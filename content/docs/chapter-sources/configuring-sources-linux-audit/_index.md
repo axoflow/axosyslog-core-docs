@@ -25,8 +25,6 @@ Most recent Linux distributions enable Security-Enhanced Linux (SELinux) or AppA
 ## Example: Using the linux-audit() driver {#example-source-file}
 
 ```c
-
-``` 
 source s_auditd {
     linux-audit(
         prefix("test.")
@@ -37,7 +35,5 @@ source s_auditd {
     );
 };
             
-```
-
 ```
 

@@ -185,14 +185,10 @@ The `http()` destination supports only unencrypted key files (that is, the priva
 To customize the action to take for a particular response code, use the following format: `response-action(\<response-code\> =\> \<action\>`. To customize multiple response code-action pairs, separate them with a comma, for example:
 
 ```c
-
-``` 
  http(
     url("http://localhost:8080")
     response-action(418 => drop, 404 => retry)
 );
-```
-
 ```
 
 

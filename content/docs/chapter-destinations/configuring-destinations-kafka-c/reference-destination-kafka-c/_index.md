@@ -169,12 +169,9 @@ The `bootstrap-servers` option is translated to the `bootstrap.servers` property
 For example, the following properties file defines the acknowledgment method and compression:
 
 ```c
-
-``` example
+example
 `acks=all
 compression.type=snappy`.
-```
-
 ```
 
 {{% include-headless "chunk/kafka-c-impl-required-options-note.md" %}}

@@ -447,8 +447,6 @@ In the case of syslog-ng macros starting with a dot (for example, "`.SDATA.meta.
 To retain the starting dot, use the **--leave-initial-dot** flag, for example:
 
 ```c
-
-``` 
 $(format-json --leave-initial-dot .SDATA.meta.sequenceID)
             
 ```

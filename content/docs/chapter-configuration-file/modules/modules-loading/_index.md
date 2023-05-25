@@ -51,8 +51,7 @@ If you include the `@requires` statement in the:
 Note that this is not true for modules marked as mandatory. You can make a dependency module mandatory by defining an error message after the `@requires \<module-name\>` statement, for example:
 
 ```c
-
-``` Example
+Example
 @requires http "The http() driver is required for elasticsearch-http(). Install syslog-ng-mod-http to continue."
 ```
 
