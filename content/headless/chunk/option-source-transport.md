@@ -6,7 +6,7 @@
 
 |          |                                                                                                                                                                                     |
 | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Type:    | {{% conditional-text include-if="pe" %}}rltp, {{% /conditional-text %}}udp, tcp, tls, proxied-tcp, proxied-tls, proxied-tls-passthrough, text-with-nuls |
+| Type:    | udp, tcp, tls, proxied-tcp, proxied-tls, proxied-tls-passthrough, text-with-nuls |
 | Default: | tcp                                                                                                                                                                                 |
 
 *Description:* Specifies the protocol used to receive messages from the source.

@@ -9,7 +9,7 @@ weight:  1500
 
 You can use the `graylog2()` destination and a Graylog Extended Log Format (GELF) template to send syslog messages to [Graylog](http://docs.graylog.org).
 
-You can forward simple name-value pairs where the name starts with a dot or underscore. If names of your name-value pairs include dots other than the first character, you should use JSON formatting directly instead of the GELF template and send logs to a raw TCP port in Graylog, which can then extract fields from nested JSON.{{% conditional-text include-if="ose" %}} Version 3.21 and later also supports TLS-encrypted connection to the Graylog server.{{% /conditional-text %}}
+You can forward simple name-value pairs where the name starts with a dot or underscore. If names of your name-value pairs include dots other than the first character, you should use JSON formatting directly instead of the GELF template and send logs to a raw TCP port in Graylog, which can then extract fields from nested JSON. Version 3.21 and later also supports TLS-encrypted connection to the Graylog server.
 
 
 
@@ -17,7 +17,6 @@ You can forward simple name-value pairs where the name starts with a dot or unde
 
 ```c
    graylog2();
-
 ```
 
 

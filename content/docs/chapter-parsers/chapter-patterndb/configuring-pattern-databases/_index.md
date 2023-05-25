@@ -68,7 +68,7 @@ By default, syslog-ng uses the name of the application (content of the ${PROGRAM
 
 ```
 
-Note that the `program-template()` option is available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.21{{% /conditional-text %}} and later.
+Note that the `program-template()` option is available in {{% param "product.abbrev" %}} version 3.21 and later.
 
 
 {{% alert title="Note" color="info" %}}
@@ -137,5 +137,5 @@ If you want to automatically drop unmatched messages (that is, discard every mes
 
 ```
 
-Note that the `drop-unmatched()` option is available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.11{{% /conditional-text %}} and later.
+Note that the `drop-unmatched()` option is available in {{% param "product.abbrev" %}} version 3.11 and later.
 

@@ -6,7 +6,7 @@
 
 |          |                                                                                                                     |
 | -------- | ------------------------------------------------------------------------------------------------------------------- |
-| Type:    | {{% conditional-text include-if="pe" %}}rltp, {{% /conditional-text %}}udp, tcp, or tls |
+| Type:    | udp, tcp, or tls |
 | Default: | tcp                                                                                                                 |
 
 *Description:* Specifies the protocol used to send messages to the destination server.

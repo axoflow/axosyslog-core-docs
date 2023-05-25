@@ -50,7 +50,7 @@ The following example displays the default values.
 
 ```
 
-The following example shows the same setup using the deprecated libmongo-client syntax (as used in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.7{{% /conditional-text %}}), and is equivalent with the previous example.
+The following example shows the same setup using the deprecated libmongo-client syntax (as used in {{% param "product.abbrev" %}} version 3.7), and is equivalent with the previous example.
 
 ```c
    destination d_mongodb {

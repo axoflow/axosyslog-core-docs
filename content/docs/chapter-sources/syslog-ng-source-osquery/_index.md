@@ -16,7 +16,7 @@ The `osquery()` source of {{% param "product.abbrev" %}} allows you read the res
 
 The {{% param "product.abbrev" %}} application automatically adds the `.osquery.` prefix to the name of the fields the extracted from the message.
 
-The `osquery()` source is available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.4{{% /conditional-text %}} and later.
+The `osquery()` source is available in {{% param "product.abbrev" %}} version 3.10 and later.
 
 
 ## Prerequisites:

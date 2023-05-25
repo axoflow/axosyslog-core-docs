@@ -6,7 +6,7 @@ weight:  3500
 
 Using the `snmptrap()` source, you can read and parse the SNMP traps of the [Net-SNMP](http://www.net-snmp.org)'s `snmptrapd` application. {{% param "product.abbrev" %}} can read these traps from a log file, and extract their content into name-value pairs, making it easy to forward them as a structured log message (for example, in JSON format). The {{% param "product.abbrev" %}} application automatically adds the `.snmp.` prefix to the name of the fields the extracted from the message.
 
-The `snmptrap()` source is available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and later.
+The `snmptrap()` source is available in {{% param "product.abbrev" %}} version 3.10 and later.
 
 
 ## Limitations:

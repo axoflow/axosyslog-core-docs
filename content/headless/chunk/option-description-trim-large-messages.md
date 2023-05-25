@@ -18,4 +18,4 @@
     
     As a result of trimming, a parser could fail to parse the trimmed message. For example, a trimmed JSON or XML message will not be valid JSON or XML.
 
-Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="pe" %}}7.0.14{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.21{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}} version 3.21 and later.

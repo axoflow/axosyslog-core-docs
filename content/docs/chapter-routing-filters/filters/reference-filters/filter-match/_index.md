@@ -14,7 +14,7 @@ To limit the scope of the match to a specific part of the message (identified wi
 
 The `value()` parameter accepts both built-in macros and user-defined ones created with a parser or using a pattern database. For details on macros and parsers, see {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/configuring-macros/_index.md" %}}, {{% xref "/docs/chapter-parsers/csv-parser/_index.md" %}}, and {{% xref "/docs/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-filters/_index.md" %}}.
 
-Starting with version {{% conditional-text include-if="ose" %}}3.22{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.15{{% /conditional-text %}}, the `match()` filter can work on templates as well. This means that you can a match against an expression combined of macros, instead of a single macro. Note that when using a template, you must reference macros with the $ sign (unlike when using the `value()` parameter). For example:
+Starting with version 3.22, the `match()` filter can work on templates as well. This means that you can a match against an expression combined of macros, instead of a single macro. Note that when using a template, you must reference macros with the $ sign (unlike when using the `value()` parameter). For example:
 
 ```c
    match("^my-regular-expression" template("${HOST}|${PROGRAM}${PID}|${MESSAGE}"));

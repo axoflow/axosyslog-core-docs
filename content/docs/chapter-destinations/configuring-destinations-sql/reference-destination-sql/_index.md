@@ -73,9 +73,9 @@ OPTION_NAME is always a string, VALUE is a string or a number. For example:
 
 *Description:* Flags related to the `sql()` destination.
 
-  - *dont-create-tables*: Enable this flag to prevent {{% param "product.abbrev" %}} from creating non-existing database tables automatically. The {{% param "product.abbrev" %}} application typically has to create tables if you use macros in the table names. Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.2{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}4.0{{% /conditional-text %}} and later.
+  - *dont-create-tables*: Enable this flag to prevent {{% param "product.abbrev" %}} from creating non-existing database tables automatically. The {{% param "product.abbrev" %}} application typically has to create tables if you use macros in the table names. Available in {{% param "product.abbrev" %}} version 3.2 and later.
 
-  - *explicit-commits*: By default, {{% param "product.abbrev" %}} commits every log message to the target database individually. When the `explicit-commits` option is enabled, messages are committed in batches. This improves the performance, but results in some latency, as the messages are not immediately sent to the database. The size and frequency of batched commits can be set using the **batch-lines()** parameter. The `explicit-commits` option is available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.2{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}4.0{{% /conditional-text %}} and later.
+  - *explicit-commits*: By default, {{% param "product.abbrev" %}} commits every log message to the target database individually. When the `explicit-commits` option is enabled, messages are committed in batches. This improves the performance, but results in some latency, as the messages are not immediately sent to the database. The size and frequency of batched commits can be set using the **batch-lines()** parameter. The `explicit-commits` option is available in {{% param "product.abbrev" %}} version 3.2 and later.
 
 
 ## Example: Setting flags for SQL destinations

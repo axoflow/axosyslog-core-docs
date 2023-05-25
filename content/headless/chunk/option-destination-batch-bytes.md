@@ -13,5 +13,5 @@
 
 Note that if the `batch-timeout()` option is enabled and the queue becomes empty, {{% param "product.abbrev" %}} flushes the messages only if `batch-timeout()` expires, or the batch reaches the limit set in `batch-bytes()`.
 
-Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.19{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.12{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}} version 3.19 and later.
 

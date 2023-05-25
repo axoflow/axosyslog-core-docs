@@ -68,7 +68,7 @@
 
   - *sanitize-utf8*: When using the `sanitize-utf8` flag, {{% param "product.abbrev" %}} converts non-UTF-8 input to an escaped form, which is valid UTF-8.
 
-  - *store-raw-message*: Save the original message as received from the client in the `${RAWMSG}` macro. You can forward this raw message in its original form to another syslog-ng node using the [syslog-ng() destination]({{< relref "/docs/chapter-destinations/destination-syslog-ng/_index.md" >}}), or to a SIEM system, ensuring that the SIEM can process it. Available only in {{% conditional-text include-if="pe" %}}7.0.9{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.16{{% /conditional-text %}} and later.
+  - *store-raw-message*: Save the original message as received from the client in the `${RAWMSG}` macro. You can forward this raw message in its original form to another syslog-ng node using the [syslog-ng() destination]({{< relref "/docs/chapter-destinations/destination-syslog-ng/_index.md" >}}), or to a SIEM system, ensuring that the SIEM can process it. Available only in 3.16 and later.
 
   - *syslog-protocol*: The `syslog-protocol` flag specifies that incoming messages are expected to be formatted according to the new IETF syslog protocol standard (RFC5424), but without the frame header. Note that this flag is not needed for the `syslog` driver, which handles only messages that have a frame header.
 

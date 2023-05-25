@@ -15,7 +15,7 @@ The `redis()` destination has the following options:
 | Type:    | hostname or IP address |
 | Default: | N/A                    |
 
-*Description:* The password used for authentication on a password-protected Redis server. Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}} and later.
+*Description:* The password used for authentication on a password-protected Redis server. Available in {{% param "product.abbrev" %}} version 3.10 and later.
 
 {{% include-headless "chunk/option-destination-batch-lines.md" %}}
 

@@ -29,7 +29,7 @@
 | Type:    | string |
 | Default: | None   |
 
-*Description:* Bind to the specified interface instead of an IP address. Available in {{% conditional-text include-if="ose" %}}3.19{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.13{{% /conditional-text %}} and later.
+*Description:* Bind to the specified interface instead of an IP address. Available in 3.19 and later.
 
 
 {{% include-headless "chunk/option-source-ip.md" %}}

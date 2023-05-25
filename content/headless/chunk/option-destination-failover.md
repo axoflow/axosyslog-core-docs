@@ -4,7 +4,7 @@
 
 ## failover()
 
-*Description:* Available only in {{% param "product.name" %}} version {{% conditional-text include-if="pe" %}}7.0.10{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.17{{% /conditional-text %}} and later. For details about how client-side failover works, see {{% xref "/docs/chapter-destinations/concepts-failover/_index.md" %}}.
+*Description:* Available only in {{% param "product.name" %}} version 3.17 and later. For details about how client-side failover works, see {{% xref "/docs/chapter-destinations/concepts-failover/_index.md" %}}.
 
 
 
@@ -33,7 +33,7 @@ The failover servers must be accessible on the same port as the primary server.
 *failback()*
 
 
-*Description:* Available only in {{% param "product.name" %}} version {{% conditional-text include-if="pe" %}}7.0.9{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.17{{% /conditional-text %}} and later.
+*Description:* Available only in {{% param "product.name" %}} version 3.17 and later.
 
 {{% include-headless "chunk/option-destination-description-failback.md" %}}
 

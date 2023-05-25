@@ -4,7 +4,7 @@ weight:  500
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-Starting with {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.2{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}4 F1{{% /conditional-text %}}, it is also possible to compare macro values and templates as numerical and string values. String comparison is alphabetical: it determines if a string is alphabetically greater or equal to another string. Use the following syntax to compare macro values or templates. For details on macros and templates, see {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/_index.md" %}}.
+Starting with {{% param "product.abbrev" %}} version 3.2, it is also possible to compare macro values and templates as numerical and string values. String comparison is alphabetical: it determines if a string is alphabetically greater or equal to another string. Use the following syntax to compare macro values or templates. For details on macros and templates, see {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/_index.md" %}}.
 
 ```c
    filter <filter-id>

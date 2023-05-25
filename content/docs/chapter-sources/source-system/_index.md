@@ -4,15 +4,15 @@ weight:  4100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-Starting with version {{% conditional-text include-if="pe" %}}4 F1{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.2{{% /conditional-text %}}, {{% param "product.abbrev" %}} can automatically collect the system-specific log messages of the host on a number of platforms using the **system()** driver. If the `system()` driver is included in the {{% param "product.abbrev" %}} configuration file, {{% param "product.abbrev" %}} automatically adds the following sources to the {{% param "product.abbrev" %}} configuration.
+Starting with version 3.2, {{% param "product.abbrev" %}} can automatically collect the system-specific log messages of the host on a number of platforms using the **system()** driver. If the `system()` driver is included in the {{% param "product.abbrev" %}} configuration file, {{% param "product.abbrev" %}} automatically adds the following sources to the {{% param "product.abbrev" %}} configuration.
 
 {{% alert title="Note" color="info" %}}
 
-{{% param "product.abbrev" %}} versions {{% conditional-text include-if="pe" %}}4.1-5.0{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.2-3.3{{% /conditional-text %}} used an external script to generate the `system()` source, but this was problematic in certain situations, for example, when the host used a strict AppArmor profile. Therefore, the `system()` source is now generated internally in {{% param "product.abbrev" %}}.
+{{% param "product.abbrev" %}} versions 3.2-3.3 used an external script to generate the `system()` source, but this was problematic in certain situations, for example, when the host used a strict AppArmor profile. Therefore, the `system()` source is now generated internally in {{% param "product.abbrev" %}}.
 
 {{% /alert %}}
 
-The `system()` driver is also used in the default configuration file of {{% param "product.abbrev" %}}. For details on the default configuration file, see [Example: The default configuration file of [%=General.OSE%]]({{< relref "/docs/chapter-quickstart/configure-clients/_index.md" >}}). Starting with {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.6{{% /conditional-text %}}, you can use the **system-expand** command-line utility (which is a shell script, located in the `modules/system-source/` directory) to display the configuration that the `system()` source will use.
+The `system()` driver is also used in the default configuration file of {{% param "product.abbrev" %}}. For details on the default configuration file, see [Example: The default configuration file of [%=General.OSE%]]({{< relref "/docs/chapter-quickstart/configure-clients/_index.md" >}}). Starting with {{% param "product.abbrev" %}} version 3.6, you can use the **system-expand** command-line utility (which is a shell script, located in the `modules/system-source/` directory) to display the configuration that the `system()` source will use.
 
 {{% alert title="Warning" color="warning" %}}
 
@@ -20,7 +20,7 @@ If {{% param "product.abbrev" %}} does not recognize the platform it is installe
 
 {{% /alert %}}
 
-Starting with version {{% conditional-text include-if="ose" %}}3.6{{% /conditional-text %}}, {{% param "product.abbrev" %}} parses messages complying with the [Splunk Common Information Model (CIM)](http://docs.splunk.com/Documentation/CIM/latest/User/Overview) and marked with `@cim` as JSON messages (for example, the ulogd from the netfilter project can emit such messages). That way, you can forward such messages without losing any information to CIM-aware applications (for example, Splunk).
+Starting with version 3.6, {{% param "product.abbrev" %}} parses messages complying with the [Splunk Common Information Model (CIM)](http://docs.splunk.com/Documentation/CIM/latest/User/Overview) and marked with `@cim` as JSON messages (for example, the ulogd from the netfilter project can emit such messages). That way, you can forward such messages without losing any information to CIM-aware applications (for example, Splunk).
 
 <table>
 <caption>Sources automatically added by {{% param "product.name" %}}</caption>

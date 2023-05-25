@@ -6,7 +6,7 @@ weight:  700
 
 {{% include-headless "wnt/warning-elasticsearch2-deprecated.md" %}}
 
-Starting with version {{% conditional-text include-if="pe" %}}5.6{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.7{{% /conditional-text %}} of {{% param "product.abbrev" %}} can directly send log messages to [Elasticsearch](https://www.elastic.co/products/elasticsearch), allowing you to search and analyze your data in real time, and visualize it with [Kibana](https://www.elastic.co/products/kibana).
+Starting with version 3.7 of {{% param "product.abbrev" %}} can directly send log messages to [Elasticsearch](https://www.elastic.co/products/elasticsearch), allowing you to search and analyze your data in real time, and visualize it with [Kibana](https://www.elastic.co/products/kibana).
 
 Note the following limitations when using the {{% param "product.abbrev" %}} `elasticsearch2` destination:
 

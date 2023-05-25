@@ -11,7 +11,7 @@ The {{% param "product.abbrev" %}} application supports the following `type()` o
 
 ## Perl Compatible Regular Expressions (pcre) {#reference-regexp-pcre}
 
-*Description:* Uses Perl Compatible Regular Expressions (PCRE).{{% conditional-text include-if="pe" %}} Starting with {{% param "product.abbrev" %}} version 3.1, PCRE expressions are supported on every platform.{{% /conditional-text %}} If the `type()` parameter is not specified, {{% param "product.abbrev" %}} uses PCRE regular expressions by default.
+*Description:* Uses Perl Compatible Regular Expressions (PCRE). If the `type()` parameter is not specified, {{% param "product.abbrev" %}} uses PCRE regular expressions by default.
 
 For more information about the `flags()` options of PCRE regular expressions, see {{% xref "/docs/chapter-manipulating-messages/regular-expressions/reference-regexp-types/regexp-flags-options/_index.md" %}}.
 

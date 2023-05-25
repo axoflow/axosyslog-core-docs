@@ -47,7 +47,7 @@ The `syslog-debun` tool collects and saves information about your {{% param "pro
 
 - `-R \<directory\>`
     
-    The directory where {{% param "product.pe" %}} is installed instead of `/opt/syslog-ng`.
+    The directory where {{% param "product.ose" %}} is installed instead of `/opt/syslog-ng`.
 
 - `-W \<directory\>`
     

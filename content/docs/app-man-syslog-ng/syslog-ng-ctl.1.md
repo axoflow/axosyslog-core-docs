@@ -9,7 +9,7 @@ weight:  4900
 
 ## Name
 
-`syslog-ng-ctl` — Display message statistics and enable verbose, debug and trace modes in {{% param "product.pe" %}}
+`syslog-ng-ctl` — Display message statistics and enable verbose, debug and trace modes
 
 ## Synopsis
 
@@ -202,7 +202,7 @@ Use the `stats` command to display statistics about the processed messages. For 
 
 - `--control=\<socket\>` or `-c`
     
-    Specify the socket to use to access {{% param "product.pe" %}}. Only needed when using a non-standard socket.
+    Specify the socket to use to access {{% param "product.ose" %}}. Only needed when using a non-standard socket.
 
 - `--reset=\<socket\>` or `-r`
     
@@ -328,7 +328,7 @@ echo "<passphrase-of-the-key>" | syslog-ng-ctl credentials add --id=<path-to-the
 
 - `--control=\<socket\>` or `-c`
     
-    Specify the socket to use to access {{% param "product.pe" %}}. Only needed when using a non-standard socket.
+    Specify the socket to use to access {{% param "product.ose" %}}. Only needed when using a non-standard socket.
 
 - `--id=\<path-to-the-key\>` or `-i`
     

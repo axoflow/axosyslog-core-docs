@@ -4,7 +4,7 @@ weight:  2100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-Version {{% conditional-text include-if="ose" %}}3.8{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.4{{% /conditional-text %}} of {{% param "product.abbrev" %}} can directly post log messages to web services using the HTTP protocol{{% conditional-text include-if="ose" %}}, without having to use Java{{% /conditional-text %}}. The current implementation has the following limitations:
+Version 3.8 of {{% param "product.abbrev" %}} can directly post log messages to web services using the HTTP protocol, without having to use Java. The current implementation has the following limitations:
 
   - Only the PUT and the POST methods are supported.
 

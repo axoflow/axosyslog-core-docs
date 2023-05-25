@@ -3,7 +3,7 @@
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 If you want to use the Java-based modules of {{% param "product.abbrev" %}} (for example, the Elasticsearch, HDFS, or Kafka destinations), you must compile {{% param "product.abbrev" %}} with Java support.
 
-  - Download and install the Java Runtime Environment (JRE), 1.7 (or newer). {{% conditional-text include-if="pe" %}}The Java-based modules of {{% param "product.abbrev" %}} are tested and supported when using the Oracle implementation of Java. Other implementations are untested and unsupported, they may or may not work as expected.{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}You can use OpenJDK or Oracle JDK, other implementations are not tested.{{% /conditional-text %}}
+  - Download and install the Java Runtime Environment (JRE), 1.7 (or newer). You can use OpenJDK or Oracle JDK, other implementations are not tested.
 
   - Install [gradle](https://gradle.org/install) version 2.2.1 or newer.
 

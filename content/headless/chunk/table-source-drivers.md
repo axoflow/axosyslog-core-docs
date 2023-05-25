@@ -17,7 +17,7 @@ Messages generated internally in syslog-ng.
 
 [network()]({{< relref "/docs/chapter-sources/configuring-sources-network/_index.md" >}})
 
-Receives messages from remote hosts using the [BSD-syslog protocol]({{< relref "/docs/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/_index.md" >}}) over IPv4 and IPv6. Supports the TCP, UDP,{{% conditional-text include-if="pe" %}}RLTP,{{% /conditional-text %}} and TLS network protocols.
+Receives messages from remote hosts using the [BSD-syslog protocol]({{< relref "/docs/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/_index.md" >}}) over IPv4 and IPv6. Supports the TCP, UDP, and TLS network protocols.
 
 [nodejs()]({{< relref "/docs/chapter-sources/configuring-source-nodejs/_index.md" >}})
 

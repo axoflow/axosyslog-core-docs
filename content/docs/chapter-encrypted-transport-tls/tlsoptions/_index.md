@@ -26,7 +26,7 @@ The tls() option can include the following settings:
 
 *Description:* Enable on-the-wire compression in TLS communication. Note that this option must be enabled both on the server and the client to have any effect. Enabling compression can significantly reduce the bandwidth required to transport the messages, but can slightly decrease the performance of {{% param "product.abbrev" %}}, reducing the number of transferred messages during a given period.
 
-Available in version {{% conditional-text include-if="ose" %}}3.19{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.12{{% /conditional-text %}} and later.
+Available in version 3.19 and later.
 
 
 {{% include-headless "chunk/option-destination-tls-ca-dir.md" %}}
@@ -198,7 +198,7 @@ TLS-encryption
 
 {{% include-headless "chunk/option-destination-tls-peer-verify-notes.md" %}}
 
-Starting with {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}, you can also use a simplified configuration method for the `peer-verify` option, simply setting it to **yes** or **no**. The following table summarizes the possible options and their results depending on the certificate of the peer.
+Starting with {{% param "product.abbrev" %}} version 3.10, you can also use a simplified configuration method for the `peer-verify` option, simply setting it to **yes** or **no**. The following table summarizes the possible options and their results depending on the certificate of the peer.
 
 {{% include-headless "chunk/option-tls-peer-verify-yesno.md" %}}
 
@@ -262,7 +262,7 @@ In the following example, the first command creates a single `PKCS #12` file fro
 
 *Description:* When set to `yes` in a destination that uses TLS encryption, this option enables [Server Name Indication](https://tools.ietf.org/html/rfc6066#page-6) (also called Server Name Identification, SNI). The {{% param "product.abbrev" %}} sends the hostname or the IP address set in the destination to the server during the TLS handshake.
 
-Available in {{% param "product.abbrev" %}}{{% conditional-text include-if="ose" %}}3.24{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.17{{% /conditional-text %}} and newer.
+Available in {{% param "product.abbrev" %}} 3.24 and newer.
 
 
 ## Example: Using Server Name Indication
@@ -304,7 +304,7 @@ The following destination sends the hostname of its destination during the TLS h
 
 Using `ssl-options(none)` means that {{% param "product.abbrev" %}} does not specify any restrictions on the protocol used. However, in this case, the underlying OpenSSL library can restrict the available protocols, for example, certain OpenSSL versions automatically disable SSLv2.
 
-This option is available in {{% param "product.abbrev" %}}{{% conditional-text include-if="ose" %}}3.7{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0{{% /conditional-text %}} and newer.
+This option is available in {{% param "product.abbrev" %}} 3.7 and newer.
 
 
 ## Example: Using ssl-options

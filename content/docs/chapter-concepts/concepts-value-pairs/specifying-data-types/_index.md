@@ -4,7 +4,7 @@ weight:  100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-By default, {{% param "product.abbrev" %}} handles every data as strings. However, certain destinations and data formats (for example, SQL, MongoDB, JSON{{% conditional-text include-if="ose" %}}, AMQP{{% /conditional-text %}}) support other types of data as well, for example, numbers or dates. The {{% param "product.abbrev" %}} application allows you to specify the data type in templates (this is also called type-hinting). If the destination driver supports data types, it converts the incoming data to the specified data type. For example, this allows you to store integer numbers as numbers in MongoDB, instead of strings.
+By default, {{% param "product.abbrev" %}} handles every data as strings. However, certain destinations and data formats (for example, SQL, MongoDB, JSON, AMQP) support other types of data as well, for example, numbers or dates. The {{% param "product.abbrev" %}} application allows you to specify the data type in templates (this is also called type-hinting). If the destination driver supports data types, it converts the incoming data to the specified data type. For example, this allows you to store integer numbers as numbers in MongoDB, instead of strings.
 
 {{% alert title="Warning" color="warning" %}}
 
