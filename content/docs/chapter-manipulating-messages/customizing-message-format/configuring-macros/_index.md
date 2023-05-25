@@ -10,8 +10,7 @@ The {{% param "product.abbrev" %}} application allows you to define message temp
 ## Declaration:
 
 ```c
-
-    template <template-name> {
+   template <template-name> {
         template("<template-expression>") <template-escape(yes)>;
     };
 
@@ -23,16 +22,14 @@ Template objects have a single option called `template-escape()`, which is disab
 If you do not want to enable the `template-escape()` option (which is rarely needed), you can define the template without the enclosing braces.
 
 ```c
-
-    template <template-name> "<template-expression>";
+   template <template-name> "<template-expression>";
 
 ```
 
 You can also refer to an existing template from within a template. The result of the referred template will be pasted into the second template.
 
 ```c
-
-    template first-template "sample-text";
+   template first-template "sample-text";
     template second-template "The result of the first-template is: $(template first-template)";
 
 ```
@@ -40,8 +37,7 @@ You can also refer to an existing template from within a template. The result of
 If you want to use a template only once, you can define the template inline, for example:
 
 ```c
-
-    destination d_file {
+   destination d_file {
         file ("/var/log/messages" template("${ISODATE} ${HOST} ${MESSAGE}\n") );
     };
 
@@ -58,8 +54,7 @@ To use a literal `$` character in a template, you have to escape it. In {{% para
 Default values for macros can also be specified by appending the `:-` characters and the default value of the macro. If a message does not contain the field referred to by the macro, or it is empty, the default value will be used when expanding the macro. For example, if a message does not contain a hostname, the following macro can specify a default hostname.
 
 ```c
-
-    ${HOST:-default_hostname}
+   ${HOST:-default_hostname}
 
 ```
 
@@ -71,8 +66,7 @@ By default, syslog-ng sends messages using the following template: `${ISODATE} $
 The following template (`t_demo_filetemplate`) adds the date of the message and the name of the host sending the message to the beginning of the message text. The template is then used in a file destination: messages sent to this destination (`d_file`) will use the message format defined in the template.
 
 ```c
-
-    template t_demo_filetemplate {
+   template t_demo_filetemplate {
         template("${ISODATE} ${HOST} ${MESSAGE}\n");
     };
     destination d_file {
@@ -84,8 +78,7 @@ The following template (`t_demo_filetemplate`) adds the date of the message and 
 If you do not want to enable the `template-escape()` option (which is rarely needed), you can define the template without the enclosing braces. The following two templates are equivalent.
 
 ```c
-
-    template t_demo_template-with-braces {
+   template t_demo_template-with-braces {
         template("${ISODATE} ${HOST} ${MESSAGE}\n");
     };
     template t_demo_template-without-braces "${ISODATE} ${HOST} ${MESSAGE}\n";
@@ -95,8 +88,7 @@ If you do not want to enable the `template-escape()` option (which is rarely nee
 Templates can also be used inline, if they are used only at a single location. The following destination is equivalent with the previous example:
 
 ```c
-
-    destination d_file {
+   destination d_file {
         file ("/var/log/messages" template("${ISODATE} ${HOST} ${MESSAGE}\n") );
     };
 
@@ -105,8 +97,7 @@ Templates can also be used inline, if they are used only at a single location. T
 The following file destination uses macros to daily create separate logfiles for every client host.
 
 ```c
-
-    destination d_file {
+   destination d_file {
             file("/var/log/${YEAR}.${MONTH}.${DAY}/${HOST}.log");
     };
 

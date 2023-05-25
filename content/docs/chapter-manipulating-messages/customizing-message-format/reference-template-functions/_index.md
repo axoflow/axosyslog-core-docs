@@ -55,8 +55,7 @@ Available in {{% param "product.abbrev" %}} version {{% conditional-text include
 The following example selects the message of the context that has a `username` name-value pair with the `root` value, and returns the value of the `tags` name-value pair.
 
 ```c
-
-    $(context-lookup ("${username}" == "root") ${tags})
+   $(context-lookup ("${username}" == "root") ${tags})
 
 ```
 
@@ -170,8 +169,7 @@ Available in {{% param "product.abbrev" %}} version 3.30 and later.
 When used in configuration as seen in the example, the `filter` template function filters even numbers from an input list of `0`, `1`, `2` and `3`:
 
 ```c
-
-    log {
+   log {
       source { example-msg-generator(num(1) values(INPUT => "0,1,2,3")); };
       destination {
          file("/dev/stdout"
@@ -215,7 +213,6 @@ The returned values are `0` and `2`.
     The following examples illustrate several ways that you can use a single filter, or a logical expression built from several filters.
     
     ```c
-    
         ('1' == '1')
         ('$_' le '1')
         ('$(% $_ 2)' eq '0')
@@ -249,7 +246,6 @@ Using the `format-cef-extension` template function has the following prerequisit
   - Set the `on-error` global option to **drop-property**, otherwise if the name of a name-value pair includes an invalid character, {{% param "product.abbrev" %}} drops the entire message. (Key name in CEF extensions can contain only the A-Z, a-z and 0-9 characters.)
     
     ```c
-    
         options {
            on-error("drop-property");
         };
@@ -264,8 +260,7 @@ Using the `format-cef-extension` template function has the following prerequisit
 The following example selects every available information about the log message, except for the date-related macros (`R_\*` and `S_\*`), selects the `.SDATA.meta.sequenceId` macro, and defines a new value-pair called `MSGHDR` that contains the program name and PID of the application that sent the log message (since you will use the template-function in a template, you must escape the double-quotes).
 
 ```c
-
-    $(format-cef-extension --scope syslog,all_macros,selected_macros \
+   $(format-cef-extension --scope syslog,all_macros,selected_macros \
       --exclude R_* --exclude S_* --key .SDATA.meta.sequenceId \
       --pair MSGHDR=\"$PROGRAM[$PID]: \")
 
@@ -274,16 +269,14 @@ The following example selects every available information about the log message,
 The following example selects every value-pair that has a name beginning with `.cef.`, but removes the `.cef.` prefix from the key names.
 
 ```c
-
-    template("$(format-cef-extension --subkeys .cef.)\n")
+   template("$(format-cef-extension --subkeys .cef.)\n")
 
 ```
 
 The following example shows how to use this template function to store log messages in CEF format:
 
 ```c
-
-    destination d_cef_extension {
+   destination d_cef_extension {
         file("/var/log/messages.cef" template("${ISODATE} ${HOST} $(format-cef-extension --scope selected_macros --scope nv_pairs)\n"));
     };
 
@@ -301,8 +294,7 @@ The following example shows how to use this template function to store log messa
 *Description:* Formats the message into [Splunk Common Information Model (CIM) format](http://docs.splunk.com/Documentation/CIM/latest/User/Overview). Applications that can receive messages in CIM format include Kibana, logstash, and Splunk. Applications that can be configured to log into CIM format include nflog and the Suricata IDS engine.
 
 ```c
-
-    destination d_cim {
+   destination d_cim {
         network(
             "192.168.1.1"
             template("$(format-cim)\n")
@@ -349,7 +341,6 @@ The following example shows the difference between nested and flattened JSON obj
   - The output of `$(format-json a.b.c=1)` is a nested JSON object (whitespace added for better readability):
     
     ```c
-    
         {
             "a": {
                 "b": {
@@ -363,7 +354,6 @@ The following example shows the difference between nested and flattened JSON obj
   - The output of `$(format-flat-json a.b.c=1)` is a flattened JSON object (whitespace added for better readability):
     
     ```c
-    
         {
             "a.b.c": "1"
         }
@@ -391,8 +381,7 @@ You can use the Graylog Extended Log Format (GELF) template together with the `g
 The following configuration example shows how you can use the `format-gelf` template:
 
 ```c
-
-    destination graylog2 {
+   destination graylog2 {
         network(
             "127.0.0.1"
             port(12201)
@@ -432,8 +421,7 @@ For details, see {{% xref "/docs/chapter-concepts/concepts-value-pairs/_index.md
 The following example selects every available information about the log message, except for the date-related macros (`R_\*` and `S_\*`), selects the `.SDATA.meta.sequenceId` macro, and defines a new value-pair called `MSGHDR` that contains the program name and PID of the application that sent the log message (since you will use the template-function in a template, you must escape the double-quotes).
 
 ```c
-
-    $(format-json --scope syslog,all_macros,selected_macros \
+   $(format-json --scope syslog,all_macros,selected_macros \
       --exclude R_* --exclude S_* --key .SDATA.meta.sequenceId \
       --pair MSGHDR=\"$PROGRAM[$PID]: \")
 
@@ -442,8 +430,7 @@ The following example selects every available information about the log message,
 The following example shows how to use this template function to store log messages in JSON format:
 
 ```c
-
-    destination d_json {
+   destination d_json {
         file(
             "/var/log/messages.json"
             template("$(format-json --scope selected_macros --scope nv_pairs)\n")
@@ -484,8 +471,7 @@ To select which value-pairs to convert, use the command-line syntax of the `valu
 The following example selects every available information about the log message, except for the date-related macros (`R_\*` and `S_\*`), selects the `.SDATA.meta.sequenceId` macro, and defines a new value-pair called `MSGHDR` that contains the program name and PID of the application that sent the log message (since you will use the template-function in a template, you must escape the double-quotes).
 
 ```c
-
-    $(format-welf --scope syslog,all_macros,selected_macros \
+   $(format-welf --scope syslog,all_macros,selected_macros \
       --exclude R_* --exclude S_* --key .SDATA.meta.sequenceId \
       --pair MSGHDR=\"$PROGRAM[$PID]: \")
 
@@ -494,8 +480,7 @@ The following example selects every available information about the log message,
 The following example shows how to use this template function to store log messages in WELF format:
 
 ```c
-
-    destination d_welf {
+   destination d_welf {
         file(
             "/var/log/messages.welf"
             template("$(format-welf --scope selected_macros --scope nv_pairs)\n")
@@ -567,7 +552,6 @@ The following databases are supported:
     Use this database to query data related to a user. Specify the user by either username or user ID. You can query the following data: username, user ID, group ID, GECOS field, home directory, or user shell.
     
     ```c
-    
         $(getent passwd testuser name)
         $(getent passwd testuser uid)
         $(getent passwd testuser gid)
@@ -580,7 +564,6 @@ The following databases are supported:
     or
     
     ```c
-    
         $(getent passwd 1000 name)
         $(getent passwd 1000 uid)
         $(getent passwd 1000 gid)
@@ -601,7 +584,6 @@ The following databases are supported:
     Use this database to query group-related data. The group can be specified using either group ID or group name. You can query the following data: group name, group ID, and members.
     
     ```c
-    
         $(getent group adm name)
         $(getent group adm gid)
         $(getent group adm members)
@@ -619,7 +601,6 @@ The following databases are supported:
     Use this database to translate protocol name to protocol ID, or protocol ID to protocol string.
     
     ```c
-    
         $(getent protocols tcp)
         $(getent protocols 6)
     
@@ -630,7 +611,6 @@ The following databases are supported:
     Use this database to translate service name to service ID, or service ID to service name.
     
     ```c
-    
         $(getent services http)
         $(getent services 80)
     
@@ -654,8 +634,7 @@ For details on selecting value-pairs in {{% param "product.abbrev" %}} and for p
 The following configuration example shows, how to send value-pairs with names starting with "`vmstat.`" to Graphite running on `localhost`, port `2003`:
 
 ```c
-
-    destination d_graphite {
+   destination d_graphite {
         network( host("localhost") port(2003) template("$(graphite-output --key vmstat.*)"));
     };
 
@@ -714,32 +693,28 @@ These template functions are available only if {{% conditional-text include-if="
 The following example calculates the SHA1 hash of the hostname of the message:
 
 ```c
-
-    $(sha1 $HOST)
+   $(sha1 $HOST)
 
 ```
 
 The following example calculates the SHA256 hash of the hostname, using the **salted** string to salt the result:
 
 ```c
-
-    $(sha1 $HOST salted)
+   $(sha1 $HOST salted)
 
 ```
 
 To use shorter hashes, set the **--length**:
 
 ```c
-
-    $(sha1 --length 6 $HOST)
+   $(sha1 --length 6 $HOST)
 
 ```
 
 To replace the hostname with its hash, use a rewrite rule:
 
 ```c
-
-    rewrite r_rewrite_hostname{set("$(sha1 $HOST)", value("HOST"));};
+   rewrite r_rewrite_hostname{set("$(sha1 $HOST)", value("HOST"));};
 
 ```
 
@@ -764,24 +739,21 @@ To replace the hostname with its hash, use a rewrite rule:
 The following example returns `violation` if the `username` name-value pair of a message is `root`, and `system` otherwise.
 
 ```c
-
-    $(if ("${username}" == "root") "violation" "system")
+   $(if ("${username}" == "root") "violation" "system")
 
 ```
 
 This can be used to set the class of a message in pattern database rules based on the condition.
 
 ```c
-
-    <value name="username">$(if ("${username}" == "root") "violation" "system")</value>
+   <value name="username">$(if ("${username}" == "root") "violation" "system")</value>
 
 ```
 
 Since template functions can be embedded into each other, it is possible to use another template function as the template of the first one. For example, the following expression returns `root` if the username is `root`, `admin` if the username is `joe`, and `normal user` otherwise.
 
 ```c
-
-    <value name="username">
+   <value name="username">
         $(if ("${username}" == "root")
             "root"
             $(if ("${username}" == "joe") "admin" "normal user"))</value>
@@ -831,8 +803,7 @@ You can also use a <span>$(list-\*)</span> template function to further manipula
 The following example writes multi-line messages into a text file.
 
 ```c
-
-    destination d_file {
+   destination d_file {
         file (
             "/var/log/messages"
             template("${ISODATE} ${HOST} $(indent-multi-line ${MESSAGE})\n")
@@ -904,8 +875,7 @@ For example, the value of the `$(list-concat ${HOST}, ${PROGRAM}, ${PID})` is a 
 You can concatenate existing lists into a single list using:
 
 ```c
-
-    $(list-concat ${list1} ${list2})
+   $(list-concat ${list1} ${list2})
 
 ```
 
@@ -1010,8 +980,7 @@ Negative numbers select an element from the end of the list, for example, `-3:` 
 *Description:* Returns the length of the macro in characters, for example, the length of the message. For example, the following filter selects messages that are shorter than 16 characters:
 
 ```c
-
-    f_short {
+   f_short {
         match ('-', value ("$(if ($(length "${MESSAGE}") <= 16) "-" "+")"));
     };
 
@@ -1030,8 +999,7 @@ Negative numbers select an element from the end of the list, for example, `-3:` 
 *Description:* Returns the lowercase version of the specified string or macro. For example, the following example uses the lowercase version of the hostname in a directory name:
 
 ```c
-
-    destination d_file {
+   destination d_file {
         file ("/var/log/${MONTH}/${DAY}/$(lowercase "${HOST}")/messages");
     };
 
@@ -1064,8 +1032,7 @@ Available in {{% param "product.abbrev" %}} version 3.28 and later.
 When used in configuration as seen in the example, the `map` template function adds one to each element of a list:
 
 ```c
-
-    log {
+   log {
       source { example-msg-generator(num(1) values(LST => "0,1,2")); };
       destination {
         file("/dev/stdout"template('$(map "$(+ 1 $_)" $LST)')
@@ -1088,8 +1055,7 @@ The returned values are `1`, `2`, and `3`.
 *Description:* These template functions allow you to manipulate numbers, that is, to perform addition (+), substraction (-), multiplication (\*), division (/), and modulus (%). All of them require two numeric arguments. The result is `NaN` (Not-a-Number) if the parameters are not numbers, cannot be parsed, or if a division by zero would occur. For example, to add the value of two macros, use the following template function:
 
 ```c
-
-    $(+ "${<MACRO1>}" "${<MACRO2>}");
+   $(+ "${<MACRO1>}" "${<MACRO2>}");
 
 ```
 
@@ -1102,8 +1068,7 @@ Starting with {{% param "product.abbrev" %}} version {{% conditional-text includ
 For example:
 
 ```c
-
-    $(/ 3 2) # Both operands are integers, so the result is 1
+   $(/ 3 2) # Both operands are integers, so the result is 1
     # One of the operands is a floating point number, so the result is also floating-point
     $(/ 3.0 2) # = 1.500000
     $(/ 3 2.0) # = 1.500000
@@ -1116,8 +1081,7 @@ To round floating-point numbers, you can use the `ceil`, `floor`, and `round` te
 When you are correlating messages and a name-value pair contains numerical values in the messages, you can calculate the lowest (min), highest (max), total (sum), and mean (average) values. These calculations process every message of the correlation context. For details on message correlation, see {{% xref "/docs/chapter-correlating-log-messages/_index.md" %}}. For example, if the messages of the context have a `.myfields.load` name-value pair, you can find the highest load value using the following template function.
 
 ```c
-
-    $(max ${.myfields.load})
+   $(max ${.myfields.load})
 
 ```
 
@@ -1149,16 +1113,14 @@ When you are correlating messages and a name-value pair contains numerical value
 If the value of the `${MESSAGE}` macro is `mymessage`, then the output of the `padding()` template function is the following:
 
 ```c
-
-    $(padding ${MESSAGE} 10 X)
+   $(padding ${MESSAGE} 10 X)
 
 ```
 
 Output: `XXXXXXXXXXmymessage`
 
 ```c
-
-    $(padding ${MESSAGE} 10 foo)
+   $(padding ${MESSAGE} 10 foo)
 
 ```
 
@@ -1193,8 +1155,7 @@ The following points apply to Python parsers.
 ## Declaration:
 
 ```c
-
-    python {
+   python {
     def <name_of_the_python_function>(<log_message>, <optional_other_arguments>):
         # <your-python-code>
         return <value_of_the_template_function>
@@ -1213,8 +1174,7 @@ The following points apply to Python parsers.
 The following example creates a Python template function called `return_message` that returns the MESSAGE part of the log message.
 
 ```c
-
-    @version: {{% param "product.techversion" %}}
+   @version: {{% param "product.techversion" %}}
     
     python {
     def return_message(log_message):
@@ -1230,8 +1190,7 @@ The following example creates a Python template function called `return_message`
 The following example creates a Python template function called `resolve_host` that receives an IP address as an argument, and attempts to resolve it into a hostname.
 
 ```c
-
-    @version: {{% param "product.techversion" %}}
+   @version: {{% param "product.techversion" %}}
     
     python {
     import socket
@@ -1264,8 +1223,7 @@ The following example creates a Python template function called `resolve_host` t
 *Description:* Replaces the delimiter character with a new one. For example, the following example replaces the tabulators (`\\t`) in the message with semicolons (`;`):
 
 ```c
-
-    $(replace-delimiter "\t" ";" "${MESSAGE}")
+   $(replace-delimiter "\t" ";" "${MESSAGE}")
 
 ```
 
@@ -1304,7 +1262,6 @@ The function has the following options:
   - The list of characters to be replaced with underscores (_). The default list contains the `/` character. The following example replaces the \\ and @ characters, so for example, fo\\o@bar becomes foobar:
     
     ```c
-    
         $(sanitize -i \@ $PROGRAM)
     
     ```
@@ -1318,7 +1275,6 @@ The function has the following options:
   - The character used to replace invalid characters. By default, this is the underscore (_). The following example replaces invalid characters with colons instead of underscores, so for example, `foo/bar` becomes `foo;bar`:
     
     ```c
-    
         $(sanitize -r ; $PROGRAM)
     
     ```
@@ -1329,8 +1285,7 @@ The function has the following options:
 The following example uses the sanitize function on two macros, and the results are used as directory names in a file destination.
 
 ```c
-
-    file("/var/log/$(sanitize $HOST $PROGRAM)/messages");
+   file("/var/log/$(sanitize $HOST $PROGRAM)/messages");
 
 ```
 
@@ -1348,8 +1303,7 @@ This is equivalent to `file("/var/log/$HOST/$PROGRAM/messages");`, but any slash
 *Description:* Converts a date in UNIXTIME (for example, ${UNIXTIME}) into [stardate](https://en.wikipedia.org/wiki/Stardate), displaying the year and the progress of the year in a number of digits (`YYYY.NNN`). You can set the number of digits using the **--digits** option, for example:
 
 ```c
-
-    $(stardate --digits 2 "${R_UNIXTIME}")
+   $(stardate --digits 2 "${R_UNIXTIME}")
 
 ```
 
@@ -1364,8 +1318,7 @@ This is equivalent to `file("/var/log/$HOST/$PROGRAM/messages");`, but any slash
 *Description:* Deletes whitespaces from the beginning and the end of a macro. You can specify multiple macros separated with whitespace in a single template function, for example:
 
 ```c
-
-    $(strip "${MESSAGE}" "${PROGRAM}")
+   $(strip "${MESSAGE}" "${PROGRAM}")
 
 ```
 
@@ -1397,32 +1350,28 @@ This is equivalent to `file("/var/log/$HOST/$PROGRAM/messages");`, but any slash
 Skip the first 15 characters of the message, and select the rest:
 
 ```c
-
-    $(substr "${MESSAGE}" "15");
+   $(substr "${MESSAGE}" "15");
 
 ```
 
 Select characters 16-30 of the message (15 characters with offset 15):
 
 ```c
-
-    $(substr "${MESSAGE}" "15" "15");
+   $(substr "${MESSAGE}" "15" "15");
 
 ```
 
 Select the last 15 characters of the message:
 
 ```c
-
-    $(substr "${MESSAGE}" "-15");
+   $(substr "${MESSAGE}" "-15");
 
 ```
 
 A template that converts the message to RFC3164 (BSD-syslog) format and truncates the messages to 1023 characters:
 
 ```c
-
-    template t_truncate_messages {
+   template t_truncate_messages {
         template("$(substr \"<$PRI>$DATE $HOST $MSGHDR$MESSAGE\" \"0\" \"1023\")\n");
         template-escape(no);
     };
@@ -1445,8 +1394,7 @@ A template that converts the message to RFC3164 (BSD-syslog) format and truncate
 For dynamic templates, you can set an optional second template. This second template will be the results of the template function if resolving the dynamic template fails for some reason. For example:
 
 ```c
-
-    $(template ${my-dynamic-template} '$DATE $HOST $MSGHDR$MSG\n')
+   $(template ${my-dynamic-template} '$DATE $HOST $MSGHDR$MSG\n')
 
 ```
 
@@ -1463,8 +1411,7 @@ Available in {{% param "product.abbrev" %}}{{% conditional-text include-if="ose"
 *Description:* Returns the uppercase version of the specified string or macro. For example, the following example uses the uppercase version of the hostname in a directory name:
 
 ```c
-
-    destination d_file {
+   destination d_file {
         file ("/var/log/${MONTH}/${DAY}/$(uppercase "${HOST}")/messages");
     };
 
@@ -1514,8 +1461,7 @@ To generate a UUID, you can use a rewrite rule to create a new value-pair for th
 The following example adds a value-pair called `MESSAGE_UUID` to the message using a rewrite rule and a template.
 
 ```c
-
-    rewrite r_add_uuid {
+   rewrite r_add_uuid {
         set("$(uuid)" value("MESSAGE_UUID"));
     };
     

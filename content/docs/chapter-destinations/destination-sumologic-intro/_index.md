@@ -86,8 +86,7 @@ Currently, using the `sumologic-syslog()` and `sumologic-http()` destinations wi
 ## Declaration for the sumologic-http() destination
 
 ```c
-
-    destination d_sumo_http {
+   destination d_sumo_http {
       sumologic-http(
         collector("ZaVnC4dhaV3_[...]UF2D8DRSnHiGKoq9Onvz-XT7RJG2FA6RuyE5z4A==")
         deployment("eu")
@@ -101,8 +100,7 @@ Currently, using the `sumologic-syslog()` and `sumologic-http()` destinations wi
 ## Declaration for the sumologic-syslog() destination
 
 ```c
-
-    destination d_sumo_syslog {
+   destination d_sumo_syslog {
       sumologic-syslog(
         token("rqf/bdxYVaBLFMoU39[...]CCC5jwETm@41123")
         deployment("eu")
@@ -119,8 +117,7 @@ Currently, using the `sumologic-syslog()` and `sumologic-http()` destinations wi
 To use the `sumologic()` driver, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 
 ```c
-
-    @include "scl.conf"
+   @include "scl.conf"
 
 ```
 

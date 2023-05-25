@@ -14,8 +14,7 @@
 Example format in configuration:
 
 ```c
-
-    ca-file("/etc/pki/tls/certs/ca-bundle.crt")
+   ca-file("/etc/pki/tls/certs/ca-bundle.crt")
 
 ```
 

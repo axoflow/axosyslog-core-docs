@@ -14,8 +14,7 @@ Both unix-stream and unix-dgram have a single required argument that specifies t
 ## Declaration:
 
 ```c
-
-    unix-stream(filename [options]);
+   unix-stream(filename [options]);
     unix-dgram(filename [options]);
 
 ```
@@ -31,16 +30,14 @@ Both unix-stream and unix-dgram have a single required argument that specifies t
 ## Example: Using the unix-stream() and unix-dgram() drivers {#example-source-unixstream}
 
 ```c
-
-    source s_stream {
+   source s_stream {
         unix-stream("/dev/log" max-connections(10));
     };
 
 ```
 
 ```c
-
-    source s_dgram {
+   source s_dgram {
         unix-dgram("/var/run/log");
     };
 

@@ -4,8 +4,7 @@
 The following log statement sends all messages arriving to the localhost to a remote server.
 
 ```c
-
-    source s_localhost {
+   source s_localhost {
         network(
             ip(127.0.0.1)
             port(1999)

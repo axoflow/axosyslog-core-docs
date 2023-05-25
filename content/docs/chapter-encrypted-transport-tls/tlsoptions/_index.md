@@ -65,8 +65,7 @@ This option is only available when syslog-ng is compiled with OpenSSL version 1.
 The following example curves work for all versions of OpenSSL that are equal to or later than version 1.0.2:
 
 ```c
-
-    ecdh-curve-list("prime256v1:secp384r1")
+   ecdh-curve-list("prime256v1:secp384r1")
 
 ```
 
@@ -228,8 +227,7 @@ In the following example, the first command creates a single `PKCS #12` file fro
 ## Example:
 
 ```c
-
-    $ openssl pkcs12 -export -inkey server.key -in server.crt -certfile ca.crt -out server.p12
+   $ openssl pkcs12 -export -inkey server.key -in server.crt -certfile ca.crt -out server.p12
 
 ```
 
@@ -238,8 +236,7 @@ In the following example, the first command creates a single `PKCS #12` file fro
 ## Example configuration:
 
 ```c
-
-    source s_tls {
+   source s_tls {
         syslog(
             transport(tls)
             tls(
@@ -273,8 +270,7 @@ Available in {{% param "product.abbrev" %}}{{% conditional-text include-if="ose"
 The following destination sends the hostname of its destination during the TLS handshake.
 
 ```c
-
-    destination demo_tls_destination_with_sni {
+   destination demo_tls_destination_with_sni {
         network(
              "logserver.example.com" port(6514)
             transport("tls")
@@ -302,8 +298,7 @@ The following destination sends the hostname of its destination during the TLS h
 *Description:* Sets the specified options of the SSL/TLS protocols. Currently, you can use it to disable specific protocol versions. Note that disabling a newer protocol version (for example, TLSv1.1) does not automatically disable older versions of the same protocol (for example, TLSv1.0). For example, use the following option to permit using only TLSv1.1 or newer:
 
 ```c
-
-    ssl-options(no-sslv2, no-sslv3, no-tlsv1)
+   ssl-options(no-sslv2, no-sslv3, no-tlsv1)
 
 ```
 
@@ -317,8 +312,7 @@ This option is available in {{% param "product.abbrev" %}}{{% conditional-text i
 The following destination explicitly disables SSL and TLSv1.0
 
 ```c
-
-    destination demo_tls_destination {
+   destination demo_tls_destination {
         network(
              "172.16.177.147" port(6514)
             transport("tls")

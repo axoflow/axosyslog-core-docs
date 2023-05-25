@@ -8,8 +8,7 @@ Starting with version {{% conditional-text include-if="ose" %}}3.19{{% /conditio
 Starting with version {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.22{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.15{{% /conditional-text %}}, you can use any of the following formats to specify multiple URLs:
 
 ```c
-
-    url("server1", "server2", "server3"); # comma-separated strings
+   url("server1", "server2", "server3"); # comma-separated strings
     url("server1" "server2" "server3"); # space-separated strings
     url("server1 server2 server3"); # space-separated within a single string
 

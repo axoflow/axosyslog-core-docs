@@ -4,8 +4,7 @@
 The `syslog-ng-ctl credentials status` command allows you to query the status of the private keys that {{% param "product.abbrev" %}} uses in the `network()` and `syslog()` drivers. The command returns the list of private keys used, and their status. For example:
 
 ```c
-
-    syslog-ng-ctl credentials status
+   syslog-ng-ctl credentials status
     Secret store status:
     /home/user/ssl_test/client-1/client-encrypted.key SUCCESS
 
@@ -16,7 +15,6 @@ If the status of a key is PENDING, you must provide the passphrase for the key, 
 The following log message also notifies you of PENDING passphrases:
 
 ```c
-
-    Waiting for password; keyfile='private.key'
+   Waiting for password; keyfile='private.key'
 
 ```

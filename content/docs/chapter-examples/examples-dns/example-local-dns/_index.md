@@ -19,7 +19,6 @@ Resolving hostnames locally enables you to display hostnames in the log files fo
 3.  Set the `dns-cache-hosts()` option to point to the file storing the hostnames.
     
     ```c
-    
         options {
             use-dns(persist_only);
             dns-cache-hosts(/etc/hosts);

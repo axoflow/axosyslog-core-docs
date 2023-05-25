@@ -37,7 +37,6 @@
     The following example illustrates using the `no-header` flag with the `syslog-parser()` parser:
     
     ```c
-    
         parser p_syslog {
           syslog-parser(
             flags(no-header)
@@ -50,7 +49,6 @@
   - *no-hostname*: Enable the `no-hostname` flag if the log message does not include the hostname of the sender host. That way {{% param "product.abbrev" %}} assumes that the first part of the message header is ${PROGRAM} instead of ${HOST}. For example:
     
     ```c
-    
         source s_dell {
             network(
                 port(2000)

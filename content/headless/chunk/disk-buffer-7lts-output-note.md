@@ -6,7 +6,6 @@
 If you receive the following error message instead of the example output, install a vim-common package on your system:
 
 ```c
-
-    xxd: command not found
+   xxd: command not found
 
 ``` {{% /alert %}}

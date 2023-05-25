@@ -12,8 +12,7 @@
 *Description:* Adds an extra header to the email with the specified name and content. The first parameter sets the name of the header, the second one its value. The value of the header can contain macros. Set the **header** option multiple times to add multiple headers. For example:
 
 ```c
-
-    header("X-Program", "$PROGRAM")
+   header("X-Program", "$PROGRAM")
 
 ```
 

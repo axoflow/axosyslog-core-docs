@@ -9,8 +9,7 @@ A source is where syslog-ng receives log messages. Sources consist of one or mor
 To define a source, add a source statement to the syslog-ng configuration file using the following syntax:
 
 ```c
-
-    source <identifier> {
+   source <identifier> {
         source-driver(params); source-driver(params); ...
     };
 
@@ -22,8 +21,7 @@ To define a source, add a source statement to the syslog-ng configuration file u
 The following source statement receives messages on the TCP port `1999` of the interface having the `10.1.2.3` IP address.
 
 ```c
-
-    source s_demo_tcp {
+   source s_demo_tcp {
         network(ip(10.1.2.3) port(1999));
     };
 
@@ -36,8 +34,7 @@ The following source statement receives messages on the TCP port `1999` of the i
 The following source statement receives messages on the `1999` TCP port and the `1999` UDP port of the interface having the `10.1.2.3` IP address.
 
 ```c
-
-    source s_demo_two_drivers {
+   source s_demo_two_drivers {
         network(ip(10.1.2.3) port(1999));
         network(ip(10.1.2.3) port(1999) transport("udp"));
     };
@@ -51,8 +48,7 @@ The following source statement receives messages on the `1999` TCP port and the 
 If the message received by the source does not have a proper syslog header, you can use the `default-facility()` and `default-priority()` options to set the facility and priority of the messages. Note that these values are applied only to messages that do not set these parameters in their header.
 
 ```c
-
-    source headerless_messages { network(default-facility(syslog) default-priority(emerg)); };
+   source headerless_messages { network(default-facility(syslog) default-priority(emerg)); };
 
 ```
 
@@ -81,8 +77,7 @@ The following source statement collects the following log messages:
   - *unix-dgram("/dev/log");*: Messages arriving to the `/dev/log` socket.
 
 ```c
-
-    source s_demo {
+   source s_demo {
         internal();
         network(transport("udp"));
         unix-dgram("/dev/log");

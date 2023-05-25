@@ -30,8 +30,7 @@ To create a JSON parser, define a parser that has the `json-parser()` option. De
 ## Declaration:
 
 ```c
-
-    parser parser_name {
+   parser parser_name {
         json-parser(
             marker()
             prefix()
@@ -47,8 +46,7 @@ To create a JSON parser, define a parser that has the `json-parser()` option. De
 In the following example, the source is a JSON encoded log message. The syslog parser is disabled, so that {{% param "product.abbrev" %}} does not parse the message: `flags(no-parse)`. The json-parser inserts "`.json.`" prefix before all extracted name-value pairs. The destination is a file that uses the `format-json` template function. Every name-value pair that begins with a dot ("`.`") character will be written to the file (`dot-nv-pairs`). The log line connects the source, the destination and the parser.
 
 ```c
-
-    source s_json {
+   source s_json {
         network(
             port(21514
             flags(no-parse)
@@ -77,8 +75,7 @@ In the following example, the source is a JSON encoded log message. The syslog p
 You can also define the parser inline in the log path.
 
 ```c
-
-    source s_json {
+   source s_json {
         network(
             port(21514)
             flags(no-parse)

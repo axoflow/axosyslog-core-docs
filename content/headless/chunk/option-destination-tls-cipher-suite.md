@@ -12,8 +12,7 @@
 *Description:* Specifies the cipher, hash, and key-exchange algorithms used for the encryption, for example, `ECDHE-ECDSA-AES256-SHA384`. The list of available algorithms depends on the version of OpenSSL used to compile {{% param "product.abbrev" %}}. To specify multiple ciphers, separate the cipher names with a colon, and enclose the list between double-quotes, for example:
 
 ```c
-
-    cipher-suite("ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384")
+   cipher-suite("ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384")
 
 ```
 
@@ -22,8 +21,7 @@ For a list of available algorithms, execute the `openssl ciphers -v` command. Th
 You can also use the following command to automatically list only ciphers permitted in a specific encryption protocol, for example, `TLSv1.2`:
 
 ```c
-
-    echo "cipher-suite(\"$(openssl ciphers -v | grep TLSv1.2 | awk '{print $1}' | xargs echo -n | sed 's/ /:/g' | sed -e 's/:$//')\")"
+   echo "cipher-suite(\"$(openssl ciphers -v | grep TLSv1.2 | awk '{print $1}' | xargs echo -n | sed 's/ /:/g' | sed -e 's/:$//')\")"
 
 ```
 

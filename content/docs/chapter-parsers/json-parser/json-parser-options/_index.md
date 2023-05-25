@@ -27,8 +27,7 @@ It cannot contain the following characters: `.[]`
 The following parser converts messages in the logstash eventlog v0 format to the v1 format.
 
 ```c
-
-    parser p_jsoneventv0 {
+   parser p_jsoneventv0 {
         channel {
             parser {
                 json-parser(extract-prefix("@fields"));
@@ -65,8 +64,7 @@ Some logging implementations require a marker to be set before the JSON payload.
 This json parser parses log messages which use the "@cee:" marker in front of the json payload. It inserts "`.cee.`" in front of the name of name-value pairs, so later on it is easier to find name-value pairs that were parsed using this parser. (For details on selecting name-value pairs, see <span class="mcFormatColor" style="color: #04aada;">value-pairs()</span>.)
 
 ```c
-
-    parser {
+   parser {
             json-parser(
                 marker("@cee:")
                 prefix(".cee.")
@@ -82,8 +80,7 @@ This json parser parses log messages which use the "@cee:" marker in front of th
 {{% include-headless "chunk/no-default-prefix.md" %}}
 
 ```c
-
-    parser {
+   parser {
         json-parser(prefix("myprefix."));
     };
 

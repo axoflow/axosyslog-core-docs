@@ -12,8 +12,7 @@ Both drivers have a single required argument specifying the name of the socket t
 ## Declaration:
 
 ```c
-
-    unix-stream(filename [options]);
+   unix-stream(filename [options]);
     unix-dgram(filename [options]);
 
 ```
@@ -23,8 +22,7 @@ Both drivers have a single required argument specifying the name of the socket t
 ## Example: Using the unix-stream() driver {#example-destination-unixstream}
 
 ```c
-
-    destination d_unix_stream { unix-stream("/var/run/logs"); };
+   destination d_unix_stream { unix-stream("/var/run/logs"); };
 
 ```
 

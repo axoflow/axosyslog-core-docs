@@ -24,16 +24,14 @@ To automatically create an initial pattern database from an existing log file, u
 The following pattern database contains a single rule that matches a log message of the `ssh` application. A sample log message looks like:
 
 ```c
-
-    Accepted password for sampleuser from 10.50.0.247 port 42156 ssh2
+   Accepted password for sampleuser from 10.50.0.247 port 42156 ssh2
 
 ```
 
 The following is a simple pattern database containing a matching rule.
 
 ```c
-
-    <patterndb version='5' pub_date='2010-10-17'>
+   <patterndb version='5' pub_date='2010-10-17'>
         <ruleset name='ssh' id='123456678'>
             <pattern>ssh</pattern>
                 <rules>
@@ -53,8 +51,7 @@ Note that the rule uses macros that refer to parts of the message, for example, 
 The following is the same example, but with a test message and test values for the parsers.
 
 ```c
-
-    <patterndb version='4' pub_date='2010-10-17'>
+   <patterndb version='4' pub_date='2010-10-17'>
         <ruleset name='ssh' id='123456678'>
             <pattern>ssh</pattern>
                 <rules>

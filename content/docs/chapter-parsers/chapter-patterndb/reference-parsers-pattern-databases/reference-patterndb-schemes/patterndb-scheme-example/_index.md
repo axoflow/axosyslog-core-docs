@@ -27,7 +27,6 @@ N/A
   - *test_message*: OPTIONAL — A sample log message that should match this pattern. For example:
     
     ```c
-    
         <test_message program="myapplication">Content filter has been enabled</test_message>
     
     ```
@@ -56,8 +55,7 @@ N/A
 ## Example
 
 ```c
-
-    <examples>
+   <examples>
         <example>
             <test_message>Accepted password for sampleuser from 10.50.0.247 port 42156 ssh2</test_message>
             <test_values>

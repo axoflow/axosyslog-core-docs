@@ -10,8 +10,7 @@ The `pseudofile()` destination driver is a very simple driver, aimed at deliveri
 ## Declaration:
 
 ```c
-
-    pseudofile(filename options());
+   pseudofile(filename options());
 
 ```
 

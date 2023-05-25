@@ -12,8 +12,7 @@ The `kafka` destination of {{% param "product.abbrev" %}} can directly publish l
 The following options are required: `kafka-bootstrap-servers()`, `topic()`. Note that to use `kafka`, you must add the following lines to the beginning of your {{% param "product.abbrev" %}} configuration:
 
 ```c
-
-    @include "scl.conf"
+   @include "scl.conf"
 
 ```
 
@@ -73,8 +72,7 @@ The `kafka-bootstrap-servers` option is translated to the `bootstrap.servers` pr
 For example, the following properties file defines the acknowledgment method and compression:
 
 ```c
-
-    acks=all
+   acks=all
     compression.type=snappy
 
 ```

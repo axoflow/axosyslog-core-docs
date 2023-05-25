@@ -5,8 +5,7 @@
 ## Declaration:
 
 ```c
-
-    destination d_http {
+   destination d_http {
         http(
             url("http://127.0.0.1:8080")
             tls(

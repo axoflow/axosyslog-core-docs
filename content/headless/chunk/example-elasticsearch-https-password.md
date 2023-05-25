@@ -4,8 +4,7 @@
 Simple password authentication:
 
 ```c
-
-    destination d_elastic {
+   destination d_elastic {
         elasticsearch2(
             client-mode("https")
             cluster("es-syslog-ng")

@@ -22,7 +22,6 @@ To configure syslog-ng on a server host, complete the following steps.
     Configure the network sources that collect the log messages sent by the clients and relays. How the network sources should be configured depends also on the capabilities of your client hosts: many older networking devices support only the legacy BSD-syslog protocol (RFC3164) using UDP transport:
     
     ```c
-    
         source s_network {
             syslog(ip(10.1.2.3) transport("udp"));
         };
@@ -32,7 +31,6 @@ To configure syslog-ng on a server host, complete the following steps.
     However, if possible, use the much more reliable TCP transport:
     
     ```c
-    
         source s_network {
             syslog(ip(10.1.2.3) transport("tcp"));
         };
@@ -50,7 +48,6 @@ To configure syslog-ng on a server host, complete the following steps.
 4.  Create local destinations that will store the log messages, for example, file- or program destinations. The default configuration of {{% param "product.abbrev" %}} places the collected messages into the `/var/log/messages` file:
     
     ```c
-    
         destination d_local {
             file("/var/log/messages");
         };
@@ -60,7 +57,6 @@ To configure syslog-ng on a server host, complete the following steps.
     If you want to create separate logfiles for every client host, use the **${HOST}** macro when specifying the filename, for example:
     
     ```c
-    
         destination d_local {
             file("/var/log/messages_${HOST}");
         };
@@ -72,7 +68,6 @@ To configure syslog-ng on a server host, complete the following steps.
 5.  Create a log statement connecting the sources to the local destinations.
     
     ```c
-    
         log {
             source(s_local); source(s_network); destination(d_local);
         };
@@ -89,7 +84,6 @@ To configure syslog-ng on a server host, complete the following steps.
     The following is a simple configuration file for {{% param "product.name" %}} that collects incoming log messages and stores them in a text file.
     
     ```c
-    
         @version: {{% param "product.techversion" %}}
         @include "scl.conf"
         options {

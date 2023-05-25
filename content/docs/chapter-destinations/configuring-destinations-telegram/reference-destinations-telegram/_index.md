@@ -44,8 +44,7 @@ The `telegram()` destination has the following options:
 The following example illustrates how you can configure the `disable_notification()`option to send silent messages to the `telegram()` destination.
 
 ```c
-
-    destination {
+   destination {
       telegram(
         bot-id(...)
         chat-id(...) 

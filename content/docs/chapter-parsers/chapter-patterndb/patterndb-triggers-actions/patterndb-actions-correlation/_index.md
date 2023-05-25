@@ -17,7 +17,6 @@ Certain features of generating messages can be used only if message correlation 
   - You can use the name-value pairs of other messages of the context. If you set the `inherit-properties` attribute of the generated message to **context**, {{% param "product.abbrev" %}} collects every name-value pair from each message stored in the context, and includes them in the generated message. This means that you can refer to a name-value pair without having to know which message of the context included it. If a name-value pair appears in multiple messages of the context, the value in the latest message will be used. To refer to an earlier value, use the **@\<distance-of-referenced-message-from-the-current\>** suffix format.
     
     ```c
-    
         <action>
             <message inherit-properties='context'>
     
@@ -31,7 +30,6 @@ Certain features of generating messages can be used only if message correlation 
     For example, if `inherit-properties` is set to **context**, and you have a rule that collects SSH login and logout messages to the same context, you can use the following value to generate a message collecting the most important information form both messages, including the beginning and end date.
     
     ```c
-    
         <value name="MESSAGE">An SSH session for ${SSH_USERNAME} from ${SSH_CLIENT_ADDRESS} closed. Session lasted from ${DATE}@2 to $DATE pid: $PID.</value>
     
     ```
@@ -39,7 +37,6 @@ Certain features of generating messages can be used only if message correlation 
     The following is a detailed rule for this purpose.
     
     ```c
-    
         <patterndb version='4' pub_date='2015-04-13'>
             <ruleset name='sshd' id='12345678'>
                 <pattern>sshd</pattern>
@@ -92,7 +89,6 @@ Certain features of generating messages can be used only if message correlation 
   - It is possible to generate a message when the `context-timeout` of the original message expires and no new message is added to the context during this time. To accomplish this, include the **trigger="timeout"** attribute in the action element:
     
     ```c
-    
         <action trigger="timeout">
     
     ```

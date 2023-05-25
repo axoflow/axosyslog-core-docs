@@ -67,8 +67,7 @@ In case of soft flow-control there is no message lost if the destination can acc
 ## Example: Soft flow-control
 
 ```c
-
-    source s_file {
+   source s_file {
         file("/tmp/input_file.log");
     };
     destination d_file {
@@ -99,8 +98,7 @@ Hazard of data loss\! For destinations other than file{{% conditional-text inclu
 ## Example: Hard flow-control
 
 ```c
-
-    source s_file {
+   source s_file {
         file("/tmp/input_file.log");
     };
     destination d_file {

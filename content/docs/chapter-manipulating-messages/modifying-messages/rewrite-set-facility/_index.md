@@ -16,8 +16,7 @@ If the parameter value is not a valid parameter value, the function ignores it a
 ## Declaration
 
 ```c
-
-    log {
+   log {
                     source { system(); };
                         if (program("postfix")) {
                           rewrite { set-facility("mail"); };
@@ -35,8 +34,7 @@ If the parameter value is not a valid parameter value, the function ignores it a
 The `set-facility()` rewrite function has a single, mandatory parameter that can be defined as follows:
 
 ```c
-
-    `set-facility( "parameter1" );`
+   `set-facility( "parameter1" );`
 
 ```
 
@@ -56,8 +54,7 @@ The `set-facility()` rewrite function accepts the following values:
 The following example can be used in production for the `set-facility()` rewrite function.
 
 ```c
-
-    rewrite {
+   rewrite {
     set-facility("info");
     set-facility("6");
     set-facility("${.json.severity}");};

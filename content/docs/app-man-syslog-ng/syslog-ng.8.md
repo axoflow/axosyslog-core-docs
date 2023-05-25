@@ -41,7 +41,6 @@ The {{% param "product.ose" %}} application is a flexible and highly scalable sy
     For example:
     
     ```c
-    
         /opt/syslog-ng/sbin/syslog-ng -Fv --caps cap_sys_admin,cap_chown,cap_dac_override,cap_net_bind_service,cap_fowner=pi
     
     ```

@@ -54,8 +54,7 @@ The XML parser has the following options.
 ## Example: Using exclude_tags
 
 ```c
-
-    parser xml_parser {
+   parser xml_parser {
         xml(
             template("$MSG")
             exclude-tags("tag1", "tag2", "inner*")
@@ -67,16 +66,14 @@ The XML parser has the following options.
 From this XML input:
 
 ```c
-
-    <tag1>Text1</tag1><tag2>Text2</tag2><tag3>Text3<innertag>TextInner</innertag></tag3>
+   <tag1>Text1</tag1><tag2>Text2</tag2><tag3>Text3<innertag>TextInner</innertag></tag3>
 
 ```
 
 The following output is generated:
 
 ```c
-
-    {"_xml":{"tag3":"Text3"}}
+   {"_xml":{"tag3":"Text3"}}
 
 ```
 
@@ -104,8 +101,7 @@ The `prefix()` option is optional and its default value is `".xml"`.
 ## Example: Using strip-whitespaces
 
 ```c
-
-    parser xml_parser {
+   parser xml_parser {
         xml(
             template("$MSG")
             strip-whitespaces(yes)
@@ -117,16 +113,14 @@ The `prefix()` option is optional and its default value is `".xml"`.
 From this XML input:
 
 ```c
-
-    <tag1> Tag </tag1>
+   <tag1> Tag </tag1>
 
 ```
 
 The following output is generated:
 
 ```c
-
-    {"_xml":{"tag1":"Tag"}}
+   {"_xml":{"tag1":"Tag"}}
 
 ```
 

@@ -16,8 +16,7 @@ If the server returns a status code beginning with 2 (for example, 200), {{% par
 ## Example: Client certificate authentication with HTTPS
 
 ```c
-
-    destination d_https {
+   destination d_https {
         http(
             [...]
             tls(
@@ -37,8 +36,7 @@ If the server returns a status code beginning with 2 (for example, 200), {{% par
 ## Declaration:
 
 ```c
-
-    destination d_http {
+   destination d_http {
         http(
             url("<web-service-IP-or-hostname>")
             method("<HTTP-method>")
@@ -65,8 +63,7 @@ If the server returns a status code beginning with 2 (for example, 200), {{% par
 The following example defines an `http` destination.
 
 ```c
-
-    destination d_http {
+   destination d_http {
         http(
             url("http://127.0.0.1:8000")
             method("PUT")

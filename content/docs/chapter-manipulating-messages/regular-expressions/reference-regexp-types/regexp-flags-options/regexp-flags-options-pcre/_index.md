@@ -14,8 +14,7 @@ The following example shows the structure of PCRE-style regular expressions in u
 ## Example: Using PCRE regular expressions {#example-regexp-pcre}
 
 ```c
-
-    rewrite r_rewrite_subst {
+   rewrite r_rewrite_subst {
         subst("a*", "?", value("MESSAGE") flags("utf8" "global"));  
     };
 
@@ -38,8 +37,7 @@ Allows [using duplicate names for named subpatterns](https://www.pcre.org/origin
 Configuration example:
 
 ```c
-
-    filter { match("(?<DN>foo)|(?<DN>bar)" value(MSG) flags(store-matches, dupnames)); };
+   filter { match("(?<DN>foo)|(?<DN>bar)" value(MSG) flags(store-matches, dupnames)); };
     ...
     destination { file(/dev/stdout template("$DN\n")); };
 

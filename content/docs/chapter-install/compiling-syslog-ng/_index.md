@@ -44,7 +44,6 @@ To compile syslog-ng Open Source Edition (OSE) from the source code, complete th
 8.  Enter the new directory and issue the following commands. (If the `./configure` file does not exist, for example, because you cloned the repository from GitHub instead of using a release tarball, execute the **./autogen.sh** command.)
     
     ```c
-    
         $ ./configure
         $ make
         $ make install
@@ -54,7 +53,6 @@ To compile syslog-ng Open Source Edition (OSE) from the source code, complete th
 9.  Uncompress the syslog-ng archive using the
     
     ```c
-    
         tar xvfz syslog-ng-x.xx.tar.gz
     
     ```
@@ -62,7 +60,6 @@ To compile syslog-ng Open Source Edition (OSE) from the source code, complete th
     or the
     
     ```c
-    
         unzip -c syslog-ng-x.xx.tar.gz | tar xvf -
     
     ```
@@ -72,7 +69,6 @@ To compile syslog-ng Open Source Edition (OSE) from the source code, complete th
 10. Enter the new directory and issue the following commands:
     
     ```c
-    
         $ ./configure
         $ make
         $ make install
@@ -94,7 +90,6 @@ To compile syslog-ng Open Source Edition (OSE) from the source code, complete th
 11. If needed, use the following options to change how syslog-ng is compiled using the following command syntax:
     
     ```c
-    
         $ ./configure --compile-time-option-name
     
     ``` {{% alert title="Note" color="info" %}}

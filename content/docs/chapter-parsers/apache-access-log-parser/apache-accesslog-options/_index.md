@@ -12,8 +12,7 @@ The `apache-accesslog-parser()` has the following options.
 By default, `apache-accesslog-parser()` uses the `.apache.` prefix. To modify it, use the following format:
 
 ```c
-
-    parser {
+   parser {
         apache-accesslog-parser(prefix("apache."));
     };
 

@@ -7,8 +7,7 @@
 The following example specifies two failover servers for a simple syslog() destination.
 
 ```c
-
-    destination d_syslog_tcp{
+   destination d_syslog_tcp{
         syslog("10.100.20.40"
             transport("tcp")
             port(6514)
@@ -21,8 +20,7 @@ The following example specifies two failover servers for a simple syslog() desti
 The following example specifies a failover server for a network() destination that uses TLS encryption.
 
 ```c
-
-    destination d_syslog_tls{
+   destination d_syslog_tls{
         network("10.100.20.40"
             transport("tls")
             port(6514)

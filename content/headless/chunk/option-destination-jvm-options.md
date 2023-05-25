@@ -14,8 +14,7 @@
 For example:
 
 ```c
-
-    jvm-options("-Xss1M -XX:+TraceClassLoading")
+   jvm-options("-Xss1M -XX:+TraceClassLoading")
 
 ```
 

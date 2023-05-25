@@ -116,56 +116,49 @@ Capturing packets requires a packet capture tool on the host. The `syslog-debun`
 ## Examples
 
 ```c
-
-    syslog-ng-debun -r
+   syslog-ng-debun -r
 
 ```
 
 Create a simple debug bundle, collecting information about your environment, for example, list packages containing the word: `syslog`, `ldd` of your syslog-binary, and so on.
 
 ```c
-
-    syslog-ng-debun -r -l
+   syslog-ng-debun -r -l
 
 ```
 
 Similar to `syslog-ng-debun -r`, but without privacy-sensitive information. For example, the following is NOT collected: `fstab`, df output, mount info, ip / network interface configuration, DNS resolv info, and process tree.
 
 ```c
-
-    syslog-ng-debun -r -d
+   syslog-ng-debun -r -d
 
 ```
 
 Similar to `syslog-ng-debun -r`, but it also stops {{% param "product.ose" %}}, then restarts it in debug mode (`-Fedv --enable-core`). To stop debug mode, press Enter. The output of the debug mode collected into a separate file, and also added to the debug bundle.
 
 ```c
-
-    syslog-ng-debun -r -s
+   syslog-ng-debun -r -s
 
 ```
 
 Trace the system calls (using `strace` or `truss`) of an already running {{% param "product.ose" %}} process.
 
 ```c
-
-    syslog-ng-debun -r -d -s
+   syslog-ng-debun -r -d -s
 
 ```
 
 Restart {{% param "product.ose" %}} in debug mode, and also trace the system calls (using `strace` or `truss`) of the {{% param "product.ose" %}} process.
 
 ```c
-
-    syslog-ng-debun -r -p
+   syslog-ng-debun -r -p
 
 ```
 
 Run packet capture (`pcap`) with the filter: `port 514 or port 601 or port 53` Also waits for pressing Enter, like debug mode.
 
 ```c
-
-    syslog-ng-debun -r -p -t 10
+   syslog-ng-debun -r -p -t 10
 
 ```
 

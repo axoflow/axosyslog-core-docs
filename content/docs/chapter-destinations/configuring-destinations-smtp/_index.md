@@ -21,8 +21,7 @@ The `smtp()` destination driver is available only in {{% conditional-text includ
 ## Declaration:
 
 ```c
-
-    smtp(host() port() from() to() subject() body() options());
+   smtp(host() port() from() to() subject() body() options());
 
 ```
 
@@ -32,8 +31,7 @@ The `smtp()` destination driver is available only in {{% conditional-text includ
 The following example defines an `smtp()` destination using only the required parameters.
 
 ```c
-
-    destination d_smtp {
+   destination d_smtp {
         smtp(
             host("localhost")
             port(25)
@@ -49,8 +47,7 @@ The following example defines an `smtp()` destination using only the required pa
 The following example sets some optional parameters as well.
 
 ```c
-
-    destination d_smtp {
+   destination d_smtp {
         smtp(
             host("localhost")
             port(25)
@@ -76,8 +73,7 @@ The following example sets some optional parameters as well.
 The following example sends an email alert if the eth0 network interface of the host is down.
 
 ```c
-
-    filter f_linkdown {
+   filter f_linkdown {
         match("eth0: link down" value("MESSAGE"));
     };
     destination d_alert {

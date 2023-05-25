@@ -12,8 +12,7 @@ The `stdin()` driver causes syslog-ng to exit once it hits end-of-file (EOF).
 ## Declaration:
 
 ```c
-
-    stdin(); 
+   stdin(); 
 
 ```
 
@@ -22,8 +21,7 @@ The `stdin()` driver causes syslog-ng to exit once it hits end-of-file (EOF).
 ## Example: Using the stdin() driver
 
 ```c
-
-    @version: {{% param "product.techversion" %}}
+   @version: {{% param "product.techversion" %}}
     log { 
         source { stdin(); };
         destination { file("/dev/stdout"); };
@@ -34,8 +32,7 @@ The `stdin()` driver causes syslog-ng to exit once it hits end-of-file (EOF).
 The following code snippet is an example of how the `stdin()` driver is used to collect a test message:
 
 ```c
-
-    $ echo "this is a test message" | ./syslog-ng -Fe --no-caps
+   $ echo "this is a test message" | ./syslog-ng -Fe --no-caps
     [2017-11-14T13:47:16.757938] syslog-ng starting up; version='3.12.1'
     [2017-11-14T13:47:16.758195] syslog-ng shutting down; version='3.12.1'
     Nov 14 13:47:16 testserver this is a test message

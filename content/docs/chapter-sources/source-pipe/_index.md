@@ -12,8 +12,7 @@ The pipe driver has a single required parameter, specifying the filename of the 
 ## Declaration:
 
 ```c
-
-    pipe(filename);
+   pipe(filename);
 
 ```
 
@@ -38,8 +37,7 @@ Pipe is very similar to the `file()` driver, but there are a few differences, fo
 ## Example: Using the pipe() driver {#example-source-pipe}
 
 ```c
-
-    source s_pipe {
+   source s_pipe {
         pipe("/dev/pipe" pad-size(2048));
     };
 

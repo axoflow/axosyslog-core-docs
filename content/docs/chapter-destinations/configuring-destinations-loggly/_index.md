@@ -10,8 +10,7 @@ The `loggly()` destination sends log messages to the [Loggly](https://www.loggly
 ## Declaration:
 
 ```c
-
-    loggly(token());
+   loggly(token());
 
 ```
 
@@ -21,8 +20,7 @@ The `loggly()` destination sends log messages to the [Loggly](https://www.loggly
 To use the loggly() destination, the only mandatory parameter is your user token. The following example sends every log from the `system()` source to your Loggly account.
 
 ```c
-
-    log {
+   log {
         source { system(); };
         destination { loggly(token("<USER-TOKEN-AS-PROVIDED-BY-LOGGLY>")); };
     };
@@ -32,8 +30,7 @@ To use the loggly() destination, the only mandatory parameter is your user token
 The following example uses TLS encryption. Before using it, download the CA certificate of Loggly and copy it to your hosts (for example, into the `/etc/ssl/certs/` directory.
 
 ```c
-
-    log {
+   log {
         destination {
             loggly(token("<USER-TOKEN-AS-PROVIDED-BY-LOGGLY>") port(6514)
                 tls(peer-verify(required-trusted) ca-dir('/etc/ssl/certs'))
@@ -46,8 +43,7 @@ The following example uses TLS encryption. Before using it, download the CA cert
 The following example parses the access logs of an Apache webserver from a file and sends them to Loggly in JSON format.
 
 ```c
-
-    log {
+   log {
         source { file("/var/log/apache2/access.log" flags(no-parse)); };
         parser { apache-accesslog-parser(); };
         destination {
@@ -63,8 +59,7 @@ The following example parses the access logs of an Apache webserver from a file 
 To use the `loggly()` driver, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 
 ```c
-
-    @include "scl.conf"
+   @include "scl.conf"
 
 ```
 

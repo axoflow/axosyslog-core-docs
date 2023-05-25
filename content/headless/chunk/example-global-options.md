@@ -7,8 +7,7 @@
 To disable domain name resolving, add the following line to the syslog-ng configuration file:
 
 ```c
-
-    options { use-dns(no); };
+   options { use-dns(no); };
 
 ```
 

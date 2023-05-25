@@ -16,8 +16,7 @@ Starting with version {{% conditional-text include-if="ose" %}}3.6{{% /condition
 To enable multithreading globally, use the `threaded` option:
 
 ```c
-
-    options {
+   options {
         threaded(yes) ;
     };
 
@@ -26,8 +25,7 @@ To enable multithreading globally, use the `threaded` option:
 To enable multithreading only for a selected source or destination, use the **flags("threaded")** option:
 
 ```c
-
-    source s_tcp_syslog {
+   source s_tcp_syslog {
         network(
             ip(127.0.0.1)
             port(1999)

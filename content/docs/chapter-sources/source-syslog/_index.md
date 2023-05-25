@@ -20,8 +20,7 @@ For the list of available optional parameters, see {{% xref "/docs/chapter-sourc
 ## Declaration:
 
 ```c
-
-    syslog(ip() port() transport() options());
+   syslog(ip() port() transport() options());
 
 ```
 
@@ -32,24 +31,21 @@ For the list of available optional parameters, see {{% xref "/docs/chapter-sourc
 TCP source listening on the localhost on port 1999.
 
 ```c
-
-    source s_syslog { syslog(ip(127.0.0.1) port(1999) transport("tcp")); };
+   source s_syslog { syslog(ip(127.0.0.1) port(1999) transport("tcp")); };
 
 ```
 
 UDP source with defaults.
 
 ```c
-
-    source s_udp { syslog( transport("udp")); };
+   source s_udp { syslog( transport("udp")); };
 
 ```
 
 Encrypted source where the client is also authenticated. For details on the encryption settings, see {{% xref "/docs/chapter-encrypted-transport-tls/tlsoptions/_index.md" %}}.
 
 ```c
-
-    source s_syslog_tls{ syslog(
+   source s_syslog_tls{ syslog(
         ip(10.100.20.40)
         transport("tls")
         tls(

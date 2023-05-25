@@ -17,7 +17,6 @@ The {{% param "product.abbrev" %}} application is also compatible with MapR File
     Enter the path where MapR was installed in the `class-path` option of the `hdfs` destination, for example:
     
     ```c
-    
         class-path("/opt/mapr/lib/")
     
     ```
@@ -32,7 +31,6 @@ The {{% param "product.abbrev" %}} application is also compatible with MapR File
     The following example defines an `hdfs` destination for MapR-FS using only the required parameters.
     
     ```c
-    
         @include "scl.conf"
         
         destination d_mapr {

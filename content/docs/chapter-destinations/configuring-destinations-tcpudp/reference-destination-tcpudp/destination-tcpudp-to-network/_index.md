@@ -25,7 +25,6 @@ To replace your existing `tcp()`, `tcp6()`, `udp()`, `udp6()` destinations with 
     The following configuration shows a simple `tcp` destination.
     
     ```c
-    
         destination d_old_tcp {
             tcp(
                 "127.0.0.1" port(1999)
@@ -42,7 +41,6 @@ To replace your existing `tcp()`, `tcp6()`, `udp()`, `udp6()` destinations with 
     When replaced with the `network()` driver, it looks like this.
     
     ```c
-    
         destination d_new_network_tcp {
             network(
                 "127.0.0.1"

@@ -4,8 +4,7 @@
 In {{% param "product.abbrev" %}} version 3.23 and later, you can specify a comma-separated list of formats to parse multiple date formats with a single parser. For example:
 
 ```c
-
-    date-parser(format(
+   date-parser(format(
         "%FT%T.%f",
         "%F %T,%f",
         "%F %T"

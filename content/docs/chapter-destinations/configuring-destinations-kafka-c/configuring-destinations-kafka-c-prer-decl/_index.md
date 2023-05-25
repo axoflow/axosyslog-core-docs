@@ -24,8 +24,7 @@ This section describes the prerequisites and restrictions for using the `kafka` 
 ## Declaration:
 
 ```c
-
-    @define kafka-implementation kafka-c
+   @define kafka-implementation kafka-c
     
     kafka(
         bootstrap-servers("1.2.3.4:9092,192.168.0.2:9092")

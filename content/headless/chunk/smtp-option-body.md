@@ -12,8 +12,7 @@
 *Description:* The BODY field of the email. You can also use macros in the string. Use **\\n** to start a new line. For example:
 
 ```c
-
-    body("{{% param "product.abbrev" %}} received the following alert from $HOST:\n$MSG")
+   body("{{% param "product.abbrev" %}} received the following alert from $HOST:\n$MSG")
 
 ```
 

@@ -38,8 +38,7 @@ Set the `max-connections()` parameter of the source to **300**. However, the `lo
 The output buffer of the destination must accommodate at least `log-iw-size()` messages, but use a greater value: in the current example **3000\*10=30000** messages. That way all incoming messages of ten poll loops fit in the output buffer. If the output buffer is full, syslog-ng does not read any messages from the source until some messages are successfully sent to the destination.
 
 ```c
-
-    source s_localhost {
+   source s_localhost {
         network(
             ip(127.0.0.1)
             port(1999)
@@ -64,8 +63,7 @@ The output buffer of the destination must accommodate at least `log-iw-size()` m
 If other sources send messages to this destination, then the output buffer must be further increased. For example, if a network host with maximum **100** connections also logs into the destination, then increase the `log-fifo-size()` by **10000**.
 
 ```c
-
-    source s_localhost {
+   source s_localhost {
         network(
             ip(127.0.0.1)
             port(1999)

@@ -47,8 +47,7 @@ This can be useful if Riemann is inaccessible for a while, and the messages are 
 The `event-time()` option takes an optional parameter specifying whether the time format is in seconds or microseconds. For example:
 
 ```c
-
-    event-time("$(* $UNIXTIME 1000000)" microseconds)
+   event-time("$(* $UNIXTIME 1000000)" microseconds)
     event-time("12345678" microseconds)
     event-time("12345678" seconds)
     event-time("12345678")
@@ -70,7 +69,6 @@ Note that the time format parameter requires:
     After calling `configure`, you should see the following message in the case of successful installation:
     
     ```c
-    
         [...]
          Riemann destination (module): yes, microseconds: yes
         [...]
@@ -86,8 +84,7 @@ Note that the time format parameter requires:
 ## Example: Example event-time() option
 
 ```c
-
-    destination d_riemann {
+   destination d_riemann {
        riemann(
        server("127.0.0.1")
        port(5555)
@@ -132,8 +129,7 @@ If an error occurs while sending the messages to the server, {{% param "product.
 *Description:* The numeric value to add as the metric field of the Riemann event. If possible, include type-hinting as well, otherwise the Riemann server will interpret the value as a floating-point number. The following example specifies the SEQNUM macro as an integer.
 
 ```c
-
-    metric(int("$SEQNUM"))
+   metric(int("$SEQNUM"))
 
 ```
 
@@ -231,8 +227,7 @@ If an error occurs while sending the messages to the server, {{% param "product.
 ## Declaration 1:
 
 ```c
-
-    destination d_riemann {
+   destination d_riemann {
         riemann(
             server("127.0.0.1")
             port(5672)
@@ -254,8 +249,7 @@ An alternative way to specify TLS options is to group them into a `tls()` block.
 ## Declaration 2:
 
 ```c
-
-    destination d_riemann {
+   destination d_riemann {
         riemann(
             server("127.0.0.1")
             port(5672)
@@ -286,8 +280,7 @@ Default:
 *Alternative 1:*
 
 ```c
-
-    type(
+   type(
         "tls"
         ca-file("/opt/syslog-ng/etc/syslog-ng/riemann-cacert.pem")
         )
@@ -297,8 +290,7 @@ Default:
 *Alternative 2:*
 
 ```c
-
-    riemann(
+   riemann(
         .
         .
         type("tls")

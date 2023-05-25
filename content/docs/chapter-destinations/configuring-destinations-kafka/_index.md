@@ -12,8 +12,7 @@ Starting with version {{% conditional-text include-if="pe" %}}5.4{{% /conditiona
 ## Declaration:
 
 ```c
-
-    @include "scl.conf"
+   @include "scl.conf"
     
     kafka(
         client-lib-dir("/opt/syslog-ng/lib/syslog-ng/java-modules/:<path-to-preinstalled-kafka-libraries>")
@@ -31,8 +30,7 @@ Starting with version {{% conditional-text include-if="pe" %}}5.4{{% /conditiona
 The following example defines a `kafka` destination, using only the required parameters.
 
 ```c
-
-    @include "scl.conf"
+   @include "scl.conf"
     
     destination d_kafka {
       kafka(

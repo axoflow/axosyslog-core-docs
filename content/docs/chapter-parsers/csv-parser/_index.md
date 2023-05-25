@@ -12,8 +12,7 @@ weight:  300
 The following example separates hostnames like `example-1` and `example-2` into two parts.
 
 ```c
-
-    parser p_hostname_segmentation {
+   parser p_hostname_segmentation {
         csv-parser(columns("HOSTNAME.NAME", "HOSTNAME.ID")
         delimiters("-")
         flags(escape-none)
@@ -37,24 +36,21 @@ The following example separates hostnames like `example-1` and `example-2` into 
 The following parser processes the log of Apache web servers and separates them into different fields. Apache log messages can be formatted like:
 
 ```c
-
-    "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %T %v"
+   "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %T %v"
 
 ```
 
 Here is a sample message:
 
 ```c
-
-    192.168.1.1 - - [31/Dec/2007:00:17:10 +0100] "GET /cgi-bin/example.cgi HTTP/1.1" 200 2708 "-" "curl/7.15.5 (i4 86-pc-linux-gnu) libcurl/7.15.5 OpenSSL/0.9.8c zlib/1.2.3 libidn/0.6.5" 2 example.mycompany
+   192.168.1.1 - - [31/Dec/2007:00:17:10 +0100] "GET /cgi-bin/example.cgi HTTP/1.1" 200 2708 "-" "curl/7.15.5 (i4 86-pc-linux-gnu) libcurl/7.15.5 OpenSSL/0.9.8c zlib/1.2.3 libidn/0.6.5" 2 example.mycompany
 
 ```
 
 To parse such logs, the delimiter character is set to a single whitespace (`delimiters(" ")`). Whitespaces between quotes and brackets are ignored (`quote-pairs('""[]')`).
 
 ```c
-
-    parser p_apache {
+   parser p_apache {
         csv-parser(
             columns("APACHE.CLIENT_IP", "APACHE.IDENT_NAME", "APACHE.USER_NAME",
             "APACHE.TIMESTAMP", "APACHE.REQUEST_URL", "APACHE.REQUEST_STATUS",
@@ -71,8 +67,7 @@ To parse such logs, the delimiter character is set to a single whitespace (`deli
 The results can be used for example, to separate log messages into different files based on the APACHE.USER_NAME field. If the field is empty, the `nouser` name is assigned.
 
 ```c
-
-    log {
+   log {
         source(s_local);
         parser(p_apache);
         destination(d_file);
@@ -90,8 +85,7 @@ The results can be used for example, to separate log messages into different fil
 Multiple parsers can be used to split a part of an already parsed message into further segments. The following example splits the timestamp of a parsed Apache log message into separate fields.
 
 ```c
-
-    parser p_apache_timestamp {
+   parser p_apache_timestamp {
         csv-parser(
             columns("APACHE.TIMESTAMP.DAY", "APACHE.TIMESTAMP.MONTH", "APACHE.TIMESTAMP.YEAR", "APACHE.TIMESTAMP.HOUR", "APACHE.TIMESTAMP.MIN", "APACHE.TIMESTAMP.SEC", "APACHE.TIMESTAMP.ZONE")
             delimiters("/: ")

@@ -29,8 +29,7 @@ Filters and substitution rewrite rules can use regular expressions. In regular e
 By default, all regular expressions are case sensitive. To disable the case sensitivity of the expression, add the **flags(ignore-case)** option to the regular expression.
 
 ```c
-
-    filter demo_regexp_insensitive {
+   filter demo_regexp_insensitive {
         host("system" flags(ignore-case));
     };
 

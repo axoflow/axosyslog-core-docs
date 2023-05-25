@@ -15,7 +15,6 @@ To use the `pacct()` driver, the following conditions must be met:
   - The `scl.conf` file must be included in your syslog-ng configuration:
     
     ```c
-    
         @include "scl.conf"
     
     ```
@@ -27,8 +26,7 @@ The `pacct()` driver parses the fields of the accounting logs and transforms the
 To use the `pacct()` driver, use the following syntax.
 
 ```c
-
-    @version: {{% param "product.techversion" %}}
+   @version: {{% param "product.techversion" %}}
     @include "scl.conf"
     source s_pacct { pacct(); };
     ...

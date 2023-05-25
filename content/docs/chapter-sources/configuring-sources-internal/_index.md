@@ -7,8 +7,7 @@ weight:  500
 All messages generated internally by syslog-ng use this special source. To collect warnings, errors and notices from syslog-ng itself, include this source in one of your source statements.
 
 ```c
-
-    internal()
+   internal()
 
 ```
 
@@ -18,8 +17,7 @@ The syslog-ng application will issue a warning upon startup if none of the defin
 ## Example: Using the internal() driver {#example-source-internal}
 
 ```c
-
-    source s_local { internal(); };
+   source s_local { internal(); };
 
 ```
 

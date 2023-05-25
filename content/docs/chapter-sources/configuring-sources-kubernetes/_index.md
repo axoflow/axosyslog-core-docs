@@ -12,8 +12,7 @@ By default, it reads the `/var/log/containers` folder and extracts both Kubernet
 ## Declaration:
 
 ```c
-
-    kubernetes(
+   kubernetes(
         base-dir("<pathname>")
     );
 

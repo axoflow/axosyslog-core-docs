@@ -7,8 +7,7 @@ weight:  100
 The `http` destination of {{% param "product.abbrev" %}} can directly post log messages to web services using the HTTP protocol. The `http` destination has the following options. Some of these options are directly used by the Java code underlying the `http` destination, therefore these options must be specified in the following format:
 
 ```c
-
-    option("<option-name>", "<option-value>")
+   option("<option-name>", "<option-value>")
 
 ```
 

@@ -10,8 +10,7 @@ The sudo parser can parse the log messages of the sudo command. Available in ver
 ## Declaration:
 
 ```c
-
-    @version: {{% param "product.configversion" %}}
+   @version: {{% param "product.configversion" %}}
     @include "scl.conf"
     log {
         source { system(); };
@@ -32,8 +31,7 @@ The `sudo-parser()` is actually a reusable configuration snippet configured to p
 By default, `sudo-parser()` uses the `.sudo.` prefix. To modify it, use the following format:
 
 ```c
-
-    parser { 
+   parser { 
         sudo-parser(prefix("myprefix.")); 
     };
 

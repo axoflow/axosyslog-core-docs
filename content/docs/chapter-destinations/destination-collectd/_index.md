@@ -12,14 +12,12 @@ Available in {{% param "product.abbrev" %}} version {{% conditional-text include
 ## Declaration:
 
 ```c
-
-    collectd();
+   collectd();
 
 ```
 
 ```c
-
-    destination d_collectd {
+   destination d_collectd {
       collectd(
         socket("<path-to-collectd-socket>"),
         host("${HOST}"),
@@ -38,8 +36,7 @@ Available in {{% param "product.abbrev" %}} version {{% conditional-text include
 The following example uses the name of the application sending the log message as the plugin name, and the value of the ${SEQNUM} macro as the value of the metric sent to collectd.
 
 ```c
-
-    destination d_collectd {
+   destination d_collectd {
       collectd(
         socket("/var/run/collectd-unixsock"),
         host("${HOST}"),
@@ -56,8 +53,7 @@ The following example uses the name of the application sending the log message a
 To use the `collectd()` driver, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 
 ```c
-
-    @include "scl.conf"
+   @include "scl.conf"
 
 ```
 

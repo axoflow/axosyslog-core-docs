@@ -28,7 +28,6 @@ N/A
   - *pattern*: A pattern describing a log message. This element is also called `message pattern`. For example:
     
     ```c
-    
         <pattern>+ ??? root-</pattern>
     
     ``` {{% alert title="Note" color="info" %}}
@@ -49,8 +48,7 @@ N/A
 ## Example
 
 ```c
-
-    <patterns>
+   <patterns>
         <pattern>Accepted @QSTRING:SSH.AUTH_METHOD: @ for@QSTRING:SSH_USERNAME: @from\ @QSTRING:SSH_CLIENT_ADDRESS: @port @NUMBER:SSH_PORT_NUMBER:@ ssh2</pattern>
     </patterns>
 

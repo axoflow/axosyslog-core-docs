@@ -12,8 +12,7 @@ Available in {{% param "product.abbrev" %}} version {{% conditional-text include
 ## Declaration:
 
 ```c
-
-    destination {
+   destination {
         discord(url("https://discord.com/api/webhooks/x/y"));
     };
 
@@ -24,8 +23,7 @@ By default the message sending is throttled to 5 message/sec, see [Discord: Rate
 To use this destination, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 
 ```c
-
-    @include "scl.conf"
+   @include "scl.conf"
 
 ```
 
@@ -44,8 +42,7 @@ To send messages to Discord, you must setup webhooks. For details, see: [Discord
 The following example sends messages with custom avatar, and text-to-speech enabled.
 
 ```c
-
-    @include "scl.conf"
+   @include "scl.conf"
     destination d_discord {
         discord(
             url("https://discord.com/api/webhooks/x/y")

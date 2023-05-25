@@ -16,8 +16,7 @@ Note that listening on a port using IPv6 automatically means that you are also l
 For example, the following source receives messages on TCP, using the `network()` driver, on every available interface of the host on both IPv4 and IPv6.
 
 ```c
-
-    source s_network_tcp { network( transport("tcp") ip("::") ip-protocol(6) port(601) ); };
+   source s_network_tcp { network( transport("tcp") ip("::") ip-protocol(6) port(601) ); };
 
 ```
 

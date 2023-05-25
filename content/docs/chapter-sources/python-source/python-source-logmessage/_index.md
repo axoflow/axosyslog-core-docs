@@ -12,8 +12,7 @@ The LogMessage API allows you to create LogMessage objects in Python sources, pa
 You can use the **LogMessage()** method to create a structured log message instance. For example:
 
 ```c
-
-    from syslogng import LogMessage
+   from syslogng import LogMessage
     
     msg = LogMessage() # Initialize an empty message with default values (recvd timestamp, rcptid, hostid, ...)
     msg = LogMessage("string or bytes-like object") # Initialize a message and set its ${MESSAGE} field to the specified argument
@@ -23,8 +22,7 @@ You can use the **LogMessage()** method to create a structured log message insta
 You can also explicitly set the different values of the log message. For example:
 
 ```c
-
-    msg["MESSAGE"] = "message"
+   msg["MESSAGE"] = "message"
     msg["HOST"] = "hostname"
 
 ```
@@ -50,8 +48,7 @@ The `parse()` method allows you to parse incoming messages as syslog messages. B
 If `keep-hostname()` is set to **no**, {{% param "product.abbrev" %}} ignores the hostname set in the message, and uses the IP address of the {{% param "product.abbrev" %}} host as the hostname (to use the hostname instead of the IP address, set the `use-dns()` or `use-fqdn()` options in the Python source).
 
 ```c
-
-    msg_ietf = LogMessage.parse('<165>1 2003-10-11T22:14:15.003Z mymachine.example.com evntslog - ID47 [exampleSDID@32473 iut="3" eventSource="Application" eventID="1011"] An application event log entry', self.parse_options)
+   msg_ietf = LogMessage.parse('<165>1 2003-10-11T22:14:15.003Z mymachine.example.com evntslog - ID47 [exampleSDID@32473 iut="3" eventSource="Application" eventID="1011"] An application event log entry', self.parse_options)
     msg_bsd = LogMessage.parse('<34>Oct 11 22:14:15 mymachine su: \'su root\' failed for lonvick on /dev/pts/8', self.parse_options)
 
 ```
@@ -63,8 +60,7 @@ If `keep-hostname()` is set to **no**, {{% param "product.abbrev" %}} ignores th
 You can set the priority of the message with the `set_pri()` method.
 
 ```c
-
-    msg.set_pri(165)
+   msg.set_pri(165)
 
 ```
 
@@ -75,8 +71,7 @@ You can set the priority of the message with the `set_pri()` method.
 You can use the `set_timestamp()` method to set the date and time of the log message.
 
 ```c
-
-    timestamp = datetime.fromisoformat("2018-09-11T14:49:02.100+02:00")
+   timestamp = datetime.fromisoformat("2018-09-11T14:49:02.100+02:00")
     msg.set_timestamp(timestamp) # datetime object, includes timezone information
 
 ```

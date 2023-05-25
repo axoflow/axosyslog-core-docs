@@ -19,8 +19,7 @@
 The log messages of the Apache Tomcat server are a typical example for multi-line log messages. The messages start with the date and time of the query in the `YYYY.MM.DD HH:MM:SS` format, as you can see in the following example.
 
 ```c
-
-    2010.06.09. 12:07:39 org.apache.catalina.startup.Catalina start
+   2010.06.09. 12:07:39 org.apache.catalina.startup.Catalina start
     SEVERE: Catalina.start:
     LifecycleException:  service.getName(): "Catalina";  Protocol handler start failed: java.net.BindException: Address already in use null:8080
            at org.apache.catalina.connector.Connector.start(Connector.java:1138)
@@ -49,8 +48,7 @@ The log messages of the Apache Tomcat server are a typical example for multi-lin
 To process these messages, specify a regular expression matching the timestamp of the messages in the `multi-line-prefix()` option. Such an expression is the following:
 
 ```c
-
-    source s_file{file("/var/log/tomcat6/catalina.2010-06-09.log" follow-freq(0) {{% conditional-text include-if="ose" %}}multi-line-mode(regexp) {{% /conditional-text %}}multi-line-prefix("[0-9]{4}\.[0-9]{2}\.[0-9]{2}\.") flags(no-parse));};
+   source s_file{file("/var/log/tomcat6/catalina.2010-06-09.log" follow-freq(0) {{% conditional-text include-if="ose" %}}multi-line-mode(regexp) {{% /conditional-text %}}multi-line-prefix("[0-9]{4}\.[0-9]{2}\.[0-9]{2}\.") flags(no-parse));};
     };
 
 ```

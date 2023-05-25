@@ -12,8 +12,7 @@ For the list of available parameters, see {{% xref "/docs/chapter-destinations/c
 ## Declaration:
 
 ```c
-
-    redis(
+   redis(
         host("<redis-server-address>")
         port("<redis-server-port>")
         auth("<redis-server-password>") # Optional, for password-protected servers
@@ -29,8 +28,7 @@ For the list of available parameters, see {{% xref "/docs/chapter-destinations/c
 The following destination counts the number of log messages received per host.
 
 ```c
-
-    destination d_redis {
+   destination d_redis {
         redis(
             host("localhost")
             port(6379)
@@ -43,8 +41,7 @@ The following destination counts the number of log messages received per host.
 The following example creates a statistic from Apache webserver logs about the browsers that the visitors use (per minute)
 
 ```c
-
-    @version: {{% param "product.techversion" %}}
+   @version: {{% param "product.techversion" %}}
     
     source s_apache {
         file("/var/log/apache2/access.log");

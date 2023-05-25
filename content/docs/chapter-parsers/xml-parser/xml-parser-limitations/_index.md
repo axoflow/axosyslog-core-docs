@@ -12,8 +12,7 @@ The XML parser comes with certain limitations.
 It is not possible to address each element of a vector-like structure individually. For example, take this input:
 
 ```c
-
-    <vector>
+   <vector>
         <entry>value1</entry>
         <entry>value2</entry>
         ...
@@ -25,16 +24,14 @@ It is not possible to address each element of a vector-like structure individual
 After parsing, the entries cannot be addressed individually. Instead, the text of the entries will be concatenated:
 
 ```c
-
-    vector.entry = "value1value2...valueN"
+   vector.entry = "value1value2...valueN"
 
 ```
 
 Note that `xmllint` has the same behavior:
 
 ```c
-
-    $ xmllint --xpath "/vector/entry/text()" test.xml
+   $ xmllint --xpath "/vector/entry/text()" test.xml
     value1value2valueN%
 
 ```

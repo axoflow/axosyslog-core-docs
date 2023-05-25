@@ -29,7 +29,6 @@ Complete the following steps on every syslog-ng client host. Examples are provid
     The following destination encrypts the log messages using TLS and sends them to the `6514/TCP` port of the syslog-ng server having the `10.1.2.3` IP address.
     
     ```c
-    
         destination demo_tls_destination {
             network("10.1.2.3" port(6514)
                 transport("tls")
@@ -42,7 +41,6 @@ Complete the following steps on every syslog-ng client host. Examples are provid
     A similar statement using the IETF-syslog protocol and thus the `syslog()` driver:
     
     ```c
-    
         destination demo_tls_syslog_destination {
             syslog("10.1.2.3" port(6514)
                                 transport("tls")

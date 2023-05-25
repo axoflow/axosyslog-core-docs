@@ -16,7 +16,6 @@ When syslog-ng crashes for some reason, it can create a core file that contains 
 1.  Core files are produced only if the `maximum core file size` ulimit is set to a high value in the init script of syslog-ng.Add the following line to the init script of syslog-ng:
     
     ```c
-    
         ulimit -c unlimited
     
     ```

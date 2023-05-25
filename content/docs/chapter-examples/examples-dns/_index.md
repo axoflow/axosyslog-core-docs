@@ -8,7 +8,6 @@ The syslog-ng application can resolve the hostnames of the clients and include t
   - Use DNS caching. Verify that the DNS cache is large enough to store all important hostnames. (By default, the syslog-ng DNS cache stores `1007` entries.)
     
     ```c
-    
         options { dns-cache-size(2000); };
     
     ```
@@ -16,7 +15,6 @@ The syslog-ng application can resolve the hostnames of the clients and include t
   - If the IP addresses of the clients change only rarely, set the expiry of the DNS cache large.
     
     ```c
-    
         options { dns-cache-expire(87600); };
     
     ```

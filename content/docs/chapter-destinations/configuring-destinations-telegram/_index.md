@@ -12,8 +12,7 @@ Note that this destination automatically uses the certificate store of the syste
 ## Declaration:
 
 ```c
-
-    telegram(parameters);
+   telegram(parameters);
 
 ```
 
@@ -26,8 +25,7 @@ Note that this destination automatically uses the certificate store of the syste
 The following example creates a `telegram()` destination.
 
 ```c
-
-    destination d_telegram {
+   destination d_telegram {
         telegram(
             template("${MESSAGE}")
             throttle(1)

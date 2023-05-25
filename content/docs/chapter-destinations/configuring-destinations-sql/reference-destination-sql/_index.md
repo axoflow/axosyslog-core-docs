@@ -27,16 +27,14 @@ This driver sends messages into an SQL database. The `sql()` destination has the
 *Description:* Specifies additional SQL options that are appended to the CREATE statement. That way you can customize what happens when {{% param "product.abbrev" %}} creates a new table in the database. Consult the documentation of your database server for details on the available options. Syntax:
 
 ```c
-
-    create-statement-append(<options-to-append>)
+   create-statement-append(<options-to-append>)
 
 ```
 
 For example, you can appends the `ROW_FORMAT=COMPRESSED` option to MySQL create table statements:
 
 ```c
-
-    create-statement-append(ROW_FORMAT=COMPRESSED)
+   create-statement-append(ROW_FORMAT=COMPRESSED)
 
 ```
 
@@ -52,16 +50,14 @@ For example, you can appends the `ROW_FORMAT=COMPRESSED` option to MySQL create 
 *Description:* Specify database options that are set whenever {{% param "product.abbrev" %}} connects to the database server. Consult the documentation of your database server for details on the available options. Syntax:
 
 ```c
-
-    dbd-option(OPTION_NAME VALUE)
+   dbd-option(OPTION_NAME VALUE)
 
 ```
 
 OPTION_NAME is always a string, VALUE is a string or a number. For example:
 
 ```c
-
-    dbd-option("null.sleep.connect" 1)
+   dbd-option("null.sleep.connect" 1)
     dbd-option("null.sleep.query" 5)
 
 ```
@@ -87,8 +83,7 @@ OPTION_NAME is always a string, VALUE is a string or a number. For example:
 The following example sets the `dont-create-tables` and `explicit-commits` flags for an `sql()` destination.
 
 ```c
-
-    flags(dont-create-tables,explicit-commits)
+   flags(dont-create-tables,explicit-commits)
 
 ```
 
@@ -139,8 +134,7 @@ The {{% param "product.abbrev" %}} application will create the name of indexes a
 The `null()` parameter of the SQL driver can be used to replace the contents of a column with a special SQL NULL value. To replace every column that contains an empty string with NULL, use the **null("")** option, for example
 
 ```c
-
-    destination d_sql {
+   destination d_sql {
         sql(type(pgsql)
         host("logserver") username("syslog-ng") password("password")
         database("logs")
@@ -156,8 +150,7 @@ The `null()` parameter of the SQL driver can be used to replace the contents of 
 To replace only a specific column (for example, `pid`) if it is empty, assign a default value to the column, and use this default value in the `null()` parameter:
 
 ```c
-
-    destination d_sql {
+   destination d_sql {
         sql(type(pgsql)
         host("logserver") username("syslog-ng") password("password")
         database("logs")
@@ -196,8 +189,7 @@ Ensure that the default value you use does not appear in the actual log messages
 *Description:* Specifies one or more SQL-like statement which is executed after {{% param "product.abbrev" %}} has successfully connected to the database. For example:
 
 ```c
-
-    session-statements("SET COLLATION_CONNECTION='utf8_general_ci'")
+   session-statements("SET COLLATION_CONNECTION='utf8_general_ci'")
 
 ```
 
@@ -246,8 +238,7 @@ It is possible to give a special value calling: default (without quotation marks
 ## Example: Value: default
 
 ```c
-
-    columns("date datetime", "host varchar(32)", "row_id serial")
+   columns("date datetime", "host varchar(32)", "row_id serial")
         values("${R_DATE}", "${HOST}", default)
 
 ```

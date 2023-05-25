@@ -11,16 +11,14 @@ weight:  900
 *Description:* The `level()` filter selects messages corresponding to a single importance level, or a level-range. To select messages of a specific level, use the name of the level as a filter parameter, for example, use the following to select warning messages:
 
 ```c
-
-    level(warning)
+   level(warning)
 
 ```
 
 To select a range of levels, include the beginning and the ending level in the filter, separated with two dots (`..`). For example, to select every message of error or higher level, use the following filter:
 
 ```c
-
-    level(err..emerg)
+   level(err..emerg)
 
 ```
 

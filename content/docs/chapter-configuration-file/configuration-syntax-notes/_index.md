@@ -17,7 +17,6 @@ When you are editing the syslog-ng configuration file, note the following points
   - You can use commas (`,`) to separate options or other parameters for readability, syslog-ng completely ignores them. The following declarations are equivalent:
     
     ```c
-    
         source s_demo_stream {
             unix-stream("<path-to-socket>" max-connections(10) group(log));
         };
@@ -30,7 +29,6 @@ When you are editing the syslog-ng configuration file, note the following points
   - When enclosing object IDs (for example, the name of a destination) between double-quotes (`"mydestination"`), the ID can include whitespace as well, for example:
     
     ```c
-    
         source "s demo stream" {
             unix-stream("<path-to-socket>" max-connections(10) group(log));
         };

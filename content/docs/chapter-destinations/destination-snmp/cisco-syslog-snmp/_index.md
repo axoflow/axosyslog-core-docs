@@ -9,7 +9,6 @@ The {{% param "product.abbrev" %}} application can convert the syslog messages s
   - The syslog-ng Source Configuration Library (SCL) must be included in the {{% param "product.abbrev" %}} configuration file:
     
     ```c
-    
         @include "scl.conf"
     
     ```
@@ -26,8 +25,7 @@ For details on the Cisco-specific SNMP trap format, see [CISCO-SYSLOG-MIB](http:
 The `${PROGRAM}` part of the syslog messages sent by Cisco devices contain not only the program name, but other important protocol information part as well. The `${PROGRAM}` of these messages contains the Facility, Severity, and the Mnemonic (the Cisco name) of the message. The following pattern database parses these values and makes them available as the `.cisco.Facility`, `.cisco.Severity`, and `.cisco.MsgName`, respectively. The actual log message is available as `.cisco.MsgText`.
 
 ```c
-
-    <patterndb version="4" pub_date="2011-05-03">
+   <patterndb version="4" pub_date="2011-05-03">
         <ruleset name="cisco snmp ruleset1" xml:id="480de478-d4a6-4a7f-bea4-0c0245d361e3">
             <description>Pattern for Cisco messages having BSD timestamps, for example: Jul 01 2010 00:32:59: %SYS-5-CONFIG_I: Configured from console by console</description>
             <pattern>%@ESTRING:.cisco.Facility:-@@ESTRING:.cisco.Severity:-@@ANYSTRING:.cisco.MsgName@</pattern>
@@ -72,8 +70,7 @@ The `cisco-snmp()` driver has the same requirements and options as the `snmp()` 
 **Declaration:**
 
 ```c
-
-    destination d_cisco_snmp {cisco-snmp(host(<hostname>));};
+   destination d_cisco_snmp {cisco-snmp(host(<hostname>));};
 
 ```
 
@@ -83,8 +80,7 @@ The `cisco-snmp()` driver has the same requirements and options as the `snmp()` 
 The following example defines an SNMP destination that sends out clogMessageGenerated messages using the SNMPv3 protocol.
 
 ```c
-
-    destination d_cisco_snmp {cisco-snmp(host("192.168.1.1")
+   destination d_cisco_snmp {cisco-snmp(host("192.168.1.1")
     version("v3")
     engine-id("'0xdeadbeefde'")
     auth-username('myusername')
