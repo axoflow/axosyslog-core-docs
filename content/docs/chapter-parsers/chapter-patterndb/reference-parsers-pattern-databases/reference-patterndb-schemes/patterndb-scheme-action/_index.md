@@ -21,7 +21,7 @@ OPTIONAL — A container element describing an action that is performed when a m
 
   - *condition*: A syslog-ng filter expression. The action is performed only if the message matches the filter. The filter can include macros and name-value pairs extracted from the message. When using actions together with message-correlation, you can also use the **$(context-length)** macro, which returns the number of messages in the current context. For example, this can be used to determine if the expected number of messages has arrived to the context: `condition='"$(context-length)" \>= "5"'`
 
-  - *rate*: Specifies maximum how many messages should be generated in the specified time period in the following format: `\<number-of-messages\>/\<period-in-seconds\>`. For example: `1/60` allows 1 message per minute. Rates apply within the scope of the context, that is, if `context-scope="host"` and `rate="1/60"`, then maximum one message is generated per minute for every host that sends a log message matching the rule. Excess messages are dropped. Note that when applying the rate to the generated messages, {{% productparam "abbrev" %}} uses the timestamps of the log messages, similarly to calculating the `context-timeout`. That way `rate` is applied correctly even if the log messages are processed offline.
+  - *rate*: Specifies maximum how many messages should be generated in the specified time period in the following format: `\<number-of-messages\>/\<period-in-seconds\>`. For example: `1/60` allows 1 message per minute. Rates apply within the scope of the context, that is, if `context-scope="host"` and `rate="1/60"`, then maximum one message is generated per minute for every host that sends a log message matching the rule. Excess messages are dropped. Note that when applying the rate to the generated messages, {{% param "product.abbrev" %}} uses the timestamps of the log messages, similarly to calculating the `context-timeout`. That way `rate` is applied correctly even if the log messages are processed offline.
 
   - *trigger*: Specifies when the action is executed. The `trigger` attribute has the following possible values:
     
@@ -35,13 +35,13 @@ OPTIONAL — A container element describing an action that is performed when a m
 
   - *create-context*
 
-  - *message*: A container element storing the message to be sent when the action is executed. Currently {{% productparam "abbrev" %}} sends these messages to the `internal()` destination.
+  - *message*: A container element storing the message to be sent when the action is executed. Currently {{% param "product.abbrev" %}} sends these messages to the `internal()` destination.
     
       - For details on the message context, see {{% xref "/docs/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-correlation/_index.md" %}} and {{% xref "/docs/chapter-parsers/chapter-patterndb/patterndb-triggers-actions/patterndb-actions-correlation/_index.md" %}}. For details on triggering messages, see {{% xref "/docs/chapter-parsers/chapter-patterndb/patterndb-triggers-actions/_index.md" %}}
         
         {{% include-headless "chunk/option-inherit-mode.md" %}}
         
-        This option is available in {{% productparam "abbrev" %}} 3.8 and later.
+        This option is available in {{% param "product.abbrev" %}} 3.8 and later.
     
     <!-- end list -->
     
@@ -49,11 +49,11 @@ OPTIONAL — A container element describing an action that is performed when a m
         
         If set to **TRUE**, the original message that triggered the action is cloned, including its name-value pairs and tags.
         
-        If set to **context**, {{% productparam "abbrev" %}} collects every name-value pair from each message stored in the context, and includes them in the generated message. If a name-value pair appears in multiple messages of the context, the value in the latest message will be used. Note that tags are not merged, the generated message will inherit the tags assigned to the last message of the context.
+        If set to **context**, {{% param "product.abbrev" %}} collects every name-value pair from each message stored in the context, and includes them in the generated message. If a name-value pair appears in multiple messages of the context, the value in the latest message will be used. Note that tags are not merged, the generated message will inherit the tags assigned to the last message of the context.
         
         For details on the message context, see {{% xref "/docs/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-correlation/_index.md" %}} and {{% xref "/docs/chapter-parsers/chapter-patterndb/patterndb-triggers-actions/patterndb-actions-correlation/_index.md" %}}. For details on triggering messages, see {{% xref "/docs/chapter-parsers/chapter-patterndb/patterndb-triggers-actions/_index.md" %}}
         
-        This option is available in {{% productparam "abbrev" %}} 5.3.2 and later.
+        This option is available in {{% param "product.abbrev" %}} 5.3.2 and later.
 
   - *values*: A container element for values and fields that are used to create the message generated by the action.
     
@@ -67,7 +67,7 @@ OPTIONAL — A container element describing an action that is performed when a m
         
         Note that currently it is not possible to add DATE, FACILITY, or SEVERITY fields to the message.
         
-        When the action is used together with message correlation, the {{% productparam "abbrev" %}} application automatically adds fields to the message based on the `context-scope` parameter. For example, using `context-scope="process"` automatically fills the HOST, PROGRAM, and PID fields of the generated message.
+        When the action is used together with message correlation, the {{% param "product.abbrev" %}} application automatically adds fields to the message based on the `context-scope` parameter. For example, using `context-scope="process"` automatically fills the HOST, PROGRAM, and PID fields of the generated message.
     
       - *name*: Name of the message field set by the `value` element.
 

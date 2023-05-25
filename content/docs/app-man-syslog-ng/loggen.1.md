@@ -27,11 +27,11 @@ weight:  4900
 
 {{% alert title="Note" color="info" %}}
 
-The `loggen` application is distributed with the {{% productparam "abbrev" %}} system logging application, and is usually part of the {{% productparam "abbrev" %}} package. The latest version of the {{% productparam "ose" %}} application is available at the [{{% productparam "ose" %}} page](https://syslog-ng.com/).
+The `loggen` application is distributed with the {{% param "product.abbrev" %}} system logging application, and is usually part of the {{% param "product.abbrev" %}} package. The latest version of the {{% param "product.ose" %}} application is available at the [{{% param "product.ose" %}} page](https://syslog-ng.com/).
 
 {{% /alert %}}
 
-This manual page is only an abstract, for the complete documentation of {{% productparam "abbrev" %}}, see the [{{% productparam "abbrev" %}} Documentation page](https://support.oneidentity.com/syslog-ng-premium-edition/technical-documents/)[{{% productparam "abbrev" %}} Documentation page](https://www.syslog-ng.com/).
+This manual page is only an abstract, for the complete documentation of {{% param "product.abbrev" %}}, see the [{{% param "product.abbrev" %}} Documentation page](https://support.oneidentity.com/syslog-ng-premium-edition/technical-documents/)[{{% param "product.abbrev" %}} Documentation page](https://www.syslog-ng.com/).
 
 The `loggen` application is a tool to test and stress-test your syslog server and the connection to the server. It can send syslog messages to the server at a specified rate using a number of connection types and protocols, including TCP, UDP, and unix domain sockets. The messages can be generated automatically (repeating the `PADD`string over and over), or read from a file or the standard input.
 
@@ -234,11 +234,11 @@ Read messages from the standard input (`stdio`) and send them to the localhost:
 
 {{% alert title="Note" color="info" %}}
 
-For the detailed documentation of {{% productparam "abbrev" %}} see [{{% productparam "abbrev" %}} Documentation page](https://support.oneidentity.com/syslog-ng-premium-edition/technical-documents/)[{{% productparam "abbrev" %}} Documentation page](https://www.syslog-ng.com/).
+For the detailed documentation of {{% param "product.abbrev" %}} see [{{% param "product.abbrev" %}} Documentation page](https://support.oneidentity.com/syslog-ng-premium-edition/technical-documents/)[{{% param "product.abbrev" %}} Documentation page](https://www.syslog-ng.com/).
 
-If you experience any problems or need help with {{% productparam "abbrev" %}}, visit the [{{% productparam "syslog-ng" %}} mailing list](https://lists.balabit.hu/mailman/listinfo/syslog-ng).
+If you experience any problems or need help with {{% param "product.abbrev" %}}, visit the [{{% param "product.syslog-ng" %}} mailing list](https://lists.balabit.hu/mailman/listinfo/syslog-ng).
 
-For news and notifications about {{% productparam "abbrev" %}}, visit the [{{% productparam "syslog-ng" %}} blogs](https://syslog-ng.com/blog/).
+For news and notifications about {{% param "product.abbrev" %}}, visit the [{{% param "product.syslog-ng" %}} blogs](https://syslog-ng.com/blog/).
 
 {{% /alert %}}
 

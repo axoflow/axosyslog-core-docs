@@ -4,7 +4,7 @@ weight:  100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The `discord()` destination of {{% productparam "abbrev" %}} can directly post log messages to web services using the HTTP protocol. The `discord()` destination has the following options.
+The `discord()` destination of {{% param "product.abbrev" %}} can directly post log messages to web services using the HTTP protocol. The `discord()` destination has the following options.
 
 
 ## avatar-url()
@@ -106,7 +106,7 @@ The `http()` destination supports only unencrypted key files (that is, the priva
 | Type:    | list            |
 | Default: | N/A (see below) |
 
-*Description:* Specifies what {{% productparam "abbrev" %}} does with the log message, based on the response code received from the HTTP server. If the server returns a status code beginning with 2 (for example, 200), {{% productparam "abbrev" %}} assumes the message was successfully sent. Otherwise, the action listed in the following table is applied. For status codes not listed in the following table, if the status code begins with 2 (for example, 299), {{% productparam "abbrev" %}} assumes the message was successfully sent. For other status codes, {{% productparam "abbrev" %}} disconnects. The following actions are possible:
+*Description:* Specifies what {{% param "product.abbrev" %}} does with the log message, based on the response code received from the HTTP server. If the server returns a status code beginning with 2 (for example, 200), {{% param "product.abbrev" %}} assumes the message was successfully sent. Otherwise, the action listed in the following table is applied. For status codes not listed in the following table, if the status code begins with 2 (for example, 299), {{% param "product.abbrev" %}} assumes the message was successfully sent. For other status codes, {{% param "product.abbrev" %}} disconnects. The following actions are possible:
 
   - `disconnect`: Keep trying to resend the message indefinitely.
 
@@ -200,7 +200,7 @@ To customize the action to take for a particular response code, use the followin
 
 {{% include-headless "chunk/option-destination-retries.md" %}}
 
-To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% productparam "abbrev" %}} will attempt to resend messages until the number of attempts reaches `retries`. If the HTTP server returns 4xx codes, {{% productparam "abbrev" %}} will drop the messages.
+To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% param "product.abbrev" %}} will attempt to resend messages until the number of attempts reaches `retries`. If the HTTP server returns 4xx codes, {{% param "product.abbrev" %}} will drop the messages.
 
 
 

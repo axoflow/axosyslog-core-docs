@@ -4,7 +4,7 @@ weight:  5300
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The destination is aimed at a fully controlled local, or near-local, trusted SMTP server. The goal is to send mail to trusted recipients, through a controlled channel. It hands mails over to an SMTP server, and that is all it does, therefore the resulting solution is as reliable as sending an email in general. For example, {{% productparam "abbrev" %}} does not verify whether the recipient exists.
+The destination is aimed at a fully controlled local, or near-local, trusted SMTP server. The goal is to send mail to trusted recipients, through a controlled channel. It hands mails over to an SMTP server, and that is all it does, therefore the resulting solution is as reliable as sending an email in general. For example, {{% param "product.abbrev" %}} does not verify whether the recipient exists.
 
 The `smtp()` driver sends email messages triggered by log messages. The `smtp()` driver uses SMTP, without needing external applications. You can customize the main fields of the email, add extra headers, send the email to multiple recipients, and so on.
 
@@ -14,7 +14,7 @@ The `smtp()` driver has the following required parameters: `host()`, `port()`, `
 
 {{% alert title="Note" color="info" %}}
 
-The `smtp()` destination driver is available only in {{% conditional-text include-if="ose" %}}{{% productparam "abbrev" %}} 3.4{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}5 F2{{% /conditional-text %}} and later.
+The `smtp()` destination driver is available only in {{% conditional-text include-if="ose" %}}{{% param "product.abbrev" %}} 3.4{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}5 F2{{% /conditional-text %}} and later.
 
 {{% /alert %}}
 

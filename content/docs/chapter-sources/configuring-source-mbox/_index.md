@@ -4,9 +4,9 @@ weight:  2100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-Using the `mbox()` driver, {{% productparam "abbrev" %}} can read email messages from local mbox files, and convert them to multiline log messages.
+Using the `mbox()` driver, {{% param "product.abbrev" %}} can read email messages from local mbox files, and convert them to multiline log messages.
 
-This driver has only one required option, the filename of the mbox file. To use the `mbox()` driver, the `scl.conf` file must be included in your {{% productparam "abbrev" %}} configuration:
+This driver has only one required option, the filename of the mbox file. To use the `mbox()` driver, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 
 ```c
 
@@ -19,7 +19,7 @@ The `mbox()` driver is actually a reusable configuration snippet configured to r
 
 ## Example: Using the mbox() driver {#example-source-mbox}
 
-The following example reads the emails of the root user on the {{% productparam "abbrev" %}} host.
+The following example reads the emails of the root user on the {{% param "product.abbrev" %}} host.
 
 ```c
 

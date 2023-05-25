@@ -14,7 +14,7 @@ The pattern database is organized as follows:
 
   - Rules consist of a message pattern and a class. The Message Pattern is similar to the Program Pattern, but is applied to the message part of the log message (the content of the ${MESSAGE} macro). If a message pattern matches the message, the class of the rule is assigned to the message (for example, Security, Violation, and so on).
 
-  - Rules can also contain additional information about the matching messages, such as the description of the rule, an URL, name-value pairs, or free-form tags.{{% conditional-text include-if="ssb" %}} This information is displayed by the {{% productparam "name" %}} in the email alerts (if alerts are requested for the rule), and are also displayed on the search interface.{{% /conditional-text %}}
+  - Rules can also contain additional information about the matching messages, such as the description of the rule, an URL, name-value pairs, or free-form tags.{{% conditional-text include-if="ssb" %}} This information is displayed by the {{% param "product.name" %}} in the email alerts (if alerts are requested for the rule), and are also displayed on the search interface.{{% /conditional-text %}}
 
   - Patterns can consist of literals (keywords, or rather, keycharacters) and pattern parsers.
     

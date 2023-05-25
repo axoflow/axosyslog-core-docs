@@ -13,7 +13,7 @@ This driver sends messages into an SQL database. The `sql()` destination has the
 | Type:    | string list                                                      |
 | Default: | "date", "facility", "level", "host", "program", "pid", "message" |
 
-*Description:* Name of the columns storing the data in `fieldname [dbtype]` format. The `[dbtype]` parameter is optional, and specifies the type of the field. By default, {{% productparam "abbrev" %}} creates `text` columns. Note that not every database engine can index text fields.
+*Description:* Name of the columns storing the data in `fieldname [dbtype]` format. The `[dbtype]` parameter is optional, and specifies the type of the field. By default, {{% param "product.abbrev" %}} creates `text` columns. Note that not every database engine can index text fields.
 
 {{% include-headless "wnt/warning-destination-mssql-columntypes.md" %}}
 
@@ -24,7 +24,7 @@ This driver sends messages into an SQL database. The `sql()` destination has the
 | Type:    | string       |
 | Default: | empty string |
 
-*Description:* Specifies additional SQL options that are appended to the CREATE statement. That way you can customize what happens when {{% productparam "abbrev" %}} creates a new table in the database. Consult the documentation of your database server for details on the available options. Syntax:
+*Description:* Specifies additional SQL options that are appended to the CREATE statement. That way you can customize what happens when {{% param "product.abbrev" %}} creates a new table in the database. Consult the documentation of your database server for details on the available options. Syntax:
 
 ```c
 
@@ -49,7 +49,7 @@ For example, you can appends the `ROW_FORMAT=COMPRESSED` option to MySQL create 
 | Type:    | string       |
 | Default: | empty string |
 
-*Description:* Specify database options that are set whenever {{% productparam "abbrev" %}} connects to the database server. Consult the documentation of your database server for details on the available options. Syntax:
+*Description:* Specify database options that are set whenever {{% param "product.abbrev" %}} connects to the database server. Consult the documentation of your database server for details on the available options. Syntax:
 
 ```c
 
@@ -77,9 +77,9 @@ OPTION_NAME is always a string, VALUE is a string or a number. For example:
 
 *Description:* Flags related to the `sql()` destination.
 
-  - *dont-create-tables*: Enable this flag to prevent {{% productparam "abbrev" %}} from creating non-existing database tables automatically. The {{% productparam "abbrev" %}} application typically has to create tables if you use macros in the table names. Available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="ose" %}}3.2{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}4.0{{% /conditional-text %}} and later.
+  - *dont-create-tables*: Enable this flag to prevent {{% param "product.abbrev" %}} from creating non-existing database tables automatically. The {{% param "product.abbrev" %}} application typically has to create tables if you use macros in the table names. Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.2{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}4.0{{% /conditional-text %}} and later.
 
-  - *explicit-commits*: By default, {{% productparam "abbrev" %}} commits every log message to the target database individually. When the `explicit-commits` option is enabled, messages are committed in batches. This improves the performance, but results in some latency, as the messages are not immediately sent to the database. The size and frequency of batched commits can be set using the **batch-lines()** parameter. The `explicit-commits` option is available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="ose" %}}3.2{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}4.0{{% /conditional-text %}} and later.
+  - *explicit-commits*: By default, {{% param "product.abbrev" %}} commits every log message to the target database individually. When the `explicit-commits` option is enabled, messages are committed in batches. This improves the performance, but results in some latency, as the messages are not immediately sent to the database. The size and frequency of batched commits can be set using the **batch-lines()** parameter. The `explicit-commits` option is available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.2{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}4.0{{% /conditional-text %}} and later.
 
 
 ## Example: Setting flags for SQL destinations
@@ -114,7 +114,7 @@ The following example sets the `dont-create-tables` and `explicit-commits` flags
 
 *Description:* The list of columns that are indexed by the database to speed up searching. To disable indexing for the destination, include the empty `indexes()` parameter in the destination, simply omitting the `indexes` parameter will cause syslog-ng to request indexing on the default columns.
 
-The {{% productparam "abbrev" %}} application will create the name of indexes automaticaly with the following method:
+The {{% param "product.abbrev" %}} application will create the name of indexes automaticaly with the following method:
 
   - In case of MsSQL, PostgreSQL, MySQL or SQLite or (Oracle but tablename \< 30 characters): `{table}_{column}_idx`.
 
@@ -184,7 +184,7 @@ Ensure that the default value you use does not appear in the actual log messages
 | Type:    | number (insertion attempts) |
 | Default: | 3                           |
 
-*Description:* The number of insertion attempts. If {{% productparam "abbrev" %}} could not insert a message into the database, it will repeat the attempt until the number of attempts reaches `retries`, then drops the connection to the database. For example, {{% productparam "abbrev" %}} will try to insert a message maximum three times by default (once for first insertion and twice if the first insertion was failed).
+*Description:* The number of insertion attempts. If {{% param "product.abbrev" %}} could not insert a message into the database, it will repeat the attempt until the number of attempts reaches `retries`, then drops the connection to the database. For example, {{% param "product.abbrev" %}} will try to insert a message maximum three times by default (once for first insertion and twice if the first insertion was failed).
 
 ## session-statements() {#sql-option-session-statements}
 
@@ -193,7 +193,7 @@ Ensure that the default value you use does not appear in the actual log messages
 | Type:    | comma-separated list of SQL statements |
 | Default: | empty string                           |
 
-*Description:* Specifies one or more SQL-like statement which is executed after {{% productparam "abbrev" %}} has successfully connected to the database. For example:
+*Description:* Specifies one or more SQL-like statement which is executed after {{% param "product.abbrev" %}} has successfully connected to the database. For example:
 
 ```c
 
@@ -203,7 +203,7 @@ Ensure that the default value you use does not appear in the actual log messages
 
 {{% alert title="Warning" color="warning" %}}
 
-The {{% productparam "abbrev" %}} application does not validate or limit the contents of customized queries. Consequently, queries performed with a user with write-access can potentially modify or even harm the database. Use customized queries with care, and only for your own responsibility.
+The {{% param "product.abbrev" %}} application does not validate or limit the contents of customized queries. Consequently, queries performed with a user with write-access can potentially modify or even harm the database. Use customized queries with care, and only for your own responsibility.
 
 {{% /alert %}}
 

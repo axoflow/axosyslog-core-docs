@@ -4,12 +4,12 @@ weight:  100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-This section describes how {{% productparam "name" %}} ({{% productparam "abbrev" %}}) supports the [Proxy Protocol](https://www.haproxy.com/blog/haproxy/proxy-protocol/).
+This section describes how {{% param "product.name" %}} ({{% param "product.abbrev" %}}) supports the [Proxy Protocol](https://www.haproxy.com/blog/haproxy/proxy-protocol/).
 
 
 ## The working mechanism behind the Proxy Protocol
 
-When using the Proxy Protocol during load balancing, {{% productparam "abbrev" %}} detects the information behind connections connected to the load balancer, then parses the injected information and adds the following macros to every message the comes through the connection later on:
+When using the Proxy Protocol during load balancing, {{% param "product.abbrev" %}} detects the information behind connections connected to the load balancer, then parses the injected information and adds the following macros to every message the comes through the connection later on:
 
 <span id="proxy-prot-adds-macros"></span>
 
@@ -27,7 +27,7 @@ Consider the following about macros and headers:
 
   - When the proxy protocol header is `PROXY UNKNOWN`, no additional macros are added.
 
-  - When {{% productparam "abbrev" %}} cannot parse a proxy protocol header, the connection is closed:
+  - When {{% param "product.abbrev" %}} cannot parse a proxy protocol header, the connection is closed:
     
     ```c
     

@@ -4,11 +4,11 @@ weight:  2100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-When you send your log messages from a {{% productparam "abbrev" %}} client through the network to a {{% productparam "abbrev" %}} server, you can use different protocols and options. Every combination has its advantages and disadvantages. The most important thing is to use matching protocols and options, so the server handles the incoming log messages properly.
+When you send your log messages from a {{% param "product.abbrev" %}} client through the network to a {{% param "product.abbrev" %}} server, you can use different protocols and options. Every combination has its advantages and disadvantages. The most important thing is to use matching protocols and options, so the server handles the incoming log messages properly.
 
-In {{% productparam "abbrev" %}} you can change many aspects of the network communication. First of all, there is the structure of the messages itself. Currently, {{% productparam "abbrev" %}} supports two standard syslog protocols: the BSD (RFC3164) and the syslog (RFC5424) message format.
+In {{% param "product.abbrev" %}} you can change many aspects of the network communication. First of all, there is the structure of the messages itself. Currently, {{% param "product.abbrev" %}} supports two standard syslog protocols: the BSD (RFC3164) and the syslog (RFC5424) message format.
 
-These RFCs describe the format and the structure of the log message, and add a (lightweight) framing around the messages. You can set this framing/structure by selecting the appropriate driver in {{% productparam "abbrev" %}}. There are two drivers you can use: the **network()** driver and the **syslog()** driver. The `syslog()` driver is for the syslog (RFC5424) protocol and the network() driver is for the BSD (RFC3164) protocol.
+These RFCs describe the format and the structure of the log message, and add a (lightweight) framing around the messages. You can set this framing/structure by selecting the appropriate driver in {{% param "product.abbrev" %}}. There are two drivers you can use: the **network()** driver and the **syslog()** driver. The `syslog()` driver is for the syslog (RFC5424) protocol and the network() driver is for the BSD (RFC3164) protocol.
 
 The `tcp()` and `udp()` drivers are now deprecated, they are essentially equivalent with the `network(transport(tcp))` and `network(transport(udp))` drivers.
 
@@ -46,7 +46,7 @@ Because some combination of drivers and options are invalid, you can use the fol
 
 15. `network(transport(rltp(tls-required(yes)) flag(syslog-protocol))`
 
-If you use the same driver and options in the destination of your {{% productparam "abbrev" %}} client and the source of your {{% productparam "abbrev" %}} server, everything should work as expected. Unfortunately there are some other combinations, that seem to work, but result in losing parts of the messages. The following table show the combinations:
+If you use the same driver and options in the destination of your {{% param "product.abbrev" %}} client and the source of your {{% param "product.abbrev" %}} server, everything should work as expected. Unfortunately there are some other combinations, that seem to work, but result in losing parts of the messages. The following table show the combinations:
 
 | Source \\ Destination | syslog/tcp | syslog/udp | syslog/tls | network/tcp | network/udp | network/tls | network/tcp/flag | network/udp/flag | network/tls/flag |
 | --------------------- | ---------- | ---------- | ---------- | ----------- | ----------- | ----------- | ---------------- | ---------------- | ---------------- |

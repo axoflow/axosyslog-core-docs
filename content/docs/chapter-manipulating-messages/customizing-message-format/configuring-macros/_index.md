@@ -4,7 +4,7 @@ weight:  300
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The {{% productparam "abbrev" %}} application allows you to define message templates, and reference them from every object that can use a template. Templates can include strings, macros (for example, date, the hostname, and so on), and template functions. For example, you can use templates to create standard message formats or filenames. For a list of macros available in {{% productparam "name" %}}, see {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" %}}.{{% conditional-text include-if="pe" %}} For the macros of the syslog-ng Agent for Windows application, see <span></span>.{{% /conditional-text %}} Fields from the structured data (SD) part of messages using the new IETF-syslog standard can also be used as macros.
+The {{% param "product.abbrev" %}} application allows you to define message templates, and reference them from every object that can use a template. Templates can include strings, macros (for example, date, the hostname, and so on), and template functions. For example, you can use templates to create standard message formats or filenames. For a list of macros available in {{% param "product.name" %}}, see {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" %}}.{{% conditional-text include-if="pe" %}} For the macros of the syslog-ng Agent for Windows application, see <span></span>.{{% /conditional-text %}} Fields from the structured data (SD) part of messages using the new IETF-syslog standard can also be used as macros.
 
 
 ## Declaration:
@@ -51,7 +51,7 @@ Macros can be included by prefixing the macro name with a `$` sign, just like in
 
 Macro names are case-sensitive, that is, `"$message"` and `"$MESSAGE"` are not the same.
 
-To use a literal `$` character in a template, you have to escape it. In {{% productparam "abbrev" %}} versions {{% conditional-text include-if="pe" %}}4.0-4.2{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.4 and earlier{{% /conditional-text %}}, use a backslash (**\\$**). In version {{% conditional-text include-if="pe" %}}5.0{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.5{{% /conditional-text %}} and later, use **$$**.
+To use a literal `$` character in a template, you have to escape it. In {{% param "product.abbrev" %}} versions {{% conditional-text include-if="pe" %}}4.0-4.2{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.4 and earlier{{% /conditional-text %}}, use a backslash (**\\$**). In version {{% conditional-text include-if="pe" %}}5.0{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.5{{% /conditional-text %}} and later, use **$$**.
 
 {{% include-headless "wnt/note-escape-at.md" %}}
 

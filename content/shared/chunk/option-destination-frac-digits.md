@@ -15,7 +15,7 @@
 
 {{% alert title="Note" color="info" %}}
 
-The {{% productparam "abbrev" %}} application can add the fractions to non-ISO8601 timestamps as well.
+The {{% param "product.abbrev" %}} application can add the fractions to non-ISO8601 timestamps as well.
 
 {{% /alert %}}
 

@@ -20,7 +20,7 @@ The `mongodb()` destination has the following options:
 
 {{% alert title="Warning" color="warning" %}}
 
-Hazard of data loss\! The {{% productparam "abbrev" %}} application does not verify that the specified collection name does not contain invalid characters. If you specify a collection with an invalid name, the log messages sent to the MongoDB database will be irrevocably lost without any warning.
+Hazard of data loss\! The {{% param "product.abbrev" %}} application does not verify that the specified collection name does not contain invalid characters. If you specify a collection with an invalid name, the log messages sent to the MongoDB database will be irrevocably lost without any warning.
 
 {{% /alert %}}
 
@@ -46,7 +46,7 @@ Hazard of data loss\! The {{% productparam "abbrev" %}} application does not ver
 
 {{% include-headless "chunk/option-destination-retries.md" %}}
 
-For MongoDB operations, {{% productparam "abbrev" %}} uses a one-minute timeout: if an operation times out, {{% productparam "abbrev" %}} assumes the operation has failed.
+For MongoDB operations, {{% param "product.abbrev" %}} uses a one-minute timeout: if an operation times out, {{% param "product.abbrev" %}} assumes the operation has failed.
 
 
 {{% include-headless "chunk/option-source-time-reopen.md" %}}
@@ -77,7 +77,7 @@ For MongoDB operations, {{% productparam "abbrev" %}} uses a one-minute timeout:
 | Default: | 1       |
 
 
-*Description:* Specifies the number of worker threads (at least 1) that {{% productparam "abbrev" %}} uses to send messages to the server. Increasing the number of worker threads can drastically improve the performance of the destination.
+*Description:* Specifies the number of worker threads (at least 1) that {{% param "product.abbrev" %}} uses to send messages to the server. Increasing the number of worker threads can drastically improve the performance of the destination.
 
 {{% include-headless "wnt/warning-diskbuffer-workers.md" %}}
 

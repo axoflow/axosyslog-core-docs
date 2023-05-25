@@ -4,9 +4,9 @@ weight:  500
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-To properly troubleshoot certain situations, it can be useful to trace which system calls {{% productparam "abbrev" %}} performs. How this is performed depends on the platform running {{% productparam "abbrev" %}}. In general, note the following points:
+To properly troubleshoot certain situations, it can be useful to trace which system calls {{% param "product.abbrev" %}} performs. How this is performed depends on the platform running {{% param "product.abbrev" %}}. In general, note the following points:
 
-  - When {{% productparam "abbrev" %}} is started, a supervisor process might stay in the foreground, while the actual syslog-ng daemon goes to the background. Always trace the background process.
+  - When {{% param "product.abbrev" %}} is started, a supervisor process might stay in the foreground, while the actual syslog-ng daemon goes to the background. Always trace the background process.
 
   - Apart from the system calls, the time between two system calls can be important as well. Make sure that your tracing tool records the time information as well. For details on how to do that, refer to the manual page of your specific tool (for example, `strace` on Linux, or `truss` on Solaris and BSD).
 
@@ -24,6 +24,6 @@ The following are examples for tracing system calls of syslog-ng on some platfor
 
 {{% alert title="Note" color="info" %}}
 
-To execute these commands on an already running {{% productparam "abbrev" %}} process, use the **-p \<pid_of_syslog-ng\>** parameter.
+To execute these commands on an already running {{% param "product.abbrev" %}} process, use the **-p \<pid_of_syslog-ng\>** parameter.
 
 {{% /alert %}}

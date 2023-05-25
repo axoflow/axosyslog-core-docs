@@ -20,7 +20,7 @@ weight:  300
 ```
 
 
-In the following example, {{% productparam "abbrev" %}} retrieves the GeoIP2 data of the IP address contained in the ${HOST} field of the incoming message (assuming that in this case the ${HOST} field contains an IP address), and includes the data (prefixed with the `geoip2` string) in the output JSON message.
+In the following example, {{% param "product.abbrev" %}} retrieves the GeoIP2 data of the IP address contained in the ${HOST} field of the incoming message (assuming that in this case the ${HOST} field contains an IP address), and includes the data (prefixed with the `geoip2` string) in the output JSON message.
 
 ```c
 

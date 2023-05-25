@@ -4,7 +4,7 @@ weight:  2100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The Cisco parser can parse the log messages of various Cisco devices. The messages of these devices often do not completely comply with the syslog RFCs, making them difficult to parse. The `cisco-parser()` of {{% productparam "abbrev" %}} solves this problem, and can separate these log messages to name-value pairs, extracting also the Cisco-specific values, for example, the mnemonic. For details on using value-pairs in {{% productparam "abbrev" %}} see {{% xref "/docs/chapter-concepts/concepts-value-pairs/_index.md" %}}. The parser can parse variations of the following message format:
+The Cisco parser can parse the log messages of various Cisco devices. The messages of these devices often do not completely comply with the syslog RFCs, making them difficult to parse. The `cisco-parser()` of {{% param "product.abbrev" %}} solves this problem, and can separate these log messages to name-value pairs, extracting also the Cisco-specific values, for example, the mnemonic. For details on using value-pairs in {{% param "product.abbrev" %}} see {{% xref "/docs/chapter-concepts/concepts-value-pairs/_index.md" %}}. The parser can parse variations of the following message format:
 
 ```c
 
@@ -28,7 +28,7 @@ Not every Cisco log message conforms to this format. If you find a message that 
 
 {{% /alert %}}
 
-The {{% productparam "abbrev" %}} application normalizes the parsed log messages into the following format:
+The {{% param "product.abbrev" %}} application normalizes the parsed log messages into the following format:
 
 ```c
 
@@ -44,7 +44,7 @@ By default, the Cisco-specific fields are extracted into the following name-valu
 
 ```c
 
-    @version: {{% productparam "techversion" %}}
+    @version: {{% param "product.techversion" %}}
     @include "scl.conf"
     log {
         source { udp(flags(no-parse)); };

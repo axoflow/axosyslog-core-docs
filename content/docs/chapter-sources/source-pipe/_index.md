@@ -30,7 +30,7 @@ Pipe is very similar to the `file()` driver, but there are a few differences, fo
 
   - It is not recommended to use `pipe()` on anything else than real pipes.
 
-  - By default, {{% productparam "abbrev" %}} uses the **flags(no-hostname)** option for pipes, meaning that {{% productparam "abbrev" %}} assumes that the log messages received from the pipe do not contain the hostname field. If your messages do contain the hostname field, use **flags(expect-hostname)**.
+  - By default, {{% param "product.abbrev" %}} uses the **flags(no-hostname)** option for pipes, meaning that {{% param "product.abbrev" %}} assumes that the log messages received from the pipe do not contain the hostname field. If your messages do contain the hostname field, use **flags(expect-hostname)**.
 
 {{% /alert %}}
 

@@ -4,9 +4,9 @@ weight:  900
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The `wildcard-file()` source collects log messages from multiple plain-text files from multiple directories. The `wildcard-file()` source is available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and later.
+The `wildcard-file()` source collects log messages from multiple plain-text files from multiple directories. The `wildcard-file()` source is available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and later.
 
-The {{% productparam "abbrev" %}} application notices if a file is renamed or replaced with a new file, so it can correctly follow the file even if logrotation is used. When {{% productparam "abbrev" %}} is restarted, it records the position of the last sent log message in the persist file, and continues to send messages from this position after the restart. The location of the persist file depends on the package you installed {{% productparam "abbrev" %}} from, typically it is `/var/lib/syslog-ng/syslog-ng.persist` or `/opt/syslog-ng/var/syslog-ng.persist/var/lib/syslog-ng/syslog-ng.persist`.
+The {{% param "product.abbrev" %}} application notices if a file is renamed or replaced with a new file, so it can correctly follow the file even if logrotation is used. When {{% param "product.abbrev" %}} is restarted, it records the position of the last sent log message in the persist file, and continues to send messages from this position after the restart. The location of the persist file depends on the package you installed {{% param "product.abbrev" %}} from, typically it is `/var/lib/syslog-ng/syslog-ng.persist` or `/opt/syslog-ng/var/syslog-ng.persist/var/lib/syslog-ng/syslog-ng.persist`.
 
 
 ## Declaration:
@@ -29,9 +29,9 @@ Note the following important points:
 
   - {{% include-headless "chunk/para-wildcard-file-source-max-files.md" %}}
 
-  - If the message does not have a proper syslog header, {{% productparam "abbrev" %}} treats messages received from files as sent by the `user` facility. Use the **default-facility()** and **default-priority()** options in the source definition to assign a different facility if needed.
+  - If the message does not have a proper syslog header, {{% param "product.abbrev" %}} treats messages received from files as sent by the `user` facility. Use the **default-facility()** and **default-priority()** options in the source definition to assign a different facility if needed.
 
-  - For every message that {{% productparam "abbrev" %}} reads from the source files, the path and name of the file is available in the [`${FILE_NAME}` macro]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}).
+  - For every message that {{% param "product.abbrev" %}} reads from the source files, the path and name of the file is available in the [`${FILE_NAME}` macro]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}).
 
 Required parameters: `base-dir()`, `filename-pattern()`. For the list of available optional parameters, see {{% xref "/docs/chapter-sources/configuring-sources-wildcard-file/reference-source-wildcard-file/_index.md" %}}.
 

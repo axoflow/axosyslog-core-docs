@@ -8,11 +8,11 @@ weight:  2100
 | --------- | -------------------------------------- |
 | Synopsis: | rate-limit(template($HOST) rate(5000)) |
 
-*Description:* Limits messages rate based on arbitrary keys in each message. The key will be resolved using the `template()` option. Each resolution will be allowed to have the number of messages each second, set by the `rate()` option. For example if `template($HOST)` and `rate(5000)` are set, and there are 2 hosts sending messages to {{% productparam "abbrev" %}}, a total of **10000** messages will be allowed by the `rate-limit()` filter, **5000** from the first and **5000** from the second host. If `template()` was not set instead, then **5000** messages would be allowed each second, regardless of their content.
+*Description:* Limits messages rate based on arbitrary keys in each message. The key will be resolved using the `template()` option. Each resolution will be allowed to have the number of messages each second, set by the `rate()` option. For example if `template($HOST)` and `rate(5000)` are set, and there are 2 hosts sending messages to {{% param "product.abbrev" %}}, a total of **10000** messages will be allowed by the `rate-limit()` filter, **5000** from the first and **5000** from the second host. If `template()` was not set instead, then **5000** messages would be allowed each second, regardless of their content.
 
 {{% alert title="Note" color="info" %}}
 
-In {{% productparam "abbrev" %}} version 3.35 the `rate-limit()` filter was called `throttle()`. In {{% productparam "abbrev" %}} version 3.36 it got renamed to `rate-limit()`, but `throttle()` is still available for backward compatibility.
+In {{% param "product.abbrev" %}} version 3.35 the `rate-limit()` filter was called `throttle()`. In {{% param "product.abbrev" %}} version 3.36 it got renamed to `rate-limit()`, but `throttle()` is still available for backward compatibility.
 
 {{% /alert %}} {{% alert title="Note" color="info" %}}
 

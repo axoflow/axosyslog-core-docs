@@ -6,7 +6,7 @@ weight:  1100
 
 ## Purpose
 
-This section describes how to read messages from an orphan disk-buffer file by using a separate {{% productparam "name" %}} ({{% productparam "abbrev" %}}) process running parallel to the already running {{% productparam "abbrev" %}} instance.
+This section describes how to read messages from an orphan disk-buffer file by using a separate {{% param "product.name" %}} ({{% param "product.abbrev" %}}) process running parallel to the already running {{% param "product.abbrev" %}} instance.
 
 
 ## Orphan disk-buffer files
@@ -15,23 +15,23 @@ This section describes how to read messages from an orphan disk-buffer file by u
 
 
 
-## Processing the messages from an orphan disk-buffer file by using a separate {{% productparam "abbrev" %}} instance
+## Processing the messages from an orphan disk-buffer file by using a separate {{% param "product.abbrev" %}} instance
 
-When {{% productparam "abbrev" %}} creates orphan disk-buffer files, you can start a separate {{% productparam "abbrev" %}} instance parallel to the {{% productparam "abbrev" %}} instance already running, and use the following resolution process to process the messages in the orphan disk-buffer file.
+When {{% param "product.abbrev" %}} creates orphan disk-buffer files, you can start a separate {{% param "product.abbrev" %}} instance parallel to the {{% param "product.abbrev" %}} instance already running, and use the following resolution process to process the messages in the orphan disk-buffer file.
 
 {{% alert title="Warning" color="warning" %}}
 
-Before starting a separate {{% productparam "abbrev" %}} instance to process the messages from the orphan disk-buffer file, consider the following:
+Before starting a separate {{% param "product.abbrev" %}} instance to process the messages from the orphan disk-buffer file, consider the following:
 
-  - During the resolution process, a separate {{% productparam "abbrev" %}} instance will be started with its temporary files beside the {{% productparam "abbrev" %}} instance already running.
-  - An incorrect startup command and incorrect configurations may cause issues for the {{% productparam "abbrev" %}} instance already running.
+  - During the resolution process, a separate {{% param "product.abbrev" %}} instance will be started with its temporary files beside the {{% param "product.abbrev" %}} instance already running.
+  - An incorrect startup command and incorrect configurations may cause issues for the {{% param "product.abbrev" %}} instance already running.
   - The disk-buffer file stores processed log messages in the format in which they would have been sent out to the destination.
   - The disk-buffer file doesn't store information about the destination.
 
 {{% /alert %}}
 
 
-To process the messages from an orphan disk-buffer file using a separate {{% productparam "abbrev" %}} instance,
+To process the messages from an orphan disk-buffer file using a separate {{% param "product.abbrev" %}} instance,
 
 1.  Identify the orphan disk-buffer files and make a record of them. For more information, see {{% xref "/docs/chapter-routing-filters/concepts-diskbuffer/get-information-about-disk-buffer-files/_index.md" %}}.
     
@@ -84,7 +84,7 @@ To process the messages from an orphan disk-buffer file using a separate {{% pro
     ```
     
 
-5.  Add your destination statement with `disk-buffer()` to the configuration file. You can copy the destination statement from your running {{% productparam "abbrev" %}} configuration.
+5.  Add your destination statement with `disk-buffer()` to the configuration file. You can copy the destination statement from your running {{% param "product.abbrev" %}} configuration.
     
     {{% alert title="Warning" color="warning" %}}
     
@@ -92,7 +92,7 @@ To process the messages from an orphan disk-buffer file using a separate {{% pro
     
     {{% /alert %}}
 
-6.  <span id="start-temp-instance"></span>Start the temporary {{% productparam "abbrev" %}} instance in the foreground.
+6.  <span id="start-temp-instance"></span>Start the temporary {{% param "product.abbrev" %}} instance in the foreground.
     
     ```c
     
@@ -100,7 +100,7 @@ To process the messages from an orphan disk-buffer file using a separate {{% pro
     
     ```
     
-    The {{% productparam "abbrev" %}} application will log to the console, so you will see any potential error that may occur during startup.
+    The {{% param "product.abbrev" %}} application will log to the console, so you will see any potential error that may occur during startup.
     
     The following example output displays that an empty disk-buffer file has been created and the connection to the remote destination has been established.
     
@@ -119,7 +119,7 @@ To process the messages from an orphan disk-buffer file using a separate {{% pro
     ```
     
 
-7.  To stop {{% productparam "abbrev" %}}, press `CTRL+C`.
+7.  To stop {{% param "product.abbrev" %}}, press `CTRL+C`.
 
 8.  <span id="repeat-steps-from-here"></span>Overwrite the empty disk-buffer file with the orphan disk-buffer file.
     
@@ -129,7 +129,7 @@ To process the messages from an orphan disk-buffer file using a separate {{% pro
     
     ```
 
-9.  Start {{% productparam "abbrev" %}} using the command used in [Start the temporary {{% productparam "abbrev" %}} instance in the foreground]({{< relref "/docs/chapter-routing-filters/concepts-diskbuffer/get-information-about-disk-buffer-files/diskb-proc-sep-sysl-inst/_index.md#start-temp-instance" >}}) step.
+9.  Start {{% param "product.abbrev" %}} using the command used in [Start the temporary {{% param "product.abbrev" %}} instance in the foreground]({{< relref "/docs/chapter-routing-filters/concepts-diskbuffer/get-information-about-disk-buffer-files/diskb-proc-sep-sysl-inst/_index.md#start-temp-instance" >}}) step.
     
     ```c
     
@@ -169,11 +169,11 @@ To process the messages from an orphan disk-buffer file using a separate {{% pro
         ```
         
 
-11. Press `CTRL+C` to stop {{% productparam "abbrev" %}}.
+11. Press `CTRL+C` to stop {{% param "product.abbrev" %}}.
 
 12. Check the state of the orphan disk-buffer file. For more information, see {{% xref "/docs/chapter-routing-filters/concepts-diskbuffer/get-information-about-disk-buffer-files/_index.md" %}}.
 
-13. If you have more than one orphan disk-buffer file, repeat [the steps following the {{% productparam "abbrev" %}} stop]({{< relref "/docs/chapter-routing-filters/concepts-diskbuffer/get-information-about-disk-buffer-files/diskb-proc-sep-sysl-inst/_index.md#repeat-steps-from-here" >}}) (that is, the steps beginning from overwriting the empty disk-buffer file with the orphan disk-buffer file) for each orphan disk-buffer file.
+13. If you have more than one orphan disk-buffer file, repeat [the steps following the {{% param "product.abbrev" %}} stop]({{< relref "/docs/chapter-routing-filters/concepts-diskbuffer/get-information-about-disk-buffer-files/diskb-proc-sep-sysl-inst/_index.md#repeat-steps-from-here" >}}) (that is, the steps beginning from overwriting the empty disk-buffer file with the orphan disk-buffer file) for each orphan disk-buffer file.
 
 14. Remove the temporary directory.
     

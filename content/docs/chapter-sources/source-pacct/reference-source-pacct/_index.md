@@ -14,7 +14,7 @@ The `pacct()` driver has the following options:
 | Type:    | filename with path     |
 | Default: | /var/log/account/pacct |
 
-*Description:* The file where the process accounting logs are stored — {{% productparam "abbrev" %}} reads accounting messages from this file.
+*Description:* The file where the process accounting logs are stored — {{% param "product.abbrev" %}} reads accounting messages from this file.
 
 
 {{% include-headless "chunk/option-source-follow-freq.md" %}}

@@ -15,7 +15,7 @@ The `stomp()` destination has the following options:
 | Type:    | yes|no |
 | Default: | no     |
 
-*Description:* Request the STOMP server to acknowledge the receipt of the messages. If you enable this option, then after sending a message, {{% productparam "abbrev" %}} waits until the server confirms that it has received the message. This delay can seriously limit the performance of {{% productparam "abbrev" %}} if the message rate is high, and the server cannot acknowledge the messages fast enough.
+*Description:* Request the STOMP server to acknowledge the receipt of the messages. If you enable this option, then after sending a message, {{% param "product.abbrev" %}} waits until the server confirms that it has received the message. This delay can seriously limit the performance of {{% param "product.abbrev" %}} if the message rate is high, and the server cannot acknowledge the messages fast enough.
 
 ## body() {#stomp-option-body}
 

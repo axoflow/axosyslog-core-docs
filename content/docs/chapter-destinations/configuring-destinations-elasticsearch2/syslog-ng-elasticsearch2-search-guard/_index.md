@@ -7,7 +7,7 @@ weight:  700
 
 ## Purpose:
 
-Version {{% conditional-text include-if="ose" %}}3.9{{% /conditional-text %}} and later supports the [Search Guard](https://floragunn.com/searchguard/) Elasticsearch plugin (version 2.4.1.16 and newer) to encrypt and authenticate your connections to from {{% productparam "abbrev" %}} to Elasticsearch 2 and newer. To configure {{% productparam "abbrev" %}} to send messages to an Elasticsearch 2.x cluster that uses Search Guard, complete the following steps.
+Version {{% conditional-text include-if="ose" %}}3.9{{% /conditional-text %}} and later supports the [Search Guard](https://floragunn.com/searchguard/) Elasticsearch plugin (version 2.4.1.16 and newer) to encrypt and authenticate your connections to from {{% param "product.abbrev" %}} to Elasticsearch 2 and newer. To configure {{% param "product.abbrev" %}} to send messages to an Elasticsearch 2.x cluster that uses Search Guard, complete the following steps.
 
 To connect to an Elasticsearch 5.x or newer cluster, use HTTPS mode.
 
@@ -15,7 +15,7 @@ To connect to an Elasticsearch 5.x or newer cluster, use HTTPS mode.
 
 ## Steps:
 
-1.  Install the Search Guard plugin on your {{% productparam "abbrev" %}} host. Use the plugin version that matches the version of your Elasticsearch installation.
+1.  Install the Search Guard plugin on your {{% param "product.abbrev" %}} host. Use the plugin version that matches the version of your Elasticsearch installation.
     
     ```c
     
@@ -23,9 +23,9 @@ To connect to an Elasticsearch 5.x or newer cluster, use HTTPS mode.
     
     ```
 
-2.  Create a certificate for your {{% productparam "abbrev" %}} host, and add the certificate to the `SYSLOG_NG-NODE_NAME-keystore.jks` file. You can configure the location of this file in the Elasticsearch resources file under the `path.conf` parameter. For details, see the [Search Guard documentation](https://github.com/floragunncom/search-guard-ssl-docs/blob/master/certificates.md).
+2.  Create a certificate for your {{% param "product.abbrev" %}} host, and add the certificate to the `SYSLOG_NG-NODE_NAME-keystore.jks` file. You can configure the location of this file in the Elasticsearch resources file under the `path.conf` parameter. For details, see the [Search Guard documentation](https://github.com/floragunncom/search-guard-ssl-docs/blob/master/certificates.md).
 
-3.  Configure an Elasticsearch destination in {{% productparam "abbrev" %}} that uses the `searchguard` client mode. For example:
+3.  Configure an Elasticsearch destination in {{% param "product.abbrev" %}} that uses the `searchguard` client mode. For example:
     
     ```c
     

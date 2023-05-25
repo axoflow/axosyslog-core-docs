@@ -35,7 +35,7 @@ The *\<rules\>* element may contain any number of *\<rule\>* elements.
 
 ## Attributes {#element-patterndb-rule-attributes}
 
-  - *provider*: The provider of the rule. This is used to distinguish between who supplied the rule, that is, if it has been created by {{% productparam "companyabbrev" %}}, or added to the XML by a local user.
+  - *provider*: The provider of the rule. This is used to distinguish between who supplied the rule, that is, if it has been created by {{% param "product.companyabbrev" %}}, or added to the XML by a local user.
 
   - *id*: The globally unique ID of the rule.
 

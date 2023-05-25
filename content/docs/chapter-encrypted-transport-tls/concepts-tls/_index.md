@@ -8,7 +8,7 @@ The syslog-ng application can send and receive log messages securely over the ne
 
 {{% alert title="Note" color="info" %}}
 
-This chapter describes how to use TLS encryption when using the standard syslog protocols, that is, the `network()` and `syslog()` drivers, for example, to forward log messages between two syslog-ng nodes, or to send log data to {{% productparam "ssblong" %}} or another log server. Other destinations that support TLS-encryption are not discussed in this chapter (for example, [`http()`]({{< relref "/docs/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})).
+This chapter describes how to use TLS encryption when using the standard syslog protocols, that is, the `network()` and `syslog()` drivers, for example, to forward log messages between two syslog-ng nodes, or to send log data to {{% param "product.ssblong" %}} or another log server. Other destinations that support TLS-encryption are not discussed in this chapter (for example, [`http()`]({{< relref "/docs/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})).
 
 {{% /alert %}}
 

@@ -4,9 +4,9 @@ weight:  5500
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The `snmp()` driver sends SNMP traps using the Simple Network Management Protocol version 2c or version 3. Incoming log messages can be converted to SNMP traps, as the fields of the SNMP messages can be customized using {{% productparam "abbrev" %}} macros.
+The `snmp()` driver sends SNMP traps using the Simple Network Management Protocol version 2c or version 3. Incoming log messages can be converted to SNMP traps, as the fields of the SNMP messages can be customized using {{% param "product.abbrev" %}} macros.
 
-The `snmp()` driver is available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="pe" %}}7.0.15{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.22{{% /conditional-text %}} and later.
+The `snmp()` driver is available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="pe" %}}7.0.15{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.22{{% /conditional-text %}} and later.
 
 
 {{% alert title="Note" color="info" %}}
@@ -31,7 +31,7 @@ The `snmp()` driver requires the `host()`, `trap-obj()`, and `snmp-obj()` option
 
 {{% alert title="Warning" color="warning" %}}
 
-If {{% productparam "abbrev" %}} cannot resolve the destination hostname during startup, it will try to resolve the hostname again when the next message to be sent as an SNMP trap is received. However, if this name resolution fails, the trap will be dropped.
+If {{% param "product.abbrev" %}} cannot resolve the destination hostname during startup, it will try to resolve the hostname again when the next message to be sent as an SNMP trap is received. However, if this name resolution fails, the trap will be dropped.
 
 {{% /alert %}}
 

@@ -14,7 +14,7 @@ This section describes the prerequisites and restrictions for using the `kafka` 
 
   - If you used the Java implementation before, see {{% xref "/docs/chapter-destinations/configuring-destinations-kafka-c/destination-kafka-c-from-java/_index.md" %}}.
 
-  - The {{% productparam "abbrev" %}} `kafka` destination supports all properties of the official Kafka producer. For details, see [the librdkafka documentation](https://github.com/edenhill/librdkafka/blob/master/CONFIGURATION.md).
+  - The {{% param "product.abbrev" %}} `kafka` destination supports all properties of the official Kafka producer. For details, see [the librdkafka documentation](https://github.com/edenhill/librdkafka/blob/master/CONFIGURATION.md).
 
   - For the list of options, see {{% xref "/docs/chapter-destinations/configuring-destinations-kafka-c/reference-destination-kafka-c/_index.md" %}}.
 

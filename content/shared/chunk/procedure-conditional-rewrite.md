@@ -29,7 +29,7 @@ The following procedure summarizes how conditional rewrite rules (rewrite rules 
 
 1.  The log path receives a message from the source (`s1`).
 
-2.  The rewrite rule (`r_rewrite_set`) evaluates the condition. If the message matches the condition (the PROGRAM field of the message is "myapplication"), {{% productparam "abbrev" %}} rewrites the log message (sets the value of the HOST field to "myhost"), otherwise it is not modified.
+2.  The rewrite rule (`r_rewrite_set`) evaluates the condition. If the message matches the condition (the PROGRAM field of the message is "myapplication"), {{% param "product.abbrev" %}} rewrites the log message (sets the value of the HOST field to "myhost"), otherwise it is not modified.
 
 3.  The next element of the log path processes the message (`d1`).
 

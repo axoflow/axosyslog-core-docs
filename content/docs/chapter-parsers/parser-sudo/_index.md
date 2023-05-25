@@ -11,7 +11,7 @@ The sudo parser can parse the log messages of the sudo command. Available in ver
 
 ```c
 
-    @version: {{% productparam "configversion" %}}
+    @version: {{% param "product.configversion" %}}
     @include "scl.conf"
     log {
         source { system(); };

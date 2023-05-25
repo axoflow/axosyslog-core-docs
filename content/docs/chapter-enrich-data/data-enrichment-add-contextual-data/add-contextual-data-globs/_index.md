@@ -4,11 +4,11 @@ weight:  300
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-Starting with in {{% productparam "abbrev" %}}{{% conditional-text include-if="ose" %}}3.24{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.17{{% /conditional-text %}} and later, you can use shell-style globbing ('\*' and '?' wildcards) in the selector.
+Starting with in {{% param "product.abbrev" %}}{{% conditional-text include-if="ose" %}}3.24{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.17{{% /conditional-text %}} and later, you can use shell-style globbing ('\*' and '?' wildcards) in the selector.
 
 To use globs in a selector
 
-1.  Use the **glob()** option within the `selector()` option in your {{% productparam "abbrev" %}} configuration file, for example:
+1.  Use the **glob()** option within the `selector()` option in your {{% param "product.abbrev" %}} configuration file, for example:
     
     ```c
     
@@ -37,9 +37,9 @@ Note the following points when using globbing in the selector:
 
   - The globs are matched against the expanded template string sequentially.
 
-  - Put more specific patterns to the top of the CSV-file. The {{% productparam "abbrev" %}} appication does not evaluate other entries after the first match.
+  - Put more specific patterns to the top of the CSV-file. The {{% param "product.abbrev" %}} appication does not evaluate other entries after the first match.
 
-  - In debug mode, {{% productparam "abbrev" %}} sends log messages to its `internal()` destination to help troubleshooting. For example:
+  - In debug mode, {{% param "product.abbrev" %}} sends log messages to its `internal()` destination to help troubleshooting. For example:
     
     ```c
     

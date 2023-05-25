@@ -9,5 +9,5 @@
 | Type:    | time in milliseconds |
 | Default: | \-1 (disabled)       |
 
-*Description:* Specifies the time {{% productparam "abbrev" %}} waits for lines to accumulate in the output buffer. The {{% productparam "abbrev" %}} application sends batches to the destinations evenly. The timer starts when the first message arrives to the buffer, so if only few messages arrive, {{% productparam "abbrev" %}} sends messages to the destination at most once every `batch-timeout()` milliseconds.
+*Description:* Specifies the time {{% param "product.abbrev" %}} waits for lines to accumulate in the output buffer. The {{% param "product.abbrev" %}} application sends batches to the destinations evenly. The timer starts when the first message arrives to the buffer, so if only few messages arrive, {{% param "product.abbrev" %}} sends messages to the destination at most once every `batch-timeout()` milliseconds.
 

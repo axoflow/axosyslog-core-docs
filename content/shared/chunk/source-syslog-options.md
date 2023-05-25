@@ -53,7 +53,7 @@
 
 {{% include-headless "chunk/option-source-log-iw-size.md" %}}
 
-If the `max-connections()` option is set, the `log-iw-size()` will be divided by the number of connections, otherwise `log-iw-size()` is divided by 10 (the default value of the `max-connections()` option). The resulting number is the initial window size of each connection. For optimal performance when receiving messages from {{% productparam "abbrev" %}} clients, make sure that the window size is larger than the `flush-lines()` option set in the destination of your clients.
+If the `max-connections()` option is set, the `log-iw-size()` will be divided by the number of connections, otherwise `log-iw-size()` is divided by 10 (the default value of the `max-connections()` option). The resulting number is the initial window size of each connection. For optimal performance when receiving messages from {{% param "product.abbrev" %}} clients, make sure that the window size is larger than the `flush-lines()` option set in the destination of your clients.
 
 
 ## Example: Initial window size of a connection

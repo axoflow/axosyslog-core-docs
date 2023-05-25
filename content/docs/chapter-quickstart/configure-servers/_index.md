@@ -15,7 +15,7 @@ To configure syslog-ng on a server host, complete the following steps.
 
 1.  Install the syslog-ng application on the host. For details installing syslog-ng on specific operating systems, see {{% xref "/docs/chapter-install/_index.md" %}}.
 
-2.  Starting with version 3.2, {{% productparam "abbrev" %}} automatically collects the log messages that use the native system logging method of the platform, for example, messages from `/dev/log` on Linux, or `/dev/klog` on FreeBSD. For a complete list of messages that are collected automatically, see {{% xref "/docs/chapter-sources/source-system/_index.md" %}}.
+2.  Starting with version 3.2, {{% param "product.abbrev" %}} automatically collects the log messages that use the native system logging method of the platform, for example, messages from `/dev/log` on Linux, or `/dev/klog` on FreeBSD. For a complete list of messages that are collected automatically, see {{% xref "/docs/chapter-sources/source-system/_index.md" %}}.
 
 3.  {{% include-headless "chunk/para-config-file-location.md" %}}
     
@@ -43,11 +43,11 @@ To configure syslog-ng on a server host, complete the following steps.
     
     {{% alert title="Note" color="info" %}}
     
-    Starting with {{% productparam "abbrev" %}} version 3.2, the `syslog()` source driver can handle both BSD-syslog (RFC 3164) and IETF-syslog (RFC 5424-26) messages.
+    Starting with {{% param "product.abbrev" %}} version 3.2, the `syslog()` source driver can handle both BSD-syslog (RFC 3164) and IETF-syslog (RFC 5424-26) messages.
     
     {{% /alert %}}
 
-4.  Create local destinations that will store the log messages, for example, file- or program destinations. The default configuration of {{% productparam "abbrev" %}} places the collected messages into the `/var/log/messages` file:
+4.  Create local destinations that will store the log messages, for example, file- or program destinations. The default configuration of {{% param "product.abbrev" %}} places the collected messages into the `/var/log/messages` file:
     
     ```c
     
@@ -86,11 +86,11 @@ To configure syslog-ng on a server host, complete the following steps.
     
     ## Example: A simple configuration for servers {#example-serverconfig}
     
-    The following is a simple configuration file for {{% productparam "name" %}} that collects incoming log messages and stores them in a text file.
+    The following is a simple configuration file for {{% param "product.name" %}} that collects incoming log messages and stores them in a text file.
     
     ```c
     
-        @version: {{% productparam "techversion" %}}
+        @version: {{% param "product.techversion" %}}
         @include "scl.conf"
         options {
             time-reap(30);

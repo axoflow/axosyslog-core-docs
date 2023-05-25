@@ -13,7 +13,7 @@ weight:  2700
 
 ## Description
 
-OPTIONAL — An element containing custom keywords (tags) about the messages matching the patterns. The tags can be used to label specific events (for example, user logons). It is also possible to filter on these tags later (for details, see {{% xref "/docs/chapter-routing-filters/filters/tagging-messages/_index.md" %}}). Starting with {{% productparam "name" %}} 3.2, the list of tags assigned to a message can be referenced with the `${TAGS}` macro.
+OPTIONAL — An element containing custom keywords (tags) about the messages matching the patterns. The tags can be used to label specific events (for example, user logons). It is also possible to filter on these tags later (for details, see {{% xref "/docs/chapter-routing-filters/filters/tagging-messages/_index.md" %}}). Starting with {{% param "product.name" %}} 3.2, the list of tags assigned to a message can be referenced with the `${TAGS}` macro.
 
 
 

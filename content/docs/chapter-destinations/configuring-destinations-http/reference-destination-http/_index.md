@@ -4,7 +4,7 @@ weight:  100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The `http` destination of {{% productparam "abbrev" %}} can directly post log messages to web services using the HTTP protocol. The `http` destination has the following options. Some of these options are directly used by the Java code underlying the `http` destination, therefore these options must be specified in the following format:
+The `http` destination of {{% param "product.abbrev" %}} can directly post log messages to web services using the HTTP protocol. The `http` destination has the following options. Some of these options are directly used by the Java code underlying the `http` destination, therefore these options must be specified in the following format:
 
 ```c
 
@@ -37,7 +37,7 @@ For the `http` destination, use this option as **class-name("org.syslog_ng.http.
 
 {{% include-headless "chunk/option-destination-java-class-path.md" %}}
 
-For the `http` destination, include the path to the java modules of {{% productparam "abbrev" %}}, for example, `class-path("/syslog-ng/install_dir/lib/syslog-ng/java-modules/\*.jar")`.
+For the `http` destination, include the path to the java modules of {{% param "product.abbrev" %}}, for example, `class-path("/syslog-ng/install_dir/lib/syslog-ng/java-modules/\*.jar")`.
 
 
 {{% include-headless "chunk/option-destination-hook.md" %}}
@@ -54,7 +54,7 @@ For the `http` destination, include the path to the java modules of {{% productp
 | Type:    | DELETE | HEAD | GET | OPTIONS | POST | PUT | TRACE |
 | Default: | PUT                                                |
 
-*Description:* Specifies the HTTP method to use when sending the message to the server. {{% conditional-text include-if="ose" %}}Available in {{% productparam "abbrev" %}} version 3.7.2 and newer.{{% /conditional-text %}}
+*Description:* Specifies the HTTP method to use when sending the message to the server. {{% conditional-text include-if="ose" %}}Available in {{% param "product.abbrev" %}} version 3.7.2 and newer.{{% /conditional-text %}}
 
 
 {{% include-headless "chunk/option-destination-retries.md" %}}

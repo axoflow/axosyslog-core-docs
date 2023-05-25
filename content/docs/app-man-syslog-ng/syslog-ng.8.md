@@ -22,9 +22,9 @@ weight:  4900
 
 ## Description
 
-This manual page is only an abstract, for the complete documentation of {{% productparam "abbrev" %}}, see the [{{% productparam "abbrev" %}} Documentation page](https://support.oneidentity.com/syslog-ng-premium-edition/technical-documents/)[{{% productparam "abbrev" %}} Documentation page](https://www.syslog-ng.com/).
+This manual page is only an abstract, for the complete documentation of {{% param "product.abbrev" %}}, see the [{{% param "product.abbrev" %}} Documentation page](https://support.oneidentity.com/syslog-ng-premium-edition/technical-documents/)[{{% param "product.abbrev" %}} Documentation page](https://www.syslog-ng.com/).
 
-The {{% productparam "ose" %}} application is a flexible and highly scalable system logging application. Typically, {{% productparam "ose" %}} is used to manage log messages and implement centralized logging, where the aim is to collect the log messages of several devices on a single, central log server. The different devices - called syslog-ng clients - all run {{% productparam "ose" %}}, and collect the log messages from the various applications, files, and other sources. The clients send all important log messages to the remote {{% productparam "ose" %}} server, where the server sorts and stores them.
+The {{% param "product.ose" %}} application is a flexible and highly scalable system logging application. Typically, {{% param "product.ose" %}} is used to manage log messages and implement centralized logging, where the aim is to collect the log messages of several devices on a single, central log server. The different devices - called syslog-ng clients - all run {{% param "product.ose" %}}, and collect the log messages from the various applications, files, and other sources. The clients send all important log messages to the remote {{% param "product.ose" %}} server, where the server sorts and stores them.
 
 
 
@@ -32,11 +32,11 @@ The {{% productparam "ose" %}} application is a flexible and highly scalable sys
 
   - `--caps`
     
-    Run {{% productparam "ose" %}} process with the specified POSIX capability flags.
+    Run {{% param "product.ose" %}} process with the specified POSIX capability flags.
     
-      - If the `--no-caps` option is not set, {{% productparam "ose" %}} has been compiled with the `--enable-linux-caps compile` option, and the host supports `CAP_SYSLOG`, {{% productparam "ose" %}} uses the following capabilities: `cap_net_bind_service`, `cap_net_broadcast`, `cap_net_raw`, `cap_dac_read_search`, `cap_dac_override`, `cap_chown`, `cap_fowner=p cap_syslog=ep`
+      - If the `--no-caps` option is not set, {{% param "product.ose" %}} has been compiled with the `--enable-linux-caps compile` option, and the host supports `CAP_SYSLOG`, {{% param "product.ose" %}} uses the following capabilities: `cap_net_bind_service`, `cap_net_broadcast`, `cap_net_raw`, `cap_dac_read_search`, `cap_dac_override`, `cap_chown`, `cap_fowner=p cap_syslog=ep`
     
-      - If the `--no-caps` option is not set, and the host does not support `CAP_SYSLOG`, {{% productparam "ose" %}} uses the following capabilities: `cap_net_bind_service`, `cap_net_broadcast`, `cap_net_raw`, `cap_dac_read_search`, `cap_dac_override`, `cap_chown`, `cap_fowner=p cap_sys_admin=ep`
+      - If the `--no-caps` option is not set, and the host does not support `CAP_SYSLOG`, {{% param "product.ose" %}} uses the following capabilities: `cap_net_bind_service`, `cap_net_broadcast`, `cap_net_raw`, `cap_dac_read_search`, `cap_dac_override`, `cap_chown`, `cap_fowner=p cap_sys_admin=ep`
     
     For example:
     
@@ -56,7 +56,7 @@ The {{% productparam "ose" %}} application is a flexible and highly scalable sys
 
   - `--chroot \<dir\>` or `-C \<dir\>`
     
-    Change root to the specified directory. The configuration file is read after chrooting so, the configuration file must be available within the `chroot`. That way it is also possible to reload the {{% productparam "syslog-ng" %}} configuration after chrooting. However, note that the `--user` and `--group`options are resolved before chrooting.
+    Change root to the specified directory. The configuration file is read after chrooting so, the configuration file must be available within the `chroot`. That way it is also possible to reload the {{% param "product.syslog-ng" %}} configuration after chrooting. However, note that the `--user` and `--group`options are resolved before chrooting.
 
   - `--control \<file\>` or `-c\<file\>`
     
@@ -68,11 +68,11 @@ The {{% productparam "ose" %}} application is a flexible and highly scalable sys
 
   - `--default-modules`
     
-    A comma-separated list of the modules that are loaded automatically. Modules not loaded automatically can be loaded by including the `@module \<modulename\>` statement in the {{% productparam "ose" %}} configuration file. Available only in {{% productparam "ose" %}} version 4.1 and later.
+    A comma-separated list of the modules that are loaded automatically. Modules not loaded automatically can be loaded by including the `@module \<modulename\>` statement in the {{% param "product.ose" %}} configuration file. Available only in {{% param "product.ose" %}} version 4.1 and later.
 
   - `--enable-core`
     
-    Enable {{% productparam "ose" %}} to write core files in case of a crash to help support and debugging.
+    Enable {{% param "product.ose" %}} to write core files in case of a crash to help support and debugging.
 
   - `--fd-limit \<number\>`
     
@@ -80,7 +80,7 @@ The {{% productparam "ose" %}} application is a flexible and highly scalable sys
 
   - `--foreground` or `-F`
     
-    Do not daemonize, run in the foreground. When running in the foreground, {{% productparam "ose" %}} starts from the current directory (`$CWD`) so it can create core files (normally, {{% productparam "ose" %}} starts from `\>$PREFIX/var`).
+    Do not daemonize, run in the foreground. When running in the foreground, {{% param "product.ose" %}} starts from the current directory (`$CWD`) so it can create core files (normally, {{% param "product.ose" %}} starts from `\>$PREFIX/var`).
 
   - `--group \<group\>` or `-g \<group\>`
     
@@ -92,13 +92,13 @@ The {{% productparam "ose" %}} application is a flexible and highly scalable sys
 
   - `--module-registry`
     
-    Display the list and description of the available modules. Note that not all of these modules are loaded automatically, only the ones specified in the `--default-modules` option. Available only in {{% productparam "ose" %}} 4 F1 and later.
+    Display the list and description of the available modules. Note that not all of these modules are loaded automatically, only the ones specified in the `--default-modules` option. Available only in {{% param "product.ose" %}} 4 F1 and later.
 
   - `--no-caps`
     
-    Run {{% productparam "ose" %}} as root, without capability-support. This is the default behavior. On Linux, it is possible to run {{% productparam "ose" %}} as non-root with capability-support if {{% productparam "ose" %}} was compiled with the `--enable-linux-caps` option enabled. (Run `syslog-ng --version` to display the list of enabled build parameters.)
+    Run {{% param "product.ose" %}} as root, without capability-support. This is the default behavior. On Linux, it is possible to run {{% param "product.ose" %}} as non-root with capability-support if {{% param "product.ose" %}} was compiled with the `--enable-linux-caps` option enabled. (Run `syslog-ng --version` to display the list of enabled build parameters.)
     
-    To run {{% productparam "ose" %}} with specific capabilities, use the `--caps` option.
+    To run {{% param "product.ose" %}} with specific capabilities, use the `--caps` option.
 
   - `--persist-file \<persist-file\>` or `-R \<persist-file\>`
     
@@ -110,15 +110,15 @@ The {{% productparam "ose" %}} application is a flexible and highly scalable sys
 
   - `--preprocess-into \<output-file\>`
     
-    After processing the configuration file and resolving included files and variables, write the resulting configuration into the specified output file. Available only in {{% productparam "ose" %}} 4 F1 and later.
+    After processing the configuration file and resolving included files and variables, write the resulting configuration into the specified output file. Available only in {{% param "product.ose" %}} 4 F1 and later.
 
   - `--process-mode \<mode\>`
     
-    Sets how to run {{% productparam "ose" %}}: in the `foreground` (mainly used for debugging), in the `background` as a daemon, or in `safe-background` mode. By default, syslog-ng runs in `safe-background` mode. This mode creates a supervisor process called `supervising syslog-ng`, that restarts {{% productparam "ose" %}} if it crashes.
+    Sets how to run {{% param "product.ose" %}}: in the `foreground` (mainly used for debugging), in the `background` as a daemon, or in `safe-background` mode. By default, syslog-ng runs in `safe-background` mode. This mode creates a supervisor process called `supervising syslog-ng`, that restarts {{% param "product.ose" %}} if it crashes.
 
   - `--stderr` or `-e`
     
-    Log internal messages of {{% productparam "ose" %}} to `stderr`. Mainly used for debugging purposes in conjunction with the `--foreground` option. If not specified, syslog-ng will log such messages to its internal source.
+    Log internal messages of {{% param "product.ose" %}} to `stderr`. Mainly used for debugging purposes in conjunction with the `--foreground` option. If not specified, syslog-ng will log such messages to its internal source.
 
   - `--syntax-only` or `-s`
     
@@ -130,7 +130,7 @@ The {{% productparam "ose" %}} application is a flexible and highly scalable sys
 
   - `--verbose` or `-v`
     
-    Enable verbose logging used to troubleshoot {{% productparam "ose" %}}.
+    Enable verbose logging used to troubleshoot {{% param "product.ose" %}}.
 
   - `--version` or `-V`
     
@@ -138,7 +138,7 @@ The {{% productparam "ose" %}} application is a flexible and highly scalable sys
 
   - `--worker-threads`
     
-    Sets the number of worker threads {{% productparam "ose" %}} can use, including the main {{% productparam "ose" %}} thread. Note that certain operations in {{% productparam "ose" %}} can use threads that are not limited by this option. This setting has effect only when {{% productparam "ose" %}} is running in multithreaded mode. Available only in {{% productparam "ose" %}} 4 F1 and later. See `The {{% productparam "ose" %}} 7 Administrator Guide` for details.
+    Sets the number of worker threads {{% param "product.ose" %}} can use, including the main {{% param "product.ose" %}} thread. Note that certain operations in {{% param "product.ose" %}} can use threads that are not limited by this option. This setting has effect only when {{% param "product.ose" %}} is running in multithreaded mode. Available only in {{% param "product.ose" %}} 4 F1 and later. See `The {{% param "product.ose" %}} 7 Administrator Guide` for details.
 
 
 
@@ -157,11 +157,11 @@ The {{% productparam "ose" %}} application is a flexible and highly scalable sys
 
 {{% alert title="Note" color="info" %}}
 
-For the detailed documentation of {{% productparam "abbrev" %}} see [{{% productparam "abbrev" %}} Documentation page](https://support.oneidentity.com/syslog-ng-premium-edition/technical-documents/)[{{% productparam "abbrev" %}} Documentation page](https://www.syslog-ng.com/).
+For the detailed documentation of {{% param "product.abbrev" %}} see [{{% param "product.abbrev" %}} Documentation page](https://support.oneidentity.com/syslog-ng-premium-edition/technical-documents/)[{{% param "product.abbrev" %}} Documentation page](https://www.syslog-ng.com/).
 
-If you experience any problems or need help with {{% productparam "abbrev" %}}, visit the [{{% productparam "syslog-ng" %}} mailing list](https://lists.balabit.hu/mailman/listinfo/syslog-ng).
+If you experience any problems or need help with {{% param "product.abbrev" %}}, visit the [{{% param "product.syslog-ng" %}} mailing list](https://lists.balabit.hu/mailman/listinfo/syslog-ng).
 
-For news and notifications about {{% productparam "abbrev" %}}, visit the [{{% productparam "syslog-ng" %}} blogs](https://syslog-ng.com/blog/).
+For news and notifications about {{% param "product.abbrev" %}}, visit the [{{% param "product.syslog-ng" %}} blogs](https://syslog-ng.com/blog/).
 
 {{% /alert %}}
 

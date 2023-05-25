@@ -16,4 +16,4 @@ The following sections describe how to select and filter log messages.
 
   - {{% xref "/docs/chapter-routing-filters/filters/tagging-messages/_index.md" %}} explains how to tag messages and how to filter on the tags.
 
-  - {{% xref "/docs/chapter-routing-filters/filters/reference-filters/_index.md" %}} is a detailed description of the filter functions available in {{% productparam "abbrev" %}}.
+  - {{% xref "/docs/chapter-routing-filters/filters/reference-filters/_index.md" %}} is a detailed description of the filter functions available in {{% param "product.abbrev" %}}.

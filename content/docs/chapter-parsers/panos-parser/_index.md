@@ -6,18 +6,18 @@ weight:  2900
 
 The [PAN-OS](https://docs.paloaltonetworks.com/pan-os.html) (a short version of Palo Alto Networks Operating System) parser can parse log messages originating from [Palo Alto Networks](https://www.paloaltonetworks.com/) devices. Even though these messages completely comply to the RFC standards, their `MESSAGE` part is not a plain text. Instead, the `MESSAGE` part contains a data structure that requires additional parsing.
 
-The `panos-parser()` of {{% productparam "name" %}} ({{% productparam "abbrev" %}}) solves this problem, and can separate PAN-OS log messages to name-value pairs.
+The `panos-parser()` of {{% param "product.name" %}} ({{% param "product.abbrev" %}}) solves this problem, and can separate PAN-OS log messages to name-value pairs.
 
-For details on using value-pairs in {{% productparam "abbrev" %}}, see {{% xref "/docs/chapter-concepts/concepts-value-pairs/_index.md" %}}.
+For details on using value-pairs in {{% param "product.abbrev" %}}, see {{% xref "/docs/chapter-concepts/concepts-value-pairs/_index.md" %}}.
 
 
 ## Prerequisites
 
-  - Version 3.29 of {{% productparam "abbrev" %}} or later.
+  - Version 3.29 of {{% param "product.abbrev" %}} or later.
     
     {{% alert title="Note" color="info" %}}
     
-    Most Linux distributions feature {{% productparam "abbrev" %}} versions earlier than version 3.29. For up-to-date binaries, visit [the syslog-ng third-party binaries page](https://www.syslog-ng.com/products/open-source-log-management/3rd-party-binaries.aspx).
+    Most Linux distributions feature {{% param "product.abbrev" %}} versions earlier than version 3.29. For up-to-date binaries, visit [the syslog-ng third-party binaries page](https://www.syslog-ng.com/products/open-source-log-management/3rd-party-binaries.aspx).
     
     {{% /alert %}}
 
@@ -27,13 +27,13 @@ For details on using value-pairs in {{% productparam "abbrev" %}}, see {{% xref 
 
 ## Limitations
 
-The `panos-parser()` only works on {{% productparam "abbrev" %}} version 3.29 or later.
+The `panos-parser()` only works on {{% param "product.abbrev" %}} version 3.29 or later.
 
 
 
 ## Configuration
 
-You can include the `panos-parser()` in your {{% productparam "abbrev" %}} configuration like this:
+You can include the `panos-parser()` in your {{% param "product.abbrev" %}} configuration like this:
 
 ```c
 
@@ -43,7 +43,7 @@ You can include the `panos-parser()` in your {{% productparam "abbrev" %}} confi
 
 ```
 
-To use this parser, the `scl.conf` file must be included in your {{% productparam "abbrev" %}} configuration:
+To use this parser, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 
 ```c
 

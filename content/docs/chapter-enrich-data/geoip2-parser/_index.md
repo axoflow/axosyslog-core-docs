@@ -4,9 +4,9 @@ weight:  500
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The {{% productparam "abbrev" %}} application can lookup IP addresses from an offline GeoIP2 database, and make the retrieved data available in name-value pairs. Depending on the database used, you can access country code, longitude, and latitude information and so on.
+The {{% param "product.abbrev" %}} application can lookup IP addresses from an offline GeoIP2 database, and make the retrieved data available in name-value pairs. Depending on the database used, you can access country code, longitude, and latitude information and so on.
 
-The {{% productparam "abbrev" %}} application works with the Country and the City version of the GeoIP2 database, both free and the commercial editions. The {{% productparam "abbrev" %}} application works with the `mmdb` (GeoIP2) format of these databases. Other formats, like `csv` are not supported.
+The {{% param "product.abbrev" %}} application works with the Country and the City version of the GeoIP2 database, both free and the commercial editions. The {{% param "product.abbrev" %}} application works with the `mmdb` (GeoIP2) format of these databases. Other formats, like `csv` are not supported.
 
 {{% alert title="Note" color="info" %}}
 

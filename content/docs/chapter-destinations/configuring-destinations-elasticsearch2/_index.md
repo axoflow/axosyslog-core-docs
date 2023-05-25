@@ -6,11 +6,11 @@ weight:  700
 
 {{% include-headless "wnt/warning-elasticsearch2-deprecated.md" %}}
 
-Starting with version {{% conditional-text include-if="pe" %}}5.6{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.7{{% /conditional-text %}} of {{% productparam "abbrev" %}} can directly send log messages to [Elasticsearch](https://www.elastic.co/products/elasticsearch), allowing you to search and analyze your data in real time, and visualize it with [Kibana](https://www.elastic.co/products/kibana).
+Starting with version {{% conditional-text include-if="pe" %}}5.6{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.7{{% /conditional-text %}} of {{% param "product.abbrev" %}} can directly send log messages to [Elasticsearch](https://www.elastic.co/products/elasticsearch), allowing you to search and analyze your data in real time, and visualize it with [Kibana](https://www.elastic.co/products/kibana).
 
-Note the following limitations when using the {{% productparam "abbrev" %}} `elasticsearch2` destination:
+Note the following limitations when using the {{% param "product.abbrev" %}} `elasticsearch2` destination:
 
-  - Since {{% productparam "abbrev" %}} uses Java libraries, the `elasticsearch2` destination has significant memory usage.
+  - Since {{% param "product.abbrev" %}} uses Java libraries, the `elasticsearch2` destination has significant memory usage.
 
 
 ## Declaration:
@@ -122,6 +122,6 @@ The following example send messages to Elasticsearch over HTTP using its REST AP
 
   - For the list of options, see {{% xref "/docs/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" %}}.
 
-The `elasticsearch2()` driver is actually a reusable configuration snippet configured to receive log messages using the Java language-binding of {{% productparam "abbrev" %}}. For details on using or writing such configuration snippets, see {{% xref "/docs/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of the elasticsearch configuration snippet on [GitHub](https://github.com/syslog-ng/syslog-ng/blob/master/scl/elasticsearch/plugin.conf). For details on extending {{% productparam "abbrev" %}} in Java, see the [Getting started with syslog-ng development](https://syslog-ng.gitbooks.io/getting-started/content/chapters/chapter_5/section_2.html) guide.
+The `elasticsearch2()` driver is actually a reusable configuration snippet configured to receive log messages using the Java language-binding of {{% param "product.abbrev" %}}. For details on using or writing such configuration snippets, see {{% xref "/docs/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of the elasticsearch configuration snippet on [GitHub](https://github.com/syslog-ng/syslog-ng/blob/master/scl/elasticsearch/plugin.conf). For details on extending {{% param "product.abbrev" %}} in Java, see the [Getting started with syslog-ng development](https://syslog-ng.gitbooks.io/getting-started/content/chapters/chapter_5/section_2.html) guide.
 
 {{% include-headless "wnt/note-jvm-reload.md" %}}

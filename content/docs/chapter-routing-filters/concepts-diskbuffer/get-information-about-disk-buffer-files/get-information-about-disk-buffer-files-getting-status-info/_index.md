@@ -6,12 +6,12 @@ weight:  300
 
 ## Purpose
 
-This section describes getting the status information of the disk-buffer files used in {{% productparam "name" %}} ({{% productparam "abbrev" %}}).
+This section describes getting the status information of the disk-buffer files used in {{% param "product.name" %}} ({{% param "product.abbrev" %}}).
 
 
 ## Command syntax
 
-The basic command syntax for getting the status information of the disk-buffer files used in {{% productparam "abbrev" %}} looks like the following:
+The basic command syntax for getting the status information of the disk-buffer files used in {{% param "product.abbrev" %}} looks like the following:
 
 ```c
 

@@ -20,7 +20,7 @@ For example, to insert the `.geoip2` prefix, use the **prefix(.geoip2)** option.
 | Synopsis: | database() |
 | Default:  |            |
 
-*Description:* Path to the GeoIP2 database to use. This works with absolute and relative paths as well. Note that {{% productparam "abbrev" %}} must have the required privileges to read this file. Do not modify or delete this file while {{% productparam "abbrev" %}} is running, it can crash {{% productparam "abbrev" %}}.
+*Description:* Path to the GeoIP2 database to use. This works with absolute and relative paths as well. Note that {{% param "product.abbrev" %}} must have the required privileges to read this file. Do not modify or delete this file while {{% param "product.abbrev" %}} is running, it can crash {{% param "product.abbrev" %}}.
 
 {{% include-headless "chunk/option-parser-geoip.md" %}}
 

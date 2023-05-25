@@ -23,7 +23,7 @@ The `stdin()` driver causes syslog-ng to exit once it hits end-of-file (EOF).
 
 ```c
 
-    @version: {{% productparam "techversion" %}}
+    @version: {{% param "product.techversion" %}}
     log { 
         source { stdin(); };
         destination { file("/dev/stdout"); };

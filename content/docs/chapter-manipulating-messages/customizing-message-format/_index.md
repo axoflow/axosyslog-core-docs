@@ -10,8 +10,8 @@ The following sections describe how to customize the names of logfiles, and also
 
   - {{% xref "/docs/chapter-manipulating-messages/modifying-messages/_index.md" %}} describes how to use macros and templates to format log messages or change the names of logfiles and database tables.
 
-  - {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" %}} lists the different types of macros available in {{% productparam "abbrev" %}}.
+  - {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" %}} lists the different types of macros available in {{% param "product.abbrev" %}}.
 
   - {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/template-functions/_index.md" %}} explains what template functions are and how to use them.
 
-  - {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" %}} lists the template functions available in {{% productparam "abbrev" %}}.
+  - {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" %}} lists the template functions available in {{% param "product.abbrev" %}}.

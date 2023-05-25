@@ -27,7 +27,7 @@ To compile syslog-ng Open Source Edition (OSE) from the source code, complete th
     
       - The development files of the *Autoconf Archive* package, [available here](http://www.gnu.org/software/autoconf-archive/).
     
-      - The {{% productparam "abbrev" %}} application now uses PCRE-type regular expressions by default. It requires the `libpcre` library package, [available here](https://sourceforge.net/projects/pcre/files/pcre/).
+      - The {{% param "product.abbrev" %}} application now uses PCRE-type regular expressions by default. It requires the `libpcre` library package, [available here](https://sourceforge.net/projects/pcre/files/pcre/).
     
       - {{% include-headless "chunk/para-java-requirements.md" %}}
 
@@ -87,7 +87,7 @@ To compile syslog-ng Open Source Edition (OSE) from the source code, complete th
     
       - On Solaris, use **gmake** (GNU make) instead of **make**.
     
-      - To build {{% productparam "abbrev" %}} with less verbose output, use the **make V=0** command. This results in shorter, less verbose output, making warnings and other anomalies easier to notice. Note that silent-rules support is only available in recent automake versions.
+      - To build {{% param "product.abbrev" %}} with less verbose output, use the **make V=0** command. This results in shorter, less verbose output, making warnings and other anomalies easier to notice. Note that silent-rules support is only available in recent automake versions.
     
     {{% /alert %}}
 

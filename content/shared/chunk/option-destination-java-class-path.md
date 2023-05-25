@@ -7,7 +7,7 @@
 |          |                                                                                                      |
 | -------- | ---------------------------------------------------------------------------------------------------- |
 | Type:    | string                                                                                               |
-| Default: | The {{% productparam "abbrev" %}} module directory: /opt/syslog-ng/lib/syslog-ng/java-modules/ |
+| Default: | The {{% param "product.abbrev" %}} module directory: /opt/syslog-ng/lib/syslog-ng/java-modules/ |
 
-*Description:* The list of the paths where the required Java classes are located. For example, **class-path("/opt/syslog-ng/lib/syslog-ng/java-modules/:/opt/my-java-libraries/libs/")**. If you set this option multiple times in your {{% productparam "abbrev" %}} configuration (for example, because you have multiple Java-based destinations), {{% productparam "abbrev" %}} will merge every available paths to a single list.
+*Description:* The list of the paths where the required Java classes are located. For example, **class-path("/opt/syslog-ng/lib/syslog-ng/java-modules/:/opt/my-java-libraries/libs/")**. If you set this option multiple times in your {{% param "product.abbrev" %}} configuration (for example, because you have multiple Java-based destinations), {{% param "product.abbrev" %}} will merge every available paths to a single list.
 

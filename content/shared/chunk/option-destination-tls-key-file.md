@@ -9,5 +9,5 @@
 | Accepted values: | Filename |
 | Default:         | none     |
 
-*Description:* The name of a file that contains an unencrypted private key in PEM format, suitable as a TLS key. If properly configured, the {{% productparam "abbrev" %}} application uses this private key and the matching certificate (set in the `cert-file()` option) to authenticate the {{% productparam "abbrev" %}} client on the destination server.
+*Description:* The name of a file that contains an unencrypted private key in PEM format, suitable as a TLS key. If properly configured, the {{% param "product.abbrev" %}} application uses this private key and the matching certificate (set in the `cert-file()` option) to authenticate the {{% param "product.abbrev" %}} client on the destination server.
 

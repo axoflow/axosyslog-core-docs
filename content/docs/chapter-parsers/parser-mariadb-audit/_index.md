@@ -11,7 +11,7 @@ The MariaDB parser can parse the log messages of the MariaDB Audit Plugin. The p
 
 ```c
 
-    @version: {{% productparam "configversion" %}}
+    @version: {{% param "product.configversion" %}}
     @include "scl.conf"
     log {
         source { system(); };

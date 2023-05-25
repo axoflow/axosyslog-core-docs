@@ -4,89 +4,89 @@ weight:  700
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-This section describes how to start, stop and check the status of {{% productparam "name" %}} ({{% productparam "abbrev" %}}) service on Linux.
+This section describes how to start, stop and check the status of {{% param "product.name" %}} ({{% param "product.abbrev" %}}) service on Linux.
 
 
-## Starting {{% productparam "abbrev" %}}
+## Starting {{% param "product.abbrev" %}}
 
-To start {{% productparam "abbrev" %}}, execute the following command as root.
+To start {{% param "product.abbrev" %}}, execute the following command as root.
 
 
-## Example: starting {{% productparam "abbrev" %}}
+## Example: starting {{% param "product.abbrev" %}}
 
 **`systemctl start syslog-ng`**
 
 
 If the service starts successfully, no output will be displayed.
 
-The following message indicates that {{% productparam "abbrev" %}} can not start (see [Checking {{% productparam "abbrev" %}} status](#check-syslog-ng-status)):
+The following message indicates that {{% param "product.abbrev" %}} can not start (see [Checking {{% param "product.abbrev" %}} status](#check-syslog-ng-status)):
 
 `Job for syslog-ng.service failed because the control process exited with error code. See **systemctl status syslog-ng.service** and **journalctl -xe** for details.`
 
 
 
-## Stopping {{% productparam "abbrev" %}}
+## Stopping {{% param "product.abbrev" %}}
 
-To stop {{% productparam "abbrev" %}}
+To stop {{% param "product.abbrev" %}}
 
 1.  Execute the following command as root.
     
     
-    ## Example: command for stopping {{% productparam "abbrev" %}}
+    ## Example: command for stopping {{% param "product.abbrev" %}}
     
     **`systemctl stop syslog-ng`**
     
 
-2.  Check the status of {{% productparam "abbrev" %}} service (see [Checking {{% productparam "abbrev" %}} status](#check-syslog-ng-status)).
+2.  Check the status of {{% param "product.abbrev" %}} service (see [Checking {{% param "product.abbrev" %}} status](#check-syslog-ng-status)).
 
 
 
-## Restarting {{% productparam "abbrev" %}}
+## Restarting {{% param "product.abbrev" %}}
 
-To restart {{% productparam "abbrev" %}}, execute the following command as root.
+To restart {{% param "product.abbrev" %}}, execute the following command as root.
 
 
-## Example: command for restarting {{% productparam "abbrev" %}}
+## Example: command for restarting {{% param "product.abbrev" %}}
 
 **`systemctl restart syslog-ng`**
 
 
 
 
-## Reloading configuration file without restarting {{% productparam "abbrev" %}}
+## Reloading configuration file without restarting {{% param "product.abbrev" %}}
 
-To reload the configuration file without restarting {{% productparam "abbrev" %}}, execute the following command as root.
+To reload the configuration file without restarting {{% param "product.abbrev" %}}, execute the following command as root.
 
 
-## Example: command for reloading the configuration file without restarting {{% productparam "abbrev" %}}
+## Example: command for reloading the configuration file without restarting {{% param "product.abbrev" %}}
 
 **`systemctl reload syslog-ng`**
 
 
 
 
-## Checking {{% productparam "abbrev" %}} status
+## Checking {{% param "product.abbrev" %}} status
 
 To check the following status-related components, observe the suggestions below.
 
-  - **Checking the status of {{% productparam "abbrev" %}} service**
+  - **Checking the status of {{% param "product.abbrev" %}} service**
     
-    To check the status of {{% productparam "abbrev" %}} service
+    To check the status of {{% param "product.abbrev" %}} service
     
     1.  Execute the following command as root.
         
         
-        ## Example: command for checking the status of {{% productparam "abbrev" %}} service
+        ## Example: command for checking the status of {{% param "product.abbrev" %}} service
         
         **`systemctl --no-pager status syslog-ng`**
         
     
-    2.  Check the <span class="code">Active:</span> field, which shows the status of {{% productparam "abbrev" %}} service. The following statuses are possible:
+    2.  Check the <span class="code">Active:</span> field, which shows the status of {{% param "product.abbrev" %}} service. The following statuses are possible:
         
-          - **active (running)** - {{% productparam "abbrev" %}} service is up and running
+          - **active (running)** - {{% param "product.abbrev" %}} service is up and running
             
             
-            ## Example: {{% productparam "abbrev" %}} service active
+            ## Example: {{% param "product.abbrev" %}} service active
             
             ```c
             
@@ -106,7 +106,7 @@ To check the following status-related components, observe the suggestions below.
           - **inactive (dead)** - syslog-ng service is stopped
             
             
-            ## Example: {{% productparam "abbrev" %}} status inactive
+            ## Example: {{% param "product.abbrev" %}} status inactive
             
             ```c
             
@@ -121,9 +121,9 @@ To check the following status-related components, observe the suggestions below.
             ```
             
 
-  - **Checking the process of {{% productparam "abbrev" %}}**
+  - **Checking the process of {{% param "product.abbrev" %}}**
     
-    To check the process of {{% productparam "abbrev" %}}, execute one of the following commands.
+    To check the process of {{% param "product.abbrev" %}}, execute one of the following commands.
     
       - 
         
@@ -151,21 +151,21 @@ To check the following status-related components, observe the suggestions below.
         
         <span class="code">syslogng 6709 0.0 0.6 308680 13432 ? Ss 09:17 0:00 /opt/syslog-ng/libexec/syslog-ng -F --no-caps --enable-core</span>
 
-  - **Checking the internal logs of {{% productparam "abbrev" %}}**
+  - **Checking the internal logs of {{% param "product.abbrev" %}}**
     
-    The internal logs of {{% productparam "abbrev" %}} contains informal, warning and error messages.
+    The internal logs of {{% param "product.abbrev" %}} contains informal, warning and error messages.
     
-    By default, {{% productparam "abbrev" %}} log messages (generated on the <span class="code">internal()</span> source) are written to **`/var/log/messages`**.
+    By default, {{% param "product.abbrev" %}} log messages (generated on the <span class="code">internal()</span> source) are written to **`/var/log/messages`**.
     
-    Check the internal logs of {{% productparam "abbrev" %}} for any issue.
+    Check the internal logs of {{% param "product.abbrev" %}} for any issue.
 
   - <span id="stats"></span>**Message processing**
     
-    The {{% productparam "abbrev" %}} application collects statistics about the number of processed messages on the different sources and destinations.
+    The {{% param "product.abbrev" %}} application collects statistics about the number of processed messages on the different sources and destinations.
     
     {{% alert title="Note" color="info" %}}
     
-    When using `syslog-ng-ctl stats`, consider that while the output is generally consistent, there is no explicit ordering behind the command. Consequently, {{% productparam "companyabbrev" %}} does not recommend creating parsers that depend on a fix output order.
+    When using `syslog-ng-ctl stats`, consider that while the output is generally consistent, there is no explicit ordering behind the command. Consequently, {{% param "product.companyabbrev" %}} does not recommend creating parsers that depend on a fix output order.
     
     If needed, you can sort the output with an external application, for example, `| sort`.
     
@@ -173,7 +173,7 @@ To check the following status-related components, observe the suggestions below.
     
       - **Central statistics**
         
-        To check the central statistics, execute the following command to see the number of received and queued (sent) messages by {{% productparam "abbrev" %}}.
+        To check the central statistics, execute the following command to see the number of received and queued (sent) messages by {{% param "product.abbrev" %}}.
         
         
         ## Example: command for checking central statistics
@@ -183,7 +183,7 @@ To check the following status-related components, observe the suggestions below.
         
         The output will be updated in every 2 seconds.
         
-        If the numbers are changing, {{% productparam "abbrev" %}} is processing the messages.
+        If the numbers are changing, {{% param "product.abbrev" %}} is processing the messages.
         
         
         ## Example: output example
@@ -209,7 +209,7 @@ To check the following status-related components, observe the suggestions below.
         
         The output will be updated in every 2 seconds.
         
-        If the numbers are changing, {{% productparam "abbrev" %}} is receiving messages on the sources.
+        If the numbers are changing, {{% param "product.abbrev" %}} is receiving messages on the sources.
         
         
         ## Example: output example
@@ -236,7 +236,7 @@ To check the following status-related components, observe the suggestions below.
         
         The output will be updated in every 2 seconds.
         
-        If the numbers are changing, {{% productparam "abbrev" %}} is receiving messages on the sources.
+        If the numbers are changing, {{% param "product.abbrev" %}} is receiving messages on the sources.
         
         
         ## Example: output example
@@ -255,7 +255,7 @@ To check the following status-related components, observe the suggestions below.
 
 {{% alert title="Note" color="info" %}}
 
-If you find error messages in the internal logs, messages are not processed by {{% productparam "abbrev" %}} or you encounter any issue, you have the following options:
+If you find error messages in the internal logs, messages are not processed by {{% param "product.abbrev" %}} or you encounter any issue, you have the following options:
 
   - Search for the error or issue in our [knowledge base](https://support.oneidentity.com/syslog-ng-premium-edition/kb).
   - Check the [following knowledge base articles](https://support.oneidentity.com/syslog-ng-premium-edition/kb?k=troubleshooting&r=Topic%3ATroubleshooting) for further troubleshooting.

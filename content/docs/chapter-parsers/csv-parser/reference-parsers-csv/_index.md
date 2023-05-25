@@ -41,9 +41,9 @@ weight:  100
 
 If you have to use a string as a delimiter, list your string delimiters in the `delimiters(strings("\<delimiter_string1\>", "\<delimiter_string2\>", ...)")` format.
 
-By default, {{% productparam "abbrev" %}} uses space as a delimiter. If you want to use only the strings as delimiters, you have to disable the space delimiter, for example: **delimiters(chars(""), strings("\<delimiter_string\>"))**
+By default, {{% param "product.abbrev" %}} uses space as a delimiter. If you want to use only the strings as delimiters, you have to disable the space delimiter, for example: **delimiters(chars(""), strings("\<delimiter_string\>"))**
 
-Otherwise, {{% productparam "abbrev" %}} will use the string delimiters in addition to the default character delimiter, so `delimiters(strings("=="))` actually equals `delimiters(chars(" "), strings("=="))`, and not `delimiters(chars(""), strings("=="))`
+Otherwise, {{% param "product.abbrev" %}} will use the string delimiters in addition to the default character delimiter, so `delimiters(strings("=="))` actually equals `delimiters(chars(" "), strings("=="))`, and not `delimiters(chars(""), strings("=="))`
 
 
 
@@ -51,13 +51,13 @@ Otherwise, {{% productparam "abbrev" %}} will use the string delimiters in addit
 
 If you use more than one delimiter, note the following points:
 
-  - {{% productparam "abbrev" %}} will split the message at the nearest possible delimiter. The order of the delimiters in the configuration file does not matter.
+  - {{% param "product.abbrev" %}} will split the message at the nearest possible delimiter. The order of the delimiters in the configuration file does not matter.
 
   - You can use both string delimiters and character delimiters in a parser.
 
   - The string delimiters can include characters that are also used as character delimiters.
 
-  - If a string delimiter and a character delimiter both match at the same position of the message, {{% productparam "abbrev" %}} uses the string delimiter.
+  - If a string delimiter and a character delimiter both match at the same position of the message, {{% param "product.abbrev" %}} uses the string delimiter.
 
 
 
@@ -138,7 +138,7 @@ If you use more than one delimiter, note the following points:
 | --------- | ------ |
 | Synopsis: | string |
 
-*Description:* If the value of a column is the value of the `null()` parameter, {{% productparam "abbrev" %}} changes the value of the column to an empty string. For example, if the columns of the message contain the "N/A" string to represent empty values, you can use the `null("N/A")` option to change these values to empty stings.
+*Description:* If the value of a column is the value of the `null()` parameter, {{% param "product.abbrev" %}} changes the value of the column to an empty string. For example, if the columns of the message contain the "N/A" string to represent empty values, you can use the `null("N/A")` option to change these values to empty stings.
 
 
 {{% include-headless "chunk/option-parser-prefix.md" %}}

@@ -13,7 +13,7 @@ Starting with version {{% conditional-text include-if="ose" %}}3.18{{% /conditio
 
 ## Formatting the batch {#http-batch-format}
 
-By default, {{% productparam "abbrev" %}} separates the log messages of the batch with a newline character. You can specify a different delimiter by using the `delimiter()` option.
+By default, {{% param "product.abbrev" %}} separates the log messages of the batch with a newline character. You can specify a different delimiter by using the `delimiter()` option.
 
 If the target application or server requires a special beginning or ending to recognize batches, use the **body-prefix()** and **body-suffix()** options to add a beginning and ending to the batch. For example, you can use these options to create JSON-encoded arrays as POST payloads, which is required by a number of REST APIs. The body of a batch HTTP request looks like this:
 

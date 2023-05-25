@@ -19,7 +19,7 @@ You can use the RLTP protocol as well. For details about the RLTP protocol, see 
 
 ```
 
-The `network()` destination has a single required parameter that specifies the destination host address where messages should be sent. If name resolution is configured, you can use the hostname of the target server. By default, {{% productparam "abbrev" %}} sends messages using the TCP protocol to port 514.
+The `network()` destination has a single required parameter that specifies the destination host address where messages should be sent. If name resolution is configured, you can use the hostname of the target server. By default, {{% param "product.abbrev" %}} sends messages using the TCP protocol to port 514.
 
 
 ## Example: Using the network() driver {#example-destination-network}

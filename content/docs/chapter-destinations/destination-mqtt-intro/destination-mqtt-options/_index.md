@@ -30,7 +30,7 @@ Supported protocol types: `TCP`, `WS`, `SSL` and`WSS`.
 
 *Description:* Required option when using templates in the `topic()` option.
 
-If the resolved `topic()` template is not a valid topic, {{% productparam "abbrev" %}} will use the `fallback-topic()` option to send messages.
+If the resolved `topic()` template is not a valid topic, {{% param "product.abbrev" %}} will use the `fallback-topic()` option to send messages.
 
 {{% alert title="Note" color="info" %}}
 
@@ -38,7 +38,7 @@ If instead of strings, you use actual templates (that is, a macro like `${MESSAG
 
 {{% /alert %}} {{% alert title="Note" color="info" %}}
 
-Occasionally, the reason why {{% productparam "abbrev" %}} cannot post messages to the configured `topic()` is that the topic contains invalid characters that originate from templates.
+Occasionally, the reason why {{% param "product.abbrev" %}} cannot post messages to the configured `topic()` is that the topic contains invalid characters that originate from templates.
 
 {{% /alert %}}
 

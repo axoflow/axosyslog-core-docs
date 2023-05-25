@@ -27,7 +27,7 @@ The driver allows you to modify nearly every field of the HTTP request. For deta
 {{% include-headless "chunk/option-description-destination-slack-throttle.md" %}}
 
 
-To use this destination, the `scl.conf` file must be included in your {{% productparam "abbrev" %}} configuration:
+To use this destination, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 
 ```c
 
@@ -41,7 +41,7 @@ The `slack()` driver is actually a reusable configuration snippet configured to 
 
 ## Prerequisites {#slack-destination-prerequisites}
 
-To send messages and notifications from {{% productparam "abbrev" %}} to Slack, you must create a Slack app and a Webhook that {{% productparam "abbrev" %}} can use. For details, see the [Slack documentation](https://api.slack.com/incoming-webhooks).
+To send messages and notifications from {{% param "product.abbrev" %}} to Slack, you must create a Slack app and a Webhook that {{% param "product.abbrev" %}} can use. For details, see the [Slack documentation](https://api.slack.com/incoming-webhooks).
 
 
 

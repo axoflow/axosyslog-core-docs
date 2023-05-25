@@ -23,7 +23,7 @@ To configure syslog-ng on a relay host, complete the following steps:
     
     {{% alert title="Note" color="info" %}}
     
-    It is recommended to use these options on your {{% productparam "abbrev" %}} server as well.
+    It is recommended to use these options on your {{% param "product.abbrev" %}} server as well.
     
     {{% /alert %}}
 
@@ -38,7 +38,7 @@ To configure syslog-ng on a relay host, complete the following steps:
     
     ```c
     
-        @version: {{% productparam "techversion" %}}
+        @version: {{% param "product.techversion" %}}
         @include "scl.conf"
         options {
             time-reap(30);

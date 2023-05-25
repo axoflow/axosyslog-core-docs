@@ -136,7 +136,7 @@ Default:
 
 N/A
 
-*Description:* If this option is specified, {{% productparam "abbrev" %}} does not include value-pairs with empty values in the output. For example: `$(format-json --scope none --omit-empty-values)` or
+*Description:* If this option is specified, {{% param "product.abbrev" %}} does not include value-pairs with empty values in the output. For example: `$(format-json --scope none --omit-empty-values)` or
 
 ```c
 
@@ -147,7 +147,7 @@ N/A
 
 ```
 
-Available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="pe" %}}7.0.14{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.21{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="pe" %}}7.0.14{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.21{{% /conditional-text %}} and later.
 
  
 
@@ -201,7 +201,7 @@ The following transformations are available:
     
     Replaces a substring at the beginning of the key with another string. Only prefixes can be replaced. For example, `replace-prefix(".class", ".patterndb")` changes the beginning tag `.class` to `.patterndb`
     
-    This option was called `replace()` in {{% productparam "abbrev" %}} version 3.4.
+    This option was called `replace()` in {{% param "product.abbrev" %}} version 3.4.
 
   - `shift("\<number\>")`
     
@@ -250,9 +250,9 @@ empty string
 
 *Description:* This option selects predefined groups of macros. The following groups are available:
 
-  - *nv-pairs*: Every soft macro (name-value pair) associated with the message, except the ones that start with a dot (.) character. Macros starting with a dot character are generated within {{% productparam "abbrev" %}} and are not originally part of the message, therefore are not included in this group.
+  - *nv-pairs*: Every soft macro (name-value pair) associated with the message, except the ones that start with a dot (.) character. Macros starting with a dot character are generated within {{% param "product.abbrev" %}} and are not originally part of the message, therefore are not included in this group.
 
-  - *dot-nv-pairs*: Every soft macro (name-value pair) associated with the message which starts with a dot (.) character. For example, `.classifier.rule_id` and `.sdata.\*`. Macros starting with a dot character are generated within {{% productparam "abbrev" %}} and are not originally part of the message.
+  - *dot-nv-pairs*: Every soft macro (name-value pair) associated with the message which starts with a dot (.) character. For example, `.classifier.rule_id` and `.sdata.\*`. Macros starting with a dot character are generated within {{% param "product.abbrev" %}} and are not originally part of the message.
 
   - *all-nv-pairs*: Include every soft macro (name-value pair). Equivalent to using both `nv-pairs` and `dot-nv-pairs`.
 

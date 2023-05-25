@@ -9,7 +9,7 @@
 | Type:    | string |
 | Default: | N/A    |
 
-*Description:*If you receive the following error message during {{% productparam "abbrev" %}} startup, set the `persist-name()` option of the duplicate drivers:
+*Description:*If you receive the following error message during {{% param "product.abbrev" %}} startup, set the `persist-name()` option of the duplicate drivers:
 
 ```c
 

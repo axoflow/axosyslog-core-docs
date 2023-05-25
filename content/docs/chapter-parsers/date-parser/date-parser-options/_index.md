@@ -14,7 +14,7 @@ The `date-parser()` parser has the following options.
 | Synopsis: | format(string) |
 | Default:  |                |
 
-*Description:* Specifies the format how {{% productparam "abbrev" %}} should parse the date. You can use the following format elements:
+*Description:* Specifies the format how {{% param "product.abbrev" %}} should parse the date. You can use the following format elements:
 
 ```c
 
@@ -102,7 +102,7 @@ For example, for the date `01/Jan/2016:13:05:05 PST` use the following format st
 | Synopsis: | stamp | recvd |
 | Default:  | stamp         |
 
-*Description:* Determines if the parsed date values are treated as sent or received date. If you use **time-stamp(stamp)**, {{% productparam "abbrev" %}} adds the parsed date to the S_ macros (corresponding to the sent date). If you use **time-stamp(recvd)**, {{% productparam "abbrev" %}} adds the parsed date to the R_ macros (corresponding to the received date).
+*Description:* Determines if the parsed date values are treated as sent or received date. If you use **time-stamp(stamp)**, {{% param "product.abbrev" %}} adds the parsed date to the S_ macros (corresponding to the sent date). If you use **time-stamp(recvd)**, {{% param "product.abbrev" %}} adds the parsed date to the R_ macros (corresponding to the received date).
 
 
 
@@ -113,7 +113,7 @@ For example, for the date `01/Jan/2016:13:05:05 PST` use the following format st
 | Synopsis: | time-zone(string) |
 | Default:  |                   |
 
-*Description:* If this option is set, {{% productparam "abbrev" %}} assumes that the parsed timestamp refers to the specified timezone. The timezone set in the `time-zone()` option overrides any timezone information parsed from the timestamp.
+*Description:* If this option is set, {{% param "product.abbrev" %}} assumes that the parsed timestamp refers to the specified timezone. The timezone set in the `time-zone()` option overrides any timezone information parsed from the timestamp.
 
 {{% include-headless "chunk/para-timezone-format.md" %}}
 

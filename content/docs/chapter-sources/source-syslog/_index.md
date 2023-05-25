@@ -10,7 +10,7 @@ The `syslog()` driver can receive messages from the network using the standard I
 
 The `syslog()` driver can also receive BSD-syslog-formatted messages (described in RFC 3164, see {{% xref "/docs/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/_index.md" %}}) if they are sent using the IETF-syslog protocol.
 
-In {{% productparam "abbrev" %}} versions 3.1 and earlier, the `syslog()` driver could handle only messages in the IETF-syslog (RFC 5424-26) format.
+In {{% param "product.abbrev" %}} versions 3.1 and earlier, the `syslog()` driver could handle only messages in the IETF-syslog (RFC 5424-26) format.
 
 {{% /alert %}}
 

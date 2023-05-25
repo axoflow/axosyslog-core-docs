@@ -61,7 +61,7 @@ Listens for incoming messages using the new [IETF-standard syslog protocol]({{< 
 
 [system()]({{< relref "/docs/chapter-sources/source-system/_index.md" >}})
 
-Automatically detects which platform {{% productparam "abbrev" %}} is running on, and collects the native log messages of that platform.
+Automatically detects which platform {{% param "product.abbrev" %}} is running on, and collects the native log messages of that platform.
 
 [systemd-journal()]({{< relref "/docs/chapter-sources/configuring-sources-journal/_index.md" >}})
 

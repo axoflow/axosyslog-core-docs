@@ -6,9 +6,9 @@ weight:  500
 
 ## Purpose
 
-This section describes getting the list of disk-buffer files used in {{% productparam "name" %}}({{% productparam "abbrev" %}}).
+This section describes getting the list of disk-buffer files used in {{% param "product.name" %}}({{% param "product.abbrev" %}}).
 
-The {{% productparam "abbrev" %}} application stores information (namely, the `IP:PORT` or `DNS:PORT` of the destinations, and the name of the disk-buffer file) about disk-buffer files in its persist file.
+The {{% param "product.abbrev" %}} application stores information (namely, the `IP:PORT` or `DNS:PORT` of the destinations, and the name of the disk-buffer file) about disk-buffer files in its persist file.
 
 
 ## Example: command for listing the disk-buffer files in use

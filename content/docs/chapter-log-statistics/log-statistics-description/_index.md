@@ -4,7 +4,7 @@ weight:  100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-You can list all active metrics on your {{% productparam "abbrev" %}} host using the following command (this lists the metrics, without their current values): **syslog-ng-ctl query list "\*"**
+You can list all active metrics on your {{% param "product.abbrev" %}} host using the following command (this lists the metrics, without their current values): **syslog-ng-ctl query list "\*"**
 
 To list the metrics and their values, use the following command: **syslog-ng-ctl query get "\*"**
 
@@ -51,17 +51,17 @@ The status of the object. One of the following:
     ```
     
     
-    To avoid performance issues or even overloading {{% productparam "abbrev" %}}, you might want to limit the number of registered dynamic counters in the message statistics. To do this, configure the [stats-max-dynamics()]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) global option.
+    To avoid performance issues or even overloading {{% param "product.abbrev" %}}, you might want to limit the number of registered dynamic counters in the message statistics. To do this, configure the [stats-max-dynamics()]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) global option.
 
   - `o` - This object was once active, but stopped receiving messages. (For example, a dynamic object may disappear and become orphan.)
     
     {{% alert title="Note" color="info" %}}
     
-    The {{% productparam "abbrev" %}} application stores the statistics of the objects when {{% productparam "abbrev" %}} is reloaded. However, if the configuration of {{% productparam "abbrev" %}} was changed since the last reload, the statistics of orphaned objects are deleted.
+    The {{% param "product.abbrev" %}} application stores the statistics of the objects when {{% param "product.abbrev" %}} is reloaded. However, if the configuration of {{% param "product.abbrev" %}} was changed since the last reload, the statistics of orphaned objects are deleted.
     
     {{% /alert %}}
 
-The `connections` statistics counter displays the number of connections tracked by {{% productparam "abbrev" %}} for the selected source driver.
+The `connections` statistics counter displays the number of connections tracked by {{% param "product.abbrev" %}} for the selected source driver.
 
 
 ## Example: sample configuration and statistics output
@@ -97,7 +97,7 @@ The type of the statistics:
 
 {{% alert title="Note" color="info" %}}
 
-In version 7.0.27, {{% productparam "abbrev" %}} only supports the `batch_size_avg` for the `http()` destination.
+In version 7.0.27, {{% param "product.abbrev" %}} only supports the `batch_size_avg` for the `http()` destination.
 
 {{% /alert %}}
 
@@ -105,7 +105,7 @@ In version 7.0.27, {{% productparam "abbrev" %}} only supports the `batch_size_a
 
 {{% alert title="Note" color="info" %}}
 
-In version 7.0.27, {{% productparam "abbrev" %}} only supports the `batch_size_max` for the `http()` destination.
+In version 7.0.27, {{% param "product.abbrev" %}} only supports the `batch_size_max` for the `http()` destination.
 
 {{% /alert %}}
 
@@ -117,13 +117,13 @@ In version 7.0.27, {{% productparam "abbrev" %}} only supports the `batch_size_m
 
 ```
 
-`dropped`: The number of dropped messages — {{% productparam "abbrev" %}} could not send the messages to the destination and the output buffer got full, so messages were dropped by the destination driver, or {{% productparam "abbrev" %}} dropped the message for some other reason (for example, a parsing error).
+`dropped`: The number of dropped messages — {{% param "product.abbrev" %}} could not send the messages to the destination and the output buffer got full, so messages were dropped by the destination driver, or {{% param "product.abbrev" %}} dropped the message for some other reason (for example, a parsing error).
 
 `eps_last_1h`: The EPS value of the past 1 hour.
 
 `eps_last_24h`: The EPS value of the past 24 hours.
 
-`eps_since_start`: The EPS value since the current {{% productparam "abbrev" %}} start.
+`eps_since_start`: The EPS value since the current {{% param "product.abbrev" %}} start.
 
 {{% alert title="Note" color="info" %}}
 
@@ -153,7 +153,7 @@ When using the `eps_last_1h`, the `eps_last_24h`, and the `eps_since_start` stat
 
 ``` {{% alert title="Note" color="info" %}}
 
-The memory usage (size) of queues is not equal to the memory usage (size) of the log messages in {{% productparam "abbrev" %}}. A log message can be in multiple queues, thus its size is added to multiple queue sizes. To check the size of all log messages, use `global.msg_allocated_bytes.value` metric.
+The memory usage (size) of queues is not equal to the memory usage (size) of the log messages in {{% param "product.abbrev" %}}. A log message can be in multiple queues, thus its size is added to multiple queue sizes. To check the size of all log messages, use `global.msg_allocated_bytes.value` metric.
 
 {{% /alert %}}
 
@@ -197,13 +197,13 @@ Consider that a message that has successfully reached its destination driver doe
 
 `suppressed`: The number of suppressed messages (if the `suppress()` feature is enabled).
 
-`written`: The number of messages successfully delivered to the destination. This value is calculated from other counters: `written = processed - queued - dropped`. That is, the number of messages {{% productparam "abbrev" %}} passed to the destination driver (processed) minus the number of messages that are still in the output queue of the destination driver (queued) and the number of messages dropped because of an error (dropped, for example, because {{% productparam "abbrev" %}} could not deliver the message to the destination and exceeded the number of retries).
+`written`: The number of messages successfully delivered to the destination. This value is calculated from other counters: `written = processed - queued - dropped`. That is, the number of messages {{% param "product.abbrev" %}} passed to the destination driver (processed) minus the number of messages that are still in the output queue of the destination driver (queued) and the number of messages dropped because of an error (dropped, for example, because {{% param "product.abbrev" %}} could not deliver the message to the destination and exceeded the number of retries).
 
 {{% include-headless "chunk/para-metrics-calculated-reset.md" %}}
 
 {{% alert title="Note" color="info" %}}
 
-Consider that for {{% productparam "abbrev" %}} version 3.36, the following statistics counters are only supported for the `http()` destination, or the `http()` destination and all `network()` sources and destinations, and all `file()` sources and destinations, respectively:
+Consider that for {{% param "product.abbrev" %}} version 3.36, the following statistics counters are only supported for the `http()` destination, or the `http()` destination and all `network()` sources and destinations, and all `file()` sources and destinations, respectively:
 
   - `msg_size_max`
 

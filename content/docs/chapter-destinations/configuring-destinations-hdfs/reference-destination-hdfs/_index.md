@@ -6,7 +6,7 @@ weight:  900
 
 The `hdfs` destination stores the log messages in files on the Hadoop Distributed File System (HDFS). The `hdfs` destination has the following options.
 
-The following options are required: `hdfs-file()`, `hdfs-uri()`. Note that to use `hdfs`, you must add the following line to the beginning of your {{% productparam "abbrev" %}} configuration:
+The following options are required: `hdfs-file()`, `hdfs-uri()`. Note that to use `hdfs`, you must add the following line to the beginning of your {{% param "product.abbrev" %}} configuration:
 
 ```c
 
@@ -32,11 +32,11 @@ For the `hdfs` destination, include the path to the directory where you copied t
 | Type:    | string |
 | Default: | N/A    |
 
-*Description:* The path where {{% productparam "abbrev" %}} will move the closed log files. If {{% productparam "abbrev" %}} cannot move the file for some reason (for example, {{% productparam "abbrev" %}} cannot connect to the HDFS NameNode), the file remains at its original location. For example, `hdfs-archive-dir("/usr/hdfs/archive/")`.
+*Description:* The path where {{% param "product.abbrev" %}} will move the closed log files. If {{% param "product.abbrev" %}} cannot move the file for some reason (for example, {{% param "product.abbrev" %}} cannot connect to the HDFS NameNode), the file remains at its original location. For example, `hdfs-archive-dir("/usr/hdfs/archive/")`.
 
 {{% alert title="Note" color="info" %}}
 
-When `hdfs-append-enabled` is set to **true**, archiving is automatically disabled, and {{% productparam "abbrev" %}} will ignore the `hdfs-archive-dir` option.
+When `hdfs-append-enabled` is set to **true**, archiving is automatically disabled, and {{% param "product.abbrev" %}} will ignore the `hdfs-archive-dir` option.
 
 {{% /alert %}}
 
@@ -49,13 +49,13 @@ When `hdfs-append-enabled` is set to **true**, archiving is automatically disabl
 | Type:    | string |
 | Default: | N/A    |
 
-*Description:* The path and name of the log file. For example, `hdfs-file("/usr/hdfs/mylogfile.txt")`. {{% productparam "abbrev" %}} checks if the path to the logfile exists. If a directory does not exist {{% productparam "abbrev" %}} automatically creates it.
+*Description:* The path and name of the log file. For example, `hdfs-file("/usr/hdfs/mylogfile.txt")`. {{% param "product.abbrev" %}} checks if the path to the logfile exists. If a directory does not exist {{% param "product.abbrev" %}} automatically creates it.
 
-`hdfs-file()` supports the usage of macros. This means that {{% productparam "abbrev" %}} can create files on HDFS dynamically, using macros in the file (or directory) name.
+`hdfs-file()` supports the usage of macros. This means that {{% param "product.abbrev" %}} can create files on HDFS dynamically, using macros in the file (or directory) name.
 
 {{% alert title="Note" color="info" %}}
 
-When a filename resolved from the macros contains a character that HDFS does not support, {{% productparam "abbrev" %}} will not be able to create the file. Make sure that you use macros that do not contain unsupported characters.
+When a filename resolved from the macros contains a character that HDFS does not support, {{% param "product.abbrev" %}} will not be able to create the file. Make sure that you use macros that do not contain unsupported characters.
 
 {{% /alert %}}
 
@@ -86,7 +86,7 @@ As an example, if it is the 31st day of the month and it is 12 o'clock, then the
 | Type:    | number |
 | Default: | 255    |
 
-*Description:* The maximum length of the filename. This filename (including the UUID that {{% productparam "abbrev" %}} appends to it) cannot be longer than what the file system permits. If the filename is longer than the value of `hdfs-max-filename-length`, {{% productparam "abbrev" %}} will automatically truncate the filename. For example, `hdfs-max-filename-length("255")`.
+*Description:* The maximum length of the filename. This filename (including the UUID that {{% param "product.abbrev" %}} appends to it) cannot be longer than what the file system permits. If the filename is longer than the value of `hdfs-max-filename-length`, {{% param "product.abbrev" %}} will automatically truncate the filename. For example, `hdfs-max-filename-length("255")`.
 
 
 
@@ -127,7 +127,7 @@ As an example, if it is the 31st day of the month and it is 12 o'clock, then the
 
 {{% include-headless "chunk/synopsis-hdfs-kerberos-example.md" %}}
 
-Available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and later.
 
 
 
@@ -142,7 +142,7 @@ Available in {{% productparam "abbrev" %}} version {{% conditional-text include-
 
 {{% include-headless "chunk/synopsis-hdfs-kerberos-example.md" %}}
 
-Available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and later.
 
 
 {{% include-headless "chunk/option-destination-log-fifo-size.md" %}}

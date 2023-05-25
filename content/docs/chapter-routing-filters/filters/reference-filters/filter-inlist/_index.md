@@ -8,15 +8,15 @@ weight:  700
 | --------- | --------------------------------------------------------------- |
 | Synopsis: | in-list("\</path/to/file.list\>", value("\<field-to-filter\>")) |
 
-*Description:* Matches the value of the specified field to a list stored in a file, allowing you to do simple, file-based black- and whitelisting. The file must be a plain-text file, containing one entry per line. The {{% productparam "abbrev" %}} application loads the entire file, and compares the value of the specified field (for example, ${PROGRAM}) to entries in the file. When you use the `in-list()` filter, note the following points:
+*Description:* Matches the value of the specified field to a list stored in a file, allowing you to do simple, file-based black- and whitelisting. The file must be a plain-text file, containing one entry per line. The {{% param "product.abbrev" %}} application loads the entire file, and compares the value of the specified field (for example, ${PROGRAM}) to entries in the file. When you use the `in-list()` filter, note the following points:
 
   - Comparing the values is case-sensitive.
 
   - Only exact matches are supported, partial and substring matches are not.
 
-  - If you modify the list file, reload the configuration of {{% productparam "abbrev" %}} for the changes to take effect.
+  - If you modify the list file, reload the configuration of {{% param "product.abbrev" %}} for the changes to take effect.
 
-Available in {{% productparam "abbrev" %}} {{% conditional-text include-if="ose" %}}3.5{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}} {{% conditional-text include-if="ose" %}}3.5{{% /conditional-text %}} and later.
 
 
 ## Example: Selecting messages using the in-list() filter {#example-whitelist-filter}

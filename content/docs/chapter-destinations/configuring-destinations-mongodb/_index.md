@@ -18,9 +18,9 @@ The `mongodb()` driver sends messages to a [MongoDB](https://www.mongodb.com/) d
 
 The `mongodb()` driver does not support creating indexes, as that can be a very complex operation in MongoDB. If needed, the administrator of the MongoDB database must ensure that indexes are created on the collections.
 
-The `mongodb()` driver does not add the `_id` field to the message: the MongoDB server will do that automatically, if none is present. If you want to override this field from {{% productparam "abbrev" %}}, use the **key()** parameter of the `value-pairs()` option.
+The `mongodb()` driver does not add the `_id` field to the message: the MongoDB server will do that automatically, if none is present. If you want to override this field from {{% param "product.abbrev" %}}, use the **key()** parameter of the `value-pairs()` option.
 
-The {{% productparam "abbrev" %}} `mongodb()` driver is compatible with MongoDB server version 1.4 and newer.
+The {{% param "product.abbrev" %}} `mongodb()` driver is compatible with MongoDB server version 1.4 and newer.
 
 {{% include-headless "wnt/note-typehinting.md" %}}
 
@@ -53,7 +53,7 @@ The following example displays the default values.
 
 ```
 
-The following example shows the same setup using the deprecated libmongo-client syntax (as used in {{% productparam "abbrev" %}} version {{% conditional-text include-if="ose" %}}3.7{{% /conditional-text %}}), and is equivalent with the previous example.
+The following example shows the same setup using the deprecated libmongo-client syntax (as used in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.7{{% /conditional-text %}}), and is equivalent with the previous example.
 
 ```c
 

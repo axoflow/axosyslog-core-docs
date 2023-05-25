@@ -6,7 +6,7 @@
 | MESSAGE                      | $MESSAGE                                                                                                           |
 | _HOSTNAME                   | $HOST                                                                                                              |
 | _PID                        | $PID                                                                                                               |
-| _COMM or SYSLOG_IDENTIFIER | $PROGRAM If both _COMM and SYSLOG_IDENTIFIER exists, {{% productparam "abbrev" %}} uses SYSLOG_IDENTIFIER |
+| _COMM or SYSLOG_IDENTIFIER | $PROGRAM If both _COMM and SYSLOG_IDENTIFIER exists, {{% param "product.abbrev" %}} uses SYSLOG_IDENTIFIER |
 | SYSLOG_FACILITY             | $FACILITY_NUM                                                                                                     |
 | PRIORITY                     | $LEVEL_NUM                                                                                                        |
 

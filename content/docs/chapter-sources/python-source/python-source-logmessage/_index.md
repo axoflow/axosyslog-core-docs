@@ -33,11 +33,11 @@ You can set certain special field (timestamp, priority) by using specific method
 
 Note the following points when creating a log message:
 
-  - When setting the hostname, {{% productparam "abbrev" %}} takes the following hostname-related options of the configuration into account: `chain-hostnames()`, `keep-hostname()`, `use-dns()`, and `use-fqdn()`.
+  - When setting the hostname, {{% param "product.abbrev" %}} takes the following hostname-related options of the configuration into account: `chain-hostnames()`, `keep-hostname()`, `use-dns()`, and `use-fqdn()`.
 
   - Python sources ignore the `log-msg-size()` option.
 
-  - The {{% productparam "abbrev" %}} application accepts only one message from every `LogSource::post_message()` or `fetch()` call, batching is currently not supported. If your Python code accepts batches of messages, you must pass them to {{% productparam "abbrev" %}} one-by-one. Similarly, if you need to split messages in the source, you must do so in your Python code, and pass the messages separately.
+  - The {{% param "product.abbrev" %}} application accepts only one message from every `LogSource::post_message()` or `fetch()` call, batching is currently not supported. If your Python code accepts batches of messages, you must pass them to {{% param "product.abbrev" %}} one-by-one. Similarly, if you need to split messages in the source, you must do so in your Python code, and pass the messages separately.
 
   - Do not reuse or store LogMessage objects after posting (calling `post_message()`) or returning the message from `fetch()`.
 
@@ -45,9 +45,9 @@ Note the following points when creating a log message:
 
 ## parse() method: Parse syslog messages
 
-The `parse()` method allows you to parse incoming messages as syslog messages. By default, the `parse()` method attempts to parse the message as an IETF-syslog (RFC5424) log message. If that fails, it parses the log message as a BSD-syslog (RFC3164) log message. Note that {{% productparam "abbrev" %}} takes the parsing-related options of the configuration into account: `flags()`, `keep-hostname()`, `recv-time-zone()`.
+The `parse()` method allows you to parse incoming messages as syslog messages. By default, the `parse()` method attempts to parse the message as an IETF-syslog (RFC5424) log message. If that fails, it parses the log message as a BSD-syslog (RFC3164) log message. Note that {{% param "product.abbrev" %}} takes the parsing-related options of the configuration into account: `flags()`, `keep-hostname()`, `recv-time-zone()`.
 
-If `keep-hostname()` is set to **no**, {{% productparam "abbrev" %}} ignores the hostname set in the message, and uses the IP address of the {{% productparam "abbrev" %}} host as the hostname (to use the hostname instead of the IP address, set the `use-dns()` or `use-fqdn()` options in the Python source).
+If `keep-hostname()` is set to **no**, {{% param "product.abbrev" %}} ignores the hostname set in the message, and uses the IP address of the {{% param "product.abbrev" %}} host as the hostname (to use the hostname instead of the IP address, set the `use-dns()` or `use-fqdn()` options in the Python source).
 
 ```c
 
@@ -81,7 +81,7 @@ You can use the `set_timestamp()` method to set the date and time of the log mes
 
 ```
 
-In Python 2, timezone information cannot be attached to the datetime instance without using an external library. The {{% productparam "abbrev" %}} represents naive datetime objects in UTC.
+In Python 2, timezone information cannot be attached to the datetime instance without using an external library. The {{% param "product.abbrev" %}} represents naive datetime objects in UTC.
 
 In Python 3, naive and timezone-aware datetime objects are both supported.
 

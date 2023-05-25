@@ -15,7 +15,7 @@ weight:  2500
 
 OPTIONAL — Creates a new correlation context from the current message and its associated context. This can be used to "split" a context.
 
-Available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="ose" %}}3.8{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.8{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7{{% /conditional-text %}} and later.
 
 
 

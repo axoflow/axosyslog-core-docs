@@ -20,7 +20,7 @@ The following options are required: `selector()`, `database()`.
 | Type:    | \<path-to-file\>.csv |
 | Default: |                      |
 
-*Description:* Specifies the path to the CSV file, for example, `/opt/syslog-ng/my-csv-database.csv`. The extension of the file must be `.csv`, and can include Windows-style (CRLF) or UNIX-style (LF) linebreaks. You can use absolute path, or relative to the {{% productparam "abbrev" %}} binary.
+*Description:* Specifies the path to the CSV file, for example, `/opt/syslog-ng/my-csv-database.csv`. The extension of the file must be `.csv`, and can include Windows-style (CRLF) or UNIX-style (LF) linebreaks. You can use absolute path, or relative to the {{% param "product.abbrev" %}} binary.
 
 
 
@@ -38,7 +38,7 @@ The following options are required: `selector()`, `database()`.
 
 ```
 
-In the {{% productparam "abbrev" %}} configuration file:
+In the {{% param "product.abbrev" %}} configuration file:
 
 ```c
 
@@ -79,7 +79,7 @@ In the {{% productparam "abbrev" %}} configuration file:
 | --------- | ---------- |
 | Synopsis: | selector() |
 
-*Description:* Specifies the string or macro that {{% productparam "abbrev" %}} evaluates for each message, and if its value matches the ID of an entry in the database, {{% productparam "abbrev" %}} adds the name-value pair of every matching database entry to the log message. You can use the following in the `selector()` option.
+*Description:* Specifies the string or macro that {{% param "product.abbrev" %}} evaluates for each message, and if its value matches the ID of an entry in the database, {{% param "product.abbrev" %}} adds the name-value pair of every matching database entry to the log message. You can use the following in the `selector()` option.
 
   - Strings
 

@@ -4,7 +4,7 @@ weight:  3500
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The Websense parser can parse the log messages of Websense Content Gateway (Raytheon|Websense, now Forcepoint). These messages do not completely comply with the syslog RFCs, making them difficult to parse. The `websense-parser()` of {{% productparam "abbrev" %}} solves this problem, and can separate these log messages to name-value pairs. For details on using value-pairs in {{% productparam "abbrev" %}} see {{% xref "/docs/chapter-concepts/concepts-value-pairs/_index.md" %}}. The parser can parse messages in the following format:
+The Websense parser can parse the log messages of Websense Content Gateway (Raytheon|Websense, now Forcepoint). These messages do not completely comply with the syslog RFCs, making them difficult to parse. The `websense-parser()` of {{% param "product.abbrev" %}} solves this problem, and can separate these log messages to name-value pairs. For details on using value-pairs in {{% param "product.abbrev" %}} see {{% xref "/docs/chapter-concepts/concepts-value-pairs/_index.md" %}}. The parser can parse messages in the following format:
 
 ```c
 
@@ -22,7 +22,7 @@ For example:
 
 If you find a message that the `websense-parser()` cannot properly parse, [contact Support](https://www.syslog-ng.com/support/), so we can improve the parser.
 
-The {{% productparam "abbrev" %}} application sets the `${PROGRAM}` field to `Websense`.
+The {{% param "product.abbrev" %}} application sets the `${PROGRAM}` field to `Websense`.
 
 By default, the websense-specific fields are extracted into name-value pairs prefixed with `.websense`. For example, the `product_version` in the previous message becomes `${.websense.product_version}`. You can change the prefix using the **prefix** option of the parser.
 
@@ -31,7 +31,7 @@ By default, the websense-specific fields are extracted into name-value pairs pre
 
 ```c
 
-    @version: {{% productparam "techversion" %}}
+    @version: {{% param "product.techversion" %}}
     @include "scl.conf"
     log {
         source { network(flags(no-parse)); };

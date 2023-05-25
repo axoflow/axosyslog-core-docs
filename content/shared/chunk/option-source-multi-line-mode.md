@@ -9,7 +9,7 @@
 | Type:    | indented|regexp |
 | Default: | empty string    |
 
-*Description:* Use the `multi-line-mode()` option when processing multi-line messages. The {{% productparam "abbrev" %}} application provides the following methods to process multi-line messages:
+*Description:* Use the `multi-line-mode()` option when processing multi-line messages. The {{% param "product.abbrev" %}} application provides the following methods to process multi-line messages:
 
   - The *indented* mode can process messages where each line that belongs to the previous line is indented by whitespace, and the message continues until the first non-indented line. For example, the Linux kernel (starting with version 3.5) uses this format for `/dev/log`, as well as several applications, like Apache Tomcat.
     

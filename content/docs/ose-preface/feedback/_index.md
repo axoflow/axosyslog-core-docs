@@ -6,6 +6,6 @@ weight:  300
 
 Any feedback is greatly appreciated, especially on what else this document should cover. General comments, errors found in the text, and any suggestions about how to improve the documentation are also welcome at documentation@balabit.com.
 
-The source of this guide is available on [GitHub](https://github.com/syslog-ng/syslog-ng-ose-guides). In case of the {{% productparam "name" %}} guides, you can also:
+The source of this guide is available on [GitHub](https://github.com/syslog-ng/syslog-ng-ose-guides). In case of the {{% param "product.name" %}} guides, you can also:
 
   - Open an [issue](https://github.com/syslog-ng/syslog-ng-ose-guides/issues).

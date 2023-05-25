@@ -25,7 +25,7 @@ The following options can be specified in the options statement, as described in
 | Accepted values: | `yes` | `no` |
 | Default:         | `no`           |
 
-*Description:* Enable or disable the chained hostname format. If a client sends the log message directly to the {{% productparam "abbrev" %}} server, the `chain-hostnames()` option is enabled on the server, and the client sends a hostname in the message that is different from its DNS hostname (as resolved from DNS by the {{% productparam "abbrev" %}} server), then the server can append the resolved hostname to the hostname in the message (separated with a `/` character) when the message is written to the destination.
+*Description:* Enable or disable the chained hostname format. If a client sends the log message directly to the {{% param "product.abbrev" %}} server, the `chain-hostnames()` option is enabled on the server, and the client sends a hostname in the message that is different from its DNS hostname (as resolved from DNS by the {{% param "product.abbrev" %}} server), then the server can append the resolved hostname to the hostname in the message (separated with a `/` character) when the message is written to the destination.
 
 For example, consider a client-server scenario with the following hostnames: `client-hostname-from-the-message`, `client-hostname-resolved-on-the-server`, `server-hostname`. The hostname of the log message written to the destination depends on the `keep-hostname()` and the `chain-hostnames()` options. How `keep-hostname()` and `chain-hostnames()` options are related is described in the following table.
 
@@ -50,7 +50,7 @@ client-hostname-from-the-message
 
 client-hostname-resolved-on-the-server
 
-If the log message is forwarded to the {{% productparam "abbrev" %}} server via a {{% productparam "abbrev" %}} relay, the hostname depends on the settings of the `keep-hostname()` and the `chain-hostnames()` options both on the {{% productparam "abbrev" %}} relay and the {{% productparam "abbrev" %}} server.
+If the log message is forwarded to the {{% param "product.abbrev" %}} server via a {{% param "product.abbrev" %}} relay, the hostname depends on the settings of the `keep-hostname()` and the `chain-hostnames()` options both on the {{% param "product.abbrev" %}} relay and the {{% param "product.abbrev" %}} server.
 
 For example, consider a client-relay-server scenario with the following hostnames: `client-hostname-from-the-message`, `client-hostname-resolved-on-the-relay`, `client-hostname-resolved-on-the-server`, `relay-hostname-resolved-on-the-server`. How `keep-hostname()` and `chain-hostnames()` options are related is described in the following table.
 
@@ -154,7 +154,7 @@ This global option works only if the `use-fqdn()` global option is set to `yes`.
 | Accepted values: | string           |
 | Default:         | `empty string` |
 
-*Description:* Use this option to specify a custom domain name that is appended after the short hostname to receive the fully qualified domain name (FQDN). This option affects every outgoing message: eventlog sources, file sources, MARK messages and internal messages of {{% productparam "abbrev" %}}.
+*Description:* Use this option to specify a custom domain name that is appended after the short hostname to receive the fully qualified domain name (FQDN). This option affects every outgoing message: eventlog sources, file sources, MARK messages and internal messages of {{% param "product.abbrev" %}}.
 
   - If the hostname is a short hostname, the custom domain name is appended after the hostname (for example, `mypc` becomes `mypc.customcompany.local`).
 
@@ -193,7 +193,7 @@ This global option works only if the `use-fqdn()` global option is set to `yes`.
 
 {{% include-headless "chunk/option-description-destination-file-dir-perm.md" %}}
 
-Starting with version {{% conditional-text include-if="pe" %}}7.0.9{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.16{{% /conditional-text %}}, the default value of this option is -1, so {{% productparam "abbrev" %}} does not change the ownership, unless explicitly configured to do so.
+Starting with version {{% conditional-text include-if="pe" %}}7.0.9{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.16{{% /conditional-text %}}, the default value of this option is -1, so {{% param "product.abbrev" %}} does not change the ownership, unless explicitly configured to do so.
 
 
 
@@ -304,7 +304,7 @@ Starting with version {{% conditional-text include-if="pe" %}}7.0.9{{% /conditio
 | Type:    | list |
 | Default: | N/A  |
 
-*Description:* Specify the Java Virtual Machine (JVM) settings of your Java destination from the {{% productparam "abbrev" %}} configuration file.
+*Description:* Specify the Java Virtual Machine (JVM) settings of your Java destination from the {{% param "product.abbrev" %}} configuration file.
 
 For example:
 
@@ -392,7 +392,7 @@ For example:
 
 *Description:* The default owner of output files. If set, syslog-ng changes the owner of accessed files (for example, `/dev/null`) to this value, and the permissions to the value set in the `perm()` option.
 
-Starting with version {{% conditional-text include-if="pe" %}}7.0.9{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.16{{% /conditional-text %}}, the default value of this option is -1, so {{% productparam "abbrev" %}} does not change the ownership, unless explicitly configured to do so.
+Starting with version {{% conditional-text include-if="pe" %}}7.0.9{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.16{{% /conditional-text %}}, the default value of this option is -1, so {{% param "product.abbrev" %}} does not change the ownership, unless explicitly configured to do so.
 
 
 
@@ -403,7 +403,7 @@ Starting with version {{% conditional-text include-if="pe" %}}7.0.9{{% /conditio
 | Accepted values: | yes|no |
 | Default:         | yes    |
 
-*Description:* Enable {{% productparam "abbrev" %}} to collect UNIX credential information (that is, the PID, user ID, and group of the sender process) for messages received using UNIX domain sockets. Available only in {{% conditional-text include-if="pe" %}}{{% productparam "name" %}} 5 F5{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}{{% productparam "name" %}} 3.7{{% /conditional-text %}} and later. Note that collecting UNIX credential information from sockets in high-traffic environments can be resource intensive, therefore `pass-unix-credentials()` can be disabled globally, or separately for each source.
+*Description:* Enable {{% param "product.abbrev" %}} to collect UNIX credential information (that is, the PID, user ID, and group of the sender process) for messages received using UNIX domain sockets. Available only in {{% conditional-text include-if="pe" %}}{{% param "product.name" %}} 5 F5{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}{{% param "product.name" %}} 3.7{{% /conditional-text %}} and later. Note that collecting UNIX credential information from sockets in high-traffic environments can be resource intensive, therefore `pass-unix-credentials()` can be disabled globally, or separately for each source.
 
 
 
@@ -416,7 +416,7 @@ Starting with version {{% conditional-text include-if="pe" %}}7.0.9{{% /conditio
 
 *Description:* The default permission for output files. If set, syslog-ng changes the permissions of accessed files (for example, `/dev/null`) to this value, and the onwer to the value set in the `owner()` option.
 
-Starting with version {{% conditional-text include-if="pe" %}}7.0.9{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.16{{% /conditional-text %}}, the default value of this option is -1, so {{% productparam "abbrev" %}} does not change the permissions, unless explicitly configured to do so.
+Starting with version {{% conditional-text include-if="pe" %}}7.0.9{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.16{{% /conditional-text %}}, the default value of this option is -1, so {{% param "product.abbrev" %}} does not change the permissions, unless explicitly configured to do so.
 
 
 
@@ -491,7 +491,7 @@ Note that level 2 and 3 increase the memory requirements and CPU load. For detai
 | Accepted values: | number  |
 | Default:         | `N/A` |
 
-*Description:* To avoid performance issues or even overloading {{% productparam "abbrev" %}} (for example, if a script starts to send logs from different IP addresses to {{% productparam "abbrev" %}}), you might want to limit the number of registered dynamic counters in the message statistics. For details on message statistics, see {{% xref "/docs/chapter-log-statistics/_index.md" %}}.
+*Description:* To avoid performance issues or even overloading {{% param "product.abbrev" %}} (for example, if a script starts to send logs from different IP addresses to {{% param "product.abbrev" %}}), you might want to limit the number of registered dynamic counters in the message statistics. For details on message statistics, see {{% xref "/docs/chapter-log-statistics/_index.md" %}}.
 
   - 
     
@@ -535,7 +535,7 @@ Note that level 2 and 3 increase the memory requirements and CPU load. For detai
 
 {{% alert title="Note" color="info" %}}
 
-If you set a lower value to `stats-max-dynamics()` (or, any limiting value, if this option has not been configured before) and restart {{% productparam "abbrev" %}}, the changes will only be applied after `stats-freq()` time has passed. That is, the previously allocated dynamic clusters will only be removed after this time.
+If you set a lower value to `stats-max-dynamics()` (or, any limiting value, if this option has not been configured before) and restart {{% param "product.abbrev" %}}, the changes will only be applied after `stats-freq()` time has passed. That is, the previously allocated dynamic clusters will only be removed after this time.
 
 {{% /alert %}}
 
@@ -559,7 +559,7 @@ If you set a lower value to `stats-max-dynamics()` (or, any limiting value, if t
 | Accepted values: | yes|no |
 | Default:         | yes    |
 
-*Description:* Enable {{% productparam "abbrev" %}} to run in multithreaded mode and use multiple CPUs. Available only in {{% conditional-text include-if="pe" %}}{{% productparam "name" %}} 4 F1{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}{{% productparam "name" %}} 3.3{{% /conditional-text %}} and later. Note that setting **threaded(no)** does not mean that {{% productparam "abbrev" %}} will use only a single thread. For details, see {{% xref "/docs/chapter-multithreading/_index.md" %}}.
+*Description:* Enable {{% param "product.abbrev" %}} to run in multithreaded mode and use multiple CPUs. Available only in {{% conditional-text include-if="pe" %}}{{% param "product.name" %}} 4 F1{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}{{% param "product.name" %}} 3.3{{% /conditional-text %}} and later. Note that setting **threaded(no)** does not mean that {{% param "product.abbrev" %}} will use only a single thread. For details, see {{% xref "/docs/chapter-multithreading/_index.md" %}}.
 
 
 

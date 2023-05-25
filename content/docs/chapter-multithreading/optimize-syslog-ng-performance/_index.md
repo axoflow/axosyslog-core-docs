@@ -8,7 +8,7 @@ Destinations that have a queue process that queue in a single thread. Multiple s
 
 Message parsing, rewrite rules, filters, and other types of message processing is performed by the reader thread in a sequential manner. This means that such operations can scale only if reading messages from the source can be multithreaded. For example, if a `tcp` source can process messages from different connections (clients) in separate threads. If the source cannot use multiple threads to process the messages, the operations will not scale.
 
-To improve the processing power of {{% productparam "abbrev" %}} and scale to more processors, use the following methods:
+To improve the processing power of {{% param "product.abbrev" %}} and scale to more processors, use the following methods:
 
   - To improve scaling on the source side, use more sources, for example, more source files, or receive the messages from more parallel connections. For network sources, you can also configure a part of your clients to send the messages to a different port of your syslog-ng server, and use separate source definitions for each port.
 

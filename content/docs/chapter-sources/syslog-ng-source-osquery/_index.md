@@ -6,22 +6,22 @@ weight:  2300
 
 The [osquery](https://osquery.io) application allows you to ask questions about your machine using an SQL-like language. For example, you can query running processes, logged in users, installed packages and syslog messages as well. You can make queries on demand, and also schedule them to run regularly.
 
-The `osquery()` source of {{% productparam "abbrev" %}} allows you read the results of periodical osquery queries (from the `/var/log/osquery/osqueryd.results.log` file) and automatically parse the messages (if you want to use {{% productparam "abbrev" %}} to [send log messages to osquery, read this blogpost](https://syslog-ng.com/blog/endpoint-visibility-and-monitoring-using-osquery-and-syslog-ng/)). For example, you can:
+The `osquery()` source of {{% param "product.abbrev" %}} allows you read the results of periodical osquery queries (from the `/var/log/osquery/osqueryd.results.log` file) and automatically parse the messages (if you want to use {{% param "product.abbrev" %}} to [send log messages to osquery, read this blogpost](https://syslog-ng.com/blog/endpoint-visibility-and-monitoring-using-osquery-and-syslog-ng/)). For example, you can:
 
   - Create filters from the fields of the messages.
 
   - Limit which fields to store, or create additional fields (combine multiple fields into one field, and so on).
 
-  - Send the messages to a central location, for example, to Elasticsearch, directly from {{% productparam "abbrev" %}}.
+  - Send the messages to a central location, for example, to Elasticsearch, directly from {{% param "product.abbrev" %}}.
 
-The {{% productparam "abbrev" %}} application automatically adds the `.osquery.` prefix to the name of the fields the extracted from the message.
+The {{% param "product.abbrev" %}} application automatically adds the `.osquery.` prefix to the name of the fields the extracted from the message.
 
-The `osquery()` source is available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.4{{% /conditional-text %}} and later.
+The `osquery()` source is available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.4{{% /conditional-text %}} and later.
 
 
 ## Prerequisites:
 
-  - To use the `osquery()` driver, the `scl.conf` file must be included in your {{% productparam "abbrev" %}} configuration:
+  - To use the `osquery()` driver, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
     
     ```c
     
@@ -29,7 +29,7 @@ The `osquery()` source is available in {{% productparam "abbrev" %}} version {{%
     
     ```
 
-  - {{% productparam "abbrev" %}} must be compiled with JSON-support enabled.
+  - {{% param "product.abbrev" %}} must be compiled with JSON-support enabled.
 
 
 The `osquery()` driver is actually a reusable configuration snippet configured to read the osquery log file using the `file()` driver, and process its JSON contents. For details on using or writing such configuration snippets, see {{% xref "/docs/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/syslog-ng/syslog-ng/blob/master/scl/osquery/plugin.conf).
@@ -37,7 +37,7 @@ The `osquery()` driver is actually a reusable configuration snippet configured t
 
 ## Example: Using the osquery() driver with the default settings {#example-source-osquery}
 
-The following {{% productparam "abbrev" %}} configuration sample uses the default settings of the driver, reading osquery result logs from the `/var/log/osquery/osqueryd.results.log` file, and writes the log messages generated from the traps into a file.
+The following {{% param "product.abbrev" %}} configuration sample uses the default settings of the driver, reading osquery result logs from the `/var/log/osquery/osqueryd.results.log` file, and writes the log messages generated from the traps into a file.
 
 ```c
 
@@ -80,7 +80,7 @@ Filter for messages related to loading Linux kernel modules:
 
 ## Example: Using the osquery() driver with custom configuration
 
-The following {{% productparam "abbrev" %}} configuration sample reads osquery result logs from the `/tmp/osquery_input.log` file, and writes the log messages generated from the traps into a file. Using the `format-json` template, the outgoing message will be a well-formed JSON message.
+The following {{% param "product.abbrev" %}} configuration sample reads osquery result logs from the `/tmp/osquery_input.log` file, and writes the log messages generated from the traps into a file. Using the `format-json` template, the outgoing message will be a well-formed JSON message.
 
 
 ## Input message:
@@ -93,7 +93,7 @@ The following {{% productparam "abbrev" %}} configuration sample reads osquery r
 
 
 
-## {{% productparam "abbrev" %}} configuration:
+## {{% param "product.abbrev" %}} configuration:
 
 ```c
 

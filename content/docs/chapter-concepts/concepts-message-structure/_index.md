@@ -12,4 +12,4 @@ The following sections describe the structure of log messages. Currently there a
 
   - The Enterprise-wide message model or EWMM allows you to deliver structured messages between syslog-ng nodes: see {{% xref "/docs/chapter-concepts/concepts-message-structure/syslog-ng-message-format/_index.md" %}}
 
-  - How messages are represented in {{% productparam "abbrev" %}}: see {{% xref "/docs/chapter-concepts/concepts-message-representation/_index.md" %}}.
+  - How messages are represented in {{% param "product.abbrev" %}}: see {{% xref "/docs/chapter-concepts/concepts-message-representation/_index.md" %}}.

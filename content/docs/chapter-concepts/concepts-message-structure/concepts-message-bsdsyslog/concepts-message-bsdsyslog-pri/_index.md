@@ -56,7 +56,7 @@ The possible Facility values (between `0` and `23`) and Severity values (between
 
 {{% alert title="Note" color="info" %}}
 
-Facility codes may slightly vary between different platforms. The {{% productparam "name" %}} ({{% productparam "abbrev" %}}) application accepts Facility codes as numerical values as well.
+Facility codes may slightly vary between different platforms. The {{% param "product.name" %}} ({{% param "product.abbrev" %}}) application accepts Facility codes as numerical values as well.
 
 {{% /alert %}}<span id="facility-codes"></span>
 

@@ -174,7 +174,7 @@ The syslog-ng application supports other timestamp formats as well, like ISO, or
 
 {{% /alert %}}
 
-The {{% productparam "abbrev" %}} application will truncate the following fields:
+The {{% param "product.abbrev" %}} application will truncate the following fields:
 
   - If *APP-NAME* is longer than 48 characters it will be truncated to 48 characters.
 

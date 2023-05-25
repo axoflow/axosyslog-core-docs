@@ -19,7 +19,7 @@ Default:
 
 no
 
-*Description:* If set to **yes**, {{% productparam "abbrev" %}} cannot lose logs in case of reload/restart, unreachable destination or {{% productparam "abbrev" %}} crash. This solution provides a slower, but reliable disk-buffer option. It is created and initialized at startup and gradually grows as new messages arrive. If set to **no**, the normal disk-buffer will be used. This provides a faster, but less reliable disk-buffer option.
+*Description:* If set to **yes**, {{% param "product.abbrev" %}} cannot lose logs in case of reload/restart, unreachable destination or {{% param "product.abbrev" %}} crash. This solution provides a slower, but reliable disk-buffer option. It is created and initialized at startup and gradually grows as new messages arrive. If set to **no**, the normal disk-buffer will be used. This provides a faster, but less reliable disk-buffer option.
 
 {{% alert title="Warning" color="warning" %}}
 
@@ -39,11 +39,11 @@ Default:
 
 no
 
-*Description:* If set to `yes`, {{% productparam "abbrev" %}} prunes the unused space in the LogMessage representation, making the disk queue size smaller at the cost of some CPU time. Setting the `compaction()` argument to `yes` is recommended when numerous name-value pairs are unset during processing, or when the same names are set multiple times.
+*Description:* If set to `yes`, {{% param "product.abbrev" %}} prunes the unused space in the LogMessage representation, making the disk queue size smaller at the cost of some CPU time. Setting the `compaction()` argument to `yes` is recommended when numerous name-value pairs are unset during processing, or when the same names are set multiple times.
 
 {{% alert title="Note" color="info" %}}
 
-Simply unsetting these name-value pairs by using the `unset()` rewrite operation is not enough, as due to performance reasons that help when {{% productparam "abbrev" %}} is CPU bound, the internal representation of a `LogMessage` will not release the memory associated with these name-value pairs. In some cases, however, the size of this overhead becomes significant (the raw message size can grow up to four times its original size), which unnecessarily increases the disk queue file size. For these cases, the compaction will drop `unset` values, making the `LogMessage` representation smaller at the cost of some CPU time required to perform compaction.
+Simply unsetting these name-value pairs by using the `unset()` rewrite operation is not enough, as due to performance reasons that help when {{% param "product.abbrev" %}} is CPU bound, the internal representation of a `LogMessage` will not release the memory associated with these name-value pairs. In some cases, however, the size of this overhead becomes significant (the raw message size can grow up to four times its original size), which unnecessarily increases the disk queue file size. For these cases, the compaction will drop `unset` values, making the `LogMessage` representation smaller at the cost of some CPU time required to perform compaction.
 
 {{% /alert %}}
 
@@ -63,7 +63,7 @@ N/A
 
 {{% include-headless "wnt/warning-disk-buffer-new-directory-delete-persist-file.md" %}} {{% alert title="Note" color="info" %}}
 
-If the `dir()` path provided by the user does not exist, {{% productparam "ose" %}} creates the path with the same permission as the running instance.
+If the `dir()` path provided by the user does not exist, {{% param "product.ose" %}} creates the path with the same permission as the running instance.
 
 {{% /alert %}}
 
@@ -179,6 +179,6 @@ Default:
 
 {{% alert title="Warning" color="warning" %}}
 
-{{% productparam "companyabbrev" %}} does not recommend you to change `truncate-size-ratio()`. Only change its value if you know the performance implications of doing so.
+{{% param "product.companyabbrev" %}} does not recommend you to change `truncate-size-ratio()`. Only change its value if you know the performance implications of doing so.
 
 {{% /alert %}}

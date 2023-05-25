@@ -25,7 +25,7 @@ The syslog-ng application will issue a warning upon startup if none of the defin
 
 
 
-## The {{% productparam "abbrev" %}} application sends the following message types from the internal() source:
+## The {{% param "product.abbrev" %}} application sends the following message types from the internal() source:
 
   - *fatal*: Priority value: critical (2), Facility value: syslog (5)
 
