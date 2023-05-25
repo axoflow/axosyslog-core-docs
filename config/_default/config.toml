@@ -47,7 +47,7 @@ twitter = "AxoFlowIO"
 
   # email = ""
 
-  copyright = "kube-logging authors"
+  copyright = "Axoflow Inc"
 
   relativeURLs = true
 
@@ -144,6 +144,32 @@ twitter = "AxoFlowIO"
     url = "https://github.com/axoflow/axosyslog-docker"
     icon = "fab fa-github"
     desc = "Get involved in AxoSyslog development"
+##########
+# Parameters for shortcodes
+##########
+
+[params.product]
+name = "syslog-ng Open Source Edition"
+abbrev = "syslog-ng OSE"
+windowsagent = "WindowsAgent"
+version = "4.0"
+techversion = "4.0"
+configversion = "4.0"
+PELong = "syslog-ng Premium Edition"
+OSELong = "syslog-ng Open Source Edition"
+SSBLong = "syslog-ng Store Box"
+SSB = "SSB"
+PE = "syslog-ng PE"
+OSE = "syslog-ng OSE"
+contact-support = "contact our support team at [FIXME]()"
+syslog-ng = "syslog-ng"
+downloads = "FIXME"
+selinux = "SELinux"
+apparmor = "AppArmor"
+companyname = "Axoflow"
+companyabbrev = "Axoflow"
+ALTPuppercase = "Reliable Log Transfer Protocol"
+ALTP = "RLTP"
 
 ###############################################################################
 # Hugo - Top-level navigation (horizontal)
@@ -174,7 +200,6 @@ twitter = "AxoFlowIO"
     weight = 100
     #pre = "<i class='fas fa-book pr-2'></i>"
     url = "https://axoflow.com/contact/"
-
 ###############################################################################
 # Misc customizations
 ###############################################################################
