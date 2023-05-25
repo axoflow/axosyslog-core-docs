@@ -1,0 +1,12 @@
+baseurl = "https://axoflow.github.io/axosyslog-4-docs/"
+buildDrafts = false
+
+enableRobotsTXT = false
+
+[services]
+[services.googleAnalytics]
+# Comment out the next line to disable GA tracking. Also disables the feature described in [params.ui.feedback].
+
+[params]
+
+url_latest_version = "https://axoflow.github.io/axosyslog-4-docs/"
