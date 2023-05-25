@@ -13,7 +13,7 @@
 <tr class="odd">
 <td>Error message:</td>
 <td>```c
-<pre><code>SSL error while writing stream; tls_error=&#39;SSL routines:ssl3_read_bytes:tlsv1 alert unknown ca&#39;</code></pre>
+SSL error while writing stream; tls_error=&#39;SSL routines:ssl3_read_bytes:tlsv1 alert unknown ca&#39;
 ```</td>
 </tr>
 <tr class="even">

@@ -38,44 +38,44 @@ Starting with version {{% conditional-text include-if="ose" %}}3.6{{% /condition
 <tr class="odd">
 <td>AIX</td>
 <td>```c
-<pre><code>unix-dgram(&quot;/dev/log&quot;);</code></pre>
+unix-dgram(&quot;/dev/log&quot;);
 ```</td>
 </tr>
 <tr class="even">
 <td>FreeBSD</td>
 <td>```c
-<pre><code>unix-dgram(&quot;/var/run/log&quot;);</code></pre>
+unix-dgram(&quot;/var/run/log&quot;);
 ```
 ```c
-<pre><code>unix-dgram(&quot;/var/run/logpriv&quot; perm(0600));</code></pre>
+unix-dgram(&quot;/var/run/logpriv&quot; perm(0600));
 ```
 ```c
-<pre><code>file(&quot;/dev/klog&quot; follow-freq(0) program-override(&quot;kernel&quot;) flags(no-parse));</code></pre>
+file(&quot;/dev/klog&quot; follow-freq(0) program-override(&quot;kernel&quot;) flags(no-parse));
 ```
 <p>For FreeBSD versions earlier than 9.1, `follow-freq(1)` is used.</p></td>
 </tr>
 <tr class="odd">
 <td>GNU/kFreeBSD</td>
 <td>```c
-<pre><code>unix-dgram(&quot;/var/run/log&quot;);</code></pre>
+unix-dgram(&quot;/var/run/log&quot;);
 ```
 ```c
-<pre><code>file(&quot;/dev/klog&quot; follow-freq(0) program-override(&quot;kernel&quot;));</code></pre>
+file(&quot;/dev/klog&quot; follow-freq(0) program-override(&quot;kernel&quot;));
 ```</td>
 </tr>
 <tr class="even">
 <td>HP-UX</td>
 <td>```c
-<pre><code>pipe(&quot;/dev/log&quot; pad-size(2048));</code></pre>
+pipe(&quot;/dev/log&quot; pad-size(2048));
 ```</td>
 </tr>
 <tr class="odd">
 <td>Linux</td>
 <td>```c
-<pre><code>unix-dgram(&quot;/dev/log&quot;);</code></pre>
+unix-dgram(&quot;/dev/log&quot;);
 ```
 ```c
-<pre><code>file(&quot;/proc/kmsg&quot; program-override(&quot;kernel&quot;) flags(kernel));</code></pre>
+file(&quot;/proc/kmsg&quot; program-override(&quot;kernel&quot;) flags(kernel));
 ```
 <p>Note that on Linux, the `so-rcvbuf()` option of the `system()` source is automatically set to 8192.</p>
 <p>If the host is running under systemd, {{% param "product.abbrev" %}} reads directly from the systemd journal file using the `systemd-journal()` source.</p>
@@ -85,35 +85,35 @@ Starting with version {{% conditional-text include-if="ose" %}}3.6{{% /condition
 <tr class="even">
 <td>macOS</td>
 <td>```c
-<pre><code>file(&quot;/var/log/system.log&quot; follow-freq(1));</code></pre>
+file(&quot;/var/log/system.log&quot; follow-freq(1));
 ```
 {{% include-headless "wnt/note-solaris-msgid.md" %}}</td>
 </tr>
 <tr class="odd">
 <td>NetBSD</td>
 <td>```c
-<pre><code>unix-dgram(&quot;/var/run/log&quot;);</code></pre>
+unix-dgram(&quot;/var/run/log&quot;);
 ```
 {{% include-headless "wnt/note-solaris-msgid.md" %}}</td>
 </tr>
 <tr class="even">
 <td>Solaris 8</td>
 <td>```c
-<pre><code>sun-streams(&quot;/dev/log&quot;);</code></pre>
+sun-streams(&quot;/dev/log&quot;);
 ```
 {{% include-headless "wnt/note-solaris-msgid.md" %}}</td>
 </tr>
 <tr class="odd">
 <td>Solaris 9</td>
 <td>```c
-<pre><code>sun-streams(&quot;/dev/log&quot; door(&quot;/etc/.syslog_door&quot;));</code></pre>
+sun-streams(&quot;/dev/log&quot; door(&quot;/etc/.syslog_door&quot;));
 ```
 {{% include-headless "wnt/note-solaris-msgid.md" %}}</td>
 </tr>
 <tr class="even">
 <td>Solaris 10</td>
 <td>```c
-<pre><code>sun-streams(&quot;/dev/log&quot; door(&quot;/var/run/syslog_door&quot;));</code></pre>
+sun-streams(&quot;/dev/log&quot; door(&quot;/var/run/syslog_door&quot;));
 ```
 {{% include-headless "wnt/note-solaris-msgid.md" %}}</td>
 </tr>

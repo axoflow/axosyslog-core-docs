@@ -13,9 +13,9 @@
 <tr class="odd">
 <td>Error message:</td>
 <td>```c
-<pre><code>Destination queue full, dropping messages; queue_len=&#39;10000&#39;, 
+Destination queue full, dropping messages; queue_len=&#39;10000&#39;, 
 log_fifo_size=&#39;10000&#39;, count=&#39;4&#39;, 
-persist_name=&#39;afsocket_dd_qfile(stream,serverdown:514)&#39; </code></pre>
+persist_name=&#39;afsocket_dd_qfile(stream,serverdown:514)&#39; 
 ```</td>
 </tr>
 <tr class="even">

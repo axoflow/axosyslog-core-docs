@@ -16,7 +16,7 @@
 <tr class="even">
 <td>Default:</td>
 <td>```c
-<pre><code>empty string</code></pre>
+empty string
 ```</td>
 </tr>
 </tbody>
