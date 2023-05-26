@@ -6,7 +6,7 @@ weight: 600
 
 ## Purpose:
 
-To collect logs from a chroot using a syslog-ng client running on the host, complete the following steps:
+To collect logs from a chroot using a `syslog-ng` client running on the host, complete the following steps:
 
 ![](../Images/Figures/fig-chroot01.png)
 
@@ -16,7 +16,7 @@ To collect logs from a chroot using a syslog-ng client running on the host, comp
 
 1.  Create a `/dev` directory within the chroot. The applications running in the chroot send their log messages here.
 
-2.  Create a local source in the configuration file of the syslog-ng application running outside the chroot. This source should point to the `/dev/log` file within the chroot (for example, to the `/chroot/dev/log` directory).
+2.  Create a local source in the configuration file of the `syslog-ng` application running outside the chroot. This source should point to the `/dev/log` file within the chroot (for example, to the `/chroot/dev/log` directory).
 
 3.  Include the source in a log statement.
     

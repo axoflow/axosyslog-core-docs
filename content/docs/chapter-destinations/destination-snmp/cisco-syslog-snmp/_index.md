@@ -6,14 +6,13 @@ weight:  100
 
 The {{% param "product.abbrev" %}} application can convert the syslog messages sent by Cisco devices to Cisco-specific SNMP traps defined by the CISCO-SYSLOG-MIB (`enterprises.cisco.ciscoMgmt.ciscoCiscoMIB`) is also supported (such traps are also referred to as `clogMessageGenerated` notifications). That way, the incoming log messages can be forwarded to devices used to process and analyze Cisco-specific SNMP traps. For this to work correctly, the following requirements must be met:
 
-  - The syslog-ng Source Configuration Library (SCL) must be included in the {{% param "product.abbrev" %}} configuration file:
+- The Source Configuration Library (SCL) must be included in the {{% param "product.abbrev" %}} configuration file:
     
     ```c
         @include "scl.conf"
-    
     ```
 
-  - The pattern database described in [Parsing Cisco-specific message fields with patterndb](#cisco-snmp-patterndb) must be used to parse the incoming log messages.
+- The pattern database described in [Parsing Cisco-specific message fields with patterndb](#cisco-snmp-patterndb) must be used to parse the incoming log messages.
 
 To accomplish this, {{% param "product.abbrev" %}} has to use a special pattern database to parse the Cisco-specific syslog messages, because these messages do not comply with the standard syslog formats.
 
