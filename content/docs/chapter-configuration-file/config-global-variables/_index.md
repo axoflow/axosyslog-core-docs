@@ -11,7 +11,11 @@ You can define global variables in the configuration file. Global variables are 
 
 ```
 
-The value can be any string, but special characters must be escaped (for details, see {{% xref "/docs/chapter-manipulating-messages/regular-expressions/_index.md" %}}). To use the variable, insert the name of the variable enclosed between backticks (```, similarly to using variables in Linux or UNIX shells) anywhere in the configuration file. If backticks are meant literally, repeat the backticks to escape them. For example, ```not-substituted-value```.
+The value can be any string, but special characters must be escaped (for details, see {{% xref "/docs/chapter-manipulating-messages/regular-expressions/_index.md" %}}). To use the variable, insert the name of the variable enclosed between backticks (<code>`</code>, similarly to using variables in Linux or UNIX shells) anywhere in the configuration file. If backticks are meant literally, repeat the backticks to escape them. For example:
+
+```
+``not-substituted-value``
+```
 
 The value of the global variable can be also specified using the following methods:
 

@@ -40,7 +40,7 @@ The `s_apache` source uses a file source (the error log of an Apache webserver) 
 
 {{% alert title="Note" color="info" %}}
 
-You must start the object definition with a **channel** even if you will use a `junction`, for example:
+You must start the object definition with a `channel` even if you will use a `junction`, for example:
 
 ```c
    parser demo-parser() {

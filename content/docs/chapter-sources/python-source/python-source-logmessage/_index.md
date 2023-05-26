@@ -9,7 +9,7 @@ The LogMessage API allows you to create LogMessage objects in Python sources, pa
 
 ## LogMessage() method: Create log message objects
 
-You can use the **LogMessage()** method to create a structured log message instance. For example:
+You can use the `LogMessage()` method to create a structured log message instance. For example:
 
 ```c
    from syslogng import LogMessage
@@ -45,7 +45,7 @@ Note the following points when creating a log message:
 
 The `parse()` method allows you to parse incoming messages as syslog messages. By default, the `parse()` method attempts to parse the message as an IETF-syslog (RFC5424) log message. If that fails, it parses the log message as a BSD-syslog (RFC3164) log message. Note that {{% param "product.abbrev" %}} takes the parsing-related options of the configuration into account: `flags()`, `keep-hostname()`, `recv-time-zone()`.
 
-If `keep-hostname()` is set to **no**, {{% param "product.abbrev" %}} ignores the hostname set in the message, and uses the IP address of the {{% param "product.abbrev" %}} host as the hostname (to use the hostname instead of the IP address, set the `use-dns()` or `use-fqdn()` options in the Python source).
+If `keep-hostname()` is set to `no`, {{% param "product.abbrev" %}} ignores the hostname set in the message, and uses the IP address of the {{% param "product.abbrev" %}} host as the hostname (to use the hostname instead of the IP address, set the `use-dns()` or `use-fqdn()` options in the Python source).
 
 ```c
    msg_ietf = LogMessage.parse('<165>1 2003-10-11T22:14:15.003Z mymachine.example.com evntslog - ID47 [exampleSDID@32473 iut="3" eventSource="Application" eventID="1011"] An application event log entry', self.parse_options)

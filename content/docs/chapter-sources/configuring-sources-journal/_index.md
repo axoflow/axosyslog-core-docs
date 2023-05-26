@@ -10,7 +10,7 @@ The `systemd-journal()` source driver is designed to read only local messages th
 
 {{% alert title="Note" color="info" %}}
 
-The `log-msg-size()` option is not applicable for this source. Use the **max-field-size()** option instead.
+The `log-msg-size()` option is not applicable for this source. Use the `max-field-size()` option instead.
 
 {{% /alert %}} {{% alert title="Note" color="info" %}}
 
@@ -45,7 +45,7 @@ Only one `systemd-journal()` source can be configured in the configuration file.
 
 ## Example: Sending all fields through syslog protocol using the systemd-journal() driver {#example-source-journal-allfields}
 
-To send all fields through the syslog protocol, enter the prefix in the following format: "**.SDATA.\<name\>**".
+To send all fields through the syslog protocol, enter the prefix in the following format: "`.SDATA.\<name\>`".
 
 ```c
    @version: {{% param "product.techversion" %}}

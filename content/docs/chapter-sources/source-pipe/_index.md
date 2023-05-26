@@ -18,7 +18,7 @@ The pipe driver has a single required parameter, specifying the filename of the 
 
 {{% alert title="Note" color="info" %}}
 
-As of syslog-ng Open Source Edition 3.0.2, pipes are created automatically. In earlier versions, you had to create the pipe using the **mkfifo(1)** command.
+As of syslog-ng Open Source Edition 3.0.2, pipes are created automatically. In earlier versions, you had to create the pipe using the `mkfifo(1)` command.
 
 {{% /alert %}}
 
@@ -28,7 +28,7 @@ Pipe is very similar to the `file()` driver, but there are a few differences, fo
 
   - It is not recommended to use `pipe()` on anything else than real pipes.
 
-  - By default, {{% param "product.abbrev" %}} uses the **flags(no-hostname)** option for pipes, meaning that {{% param "product.abbrev" %}} assumes that the log messages received from the pipe do not contain the hostname field. If your messages do contain the hostname field, use **flags(expect-hostname)**.
+  - By default, {{% param "product.abbrev" %}} uses the `flags(no-hostname)` option for pipes, meaning that {{% param "product.abbrev" %}} assumes that the log messages received from the pipe do not contain the hostname field. If your messages do contain the hostname field, use `flags(expect-hostname)`.
 
 {{% /alert %}}
 

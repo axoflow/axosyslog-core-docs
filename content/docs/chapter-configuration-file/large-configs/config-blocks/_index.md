@@ -54,7 +54,7 @@ Include this file in your main syslog-ng configuration file, reference the block
 ```
 
 
-To define a block that defines more than one object, use **root** as the type of the block, and reference the block from the main part of the {{% param "product.abbrev" %}} configuration file.
+To define a block that defines more than one object, use `root` as the type of the block, and reference the block from the main part of the {{% param "product.abbrev" %}} configuration file.
 
 
 ## Example: Defining blocks with multiple elements {#example-configuration-block-root}
@@ -89,7 +89,7 @@ If you want to reuse more than a single configuration object, for example, a log
 
 You can express in block definitons that a parameter is mandatory by defining it with empty brackets `()`. In this case, the parameter must be overridden in the reference block. Failing to do so will result in an error message and initialization failure.
 
-To make a parameter expand into nothing (for example, because it has no default value, like `hook-commands()` or `tls()`), insert a pair of double quote marks inside the empty brackets: **("")**
+To make a parameter expand into nothing (for example, because it has no default value, like `hook-commands()` or `tls()`), insert a pair of double quote marks inside the empty brackets: `("")`
 
 
 ## Example: Mandatory parameters
@@ -127,8 +127,11 @@ Configuration blocks can receive arguments as well. The parameters the block can
 
 ```
 
-If an argument does not have a default value, use an empty double quote bracket pair **("")** after the name of the argument. To refer the value of the argument in the block, use the name of the argument between backticks (for example, **`argument1`**).
+If an argument does not have a default value, use an empty double quote bracket pair `("")` after the name of the argument. To refer the value of the argument in the block, use the name of the argument between backticks, for example:
 
+```
+`argument1`
+```
 
 ## Example: Passing arguments to blocks
 
@@ -147,7 +150,7 @@ The following sample defines a file source block, which can receive the name of 
 
 If you reference the block with more arguments then specified in its definition, you can use these additional arguments as a single argument-list within the block. That way, you can use a variable number of optional arguments in your block. This can be useful when passing arguments to a template, or optional arguments to an underlying driver.
 
-The three dots (`…`) at the end of the argument list refer to any additional parameters. It tells {{% param "product.abbrev" %}} that this macro accepts ``__VARARGS__``, therefore any name-value pair can be passed without validation. To reference this argument-list, insert **`__VARARGS__`** to the place in the block where you want to insert the argument-list. Note that you can use this only once in a block.
+The three dots (`…`) at the end of the argument list refer to any additional parameters. It tells {{% param "product.abbrev" %}} that this macro accepts ``__VARARGS__``, therefore any name-value pair can be passed without validation. To reference this argument-list, insert `__VARARGS__` to the place in the block where you want to insert the argument-list. Note that you can use this only once in a block.
 
 The following definition extends the logfile block from the previous example, and passes the optional arguments (`follow-freq(1) flags(no-parse)`) to the `file()` source.
 

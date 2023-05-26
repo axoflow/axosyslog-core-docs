@@ -19,9 +19,9 @@ To use the `pacct()` driver, the following conditions must be met:
     
     ```
 
-  - Process accounting must be running on the host. You can enable it with the **accton** command.
+  - Process accounting must be running on the host. You can enable it with the `accton` command.
 
-The `pacct()` driver parses the fields of the accounting logs and transforms them into name-value pairs. The fields are defined in the manual page of the accounting log file (`man acct`), {{% param "product.abbrev" %}} prepends every field with the `.pacct.` prefix. For example, the **ac_uid** field that contains the id of the user who started the process will be available under the `$.pacct.ac_uid` name. These can be used as macros in templates, in filters to select specific messages, and so on.
+The `pacct()` driver parses the fields of the accounting logs and transforms them into name-value pairs. The fields are defined in the manual page of the accounting log file (`man acct`), {{% param "product.abbrev" %}} prepends every field with the `.pacct.` prefix. For example, the `ac_uid` field that contains the id of the user who started the process will be available under the `$.pacct.ac_uid` name. These can be used as macros in templates, in filters to select specific messages, and so on.
 
 To use the `pacct()` driver, use the following syntax.
 

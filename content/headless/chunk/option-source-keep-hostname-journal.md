@@ -11,9 +11,9 @@
 
 *Description:* Enable or disable hostname rewriting.
 
-  - If enabled (**keep-hostname(yes)**), {{% param "product.abbrev" %}} will retain the hostname information read from the systemd journal messages.
+  - If enabled (`keep-hostname(yes)`), {{% param "product.abbrev" %}} will retain the hostname information read from the systemd journal messages.
 
-  - If disabled (**keep-hostname(no)**), {{% param "product.abbrev" %}} will use the hostname that has been set up for the operating system instance that syslog-ng is running on. To query or set this value, use the **hostnamectl** command.
+  - If disabled (`keep-hostname(no)`), {{% param "product.abbrev" %}} will use the hostname that has been set up for the operating system instance that syslog-ng is running on. To query or set this value, use the `hostnamectl` command.
 
 This option can be specified globally, and per-source as well. The local setting of the source overrides the global option if available.
 

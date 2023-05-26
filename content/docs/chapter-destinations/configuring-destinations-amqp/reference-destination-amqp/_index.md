@@ -80,7 +80,7 @@ The `amqp()` destination has the following options:
 | Type:    | yes|no |
 | Default: | no     |
 
-*Description:* By default, {{% param "product.abbrev" %}} does not create non-existing exchanges. Use the **exchange-declare(yes)** option to automatically create exchanges.
+*Description:* By default, {{% param "product.abbrev" %}} does not create non-existing exchanges. Use the `exchange-declare(yes)` option to automatically create exchanges.
 
 
 

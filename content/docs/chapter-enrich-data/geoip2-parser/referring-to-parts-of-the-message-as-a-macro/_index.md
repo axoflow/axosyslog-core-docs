@@ -6,19 +6,19 @@ weight:  100
 
 You can refer to the separated parts of the message using the key of the value as a macro. For example, if the message contains `KEY1=value1,KEY2=value2`, you can refer to the values as `${KEY1}` and `${KEY2}`.
 
-for example, if the default prefix (`.geoip2`) is used, you can determine the country code using **${.geoip2.country.iso_code}**.
+for example, if the default prefix (`.geoip2`) is used, you can determine the country code using `${.geoip2.country.iso_code}`.
 
 To look up all keys:
 
-1.  Install the **mmdb-bin** package.
+1.  Install the `mmdb-bin` package.
     
-    After installing this package, you will be able to use the **mmdblookup** command.
+    After installing this package, you will be able to use the `mmdblookup` command.
     
     {{% alert title="Note" color="info" %}}
 The name of the package depends on the Linux distribution. The package mentioned in this example is on Ubuntu.
     {{% /alert %}}
 
-2.  Create a dump using the following command: **mmdblookup --file GeoLite2-City.mmdb --ip \<your-IP-address\>**
+2.  Create a dump using the following command: `mmdblookup --file GeoLite2-City.mmdb --ip \<your-IP-address\>`
     
     The resulting dump file will contain the keys that you can use.
 

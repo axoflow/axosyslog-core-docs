@@ -37,7 +37,7 @@ A single substitution rule can include multiple substitutions that are applied s
 
 {{% alert title="Note" color="info" %}}
 
-For case-insensitive searches, add the **flags(ignore-case)** option. To replace every occurrence of the string, add **flags(global)** option. Note that the `store-matches` flag is automatically enabled in rewrite rules.
+For case-insensitive searches, add the `flags(ignore-case)` option. To replace every occurrence of the string, add `flags(global)` option. Note that the `store-matches` flag is automatically enabled in rewrite rules.
 
 {{% /alert %}}
 

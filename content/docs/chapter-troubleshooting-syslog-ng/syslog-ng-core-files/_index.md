@@ -24,7 +24,7 @@ When syslog-ng crashes for some reason, it can create a core file that contains 
 
 3.  If syslog-ng crashes, it will create a core file in the directory syslog-ng was started from.
 
-4.  To test that syslog-ng can create a core file, you can create a crash manually. For this, determine the PID of syslog-ng (for example, using the **ps -All|grep syslog-ng** command), then issue the following command: **kill -ABRT \<syslog-ng pid\>**
+4.  To test that syslog-ng can create a core file, you can create a crash manually. For this, determine the PID of syslog-ng (for example, using the `ps -All|grep syslog-ng` command), then issue the following command: `kill -ABRT \<syslog-ng pid\>`
     
     This should create a core file in the current working directory.
 

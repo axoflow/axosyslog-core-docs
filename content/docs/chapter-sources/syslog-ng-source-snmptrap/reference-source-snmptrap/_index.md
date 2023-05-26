@@ -37,5 +37,5 @@ Default value: `.snmp.` option.
 | Type:    | yes|no |
 | Default: | yes    |
 
-*Description:* The `snmptrap()` source automatically parses the traps into name-value pairs, so you can handle the content of the trap as a structured message. Consequently, you might not even need the `${MESSAGE}` part of the log message. If `set-message-macro()` is set to **no**, {{% param "product.abbrev" %}} leaves the `${MESSAGE}` part empty. If `set-message-macro()` is set to **yes**, {{% param "product.abbrev" %}} generates a regular log message from the trap.
+*Description:* The `snmptrap()` source automatically parses the traps into name-value pairs, so you can handle the content of the trap as a structured message. Consequently, you might not even need the `${MESSAGE}` part of the log message. If `set-message-macro()` is set to `no`, {{% param "product.abbrev" %}} leaves the `${MESSAGE}` part empty. If `set-message-macro()` is set to `yes`, {{% param "product.abbrev" %}} generates a regular log message from the trap.
 

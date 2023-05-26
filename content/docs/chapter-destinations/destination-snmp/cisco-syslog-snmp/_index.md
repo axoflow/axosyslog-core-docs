@@ -55,7 +55,7 @@ The `${PROGRAM}` part of the syslog messages sent by Cisco devices contain not o
 
 ## Sending clogMessageGenerated SNMP traps
 
-To send out clogMessageGenerated SNMP traps, use the **cisco_snmp()** destination driver. The `cisco-snmp()` destination is actually a modified version of the `snmp()` destination driver.
+To send out clogMessageGenerated SNMP traps, use the `cisco_snmp()` destination driver. The `cisco-snmp()` destination is actually a modified version of the `snmp()` destination driver.
 
 
 {{% alert title="Note" color="info" %}}
@@ -67,7 +67,7 @@ The `cisco-snmp()` driver is actually a reusable configuration snippet. For deta
 
 The `cisco-snmp()` driver has the same requirements and options as the `snmp()` destination driver, but automatically fills the clogMessageGenerated-specific fields with the data received from parsing the Cisco-specific syslog messages using the pattern database. For details on the , see the `\<INSTALLDIR\>/ share/include/scl/snmp/plugin.conf` file.
 
-**Declaration:**
+`Declaration:`
 
 ```c
    destination d_cisco_snmp {cisco-snmp(host(<hostname>));};

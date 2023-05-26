@@ -9,7 +9,7 @@
 | Type:    | string |
 | Default: | n/a    |
 
-*Description:* The CC recipient of the email (contents of the CC field). You can specify the email address, or the name and the email address. Set the **cc** option multiple times to send the email to multiple recipients. For example: **cc("admin@example.com")** or **cc("Admin" "admin@example.com")** or **cc("Admin" "admin@example.com") cc("Admin2" "admin2@example.com"**
+*Description:* The CC recipient of the email (contents of the CC field). You can specify the email address, or the name and the email address. Set the `cc` option multiple times to send the email to multiple recipients. For example: `cc("admin@example.com")` or `cc("Admin" "admin@example.com")` or `cc("Admin" "admin@example.com") cc("Admin2" "admin2@example.com"`
 
 {{% include-headless "chunk/para-can-contain-macros.md" %}}
 

@@ -65,7 +65,7 @@ Fetcher-style Python sources must be inherited from the `syslogng.LogFetcher` cl
 
 For fetcher-style Python sources, {{% param "product.abbrev" %}} handles the event loop and the scheduling automatically. You can use simple blocking server/client libraries to receive or fetch logs.
 
-You can retrieve messages using the **fetch()** method.
+You can retrieve messages using the `fetch()` method.
 
 {{% include-headless "chunk/python-method-init.md" %}}
 
@@ -80,7 +80,7 @@ The `open(self)` method opens the resources required for the source, for example
 
 ## fetch(self) method (mandatory)
 
-Use the **fetch** method to fetch messages and pass them to the log paths.
+Use the `fetch` method to fetch messages and pass them to the log paths.
 
 For details on parsing messages, see {{% xref "/docs/chapter-sources/python-source/python-source-logmessage/_index.md" %}}.
 

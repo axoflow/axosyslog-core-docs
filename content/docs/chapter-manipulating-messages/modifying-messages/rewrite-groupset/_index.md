@@ -12,7 +12,7 @@ The `groupset()` rewrite rule allows you to modify the value of multiple message
 
   - Note that `groupset()` does not create new fields, it only modifies existing fields.
 
-  - You can refer to the old value of the field using the **$_** macro. This is resolved to the value of the current field, and is available only in `groupset()` rules.
+  - You can refer to the old value of the field using the `$_` macro. This is resolved to the value of the current field, and is available only in `groupset()` rules.
 
 
 ## Declaration:
@@ -29,14 +29,14 @@ The `groupset()` rewrite rule allows you to modify the value of multiple message
 
 The following examples show how to change the values of multiple fields at the same time.
 
-  - Change the value of the `HOST` field to **myhost**.
+  - Change the value of the `HOST` field to `myhost`.
     
     ```c
         groupset ("myhost" values("HOST"))
     
     ```
 
-  - Change the value of the `HOST` and `FULLHOST` fields to **myhost**.
+  - Change the value of the `HOST` and `FULLHOST` fields to `myhost`.
     
     ```c
         groupset ("myhost" values("HOST" "FULLHOST"))
@@ -50,7 +50,7 @@ The following examples show how to change the values of multiple fields at the s
     
     ```
 
-  - Change the value of each field and macro that begins with `.USER` to **nobody**.
+  - Change the value of each field and macro that begins with `.USER` to `nobody`.
     
     ```c
         groupset ("nobody" values(".USER.*"))

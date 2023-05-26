@@ -4,7 +4,7 @@ weight:  900
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The syslog-ng application can encrypt incoming and outgoing syslog message flows using TLS if you use the **network()** or **syslog()** drivers.
+The syslog-ng application can encrypt incoming and outgoing syslog message flows using TLS if you use the `network()` or `syslog()` drivers.
 
 {{% alert title="Note" color="info" %}}
 
@@ -12,7 +12,7 @@ The format of the TLS connections used by syslog-ng is similar to using syslog-n
 
 {{% /alert %}}
 
-To encrypt connections, use the **transport("tls")** and **tls()** options in the source and destination statements.
+To encrypt connections, use the `transport("tls")` and `tls()` options in the source and destination statements.
 
 The tls() option can include the following settings:
 
@@ -78,7 +78,7 @@ The following example curves work for all versions of OpenSSL that are equal to 
 | Accepted values: | string [colon-separated list] |
 | Default:         | none                            |
 
-*Description:* A colon-separated list that specifies the supported signature algorithms for TLSv1.2 and higher, for example, **RSA-PSS+SHA256:ed25519**.
+*Description:* A colon-separated list that specifies the supported signature algorithms for TLSv1.2 and higher, for example, `RSA-PSS+SHA256:ed25519`.
 
 For servers, it is used to determine which signature algorithms to support.
 
@@ -93,7 +93,7 @@ For clients, this value is used directly for the supported signature algorithms 
 | Accepted values: | string [colon-separated list] |
 | Default:         | none                            |
 
-*Description:* A colon-separated list that specifies the supported signature algorithms associated with client authentication for TLSv1.2 and higher, for example, **RSA-PSS+SHA256:ed25519**.
+*Description:* A colon-separated list that specifies the supported signature algorithms associated with client authentication for TLSv1.2 and higher, for example, `RSA-PSS+SHA256:ed25519`.
 
 For servers, the value is used in the
 
@@ -198,7 +198,7 @@ TLS-encryption
 
 {{% include-headless "chunk/option-destination-tls-peer-verify-notes.md" %}}
 
-Starting with {{% param "product.abbrev" %}} version 3.10, you can also use a simplified configuration method for the `peer-verify` option, simply setting it to **yes** or **no**. The following table summarizes the possible options and their results depending on the certificate of the peer.
+Starting with {{% param "product.abbrev" %}} version 3.10, you can also use a simplified configuration method for the `peer-verify` option, simply setting it to `yes` or `no`. The following table summarizes the possible options and their results depending on the certificate of the peer.
 
 {{% include-headless "chunk/option-tls-peer-verify-yesno.md" %}}
 
@@ -347,7 +347,7 @@ The following destination explicitly disables SSL and TLSv1.0
 
 *Description:* To accept connections only from hosts using certain certificates having specific SHA-1 fingerprints, list the fingerprints of the accepted certificates in this parameter. for example, `trusted-keys("SHA1:00:EF:ED:A4:CE:00:D1:14:A4:AB:43:00:EF:00:91:85:FF:89:28:8F", "SHA1:0C:42:00:3E:B2:60:36:64:00:E2:83:F0:80:46:AD:00:A8:9D:00:15")`.
 
-To find the fingerprint of a certificate, you can use the following command: **openssl x509 -in \<certificate-filename\> -sha1 -noout -fingerprint**
+To find the fingerprint of a certificate, you can use the following command: `openssl x509 -in \<certificate-filename\> -sha1 -noout -fingerprint`
 
 {{% alert title="Note" color="info" %}}
 

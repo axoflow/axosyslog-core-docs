@@ -21,11 +21,11 @@ If the following characters appear in the message, they must be escaped in the r
 
   - `@`: Use @@, for example, `user@@example.com`
 
-  - *\<*: Use **\&lt;**
+  - *\<*: Use `\&lt;`
 
-  - *\>*: Use **\&gt;**
+  - *\>*: Use `\&gt;`
 
-  - &: Use **\&amp;**
+  - &: Use `\&amp;`
 
 {{% /alert %}}
 

@@ -6,7 +6,7 @@ weight:  3300
 
 The {{% param "product.abbrev" %}} application can correlate log messages. Alternatively, you can also correlate log messages using pattern databases. For details, see {{% xref "/docs/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-correlation/_index.md" %}}.
 
-  - To group or correlate log messages that match a set of filters, use the **group-by** parser. This works similarly to SQL GROUP BY statements. For details, see {{% xref "/docs/chapter-correlating-log-messages/grouping-by-parser/_index.md" %}}.
+  - To group or correlate log messages that match a set of filters, use the `group-by` parser. This works similarly to SQL GROUP BY statements. For details, see {{% xref "/docs/chapter-correlating-log-messages/grouping-by-parser/_index.md" %}}.
 
   - You can correlate log messages identified using pattern databases. For details, see {{% xref "/docs/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-correlation/_index.md" %}}.
 

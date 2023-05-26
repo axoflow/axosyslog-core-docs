@@ -8,7 +8,7 @@ You can extend and customize {{% param "product.abbrev" %}} easily by writing [d
 
 Instead of writing Python code into your {{% param "product.abbrev" %}} configuration file, you can store the Python code for your Python object in an external file. That way, it is easier to write, maintain, and debug the code. You can store the Python code in any directory in your system, but make sure to include it in your Python path.
 
-When referencing a Python class from an external file in the `class()` option of a Python block in the {{% param "product.abbrev" %}} configuration file, the class name must include the name of the Python file containing the class, without the path and the .py extension. For example, if the MyDestination class is available in the `/etc/syslog-ng/etc/pythonexample.py` file, use **class("pythonexample.MyDestination")**:
+When referencing a Python class from an external file in the `class()` option of a Python block in the {{% param "product.abbrev" %}} configuration file, the class name must include the name of the Python file containing the class, without the path and the .py extension. For example, if the MyDestination class is available in the `/etc/syslog-ng/etc/pythonexample.py` file, use `class("pythonexample.MyDestination")`:
 
 ```c
    destination d_python_to_file {

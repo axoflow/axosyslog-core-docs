@@ -272,7 +272,7 @@ Automatically create a pattern database from a log file containing a large numbe
 
 - `--samples=\<number-of-samples\>`
     
-    Include a generated name in the parsers, for example, **.dict.string1**, **.dict.string2**, and so on.
+    Include a generated name in the parsers, for example, `.dict.string1`, `.dict.string2`, and so on.
 
 - `--support=\<number\>` or `-S`
     

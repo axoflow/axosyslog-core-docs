@@ -8,7 +8,7 @@ The filters and default macros of syslog-ng work well on the headers and metainf
 
 The {{% param "product.abbrev" %}} application provides the following possibilities to parse the messages, or parts of the messages:
 
-  - By default, {{% param "product.abbrev" %}} parses every message as a syslog message. To disable message parsing, use the **flags(no-parse)** option of the source. To explicitly parse a message as a syslog message, use the **syslog** parser. For details, see {{% xref "/docs/chapter-parsers/parser-syslog/_index.md" %}}.
+  - By default, {{% param "product.abbrev" %}} parses every message as a syslog message. To disable message parsing, use the `flags(no-parse)` option of the source. To explicitly parse a message as a syslog message, use the `syslog` parser. For details, see {{% xref "/docs/chapter-parsers/parser-syslog/_index.md" %}}.
 
   - To segment a message into columns using a CSV-parser, see {{% xref "/docs/chapter-parsers/csv-parser/_index.md" %}}.
 

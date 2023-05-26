@@ -75,7 +75,7 @@ OPTION_NAME is always a string, VALUE is a string or a number. For example:
 
   - *dont-create-tables*: Enable this flag to prevent {{% param "product.abbrev" %}} from creating non-existing database tables automatically. The {{% param "product.abbrev" %}} application typically has to create tables if you use macros in the table names. Available in {{% param "product.abbrev" %}} version 3.2 and later.
 
-  - *explicit-commits*: By default, {{% param "product.abbrev" %}} commits every log message to the target database individually. When the `explicit-commits` option is enabled, messages are committed in batches. This improves the performance, but results in some latency, as the messages are not immediately sent to the database. The size and frequency of batched commits can be set using the **batch-lines()** parameter. The `explicit-commits` option is available in {{% param "product.abbrev" %}} version 3.2 and later.
+  - *explicit-commits*: By default, {{% param "product.abbrev" %}} commits every log message to the target database individually. When the `explicit-commits` option is enabled, messages are committed in batches. This improves the performance, but results in some latency, as the messages are not immediately sent to the database. The size and frequency of batched commits can be set using the `batch-lines()` parameter. The `explicit-commits` option is available in {{% param "product.abbrev" %}} version 3.2 and later.
 
 
 ## Example: Setting flags for SQL destinations
@@ -131,7 +131,7 @@ The {{% param "product.abbrev" %}} application will create the name of indexes a
 
 ## Example: Using SQL NULL values {#example-destination-sql-null}
 
-The `null()` parameter of the SQL driver can be used to replace the contents of a column with a special SQL NULL value. To replace every column that contains an empty string with NULL, use the **null("")** option, for example
+The `null()` parameter of the SQL driver can be used to replace the contents of a column with a special SQL NULL value. To replace every column that contains an empty string with NULL, use the `null("")` option, for example
 
 ```c
    destination d_sql {

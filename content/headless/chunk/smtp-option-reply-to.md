@@ -9,7 +9,7 @@
 | Type:    | string |
 | Default: | n/a    |
 
-*Description:* Replies of the recipient will be sent to this address (contents of the REPLY-TO field). You can specify the email address, or the name and the email address. Set the **reply-to()** option multiple times to send the email to multiple recipients. For example: **reply-to("admin@example.com")** or **reply-to("Admin" "admin@example.com")** or **reply-to("Admin" "admin@example.com") reply-to("Admin2" "admin2@example.com")**
+*Description:* Replies of the recipient will be sent to this address (contents of the REPLY-TO field). You can specify the email address, or the name and the email address. Set the `reply-to()` option multiple times to send the email to multiple recipients. For example: `reply-to("admin@example.com")` or `reply-to("Admin" "admin@example.com")` or `reply-to("Admin" "admin@example.com") reply-to("Admin2" "admin2@example.com")`
 
 {{% include-headless "chunk/para-can-contain-macros.md" %}}
 

@@ -25,13 +25,13 @@ To select the messages that come from either host `example1` or `example2`, use 
         destination(d1); destination(d2); };
 ```
 
-Use the **not** operator to invert filters, for example, to select the messages that were not sent by host `example1`:
+Use the `not` operator to invert filters, for example, to select the messages that were not sent by host `example1`:
 
 ```c
    filter demo_filter { not host("example1"); };
 ```
 
-However, to select the messages that were not sent by host `example1` or `example2`, you have to use the **and** operator (that's how boolean logic works):
+However, to select the messages that were not sent by host `example1` or `example2`, you have to use the `and` operator (that's how boolean logic works):
 
 ```c
    filter demo_filter { not host("example1") and not host("example2"); };

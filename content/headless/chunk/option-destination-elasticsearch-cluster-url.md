@@ -9,7 +9,7 @@
 | Type:    | string |
 | Default: | N/A    |
 
-*Description:* Specifies the URL or the Elasticsearch cluster, for example, **cluster-url("http://192.168.10.10:9200")")**.
+*Description:* Specifies the URL or the Elasticsearch cluster, for example, `cluster-url("http://192.168.10.10:9200")")`.
 
 {{% include-headless "chunk/para-elasticsearch-loadbalancing.md" %}}
 

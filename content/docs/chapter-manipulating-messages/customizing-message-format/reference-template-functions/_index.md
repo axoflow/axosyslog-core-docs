@@ -60,7 +60,7 @@ The following example selects the message of the context that has a `username` n
 ```
 
 
-To limit the number of matches that the template function returns, use the **--max-count** option, for example, **$(context-lookup --max-count 5 ("${username}" == "root") ${tags})**. If you do not want to limit the number of matches, use **--max-count 0**.
+To limit the number of matches that the template function returns, use the `--max-count` option, for example, `$(context-lookup --max-count 5 ("${username}" == "root") ${tags})`. If you do not want to limit the number of matches, use `--max-count 0`.
 
 You can to specify multiple name-value pairs as parameters, separated with commas. If multiple messages match the condition of `context-lookup`, these will be returned also separated by commas. This can be used for example, to collect the email recipients from postfix messages.
 
@@ -123,19 +123,19 @@ Available in {{% param "product.abbrev" %}} version 3.10 and later.
 
 ## Example: Using the explode template function
 
-The following configuration example turns strings into a list. If there are several strings, {{% param "product.abbrev" %}} looks for a separator within each individual string. For example, **string 2** is separated as **string, 2** in the example below:
+The following configuration example turns strings into a list. If there are several strings, {{% param "product.abbrev" %}} looks for a separator within each individual string. For example, `string 2` is separated as `string, 2` in the example below:
 
 | Configuration                                   | Result                             |
 | ----------------------------------------------- | ---------------------------------- |
 | $(explode ';' string1;string 2;string3;string4) | "string1,string,2,string3,string4" |
 
-Enclose the strings in double-quotes or apostrophes and **string 2** is separated as shown below:
+Enclose the strings in double-quotes or apostrophes and `string 2` is separated as shown below:
 
 | Configuration                                             | Result                                     |
 | --------------------------------------------------------- | ------------------------------------------ |
 | $(explode ' ' 'string1 string 2 string3 string4 string5') | "string1,string 2,string3,string4,string5" |
 
-The following examples replace the separator **';'** character with a **','** character:
+The following examples replace the separator `';'` character with a `','` character:
 
 | Configuration                                                | Result                                    |
 | ------------------------------------------------------------ | ----------------------------------------- |
@@ -238,7 +238,7 @@ For details, see {{% xref "/docs/chapter-concepts/concepts-value-pairs/_index.md
 
 Using the `format-cef-extension` template function has the following prerequisites:
 
-  - Set the `on-error` global option to **drop-property**, otherwise if the name of a name-value pair includes an invalid character, {{% param "product.abbrev" %}} drops the entire message. (Key name in CEF extensions can contain only the A-Z, a-z and 0-9 characters.)
+  - Set the `on-error` global option to `drop-property`, otherwise if the name of a name-value pair includes an invalid character, {{% param "product.abbrev" %}} drops the entire message. (Key name in CEF extensions can contain only the A-Z, a-z and 0-9 characters.)
     
     ```c
         options {
@@ -246,7 +246,7 @@ Using the `format-cef-extension` template function has the following prerequisit
         };
     ```
 
-  - The log messages must be encoded in UTF-8. Use the **encoding()** option or the **validate-utf8** flag in the message source.
+  - The log messages must be encoded in UTF-8. Use the `encoding()` option or the `validate-utf8` flag in the message source.
 
 
 ## Example: Using the format-cef-extension template function
@@ -299,7 +299,7 @@ You can find the exact source of this template function in the [{{% param "produ
 
 {{% alert title="Note" color="info" %}}
 
-To use the `format-cim()` template function, {{% param "product.abbrev" %}} must be compiled with JSON support. For details, see {{% xref "/docs/chapter-install/syslog-ng-compile-options/_index.md" %}}. To see if your {{% param "product.abbrev" %}} binary was compiled with JSON support, execute the **syslog-ng --version** command.
+To use the `format-cim()` template function, {{% param "product.abbrev" %}} must be compiled with JSON support. For details, see {{% xref "/docs/chapter-install/syslog-ng-compile-options/_index.md" %}}. To see if your {{% param "product.abbrev" %}} binary was compiled with JSON support, execute the `syslog-ng --version` command.
 
 {{% /alert %}}
 
@@ -323,7 +323,7 @@ To use the `format-cim()` template function, {{% param "product.abbrev" %}} must
 
     $(format-flat-json parameters)
 
-*Description:* The `format-flat-json` template function is identical to the `format-json` template function, but nested JSON objects are flattened in the output. If you have to forward your log messages in JSON format, but the receiving application cannot handle nested JSON objects, use the **format-flat-json** template function.
+*Description:* The `format-flat-json` template function is identical to the `format-json` template function, but nested JSON objects are flattened in the output. If you have to forward your log messages in JSON format, but the receiving application cannot handle nested JSON objects, use the `format-flat-json` template function.
 
 
 ## Example: Flattened JSON output
@@ -433,14 +433,14 @@ The following example shows how to use this template function to store log messa
 {{% alert title="Note" color="info" %}}
 In the case of syslog-ng macros starting with a dot (for example, "`.SDATA.meta.sequenceID`"), `format-json` replaces the dot with an underscore character (for example, `{"_SDATA":{"meta":{"sequenceId":"55555"}}}`).
 
-To retain the starting dot, use the **--leave-initial-dot** flag, for example:
+To retain the starting dot, use the `--leave-initial-dot` flag, for example:
 
 ```c
 $(format-json --leave-initial-dot .SDATA.meta.sequenceID)
 ```
 {{% /alert %}}
 
-If you have to forward your log messages in JSON format, but the receiving application cannot handle nested JSON objects, use the **format-flat-json** template function. For details, see [](#template-function-format-flat-json).
+If you have to forward your log messages in JSON format, but the receiving application cannot handle nested JSON objects, use the `format-flat-json` template function. For details, see [](#template-function-format-flat-json).
 
 
 
@@ -508,7 +508,7 @@ To retrieve additional GeoIP information, see {{% xref "/docs/chapter-enrich-dat
 
 {{% alert title="Note" color="info" %}}
 
-This template function is available only if {{% param "product.abbrev" %}} has been compiled with geoip2 support. To enable it, use the **--enable-geoip** compiling option.
+This template function is available only if {{% param "product.abbrev" %}} has been compiled with geoip2 support. To enable it, use the `--enable-geoip` compiling option.
 
 {{% /alert %}}
 
@@ -527,7 +527,7 @@ To retrieve additional GeoIP information, see {{% xref "/docs/chapter-enrich-dat
 
 *Description:* Available in {{% param "product.abbrev" %}} 3.13 and later.
 
-You can use the **getent** template function to look up entries from the Name Service Switch libraries, such as, passwd, services, or protocols.
+You can use the `getent` template function to look up entries from the Name Service Switch libraries, such as, passwd, services, or protocols.
 
 The following databases are supported:
 
@@ -662,7 +662,7 @@ The md4 `\<method\>` is deprecated.
 
 This template function can be used for anonymizing sensitive parts of the log message (for example, username) that were parsed out using PatternDB before storing or forwarding the message. This way, the ability of correlating messages along this value is retained.
 
-Also, using this template, quasi-unique IDs can be generated for data, using the **--length** option. This way, IDs will be shorter than a regular hash, but there is a very small possibility of them not being as unique as a non-truncated hash.
+Also, using this template, quasi-unique IDs can be generated for data, using the `--length` option. This way, IDs will be shorter than a regular hash, but there is a very small possibility of them not being as unique as a non-truncated hash.
 
 {{% alert title="Note" color="info" %}}
 
@@ -680,14 +680,14 @@ The following example calculates the SHA1 hash of the hostname of the message:
 
 ```
 
-The following example calculates the SHA256 hash of the hostname, using the **salted** string to salt the result:
+The following example calculates the SHA256 hash of the hostname, using the `salted` string to salt the result:
 
 ```c
    $(sha1 $HOST salted)
 
 ```
 
-To use shorter hashes, set the **--length**:
+To use shorter hashes, set the `--length`:
 
 ```c
    $(sha1 --length 6 $HOST)
@@ -1273,7 +1273,7 @@ This is equivalent to `file("/var/log/$HOST/$PROGRAM/messages");`, but any slash
 
     $(stardate [option] "<date-in-unixtime>")
 
-*Description:* Converts a date in UNIXTIME (for example, ${UNIXTIME}) into [stardate](https://en.wikipedia.org/wiki/Stardate), displaying the year and the progress of the year in a number of digits (`YYYY.NNN`). You can set the number of digits using the **--digits** option, for example:
+*Description:* Converts a date in UNIXTIME (for example, ${UNIXTIME}) into [stardate](https://en.wikipedia.org/wiki/Stardate), displaying the year and the progress of the year in a number of digits (`YYYY.NNN`). You can set the number of digits using the `--digits` option, for example:
 
 ```c
    $(stardate --digits 2 "${R_UNIXTIME}")
@@ -1311,11 +1311,11 @@ This is equivalent to `file("/var/log/$HOST/$PROGRAM/messages");`, but any slash
 
   - `offset`
 
-  - Specifies where the substring begins (in characters). **0** means to start from the beginning of the string, **5** means to skip the first 5 characters of the string, and so on. Use negative numbers to specify where to start from the end of the string, for example, **-1** means the last character, **-5** means to start five characters before the end of the string.
+  - Specifies where the substring begins (in characters). `0` means to start from the beginning of the string, `5` means to skip the first 5 characters of the string, and so on. Use negative numbers to specify where to start from the end of the string, for example, `-1` means the last character, `-5` means to start five characters before the end of the string.
 
   - `length`
 
-  - *Optional parameter*: The number of characters to extract. If not specified, the substring will be extracted from the offset to the end of the string. Use negative numbers to stop the substring before the end of the string, for example, **-5** means the substring ends five characters before the end of the string.
+  - *Optional parameter*: The number of characters to extract. If not specified, the substring will be extracted from the offset to the end of the string. Use negative numbers to stop the substring before the end of the string, for example, `-5` means the substring ends five characters before the end of the string.
 
 
 ## Example: Using the substr template function

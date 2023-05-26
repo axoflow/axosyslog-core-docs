@@ -28,13 +28,13 @@ The `program()` destination has the following options:
 
 {{% include-headless "chunk/option-destination-mark-mode.md" %}}
 
-Note that in earlier versions of {{% param "product.abbrev" %}}, the default for the mark-mode of the `program` destination was `none`. Now it defaults to the global setting, so the `program` destination will emit a MARK message every `mark-freq` interval. To avoid such messages, set the `mark-mode()` option of the destination to **none**.
+Note that in earlier versions of {{% param "product.abbrev" %}}, the default for the mark-mode of the `program` destination was `none`. Now it defaults to the global setting, so the `program` destination will emit a MARK message every `mark-freq` interval. To avoid such messages, set the `mark-mode()` option of the destination to `none`.
 
 {{% include-headless "chunk/option-destination-suppress.md" %}}
 
 {{% include-headless "chunk/option-destination-template.md" %}}
 
-Make sure to end your template with a newline character (**\\n**).
+Make sure to end your template with a newline character (`\\n`).
 
 {{% include-headless "chunk/option-destination-template-escape.md" %}}
 

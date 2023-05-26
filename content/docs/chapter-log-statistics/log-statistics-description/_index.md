@@ -4,9 +4,9 @@ weight:  100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-You can list all active metrics on your {{% param "product.abbrev" %}} host using the following command (this lists the metrics, without their current values): **syslog-ng-ctl query list "\*"**
+You can list all active metrics on your {{% param "product.abbrev" %}} host using the following command (this lists the metrics, without their current values): `syslog-ng-ctl query list "\*"`
 
-To list the metrics and their values, use the following command: **syslog-ng-ctl query get "\*"**
+To list the metrics and their values, use the following command: `syslog-ng-ctl query get "\*"`
 
 The displayed metrics have the following structure.
 

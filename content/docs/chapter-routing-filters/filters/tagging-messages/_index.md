@@ -18,6 +18,6 @@ When syslog-ng receives a message, it automatically adds the `.source.\<id_of_th
 
   - Tags are available locally, that is, if you add tags to a message on the client, these tags will not be available on the server.
 
-  - To include the tags in the message, use the **${TAGS}** macro in a template. Alternatively, if you are using the IETF-syslog message format, you can include the `${TAGS}` macro in the `.SDATA.meta` part of the message. Note that the `${TAGS}` macro is available only in {{% param "product.abbrev" %}} 3.1.1 and later.
+  - To include the tags in the message, use the `${TAGS}` macro in a template. Alternatively, if you are using the IETF-syslog message format, you can include the `${TAGS}` macro in the `.SDATA.meta` part of the message. Note that the `${TAGS}` macro is available only in {{% param "product.abbrev" %}} 3.1.1 and later.
 
 For an example on tagging, see [Example: Adding tags and filtering messages with tags]({{< relref "/docs/chapter-routing-filters/filters/reference-filters/_index.md" >}}).

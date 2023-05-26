@@ -13,7 +13,7 @@
 
 {{% alert title="Note" color="info" %}}
 
-If you specify `host="localhost"`, {{% param "product.abbrev" %}} will use a socket to connect to the local SMTP server. Use **host="127.0.0.1"** to force TCP communication between {{% param "product.abbrev" %}} and the local SMTP server.
+If you specify `host="localhost"`, {{% param "product.abbrev" %}} will use a socket to connect to the local SMTP server. Use `host="127.0.0.1"` to force TCP communication between {{% param "product.abbrev" %}} and the local SMTP server.
 
 {{% /alert %}}
 

@@ -24,6 +24,6 @@ The following are examples for tracing system calls of syslog-ng on some platfor
 
 {{% alert title="Note" color="info" %}}
 
-To execute these commands on an already running {{% param "product.abbrev" %}} process, use the **-p \<pid_of_syslog-ng\>** parameter.
+To execute these commands on an already running {{% param "product.abbrev" %}} process, use the `-p \<pid_of_syslog-ng\>` parameter.
 
 {{% /alert %}}

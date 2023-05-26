@@ -319,7 +319,7 @@ For example:
 | Type:    | yes|no |
 | Default: | no     |
 
-*Description:* By default, when connecting to an Elasticsearch cluster, {{% param "product.abbrev" %}} checks the state of the cluster. If the primary shards of the cluster are not active, {{% param "product.abbrev" %}} will not send messages, but wait for them to become active. To disable this health check and send the messages to Elasticsearch anyway, use the **skip-cluster-health-check(yes)** option in your configuration.
+*Description:* By default, when connecting to an Elasticsearch cluster, {{% param "product.abbrev" %}} checks the state of the cluster. If the primary shards of the cluster are not active, {{% param "product.abbrev" %}} will not send messages, but wait for them to become active. To disable this health check and send the messages to Elasticsearch anyway, use the `skip-cluster-health-check(yes)` option in your configuration.
 
 
 ## template() {#elasticsearch2-option-elasticsearch2-template}
@@ -331,7 +331,7 @@ For example:
 
 *Description:* The message as sent to the Elasticsearch server. Typically, you will want to use the command-line notation of the `format-json` template function.
 
-To add a `@timestamp` field to the message, for example, to use with Kibana, include the **@timestamp=${ISODATE}** expression in the template. For example: `template($(format-json --scope rfc5424 --exclude DATE --key ISODATE @timestamp=${ISODATE}))`
+To add a `@timestamp` field to the message, for example, to use with Kibana, include the `@timestamp=${ISODATE}` expression in the template. For example: `template($(format-json --scope rfc5424 --exclude DATE --key ISODATE @timestamp=${ISODATE}))`
 
 For details on formatting messages in JSON format, see [format-json]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}).
 

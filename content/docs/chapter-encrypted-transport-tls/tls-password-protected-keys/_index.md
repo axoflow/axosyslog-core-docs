@@ -17,7 +17,7 @@ Starting with {{% param "product.abbrev" %}} version 3.14, you can use password-
 
   - The path and the filename of the private key cannot contain whitespaces.
 
-  - Depending on your platform, the number of passwords {{% param "product.abbrev" %}} can use at the same time might be limited (for example, on Ubuntu 16.04 you can store 16 passwords if you are running {{% param "product.abbrev" %}} as a non-root user). If you use lots of password-protected private keys in your {{% param "product.abbrev" %}} configuration, increase this limit using the following command: **sudo ulimit -l unlimited**
+  - Depending on your platform, the number of passwords {{% param "product.abbrev" %}} can use at the same time might be limited (for example, on Ubuntu 16.04 you can store 16 passwords if you are running {{% param "product.abbrev" %}} as a non-root user). If you use lots of password-protected private keys in your {{% param "product.abbrev" %}} configuration, increase this limit using the following command: `sudo ulimit -l unlimited`
 
 
 

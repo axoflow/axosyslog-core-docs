@@ -55,7 +55,7 @@ Technically, `add-contextual-data()` is a parser in {{% param "product.abbrev" %
 ```
 
 
-You can also add data to messages that do not have a matching selector entry in the database using the **default-selector()** option.
+You can also add data to messages that do not have a matching selector entry in the database using the `default-selector()` option.
 
 If you modify the database file, you have to reload {{% param "product.abbrev" %}} for the changes to take effect. If reloading {{% param "product.abbrev" %}} or the database file fails for some reason, {{% param "product.abbrev" %}} will keep using the last working database file.
 

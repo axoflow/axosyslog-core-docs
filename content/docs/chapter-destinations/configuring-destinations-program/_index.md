@@ -31,7 +31,7 @@ When using the `program()` driver, consider the following:
 
 ## Example: Using the program() destination driver {#example-destination-program}
 
-The message format does not include the priority and facility values by default. To add these values, specify a template for the program destination, as shown in the following example. Make sure to end your template with a newline character (**\\n**).
+The message format does not include the priority and facility values by default. To add these values, specify a template for the program destination, as shown in the following example. Make sure to end your template with a newline character (`\\n`).
 
 ```c
    destination d_prog { program("/bin/script" template("<${PRI}>${DATE} ${HOST} ${MESSAGE}\n") ); };

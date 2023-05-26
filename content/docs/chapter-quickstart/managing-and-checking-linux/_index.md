@@ -14,14 +14,14 @@ To start {{% param "product.abbrev" %}}, execute the following command as root.
 
 ## Example: starting {{% param "product.abbrev" %}}
 
-**`systemctl start syslog-ng`**
+`systemctl start syslog-ng`
 
 
 If the service starts successfully, no output will be displayed.
 
 The following message indicates that {{% param "product.abbrev" %}} can not start (see [Checking {{% param "product.abbrev" %}} status](#check-syslog-ng-status)):
 
-`Job for syslog-ng.service failed because the control process exited with error code. See **systemctl status syslog-ng.service** and **journalctl -xe** for details.`
+`Job for syslog-ng.service failed because the control process exited with error code. See `systemctl status syslog-ng.service` and `journalctl -xe` for details.`
 
 
 
@@ -34,7 +34,7 @@ To stop {{% param "product.abbrev" %}}
     
     ## Example: command for stopping {{% param "product.abbrev" %}}
     
-    **`systemctl stop syslog-ng`**
+    `systemctl stop syslog-ng`
     
 
 2.  Check the status of {{% param "product.abbrev" %}} service (see [Checking {{% param "product.abbrev" %}} status](#check-syslog-ng-status)).
@@ -48,7 +48,7 @@ To restart {{% param "product.abbrev" %}}, execute the following command as root
 
 ## Example: command for restarting {{% param "product.abbrev" %}}
 
-**`systemctl restart syslog-ng`**
+`systemctl restart syslog-ng`
 
 
 
@@ -60,7 +60,7 @@ To reload the configuration file without restarting {{% param "product.abbrev" %
 
 ## Example: command for reloading the configuration file without restarting {{% param "product.abbrev" %}}
 
-**`systemctl reload syslog-ng`**
+`systemctl reload syslog-ng`
 
 
 
@@ -69,7 +69,7 @@ To reload the configuration file without restarting {{% param "product.abbrev" %
 
 To check the following status-related components, observe the suggestions below.
 
-  - **Checking the status of {{% param "product.abbrev" %}} service**
+  - `Checking the status of {{% param "product.abbrev" %}} service`
     
     To check the status of {{% param "product.abbrev" %}} service
     
@@ -78,12 +78,12 @@ To check the following status-related components, observe the suggestions below.
         
         ## Example: command for checking the status of {{% param "product.abbrev" %}} service
         
-        **`systemctl --no-pager status syslog-ng`**
+        `systemctl --no-pager status syslog-ng`
         
     
     2.  Check the <span class="code">Active:</span> field, which shows the status of {{% param "product.abbrev" %}} service. The following statuses are possible:
         
-          - **active (running)** - {{% param "product.abbrev" %}} service is up and running
+          - `active (running)` - {{% param "product.abbrev" %}} service is up and running
             
             
             ## Example: {{% param "product.abbrev" %}} service active
@@ -103,7 +103,7 @@ To check the following status-related components, observe the suggestions below.
             ```
             
         
-          - **inactive (dead)** - syslog-ng service is stopped
+          - `inactive (dead)` - syslog-ng service is stopped
             
             
             ## Example: {{% param "product.abbrev" %}} status inactive
@@ -121,7 +121,7 @@ To check the following status-related components, observe the suggestions below.
             ```
             
 
-  - **Checking the process of {{% param "product.abbrev" %}}**
+  - `Checking the process of {{% param "product.abbrev" %}}`
     
     To check the process of {{% param "product.abbrev" %}}, execute one of the following commands.
     
@@ -130,7 +130,7 @@ To check the following status-related components, observe the suggestions below.
         
         ## Example: command ps u `pidof syslog-ng`
         
-        **`ps u `pidof syslog-ng``**
+        `ps u `pidof syslog-ng``
         
         
         Expected output example:
@@ -144,22 +144,22 @@ To check the following status-related components, observe the suggestions below.
         
         ## Example: command ps axu | grep syslog-ng | grep -v grep
         
-        **`ps axu | grep syslog-ng | grep -v grep`**
+        `ps axu | grep syslog-ng | grep -v grep`
         
         
         Expected output example:
         
         <span class="code">syslogng 6709 0.0 0.6 308680 13432 ? Ss 09:17 0:00 /opt/syslog-ng/libexec/syslog-ng -F --no-caps --enable-core</span>
 
-  - **Checking the internal logs of {{% param "product.abbrev" %}}**
+  - `Checking the internal logs of {{% param "product.abbrev" %}}`
     
     The internal logs of {{% param "product.abbrev" %}} contains informal, warning and error messages.
     
-    By default, {{% param "product.abbrev" %}} log messages (generated on the <span class="code">internal()</span> source) are written to **`/var/log/messages`**.
+    By default, {{% param "product.abbrev" %}} log messages (generated on the <span class="code">internal()</span> source) are written to `/var/log/messages`.
     
     Check the internal logs of {{% param "product.abbrev" %}} for any issue.
 
-  - <span id="stats"></span>**Message processing**
+  - <span id="stats"></span>`Message processing`
     
     The {{% param "product.abbrev" %}} application collects statistics about the number of processed messages on the different sources and destinations.
     
@@ -169,14 +169,14 @@ When using `syslog-ng-ctl stats`, consider that while the output is generally co
     If needed, you can sort the output with an external application, for example, `| sort`.
     {{% /alert %}}
     
-      - **Central statistics**
+      - `Central statistics`
         
         To check the central statistics, execute the following command to see the number of received and queued (sent) messages by {{% param "product.abbrev" %}}.
         
         
         ## Example: command for checking central statistics
         
-        **`watch "/opt/syslog-ng/sbin/syslog-ng-ctl stats | grep ^center"`**
+        `watch "/opt/syslog-ng/sbin/syslog-ng-ctl stats | grep ^center"`
         
         
         The output will be updated in every 2 seconds.
@@ -195,14 +195,14 @@ When using `syslog-ng-ctl stats`, consider that while the output is generally co
         ```
         
     
-      - **Source statistics**
+      - `Source statistics`
         
         To check the source statistics, execute the following command to see the number of received messages on the configured sources.
         
         
         ## Example: command for checking central statistics
         
-        **`watch "/opt/syslog-ng/sbin/syslog-ng-ctl stats | grep ^source"`**
+        `watch "/opt/syslog-ng/sbin/syslog-ng-ctl stats | grep ^source"`
         
         
         The output will be updated in every 2 seconds.
@@ -222,14 +222,14 @@ When using `syslog-ng-ctl stats`, consider that while the output is generally co
         ```
         
     
-      - **Destination statistics**
+      - `Destination statistics`
         
         To check the source statistics, execute the following command to see the number of received messages on the configured sources.
         
         
         ## Example: command for checking destination statistics
         
-        **`watch "/opt/syslog-ng/sbin/syslog-ng-ctl stats | grep ^source"`**
+        `watch "/opt/syslog-ng/sbin/syslog-ng-ctl stats | grep ^source"`
         
         
         The output will be updated in every 2 seconds.

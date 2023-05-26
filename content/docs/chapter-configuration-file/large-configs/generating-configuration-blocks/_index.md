@@ -69,7 +69,7 @@ The {{% param "product.abbrev" %}} application can automatically execute scripts
     
     ```
 
-7.  Check if your modified {{% param "product.abbrev" %}} configuration file is syntactically correct using the **syslog-ng --syntax-only** command.
+7.  Check if your modified {{% param "product.abbrev" %}} configuration file is syntactically correct using the `syslog-ng --syntax-only` command.
 
-8.  If your modified configuration is syntactically correct, load the new configuration file using the **syslog-ng-ctl reload** command.
+8.  If your modified configuration is syntactically correct, load the new configuration file using the `syslog-ng-ctl reload` command.
 

@@ -19,9 +19,9 @@ The `grouping-by()` parser has three options that determine if a message is adde
 
   - The `key()` identifies the context the message belongs to. (The value of the key must be the same for every message of the context.)
 
-  - To use a filter to further limit the messages that are added to the context, you can use the **where()** option.
+  - To use a filter to further limit the messages that are added to the context, you can use the `where()` option.
 
-The `timeout()` option determines how long a context is stored, that is, how long {{% param "product.abbrev" %}} waits for related messages to arrive. If the group has a specific log message that ends the context (for example, a logout message), you can specify it using the **trigger()** option.
+The `timeout()` option determines how long a context is stored, that is, how long {{% param "product.abbrev" %}} waits for related messages to arrive. If the group has a specific log message that ends the context (for example, a logout message), you can specify it using the `trigger()` option.
 
 When the context is closed, and the messages match the filter set in the `having()` option (or the `having()` option is not set), {{% param "product.abbrev" %}} generates and sends the message set in the `aggregate()` option.
 

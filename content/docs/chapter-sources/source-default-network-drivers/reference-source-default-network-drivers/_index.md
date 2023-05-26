@@ -43,7 +43,7 @@ Note that the total number of connections the `default-network-drivers()` source
 
 {{% alert title="Warning" color="warning" %}}
 
-To receive messages using a TLS-encrypted connection, you must set the `tls(key-file() cert-file())` options of the **default-network-drivers()** source. For example:
+To receive messages using a TLS-encrypted connection, you must set the `tls(key-file() cert-file())` options of the `default-network-drivers()` source. For example:
 
 ```c
    source s_network {

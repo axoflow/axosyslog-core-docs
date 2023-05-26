@@ -7,33 +7,33 @@ weight:  700
 Complete the following steps to configure your Microsoft SQL Server to enable remote logins and accept log messages from syslog-ng.
 
 
-1.  Start the SQL Server Management Studio application. Select **Start \> Programs \> Microsoft SQL Server 2005 \> SQL Server Management Studio**.
+1.  Start the SQL Server Management Studio application. Select `Start \> Programs \> Microsoft SQL Server 2005 \> SQL Server Management Studio`.
 
 2.  Create a new database.
     
     1.  ![](../Images/Screenshots/mssql-newdb-select.png)
         
-        In the **Object Explorer**, right-click on the **Databases** entry and select **New Database**.
+        In the `Object Explorer`, right-click on the `Databases` entry and select `New Database`.
     
     2.  ![](../Images/Screenshots/mssql-newdb-create.png)
         
-        Enter the name of the new database (for example, **syslogng**) into the **Database name** field and click **OK**.
+        Enter the name of the new database (for example, `syslogng`) into the `Database name` field and click `OK`.
 
 3.  Create a new database user and associate it with the new database.
     
     1.  ![](../Images/Screenshots/mssql-newuser-select.png)
         
-        In the **Object Explorer**, select **Security**, right-click on the **Logins** entry, then select **New Login**.
+        In the `Object Explorer`, select `Security`, right-click on the `Logins` entry, then select `New Login`.
     
     2.  ![](../Images/Screenshots/mssql-newuser-general.png)
         
-        Enter a name (for example, **syslog-ng**) for the user into the **Login name** field.
+        Enter a name (for example, `syslog-ng`) for the user into the `Login name` field.
     
-    3.  Select the **SQL Server Authentication** option and enter a password for the user.
+    3.  Select the `SQL Server Authentication` option and enter a password for the user.
     
-    4.  In the **Default database** field, select the database created in Step 2 (for example, **syslogng**).
+    4.  In the `Default database` field, select the database created in Step 2 (for example, `syslogng`).
     
-    5.  In the **Default language** field, select the language of log messages that you want to store in the database, then click **OK**.
+    5.  In the `Default language` field, select the language of log messages that you want to store in the database, then click `OK`.
         
         {{% alert title="Warning" color="warning" %}}
         
@@ -41,15 +41,15 @@ Complete the following steps to configure your Microsoft SQL Server to enable re
         
         {{% /alert %}}
     
-    6.  In the **Object Explorer**, select **Security \> Logins**, then right-click on the new login created in the previous step, and select **Properties**.
+    6.  In the `Object Explorer`, select `Security \> Logins`, then right-click on the new login created in the previous step, and select `Properties`.
     
     7.  ![](../Images/Screenshots/mssql-newuser-setowner.png)
         
-        Select **User Mapping**. In the **Users mapped to this login** option, check the line corresponding to the new login (for example, `syslogng`). In the **Database role membership** field, check the **db_owner** and **public** options.
+        Select `User Mapping`. In the `Users mapped to this login` option, check the line corresponding to the new login (for example, `syslogng`). In the `Database role membership` field, check the `db_owner` and `public` options.
 
 4.  ![](../Images/Screenshots/mssql-newuser-login.png)
     
     Enable remote logins for SQL users.
     
-    In the **Object Explorer** right-click on your database server, and select **Properties \> Security**, and set the **Server Authentication** option to **SQL Server and Windows Authentication mode**.
+    In the `Object Explorer` right-click on your database server, and select `Properties \> Security`, and set the `Server Authentication` option to `SQL Server and Windows Authentication mode`.
 

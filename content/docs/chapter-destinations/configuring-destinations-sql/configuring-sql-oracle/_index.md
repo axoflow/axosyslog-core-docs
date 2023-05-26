@@ -14,7 +14,7 @@ The Oracle sql destination has some special aspects that are important to note.
 
   - As certain database versions limit the maximum length of table names, macros in the table names should be used with care.
 
-  - In the current version of {{% param "product.abbrev" %}}, the types of database columns must be explicitly set for the Oracle destination. The column used to store the text part of the syslog messages should be able to store messages as long as the longest message permitted by syslog-ng, therefore it is usually recommended to use the **varchar2** or **clob** column type. (The maximum length of the messages can be set using the `log-msg-size()` option.) For details, see the following example.
+  - In the current version of {{% param "product.abbrev" %}}, the types of database columns must be explicitly set for the Oracle destination. The column used to store the text part of the syslog messages should be able to store messages as long as the longest message permitted by syslog-ng, therefore it is usually recommended to use the `varchar2` or `clob` column type. (The maximum length of the messages can be set using the `log-msg-size()` option.) For details, see the following example.
 
   - The Oracle Instant Client used by {{% param "product.abbrev" %}} supports only the following character sets:
     

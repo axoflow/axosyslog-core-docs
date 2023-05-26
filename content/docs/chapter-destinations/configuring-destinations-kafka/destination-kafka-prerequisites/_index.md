@@ -9,7 +9,7 @@ To publish messages from {{% param "product.abbrev" %}} to Apache Kafka, complet
 
 ## Steps:
 
-1.  {{% include-headless "chunk/para-java-requirements.md" %}}
+1.  {{< include-headless "chunk/para-java-requirements.md" >}}
 
 2.  Download the latest stable binary release of the Apache Kafka libraries (version 0.9 or newer) from <http://kafka.apache.org/downloads.html>.
 

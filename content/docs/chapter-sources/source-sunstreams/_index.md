@@ -8,7 +8,7 @@ Solaris uses its `STREAMS` framework to send messages to the `syslogd` process. 
 
 {{% alert title="Note" color="info" %}}
 
-The `sun-streams()` driver must be enabled when the syslog-ng application is compiled (see **./configure --help**).
+The `sun-streams()` driver must be enabled when the syslog-ng application is compiled (see `./configure --help`).
 
 {{% /alert %}}
 

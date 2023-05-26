@@ -21,7 +21,7 @@ These macros are available when {{% param "product.abbrev" %}} successfully pars
 
 ## BSDTAG {#macro-bsdtag}
 
-*Description:* Facility/priority information in the format used by the FreeBSD syslogd: a priority number followed by a letter that indicates the facility. The priority number can range from **0** to **7**. The facility letter can range from **A** to **Y**, where `A` corresponds to facility number zero (LOG_KERN), `B` corresponds to facility 1 (LOG_USER), and so on.
+*Description:* Facility/priority information in the format used by the FreeBSD syslogd: a priority number followed by a letter that indicates the facility. The priority number can range from `0` to `7`. The facility letter can range from `A` to `Y`, where `A` corresponds to facility number zero (LOG_KERN), `B` corresponds to facility 1 (LOG_USER), and so on.
 
 
 
@@ -77,9 +77,9 @@ For an example use case when using the macro is recommended, see {{% xref "/docs
 
   - If the message traverses several hosts and the [`chain-hostnames()`]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) option is on, the first host in the chain is used.
 
-  - If the [`keep-hostname()`]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) option is disabled (**keep-hostname(no)**), the value of the $FULLHOST macro will be the DNS hostname of the host that sent the message to {{% param "product.abbrev" %}} (that is, the DNS hostname of the last hop). In this case the $FULLHOST and $FULLHOST_FROM macros will have the same value.
+  - If the [`keep-hostname()`]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) option is disabled (`keep-hostname(no)`), the value of the $FULLHOST macro will be the DNS hostname of the host that sent the message to {{% param "product.abbrev" %}} (that is, the DNS hostname of the last hop). In this case the $FULLHOST and $FULLHOST_FROM macros will have the same value.
 
-  - If the [`keep-hostname()`]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) option is enabled (**keep-hostname(yes)**), the value of the $FULLHOST macro will be the hostname retrieved from the log message. That way the name of the original sender host can be used, even if there are log relays between the sender and the server.
+  - If the [`keep-hostname()`]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) option is enabled (`keep-hostname(yes)`), the value of the $FULLHOST macro will be the hostname retrieved from the log message. That way the name of the original sender host can be used, even if there are log relays between the sender and the server.
     
     {{% include-headless "chunk/p-keep-hostname-macro.md" %}}
 
@@ -117,9 +117,9 @@ The {{% param "product.abbrev" %}} application uses the following procedure to d
 
   - If the message traverses several hosts and the [`chain-hostnames()`]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) option is on, the first host in the chain is used.
 
-  - If the [`keep-hostname()`]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) option is disabled (**keep-hostname(no)**), the value of the $HOST macro will be the DNS hostname of the host that sent the message to {{% param "product.abbrev" %}} (that is, the DNS hostname of the last hop). In this case the $HOST and $HOST_FROM macros will have the same value.
+  - If the [`keep-hostname()`]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) option is disabled (`keep-hostname(no)`), the value of the $HOST macro will be the DNS hostname of the host that sent the message to {{% param "product.abbrev" %}} (that is, the DNS hostname of the last hop). In this case the $HOST and $HOST_FROM macros will have the same value.
 
-  - If the [`keep-hostname()`]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) option is enabled (**keep-hostname(yes)**), the value of the $HOST macro will be the hostname retrieved from the log message. That way the name of the original sender host can be used, even if there are log relays between the sender and the server.
+  - If the [`keep-hostname()`]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) option is enabled (`keep-hostname(yes)`), the value of the $HOST macro will be the hostname retrieved from the log message. That way the name of the original sender host can be used, even if there are log relays between the sender and the server.
     
     {{% include-headless "chunk/p-keep-hostname-macro.md" %}}
 
@@ -295,16 +295,16 @@ For an example use case when using the macro is recommended, see {{% xref "/docs
 
 When using STRUCTURED-DATA macros, consider the following:
 
-  - When referencing an element of the structured data, the macro must begin with the dot (.) character. For example, **${.SDATA.timeQuality.isSynced}**.
+  - When referencing an element of the structured data, the macro must begin with the dot (.) character. For example, `${.SDATA.timeQuality.isSynced}`.
 
-  - The SDID and SDNAME parts of the macro names are case sensitive: **${.SDATA.timeQuality.isSynced}** is not the same as **${.SDATA.TIMEQUALITY.ISSYNCED}**.
+  - The SDID and SDNAME parts of the macro names are case sensitive: `${.SDATA.timeQuality.isSynced}` is not the same as `${.SDATA.TIMEQUALITY.ISSYNCED}`.
 
 {{% /alert %}}
 
 
 ## Example: Using SDATA macros
 
-For example, if a log message contains the following structured data: **[exampleSDID@0 iut="3" eventSource="Application" eventID="1011"][examplePriority@0 class="high"]** you can use macros like: **${.SDATA.exampleSDID@0.eventSource}** — this would return the `Application` string in this case.
+For example, if a log message contains the following structured data: `[exampleSDID@0 iut="3" eventSource="Application" eventID="1011"][examplePriority@0 class="high"]` you can use macros like: `${.SDATA.exampleSDID@0.eventSource}` — this would return the `Application` string in this case.
 
 
 
@@ -320,7 +320,7 @@ For example, if a log message contains the following structured data: **[example
   - If the message is a Cisco IOS log message using the extended timestamp format, then {{% param "product.abbrev" %}} stores the sequence number from the message in this macro. If you forward this message the IETF-syslog protocol, {{% param "product.abbrev" %}} includes the sequence number received from the Cisco device in the `${.SDATA.meta.sequenceId}` part of the message.
     
     {{% alert title="Note" color="info" %}}
-To enable sequence numbering of log messages on Cisco devices, use the following command on the device (available in IOS 10.0 and later): **service sequence-numbers**. For details, see the manual of your Cisco device.
+To enable sequence numbering of log messages on Cisco devices, use the following command on the device (available in IOS 10.0 and later): `service sequence-numbers`. For details, see the manual of your Cisco device.
     {{% /alert %}}
 
   - For locally generated messages (that is, for messages that are received from a local source, and not from the network), {{% param "product.abbrev" %}} calculates a sequence number when sending the message to a destination (it is not calculated for relayed messages).
@@ -329,7 +329,7 @@ To enable sequence numbering of log messages on Cisco devices, use the following
     
       - This sequence number increases by one for every message sent to the destination. It not lost when {{% param "product.abbrev" %}} is reloaded, but it is reset when {{% param "product.abbrev" %}} is restarted.
     
-      - This sequence number is added to every message that uses the IETF-syslog protocol (**${.SDATA.meta.sequenceId}**), and can be added to BSD-syslog messages using the **${SEQNUM}** macro.
+      - This sequence number is added to every message that uses the IETF-syslog protocol (`${.SDATA.meta.sequenceId}`), and can be added to BSD-syslog messages using the `${SEQNUM}` macro.
 
 {{% alert title="Note" color="info" %}}
 

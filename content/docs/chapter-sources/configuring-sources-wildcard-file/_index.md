@@ -21,13 +21,13 @@ The {{% param "product.abbrev" %}} application notices if a file is renamed or r
 
 Note the following important points:
 
-  - You can use the **\*** and **?** wildcard characters in the filename (the `filename-pattern()` option), but not in the path (the `base-dir()` option).
+  - You can use the `\`* and `?` wildcard characters in the filename (the `filename-pattern()` option), but not in the path (the `base-dir()` option).
 
   - {{% include-headless "wnt/warning-wildcard-overlapping-files.md" %}}
 
   - {{% include-headless "chunk/para-wildcard-file-source-max-files.md" %}}
 
-  - If the message does not have a proper syslog header, {{% param "product.abbrev" %}} treats messages received from files as sent by the `user` facility. Use the **default-facility()** and **default-priority()** options in the source definition to assign a different facility if needed.
+  - If the message does not have a proper syslog header, {{% param "product.abbrev" %}} treats messages received from files as sent by the `user` facility. Use the `default-facility()` and `default-priority()` options in the source definition to assign a different facility if needed.
 
   - For every message that {{% param "product.abbrev" %}} reads from the source files, the path and name of the file is available in the [`${FILE_NAME}` macro]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}).
 

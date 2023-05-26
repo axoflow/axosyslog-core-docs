@@ -8,11 +8,11 @@ To increase its flexibility and simplify the development of additional modules, 
 
 Each module contains one or more plugins that add some functionality to {{% param "product.abbrev" %}} (for example, a destination or a source driver).
 
-  - To display the list of available modules, run the **syslog-ng --version** command.
+  - To display the list of available modules, run the `syslog-ng --version` command.
 
-  - To display the description of the available modules, run the **syslog-ng --module-registry** command.
+  - To display the description of the available modules, run the `syslog-ng --module-registry` command.
 
-  - To customize which modules {{% param "product.abbrev" %}} automatically loads when {{% param "product.abbrev" %}} starts, use the **--default-modules** command-line option of {{% param "product.abbrev" %}}.
+  - To customize which modules {{% param "product.abbrev" %}} automatically loads when {{% param "product.abbrev" %}} starts, use the `--default-modules` command-line option of {{% param "product.abbrev" %}}.
 
   - To request loading a module from the {{% param "product.abbrev" %}} configuration file, see {{% xref "/docs/chapter-configuration-file/modules/modules-loading/_index.md" %}}.
 

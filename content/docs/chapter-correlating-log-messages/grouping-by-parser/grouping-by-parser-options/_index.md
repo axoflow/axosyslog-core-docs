@@ -45,12 +45,12 @@ Note that the `aggregate()` option has access to every message of the context, a
 | --------- | ------------- |
 | Synopsis: | inject-mode() |
 
-*Description:* By default, the aggregated message that {{% param "product.abbrev" %}} generates is injected into the same place where the `grouping-by()` statement is referenced in the log path. To post the generated message into the `internal()` source instead, use the **inject-mode()** option in the definition of the parser.
+*Description:* By default, the aggregated message that {{% param "product.abbrev" %}} generates is injected into the same place where the `grouping-by()` statement is referenced in the log path. To post the generated message into the `internal()` source instead, use the `inject-mode()` option in the definition of the parser.
 
 
 ## Example: Sending triggered messages to the internal() source
 
-To send the generated messages to the `internal` source, use the **inject-mode("internal")** option:
+To send the generated messages to the `internal` source, use the `inject-mode("internal")` option:
 
 ```c
    parser p_grouping-by {grouping-by(
@@ -59,7 +59,7 @@ To send the generated messages to the `internal` source, use the **inject-mode("
     );};
 ```
 
-To inject the generated messages where the parser is referenced, use the **inject-mode("pass-through")** option:
+To inject the generated messages where the parser is referenced, use the `inject-mode("pass-through")` option:
 
 ```c
    parser p_grouping-by {grouping-by(
@@ -138,7 +138,7 @@ If the value of the key is static (for example, key("PROGRAM") instead of key("$
 
 *Description:* Specifies the maximum time to wait for all messages of the context to arrive. If no new message is added to the context during this period, the context is assumed to be complete and {{% param "product.abbrev" %}} generates and sends the triggered message (specified in the [aggregate()](#grouping-by-parser-aggregate) option), and clears the context. If a new message is added to the context, the timeout period is restarted.
 
-This option is mandatory, and its value must be equal to or greater than **1**.
+This option is mandatory, and its value must be equal to or greater than `1`.
 
 
 

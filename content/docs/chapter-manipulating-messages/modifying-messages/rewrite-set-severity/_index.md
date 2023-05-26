@@ -47,7 +47,7 @@ The `set-severity()` rewrite function accepts the following values:
 
 The following examples can be used in production for the `set-severity()` rewrite function.
 
-**Example using string:**
+`Example using string:`
 
 ```c
    rewrite {
@@ -55,7 +55,7 @@ The following examples can be used in production for the `set-severity()` rewrit
     };
 ```
 
-**Example using numeric string:**
+`Example using numeric string:`
 
 ```c
    rewrite {
@@ -63,7 +63,7 @@ The following examples can be used in production for the `set-severity()` rewrit
     };
 ```
 
-**Example using template:**
+`Example using template:`
 
 ```c
    rewrite {

@@ -17,7 +17,7 @@ The `snmptrap()` source is available in {{% param "product.abbrev" %}} version 3
 
   - The {{% param "product.abbrev" %}} application cannot resolve OIDs, you have to configure `snmptrapd` to do so. Note that because of a bug, if `snmptrapd` does not escape String values in the VarBindList if it can resolve an OID to a symbolic name. As a result, {{% param "product.abbrev" %}} cannot process traps that contain the `=` in the value of the string. To overcome this problem, disable resolving OIDs in `snmptrapd`. For details, see the documentation of `snmptrapd`.
 
-  - The colon (`:`) character is commonly used in SNMP traps. However, this character cannot be used in the name of {{% param "product.abbrev" %}} macros (name-value pairs). Therefore, the {{% param "product.abbrev" %}} application automatically replaces all consecutive `:` characters with a single underscore (`_`) character. For example, you can reference the value of the `NET-SNMP-EXAMPLES-MIB::netSnmpExampleString` key using the **${NET-SNMP-EXAMPLES-MIB_netSnmpExampleString}** macro.
+  - The colon (`:`) character is commonly used in SNMP traps. However, this character cannot be used in the name of {{% param "product.abbrev" %}} macros (name-value pairs). Therefore, the {{% param "product.abbrev" %}} application automatically replaces all consecutive `:` characters with a single underscore (`_`) character. For example, you can reference the value of the `NET-SNMP-EXAMPLES-MIB::netSnmpExampleString` key using the `${NET-SNMP-EXAMPLES-MIB_netSnmpExampleString}` macro.
     
     Note that this affects only name-value pairs (macros). The generated message always contains the original name of the key.
 

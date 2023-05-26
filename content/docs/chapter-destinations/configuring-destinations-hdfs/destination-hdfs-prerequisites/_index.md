@@ -9,7 +9,7 @@ To send messages from {{% param "product.abbrev" %}} to HDFS, complete the follo
 
 ## Steps:
 
-1.  {{% include-headless "chunk/para-java-requirements.md" %}}
+1.  {{< include-headless "chunk/para-java-requirements.md" >}}
 
 2.  Download the Hadoop Distributed File System (HDFS) libraries (version 2.x) from <http://hadoop.apache.org/releases.html>.
 

@@ -6,7 +6,7 @@ weight:  100
 
 This chapter lists regular expressions supported by {{% param "product.name" %}} ({{% param "product.abbrev" %}}) and their available supported `type()` and `flags()` options.
 
-By default, {{% param "product.abbrev" %}} uses PCRE-style regular expressions. To use other expression types, add the **type()** option after the regular expression.
+By default, {{% param "product.abbrev" %}} uses PCRE-style regular expressions. To use other expression types, add the `type()` option after the regular expression.
 
 The {{% param "product.abbrev" %}} application supports the following regular expression `type()` options:
 

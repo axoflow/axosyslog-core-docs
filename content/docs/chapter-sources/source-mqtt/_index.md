@@ -30,7 +30,7 @@ The rest of this chapter and its sections build on your familiarity with the MQT
 
 ## Example: Using the mqtt() source in your configuration
 
-The following example illustrates an `mqtt()` source configured to fetch messages from the MQTT broker running on **localhost:4444** using the **test/test topic**, and send them to the **localhost:4445** address.
+The following example illustrates an `mqtt()` source configured to fetch messages from the MQTT broker running on `localhost:4444` using the `test/test topic`, and send them to the `localhost:4445` address.
 
 ```c
    @version: 3.35

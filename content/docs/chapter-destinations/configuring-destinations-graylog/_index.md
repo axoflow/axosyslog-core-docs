@@ -23,7 +23,7 @@ You can forward simple name-value pairs where the name starts with a dot or unde
 
 ## Example: Using the graylog2() driver {#example-destination-graylog}
 
-You can send syslog messages to Graylog using the **graylog2()** destination. The `graylog2()` destination uses the GELF template, the native data format of Graylog.
+You can send syslog messages to Graylog using the `graylog2()` destination. The `graylog2()` destination uses the GELF template, the native data format of Graylog.
 
 1.  On the Graylog side, configure a GELF TCP input. For more information, see the relevant [Graylog](http://docs.graylog.org) documentation.
 

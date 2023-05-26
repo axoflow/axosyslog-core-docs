@@ -6,9 +6,9 @@ weight:  300
 
 Starting with version 3.6, {{% param "product.abbrev" %}} runs in multithreaded mode by default. You can enable multithreading in {{% param "product.abbrev" %}} using the following methods:
 
-  - Globally using the **threaded(yes)** option.
+  - Globally using the `threaded(yes)` option.
 
-  - Separately for selected sources or destinations using the **flags("threaded")** option.
+  - Separately for selected sources or destinations using the `flags("threaded")` option.
 
 
 ## Example: Enabling multithreading
@@ -21,7 +21,7 @@ To enable multithreading globally, use the `threaded` option:
     };
 ```
 
-To enable multithreading only for a selected source or destination, use the **flags("threaded")** option:
+To enable multithreading only for a selected source or destination, use the `flags("threaded")` option:
 
 ```c
    source s_tcp_syslog {

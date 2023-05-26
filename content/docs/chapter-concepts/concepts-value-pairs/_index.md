@@ -20,10 +20,10 @@ The {{% param "product.abbrev" %}} application allows you to select and construc
 
 When using `value-pairs`, there are three ways to specify which information (that is, macros or other name-value pairs) to include in the selection.
 
-  - Select groups of macros using the **scope()** parameter, and optionally remove certain macros from the group using the **exclude()** parameter.
+  - Select groups of macros using the `scope()` parameter, and optionally remove certain macros from the group using the `exclude()` parameter.
 
-  - List specific macros to include using the **key()** parameter.
+  - List specific macros to include using the `key()` parameter.
 
-  - Define new name-value pairs to include using the **pair()** parameter.
+  - Define new name-value pairs to include using the `pair()` parameter.
 
 These parameters are detailed in <span class="mcFormatColor" style="color: #04aada;">value-pairs()</span>.

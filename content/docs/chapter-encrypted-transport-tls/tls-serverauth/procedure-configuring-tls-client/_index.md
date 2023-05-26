@@ -15,9 +15,9 @@ Complete the following steps on every syslog-ng client host. Examples are provid
 
 1.  Copy the CA certificate (for example, `cacert.pem`) of the Certificate Authority that issued the certificate of the syslog-ng server (or the self-signed certificate of the syslog-ng server) to the syslog-ng client hosts, for example, into the `/opt/syslog-ng/etc/syslog-ng/ca.d` directory.
     
-    Issue the following command on the certificate: **openssl x509 -noout -hash -in cacert.pem** The result is a hash (for example, `6d2962a8`), a series of alphanumeric characters based on the Distinguished Name of the certificate.
+    Issue the following command on the certificate: `openssl x509 -noout -hash -in cacert.pem` The result is a hash (for example, `6d2962a8`), a series of alphanumeric characters based on the Distinguished Name of the certificate.
     
-    Issue the following command to create a symbolic link to the certificate that uses the hash returned by the previous command and the **.0** suffix.
+    Issue the following command to create a symbolic link to the certificate that uses the hash returned by the previous command and the `.0` suffix.
     
     `ln -s cacert.pem 6d2962a8.0`
 

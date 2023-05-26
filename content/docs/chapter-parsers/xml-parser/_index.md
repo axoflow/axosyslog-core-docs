@@ -123,7 +123,7 @@ To ensure that the end of the XML document is accurately detected, use any of th
 
   - In the case of multiline XML documents:
     
-      - If the opening and closing tags are fixed and known, you can use **multi-line-mode(prefix-suffix)**. Using regular expressions, specify a prefix and suffix matching the opening and closing tags. For details on using `multi-line-mode(prefix-suffix)`, see the `multi-line-prefix()` and `multi-line-suffix()` options.
+      - If the opening and closing tags are fixed and known, you can use `multi-line-mode(prefix-suffix)`. Using regular expressions, specify a prefix and suffix matching the opening and closing tags. For details on using `multi-line-mode(prefix-suffix)`, see the `multi-line-prefix()` and `multi-line-suffix()` options.
     
       - In the case of TCP, you can encapsulate and send the document in syslog-protocol format, and use a `syslog()` source. Make sure that the message conforms to [the octet counting method described in RFC6587](https://tools.ietf.org/html/rfc6587#section-3.4.1).
         

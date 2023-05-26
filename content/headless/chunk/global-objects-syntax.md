@@ -15,7 +15,7 @@
         
         {{% alert title="Note" color="info" %}}
         
-        Use identifiers that refer to the type of the object they identify. For example, prefix source objects with **s_**, destinations with **d_**, and so on.
+        Use identifiers that refer to the type of the object they identify. For example, prefix source objects with `s_`, destinations with `d_`, and so on.
         
         {{% /alert %}} {{% alert title="Note" color="info" %}}
         
@@ -25,7 +25,7 @@
     
       - *Parameters*: The parameters of the object, enclosed in braces `{parameters}`.
     
-      - *Semicolon*: Object definitions end with a semicolon (**;**).
+      - *Semicolon*: Object definitions end with a semicolon (`;`).
     
     For example, the following line defines a source and calls it `s_internal`.
     
@@ -86,7 +86,7 @@
 
   - Objects can be defined inline as well. This is useful if you use the object only once (for example, a filter). For details, see {{% xref "/docs/chapter-configuration-file/inline-objects/_index.md" %}}.
 
-  - To add comments to the configuration file, start a line with **#** and write your comments. These lines are ignored by syslog-ng.
+  - To add comments to the configuration file, start a line with `#` and write your comments. These lines are ignored by syslog-ng.
     
     ```c
         # Comment: This is a stream source

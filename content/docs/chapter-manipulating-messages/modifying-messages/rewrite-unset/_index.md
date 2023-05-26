@@ -32,7 +32,7 @@ The following example unsets the HOST field of the message.
 ```
 
 
-To unset a group of fields, you can use the **groupunset()** rewrite rule.
+To unset a group of fields, you can use the `groupunset()` rewrite rule.
 
 
 ## Declaration:

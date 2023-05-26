@@ -70,7 +70,7 @@ For further information about the %z and %Z format elements, see the 'DESCRIPTIO
 {{% /alert %}}
 
 
-For example, for the date `01/Jan/2016:13:05:05 PST` use the following format string: **format("%d/%b/%Y:%H:%M:%S %Z")**
+For example, for the date `01/Jan/2016:13:05:05 PST` use the following format string: `format("%d/%b/%Y:%H:%M:%S %Z")`
 
 {{% include-headless "chunk/example-date-parser.md" %}}
 
@@ -99,7 +99,7 @@ For example, for the date `01/Jan/2016:13:05:05 PST` use the following format st
 | Synopsis: | stamp | recvd |
 | Default:  | stamp         |
 
-*Description:* Determines if the parsed date values are treated as sent or received date. If you use **time-stamp(stamp)**, {{% param "product.abbrev" %}} adds the parsed date to the S_ macros (corresponding to the sent date). If you use **time-stamp(recvd)**, {{% param "product.abbrev" %}} adds the parsed date to the R_ macros (corresponding to the received date).
+*Description:* Determines if the parsed date values are treated as sent or received date. If you use `time-stamp(stamp)`, {{% param "product.abbrev" %}} adds the parsed date to the S_ macros (corresponding to the sent date). If you use `time-stamp(recvd)`, {{% param "product.abbrev" %}} adds the parsed date to the R_ macros (corresponding to the received date).
 
 
 

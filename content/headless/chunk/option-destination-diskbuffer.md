@@ -19,7 +19,7 @@ Default:
 
 no
 
-*Description:* If set to **yes**, {{% param "product.abbrev" %}} cannot lose logs in case of reload/restart, unreachable destination or {{% param "product.abbrev" %}} crash. This solution provides a slower, but reliable disk-buffer option. It is created and initialized at startup and gradually grows as new messages arrive. If set to **no**, the normal disk-buffer will be used. This provides a faster, but less reliable disk-buffer option.
+*Description:* If set to `yes`, {{% param "product.abbrev" %}} cannot lose logs in case of reload/restart, unreachable destination or {{% param "product.abbrev" %}} crash. This solution provides a slower, but reliable disk-buffer option. It is created and initialized at startup and gradually grows as new messages arrive. If set to `no`, the normal disk-buffer will be used. This provides a faster, but less reliable disk-buffer option.
 
 {{% alert title="Warning" color="warning" %}}
 
@@ -89,7 +89,7 @@ Default:
 
 10000
 
-*Description:* Use this option if the option `reliable()` is set to **no**. This option contains the number of messages stored in overflow queue. It replaces the old `log-fifo-size()` option. It inherits the value of the global `log-fifo-size()` option if provided. If it is not provided, the default value is **10000** messages. Note that this option will be ignored if the option `reliable()` is set to **yes**.
+*Description:* Use this option if the option `reliable()` is set to `no`. This option contains the number of messages stored in overflow queue. It replaces the old `log-fifo-size()` option. It inherits the value of the global `log-fifo-size()` option if provided. If it is not provided, the default value is `10000` messages. Note that this option will be ignored if the option `reliable()` is set to `yes`.
 
 
 *mem-buf-size()*
@@ -103,7 +103,7 @@ Default:
 
 163840000
 
-*Description:* Use this option if the option `reliable()` is set to **yes**. This option contains the size of the messages in bytes that is used in the memory part of the disk buffer. It replaces the old `log-fifo-size()` option. It does not inherit the value of the global `log-fifo-size()` option, even if it is provided. Note that this option will be ignored if the option `reliable()` is set to **no**.
+*Description:* Use this option if the option `reliable()` is set to `yes`. This option contains the size of the messages in bytes that is used in the memory part of the disk buffer. It replaces the old `log-fifo-size()` option. It does not inherit the value of the global `log-fifo-size()` option, even if it is provided. Note that this option will be ignored if the option `reliable()` is set to `no`.
 
 
 *qout-size()*
