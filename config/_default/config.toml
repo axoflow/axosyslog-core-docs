@@ -18,7 +18,7 @@ enableGitInfo = true
 
 [languages]
 [languages.en]
-title = "Logging operator"
+title = "AxoSyslog 4 documentation - a syslog-ng distribution"
 description = "Documentation for AxoSyslog version 4, a syslog-ng distribution"
 languageName ="English"
 # Weight used for sorting.
