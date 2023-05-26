@@ -13,6 +13,5 @@
 
 ```c
    body("{{% param "product.abbrev" %}} received the following alert from $HOST:\n$MSG")
-
 ```
 

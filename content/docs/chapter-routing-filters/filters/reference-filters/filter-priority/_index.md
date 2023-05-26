@@ -12,14 +12,12 @@ weight:  900
 
 ```c
    level(warning)
-
 ```
 
 To select a range of levels, include the beginning and the ending level in the filter, separated with two dots (`..`). For example, to select every message of error or higher level, use the following filter:
 
 ```c
    level(err..emerg)
-
 ```
 
 The `level()` filter accepts the following levels: `emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`.

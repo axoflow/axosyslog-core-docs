@@ -265,7 +265,6 @@ The `http()` destination supports only unencrypted key files (that is, the priva
     |  510 | "Not Extended"                    | disconnect |
     |  511 | "Network Authentication Required" | disconnect |
     |------+-----------------------------------+------------|
-
 ```
 
 To customize the action to take for a particular response code, use the following format: `response-action(\<response-code\> =\> \<action\>`. To customize multiple response code-action pairs, separate them with a comma, for example:

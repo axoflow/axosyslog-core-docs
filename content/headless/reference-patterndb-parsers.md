@@ -69,7 +69,6 @@ Parses a Link Layer Address in the `xx:xx:xx:...` form, where each xx is a 2 dig
 
 ```c
    @LLADDR:link-level-address:10@
-
 ```
 
 
@@ -101,7 +100,6 @@ This parser parses everything until the next new-line character (more precisely,
         Process Command Line: @LNSTRING:.winaudit.CommandLine@
     
         Token Elevation Type indicates the type of token that was assigned to the new process in accordance with User Account Control policy.</pattern>
-
 ```
 
 

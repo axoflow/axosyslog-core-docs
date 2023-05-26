@@ -54,7 +54,6 @@ In the following example, the `set-pri()` rewrite function is used to temporaril
       destination { file("/var/log/mail.log"); };
       flags(flow-control);
     }
-
 ```
 
 
@@ -70,7 +69,6 @@ In the following example, an application sends log messages in the following JSO
     "priority": "165",
     "message": "An application event log entry."
     }
-
 ```
 
 You can parse these logs with the {{% xref "/docs/chapter-parsers/json-parser/_index.md" %}} function:
@@ -80,7 +78,6 @@ You can parse these logs with the {{% xref "/docs/chapter-parsers/json-parser/_i
     parser p_json {
     json-parser (prefix(".json."));
     }
-
 ```
 
 As the application message contains a valid priority field, you can use the `set-pri()` rewrite function to modify the priority of the message:

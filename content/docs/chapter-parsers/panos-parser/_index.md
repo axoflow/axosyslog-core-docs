@@ -43,7 +43,6 @@ To use this parser, the `scl.conf` file must be included in your {{% param "prod
 
 ```c
    @include "scl.conf"
-
 ```
 
 The `panos-parser()` is a reusable configuration snippet configured to parse Palo Alto Networks PAN-OS log messages. For details on using or writing such configuration snippets, see {{% xref "/docs/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/syslog-ng/syslog-ng/blob/master/scl/paloalto/panos.conf).

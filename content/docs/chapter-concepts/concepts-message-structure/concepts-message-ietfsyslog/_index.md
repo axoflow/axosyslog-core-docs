@@ -16,14 +16,12 @@ The following is a sample syslog message (source: https://tools.ietf.org/html/rf
 
 ```c
    <34>1 2003-10-11T22:14:15.003Z mymachine.example.com su - ID47 - BOM'su root' failed for lonvick on /dev/pts/8
-
 ```
 
 The message corresponds to the following format:
 
 ```c
    <priority>VERSION ISOTIMESTAMP HOSTNAME APPLICATION PID MESSAGEID STRUCTURED-DATA MSG
-
 ```
 
   - Facility is 4, severity is 2, so PRI is 34.
@@ -190,7 +188,6 @@ The STRUCTURED-DATA message part may contain meta- information about the syslog 
 
 ```c
    [exampleSDID@0 iut="3" eventSource="Application" eventID="1011"][examplePriority@0 class="high"]
-
 ```
 
 

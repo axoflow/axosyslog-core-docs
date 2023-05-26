@@ -82,7 +82,6 @@ The {{% param "product.ose" %}} application stores various data, metrics, and st
   |_[destinations]-[network]-[tcp]->[stats]->{received=12;dropped=2}
   |
   |_[sources]-[sql]-[stats]->{received=501;dropped=0}
-
 ```
 
 You can query the nodes of this tree, and also use filters to select the information you need. A query is actually a path in the tree. You can also use the `?` and `\*` wildcards. For example:
@@ -150,7 +149,6 @@ An example output:
   global.msg_clones.stats.processed
   global.sdata_updates.stats.processed
               tag..source.s_tcp.stats.processed
-
 ```
 
 The `syslog-ng-ctl query list` command has the following options:

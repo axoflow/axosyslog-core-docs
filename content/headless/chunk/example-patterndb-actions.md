@@ -16,7 +16,6 @@ When inserted in a pattern database rule, the following example generates a mess
             </message>
         </action>
     </actions>
-
 ```
 
 
@@ -37,6 +36,5 @@ The following action generates a message that is identical to the original messa
             </message>
         </action>
     </actions>
-
 ```
 

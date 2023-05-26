@@ -8,7 +8,6 @@ The `http` destination of {{% param "product.abbrev" %}} can directly post log m
 
 ```c
    option("<option-name>", "<option-value>")
-
 ```
 
 For example, `option("url", "http://\<server-address\>:\<port-number\>")`. The exact format to use is indicated in the description of the option.

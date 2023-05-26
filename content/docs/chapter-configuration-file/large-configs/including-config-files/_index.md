@@ -8,7 +8,6 @@ The syslog-ng application supports including external files in its configuration
 
 ```c
    @include "<filename>"
-
 ```
 
 This imports the entire file into the configuration of {{% param "product.abbrev" %}}, at the location of the include statement. The \<filename\> can be one of the following:

@@ -195,7 +195,6 @@ The following example applies the `sshd.pdb` pattern database file to the log me
    pdbtool match -p sshd.pdb \
                         –file /var/log/messages \
                     –filter ‘tags(“usracct”);’ 
-
 ```
 
 <span id="pdbtool-merge"></span>

@@ -8,7 +8,6 @@ All messages generated internally by syslog-ng use this special source. To colle
 
 ```c
    internal()
-
 ```
 
 The syslog-ng application will issue a warning upon startup if none of the defined log paths reference this driver.

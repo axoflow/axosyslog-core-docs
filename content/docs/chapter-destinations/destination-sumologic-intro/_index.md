@@ -106,7 +106,6 @@ To use the `sumologic()` driver, the `scl.conf` file must be included in your {{
 
 ```c
    @include "scl.conf"
-
 ```
 
 

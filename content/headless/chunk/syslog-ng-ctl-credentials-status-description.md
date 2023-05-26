@@ -7,7 +7,6 @@ The `syslog-ng-ctl credentials status` command allows you to query the status of
    syslog-ng-ctl credentials status
     Secret store status:
     /home/user/ssl_test/client-1/client-encrypted.key SUCCESS
-
 ```
 
 If the status of a key is PENDING, you must provide the passphrase for the key, otherwise {{% param "product.abbrev" %}} cannot use it. The sources and destinations that use these keys will not work until you provide the passwords. Other parts of the {{% param "product.abbrev" %}} configuration will be unaffected. You must provide the passphrase of the password-protected keys every time {{% param "product.abbrev" %}} is restarted.

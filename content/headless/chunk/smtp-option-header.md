@@ -13,7 +13,6 @@
 
 ```c
    header("X-Program", "$PROGRAM")
-
 ```
 
 When using the header option, note the following points:

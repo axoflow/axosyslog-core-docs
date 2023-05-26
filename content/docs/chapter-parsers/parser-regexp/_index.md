@@ -35,7 +35,6 @@ In the following example, the incoming log message is the following:
 
 ```c
    Apr 20 11:09:46 test_field -> test_value
-
 ```
 
 The regexp-parser inserts the `.regexp.` prefix before all extracted name-value pairs. The destination is a file, that uses the format-json template function. Every name-value pair that begins with a dot (`.`) character will be written to the file (dot-nv-pairs). The log line connects the source, the parser and the destination.

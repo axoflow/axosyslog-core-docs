@@ -11,7 +11,6 @@ The {{% param "product.abbrev" %}} `kafka` destination tries to reconnect to the
 ```c
    retry.backoff.ms=1000
     reconnect.backoff.ms=1000
-
 ```
 
 For details on using property files, see [properties-file()]({{< relref "/docs/chapter-destinations/configuring-destinations-kafka/reference-destination-kafka/_index.md" >}}). For details on the properties that you can set in the property file, see the [Apache Kafka documentation](http://kafka.apache.org/documentation.html#newproducerconfigs).

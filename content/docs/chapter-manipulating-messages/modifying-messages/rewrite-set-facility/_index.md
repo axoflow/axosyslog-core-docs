@@ -34,7 +34,6 @@ The `set-facility()` rewrite function has a single, mandatory parameter that can
 
 ```c
    `set-facility( "parameter1" );`
-
 ```
 
 

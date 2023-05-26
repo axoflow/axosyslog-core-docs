@@ -38,7 +38,6 @@ N/A
             </patterns>
         </rule>
     </rules>
-
 ```
 
 

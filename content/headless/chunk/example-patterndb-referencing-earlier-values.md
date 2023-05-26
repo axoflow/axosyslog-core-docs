@@ -16,6 +16,5 @@ The following action can be used to log the length of an SSH session (the time d
             </message>
         </action>
     </actions>
-
 ```
 

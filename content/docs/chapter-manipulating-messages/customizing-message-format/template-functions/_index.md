@@ -8,7 +8,6 @@ A template function is a transformation: it modifies the way macros or name-valu
 
 ```c
    $(function-name parameter1 parameter2 parameter3 ...)
-
 ```
 
 For example, the `$(echo)` template function simply returns the value of the macro it receives as a parameter, thus `$(echo ${HOST})` is equivalent to `${HOST}`.
@@ -17,14 +16,12 @@ The parameters of template functions are separated by a whitespace character. A 
 
 ```c
    $(echo "${HOST} ${PROGRAM} ${PID}")
-
 ```
 
 Template functions can be nested into each other, so the parameter of a template function can be another template function, like:
 
 ```c
    $(echo $(echo ${HOST}))
-
 ```
 
 For details on the available template functions, see the descriptions of the individual template functions in {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" %}}.

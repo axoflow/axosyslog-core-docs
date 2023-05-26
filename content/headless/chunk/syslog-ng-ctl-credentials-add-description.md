@@ -5,14 +5,12 @@ You can add the passphrase to a password-protected private key file using the fo
 
 ```c
    syslog-ng-ctl credentials add --id=<path-to-the-key>
-
 ```
 
 Alternatively, you can include the passphrase in the `--secret` parameter:
 
 ```c
    syslog-ng-ctl credentials add --id=<path-to-the-key> --secret=<passphrase-of-the-key>
-
 ```
 
 Or you can pipe the passphrase to the syslog-ng-ctl command, for example:

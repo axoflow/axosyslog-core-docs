@@ -10,7 +10,6 @@ To use the `default-network-drivers()` source, the `scl.conf` file must be inclu
 
 ```c
    @include "scl.conf"
-
 ```
 
 Also, make sure that your {{% param "product.selinux" %}}, {{% param "product.apparmor" %}}, and firewall settings permit {{% param "product.name" %}} to access the ports where you want to receive messages, and that no other application is using these ports. By default, the `default-network-drivers()` source accepts messages on the following ports:

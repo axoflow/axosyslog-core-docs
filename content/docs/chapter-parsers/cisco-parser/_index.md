@@ -8,7 +8,6 @@ The Cisco parser can parse the log messages of various Cisco devices. The messag
 
 ```c
    <pri>(sequence: )?(origin-id: )?(timestamp? timezone?: )?%msg
-
 ```
 
 For example:
@@ -19,7 +18,6 @@ For example:
     <190>31: foo: *Apr 29 13:58:46.411: %SYS-6-LOGGINGHOST_STARTSTOP: Logging to host 192.168.1.239 started - CLI initiated
     <189>32: 0.0.0.0: *Apr 29 13:59:12.491: %SYS-5-CONFIG_I: Configured from console by console
     <189>32: foo: *Apr 29 13:58:46.411: %SYSMGR-STANDBY-3-SHUTDOWN_START: The System Manager has started the shutdown procedure.
-
 ```
 
 {{% alert title="Note" color="info" %}}
@@ -31,7 +29,6 @@ The {{% param "product.abbrev" %}} application normalizes the parsed log message
 ```c
    ${MESSAGE}=%FAC-SEV-MNEMONIC: message
     ${HOST}=origin-id
-
 ```
 
 By default, the Cisco-specific fields are extracted into the following name-value pairs:`${.cisco.facility}`, `${.cisco.severity}`, `${.cisco.mnemonic}`. You can change the prefix using the `prefix` option.

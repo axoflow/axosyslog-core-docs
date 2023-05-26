@@ -81,7 +81,6 @@ Statistics output:
    src.tcp;s_network#0;tcp,127.0.0.5;a;processed;1
     src.tcp;s_network#0;tcp,127.0.0.1;a;processed;3
     src.tcp;s_network;afsocket_sd.(stream,AF_INET(0.0.0.0:8001));a;connections;2
-
 ```
 
 
@@ -107,7 +106,6 @@ In version 7.0.27, {{% param "product.abbrev" %}} only supports the `batch_size_
 
 ```c
    parser;demo_parser;;a;discarded;20
-
 ```
 
 `dropped`: The number of dropped messages — {{% param "product.abbrev" %}} could not send the messages to the destination and the output buffer got full, so messages were dropped by the destination driver, or {{% param "product.abbrev" %}} dropped the message for some other reason (for example, a parsing error).
@@ -134,14 +132,12 @@ When using the `eps_last_1h`, the `eps_last_24h`, and the `eps_since_start` stat
 
 ```c
    filter;demo_filter;;a;matched;28
-
 ```
 
 `memory_usage`: The memory used by the messages in the different queue types (in bytes). This includes every queue used by the object, including memory buffers (log-fifo) and disk-based buffers (both reliable and non-reliable). For example:
 
 ```c
    dst.network;d_net#0;tcp,127.0.0.1:9999;a;memory_usage;0
-
 ```
 
 {{% alert title="Note" color="info" %}}

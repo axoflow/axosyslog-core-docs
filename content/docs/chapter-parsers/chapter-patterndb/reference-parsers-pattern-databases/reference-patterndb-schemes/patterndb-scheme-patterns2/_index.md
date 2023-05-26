@@ -51,7 +51,6 @@ Support for XML entities is limited, you can use only the following entities: `\
    <patterns>
         <pattern>Accepted @QSTRING:SSH.AUTH_METHOD: @ for@QSTRING:SSH_USERNAME: @from\ @QSTRING:SSH_CLIENT_ADDRESS: @port @NUMBER:SSH_PORT_NUMBER:@ ssh2</pattern>
     </patterns>
-
 ```
 
 

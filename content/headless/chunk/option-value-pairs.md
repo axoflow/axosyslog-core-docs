@@ -37,7 +37,6 @@ The following example selects every available information about the log message,
         key(".SDATA.meta.sequenceId")
         pair("MSGHDR" "$PROGRAM[$PID]: ")
     )
-
 ```
 
 The following example selects the same information as the previous example, but converts it into JSON format.
@@ -46,7 +45,6 @@ The following example selects the same information as the previous example, but 
    $(format-json --scope nv_pairs,core,syslog,all_macros,selected_macros,everything \
         --exclude R_* --exclude S_* --key .SDATA.meta.sequenceId \
         --pair MSGHDR="$PROGRAM[$PID]: ")
-
 ```
 
 
@@ -85,7 +83,6 @@ For example, the following example removes the SDATA macros from the selection.
         scope(rfc5424 selected_macros)
         exclude(".SDATA*")
     )
-
 ```
 
 The name of the macro to remove can include wildcards `(\*, ?)`. Regular expressions are not supported.
@@ -107,7 +104,6 @@ empty string
         scope(rfc3164)
         key("HOST")
     )
-
 ```
 
 ```c
@@ -115,7 +111,6 @@ empty string
         scope(rfc3164)
         key("HOST", "PROGRAM")
     )
-
 ```
 
 *omit-empty-values()*
@@ -137,7 +132,6 @@ N/A
         scope(rfc3164 selected-macros)
         omit-empty-values()
     )
-
 ```
 
 Available in {{% param "product.abbrev" %}} version 3.21 and later.
@@ -162,7 +156,6 @@ empty string
         pair("TIME" "$HOUR:$MIN")
         pair("MSGHDR" "$PROGRAM[$PID]: ")
     )
-
 ```
 
 *rekey()*
@@ -217,14 +210,12 @@ The following sample selects every value-pair that begins with `.cee.`, deletes 
             )
         )
     )
-
 ```
 
 The `rekey()` option can be used with the `format-json` template-function as well, using the following syntax:
 
 ```c
    $(format-json --rekey .cee.* --add-prefix events.)
-
 ```
 
 

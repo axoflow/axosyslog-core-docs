@@ -52,14 +52,12 @@ The *\<rules\>* element may contain any number of *\<rule\>* elements.
 
 ```c
    <rule provider='example' id='f57196aa-75fd-11dd-9bba-001e6806451b' class='violation'>
-
 ```
 
 The following example specifies attributes for correlating messages as well. For details on correlating messages, see {{% xref "/docs/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-correlation/_index.md" %}}.
 
 ```c
    <rule provider='example' id='f57196aa-75fd-11dd-9bba-001e6806451b' class='violation' context-id='same-session' context-scope='process' context-timeout='360'>
-
 ```
 
 

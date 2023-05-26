@@ -34,7 +34,6 @@ The following options are required: `selector()`, `database()`.
 
 ```c
    unknown-hostname,host-role,unknown
-
 ```
 
 In the {{% param "product.abbrev" %}} configuration file:

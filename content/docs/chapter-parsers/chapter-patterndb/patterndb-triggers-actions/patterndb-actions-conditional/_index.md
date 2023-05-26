@@ -8,7 +8,6 @@ To limit when a message is triggered, use the `condition` attribute and specify 
 
 ```c
    <action condition="'${HOST}' == 'myhost'">
-
 ```
 
 You can use the same operators in the condition that can be used in filters. For details, see {{% xref "/docs/chapter-routing-filters/filters/filters-comparing/_index.md" %}}.
@@ -25,7 +24,6 @@ The following action can be used to log the length of an SSH session (the time d
             </message>
         </action>
     </actions>
-
 ```
 
 
@@ -52,6 +50,5 @@ The following example triggers different actions based on the number of messages
             </message>
         </action>
     </actions>
-
 ```
 

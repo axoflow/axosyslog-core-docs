@@ -20,7 +20,6 @@ For example, the following csv-file contains three lines identified with the IP 
    192.168.1.1,host-role,webserver
     192.168.2.1,host-role,firewall
     192.168.3.1,host-role,mailserver
-
 ```
 
 
@@ -36,7 +35,6 @@ To add multiple name-value pairs to a message, include a separate line in the da
    192.168.1.1,host-role,webserver
     192.168.1.1,contact-person,"John Doe"
     192.168.1.1,contact-email,johndoe@example.com
-
 ```
 
 Technically, `add-contextual-data()` is a parser in {{% param "product.abbrev" %}} so you have to define it as a parser object.
@@ -91,6 +89,5 @@ The following example defines uses a CSV database to add the role of the host ba
     192.168.2.1,host-role,firewall
     192.168.3.1,host-role,mailserver
     unknown,host-role,unknown
-
 ```
 

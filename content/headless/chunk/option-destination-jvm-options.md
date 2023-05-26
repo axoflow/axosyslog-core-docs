@@ -15,7 +15,6 @@ For example:
 
 ```c
    jvm-options("-Xss1M -XX:+TraceClassLoading")
-
 ```
 
 You can set this option only as a [global option]({{< relref "/docs/chapter-global-options/_index.md" >}}), by adding it to the `options` statement of the syslog-ng configuration file.

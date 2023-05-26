@@ -249,7 +249,6 @@ The following is a simple destination that uses the `flush()` method to print th
             print("flushing: " + ",".join(self.bulk))
             self.bulk = list()
             return self.SUCCESS
-
 ```
 
 

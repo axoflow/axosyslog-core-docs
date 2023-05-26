@@ -24,7 +24,6 @@ If the target application or server requires a special beginning or ending to re
     ....
     log-line-n (the number of log lines is batch-lines(), or less if batch-timeout() has elapsed or the batch would be longer than batch-bytes())
     value of body-suffix() option
-
 ```
 
 

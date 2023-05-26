@@ -13,7 +13,6 @@ The following options are required: `kafka-bootstrap-servers()`, `topic()`. Note
 
 ```c
    @include "scl.conf"
-
 ```
 
 
@@ -74,7 +73,6 @@ For example, the following properties file defines the acknowledgment method and
 ```c
    acks=all
     compression.type=snappy
-
 ```
 
 

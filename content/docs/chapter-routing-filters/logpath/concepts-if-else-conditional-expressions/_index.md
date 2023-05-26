@@ -71,7 +71,6 @@ The configuration results in the following console printout:
 ```c
    matched: ...,STRING-TO-MATCH,...
     unmatched: ...,NO-MATCH,...
-
 ```
 
 

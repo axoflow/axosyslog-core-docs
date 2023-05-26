@@ -28,7 +28,6 @@ Another parameter of a rule is the `context-timeout` attribute, which determines
         </patterns>
     ...
     </rule>
-
 ```
 
 

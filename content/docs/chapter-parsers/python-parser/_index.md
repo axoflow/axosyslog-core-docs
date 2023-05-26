@@ -60,7 +60,6 @@ The return value of the `init()` method must be `True`. If it returns `False`, o
             self.regex = re.compile(pattern)
             self.counter = 0
             return True
-
 ```
 
 
@@ -90,7 +89,6 @@ The following sample code parses the messages of the `loggen` tool (for details,
 
 ```c
    <38>2017-04-05T12:16:46 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1491387406, stamp: 2017-04-05T12:16:46 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
-
 ```
 
 The {{% param "product.abbrev" %}} parser object references the LoggenParser class and passes a set of regular expressions to parse the loggen messages. The `init()` method of the LoggenParser class compiles these expressions into a pattern. The `parse` method uses these patterns to extract the fields of the message into name-value pairs. The destination template of the {{% param "product.abbrev" %}} log statement uses the extracted fields to format the output message.

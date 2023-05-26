@@ -106,7 +106,6 @@ Because `localport` is defined with empty brackets `()`, it is a mandatory param
 
 ```c
    my_tcp_source(localport(8080))
-
 ```
 
 will be expanded to:
@@ -124,7 +123,6 @@ Configuration blocks can receive arguments as well. The parameters the block can
 
 ```c
    block type block_name(argument1(<default-value-of-the-argument>) argument2(<default-value-of-the-argument>) argument3())
-
 ```
 
 If an argument does not have a default value, use an empty double quote bracket pair `("")` after the name of the argument. To refer the value of the argument in the block, use the name of the argument between backticks, for example:

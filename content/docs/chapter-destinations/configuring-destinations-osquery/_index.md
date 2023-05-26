@@ -16,7 +16,6 @@ Run osqueryi:
 ```c
    osqueryi --enable_syslog
              --disable-events=false
-
 ```
 
 To store the database on disk:
@@ -25,7 +24,6 @@ To store the database on disk:
    osqueryi --enable_syslog
              --disable-events=false
              --database_path=/tmp/osquery.db
-
 ```
 
 To set up a custom named pipe:
@@ -35,7 +33,6 @@ To set up a custom named pipe:
              --disable-events=false
              --database_path=/tmp/osquery.db
              --syslog_pipe_path=/tmp/osq.pipe
-
 ```
 
 Example configuration:

@@ -17,14 +17,12 @@ The following command will list the disk-buffer files in use:
 
 ```c
    /opt/syslog-ng/bin/persist-tool dump /opt/syslog-ng/var/syslog-ng.persist/var/lib/syslog-ng/syslog-ng.persist | awk -F '["=]' '/(qfile\(|\.queue)/ { gsub(/[ \t]+/, "", $5); gsub(/^[0-9A-Fa-f]{8}/, "", $5); "echo "$5"|xxd -r -p"|& getline QUEUE; printf("%s ==> %s\n",$1,QUEUE)}'
-
 ```
 
 The example output will look like the following:
 
 ```c
    afsocket_dd_qfile(stream,10.21.10.20:601)  ==> /opt/syslog-ng/var/syslog-ng-00000.rqf
-
 ```
 
 {{% include-headless "chunk/disk-buffer-7lts-output-note.md" %}}

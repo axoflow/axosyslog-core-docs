@@ -60,7 +60,6 @@ With these configuration settings, the macros will specify the local IP, the loc
 
 ```c
    destip=10.12.15.215 destport=5555 proto=17
-
 ```
 
 

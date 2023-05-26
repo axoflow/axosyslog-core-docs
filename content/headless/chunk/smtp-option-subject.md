@@ -13,7 +13,6 @@
 
 ```c
    subject("[SYSLOG ALERT]: Critical error message received from $HOST")
-
 ```
 
 If you specify the `subject()` option multiple times, the last value will be used.

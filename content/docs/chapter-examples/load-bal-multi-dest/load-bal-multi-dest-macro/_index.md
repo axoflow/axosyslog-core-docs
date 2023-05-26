@@ -45,7 +45,6 @@ The following example is a round-robin load balancing method, based on {{% param
         }; 
       }; 
     }; 
-
 ```
 
 The `filter {" \<return value \>" == "$(% ${R_MSEC} 2)"};` code snippets (in bold) serve as the basis of the method. This filter separates incoming log messages' timestamp values based on the `R_MSEC` macro, using a division with remainder method, and distributes the log messages equally between two destinations based on the return value (in this case, `0` or `1`).

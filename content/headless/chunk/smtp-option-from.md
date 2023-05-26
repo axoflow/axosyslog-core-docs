@@ -13,14 +13,12 @@
 
 ```c
    from("admin@example.com")
-
 ```
 
 or
 
 ```c
    from("Admin" "admin@example.com")
-
 ```
 
 If you specify the `from()` option multiple times, the last value will be used. Instead of the `from()` option, you can also use `sender()`, which is just an alias of the `from()` option.

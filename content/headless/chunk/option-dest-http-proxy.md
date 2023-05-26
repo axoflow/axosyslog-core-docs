@@ -39,7 +39,6 @@ The following example illustrates including the `proxy()` option in your configu
    destination {
       http( url("SYSLOG_SERVER_IP:PORT") proxy("PROXY_IP:PORT") method("POST"));
     }; 
-
 ```
 
 
