@@ -12,7 +12,7 @@ If no drivers are defined for a destination, all messages sent to the destinatio
 
 {{% /alert %}}
 
-To define a destination, add a destination statement to the syslog-ng configuration file using the following syntax:
+To define a destination, add a destination statement to the `syslog-ng` configuration file using the following syntax:
 
 ```c
    destination <identifier> {

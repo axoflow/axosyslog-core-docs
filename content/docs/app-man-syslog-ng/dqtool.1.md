@@ -119,9 +119,9 @@ bin/dqtool relocate --new_path /tmp/dq --persist var/syslog-ng.persist --all
 
 ## See also
 
-<span class="mcFormatColor" style="color: #04aada;">The syslog-ng.conf manual page</span>
+<span class="mcFormatColor" style="color: #04aada;">The `syslog-ng.conf` manual page</span>
 
-<span class="mcFormatColor" style="color: #04aada;">The syslog-ng manual page</span>
+<span class="mcFormatColor" style="color: #04aada;">The `syslog-ng` manual page</span>
 
 {{% alert title="Note" color="info" %}}
 If you experience any problems or need help with {{% param "product.abbrev" %}}, {{% param "product.contact" %}}.

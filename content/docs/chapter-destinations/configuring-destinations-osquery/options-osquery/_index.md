@@ -29,7 +29,7 @@ Specifying this option is optional. However, when you start losing logs for some
 | Type:    | string |
 | Default: | N/A    |
 
-*Description:* Specifies a custom path to the named pipe that acts as the interface between osquery and syslog-ng. (The default path is set in the SCL file.)
+*Description:* Specifies a custom path to the named pipe that acts as the interface between osquery and `syslog-ng`. (The default path is set in the SCL file.)
 
 Specifying this option is optional.
 

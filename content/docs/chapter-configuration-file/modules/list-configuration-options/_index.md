@@ -8,36 +8,32 @@ Starting with {{% param "product.abbrev" %}} 3.25, you can use the `syslog-ng-cf
 
 The `syslog-ng-cfg-db.py` utility has the following options:
 
-  - The following command lists the contexts that the utility supports.
+- The following command lists the contexts that the utility supports.
     
     ```c
         syslog-ng-cfg-db.py
-    
     ```
     
     {{% alert title="Note" color="info" %}}
 Currently, sources and destinations are supported.
     {{% /alert %}}
 
-  - The following command lists the available drivers of a context:
+- The following command lists the available drivers of a context:
     
     ```c
         syslog-ng-cfg-db.py -c <source|destination>
-    
     ```
 
-  - The following command lists the available options of a specific driver and specifies the context and the driver:
+- The following command lists the available options of a specific driver and specifies the context and the driver:
     
     ```c
         syslog-ng-cfg-db.py -c <source|destination> -d <driver>
-    
     ```
     
     For example, to list the options of the `kafka-c()` destination driver:
     
     ```c
         syslog-ng-cfg-db.py -c destination -d kafka-c
-    
     ```
     
     The output includes the available options of the driver in alphabetical order, and the type of the option. For example:
@@ -77,7 +73,6 @@ Currently, sources and destinations are supported.
                 <identifier>(<string>)
             )
         )
-    
     ```
     
     {{% alert title="Note" color="info" %}}

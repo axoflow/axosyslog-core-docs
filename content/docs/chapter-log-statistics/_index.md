@@ -13,7 +13,7 @@ The {{% param "product.abbrev" %}} application collects various statistics and m
 
   - Using the [`syslog-ng-ctl`]({{< relref "/docs/chapter-quickstart/managing-and-checking-linux/_index.md#stats" >}}) query command.
     
-    For further information about using `syslog-ng-ctl` commands, see <span class="mcFormatColor" style="color: #04aada;">The syslog-ng manual pages</span>.
+    For further information about using `syslog-ng-ctl` commands, see <span class="mcFormatColor" style="color: #04aada;">The `syslog-ng` manual pages</span>.
 
 
 
@@ -23,7 +23,7 @@ The {{% param "product.abbrev" %}} application collects various statistics and m
 
   - Using the [`syslog-ng-ctl stats`]({{< relref "/docs/chapter-quickstart/managing-and-checking-linux/_index.md#stats" >}}) command.
     
-    For further information about using `syslog-ng-ctl` commands, see <span class="mcFormatColor" style="color: #04aada;">The syslog-ng manual pages</span>.
+    For further information about using `syslog-ng-ctl` commands, see <span class="mcFormatColor" style="color: #04aada;">The `syslog-ng` manual pages</span>.
 
   - Use the `socat` application: `echo STATS | socat -vv UNIX-CONNECT:/opt/syslog-ng/var/run/syslog-ng.ctl -`
 

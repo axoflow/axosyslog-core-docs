@@ -61,7 +61,7 @@ For MongoDB operations, {{% param "product.abbrev" %}} uses a one-minute timeout
 | Type:    | string                                                                                           |
 | Default: | mongodb://127.0.0.1:27017/syslog?wtimeoutMS=60000\&socketTimeoutMS=60000\&connectTimeoutMS=60000 |
 
-*Description:* Available in syslog-ng OSE 3.8 and later. Please refer to the [MongoDB URI format documentation](https://docs.mongodb.com/manual/reference/connection-string/) for detailed syntax.
+*Description:* Available in {{< param "product.name" >}} 3.8 and later. Please refer to the [MongoDB URI format documentation](https://docs.mongodb.com/manual/reference/connection-string/) for detailed syntax.
 
 
 {{% include-headless "chunk/destination-option-value-pairs-content.md" %}}

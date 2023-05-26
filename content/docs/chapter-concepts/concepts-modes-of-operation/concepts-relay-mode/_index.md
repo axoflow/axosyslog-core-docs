@@ -6,6 +6,6 @@ weight:  300
 
 ![](../Images/Figures/fig-relay_mode01.png)
 
-In relay mode, syslog-ng receives logs through the network from syslog-ng clients and forwards them to the central syslog-ng server using a network connection. Relays also log the messages from the relay host into a local file, or forward these messages to the central syslog-ng server.
+In relay mode, {{% param "product.ose" %}} receives logs through the network from {{% param "product.ose" %}} clients and forwards them to the central {{% param "product.ose" %}} server using a network connection. Relays also log the messages from the relay host into a local file, or forward these messages to the central {{% param "product.ose" %}} server.
 
 {{% include-headless "chunk/relay-mode-uses.md" %}}

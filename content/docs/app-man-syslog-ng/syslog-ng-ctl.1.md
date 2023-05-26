@@ -45,11 +45,11 @@ The `syslog-ng-ctl` application is a utility that can be used to:
 
 `command [options]`
 
-Use the `syslog-ng-ctl \<command\> --set=on` command to display verbose, trace, or debug messages. If you are trying to solve configuration problems, the verbose (and occasionally trace) messages are usually sufficient. Debug messages are needed mostly for finding software errors. After solving the problem, do not forget to turn these messages off using the `syslog-ng-ctl \<command\> --set=off` Note that enabling debug messages does not enable verbose and trace messages.
+Use the `syslog-ng-ctl <command> --set=on` command to display verbose, trace, or debug messages. If you are trying to solve configuration problems, the verbose (and occasionally trace) messages are usually sufficient. Debug messages are needed mostly for finding software errors. After solving the problem, do not forget to turn these messages off using the `syslog-ng-ctl <command> --set=off` command. Note that enabling debug messages does not enable verbose and trace messages.
 
-Use `syslog-ng-ctl \<command\>` without any parameters to display whether the particular type of messages are enabled or not.
+Use `syslog-ng-ctl <command>` without any parameters to display whether the particular type of messages are enabled or not.
 
-If you need to use a non-standard control socket to access syslog-ng, use the `syslog-ng-ctl \<command\> --set=on --control=\<socket\>` command to specify the socket to use.
+If you need to use a non-standard control socket to access `syslog-ng`, use the `syslog-ng-ctl <command> --set=on --control=<socket>` command to specify the socket to use.
 
 - `verbose`
     
@@ -196,13 +196,13 @@ The `syslog-ng-ctl query get` command has the following options:
 
 `stats [options]`
 
-Use the `stats` command to display statistics about the processed messages. For details about the displayed statistics, see [The {{% param "product.ose" %}} Administrator Guide](https://www.syslog-ng.com). The `stats` command has the following options:
+Use the `stats` command to display statistics about the processed messages. For details about the displayed statistics, see [The {{% param "product.ose" %}} documentation](https://axoflow.com/docs/). The `stats` command has the following options:
 
-- `--control=\<socket\>` or `-c`
+- `--control=<socket>` or `-c`
     
     Specify the socket to use to access {{% param "product.ose" %}}. Only needed when using a non-standard socket.
 
-- `--reset=\<socket\>` or `-r`
+- `--reset=<socket>` or `-r`
     
     Reset all statistics to zero, except for the `queued` counters. (The `queued` counters show the number of messages in the message queue of the destination driver, waiting to be sent to the destination.)
 
@@ -293,7 +293,7 @@ The following log message also notifies you of PENDING passphrases:
 Waiting for password; keyfile='private.key'
 ```
 
-- `--control=\<socket\>` or `-c`
+- `--control=<socket>` or `-c`
     
     Specify the socket to use to access {{% param "product.ose" %}}. Only needed when using a non-standard socket.
 
@@ -323,7 +323,7 @@ Or you can pipe the passphrase to the syslog-ng-ctl command, for example:
 echo "<passphrase-of-the-key>" | syslog-ng-ctl credentials add --id=<path-to-the-key>
 ```
 
-- `--control=\<socket\>` or `-c`
+- `--control=<socket>` or `-c`
     
     Specify the socket to use to access {{% param "product.ose" %}}. Only needed when using a non-standard socket.
 
@@ -367,9 +367,9 @@ The `syslog-ng-ctl reload` command returns 0 if the operation was successful, 1 
 
 ## See also
 
-<span class="mcFormatColor" style="color: #04aada;">The syslog-ng.conf manual page</span>
+<span class="mcFormatColor" style="color: #04aada;">The `syslog-ng.conf` manual page</span>
 
-<span class="mcFormatColor" style="color: #04aada;">The syslog-ng manual page</span>
+<span class="mcFormatColor" style="color: #04aada;">The `syslog-ng` manual page</span>
 
 {{% alert title="Note" color="info" %}}
 

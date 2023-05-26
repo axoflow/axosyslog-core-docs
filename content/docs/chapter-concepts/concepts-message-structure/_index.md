@@ -10,6 +10,6 @@ The following sections describe the structure of log messages. Currently there a
 
   - The new standard described in RFC 5424 (also called the IETF-syslog protocol): see {{% xref "/docs/chapter-concepts/concepts-message-structure/concepts-message-ietfsyslog/_index.md" %}}
 
-  - The Enterprise-wide message model or EWMM allows you to deliver structured messages between syslog-ng nodes: see {{% xref "/docs/chapter-concepts/concepts-message-structure/syslog-ng-message-format/_index.md" %}}
+  - The Enterprise-wide message model or EWMM allows you to deliver structured messages between {{% param "product.ose" %}} nodes: see {{% xref "/docs/chapter-concepts/concepts-message-structure/syslog-ng-message-format/_index.md" %}}
 
   - How messages are represented in {{% param "product.abbrev" %}}: see {{% xref "/docs/chapter-concepts/concepts-message-representation/_index.md" %}}.

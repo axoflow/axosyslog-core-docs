@@ -6,7 +6,7 @@ weight:  1300
 
 The `graphite()` destination can send metrics to a [Graphite](http://graphite.readthedocs.io/en/latest/index.html) server to store numeric time-series data. There are many ways to feed the Graphite template function with name value pairs. The {{% param "product.abbrev" %}} CSV and PatternDB parsers (for details, see <span class="mcFormatColor" style="color: #04aada;">Using pattern parsers</span>) can parse log messages and generate name value pairs based on message content. The CSV parser (for details, see {{% xref "/docs/chapter-parsers/csv-parser/_index.md" %}}) can be used for logs that have a constant field based structure, like the Apache web server access logs. The <span>patterndb</span> parser can parse information and can extract important fields from free form log messages, as long as patterns describing the log messages are available. Another way is to send JSON-based log messages (for details, see {{% xref "/docs/chapter-parsers/json-parser/_index.md" %}}) to {{% param "product.abbrev" %}}, like running a simple shell script collecting metrics and running it from cron regularly.
 
-To see an example of how the `graphite()` destination is used to collect statistics coming from syslog-ng, see the blog post [Collecting syslog-ng statistics to Graphite](https://syslog-ng.com/blog/collecting-syslog-ng-statistics-to-graphite/).
+To see an example of how the `graphite()` destination is used to collect statistics coming from `syslog-ng`, see the blog post [Collecting syslog-ng statistics to Graphite](https://syslog-ng.com/blog/collecting-syslog-ng-statistics-to-graphite/).
 
 
 ## Declaration:

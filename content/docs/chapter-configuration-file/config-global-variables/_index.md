@@ -4,7 +4,7 @@ weight:  1100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-You can define global variables in the configuration file. Global variables are actually `name-value` pairs. When syslog-ng processes the configuration file during startup, it automatically replaces ``name`` with `value`. To define a global variable, use the following syntax:
+You can define global variables in the configuration file. Global variables are actually `name-value` pairs. When `syslog-ng` processes the configuration file during startup, it automatically replaces ``name`` with `value`. To define a global variable, use the following syntax:
 
 ```c
    @define name "value"
@@ -28,7 +28,7 @@ The value of the global variable can be also specified using the following metho
 
 The environmental variables of the host are automatically imported and can be used as global variables.
 
-In {{% param "product.abbrev" %}} 3.24 and later, the location of the syslog-ng configuration file is available as the ``syslog-ng-sysconfdir`` variable.
+In {{% param "product.abbrev" %}} 3.24 and later, the location of the configuration file is available as the ``syslog-ng-sysconfdir`` variable.
 
 {{% /alert %}}
 

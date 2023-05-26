@@ -6,7 +6,7 @@ weight:  3700
 
 The `osquery()` driver sends log messages to osquery's syslog table.
 
-The syslog table contains logs forwarded over a named pipe from syslog-ng. When an osquery process that supports the syslog table starts up, it creates (and properly sets permissions for) a named pipe for syslog-ng to write to.
+The syslog table contains logs forwarded over a named pipe from `syslog-ng`. When an osquery process that supports the syslog table starts up, it creates (and properly sets permissions for) a named pipe for `syslog-ng` to write to.
 
 
 ## Example: Using the osquery() destination driver

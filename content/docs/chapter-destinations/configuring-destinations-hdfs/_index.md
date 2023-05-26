@@ -6,8 +6,6 @@ weight:  1700
 
 Starting with version 3.7, {{% param "product.abbrev" %}} can send plain-text log files to the [Hadoop Distributed File System (HDFS)](http://hadoop.apache.org/), allowing you to store your log data on a distributed, scalable file system. This is especially useful if you have huge amounts of log messages that would be difficult to store otherwise, or if you want to process your messages using Hadoop tools (for example, Apache Pig).
 
-For more information about the benefits of using syslog-ng as a data collection, processing, and filtering tool in a Hadoop environment, see the blog post [Filling your data lake with log messages: the syslog-ng Hadoop (HDFS) destination](https://syslog-ng.com/blog/filling-your-data-lake-with-log-messages-the-syslog-ng-hadoop-hdfs-destination/).
-
 Note the following limitations when using the {{% param "product.abbrev" %}} `hdfs` destination:
 
   - Since {{% param "product.abbrev" %}} uses the official Java HDFS client, the `hdfs` destination has significant memory usage (about 400MB).

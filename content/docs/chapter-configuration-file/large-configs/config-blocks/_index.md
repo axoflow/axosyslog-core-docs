@@ -20,7 +20,7 @@ The type and name combination of each block must be unique, that is, two blocks 
 
 To use a block in your configuration file, you have to do two things:
 
-  - Include the file defining the block in the `syslog-ng.conf` file — or a file already included into `syslog-ng.conf`. Version 3.7 and newer automatically includes the `\*.conf` files from the `\<directory-where-syslog-ng-is-installed\>/scl/\*/` directories.
+  - Include the file defining the block in the `syslog-ng.conf` file — or a file already included into `syslog-ng.conf`. Version 3.7 and newer automatically includes the `*.conf` files from the `<directory-where-syslog-ng-is-installed\>/scl/\*/` directories.
 
   - Reference the name of the block in your configuration file. This will insert the block into your configuration. For example, to use a block called `myblock`, include the following line in your configuration:
     
@@ -43,7 +43,7 @@ Suppose you are running an application on your hosts that logs into the `/opt/va
             file("/opt/var/myapplication.log" follow-freq(1) default-facility(syslog)); };
 ```
 
-Include this file in your main syslog-ng configuration file, reference the block, and use it in a logpath:
+Include this file in your main `syslog-ng` configuration file, reference the block, and use it in a logpath:
 
 ```c
    @version: {{% param "product.techversion" %}}

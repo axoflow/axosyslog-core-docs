@@ -14,7 +14,7 @@ The Oracle sql destination has some special aspects that are important to note.
 
   - As certain database versions limit the maximum length of table names, macros in the table names should be used with care.
 
-  - In the current version of {{% param "product.abbrev" %}}, the types of database columns must be explicitly set for the Oracle destination. The column used to store the text part of the syslog messages should be able to store messages as long as the longest message permitted by syslog-ng, therefore it is usually recommended to use the `varchar2` or `clob` column type. (The maximum length of the messages can be set using the `log-msg-size()` option.) For details, see the following example.
+  - In the current version of {{% param "product.abbrev" %}}, the types of database columns must be explicitly set for the Oracle destination. The column used to store the text part of the syslog messages should be able to store messages as long as the longest message permitted by `syslog-ng`, therefore it is usually recommended to use the `varchar2` or `clob` column type. (The maximum length of the messages can be set using the `log-msg-size()` option.) For details, see the following example.
 
   - The Oracle Instant Client used by {{% param "product.abbrev" %}} supports only the following character sets:
     
@@ -25,7 +25,7 @@ The Oracle sql destination has some special aspects that are important to note.
 
 ## Example: Using the sql() driver with an Oracle database {#example-destination-sql-oracle}
 
-The following example sends the log messages into an Oracle database running on the `logserver` host, which must be set in the `/etc/tnsnames.ora` file. The messages are inserted into the `LOGS` database, the name of the table includes the exact date when the messages were sent. The syslog-ng application automatically creates the required tables and columns, if the user account used to connect to the database has the required privileges.
+The following example sends the log messages into an Oracle database running on the `logserver` host, which must be set in the `/etc/tnsnames.ora` file. The messages are inserted into the `LOGS` database, the name of the table includes the exact date when the messages were sent. The `syslog-ng` application automatically creates the required tables and columns, if the user account used to connect to the database has the required privileges.
 
 ```c
    destination d_sql {

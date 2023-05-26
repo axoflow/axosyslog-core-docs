@@ -6,5 +6,5 @@ weight:  500
 
 ![](../Images/Figures/fig-server_mode01.png)
 
-In server mode, syslog-ng acts as a central log-collecting server. It receives messages from syslog-ng clients and relays over the network, and stores them locally in files, or passes them to other applications, for example, log analyzers.
+In server mode, {{% param "product.ose" %}} acts as a central log-collecting server. It receives messages from {{% param "product.ose" %}} clients and relays over the network, and stores them locally in files, or passes them to other applications, for example, log analyzers.
 

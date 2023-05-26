@@ -1,5 +1,5 @@
 ---
-title: "Modules in syslog-ng Open Source Edition (syslog-ng OSE)"
+title: "Using modules"
 weight:  1300
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
@@ -16,4 +16,4 @@ Each module contains one or more plugins that add some functionality to {{% para
 
   - To request loading a module from the {{% param "product.abbrev" %}} configuration file, see {{% xref "/docs/chapter-configuration-file/modules/modules-loading/_index.md" %}}.
 
-For details on the command-line parameters of {{% param "product.abbrev" %}} mentioned in the previous list, see the {{% param "product.abbrev" %}} man page at <span class="mcFormatColor" style="color: #04aada;">The syslog-ng manual page</span>.
+For details on the command-line parameters of {{% param "product.abbrev" %}} mentioned in the previous list, see the {{% param "product.abbrev" %}} man page at <span class="mcFormatColor" style="color: #04aada;">The `syslog-ng` manual page</span>.
