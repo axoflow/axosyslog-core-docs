@@ -165,8 +165,6 @@ The output will be updated in every 2 seconds. If the numbers are changing, {{% 
 {{% alert title="Note" color="info" %}}
 If you find error messages in the internal logs, messages are not processed by {{% param "product.abbrev" %}} or you encounter any issue, you have the following options:
 
-- Search for the error or issue in our [knowledge base](https://support.oneidentity.com/syslog-ng-premium-edition/kb).
-- Check the [following knowledge base articles](https://support.oneidentity.com/syslog-ng-premium-edition/kb?k=troubleshooting&r=Topic%3ATroubleshooting) for further troubleshooting.
-- [Open a support service request](https://support.oneidentity.com/) including the results.
-
+- [Open a GitHub issue](https://github.com/syslog-ng/syslog-ng/issues) including the results.
+- {{< param "product.contact" >}}
 {{% /alert %}}

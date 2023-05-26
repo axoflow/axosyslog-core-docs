@@ -23,7 +23,7 @@ weight:  4900
 
 {{% alert title="Note" color="info" %}}
 
-The `syslog-debun` application is distributed with the {{% param "product.abbrev" %}} system logging application, and is usually part of the {{% param "product.abbrev" %}} package. The latest version of the {{% param "product.ose" %}} application is available at the [{{% param "product.ose" %}} page](https://syslog-ng.com/).
+The `syslog-debun` application is distributed with the {{% param "product.abbrev" %}} system logging application, and is usually part of the {{% param "product.abbrev" %}} package. 
 
 {{% /alert %}}
 

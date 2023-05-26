@@ -8,4 +8,4 @@ The {{% param "product.name" %}} ({{% param "product.abbrev" %}}) application is
 
   - The source code of {{% param "product.name" %}} is released under the GPLv2 license and is [available on GitHub](https://github.com/syslog-ng/syslog-ng).
 
-  - For the available binary installation packages, see [syslog-ng Open Source Edition installation packages](https://www.syslog-ng.com/products/open-source-log-management/3rd-party-binaries.aspx).
+  - For the available binary installation packages, see [syslog-ng Open Source Edition installation packages](https://github.com/syslog-ng/syslog-ng/#installation-from-binaries).

@@ -16,7 +16,7 @@ For details on using value-pairs in {{% param "product.abbrev" %}}, see {{% xref
   - Version 3.29 of {{% param "product.abbrev" %}} or later.
     
     {{% alert title="Note" color="info" %}}
-Most Linux distributions feature {{% param "product.abbrev" %}} versions earlier than version 3.29. For up-to-date binaries, visit [the syslog-ng third-party binaries page](https://www.syslog-ng.com/products/open-source-log-management/3rd-party-binaries.aspx).
+Most Linux distributions feature {{% param "product.abbrev" %}} versions earlier than version 3.29. For up-to-date binaries, visit [the syslog-ng third-party binaries page](https://github.com/syslog-ng/syslog-ng/#installation-from-binaries).
     {{% /alert %}}
 
   - PAN-OS log messages from Palo Alto Networks devices.

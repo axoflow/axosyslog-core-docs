@@ -23,7 +23,7 @@ weight:  4900
 
 ## Description
 
-This manual page is only an abstract, for the complete documentation of {{% param "product.abbrev" %}}, see the [{{% param "product.abbrev" %}} Documentation page](https://support.oneidentity.com/syslog-ng-premium-edition/technical-documents/)[{{% param "product.abbrev" %}} Documentation page](https://www.syslog-ng.com/).
+
 
 The {{% param "product.abbrev" %}} application can match the contents of the log messages to a database of predefined message patterns (also called `patterndb`). By comparing the messages to the known patterns, {{% param "product.abbrev" %}} is able to identify the exact type of the messages, tag the messages, and sort them into message classes. The message classes can be used to classify the type of the event described in the log message. The functionality of the pattern database is similar to that of the logcheck project, but the {{% param "product.syslog-ng" %}} approach is faster, scales better, and is much easier to maintain compared to the regular expressions of logcheck.
 
@@ -203,7 +203,7 @@ The following example applies the `sshd.pdb` pattern database file to the log me
 
 `merge [options]`
 
-Use the `merge` command to combine separate pattern database files into a single file (pattern databases are usually stored in separate files per applications to simplify maintenance). If a file uses an older database format, it is automatically updated to the latest format (`V3`). See the [`The syslog-ng Administrator Guide`](https://www.syslog-ng.com/) for details on the different pattern database versions.
+Use the `merge` command to combine separate pattern database files into a single file (pattern databases are usually stored in separate files per applications to simplify maintenance). If a file uses an older database format, it is automatically updated to the latest format (`V3`). See the [AxoSyslog documentation](https://axoflow.com/docs/) for details on the different pattern database versions.
 
 - `--debug` or `-d`
     
@@ -247,7 +247,7 @@ Currently it is not possible to convert a file without merging, so if you only w
 
 `patternize [options]`
 
-Automatically create a pattern database from a log file containing a large number of log messages. The resulting pattern database is printed to the standard output (`stdout`). The `pdbtool patternize` command uses a data clustering technique to find similar log messages and replacing the differing parts with `@ESTRING:: @` parsers. For details on pattern databases and message parsers, see the [`The syslog-ng Administrator Guide`](https://www.syslog-ng.com/). The `patternize` command is available only in version 3.2 and later.
+Automatically create a pattern database from a log file containing a large number of log messages. The resulting pattern database is printed to the standard output (`stdout`). The `pdbtool patternize` command uses a data clustering technique to find similar log messages and replacing the differing parts with `@ESTRING:: @` parsers. For details on pattern databases and message parsers, see the [AxoSyslog documentation](https://axoflow.com/docs/). The `patternize` command is available only in version 3.2 and later.
 
 - `--debug` or `-d`
     
@@ -337,7 +337,7 @@ pdbtool test --validate /home/me/mypatterndb.pdb
 
 ## See also
 
-[<span class="mcFormatColor" style="color: #04aada;">The syslog-ng Administrator Guide</span>](https://www.syslog-ng.com/)
+[<span class="mcFormatColor" style="color: #04aada;">AxoSyslog documentation</span>](https://axoflow.com/docs/)
 
 <span class="mcFormatColor" style="color: #04aada;">The syslog-ng.conf manual page</span>
 

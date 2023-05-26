@@ -22,7 +22,7 @@ Splunk format:
    time=1557767758|hostname=r80test|product=Firewall|layer_name=Network|layer_uuid=c0264a80-1832-4fce-8a90-d0849dc4ba33|match_id=1|parent_rule=0|rule_action=Accept|rule_uid=4420bdc0-19f3-4a3e-8954-03b742cd3aee|action=Accept|ifdir=inbound|ifname=eth0|logid=0|loguid={0x5cd9a64e,0x0,0x5060a8c0,0xc0000001}|origin=192.168.96.80|originsicname=cn\=cp_mgmt,o\=r80test..ymydp2|sequencenum=1|time=1557767758|version=5|dst=192.168.96.80|inzone=Internal|outzone=Local|proto=6|s_port=63945|service=443|service_id=https|src=192.168.96.27|
 ```
 
-If you find a message that the `checkpoint-parser()` cannot properly parse, [contact Support](https://www.syslog-ng.com/support/), so we can improve the parser.
+If you find a message that the `checkpoint-parser()` cannot properly parse, {{< param "product.contact" >}}, so we can improve the parser.
 
 By default, the Check Point-specific fields are extracted into name-value pairs prefixed with `.checkpoint`. For example, the `action` in the previous message becomes `${.checkpoint.action}`. You can change the prefix using the `prefix` option of the parser.
 

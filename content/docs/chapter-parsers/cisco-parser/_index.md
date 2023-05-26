@@ -21,7 +21,7 @@ For example:
 ```
 
 {{% alert title="Note" color="info" %}}
-Not every Cisco log message conforms to this format. If you find a message that the `cisco-parser()` cannot properly parse, [contact Support](https://www.syslog-ng.com/support/), so we can improve the parser.
+Not every Cisco log message conforms to this format. If you find a message that the `cisco-parser()` cannot properly parse, {{< param "product.contact" >}}, so we can improve the parser.
 {{% /alert %}}
 
 The {{% param "product.abbrev" %}} application normalizes the parsed log messages into the following format:
