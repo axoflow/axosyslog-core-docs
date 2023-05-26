@@ -17,5 +17,4 @@ Verify the certificate of the Elasticsearch server without authentication:
             java-truststore-password("password-to-your-keystore")
         );
     };
-
 ```

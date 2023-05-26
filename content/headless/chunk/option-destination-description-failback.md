@@ -20,7 +20,6 @@ Depending on how you set the `failback()` option, {{% param "product.abbrev" %}}
                   failover( servers("failover-server1", "failover-server2") )
         );  
         };
-    
     ```
     
 
@@ -29,9 +28,7 @@ Depending on how you set the `failback()` option, {{% param "product.abbrev" %}}
     After {{% param "product.abbrev" %}} connects a secondary server during a failover, it sends a probe every `tcp-probe-interval()` seconds towards the primary server. If the primary logserver responds with a TCP ACK packet, the probe is successful. When the number of successful probes reaches the value set in the `successful-probes-required()` option, {{% param "product.abbrev" %}} tries to connect the primary server using the last probe.
     
     {{% alert title="Note" color="info" %}}
-    
-    {{% param "product.abbrev" %}} always waits for the result of the last probe before sending the next message. So if one connection attempt takes longer than the configured interval, that is, it waits for connection time out, you may experience longer intervals between actual probes.
-    
+{{% param "product.abbrev" %}} always waits for the result of the last probe before sending the next message. So if one connection attempt takes longer than the configured interval, that is, it waits for connection time out, you may experience longer intervals between actual probes.
     {{% /alert %}}
     
     
@@ -53,6 +50,5 @@ Depending on how you set the `failback()` option, {{% param "product.abbrev" %}}
                   )
         );  
         };
-    
     ```
     

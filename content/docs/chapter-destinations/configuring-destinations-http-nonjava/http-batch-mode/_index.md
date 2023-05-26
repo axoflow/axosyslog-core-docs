@@ -45,7 +45,6 @@ The following destination sends [log messages to an Elasticsearch server using t
                  $(format-json --scope rfc5424 --key ISODATE)')
         );
     };
-
 ```
 
 
@@ -75,7 +74,6 @@ The following destination sends [log messages to an Elasticsearch server using t
             persist-name("d_http-load-balance")
         );
     };
-
 ```
 
 {{% include-headless "chunk/http-load-balance-workers.md" %}}

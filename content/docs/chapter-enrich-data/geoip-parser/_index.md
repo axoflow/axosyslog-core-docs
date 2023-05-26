@@ -27,7 +27,6 @@ You can refer to the separated parts of the message using the key of the value a
             database("<path-to-database-file>")
         );
     };
-
 ```
 
 
@@ -59,7 +58,6 @@ In the following example, {{% param "product.abbrev" %}} retrieves the GeoIP dat
         parser(p_geoip);
         destination(d_file);
     };
-
 ```
 
 For example, for the `\<38\>Jan 1 14:45:22 192.168.1.1 prg00000[1234]: test message` message the output will look like:
@@ -79,7 +77,6 @@ If you are transferring your log messages into Elasticsearch, use the following 
             condition(not "${geoip.latitude}" == "")
         );
     };
-
 ```
 
 In your Elasticsearch configuration, set the appropriate mappings:

@@ -10,5 +10,4 @@ Specify the macro that contains the list of tags to parse in the `template()` op
 
 ```c
    tags-parser(template("${<macro-or-field-with-tags>}"));
-
 ```

@@ -51,7 +51,6 @@ The following example illustrates how you can configure the `disable_notificatio
         disable_notification(true)
       ); 
     };
-
 ```
 
 

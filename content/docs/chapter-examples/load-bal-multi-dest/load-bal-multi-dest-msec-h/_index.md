@@ -17,7 +17,6 @@ As an alternative to using the example configuration described in {{% xref "/doc
 
 ```c
    destination d_lb {network-load-balancer(targets(myhost1 myhost2 myhost3))};
-
 ```
 
 Where destinations share the same configuration except for the destination address, balancing is based on MSEC hashing.

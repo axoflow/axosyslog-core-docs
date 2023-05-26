@@ -21,7 +21,6 @@ The `groupset()` rewrite rule allows you to modify the value of multiple message
    rewrite <name_of_the_rule> {
         groupset("<new-value-of-the-fields>", values("<field-name-or-glob>" ["<another-field-name-or-glob>"]));
     };
-
 ```
 
 

@@ -40,7 +40,6 @@ This sample file destination configuration stores incoming logs in files that ar
             create-dirs(yes)
         );
     };
-
 ```
 
 
@@ -57,7 +56,6 @@ This sample logstore destination configuration stores incoming logs in logstores
             create-dirs(yes)
         );
     };
-
 ```
 
 
@@ -68,7 +66,6 @@ This sample command for `cron` removes files older than two weeks from the `/var
 
 ```c
    find /var/log/remote/ -daystart -mtime +14 -type f -exec rm {} \;
-
 ```
 
 

@@ -17,7 +17,6 @@ For example, consider the following message:
 
 ```c
    VSYS=public; Slot=5/1; protocol=17; source-ip=10.116.214.221; source-port=50989; destination-ip=172.16.236.16; destination-port=162;time=2016/02/18 16:00:07; interzone-emtn_s1_vpn-enodeb_om; inbound; policy=370;
-
 ```
 
 This is a list of key-value pairs, where the value separator is **=** and the pair separator is **;**. However, before the last key-value pair (**policy=370**), there are two stray words: **interzone-emtn_s1_vpn-enodeb_om inbound**. If you want to store or process these, specify a name-value pair to store them in the `extract-stray-words-into()` option, for example, **extract-stray-words-into("my-stray-words")**. The value of `${my-stray-words}` for this message will be **interzone-emtn_s1_vpn-enodeb_om, inbound**

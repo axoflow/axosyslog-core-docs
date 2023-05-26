@@ -13,7 +13,6 @@ The pipe driver has a single required parameter, specifying the filename of the 
 
 ```c
    pipe(filename);
-
 ```
 
 {{% alert title="Warning" color="warning" %}}
@@ -28,6 +27,5 @@ Starting with {{% param "product.abbrev" %}} 3.0.2, pipes are created automatica
 
 ```c
    destination d_pipe { pipe("/dev/xconsole"); };
-
 ```
 

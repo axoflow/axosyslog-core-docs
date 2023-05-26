@@ -16,5 +16,4 @@ Note the following points when reading kernel messages on various platforms.
     
     ```c
         file("/dev/klog" program-override("kernel") flags(kernel) follow-freq(0));
-    
     ```

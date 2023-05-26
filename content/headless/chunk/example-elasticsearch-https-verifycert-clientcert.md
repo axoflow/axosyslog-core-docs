@@ -19,5 +19,4 @@ Verify the certificate of the Elasticsearch server and perform certificate authe
             java-truststore-password("password-to-your-keystore")
         );
     };
-
 ```

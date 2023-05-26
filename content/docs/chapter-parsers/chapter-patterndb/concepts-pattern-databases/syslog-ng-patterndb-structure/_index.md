@@ -19,11 +19,9 @@ The pattern database is organized as follows:
   - Patterns can consist of literals (keywords, or rather, keycharacters) and pattern parsers.
     
     {{% alert title="Note" color="info" %}}
+If the ${PROGRAM} part of a message is empty, rules with an empty Program Pattern are used to classify the message.
     
-    If the ${PROGRAM} part of a message is empty, rules with an empty Program Pattern are used to classify the message.
+If the same Program Pattern is used in multiple rulesets, the rules of these rulesets are merged, and every rule is used to classify the message. Note that message patterns must be unique within the merged rulesets, but the currently only one ruleset is checked for uniqueness.
     
-    If the same Program Pattern is used in multiple rulesets, the rules of these rulesets are merged, and every rule is used to classify the message. Note that message patterns must be unique within the merged rulesets, but the currently only one ruleset is checked for uniqueness.
-    
-    If the content of the ${PROGRAM} macro is not the proper name of the application, you can use the `program-template()` option to specify it.
-    
+If the content of the ${PROGRAM} macro is not the proper name of the application, you can use the `program-template()` option to specify it.
     {{% /alert %}}

@@ -33,7 +33,6 @@ This means that messages sent by `application_A` running on `myhost_A` will be p
     
     ```c
         log { source(s_localhost); destination(d_file); flags(catchall); };
-    
     ```
 
 The following example shows a scenario that can result in message loss. Do NOT use such a configuration, unless you know exactly what you are doing. The problem is if a message matches the filters in the first part of the first log path, {{% param "product.abbrev" %}} treats the message as 'processed'. Since the first log path includes the `final` flag, {{% param "product.abbrev" %}} will not pass the message to the second log path (the one with the `fallback` flag). As a result, {{% param "product.abbrev" %}} drops messages that do not match the filter of the embedded log path.
@@ -60,7 +59,6 @@ The following example shows a scenario that can result in message loss. Do NOT u
         destination(d_file2);
         flags(fallback);
     };
-
 ```
 
 

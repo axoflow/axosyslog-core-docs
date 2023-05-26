@@ -20,5 +20,4 @@ The following log statement sends all messages arriving to the localhost to a re
         source(s_localhost);
         destination(d_tcp);
     };
-
 ```

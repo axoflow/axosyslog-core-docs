@@ -33,7 +33,6 @@ Embedded log statements (for details, see {{% xref "/docs/chapter-routing-filter
         #set flags after the embedded log statements
         flags(flag1[, flag2...]);
     };
-
 ```
 
 
@@ -47,7 +46,6 @@ The following log path sends every message to the configured destinations: both 
         destination(d_file1);
         destination(d_file2);
     };
-
 ```
 
 The next example is equivalent to the one above, but uses an embedded log statement.
@@ -60,7 +58,6 @@ The next example is equivalent to the one above, but uses an embedded log statem
             destination(d_file2);
         };
     };
-
 ```
 
 The following example uses two filters:
@@ -81,7 +78,6 @@ The following example uses two filters:
             destination(d_file2);
         };
     };
-
 ```
 
 The following example collects logs from multiple source groups and uses the `source()` filter in the embedded log statement to select messages of the `s_network` source group.
@@ -98,6 +94,5 @@ The following example collects logs from multiple source groups and uses the `so
         destination(d_file2);
         };
     };
-
 ```
 

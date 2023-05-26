@@ -15,7 +15,6 @@ The file driver has a single required parameter specifying the file to open. If 
 
 ```c
    file("filename");
-
 ```
 
 
@@ -26,7 +25,6 @@ The file driver has a single required parameter specifying the file to open. If 
    source s_file {
         file("/var/log/messages");
     };
-
 ```
 
 
@@ -39,7 +37,6 @@ The following source checks the `access.log` file every second for new messages.
    source s_tail {
         file("/var/log/apache/access.log" follow-freq(1) flags(no-parse));
     };
-
 ```
 
 

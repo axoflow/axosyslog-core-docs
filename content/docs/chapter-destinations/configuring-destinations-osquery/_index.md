@@ -64,6 +64,5 @@ Example configuration:
      destination(d_osquery);
      flags(flow-control);
     };
-
 ```
 

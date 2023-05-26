@@ -22,9 +22,7 @@ To configure syslog-ng on a relay host, complete the following steps:
 7.  Enable the `keep-hostname()` and disable the `chain-hostnames()` options. (For details on how these options work, see [Global options]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}).)
     
     {{% alert title="Note" color="info" %}}
-    
-    It is recommended to use these options on your {{% param "product.abbrev" %}} server as well.
-    
+It is recommended to use these options on your {{% param "product.abbrev" %}} server as well.
     {{% /alert %}}
 
 8.  Set filters and options (for example, TLS encryption) as necessary.
@@ -58,7 +56,6 @@ To configure syslog-ng on a relay host, complete the following steps:
             source(s_local); source(s_network);
             destination(d_syslog_tcp);
         };
-    
     ```
     
 

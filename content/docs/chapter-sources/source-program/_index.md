@@ -13,7 +13,6 @@ The program driver has a single required parameter, specifying the name of the a
 
 ```c
    program(filename);
-
 ```
 
 
@@ -24,7 +23,6 @@ The program driver has a single required parameter, specifying the name of the a
    source s_program {
         program("/etc/init.d/mydaemon");
     };
-
 ```
 
 

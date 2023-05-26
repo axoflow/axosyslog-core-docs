@@ -18,7 +18,6 @@ For the list of available parameters, see {{% xref "/docs/chapter-destinations/c
         auth("<redis-server-password>") # Optional, for password-protected servers
         command("<redis-command>", "<first-command-parameter>", "<second-command-parameter>", "<third-command-parameter>")
     );
-
 ```
 
 
@@ -35,7 +34,6 @@ The following destination counts the number of log messages received per host.
             command("HINCRBY", "hosts", "$HOST", "1")
         );
     };
-
 ```
 
 The following example creates a statistic from Apache webserver logs about the browsers that the visitors use (per minute)
@@ -67,6 +65,5 @@ The following example creates a statistic from Apache webserver logs about the b
         parser(p_apache);
         destination(d_redis);
     };
-
 ```
 

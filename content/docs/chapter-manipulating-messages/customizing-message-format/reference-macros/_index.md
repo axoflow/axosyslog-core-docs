@@ -320,9 +320,7 @@ For example, if a log message contains the following structured data: **[example
   - If the message is a Cisco IOS log message using the extended timestamp format, then {{% param "product.abbrev" %}} stores the sequence number from the message in this macro. If you forward this message the IETF-syslog protocol, {{% param "product.abbrev" %}} includes the sequence number received from the Cisco device in the `${.SDATA.meta.sequenceId}` part of the message.
     
     {{% alert title="Note" color="info" %}}
-    
-    To enable sequence numbering of log messages on Cisco devices, use the following command on the device (available in IOS 10.0 and later): **service sequence-numbers**. For details, see the manual of your Cisco device.
-    
+To enable sequence numbering of log messages on Cisco devices, use the following command on the device (available in IOS 10.0 and later): **service sequence-numbers**. For details, see the manual of your Cisco device.
     {{% /alert %}}
 
   - For locally generated messages (that is, for messages that are received from a local source, and not from the network), {{% param "product.abbrev" %}} calculates a sequence number when sending the message to a destination (it is not calculated for relayed messages).

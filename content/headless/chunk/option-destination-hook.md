@@ -89,6 +89,5 @@ The assumption in this example is that the `LOGCHAIN` chain is part of a larger 
             )
          );
     };
-
 ```
 

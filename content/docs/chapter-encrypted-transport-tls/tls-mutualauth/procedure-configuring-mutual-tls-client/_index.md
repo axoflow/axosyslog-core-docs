@@ -44,7 +44,6 @@ Complete the following steps on every syslog-ng client host. Examples are provid
                 )
             );
         };
-    
     ```
     
     ```c
@@ -59,17 +58,14 @@ Complete the following steps on every syslog-ng client host. Examples are provid
                 )
             ); 
         };
-    
     ```
     
 
 5.  Include the destination created in Step 2 in a log statement.
     
     {{% alert title="Warning" color="warning" %}}
-    
-    The encrypted connection between the server and the client fails if the `Common Name` or the `subject_alt_name` parameter of the server certificate does not match the hostname or the IP address (as resolved from the syslog-ng clients and relays) of the server.
+The encrypted connection between the server and the client fails if the `Common Name` or the `subject_alt_name` parameter of the server certificate does not match the hostname or the IP address (as resolved from the syslog-ng clients and relays) of the server.
     
     Do not forget to update the certificate files when they expire.
-    
     {{% /alert %}}
 

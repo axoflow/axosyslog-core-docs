@@ -17,5 +17,4 @@ Simple password authentication:
             http-auth-type-basic-password("example-password")
         );
     };
-
 ```

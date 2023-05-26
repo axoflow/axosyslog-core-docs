@@ -78,13 +78,11 @@ To compile syslog-ng Open Source Edition (OSE) from the source code, complete th
     These commands will build syslog-ng using its default options.
     
     {{% alert title="Note" color="info" %}}
-    
-    When using the `make` command, consider the following:
+When using the `make` command, consider the following:
     
       - On Solaris, use **gmake** (GNU make) instead of **make**.
     
       - To build {{% param "product.abbrev" %}} with less verbose output, use the **make V=0** command. This results in shorter, less verbose output, making warnings and other anomalies easier to notice. Note that silent-rules support is only available in recent automake versions.
-    
     {{% /alert %}}
 
 11. If needed, use the following options to change how syslog-ng is compiled using the following command syntax:
@@ -92,15 +90,13 @@ To compile syslog-ng Open Source Edition (OSE) from the source code, complete th
     ```c
         $ ./configure --compile-time-option-name
     
-    ``` {{% alert title="Note" color="info" %}}
+    ```
     
-    You can also use *--disable options*, to explicitly disable a feature and override autodetection. For example, to disable the TCP-wrapper support, use the *--disable-tcp-wrapper* option. For the list of available compiling options, see {{% xref "/docs/chapter-install/syslog-ng-compile-options/_index.md" %}}.
-    
+    {{% alert title="Note" color="info" %}}
+You can also use *--disable options*, to explicitly disable a feature and override autodetection. For example, to disable the TCP-wrapper support, use the *--disable-tcp-wrapper* option. For the list of available compiling options, see {{% xref "/docs/chapter-install/syslog-ng-compile-options/_index.md" %}}.
     {{% /alert %}}
     
     {{% alert title="Warning" color="warning" %}}
-    
-    The default linking mode of syslog-ng is `dynamic`. This means that syslog-ng might not be able to start up if the `/usr` directory is on NFS. On platforms where syslog-ng is used as a system logger, the `--enable-mixed-linking` is preferred.
-    
+The default linking mode of syslog-ng is `dynamic`. This means that syslog-ng might not be able to start up if the `/usr` directory is on NFS. On platforms where syslog-ng is used as a system logger, the `--enable-mixed-linking` is preferred.
     {{% /alert %}}
 

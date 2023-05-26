@@ -33,7 +33,6 @@ By default, the Fortigate-specific fields are extracted into name-value pairs pr
         parser { fortigate-parser(); };
         destination { ... };
     };
-
 ```
 
 
@@ -50,6 +49,5 @@ By default, `websense-parser()` uses the `.websense.` prefix. To modify it, use 
    parser {
                     websense-parser(prefix("myprefix."));
                 };
-
 ```
 

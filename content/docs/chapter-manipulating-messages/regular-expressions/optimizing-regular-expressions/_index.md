@@ -13,7 +13,6 @@ Suppose you need a filter that matches the following error message logged by the
 
 ```c
    xntpd[1567]: time error -1159.777379 is too large (set clock manually);
-
 ```
 
 The following filter uses regular expressions and matches every instance and variant of this message.
@@ -23,7 +22,6 @@ The following filter uses regular expressions and matches every instance and var
         program("demo_program") and
         match("time error .* is too large .* set clock manually");
     };
-
 ```
 
 Segmenting the `match()` part of this filter into separate `match()` functions greatly improves the performance of the filter.
@@ -35,6 +33,5 @@ Segmenting the `match()` part of this filter into separate `match()` functions g
         match("is too large") and
         match("set clock manually");
     };
-
 ```
 

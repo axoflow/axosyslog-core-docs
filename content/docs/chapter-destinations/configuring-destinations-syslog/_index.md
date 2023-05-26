@@ -13,7 +13,6 @@ The required arguments of the driver are the address of the destination host (wh
 
 ```c
    syslog(host transport [options]);
-
 ```
 
 
@@ -36,14 +35,12 @@ The default ports for the different transport protocols are as follows: UDP — 
 
 ```c
    destination d_tcp { syslog("10.1.2.3" transport("tcp") port(1999) localport(999)); };
-
 ```
 
 If name resolution is configured, the hostname of the target server can be used as well.
 
 ```c
    destination d_tcp { syslog("target_host" transport("tcp") port(1999) localport(999)); };
-
 ```
 
 Send the log messages using TLS encryption and use mutual authentication. For details on the encryption and authentication options, see {{% xref "/docs/chapter-encrypted-transport-tls/tlsoptions/_index.md" %}}.
@@ -60,7 +57,6 @@ Send the log messages using TLS encryption and use mutual authentication. For de
             )
         );
     };
-
 ```
 
 

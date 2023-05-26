@@ -10,7 +10,6 @@ To define a filter, add a filter statement to the syslog-ng configuration file u
 
 ```c
    filter <identifier> { <filter_type>("<filter_expression>"); };
-
 ```
 
 Then use the filter in a log path, for example:
@@ -20,7 +19,6 @@ Then use the filter in a log path, for example:
         source(s1);
         filter(<identifier>);
         destination(d1); };
-
 ```
 
 You can also define the filter inline. For details, see {{% xref "/docs/chapter-configuration-file/inline-objects/_index.md" %}}.
@@ -38,7 +36,6 @@ The following filter statement selects the messages that contain the word `deny`
         filter(demo_filter);
         destination(d1);
     };
-
 ```
 
 The following example does the same, but defines the filter inline.
@@ -49,6 +46,5 @@ The following example does the same, but defines the filter inline.
         filter { host("example") and match("deny" value("MESSAGE")) };
         destination(d1);
     };
-
 ```
 

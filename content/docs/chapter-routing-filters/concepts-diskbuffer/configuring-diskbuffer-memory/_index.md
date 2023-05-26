@@ -16,6 +16,5 @@ To enable memory buffering, use the **log-fifo-size()** parameter in the destina
             log-fifo-size(10000)
         );
     };
-
 ```
 

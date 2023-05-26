@@ -30,7 +30,6 @@ For example, suppose that you have a single network source that receives log mes
             file("/var/log/messages");
         };
     };
-
 ```
 
 Since every channel receives every message that reaches the junction, use the **flags(final)** option in the channels to avoid the unnecessary processing the messages multiple times:
@@ -61,10 +60,9 @@ Since every channel receives every message that reaches the junction, use the **
             file("/var/log/messages");
         };
     };
+```
 
-``` {{% alert title="Note" color="info" %}}
-
+{{% alert title="Note" color="info" %}}
 {{% param "product.abbrev" %}} has several parsers that you can use to parse non-compliant messages. You can even [write a custom syslog-ng parser in Python]({{< relref "/docs/chapter-parsers/python-parser/_index.md" >}}). For details, see {{% xref "/docs/chapter-parsers/_index.md" %}}.
-
 {{% /alert %}}
 

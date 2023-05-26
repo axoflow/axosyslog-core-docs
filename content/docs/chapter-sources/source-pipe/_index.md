@@ -13,7 +13,6 @@ The pipe driver has a single required parameter, specifying the filename of the 
 
 ```c
    pipe(filename);
-
 ```
 
 
@@ -40,6 +39,5 @@ Pipe is very similar to the `file()` driver, but there are a few differences, fo
    source s_pipe {
         pipe("/dev/pipe" pad-size(2048));
     };
-
 ```
 

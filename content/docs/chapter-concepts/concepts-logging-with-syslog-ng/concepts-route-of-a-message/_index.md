@@ -24,9 +24,7 @@ The following procedure illustrates the route of a log message from its source o
 4.  The syslog-ng client performs optional operations (message filtering, parsing, and rewriting) on the message, for example, it compares the message to the filters of the log statement (if any). If the message complies with all filter rules, syslog-ng sends the message to the destinations set in the log statement, for example, to the remote syslog-ng server.
     
     {{% alert title="Warning" color="warning" %}}
-    
-    Message filtering, parsing, and rewriting is performed in the order that the operations appear in the log statement.
-    
+Message filtering, parsing, and rewriting is performed in the order that the operations appear in the log statement.
     {{% /alert %}}
 
 5.  The syslog-ng client processes the next log statement that includes the `/var/log/apache` source, repeating Steps 3-4.
@@ -38,16 +36,12 @@ The following procedure illustrates the route of a log message from its source o
 8.  The syslog-ng server performs optional operations (message filtering, parsing, and rewriting) on the message, for example, it compares the message to the filters of the log statement (if any). If the message complies with all filter rules, syslog-ng sends the message to the destinations set in the log statement.
     
     {{% alert title="Warning" color="warning" %}}
-    
-    Message filtering, parsing, and rewriting is performed in the order that the operations appear in the log statement.
-    
+Message filtering, parsing, and rewriting is performed in the order that the operations appear in the log statement.
     {{% /alert %}}
 
 9.  The syslog-ng server processes the next log statement, repeating Steps 7-9.
     
     {{% alert title="Note" color="info" %}}
-    
-    The syslog-ng application can stop reading messages from its sources if the destinations cannot process the sent messages. This feature is called flow-control and is detailed in {{% xref "/docs/chapter-routing-filters/concepts-flow-control/_index.md" %}}.
-    
+The syslog-ng application can stop reading messages from its sources if the destinations cannot process the sent messages. This feature is called flow-control and is detailed in {{% xref "/docs/chapter-routing-filters/concepts-flow-control/_index.md" %}}.
     {{% /alert %}}
 

@@ -14,7 +14,6 @@ The following example specifies two failover servers for a simple syslog() desti
             failover-servers("10.2.3.4", "myfailoverserver")
         );
     };
-
 ```
 
 The following example specifies a failover server for a network() destination that uses TLS encryption.
@@ -31,6 +30,5 @@ The following example specifies a failover server for a network() destination th
             cert-file('/opt/syslog-ng/etc/syslog-ng/keys/client_certificate.pem'))
         );
     };
-
 ```
 

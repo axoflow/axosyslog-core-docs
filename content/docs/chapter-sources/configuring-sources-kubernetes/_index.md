@@ -15,6 +15,5 @@ By default, it reads the `/var/log/containers` folder and extracts both Kubernet
    kubernetes(
         base-dir("<pathname>")
     );
-
 ```
 

@@ -18,7 +18,6 @@ To define a destination, add a destination statement to the syslog-ng configurat
    destination <identifier> {
         destination-driver(params); destination-driver(params); ...
     };
-
 ```
 
 
@@ -30,7 +29,6 @@ The following destination statement sends messages to the TCP port `1999` of the
    destination d_demo_tcp {
         network("10.1.2.3" port(1999));
     };
-
 ```
 
 If name resolution is configured, you can use the hostname of the target server as well.
@@ -39,7 +37,6 @@ If name resolution is configured, you can use the hostname of the target server 
    destination d_tcp {
         network("target_host" port(1999));
     };
-
 ```
 
 

@@ -13,7 +13,6 @@ Available in {{% param "product.abbrev" %}} version 3.20 and later.
 
 ```c
    collectd();
-
 ```
 
 ```c
@@ -26,7 +25,6 @@ Available in {{% param "product.abbrev" %}} version 3.20 and later.
         values("<metric-sent-to-collectd>"),
       );
     };
-
 ```
 
 
@@ -46,7 +44,6 @@ The following example uses the name of the application sending the log message a
         values("${SEQNUM}"),
       );
     };
-
 ```
 
 

@@ -29,7 +29,6 @@ The following example stores the MESSAGE, PID, DATE, and PROGRAM fields of a log
             pair("message", "$MESSAGE"))
         )
     );
-
 ```
 
 The following example formats the same fields into JSON.

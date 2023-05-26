@@ -15,7 +15,6 @@ For the list of available parameters, see {{% xref "/docs/chapter-destinations/c
 
 ```c
    stomp( host("<stomp-server-address>") );
-
 ```
 
 
@@ -38,6 +37,5 @@ The following example shows the default values of the available options.
             value-pairs(scope(selected-macros, nv-pairs, sdata))
         );
     };
-
 ```
 

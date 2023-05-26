@@ -29,7 +29,6 @@ The following is a very simple configuration file for syslog-ng: it collects the
     log {
         source(s_local); destination(d_file);
     };
-
 ```
 
 

@@ -62,9 +62,7 @@ The `syslog-debun` tool collects and saves information about your {{% param "pro
     Start {{% param "product.ose" %}} in debug mode, using the `-Fedv --enable-core` options.
     
     {{% alert title="Warning" color="warning" %}}
-    
-    Using this option under high message load may increase disk I/O during the debug, and the resulting debug bundle can be huge. To exit debug mode, press Enter.
-    
+Using this option under high message load may increase disk I/O during the debug, and the resulting debug bundle can be huge. To exit debug mode, press Enter.
     {{% /alert %}}
 
 - `-D \<options\>`

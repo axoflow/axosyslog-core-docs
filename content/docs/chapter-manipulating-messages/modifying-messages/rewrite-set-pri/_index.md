@@ -21,7 +21,6 @@ If the specified parameter value is not a valid value, the function ignores it a
    rewrite <rule-name> {
         set-pri("template-string");
     };
-
 ```
 
 
@@ -88,6 +87,5 @@ As the application message contains a valid priority field, you can use the `set
 
 ```c
    set-pri("$.json.priority");
-
 ```
 

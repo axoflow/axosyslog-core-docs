@@ -45,5 +45,4 @@ To send log messages to the internal() source from Python
         source s_internal { internal(); };
         destination d_internal { file("/var/log/internal.txt"); };
         log {source(s_internal); destination(d_internal); };
-    
     ```

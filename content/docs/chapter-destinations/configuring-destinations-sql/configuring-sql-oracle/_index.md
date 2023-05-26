@@ -37,7 +37,6 @@ The following example sends the log messages into an Oracle database running on 
       values("${R_DATE}", "${HOST}", "${PROGRAM}", "${PID}", "${MSGONLY}")
       indexes("datetime", "host", "program", "pid", "message"));
     };
-
 ```
 
 The Oracle Instant Client retrieves the address of the database server from the `/etc/tnsnames.ora` file. Edit or create this file as needed for your configuration. A sample is provided below.

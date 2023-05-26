@@ -57,7 +57,6 @@ In the following example {{% param "product.abbrev" %}} handles the logservers i
           time-reopen(60)
           );
     };
-
 ```
 
 In the following example {{% param "product.abbrev" %}} attempts to return to the primary logserver, as set in the `failback()` option: it will check if the server is accessible every `tcp-probe-interval()` seconds, and reconnect to the primary logserver after three successful connection attempts.
@@ -77,7 +76,6 @@ In the following example {{% param "product.abbrev" %}} attempts to return to th
           time-reopen(60)
           );
     };
-
 ```
 
 

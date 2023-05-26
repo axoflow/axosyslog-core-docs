@@ -9,5 +9,4 @@ In {{% param "product.abbrev" %}} version 3.23 and later, you can specify a comm
         "%F %T,%f",
         "%F %T"
     ));
-
 ```

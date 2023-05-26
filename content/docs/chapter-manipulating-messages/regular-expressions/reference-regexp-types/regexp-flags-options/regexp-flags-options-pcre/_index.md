@@ -17,7 +17,6 @@ The following example shows the structure of PCRE-style regular expressions in u
    rewrite r_rewrite_subst {
         subst("a*", "?", value("MESSAGE") flags("utf8" "global"));  
     };
-
 ```
 
 
@@ -40,7 +39,6 @@ Configuration example:
    filter { match("(?<DN>foo)|(?<DN>bar)" value(MSG) flags(store-matches, dupnames)); };
     ...
     destination { file(/dev/stdout template("$DN\n")); };
-
 ```
 
 

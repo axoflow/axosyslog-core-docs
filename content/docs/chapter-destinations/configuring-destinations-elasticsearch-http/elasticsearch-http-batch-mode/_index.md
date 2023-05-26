@@ -26,7 +26,6 @@ In the following example, a batch consists of 100 messages, or a maximum of 512 
             batch-timeout(10000)
         );
     };
-
 ```
 
 
@@ -50,7 +49,6 @@ The following destination sends log messages to 3 different Elasticsearch indexe
             persist-name("d_elasticsearch-http-load-balance")
         );
     };
-
 ```
 
 {{% include-headless "chunk/http-load-balance-workers.md" %}}

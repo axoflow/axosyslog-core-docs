@@ -17,7 +17,6 @@ To use globs in a selector
                 database("context-info-db.csv")
             );
         };
-    
     ```
 
 2.  Use globs and wildcards in the selector column of your CSV-file, for example:

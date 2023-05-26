@@ -20,7 +20,6 @@ The `python()` and `python-fetcher()` drivers have the following options.
    python(
         class("MyPythonSource")
     );
-
 ```
 
 If you want to store the Python code in an external Python file, the `class()` option must include the name of the Python file containing the class, without the path and the .py extension, for example:
@@ -29,7 +28,6 @@ If you want to store the Python code in an external Python file, the `class()` o
    python(
         class("MyPythonfilename.MyPythonSource")
     );
-
 ```
 
 For details, see {{% xref "/docs/chapter-configuration-file/python-code-external-file/_index.md" %}}

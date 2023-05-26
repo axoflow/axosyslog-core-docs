@@ -19,7 +19,6 @@ Conditional expressions have two formats:
         } else {
             ...
         };
-    
     ```
     
     This format only uses the filter expression in `if()`. If `if` does not contain `'foo'`, the `else` branch is taken.
@@ -35,7 +34,6 @@ Conditional expressions have two formats:
         } else {
             ...
         };
-    
     ```
     
     This format considers all filters and all parsers as the condition, combined. If the message contains `'foo'` and the `date-parser()` fails, the `else` branch is taken. Similarly, if the message does not contain `'foo'`, the `else` branch is taken.
@@ -66,7 +64,6 @@ The following configuration can be used as a template for using the `if {}` and 
         destination { file(/dev/stdout template("unmatched: $MSG\n") persist-name("2")); };
        };
     };
-
 ```
 
 The configuration results in the following console printout:

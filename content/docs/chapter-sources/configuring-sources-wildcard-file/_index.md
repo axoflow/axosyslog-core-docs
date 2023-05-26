@@ -16,7 +16,6 @@ The {{% param "product.abbrev" %}} application notices if a file is renamed or r
         base-dir("<pathname>")
         filename-pattern("<filename>")
     );
-
 ```
 
 

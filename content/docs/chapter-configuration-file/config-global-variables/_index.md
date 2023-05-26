@@ -45,7 +45,6 @@ For example, if an application is creating multiple log files in a directory, yo
     source s_myapp_3 {
         file("`mypath`/debug.log" follow-freq(1));
     };
-
 ```
 
 The {{% param "product.abbrev" %}} application will interpret this as:
@@ -61,6 +60,5 @@ The {{% param "product.abbrev" %}} application will interpret this as:
     source s_myapp_3 {
         file("/opt/myapp/logs/debug.log" follow-freq(1));
     };
-
 ```
 

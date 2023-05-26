@@ -23,7 +23,6 @@ Note the following limitations when using the {{% param "product.abbrev" %}} `el
         type("test")
         cluster("syslog-ng")
     );
-
 ```
 
 
@@ -41,7 +40,6 @@ The following example defines an `elasticsearch2` destination that sends message
             type("test")
         );
     };
-
 ```
 
 The following example sends 10000 messages in a batch, in transport mode, and includes a custom unique ID for each message.
@@ -74,7 +72,6 @@ The following example sends 10000 messages in a batch, in transport mode, and in
         destination(d_elastic);
         flags(flow-control);
     };
-
 ```
 
 
@@ -106,7 +103,6 @@ The following example send messages to Elasticsearch over HTTP using its REST AP
         destination(d_elastic);
         flags(flow-control);
     };
-
 ```
 
 {{% include-headless "chunk/example-elasticsearch-https-verifycert-clientcert.md" %}}

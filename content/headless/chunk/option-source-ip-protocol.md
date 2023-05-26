@@ -17,6 +17,5 @@ For example, the following source receives messages on TCP, using the `network()
 
 ```c
    source s_network_tcp { network( transport("tcp") ip("::") ip-protocol(6) port(601) ); };
-
 ```
 

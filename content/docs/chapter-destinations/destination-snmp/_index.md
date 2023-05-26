@@ -23,7 +23,6 @@ The `snmp()` driver requires the `host()`, `trap-obj()`, and `snmp-obj()` option
 
 ```c
    destination d_snmp {snmp(host() trap-obj() snmp-obj() ...);};
-
 ```
 
 
@@ -59,7 +58,6 @@ The following example defines an SNMP destination that uses the SNMPv2c protocol
             snmp-obj('.1.3.6.1.4.1.18372.3.1.1.1.1.3.0', 'Ipaddress', '192.168.1.1')
             );
     };
-
 ```
 
 The following example defines an SNMP destination that uses the SNMPv3 protocol and uses macros to fill the values of the SNMP objects.
@@ -81,6 +79,5 @@ The following example defines an SNMP destination that uses the SNMPv3 protocol 
             snmp-obj('.1.3.6.1.4.1.18372.3.1.1.1.1.3', 'Ipaddress', '${SOURCEIP}')
             );
     };
-
 ```
 

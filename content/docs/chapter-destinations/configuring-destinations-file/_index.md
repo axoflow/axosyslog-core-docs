@@ -17,7 +17,6 @@ The `file()` has a single required parameter that specifies the filename that st
 
 ```c
    file(filename options());
-
 ```
 
 
@@ -26,7 +25,6 @@ The `file()` has a single required parameter that specifies the filename that st
 
 ```c
    destination d_file { file("/var/log/messages"); };
-
 ```
 
 
@@ -39,7 +37,6 @@ The `file()` has a single required parameter that specifies the filename that st
              template("${HOUR}:${MIN}:${SEC} ${TZ} ${HOST} [${LEVEL}] ${MESSAGE}\n")
              template-escape(no));
     };
-
 ```
 
 

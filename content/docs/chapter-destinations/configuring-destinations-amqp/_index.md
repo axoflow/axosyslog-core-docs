@@ -15,7 +15,6 @@ For the list of available parameters, see {{% xref "/docs/chapter-destinations/c
 
 ```c
    amqp( host("<amqp-server-address>") );
-
 ```
 
 
@@ -40,6 +39,5 @@ The following example shows the default values of the available options.
             )
         );
     };
-
 ```
 

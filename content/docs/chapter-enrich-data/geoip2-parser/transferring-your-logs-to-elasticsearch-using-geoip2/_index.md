@@ -14,7 +14,6 @@ If you are transferring your log messages into Elasticsearch, use the following 
             condition(not "${geoip2.location.latitude}" == "")
         );
     };
-
 ```
 
 In your Elasticsearch configuration, set the appropriate mappings:

@@ -57,7 +57,6 @@ The output buffer of the destination must accommodate at least `log-iw-size()` m
         destination(d_tcp);
         flags(flow-control);
     };
-
 ```
 
 If other sources send messages to this destination, then the output buffer must be further increased. For example, if a network host with maximum **100** connections also logs into the destination, then increase the `log-fifo-size()` by **10000**.
@@ -89,6 +88,5 @@ If other sources send messages to this destination, then the output buffer must 
         destination(d_tcp);
         flags(flow-control);
     };
-
 ```
 

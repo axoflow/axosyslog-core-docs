@@ -38,7 +38,6 @@ Complete the following steps on the syslog-ng server:
                 )
             );
         };
-    
     ```
     
     A similar source for receiving messages using the IETF-syslog protocol:
@@ -53,7 +52,6 @@ Complete the following steps on the syslog-ng server:
                 )
             );
         };
-    
     ```
     
 
@@ -80,7 +78,6 @@ Complete the following steps on the syslog-ng server:
                 )
             );
         };
-    
     ```
     
     A similar source for receiving messages using the IETF-syslog protocol:
@@ -97,13 +94,10 @@ Complete the following steps on the syslog-ng server:
                 )
             );
         };
-    
     ```
     
     
     {{% alert title="Warning" color="warning" %}}
-    
-    Do not forget to update the certificate and key files when they expire.
-    
+Do not forget to update the certificate and key files when they expire.
     {{% /alert %}}
 

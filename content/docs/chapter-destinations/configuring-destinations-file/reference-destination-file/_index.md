@@ -65,7 +65,6 @@ An example when time-based macro is used:
 
 ```c
    file("/var/log/cron.${YEAR}${MONTH}" symlink-as("/var/log/cron"));
-
 ```
 
 In this case the `/var/log/cron` should point to the current month.

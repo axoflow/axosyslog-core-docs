@@ -16,5 +16,4 @@ Note that by default, the `syslog-parser` attempts to parse the message as an RF
 
 ```c
    syslog-parser(flags(syslog-protocol));
-
 ```

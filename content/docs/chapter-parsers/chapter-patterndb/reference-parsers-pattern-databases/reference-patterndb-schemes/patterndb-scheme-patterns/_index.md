@@ -34,9 +34,7 @@ N/A
     You can also use parsers in the program pattern if needed, and use the parsed results later. For example: `\<pattern\>postfix\\@ESTRING:.postfix.component:[@\</pattern\>`
     
     {{% alert title="Note" color="info" %}}
-    
-    If the `\<pattern\>` element of a ruleset is not specified, {{% param "product.abbrev" %}} will use this ruleset as a fallback ruleset: it will apply the ruleset to messages that have an empty PROGRAM header, or if none of the program patterns matched the PROGRAM header of the incoming message.
-    
+If the `\<pattern\>` element of a ruleset is not specified, {{% param "product.abbrev" %}} will use this ruleset as a fallback ruleset: it will apply the ruleset to messages that have an empty PROGRAM header, or if none of the program patterns matched the PROGRAM header of the incoming message.
     {{% /alert %}}
 
 

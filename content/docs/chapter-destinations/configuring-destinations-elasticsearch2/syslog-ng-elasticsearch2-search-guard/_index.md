@@ -37,7 +37,6 @@ To connect to an Elasticsearch 5.x or newer cluster, use HTTPS mode.
             resource("/etc/syslog-ng/elasticsearch.yml")
           );
         };
-    
     ```
 
 4.  Configure the Elasticsearch resource file (for example, `/etc/syslog-ng/elasticsearch.yml`) as needed for your environment. Note the `searchguard:` section.

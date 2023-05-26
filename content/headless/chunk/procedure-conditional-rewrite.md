@@ -20,7 +20,6 @@ The following procedure summarizes how conditional rewrite rules (rewrite rules 
         rewrite(r_rewrite_set);
         destination(d1);
     };
-
 ```
 
 

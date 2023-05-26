@@ -27,7 +27,6 @@ The following sample configuration selects the triggered messages and sends them
         destination d_triggers {
             program("/bin/myscript"; );
         };
-    
     ```
 
 3.  Create a filter that selects the triggered messages from the internal source.
@@ -36,14 +35,12 @@ The following sample configuration selects the triggered messages and sends them
         filter f_triggers {
             match("yes" value ("TRIGGER") type(string));
         };
-    
     ```
 
 4.  Create a logpath that selects the triggered messages from the internal source and sends them to the script:
     
     ```c
         log { source(s_local); filter(f_triggers); destination(d_triggers); };
-    
     ```
 
 5.  Create a script that will actually process the generated messages, for example:

@@ -51,9 +51,7 @@ To process the messages from an orphan disk-buffer file using a separate {{% par
     ```
     
     {{% alert title="Warning" color="warning" %}}
-    
-    Make sure that there is sufficient disk space in the directory. The minimum recommended disk space in the directory is equal to the size of the orphan disk-buffer file.
-    
+Make sure that there is sufficient disk space in the directory. The minimum recommended disk space in the directory is equal to the size of the orphan disk-buffer file.
     {{% /alert %}}
 
 4.  Create the configuration file `/tmp/qdisk/qdisk.conf` for the temporary instance with the following content.
@@ -78,16 +76,13 @@ To process the messages from an orphan disk-buffer file using a separate {{% par
         log {
           destination(d_destination);
         };
-    
     ```
     
 
 5.  Add your destination statement with `disk-buffer()` to the configuration file. You can copy the destination statement from your running {{% param "product.abbrev" %}} configuration.
     
     {{% alert title="Warning" color="warning" %}}
-    
-    Add the `dir()` option and set the disk-buffer file's destination directory to the temporary directory (that is, `/tmp/qdisk`) in your destination statement.
-    
+Add the `dir()` option and set the disk-buffer file's destination directory to the temporary directory (that is, `/tmp/qdisk`) in your destination statement.
     {{% /alert %}}
 
 6.  <span id="start-temp-instance"></span>Start the temporary {{% param "product.abbrev" %}} instance in the foreground.

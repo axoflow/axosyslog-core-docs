@@ -30,7 +30,6 @@ The following example sends every log from the `system()` source to your Sumo Lo
         );
       };
     };
-
 ```
 
 

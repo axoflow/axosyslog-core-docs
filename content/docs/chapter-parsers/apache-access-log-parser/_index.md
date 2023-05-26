@@ -29,7 +29,6 @@ The {{% param "product.abbrev" %}} application extracts every field into name-va
             prefix()
         );
     };
-
 ```
 
 
@@ -57,7 +56,6 @@ In the following example, the source is a log file created by an Apache web serv
         parser { apache-accesslog-parser();};
         destination(d_json);
     };
-
 ```
 
 

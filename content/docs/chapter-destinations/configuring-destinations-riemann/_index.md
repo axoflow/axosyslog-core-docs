@@ -17,7 +17,6 @@ For the list of available parameters, see {{% xref "/docs/chapter-destinations/c
         port("<riemann-server-port>")
         metric("<the-metric-or-data-to-send-to-riemann>")
     );
-
 ```
 
 
@@ -52,7 +51,6 @@ The following destination sends the value of the SEQNUM macro (the number of mes
         destination(d_riemann);
         flags(flow-control);
     };
-
 ```
 
 

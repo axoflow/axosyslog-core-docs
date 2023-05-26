@@ -15,7 +15,6 @@ The `slack()` destination driver sends messages to a [Slack](https://slack.com/)
         hook-url("https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX")
       );
     };
-
 ```
 
 
@@ -60,6 +59,5 @@ The following example sets the colors and the author of the message.
         author-icon("https://raw.githubusercontent.com/MrAnno/vscode-syslog-ng/master/images/syslog-ng-icon.png")
       );
     };
-
 ```
 

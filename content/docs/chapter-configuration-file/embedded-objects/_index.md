@@ -14,7 +14,6 @@ To embed multiple objects into a configuration object, use the following syntax.
             <configuration-objects>
         };
     };
-
 ```
 
 
@@ -34,7 +33,6 @@ For example, to process a log file in a specific way, you can define the require
     log {
         source(s_apache); ...
     };
-
 ```
 
 The `s_apache` source uses a file source (the error log of an Apache webserver) and references a specific parser to process the messages of the error log. The log statement references only the `s_apache` source, and any other object in the log statement can already use the results of the `p_apache_parser`parser.
@@ -53,7 +51,6 @@ You must start the object definition with a **channel** even if you will use a `
             };
         };
     };
-
 ```
 
 If you want to embed configuration objects into sources or destinations, always use channels, otherwise the source or destination will not behave as expected. For example, the following configuration is good:
@@ -71,5 +68,5 @@ If you want to embed configuration objects into sources or destinations, always 
             };
         };
     };
-
-``` {{% /alert %}}
+```
+{{% /alert %}}

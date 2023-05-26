@@ -17,5 +17,4 @@ Certificate authentication:
             java-keystore-password("password-to-your-keystore")
         );
     };
-
 ```

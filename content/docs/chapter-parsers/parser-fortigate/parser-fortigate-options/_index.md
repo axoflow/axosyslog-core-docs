@@ -15,7 +15,6 @@ By default, `fortigate-parser()` uses the `.fortigate.` prefix. To modify it, us
    parser {
         fortigate-parser(prefix("myprefix."));
     };
-
 ```
 
 

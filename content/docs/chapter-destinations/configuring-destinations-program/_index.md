@@ -13,7 +13,6 @@ The `program()` driver has a single required parameter, specifying a program nam
 
 ```c
    program(command_to_run);
-
 ```
 
 When using the `program()` driver, consider the following:
@@ -36,7 +35,6 @@ The message format does not include the priority and facility values by default.
 
 ```c
    destination d_prog { program("/bin/script" template("<${PRI}>${DATE} ${HOST} ${MESSAGE}\n") ); };
-
 ```
 
 The following shell script writes the incoming messages into the `/tmp/testlog` file.

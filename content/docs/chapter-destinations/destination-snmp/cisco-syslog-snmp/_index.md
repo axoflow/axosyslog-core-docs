@@ -71,7 +71,6 @@ The `cisco-snmp()` driver has the same requirements and options as the `snmp()` 
 
 ```c
    destination d_cisco_snmp {cisco-snmp(host(<hostname>));};
-
 ```
 
 
@@ -86,7 +85,6 @@ The following example defines an SNMP destination that sends out clogMessageGene
     auth-username('myusername')
     auth-password('password')
     enc-password('password'));};
-
 ```
 
 

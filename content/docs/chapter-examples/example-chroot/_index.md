@@ -21,8 +21,6 @@ To collect logs from a chroot using a syslog-ng client running on the host, comp
 3.  Include the source in a log statement.
     
     {{% alert title="Note" color="info" %}}
-    
-    You need to set up timezone information within your chroot as well. This usually means creating a symlink to `/etc/localtime`.
-    
+You need to set up timezone information within your chroot as well. This usually means creating a symlink to `/etc/localtime`.
     {{% /alert %}}
 

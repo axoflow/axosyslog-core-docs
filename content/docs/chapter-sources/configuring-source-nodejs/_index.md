@@ -23,7 +23,6 @@ The following example uses the default settings of the driver, listening for mes
 ```c
    @include "scl.conf"
     source apps { nodejs(); };
-
 ```
 
 The following example listens only on IP address `192.168.1.1`, port `9999`.
@@ -36,7 +35,6 @@ The following example listens only on IP address `192.168.1.1`, port `9999`.
             port(9999)
         )
     };
-
 ```
 
 

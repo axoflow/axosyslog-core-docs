@@ -88,7 +88,6 @@ For example, for the date `01/Jan/2016:13:05:05 PST` use the following format st
 
 ```c
    date-parser(flags(guess-timezone));
-
 ```
 
 

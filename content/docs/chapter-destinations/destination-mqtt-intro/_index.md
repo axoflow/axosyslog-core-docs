@@ -52,6 +52,5 @@ The following example illustrates a `mqtt()` destination configured to fetch mes
       source(s_net); 
       destination( d_mqtt); 
     };
-
 ```
 

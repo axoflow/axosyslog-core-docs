@@ -30,7 +30,6 @@ The Regular expression parser has the following options.
             prefix("myprefix.")
         );
     };
-
 ```
 
 {{% include-headless "chunk/option-parser-template.md" %}}

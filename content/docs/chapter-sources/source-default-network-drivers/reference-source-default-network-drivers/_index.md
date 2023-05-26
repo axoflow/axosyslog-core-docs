@@ -54,10 +54,8 @@ To receive messages using a TLS-encrypted connection, you must set the `tls(key-
             )
         );
     };
-
-``` {{% /alert %}}
-
-
+```
+{{% /alert %}}
 
 ## tcp-port()
 

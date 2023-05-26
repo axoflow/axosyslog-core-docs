@@ -12,5 +12,4 @@ options(
   "otheroption" => "value"
 )           
 ```
-
-``` {{% /alert %}}
+{{% /alert %}}

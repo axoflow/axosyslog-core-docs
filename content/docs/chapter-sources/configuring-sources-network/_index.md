@@ -15,7 +15,6 @@ You can use the RLTP protocol as well. For details about the RLTP protocol, see 
 
 ```c
    network([options]);
-
 ```
 
 
@@ -30,7 +29,6 @@ Using only the default settings: listen on every available IPV4 interface on the
    source s_network {
         network();
     };
-
 ```
 
 UDP source listening on `192.168.1.1` (the default port for UDP is 514):
@@ -42,7 +40,6 @@ UDP source listening on `192.168.1.1` (the default port for UDP is 514):
             transport("udp")
         );
     };
-
 ```
 
 TCP source listening on the IPv6 localhost, port 2222:
@@ -56,7 +53,6 @@ TCP source listening on the IPv6 localhost, port 2222:
             ip-protocol(6)
         );
     };
-
 ```
 
 A TCP source listening on a TLS-encrypted channel.
@@ -72,7 +68,6 @@ A TCP source listening on a TLS-encrypted channel.
             );
         );
     };
-
 ```
 
 A TCP source listening for messages using the IETF-syslog message format. Note that for transferring IETF-syslog messages, generally you are recommended to use the `syslog()` driver on both the client and the server, as it uses both the IETF-syslog message format and the protocol. For details, see {{% xref "/docs/chapter-sources/source-syslog/_index.md" %}}.
@@ -84,7 +79,6 @@ A TCP source listening for messages using the IETF-syslog message format. Note t
             flags(syslog-protocol)
         );
     };
-
 ```
 
 

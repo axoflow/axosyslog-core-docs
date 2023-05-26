@@ -15,7 +15,6 @@ weight:  300
             database("<path-to-geoip2-database-file>")
         );
     };
-
 ```
 
 
@@ -54,7 +53,6 @@ In the following example, {{% param "product.abbrev" %}} retrieves the GeoIP2 da
         parser(p_geoip2);
         destination(d_file);
     };
-
 ```
 
 For example, for the `\<38\>2017-05-24T13:09:46 192.168.1.1 prg00000[1234]: test message` message the output will look like:

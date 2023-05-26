@@ -26,7 +26,6 @@ The `stdin()` driver causes syslog-ng to exit once it hits end-of-file (EOF).
         source { stdin(); };
         destination { file("/dev/stdout"); };
     };
-
 ```
 
 The following code snippet is an example of how the `stdin()` driver is used to collect a test message:

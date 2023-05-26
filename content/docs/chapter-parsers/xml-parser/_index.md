@@ -23,7 +23,6 @@ To create an XML parser, define an `xml_parser` that has the `xml()` option. By 
             strip-whitespaces()
         );
     };
-
 ```
 
 
@@ -53,7 +52,6 @@ In the following example, the source is an XML-encoded log message. The destinat
         parser(xml_parser);
         destination(d_local);
     };
-
 ```
 
 You can also define the parser inline in the log path.
@@ -64,7 +62,6 @@ You can also define the parser inline in the log path.
         parser { xml(prefix(".SDATA")); };
         destination(d_file);
     };
-
 ```
 
 

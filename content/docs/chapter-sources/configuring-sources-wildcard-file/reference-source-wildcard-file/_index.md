@@ -148,7 +148,6 @@ The following example reads files having the `.log` extension from the `/var/log
             log-fetch-limit(100)
         );
     };
-
 ```
 
 

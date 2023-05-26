@@ -19,7 +19,6 @@ If the parameter value is not a valid parameter value, the function ignores it a
    rewrite <name_of_the_rule> {
         set-severity("severity string or number");
     };
-
 ```
 
 
@@ -54,7 +53,6 @@ The following examples can be used in production for the `set-severity()` rewrit
    rewrite {
         set-severity("info");
     };
-
 ```
 
 **Example using numeric string:**
@@ -63,7 +61,6 @@ The following examples can be used in production for the `set-severity()` rewrit
    rewrite {
         set-severity("6");
     };
-
 ```
 
 **Example using template:**
@@ -72,6 +69,5 @@ The following examples can be used in production for the `set-severity()` rewrit
    rewrite {
         set-severity("${.json.severity}");
     };
-
 ```
 

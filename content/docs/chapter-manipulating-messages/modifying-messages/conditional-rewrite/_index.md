@@ -30,7 +30,6 @@ The following procedure summarizes how conditional rewrite rules (rewrite rules 
         rewrite(r_rewrite_set);
         destination(d1);
     };
-
 ```
 
 To configure condtional rewrite
@@ -48,7 +47,6 @@ The following example sets the HOST field of the message to `myhost` only if the
 
 ```c
    rewrite r_rewrite_set{set("myhost", value("HOST") condition(program("myapplication")));};
-
 ```
 
 The following example is identical to the previous one, except that the condition references an existing filter template.
@@ -56,7 +54,6 @@ The following example is identical to the previous one, except that the conditio
 ```c
    filter f_rewritefilter {program("myapplication");};
     rewrite r_rewrite_set{set("myhost", value("HOST") condition(filter(f_rewritefilter)));};
-
 ```
 
 

@@ -69,7 +69,6 @@ In the following example, a `/var/testdb_working_dir/$DAY-$HOUR.txt` file will b
      hdfs-uri("hdfs://hdp2.syslog-ng.example:8020")
      hdfs-file("/var/testdb_working_dir/$DAY-$HOUR.txt"));
     };
-
 ```
 
 As an example, if it is the 31st day of the month and it is 12 o'clock, then the name of the file will be `31-12.txt`.

@@ -50,7 +50,6 @@ To parse the log messages of the Linux Audit subsystem, define a parser that has
             template()
         );
     };
-
 ```
 
 
@@ -80,7 +79,6 @@ In the following example, the source is a log file created by auditd. Since the 
         parser(p_auditd);
         destination(d_json);
     };
-
 ```
 
 You can also define the parser inline in the log path.
@@ -104,6 +102,5 @@ You can also define the parser inline in the log path.
         };
         destination(d_json);
     };
-
 ```
 

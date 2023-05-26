@@ -17,7 +17,6 @@ On platforms running systemd, the `systemd-syslog()` driver reads the log messag
 
 ```c
    systemd-syslog();
-
 ```
 
 
@@ -39,6 +38,5 @@ On platforms running systemd, the `systemd-syslog()` driver reads the log messag
         source(s_systemdd);
         destination(d_network);
     };
-
 ```
 

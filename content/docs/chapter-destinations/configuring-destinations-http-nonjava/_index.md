@@ -28,7 +28,6 @@ If the server returns a status code beginning with 2 (for example, 200), {{% par
             [...]
         );
     };
-
 ```
 
 
@@ -45,7 +44,6 @@ If the server returns a status code beginning with 2 (for example, 200), {{% par
             password("<password>")
         );
     };
-
 ```
 
 
@@ -80,7 +78,6 @@ The following example defines an `http` destination.
         destination(d_http);
         flags(flow-control);
     };
-
 ```
 
 

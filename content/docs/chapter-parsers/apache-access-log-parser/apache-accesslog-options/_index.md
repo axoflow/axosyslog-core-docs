@@ -15,7 +15,6 @@ By default, `apache-accesslog-parser()` uses the `.apache.` prefix. To modify it
    parser {
         apache-accesslog-parser(prefix("apache."));
     };
-
 ```
 
 

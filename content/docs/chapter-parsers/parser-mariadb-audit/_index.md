@@ -17,7 +17,6 @@ The MariaDB parser can parse the log messages of the MariaDB Audit Plugin. The p
         parser { mariadb-audit-parser(); };
         destination { ... };
     };
-
 ```
 
 
@@ -34,6 +33,5 @@ By default, `mariadb-audit` uses the `.mariadb.` prefix. To modify it, use the f
    parser {
         mariadb-audit-parser(prefix("myprefix."));
     };
-
 ```
 

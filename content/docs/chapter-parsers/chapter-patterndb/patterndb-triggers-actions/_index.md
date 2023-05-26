@@ -20,7 +20,6 @@ To send the generated messages to the `internal` source, use the **inject-mode(i
             inject-mode(internal)
         );
     };
-
 ```
 
 To inject the generated messages where the pattern database is referenced, use the **inject-mode(pass-through)** option:
@@ -32,7 +31,6 @@ To inject the generated messages where the pattern database is referenced, use t
             inject-mode(pass-through)
         );
     };
-
 ```
 
 

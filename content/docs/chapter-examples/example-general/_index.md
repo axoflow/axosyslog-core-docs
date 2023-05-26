@@ -11,7 +11,6 @@ This section provides general tips and recommendations on using syslog-ng. Some 
     
     ```c
         options {ts-format(iso) ; };
-    
     ```
 
   - Resolving the IP addresses of the clients to domain names can decrease the performance of syslog-ng. For details, see {{% xref "/docs/chapter-examples/examples-dns/_index.md" %}}.

@@ -17,7 +17,6 @@ The following filter matches on hostnames starting with the `myhost` string, for
 
 ```c
    filter f_wildcard {host("myhost*" type(glob));};
-
 ```
 
 
@@ -27,5 +26,4 @@ To filter for special control characters like the carriage return (CR), use the 
 
 ```c
    filter f_carriage_return {match("\x0d" value ("MESSAGE"));};
-
 ```

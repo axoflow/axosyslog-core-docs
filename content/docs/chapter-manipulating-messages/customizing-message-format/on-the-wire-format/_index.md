@@ -18,7 +18,6 @@ The following template is a valid LPUSH command in accordance with the [Redis pr
    template t_redis_lpush {
         template("*3\r\n$$5\r\nLPUSH\r\n$$$(length ${PROGRAM})\r\n${PROGRAM}\r\n$$$(length ${MESSAGE})\r\n${MESSAGE}\r\n");
     };
-
 ```
 
 If you use this template in a `network()` destination, {{% param "product.abbrev" %}} formats the message according to the template, and sends it to the Redis server.
@@ -27,5 +26,4 @@ If you use this template in a `network()` destination, {{% param "product.abbrev
    destination d_redis_tcp {
         network("127.0.0.1" port(6379) template(t_redis_lpush));
     };
-
 ```

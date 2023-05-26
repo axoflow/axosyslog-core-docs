@@ -7,5 +7,5 @@ The {{% param "product.abbrev" %}} application automatically adds the class of t
 
 ```c
    filter f_tag_filter {tags(".classifier.system");};
-
-``` {{% /alert %}}
+```
+{{% /alert %}}

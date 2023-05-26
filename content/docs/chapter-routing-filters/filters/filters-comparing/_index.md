@@ -9,7 +9,6 @@ Starting with {{% param "product.abbrev" %}} version 3.2, it is also possible to
 ```c
    filter <filter-id>
             {"<macro-or-template>" operator "<value-or-macro-or-template>"};
-
 ```
 
 
@@ -19,21 +18,18 @@ The following expression selects log messages containing a PID (that is, `${PID}
 
 ```c
    filter f_pid {"${PID}" !=""};
-
 ```
 
 The following expression selects log messages that do not contain a PID. Also, it uses a template as the left argument of the operator and compares the values as strings:
 
 ```c
    filter f_pid {"${HOST}${PID}" eq "${HOST}"};
-
 ```
 
 The following example selects messages with priority level higher than 5.
 
 ```c
    filter f_level {"${LEVEL_NUM}" > "5"};
-
 ```
 
 

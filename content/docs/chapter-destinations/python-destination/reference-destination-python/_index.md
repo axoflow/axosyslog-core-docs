@@ -45,7 +45,6 @@ This option does not have any effect unless the `flush()` method is implemented 
    python(
         class("MyPythonDestination")
     );
-
 ```
 
 If you want to store the Python code in an external Python file, the `class()` option must include the name of the Python file containing the class, without the path and the .py extension, for example:
@@ -54,7 +53,6 @@ If you want to store the Python code in an external Python file, the `class()` o
    python(
         class("MyPythonfilename.MyPythonDestination")
     );
-
 ```
 
 For details, see {{% xref "/docs/chapter-configuration-file/python-code-external-file/_index.md" %}}
@@ -94,6 +92,5 @@ You can use this option to limit which name-value pairs are passed to the Python
             value-pairs(key(MESSAGE))
         );
     };
-
 ```
 

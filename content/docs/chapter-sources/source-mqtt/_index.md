@@ -24,7 +24,6 @@ The rest of this chapter and its sections build on your familiarity with the MQT
             topic("<topic-name>")
         );
     };
-
 ```
 
 
@@ -52,6 +51,5 @@ The following example illustrates an `mqtt()` source configured to fetch message
         source(s_mqtt);
         destination(d_network);;
     };
-
 ```
 

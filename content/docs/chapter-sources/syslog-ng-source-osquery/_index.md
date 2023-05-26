@@ -50,7 +50,6 @@ The following {{% param "product.abbrev" %}} configuration sample uses the defau
             file("/var/log/example.log");
         };
     };
-
 ```
 
 Filter for messages related to loading Linux kernel modules:
@@ -70,7 +69,6 @@ Filter for messages related to loading Linux kernel modules:
             file("/var/log/example.log");
         };
     };
-
 ```
 
 
@@ -111,7 +109,6 @@ The following {{% param "product.abbrev" %}} configuration sample reads osquery 
       destination(d_file);
       flags(flow-control);
     };
-
 ```
 
 ## Outgoing message:

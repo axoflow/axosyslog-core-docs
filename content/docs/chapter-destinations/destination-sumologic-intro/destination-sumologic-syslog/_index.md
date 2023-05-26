@@ -29,7 +29,6 @@ The following example illustrates how you can use the `sumologic-syslog()` desti
         );
     };
     };
-
 ```
 
 
@@ -54,7 +53,6 @@ The following example illustrates how you can use the `sumologic-syslog()` desti
         );
       };
     };
-
 ```
 
 

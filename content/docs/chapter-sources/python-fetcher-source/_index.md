@@ -55,7 +55,6 @@ This section describes fetcher-style sources. For details on server-style source
         def close(self): # optional
             print("close")
     };
-
 ```
 
 

@@ -25,6 +25,5 @@ The following example reads the emails of the root user on the {{% param "produc
     source root-mbox {
         mbox("/var/spool/mail/root");
     };
-
 ```
 

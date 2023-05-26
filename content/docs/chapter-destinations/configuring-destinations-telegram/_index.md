@@ -13,7 +13,6 @@ Note that this destination automatically uses the certificate store of the syste
 
 ```c
    telegram(parameters);
-
 ```
 
 
@@ -35,6 +34,5 @@ The following example creates a `telegram()` destination.
             chat-id("<chat id>")
         );
     };
-
 ```
 

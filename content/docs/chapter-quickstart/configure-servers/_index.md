@@ -25,7 +25,6 @@ To configure syslog-ng on a server host, complete the following steps.
         source s_network {
             syslog(ip(10.1.2.3) transport("udp"));
         };
-    
     ```
     
     However, if possible, use the much more reliable TCP transport:
@@ -34,15 +33,12 @@ To configure syslog-ng on a server host, complete the following steps.
         source s_network {
             syslog(ip(10.1.2.3) transport("tcp"));
         };
-    
     ```
     
     For other options, see {{% xref "/docs/chapter-sources/source-syslog/_index.md" %}} and {{% xref "/docs/chapter-sources/configuring-sources-tcpudp/_index.md" %}}.
     
     {{% alert title="Note" color="info" %}}
-    
-    Starting with {{% param "product.abbrev" %}} version 3.2, the `syslog()` source driver can handle both BSD-syslog (RFC 3164) and IETF-syslog (RFC 5424-26) messages.
-    
+Starting with {{% param "product.abbrev" %}} version 3.2, the `syslog()` source driver can handle both BSD-syslog (RFC 3164) and IETF-syslog (RFC 5424-26) messages.
     {{% /alert %}}
 
 4.  Create local destinations that will store the log messages, for example, file- or program destinations. The default configuration of {{% param "product.abbrev" %}} places the collected messages into the `/var/log/messages` file:
@@ -51,7 +47,6 @@ To configure syslog-ng on a server host, complete the following steps.
         destination d_local {
             file("/var/log/messages");
         };
-    
     ```
     
     If you want to create separate logfiles for every client host, use the **${HOST}** macro when specifying the filename, for example:
@@ -60,7 +55,6 @@ To configure syslog-ng on a server host, complete the following steps.
         destination d_local {
             file("/var/log/messages_${HOST}");
         };
-    
     ```
     
     For details on further macros and how to use them, see {{% xref "/docs/chapter-manipulating-messages/_index.md" %}}.
@@ -71,7 +65,6 @@ To configure syslog-ng on a server host, complete the following steps.
         log {
             source(s_local); source(s_network); destination(d_local);
         };
-    
     ```
 
 6.  Set filters, options (for example, TLS encryption) and other advanced features as necessary.
@@ -108,7 +101,6 @@ To configure syslog-ng on a server host, complete the following steps.
         log {
             source(s_local); source(s_network); destination(d_logs);
         };
-    
     ```
     
 
