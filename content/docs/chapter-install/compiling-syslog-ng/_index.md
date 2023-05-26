@@ -7,15 +7,15 @@ weight:  100
 
 ## Purpose:
 
-To compile syslog-ng Open Source Edition (OSE) from the source code, complete the following steps. Alternatively, you can use precompiled binary packages on several platforms. For a list of third-party packages available for various Linux, UNIX, and other platforms, see [syslog-ng Open Source Edition installation packages](https://github.com/syslog-ng/syslog-ng/#installation-from-binaries).
+To compile `syslog-ng` from the source code, complete the following steps. Alternatively, you can use precompiled binary packages on several platforms. For a list of third-party packages available for various Linux, UNIX, and other platforms, see [syslog-ng Open Source Edition installation packages](https://github.com/syslog-ng/syslog-ng/#installation-from-binaries).
 
 
 
 ## Steps:
 
-1.  Download the latest version of syslog-ng OSE from [GitHub](https://github.com/syslog-ng/syslog-ng/). The source code is available as a tar.gz archive file.
+1.  Download the latest source code release from [GitHub](https://github.com/syslog-ng/syslog-ng/releases). The source code is available as a tar.gz archive file.
 
-2.  Install the following packages that are required to compile syslog-ng. These packages are available for most UNIX/Linux systems. Alternatively, you can also download the sources and compile them.
+2.  Install the following required packages. These packages are available for most UNIX/Linux systems. Alternatively, you can also download the sources and compile them.
     
       - A version of the *gcc* C compiler that properly supports Thread Local Storage (TLS), for example, version 4.5.
     
@@ -33,7 +33,7 @@ To compile syslog-ng Open Source Edition (OSE) from the source code, complete th
 
 3.  If you want to post log messages as HTTP requests using the `http()` destination, install the development files of the *libcurl* library. This library is not needed if you use the `--disable-http` compile option. Alternatively, you can use a Java-based implementation of the HTTP destination.
 
-4.  If you want to use the spoof-source function of syslog-ng, install the development files of the *libnet* library, [available here](http://libnet.sourceforge.net).
+4.  If you want to use the spoof-source function of `syslog-ng`, install the development files of the *libnet* library, [available here](http://libnet.sourceforge.net).
 
 5.  If you want to send emails using the `smtp()` destination, install the development files of the *libesmtp* library. This library is not needed if you use the `--disable-smtp` compile option.
 
@@ -47,24 +47,21 @@ To compile syslog-ng Open Source Edition (OSE) from the source code, complete th
         $ ./configure
         $ make
         $ make install
-    
     ```
 
-9.  Uncompress the syslog-ng archive using the
+9.  Uncompress the `syslog-ng` archive using the
     
     ```c
         tar xvfz syslog-ng-x.xx.tar.gz
-    
     ```
     
     or the
     
     ```c
         unzip -c syslog-ng-x.xx.tar.gz | tar xvf -
-    
     ```
     
-    command. A new directory containing the source code of syslog-ng will be created.
+    command. A new directory containing the source code of `syslog-ng` will be created.
 
 10. Enter the new directory and issue the following commands:
     
@@ -72,20 +69,19 @@ To compile syslog-ng Open Source Edition (OSE) from the source code, complete th
         $ ./configure
         $ make
         $ make install
-    
     ```
     
-    These commands will build syslog-ng using its default options.
+    These commands will build `syslog-ng` using its default options.
     
     {{% alert title="Note" color="info" %}}
 When using the `make` command, consider the following:
     
-      - On Solaris, use `gmake` (GNU make) instead of `make`.
-    
-      - To build {{% param "product.abbrev" %}} with less verbose output, use the `make V=0` command. This results in shorter, less verbose output, making warnings and other anomalies easier to notice. Note that silent-rules support is only available in recent automake versions.
+- On Solaris, use `gmake` (GNU make) instead of `make`.
+
+- To build {{% param "product.abbrev" %}} with less verbose output, use the `make V=0` command. This results in shorter, less verbose output, making warnings and other anomalies easier to notice. Note that silent-rules support is only available in recent automake versions.
     {{% /alert %}}
 
-11. If needed, use the following options to change how syslog-ng is compiled using the following command syntax:
+11. If needed, use the following options to change how `syslog-ng` is compiled using the following command syntax:
     
     ```c
         $ ./configure --compile-time-option-name
@@ -97,6 +93,6 @@ You can also use *--disable options*, to explicitly disable a feature and overri
     {{% /alert %}}
     
     {{% alert title="Warning" color="warning" %}}
-The default linking mode of syslog-ng is `dynamic`. This means that syslog-ng might not be able to start up if the `/usr` directory is on NFS. On platforms where syslog-ng is used as a system logger, the `--enable-mixed-linking` is preferred.
+The default linking mode of `syslog-ng` is `dynamic`. This means that `syslog-ng` might not be able to start up if the `/usr` directory is on NFS. On platforms where `syslog-ng` is used as a system logger, the `--enable-mixed-linking` is preferred.
     {{% /alert %}}
 

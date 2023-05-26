@@ -39,7 +39,7 @@ The *\<rules\>* element may contain any number of *\<rule\>* elements.
 
   - *id*: The globally unique ID of the rule.
 
-  - *class*: The class of the rule — syslog-ng assigns this class to the messages matching a pattern of this rule.
+  - *class*: The class of the rule — this class is assigned to the messages matching a pattern of this rule.
 
 
 

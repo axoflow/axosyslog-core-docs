@@ -4,7 +4,7 @@ weight:  3100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The filters and default macros of syslog-ng work well on the headers and metainformation of the log messages, but are rather limited when processing the content of the messages. Parsers can segment the content of the messages into name-value pairs, and these names can be used as user-defined macros. Subsequent filtering or other type of processing of the message can use these custom macros to refer to parts of the message. Parsers are global objects most often used together with filters and rewrite rules.
+The filters and default macros of `syslog-ng` work well on the headers and metainformation of the log messages, but are rather limited when processing the content of the messages. Parsers can segment the content of the messages into name-value pairs, and these names can be used as user-defined macros. Subsequent filtering or other type of processing of the message can use these custom macros to refer to parts of the message. Parsers are global objects most often used together with filters and rewrite rules.
 
 The {{% param "product.abbrev" %}} application provides the following possibilities to parse the messages, or parts of the messages:
 
@@ -24,7 +24,7 @@ The {{% param "product.abbrev" %}} application provides the following possibilit
 
   - To write a custom parser in Python or Hy, see {{% xref "/docs/chapter-parsers/python-parser/_index.md" %}}.
 
-  - To parse the tags sent by another syslog-ng host. For details, see {{% xref "/docs/chapter-parsers/parser-tags/_index.md" %}}.
+  - To parse the tags sent by another `syslog-ng` host. For details, see {{% xref "/docs/chapter-parsers/parser-tags/_index.md" %}}.
 
 The {{% param "product.abbrev" %}} application provides built-in parsers for the following application logs:
 

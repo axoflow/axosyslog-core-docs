@@ -1,5 +1,5 @@
 ---
-title: "Compiling options of syslog-ng OSE"
+title: "Compiling options of syslog-ng"
 weight:  300
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
@@ -24,7 +24,7 @@ When compiling {{% param "product.abbrev" %}} from source, you can use the follo
 
   - *--enable-debug* Include debug information.
 
-  - *--enable-dynamic-linking* Compile syslog-ng as a completely dynamic binary. If not specified syslog-ng uses mixed linking (`--enable-mixed-linking`): it links dynamically to system libraries and statically to everything else.
+  - *--enable-dynamic-linking* Compile `syslog-ng` as a completely dynamic binary. If not specified `syslog-ng` uses mixed linking (`--enable-mixed-linking`): it links dynamically to system libraries and statically to everything else.
 
   - *--enable-geoip* Enable GEOIP support, required for the `geoip2` template function and the `geoip2-parser` (enabled automatically if the `libmaxminddb` library is detected).
 
@@ -84,6 +84,6 @@ When compiling {{% param "product.abbrev" %}} from source, you can use the follo
 
   - *--with-python* Specifies which Python version to use, for example, `--with-python=2.7`
 
-  - *--with-timezone-dir* Specifies the directory where syslog-ng looks for the timezone files to resolve the `time-zone()` and `local-time-zone()` options. If not specified, the `/opt/syslog-ng/share/zoneinfo/` and `/usr/share/zoneinfo/` directories are checked, respectively. Note that HP-UX uses a unique file format (`tztab`) to describe the timezone information, but that format is currently not supported in syslog-ng. As a workaround, copy the zoneinfo files from another, non-HP-UX system to the `/opt/syslog-ng/share/zoneinfo/` directory of your HP-UX system.
+  - *--with-timezone-dir* Specifies the directory where `syslog-ng` looks for the timezone files to resolve the `time-zone()` and `local-time-zone()` options. If not specified, the `/opt/syslog-ng/share/zoneinfo/` and `/usr/share/zoneinfo/` directories are checked, respectively. Note that HP-UX uses a unique file format (`tztab`) to describe the timezone information, but that format is currently not supported. As a workaround, copy the zoneinfo files from another, non-HP-UX system to the `/opt/syslog-ng/share/zoneinfo/` directory of your HP-UX system.
 
   - *--without-compile-date* Removes the compilation date from the binary. For example, as openSUSE checks if recompilation changes the binary to detect if dependent packages need to be rebuilt or not, and including the date changes the binary every time.
