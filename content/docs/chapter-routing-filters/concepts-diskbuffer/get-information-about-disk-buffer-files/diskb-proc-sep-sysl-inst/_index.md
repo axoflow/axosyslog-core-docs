@@ -11,7 +11,7 @@ This section describes how to read messages from an orphan disk-buffer file by u
 
 ## Orphan disk-buffer files
 
-{{% include-headless "chunk/orphan-d-buf-intro.md" %}}
+{{< include-headless "chunk/orphan-d-buf-intro.md" >}}
 
 
 
@@ -47,7 +47,6 @@ To process the messages from an orphan disk-buffer file using a separate {{% par
     
     ```c
         mkdir /tmp/qdisk
-    
     ```
     
     {{% alert title="Warning" color="warning" %}}
@@ -89,7 +88,6 @@ Add the `dir()` option and set the disk-buffer file's destination directory to t
     
     ```c
         syslog-ng -Fe -f /tmp/qdisk/qdisk.conf -R /tmp/qdisk/qdisk.persist -c /tmp/qdisk/qdisk.ctl
-    
     ```
     
     The {{% param "product.abbrev" %}} application will log to the console, so you will see any potential error that may occur during startup.
@@ -106,7 +104,6 @@ Add the `dir()` option and set the disk-buffer file's destination directory to t
         syslog-ng starting up; version='7.0.20', cfg-fingerprint='eaa03b9efb88b87d7c1b0ce7efd042ed8ac0c013', cfg-nonce-ndx='0', cfg-signature='c0327a7f7e6418ce0399a75089377dfb662bb072'
         FIPS information; FIPS-mode='disabled'
         Syslog connection established; fd='7', server='AF_INET(10.21.10.20:514)', local='AF_INET(0.0.0.0:0)'
-    
     ```
     
 
@@ -116,14 +113,12 @@ Add the `dir()` option and set the disk-buffer file's destination directory to t
     
     ```c
         mv /opt/syslog-ng/var/syslog-ng-00005.rqf /tmp/qdisk/syslog-ng-00000.rqf
-    
     ```
 
 9.  Start {{% param "product.abbrev" %}} using the command used in [Start the temporary {{% param "product.abbrev" %}} instance in the foreground]({{< relref "/docs/chapter-routing-filters/concepts-diskbuffer/get-information-about-disk-buffer-files/diskb-proc-sep-sysl-inst/_index.md#start-temp-instance" >}}) step.
     
     ```c
         syslog-ng -Fe -f /tmp/qdisk/qdisk.conf -R /tmp/qdisk/qdisk.persist -c /tmp/qdisk/qdisk.ctl
-    
     ```
 
 10. Open another terminal and check the progress by using one of the following methods.
@@ -131,17 +126,13 @@ Add the `dir()` option and set the disk-buffer file's destination directory to t
       - Checking the number of stored logs in the disk-buffer (that is, the last number from the output).
         
         ```c
-        
             /opt/syslog-ng/sbin/syslog-ng-ctl stats -c /tmp/qdisk/qdisk.ctl | grep 'dst.*queued'
-        
         ```
     
       - Checking the status of the disk-buffer file.
         
         ```c
-        
             /opt/syslog-ng/bin/dqtooldqtool info /tmp/qdisk/syslog-ng-00000.rqf
-        
         ```
         
         An empty disk-buffer file will look similar to this:
@@ -152,9 +143,7 @@ Add the `dir()` option and set the disk-buffer file's destination directory to t
         When checking the status of the disk-buffer files, the terminal will display a similar status message for an empty disk-buffer file:
         
         ```c
-        
             Reliable disk-buffer state loaded; filename='/tmp/qdisk/syslog-ng-00000.rqf', queue_length='0', size='0'
-        
         ```
         
 
@@ -173,6 +162,4 @@ Add the `dir()` option and set the disk-buffer file's destination directory to t
     
     ```c
         rm -rf /tmp/qdisk
-    
     ```
-    
