@@ -58,9 +58,9 @@ If you want to store the Python code in an external Python file, the `class()` o
 For details, see {{% xref "/docs/chapter-configuration-file/python-code-external-file/_index.md" %}}
 
 
-{{% include-headless "chunk/option-destination-diskbuffer.md" %}}
+{{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
-{{% include-headless "chunk/option-destination-frac-digits.md" %}}
+{{< include-headless "chunk/option-destination-frac-digits.md" >}}
 
 {{% include-headless "chunk/option-python-loaders.md" %}}
 

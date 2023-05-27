@@ -90,10 +90,10 @@ The syntax of the config() option is the following:
 ```
 
 
-{{% include-headless "chunk/option-destination-diskbuffer.md" %}}
+{{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
 
-{{% include-headless "chunk/option-destination-frac-digits.md" %}}
+{{< include-headless "chunk/option-destination-frac-digits.md" >}}
 
 
 ## flush-timeout-on-reload() {#kafka-option-kafka-bootstrap-servers}
@@ -212,7 +212,7 @@ For details on formatting messages in JSON format, see [format-json]({{< relref 
 *Description:* The Kafka topic under which the message is published.
 
 
-{{% include-headless "chunk/option-destination-ts-format.md" %}}
+{{< include-headless "chunk/option-destination-ts-format.md" >}}
 
 
 ## workers() {#kafka-option-kafka-topic}

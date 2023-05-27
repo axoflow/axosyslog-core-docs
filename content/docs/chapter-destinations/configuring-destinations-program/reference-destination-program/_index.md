@@ -8,13 +8,13 @@ This driver starts an external application or script and sends the log messages 
 
 The `program()` destination has the following options:
 
-{{% include-headless "chunk/option-destination-diskbuffer.md" %}}
+{{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
 {{% include-headless "chunk/option-destination-flags.md" %}}
 
 {{% include-headless "chunk/option-destination-flush-lines.md" %}}
 
-{{% include-headless "chunk/option-destination-frac-digits.md" %}}
+{{< include-headless "chunk/option-destination-frac-digits.md" >}}
 
 {{< include-headless "chunk/option-destination-hook.md" >}}
 
@@ -26,7 +26,7 @@ The `program()` destination has the following options:
 
 {{% include-headless "chunk/option-destination-mark-freq.md" %}}
 
-{{% include-headless "chunk/option-destination-mark-mode.md" %}}
+{{< include-headless "chunk/option-destination-mark-mode.md" >}}
 
 Note that in earlier versions of {{% param "product.abbrev" %}}, the default for the mark-mode of the `program` destination was `none`. Now it defaults to the global setting, so the `program` destination will emit a MARK message every `mark-freq` interval. To avoid such messages, set the `mark-mode()` option of the destination to `none`.
 
@@ -44,4 +44,4 @@ Make sure to end your template with a newline character (`\\n`).
 
 {{% include-headless "chunk/option-destination-timezone.md" %}}
 
-{{% include-headless "chunk/option-destination-ts-format.md" %}}
+{{< include-headless "chunk/option-destination-ts-format.md" >}}

@@ -19,5 +19,5 @@ The {{% param "product.abbrev" %}} application can add the fractions to non-ISO8
 
 {{% /alert %}}
 
-{{% include-headless "wnt/n-frac-trunc.md" %}}
+{{< include-headless "wnt/n-frac-trunc.md" >}}
 

@@ -29,7 +29,7 @@ The `riemann()` destination has the following options:
 
 *Description:* The value to add as the description field of the Riemann event.
 
-{{% include-headless "chunk/option-destination-diskbuffer.md" %}}
+{{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
 
 

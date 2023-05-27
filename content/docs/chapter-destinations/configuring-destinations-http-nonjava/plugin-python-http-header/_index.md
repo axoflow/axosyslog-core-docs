@@ -40,7 +40,7 @@ Before you use the `python-http-header` plugin, make sure that your {{% param "p
     };
 ```
 
-`Options used in the configuration`
+Options used in the configuration:
 
   - `class`: Mandatory option. It refers to the user's Python class that implements the `python-http-header` interface. It can be `mymodule.MyClass` if the `class MyClass` is put into a `mymodule.py` module, or simply `MyClass` if the user's code is provided inline in the configuration, using the `python { ... };` keyword.{{% alert title="Note" color="info" %}}
 If you put the class implementation into its own module, it should be put into a standard location, or made available with the `PYTHONPATH` environment variable.
@@ -77,7 +77,7 @@ If the plugin fails, the HTTP module does not send the HTTP request without the 
 {{% /alert %}}
 
 
-`Methods used in the configuration`
+Methods used in the configuration:
 
   - `__init__(self, options)`: Optional method. The options specified in the {{% param "product.abbrev" %}} configuration can be stored in the instance using this method.
   - `get_headers(self, body, headers)`: Mandatory method. Returns a list of strings of form [`"header: value"`, ...]. The returned headers will be set for the outgoing HTTP request. The body contains the body of the HTTP request. The headers contain the current headers that the HTTP destination has already added to the request.
@@ -144,4 +144,4 @@ The following example can be copy-pasted and used as a template for using the Py
 
 
 
-{{% include-headless "wnt/w-http-header-py-supp.md" %}}
+{{< include-headless "wnt/w-http-header-py-supp.md" >}}

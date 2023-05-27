@@ -6,18 +6,11 @@
 
 *Description:* This option enables putting outgoing messages into the disk buffer of the destination to avoid message loss in case of a system failure on the destination side. It has the following options:
 
+### reliable()
 
-
-*reliable()*
-
-
-Type:
-
-yes|no
-
-Default:
-
-no
+| Type:        | yes/no    |
+|--------------|-----------|
+| Default:     | no        |
 
 *Description:* If set to `yes`, {{% param "product.abbrev" %}} cannot lose logs in case of reload/restart, unreachable destination or {{% param "product.abbrev" %}} crash. This solution provides a slower, but reliable disk-buffer option. It is created and initialized at startup and gradually grows as new messages arrive. If set to `no`, the normal disk-buffer will be used. This provides a faster, but less reliable disk-buffer option.
 
@@ -27,17 +20,11 @@ Hazard of data loss! If you change the value of `reliable()` option when there a
 
 {{% /alert %}}
 
+### compaction()
 
-*compaction()*
-
-
-Type:
-
-yes|no
-
-Default:
-
-no
+| Type:        | yes/no    |
+|--------------|-----------|
+| Default:     | no        |
 
 *Description:* If set to `yes`, {{% param "product.abbrev" %}} prunes the unused space in the LogMessage representation, making the disk queue size smaller at the cost of some CPU time. Setting the `compaction()` argument to `yes` is recommended when numerous name-value pairs are unset during processing, or when the same names are set multiple times.
 
@@ -47,82 +34,61 @@ Simply unsetting these name-value pairs by using the `unset()` rewrite operation
 
 {{% /alert %}}
 
+### dir()
 
-*dir()*
-
-
-Type:
-
-string
-
-Default:
-
-N/A
+| Type:        | string    |
+|--------------|-----------|
+| Default:     | N/A       |
 
 *Description:* Defines the folder where the disk-buffer files are stored.
 
-{{% include-headless "wnt/warning-disk-buffer-new-directory-delete-persist-file.md" %}} {{% alert title="Note" color="info" %}}
+{{< include-headless "wnt/warning-disk-buffer-new-directory-delete-persist-file.md" >}}
+
+{{% alert title="Note" color="info" %}}
 
 If the `dir()` path provided by the user does not exist, {{% param "product.ose" %}} creates the path with the same permission as the running instance.
 
 {{% /alert %}}
 
-*disk-buf-size()*
+### disk-buf-size()
 
-Type:
-
-number (bytes)
-
-Default:
+| Type:        | number (bytes) |
+|--------------|-----------|
+| Default:     | 1MiB       |
 
 *Description:* This is a required option. The maximum size of the disk-buffer in bytes. The minimum value is `1048576` bytes. If you set a smaller value, the minimum value will be used automatically. It replaces the old `log-disk-fifo-size()` option.
 
 
-*mem-buf-length()*
+### mem-buf-length()
 
-
-Type:
-
-number (messages)
-
-Default:
-
-10000
+| Type:        | number(messages)    |
+|--------------|-----------|
+| Default:     | 10000   |
 
 *Description:* Use this option if the option `reliable()` is set to `no`. This option contains the number of messages stored in overflow queue. It replaces the old `log-fifo-size()` option. It inherits the value of the global `log-fifo-size()` option if provided. If it is not provided, the default value is `10000` messages. Note that this option will be ignored if the option `reliable()` is set to `yes`.
 
 
-*mem-buf-size()*
+### mem-buf-size()
 
-
-Type:
-
-number (bytes)
-
-Default:
-
-163840000
+| Type:        | number (bytes) |
+|--------------|-----------|
+| Default:     | 163840000       |
 
 *Description:* Use this option if the option `reliable()` is set to `yes`. This option contains the size of the messages in bytes that is used in the memory part of the disk buffer. It replaces the old `log-fifo-size()` option. It does not inherit the value of the global `log-fifo-size()` option, even if it is provided. Note that this option will be ignored if the option `reliable()` is set to `no`.
 
 
-*qout-size()*
+### qout-size()
 
-
-Type:
-
-number (messages)
-
-Default:
-
-64
+| Type:        | number(messages)    |
+|--------------|-----------|
+| Default:     | 1000   |
 
 *Description:* The number of messages stored in the output buffer of the destination. Note that if you change the value of this option and the disk-buffer already exists, the change will take effect when the disk-buffer becomes empty.
 
 Options `reliable()` and `disk-buf-size()` are required options.
 
 
-## Example: Examples for using disk-buffer()
+### Example: Examples for using disk-buffer()
 
 In the following case reliable disk-buffer() is used.
 
@@ -158,18 +124,11 @@ In the following case normal disk-buffer() is used.
     };
 ```
 
+### truncate-size-ratio() {#diskbuf-trunkate-size-ratio}
 
-
-<span id="diskbuf-trunkate-size-ratio"></span>*truncate-size-ratio()*
-
-
-Type:
-
-number (between 0 and 1)
-
-Default:
-
-0.1 (10%)
+| Type:        | number((between 0 and 1))    |
+|--------------|-----------|
+| Default:     | 0.1 (10%)   |
 
 *Description:* Limits the truncation of the disk-buffer file. Truncating the disk-buffer file can slow down the disk IO operations, but it saves disk space, so `syslog-ng` only truncates the file, if the possible disk gain is more than `truncate-size-ratio()` times `disk-buf-size()`.
 

@@ -147,7 +147,7 @@ The {{% param "product.abbrev" %}} application uses the following procedure to d
 
 *Description:* Date of the message in the ISO 8601 compatible standard timestamp format (yyyy-mm-ddThh:mm:ss+-ZONE), for example: `2006-06-13T15:58:00.123+01:00`. If possible, it is recommended to use `${ISODATE}` for timestamping. Note that `syslog-ng` can produce fractions of a second (for example, milliseconds) in the timestamp by using the `frac-digits()` global or per-destination option.
 
-{{% include-headless "wnt/n-frac-trunc.md" %}}
+{{< include-headless "wnt/n-frac-trunc.md" >}}
 
 
 

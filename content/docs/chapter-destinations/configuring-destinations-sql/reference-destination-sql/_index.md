@@ -58,7 +58,7 @@ OPTION_NAME is always a string, VALUE is a string or a number. For example:
     dbd-option("null.sleep.query" 5)
 ```
 
-{{% include-headless "chunk/option-destination-diskbuffer.md" %}}
+{{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
 ## flags() {#sql-option-flags}
 
@@ -89,7 +89,7 @@ The following example sets the `dont-create-tables` and `explicit-commits` flags
 
 {{% include-headless "chunk/option-destination-batch-timeout.md" %}}
 
-{{% include-headless "chunk/option-destination-frac-digits.md" %}}
+{{< include-headless "chunk/option-destination-frac-digits.md" >}}
 
 {{< include-headless "chunk/option-destination-hook.md" >}}
 

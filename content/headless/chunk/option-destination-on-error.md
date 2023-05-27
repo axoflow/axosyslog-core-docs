@@ -4,23 +4,8 @@
 
 ## on-error()
 
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td>Accepted values:</td>
-<td><p>drop-message|drop-property|fallback-to-string|</p>
-<p>silently-drop-message|silently-drop-property|silently-fallback-to-string</p></td>
-</tr>
-<tr class="even">
-<td>Default:</td>
-<td>Use the global setting (which defaults to `drop-message`)</td>
-</tr>
-</tbody>
-</table>
+| Type:        | drop-message|drop-property|fallback-to-string|silently-drop-message | silently-drop-property|silently-fallback-to-string    |
+|--------------|-----------|
+| Default:     | Use the global setting (which defaults to `drop-message`)  |
 
 {{% include-headless "chunk/option-description-destination-on-error.md" %}}
-

@@ -16,11 +16,11 @@ The following options are required: `hdfs-file()`, `hdfs-uri()`. Note that to us
 
 For the `hdfs` destination, include the path to the directory where you copied the required libraries (see {{% xref "/docs/chapter-destinations/configuring-destinations-hdfs/destination-hdfs-prerequisites/_index.md" %}}), for example, `client-lib-dir("/opt/syslog-ng/lib/syslog-ng/java-modules/:/opt/hadoop/libs/")`.
 
-{{% include-headless "chunk/option-destination-diskbuffer.md" %}}
+{{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
-{{% include-headless "chunk/option-destination-frac-digits.md" %}}
+{{< include-headless "chunk/option-destination-frac-digits.md" >}}
 
-{{% include-headless "chunk/option-destination-hdfs-append-enabled.md" %}}
+{{< include-headless "chunk/option-destination-hdfs-append-enabled.md" >}}
 
 
 ## hdfs-archive-dir() {#hdfs-option-hdfs-archive-dir}
@@ -164,4 +164,4 @@ Available in {{% param "product.abbrev" %}} version 3.10 and later.
 
 {{% include-headless "chunk/option-destination-timezone.md" %}}
 
-{{% include-headless "chunk/option-destination-ts-format.md" %}}
+{{< include-headless "chunk/option-destination-ts-format.md" >}}

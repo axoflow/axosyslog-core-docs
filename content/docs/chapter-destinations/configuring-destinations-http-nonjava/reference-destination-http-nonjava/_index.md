@@ -113,7 +113,7 @@ For details on how this option influences HTTP batch mode, see [http: Posting me
 For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/docs/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
 
 
-{{% include-headless "chunk/option-destination-diskbuffer.md" %}}
+{{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
 
 ## headers()
@@ -173,7 +173,7 @@ The `http()` destination supports only unencrypted key files (that is, the priva
 
 
 
-{{% include-headless "chunk/option-peer-verify-simple.md" %}}
+{{< include-headless "chunk/option-peer-verify-simple.md" >}}
 
 {{% include-headless "chunk/topic-tls-block-http.md" %}}
 
@@ -267,7 +267,7 @@ The `http()` destination supports only unencrypted key files (that is, the priva
     |------+-----------------------------------+------------|
 ```
 
-To customize the action to take for a particular response code, use the following format: `response-action(\<response-code\> =\> \<action\>`. To customize multiple response code-action pairs, separate them with a comma, for example:
+To customize the action to take for a particular response code, use the following format: `response-action(<response-code> => <action>`. To customize multiple response code-action pairs, separate them with a comma, for example:
 
 ```c
  http(
@@ -318,7 +318,7 @@ To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% param 
 
 In case the server on the specified URL returns a redirect request, {{% param "product.abbrev" %}} automatically follows maximum 3 redirects. Only HTTP and HTTPS based redirections are supported.
 
-{{% include-headless "chunk/destination-load-balancing-url.md" %}}
+{{< include-headless "chunk/destination-load-balancing-url.md" >}}
 
 
 {{% include-headless "chunk/option-destination-http-user-agent.md" %}}

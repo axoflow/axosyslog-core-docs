@@ -44,4 +44,4 @@ The following example defines an `http` destination.
 ```
 
 
-{{% include-headless "wnt/note-jvm-reload.md" %}}
+{{< include-headless "wnt/note-jvm-reload.md" >}}

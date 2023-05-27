@@ -106,7 +106,7 @@ For details on how this option influences batch mode, see [http: Posting message
 *Description:* An integer that assigns a color to the message from the list of colors set in the `colors()` option.
 
 
-{{% include-headless "chunk/option-destination-diskbuffer.md" %}}
+{{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
 
 ## fallback()

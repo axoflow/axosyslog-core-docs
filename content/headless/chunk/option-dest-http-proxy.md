@@ -28,7 +28,7 @@
 
 {{% include-headless "chunk/destination-http-proxy-settings2.md" %}}
 
-{{% include-headless "chunk/destination-http-proxy-settings4.md" %}}
+{{< include-headless "chunk/destination-http-proxy-settings4.md" >}}
 
 
 ## Example: the proxy() option in configuration

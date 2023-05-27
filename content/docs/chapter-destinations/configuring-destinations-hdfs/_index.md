@@ -10,7 +10,7 @@ Note the following limitations when using the {{% param "product.abbrev" %}} `hd
 
   - Since {{% param "product.abbrev" %}} uses the official Java HDFS client, the `hdfs` destination has significant memory usage (about 400MB).
 
-  - {{% include-headless "chunk/para-hdfs-flush.md" %}}
+  - {{< include-headless "chunk/para-hdfs-flush.md" >}}
 
 
 ## Declaration:
@@ -56,4 +56,4 @@ The following example defines an `hdfs` destination using only the required para
 
 The `hdfs()` driver is actually a reusable configuration snippet configured to receive log messages using the Java language-binding of {{% param "product.abbrev" %}}. For details on using or writing such configuration snippets, see {{% xref "/docs/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of the hdfs configuration snippet on [GitHub](https://github.com/syslog-ng/syslog-ng/blob/master/scl/hdfs/plugin.conf). For details on extending {{% param "product.abbrev" %}} in Java, see the [Getting started with syslog-ng development](https://syslog-ng.gitbooks.io/getting-started/content/chapters/chapter_5/section_2.html) guide.
 
-{{% include-headless "wnt/note-jvm-reload.md" %}}
+{{< include-headless "wnt/note-jvm-reload.md" >}}

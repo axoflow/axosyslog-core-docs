@@ -12,7 +12,7 @@ The `smtp()` sends email messages using SMTP, without needing external applicati
 
 {{% include-headless "chunk/smtp-option-cc.md" %}}
 
-{{% include-headless "chunk/option-destination-diskbuffer.md" %}}
+{{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
 {{% include-headless "chunk/option-destination-batch-bytes.md" %}}
 
