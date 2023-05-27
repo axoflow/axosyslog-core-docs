@@ -1,7 +1,7 @@
 ---
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
-Destination drivers available in syslog-ng
+Destination drivers available in `syslog-ng`
 
 Name
 
@@ -93,7 +93,7 @@ Sends sends SNMP traps using the Simple Network Management Protocol version 2c o
 
 [sql()]({{< relref "/docs/chapter-destinations/configuring-destinations-sql/_index.md" >}})
 
-Sends messages into an SQL database. In addition to the standard syslog-ng packages, the `sql()` destination requires database-specific packages to be installed. Refer to the section appropriate for your platform in {{% xref "/docs/chapter-install/_index.md" %}}.
+Sends messages into an SQL database. In addition to the standard `syslog-ng` packages, the `sql()` destination requires database-specific packages to be installed. Refer to the section appropriate for your platform in {{% xref "/docs/chapter-install/_index.md" %}}.
 
 snmp()
 

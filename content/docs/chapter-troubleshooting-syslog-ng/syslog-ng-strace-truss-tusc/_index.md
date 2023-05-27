@@ -6,7 +6,7 @@ weight:  500
 
 To properly troubleshoot certain situations, it can be useful to trace which system calls {{% param "product.abbrev" %}} performs. How this is performed depends on the platform running {{% param "product.abbrev" %}}. In general, note the following points:
 
-  - When {{% param "product.abbrev" %}} is started, a supervisor process might stay in the foreground, while the actual syslog-ng daemon goes to the background. Always trace the background process.
+  - When {{% param "product.abbrev" %}} is started, a supervisor process might stay in the foreground, while the actual `syslog-ng` daemon goes to the background. Always trace the background process.
 
   - Apart from the system calls, the time between two system calls can be important as well. Make sure that your tracing tool records the time information as well. For details on how to do that, refer to the manual page of your specific tool (for example, `strace` on Linux, or `truss` on Solaris and BSD).
 
@@ -14,7 +14,7 @@ To properly troubleshoot certain situations, it can be useful to trace which sys
 
   - When using `strace`, also record the output of `lsof` to see which files are accessed.
 
-The following are examples for tracing system calls of syslog-ng on some platforms. The output is saved into the `/tmp/syslog-ng-trace.txt` file, sufficed with the PID of the related syslog-ng process.The path of the syslog-ng binary may be different for your installation, as distribution-specific packages may use different paths.
+The following are examples for tracing system calls of `syslog-ng` on some platforms. The output is saved into the `/tmp/syslog-ng-trace.txt` file, sufficed with the PID of the related `syslog-ng` process. The path of the `syslog-ng` binary may be different for your installation, as distribution-specific packages may use different paths.
 
   - *Linux*: ` strace -o /tmp/trace.txt -s256 -ff -ttT /opt/syslog-ng/sbin/syslog-ng -f /opt/syslog-ng/etc/syslog-ng.conf -Fdv`
 
@@ -24,6 +24,6 @@ The following are examples for tracing system calls of syslog-ng on some platfor
 
 {{% alert title="Note" color="info" %}}
 
-To execute these commands on an already running {{% param "product.abbrev" %}} process, use the `-p \<pid_of_syslog-ng\>` parameter.
+To execute these commands on an already running {{% param "product.abbrev" %}} process, use the `-p <pid_of_syslog-ng>` parameter.
 
 {{% /alert %}}

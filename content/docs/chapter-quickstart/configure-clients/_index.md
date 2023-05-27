@@ -7,13 +7,13 @@ weight:  100
 
 ## Purpose:
 
-To configure syslog-ng on a client host, complete the following steps.
+To configure `syslog-ng` on a client host, complete the following steps.
 
 
 
 ## Steps:
 
-1.  Install the syslog-ng application on the host. For details installing syslog-ng on specific operating systems, see {{% xref "/docs/chapter-install/_index.md" %}}.
+1.  Install the `syslog-ng` application on the host. For details installing `syslog-ng` on specific operating systems, see {{% xref "/docs/chapter-install/_index.md" %}}.
 
 2.  Configure the local sources to collect the log messages of the host. Starting with version 3.2, {{% param "product.abbrev" %}} automatically collects the log messages that use the native system logging method of the platform, for example, messages from `/dev/log` on Linux, or `/dev/klog` on FreeBSD. For a complete list of messages that are collected automatically, see {{% xref "/docs/chapter-sources/source-system/_index.md" %}}.
     
@@ -42,7 +42,7 @@ The default configuration file of {{% param "product.abbrev" %}} collects platfo
 ```
     {{% /alert %}}
 
-3.  Create a network destination that points directly to the syslog-ng server, or to a local relay. The network destination greatly depends on the protocol that your log server or relay accepts messages. Many systems still use the legacy BSD-syslog protocol (RFC3162) over the unreliable UDP transport:
+3.  Create a network destination that points directly to the `syslog-ng` server, or to a local relay. The network destination greatly depends on the protocol that your log server or relay accepts messages. Many systems still use the legacy BSD-syslog protocol (RFC3162) over the unreliable UDP transport:
     
     ```c
         destination d_network { network("10.1.2.3" transport("udp")); };
@@ -56,7 +56,7 @@ The default configuration file of {{% param "product.abbrev" %}} collects platfo
         };
     ```
 
-4.  Create a log statement connecting the local sources to the syslog-ng server or relay. For example:
+4.  Create a log statement connecting the local sources to the `syslog-ng` server or relay. For example:
     
     ```c
         log {

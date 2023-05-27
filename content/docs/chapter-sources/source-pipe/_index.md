@@ -18,7 +18,7 @@ The pipe driver has a single required parameter, specifying the filename of the 
 
 {{% alert title="Note" color="info" %}}
 
-As of syslog-ng Open Source Edition 3.0.2, pipes are created automatically. In earlier versions, you had to create the pipe using the `mkfifo(1)` command.
+As of version 3.0.2, pipes are created automatically. In earlier versions, you had to create the pipe using the `mkfifo(1)` command.
 
 {{% /alert %}}
 

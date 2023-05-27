@@ -20,7 +20,7 @@ You can use the facility filter the following ways:
 
   - Use a facility range (works only with facility names), for example, `facility(local0..local5)`
 
-The syslog-ng application recognizes the following facilities: (Note that some of these facilities are available only on specific platforms.)
+The `syslog-ng` application recognizes the following facilities: (Note that some of these facilities are available only on specific platforms.)
 
 syslog Message Facilities recognized by the facility() filter
 

@@ -9,5 +9,5 @@
 | Type:    | string                  |
 | Default: | Use the global settings |
 
-*Description:* The group of the directories created by syslog-ng. To preserve the original properties of an existing directory, use the option without specifying an attribute: `dir-group()`.
+*Description:* The group of the directories created by `syslog-ng`. To preserve the original properties of an existing directory, use the option without specifying an attribute: `dir-group()`.
 

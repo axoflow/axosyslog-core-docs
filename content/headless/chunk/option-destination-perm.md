@@ -9,7 +9,7 @@
 | Type:    | number                  |
 | Default: | Use the global settings |
 
-*Description:* The permission mask of the file if it is created by syslog-ng. For octal numbers prefix the number with `0`, for example, use `0755` for `rwxr-xr-x`.
+*Description:* The permission mask of the file if it is created by `syslog-ng`. For octal numbers prefix the number with `0`, for example, use `0755` for `rwxr-xr-x`.
 
 To preserve the original properties of an existing file, use the option without specifying an attribute: `perm()`.
 

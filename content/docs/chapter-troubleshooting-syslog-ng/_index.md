@@ -1,12 +1,12 @@
 ---
-title: "Troubleshooting syslog-ng"
+title: "Troubleshooting"
 weight:  4100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-This chapter provides tips and guidelines about troubleshooting problems related to syslog-ng.
+This chapter provides tips and guidelines about troubleshooting problems related to `syslog-ng`.
 
-  - As a general rule, first try to log the messages to a local file. Once this is working, you know that syslog-ng is running correctly and receiving messages, and you can proceed to forwarding the messages to the server.
+  - As a general rule, first try to log the messages to a local file. Once this is working, you know that `syslog-ng` is running correctly and receiving messages, and you can proceed to forwarding the messages to the server.
 
   - Always check the configuration files for any syntax errors on both the client and the server using the `syslog-ng --syntax-only` command.
 
@@ -16,7 +16,7 @@ This chapter provides tips and guidelines about troubleshooting problems related
 
   - To find message-routing problems, run {{% param "product.abbrev" %}} with the following command `syslog-ng -Fevd`. That way {{% param "product.abbrev" %}} will run in the foreground, and display debug messages about the messages that are processed.
 
-  - If syslog-ng is closing the connections for no apparent reason, be sure to check the log messages of syslog-ng. You may also want to run syslog-ng with the `--verbose` or `--debug` command-line options for more-detailed log messages. You can enable these messages without restarting syslog-ng using the `syslog-ng-ctl verbose --set=on` command. For details, see the syslog-ng-ctl man page at <span class="mcFormatColor" style="color: #04aada;">The syslog-ng control tool manual page</span>.
+  - If `syslog-ng` is closing the connections for no apparent reason, be sure to check the log messages of `syslog-ng`. You may also want to run `syslog-ng` with the `--verbose` or `--debug` command-line options for more-detailed log messages. You can enable these messages without restarting `syslog-ng` using the `syslog-ng-ctl verbose --set=on` command. For details, see the {{% xref "/docs/app-man-syslog-ng/syslog-ng.conf.5/_index.md" %}}.
 
   - Build up encrypted connections step-by-step. First create a working, unencrypted (for example, TCP) connection, then add TLS encryption, and finally, client authentication if needed.
 

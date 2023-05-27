@@ -7,4 +7,4 @@
 
   - TCP provides connection-oriented service: the client and the server establish a connection, each message is acknowledged, and lost packets are resent. TCP can detect lost connections, and messages are lost, only if the TCP connection breaks. When a TCP connection is broken, messages that the client has sent but were not yet received on the server are lost.
 
-  - The syslog-ng application supports TLS (Transport Layer Security, also known as SSL) over TCP. For details, see {{% xref "/docs/chapter-encrypted-transport-tls/tls-serverauth/_index.md" %}}.
+  - The `syslog-ng` application supports TLS (Transport Layer Security, also known as SSL) over TCP. For details, see {{% xref "/docs/chapter-encrypted-transport-tls/tls-serverauth/_index.md" %}}.

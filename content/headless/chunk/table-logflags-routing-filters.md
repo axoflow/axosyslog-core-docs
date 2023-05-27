@@ -29,4 +29,4 @@ This flag means that the processing of log messages processed by the log stateme
 
 flow-control
 
-Enables flow-control to the log path, meaning that syslog-ng will stop reading messages from the sources of this log statement if the destinations are not able to process the messages at the required speed. If disabled, syslog-ng will drop messages if the destination queues are full. If enabled, syslog-ng will only drop messages if the destination queues/window sizes are improperly sized. For details, see {{% xref "/docs/chapter-routing-filters/concepts-flow-control/_index.md" %}}.
+Enables flow-control to the log path, meaning that `syslog-ng` will stop reading messages from the sources of this log statement if the destinations are not able to process the messages at the required speed. If disabled, `syslog-ng` will drop messages if the destination queues are full. If enabled, `syslog-ng` will only drop messages if the destination queues/window sizes are improperly sized. For details, see {{% xref "/docs/chapter-routing-filters/concepts-flow-control/_index.md" %}}.

@@ -13,9 +13,8 @@ Alternatively, you can include the passphrase in the `--secret` parameter:
    syslog-ng-ctl credentials add --id=<path-to-the-key> --secret=<passphrase-of-the-key>
 ```
 
-Or you can pipe the passphrase to the syslog-ng-ctl command, for example:
+Or you can pipe the passphrase to the `syslog-ng-ctl` command, for example:
 
 ```c
    echo "<passphrase-of-the-key>" | syslog-ng-ctl credentials add --id=<path-to-the-key>
-
 ```
