@@ -18,7 +18,7 @@ These drivers send messages to a unix socket in either `SOCK_STREAM` or `SOCK_DG
 
 {{% include-headless "chunk/option-destination-frac-digits.md" %}}
 
-{{% include-headless "chunk/option-destination-hook.md" %}}
+{{< include-headless "chunk/option-destination-hook.md" >}}
 
 {{% include-headless "chunk/option-destination-log-fifo-size.md" %}}
 

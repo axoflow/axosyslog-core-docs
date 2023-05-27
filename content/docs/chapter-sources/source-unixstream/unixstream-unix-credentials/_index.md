@@ -20,25 +20,25 @@ Starting with {{% param "product.abbrev" %}} 3.6, the `unix-stream()` and `unix-
 </thead>
 <tbody>
 <tr class="odd">
-<td>`${.unix.cmdline}`</td>
-<td>The name (without the path) and command-line options of the executable belonging to the PID that sent the message. For example, `su - myuser`</td>
+<td><code>${.unix.cmdline}</code></td>
+<td>The name (without the path) and command-line options of the executable belonging to the PID that sent the message. For example, <code>su - myuser</code></td>
 </tr>
 <tr class="even">
-<td>`${.unix.exe}`</td>
-<td>The path of the executable belonging to the PID that sent the message. For example, `/usr/bin/su`</td>
+<td><code>${.unix.exe}</code></td>
+<td>The path of the executable belonging to the PID that sent the message. For example, <code>/usr/bin/su</code></td>
 </tr>
 <tr class="odd">
-<td>`${.unix.gid}`</td>
-<td>The group ID (GID) corresponding to the UID of the application that sent the log message. Note that this is the ID number of the group, not its human-readable name. For example, `0`</td>
+<td><code>${.unix.gid}</code></td>
+<td>The group ID (GID) corresponding to the UID of the application that sent the log message. Note that this is the ID number of the group, not its human-readable name. For example, <code>0</code></td>
 </tr>
 <tr class="even">
-<td>`${.unix.pid}`</td>
-<td><p>The process ID (PID) of the application that sent the log message. For example, `774`.</p>
+<td><code>${.unix.pid}</code></td>
+<td><p>The process ID (PID) of the application that sent the log message. For example, <code>774</code>.</p>
 <p>Note that on every UNIX platforms, if the `system()` source uses sockets, it will overwrite the PID macro with the value of `${.unix.pid}`, if it is available.</p></td>
 </tr>
 <tr class="odd">
-<td>`${.unix.uid}`</td>
-<td>The user ID (UID) of the application that sent the log message. Note that this is the ID number of the user, not its human-readable name. For example, `0`</td>
+<td><code>${.unix.uid}</code></td>
+<td>The user ID (UID) of the application that sent the log message. Note that this is the ID number of the user, not its human-readable name. For example, <code>0</code></td>
 </tr>
 </tbody>
 </table>

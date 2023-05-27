@@ -8,7 +8,6 @@ The Python log parser (available in {{% param "product.abbrev" %}} version 3.10 
 
 {{% include-headless "chunk/python-blocks.md" %}}
 
-
 ## Declaration:
 
 Python parsers consist of two parts. The first is a {{% param "product.abbrev" %}} parser object that you use in your {{% param "product.abbrev" %}} configuration, for example, in the log path. This parser references a Python class, which is the second part of the Python parsers. The Python class processes the log messages it receives, and can do virtually anything that you can code in Python.
@@ -79,9 +78,6 @@ The return value of the `parse()` method must be `True`. If it returns `False`, 
 This method is executed when {{% param "product.abbrev" %}} is stopped or reloaded.
 
 {{% include-headless "wnt/warning-python-parser-deinit.md" %}}
-
-
-
 
 ## Example: Parse loggen logs {#python-parser-example}
 

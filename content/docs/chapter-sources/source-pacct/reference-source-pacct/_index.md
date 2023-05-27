@@ -19,4 +19,4 @@ The `pacct()` driver has the following options:
 
 {{% include-headless "chunk/option-source-follow-freq.md" %}}
 
-{{% include-headless "chunk/option-destination-hook.md" %}}
+{{< include-headless "chunk/option-destination-hook.md" >}}

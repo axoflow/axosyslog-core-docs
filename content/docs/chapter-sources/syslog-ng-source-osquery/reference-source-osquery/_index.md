@@ -17,7 +17,7 @@ The `osquery()` driver has the following options.
 *Description:* The log file of `osquery` that stores the results of periodic queries. The {{% param "product.abbrev" %}} application reads the messages from this file.
 
 
-{{% include-headless "chunk/option-destination-hook.md" %}}
+{{< include-headless "chunk/option-destination-hook.md" >}}
 
 
 {{% include-headless "chunk/option-parser-prefix.md" %}}

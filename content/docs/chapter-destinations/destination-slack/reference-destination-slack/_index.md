@@ -141,7 +141,7 @@ For details on how this option influences batch mode, see [http: Posting message
 *Description:* A hyperlink for an image. For details, see the [footer_icon option in the Slack documentation](https://api.slack.com/docs/message-attachments).
 
 
-{{% include-headless "chunk/option-destination-hook.md" %}}
+{{< include-headless "chunk/option-destination-hook.md" >}}
 
 
 ## hook-url()

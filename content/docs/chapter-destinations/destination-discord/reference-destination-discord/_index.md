@@ -61,7 +61,7 @@ For details on how this option influences HTTP batch mode, see [http: Posting me
 
 {{% include-headless "chunk/option-destination-diskbuffer.md" %}}
 
-{{% include-headless "chunk/option-destination-hook.md" %}}
+{{< include-headless "chunk/option-destination-hook.md" >}}
 
 {{% include-headless "chunk/option-destination-log-fifo-size.md" %}}
 

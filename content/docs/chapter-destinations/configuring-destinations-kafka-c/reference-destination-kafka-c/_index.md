@@ -117,7 +117,7 @@ The syntax of the config() option is the following:
 *Description:* When `syslog-ng` shuts down, the Kafka client will also shut down. The `flush-timeout-on-shutdown()` option specifies the number of milliseconds `syslog-ng` waits for the Kafka client to send the unsent messages. Any messages not sent after the specified time will be lost. To avoid losing messages, we recommend you use the disk-buffer option.
 
 
-{{% include-headless "chunk/option-destination-hook.md" %}}
+{{< include-headless "chunk/option-destination-hook.md" >}}
 
 
 ## key() {#kafka-option-key}

@@ -16,7 +16,7 @@ The `pseudofile()` destination has the following options:
 
 *Description:* The file to write messages to, including the path.
 
-{{% include-headless "chunk/option-destination-hook.md" %}}
+{{< include-headless "chunk/option-destination-hook.md" >}}
 
 {{% include-headless "chunk/option-destination-template.md" %}}
 

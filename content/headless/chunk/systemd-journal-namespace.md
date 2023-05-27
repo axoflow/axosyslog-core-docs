@@ -15,9 +15,9 @@ The following modes of operation are available:
 
   - If you do not specify the `namespace()` option in your configuration, or if you specify an empty string, the `systemd-journal()` source reads and displays log data from all namespaces.
 
-  - If you specify the `namespace()` option as `namespace("\*")`, the `systemd-journal()` source reads and displays log data from all namespaces, interleaved.
+  - If you specify the `namespace()` option as `namespace("*")`, the `systemd-journal()` source reads and displays log data from all namespaces, interleaved.
 
-  - If `namespace(\<specified-namespace\>)` is specified, the `systemd-journal()` source only reads and displays log data from the specified namespace.
+  - If `namespace(<specified-namespace>)` is specified, the `systemd-journal()` source only reads and displays log data from the specified namespace.
 
   - If the namespace identifier is prefixed with `"+"` when you specify your `namespace()` option, the `systemd-journal()`source only reads and displays log data from the specified namespace and the default namespace, interleaved.
 

@@ -56,4 +56,4 @@ Encrypted source where the client is also authenticated. For details on the encr
 ```
 
 
-{{% include-headless "wnt/warning-udp-recvbuf.md" %}}
+{{< include-headless "wnt/warning-udp-recvbuf.md" >}}

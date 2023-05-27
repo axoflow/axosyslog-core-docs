@@ -31,7 +31,7 @@ Available in version 3.19 and later.
 
 {{% include-headless "chunk/option-destination-tls-ca-dir.md" %}}
 
-{{% include-headless "chunk/option-destination-tls-ca-file.md" %}}
+{{< include-headless "chunk/option-destination-tls-ca-file.md" >}}
 
 {{% include-headless "chunk/option-destination-tls-cert-file.md" %}}
 

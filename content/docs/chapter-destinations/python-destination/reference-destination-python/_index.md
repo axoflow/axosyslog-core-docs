@@ -73,7 +73,7 @@ For details, see {{% xref "/docs/chapter-configuration-file/python-code-external
 
 {{% include-headless "chunk/option-persist-name.md" %}}
 
-{{% include-headless "wnt/note-python-persist-name.md" %}}
+{{< include-headless "wnt/note-python-persist-name.md" >}}
 
 
 {{% include-headless "chunk/option-destination-throttle.md" %}}

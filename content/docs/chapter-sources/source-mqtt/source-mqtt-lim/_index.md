@@ -10,6 +10,6 @@ Using the `mqtt()` source of {{% param "product.abbrev" %}} has the following li
 
   - You cannot use the `mqtt()` source without installing the the `eclipse-paho-mqtt-c` library.
 
-  - {{% include-headless "chunk/eclipse-paho-mqtt-c.md" %}}
+  - {{< include-headless "chunk/eclipse-paho-mqtt-c.md" >}}
 
   - The current implementation of the `mqtt()` source supports versions 3.1 and 3.1.1 of the MQTT protocol

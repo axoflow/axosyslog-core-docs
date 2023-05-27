@@ -13,7 +13,7 @@ The `snmptrap()` source is available in {{% param "product.abbrev" %}} version 3
 
   - The `snmptrap()` source has only the options listed in {{% xref "/docs/chapter-sources/syslog-ng-source-snmptrap/reference-source-snmptrap/_index.md" %}}. Other options commonly available in other source drivers are not supported.
 
-  - {{% include-headless "chunk/para-snmptrap-discards-messages.md" %}}
+  - {{< include-headless "chunk/para-snmptrap-discards-messages.md" >}}
 
   - The {{% param "product.abbrev" %}} application cannot resolve OIDs, you have to configure `snmptrapd` to do so. Note that because of a bug, if `snmptrapd` does not escape String values in the VarBindList if it can resolve an OID to a symbolic name. As a result, {{% param "product.abbrev" %}} cannot process traps that contain the `=` in the value of the string. To overcome this problem, disable resolving OIDs in `snmptrapd`. For details, see the documentation of `snmptrapd`.
 

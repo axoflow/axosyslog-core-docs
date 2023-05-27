@@ -10,7 +10,7 @@ This section describes server-style sources. For details on fetcher-style source
 
 {{% include-headless "chunk/python-blocks.md" %}}
 
-{{% include-headless "wnt/note-python-persist-name.md" %}}
+{{< include-headless "wnt/note-python-persist-name.md" >}}
 
 
 ## Declaration:
@@ -65,7 +65,7 @@ You can implement your own event loop, or integrate the event loop of an externa
 
 To post messages, call `LogSource::post_message()` method in the `run` method.
 
-{{% include-headless "chunk/python-method-init.md" %}}
+{{< include-headless "chunk/python-method-init.md" >}}
 
 
 ## run(self) method (mandatory)
@@ -83,7 +83,7 @@ For details on parsing and posting messages, see {{% xref "/docs/chapter-sources
 The {{% param "product.abbrev" %}} application calls this method when {{% param "product.abbrev" %}} is shut down or restarted. The `request_exit` method must shut down the event loop or framework, so the `run` method can return gracefully. If you use blocking operations within the `run()` method, use `request_exit()` to interrupt those operations and set an exit flag, otherwise {{% param "product.abbrev" %}} is not able to stop. Note that {{% param "product.abbrev" %}} calls the `request_exit` method from a thread different from the source thread.
 
 
-{{% include-headless "chunk/python-method-deinit.md" %}}
+{{< include-headless "chunk/python-method-deinit.md" >}}
 
 
 For the list of available optional parameters, see {{% xref "/docs/chapter-sources/python-source/reference-source-python/_index.md" %}}.

@@ -9,4 +9,4 @@
 
 *Description:* Specifies the hostname or IP address, and the port number of the MQTT broker to which {{% param "product.abbrev" %}} will send the log messages.
 
-Syntax: `\<protocol type\>://\<host\>:\<port\>`
+Syntax: `<protocol type>://<host>:<port>`

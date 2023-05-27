@@ -12,7 +12,7 @@ The `collectd()` destination has the following options. The `plugin()` and `type
 
 {{% include-headless "chunk/option-destination-frac-digits.md" %}}
 
-{{% include-headless "chunk/option-destination-hook.md" %}}
+{{< include-headless "chunk/option-destination-hook.md" >}}
 
 
 ## host()

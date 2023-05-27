@@ -26,7 +26,7 @@ The `file()` driver outputs messages to the specified text file, or to a set of 
 
 {{% include-headless "chunk/option-destination-fsync.md" %}}
 
-{{% include-headless "chunk/option-destination-hook.md" %}}
+{{< include-headless "chunk/option-destination-hook.md" >}}
 
 {{% include-headless "chunk/option-destination-group.md" %}}
 

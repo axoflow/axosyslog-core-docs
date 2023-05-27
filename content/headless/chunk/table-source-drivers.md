@@ -7,9 +7,10 @@
 |--------------|------------------------|
 | [file()]({{< relref "/docs/chapter-sources/configuring-sources-file/_index.md" >}}) | Opens the specified file and reads messages. |
 | [internal()]({{< relref "/docs/chapter-sources/configuring-sources-internal/_index.md" >}}) | Messages generated internally in `syslog-ng`. |
+| [kubernetes()]({{< relref "/docs/chapter-sources/configuring-sources-kubernetes/_index.md" >}}) | Collects container logs managed by the Kubelet. |
+| [mbox()]({{< relref "/docs/chapter-sources/configuring-source-mbox/_index.md" >}}) | Read email messages from local mbox files, and convert them to multiline log messages. |
 | [network()]({{< relref "/docs/chapter-sources/configuring-sources-network/_index.md" >}}) | Receives messages from remote hosts using the [BSD-syslog protocol]({{< relref "/docs/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/_index.md" >}}) over IPv4 and IPv6. Supports the TCP, UDP, and TLS network protocols. |
 | [nodejs()]({{< relref "/docs/chapter-sources/configuring-source-nodejs/_index.md" >}}) | Receives JSON messages from nodejs applications. |
-| [mbox()]({{< relref "/docs/chapter-sources/configuring-source-mbox/_index.md" >}}) | Read email messages from local mbox files, and convert them to multiline log messages. |
 | [osquery()]({{< relref "/docs/chapter-sources/syslog-ng-source-osquery/_index.md" >}}) | Run osquery queries, and convert their results into log messages. |
 | [pacct()]({{< relref "/docs/chapter-sources/source-pacct/_index.md" >}}) | Reads messages from the process accounting logs on Linux. |
 | [pipe()]({{< relref "/docs/chapter-sources/source-pipe/_index.md" >}}) | Opens the specified named pipe and reads messages. |

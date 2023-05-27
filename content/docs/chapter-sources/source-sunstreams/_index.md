@@ -14,7 +14,7 @@ The `sun-streams()` driver must be enabled when the `syslog-ng` application is c
 
 The `sun-streams()` driver has a single required argument specifying the `STREAMS` device to open, and the `door()` option. For the list of available optional parameters, see {{% xref "/docs/chapter-sources/source-sunstreams/reference-source-sunstreams/_index.md" %}}.
 
-{{% include-headless "wnt/note-solaris-msgid.md" %}}
+{{< include-headless "wnt/note-solaris-msgid.md" >}}
 
 
 ## Declaration:

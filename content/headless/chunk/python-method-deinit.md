@@ -6,5 +6,5 @@
 
 This method is executed when {{% param "product.abbrev" %}} is stopped or reloaded. This method does not return a value.
 
-{{% include-headless "wnt/warning-python-parser-deinit.md" %}}
+{{< include-headless "wnt/warning-python-parser-deinit.md" >}}
 

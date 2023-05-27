@@ -136,7 +136,7 @@ The following headers are included by default:
   - X-Syslog-Level: \<loglevel/priority\>
 
 
-{{% include-headless "chunk/option-destination-hook.md" %}}
+{{< include-headless "chunk/option-destination-hook.md" >}}
 
 {{% include-headless "chunk/option-destination-log-fifo-size.md" %}}
 

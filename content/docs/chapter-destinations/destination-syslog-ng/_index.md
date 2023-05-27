@@ -29,7 +29,7 @@ The `syslog-ng()` destination is a special version of the `network()` destinatio
 
 {{% include-headless "chunk/option-destination-tls-ca-dir.md" %}}
 
-{{% include-headless "chunk/option-destination-tls-ca-file.md" %}}
+{{< include-headless "chunk/option-destination-tls-ca-file.md" >}}
 
 {{% include-headless "chunk/option-destination-diskbuffer.md" %}}
 

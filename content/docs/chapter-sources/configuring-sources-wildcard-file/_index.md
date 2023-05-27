@@ -23,9 +23,9 @@ Note the following important points:
 
   - You can use the `\`* and `?` wildcard characters in the filename (the `filename-pattern()` option), but not in the path (the `base-dir()` option).
 
-  - {{% include-headless "wnt/warning-wildcard-overlapping-files.md" %}}
+  - {{< include-headless "wnt/warning-wildcard-overlapping-files.md" >}}
 
-  - {{% include-headless "chunk/para-wildcard-file-source-max-files.md" %}}
+  - {{< include-headless "chunk/para-wildcard-file-source-max-files.md" >}}
 
   - If the message does not have a proper syslog header, {{% param "product.abbrev" %}} treats messages received from files as sent by the `user` facility. Use the `default-facility()` and `default-priority()` options in the source definition to assign a different facility if needed.
 

@@ -43,7 +43,7 @@ The `stomp()` destination has the following options:
 
 {{% include-headless "chunk/option-destination-batch-timeout.md" %}}
 
-{{% include-headless "chunk/option-destination-hook.md" %}}
+{{< include-headless "chunk/option-destination-hook.md" >}}
 
 ## host() {#stomp-option-host}
 

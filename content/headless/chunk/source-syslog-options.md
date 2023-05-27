@@ -6,16 +6,16 @@
 {{% include-headless "chunk/option-source-encoding.md" %}}
 
 
-{{% include-headless "chunk/option-source-flags.md" %}}
+{{< include-headless "chunk/option-source-flags.md" >}}
 
-  - *threaded*: The `threaded` flag enables multithreading for the source. For details on multithreading, see {{% xref "/docs/chapter-multithreading/_index.md" %}}.
+- *threaded*: The `threaded` flag enables multithreading for the source. For details on multithreading, see {{% xref "/docs/chapter-multithreading/_index.md" %}}.
     
     {{% alert title="Note" color="info" %}}
 The `syslog` source uses multiple threads only if the source uses the `tls` or `tcp` transport protocols.
     {{% /alert %}}
 
 
-{{% include-headless "chunk/option-destination-hook.md" %}}
+{{< include-headless "chunk/option-destination-hook.md" >}}
 
 {{% include-headless "chunk/option-source-host-override.md" %}}
 
@@ -40,9 +40,9 @@ The `syslog` source uses multiple threads only if the source uses the `tls` or `
 
 {{% include-headless "chunk/option-source-keep-alive.md" %}}
 
-{{% include-headless "chunk/option-source-keep-hostname.md" %}}
+{{< include-headless "chunk/option-source-keep-hostname.md" >}}
 
-{{% include-headless "chunk/option-source-keep-timestamp.md" %}}
+{{< include-headless "chunk/option-source-keep-timestamp.md" >}}
 
 {{% include-headless "chunk/option-source-listen-backlog.md" %}}
 
@@ -60,7 +60,7 @@ If `log-iw-size(1000)` and `max-connections(10)`, then each connection will have
 
 
 
-{{% include-headless "chunk/option-source-log-msg-size.md" %}}
+{{< include-headless "chunk/option-source-log-msg-size.md" >}}
 
 {{% include-headless "chunk/option-source-max-connections.md" %}}
 
@@ -74,7 +74,7 @@ If `log-iw-size(1000)` and `max-connections(10)`, then each connection will have
 
 {{% include-headless "chunk/option-source-so-keepalive.md" %}}
 
-{{% include-headless "chunk/option-source-so-rcvbuf.md" %}}
+{{< include-headless "chunk/option-source-so-rcvbuf.md" >}}
 
 {{% include-headless "chunk/option-source-so-reuseport.md" %}}
 
@@ -85,15 +85,15 @@ If `log-iw-size(1000)` and `max-connections(10)`, then each connection will have
 {{% include-headless "chunk/option-source-time-zone.md" %}}
 
 
-{{% include-headless "chunk/option-source-transport.md" %}}
+{{< include-headless "chunk/option-source-transport.md" >}}
 
-{{% include-headless "wnt/warning-udp-recvbuf.md" %}}
+{{< include-headless "wnt/warning-udp-recvbuf.md" >}}
 
 
 {{% include-headless "chunk/option-source-trim-large-messages.md" %}}
 
 {{% include-headless "chunk/option-tls.md" %}}
 
-{{% include-headless "chunk/option-source-use-dns.md" %}}
+{{< include-headless "chunk/option-source-use-dns.md" >}}
 
-{{% include-headless "chunk/option-source-use-fqdn.md" %}}
+{{< include-headless "chunk/option-source-use-fqdn.md" >}}

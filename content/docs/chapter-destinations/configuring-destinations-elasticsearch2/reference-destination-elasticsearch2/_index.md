@@ -95,7 +95,7 @@ Hazard of data loss! Using the `concurrent-requests()` option increases the numb
 
 {{% include-headless "chunk/option-destination-frac-digits.md" %}}
 
-{{% include-headless "chunk/option-destination-hook.md" %}}
+{{< include-headless "chunk/option-destination-hook.md" >}}
 
 
 ## http-auth-type() {#elasticsearch2-option-elasticsearch2-http-auth-type}

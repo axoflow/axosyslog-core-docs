@@ -6,7 +6,7 @@ weight:  100
 
 The `graphite()` destination has the following options:
 
-{{% include-headless "chunk/option-destination-hook.md" %}}
+{{< include-headless "chunk/option-destination-hook.md" >}}
 
 
 ## host() {#graphite-option-host}

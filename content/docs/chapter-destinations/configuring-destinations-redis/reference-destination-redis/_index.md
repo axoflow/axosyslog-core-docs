@@ -46,7 +46,7 @@ Note the following points when using the `redis()` destination:
 
 {{% include-headless "chunk/option-destination-batch-timeout.md" %}}
 
-{{% include-headless "chunk/option-destination-hook.md" %}}
+{{< include-headless "chunk/option-destination-hook.md" >}}
 
 ## host() {#redis-option-host}
 

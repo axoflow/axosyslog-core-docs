@@ -11,5 +11,4 @@
 
 *Description:* Specifies the size of the socket receive buffer in bytes. For details, see the `socket(7)` manual page.
 
-{{% include-headless "wnt/warning-udp-recvbuf.md" %}}
-
+{{< include-headless "wnt/warning-udp-recvbuf.md" >}}

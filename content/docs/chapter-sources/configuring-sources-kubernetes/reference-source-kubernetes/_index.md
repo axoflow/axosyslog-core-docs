@@ -25,7 +25,7 @@ The `kubernetes()` source has the following options:
 | Type:    | string |
 | Default: | k8s    |
 
-*Description:*The name of the Kubernetes cluster.
+*Description:* The name of the Kubernetes cluster.
 
 
 

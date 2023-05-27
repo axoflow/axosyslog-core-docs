@@ -6,4 +6,4 @@ weight:  100
 
 The `systemd-syslog()` driver has the following options:
 
-{{% include-headless "chunk/option-destination-hook.md" %}}
+{{< include-headless "chunk/option-destination-hook.md" >}}

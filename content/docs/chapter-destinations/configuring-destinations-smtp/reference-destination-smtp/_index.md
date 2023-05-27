@@ -24,7 +24,7 @@ The `smtp()` sends email messages using SMTP, without needing external applicati
 
 {{% include-headless "chunk/smtp-option-header.md" %}}
 
-{{% include-headless "chunk/option-destination-hook.md" %}}
+{{< include-headless "chunk/option-destination-hook.md" >}}
 
 {{% include-headless "chunk/smtp-option-host.md" %}}
 

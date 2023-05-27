@@ -19,7 +19,7 @@ The `snmptrap()` driver has the following options. Only the `filename()` option 
 {{% include-headless "chunk/para-snmptrap-discards-messages.md" %}}
 
 
-{{% include-headless "chunk/option-destination-hook.md" %}}
+{{< include-headless "chunk/option-destination-hook.md" >}}
 
 {{% include-headless "chunk/option-persist-name.md" %}}
 
