@@ -8,7 +8,7 @@ weight: 600
 
 To collect logs from a chroot using a `syslog-ng` client running on the host, complete the following steps:
 
-![](../Images/Figures/fig-chroot01.png)
+![](/images/figures/fig-chroot01.png)
 
 
 

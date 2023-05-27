@@ -25,7 +25,7 @@ The {{% param "product.abbrev" %}} application supports two types of disk buffer
 
 When you use disk-based buffering, and the `reliable()` option is set to `no`, {{% param "product.abbrev" %}} handles outgoing messages the following way:
 
-![](../Images/Figures/disk-buffer-diagram-normal.png)
+![](/images/figures/disk-buffer-diagram-normal.png)
 
   - *Output queue*: In-memory queue. If there is space left in it, {{% param "product.abbrev" %}} puts the message into this queue first . Messages stored here are processed faster, because {{% param "product.abbrev" %}} can skip writing to, and reading from the disk, as well as serializing or deserializing the message, saving I/O and processor time as a result. The contents of the in-memory output queue are persisted to the disk-buffer file during {{% param "product.abbrev" %}} reload, restart or stop, but they cannot be persisted if in the event of power failures, or if {{% param "product.abbrev" %}} crashes. By default, the output queue can hold 1000 messages (you can adjust this number using the `quot-size()` option).
 
@@ -57,7 +57,7 @@ The `mem-buf-size()` option determines when flow-control is triggered. After the
 
 If the control window is full, the flow-control completely stops reading incoming messages from the source. (As a result, `mem-buf-size()` must be at least as large as `log-iw-size()` times the average message size.)
 
-![](../Images/Figures/disk-buffer-diagram-reliable.png)
+![](/images/figures/disk-buffer-diagram-reliable.png)
 
   - *Output queue*: In-memory and disk queue. If there is space left in it, {{% param "product.abbrev" %}} puts the message into this queue first. In case of reliable disk-buffer, in addition to storing the message in memory, it is stored directly in the disk-buffer file as well for safety reasons (see the next point). Messages stored here are processed faster, because {{% param "product.abbrev" %}} can skip reading from the disk, and deserializing the message, saving I/O and processor time. By default, the output queue can hold 1000 messages (you can adjust it using the `quot-size()` option).
 

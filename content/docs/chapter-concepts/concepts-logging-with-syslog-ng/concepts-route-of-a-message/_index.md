@@ -9,7 +9,7 @@ weight:  100
 
 The following procedure illustrates the route of a log message from its source on the {{% param "product.ose" %}} client to its final destination on the central {{% param "product.ose" %}} server.
 
-![](../Images/Figures/fig-syslog-ng-logging-01.png)
+![](/images/figures/fig-syslog-ng-logging-01.png)
 
 
 
