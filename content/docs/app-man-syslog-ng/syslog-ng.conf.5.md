@@ -258,7 +258,7 @@ The sources, destinations, and filters available in {{% param "product.ose" %}} 
 
 ## See also
 
-<span class="mcFormatColor" style="color: #04aada;">The `syslog-ng` manual page</span>
+{{% xref "/docs/app-man-syslog-ng/syslog-ng.8/_index.md" %}}
 
 {{% alert title="Note" color="info" %}}
 

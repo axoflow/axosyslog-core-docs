@@ -62,7 +62,7 @@ The following options are required: `index()`, `type()`. In node mode, either th
 
 {{% alert title="Warning" color="warning" %}}
 
-Hazard of data loss\! Using the `concurrent-requests()` option increases the number of messages lost in case the Elasticsearch server becomes unaccessible.
+Hazard of data loss! Using the `concurrent-requests()` option increases the number of messages lost in case the Elasticsearch server becomes unaccessible.
 
 {{% /alert %}}
 

@@ -202,7 +202,7 @@ To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% param 
 
 {{% alert title="Warning" color="warning" %}}
 
-Hazard of data loss\! Make sure to include a fallback value, as if the template gets resolved to an empty string, Discord rejects the message.
+Hazard of data loss! Make sure to include a fallback value, as if the template gets resolved to an empty string, Discord rejects the message.
 
 {{% /alert %}}
 

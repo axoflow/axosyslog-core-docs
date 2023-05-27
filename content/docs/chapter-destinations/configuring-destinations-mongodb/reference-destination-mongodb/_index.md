@@ -20,7 +20,7 @@ The `mongodb()` destination has the following options:
 
 {{% alert title="Warning" color="warning" %}}
 
-Hazard of data loss\! The {{% param "product.abbrev" %}} application does not verify that the specified collection name does not contain invalid characters. If you specify a collection with an invalid name, the log messages sent to the MongoDB database will be irrevocably lost without any warning.
+Hazard of data loss! The {{% param "product.abbrev" %}} application does not verify that the specified collection name does not contain invalid characters. If you specify a collection with an invalid name, the log messages sent to the MongoDB database will be irrevocably lost without any warning.
 
 {{% /alert %}}
 

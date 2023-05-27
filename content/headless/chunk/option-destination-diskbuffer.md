@@ -23,7 +23,7 @@ no
 
 {{% alert title="Warning" color="warning" %}}
 
-Hazard of data loss\! If you change the value of `reliable()` option when there are messages in the disk-buffer, the messages stored in the disk-buffer will be lost.
+Hazard of data loss! If you change the value of `reliable()` option when there are messages in the disk-buffer, the messages stored in the disk-buffer will be lost.
 
 {{% /alert %}}
 
