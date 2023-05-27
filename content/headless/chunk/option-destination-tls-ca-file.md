@@ -18,8 +18,6 @@ Example format in configuration:
 ```
 
 
-{{% alert title="Note" color="info" %}}
-
+{{< alert title="Note" color="info" >}}
 The `ca-file()` option can be used together with the `ca-dir()` option, and it is relevant when `peer-verify()` is set to other than `no` or `optional-untrusted`.
-
-{{% /alert %}}
+{{< /alert >}}

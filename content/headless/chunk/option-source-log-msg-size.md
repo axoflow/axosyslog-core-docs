@@ -9,7 +9,7 @@
 | Type:    | number (bytes)                                                                  |
 | Default: | Use the global `log-msg-size()` option, which defaults to `65536` (64 KiB). |
 
-{{% include-headless "chunk/option-description-log-msg-size.md" %}}
+{{< include-headless "chunk/option-description-log-msg-size.md" >}}
 
 Uses the value of the [global option]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) if not specified.
 
