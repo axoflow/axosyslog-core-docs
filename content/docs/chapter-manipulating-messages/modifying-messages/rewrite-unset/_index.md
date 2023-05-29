@@ -6,7 +6,7 @@ weight:  1300
 
 You can unset macros or fields of the message, including any user-defined macros created using parsers (for details, see {{% xref "/docs/chapter-parsers/_index.md" %}} and {{% xref "/docs/chapter-parsers/chapter-patterndb/_index.md" %}}). Note that the unset operation completely deletes any previous value of the field that you apply it on.
 
-{{% include-headless "wnt/note-rewrite-hard-macros.md" %}}
+{{< include-headless "wnt/note-rewrite-hard-macros.md" >}}
 
 Use the following syntax:
 

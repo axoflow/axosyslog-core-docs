@@ -60,4 +60,4 @@ Send the log messages using TLS encryption and use mutual authentication. For de
 ```
 
 
-{{% include-headless "wnt/note-formatting-messages.md" %}}
+{{< include-headless "wnt/note-formatting-messages.md" >}}

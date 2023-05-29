@@ -253,7 +253,7 @@ This option is used only in HTTPS mode: `client-mode("https")`, and is available
 
 {{% include-headless "chunk/option-destination-log-fifo-size.md" %}}
 
-{{% include-headless "chunk/option-destination-on-error.md" %}}
+{{< include-headless "chunk/option-destination-on-error.md" >}}
 
 
 ## port() {#elasticsearch2-option-elasticsearch2-port}

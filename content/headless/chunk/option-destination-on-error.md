@@ -4,7 +4,7 @@
 
 ## on-error()
 
-| Type:        | drop-message|drop-property|fallback-to-string|silently-drop-message | silently-drop-property|silently-fallback-to-string    |
+| Type:        | One of: `drop-message, drop-property, fallback-to-string, silently-drop-message, silently-drop-property, silently-fallback-to-string` |
 |--------------|-----------|
 | Default:     | Use the global setting (which defaults to `drop-message`)  |
 

@@ -15,7 +15,7 @@ Complete the following steps on the `syslog-ng` server:
 
 1.  Create an X.509 certificate for the `syslog-ng` server.
     
-    {{% include-headless "wnt/note-cert-common-name.md" %}}
+    {{< include-headless "wnt/note-cert-common-name.md" >}}
 
 2.  Copy the certificate (for example, `syslog-ng.cert`) of the `syslog-ng` server to the `syslog-ng` server host, for example, into the `/opt/syslog-ng/etc/syslog-ng/cert.d` directory. The certificate must be a valid X.509 certificate in PEM format.
 

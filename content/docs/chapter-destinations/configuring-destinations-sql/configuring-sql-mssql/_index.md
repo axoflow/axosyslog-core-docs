@@ -12,7 +12,7 @@ The `mssql` database driver can access Microsoft SQL (MSSQL) destinations. This 
 
   - In the current version of {{% param "product.abbrev" %}}, the types of database columns must be explicitly set for the MSSQL destination.
     
-    {{% include-headless "wnt/warning-destination-mssql-columntypes.md" %}}
+    {{< include-headless "wnt/warning-destination-mssql-columntypes.md" >}}
 
   - The column used to store the text part of the syslog messages should be able to store messages as long as the longest message permitted by `syslog-ng`. The `varchar` column type can store maximum 4096 bytes-long messages. The maximum length of the messages can be set using the `log-msg-size()` option. For details, see the following example.
 

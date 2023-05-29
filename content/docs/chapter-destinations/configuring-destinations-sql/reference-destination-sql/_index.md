@@ -15,7 +15,7 @@ This driver sends messages into an SQL database. The `sql()` destination has the
 
 *Description:* Name of the columns storing the data in `fieldname [dbtype]` format. The `[dbtype]` parameter is optional, and specifies the type of the field. By default, {{% param "product.abbrev" %}} creates `text` columns. Note that not every database engine can index text fields.
 
-{{% include-headless "wnt/warning-destination-mssql-columntypes.md" %}}
+{{< include-headless "wnt/warning-destination-mssql-columntypes.md" >}}
 
 ## create-statement-append() {#sql-option-create-statement-append}
 

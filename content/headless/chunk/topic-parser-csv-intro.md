@@ -5,7 +5,7 @@ The {{% param "product.abbrev" %}} application can separate parts of log message
 
 Parsers are similar to filters: they must be defined in the {{% param "product.abbrev" %}} configuration file and used in the log statement. You can also define the parser inline in the log path.
 
-{{% include-headless "wnt/note-element-order.md" %}}
+{{< include-headless "wnt/note-element-order.md" >}}
 
 To create a `csv-parser()`, you have to define the columns of the message, the separator characters or strings (also called delimiters, for example, semicolon or tabulator), and optionally the characters that are used to escape the delimiter characters (`quote-pairs()`).
 

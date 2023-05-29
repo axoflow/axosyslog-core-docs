@@ -126,20 +126,20 @@ The following configuration example turns strings into a list. If there are seve
 
 | Configuration                                   | Result                             |
 | ----------------------------------------------- | ---------------------------------- |
-| $(explode ';' string1;string 2;string3;string4) | "string1,string,2,string3,string4" |
+| `$(explode ';' string1;string 2;string3;string4)` | `"string1,string,2,string3,string4"` |
 
 Enclose the strings in double-quotes or apostrophes and `string 2` is separated as shown below:
 
 | Configuration                                             | Result                                     |
 | --------------------------------------------------------- | ------------------------------------------ |
-| $(explode ' ' 'string1 string 2 string3 string4 string5') | "string1,string 2,string3,string4,string5" |
+| `$(explode ' ' 'string1 string 2 string3 string4 string5')` | `"string1,string 2,string3,string4,string5"` |
 
 The following examples replace the separator `';'` character with a `','` character:
 
 | Configuration                                                | Result                                    |
 | ------------------------------------------------------------ | ----------------------------------------- |
-| `$(implode ',' $(explode ';' 'string1;string2;string3'))`  | "string1,string2,string3"                 |
-| `$(explode ';' 'string1;string2;string3;string4;string5')` | "string1,string2,string3,string4,string5" |
+| `$(implode ',' $(explode ';' 'string1;string2;string3'))`  | `"string1,string2,string3"`                 |
+| `$(explode ';' 'string1;string2;string3;string4;string5')` | `"string1,string2,string3,string4,string5"` |
 
 
 
@@ -211,7 +211,6 @@ To refer to the variable bound to the current element of the list, use `$_ macro
         ('$_' le '1')
         ('$(% $_ 2)' eq '0')
         ('$_' le '1') and ('$(% $_ 2)' eq '0')
-    
     ```
     
 
@@ -277,9 +276,7 @@ The following example shows how to use this template function to store log messa
 
 ## format-cim {#template-function-format-cim}
 
-*Syntax:*
-
-    $(format-cim)
+*Syntax:* `$(format-cim)`
 
 *Description:* Formats the message into [Splunk Common Information Model (CIM) format](http://docs.splunk.com/Documentation/CIM/latest/User/Overview). Applications that can receive messages in CIM format include Kibana, logstash, and Splunk. Applications that can be configured to log into CIM format include nflog and the Suricata IDS engine.
 
@@ -304,9 +301,7 @@ To use the `format-cim()` template function, {{% param "product.abbrev" %}} must
 
 ## format-ewmm {#template-function-format-ewmm}
 
-*Syntax:*
-
-    $(format-ewmm)
+*Syntax:* `$(format-ewmm)`
 
 *Description:* The `format-ewmm` template function converts the message into the [Enterprise-wide message model (EWMM) format]({{< relref "/docs/chapter-concepts/concepts-message-structure/syslog-ng-message-format/_index.md" >}}). Available in version 3.16 and later.
 
@@ -316,9 +311,7 @@ To use the `format-cim()` template function, {{% param "product.abbrev" %}} must
 
 ## format-flat-json {#template-function-format-flat-json}
 
-*Syntax:*
-
-    $(format-flat-json parameters)
+*Syntax:* `$(format-flat-json parameters)`
 
 *Description:* The `format-flat-json` template function is identical to the `format-json` template function, but nested JSON objects are flattened in the output. If you have to forward your log messages in JSON format, but the receiving application cannot handle nested JSON objects, use the `format-flat-json` template function.
 
@@ -337,7 +330,6 @@ The following example shows the difference between nested and flattened JSON obj
                 }
             }
         }
-    
     ```
 
   - The output of `$(format-flat-json a.b.c=1)` is a flattened JSON object (whitespace added for better readability):
@@ -346,7 +338,6 @@ The following example shows the difference between nested and flattened JSON obj
         {
             "a.b.c": "1"
         }
-    
     ```
 
 
@@ -356,9 +347,7 @@ For details on formatting log messages into JSON format, see [](#template-functi
 
 ## format-gelf {#template-function-format-gelf}
 
-*Syntax:*
-
-    $(format-gelf)
+*Syntax:* `$(format-gelf)`
 
 *Description:* Available in {{% param "product.abbrev" %}} 3.13 and later.
 
@@ -385,9 +374,7 @@ The following configuration example shows how you can use the `format-gelf` temp
 
 ## format-json {#template-function-format-json}
 
-*Syntax:*
-
-    $(format-json parameters)
+*Syntax:* `$(format-json parameters)`
 
 *Description:* The `format-json` template function receives value-pairs as parameters and converts them into JavaScript Object Notation (JSON) format. Including the template function in a message template allows you to store selected information about a log message (that is, its content, macros, or other metadata) in JSON format. Note that the input log message does not have to be in JSON format to use `format-json`, you can reformat any incoming message as JSON.
 
@@ -401,7 +388,7 @@ You can use the [value-pairs]({{< relref "/docs/chapter-concepts/concepts-value-
 
 For details, see {{% xref "/docs/chapter-concepts/concepts-value-pairs/_index.md" %}}. Note that the syntax of `format-json` is different from the syntax of `value-pairs()`: `format-json` uses a syntax similar to command lines.
 
-{{% include-headless "wnt/note-typehinting.md" %}}
+{{< include-headless "wnt/note-typehinting.md" >}}
 
 
 ## Example: Using the format-json template function
@@ -475,9 +462,7 @@ The following example shows how to use this template function to store log messa
 
 This template function is deprecated. Use [geoip2](#template-function-geoip2) instead.
 
-*Syntax:*
-
-    $(geoip <IPv4-address>)
+*Syntax:* `$(geoip <IPv4-address>)`
 
 *Description:* This template function returns the 2-letter country code of any IPv4 address or host. IPv6 addresses are not supported. Currently only the 2-letter codes are supported, and only from the default database. For example, `$(geoip $HOST)`
 
@@ -495,8 +480,10 @@ To retrieve additional GeoIP information, see {{% xref "/docs/chapter-enrich-dat
 
 *Syntax:*
 
+    ```bash
     $(geoip2 --database <path-to-geoip2-database-file>
         [ --field "registered_country.names.ru" ] ${HOST})
+    ```
 
 *Description:* This template function extracts specific fields from the mmdb database using the `--field` parameter. If you omit this parameter, it returns the 2-letter country code of any IPv4/IPv6 address or host.
 
@@ -516,9 +503,7 @@ To retrieve additional GeoIP information, see {{% xref "/docs/chapter-enrich-dat
 
 ## getent {#template-function-getent}
 
-*Syntax:*
-
-    $(getent)
+*Syntax:* `$(getent)`
 
 *Description:* Available in {{% param "product.abbrev" %}} 3.13 and later.
 
@@ -537,7 +522,6 @@ The following databases are supported:
         $(getent passwd testuser gecos)
         $(getent passwd testuser dir)
         $(getent passwd testuser shell)
-    
     ```
     
     or
@@ -549,7 +533,6 @@ The following databases are supported:
         $(getent passwd 1000 gecos)
         $(getent passwd 1000 dir)
         $(getent passwd 1000 shell)
-    
     ```
     
     The queried data is optional. When you do not query any data, the default behavior applies, which is as follows: user ID is returned for username, or username is returned for user ID.
@@ -566,7 +549,6 @@ The following databases are supported:
         $(getent group adm name)
         $(getent group adm gid)
         $(getent group adm members)
-    
     ```
     
     The queried data is optional. The default behavior is as follows: group ID is returned for group name, or group name is returned for user ID.
@@ -582,7 +564,6 @@ The following databases are supported:
     ```c
         $(getent protocols tcp)
         $(getent protocols 6)
-    
     ```
 
   - *services*
@@ -592,16 +573,13 @@ The following databases are supported:
     ```c
         $(getent services http)
         $(getent services 80)
-    
     ```
 
 
 
 ## graphite-output {#template-function-graphite}
 
-*Syntax:*
-
-    $(graphite-output parameters)
+*Syntax:* `$(graphite-output parameters)`
 
 *Description:* Available in {{% param "product.abbrev" %}} 3.6 and later. This template function converts value-pairs from the incoming message to the Graphite plain text protocol format. It is ideal to use with the messages generated by the [monitor-source plugin](https://github.com/syslog-ng/syslog-ng-incubator/tree/master/modules/monitor-source/) (currently available in the syslog-ng incubator project).
 
@@ -623,9 +601,7 @@ The following configuration example shows, how to send value-pairs with names st
 
 ## grep {#template-function-grep}
 
-*Syntax:*
-
-    $(grep condition value-to-select)
+*Syntax:* `$(grep condition value-to-select)`
 
 *Description:* The `grep` template function can search a message context when correlating messages (for example, when you use a [pattern database]({{< relref "/docs/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-correlation/_index.md" >}}) or the [grouping-by parser]({{< relref "/docs/chapter-correlating-log-messages/grouping-by-parser/_index.md" >}})). The `context-lookup` template function requires a condition (a filter or a string), and returns a specific macro or template of the matching message (for example, the ${MESSAGE} field of the message).
 
@@ -639,21 +615,17 @@ You can to specify multiple name-value pairs as parameters, separated with comma
 
 ## hash {#template-function-hash}
 
-*Syntax:*
+*Syntax:* `$(<method> [opts] $arg1 $arg2 $arg3...)`
 
-    $(<method> [opts] $arg1 $arg2 $arg3...)
-
-*Options:*
-
-    --length N, -l N
+*Options:* `--length N, -l N`
 
 Truncate the hash to the first N characters.
 
 *Description:* Calculates a hash of the string or macro received as argument using the specified hashing method. If you specify multiple arguments, effectively you receive the hash of the first argument salted with the subsequent arguments.
 
-`\<method\>` can be one of md5, md4, sha1, sha256, sha512 and "hash", which is equivalent to md5. Macros are expected as arguments, and they are concatenated without the use of additional characters.
+`<method>` can be one of md5, md4, sha1, sha256, sha512 and "hash", which is equivalent to md5. Macros are expected as arguments, and they are concatenated without the use of additional characters.
 
-The md4 `\<method\>` is deprecated.
+The md4 `<method>` is deprecated.
 
 This template function can be used for anonymizing sensitive parts of the log message (for example, username) that were parsed out using PatternDB before storing or forwarding the message. This way, the ability of correlating messages along this value is retained.
 
@@ -663,7 +635,8 @@ Also, using this template, quasi-unique IDs can be generated for data, using the
 
 These template functions are available only if {{% param "product.abbrev" %}} has been compiled with the `--enable-ssl` compile option and the `tfhash` module has been loaded.
 
-{{% include-headless "chunk/para-load-module.md" %}} {{% /alert %}}
+{{% include-headless "chunk/para-load-module.md" %}}
+{{% /alert %}}
 
 
 ## Example: Using the $(hash) template function {#template-function-hash-example}
@@ -701,9 +674,7 @@ To replace the hostname with its hash, use a rewrite rule:
 
 ## if {#template-function-if}
 
-*Syntax:*
-
-    $(if (<condition>) <true template> <false template>)
+*Syntax:* `$(if (<condition>) <true template> <false template>)`
 
 *Description:* Returns the value of the `\<true template\>` parameter if the `\<condition\>` is true. If the `\<condition\>` is false, the value of `\<false template\>` is returned.
 
@@ -736,9 +707,7 @@ Since template functions can be embedded into each other, it is possible to use 
 
 ## implode {#template-function-implode}
 
-*Syntax:*
-
-    $(implode <separator> <string1>, <string2>, ...)
+*Syntax:* `$(implode <separator> <string1>, <string2>, ...)`
 
 *Description:* Turns a list into a string combining the pieces together with a separator. You can also use the [explode](#template-function-explode) template function, which turns a string separated by a specific character into a list. Available in {{% param "product.abbrev" %}} 3.21 and later.
 
@@ -749,22 +718,20 @@ The following configuration example shows how you can use the `implode` template
 
 | Configuration                                            | Result                                    |
 | -------------------------------------------------------- | ----------------------------------------- |
-| $(implode ' ' 'string1,string2,string3,string4,string5') | "string1 string2 string3 string4 string5" |
+| `$(implode ' ' 'string1,string2,string3,string4,string5')` | `"string1 string2 string3 string4 string5"` |
 
 You can also use a <span>$(list-\*)</span> template function to further manipulate the list. The following example returns the first three elements of the list:
 
 | Configuration                                                           | Result                    |
 | ----------------------------------------------------------------------- | ------------------------- |
-| $(implode ' ' $(list-slice :3 string1,string2,string3,string4,string5)) | "string1 string2 string3" |
+| `$(implode ' ' $(list-slice :3 string1,string2,string3,string4,string5))` | `"string1 string2 string3"` |
 
 
 
 
 ## indent-multi-line {#template-function-indent-multi-line}
 
-*Syntax:*
-
-    $(indent-multi-line parameter)
+*Syntax:* `$(indent-multi-line parameter)`
 
 *Description:* This template function makes it possible to write multi-line log messages into a file. The first line is written like a regular message, subsequent lines are indented with a tab, in compliance with RFC822.
 
@@ -787,9 +754,7 @@ The following example writes multi-line messages into a text file.
 
 ## ipv4-to-int {#template-function-ipv4-to-int}
 
-*Syntax:*
-
-    $(ipv4-to-int parameter)
+*Syntax:* `$(ipv4-to-int parameter)`
 
 *Description:* Converts the specified IPv4 address to its numeric representation. The numerical value of an IPv4 address is calculated by treating the IP address as a 4-byte hexadecimal value. For example, the 192.168.1.1 address equals to: 192=C0, 168=A8, 1=01, 1=01, or C0A80101, which is 3232235777 in decimal representation.
 
@@ -797,13 +762,15 @@ The following example writes multi-line messages into a text file.
 
 This template function is available only if the `convertfuncs` module has been loaded.
 
-{{% include-headless "chunk/para-load-module.md" %}} {{% /alert %}}
+{{% include-headless "chunk/para-load-module.md" %}}
+
+{{% /alert %}}
 
 
 
 ## List manipulation {#template-function-list}
 
-The `list-\*` template functions allow you to manipulate comma-separated lists. Such lists represent a simple array type in {{% param "product.abbrev" %}}. Note the following about formatting lists:
+The `list-*` template functions allow you to manipulate comma-separated lists. Such lists represent a simple array type in {{% param "product.abbrev" %}}. Note the following about formatting lists:
 
   - Values are separated by commas, for example, `"item1","item2","item3"`. The single-element list is an element without a comma.
 
@@ -820,9 +787,7 @@ Starting with {{% param "product.abbrev" %}} version 3.10, the following list-re
 
 ## list-append {#template-function-list-append}
 
-*Syntax:*
-
-    $(list-append ${list} ${name-value-pair1} ${name-value-pair2} ... )
+*Syntax:* `$(list-append ${list} ${name-value-pair1} ${name-value-pair2} ... )`
 
 *Description:* Returns a list and appends the values of the specified name-value pairs to the end of the list. You can also append elements to an empty list, for example, `$(list-append '' 'element-to-add')`
 
@@ -832,9 +797,7 @@ Starting with {{% param "product.abbrev" %}} version 3.10, the following list-re
 
 ## list-concat {#template-function-list-concat}
 
-*Syntax:*
-
-    $(list-concat ${name-value-pair1} ${name-value-pair2} ... )
+*Syntax:* `$(list-concat ${name-value-pair1} ${name-value-pair2} ... )`
 
 The commas between the parameters are optional.
 
@@ -854,9 +817,7 @@ You can concatenate existing lists into a single list using:
 
 ## list-count {#template-function-list-count}
 
-*Syntax:*
-
-    $(list-count ${list} )
+*Syntax:* `$(list-count ${list} )`
 
 *Description:* Returns the number of elements in the list.
 
@@ -866,9 +827,7 @@ You can concatenate existing lists into a single list using:
 
 ## list-head {#template-function-list-head}
 
-*Syntax:*
-
-    $(list-head ${list} )
+*Syntax:* `$(list-head ${list} )`
 
 *Description:* Returns the first element of the list, unquoted.
 
@@ -878,9 +837,7 @@ You can concatenate existing lists into a single list using:
 
 ## list-nth {#template-function-list-nth}
 
-*Syntax:*
-
-    $(list-nth <index-number> ${list} )
+*Syntax:* `$(list-nth <index-number> ${list} )`
 
 *Description:* Returns the nth element of the list, unquoted. Note that the list index starts with zero, so `(list-nth 1 ${list} )` returns the second element, and so on.
 
@@ -890,15 +847,13 @@ You can concatenate existing lists into a single list using:
 
 ## list-search {#template-function-list-search}
 
-*Syntax:*
-
-    $(list-search [OPTIONS] <pattern> ${list})
+*Syntax:* `$(list-search [OPTIONS] <pattern> ${list})`
 
 *Description:* The `list-search` template function searches the elements of `${list}` starting at the specified `start_index`, then returns the index of the first match of `\<pattern\>` within `${list}`.
 
 {{% alert title="Note" color="info" %}}
 
-Indexing is 0-based. If `\<pattern\>` is not found, the function returns an empty string.
+Indexing is 0-based. If `<pattern>` is not found, the function returns an empty string.
 
 {{% /alert %}}
 
@@ -913,9 +868,7 @@ Options:
 
 ## list-slice {#template-function-list-slice}
 
-*Syntax:*
-
-    $(list-slice <from>:<to> ${list} )
+*Syntax:* `$(list-slice <from>:<to> ${list} )`
 
 *Description:* Returns the specified subset of the list. Note that the list index starts with zero, for example, `$(list-slice 1:2 ${list} )` returns the second and third element of the list, and so on.
 
@@ -929,9 +882,7 @@ Negative numbers select an element from the end of the list, for example, `-3:` 
 
 ## list-tail {#template-function-list-tail}
 
-*Syntax:*
-
-    $(list-tail ${list} )
+*Syntax:* `$(list-tail ${list} )`
 
 *Description:* Returns the list without the first element. For example, if the `${mylist}` list contains the `one, two, three` elements, then `$(list-tail ${mylist} )` returns `two, three`.
 
@@ -942,9 +893,7 @@ Negative numbers select an element from the end of the list, for example, `-3:` 
 
 ## length {#template-function-length}
 
-*Syntax:*
-
-    $(length "<macro>")
+*Syntax:* `$(length "<macro>")`
 
 *Description:* Returns the length of the macro in characters, for example, the length of the message. For example, the following filter selects messages that are shorter than 16 characters:
 
@@ -960,9 +909,7 @@ Negative numbers select an element from the end of the list, for example, `-3:` 
 
 ## lowercase {#template-function-lowercase}
 
-*Syntax:*
-
-    $(lowercase "<macro>")
+*Syntax:* `$(lowercase "<macro>")`
 
 *Description:* Returns the lowercase version of the specified string or macro. For example, the following example uses the lowercase version of the hostname in a directory name:
 
@@ -980,9 +927,7 @@ Available in {{% param "product.abbrev" %}} 3.5 and later.
 
 ## map
 
-*Syntax:*
-
-    $(map template list)
+*Syntax:* `$(map template list)`
 
 *Description:* Returns with a list that contains the results of applying a template function for each elements of a list.
 
@@ -1014,9 +959,7 @@ The returned values are `1`, `2`, and `3`.
 
 ## Numerical operations {#template-function-numerical}
 
-*Syntax:*
-
-    $(<operation> "<value1>" "<value2>")
+*Syntax:* `$(<operation> "<value1>" "<value2>")`
 
 *Description:* These template functions allow you to manipulate numbers, that is, to perform addition (+), substraction (-), multiplication (\*), division (/), and modulus (%). All of them require two numeric arguments. The result is `NaN` (Not-a-Number) if the parameters are not numbers, cannot be parsed, or if a division by zero would occur. For example, to add the value of two macros, use the following template function:
 
@@ -1052,9 +995,7 @@ When you are correlating messages and a name-value pair contains numerical value
 
 ## or {#template-function-or}
 
-*Syntax:*
-
-    $(or <macro1> <macro2>)
+*Syntax:* `$(or <macro1> <macro2>)`
 
 *Description:* This template function returns the first non-empty argument.
 
@@ -1064,7 +1005,7 @@ When you are correlating messages and a name-value pair contains numerical value
 
 *Syntax:*
 
-``` 
+```bash 
  $(padding <macro> <width> <prepended-character-or-string>)
 ```
 
@@ -1094,7 +1035,7 @@ Output: `foofoofoofmymessage`
 
 *Syntax:*
 
-``` 
+``` bash
  $(python <name-of-the-python-method-to-use> <arguments-of-the-method>)
 ```
 
@@ -1174,9 +1115,7 @@ The following example creates a Python template function called `resolve_host` t
 
 ## replace-delimiter {#template-function-replace-delimiter}
 
-*Syntax:*
-
-    $(replace-delimiter "<old-delimiters>" "<new-delimiter>" "<macro>")
+*Syntax:* `$(replace-delimiter "<old-delimiters>" "<new-delimiter>" "<macro>")`
 
 *Description:* Replaces the delimiter character with a new one. For example, the following example replaces the tabulators (`\\t`) in the message with semicolons (`;`):
 
@@ -1190,9 +1129,7 @@ Available in {{% param "product.abbrev" %}} 3.5 and later.
 
 ## round {#template-function-round}
 
-*Syntax:*
-
-    $(round argument)
+*Syntax:* `$(round argument)`
 
 *Description:* Rounds a floating-point number to the nearest integer. For example, `$(round 1.5)` is 2. See also the `ceil` and `floor` template functions.
 
@@ -1202,9 +1139,7 @@ This template function has an optional second argument that sets the precision o
 
 ## sanitize {#template-function-sanitize}
 
-*Syntax:*
-
-    $(sanitize <options> "<macro1>" "<macro2> ...")
+*Syntax:* `$(sanitize <options> "<macro1>" "<macro2> ...")`
 
 *Description:* This file replaces the special characters in macro values, for example, it can replace the slash (/) characters in a filename with the underscore (_) character. If you specify multiple arguments, they will be concatenated using the `/` character, so they can be used as separate directory levels when used in filenames.
 
@@ -1214,26 +1149,24 @@ The function has the following options:
 
   - Filter control characters (characters that have an ASCII code of 32 or lower). This option is used by default.
 
-  - `--invalid-chars \<characterlist\> or -i \<characterlist\>`
+  - `--invalid-chars <characterlist>` or `-i <characterlist>`
 
   - The list of characters to be replaced with underscores (_). The default list contains the `/` character. The following example replaces the \\ and @ characters, so for example, fo\\o@bar becomes foobar:
     
     ```c
         $(sanitize -i \@ $PROGRAM)
-    
     ```
 
   - `--no-ctrl-chars or -C`
 
   - Do not filter the control characters (characters that have an ASCII code of 32 or lower).
 
-  - `--replacement \<replacement-character\> or -r \<replacement-character\>`
+  - `--replacement <replacement-character>` or `-r <replacement-character>`
 
   - The character used to replace invalid characters. By default, this is the underscore (_). The following example replaces invalid characters with colons instead of underscores, so for example, `foo/bar` becomes `foo;bar`:
     
     ```c
         $(sanitize -r ; $PROGRAM)
-    
     ```
 
 
@@ -1252,9 +1185,7 @@ This is equivalent to `file("/var/log/$HOST/$PROGRAM/messages");`, but any slash
 
 ## stardate {#template-function-stardate}
 
-*Syntax:*
-
-    $(stardate [option] "<date-in-unixtime>")
+*Syntax:* `$(stardate [option] "<date-in-unixtime>")`
 
 *Description:* Converts a date in UNIXTIME (for example, ${UNIXTIME}) into [stardate](https://en.wikipedia.org/wiki/Stardate), displaying the year and the progress of the year in a number of digits (`YYYY.NNN`). You can set the number of digits using the `--digits` option, for example:
 
@@ -1266,9 +1197,7 @@ This is equivalent to `file("/var/log/$HOST/$PROGRAM/messages");`, but any slash
 
 ## strip {#template-function-strip}
 
-*Syntax:*
-
-    $(strip "<macro>")
+*Syntax:* `$(strip "<macro>")`
 
 *Description:* Deletes whitespaces from the beginning and the end of a macro. You can specify multiple macros separated with whitespace in a single template function, for example:
 
@@ -1280,23 +1209,15 @@ This is equivalent to `file("/var/log/$HOST/$PROGRAM/messages");`, but any slash
 
 ## substr {#template-function-substr}
 
-*Syntax:*
-
-    $(substr "<argument>" "<offset>" "<length>")
+*Syntax:* `$(substr "<argument>" "<offset>" "<length>")`
 
 *Description:* This function extracts a substring of a string.
 
-  - `argument`
+  - `argument` The string to extract the substring from, for example, `"${MESSAGE}"`
 
-  - The string to extract the substring from, for example, `"${MESSAGE}"`
+  - `offset` Specifies where the substring begins (in characters). `0` means to start from the beginning of the string, `5` means to skip the first 5 characters of the string, and so on. Use negative numbers to specify where to start from the end of the string, for example, `-1` means the last character, `-5` means to start five characters before the end of the string.
 
-  - `offset`
-
-  - Specifies where the substring begins (in characters). `0` means to start from the beginning of the string, `5` means to skip the first 5 characters of the string, and so on. Use negative numbers to specify where to start from the end of the string, for example, `-1` means the last character, `-5` means to start five characters before the end of the string.
-
-  - `length`
-
-  - *Optional parameter*: The number of characters to extract. If not specified, the substring will be extracted from the offset to the end of the string. Use negative numbers to stop the substring before the end of the string, for example, `-5` means the substring ends five characters before the end of the string.
+  - `length` *Optional parameter*: The number of characters to extract. If not specified, the substring will be extracted from the offset to the end of the string. Use negative numbers to stop the substring before the end of the string, for example, `-5` means the substring ends five characters before the end of the string.
 
 
 ## Example: Using the substr template function
@@ -1335,9 +1256,11 @@ A template that converts the message to RFC3164 (BSD-syslog) format and truncate
 
 *Syntax:*
 
-    $(template <template-name>)
-    $(template $<dynamic-template-name>)
-    $(template $<dynamic-template-name> '<optional-fallback-template>')
+```shell
+$(template <template-name>)
+$(template $<dynamic-template-name>)
+$(template $<dynamic-template-name> '<optional-fallback-template>')
+```
 
 *Description:* This template function looks up the \<template-name\> in the configuration and uses that to format its result. The referenced template can be static or dynamic. For static templates, {{% param "product.abbrev" %}} resolves the template when it starts, or when the configuration is reloaded. For dynamic templates, the results are resolved runtime (for dynamic templates, the template name contains at least one '$' character). For example, the name of the template to be invoked can be extracted from the message, or from a name-value pair set using the [`add-contextual-data()`]({{< relref "/docs/chapter-enrich-data/data-enrichment-add-contextual-data/_index.md" >}}) feature.
 
@@ -1353,9 +1276,7 @@ Available in {{% param "product.abbrev" %}} 3.22 and later.
 
 ## uppercase {#template-function-uppercase}
 
-*Syntax:*
-
-    $(uppercase "<macro>")
+*Syntax:* `$(uppercase "<macro>")`
 
 *Description:* Returns the uppercase version of the specified string or macro. For example, the following example uses the uppercase version of the hostname in a directory name:
 
@@ -1371,9 +1292,7 @@ Available in {{% param "product.abbrev" %}} 3.5 and later.
 
 ## url-decode {#template-function-url-decode}
 
-*Syntax:*
-
-    $(url-decode <string-pr-macro-1> <string-pr-macro-2> ... )
+*Syntax:* `$(url-decode <string-pr-macro-1> <string-pr-macro-2> ... )`
 
 *Description:* You can use the `url-decode` template function to decode url-encoded strings and macros. For example, `$(url-decode %3C%3E)` yields `\<\>`. The `url-decode` can receive multiple parameters (maximum 64). In this case, each parameter is decoded separately, and simply concatenated.
 
@@ -1383,9 +1302,7 @@ Available in {{% param "product.abbrev" %}} version 3.18 and later.
 
 ## url-encode {#template-function-url-encode}
 
-*Syntax:*
-
-    $(url-encode ${MESSAGE} )\n")
+*Syntax:* `$(url-encode ${MESSAGE} )\n")`
 
 *Description:* You can use the `url-encode` template function together with the `telegram()` destination to send syslog messages to [Telegram.](https://core.telegram.org/ "https://core.telegram.org") The `url-encode` template function escapes strings. All input characters that are not a-z, A-Z, 0-9, '-', '.', '_' or '\~' are converted to their "URL escaped" version.
 
@@ -1394,9 +1311,7 @@ Available in {{% param "product.abbrev" %}} version 3.18 and later. (In version 
 
 ## uuid {#template-function-uuid}
 
-*Syntax:*
-
-    $(uuid)
+*Syntax:* `$(uuid)`
 
 *Description:* Generates a Universally Unique IDentifier (UUID) that complies with [RFC4122](https://www.ietf.org/rfc/rfc4122.txt). That way, an UUID can be added to the message soon after it is received, so messages stored in multiple destinations can be identified. For example, when storing messages in a database and also in files, the UUID can be used to find a particular message both in the database and the files.
 

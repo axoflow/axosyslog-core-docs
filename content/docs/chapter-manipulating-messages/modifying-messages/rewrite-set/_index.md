@@ -12,7 +12,7 @@ To set a field of the message to a specific value, you have to:
 
 You can set the value of available macros, for example, HOST, MESSAGE, PROGRAM, or any user-defined macros created using parsers (for details, see {{% xref "/docs/chapter-parsers/_index.md" %}} and {{% xref "/docs/chapter-parsers/chapter-patterndb/_index.md" %}}). Note that the rewrite operation completely replaces any previous value of that field.
 
-{{% include-headless "wnt/note-rewrite-hard-macros.md" %}}
+{{< include-headless "wnt/note-rewrite-hard-macros.md" >}}
 
 Use the following syntax:
 

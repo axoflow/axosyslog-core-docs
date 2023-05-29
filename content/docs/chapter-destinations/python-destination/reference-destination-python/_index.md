@@ -66,7 +66,9 @@ For details, see {{% xref "/docs/chapter-configuration-file/python-code-external
 
 {{% include-headless "chunk/option-destination-log-fifo-size.md" %}}
 
-{{% include-headless "chunk/option-destination-on-error.md" %}}<span id="python-options"></span>
+{{< include-headless "chunk/option-destination-on-error.md" >}}
+
+<span id="python-options"></span>
 
 {{% include-headless "chunk/option-python-options.md" %}}
 
@@ -81,7 +83,7 @@ For details, see {{% xref "/docs/chapter-configuration-file/python-code-external
 {{% include-headless "chunk/option-source-time-reopen-py.md" %}}
 
 
-{{% include-headless "chunk/destination-option-value-pairs-content.md" %}}
+{{< include-headless "chunk/destination-option-value-pairs-content.md" >}}
 
 You can use this option to limit which name-value pairs are passed to the Python code for each message. Note that if you use the `value-pairs()` option, the Python code receives the specified value-pairs as a Python dict. Otherwise, it receives the message object. In the following example, only the text of the log message is passed to Python.
 

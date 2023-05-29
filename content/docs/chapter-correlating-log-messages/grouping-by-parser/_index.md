@@ -25,7 +25,7 @@ The `timeout()` option determines how long a context is stored, that is, how lon
 
 When the context is closed, and the messages match the filter set in the `having()` option (or the `having()` option is not set), {{% param "product.abbrev" %}} generates and sends the message set in the `aggregate()` option.
 
-{{% include-headless "wnt/note-message-context.md" %}}
+{{< include-headless "wnt/note-message-context.md" >}}
 
 
 

@@ -39,7 +39,7 @@ For the `kafka` destination, include the path to the directory where you copied 
 
 {{% include-headless "chunk/option-destination-jvm-options.md" %}}
 
-{{% include-headless "chunk/option-destination-on-error.md" %}}
+{{< include-headless "chunk/option-destination-on-error.md" >}}
 
 
 ## key() {#kafka-option-key}

@@ -113,29 +113,29 @@ Define a source that correctly detects the end of the message, otherwise the XML
 
 To ensure that the end of the XML document is accurately detected, use any of the following options:
 
-  - Ensure that the XML is a single-line message.
+- Ensure that the XML is a single-line message.
 
-  - In the case of multiline XML documents:
+- In the case of multiline XML documents:
+
+    - If the opening and closing tags are fixed and known, you can use `multi-line-mode(prefix-suffix)`. Using regular expressions, specify a prefix and suffix matching the opening and closing tags. For details on using `multi-line-mode(prefix-suffix)`, see the `multi-line-prefix()` and `multi-line-suffix()` options.
     
-      - If the opening and closing tags are fixed and known, you can use `multi-line-mode(prefix-suffix)`. Using regular expressions, specify a prefix and suffix matching the opening and closing tags. For details on using `multi-line-mode(prefix-suffix)`, see the `multi-line-prefix()` and `multi-line-suffix()` options.
-    
-      - In the case of TCP, you can encapsulate and send the document in syslog-protocol format, and use a `syslog()` source. Make sure that the message conforms to [the octet counting method described in RFC6587](https://tools.ietf.org/html/rfc6587#section-3.4.1).
+        - In the case of TCP, you can encapsulate and send the document in syslog-protocol format, and use a `syslog()` source. Make sure that the message conforms to [the octet counting method described in RFC6587](https://tools.ietf.org/html/rfc6587#section-3.4.1).
         
-        For example:
+            For example:
+            
+            ```c
+            
+                59 <133>Feb 25 14:09:07 webserver syslogd: <book>\nText\n</book>
+            
+            ```
+            
+            Considering the new lines as one character, `59` is appended to the original message.
         
-        ```c
-        
-            59 <133>Feb 25 14:09:07 webserver syslogd: <book>\nText\n</book>
-        
-        ```
-        
-        Considering the new lines as one character, `59` is appended to the original message.
-    
       - You can use a datagram-based source. In the case of datagram-based sources, the protocol signals the end of the message automatically. Ensure that the complete XML document is written in one message.
     
       - Unless the opening and closing tags are fixed and known, stream-based sources are currently not supported.
 
 In case you experience issues, start `syslog-ng` with debug logs enabled. There will be a debug log about the incoming log entry, which shows the complete message to be parsed. The entry should contain the entire XML document.
 
-{{% include-headless "wnt/note-xml-parser-format.md" %}}
+{{< include-headless "wnt/note-xml-parser-format.md" >}}
 

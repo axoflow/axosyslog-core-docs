@@ -45,7 +45,7 @@ Macro names are case-sensitive, that is, `"$message"` and `"$MESSAGE"` are not t
 
 To use a literal `$` character in a template, you have to escape it. In {{% param "product.abbrev" %}} versions 3.4 and earlier, use a backslash `(`\\$`)`. In version 3.5 and later, use `$$`.
 
-{{% include-headless "wnt/note-escape-at.md" %}}
+{{< include-headless "wnt/note-escape-at.md" >}}
 
 Default values for macros can also be specified by appending the `:-` characters and the default value of the macro. If a message does not contain the field referred to by the macro, or it is empty, the default value will be used when expanding the macro. For example, if a message does not contain a hostname, the following macro can specify a default hostname.
 

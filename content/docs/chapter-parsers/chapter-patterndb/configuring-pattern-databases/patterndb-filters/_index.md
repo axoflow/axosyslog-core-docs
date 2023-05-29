@@ -53,7 +53,7 @@ To filter on messages matching a specific classification rule, create a filter t
 
 Pattern database rules can assign tags to messages. These tags can be used to select tagged messages using the `tags()` filter function.
 
-{{% include-headless "wnt/note-patterndb-class-tag.md" %}}
+{{< include-headless "wnt/note-patterndb-class-tag.md" >}}
 
 The message-segments parsed by the pattern parsers can also be used as macros as well. To accomplish this, you have to add a name to the parser, and then you can use this name as a macro that refers to the parsed value of the message.
 

@@ -31,5 +31,4 @@ Use the `tags()` option of the filters to select only specific messages:
     };
 ```
 
-
-{{% include-headless "wnt/note-patterndb-class-tag.md" %}}
+{{< include-headless "wnt/note-patterndb-class-tag.md" >}}

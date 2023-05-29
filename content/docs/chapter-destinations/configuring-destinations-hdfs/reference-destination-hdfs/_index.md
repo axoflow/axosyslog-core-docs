@@ -143,7 +143,7 @@ Available in {{% param "product.abbrev" %}} version 3.10 and later.
 
 {{% include-headless "chunk/option-destination-log-fifo-size.md" %}}
 
-{{% include-headless "chunk/option-destination-on-error.md" %}}
+{{< include-headless "chunk/option-destination-on-error.md" >}}
 
 {{% include-headless "chunk/option-destination-retries.md" %}}
 

@@ -10,7 +10,7 @@ A set of macros can be defined as a template object and used in multiple destina
 
 Another use of macros and templates is to customize the format of the syslog message, for example, to add elements of the message header to the message text.
 
-{{% include-headless "wnt/note-formatting-messages.md" %}}
+{{< include-headless "wnt/note-formatting-messages.md" >}}
 
   - For details on using templates and macros, see {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/configuring-macros/_index.md" %}}.
 

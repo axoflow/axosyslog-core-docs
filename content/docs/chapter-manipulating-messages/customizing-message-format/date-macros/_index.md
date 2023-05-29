@@ -8,7 +8,7 @@ The macros related to the date of the message (for example: `${ISODATE}`, `${HOU
 
   - `S_` prefix, for example, `${S_DATE}`: The `${S_DATE}` macro represents the date found in the log message, that is, when the message was sent by the original application.
     
-    {{% include-headless "wnt/warning-keep-timestamp-s-macros.md" %}}
+    {{< include-headless "wnt/warning-keep-timestamp-s-macros.md" >}}
 
   - `R_` prefix, for example, `${R_DATE}`: `${R_DATE}` is the date when {{% param "product.abbrev" %}} has received the message.
 

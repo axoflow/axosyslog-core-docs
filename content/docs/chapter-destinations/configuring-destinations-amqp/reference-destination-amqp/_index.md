@@ -222,7 +222,7 @@ Available in {{% param "product.abbrev" %}} version 3.21 and later.
 *Description:* The username used to authenticate on the AMQP server.
 
 
-{{% include-headless "chunk/destination-option-value-pairs.md" %}}
+{{< include-headless "chunk/destination-option-value-pairs.md" >}}
 
 
 ## vhost() {#amqp-option-vhost}
