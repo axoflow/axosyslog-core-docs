@@ -221,7 +221,7 @@ If an error occurs while sending the messages to the server, {{% param "product.
 
 
 
-## Declaration 1:
+### Declaration 1:
 
 ```c
    destination d_riemann {
@@ -242,7 +242,7 @@ An alternative way to specify TLS options is to group them into a `tls()` block.
 
 
 
-## Declaration 2:
+### Declaration 2:
 
 ```c
    destination d_riemann {
@@ -261,18 +261,16 @@ An alternative way to specify TLS options is to group them into a `tls()` block.
 
 Make sure that you specify TLS options either using `type()` or using the `tls()` block. Avoid mixing the two methods. In case you do specify TLS options in both ways, the one that comes later in the configuration file will take effect.
 
-*ca-file()*
+### `ca-file()`
 
-
-Type:
-
-path to a CA certificate in PEM format
-
-Default:
+|          |                 |
+| -------- | --------------- |
+| Type:    | path to a CA certificate in PEM format |
+| Default: |                 |
 
 *Description:* Path to the CA certificate in PEM format that signed the certificate of the Riemann server. When establishing TLS connection, {{% param "product.abbrev" %}} verifies the certificate of the Riemann server using this CA.
 
-*Alternative 1:*
+*Alternative 1*
 
 ```c
    type(
@@ -281,7 +279,7 @@ Default:
         )
 ```
 
-*Alternative 2:*
+*Alternative 2*
 
 ```c
    riemann(
@@ -295,13 +293,12 @@ Default:
 
 This option was called `cacert()` up until (and including) {{% param "product.abbrev" %}} version 3.12.
 
-*cert-file()*
+### cert-file()
 
-Type:
-
-path to a certificate in PEM format
-
-Default:
+|          |                 |
+| -------- | --------------- |
+| Type:    | path to a CA certificate in PEM format |
+| Default: |                 |
 
 *Description:* Path to the a certificate file in PEM format. When establishing TLS connection, {{% param "product.abbrev" %}} authenticates on the Riemann server using this certificate and the matching private key set in the `key-file()` option.
 
@@ -309,13 +306,12 @@ Default:
 
 This option was called `cert()` in {{% param "product.abbrev" %}} version 3.7.
 
-*key-file()*
+### key-file()
 
-Type:
-
-path to a private key file
-
-Default:
+|          |                 |
+| -------- | --------------- |
+| Type:    | path to a private key file |
+| Default: |                 |
 
 *Description:* Path to the private key of the certificate file set in the `cert-file()` option. When establishing TLS connection, {{% param "product.abbrev" %}} authenticates on the Riemann server using this private key and the matching certificate set in the `cert-file()` option.
 

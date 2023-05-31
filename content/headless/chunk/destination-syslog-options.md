@@ -10,7 +10,7 @@
 
 
 
-{{% include-headless "chunk/option-destination-failover.md" %}}
+{{< include-headless "chunk/option-destination-failover.md" >}}
 
 
 
@@ -86,7 +86,7 @@
 
 
 
-{{% include-headless "chunk/option-destination-spoof-source.md" %}}
+{{< include-headless "chunk/option-destination-spoof-source.md" >}}
 
 
 
@@ -94,11 +94,11 @@
 
 
 
-{{% include-headless "chunk/option-tcp-keepalive-intvl.md" %}}
+{{< include-headless "chunk/option-tcp-keepalive-intvl.md" >}}
 
 
 
-{{% include-headless "chunk/option-tcp-keepalive-probes.md" %}}
+{{< include-headless "chunk/option-tcp-keepalive-probes.md" >}}
 
 
 

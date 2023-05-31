@@ -29,92 +29,87 @@ The following options can be specified in the options statement, as described in
 
 For example, consider a client-server scenario with the following hostnames: `client-hostname-from-the-message`, `client-hostname-resolved-on-the-server`, `server-hostname`. The hostname of the log message written to the destination depends on the `keep-hostname()` and the `chain-hostnames()` options. How `keep-hostname()` and `chain-hostnames()` options are related is described in the following table.
 
-
-keep-hostname() setting on the server
-
-yes
-
-no
-
-*chain-hostnames() setting on the server*
-
-*yes*
-
-client-hostname-from-the-message
-
-client-hostname-from-the-message/client-hostname-resolved-on-the-server
-
-*no*
-
-client-hostname-from-the-message
-
-client-hostname-resolved-on-the-server
+<table class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit" style="WIDTH: 100%; mc-table-style: url('../../Resources/TableStyles/RuledTableWithHeading_VerticallyRuled_DoNotEdit.css')" cellspacing="0">
+<thead>
+<tr class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-Head-Header1">
+<th class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-HeadE-Column1-Header1" rowspan="2" colspan="2">
+<p></p></th>
+<th class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-HeadD-Column1-Header1" colspan="2">keep-hostname() setting on the server</th></tr>
+<tr class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-Head-Header1">
+<th class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-HeadE-Column1-Header1">yes </th>
+<th class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-HeadD-Column1-Header1">no </th></tr></thead>
+<tbody>
+<tr class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-Body-Body1">
+<td class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-BodyE-Column1-Body1" rowspan="2"><i style="FONT-STYLE: normal">chain-hostnames() setting on the server</i> </td>
+<td class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-BodyE-Column1-Body1"><i style="FONT-STYLE: normal">yes</i> </td>
+<td class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-BodyE-Column1-Body1">client-hostname-from-the-message </td>
+<td class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-BodyD-Column1-Body1">client-hostname-from-the-message/client-hostname-resolved-on-the-server </td></tr>
+<tr class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-Body-Body1">
+<td class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-BodyB-Column1-Body1"><i style="FONT-STYLE: normal">no</i> </td>
+<td class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-BodyB-Column1-Body1">client-hostname-from-the-message </td>
+<td class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-BodyA-Column1-Body1">client-hostname-resolved-on-the-server </td></tr></tbody>
+<colgroup>
+<col class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-Column-Column1" style="WIDTH: 0.3in">
+<col class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-Column-Column1" style="WIDTH: 0.3in">
+<col class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-Column-Column1" style="WIDTH: 0.3in"></colgroup></table>
 
 If the log message is forwarded to the {{% param "product.abbrev" %}} server via a {{% param "product.abbrev" %}} relay, the hostname depends on the settings of the `keep-hostname()` and the `chain-hostnames()` options both on the {{% param "product.abbrev" %}} relay and the {{% param "product.abbrev" %}} server.
 
 For example, consider a client-relay-server scenario with the following hostnames: `client-hostname-from-the-message`, `client-hostname-resolved-on-the-relay`, `client-hostname-resolved-on-the-server`, `relay-hostname-resolved-on-the-server`. How `keep-hostname()` and `chain-hostnames()` options are related is described in the following table.
 
-chain-hostnames() setting on the server
-
-yes
-
-no
-
-keep-hostname() setting on the server
-
-keep-hostname() setting on the server
-
-yes
-
-no
-
-yes
-
-no
-
-*chain-hostnames() setting on the relay*
-
-*yes*
-
-*keep-hostname() setting on the relay*
-
-*yes*
-
-client-hostname-from-the-message
-
-client-hostname-from-the-message / relay-hostname-resolved-on-the-server
-
-client-hostname-from-the-message
-
-relay-hostname-resolved-on-the-server
-
-*no*
-
-client-hostname-from-the-message / client-hostname-resolved-on-the-relay
-
-client-hostname-from-the-message / client-hostname-resolved-on-the-relay / relay-hostname-resolved-on-the-server
-
-client-hostname-from-the-message / client-hostname-resolved-on-the-relay
-
-*no*
-
-*keep-hostname() setting on the relay*
-
-*yes*
-
-client-hostname-from-the-message
-
-client-hostname-from-the-message / relay-hostname-resolved-on-the-server
-
-client-hostname-from-the-message
-
-*no*
-
-client-hostname-resolved-on-the-relay
-
-client-hostname-resolved-on-the-relay / relay-hostname-resolved-on-the-server
-
-client-hostname-resolved-on-the-relay
+<table class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit" style="WIDTH: 100%; mc-table-style: url('../../Resources/TableStyles/RuledTableWithHeading_VerticallyRuled_DoNotEdit.css')" cellspacing="0">
+<thead>
+<tr class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-Head-Header1">
+<th class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-HeadE-Column1-Header1" rowspan="4" colspan="4">
+<p></p>
+<p></p></th>
+<th class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-HeadD-Column1-Header1" colspan="4">chain-hostnames() setting on the server</th></tr>
+<tr class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-Head-Header1">
+<th class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-HeadE-Column1-Header1" colspan="2">yes</th>
+<th class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-HeadD-Column1-Header1" colspan="2">no</th></tr>
+<tr class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-Head-Header1">
+<th class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-HeadE-Column1-Header1" colspan="2">keep-hostname() setting on the server</th>
+<th class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-HeadD-Column1-Header1" colspan="2">keep-hostname() setting on the server</th></tr>
+<tr class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-Head-Header1">
+<th class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-HeadE-Column1-Header1">yes</th>
+<th class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-HeadE-Column1-Header1">no</th>
+<th class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-HeadE-Column1-Header1">yes</th>
+<th class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-HeadD-Column1-Header1">no</th></tr></thead>
+<tbody>
+<tr class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-Body-Body1">
+<td class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-BodyE-Column1-Body1" rowspan="4"><i style="FONT-STYLE: normal">chain-hostnames() setting on the relay</i> </td>
+<td class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-BodyE-Column1-Body1" rowspan="2"><i style="FONT-STYLE: normal">yes</i> </td>
+<td class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-BodyE-Column1-Body1" rowspan="2"><i style="FONT-STYLE: normal">keep-hostname() setting on the relay</i> </td>
+<td class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-BodyE-Column1-Body1"><i style="FONT-STYLE: normal">yes</i> </td>
+<td class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-BodyE-Column1-Body1">client-hostname-from-the-message </td>
+<td class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-BodyE-Column1-Body1">client-hostname-from-the-message / relay-hostname-resolved-on-the-server </td>
+<td class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-BodyE-Column1-Body1">client-hostname-from-the-message </td>
+<td class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-BodyD-Column1-Body1" rowspan="4">relay-hostname-resolved-on-the-server </td></tr>
+<tr class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-Body-Body1">
+<td class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-BodyE-Column1-Body1"><i style="FONT-STYLE: normal">no</i> </td>
+<td class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-BodyE-Column1-Body1">client-hostname-from-the-message / client-hostname-resolved-on-the-relay </td>
+<td class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-BodyE-Column1-Body1">client-hostname-from-the-message / client-hostname-resolved-on-the-relay / relay-hostname-resolved-on-the-server </td>
+<td class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-BodyE-Column1-Body1">client-hostname-from-the-message / client-hostname-resolved-on-the-relay </td></tr>
+<tr class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-Body-Body1">
+<td class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-BodyE-Column1-Body1" rowspan="2"><i style="FONT-STYLE: normal">no</i> </td>
+<td class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-BodyE-Column1-Body1" rowspan="2"><i style="FONT-STYLE: normal">keep-hostname() setting on the relay</i> </td>
+<td class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-BodyE-Column1-Body1"><i style="FONT-STYLE: normal">yes</i> </td>
+<td class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-BodyE-Column1-Body1">client-hostname-from-the-message </td>
+<td class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-BodyE-Column1-Body1">client-hostname-from-the-message / relay-hostname-resolved-on-the-server </td>
+<td class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-BodyE-Column1-Body1">client-hostname-from-the-message </td></tr>
+<tr class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-Body-Body1">
+<td class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-BodyB-Column1-Body1"><i style="FONT-STYLE: normal">no</i> </td>
+<td class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-BodyB-Column1-Body1">client-hostname-resolved-on-the-relay </td>
+<td class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-BodyB-Column1-Body1">client-hostname-resolved-on-the-relay / relay-hostname-resolved-on-the-server </td>
+<td class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-BodyB-Column1-Body1">client-hostname-resolved-on-the-relay </td></tr></tbody>
+<colgroup>
+<col class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-Column-Column1" style="WIDTH: 0.3in">
+<col class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-Column-Column1" style="WIDTH: 0.3in">
+<col class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-Column-Column1" style="WIDTH: 0.3in">
+<col class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-Column-Column1" style="WIDTH: 0.3in">
+<col class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-Column-Column1" style="WIDTH: 0.3in">
+<col class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-Column-Column1" style="WIDTH: 0.3in">
+<col class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-Column-Column1" style="WIDTH: 0.3in"></colgroup></table>
 
 {{% include-headless "chunk/pe-para-chain-hostnames.md" %}}
 
@@ -352,29 +347,13 @@ For example:
 
 {{< include-headless "chunk/option-destination-mark-mode.md" >}}
 
-{{% include-headless "chunk/option-source-normalize-hostnames.md" %}}
+{{< include-headless "chunk/option-source-normalize-hostnames.md" >}}
 
 
 ## on-error() {#global-option-typecasting-on-error}
 
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td>Accepted values:</td>
-<td><p></p></td>
-</tr>
-<tr class="even">
-<td>Default:</td>
-<td></td>
-</tr>
-</tbody>
-</table>
 
-| Accepted values:  | `drop-message|drop-property|fallback-to-string| silently-drop-message|silently-drop-property|silently-fallback-to-string` |
+| Accepted values:  | `drop-message`, `drop-property`, `fallback-to-string`, `silently-drop-message`, `silently-drop-property`, `silently-fallback-to-string` |
 |--------------|-----------|
 | Default:     | `drop-message` |
 
@@ -490,10 +469,7 @@ Note that level 2 and 3 increase the memory requirements and CPU load. For detai
 
 *Description:* To avoid performance issues or even overloading {{% param "product.abbrev" %}} (for example, if a script starts to send logs from different IP addresses to {{% param "product.abbrev" %}}), you might want to limit the number of registered dynamic counters in the message statistics. For details on message statistics, see {{% xref "/docs/chapter-log-statistics/_index.md" %}}.
 
-  - 
-    
-    
-    ## Unlimited dynamic counters:
+- Unlimited dynamic counters:
     
     If you do not use this option, dynamic counters will not be limited. This can be useful in cases where you are extremely interested in dynamic counters, and use these statistics extensively.
     
@@ -502,29 +478,21 @@ In some cases, there might be even millions of dynamic counters
     {{% /alert %}}
     
 
-  - 
-    
-    
-    ## Limited dynamic counter clusters:
+- Limited dynamic counter clusters:
     
     To limit dynamic counters, enter a number, and only a maximum of \<number\> counters will be registered in the statistics.
     
     In practice, this means dynamic counter clusters. A program name produces one dynamic counter cluster, that can include several counters, such as `processed`, `stamp`, and so on.
-    
-    
-    
-    ## Example: Limiting dynamic counter clusters 1
-    
-    If you set `stats-max-dynamics()` to `1`, and 2 programs send messages, only one of these programs will be tracked in the dynamic counters, but it will have more than one counters.
-    
-    
-    
-    ## Example: Limiting dynamic counter clusters 2
-    
-    If you have 500 clients, and set `stats-max-dynamics()` to `1000`, you will have enough number of counters reserved for these clients, but at the same time, you limit the use of your resources and therefore protect your system from being overloaded.
-    
 
-  - ## No dynamic counters:
+    **Example: Limiting dynamic counter clusters 1:**
+
+    If you set `stats-max-dynamics()` to `1`, and 2 programs send messages, only one of these programs will be tracked in the dynamic counters, but it will have more than one counters.
+
+    **Example: Limiting dynamic counter clusters 2:**
+
+    If you have 500 clients, and set `stats-max-dynamics()` to `1000`, you will have enough number of counters reserved for these clients, but at the same time, you limit the use of your resources and therefore protect your system from being overloaded.
+
+- No dynamic counters:
     
     To disable dynamic counters completely, set the value of this option to `0`. This is the recommended value if you do not use statistics, or if you are not interested in dynamic counters in particular (for example, the number of logs arriving from programs).
 
@@ -533,7 +501,6 @@ In some cases, there might be even millions of dynamic counters
 If you set a lower value to `stats-max-dynamics()` (or, any limiting value, if this option has not been configured before) and restart {{% param "product.abbrev" %}}, the changes will only be applied after `stats-freq()` time has passed. That is, the previously allocated dynamic clusters will only be removed after this time.
 
 {{% /alert %}}
-
 
 
 ## sync() or sync-freq() (DEPRECATED)

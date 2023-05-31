@@ -14,7 +14,7 @@ For more information about the `sumologic-http()` destination, see {{% xref "/do
 ## Sending data using the sumologic-http() destination
 
 
-## Example: Using the sumologic-http() destination {#example-destination-sumologic-http}
+### Example: Using the sumologic-http() destination {#example-destination-sumologic-http}
 
 The following example sends every log from the `system()` source to your Sumo Logic account.
 

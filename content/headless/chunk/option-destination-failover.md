@@ -8,16 +8,11 @@
 
 
 
-*servers()*
+### servers()
 
-
-Type:
-
-list of IP addresses and fully-qualified domain names
-
-Default:
-
-empty
+| Type:        | list of IP addresses and fully-qualified domain names |
+|--------------|-----------|
+| Default:     | empty  |
 
 *Description:* Specifies a secondary destination server where log messages are sent if the primary server becomes inaccessible. To list several failover servers, separate the address of the servers with comma. By default, {{% param "product.abbrev" %}} waits for the a server before switching to the next failover server is set in the `time-reopen()` option.
 
@@ -30,19 +25,19 @@ The failover servers must be accessible on the same port as the primary server.
 {{% /alert %}}
 
 
-*failback()*
+### failback()
 
 
 *Description:* Available only in {{% param "product.name" %}} version 3.17 and later.
 
-{{% include-headless "chunk/option-destination-description-failback.md" %}}
+{{< include-headless "chunk/option-destination-description-failback.md" >}}
 
 Default value for `tcp-probe-interval()`: 60 seconds
 
 Default value for `successful-probes-required()`: 3
 
 
-## Example: Configuring failover servers
+### Example: Configuring failover servers
 
 In the following example {{% param "product.abbrev" %}} handles the logservers in round-robin fashion if the primary logserver becomes uneccassible (therefore `failback()` option is not set).
 

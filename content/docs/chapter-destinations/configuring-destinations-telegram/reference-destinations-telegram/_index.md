@@ -85,7 +85,7 @@ The following example illustrates how you can configure the `disable_notificatio
 |          |                 |
 | -------- | --------------- |
 | Type:    | string          |
-| Default: | ${MESSAGE} \\") |
+| Default: | `${MESSAGE}` |
 
 *Description:* Specifies the content of the message. The {{% param "product.abbrev" %}} application will automatically encode the content of this option using the `url-encode()` template function.
 

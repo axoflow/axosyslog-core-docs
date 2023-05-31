@@ -6,7 +6,7 @@ weight:  1300
 
 The Python log parser (available in {{% param "product.abbrev" %}} version 3.10 and later) allows you to write your own parser in Python. Practically, that way you can process the log message (or parts of the log message) any way you need. For example, you can import external Python modules to process the messages, query databases to enrich the messages with additional data, and many other things.
 
-{{% include-headless "chunk/python-blocks.md" %}}
+{{< include-headless "chunk/python-blocks.md" >}}
 
 ## Declaration:
 

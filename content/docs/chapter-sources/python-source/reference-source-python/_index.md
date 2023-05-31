@@ -56,7 +56,7 @@ The flags and the hostname-related options (for example, `use-dns`) set in the c
 
 {{% include-headless "chunk/option-python-loaders.md" %}}
 
-{{% include-headless "chunk/option-python-options.md" %}}
+{{< include-headless "chunk/option-python-options.md" >}}
 
 
 {{% include-headless "chunk/option-persist-name.md" %}}

@@ -14,7 +14,7 @@ For more information about the `sumologic-http()` destination, see {{% xref "/do
 ## Sending data using the sumologic-syslog() destination
 
 
-## Example: Sending data using the sumologic-syslog() destination {#example-destination-sumologic-syslog}
+### Example: Sending data using the sumologic-syslog() destination {#example-destination-sumologic-syslog}
 
 The following example illustrates how you can use the `sumologic-syslog()` destination to send data to your Sumo Logic account.
 
@@ -37,7 +37,7 @@ The following example illustrates how you can use the `sumologic-syslog()` desti
 ## Sending JSON data using the sumologic-syslog destination
 
 
-## Example: Sending data using the sumologic-syslog() destination {#example-destination-sumologic-syslog-json}
+### Example: Sending data using the sumologic-syslog() destination {#example-destination-sumologic-syslog-json}
 
 The following example illustrates how you can use the `sumologic-syslog()` destination to send JSON data to your Sumo Logic account.
 

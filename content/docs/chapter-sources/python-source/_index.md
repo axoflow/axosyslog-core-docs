@@ -8,7 +8,7 @@ weight:  3100
 
 This section describes server-style sources. For details on fetcher-style sources, see {{% xref "/docs/chapter-sources/python-fetcher-source/_index.md" %}}.
 
-{{% include-headless "chunk/python-blocks.md" %}}
+{{< include-headless "chunk/python-blocks.md" >}}
 
 {{< include-headless "wnt/note-python-persist-name.md" >}}
 
