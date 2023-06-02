@@ -152,50 +152,45 @@ Using `keylog-file()` makes TLS connections less secure by writing secret key ma
 
 The following table summarizes the possible options and their results depending on the certificate of the peer.
 
+<table class="TableStyle-RuledTableWithoutHeading_DoNotEdit" style="WIDTH: 100%; mc-table-style: url('../../Resources/TableStyles/RuledTableWithoutHeading_DoNotEdit.css')" cellspacing="0">
+<thead>
+<tr class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-Head-Header1">
+<th class="TableStyle-RuledTableWithoutHeading_DoNotEdit-HeadH-Column1-" rowspan="2" colspan="2">
+<p></p></th>
+<th class="TableStyle-RuledTableWithoutHeading_DoNotEdit-HeadG-Column1-" colspan="3">The remote peer has:</th></tr>
+<tr class="TableStyle-RuledTableWithHeading_VerticallyRuled_DoNotEdit-Head-Header1">
+<th class="TableStyle-RuledTableWithoutHeading_DoNotEdit-HeadH-Column1-">no certificate </th>
+<th class="TableStyle-RuledTableWithoutHeading_DoNotEdit-HeadH-Column1-">invalid certificate </th>
+<th class="TableStyle-RuledTableWithoutHeading_DoNotEdit-HeadG-Column1-">valid certificate </th></tr></thead>
+<tbody>
+<tr class="TableStyle-RuledTableWithoutHeading_DoNotEdit-Body-Body1">
+<td class="TableStyle-RuledTableWithoutHeading_DoNotEdit-BodyE-Column1-Body1" rowspan="4"><i style="FONT-STYLE: normal">Local peer-verify() setting</i> </td>
+<td class="TableStyle-RuledTableWithoutHeading_DoNotEdit-BodyE-Column1-Body1"><i style="FONT-STYLE: normal">optional-untrusted</i> </td>
+<td class="TableStyle-RuledTableWithoutHeading_DoNotEdit-BodyE-Column1-Body1">TLS-encryption </td>
+<td class="TableStyle-RuledTableWithoutHeading_DoNotEdit-BodyE-Column1-Body1">TLS-encryption </td>
+<td class="TableStyle-RuledTableWithoutHeading_DoNotEdit-BodyD-Column1-Body1">TLS-encryption </td></tr>
+<tr class="TableStyle-RuledTableWithoutHeading_DoNotEdit-Body-Body1">
+<td class="TableStyle-RuledTableWithoutHeading_DoNotEdit-BodyE-Column1-Body1"><i style="FONT-STYLE: normal">optional-trusted</i> </td>
+<td class="TableStyle-RuledTableWithoutHeading_DoNotEdit-BodyE-Column1-Body1">TLS-encryption </td>
+<td class="TableStyle-RuledTableWithoutHeading_DoNotEdit-BodyE-Column1-Body1">rejected connection </td>
+<td class="TableStyle-RuledTableWithoutHeading_DoNotEdit-BodyD-Column1-Body1">TLS-encryption </td></tr>
+<tr class="TableStyle-RuledTableWithoutHeading_DoNotEdit-Body-Body1">
+<td class="TableStyle-RuledTableWithoutHeading_DoNotEdit-BodyE-Column1-Body1"><i style="FONT-STYLE: normal">required-untrusted</i> </td>
+<td class="TableStyle-RuledTableWithoutHeading_DoNotEdit-BodyE-Column1-Body1">rejected connection </td>
+<td class="TableStyle-RuledTableWithoutHeading_DoNotEdit-BodyE-Column1-Body1">TLS-encryption </td>
+<td class="TableStyle-RuledTableWithoutHeading_DoNotEdit-BodyD-Column1-Body1">TLS-encryption </td></tr>
+<tr class="TableStyle-RuledTableWithoutHeading_DoNotEdit-Body-Body1">
+<td class="TableStyle-RuledTableWithoutHeading_DoNotEdit-BodyB-Column1-Body1"><i style="FONT-STYLE: normal">required-trusted</i> </td>
+<td class="TableStyle-RuledTableWithoutHeading_DoNotEdit-BodyB-Column1-Body1">rejected connection </td>
+<td class="TableStyle-RuledTableWithoutHeading_DoNotEdit-BodyB-Column1-Body1">rejected connection </td>
+<td class="TableStyle-RuledTableWithoutHeading_DoNotEdit-BodyA-Column1-Body1">TLS-encryption </td></tr></tbody>
+<colgroup>
+<col class="TableStyle-RuledTableWithoutHeading_DoNotEdit-Column-Column1" style="WIDTH: 0.3in">
+<col class="TableStyle-RuledTableWithoutHeading_DoNotEdit-Column-Column1" style="WIDTH: 0.3in">
+<col class="TableStyle-RuledTableWithoutHeading_DoNotEdit-Column-Column1" style="WIDTH: 0.3in">
+<col class="TableStyle-RuledTableWithoutHeading_DoNotEdit-Column-Column1" style="WIDTH: 0.3in"></colgroup></table>
 
-The remote peer has:
-
-no certificate
-
-invalid certificate
-
-valid certificate
-
-*Local peer-verify() setting*
-
-*optional-untrusted*
-
-TLS-encryption
-
-TLS-encryption
-
-TLS-encryption
-
-*optional-trusted*
-
-TLS-encryption
-
-rejected connection
-
-TLS-encryption
-
-*required-untrusted*
-
-rejected connection
-
-TLS-encryption
-
-TLS-encryption
-
-*required-trusted*
-
-rejected connection
-
-rejected connection
-
-TLS-encryption
-
-{{% include-headless "chunk/option-destination-tls-peer-verify-notes.md" %}}
+{{< include-headless "chunk/option-destination-tls-peer-verify-notes.md" >}}
 
 Starting with {{% param "product.abbrev" %}} version 3.10, you can also use a simplified configuration method for the `peer-verify` option, simply setting it to `yes` or `no`. The following table summarizes the possible options and their results depending on the certificate of the peer.
 
@@ -218,20 +213,15 @@ You can use the `ca-dir()` option together with `pkcs12-file()`. However, this i
 Passphrase is currently not supported.
 
 
-## Example: Using pkcs12-file()
+### Example: Using pkcs12-file()
 
 In the following example, the first command creates a single `PKCS #12` file from the private key, X.509 certificate, and CA certificate files. Then, the second half of the example uses the same `PKCS #12` file in the `syslog-ng` configuration.
 
-
-## Example:
-
-```c
-   $ openssl pkcs12 -export -inkey server.key -in server.crt -certfile ca.crt -out server.p12
+```bash
+openssl pkcs12 -export -inkey server.key -in server.crt -certfile ca.crt -out server.p12
 ```
 
-
-
-## Example configuration:
+Example configuration:
 
 ```c
    source s_tls {
@@ -246,10 +236,6 @@ In the following example, the first command creates a single `PKCS #12` file fro
     };
 ```
 
-
-
-
-
 ## sni() {#tls-options-sni}
 
 |                  |          |
@@ -262,7 +248,7 @@ In the following example, the first command creates a single `PKCS #12` file fro
 Available in {{% param "product.abbrev" %}} 3.24 and newer.
 
 
-## Example: Using Server Name Indication
+### Example: Using Server Name Indication
 
 The following destination sends the hostname of its destination during the TLS handshake.
 
@@ -302,7 +288,7 @@ Using `ssl-options(none)` means that {{% param "product.abbrev" %}} does not spe
 This option is available in {{% param "product.abbrev" %}} 3.7 and newer.
 
 
-## Example: Using ssl-options
+## # Example: Using ssl-options
 
 The following destination explicitly disables SSL and TLSv1.0
 

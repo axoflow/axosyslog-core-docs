@@ -34,7 +34,7 @@ For the input string `'exam'`,
 
 
 
-{{% include-headless "chunk/regex-shared-store-matches.md" %}}
+{{< include-headless "chunk/regex-shared-store-matches.md" >}}
 
 
 ## substring

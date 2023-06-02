@@ -183,11 +183,11 @@ The returned values are `0` and `2`.
 
 *Parameters:*
 
-  - `\<filter-expression\>`
+  - `<filter-expression>`
     
     Mandatory parameter.
     
-    The `\<filter-expression\>` parameter can be:
+    The `<filter-expression>` parameter can be:
     
       - a comparison
     
@@ -196,13 +196,13 @@ The returned values are `0` and `2`.
       - a logical expression built from filters (using `and`, `or`, and `not`)
     
     {{% alert title="Note" color="info" %}}
-When using the `\<filter-expression\>` parameter, you can refer other template functions, or use macros.
+When using the `<filter-expression>` parameter, you can refer other template functions, or use macros.
     {{% /alert %}} {{% alert title="Note" color="info" %}}
 To refer to the variable bound to the current element of the list, use `$_ macro`.
     {{% /alert %}}
     
     
-    ## Examples for \<filter-expression\>
+    ## Examples for <filter-expression>
     
     The following examples illustrate several ways that you can use a single filter, or a logical expression built from several filters.
     
