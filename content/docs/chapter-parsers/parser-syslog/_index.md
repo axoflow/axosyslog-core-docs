@@ -9,7 +9,7 @@ By default, {{% param "product.abbrev" %}} parses every message using the `syslo
 You can also use the `syslog-parser` to explicitly parse a message, or a part of a message as a syslog message (for example, after rewriting the beginning of a message that does not comply with the syslog standards).
 
 
-{{% include-headless "chunk/example-junctions-syslog-parser.md" %}}
+{{< include-headless "chunk/example-junctions-syslog-parser.md" >}}
 
 
 Note that by default, the `syslog-parser` attempts to parse the message as an RFC3164-formatted (BSD-syslog) message. To parse the message as an RFC5424-formatted message, use the `flags(syslog-protocol)` option in the parser.

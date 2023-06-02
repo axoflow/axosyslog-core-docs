@@ -4,9 +4,9 @@ weight:  100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-You can list all active metrics on your {{% param "product.abbrev" %}} host using the following command (this lists the metrics, without their current values): `syslog-ng-ctl query list "\*"`
+You can list all active metrics on your {{% param "product.abbrev" %}} host using the following command (this lists the metrics, without their current values): `syslog-ng-ctl query list "*"`
 
-To list the metrics and their values, use the following command: `syslog-ng-ctl query get "\*"`
+To list the metrics and their values, use the following command: `syslog-ng-ctl query get "*"`
 
 The displayed metrics have the following structure.
 
@@ -230,18 +230,18 @@ Aggregated statistics are available for different sources and destinations from 
 <thead>
 <tr class="header">
 <th><p> </p></th>
-<th><p>`msg_size_avg`</p></th>
-<th><p>`msg_size_max`</p></th>
-<th><p>`batch_size_avg`</p></th>
-<th><p>`batch_size_max`</p></th>
-<th><p>`eps_last_1h`</p></th>
-<th><p>`eps_last_1h`</p></th>
-<th><p>`eps_last_1h`</p></th>
+<th><p><code> msg_size_avg</code></p></th>
+<th><p><code> msg_size_max</code></p></th>
+<th><p><code> batch_size_avg</code></p></th>
+<th><p><code> batch_size_max</code></p></th>
+<th><p><code> eps_last_1h</code></p></th>
+<th><p><code> eps_last_1h</code></p></th>
+<th><p><code> eps_last_1h</code></p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><p>`network()` source and destination</p></td>
+<td><p><code> network()</code> source and destination</p></td>
 <td><p>from level 1</p></td>
 <td><p>from level 1</p></td>
 <td><p>counter N/A</p></td>
@@ -251,7 +251,7 @@ Aggregated statistics are available for different sources and destinations from 
 <td><p>from level 1</p></td>
 </tr>
 <tr class="even">
-<td><p>`file()` source and destination</p></td>
+<td><p><code>file()</code> source and destination</p></td>
 <td><p>from level 1</p></td>
 <td><p>from level 1</p></td>
 <td><p>counter N/A</p></td>
@@ -261,7 +261,7 @@ Aggregated statistics are available for different sources and destinations from 
 <td><p>from level 1</p></td>
 </tr>
 <tr class="odd">
-<td><p>`http()` destination</p></td>
+<td><p><code>http()</code> destination</p></td>
 <td><p>from level 0</p>
 <p> </p></td>
 <td><p>from level 0</p></td>

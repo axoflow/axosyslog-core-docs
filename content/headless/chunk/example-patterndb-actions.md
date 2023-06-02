@@ -6,7 +6,7 @@
 
 When inserted in a pattern database rule, the following example generates a message when a message matching the rule is received.
 
-```c
+```xml
    <actions>
         <action>
             <message>
@@ -19,14 +19,14 @@ When inserted in a pattern database rule, the following example generates a mess
 ```
 
 
-To inherit the properties and values of the triggering message, set the `inherit-properties` attribute of the `\<message\>` element to TRUE. That way the triggering log message is cloned, including name-value pairs and tags. If you set any values for the message in the `\<action\>` element, they will override the values of the original message.
+To inherit the properties and values of the triggering message, set the `inherit-properties` attribute of the `<message>` element to TRUE. That way the triggering log message is cloned, including name-value pairs and tags. If you set any values for the message in the `<action>` element, they will override the values of the original message.
 
 
 ## Example: Generating messages with inherited values
 
 The following action generates a message that is identical to the original message, but its $PROGRAM field is set to `overriding-original-program-name`
 
-```c
+```xml
    <actions>
         <action>
             <message inherit-properties='TRUE'>

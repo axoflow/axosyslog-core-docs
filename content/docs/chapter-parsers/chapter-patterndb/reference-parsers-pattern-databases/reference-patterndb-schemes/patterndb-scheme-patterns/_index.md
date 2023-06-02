@@ -13,7 +13,7 @@ weight:  500
 
 ## Description
 
-A container element. A `\<patterns\>` element may contain any number of `\<pattern\>` elements.
+A container element. A `<patterns>` element may contain any number of `\<pattern\>` elements.
 
 
 
