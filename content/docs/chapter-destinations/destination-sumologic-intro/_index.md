@@ -11,7 +11,7 @@ From version 3.27.1, the {{% param "product.name" %}} ({{% param "product.abbrev
 
 Currently, using the `sumologic-http()` and `sumologic-syslog()` destinations with {{% param "product.abbrev" %}} has the following prerequisites:
 
-  - A Sumo Logic account.
+- A Sumo Logic account.
     
     If you do not yet have a Sumo Logic account, visit [the official Sumo Logic website](https://www.sumologic.com/), and click `Start free trial` to create an account.
     
@@ -19,7 +19,7 @@ Currently, using the `sumologic-http()` and `sumologic-syslog()` destinations wi
 A free trial version of the Sumo Logic account has limited functionalities and is only available for 90 days.
     {{% /alert %}}
 
-  - A [Cloud Syslog Source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-Syslog-Source) configured with your Sumo Logic account.
+- A [Cloud Syslog Source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-Syslog-Source) configured with your Sumo Logic account.
     
     For details, follow the configuration instructions under [the Configure a Cloud Syslog Source section](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-Syslog-Source#configure-a-cloud%C2%A0syslog%C2%A0source) on the official Sumo Logic website.
     
@@ -27,9 +27,9 @@ A free trial version of the Sumo Logic account has limited functionalities and i
 Transport-level security (TLS) 1.2 over TCP is required.
     {{% /alert %}}
 
-  - A Cloud Syslog Source Token (from the Cloud Syslog Source side).
+- A Cloud Syslog Source Token (from the Cloud Syslog Source side).
 
-  - TLS set up on your Sumo Logic account.
+- TLS set up on your Sumo Logic account.
     
     For detailed information about setting up TLS in your Sumo Logic account, see [the description for setting up TLS on the Sumo Logic official website](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-Syslog-Source#set%C2%A0up-tls).
     
@@ -37,21 +37,21 @@ Transport-level security (TLS) 1.2 over TCP is required.
 After you download the `DigiCert` certificate, make sure you follow the certificate setup steps under [the syslog-ng section](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-Syslog-Source#syslog-ng-1).
     {{% /alert %}}
 
-  - Your Sumo Logic syslog client, configured to send data to the Sumo Logic cloud syslog service, by using {{% param "product.abbrev" %}}.
+- Your Sumo Logic syslog client, configured to send data to the Sumo Logic cloud syslog service, by using {{% param "product.abbrev" %}}.
     
     For detailed information, follow the instructions under [the Send data to cloud syslog source with syslog-ng section](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-Syslog-Source#send-data-to%C2%A0cloud-syslog-source-with-syslog-ng) on the official Sumo Logic website.
 
-  - A verified connection and client configuration with the Sumo Logic service.
+- A verified connection and client configuration with the Sumo Logic service.
     
     {{% alert title="Warning" color="warning" %}}
 To avoid potential data loss, we strongly recommend that you verify your [connection](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-Syslog-Source#verify-connection-with-sumo-service) and [client configuration](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-Syslog-Source#verify-client-configuration) with the Sumo Logic service before you start using the `sumologic-http()` or `sumologic-syslog()` destination with {{% param "product.abbrev" %}} in a production environment.
     {{% /alert %}}
 
-  - (Optional) For using the `sumologic-http()` destination, you need a [HTTP Hosted Collector](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/HTTP-Source) configured in the Sumo Logic service.
+- (Optional) For using the `sumologic-http()` destination, you need a [HTTP Hosted Collector](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/HTTP-Source) configured in the Sumo Logic service.
     
     To configure a Hosted Collector, follow the configuration instructions under [the Configure a Hosted Collector section](https://help.sumologic.com/03Send-Data/Hosted-Collectors/Configure-a-Hosted-Collector) on the official Sumo Logic website.
 
-  - (Optional) For using the `sumologic-http()` destination, you need the unique HTTP collector code you receive while configuring your Host Collector for HTTP requests.
+- (Optional) For using the `sumologic-http()` destination, you need the unique HTTP collector code you receive while configuring your Host Collector for HTTP requests.
 
 
 
@@ -59,13 +59,13 @@ To avoid potential data loss, we strongly recommend that you verify your [connec
 
 Currently, using the `sumologic-syslog()` and `sumologic-http()` destinations with {{% param "product.abbrev" %}} has the following limitations:
 
-  - The minimum required version of {{% param "product.abbrev" %}} is version 3.27.1.
+- The minimum required version of {{% param "product.abbrev" %}} is version 3.27.1.
 
-  - Message format must be in [RFC 5424-compliant form](https://tools.ietf.org/html/rfc5424#page-8). Messages over 64KB in length are truncated.
+- Message format must be in [RFC 5424-compliant form](https://tools.ietf.org/html/rfc5424#page-8). Messages over 64KB in length are truncated.
     
     For more information about the message format limitations, see [the Message format section](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-Syslog-Source#message-format) on the official Sumo Logic website.
 
-  - 64 characters long Sumo Logic tokens must be passed in the message body.
+- 64 characters long Sumo Logic tokens must be passed in the message body.
     
     {{% alert title="Note" color="info" %}}
 Although [RFC 5424](https://tools.ietf.org/html/rfc5424) limits the structured data field ([SD-ID](https://tools.ietf.org/html/rfc5424#page-15)) to 32 characters, Sumo Logic tokens are 64 characters long. If your logging client enforces the 32 characters length limit, you must pass the token in the message body.
