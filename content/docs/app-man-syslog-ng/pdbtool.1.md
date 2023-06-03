@@ -61,7 +61,7 @@ Lists every name-value pair that can be set by the rules of the pattern database
     
     List only the name-value pairs that can be set for the messages of the specified `$PROGRAM` application.
 
-
+The **exit code** for the pdbtool dictionary command is 1 in case the database failed to load and zero otherwise.
 
 <span id="pdbtool-dump"></span>
 
@@ -91,6 +91,7 @@ Display the RADIX tree built from the patterns. This shows how are the patterns 
     
     Enable verbose messages on `stderr`.
 
+The **exit code** for the pdbtool dump command is 1 in case the database failed to load and zero otherwise.
 
 ## Example and sample output:
 
@@ -179,6 +180,9 @@ The `match` command has the following options:
     
     Enable verbose messages on `stderr`.
 
+
+The **exit code** for the pdbtool match command is 1 in case there was a parameter issue (e.g. the template or filter arguments could not be compiled or the database file cannot be loaded) or if the match was not successful, 0 if everything was loaded successfully and the match was succesful.
+
 ## Example
 
 The following command checks if the `patterndb.xml` file recognizes the `Accepted publickey for myuser from 127.0.0.1 port 59357 ssh6` message:
@@ -196,6 +200,7 @@ The following example applies the `sshd.pdb` pattern database file to the log me
                         –file /var/log/messages \
                     –filter ‘tags(“usracct”);’ 
 ```
+
 
 <span id="pdbtool-merge"></span>
 
@@ -232,6 +237,8 @@ Use the `merge` command to combine separate pattern database files into a single
 - `--verbose` or `-v`
     
     Enable verbose messages on stderr.
+   
+The **exit code** for the pdbtool merge command is 1 if the parameters could not be processed or if the database files cannot be loaded, 0 otherwise.
 
 ## Example
 
@@ -282,6 +289,8 @@ Automatically create a pattern database from a log file containing a large numbe
 - `--verbose` or `-v`
     
     Enable verbose messages on `stderr`.
+    
+The **exit code** for the pdbtool patternize command is 1 if the patternizer was unsuccessful and zero otherwise.
 
 ## Example
 
@@ -320,6 +329,8 @@ Use the `test` command to validate a pattern database XML file. Note that you mu
 - `--verbose` or `-v`
     
     Enable verbose messages on stderr.
+
+The **exit code** of the pdbtool test command is 1 if the database cannot be loaded or if validation failed, 2 if an example failed to match, 3 if the specified rule-id was not found and 0 otherwise.
 
 ## Example
 
