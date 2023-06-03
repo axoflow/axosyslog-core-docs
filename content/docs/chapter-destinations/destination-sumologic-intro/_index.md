@@ -44,7 +44,7 @@ After you download the `DigiCert` certificate, make sure you follow the certific
   - A verified connection and client configuration with the Sumo Logic service.
     
     {{% alert title="Warning" color="warning" %}}
-To avoid potential data loss, One Identity strongly recommends that you verify your [connection](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-Syslog-Source#verify-connection-with-sumo-service) and [client configuration](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-Syslog-Source#verify-client-configuration) with the Sumo Logic service before you start using the `sumologic-http()` or `sumologic-syslog()` destination with {{% param "product.abbrev" %}} in a production environment.
+To avoid potential data loss, we strongly recommend that you verify your [connection](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-Syslog-Source#verify-connection-with-sumo-service) and [client configuration](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-Syslog-Source#verify-client-configuration) with the Sumo Logic service before you start using the `sumologic-http()` or `sumologic-syslog()` destination with {{% param "product.abbrev" %}} in a production environment.
     {{% /alert %}}
 
   - (Optional) For using the `sumologic-http()` destination, you need a [HTTP Hosted Collector](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/HTTP-Source) configured in the Sumo Logic service.
