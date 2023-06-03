@@ -104,6 +104,10 @@ twitter = "AxoFlowIO"
   # Enable syntax highlighting and copy buttons on code blocks with Prism
   prism_syntax_highlighting = true
 
+  # Use tocbot for table of contents
+  [params.jstoc]
+  enable = true
+
   # User interface configuration
   [params.ui]
   #  Set to true to disable breadcrumb navigation.
