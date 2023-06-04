@@ -8,7 +8,7 @@ Starting from version 3.0, `syslog-ng` can handle embedded log statements (also 
 
 For example, if you want to filter your incoming messages based on the facility parameter, and then use further filters to send messages arriving from different hosts to different destinations, you would use embedded log statements.
 
-![](/images/figures/fig-syslog-ng-embedded-log-statement-2.png)
+![How embedded log statements work](/images/figures/fig-syslog-ng-embedded-log-statement-2.png)
 
 Embedded log statements include sources — and usually filters, parsers, rewrite rules, or destinations — and other log statements that can include filters, parsers, rewrite rules, and destinations. The following rules apply to embedded log statements:
 
@@ -22,6 +22,6 @@ Embedded log statements include sources — and usually filters, parsers, rewrit
 
   - Embedded log statements that are on the same level receive the same messages from the higher-level log statement. For example, if the top-level log statement includes a filter, the lower-level log statements receive only the messages that pass the filter.
 
-![](/images/figures/fig-syslog-ng-embedded-log-statement.png)
+![Embedded log statement configuration](/images/figures/fig-syslog-ng-embedded-log-statement.png)
 
 Embedded log filters can be used to optimize the processing of log messages, for example, to re-use the results of filtering and rewriting operations.
