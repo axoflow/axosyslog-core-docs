@@ -78,7 +78,7 @@ When compiling {{% param "product.abbrev" %}} from source, you can use the follo
 
   - *--module-install-dir* Specifies {{% param "product.abbrev" %}}'s module installation directory (normally `$prefix/lib/syslog-ng`). All Java-based SCLs use this option.
 
-  - *--with-module-path* Specifies a colon-separated (:) list of directories, where the {{% param "product.abbrev" %}} binary will search for modules.
+  - *--with-module-path* Specifies a colon-separated (:) list of directories, where the `syslog-ng` binary will search for modules.
 
   - *--with-net-snmp* Specifies the path to the libsnmp-dev library, required for the `snmp()` destination.
 
