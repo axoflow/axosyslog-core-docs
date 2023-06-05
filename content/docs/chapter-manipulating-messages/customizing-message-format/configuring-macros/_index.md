@@ -16,7 +16,7 @@ The {{% param "product.abbrev" %}} application allows you to define message temp
 ```
 
 
-Template objects have a single option called `template-escape()`, which is disabled by default (`template-escape(no)`). This behavior is useful when the messages are passed to an application that cannot handle escaped characters properly. Enabling template escaping (`template-escape(yes)`) causes `syslog-ng` to escape the `'`, `"`, and backslash characters from the messages.
+Template objects have a single option called `template-escape()`, which is disabled by default (`template-escape(no)`). This behavior is useful when the messages are passed to an application that cannot handle escaped characters properly. Enabling template escaping (`template-escape(yes)`) causes AxoSyslog to escape the `'`, `"`, and backslash characters from the messages.
 
 If you do not want to enable the `template-escape()` option (which is rarely needed), you can define the template without the enclosing braces.
 
@@ -53,7 +53,7 @@ Default values for macros can also be specified by appending the `:-` characters
 ${HOST:-default_hostname}
 ```
 
-By default, `syslog-ng` sends messages using the following template: `${ISODATE} ${HOST} ${MSGHDR}${MESSAGE}\\n`. (The `${MSGHDR}${MESSAGE}` part is written together because the `${MSGHDR}` macro includes a trailing whitespace.)
+By default, AxoSyslog sends messages using the following template: `${ISODATE} ${HOST} ${MSGHDR}${MESSAGE}\\n`. (The `${MSGHDR}${MESSAGE}` part is written together because the `${MSGHDR}` macro includes a trailing whitespace.)
 
 
 ## Example: Using templates and macros

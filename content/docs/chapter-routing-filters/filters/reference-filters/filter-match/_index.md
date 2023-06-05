@@ -8,7 +8,7 @@ weight:  1100
 | --------- | ------------------------------------------------------------------------------- |
 | Synopsis: | match(regexp) | match(regexp value("MACRO")) | match(regexp template("MACROS")) |
 
-*Description:* Match a regular expression to the headers and the message itself (that is, the values returned by the `MSGHDR` and `MSG` macros). Note that in `syslog-ng` version 2.1 and earlier, the `match()` filter was applied only to the text of the message, excluding the headers. This functionality has been moved to the `message()` filter.
+*Description:* Match a regular expression to the headers and the message itself (that is, the values returned by the `MSGHDR` and `MSG` macros). Note that in AxoSyslog version 2.1 and earlier, the `match()` filter was applied only to the text of the message, excluding the headers. This functionality has been moved to the `message()` filter.
 
 To limit the scope of the match to a specific part of the message (identified with a macro), use the `match(regexp value("MACRO"))` syntax. Do not include the $ sign in the parameter of the `value()` option.
 

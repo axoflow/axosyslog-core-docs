@@ -14,7 +14,7 @@ When you are editing the `syslog-ng.conf` configuration file, note the following
     
     Starting with {{% param "product.abbrev" %}} version 3.5, you can use suffixes for kilo-, mega-, and gigabytes. Use the Kb, Mb, or Gb suffixes for the base-10 version, and Kib, Mib, or Gib for the base-2 version. That is, 2MB means 2000000, while 2MiB means 2097152. For example, to set the `log-msg-size()` option to 2000000 bytes, use `log-msg-size(2Mb)`.
 
-  - You can use commas (`,`) to separate options or other parameters for readability, `syslog-ng` completely ignores them. The following declarations are equivalent:
+  - You can use commas (`,`) to separate options or other parameters for readability, AxoSyslog completely ignores them. The following declarations are equivalent:
     
     ```c
         source s_demo_stream {

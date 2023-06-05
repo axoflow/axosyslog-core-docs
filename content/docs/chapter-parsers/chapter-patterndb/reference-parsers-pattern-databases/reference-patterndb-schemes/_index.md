@@ -12,7 +12,7 @@ For a sample database containing only a single pattern, see [Example: A pattern 
 
 {{% alert title="Note" color="info" %}}
 
-Use the `pdbtool` utility that is bundled with `syslog-ng` to test message patterns and convert existing databases to the latest format. For details, see <span class="mcFormatColor" style="color: #04aada;">The pdbtool manual page</span>.
+Use the `pdbtool` utility that is bundled with AxoSyslog to test message patterns and convert existing databases to the latest format. For details, see <span class="mcFormatColor" style="color: #04aada;">The pdbtool manual page</span>.
 
 To automatically create an initial pattern database from an existing log file, use the `pdbtool patternize` command. For details, see <span class="mcFormatColor" style="color: #04aada;">The pdbtool manual page</span>.
 

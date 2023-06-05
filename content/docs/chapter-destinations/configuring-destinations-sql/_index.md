@@ -17,9 +17,9 @@ The `sql()` driver has the following required parameters: [`type()`]({{< relref 
 
 {{% alert title="Warning" color="warning" %}}
 
-The `syslog-ng` application requires read and write access to the SQL table, otherwise it cannot verify that the destination table exists.
+The AxoSyslog application requires read and write access to the SQL table, otherwise it cannot verify that the destination table exists.
 
-Currently the `syslog-ng` application has default schemas for the different databases and uses these defaults if the database schema (for example, columns and column types) is not defined in the configuration file. However, these schemas will be deprecated and specifying the exact database schema will be required in later versions.
+Currently the AxoSyslog application has default schemas for the different databases and uses these defaults if the database schema (for example, columns and column types) is not defined in the configuration file. However, these schemas will be deprecated and specifying the exact database schema will be required in later versions.
 
 {{% /alert %}}
 
@@ -38,12 +38,12 @@ When using macros in table names, note that some databases limit the maximum all
 
 {{% /alert %}}
 
-Inserting the records into the database is performed by a separate thread. The `syslog-ng` application automatically performs the escaping required to insert the messages into the database.
+Inserting the records into the database is performed by a separate thread. The AxoSyslog application automatically performs the escaping required to insert the messages into the database.
 
 
 ## Example: Using the sql() driver {#example-destination-sql}
 
-The following example sends the log messages into a PostgreSQL database running on the `logserver` host. The messages are inserted into the `logs` database, the name of the table includes the exact date and the name of the host sending the messages. The `syslog-ng` application automatically creates the required tables and columns, if the user account used to connect to the database has the required privileges.
+The following example sends the log messages into a PostgreSQL database running on the `logserver` host. The messages are inserted into the `logs` database, the name of the table includes the exact date and the name of the host sending the messages. The AxoSyslog application automatically creates the required tables and columns, if the user account used to connect to the database has the required privileges.
 
 ```c
    destination d_sql {

@@ -6,7 +6,7 @@ weight:  4100
 
 This chapter provides tips and guidelines about troubleshooting problems related to `syslog-ng`.
 
-  - As a general rule, first try to log the messages to a local file. Once this is working, you know that `syslog-ng` is running correctly and receiving messages, and you can proceed to forwarding the messages to the server.
+  - As a general rule, first try to log the messages to a local file. Once this is working, you know that AxoSyslog is running correctly and receiving messages, and you can proceed to forwarding the messages to the server.
 
   - Always check the configuration files for any syntax errors on both the client and the server using the `syslog-ng --syntax-only` command.
 
@@ -16,7 +16,7 @@ This chapter provides tips and guidelines about troubleshooting problems related
 
   - To find message-routing problems, run {{% param "product.abbrev" %}} with the following command `syslog-ng -Fevd`. That way {{% param "product.abbrev" %}} will run in the foreground, and display debug messages about the messages that are processed.
 
-  - If `syslog-ng` is closing the connections for no apparent reason, be sure to check the log messages of `syslog-ng`. You may also want to run `syslog-ng` with the `--verbose` or `--debug` command-line options for more-detailed log messages. You can enable these messages without restarting `syslog-ng` using the `syslog-ng-ctl verbose --set=on` command. For details, see the {{% xref "/docs/app-man-syslog-ng/syslog-ng.conf.5/_index.md" %}}.
+  - If AxoSyslog is closing the connections for no apparent reason, be sure to check the log messages of `syslog-ng`. You may also want to run `syslog-ng` with the `--verbose` or `--debug` command-line options for more-detailed log messages. You can enable these messages without restarting `syslog-ng` using the `syslog-ng-ctl verbose --set=on` command. For details, see the {{% xref "/docs/app-man-syslog-ng/syslog-ng.conf.5/_index.md" %}}.
 
   - Build up encrypted connections step-by-step. First create a working, unencrypted (for example, TCP) connection, then add TLS encryption, and finally, client authentication if needed.
 

@@ -35,7 +35,7 @@ This parser has a required parameter that acts as the stopcharacter: the parser 
 
 ## @FLOAT@ {#patterndb-parser-float}
 
-A floating-point number that may contain a dot (.) character. (Up to `syslog-ng` 3.1, the name of this parser was `@DOUBLE@`.)
+A floating-point number that may contain a dot (.) character. (Up to AxoSyslog 3.1, the name of this parser was `@DOUBLE@`.)
 
 
 

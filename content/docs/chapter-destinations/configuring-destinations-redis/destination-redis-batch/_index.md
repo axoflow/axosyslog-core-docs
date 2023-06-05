@@ -11,7 +11,7 @@ Starting with version 3.34, you can send multiple log messages with the help of 
 
 The `batch-lines()`, `batch-lines()`, and `batch-timeout()` options of the destination determine how many log messages {{% param "product.abbrev" %}} sends in a batch. The `batch-lines()` option determines the maximum number of messages {{% param "product.abbrev" %}} puts in a batch in. This can be limited based on size and time:
 
-`syslog-ng` sends a batch every `batch-timeout()` milliseconds, even if the number of messages in the batch is less than `batch-lines()`. That way the destination receives every message in a timely manner even if suddenly there are no more messages.
+AxoSyslog sends a batch every `batch-timeout()` milliseconds, even if the number of messages in the batch is less than `batch-lines()`. That way the destination receives every message in a timely manner even if suddenly there are no more messages.
 
 To increase the performance of the destination, increase the number of worker threads for the destination using the `workers()` option, or adjust the `batch-lines()` and/or `batch-timeout()` options.
 

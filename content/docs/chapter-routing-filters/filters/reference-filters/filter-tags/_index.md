@@ -8,7 +8,7 @@ weight:  2500
 | --------- | --- |
 | Synopsis: | tag |
 
-*Description:* Select messages labeled with the specified tag. Every message automatically has the tag of its source in `.source.<id_of_the_source_statement>` format. This option is available only in `syslog-ng` 3.1 and later.
+*Description:* Select messages labeled with the specified tag. Every message automatically has the tag of its source in `.source.<id_of_the_source_statement>` format. This option is available only in AxoSyslog 3.1 and later.
 
 
 ## Example: Adding tags and filtering messages with tags {#example-tags-filtering}

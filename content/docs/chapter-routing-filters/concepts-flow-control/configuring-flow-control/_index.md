@@ -6,9 +6,9 @@ weight:  300
 
 For details on how flow-control works, see {{% xref "/docs/chapter-routing-filters/concepts-flow-control/_index.md" %}}. The summary of the main points is as follows:
 
-  - The `syslog-ng` application normally reads a maximum of `log-fetch-limit()` number of messages from a source.
+  - The AxoSyslog application normally reads a maximum of `log-fetch-limit()` number of messages from a source.
 
-  - From TCP and unix-stream sources, `syslog-ng` reads a maximum of `log-fetch-limit()` from every connection of the source. The number of connections to the source is set using the `max-connections()` parameter.
+  - From TCP and unix-stream sources, AxoSyslog reads a maximum of `log-fetch-limit()` from every connection of the source. The number of connections to the source is set using the `max-connections()` parameter.
 
   - Every destination has an output buffer. The size of this buffer is set automatically for log paths that use flow-control, and can be set using the `log-fifo-size()` option for other log paths.
 
@@ -18,7 +18,7 @@ For details on how flow-control works, see {{% xref "/docs/chapter-routing-filte
     
     The dynamic control window is automatically distributed among the active connections of the source.
 
-  - If the control window is full, `syslog-ng` stops reading messages from the source until some messages are successfully sent to the destination.
+  - If the control window is full, AxoSyslog stops reading messages from the source until some messages are successfully sent to the destination.
 
   - If the output buffer becomes full, and neither disk-buffering nor flow-control is used, messages may be lost.
 
@@ -31,11 +31,11 @@ If you modify the `max-connections()` or the `log-fetch-limit()` parameter, do n
 
 ## Example: Sizing parameters for flow-control
 
-Suppose that `syslog-ng` has a source that must accept up to 300 parallel connections. Such situation can arise when a network source receives connections from many clients, or if many applications log to the same socket.
+Suppose that AxoSyslog has a source that must accept up to 300 parallel connections. Such situation can arise when a network source receives connections from many clients, or if many applications log to the same socket.
 
-Set the `max-connections()` parameter of the source to `300`. However, the `log-fetch-limit()` (default value: 10) parameter applies to every connection of the source individually, while the `log-iw-size()` (default value: 1000) parameter applies to the source. In a worst-case scenario, the destination does not accept any messages, while all 300 connections send at least `log-fetch-limit()` number of messages to the source during every poll loop. Therefore, the control window must accommodate at least `max-connections()`\*`log-fetch-limit()` messages to be able to read every incoming message of a poll loop. In the current example this means that `log-iw-size()` should be greater than `300\*10=3000`. If the control window is smaller than this value, the control window might fill up with messages from the first connections — causing `syslog-ng` to read only one message of the last connections in every poll loop.
+Set the `max-connections()` parameter of the source to `300`. However, the `log-fetch-limit()` (default value: 10) parameter applies to every connection of the source individually, while the `log-iw-size()` (default value: 1000) parameter applies to the source. In a worst-case scenario, the destination does not accept any messages, while all 300 connections send at least `log-fetch-limit()` number of messages to the source during every poll loop. Therefore, the control window must accommodate at least `max-connections()`\*`log-fetch-limit()` messages to be able to read every incoming message of a poll loop. In the current example this means that `log-iw-size()` should be greater than `300\*10=3000`. If the control window is smaller than this value, the control window might fill up with messages from the first connections — causing AxoSyslog to read only one message of the last connections in every poll loop.
 
-The output buffer of the destination must accommodate at least `log-iw-size()` messages, but use a greater value: in the current example `3000\*10=30000` messages. That way all incoming messages of ten poll loops fit in the output buffer. If the output buffer is full, `syslog-ng` does not read any messages from the source until some messages are successfully sent to the destination.
+The output buffer of the destination must accommodate at least `log-iw-size()` messages, but use a greater value: in the current example `3000\*10=30000` messages. That way all incoming messages of ten poll loops fit in the output buffer. If the output buffer is full, AxoSyslog does not read any messages from the source until some messages are successfully sent to the destination.
 
 ```c
    source s_localhost {

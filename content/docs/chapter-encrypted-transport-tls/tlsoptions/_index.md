@@ -4,11 +4,11 @@ weight:  900
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The `syslog-ng` application can encrypt incoming and outgoing syslog message flows using TLS if you use the `network()` or `syslog()` drivers.
+The AxoSyslog application can encrypt incoming and outgoing syslog message flows using TLS if you use the `network()` or `syslog()` drivers.
 
 {{% alert title="Note" color="info" %}}
 
-The format of the TLS connections used by `syslog-ng` is similar to using `syslog-ng` and stunnel, but the source IP information is not lost.
+The format of the TLS connections used by AxoSyslog is similar to using AxoSyslog and stunnel, but the source IP information is not lost.
 
 {{% /alert %}}
 
@@ -215,7 +215,7 @@ Passphrase is currently not supported.
 
 ### Example: Using pkcs12-file()
 
-In the following example, the first command creates a single `PKCS #12` file from the private key, X.509 certificate, and CA certificate files. Then, the second half of the example uses the same `PKCS #12` file in the `syslog-ng` configuration.
+In the following example, the first command creates a single `PKCS #12` file from the private key, X.509 certificate, and CA certificate files. Then, the second half of the example uses the same `PKCS #12` file in the AxoSyslog configuration.
 
 ```bash
 openssl pkcs12 -export -inkey server.key -in server.crt -certfile ca.crt -out server.p12

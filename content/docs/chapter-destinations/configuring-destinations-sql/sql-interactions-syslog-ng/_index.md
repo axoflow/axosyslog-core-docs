@@ -9,15 +9,15 @@ weight:  500
 
 *Create table:*
 
-  - If the given table does not exist, `syslog-ng` tries to create it with the given column types.
+  - If the given table does not exist, AxoSyslog tries to create it with the given column types.
 
   - The {{% param "product.abbrev" %}} application automatically creates the required tables and columns, if the user account used to connect to the database has the required privileges.
 
-  - If `syslog-ng` cannot create or alter a table, it tries to do it again when it reaches the next `time-reopen()`.
+  - If AxoSyslog cannot create or alter a table, it tries to do it again when it reaches the next `time-reopen()`.
 
 *Alter table:*
 
-  - If the table structure is different from given structure in an existing table, `syslog-ng` tries to add columns in this table but never will delete or modify an existing column.
+  - If the table structure is different from given structure in an existing table, AxoSyslog tries to add columns in this table but never will delete or modify an existing column.
 
   - If {{% param "product.abbrev" %}} cannot create or alter a table, it tries to do it again when reach the next `time-reopen()`.
 
@@ -31,7 +31,7 @@ weight:  500
 
   - The {{% param "product.abbrev" %}} application automatically performs the escaping required to insert the messages into the database.
 
-  - If insert returns with error, `syslog-ng` tries to insert the message +two times by default, then drops it. Retrying time is the value of `time-reopen()`.
+  - If insert returns with error, AxoSyslog tries to insert the message +two times by default, then drops it. Retrying time is the value of `time-reopen()`.
 
 
 

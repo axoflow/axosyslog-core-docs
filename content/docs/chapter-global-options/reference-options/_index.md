@@ -340,7 +340,7 @@ For example:
 | Accepted values: | number |
 | Default:         | 1200   |
 
-*Description:* The `mark-freq()` option is an alias for the deprecated `mark()` option. This is retained for compatibility with `syslog-ng` version 1.6.x.
+*Description:* The `mark-freq()` option is an alias for the deprecated `mark()` option. This is retained for compatibility with AxoSyslog version 1.6.x.
 
 
 {{% include-headless "chunk/option-destination-mark-freq.md" %}}
@@ -452,7 +452,7 @@ Starting with version 3.16, the default value of this option is -1, so {{% param
 | Accepted values: | `0` | `1` | `2` | `3` |
 | Default:         | `0`                         |
 
-*Description:* Specifies the detail of statistics `syslog-ng` collects about the processed messages.
+*Description:* Specifies the detail of statistics AxoSyslog collects about the processed messages.
 
 {{% include-headless "chunk/option-stats-level-description.md" %}}
 
@@ -564,7 +564,7 @@ If you set a lower value to `stats-max-dynamics()` (or, any limiting value, if t
 | Accepted values: | `rfc3164` | `bsd` | `rfc3339` | `iso` |
 | Default:         | `rfc3164`                                   |
 
-*Description:* Specifies the timestamp format used when `syslog-ng` itself formats a timestamp and nothing else specifies a format (for example: `STAMP` macros, internal messages, messages without original timestamps). For details, see also {{% xref "/docs/chapter-concepts/timezone-handling/example-timezones/_index.md" %}}.
+*Description:* Specifies the timestamp format used when AxoSyslog itself formats a timestamp and nothing else specifies a format (for example: `STAMP` macros, internal messages, messages without original timestamps). For details, see also {{% xref "/docs/chapter-concepts/timezone-handling/example-timezones/_index.md" %}}.
 
 By default, timestamps include only seconds. To include fractions of a second (for example, milliseconds) use the `frac-digits()` option.
 
@@ -598,7 +598,7 @@ This option is deprecated, use the `use-uniqid()` option instead.
 
 *Description:* This option enables generating a globally unique ID. It is generated from the HOSTID and the RCPTID in the format of HOSTID@RCPTID. It has a fixed length: 16+@+8 characters. You can include the unique ID in the message by using the macro. For details, see [UNIQID]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}).
 
-Enabling this option automatically generates the HOSTID. The HOSTID is a persistent, 32-bits-long cryptographically secure pseudo random number, that belongs to the host that the `syslog-ng` is running on. If the persist file is damaged, the HOSTID might change.
+Enabling this option automatically generates the HOSTID. The HOSTID is a persistent, 32-bits-long cryptographically secure pseudo random number, that belongs to the host that the AxoSyslog is running on. If the persist file is damaged, the HOSTID might change.
 
 Enabling this option automatically enables the RCPTID functionality. For details, see [RCPTID]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}})
 

@@ -37,7 +37,7 @@ For RFC3164-formatted messages (that is, messages received on the ports set in o
 
 2.  Parse the incoming message as an [RFC3164-formatted message]({{< relref "/docs/chapter-parsers/parser-syslog/_index.md" >}}).
     
-      - If the incoming message was sent by a {{% param "product.abbrev" %}} client using the [`syslog-ng()` destination]({{< relref "/docs/chapter-destinations/destination-syslog-ng/_index.md" >}}), parse its fields as a [`syslog-ng` message]({{< relref "/docs/chapter-parsers/parser-ewmm/_index.md" >}}).
+      - If the incoming message was sent by a {{% param "product.abbrev" %}} client using the [`syslog-ng()` destination]({{< relref "/docs/chapter-destinations/destination-syslog-ng/_index.md" >}}), parse its fields as a [AxoSyslog message]({{< relref "/docs/chapter-parsers/parser-ewmm/_index.md" >}}).
         
         {{% include-headless "chunk/ewmm-intro.md" %}}
     

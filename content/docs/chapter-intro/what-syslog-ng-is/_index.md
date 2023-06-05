@@ -17,7 +17,7 @@ The {{% param "product.abbrev" %}} application enables you to send the log messa
 
 ## Disk-based message buffering
 
-To minimize the risk of losing important log messages, the {{% param "product.abbrev" %}} application can store messages on the local hard disk if the central log server or the network connection becomes unavailable. The `syslog-ng` application automatically sends the stored messages to the server when the connection is reestablished, in the same order the messages were received. The disk buffer is persistent – no messages are lost even if `syslog-ng` is restarted.
+To minimize the risk of losing important log messages, the {{% param "product.abbrev" %}} application can store messages on the local hard disk if the central log server or the network connection becomes unavailable. The AxoSyslog application automatically sends the stored messages to the server when the connection is reestablished, in the same order the messages were received. The disk buffer is persistent – no messages are lost even if AxoSyslog is restarted.
 
 
 
@@ -61,7 +61,7 @@ Large organizations increasingly rely on queuing infrastructure to transfer thei
 
 ## SQL, NoSQL, and monitoring
 
-Storing your log messages in a database allows you to easily search and query the messages and interoperate with log analyzing applications. The `syslog-ng` application supports the following databases: MongoDB, MSSQL, MySQL, Oracle, PostgreSQL, and SQLite.
+Storing your log messages in a database allows you to easily search and query the messages and interoperate with log analyzing applications. The AxoSyslog application supports the following databases: MongoDB, MSSQL, MySQL, Oracle, PostgreSQL, and SQLite.
 
 {{% param "product.abbrev" %}} also allows you to extract the information you need from your log data, and directly send it to your Graphite, Redis, or Riemann monitoring system.
 
@@ -73,7 +73,7 @@ Storing your log messages in a database allows you to easily search and query th
 
 ## syslog protocol standards
 
-`syslog-ng` not only supports legacy BSD syslog (RFC3164) and the enhanced RFC5424 protocols but also JavaScript Object Notation (JSON) and journald message formats.
+AxoSyslog not only supports legacy BSD syslog (RFC3164) and the enhanced RFC5424 protocols but also JavaScript Object Notation (JSON) and journald message formats.
 
 
 
@@ -85,5 +85,5 @@ The {{% param "product.abbrev" %}} application is the ideal choice to collect lo
 
 ## IPv4 and IPv6 support
 
-The `syslog-ng` application can operate in both IPv4 and IPv6 network environments, and can receive and send messages to both types of networks.
+The AxoSyslog application can operate in both IPv4 and IPv6 network environments, and can receive and send messages to both types of networks.
 

@@ -17,7 +17,7 @@ When processing a message that does not contain timezone information, the {{% pa
 3.  Specify the timezone in the destination driver using the `time-zone()` parameter. Each destination driver might have an associated timezone value`: syslog-ng` converts message timestamps to this timezone before sending the message to its destination (file or network socket). Each destination defaults to the value of the [`send-time-zone()`]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) global option.
     
     {{% alert title="Note" color="info" %}}
-A message can be sent to multiple destination zones. The `syslog-ng` application converts the timezone information properly for every individual destination zone.
+A message can be sent to multiple destination zones. The AxoSyslog application converts the timezone information properly for every individual destination zone.
     {{% /alert %}}
     
     {{% alert title="Warning" color="warning" %}}

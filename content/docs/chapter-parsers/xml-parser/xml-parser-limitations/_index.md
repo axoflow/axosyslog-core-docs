@@ -53,5 +53,5 @@ The XML parser is based on the glib XML subset parser, called ["GMarkup" parser]
 
 ## No support for long keys:
 
-If the key is longer than 255 characters, `syslog-ng` drops the entry and an error log is emitted. There is no chunking or any other way of recovering data, not even partial data. The entry will be replaced by an empty string.
+If the key is longer than 255 characters, AxoSyslog drops the entry and an error log is emitted. There is no chunking or any other way of recovering data, not even partial data. The entry will be replaced by an empty string.
 

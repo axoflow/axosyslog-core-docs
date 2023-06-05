@@ -12,7 +12,7 @@ To use the `pacct()` driver, the following conditions must be met:
 
   - The `pacctformat` plugin must be loaded. By default, {{% param "product.abbrev" %}} automatically loads the available modules.
 
-  - The `scl.conf` file must be included in your `syslog-ng` configuration:
+  - The `scl.conf` file must be included in your AxoSyslog configuration:
     
     ```c
         @include "scl.conf"

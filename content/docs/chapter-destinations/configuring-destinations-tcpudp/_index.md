@@ -8,4 +8,4 @@ weight:  6900
 
 To convert your existing `tcp()`, `tcp6()`, `udp()`, `udp6()` source drivers to use the `network()` driver, see {{% xref "/docs/chapter-destinations/configuring-destinations-tcpudp/reference-destination-tcpudp/destination-tcpudp-to-network/_index.md" %}}.
 
-The `tcp()`, `tcp6()`, `udp()`, and `udp6()` drivers send messages to another host (for example, a `syslog-ng` server or relay) on the local intranet or internet using the UDP or TCP protocol. The `tcp6()` and `udp6()` drivers use the IPv6 network protocol.
+The `tcp()`, `tcp6()`, `udp()`, and `udp6()` drivers send messages to another host (for example, an AxoSyslog server or relay) on the local intranet or internet using the UDP or TCP protocol. The `tcp6()` and `udp6()` drivers use the IPv6 network protocol.

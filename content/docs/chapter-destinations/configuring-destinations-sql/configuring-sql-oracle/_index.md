@@ -25,7 +25,7 @@ The Oracle sql destination has some special aspects that are important to note.
 
 ## Example: Using the sql() driver with an Oracle database {#example-destination-sql-oracle}
 
-The following example sends the log messages into an Oracle database running on the `logserver` host, which must be set in the `/etc/tnsnames.ora` file. The messages are inserted into the `LOGS` database, the name of the table includes the exact date when the messages were sent. The `syslog-ng` application automatically creates the required tables and columns, if the user account used to connect to the database has the required privileges.
+The following example sends the log messages into an Oracle database running on the `logserver` host, which must be set in the `/etc/tnsnames.ora` file. The messages are inserted into the `LOGS` database, the name of the table includes the exact date when the messages were sent. The AxoSyslog application automatically creates the required tables and columns, if the user account used to connect to the database has the required privileges.
 
 ```c
    destination d_sql {

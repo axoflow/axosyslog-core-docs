@@ -27,7 +27,7 @@ You can send syslog messages to Graylog using the `graylog2()` destination. The 
 
 1.  On the Graylog side, configure a GELF TCP input. For more information, see the relevant [Graylog](http://docs.graylog.org) documentation.
 
-2.  On the `syslog-ng` side, configure the name or IP address of the host running Graylog.
+2.  On the AxoSyslog side, configure the name or IP address of the host running Graylog.
     
     ```c
         destination d_graylog {
@@ -42,7 +42,7 @@ You can send syslog messages to Graylog using the `graylog2()` destination. The 
 
 {{% alert title="Note" color="info" %}}
 
-If there is a dot in a field name other than the first character, `syslog-ng` creates nested JSON while formatting the message. Nested JSON is not automatically parsed in GELF messages.
+If there is a dot in a field name other than the first character, AxoSyslog creates nested JSON while formatting the message. Nested JSON is not automatically parsed in GELF messages.
 
 {{% /alert %}}
 
@@ -56,7 +56,7 @@ While sending nested JSON inside GELF is possible, it is not convenient. If you 
 
 2.  Still in Graylog, once the raw TCP input is ready, add a JSON extractor to it.
 
-3.  On the `syslog-ng` side, use a network destination combined with a template utilizing format-json as shown in the example below:
+3.  On the AxoSyslog side, use a network destination combined with a template utilizing format-json as shown in the example below:
     
     ```c
         destination d_jsontcp {
