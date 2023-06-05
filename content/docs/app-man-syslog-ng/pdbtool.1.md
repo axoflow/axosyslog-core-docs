@@ -53,11 +53,11 @@ Lists every name-value pair that can be set by the rules of the pattern database
     
     List the tags instead of the names of the name-value pairs.
 
-- `--pdb \<path-to-file\>` or `-p \<path-to-file\>`
+- `--pdb <path-to-file>` or `-p <path-to-file>`
     
     Name of the pattern database file to use.
 
-- `--program \<programname\>` or `-P \<programname\>`
+- `--program <programname>` or `-P <programname>`
     
     List only the name-value pairs that can be set for the messages of the specified `$PROGRAM` application.
 
@@ -93,7 +93,7 @@ Display the RADIX tree built from the patterns. This shows how are the patterns 
 
 The **exit code** for the `pdbtool dump` command is 1 in case the database failed to load and zero otherwise.
 
-## Example and sample output:
+### Example and sample output:
 
 ```c
 pdbtool dump -p patterndb.xml  -P 'sshd'
@@ -152,7 +152,7 @@ The `match` command has the following options:
     
     Print debugging information about the pattern matching. See also the `--debug-csv` option.
 
-- `--file=\<filename-with-path\>` or `-f`
+- `--file=<filename-with-path>` or `-f`
     
     Process the messages of the specified log file with the pattern database. This option allows to classify messages offline, and to apply the pattern database to already existing logfiles. To read the messages from the standard input (`stdin`), specify a hyphen (`-`) character instead of a filename.
 
@@ -172,7 +172,7 @@ The `match` command has the following options:
     
     Name of the program to use, as contained in the `${PROGRAM}` part of the syslog message.
 
-- `--template=\<template-expression\>` or `-T`
+- `--template=<template-expression>` or `-T`
     
     A `syslog-ng` template expression that is used to format the output messages.
 
@@ -184,7 +184,7 @@ The `match` command has the following options:
 The **exit code** for the `pdbtool match` command is 1 in case there was a parameter issue (for example, the template or filter arguments could not be compiled, or the database file cannot be loaded) and zero otherwise. Both matching and non-matching messages will result in a 0 exit code.
 
 
-## Example
+### Example 1
 
 The following command checks if the `patterndb.xml` file recognizes the `Accepted publickey for myuser from 127.0.0.1 port 59357 ssh6` message:
 
@@ -192,7 +192,7 @@ The following command checks if the `patterndb.xml` file recognizes the `Accepte
 pdbtool match -p patterndb.xml -P sshd -M "Accepted publickey for myuser from 127.0.0.1 port 59357 ssh6"
 ```
 
-## Example
+### Example 2
 
 The following example applies the `sshd.pdb` pattern database file to the log messages stored in the `/var/log/messages` file, and displays only the messages that received a `useracct` tag.
 
@@ -241,7 +241,7 @@ Use the `merge` command to combine separate pattern database files into a single
    
 The **exit code** for the `pdbtool merge` command is 1 if the parameters could not be processed or if the database files cannot be loaded, 0 otherwise.
 
-## Example
+### Example
 
 ```c
 pdbtool merge --recursive --directory /home/me/mypatterns/  --pdb /var/lib/syslog-ng/patterndb.xml
@@ -261,7 +261,7 @@ Automatically create a pattern database from a log file containing a large numbe
     
     Enable debug/diagnostic messages on stderr.
 
-- `--file=\<path\>` or `-f`
+- `--file=<path>` or `-f`
     
     The logfile containing the log messages to create patterns from. To receive the log messages from the standard input (`stdin`), use `-`.
 
@@ -277,11 +277,11 @@ Automatically create a pattern database from a log file containing a large numbe
     
     Do not parse the input file, treat every line as the message part of a log message.
 
-- `--samples=\<number-of-samples\>`
+- `--samples=<number-of-samples>`
     
     Include a generated name in the parsers, for example, `.dict.string1`, `.dict.string2`, and so on.
 
-- `--support=\<number\>` or `-S`
+- `--support=<number>` or `-S`
     
     A pattern is added to the output pattern database if at least the specified percentage of log messages from the input logfile match the pattern. For example, if the input logfile contains 1000 log messages and the `--support=3.0` option is used, a pattern is created only if the pattern matches at least 3 percent of the log messages (that is, 30 log messages). If patternize does not create enough patterns, try to decrease the support value.
     
@@ -293,7 +293,7 @@ Automatically create a pattern database from a log file containing a large numbe
     
 The **exit code** for the `pdbtool patternize` command is 1 if the patternizer was unsuccessful and zero otherwise.
 
-## Example
+### Example
 
 ```c
 pdbtool patternize --support=2.5 --file=/var/log/messages
@@ -333,7 +333,7 @@ Use the `test` command to validate a pattern database XML file. Note that you mu
 
 The **exit code** of the `pdbtool test` command is 1 if the database cannot be loaded or if validation failed, 2 if an example failed to match, 3 if the specified rule-id was not found and 0 otherwise.
 
-## Example
+### Example
 
 ```c
 pdbtool test --validate /home/me/mypatterndb.pdb
