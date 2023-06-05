@@ -43,7 +43,7 @@ Suppose you are running an application on your hosts that logs into the `/opt/va
             file("/opt/var/myapplication.log" follow-freq(1) default-facility(syslog)); };
 ```
 
-Include this file in your main `syslog-ng` configuration file, reference the block, and use it in a logpath:
+Include this file in your main `syslog-ng.conf` configuration file, reference the block, and use it in a logpath:
 
 ```c
    @version: {{% param "product.techversion" %}}

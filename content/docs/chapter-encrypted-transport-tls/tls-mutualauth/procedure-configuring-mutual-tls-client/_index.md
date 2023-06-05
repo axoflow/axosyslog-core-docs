@@ -25,7 +25,7 @@ Complete the following steps on every `syslog-ng` client host. Examples are prov
     
     `ln -s cacert.pem 6d2962a8.0`
 
-4.  Add a destination statement to the `syslog-ng` configuration file that uses the `tls( ca-dir(path_to_ca_directory) )` option and specify the directory using the CA certificate. The destination must use the `network()` or the `syslog()` destination driver, and the IP address and port parameters of the driver must point to the `syslog-ng` server. Include the client's certificate and private key in the `tls()` options.
+4.  Add a destination statement to the `syslog-ng.conf` configuration file that uses the `tls( ca-dir(path_to_ca_directory) )` option and specify the directory using the CA certificate. The destination must use the `network()` or the `syslog()` destination driver, and the IP address and port parameters of the driver must point to the `syslog-ng` server. Include the client's certificate and private key in the `tls()` options.
     
     
     ## Example: A destination statement using mutual authentication

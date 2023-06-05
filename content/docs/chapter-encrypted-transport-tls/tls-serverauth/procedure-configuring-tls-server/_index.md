@@ -21,7 +21,7 @@ Complete the following steps on the `syslog-ng` server:
 
 3.  Copy the private key (for example, `syslog-ng.key`) matching the certificate of the `syslog-ng` server to the `syslog-ng` server host, for example, into the `/opt/syslog-ng/etc/syslog-ng/key.d` directory. The key must be in PEM format. If you want to use a password-protected key, see {{% xref "/docs/chapter-encrypted-transport-tls/tls-password-protected-keys/_index.md" %}}.
 
-4.  Add a source statement to the `syslog-ng` configuration file that uses the `tls( key-file(key_file_fullpathname) cert-file(cert_file_fullpathname) )` option and specify the key and certificate files. The source must use the source driver (`network()` or `syslog()`) matching the destination driver used by the `syslog-ng` client.
+4.  Add a source statement to the `syslog-ng.conf` configuration file that uses the `tls( key-file(key_file_fullpathname) cert-file(cert_file_fullpathname) )` option and specify the key and certificate files. The source must use the source driver (`network()` or `syslog()`) matching the destination driver used by the `syslog-ng` client.
     
     
     ## Example: A source statement using TLS
