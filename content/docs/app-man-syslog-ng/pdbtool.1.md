@@ -61,7 +61,7 @@ Lists every name-value pair that can be set by the rules of the pattern database
     
     List only the name-value pairs that can be set for the messages of the specified `$PROGRAM` application.
 
-The **exit code** for the pdbtool dictionary command is 1 in case the database failed to load and zero otherwise.
+The **exit code** for the `pdbtool dictionary` command is 1 in case the database failed to load and zero otherwise.
 
 <span id="pdbtool-dump"></span>
 
@@ -91,7 +91,7 @@ Display the RADIX tree built from the patterns. This shows how are the patterns 
     
     Enable verbose messages on `stderr`.
 
-The **exit code** for the pdbtool dump command is 1 in case the database failed to load and zero otherwise.
+The **exit code** for the `pdbtool dump` command is 1 in case the database failed to load and zero otherwise.
 
 ## Example and sample output:
 
@@ -181,7 +181,7 @@ The `match` command has the following options:
     Enable verbose messages on `stderr`.
 
 
-The **exit code** for the pdbtool match command is 1 in case there was a parameter issue (e.g. the template or filter arguments could not be compiled or the database file cannot be loaded) and zero otherwise. Both matching and non-matching messages will result in a 0 exit code.
+The **exit code** for the `pdbtool match` command is 1 in case there was a parameter issue (for example, the template or filter arguments could not be compiled, or the database file cannot be loaded) and zero otherwise. Both matching and non-matching messages will result in a 0 exit code.
 
 
 ## Example
@@ -239,7 +239,7 @@ Use the `merge` command to combine separate pattern database files into a single
     
     Enable verbose messages on stderr.
    
-The **exit code** for the pdbtool merge command is 1 if the parameters could not be processed or if the database files cannot be loaded, 0 otherwise.
+The **exit code** for the `pdbtool merge` command is 1 if the parameters could not be processed or if the database files cannot be loaded, 0 otherwise.
 
 ## Example
 
@@ -291,7 +291,7 @@ Automatically create a pattern database from a log file containing a large numbe
     
     Enable verbose messages on `stderr`.
     
-The **exit code** for the pdbtool patternize command is 1 if the patternizer was unsuccessful and zero otherwise.
+The **exit code** for the `pdbtool patternize` command is 1 if the patternizer was unsuccessful and zero otherwise.
 
 ## Example
 
@@ -331,7 +331,7 @@ Use the `test` command to validate a pattern database XML file. Note that you mu
     
     Enable verbose messages on stderr.
 
-The **exit code** of the pdbtool test command is 1 if the database cannot be loaded or if validation failed, 2 if an example failed to match, 3 if the specified rule-id was not found and 0 otherwise.
+The **exit code** of the `pdbtool test` command is 1 if the database cannot be loaded or if validation failed, 2 if an example failed to match, 3 if the specified rule-id was not found and 0 otherwise.
 
 ## Example
 
