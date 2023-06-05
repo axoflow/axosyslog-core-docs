@@ -1,5 +1,5 @@
 ---
-title: AxoSyslog 4 documentation
+title: AxoSyslog Core documentation
 ---
 
 AxoSyslog is a cloud-native syslog-ng distribution by [Axoflow](https://axoflow.com).
