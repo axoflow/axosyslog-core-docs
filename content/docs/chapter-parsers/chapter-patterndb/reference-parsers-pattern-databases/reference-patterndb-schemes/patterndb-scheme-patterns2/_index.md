@@ -13,7 +13,7 @@ weight:  1100
 
 ## Description
 
-An element containing the patterns of the rule. If a *<patterns>* element contains multiple *\<pattern\>* elements, the class of the *\<rule\>* is assigned to every syslog message matching any of the patterns.
+An element containing the patterns of the rule. If a *<patterns>* element contains multiple *<pattern>lements, the class of the *<rule>>>>ssigned to every syslog message matching any of the patterns.
 
 
 

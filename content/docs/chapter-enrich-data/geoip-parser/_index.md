@@ -60,7 +60,7 @@ In the following example, {{% param "product.abbrev" %}} retrieves the GeoIP dat
     };
 ```
 
-For example, for the `\<38\>Jan 1 14:45:22 192.168.1.1 prg00000[1234]: test message` message the output will look like:
+For example, for the `<38>an 1 14:45:22 192.168.1.1 prg00000[1234]: test message` message the output will look like:
 
 ```c
    {"geoip":{"longitude":"47.460704","latitude":"19.049968","country_code":"HU"},"PROGRAM":"prg00000","PRIORITY":"info","PID":"1234","MESSAGE":"test message","HOST":"192.168.1.1","FACILITY":"auth","DATE":"Jan  1 14:45:22"}

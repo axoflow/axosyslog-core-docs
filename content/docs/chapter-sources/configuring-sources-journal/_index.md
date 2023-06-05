@@ -45,7 +45,7 @@ Only one `systemd-journal()` source can be configured in the configuration file.
 
 ## Example: Sending all fields through syslog protocol using the systemd-journal() driver {#example-source-journal-allfields}
 
-To send all fields through the syslog protocol, enter the prefix in the following format: "`.SDATA.\<name\>`".
+To send all fields through the syslog protocol, enter the prefix in the following format: "`.SDATA.<name>`".
 
 ```c
    @version: {{% param "product.techversion" %}}

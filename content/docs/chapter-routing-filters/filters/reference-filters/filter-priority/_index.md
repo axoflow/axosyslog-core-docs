@@ -6,7 +6,7 @@ weight:  900
 
 |           |                                                                            |
 | --------- | -------------------------------------------------------------------------- |
-| Synopsis: | level(\<priority-level\>) or level(\<priority-level\>..\<priority-level\>) |
+| Synopsis: | level(<priority-level>) or level(<priority-level>..<priority-level>) |
 
 *Description:* The `level()` filter selects messages corresponding to a single importance level, or a level-range. To select messages of a specific level, use the name of the level as a filter parameter, for example, use the following to select warning messages:
 

@@ -13,13 +13,13 @@ weight:  300
 
 ## Description
 
-A container element to group log patterns for an application or program. A `\<patterndb\>` element may contain any number of `\<ruleset\>` elements.
+A container element to group log patterns for an application or program. A `<patterndb> element may contain any number of `<ruleset>>elements.
 
 
 
 ## Attributes
 
-  - *name*: The name of the application. Note that the function of this attribute is to make the database more readable, syslog-ng uses the `\<pattern\>` element to identify the applications sending log messages.
+  - *name*: The name of the application. Note that the function of this attribute is to make the database more readable, syslog-ng uses the `<pattern> element to identify the applications sending log messages.
 
   - *id*: A unique ID of the application, for example, the md5 sum of the `name` attribute.
 
@@ -39,7 +39,7 @@ A container element to group log patterns for an application or program. A `\<pa
 
   - *url*: OPTIONAL — An URL referring to further information about the ruleset or the application.
 
-  - *rule_urls*: OPTIONAL — To list multiple URLs referring to further information about the ruleset or the application, enclose the \<url\> elements into an \<urls\> element.
+  - *rule_urls*: OPTIONAL — To list multiple URLs referring to further information about the ruleset or the application, enclose the <url>elements into an <urls>>lement.
 
 
 ## Example

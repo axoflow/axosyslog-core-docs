@@ -15,7 +15,7 @@ The Linux audit parser can parse the log messages of the Linux Audit subsystem (
     type=PROCTITLE msg=audit(1441988805.991:239): proctitle=64756D7065326673002D68002F6465762F73646131
 ```
 
-Certain fields of the audit log can be encoded in hexadecimal format, for example, the `arch` field, or the `a\<number\>` fields in the previous example. The {{% param "product.abbrev" %}} application automatically decodes these fields (for example, the `c000003e` value becomes `x86_64`).
+Certain fields of the audit log can be encoded in hexadecimal format, for example, the `arch` field, or the `a<number>` fields in the previous example. The {{% param "product.abbrev" %}} application automatically decodes these fields (for example, the `c000003e` value becomes `x86_64`).
 
 The {{% param "product.abbrev" %}} application extracts every field into name-value pairs. It automatically decodes the following fields:
 

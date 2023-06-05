@@ -18,7 +18,7 @@ To look up all keys:
 The name of the package depends on the Linux distribution. The package mentioned in this example is on Ubuntu.
     {{% /alert %}}
 
-2.  Create a dump using the following command: `mmdblookup --file GeoLite2-City.mmdb --ip \<your-IP-address\>`
+2.  Create a dump using the following command: `mmdblookup --file GeoLite2-City.mmdb --ip <your-IP-address>
     
     The resulting dump file will contain the keys that you can use.
 

@@ -13,7 +13,7 @@ weight:  500
 
 ## Description
 
-A container element. A `<patterns>` element may contain any number of `\<pattern\>` elements.
+A container element. A `<patterns>` element may contain any number of `<pattern>elements.
 
 
 
@@ -31,10 +31,10 @@ N/A
     
     It is not necessary to use multiple patterns if only the end of the ${PROGRAM} fields is different, use only the beginning of the ${PROGRAM} field as the `pattern`. For example, the Postfix email server sends messages using different process names, but all of them begin with the `postfix` string.
     
-    You can also use parsers in the program pattern if needed, and use the parsed results later. For example: `\<pattern\>postfix\\@ESTRING:.postfix.component:[@\</pattern\>`
+    You can also use parsers in the program pattern if needed, and use the parsed results later. For example: `<pattern>stfix\\@ESTRING:.postfix.component:[@</pattern>>>
     
     {{% alert title="Note" color="info" %}}
-If the `\<pattern\>` element of a ruleset is not specified, {{% param "product.abbrev" %}} will use this ruleset as a fallback ruleset: it will apply the ruleset to messages that have an empty PROGRAM header, or if none of the program patterns matched the PROGRAM header of the incoming message.
+If the `<pattern>element of a ruleset is not specified, {{% param "product.abbrev" %}} will use this ruleset as a fallback ruleset: it will apply the ruleset to messages that have an empty PROGRAM header, or if none of the program patterns matched the PROGRAM header of the incoming message.
     {{% /alert %}}
 
 

@@ -12,7 +12,7 @@ Hazard of data loss! If {{% param "product.abbrev" %}} cannot convert the data i
 
 {{% /alert %}}
 
-To use type-hinting, enclose the macro or template containing the data with the type: `\<datatype\>("\<macro\>")`, for example: `int("$PID")`.
+To use type-hinting, enclose the macro or template containing the data with the type: `<datatype>("<macro>")`, for example: `int("$PID")`.
 
 Currently the `mongodb()` destination and the `format-json` and `format-flat-json()` template functions support data types.
 

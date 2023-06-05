@@ -6,7 +6,7 @@ weight:  700
 
 |           |                                                                 |
 | --------- | --------------------------------------------------------------- |
-| Synopsis: | in-list("\</path/to/file.list\>", value("\<field-to-filter\>")) |
+| Synopsis: | in-list("</path/to/file.list>", value("<field-to-filter>")) |
 
 *Description:* Matches the value of the specified field to a list stored in a file, allowing you to do simple, file-based black- and whitelisting. The file must be a plain-text file, containing one entry per line. The {{% param "product.abbrev" %}} application loads the entire file, and compares the value of the specified field (for example, ${PROGRAM}) to entries in the file. When you use the `in-list()` filter, note the following points:
 

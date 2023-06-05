@@ -5,9 +5,9 @@
 | ------------------ | --------------- | --------------------- |
 | \==                | eq              | Equals                |
 | \!=                | ne              | Not equal to          |
-| \>                 | gt              | Greater than          |
-| \<                 | lt              | Less than             |
-| \>=                | ge              | Greater than or equal |
-| \=\<               | le              | Less than or equal    |
+| >                 | gt              | Greater than          |
+| <                 | lt              | Less than             |
+| >=                | ge              | Greater than or equal |
+| \=<               | le              | Less than or equal    |
 
 Numerical and string comparison operators

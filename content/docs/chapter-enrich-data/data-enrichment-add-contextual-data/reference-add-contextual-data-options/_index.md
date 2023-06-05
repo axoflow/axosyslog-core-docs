@@ -17,7 +17,7 @@ The following options are required: `selector()`, `database()`.
 
 |          |                      |
 | -------- | -------------------- |
-| Type:    | \<path-to-file\>.csv |
+| Type:    | <path-to-file>.csv |
 | Default: |                      |
 
 *Description:* Specifies the path to the CSV file, for example, `/opt/syslog-ng/my-csv-database.csv`. The extension of the file must be `.csv`, and can include Windows-style (CRLF) or UNIX-style (LF) linebreaks. You can use absolute path, or relative to the {{% param "product.abbrev" %}} binary.

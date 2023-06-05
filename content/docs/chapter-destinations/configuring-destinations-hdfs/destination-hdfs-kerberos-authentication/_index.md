@@ -25,7 +25,7 @@ If you want to configure your `hdfs()` destination to stop using Kerberos authen
 
   - You have a keytab file and a principal for the host running {{% param "product.abbrev" %}}. For details, see the [Kerberos documentation](http://web.mit.edu/Kerberos/krb5-1.5/krb5-1.5.4/doc/krb5-install/The-Keytab-File.html).
 
-  - You have installed and configured the Kerberos client packages on the host running {{% param "product.abbrev" %}}. (That is, Kerberos authentication works for the host, for example, from the command line using the `kinit user@REALM -k -t \<keytab_file\>` command.)
+  - You have installed and configured the Kerberos client packages on the host running {{% param "product.abbrev" %}}. (That is, Kerberos authentication works for the host, for example, from the command line using the `kinit user@REALM -k -t <keytab_file>` command.)
 
 {{% include-headless "chunk/synopsis-hdfs-kerberos-example.md" %}}
 

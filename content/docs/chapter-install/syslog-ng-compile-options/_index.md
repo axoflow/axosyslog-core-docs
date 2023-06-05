@@ -44,7 +44,7 @@ When compiling {{% param "product.abbrev" %}} from source, you can use the follo
 
   - *--enable-python* Enable support for Python-based modules.
 
-  - *--enable-redis* Enable the redis destination (enabled by default). The source of the libhiredis client (0.11 or newer) must be available. To specify the location of the library, use the `--with-libhiredis=\<path-to-libhiredis\>` compiling option. For details on using this destination, see {{% xref "/docs/chapter-destinations/configuring-destinations-redis/_index.md" %}}.
+  - *--enable-redis* Enable the redis destination (enabled by default). The source of the libhiredis client (0.11 or newer) must be available. To specify the location of the library, use the `--with-libhiredis=<path-to-libhiredis>` compiling option. For details on using this destination, see {{% xref "/docs/chapter-destinations/configuring-destinations-redis/_index.md" %}}.
 
   - *--enable-riemann* Enable the riemann destination (enabled by default). The source of the libriemann client must be available. For details on using this destination, see {{% xref "/docs/chapter-destinations/configuring-destinations-riemann/_index.md" %}}.
 

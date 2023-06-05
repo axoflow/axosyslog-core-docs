@@ -6,7 +6,7 @@
 
 |           |                                                 |
 | --------- | ----------------------------------------------- |
-| Synopsis: | extract-stray-words-into("\<name-value-pair\>") |
+| Synopsis: | extract-stray-words-into("<name-value-pair>) |
 
 *Description:* Specifies the name-value pair where {{% param "product.abbrev" %}} stores any stray words that appear before or between the parsed key-value pairs (mainly when the [`pair-separator()`]({{< relref "/docs/chapter-parsers/key-value-parser/kv-parser-options/_index.md" >}}) option is also set). If multiple stray words appear in a message, then {{% param "product.abbrev" %}} stores them as a comma-separated list. Note that the `prefix()` option does not affect the name-value pair storing the stray words. Default value:`N/A`
 
