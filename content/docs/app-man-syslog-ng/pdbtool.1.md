@@ -181,7 +181,8 @@ The `match` command has the following options:
     Enable verbose messages on `stderr`.
 
 
-The **exit code** for the pdbtool match command is 1 in case there was a parameter issue (e.g. the template or filter arguments could not be compiled or the database file cannot be loaded) or if the match was not successful, 0 if everything was loaded successfully and the match was succesful.
+The **exit code** for the pdbtool match command is 1 in case there was a parameter issue (e.g. the template or filter arguments could not be compiled or the database file cannot be loaded) and zero otherwise. Both matching and non-matching messages will result in a 0 exit code.
+
 
 ## Example
 
