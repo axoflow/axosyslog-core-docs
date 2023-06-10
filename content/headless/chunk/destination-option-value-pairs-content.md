@@ -17,7 +17,7 @@
 <tr class="even">
 <td>Default:</td>
 <td>```c
-<pre><code>scope(&quot;selected-macros&quot; &quot;nv-pairs&quot;)</code></pre>
+scope(&quot;selected-macros&quot; &quot;nv-pairs&quot;)
 ```</td>
 </tr>
 </tbody>

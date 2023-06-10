@@ -13,10 +13,10 @@
 <tr class="odd">
 <td>Error message:</td>
 <td>```c
-<pre><code>testuser@thor-x1:~/cert_no_start_line/certs$ openssl x509 -in cert.pem -text
+testuser@thor-x1:~/cert_no_start_line/certs$ openssl x509 -in cert.pem -text
 unable to load certificate
 140178126276248:error:0906D06C:PEM routines:PEM_read_bio:no start 
-line:pem_lib.c:701:Expecting: TRUSTED CERTIFICATE</code></pre>
+line:pem_lib.c:701:Expecting: TRUSTED CERTIFICATE
 ```</td>
 </tr>
 <tr class="even">
