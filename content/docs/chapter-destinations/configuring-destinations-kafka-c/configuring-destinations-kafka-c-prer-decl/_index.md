@@ -42,8 +42,6 @@ The following example defines a `kafka` destination in the new C implementation,
 
 ```c
 
-``` 
-
 @define kafka-implementation kafka-c 
 @include "scl.conf"
 
@@ -53,7 +51,5 @@ destination d_kafka {
     topic("{MYTOPIC}")
   );
 };
-```
-
 ```
 
