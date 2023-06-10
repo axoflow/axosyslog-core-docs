@@ -24,8 +24,7 @@ Available in {{% param "product.abbrev" %}} {{% conditional-text include-if="ose
 Create a text file that contains the programs (as in the ${PROGRAM} field of their log messages) you want to select. For example, you want to forward only the logs of a few applications from a host: kernel, sshd, and sudo. Create the `/etc/syslog-ng/programlist.list` file with the following contents:
 
 ```c
-
-    kernel
+   kernel
     sshd
     sudo
 
@@ -34,16 +33,14 @@ Create a text file that contains the programs (as in the ${PROGRAM} field of the
 The following filter selects only the messages of the listed applications:
 
 ```c
-
-    filter f_whitelist { in-list("/etc/syslog-ng/programlist.list", value("PROGRAM")); };
+   filter f_whitelist { in-list("/etc/syslog-ng/programlist.list", value("PROGRAM")); };
 
 ```
 
 Create the appropriate sources and destinations for your environment, then create a log path that uses the previous filter to select only the log messages of the applications you need:
 
 ```c
-
-    log {
+   log {
         source(s_all);
         filter(f_whitelist);
         destination(d_logserver); };
@@ -53,8 +50,7 @@ Create the appropriate sources and destinations for your environment, then creat
 To create a blacklist filter, simply negate the `in-list()` filter:
 
 ```c
-
-    filter f_blacklist { not in-list("/etc/syslog-ng/programlist.list", value("PROGRAM")); };
+   filter f_blacklist { not in-list("/etc/syslog-ng/programlist.list", value("PROGRAM")); };
 
 ```
 

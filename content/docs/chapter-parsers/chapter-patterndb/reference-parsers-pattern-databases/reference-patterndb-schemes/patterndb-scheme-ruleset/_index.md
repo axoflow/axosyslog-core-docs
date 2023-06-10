@@ -45,8 +45,7 @@ A container element to group log patterns for an application or program. A `\<pa
 ## Example
 
 ```c
-
-    <ruleset name='su' id='480de478-d4a6-4a7f-bea4-0c0245d361e1'>
+   <ruleset name='su' id='480de478-d4a6-4a7f-bea4-0c0245d361e1'>
 
 ```
 

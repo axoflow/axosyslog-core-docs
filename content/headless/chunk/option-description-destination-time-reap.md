@@ -13,7 +13,6 @@ Starting with version {{% conditional-text include-if="ose" %}}3.23{{% /conditio
 1.  If the `time-reap()` option of the destination is set, that value is used, for example:
     
     ```c
-    
         destination d_fifo {
             pipe(
                 "/tmp/test.fifo",
@@ -26,7 +25,6 @@ Starting with version {{% conditional-text include-if="ose" %}}3.23{{% /conditio
 2.  If the `time-reap()` option of the destination is not set, and the destination does not use a template or macro in its filename or path, `time-reap()` is automatically set to 0. For example:
     
     ```c
-    
         destination d_fifo {
             pipe(
                 "/tmp/test.fifo",

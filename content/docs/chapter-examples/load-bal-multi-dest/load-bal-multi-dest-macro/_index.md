@@ -19,8 +19,7 @@ For more information about the `R_MSEC` macro and further macros of {{% param "p
 The following example is a round-robin load balancing method, based on {{% param "product.abbrev" %}}'s `R_MSEC` macro.
 
 ```c
-
-    destination d_lb_network { 
+   destination d_lb_network { 
       channel { 
         channel { 
           filter { 

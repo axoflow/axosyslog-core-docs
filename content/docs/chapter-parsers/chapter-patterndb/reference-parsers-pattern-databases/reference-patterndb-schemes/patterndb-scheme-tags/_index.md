@@ -31,8 +31,7 @@ N/A
 ## Example
 
 ```c
-
-    <tags><tag>UserLogin</tag></tags>
+   <tags><tag>UserLogin</tag></tags>
 
 ```
 

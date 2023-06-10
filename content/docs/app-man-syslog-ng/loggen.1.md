@@ -175,48 +175,42 @@ When `loggen` finishes sending the messages, it displays the following statistic
 The following command generates 100 messages per second for ten minutes, and sends them to port 2010 of the localhost via TCP. Each message is 300 bytes long.
 
 ```c
-
-    loggen --size 300 --rate 100 --interval 600 127.0.0.1 2010
+   loggen --size 300 --rate 100 --interval 600 127.0.0.1 2010
 
 ```
 
 The following command is similar to the one above, but uses the UDP protocol.
 
 ```c
-
-    loggen --inet --dgram --size 300 --rate 100 --interval 600 127.0.0.1 2010
+   loggen --inet --dgram --size 300 --rate 100 --interval 600 127.0.0.1 2010
 
 ```
 
 Send a single message on TCP6 to the `::1` IPv6 address, port `1061:`
 
 ```c
-
-    loggen --ipv6 --number 1 ::1 1061
+   loggen --ipv6 --number 1 ::1 1061
 
 ```
 
 Send a single message on UDP6 to the `::1` IPv6 address, port `1061:`
 
 ```c
-
-    loggen --ipv6 --dgram --number 1 ::1 1061
+   loggen --ipv6 --dgram --number 1 ::1 1061
 
 ```
 
 Send a single message using a unix domain-socket:
 
 ```c
-
-    loggen --unix --stream --number 1 </path/to/socket>
+   loggen --unix --stream --number 1 </path/to/socket>
 
 ```
 
 Read messages from the standard input (`stdio`) and send them to the localhost:
 
 ```c
-
-    loggen 127.0.0.1 1061 --read-file -
+   loggen 127.0.0.1 1061 --read-file -
 
 ```
 

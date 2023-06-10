@@ -12,8 +12,7 @@ If you use RFC5424-formatted (IETF-syslog) messages, you can also create custom 
 The following example sets the sequence ID field of the RFC5424-formatted (IETF-syslog) messages to a fixed value. This field is a predefined SDATA field with a reserved SD-ID, therefore its name does not contain the `@` character.
 
 ```c
-
-    rewrite r_sd {
+   rewrite r_sd {
         set("55555" value(".SDATA.meta.sequenceId"));
     };
 
@@ -24,8 +23,7 @@ It is also possible to set the value of a field that does not exist yet, and cre
 The next example creates a new SDATA field-group and field called `custom` and `sourceip`, respectively:
 
 ```c
-
-    rewrite r_rewrite_set {
+   rewrite r_rewrite_set {
         set("${SOURCEIP}" value(".SDATA.custom@18372.4.sourceip"));
     };
 

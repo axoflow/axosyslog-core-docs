@@ -31,8 +31,7 @@ N/A
 ## Example
 
 ```c
-
-    <rules>
+   <rules>
         <rule provider='me' id='182437592347598' class='system'>
             <patterns>
                 <pattern>Accepted @QSTRING:SSH.AUTH_METHOD: @ for@QSTRING:SSH_USERNAME: @from\ @QSTRING:SSH_CLIENT_ADDRESS: @port @NUMBER:SSH_PORT_NUMBER:@ ssh2</pattern>

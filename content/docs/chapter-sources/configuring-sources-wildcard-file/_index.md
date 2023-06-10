@@ -12,8 +12,7 @@ The {{% param "product.abbrev" %}} application notices if a file is renamed or r
 ## Declaration:
 
 ```c
-
-    wildcard-file(
+   wildcard-file(
         base-dir("<pathname>")
         filename-pattern("<filename>")
     );

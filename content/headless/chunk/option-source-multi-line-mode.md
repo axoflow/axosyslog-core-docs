@@ -17,7 +17,6 @@
     ## Example: Processing indented multi-line messages
     
     ```c
-    
         source s_tomcat {
             file("/var/log/tomcat/xxx.log" multi-line-mode(indented));
         };

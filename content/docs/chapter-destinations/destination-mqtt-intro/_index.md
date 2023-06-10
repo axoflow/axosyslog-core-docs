@@ -18,8 +18,7 @@ The rest of this chapter and its sections build on your familiarity with the MQT
 ## Declaration:
 
 ```c
-
-    destination d_mqtt { 
+   destination d_mqtt { 
       mqtt(
         topic("<topic-name>"), 
         address("tcp://localhost:<port-number>"),   
@@ -36,8 +35,7 @@ The rest of this chapter and its sections build on your familiarity with the MQT
 The following example illustrates a `mqtt()` destination configured to fetch messages from the `localhost:4444` address, and send them to the broker running on `localhost:4445`, using the `mqtt test/test` topic.
 
 ```c
-
-    @version: 3.32
+   @version: 3.32
     @include "scl.conf"
     
       source s_net { 

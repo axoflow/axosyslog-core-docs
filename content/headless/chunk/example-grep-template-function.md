@@ -7,8 +7,7 @@
 The following example selects the message of the context that has a **username** name-value pair with the **root** value, and returns the value of the `auth_method` name-value pair.
 
 ```c
-
-    $(grep ("${username}" == "root") ${auth_method})
+   $(grep ("${username}" == "root") ${auth_method})
 
 ```
 

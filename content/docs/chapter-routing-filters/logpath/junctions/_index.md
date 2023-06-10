@@ -21,8 +21,7 @@ Certain parsers can also act as filters:
 You can also use log-path flags in the channels of the junction. Within the junction, a message is processed by every channel, in the order the channels appear in the configuration file. Typically if your channels have filters, you also set the **flags(final)** option for the channel. However, note that the log-path flags of the channel apply only within the junction, for example, if you set the `final` flag for a channel, then the subsequent channels of the junction will not receive the message, but this does not affect any other log path or junction of the configuration. The only exception is the `flow-control` flag: if you enable flow-control in a junction, it affects the entire log path. For details on log-path flags, see {{% xref "/docs/chapter-routing-filters/logpath/reference-logflags/_index.md" %}}.
 
 ```c
-
-    junction {
+   junction {
         channel { <other-syslog-ng-objects> <log-path-flags>};
         channel { <other-syslog-ng-objects> <log-path-flags>};
         ...

@@ -26,8 +26,7 @@ When you enable Proxy Protocol support for your `network()` source, you can use 
 The following code sample illustrates how you can use the Proxy Protocol in your {{% param "product.abbrev" %}} configuration (using the `transport()` parameter set to `proxied-tls-passthrough`).
 
 ```c
-
-    @version: 3.35
+   @version: 3.35
     
     source s_tcp_pp {
       network (
@@ -63,8 +62,7 @@ The following example illustrates how the parsed macros will appear in the outpu
 With the `PROXY TCP4 192.168.1.1 10.10.0.1 1111 2222` input header, the output looks like this:
 
 ```c
-
-    {"SOURCE":"s_tcp_pp","PROXIED_SRCPORT":"1111","PROXIED_SRCIP":"192.168.1.1","PROXIED_IP_VERSION":"4","PROXIED_DSTPORT":"2222","PROXIED_DSTIP":"10.10.0.1","PROGRAM":"TestMsg","MESSAGE":"","LEGACY_MSGHDR":"TestMsg","HOST_FROM":"localhost","HOST":"localhost"}
+   {"SOURCE":"s_tcp_pp","PROXIED_SRCPORT":"1111","PROXIED_SRCIP":"192.168.1.1","PROXIED_IP_VERSION":"4","PROXIED_DSTPORT":"2222","PROXIED_DSTIP":"10.10.0.1","PROGRAM":"TestMsg","MESSAGE":"","LEGACY_MSGHDR":"TestMsg","HOST_FROM":"localhost","HOST":"localhost"}
 
 ```
 

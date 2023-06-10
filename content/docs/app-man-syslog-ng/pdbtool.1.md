@@ -95,8 +95,7 @@ Display the RADIX tree built from the patterns. This shows how are the patterns 
 ## Example and sample output:
 
 ```c
-
-    pdbtool dump -p patterndb.xml  -P 'sshd'
+   pdbtool dump -p patterndb.xml  -P 'sshd'
 
 ```
 
@@ -208,8 +207,7 @@ The following command checks if the `patterndb.xml` file recognizes the `Accepte
 The following example applies the `sshd.pdb` pattern database file to the log messages stored in the `/var/log/messages` file, and displays only the messages that received a `useracct` tag.
 
 ```c
-
-    pdbtool match -p sshd.pdb \
+   pdbtool match -p sshd.pdb \
                         –file /var/log/messages \
                     –filter ‘tags(“usracct”);’ 
 
@@ -316,8 +314,7 @@ Automatically create a pattern database from a log file containing a large numbe
 ## Example:
 
 ```c
-
-    pdbtool patternize --support=2.5 --file=/var/log/messages
+   pdbtool patternize --support=2.5 --file=/var/log/messages
 
 ```
 
@@ -360,8 +357,7 @@ Use the `test` command to validate a pattern database XML file. Note that you mu
 ## Example:
 
 ```c
-
-    pdbtool test --validate /home/me/mypatterndb.pdb
+   pdbtool test --validate /home/me/mypatterndb.pdb
 
 ```
 

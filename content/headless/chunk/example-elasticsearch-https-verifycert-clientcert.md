@@ -4,8 +4,7 @@
 Verify the certificate of the Elasticsearch server and perform certificate authentication (this is actually a mutual, certificate-based authentication between the {{% param "product.abbrev" %}} client and the Elasticsearch server):
 
 ```c
-
-    destination d_elastic {
+   destination d_elastic {
         elasticsearch2(
             client-mode("https")
             cluster("es-syslog-ng")

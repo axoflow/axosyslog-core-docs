@@ -10,8 +10,7 @@ Log messages of banking and e-commerce applications might include credit card nu
 ## Declaration:
 
 ```c
-
-    @include "scl/rewrite/cc-mask.conf"
+   @include "scl/rewrite/cc-mask.conf"
     
     rewrite {
         credit-card-mask(value("<message-field-to-process>"));

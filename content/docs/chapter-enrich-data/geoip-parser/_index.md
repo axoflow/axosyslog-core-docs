@@ -20,8 +20,7 @@ You can refer to the separated parts of the message using the key of the value a
 ## Declaration:
 
 ```c
-
-    parser parser_name {
+   parser parser_name {
         geoip(
             <macro-containing-the-IP-address-to-lookup>
             prefix()
@@ -38,8 +37,7 @@ You can refer to the separated parts of the message using the key of the value a
 In the following example, {{% param "product.abbrev" %}} retrieves the GeoIP data of the IP address contained in the ${HOST} field of the incoming message, and includes the data (prefixed with the `geoip.` string) in the output JSON message.
 
 ```c
-
-    @version: 3.7
+   @version: 3.7
     
     options {
         keep-hostname(yes);
@@ -67,16 +65,14 @@ In the following example, {{% param "product.abbrev" %}} retrieves the GeoIP dat
 For example, for the `\<38\>Jan 1 14:45:22 192.168.1.1 prg00000[1234]: test message` message the output will look like:
 
 ```c
-
-    {"geoip":{"longitude":"47.460704","latitude":"19.049968","country_code":"HU"},"PROGRAM":"prg00000","PRIORITY":"info","PID":"1234","MESSAGE":"test message","HOST":"192.168.1.1","FACILITY":"auth","DATE":"Jan  1 14:45:22"}
+   {"geoip":{"longitude":"47.460704","latitude":"19.049968","country_code":"HU"},"PROGRAM":"prg00000","PRIORITY":"info","PID":"1234","MESSAGE":"test message","HOST":"192.168.1.1","FACILITY":"auth","DATE":"Jan  1 14:45:22"}
 
 ```
 
 If you are transferring your log messages into Elasticsearch, use the following rewrite rule to combine the longitude and latitude information into a single value (called `geoip.location`), and set the mapping in Elasticsearch accordingly. Do not forget to include the rewrite in your log path. For details on transferring your log messages to Elasticsearch, see {{% xref "/docs/chapter-destinations/configuring-destinations-elasticsearch2/_index.md" %}}.
 
 ```c
-
-    rewrite r_geoip {
+   rewrite r_geoip {
         set(
             "${geoip.latitude},${geoip.longitude}",
             value( "geoip.location" ),
@@ -89,8 +85,7 @@ If you are transferring your log messages into Elasticsearch, use the following 
 In your Elasticsearch configuration, set the appropriate mappings:
 
 ```c
-
-    {
+   {
        "mappings" : {
           "_default_" : {
              "properties" : {

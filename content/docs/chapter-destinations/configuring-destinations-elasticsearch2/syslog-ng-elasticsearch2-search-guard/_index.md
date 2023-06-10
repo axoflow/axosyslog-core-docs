@@ -18,7 +18,6 @@ To connect to an Elasticsearch 5.x or newer cluster, use HTTPS mode.
 1.  Install the Search Guard plugin on your {{% param "product.abbrev" %}} host. Use the plugin version that matches the version of your Elasticsearch installation.
     
     ```c
-    
         sudo /usr/share/elasticsearch/bin/plugin install -b com.floragunn/search-guard-ssl/<version-number-of-the-plugin>
     
     ```
@@ -28,7 +27,6 @@ To connect to an Elasticsearch 5.x or newer cluster, use HTTPS mode.
 3.  Configure an Elasticsearch destination in {{% param "product.abbrev" %}} that uses the `searchguard` client mode. For example:
     
     ```c
-    
         destination d_elasticsearch {
           elasticsearch2(
             client-lib-dir("/usr/share/elasticsearch/plugins/search-guard-ssl/*.jar:/usr/share/elasticsearch/lib")
@@ -45,7 +43,6 @@ To connect to an Elasticsearch 5.x or newer cluster, use HTTPS mode.
 4.  Configure the Elasticsearch resource file (for example, `/etc/syslog-ng/elasticsearch.yml`) as needed for your environment. Note the `searchguard:` section.
     
     ```c
-    
         cluster:
           name: elasticsearch
         discovery:

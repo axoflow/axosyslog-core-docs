@@ -35,7 +35,6 @@ Complete the following steps on the syslog-ng server:
     The following source receives log messages encrypted using TLS, arriving to the `1999/TCP` port of any interface of the syslog-ng server.
     
     ```c
-    
         source demo_tls_source {
             network(
                 ip(0.0.0.0) port(1999)
@@ -53,7 +52,6 @@ Complete the following steps on the syslog-ng server:
     A similar source for receiving messages using the IETF-syslog protocol:
     
     ```c
-    
         source demo_tls_syslog_source {
             syslog(
                 ip(0.0.0.0) port(1999)

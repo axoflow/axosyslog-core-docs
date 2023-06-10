@@ -16,8 +16,7 @@ The `syslog-ng()` destination driver is available in version {{% conditional-tex
 ## Declaration:
 
 ```c
-
-    destination d_ewmm {
+   destination d_ewmm {
         syslog-ng(server("192.168.1.1"));
     };
 

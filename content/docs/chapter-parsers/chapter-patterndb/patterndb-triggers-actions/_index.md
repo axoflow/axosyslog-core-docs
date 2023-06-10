@@ -14,8 +14,7 @@ The generated message is injected into the same place where the `db-parser()` st
 To send the generated messages to the `internal` source, use the **inject-mode(internal)** option:
 
 ```c
-
-    parser p_db {
+   parser p_db {
         db-parser(
             file("mypatterndbfile.xml")
             inject-mode(internal)
@@ -27,8 +26,7 @@ To send the generated messages to the `internal` source, use the **inject-mode(i
 To inject the generated messages where the pattern database is referenced, use the **inject-mode(pass-through)** option:
 
 ```c
-
-    parser p_db {
+   parser p_db {
         db-parser(
             file("mypatterndbfile.xml")
             inject-mode(pass-through)

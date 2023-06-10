@@ -117,8 +117,7 @@ The `http()` destination supports only unencrypted key files (that is, the priva
   - `success`: Assume the message was successfully sent.
 
 ```c
-
-    |------+-----------------------------------+------------|
+   |------+-----------------------------------+------------|
     | code | explanation                       | action     |
     |------+-----------------------------------+------------|
     |  100 | "Continue"                        | disconnect |

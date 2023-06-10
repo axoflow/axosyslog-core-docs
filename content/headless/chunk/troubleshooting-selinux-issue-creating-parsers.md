@@ -6,8 +6,7 @@
 If you are using a recent enough PCRE library, {{% param "product.abbrev" %}} will automatically use the JIT of the regexp engine, which will result in a similar error:
 
 ```c
-
-    setroubleshoot [21631 ] : SELinux is preventing <syslog-ng path> from using the execmem access on a process. (...)
+   setroubleshoot [21631 ] : SELinux is preventing <syslog-ng path> from using the execmem access on a process. (...)
     
     python [21631 ] : SELinux is preventing <syslog-ng path> from using the execmem access on a process.
 

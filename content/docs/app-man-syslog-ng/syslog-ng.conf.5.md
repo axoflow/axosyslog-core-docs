@@ -50,7 +50,6 @@ Other optional elements that can appear in log statements are parsers and rewrit
   - The main body of the configuration file consists of object definitions: sources, destinations, logpaths define which log message are received and where they are sent. All identifiers, option names and attributes, and any other strings used in the syslog-ng configuration file are case sensitive. Object definitions (also called statements) have the following syntax:
     
     ```c
-    
         type-of-the-object identifier-of-the-object {<parameters>};
     
     ```
@@ -76,7 +75,6 @@ Other optional elements that can appear in log statements are parsers and rewrit
     For example, the following line defines a source and calls it `s_internal`.
     
     ```c
-    
         source s_internal { internal(); };
     
     ```
@@ -84,7 +82,6 @@ Other optional elements that can appear in log statements are parsers and rewrit
     The object can be later referenced in other statements using its ID, for example, the previous source is used as a parameter of the following log statement:
     
     ```c
-    
         log { source(s_internal); destination(d_file); };
     
     ```
@@ -92,7 +89,6 @@ Other optional elements that can appear in log statements are parsers and rewrit
   - The parameters and options within a statement are similar to function calls of the C programming language: the name of the option followed by a list of its parameters enclosed within brackets and terminated with a semicolon.
     
     ```c
-    
         option(parameter1, parameter2); option2(parameter1, parameter2);
     
     ```
@@ -100,7 +96,6 @@ Other optional elements that can appear in log statements are parsers and rewrit
     For example, the `file()` driver in the following source statement has three options: the filename (`/var/log/apache/access.log`), `follow-freq()`, and `flags()`. The `follow-freq()` option also has a parameter, while the `flags()` option has two parameters.
     
     ```c
-    
         source s_tail { file("/var/log/apache/access.log"
         follow-freq(1) flags(no-parse, validate-utf8)); };
     
@@ -114,7 +109,6 @@ Other optional elements that can appear in log statements are parsers and rewrit
     The `unix-stream()` source driver has a single required argument: the name of the socket to listen on. Optional parameters follow the socket name in any order, so the following source definitions have the same effect:
     
     ```c
-    
         source s_demo_stream1 {
                             unix-stream("<path-to-socket>" max-connections(10) group(log)); };
                             source s_demo_stream2 {
@@ -126,7 +120,6 @@ Other optional elements that can appear in log statements are parsers and rewrit
   - Some options are global options, or can be set globally, for example, whether {{% param "product.ose" %}} should use DNS resolution to resolve IP addresses.
     
     ```c
-    
         options { use-dns(no); };
     
     ```
@@ -138,7 +131,6 @@ Other optional elements that can appear in log statements are parsers and rewrit
   - To add comments to the configuration file, start a line with `#` and write your comments. These lines are ignored by {{% param "product.ose" %}}.
     
     ```c
-    
     ``` 
         #Comment: This is a stream source
     source s_demo_stream {
@@ -150,8 +142,7 @@ Other optional elements that can appear in log statements are parsers and rewrit
 The syntax of log statements is as follows:
 
 ```c
-
-    log {
+   log {
         source(s1); source(s2); ...
     optional_element(filter1|parser1|rewrite1);
     optional_element(filter2|parser2|rewrite2);
@@ -190,8 +181,7 @@ The {{% param "product.ose" %}} application has a number of global options gover
 To disable domain name resolving, add the following line to the {{% param "product.ose" %}} configuration file:
 
 ```c
-
-    options { use-dns(no); };
+   options { use-dns(no); };
 
 ```
 

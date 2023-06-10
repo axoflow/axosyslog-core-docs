@@ -15,8 +15,7 @@ Starting with version {{% conditional-text include-if="pe" %}}7.0.18{{% /conditi
 By default, these operations modify the date-related macros of the message that correspond to the date the message was sent (that is, the S_ macros). You can modify the dates when {{% param "product.abbrev" %}} has received the messages (that is, the R_ macros), but this is rarely needed. To do so, include the `time-stamp(recvd)` option in the operation, for example:
 
 ```c
-
-    rewrite { fix-time-zone("EST5EDT" time-stamp(recvd)); };
+   rewrite { fix-time-zone("EST5EDT" time-stamp(recvd)); };
 
 ```
 
@@ -26,8 +25,7 @@ By default, these operations modify the date-related macros of the message that 
 Use the `fix-time-zone()` operation to correct the timezone of a message if it was parsed incorrectly for some reason, or if the client did not include any timezone information in the message. You can specify the new timezone as the name of a timezone, or as a template string. For example, use the following rewrite rule to set the timezone to EST5EDT:
 
 ```c
-
-    rewrite { fix-time-zone("EST5EDT"); };
+   rewrite { fix-time-zone("EST5EDT"); };
 
 ```
 

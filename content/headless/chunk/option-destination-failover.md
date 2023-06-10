@@ -47,8 +47,7 @@ Default value for `successful-probes-required()`: 3
 In the following example {{% param "product.abbrev" %}} handles the logservers in round-robin fashion if the primary logserver becomes uneccassible (therefore `failback()` option is not set).
 
 ```c
-
-    destination demo_failover_roundrobin{
+   destination demo_failover_roundrobin{
           syslog("primary-logserver.example.com"
                 failover(
                       servers("first-failover-logserver.example.com", "second-failover-logserver.example.com")
@@ -64,8 +63,7 @@ In the following example {{% param "product.abbrev" %}} handles the logservers i
 In the following example {{% param "product.abbrev" %}} attempts to return to the primary logserver, as set in the `failback()` option: it will check if the server is accessible every `tcp-probe-interval()` seconds, and reconnect to the primary logserver after three successful connection attempts.
 
 ```c
-
-    destination demo_failover_returntoprimary{
+   destination demo_failover_returntoprimary{
           syslog("primary-logserver.example.com"
                 failover(
                       servers("first-failover-logserver.example.com", "second-failover-logserver.example.com")

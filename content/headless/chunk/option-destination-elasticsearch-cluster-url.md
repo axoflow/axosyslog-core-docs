@@ -16,8 +16,7 @@
 For example:
 
 ```c
-
-    destination d_elasticsearch {
+   destination d_elasticsearch {
       elasticsearch2(
         client-lib-dir("/usr/share/elasticsearch/lib/")
         index("syslog-${YEAR}.${MONTH}.${DAY}")

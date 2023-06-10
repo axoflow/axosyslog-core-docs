@@ -17,8 +17,7 @@ The `date-parser()` parser has the following options.
 *Description:* Specifies the format how {{% param "product.abbrev" %}} should parse the date. You can use the following format elements:
 
 ```c
-
-    %%      PERCENT
+   %%      PERCENT
     %a      day of the week, abbreviated
     %A      day of the week
     %b      month abbr
@@ -88,8 +87,7 @@ For example, for the date `01/Jan/2016:13:05:05 PST` use the following format st
 *guess-timezone*: Attempt to guess the timezone of the message if this information is not available in the message. Works when the incoming message stream is close to real time, and the timezone information is missing from the timestamp. For example:
 
 ```c
-
-    date-parser(flags(guess-timezone));
+   date-parser(flags(guess-timezone));
 
 ```
 

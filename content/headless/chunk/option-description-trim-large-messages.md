@@ -8,7 +8,6 @@
   - If set to **yes**, {{% param "product.abbrev" %}} trims the incoming log message to the size set in `log-msg-size()`, and adds the `trimmed` tag to the message. The rest of the message is dropped. You can use the tag to filter on such messages.
     
     ```c
-    
         filter f_trimmed {
             tags("trimmed");
         };

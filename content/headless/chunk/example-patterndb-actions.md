@@ -7,8 +7,7 @@
 When inserted in a pattern database rule, the following example generates a message when a message matching the rule is received.
 
 ```c
-
-    <actions>
+   <actions>
         <action>
             <message>
                 <values>
@@ -29,8 +28,7 @@ To inherit the properties and values of the triggering message, set the `inherit
 The following action generates a message that is identical to the original message, but its $PROGRAM field is set to `overriding-original-program-name`
 
 ```c
-
-    <actions>
+   <actions>
         <action>
             <message inherit-properties='TRUE'>
                 <values>

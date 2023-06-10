@@ -15,8 +15,7 @@ If no drivers are defined for a destination, all messages sent to the destinatio
 To define a destination, add a destination statement to the syslog-ng configuration file using the following syntax:
 
 ```c
-
-    destination <identifier> {
+   destination <identifier> {
         destination-driver(params); destination-driver(params); ...
     };
 
@@ -28,8 +27,7 @@ To define a destination, add a destination statement to the syslog-ng configurat
 The following destination statement sends messages to the TCP port `1999` of the `10.1.2.3` host.
 
 ```c
-
-    destination d_demo_tcp {
+   destination d_demo_tcp {
         network("10.1.2.3" port(1999));
     };
 
@@ -38,8 +36,7 @@ The following destination statement sends messages to the TCP port `1999` of the
 If name resolution is configured, you can use the hostname of the target server as well.
 
 ```c
-
-    destination d_tcp {
+   destination d_tcp {
         network("target_host" port(1999));
     };
 

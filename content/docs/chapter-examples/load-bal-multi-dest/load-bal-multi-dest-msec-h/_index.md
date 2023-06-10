@@ -16,8 +16,7 @@ Also consider that the configuration generator script may change incompatibly in
 As an alternative to using the example configuration described in {{% xref "/docs/chapter-examples/load-bal-multi-dest/load-bal-multi-dest-macro/_index.md" %}}, a configuration generator script is also available in {{% param "product.abbrev" %}}:
 
 ```c
-
-    destination d_lb {network-load-balancer(targets(myhost1 myhost2 myhost3))};
+   destination d_lb {network-load-balancer(targets(myhost1 myhost2 myhost3))};
 
 ```
 

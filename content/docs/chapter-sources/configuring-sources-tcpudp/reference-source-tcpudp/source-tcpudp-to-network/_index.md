@@ -25,7 +25,6 @@ To replace your existing `tcp()`, `tcp6()`, `udp()`, `udp6()` sources with a `ne
     The following configuration shows a simple `tcp` source.
     
     ```c
-    
         source s_old_tcp {
             tcp(
                 ip(127.0.0.1) port(1999)
@@ -42,7 +41,6 @@ To replace your existing `tcp()`, `tcp6()`, `udp()`, `udp6()` sources with a `ne
     When replaced with the `network()` driver, it looks like this.
     
     ```c
-    
         source s_new_network_tcp {
             network(
                 transport("tls")

@@ -4,8 +4,7 @@
 The following example creates a new context whenever the rule matches. The new context receives **1000** as ID, and **program** as scope, and the content set in the `\<message\>` element of the `\<create-context\>` element.
 
 ```c
-
-    <rule provider='test' id='12' class='violation'>
+   <rule provider='test' id='12' class='violation'>
       <patterns>
         <pattern>simple-message-with-action-to-create-context</pattern>
       </patterns>

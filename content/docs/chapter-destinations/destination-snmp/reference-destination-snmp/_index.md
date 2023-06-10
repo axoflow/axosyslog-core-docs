@@ -145,14 +145,12 @@ This option is a required parameter when using the SNMPv3 protocol.
 The following are SNMP object definitions:
 
 ```c
-
-    snmp-obj('.1.3.6.1.4.1.18372.3.1.1.1.1.3', 'Ipaddress', '192.168.1.1')
+   snmp-obj('.1.3.6.1.4.1.18372.3.1.1.1.1.3', 'Ipaddress', '192.168.1.1')
 
 ```
 
 ```c
-
-    snmp-obj('.1.3.6.1.4.1.18372.3.1.1.1.1.2', 'Octetstring', '${MESSAGE}')
+   snmp-obj('.1.3.6.1.4.1.18372.3.1.1.1.1.2', 'Octetstring', '${MESSAGE}')
 
 ```
 

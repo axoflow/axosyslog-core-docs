@@ -43,8 +43,7 @@ N/A
 ## Example
 
 ```c
-
-    <patterns>
+   <patterns>
         <pattern>firstapplication</pattern>
         <pattern>otherapplication</pattern>
     </patterns>
@@ -54,8 +53,7 @@ N/A
 Using parsers in the program pattern:
 
 ```c
-
-    <pattern>postfix\@ESTRING:.postfix.component:[@</pattern>
+   <pattern>postfix\@ESTRING:.postfix.component:[@</pattern>
 
 ```
 

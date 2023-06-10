@@ -9,8 +9,7 @@ If the [`stats-freq()` global option]({{< relref "/docs/chapter-global-options/r
 The following is a sample log statistics message for a configuration that has a single source (`s_local`) and a network and a local file destination (`d_network` and `d_local`, respectively). All incoming messages are sent to both destinations.
 
 ```c
-
-    Log statistics;
+   Log statistics;
             dropped='tcp(AF_INET(192.168.10.1:514))=6439',
             processed='center(received)=234413',
             processed='destination(d_tcp)=234413',
@@ -22,8 +21,7 @@ The following is a sample log statistics message for a configuration that has a 
 The statistics include a list of source groups and destinations, as well as the number of processed messages for each. You can control the verbosity of the statistics using the [`stats-level()` global option]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}). The following is an example output.
 
 ```c
-
-    src.internal;s_all#0;;a;processed;6445
+   src.internal;s_all#0;;a;processed;6445
     src.internal;s_all#0;;a;stamp;1268989330
     destination;df_auth;;a;processed;404
     destination;df_news_dot_notice;;a;processed;0

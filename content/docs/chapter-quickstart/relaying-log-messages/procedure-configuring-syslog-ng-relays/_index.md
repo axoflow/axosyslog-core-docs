@@ -37,7 +37,6 @@ To configure syslog-ng on a relay host, complete the following steps:
     The following is a simple configuration file that collects local and incoming log messages and forwards them to a logserver using the IETF-syslog protocol.
     
     ```c
-    
         @version: {{% param "product.techversion" %}}
         @include "scl.conf"
         options {

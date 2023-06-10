@@ -14,7 +14,6 @@ Conditional expressions have two formats:
   - Explicit filter expression:
     
     ```c
-    
         if (message('foo')) {
             parser { date-parser(); };
         } else {
@@ -30,7 +29,6 @@ Conditional expressions have two formats:
   - Condition embedded in the log path:
     
     ```c
-    
         if {
             filter { message('foo')); };
             parser { date-parser(); };
@@ -55,8 +53,7 @@ You can copy-paste the following example and use it as a template for using the 
 The following configuration can be used as a template for using the `if {}` and `else {}` blocks:
 
 ```c
-
-    log{
+   log{
       source { example-msg-generator(num(1) template("...,STRING-TO-MATCH,..."));};
       source { example-msg-generator(num(1) template("...,NO-MATCH,..."));};
      
@@ -75,8 +72,7 @@ The following configuration can be used as a template for using the `if {}` and 
 The configuration results in the following console printout:
 
 ```c
-
-    matched: ...,STRING-TO-MATCH,...
+   matched: ...,STRING-TO-MATCH,...
     unmatched: ...,NO-MATCH,...
 
 ```

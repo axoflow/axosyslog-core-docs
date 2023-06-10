@@ -7,8 +7,7 @@ weight:  300
 Every syslog-ng configuration file must begin with a line containing the version information of syslog-ng. For syslog-ng version {{% param "product.version" %}}, this line looks like:
 
 ```c
-
-    @version: {{% param "product.techversion" %}}
+   @version: {{% param "product.techversion" %}}
 
 ```
 
@@ -20,8 +19,7 @@ Versioning the configuration file was introduced in syslog-ng 3.0. If the config
 The following is a very simple configuration file for syslog-ng: it collects the internal messages of syslog-ng and the messages from `/dev/log` into the `/var/log/messages_syslog-ng.log` file.
 
 ```c
-
-    @version: {{% param "product.techversion" %}}
+   @version: {{% param "product.techversion" %}}
     source s_local {
         unix-dgram("/dev/log"); internal();
     };

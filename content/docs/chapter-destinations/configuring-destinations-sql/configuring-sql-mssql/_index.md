@@ -24,8 +24,7 @@ The `mssql` database driver can access Microsoft SQL (MSSQL) destinations. This 
 The following example sends the log messages into an MSSQL database running on the `logserver` host. The messages are inserted into the `syslogng` database, the name of the table includes the exact date when the messages were sent. The syslog-ng application automatically creates the required tables and columns, if the user account used to connect to the database has the required privileges.
 
 ```c
-
-    destination d_mssql {
+   destination d_mssql {
     sql(type(mssql) host("logserver") port("1433")
       username("syslogng") password("syslogng") database("syslogng")
       table("msgs_${R_YEAR}${R_MONTH}${R_DAY}")columns("datetime varchar(16)", "host varchar(32)",
@@ -39,8 +38,7 @@ The following example sends the log messages into an MSSQL database running on t
 The date format used by the MSSQL database must be explicitly set in the `/etc/locales.conf` file of the syslog-ng server. Edit or create this file as needed for your configuration. A sample is provided below.
 
 ```c
-
-    [default]
+   [default]
     date = "%Y-%m-%d %H:%M:%S"
 
 ```

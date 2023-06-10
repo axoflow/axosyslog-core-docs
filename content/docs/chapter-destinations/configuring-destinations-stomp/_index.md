@@ -14,8 +14,7 @@ For the list of available parameters, see {{% xref "/docs/chapter-destinations/c
 ## Declaration:
 
 ```c
-
-    stomp( host("<stomp-server-address>") );
+   stomp( host("<stomp-server-address>") );
 
 ```
 
@@ -26,8 +25,7 @@ For the list of available parameters, see {{% xref "/docs/chapter-destinations/c
 The following example shows the default values of the available options.
 
 ```c
-
-    destination d_stomp {
+   destination d_stomp {
         stomp(
             host("localhost")
             port(61613)

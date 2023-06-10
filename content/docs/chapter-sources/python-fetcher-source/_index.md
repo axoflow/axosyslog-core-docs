@@ -16,8 +16,7 @@ This section describes fetcher-style sources. For details on server-style source
 {{% include-headless "chunk/python-source-declaration.md" %}}
 
 ```c
-
-    source <name_of_the_python_source>{
+   source <name_of_the_python_source>{
         python-fetcher(
             class("<name_of_the_python_class_executed_by_the_source>")
         );

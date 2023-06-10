@@ -12,8 +12,7 @@ HTTPS connection, as well as password- and certificate-based authentication is s
 ## Declaration:
 
 ```c
-
-    d_elasticsearch_http {
+   d_elasticsearch_http {
         elasticsearch-http(
             index("<elasticsearch-index-to-store-messages>")
             url("https://your-elasticsearch-server1:9200/_bulk" "https://your-elasticsearch-server2:9200/_bulk")
@@ -40,8 +39,7 @@ HTTPS connection, as well as password- and certificate-based authentication is s
 The following example defines a `elasticsearch-http()` destination, with only the required options.
 
 ```c
-
-    destination d_elasticsearch_http {
+   destination d_elasticsearch_http {
         elasticsearch-http(
             index("<name-of-the-index>")
             type("<type-of-the-index>")
@@ -61,8 +59,7 @@ The following example defines a `elasticsearch-http()` destination, with only th
 The following example uses mutually-authenticated HTTPS connection, templated index, and also sets the `type()` and some other options.
 
 ```c
-
-    destination d_elasticsearch_https {
+   destination d_elasticsearch_https {
         elasticsearch-http(
             url("https://node01.example.com:9200/_bulk")
             index("test-${YEAR}${MONTH}${DAY}")

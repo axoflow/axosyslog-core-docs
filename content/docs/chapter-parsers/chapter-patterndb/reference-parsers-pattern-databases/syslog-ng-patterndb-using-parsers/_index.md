@@ -22,32 +22,28 @@ Pattern parsers attempt to parse a part of the message using rules specific to t
 A simple parser:
 
 ```c
-
-    @STRING@
+   @STRING@
 
 ```
 
 A named parser:
 
 ```c
-
-    @STRING:myparser_name@
+   @STRING:myparser_name@
 
 ```
 
 A named parser with a parameter:
 
 ```c
-
-    @STRING:myparser_name:*@
+   @STRING:myparser_name:*@
 
 ```
 
 A parser with a parameter, but without a name:
 
 ```c
-
-    @STRING::*@
+   @STRING::*@
 
 ```
 

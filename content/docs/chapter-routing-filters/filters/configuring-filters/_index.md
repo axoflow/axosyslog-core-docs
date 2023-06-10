@@ -9,16 +9,14 @@ Filters perform log routing within syslog-ng: a message passes the filter if the
 To define a filter, add a filter statement to the syslog-ng configuration file using the following syntax:
 
 ```c
-
-    filter <identifier> { <filter_type>("<filter_expression>"); };
+   filter <identifier> { <filter_type>("<filter_expression>"); };
 
 ```
 
 Then use the filter in a log path, for example:
 
 ```c
-
-    log {
+   log {
         source(s1);
         filter(<identifier>);
         destination(d1); };
@@ -33,8 +31,7 @@ You can also define the filter inline. For details, see {{% xref "/docs/chapter-
 The following filter statement selects the messages that contain the word `deny` and come from the host `example`.
 
 ```c
-
-    filter demo_filter { host("example") and match("deny" value("MESSAGE"))
+   filter demo_filter { host("example") and match("deny" value("MESSAGE"))
     };
     log {
         source(s1);
@@ -47,8 +44,7 @@ The following filter statement selects the messages that contain the word `deny`
 The following example does the same, but defines the filter inline.
 
 ```c
-
-    log {
+   log {
         source(s1);
         filter { host("example") and match("deny" value("MESSAGE")) };
         destination(d1);

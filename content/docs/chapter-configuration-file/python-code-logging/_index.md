@@ -19,7 +19,6 @@ To send log messages to the internal() source from Python
 1.  Add the following import to your Python code:
     
     ```c
-    
         import syslogng
     
     ```
@@ -27,7 +26,6 @@ To send log messages to the internal() source from Python
 2.  Create a logger object:
     
     ```c
-    
         logger = syslogng.Logger()
     
     ```
@@ -35,7 +33,6 @@ To send log messages to the internal() source from Python
 3.  Use the logger object in your Python code, for example:
     
     ```c
-    
         logger.info("This is a sample log message send from the Python code.")
     
     ```
@@ -45,7 +42,6 @@ To send log messages to the internal() source from Python
 4.  Make sure that your {{% param "product.abbrev" %}} configuration includes the `internal()` source, for example:
     
     ```c
-    
         source s_internal { internal(); };
         destination d_internal { file("/var/log/internal.txt"); };
         log {source(s_internal); destination(d_internal); };

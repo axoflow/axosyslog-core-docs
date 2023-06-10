@@ -12,8 +12,7 @@ The `fortigate-parser()` has the following options:
 By default, `fortigate-parser()` uses the `.fortigate.` prefix. To modify it, use the following format:
 
 ```c
-
-    parser {
+   parser {
         fortigate-parser(prefix("myprefix."));
     };
 

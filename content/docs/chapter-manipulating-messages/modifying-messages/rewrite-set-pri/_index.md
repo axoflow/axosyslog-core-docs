@@ -18,8 +18,7 @@ If the specified parameter value is not a valid value, the function ignores it a
 ## Declaration
 
 ```c
-
-    rewrite <rule-name> {
+   rewrite <rule-name> {
         set-pri("template-string");
     };
 
@@ -48,8 +47,7 @@ The template string specified for the `set-pri()` rewrite function must expand t
 In the following example, the `set-pri()` rewrite function is used to temporarily raise the priority of the application `myprogram`:
 
 ```c
-
-    log {
+   log {
       source { system(); };
       if (program("myprogram")){
       rewrite { set-pri("92"); };
@@ -67,8 +65,7 @@ In the following example, the `set-pri()` rewrite function is used to temporaril
 In the following example, an application sends log messages in the following JSON format:
 
 ```c
-
-    {
+   {
     "time": "2003-10-11T22:14:15.003Z",
     "host": "mymachine",
     "priority": "165",
@@ -80,8 +77,7 @@ In the following example, an application sends log messages in the following JSO
 You can parse these logs with the {{% xref "/docs/chapter-parsers/json-parser/_index.md" %}} function:
 
 ```c
-
-    {
+   {
     parser p_json {
     json-parser (prefix(".json."));
     }
@@ -91,8 +87,7 @@ You can parse these logs with the {{% xref "/docs/chapter-parsers/json-parser/_i
 As the application message contains a valid priority field, you can use the `set-pri()` rewrite function to modify the priority of the message:
 
 ```c
-
-    set-pri("$.json.priority");
+   set-pri("$.json.priority");
 
 ```
 

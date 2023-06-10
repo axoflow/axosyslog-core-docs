@@ -264,8 +264,7 @@ Starting with version {{% conditional-text include-if="pe" %}}7.0.9{{% /conditio
 *Description:* Specifies a template that file-like destinations use by default. For example:
 
 ```c
-
-    template t_isostamp { template("$ISODATE $HOST $MSGHDR$MSG\n"); };
+   template t_isostamp { template("$ISODATE $HOST $MSGHDR$MSG\n"); };
     
     options { file-template(t_isostamp); };
 
@@ -309,8 +308,7 @@ Starting with version {{% conditional-text include-if="pe" %}}7.0.9{{% /conditio
 For example:
 
 ```c
-
-    jvm-options("-Xss1M -XX:+TraceClassLoading")
+   jvm-options("-Xss1M -XX:+TraceClassLoading")
 
 ```
 
@@ -430,8 +428,7 @@ Starting with version {{% conditional-text include-if="pe" %}}7.0.9{{% /conditio
 *Description:* Specifies a template that protocol-like destinations (for example, network() and syslog()) use by default. For example:
 
 ```c
-
-    template t_isostamp { template("$ISODATE $HOST $MSGHDR$MSG\n"); };
+   template t_isostamp { template("$ISODATE $HOST $MSGHDR$MSG\n"); };
     
     options { proto-template(t_isostamp); };
 

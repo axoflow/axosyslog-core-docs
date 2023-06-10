@@ -37,8 +37,7 @@ N/A
 ## Example
 
 ```c
-
-    <values>
+   <values>
         <value name=".classifier.outcome">/Success</value>
     </values>
 

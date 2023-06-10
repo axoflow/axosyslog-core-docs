@@ -7,8 +7,7 @@ An alternative way to specify this option is to put into a `tls()` block and spe
 ## Declaration:
 
 ```c
-
-    destination  d_ampqp {
+   destination  d_ampqp {
         amqp(
             host("127.0.0.1")
             port(5672)

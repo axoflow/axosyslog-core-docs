@@ -9,8 +9,7 @@ The {{% param "product.name" %}} application loads every available module during
 To load a module that is not loaded automatically, include the following statement in the {{% param "product.abbrev" %}} configuration file:
 
 ```c
-
-    @module <module-name>
+   @module <module-name>
 
 ```
 
@@ -27,8 +26,7 @@ Note the following points about the `@module` statement:
 To disable loading every module automatically, set the `autoload-compiled-modules` global variable to **0** in your configuration file:
 
 ```c
-
-    @define autoload-compiled-modules 0
+   @define autoload-compiled-modules 0
 
 ```
 
@@ -41,8 +39,7 @@ Note that in this case you have to explicitly load the modules you want to use.
 To ensure that a module is loaded, include the following statement in the {{% param "product.abbrev" %}} configuration file or the external files included in the configuration file:
 
 ```c
-
-    @requires <module-name>
+   @requires <module-name>
 
 ``` {{% alert title="Note" color="info" %}}
 

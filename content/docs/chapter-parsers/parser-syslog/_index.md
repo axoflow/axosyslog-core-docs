@@ -15,7 +15,6 @@ You can also use the **syslog-parser** to explicitly parse a message, or a part 
 Note that by default, the `syslog-parser` attempts to parse the message as an RFC3164-formatted (BSD-syslog) message. To parse the message as an RFC5424-formatted message, use the **flags(syslog-protocol)** option in the parser.
 
 ```c
-
-    syslog-parser(flags(syslog-protocol));
+   syslog-parser(flags(syslog-protocol));
 
 ```

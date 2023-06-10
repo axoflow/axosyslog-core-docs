@@ -17,8 +17,7 @@ The `python()` and `python-fetcher()` drivers have the following options.
 *Description:* The name of the Python class that implements the source, for example:
 
 ```c
-
-    python(
+   python(
         class("MyPythonSource")
     );
 
@@ -27,8 +26,7 @@ The `python()` and `python-fetcher()` drivers have the following options.
 If you want to store the Python code in an external Python file, the `class()` option must include the name of the Python file containing the class, without the path and the .py extension, for example:
 
 ```c
-
-    python(
+   python(
         class("MyPythonfilename.MyPythonSource")
     );
 

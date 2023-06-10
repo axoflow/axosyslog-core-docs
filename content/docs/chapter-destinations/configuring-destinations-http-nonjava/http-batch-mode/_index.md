@@ -18,8 +18,7 @@ By default, {{% param "product.abbrev" %}} separates the log messages of the bat
 If the target application or server requires a special beginning or ending to recognize batches, use the **body-prefix()** and **body-suffix()** options to add a beginning and ending to the batch. For example, you can use these options to create JSON-encoded arrays as POST payloads, which is required by a number of REST APIs. The body of a batch HTTP request looks like this:
 
 ```c
-
-    value of body-prefix() option
+   value of body-prefix() option
     log-line-1 (as formatted in the body() option)
     log-line-2 (as formatted in the body() option)
     ....
@@ -34,8 +33,7 @@ If the target application or server requires a special beginning or ending to re
 The following destination sends [log messages to an Elasticsearch server using the bulk API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html). A batch consists of 100 messages, or a maximum of 512 kilobytes, and is sent every 10 seconds (10000 milliseconds).
 
 ```c
-
-    destination d_http {
+   destination d_http {
         http(url("http://your-elasticsearch-server/_bulk")
             method("POST")
             batch-lines(100)
@@ -63,8 +61,7 @@ The following destination sends [log messages to an Elasticsearch server using t
 The following destination sends [log messages to an Elasticsearch server using the bulk API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html), to 3 different ingest nodes. Each node is assigned a separate worker thread. A batch consists of 100 messages, or a maximum of 512 kilobytes, and is sent every 10 seconds (10000 milliseconds).
 
 ```c
-
-    destination d_http {
+   destination d_http {
         http(url("http://your-elasticsearch-server/_bulk" "http://your-second-ingest-node/_bulk" "http://your-third-ingest-node/_bulk")
             method("POST")
             batch-lines(100)

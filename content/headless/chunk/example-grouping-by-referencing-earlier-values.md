@@ -7,8 +7,7 @@
 The following action can be used to log the length of an SSH session (the time difference between a login and a logout message in the context):
 
 ```c
-
-    aggregate(
+   aggregate(
         value('value name="MESSAGE" An SSH session for ${SSH_USERNAME}@1 from ${SSH_CLIENT_ADDRESS}@2 closed. Session lasted from ${DATE}@2 to ${DATE}')
     )
 

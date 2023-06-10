@@ -12,8 +12,7 @@
 *Description:*If you receive the following error message during {{% param "product.abbrev" %}} startup, set the `persist-name()` option of the duplicate drivers:
 
 ```c
-
-    Error checking the uniqueness of the persist names, please override it with persist-name option. Shutting down.
+   Error checking the uniqueness of the persist names, please override it with persist-name option. Shutting down.
 
 ```
 

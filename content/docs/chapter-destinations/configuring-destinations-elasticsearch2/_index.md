@@ -16,8 +16,7 @@ Note the following limitations when using the {{% param "product.abbrev" %}} `el
 ## Declaration:
 
 ```c
-
-    @include "scl.conf"
+   @include "scl.conf"
     
     elasticsearch2(
         index("syslog-ng_${YEAR}.${MONTH}.${DAY}")
@@ -34,8 +33,7 @@ Note the following limitations when using the {{% param "product.abbrev" %}} `el
 The following example defines an `elasticsearch2` destination that sends messages in transport mode to an Elasticsearch server running on the localhost, using only the required parameters.
 
 ```c
-
-    @include "scl.conf"
+   @include "scl.conf"
     
     destination d_elastic {
         elasticsearch2(
@@ -49,8 +47,7 @@ The following example defines an `elasticsearch2` destination that sends message
 The following example sends 10000 messages in a batch, in transport mode, and includes a custom unique ID for each message.
 
 ```c
-
-    @include "scl.conf"
+   @include "scl.conf"
     
     options {
         threaded(yes);
@@ -87,8 +84,7 @@ The following example sends 10000 messages in a batch, in transport mode, and in
 The following example send messages to Elasticsearch over HTTP using its REST API:
 
 ```c
-
-    @include "scl.conf"
+   @include "scl.conf"
     
     source s_network {
         network(port(5555));

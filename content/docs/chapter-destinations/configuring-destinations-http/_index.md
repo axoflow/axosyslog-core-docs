@@ -14,8 +14,7 @@ Version {{% conditional-text include-if="ose" %}}3.7{{% /conditional-text %}} of
 ## Declaration:
 
 ```c
-
-    java(
+   java(
         class-path("/syslog-ng/install_dir/lib/syslog-ng/java-modules/*.jar")
         class-name("org.syslog_ng.http.HTTPDestination")
     
@@ -32,8 +31,7 @@ Version {{% conditional-text include-if="ose" %}}3.7{{% /conditional-text %}} of
 The following example defines an `http` destination.
 
 ```c
-
-    destination d_http {
+   destination d_http {
         java(
             class-path("/syslog-ng/install_dir/lib/syslog-ng/java-modules/*.jar")
             class-name("org.syslog_ng.http.HTTPDestination")

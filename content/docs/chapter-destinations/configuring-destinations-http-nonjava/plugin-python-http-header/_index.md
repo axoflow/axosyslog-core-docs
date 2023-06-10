@@ -28,8 +28,7 @@ Before you use the `python-http-header` plugin, make sure that your {{% param "p
 ## Configuration
 
 ```c
-
-    destination d_http {
+   destination d_http {
       http(
         python_http_header(
           class("<class-name>")
@@ -61,8 +60,7 @@ Before you use the `python-http-header` plugin, make sure that your {{% param "p
 You can define the Python interface with the following:
 
 ```c
-
-    class TestCounter():
+   class TestCounter():
       def __init__(self, options):
         self.key = options["value"]
     
@@ -98,8 +96,7 @@ If the plugin fails, the HTTP module does not send the HTTP request without the 
 The following example can be copy-pasted and used as a template for using the Python HTTP header plugin in your configuration.
 
 ```c
-
-    python {
+   python {
     from syslogng import Logger
                         
     logger = Logger()

@@ -42,8 +42,7 @@ This option does not have any effect unless the `flush()` method is implemented 
 *Description:* The name of the Python class that implements the destination, for example:
 
 ```c
-
-    python(
+   python(
         class("MyPythonDestination")
     );
 
@@ -52,8 +51,7 @@ This option does not have any effect unless the `flush()` method is implemented 
 If you want to store the Python code in an external Python file, the `class()` option must include the name of the Python file containing the class, without the path and the .py extension, for example:
 
 ```c
-
-    python(
+   python(
         class("MyPythonfilename.MyPythonDestination")
     );
 
@@ -90,8 +88,7 @@ For details, see {{% xref "/docs/chapter-configuration-file/python-code-external
 You can use this option to limit which name-value pairs are passed to the Python code for each message. Note that if you use the `value-pairs()` option, the Python code receives the specified value-pairs as a Python dict. Otherwise, it receives the message object. In the following example, only the text of the log message is passed to Python.
 
 ```c
-
-    destination d_python_to_file {
+   destination d_python_to_file {
         python(
             class("pythonexample.TextDestination")
             value-pairs(key(MESSAGE))

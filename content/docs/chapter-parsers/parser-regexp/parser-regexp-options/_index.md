@@ -24,8 +24,7 @@ The Regular expression parser has the following options.
 {{% include-headless "chunk/no-default-prefix.md" %}}
 
 ```c
-
-    parser p_regexp{
+   parser p_regexp{
         regexp-parser(
             patterns( ... )
             prefix("myprefix.")

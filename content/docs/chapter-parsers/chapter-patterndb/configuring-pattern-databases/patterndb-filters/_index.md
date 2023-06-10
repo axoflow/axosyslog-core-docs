@@ -18,8 +18,7 @@ The results of message classification and parsing can be used in custom filters 
 To filter on a specific message class, create a filter that checks the `.classifier_class` macro, and use this filter in a log statement.
 
 ```c
-
-    filter fi_class_violation {
+   filter fi_class_violation {
         match(
             "violation"
             value(".classifier.class")
@@ -30,8 +29,7 @@ To filter on a specific message class, create a filter that checks the `.classif
 ```
 
 ```c
-
-    log {
+   log {
         source(s_all);
         parser(pattern_db);
         filter(fi_class_violation);
@@ -45,8 +43,7 @@ Filtering on the `unknown` class selects messages that did not match any rule of
 To filter on messages matching a specific classification rule, create a filter that checks the `.classifier.rule_id` macro. The unique identifier of the rule (for example, `e1e9c0d8-13bb-11de-8293-000c2922ed0a`) is the `id` attribute of the rule in the XML database.
 
 ```c
-
-    filter fi_class_rule {
+   filter fi_class_rule {
         match(
             "e1e9c0d8-13bb-11de-8293-000c2922ed0a"
             value(".classifier.rule_id")
@@ -69,24 +66,21 @@ The message-segments parsed by the pattern parsers can also be used as macros as
 For example, you want to parse messages of an application that look like `"Transaction: \<type\>."`, where \<type\> is a string that has different values (for example, refused, accepted, incomplete, and so on). To parse these messages, you can use the following pattern:
 
 ```c
-
-    'Transaction: @ESTRING::.@'
+   'Transaction: @ESTRING::.@'
 
 ```
 
 Here the @ESTRING@ parser parses the message until the next full stop character. To use the results in a filter or a filename template, include a name in the parser of the pattern, for example:
 
 ```c
-
-    'Transaction: @ESTRING:TRANSACTIONTYPE:.@'
+   'Transaction: @ESTRING:TRANSACTIONTYPE:.@'
 
 ```
 
 After that, add a custom template to the log path that uses this template. For example, to select every `accepted` transaction, use the following custom filter in the log path:
 
 ```c
-
-    match("accepted" value("TRANSACTIONTYPE"));
+   match("accepted" value("TRANSACTIONTYPE"));
 
 ```
 

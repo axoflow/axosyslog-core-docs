@@ -16,8 +16,7 @@ On platforms running systemd, the `systemd-syslog()` driver reads the log messag
 ## Declaration:
 
 ```c
-
-    systemd-syslog();
+   systemd-syslog();
 
 ```
 
@@ -26,8 +25,7 @@ On platforms running systemd, the `systemd-syslog()` driver reads the log messag
 ## Example: Using the systemd-syslog() driver
 
 ```c
-
-    @version: {{% param "product.techversion" %}}
+   @version: {{% param "product.techversion" %}}
     
     source s_systemdd {
         systemd-syslog();

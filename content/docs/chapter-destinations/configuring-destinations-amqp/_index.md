@@ -14,8 +14,7 @@ For the list of available parameters, see {{% xref "/docs/chapter-destinations/c
 ## Declaration:
 
 ```c
-
-    amqp( host("<amqp-server-address>") );
+   amqp( host("<amqp-server-address>") );
 
 ```
 
@@ -26,8 +25,7 @@ For the list of available parameters, see {{% xref "/docs/chapter-destinations/c
 The following example shows the default values of the available options.
 
 ```c
-
-    destination d_amqp {
+   destination d_amqp {
         amqp(
             vhost("/")
             host("127.0.0.1")

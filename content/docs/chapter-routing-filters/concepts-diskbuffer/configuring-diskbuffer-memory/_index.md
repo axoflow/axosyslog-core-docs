@@ -10,8 +10,7 @@ To enable memory buffering, use the **log-fifo-size()** parameter in the destina
 ## Example: Example for using memory buffering
 
 ```c
-
-    destination d_BSD {
+   destination d_BSD {
         network("127.0.0.1"
             port(3333)
             log-fifo-size(10000)

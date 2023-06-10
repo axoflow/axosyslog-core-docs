@@ -68,8 +68,7 @@ Parses any IP address.
 Parses a Link Layer Address in the `xx:xx:xx:...` form, where each xx is a 2 digit HEX number (an octet). The parameter specifies the maximum number of octets to match and defaults to 20. The MACADDR parser is a special wrapper using the LLADDR parser. For example, the following parser parses maximally 10 octets, and stores the results in the `link-level-address` macro:
 
 ```c
-
-    @LLADDR:link-level-address:10@
+   @LLADDR:link-level-address:10@
 
 ```
 
@@ -86,8 +85,7 @@ Parses the standard format of a MAC-48 address, consisting of is six groups of t
 This parser parses everything until the next new-line character (more precisely, until the next Unix-style LF or Windows-style CRLF character). For single-line messages, NLSTRING is equivalent with ANYSTRING. For multi-line messages, NLSTRING parses to the end of the current line, while ANYSTRING parses to the end of the message. Using NLSTRING is useful when parsing multi-line messages, for example, Windows logs. For example, the following pattern parses information from Windows security auditing logs.
 
 ```c
-
-    <pattern>Example-PC\Example: Security Microsoft Windows security auditing.: [Success Audit] A new process has been created.
+   <pattern>Example-PC\Example: Security Microsoft Windows security auditing.: [Success Audit] A new process has been created.
     
         Subject:
         Security ID: @LNSTRING:.winaudit.SubjectUserSid@

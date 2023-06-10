@@ -29,8 +29,7 @@ The following modes of operation are available:
 The following configuration example uses the default value for the `namespace()` option:
 
 ```c
-
-    source s_journal
+   source s_journal
     { 
       systemd-journal(namespace("*"));
     };
@@ -40,8 +39,7 @@ The following configuration example uses the default value for the `namespace()`
 The following configuration example uses a prefixed namespace identifier in the `namespace()` option:
 
 ```c
-
-    source s_journal
+   source s_journal
     { 
       systemd-journal(namespace("+foobar"));
     };

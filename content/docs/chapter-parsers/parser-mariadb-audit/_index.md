@@ -10,8 +10,7 @@ The MariaDB parser can parse the log messages of the MariaDB Audit Plugin. The p
 ## Declaration:
 
 ```c
-
-    @version: {{% param "product.configversion" %}}
+   @version: {{% param "product.configversion" %}}
     @include "scl.conf"
     log {
         source { system(); };
@@ -32,8 +31,7 @@ The `mariadb-audit` is a reusable configuration snippet configured to parse Mari
 By default, `mariadb-audit` uses the `.mariadb.` prefix. To modify it, use the following format:
 
 ```c
-
-    parser {
+   parser {
         mariadb-audit-parser(prefix("myprefix."));
     };
 

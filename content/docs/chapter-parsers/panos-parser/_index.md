@@ -36,8 +36,7 @@ The `panos-parser()` only works on {{% param "product.abbrev" %}} version 3.29 o
 You can include the `panos-parser()` in your {{% param "product.abbrev" %}} configuration like this:
 
 ```c
-
-    parser p_parser{
+   parser p_parser{
         panos-parser();
     };
 
@@ -46,8 +45,7 @@ You can include the `panos-parser()` in your {{% param "product.abbrev" %}} conf
 To use this parser, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 
 ```c
-
-    @include "scl.conf"
+   @include "scl.conf"
 
 ```
 

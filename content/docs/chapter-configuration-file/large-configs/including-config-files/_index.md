@@ -7,8 +7,7 @@ weight:  100
 The syslog-ng application supports including external files in its configuration file, so parts of its configuration can be managed separately. To include the contents of a file in the syslog-ng configuration, use the following syntax:
 
 ```c
-
-    @include "<filename>"
+   @include "<filename>"
 
 ```
 
@@ -31,7 +30,6 @@ When including configuration files, consider the following points:
   - Include statements can only be used at top level of the configuration file. For example, the following is correct:
     
     ```c
-    
         @version: {{% param "product.techversion" %}}
         @include "example.conf"
     
@@ -40,7 +38,6 @@ When including configuration files, consider the following points:
     But the following is not:
     
     ```c
-    
         source s_example {
             @include "example.conf"
         };

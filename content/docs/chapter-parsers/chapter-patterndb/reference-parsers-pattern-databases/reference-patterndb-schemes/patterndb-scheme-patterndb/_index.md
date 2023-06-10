@@ -33,8 +33,7 @@ The container element of the pattern database.
 ## Example
 
 ```c
-
-    <patterndb version='4' pub_date='2010-10-25'>
+   <patterndb version='4' pub_date='2010-10-25'>
 
 ```
 

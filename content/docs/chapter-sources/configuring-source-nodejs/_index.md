@@ -9,8 +9,7 @@ Using the `nodejs()` driver, {{% param "product.abbrev" %}} can receive applicat
 To use the `nodejs()` driver, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 
 ```c
-
-    @include "scl.conf"
+   @include "scl.conf"
 
 ```
 
@@ -22,8 +21,7 @@ The `nodejs()` driver is actually a reusable configuration snippet configured to
 The following example uses the default settings of the driver, listening for messages on port 9003 of every IP address of the {{% param "product.abbrev" %}} host.
 
 ```c
-
-    @include "scl.conf"
+   @include "scl.conf"
     source apps { nodejs(); };
 
 ```
@@ -31,8 +29,7 @@ The following example uses the default settings of the driver, listening for mes
 The following example listens only on IP address `192.168.1.1`, port `9999`.
 
 ```c
-
-    @include "scl.conf"
+   @include "scl.conf"
     source apps {
         nodejs(
             localip(192.168.1.1)

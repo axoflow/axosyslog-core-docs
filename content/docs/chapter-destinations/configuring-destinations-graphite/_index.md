@@ -12,8 +12,7 @@ To see an example of how the `graphite()` destination is used to collect statist
 ## Declaration:
 
 ```c
-
-    graphite(payload());
+   graphite(payload());
 
 ```
 
@@ -24,8 +23,7 @@ To see an example of how the `graphite()` destination is used to collect statist
 To use the <span>graphite()</span> destination, the only mandatory parameter is payload, which specifies the value pairs to send to <span>graphite</span>. In the following example any value pairs starting with <span>"monitor."</span> are forwarded to <span>graphite</span>.
 
 ```c
-
-    destination d_graphite { graphite(payload("--key monitor.*")); };
+   destination d_graphite { graphite(payload("--key monitor.*")); };
 
 ```
 

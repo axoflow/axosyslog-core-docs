@@ -81,8 +81,7 @@ In the following example, the `hook-commands()` is used with the `network()` dri
 The assumption in this example is that the `LOGCHAIN` chain is part of a larger ruleset that routes traffic to it. Whenever the {{% param "product.abbrev" %}} created rule is there, packets can flow, otherwise the port is closed.
 
 ```c
-
-    source {
+   source {
        network(transport(udp)
         hook-commands(
               startup("iptables -I LOGCHAIN 1 -p udp --dport 514 -j ACCEPT")

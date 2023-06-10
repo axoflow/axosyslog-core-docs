@@ -46,7 +46,6 @@ To process the messages from an orphan disk-buffer file using a separate {{% par
 3.  Create a directory for the temporary instance. In the examples during this process, the `/tmp/qdisk` directory is used.
     
     ```c
-    
         mkdir /tmp/qdisk
     
     ```
@@ -63,7 +62,6 @@ To process the messages from an orphan disk-buffer file using a separate {{% par
     ## Example: creating the /tmp/qdisk/qdisk.conf configuration file for the temporary instance
     
     ```c
-    
         @version:7.0
         @include "scl.conf"
         
@@ -95,7 +93,6 @@ To process the messages from an orphan disk-buffer file using a separate {{% par
 6.  <span id="start-temp-instance"></span>Start the temporary {{% param "product.abbrev" %}} instance in the foreground.
     
     ```c
-    
         syslog-ng -Fe -f /tmp/qdisk/qdisk.conf -R /tmp/qdisk/qdisk.persist -c /tmp/qdisk/qdisk.ctl
     
     ```
@@ -108,7 +105,6 @@ To process the messages from an orphan disk-buffer file using a separate {{% par
     ## Example: output displaying newly created empty disk-buffer file and connection established to remote destination
     
     ```c
-    
         Follow-mode file source not found, deferring open; filename='/no_such_file_or.dir'
         Reliable disk-buffer state saved; filename='/tmp/qdisk/syslog-ng-00000.rqf', qdisk_length='0'
         No server license found, running in client mode;
@@ -124,7 +120,6 @@ To process the messages from an orphan disk-buffer file using a separate {{% par
 8.  <span id="repeat-steps-from-here"></span>Overwrite the empty disk-buffer file with the orphan disk-buffer file.
     
     ```c
-    
         mv /opt/syslog-ng/var/syslog-ng-00005.rqf /tmp/qdisk/syslog-ng-00000.rqf
     
     ```
@@ -132,7 +127,6 @@ To process the messages from an orphan disk-buffer file using a separate {{% par
 9.  Start {{% param "product.abbrev" %}} using the command used in [Start the temporary {{% param "product.abbrev" %}} instance in the foreground]({{< relref "/docs/chapter-routing-filters/concepts-diskbuffer/get-information-about-disk-buffer-files/diskb-proc-sep-sysl-inst/_index.md#start-temp-instance" >}}) step.
     
     ```c
-    
         syslog-ng -Fe -f /tmp/qdisk/qdisk.conf -R /tmp/qdisk/qdisk.persist -c /tmp/qdisk/qdisk.ctl
     
     ```
@@ -183,7 +177,6 @@ To process the messages from an orphan disk-buffer file using a separate {{% par
     The following command removes the `/mp/qdisk` temporary directory:
     
     ```c
-    
         rm -rf /tmp/qdisk
     
     ```

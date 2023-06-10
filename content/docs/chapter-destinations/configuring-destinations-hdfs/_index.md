@@ -18,8 +18,7 @@ Note the following limitations when using the {{% param "product.abbrev" %}} `hd
 ## Declaration:
 
 ```c
-
-    @include "scl.conf"
+   @include "scl.conf"
     
     hdfs(
         client-lib-dir("/opt/syslog-ng/lib/syslog-ng/java-modules/:<path-to-preinstalled-hadoop-libraries>")
@@ -36,8 +35,7 @@ Note the following limitations when using the {{% param "product.abbrev" %}} `hd
 The following example defines an `hdfs` destination using only the required parameters.
 
 ```c
-
-    @include "scl.conf"
+   @include "scl.conf"
     
     destination d_hdfs {
         hdfs(

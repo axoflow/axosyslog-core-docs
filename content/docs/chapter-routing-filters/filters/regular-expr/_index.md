@@ -16,8 +16,7 @@ Alternatively, if you do not need regular expressions, only wildcards, use **typ
 The following filter matches on hostnames starting with the `myhost` string, for example, on `myhost-1`, `myhost-2`, and so on.
 
 ```c
-
-    filter f_wildcard {host("myhost*" type(glob));};
+   filter f_wildcard {host("myhost*" type(glob));};
 
 ```
 
@@ -27,7 +26,6 @@ For details on using regular expressions in {{% param "product.abbrev" %}}, see 
 To filter for special control characters like the carriage return (CR), use the **\\r** escape prefix in {{% param "product.abbrev" %}} version 3.0 and 3.1. In {{% param "product.abbrev" %}} 3.2 and later, you can also use the `\\x` escape prefix and the ASCII code of the character. For example, to filter on carriage returns, use the following filter:
 
 ```c
-
-    filter f_carriage_return {match("\x0d" value ("MESSAGE"));};
+   filter f_carriage_return {match("\x0d" value ("MESSAGE"));};
 
 ```
