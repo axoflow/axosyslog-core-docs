@@ -12,7 +12,7 @@ The displayed metrics have the following structure.
 
 The type of the object (for example, `dst.file`, `tag`, `src.facility`)
 
-The ID of the object used in the `syslog-ng` configuration file, for example, `d_internal` or `source.src_tcp`. The `#0` part means that this is the first destination in the destination group.
+The ID of the object used in the `syslog-ng.conf` configuration file, for example, `d_internal` or `source.src_tcp`. The `#0` part means that this is the first destination in the destination group.
 
 The instance ID (destination) of the object, for example, the filename of a file destination, or the name of the application for a program source or destination.
 

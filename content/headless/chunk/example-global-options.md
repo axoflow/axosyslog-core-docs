@@ -4,7 +4,7 @@
 
 ## Example: Using global options
 
-To disable domain name resolving, add the following line to the `syslog-ng` configuration file:
+To disable domain name resolving, add the following line to the `syslog-ng.conf` configuration file:
 
 ```c
    options { use-dns(no); };

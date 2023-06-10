@@ -47,7 +47,7 @@ Other optional elements that can appear in log statements are parsers and rewrit
 
 ## Configuring {{% param "product.ose" %}}
 
-- The main body of the configuration file consists of object definitions: sources, destinations, logpaths define which log message are received and where they are sent. All identifiers, option names and attributes, and any other strings used in the `syslog-ng` configuration file are case sensitive. Object definitions (also called statements) have the following syntax:
+- The main body of the configuration file consists of object definitions: sources, destinations, logpaths define which log message are received and where they are sent. All identifiers, option names and attributes, and any other strings used in the `syslog-ng.conf` configuration file are case sensitive. Object definitions (also called statements) have the following syntax:
     
     ```c
         type-of-the-object identifier-of-the-object {<parameters>};

@@ -6,7 +6,7 @@ weight:  100
 
 A source is where `syslog-ng` receives log messages. Sources consist of one or more drivers, each defining where and how messages are received.
 
-To define a source, add a source statement to the `syslog-ng` configuration file using the following syntax:
+To define a source, add a source statement to the `syslog-ng.conf` configuration file using the following syntax:
 
 ```c
    source <identifier> {

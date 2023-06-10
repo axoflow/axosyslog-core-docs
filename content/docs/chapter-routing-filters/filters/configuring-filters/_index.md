@@ -6,7 +6,7 @@ weight:  100
 
 Filters perform log routing: a message passes the filter if the filter expression is true for the particular message. If a log statement includes filters, the messages are sent to the destinations only if they pass all filters of the log path. For example, a filter can select only the messages originating from a particular host. Complex filters can be created using filter functions and logical boolean expressions.
 
-To define a filter, add a filter statement to the `syslog-ng` configuration file using the following syntax:
+To define a filter, add a filter statement to the `syslog-ng.conf` configuration file using the following syntax:
 
 ```c
    filter <identifier> { <filter_type>("<filter_expression>"); };
