@@ -35,7 +35,7 @@ These two drivers behave similarly: they open an `AF_UNIX` socket and start list
 | Type:    | yes or no |
 | Default: | yes       |
 
-*Description:* Selects whether to keep connections open when syslog-ng is restarted, cannot be used with `unix-dgram()`.
+*Description:* Selects whether to keep connections open when `syslog-ng` is restarted, cannot be used with `unix-dgram()`.
 
 
 {{% include-headless "chunk/option-source-keep-timestamp.md" %}}

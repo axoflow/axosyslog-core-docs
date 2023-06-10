@@ -6,7 +6,7 @@ weight:  100
 
 This guide is intended for system administrators and consultants responsible for designing and maintaining logging solutions and log centers. It is also useful for IT decision makers looking for a tool to implement centralized logging in heterogeneous environments.
 
-The following skills and knowledge are necessary for a successful syslog-ng administrator:
+The following skills and knowledge are necessary for a successful `syslog-ng` administrator:
 
   - At least basic system administration knowledge.
 

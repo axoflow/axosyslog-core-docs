@@ -15,5 +15,4 @@ The following log message also notifies you of PENDING passphrases:
 
 ```c
    Waiting for password; keyfile='private.key'
-
 ```

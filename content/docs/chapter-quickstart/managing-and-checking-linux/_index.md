@@ -1,5 +1,5 @@
 ---
-title: "Managing and checking syslog-ng OSE service on Linux"
+title: "Managing and checking the syslog-ng service on Linux"
 weight:  700
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
@@ -17,7 +17,7 @@ If the service starts successfully, no output will be displayed.
 
 The following message indicates that {{% param "product.abbrev" %}} can not start (see [Checking {{% param "product.abbrev" %}} status](#check-syslog-ng-status)):
 
-`Job for syslog-ng.service failed because the control process exited with error code. See `systemctl status syslog-ng.service` and `journalctl -xe` for details.`
+    Job for syslog-ng.service failed because the control process exited with error code. See `systemctl status syslog-ng.service` and `journalctl -xe` for details.
 
 ## Stopping {{% param "product.abbrev" %}}
 

@@ -171,7 +171,7 @@ Default:
 
 0.1 (10%)
 
-*Description:* Limits the truncation of the disk-buffer file. Truncating the disk-buffer file can slow down the disk IO operations, but it saves disk space, so syslog-ng only truncates the file, if the possible disk gain is more than `truncate-size-ratio()` times `disk-buf-size()`.
+*Description:* Limits the truncation of the disk-buffer file. Truncating the disk-buffer file can slow down the disk IO operations, but it saves disk space, so `syslog-ng` only truncates the file, if the possible disk gain is more than `truncate-size-ratio()` times `disk-buf-size()`.
 
 {{% alert title="Warning" color="warning" %}}
 
