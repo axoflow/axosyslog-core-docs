@@ -48,7 +48,7 @@ Note that the `aggregate()` option has access to every message of the context, a
 *Description:* By default, the aggregated message that {{% param "product.abbrev" %}} generates is injected into the same place where the `grouping-by()` statement is referenced in the log path. To post the generated message into the `internal()` source instead, use the `inject-mode()` option in the definition of the parser.
 
 
-## Example: Sending triggered messages to the internal() source
+### Example: Sending triggered messages to the internal() source
 
 To send the generated messages to the `internal` source, use the `inject-mode("internal")` option:
 

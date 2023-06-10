@@ -27,7 +27,7 @@ Available in {{% param "product.abbrev" %}} version 3.8 and later.
 
   - *message*: A container element storing the message that is added to the new context when the action is executed.
     
-      - {{% include-headless "chunk/option-inherit-mode.md" %}}
+      - {{< include-headless "chunk/option-inherit-mode.md" >}}
         
         For details on the message context, see {{% xref "/docs/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-correlation/_index.md" %}} and {{% xref "/docs/chapter-parsers/chapter-patterndb/patterndb-triggers-actions/patterndb-actions-correlation/_index.md" %}}. For details on triggering messages, see {{% xref "/docs/chapter-parsers/chapter-patterndb/patterndb-triggers-actions/_index.md" %}}
 

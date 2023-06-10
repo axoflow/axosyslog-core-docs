@@ -18,4 +18,4 @@ The pattern databases are available under the Creative Commons Attribution-Share
 
 For legal details, the full text of the license is [available here](https://creativecommons.org/licenses/by-sa/3.0/us/legalcode).
 
-If you create patterns that are not available in the GitHub repository, consider sharing them with the community. To do this, open a GitHub issue, or {{< param "product.contact" >}}.
+If you create patterns that are not available in the GitHub repository, consider sharing them with the community. To do this, open a GitHub issue, or {{% param "product.contact" %}}.

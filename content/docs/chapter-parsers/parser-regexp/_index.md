@@ -8,7 +8,7 @@ The {{% param "product.abbrev" %}} application can parse fields from a message w
 
 {{% alert title="Note" color="info" %}}
 
-The `regexp-parser()` can create additional name-value pairs only if "named capture groups" are used in the regular expression, for example `(?\<test_field\>\\w+)`. For more information, see "named capture groups" in [PCRE documentation](https://www.pcre.org/current/doc/html/pcre2pattern.html#SEC16).
+The `regexp-parser()` can create additional name-value pairs only if "named capture groups" are used in the regular expression, for example `(?<test_field>\w+)`. For more information, see "named capture groups" in [PCRE documentation](https://www.pcre.org/current/doc/html/pcre2pattern.html#SEC16).
 
 {{% /alert %}}
 

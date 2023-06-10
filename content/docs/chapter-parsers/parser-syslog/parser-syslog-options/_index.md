@@ -10,7 +10,7 @@ The `syslog-parser()` has the following options:
 
 {{% include-headless "chunk/option-source-default-priority.md" %}}
 
-{{% include-headless "chunk/option-source-drop-invalid.md" %}}
+{{< include-headless "chunk/option-source-drop-invalid.md" >}}
 
 {{< include-headless "chunk/option-source-flags.md" >}}
 
