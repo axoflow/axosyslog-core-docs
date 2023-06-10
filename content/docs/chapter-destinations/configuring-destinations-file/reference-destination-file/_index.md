@@ -18,7 +18,7 @@ The `file()` driver outputs messages to the specified text file, or to a set of 
 
 {{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
-{{% include-headless "chunk/option-destination-flags-file.md" %}}
+{{< include-headless "chunk/option-destination-flags-file.md" >}}
 
 {{% include-headless "chunk/option-destination-flush-lines.md" %}}
 
