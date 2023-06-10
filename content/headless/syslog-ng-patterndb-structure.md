@@ -6,7 +6,7 @@ weight:  4900
 
 The pattern database is organized as follows:
 
-![](../Images/Figures/fig-patterndb-structure.png)
+![](/images/figures/fig-patterndb-structure.png)
 
   - The pattern database consists of rulesets. A ruleset consists of a Program Pattern and a set of rules: the rules of a ruleset are applied to log messages if the name of the application that sent the message matches the Program Pattern of the ruleset. The name of the application (the content of the ${PROGRAM} macro) is compared to the Program Patterns of the available rulesets, and then the rules of the matching rulesets are applied to the message. (If the content of the ${PROGRAM} macro is not the proper name of the application, you can use the `program-template()` option to specify it.)
 

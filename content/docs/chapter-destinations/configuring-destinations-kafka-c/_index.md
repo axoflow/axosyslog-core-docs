@@ -13,5 +13,5 @@ As of {{% param "product.abbrev" %}} version 3.21, the new C implementation of t
 
 ## How the C implementation of the kafka destination works with {{% param "product.abbrev" %}}
 
-![](../Images/Figures/fig-kafka-c-implementation.png)
+![](/images/figures/fig-kafka-c-implementation.png)
 

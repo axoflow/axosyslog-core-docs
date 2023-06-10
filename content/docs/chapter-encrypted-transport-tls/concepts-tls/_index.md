@@ -14,7 +14,7 @@ This chapter describes how to use TLS encryption when using the standard syslog 
 
 TLS uses certificates to authenticate and encrypt the communication, as illustrated on the following figure:
 
-![](../Images/Figures/fig-certificate-based-authentication01.png)
+![](/images/figures/fig-certificate-based-authentication01.png)
 
 The client authenticates the server by requesting its certificate and public key. Optionally, the server can also request a certificate from the client, thus mutual authentication is also possible.
 

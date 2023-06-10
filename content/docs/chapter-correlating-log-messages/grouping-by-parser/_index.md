@@ -11,7 +11,7 @@ The {{% param "product.abbrev" %}} application can correlate log messages that m
 
 ## How the grouping-by() parser works
 
-![](../Images/Figures/fig-grouping-by-parser-works.png)
+![](/images/figures/fig-grouping-by-parser-works.png)
 
 The `grouping-by()` parser has three options that determine if a message is added to a context: `scope()`, `key()`, and `where()`.
 
