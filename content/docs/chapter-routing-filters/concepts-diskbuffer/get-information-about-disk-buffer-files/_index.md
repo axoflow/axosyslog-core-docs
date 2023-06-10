@@ -6,6 +6,6 @@ weight:  500
 
 ## Purpose
 
-This section describes how to get information about disk-buffer files used in {{% param "product.name" %}} ({{% param "product.abbrev" %}}).
+This section describes how to get information about disk-buffer files used in {{% param "product.name" %}}.
 
 {{< include-headless "chunk/get-info-about-disk-buffer-files-intro.md" >}}

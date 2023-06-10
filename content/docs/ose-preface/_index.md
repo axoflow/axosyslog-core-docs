@@ -6,4 +6,4 @@ weight:  700
 
 Welcome to the {{% param "product.name" %}} {{% param "product.version" %}} Administration Guide.
 
-This document describes how to configure and manage {{% param "product.name" %}} ({{% param "product.abbrev" %}}). Background information for the technology and concepts used by the product is also discussed.
+This document describes how to configure and manage {{% param "product.name" %}}. Background information for the technology and concepts used by the product is also discussed.

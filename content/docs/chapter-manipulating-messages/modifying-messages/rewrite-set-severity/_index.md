@@ -8,7 +8,7 @@ It is possible to configure the `severity` field with the `set-severity()` rewri
 
 {{% alert title="Note" color="info" %}}
 
-If the parameter value is not a valid parameter value, the function ignores it and sends a debug message, but the {{% param "product.name" %}} ({{% param "product.abbrev" %}}) application still sends the message.
+If the parameter value is not a valid parameter value, the function ignores it and sends a debug message, but the {{% param "product.name" %}} application still sends the message.
 
 {{% /alert %}}
 

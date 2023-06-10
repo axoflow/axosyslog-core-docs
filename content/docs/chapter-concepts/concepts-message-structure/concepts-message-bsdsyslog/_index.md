@@ -30,6 +30,6 @@ The different parts of the message are explained in the following sections.
 
 {{% alert title="Note" color="info" %}}
 
-The {{% param "product.name" %}} ({{% param "product.abbrev" %}}) application supports longer messages as well. For details, see the `log-msg-size()` option in {{% xref "/docs/chapter-global-options/reference-options/_index.md" %}}. However, it is not recommended to enable messages larger than the packet size when using UDP destinations.
+The {{% param "product.name" %}} application supports longer messages as well. For details, see the `log-msg-size()` option in {{% xref "/docs/chapter-global-options/reference-options/_index.md" %}}. However, it is not recommended to enable messages larger than the packet size when using UDP destinations.
 
 {{% /alert %}}

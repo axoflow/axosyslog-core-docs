@@ -6,7 +6,7 @@ weight:  900
 
 ## Purpose
 
-This section describes orphan disk-buffer files used in {{% param "product.name" %}}({{% param "product.abbrev" %}}).
+This section describes orphan disk-buffer files used in {{% param "product.name" %}}.
 
 
 ## Orphan disk-buffer files

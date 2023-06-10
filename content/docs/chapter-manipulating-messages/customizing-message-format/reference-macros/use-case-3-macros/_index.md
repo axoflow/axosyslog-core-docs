@@ -25,7 +25,7 @@ Using the $DESTIP, the $DESTPORT, and the $PROTO macros is relevant when multipl
 
 ## Macros: $DESTIP, $DESTPORT, and $PROTO
 
-To solve either of the challenges listed previously, {{% param "product.name" %}} ({{% param "product.abbrev" %}}) supports the following macros that you can include in your configuration:
+To solve either of the challenges listed previously, {{% param "product.name" %}} supports the following macros that you can include in your configuration:
 
   - [`$DESTIP`]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-destip" >}})
 

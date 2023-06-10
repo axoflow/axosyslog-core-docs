@@ -4,7 +4,7 @@ weight:  6300
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-From version 3.27.1, the {{% param "product.name" %}} ({{% param "product.abbrev" %}}) application can send log messages to [Sumo Logic](https://www.sumologic.com/), a cloud-based log management and security analytics service, by using the `sumologic-http()` and `sumologic-syslog()` destinations.
+From version 3.27.1, the {{% param "product.name" %}} application can send log messages to [Sumo Logic](https://www.sumologic.com/), a cloud-based log management and security analytics service, by using the `sumologic-http()` and `sumologic-syslog()` destinations.
 
 
 ## Prerequisites

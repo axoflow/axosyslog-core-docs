@@ -6,7 +6,7 @@ weight:  700
 
 ## Purpose
 
-This section describes printing the content of the disk-buffer files used in {{% param "product.name" %}}({{% param "product.abbrev" %}}).
+This section describes printing the content of the disk-buffer files used in {{% param "product.name" %}}.
 
 
 ## Command syntax

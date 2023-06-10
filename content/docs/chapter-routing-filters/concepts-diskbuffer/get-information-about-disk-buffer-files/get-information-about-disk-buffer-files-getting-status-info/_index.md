@@ -6,7 +6,7 @@ weight:  300
 
 ## Purpose
 
-This section describes getting the status information of the disk-buffer files used in {{% param "product.name" %}} ({{% param "product.abbrev" %}}).
+This section describes getting the status information of the disk-buffer files used in {{% param "product.name" %}}.
 
 
 ## Command syntax

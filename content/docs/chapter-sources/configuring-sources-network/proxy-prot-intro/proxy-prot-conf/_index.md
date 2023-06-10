@@ -4,7 +4,7 @@ weight:  300
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-This section provides information about enabling Proxy Protocol support in your `network()` source options, and an example configuration and output to illustrate how the Proxy Protocol method works in {{% param "product.name" %}} ({{% param "product.abbrev" %}}).
+This section provides information about enabling Proxy Protocol support in your `network()` source options, and an example configuration and output to illustrate how the Proxy Protocol method works in {{% param "product.name" %}}.
 
 For more information about the working mechanism of the Proxy Protocol, see {{% xref "/docs/chapter-sources/configuring-sources-network/proxy-prot-intro/proxy-prot-w-mech/_index.md" %}}.
 

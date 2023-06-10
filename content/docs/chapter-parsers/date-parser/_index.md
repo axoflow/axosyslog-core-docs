@@ -8,7 +8,7 @@ The date parser can extract dates from non-syslog messages. It operates by defau
 
 {{% alert title="Note" color="info" %}}
 
-Note that parsing will fail if the format string does not match the entire template or field. Since by default {{% param "product.name" %}} ({{% param "product.abbrev" %}}) uses the ${MESSAGE} part of the log message, parsing will fail, unless the log message contains only a date, but that is unlikely, so practically you will have to segment the message (for example, using a [csv-parser()]({{< relref "/docs/chapter-parsers/csv-parser/_index.md" >}})) before using the `date-parser()`. You can also use `date-parser()` to parse dates received in a JSON or key-value-formatted log message.
+Note that parsing will fail if the format string does not match the entire template or field. Since by default {{% param "product.name" %}} uses the ${MESSAGE} part of the log message, parsing will fail, unless the log message contains only a date, but that is unlikely, so practically you will have to segment the message (for example, using a [csv-parser()]({{< relref "/docs/chapter-parsers/csv-parser/_index.md" >}})) before using the `date-parser()`. You can also use `date-parser()` to parse dates received in a JSON or key-value-formatted log message.
 
 {{% /alert %}}
 

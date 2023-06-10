@@ -6,7 +6,7 @@ weight:  1100
 
 ## Purpose
 
-This section describes how to read messages from an orphan disk-buffer file by using a separate {{% param "product.name" %}} ({{% param "product.abbrev" %}}) process running parallel to the already running {{% param "product.abbrev" %}} instance.
+This section describes how to read messages from an orphan disk-buffer file by using a separate {{% param "product.name" %}} process running parallel to the already running {{% param "product.abbrev" %}} instance.
 
 
 ## Orphan disk-buffer files

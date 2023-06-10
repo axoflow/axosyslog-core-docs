@@ -6,7 +6,7 @@ weight:  2900
 
 The [PAN-OS](https://docs.paloaltonetworks.com/pan-os.html) (a short version of Palo Alto Networks Operating System) parser can parse log messages originating from [Palo Alto Networks](https://www.paloaltonetworks.com/) devices. Even though these messages completely comply to the RFC standards, their `MESSAGE` part is not a plain text. Instead, the `MESSAGE` part contains a data structure that requires additional parsing.
 
-The `panos-parser()` of {{% param "product.name" %}} ({{% param "product.abbrev" %}}) solves this problem, and can separate PAN-OS log messages to name-value pairs.
+The `panos-parser()` of {{% param "product.name" %}} solves this problem, and can separate PAN-OS log messages to name-value pairs.
 
 For details on using value-pairs in {{% param "product.abbrev" %}}, see {{% xref "/docs/chapter-concepts/concepts-value-pairs/_index.md" %}}.
 

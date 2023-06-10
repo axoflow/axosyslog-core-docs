@@ -12,4 +12,4 @@ This chapter provides a very brief introduction into configuring the {{% param "
 
   - To configure {{% param "product.abbrev" %}} as a relay that receives log messages from client hosts and forwards them to a central logserver, see {{% xref "/docs/chapter-quickstart/configure-servers/_index.md" %}}.
 
-  - For information about managing and checking {{% param "product.name" %}} ({{% param "product.abbrev" %}}) services on Linux, see {{% xref "/docs/chapter-quickstart/managing-and-checking-linux/_index.md" %}}.
+  - For information about managing and checking {{% param "product.name" %}} services on Linux, see {{% xref "/docs/chapter-quickstart/managing-and-checking-linux/_index.md" %}}.
