@@ -1,23 +1,23 @@
 ---
-title: "The way syslog-ng interacts with the database"
+title: "Interacting with the database"
 weight:  500
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
 
-## Used SQL operations by syslog-ng
+## SQL operations
 
 *Create table:*
 
-  - If the given table does not exist, syslog-ng tries to create it with the given column types.
+  - If the given table does not exist, `syslog-ng` tries to create it with the given column types.
 
   - The {{% param "product.abbrev" %}} application automatically creates the required tables and columns, if the user account used to connect to the database has the required privileges.
 
-  - If syslog-ng cannot create or alter a table, it tries to do it again when it reaches the next `time-reopen()`.
+  - If `syslog-ng` cannot create or alter a table, it tries to do it again when it reaches the next `time-reopen()`.
 
 *Alter table:*
 
-  - If the table structure is different from given structure in an existing table, syslog-ng tries to add columns in this table but never will delete or modify an existing column.
+  - If the table structure is different from given structure in an existing table, `syslog-ng` tries to add columns in this table but never will delete or modify an existing column.
 
   - If {{% param "product.abbrev" %}} cannot create or alter a table, it tries to do it again when reach the next `time-reopen()`.
 
@@ -31,7 +31,7 @@ weight:  500
 
   - The {{% param "product.abbrev" %}} application automatically performs the escaping required to insert the messages into the database.
 
-  - If insert returns with error, syslog-ng tries to insert the message +two times by default, then drops it. Retrying time is the value of `time-reopen()`.
+  - If insert returns with error, `syslog-ng` tries to insert the message +two times by default, then drops it. Retrying time is the value of `time-reopen()`.
 
 
 
@@ -67,7 +67,7 @@ The {{% param "product.abbrev" %}} application uses UTF-8 by default when writes
 
 ## Macros:
 
-The value of ${SEQNUM} macro will be overrided by sql driver regardless of local or relayed incoming message.
+The value of ${SEQNUM} macro will be overridden by sql driver regardless of local or relayed incoming message.
 
-It will be grown continously.
+It will be grown continuously.
 

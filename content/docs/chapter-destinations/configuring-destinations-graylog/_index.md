@@ -27,7 +27,7 @@ You can send syslog messages to Graylog using the `graylog2()` destination. The 
 
 1.  On the Graylog side, configure a GELF TCP input. For more information, see the relevant [Graylog](http://docs.graylog.org) documentation.
 
-2.  On the syslog-ng side, configure the name or IP address of the host running Graylog.
+2.  On the `syslog-ng` side, configure the name or IP address of the host running Graylog.
     
     ```c
         destination d_graylog {
@@ -38,11 +38,11 @@ You can send syslog messages to Graylog using the `graylog2()` destination. The 
         };
     ```
     
-    If you parsed your messages using syslog-ng, the template also forwards any name-value pairs where the name starts with a dot or underscore.
+    If you parsed your messages using `syslog-n`g, the template also forwards any name-value pairs where the name starts with a dot or underscore.
 
 {{% alert title="Note" color="info" %}}
 
-If there is a dot in a field name other than the first character, syslog-ng creates nested JSON while formatting the message. Nested JSON is not automatically parsed in GELF messages.
+If there is a dot in a field name other than the first character, `syslog-ng` creates nested JSON while formatting the message. Nested JSON is not automatically parsed in GELF messages.
 
 {{% /alert %}}
 
@@ -50,13 +50,13 @@ If there is a dot in a field name other than the first character, syslog-ng crea
 
 ## Sending nested JSON to Graylog
 
-While sending nested JSON inside GELF is possible, it is not convenient. If you use parsing and normalization in syslog-ng and dot notation in field names, use pure JSON instead of GELF to forward your messages.
+While sending nested JSON inside GELF is possible, it is not convenient. If you use parsing and normalization and dot notation in field names, use pure JSON instead of GELF to forward your messages.
 
 1.  On the Graylog side, create a new raw TCP input.
 
 2.  Still in Graylog, once the raw TCP input is ready, add a JSON extractor to it.
 
-3.  On the syslog-ng side, use a network destination combined with a template utilizing format-json as shown in the example below:
+3.  On the `syslog-ng` side, use a network destination combined with a template utilizing format-json as shown in the example below:
     
     ```c
         destination d_jsontcp {

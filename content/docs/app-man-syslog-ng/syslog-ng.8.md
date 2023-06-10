@@ -1,5 +1,5 @@
 ---
-title: "The syslog-ng manual page"
+title: "The `syslog-ng` manual page"
 weight:  4900
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
@@ -24,7 +24,7 @@ weight:  4900
 
 
 
-The {{% param "product.ose" %}} application is a flexible and highly scalable system logging application. Typically, {{% param "product.ose" %}} is used to manage log messages and implement centralized logging, where the aim is to collect the log messages of several devices on a single, central log server. The different devices - called syslog-ng clients - all run {{% param "product.ose" %}}, and collect the log messages from the various applications, files, and other sources. The clients send all important log messages to the remote {{% param "product.ose" %}} server, where the server sorts and stores them.
+The {{% param "product.ose" %}} application is a flexible and highly scalable system logging application. Typically, {{% param "product.ose" %}} is used to manage log messages and implement centralized logging, where the aim is to collect the log messages of several devices on a single, central log server. The different devices - called clients - all run {{% param "product.ose" %}}, and collect the log messages from the various applications, files, and other sources. The clients send all important log messages to the remote {{% param "product.ose" %}} server, where the server sorts and stores them.
 
 
 
@@ -46,41 +46,41 @@ The {{% param "product.ose" %}} application is a flexible and highly scalable sy
     
     Note that the capabilities are not case sensitive, the following command is also good: `/opt/syslog-ng/sbin/syslog-ng -Fv --caps CAP_SYS_ADMIN,CAP_CHOWN,CAP_DAC_OVERRIDE,CAP_NET_BIND_SERVICE,CAP_FOWNER=pi`
     
-    For details on the capability flags, see the following man pages: `\>cap_from_text(3)` and `\>capabilities(7)`
+    For details on the capability flags, see the following man pages: `cap_from_text(3)` and `capabilities(7)`
 
-- `--cfgfile \<file\>` or `-f \<file\>`
+- `--cfgfile <file>` or `-f <file>`
     
     Use the specified configuration file.
 
-- `--chroot \<dir\>` or `-C \<dir\>`
+- `--chroot <dir>` or `-C <dir>`
     
     Change root to the specified directory. The configuration file is read after chrooting so, the configuration file must be available within the `chroot`. That way it is also possible to reload the {{% param "product.syslog-ng" %}} configuration after chrooting. However, note that the `--user` and `--group`options are resolved before chrooting.
 
-- `--control \<file\>` or `-c\<file\>`
+- `--control <file>` or `-c<file>`
     
-    Set the location of the syslog-ng control socket. Default value: `\>/var/run/syslog-ng.ctl`
+    Set the location of the `syslog-ng` control socket. Default value: `/var/run/syslog-ng.ctl`
 
 - `--debug` or `-d`
     
-    Start syslog-ng in debug mode.
+    Start `syslog-ng` in debug mode.
 
 - `--default-modules`
     
-    A comma-separated list of the modules that are loaded automatically. Modules not loaded automatically can be loaded by including the `@module \<modulename\>` statement in the {{% param "product.ose" %}} configuration file. Available only in {{% param "product.ose" %}} version 4.1 and later.
+    A comma-separated list of the modules that are loaded automatically. Modules not loaded automatically can be loaded by including the `@module <modulename>` statement in the {{% param "product.ose" %}} configuration file. Available only in {{% param "product.ose" %}} version 4.1 and later.
 
 - `--enable-core`
     
     Enable {{% param "product.ose" %}} to write core files in case of a crash to help support and debugging.
 
-- `--fd-limit \<number\>`
+- `--fd-limit <number>`
     
-    Set the minimal number of required file descriptors (`fd-s`). This sets how many files syslog-ng can keep open simultaneously. Default value: `4096`. Note that this does not override the global ulimit setting of the host.
+    Set the minimal number of required file descriptors (`fd-s`). This sets how many files `syslog-ng` can keep open simultaneously. Default value: `4096`. Note that this does not override the global ulimit setting of the host.
 
 - `--foreground` or `-F`
     
-    Do not daemonize, run in the foreground. When running in the foreground, {{% param "product.ose" %}} starts from the current directory (`$CWD`) so it can create core files (normally, {{% param "product.ose" %}} starts from `\>$PREFIX/var`).
+    Do not daemonize, run in the foreground. When running in the foreground, {{% param "product.ose" %}} starts from the current directory (`$CWD`) so it can create core files (normally, {{% param "product.ose" %}} starts from `/$PREFIX/var`).
 
-- `--group \<group\>` or `-g \<group\>`
+- `--group <group>` or `-g <group>`
     
     Switch to the specified group after initializing the configuration file.
 
@@ -98,33 +98,33 @@ The {{% param "product.ose" %}} application is a flexible and highly scalable sy
     
     To run {{% param "product.ose" %}} with specific capabilities, use the `--caps` option.
 
-- `--persist-file \<persist-file\>` or `-R \<persist-file\>`
+- `--persist-file <persist-file>` or `-R <persist-file>`
     
-    Set the path and name of the `\>syslog-ng.persist` file where the persistent options and data are stored.
+    Set the path and name of the `syslog-ng.persist` file where the persistent options and data are stored.
 
-- `--pidfile \<pidfile\>` or `-p \<pidfile\>`
+- `--pidfile <pidfile>` or `-p <pidfile>`
     
     Set path to the PID file where the pid of the main process is stored.
 
-- `--preprocess-into \<output-file\>`
+- `--preprocess-into <output-file>`
     
     After processing the configuration file and resolving included files and variables, write the resulting configuration into the specified output file. Available only in {{% param "product.ose" %}} 4 F1 and later.
 
-- `--process-mode \<mode\>`
+- `--process-mode <mode>`
     
-    Sets how to run {{% param "product.ose" %}}: in the `foreground` (mainly used for debugging), in the `background` as a daemon, or in `safe-background` mode. By default, syslog-ng runs in `safe-background` mode. This mode creates a supervisor process called `supervising syslog-ng`, that restarts {{% param "product.ose" %}} if it crashes.
+    Sets how to run {{% param "product.ose" %}}: in the `foreground` (mainly used for debugging), in the `background` as a daemon, or in `safe-background` mode. By default, `syslog-ng` runs in `safe-background` mode. This mode creates a supervisor process called `supervising syslog-ng`, that restarts {{% param "product.ose" %}} if it crashes.
 
 - `--stderr` or `-e`
 
-    Log internal messages of {{% param "product.ose" %}} to `stderr`. Mainly used for debugging purposes in conjunction with the `--foreground` option. If not specified, syslog-ng will log such messages to its internal source.
+    Log internal messages of {{% param "product.ose" %}} to `stderr`. Mainly used for debugging purposes in conjunction with the `--foreground` option. If not specified, `syslog-ng` logs such messages to its internal source.
 
 - `--syntax-only` or `-s`
     
     Verify that the configuration file is syntactically correct and exit.
 
-- `--user \<user\>` or `-u \<user\>`
+- `--user <user>` or `-u <user>`
     
-    Switch to the specified user after initializing the configuration file (and optionally chrooting). Note that it is not possible to reload the syslog-ng configuration if the specified user has no privilege to create the `\>/dev/log` file.
+    Switch to the specified user after initializing the configuration file (and optionally chrooting). Note that it is not possible to reload the `syslog-ng` configuration if the specified user has no privilege to create the `/dev/log` file.
 
 - `--verbose` or `-v`
     
@@ -148,7 +148,7 @@ The {{% param "product.ose" %}} application is a flexible and highly scalable sy
 
 ## See also
 
-<span class="mcFormatColor" style="color: #04aada;">The syslog-ng.conf manual page</span>
+<span class="mcFormatColor" style="color: #04aada;">The `syslog-ng.conf` manual page</span>
 
 {{% alert title="Note" color="info" %}}
 

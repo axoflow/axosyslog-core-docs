@@ -7,7 +7,7 @@ weight:  4900
 
 ## Name
 
-`syslog-debun` — syslog-ng DEBUg buNdle generator
+`syslog-debun` — `syslog-ng` DEBUg buNdle generator
 
 
 
@@ -169,7 +169,7 @@ Collect `pcap` and debug mode output following this scenario:
 
 - Start packet capture with default parameters (`-p`)
 - Wait 5 seconds (`-w 5`)
-- Stop syslog-ng
+- Stop {{% param "product.ose" %}}
 - Start {{% param "product.ose" %}} in debug mode with default parameters (`-d`)
 - Wait 10 seconds (`-t 10`)
 - Stop {{% param "product.ose" %}} debugging
@@ -184,7 +184,7 @@ Collect `pcap` and debug mode output following this scenario:
 
 ## See also
 
-<span class="mcFormatColor" style="color: #04aada;">The syslog-ng.conf manual page</span>
+<span class="mcFormatColor" style="color: #04aada;">The `syslog-ng.conf` manual page</span>
 
 {{% alert title="Note" color="info" %}}
 

@@ -161,7 +161,7 @@ When `--interval` and `--number` are used together, `loggen` will send messages 
 
 - `--version` or `-V`
     
-    Display version number of syslog-ng.
+    Display version number of `syslog-ng`.
 
 ## Examples
 
@@ -207,7 +207,7 @@ loggen 127.0.0.1 1061 --read-file -
 
 ## See also
 
-<span class="mcFormatColor" style="color: #04aada;">The syslog-ng.conf manual page</span>
+<span class="mcFormatColor" style="color: #04aada;">The `syslog-ng.conf` manual page</span>
 
 {{% alert title="Note" color="info" %}}
 

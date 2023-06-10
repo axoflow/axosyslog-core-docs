@@ -102,13 +102,13 @@ The following example sets the `dont-create-tables` and `explicit-commits` flags
 | Type:    | string list                           |
 | Default: | "date", "facility", "host", "program" |
 
-*Description:* The list of columns that are indexed by the database to speed up searching. To disable indexing for the destination, include the empty `indexes()` parameter in the destination, simply omitting the `indexes` parameter will cause syslog-ng to request indexing on the default columns.
+*Description:* The list of columns that are indexed by the database to speed up searching. To disable indexing for the destination, include the empty `indexes()` parameter in the destination, simply omitting the `indexes` parameter will cause `syslog-ng` to request indexing on the default columns.
 
 The {{% param "product.abbrev" %}} application will create the name of indexes automaticaly with the following method:
 
-  - In case of MsSQL, PostgreSQL, MySQL or SQLite or (Oracle but tablename \< 30 characters): `{table}_{column}_idx`.
+  - In case of MsSQL, PostgreSQL, MySQL or SQLite or (Oracle but tablename < 30 characters): `{table}_{column}_idx`.
 
-  - In case of Oracle and tablename \> 30 characters: `md5sum of {table}_{column}-1` and the first character will be replaced by "i" character and the md5sum will be truncated to 30 characters.
+  - In case of Oracle and tablename > 30 characters: `md5sum of {table}_{column}-1` and the first character will be replaced by "i" character and the md5sum will be truncated to 30 characters.
 
 {{% include-headless "chunk/option-destination-local-timezone.md" %}}
 

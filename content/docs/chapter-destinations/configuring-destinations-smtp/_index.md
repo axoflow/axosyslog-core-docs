@@ -34,10 +34,10 @@ The following example defines an `smtp()` destination using only the required pa
         smtp(
             host("localhost")
             port(25)
-            from("syslog-ng alert service" "noreply@example.com")
+            from("alert service" "noreply@example.com")
             to("Admin #1" "admin1@example.com")
             subject("[ALERT] Important log message of $LEVEL condition received from $HOST/$PROGRAM!")
-            body("Hi!\nThe syslog-ng alerting service detected the following important log message:\n $MSG\n-- \nsyslog-ng\n")
+            body("Hi!\nThe alerting service detected the following important log message:\n $MSG\n-- \n")
         );
     };
 ```

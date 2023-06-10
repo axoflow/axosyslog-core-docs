@@ -53,7 +53,7 @@ The PRI part of the syslog message (known as Priority value) represents the Faci
 
 {{% alert title="Note" color="info" %}}
 
-Facility codes may slightly vary between different platforms. The syslog-ng application accepts facility codes as numerical values as well.
+Facility codes may slightly vary between different platforms. The `syslog-ng` application accepts facility codes as numerical values as well.
 
 {{% /alert %}}
 
@@ -166,7 +166,7 @@ The HEADER part contains the following elements:
 
 {{% alert title="Note" color="info" %}}
 
-The syslog-ng application supports other timestamp formats as well, like ISO, or the PIX extended format. The timestamp used in the IETF-syslog protocol is derived from RFC3339, which is based on ISO8601. For details, see the `ts-format()` option in {{% xref "/docs/chapter-global-options/reference-options/_index.md" %}}.
+The {{% param "product.ose" %}} application supports other timestamp formats as well, like ISO, or the PIX extended format. The timestamp used in the IETF-syslog protocol is derived from RFC3339, which is based on ISO8601. For details, see the `ts-format()` option in {{% xref "/docs/chapter-global-options/reference-options/_index.md" %}}.
 
 {{% /alert %}}
 
@@ -184,7 +184,7 @@ The {{% param "product.abbrev" %}} application will truncate the following field
 
 ## The STRUCTURED-DATA message part
 
-The STRUCTURED-DATA message part may contain meta- information about the syslog message, or application-specific information such as traffic counters or IP addresses. STRUCTURED-DATA consists of data blocks enclosed in brackets (*[]*). Every block includes the ID of the block, and one or more *name=value* pairs. The syslog-ng application automatically parses the STRUCTURED-DATA part of syslog messages, which can be referenced in macros (for details, see {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" %}}). An example STRUCTURED-DATA block looks like:
+The STRUCTURED-DATA message part may contain meta- information about the syslog message, or application-specific information such as traffic counters or IP addresses. STRUCTURED-DATA consists of data blocks enclosed in brackets (*[]*). Every block includes the ID of the block, and one or more *name=value* pairs. The `syslog-ng` application automatically parses the STRUCTURED-DATA part of syslog messages, which can be referenced in macros (for details, see {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" %}}). An example STRUCTURED-DATA block looks like:
 
 ```c
    [exampleSDID@0 iut="3" eventSource="Application" eventID="1011"][examplePriority@0 class="high"]

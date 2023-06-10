@@ -9,7 +9,7 @@ weight:  4900
 
 ## Name
 
-`pdbtool` — An application to test and convert syslog-ng pattern database rules
+`pdbtool` — An application to test and convert pattern database rules
 
 
 
@@ -157,7 +157,7 @@ The `match` command has the following options:
 
 - `--filter=\<filter-expression\>` or `-F`
     
-    Print only messages matching the specified syslog-ng filter expression.
+    Print only messages matching the specified `syslog-ng` filter expression.
 
 - `--message` or `-M`
     
@@ -173,7 +173,7 @@ The `match` command has the following options:
 
 - `--template=\<template-expression\>` or `-T`
     
-    A syslog-ng template expression that is used to format the output messages.
+    A `syslog-ng` template expression that is used to format the output messages.
 
 - `--verbose` or `-v`
     
@@ -339,9 +339,9 @@ pdbtool test --validate /home/me/mypatterndb.pdb
 
 [<span class="mcFormatColor" style="color: #04aada;">AxoSyslog documentation</span>](https://axoflow.com/docs/)
 
-<span class="mcFormatColor" style="color: #04aada;">The syslog-ng.conf manual page</span>
+<span class="mcFormatColor" style="color: #04aada;">The `syslog-ng.conf` manual page</span>
 
-<span class="mcFormatColor" style="color: #04aada;">The syslog-ng manual page</span>
+<span class="mcFormatColor" style="color: #04aada;">The `syslog-ng` manual page</span>
 
 {{% alert title="Note" color="info" %}}
 

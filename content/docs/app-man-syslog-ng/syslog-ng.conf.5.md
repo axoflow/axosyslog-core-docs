@@ -1,5 +1,5 @@
 ---
-title: "The syslog-ng.conf manual page"
+title: "The `syslog-ng.conf` manual page"
 weight:  4900
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
@@ -7,7 +7,7 @@ weight:  4900
 
 ## Name
 
-`syslog-ng.conf` — syslog-ng configuration file
+`syslog-ng.conf` — configuration file
 
 
 
@@ -29,7 +29,7 @@ The {{% param "product.ose" %}} application is a flexible and highly scalable sy
 
 ## Basic concepts of {{% param "product.ose" %}}
 
-The {{% param "product.ose" %}} application reads incoming messages and forwards them to the selected destinations. The syslog-ng application can receive messages from files, remote hosts, and other sources.
+The {{% param "product.ose" %}} application reads incoming messages and forwards them to the selected destinations. The {{% param "product.ose" %}} application can receive messages from files, remote hosts, and other sources.
 
 <span id="idm45287286176944"></span>
 
@@ -47,7 +47,7 @@ Other optional elements that can appear in log statements are parsers and rewrit
 
 ## Configuring {{% param "product.ose" %}}
 
-- The main body of the configuration file consists of object definitions: sources, destinations, logpaths define which log message are received and where they are sent. All identifiers, option names and attributes, and any other strings used in the syslog-ng configuration file are case sensitive. Object definitions (also called statements) have the following syntax:
+- The main body of the configuration file consists of object definitions: sources, destinations, logpaths define which log message are received and where they are sent. All identifiers, option names and attributes, and any other strings used in the `syslog-ng` configuration file are case sensitive. Object definitions (also called statements) have the following syntax:
     
     ```c
         type-of-the-object identifier-of-the-object {<parameters>};
@@ -166,7 +166,7 @@ options { use-dns(no); };
 ```
 
 
-The sources, destinations, and filters available in {{% param "product.ose" %}} are listed below. For details, see the [{{% param "product.ose" %}} Documentation page](https://www.syslog-ng.com).
+The sources, destinations, and filters available in {{% param "product.ose" %}} are listed below. For details, see the [{{% param "product.ose" %}} documentation](https://axoflow.com/docs/).
 
 
 ## Table: Source drivers available in {{% param "product.ose" %}}
@@ -197,7 +197,7 @@ The sources, destinations, and filters available in {{% param "product.ose" %}} 
 
 <span id="idm45287286060496"></span>
 
-## Table 2. Destination drivers available in syslog-ng
+## Table 2. Available destination drivers
 
 | Name                | Description                                                                                                                                                                                         |
 | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -229,7 +229,7 @@ The sources, destinations, and filters available in {{% param "product.ose" %}} 
 
 <span id="idm45287285998944"></span>
 
-## Table 3. Filter functions available in syslog-ng OSE
+## Table 3. Filter functions
 
 | Name                       | Description                                                                               |
 | -------------------------- | ----------------------------------------------------------------------------------------- |
@@ -258,7 +258,7 @@ The sources, destinations, and filters available in {{% param "product.ose" %}} 
 
 ## See also
 
-<span class="mcFormatColor" style="color: #04aada;">The syslog-ng manual page</span>
+<span class="mcFormatColor" style="color: #04aada;">The `syslog-ng` manual page</span>
 
 {{% alert title="Note" color="info" %}}
 
