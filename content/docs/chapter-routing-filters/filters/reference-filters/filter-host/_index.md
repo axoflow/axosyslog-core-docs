@@ -12,5 +12,4 @@ weight:  500
 
 ```c
    filter demo_filter { host("example") };
-
 ```

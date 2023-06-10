@@ -10,5 +10,4 @@
         destination(d1); destination(d2); ...
         flags(flag1[, flag2...]);
     };
-
 ```

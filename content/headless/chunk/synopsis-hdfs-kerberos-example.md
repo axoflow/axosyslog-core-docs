@@ -9,5 +9,4 @@
         kerberos-principal("hdfs-hdpkerberos@MYREALM")
         hdfs-file("/var/hdfs/test.log"));
     };
-
 ```

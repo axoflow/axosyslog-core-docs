@@ -39,7 +39,6 @@ The {{% param "product.abbrev" %}} application can automatically execute scripts
         for i in `find /var/log/apache2/ -type d`; do
             echo "file(\"$i/access.log\" flags(no-parse) program-override(\"apache2\"));";
         done;
-    
     ```
     
     The script generates an output similar to this one, where `service\*` is the actual name of a subdirectory:
@@ -47,7 +46,6 @@ The {{% param "product.abbrev" %}} application can automatically execute scripts
     ```c
         file("/var/log/apache2/service1/access.log" flags(no-parse) program-override("apache2"));
         file("/var/log/apache2/service2/access.log" flags(no-parse) program-override("apache2"));
-    
     ```
 
 5.  Include the `plugin.conf` file in the `syslog-ng.conf` file — or a file already included into `syslog-ng.conf`. Version 3.7 and newer automatically includes the `\*.conf` files from the `\<directory-where-syslog-ng-is-installed\>/scl/\*/` directories. For details on including configuration files, see {{% xref "/docs/chapter-configuration-file/large-configs/including-config-files/_index.md" %}}.

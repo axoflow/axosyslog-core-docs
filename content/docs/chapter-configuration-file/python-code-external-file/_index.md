@@ -20,7 +20,6 @@ When referencing a Python class from an external file in the `class()` option of
         source(src);
         destination(d_python_to_file);
     };
-
 ```
 
 {{% include-headless "wnt/note-python-persist-name.md" %}}

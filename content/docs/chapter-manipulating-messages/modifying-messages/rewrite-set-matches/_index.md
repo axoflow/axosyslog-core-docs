@@ -25,7 +25,6 @@ To reset match variables to be empty, use the `unset-matches()` rewrite rule.
    rewrite <name_of_the_rule> {
         set-matches("<list-expression or list-based template function>");
     };
-
 ```
 
 
@@ -40,7 +39,6 @@ In the following two examples, **$1**, **$2**, and **$3** will be set to **foo**
    rewrite {
         set-matches("foo,bar,baz");
     };
-
 ```
 
 **Example using a list template function:**
@@ -49,6 +47,5 @@ In the following two examples, **$1**, **$2**, and **$3** will be set to **foo**
    rewrite {
         set-matches("$(explode ':' 'foo:bar:baz')");
     };
-
 ```
 

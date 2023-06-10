@@ -17,7 +17,6 @@ Available in {{% param "product.abbrev" %}} version 3.10 and later.
             <list-of-value-pairs-options>
         );
     };
-
 ```
 
 
@@ -33,6 +32,5 @@ The following example creates a new name-value pair called `username`, adds the 
             key('.apache.*' rekey(add-prefix("webserver")))
         );
     };
-
 ```
 

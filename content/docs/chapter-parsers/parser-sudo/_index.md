@@ -17,7 +17,6 @@ The sudo parser can parse the log messages of the sudo command. Available in ver
         parser { sudo-parser(); };
         destination { ... };
     };
-
 ```
 
 
@@ -34,6 +33,5 @@ By default, `sudo-parser()` uses the `.sudo.` prefix. To modify it, use the foll
    parser { 
         sudo-parser(prefix("myprefix.")); 
     };
-
 ```
 

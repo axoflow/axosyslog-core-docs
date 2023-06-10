@@ -139,7 +139,6 @@ In the following case reliable disk-buffer() is used.
             )
         );
     };
-
 ```
 
 In the following case normal disk-buffer() is used.
@@ -157,7 +156,6 @@ In the following case normal disk-buffer() is used.
             )
         );
     };
-
 ```
 
 

@@ -40,6 +40,5 @@ The {{% param "product.abbrev" %}} application is also compatible with MapR File
                 hdfs-file("/user/log/logfile.txt")
             );
         };
-    
     ```
     

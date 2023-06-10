@@ -25,7 +25,6 @@ Note the following limitations when using the {{% param "product.abbrev" %}} `hd
         hdfs-uri("hdfs://NameNode:8020")
         hdfs-file("<path-to-logfile>")
     );
-
 ```
 
 
@@ -44,7 +43,6 @@ The following example defines an `hdfs` destination using only the required para
             hdfs-file("/user/log/logfile.txt")
         );
     };
-
 ```
 
 

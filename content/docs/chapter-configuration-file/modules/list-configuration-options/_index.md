@@ -13,10 +13,10 @@ The `syslog-ng-cfg-db.py` utility has the following options:
     ```c
         syslog-ng-cfg-db.py
     
-    ``` {{% alert title="Note" color="info" %}}
+    ```
     
-    Currently, sources and destinations are supported.
-    
+    {{% alert title="Note" color="info" %}}
+Currently, sources and destinations are supported.
     {{% /alert %}}
 
   - The following command lists the available drivers of a context:
@@ -78,8 +78,8 @@ The `syslog-ng-cfg-db.py` utility has the following options:
             )
         )
     
-    ``` {{% alert title="Note" color="info" %}}
+    ```
     
-    The script caches the list of the options, so if you want to rebuild the database, you have to use the `-r` option.
-    
+    {{% alert title="Note" color="info" %}}
+The script caches the list of the options, so if you want to rebuild the database, you have to use the `-r` option.
     {{% /alert %}}

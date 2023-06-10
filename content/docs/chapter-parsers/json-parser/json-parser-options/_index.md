@@ -42,7 +42,6 @@ The following parser converts messages in the logstash eventlog v0 format to the
             };
         };
     };
-
 ```
 
 
@@ -70,7 +69,6 @@ This json parser parses log messages which use the "@cee:" marker in front of th
                 prefix(".cee.")
             );
         };
-
 ```
 
 
@@ -83,7 +81,6 @@ This json parser parses log messages which use the "@cee:" marker in front of th
    parser {
         json-parser(prefix("myprefix."));
     };
-
 ```
 
 {{% include-headless "chunk/option-parser-template.md" %}}

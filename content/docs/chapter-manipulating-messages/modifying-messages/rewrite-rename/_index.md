@@ -15,7 +15,6 @@ The `rename()` rewrite rule uses positional arguments and they are both required
    rewrite r_rewrite_rename {
         rename("<string1>" "<string2>");
     };
-
 ```
 
 
@@ -28,6 +27,5 @@ The following example renames the `.app.name` into `.container` if the `.app.nam
    rewrite r_rewrite_rename {
         rename(".app.name" ".container");
     };
-
 ```
 

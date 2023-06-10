@@ -35,7 +35,6 @@ By default, the websense-specific fields are extracted into name-value pairs pre
         parser { websense-parser(); };
         destination { ... };
     };
-
 ```
 
 
@@ -52,6 +51,5 @@ By default, `websense-parser()` uses the `.websense.` prefix. To modify it, use 
    parser {
         websense-parser(prefix("myprefix."));
     };
-
 ```
 

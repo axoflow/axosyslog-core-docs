@@ -267,7 +267,6 @@ Starting with version 3.16, the default value of this option is -1, so {{% param
    template t_isostamp { template("$ISODATE $HOST $MSGHDR$MSG\n"); };
     
     options { file-template(t_isostamp); };
-
 ```
 
 
@@ -431,7 +430,6 @@ Starting with version 3.16, the default value of this option is -1, so {{% param
    template t_isostamp { template("$ISODATE $HOST $MSGHDR$MSG\n"); };
     
     options { proto-template(t_isostamp); };
-
 ```
 
 
@@ -498,9 +496,7 @@ Note that level 2 and 3 increase the memory requirements and CPU load. For detai
     If you do not use this option, dynamic counters will not be limited. This can be useful in cases where you are extremely interested in dynamic counters, and use these statistics extensively.
     
     {{% alert title="Warning" color="warning" %}}
-    
-    In some cases, there might be even millions of dynamic counters
-    
+In some cases, there might be even millions of dynamic counters
     {{% /alert %}}
     
 

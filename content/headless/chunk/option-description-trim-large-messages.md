@@ -11,7 +11,6 @@
         filter f_trimmed {
             tags("trimmed");
         };
-    
     ```
     
     If {{% param "product.abbrev" %}} trims a log message, it sends a debug-level log message to its `internal()` source.

@@ -28,7 +28,6 @@ Substitution rules use the following syntax:
             "<replacement string>", value(<field name>), flags()
         );
     };
-
 ```
 
 
@@ -51,7 +50,6 @@ The following example replaces the `IP` in the text of the message with the stri
    rewrite r_rewrite_subst{
         subst("IP", "IP-Address", value("MESSAGE"));
     };
-
 ```
 
 To replace every occurrence, use:
@@ -60,7 +58,6 @@ To replace every occurrence, use:
    rewrite r_rewrite_subst{
         subst("IP", "IP-Address", value("MESSAGE"), flags("global"));
     };
-
 ```
 
 Multiple substitution rules are applied sequentially. The following rules replace the first occurrence of the string `IP` with the string `IP-Addresses`.
@@ -70,7 +67,6 @@ Multiple substitution rules are applied sequentially. The following rules replac
         subst("IP", "IP-Address", value("MESSAGE"));
         subst("Address", "Addresses", value("MESSAGE"));
     };
-
 ```
 
 

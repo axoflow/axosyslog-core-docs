@@ -38,15 +38,12 @@ Before you use the `python-http-header` plugin, make sure that your {{% param "p
         url("http://127.0.0.1:8888")
       );
     };
-
 ```
 
 **Options used in the configuration**
 
   - `class`: Mandatory option. It refers to the user's Python class that implements the `python-http-header` interface. It can be `mymodule.MyClass` if the `class MyClass` is put into a `mymodule.py` module, or simply `MyClass` if the user's code is provided inline in the configuration, using the `python { ... };` keyword.{{% alert title="Note" color="info" %}}
-    
-    If you put the class implementation into its own module, it should be put into a standard location, or made available with the `PYTHONPATH` environment variable.
-    
+If you put the class implementation into its own module, it should be put into a standard location, or made available with the `PYTHONPATH` environment variable.
     {{% /alert %}}
 
   - `options("key" "value")`: Optional option. Multiple options can be specified at the same time. The {{% param "product.abbrev" %}} application will build a Python dictionary, which will be available in the `__init__` method.
@@ -144,7 +141,6 @@ The following example can be copy-pasted and used as a template for using the Py
         destination(d_http);
         flags(flow-control);
     };
-
 ```
 
 

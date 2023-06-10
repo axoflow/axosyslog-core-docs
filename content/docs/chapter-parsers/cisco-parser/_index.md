@@ -20,10 +20,10 @@ For example:
     <189>32: 0.0.0.0: *Apr 29 13:59:12.491: %SYS-5-CONFIG_I: Configured from console by console
     <189>32: foo: *Apr 29 13:58:46.411: %SYSMGR-STANDBY-3-SHUTDOWN_START: The System Manager has started the shutdown procedure.
 
-``` {{% alert title="Note" color="info" %}}
+```
 
+{{% alert title="Note" color="info" %}}
 Not every Cisco log message conforms to this format. If you find a message that the `cisco-parser()` cannot properly parse, [contact Support](https://www.syslog-ng.com/support/), so we can improve the parser.
-
 {{% /alert %}}
 
 The {{% param "product.abbrev" %}} application normalizes the parsed log messages into the following format:
@@ -47,7 +47,6 @@ By default, the Cisco-specific fields are extracted into the following name-valu
         parser { cisco-parser(); };
         destination { ... };
     };
-
 ```
 
 
@@ -64,6 +63,5 @@ By default, `cisco-parser()` uses the `.cisco.` prefix. To modify it, use the fo
    parser {
         cisco-parser(prefix("myprefix."));
     };
-
 ```
 

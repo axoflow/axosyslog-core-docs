@@ -35,7 +35,6 @@ By default, the Netskope-specific fields are extracted into name-value pairs pre
         parser { netskope-parser(); };
         destination { ... };
     };
-
 ```
 
 
@@ -52,6 +51,5 @@ By default, `netskope-parser()` uses the `.netskope.` prefix. To modify it, use 
    parser {
         netskope-parser(prefix("myprefix."));
     };
-
 ```
 

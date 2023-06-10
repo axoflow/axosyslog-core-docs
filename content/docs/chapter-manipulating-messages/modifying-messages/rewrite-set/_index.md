@@ -23,7 +23,6 @@ Use the following syntax:
    rewrite <name_of_the_rule> {
         set("<string to include>", value(<field name>));
     };
-
 ```
 
 
@@ -36,7 +35,6 @@ The following example sets the HOST field of the message to `myhost`.
    rewrite r_rewrite_set{
         set("myhost", value("HOST"));
     };
-
 ```
 
 The following example appends the "suffix" string to the MESSAGE field:
@@ -45,7 +43,6 @@ The following example appends the "suffix" string to the MESSAGE field:
    rewrite r_rewrite_set{
         set("$MESSAGE suffix", value("MESSAGE"));
     };
-
 ```
 
 For details on rewriting SDATA fields, see {{% xref "/docs/chapter-manipulating-messages/modifying-messages/custom-sdata-fields/_index.md" %}}.
@@ -57,11 +54,8 @@ You can also use the following options in rewrite rules that use the `set()` ope
    rewrite <name_of_the_rule> {
         set("<string to include>", value(<field name>), on-error("fallback-to-string");
     };
+```
 
-``` {{% alert title="Note" color="info" %}}
-
-The `severity` and `facility` fields can only be set by the `set-severity()` rewrite functions.
-
-For more information, see {{% xref "/docs/chapter-manipulating-messages/modifying-messages/rewrite-set-severity/_index.md" %}}.
-
+{{% alert title="Note" color="info" %}}
+The `severity` and `facility` fields can only be set by the `set-severity()` rewrite functions. For more information, see {{% xref "/docs/chapter-manipulating-messages/modifying-messages/rewrite-set-severity/_index.md" %}}.
 {{% /alert %}}

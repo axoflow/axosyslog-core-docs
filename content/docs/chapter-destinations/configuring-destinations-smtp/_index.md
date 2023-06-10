@@ -22,7 +22,6 @@ The `smtp()` destination driver is available only in {{% param "product.abbrev" 
 
 ```c
    smtp(host() port() from() to() subject() body() options());
-
 ```
 
 
@@ -41,7 +40,6 @@ The following example defines an `smtp()` destination using only the required pa
             body("Hi!\nThe syslog-ng alerting service detected the following important log message:\n $MSG\n-- \nsyslog-ng\n")
         );
     };
-
 ```
 
 The following example sets some optional parameters as well.
@@ -61,7 +59,6 @@ The following example sets some optional parameters as well.
             header("X-Program", "$PROGRAM")
             );
     };
-
 ```
 
 
@@ -92,6 +89,5 @@ The following example sends an email alert if the eth0 network interface of the 
         filter(f_linkdown);
         destination(d_alert);
     };
-
 ```
 

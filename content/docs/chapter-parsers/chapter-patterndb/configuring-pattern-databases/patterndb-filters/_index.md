@@ -25,7 +25,6 @@ To filter on a specific message class, create a filter that checks the `.classif
             type("string")
         );
     };
-
 ```
 
 ```c
@@ -35,7 +34,6 @@ To filter on a specific message class, create a filter that checks the `.classif
         filter(fi_class_violation);
         destination(di_class_violation);
     };
-
 ```
 
 Filtering on the `unknown` class selects messages that did not match any rule of the pattern database. Routing these messages into a separate file allows you to periodically review new or unknown messages.
@@ -50,7 +48,6 @@ To filter on messages matching a specific classification rule, create a filter t
             type("string")
         );
     };
-
 ```
 
 
@@ -81,7 +78,6 @@ After that, add a custom template to the log path that uses this template. For e
 
 ```c
    match("accepted" value("TRANSACTIONTYPE"));
-
 ```
 
 

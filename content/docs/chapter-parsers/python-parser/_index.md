@@ -32,7 +32,6 @@ Python parsers consist of two parts. The first is a {{% param "product.abbrev" %
             '''Required. This method receives and processes the log message.'''
             return True
     };
-
 ```
 
 
@@ -132,7 +131,6 @@ The {{% param "product.abbrev" %}} parser object references the LoggenParser cla
                 return True
             return False
     };
-
 ```
 
 
@@ -198,6 +196,5 @@ The following example uses regular expressions to process Windows log messages r
                         log_message[key] = value
             return True
     };
-
 ```
 

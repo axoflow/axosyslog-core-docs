@@ -10,7 +10,6 @@ Starting with 3.26, {{% param "product.abbrev" %}} assigns a persist name to Pyt
         source { python(class(PyNetworkSource) options("port" "8080") persist-name("<unique-string>); };
         source { python(class(PyNetworkSource) options("port" "8081")); };
     };
-
 ```
 
 Alternatively, you can include the following line in the Python package: `@staticmethod generate_persist_name`. For example:
@@ -26,4 +25,5 @@ Alternatively, you can include the following line in the Python package: `@stati
         def request_exit(self):
             pass
 
-``` {{% /alert %}}
+```
+{{% /alert %}}

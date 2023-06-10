@@ -45,7 +45,6 @@ In the {{% param "product.abbrev" %}} configuration file:
         database("context-info-db.csv")
         default-selector("unknown-hostname")
     );
-
 ```
 
 

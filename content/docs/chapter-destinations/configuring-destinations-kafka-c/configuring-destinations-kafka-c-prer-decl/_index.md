@@ -31,7 +31,6 @@ This section describes the prerequisites and restrictions for using the `kafka` 
         topic("{MYTOPIC}")
     
     );
-
 ```
 
 

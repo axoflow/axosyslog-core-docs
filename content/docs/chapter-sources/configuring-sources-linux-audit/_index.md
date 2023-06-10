@@ -17,7 +17,6 @@ Most recent Linux distributions enable Security-Enhanced Linux (SELinux) or AppA
 
 ```c
    linux-audit(options);
-
 ```
 
 

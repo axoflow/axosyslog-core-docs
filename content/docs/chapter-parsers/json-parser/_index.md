@@ -36,7 +36,6 @@ To create a JSON parser, define a parser that has the `json-parser()` option. De
             prefix()
         );
     };
-
 ```
 
 
@@ -69,7 +68,6 @@ In the following example, the source is a JSON encoded log message. The syslog p
         parser(p_json);
         destination(d_json);
     };
-
 ```
 
 You can also define the parser inline in the log path.
@@ -96,6 +94,5 @@ You can also define the parser inline in the log path.
         };
         destination(d_json);
     };
-
 ```
 

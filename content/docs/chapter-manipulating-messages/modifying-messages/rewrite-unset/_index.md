@@ -17,7 +17,6 @@ Use the following syntax:
    rewrite <name_of_the_rule> {
         unset(value("<field-name>"));
     };
-
 ```
 
 
@@ -30,7 +29,6 @@ The following example unsets the HOST field of the message.
    rewrite r_rewrite_unset{
         unset(value("HOST"));
     };
-
 ```
 
 
@@ -43,7 +41,6 @@ To unset a group of fields, you can use the **groupunset()** rewrite rule.
    rewrite <name_of_the_rule> {
         groupunset(values("<expression-for-field-names>"));
     };
-
 ```
 
 
@@ -56,6 +53,5 @@ The following rule clears all SDATA fields:
    rewrite r_rewrite_unset_SDATA{
         groupunset(values(".SDATA.*"));
     };
-
 ```
 

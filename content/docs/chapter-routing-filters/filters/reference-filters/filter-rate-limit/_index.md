@@ -32,6 +32,5 @@ The following example depicts the scenario described in the description part of 
                     rate(5000)
                     );
                 };
-
 ```
 

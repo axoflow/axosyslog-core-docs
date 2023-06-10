@@ -54,7 +54,6 @@ The $DESTIP, the $DESTPORT, and the $PROTO macros in your {{% param "product.abb
       file("/dev/stdout" template("destip=$DESTIP destport=$DESTPORT proto=$PROTO\n")); 
       };
     };
-
 ```
 
 With these configuration settings, the macros will specify the local IP, the local port, and the protocol information of the source from which the message originates as follows:

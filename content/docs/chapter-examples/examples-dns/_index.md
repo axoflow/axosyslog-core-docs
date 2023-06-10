@@ -9,14 +9,12 @@ The syslog-ng application can resolve the hostnames of the clients and include t
     
     ```c
         options { dns-cache-size(2000); };
-    
     ```
 
   - If the IP addresses of the clients change only rarely, set the expiry of the DNS cache large.
     
     ```c
         options { dns-cache-expire(87600); };
-    
     ```
 
   - If possible, resolve the hostnames locally. For details, see {{% xref "/docs/chapter-examples/examples-dns/example-local-dns/_index.md" %}}.

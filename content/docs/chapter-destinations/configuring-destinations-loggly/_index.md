@@ -11,7 +11,6 @@ The `loggly()` destination sends log messages to the [Loggly](https://www.loggly
 
 ```c
    loggly(token());
-
 ```
 
 
@@ -24,7 +23,6 @@ To use the loggly() destination, the only mandatory parameter is your user token
         source { system(); };
         destination { loggly(token("<USER-TOKEN-AS-PROVIDED-BY-LOGGLY>")); };
     };
-
 ```
 
 The following example uses TLS encryption. Before using it, download the CA certificate of Loggly and copy it to your hosts (for example, into the `/etc/ssl/certs/` directory.
@@ -37,7 +35,6 @@ The following example uses TLS encryption. Before using it, download the CA cert
             );
         };
     };
-
 ```
 
 The following example parses the access logs of an Apache webserver from a file and sends them to Loggly in JSON format.

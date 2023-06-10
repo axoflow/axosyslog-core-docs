@@ -15,7 +15,6 @@ Log messages of banking and e-commerce applications might include credit card nu
     rewrite {
         credit-card-mask(value("<message-field-to-process>"));
     };
-
 ```
 
 By default, these rewrite rules process the MESSAGE part of the log message.

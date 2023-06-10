@@ -13,7 +13,6 @@ To format multi-line messages to your individual needs, consider the following:
                 template("${ISODATE} ${HOST} $(indent-multi-line ${MESSAGE})\n")
             );
         };
-    
     ```
     
     For details on using templates, see {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/configuring-macros/_index.md" %}}.

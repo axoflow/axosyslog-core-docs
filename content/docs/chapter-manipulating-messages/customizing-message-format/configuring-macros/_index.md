@@ -13,7 +13,6 @@ The {{% param "product.abbrev" %}} application allows you to define message temp
    template <template-name> {
         template("<template-expression>") <template-escape(yes)>;
     };
-
 ```
 
 
@@ -23,7 +22,6 @@ If you do not want to enable the `template-escape()` option (which is rarely nee
 
 ```c
    template <template-name> "<template-expression>";
-
 ```
 
 You can also refer to an existing template from within a template. The result of the referred template will be pasted into the second template.
@@ -31,7 +29,6 @@ You can also refer to an existing template from within a template. The result of
 ```c
    template first-template "sample-text";
     template second-template "The result of the first-template is: $(template first-template)";
-
 ```
 
 If you want to use a template only once, you can define the template inline, for example:
@@ -40,7 +37,6 @@ If you want to use a template only once, you can define the template inline, for
    destination d_file {
         file ("/var/log/messages" template("${ISODATE} ${HOST} ${MESSAGE}\n") );
     };
-
 ```
 
 Macros can be included by prefixing the macro name with a `$` sign, just like in Bourne compatible shells. Although using braces around macro names is not mandatory, and the `"$MESSAGE"` and `"${MESSAGE}"` formats are equivalent, using the `"${MESSAGE}"` format is recommended for clarity.
@@ -71,7 +67,6 @@ The following template (`t_demo_filetemplate`) adds the date of the message and 
     destination d_file {
         file("/var/log/messages" template(t_demo_filetemplate));
     };
-
 ```
 
 If you do not want to enable the `template-escape()` option (which is rarely needed), you can define the template without the enclosing braces. The following two templates are equivalent.
@@ -81,7 +76,6 @@ If you do not want to enable the `template-escape()` option (which is rarely nee
         template("${ISODATE} ${HOST} ${MESSAGE}\n");
     };
     template t_demo_template-without-braces "${ISODATE} ${HOST} ${MESSAGE}\n";
-
 ```
 
 Templates can also be used inline, if they are used only at a single location. The following destination is equivalent with the previous example:
@@ -90,7 +84,6 @@ Templates can also be used inline, if they are used only at a single location. T
    destination d_file {
         file ("/var/log/messages" template("${ISODATE} ${HOST} ${MESSAGE}\n") );
     };
-
 ```
 
 The following file destination uses macros to daily create separate logfiles for every client host.
@@ -99,7 +92,6 @@ The following file destination uses macros to daily create separate logfiles for
    destination d_file {
             file("/var/log/${YEAR}.${MONTH}.${DAY}/${HOST}.log");
     };
-
 ```
 
 

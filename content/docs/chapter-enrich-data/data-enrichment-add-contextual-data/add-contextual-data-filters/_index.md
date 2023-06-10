@@ -35,7 +35,6 @@ You must store the filters you reference in a database in a separate file. This 
     filter f_localhost { host("mymachine.example.com") };
     filter f_auth { facility(4) };
     filter f_kern { facility(0) };
-
 ```
 
 
@@ -49,7 +48,6 @@ You must store the filters you reference in a database in a separate file. This 
             prefix(".metadata.")
         );
     };
-
 ```
 
 

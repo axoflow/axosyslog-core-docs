@@ -32,7 +32,6 @@ The following example sends the log messages into an MSSQL database running on t
       values("${R_DATE}", "${HOST}", "${PROGRAM}", "${PID}", "${MSGONLY}")
       indexes("datetime", "host", "program", "pid"));
     };
-
 ```
 
 The date format used by the MSSQL database must be explicitly set in the `/etc/locales.conf` file of the syslog-ng server. Edit or create this file as needed for your configuration. A sample is provided below.

@@ -31,7 +31,6 @@ The following destination sends log messages to a Redis server using the pipelin
             log-fifo-size(100000)
         );
     };
-
 ```
 
 

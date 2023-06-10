@@ -40,7 +40,6 @@ When the context is closed, and the messages match the filter set in the `having
             timeout()
         );
     };
-
 ```
 
 
@@ -75,7 +74,6 @@ These lines are connected by their second field: `msg=audit(1440927434.124:40347
             timeout(10)
         );
     };
-
 ```
 
 For another example, see [The grouping-by() parser in syslog-ng blog post](https://www.syslog-ng.com/community/b/blog/posts/the-grouping-by-parser-in-syslog-ng-3-8)

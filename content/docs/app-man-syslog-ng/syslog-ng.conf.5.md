@@ -75,21 +75,18 @@ Other optional elements that can appear in log statements are parsers and rewrit
     
     ```c
         source s_internal { internal(); };
-    
     ```
     
     The object can be later referenced in other statements using its ID, for example, the previous source is used as a parameter of the following log statement:
     
     ```c
         log { source(s_internal); destination(d_file); };
-    
     ```
 
   - The parameters and options within a statement are similar to function calls of the C programming language: the name of the option followed by a list of its parameters enclosed within brackets and terminated with a semicolon.
     
     ```c
         option(parameter1, parameter2); option2(parameter1, parameter2);
-    
     ```
     
     For example, the `file()` driver in the following source statement has three options: the filename (`/var/log/apache/access.log`), `follow-freq()`, and `flags()`. The `follow-freq()` option also has a parameter, while the `flags()` option has two parameters.
@@ -97,7 +94,6 @@ Other optional elements that can appear in log statements are parsers and rewrit
     ```c
         source s_tail { file("/var/log/apache/access.log"
         follow-freq(1) flags(no-parse, validate-utf8)); };
-    
     ```
     
     Objects may have required and optional parameters. Required parameters are positional, meaning that they must be specified in a defined order. Optional parameters can be specified in any order using the **option(value)** format. If a parameter (optional or required) is not specified, its default value is used. The parameters and their default values are listed in the reference section of the particular object.

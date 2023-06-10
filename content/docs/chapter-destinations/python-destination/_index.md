@@ -60,14 +60,11 @@ Python destinations consist of two parts. The first is a {{% param "product.abbr
             """Flush the queued messages"""
             pass
     };
+```
 
-``` {{% alert title="Note" color="info" %}}
-
+{{% alert title="Note" color="info" %}}
 From version 3.27, {{% param "product.abbrev" %}} supports the arrow syntax in declaration. For more information, see [the options() of the python() destination]({{< relref "/docs/chapter-destinations/python-destination/reference-destination-python/_index.md#python-options" >}}).
-
 {{% /alert %}}
-
-
 
 ## Methods of the python() destination {#python-destination-methods}
 
@@ -192,7 +189,6 @@ The following sample code writes the body of log messages into the `/tmp/example
             self.outfile.close();
             return True
     };
-
 ```
 
 The following code is similar to the previous example, but it opens and closes the file using the **open()** and **close()** methods.
@@ -229,7 +225,6 @@ The following code is similar to the previous example, but it opens and closes t
             except:
                 return False
     };
-
 ```
 
 For a more detailed example about sending log messages to an MQTT (Message Queuing Telemetry Transport) server, see the [Writing Python destination in syslog-ng: how to send log messages to MQTT blog post](https://www.syslog-ng.com/community/b/blog/posts/writing-python-destination-in-syslog-ng-how-to-send-log-messages-to-mqtt).

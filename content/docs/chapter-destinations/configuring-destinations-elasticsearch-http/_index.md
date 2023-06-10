@@ -19,7 +19,6 @@ HTTPS connection, as well as password- and certificate-based authentication is s
             type("<type-of-the-index>")
         );
     };
-
 ```
 
 
@@ -53,7 +52,6 @@ The following example defines a `elasticsearch-http()` destination, with only th
         destination(d_elasticsearch_http);
         flags(flow-control);
     };
-
 ```
 
 The following example uses mutually-authenticated HTTPS connection, templated index, and also sets the `type()` and some other options.
@@ -76,7 +74,6 @@ The following example uses mutually-authenticated HTTPS connection, templated in
             )
         );
     };
-
 ```
 
 

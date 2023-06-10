@@ -57,7 +57,6 @@ To send the generated messages to the `internal` source, use the **inject-mode("
         ...
         inject-mode("internal")
     );};
-
 ```
 
 To inject the generated messages where the parser is referenced, use the **inject-mode("pass-through")** option:
@@ -67,7 +66,6 @@ To inject the generated messages where the parser is referenced, use the **injec
         ...
         inject-mode("pass-through")
     );};
-
 ```
 
 

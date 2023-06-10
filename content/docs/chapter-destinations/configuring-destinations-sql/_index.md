@@ -11,7 +11,6 @@ The `sql()` driver sends messages into an SQL database. Currently the Microsoft 
 
 ```c
    sql(database_type host_parameters database_parameters [options]);
-
 ```
 
 The `sql()` driver has the following required parameters: [`type()`]({{< relref "/docs/chapter-destinations/configuring-destinations-sql/reference-destination-sql/_index.md" >}}), [`database()`]({{< relref "/docs/chapter-destinations/configuring-destinations-sql/reference-destination-sql/_index.md" >}}), [`table()`]({{< relref "/docs/chapter-destinations/configuring-destinations-sql/reference-destination-sql/_index.md" >}}), [`columns()`]({{< relref "/docs/chapter-destinations/configuring-destinations-sql/reference-destination-sql/_index.md" >}}), and [`values()`]({{< relref "/docs/chapter-destinations/configuring-destinations-sql/reference-destination-sql/_index.md" >}}).
@@ -56,7 +55,6 @@ The following example sends the log messages into a PostgreSQL database running 
         values("{$R_DATE}", "${HOST}", "${PROGRAM}", "${PID}", "${MSGONLY}")
         indexes("datetime", "host", "program", "pid", "message"));
     };
-
 ```
 
 The following example specifies the type of the database columns as well:
@@ -71,6 +69,5 @@ The following example specifies the type of the database columns as well:
         values("${R_DATE}", "${HOST}", "${PROGRAM}", "${PID}", "${MSGONLY}")
         indexes("datetime", "host", "program", "pid", "message"));
     };
-
 ```
 

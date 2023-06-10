@@ -21,7 +21,6 @@ Version 3.7 of {{% param "product.abbrev" %}} can directly post log messages to 
         option("url", "http://<server-address>:<port-number>")
     
     );
-
 ```
 
 
@@ -42,7 +41,6 @@ The following example defines an `http` destination.
     
     log
         { source(s_file); destination(d_http); flags(flow-control); };
-
 ```
 
 

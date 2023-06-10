@@ -164,11 +164,9 @@ To check the following status-related components, observe the suggestions below.
     The {{% param "product.abbrev" %}} application collects statistics about the number of processed messages on the different sources and destinations.
     
     {{% alert title="Note" color="info" %}}
-    
-    When using `syslog-ng-ctl stats`, consider that while the output is generally consistent, there is no explicit ordering behind the command. Consequently, {{% param "product.companyabbrev" %}} does not recommend creating parsers that depend on a fix output order.
+When using `syslog-ng-ctl stats`, consider that while the output is generally consistent, there is no explicit ordering behind the command. Consequently, {{% param "product.companyabbrev" %}} does not recommend creating parsers that depend on a fix output order.
     
     If needed, you can sort the output with an external application, for example, `| sort`.
-    
     {{% /alert %}}
     
       - **Central statistics**

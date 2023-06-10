@@ -18,7 +18,6 @@ Starting with version 3.22, the `match()` filter can work on templates as well. 
 
 ```c
    match("^my-regular-expression" template("${HOST}|${PROGRAM}${PID}|${MESSAGE}"));
-
 ```
 
 Using a template with a single macro is equivalent with using the `value()` parameter. For example, the following two lines are equivalent:
@@ -26,5 +25,4 @@ Using a template with a single macro is equivalent with using the `value()` para
 ```c
    match("^my-regular-expression" value("MESSAGE"));
     match("^my-regular-expression" template("${MESSAGE}"));
-
 ```

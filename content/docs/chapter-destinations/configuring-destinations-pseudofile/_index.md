@@ -11,6 +11,5 @@ The `pseudofile()` destination driver is a very simple driver, aimed at deliveri
 
 ```c
    pseudofile(filename options());
-
 ```
 

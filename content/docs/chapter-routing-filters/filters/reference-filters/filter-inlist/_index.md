@@ -34,7 +34,6 @@ The following filter selects only the messages of the listed applications:
 
 ```c
    filter f_whitelist { in-list("/etc/syslog-ng/programlist.list", value("PROGRAM")); };
-
 ```
 
 Create the appropriate sources and destinations for your environment, then create a log path that uses the previous filter to select only the log messages of the applications you need:
@@ -44,13 +43,11 @@ Create the appropriate sources and destinations for your environment, then creat
         source(s_all);
         filter(f_whitelist);
         destination(d_logserver); };
-
 ```
 
 To create a blacklist filter, simply negate the `in-list()` filter:
 
 ```c
    filter f_blacklist { not in-list("/etc/syslog-ng/programlist.list", value("PROGRAM")); };
-
 ```
 

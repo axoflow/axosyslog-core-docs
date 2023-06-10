@@ -30,10 +30,10 @@ N/A
     ```c
         <pattern>+ ??? root-</pattern>
     
-    ``` {{% alert title="Note" color="info" %}}
+    ```
     
-    Support for XML entities is limited, you can use only the following entities: **\&amp; \&lt; \&gt; \&quot; \&apos;**. User-defined entities are not supported.
-    
+    {{% alert title="Note" color="info" %}}
+Support for XML entities is limited, you can use only the following entities: **\&amp; \&lt; \&gt; \&quot; \&apos;**. User-defined entities are not supported.
     {{% /alert %}}
 
   - *description*: OPTIONAL — A description of the pattern or the log message matching the pattern.

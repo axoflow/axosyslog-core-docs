@@ -21,7 +21,6 @@ For the list of available optional parameters, see {{% xref "/docs/chapter-sourc
 
 ```c
    syslog(ip() port() transport() options());
-
 ```
 
 
@@ -32,14 +31,12 @@ TCP source listening on the localhost on port 1999.
 
 ```c
    source s_syslog { syslog(ip(127.0.0.1) port(1999) transport("tcp")); };
-
 ```
 
 UDP source with defaults.
 
 ```c
    source s_udp { syslog( transport("udp")); };
-
 ```
 
 Encrypted source where the client is also authenticated. For details on the encryption settings, see {{% xref "/docs/chapter-encrypted-transport-tls/tlsoptions/_index.md" %}}.
@@ -56,7 +53,6 @@ Encrypted source where the client is also authenticated. For details on the encr
         )
         );
     };
-
 ```
 
 

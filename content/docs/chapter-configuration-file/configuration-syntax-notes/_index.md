@@ -23,7 +23,6 @@ When you are editing the syslog-ng configuration file, note the following points
         source s_demo_stream {
             unix-stream("<path-to-socket>", max-connections(10), group(log));
         };
-    
     ```
 
   - When enclosing object IDs (for example, the name of a destination) between double-quotes (`"mydestination"`), the ID can include whitespace as well, for example:
@@ -32,7 +31,6 @@ When you are editing the syslog-ng configuration file, note the following points
         source "s demo stream" {
             unix-stream("<path-to-socket>" max-connections(10) group(log));
         };
-    
     ```
 
   - For notes on using regular expressions, see {{% xref "/docs/chapter-manipulating-messages/regular-expressions/_index.md" %}}.

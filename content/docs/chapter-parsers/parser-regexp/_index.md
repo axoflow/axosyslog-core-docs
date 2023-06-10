@@ -25,7 +25,6 @@ For example:
         patterns( ... )
         );
     };
-
 ```
 
 
@@ -65,7 +64,6 @@ The regexp-parser inserts the `.regexp.` prefix before all extracted name-value 
         parser(p_regexp);
         destination(d_file);
     };
-
 ```
 
 You can also define the parser inline in the log path.
@@ -93,7 +91,6 @@ You can also define the parser inline in the log path.
         };
         destination(d_file);
     };
-
 ```
 
 You can set multiple patterns:
@@ -105,6 +102,5 @@ You can set multiple patterns:
             prefix(".regexp.")
         );
     };
-
 ```
 

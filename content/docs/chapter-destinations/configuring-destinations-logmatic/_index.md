@@ -11,7 +11,6 @@ The `logmatic()` destination sends log messages to the [Logmatic.io](https://log
 
 ```c
    logmatic(token());
-
 ```
 
 
@@ -24,7 +23,6 @@ To use the logmatic() destination, the only mandatory parameter is your user tok
         source { system(); };
         destination { logmatic(token("<API-KEY-AS-PROVIDED-BY-LOGMATIC.IO>")); };
     };
-
 ```
 
 The following example uses TLS encryption. Before using it, download the CA certificate of Logmatic.io and copy it to your hosts (for example, into the `/etc/ssl/certs/` directory.
@@ -37,7 +35,6 @@ The following example uses TLS encryption. Before using it, download the CA cert
             );
         };
     };
-
 ```
 
 The following example parses the access logs of an Apache webserver from a file and sends them to Logmatic.io in JSON format.

@@ -19,7 +19,6 @@ To enable multithreading globally, use the `threaded` option:
    options {
         threaded(yes) ;
     };
-
 ```
 
 To enable multithreading only for a selected source or destination, use the **flags("threaded")** option:
@@ -32,6 +31,5 @@ To enable multithreading only for a selected source or destination, use the **fl
             flags("syslog-protocol", "threaded")
         );
     };
-
 ```
 

@@ -246,7 +246,6 @@ In the following example, the first command creates a single `PKCS #12` file fro
             )
         );
     };
-
 ```
 
 
@@ -282,7 +281,6 @@ The following destination sends the hostname of its destination during the TLS h
             )
         );
     };
-
 ```
 
 
@@ -324,7 +322,6 @@ The following destination explicitly disables SSL and TLSv1.0
             )
         );
     };
-
 ```
 
 

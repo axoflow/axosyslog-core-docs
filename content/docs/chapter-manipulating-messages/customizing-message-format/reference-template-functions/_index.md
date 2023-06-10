@@ -177,7 +177,6 @@ When used in configuration as seen in the example, the `filter` template functio
          );
       };
     };
-
 ```
 
 The returned values are `0` and `2`.
@@ -198,13 +197,9 @@ The returned values are `0` and `2`.
       - a logical expression built from filters (using `and`, `or`, and `not`)
     
     {{% alert title="Note" color="info" %}}
-    
-    When using the `\<filter-expression\>` parameter, you can refer other template functions, or use macros.
-    
+When using the `\<filter-expression\>` parameter, you can refer other template functions, or use macros.
     {{% /alert %}} {{% alert title="Note" color="info" %}}
-    
-    To refer to the variable bound to the current element of the list, use `$_ macro`.
-    
+To refer to the variable bound to the current element of the list, use `$_ macro`.
     {{% /alert %}}
     
     
@@ -249,7 +244,6 @@ Using the `format-cef-extension` template function has the following prerequisit
         options {
            on-error("drop-property");
         };
-    
     ```
 
   - The log messages must be encoded in UTF-8. Use the **encoding()** option or the **validate-utf8** flag in the message source.
@@ -279,7 +273,6 @@ The following example shows how to use this template function to store log messa
    destination d_cef_extension {
         file("/var/log/messages.cef" template("${ISODATE} ${HOST} $(format-cef-extension --scope selected_macros --scope nv_pairs)\n"));
     };
-
 ```
 
 
@@ -300,7 +293,6 @@ The following example shows how to use this template function to store log messa
             template("$(format-cim)\n")
         );
     };
-
 ```
 
 You can find the exact source of this template function in the [{{% param "product.abbrev" %}} GitHub repository](https://github.com/syslog-ng/syslog-ng/blob/master/scl/cim/template.conf).
@@ -389,7 +381,6 @@ The following configuration example shows how you can use the `format-gelf` temp
             template("$(format-gelf)")
         );
     };
-
 ```
 
 
@@ -436,22 +427,18 @@ The following example shows how to use this template function to store log messa
             template("$(format-json --scope selected_macros --scope nv_pairs)\n")
         );
     };
-
 ```
 
 
 {{% alert title="Note" color="info" %}}
-
 In the case of syslog-ng macros starting with a dot (for example, "`.SDATA.meta.sequenceID`"), `format-json` replaces the dot with an underscore character (for example, `{"_SDATA":{"meta":{"sequenceId":"55555"}}}`).
 
 To retain the starting dot, use the **--leave-initial-dot** flag, for example:
 
 ```c
 $(format-json --leave-initial-dot .SDATA.meta.sequenceID)
-            
 ```
-
-``` {{% /alert %}}
+{{% /alert %}}
 
 If you have to forward your log messages in JSON format, but the receiving application cannot handle nested JSON objects, use the **format-flat-json** template function. For details, see [](#template-function-format-flat-json).
 
@@ -484,7 +471,6 @@ The following example shows how to use this template function to store log messa
             template("$(format-welf --scope selected_macros --scope nv_pairs)\n")
         );
     };
-
 ```
 
 
@@ -635,7 +621,6 @@ The following configuration example shows, how to send value-pairs with names st
    destination d_graphite {
         network( host("localhost") port(2003) template("$(graphite-output --key vmstat.*)"));
     };
-
 ```
 
 
@@ -713,7 +698,6 @@ To replace the hostname with its hash, use a rewrite rule:
 
 ```c
    rewrite r_rewrite_hostname{set("$(sha1 $HOST)", value("HOST"));};
-
 ```
 
 
@@ -807,7 +791,6 @@ The following example writes multi-line messages into a text file.
             template("${ISODATE} ${HOST} $(indent-multi-line ${MESSAGE})\n")
         );
     };
-
 ```
 
 
@@ -981,7 +964,6 @@ Negative numbers select an element from the end of the list, for example, `-3:` 
    f_short {
         match ('-', value ("$(if ($(length "${MESSAGE}") <= 16) "-" "+")"));
     };
-
 ```
 
 
@@ -1000,7 +982,6 @@ Negative numbers select an element from the end of the list, for example, `-3:` 
    destination d_file {
         file ("/var/log/${MONTH}/${DAY}/$(lowercase "${HOST}")/messages");
     };
-
 ```
 
 Available in {{% param "product.abbrev" %}} 3.5 and later.
@@ -1037,7 +1018,6 @@ When used in configuration as seen in the example, the `map` template function a
         );
       };
     };
-
 ```
 
 The returned values are `1`, `2`, and `3`.
@@ -1054,7 +1034,6 @@ The returned values are `1`, `2`, and `3`.
 
 ```c
    $(+ "${<MACRO1>}" "${<MACRO2>}");
-
 ```
 
 Starting with {{% param "product.abbrev" %}} version 3.22 and later, the numerical operators support floating-point values. They behave like the operators in the C programming language:
@@ -1162,7 +1141,6 @@ The following points apply to Python parsers.
     template <template-name> {
         template($(python <name_of_the_python_function>));
     };
-
 ```
 
 
@@ -1182,7 +1160,6 @@ The following example creates a Python template function called `return_message`
     destination d_local {
         file("/tmp/logs.txt" template("[$(python return_message)]\n"));
     };
-
 ```
 
 The following example creates a Python template function called `resolve_host` that receives an IP address as an argument, and attempts to resolve it into a hostname.
@@ -1206,7 +1183,6 @@ The following example creates a Python template function called `resolve_host` t
             template("${ISODATE} $(python resolve_host ${SOURCE_IP}) ${MESSAGE}\n")
         );
     };
-
 ```
 
 
@@ -1284,7 +1260,6 @@ The following example uses the sanitize function on two macros, and the results 
 
 ```c
    file("/var/log/$(sanitize $HOST $PROGRAM)/messages");
-
 ```
 
 This is equivalent to `file("/var/log/$HOST/$PROGRAM/messages");`, but any slashes in the values of the $HOST and $PROGRAM macros are replaced with underscores.
@@ -1349,21 +1324,18 @@ Skip the first 15 characters of the message, and select the rest:
 
 ```c
    $(substr "${MESSAGE}" "15");
-
 ```
 
 Select characters 16-30 of the message (15 characters with offset 15):
 
 ```c
    $(substr "${MESSAGE}" "15" "15");
-
 ```
 
 Select the last 15 characters of the message:
 
 ```c
    $(substr "${MESSAGE}" "-15");
-
 ```
 
 A template that converts the message to RFC3164 (BSD-syslog) format and truncates the messages to 1023 characters:
@@ -1373,7 +1345,6 @@ A template that converts the message to RFC3164 (BSD-syslog) format and truncate
         template("$(substr \"<$PRI>$DATE $HOST $MSGHDR$MESSAGE\" \"0\" \"1023\")\n");
         template-escape(no);
     };
-
 ```
 
 
@@ -1412,7 +1383,6 @@ Available in {{% param "product.abbrev" %}} 3.22 and later.
    destination d_file {
         file ("/var/log/${MONTH}/${DAY}/$(uppercase "${HOST}")/messages");
     };
-
 ```
 
 Available in {{% param "product.abbrev" %}} 3.5 and later.
@@ -1475,7 +1445,6 @@ The following example adds a value-pair called `MESSAGE_UUID` to the message usi
         rewrite(r_add_uuid);
         destination(d_file);
     };
-
 ```
 
 

@@ -59,7 +59,6 @@ The following example uses only the default settings.
    source s_network {
         default-network-drivers();
     };
-
 ```
 
 The following example can receive TLS-encrypted connections on the default port (port 6514).
@@ -73,7 +72,6 @@ The following example can receive TLS-encrypted connections on the default port 
             )
         );
     };
-
 ```
 
 

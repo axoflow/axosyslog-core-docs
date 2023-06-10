@@ -11,7 +11,6 @@ The `mongodb()` driver sends messages to a [MongoDB](https://www.mongodb.com/) d
 
 ```c
    mongodb(parameters);
-
 ```
 
 
@@ -32,7 +31,6 @@ The following example creates a `mongodb()` destination using only default value
    destination d_mongodb {
         mongodb();
     };
-
 ```
 
 The following example displays the default values.
@@ -47,7 +45,6 @@ The following example displays the default values.
             )
         );
     };
-
 ```
 
 The following example shows the same setup using the deprecated libmongo-client syntax (as used in {{% param "product.abbrev" %}} version 3.7), and is equivalent with the previous example.
@@ -63,6 +60,5 @@ The following example shows the same setup using the deprecated libmongo-client 
             )
         );
     };
-
 ```
 

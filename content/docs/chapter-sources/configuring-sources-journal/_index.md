@@ -39,7 +39,6 @@ Only one `systemd-journal()` source can be configured in the configuration file.
 
 ```c
    systemd-journal(options);
-
 ```
 
 
@@ -63,7 +62,6 @@ To send all fields through the syslog protocol, enter the prefix in the followin
         source(s_journald);
         destination(d_network);
     };
-
 ```
 
 
@@ -88,7 +86,6 @@ To send all fields through the syslog protocol, enter the prefix in the followin
         filter(f_uid);
         destination(d_network);
     };
-
 ```
 
 
@@ -110,7 +107,6 @@ To send all fields through the syslog protocol, enter the prefix in the followin
         source(s_local);
         destination(d_network);
     };
-
 ```
 
 

@@ -22,7 +22,6 @@ Note that parsing will fail if the format string does not match the entire templ
             template("<field-to-parse>'")
         );
     };
-
 ```
 
 
@@ -48,14 +47,12 @@ In the following example, {{% param "product.abbrev" %}} parses dates like `01/J
         parser { date-parser(format("%d/%b/%Y:%H:%M:%S %Z") template("${MY_DATE}")); };
         destination(d_file);
     };
-
 ```
 
 In the template option, you can use template functions to specify which part of the message to parse with the format string. The following example selects the first 24 characters of the ${MESSAGE} macro.
 
 ```c
    date-parser(format("%d/%b/%Y:%H:%M:%S %Z") template("$(substr ${MESSAGE} 0 24)") );
-
 ```
 
 {{% include-headless "chunk/example-date-parser.md" %}}

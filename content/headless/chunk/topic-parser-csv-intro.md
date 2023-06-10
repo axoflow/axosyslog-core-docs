@@ -19,7 +19,6 @@ To create a `csv-parser()`, you have to define the columns of the message, the s
             delimiters(chars("<delimiter_characters>"), strings("<delimiter_strings>"))
         );
     };
-
 ```
 
 

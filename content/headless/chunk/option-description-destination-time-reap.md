@@ -19,7 +19,6 @@ Starting with version 3.23, the way how `time-reap()` works is the following.
                 time-reap(30)  # sets time-reap() for this destination only
             );
         };
-    
     ```
 
 2.  If the `time-reap()` option of the destination is not set, and the destination does not use a template or macro in its filename or path, `time-reap()` is automatically set to 0. For example:
@@ -30,7 +29,6 @@ Starting with version 3.23, the way how `time-reap()` works is the following.
                 "/tmp/test.fifo",
             );
         };
-    
     ```
 
 3.  Otherwise, the value of the global `time-reap()` option is used, which defaults to 60 seconds.

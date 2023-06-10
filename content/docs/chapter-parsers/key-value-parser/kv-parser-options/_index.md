@@ -17,7 +17,6 @@ By default, `kv-parser()` uses the `.kv.` prefix. To modify it, use the followin
    parser {
         kv-parser(prefix("myprefix."));
     };
-
 ```
 
 

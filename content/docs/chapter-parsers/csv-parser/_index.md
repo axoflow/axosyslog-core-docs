@@ -26,7 +26,6 @@ The following example separates hostnames like `example-1` and `example-2` into 
         parser(p_hostname_segmentation);
         destination(d_file);
     };
-
 ```
 
 
@@ -61,7 +60,6 @@ To parse such logs, the delimiter character is set to a single whitespace (`deli
             quote-pairs('""[]')
         );
     };
-
 ```
 
 The results can be used for example, to separate log messages into different files based on the APACHE.USER_NAME field. If the field is empty, the `nouser` name is assigned.
@@ -75,7 +73,6 @@ The results can be used for example, to separate log messages into different fil
     destination d_file {
         file("/var/log/messages-${APACHE.USER_NAME:-nouser}");
     };
-
 ```
 
 
@@ -99,7 +96,6 @@ Multiple parsers can be used to split a part of an already parsed message into f
         parser(p_apache_timestamp);
         destination(d_file);
     };
-
 ```
 
 

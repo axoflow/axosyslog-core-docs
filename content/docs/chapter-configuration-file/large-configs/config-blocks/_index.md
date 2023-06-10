@@ -8,7 +8,6 @@ To create a reusable configuration snippet and reuse parts of a configuration fi
 
 ```c
    block type name() {<contents of the block>};
-
 ```
 
 Type must be one of the following: `destination`, `filter`, `log`, `options`, `parser`, `rewrite`, `root`, `source`. The `root` blocks can be used in the "root" context of the configuration file, that is, outside any other statements.
@@ -42,7 +41,6 @@ Suppose you are running an application on your hosts that logs into the `/opt/va
 ```c
    block source myappsource() {
             file("/opt/var/myapplication.log" follow-freq(1) default-facility(syslog)); };
-
 ```
 
 Include this file in your main syslog-ng configuration file, reference the block, and use it in a logpath:
@@ -53,7 +51,6 @@ Include this file in your main syslog-ng configuration file, reference the block
     source s_myappsource { myappsource(); };
     ...
     log { source(s_myappsource); destination(...); };
-
 ```
 
 
@@ -76,7 +73,6 @@ The following example defines a source, a destination, and a log path to connect
             source(s_file); destination(d_local);
         };
     };
-
 ```
 
 
@@ -104,7 +100,6 @@ The following example defines a TCP source that can receive the following parame
    block source my_tcp_source(localport() flags("")) {
         network(port(`localport`) transport(tcp) flags(`flags`));
     };
-
 ```
 
 Because `localport` is defined with empty brackets `()`, it is a mandatory parameter. However, the `flags` parameter is not mandatory, because it is defined with an empty double quote bracket pair `("")`. If you do not enter a specific value when referencing this parameter, the value will be an empty string. This means that in this case
@@ -118,7 +113,6 @@ will be expanded to:
 
 ```c
    network(port(8080) transport(tcp) flags());
-
 ```
 
 
@@ -148,7 +142,6 @@ The following sample defines a file source block, which can receive the name of 
     source s_example {
         s_logfile(filename("logfile.log"));
     };
-
 ```
 
 
@@ -170,7 +163,6 @@ The following definition extends the logfile block from the previous example, an
             flags(no-parse)
         );
     };
-
 ```
 
 
@@ -182,7 +174,6 @@ The following example is the code of the [`pacct()` source driver]({{< relref "/
    block source pacct(file("/var/log/account/pacct") follow-freq(1) ...) {
         file("`file`" follow-freq(`follow-freq`) format("pacct") tags(".pacct") `__VARARGS__`);
     };
-
 ```
 
 
@@ -202,7 +193,6 @@ The following example defines a block called `setup-dns()` to set DNS-related se
     options {
         setup-dns(use-dns(yes));
     };
-
 ```
 
 

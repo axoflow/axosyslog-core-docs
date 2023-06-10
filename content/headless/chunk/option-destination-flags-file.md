@@ -20,8 +20,6 @@
   - *threaded*: The `threaded` flag enables multithreading for the destination. For details on multithreading, see {{% xref "/docs/chapter-multithreading/_index.md" %}}.
     
     {{% alert title="Note" color="info" %}}
-    
-    The `file` destination uses multiple threads only if the destination filename contains macros.
-    
+The `file` destination uses multiple threads only if the destination filename contains macros.
     {{% /alert %}}
 

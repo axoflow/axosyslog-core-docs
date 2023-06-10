@@ -85,7 +85,6 @@ The following {{% param "product.abbrev" %}} configuration sample uses the defau
         file("/var/log/example.log");
       };
     };
-
 ```
 
 From the trap, {{% param "product.abbrev" %}} writes the following into the log file:
@@ -111,7 +110,6 @@ Using the same input trap, the following configuration example formats the SNMP 
         file("/var/log/example.log" template("$(format-json --scope dot-nv-pairs)\n"));
       };
     };
-
 ```
 
 The previous trap formatted as JSON:

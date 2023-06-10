@@ -20,7 +20,6 @@ Starting with version 3.7, {{% param "product.abbrev" %}} can directly publish l
         topic("${HOST}")
     
     );
-
 ```
 
 
@@ -39,7 +38,6 @@ The following example defines a `kafka` destination, using only the required par
         topic("${HOST}")
       );
     };
-
 ```
 
 

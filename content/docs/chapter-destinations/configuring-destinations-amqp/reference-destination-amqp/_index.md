@@ -124,7 +124,6 @@ The `amqp()` destination has the following options:
         username(guest) password(guest)
         );
     };
-
 ```
 
 Available in {{% param "product.abbrev" %}} version 3.21 and later.

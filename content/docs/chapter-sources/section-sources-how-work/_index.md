@@ -12,7 +12,6 @@ To define a source, add a source statement to the syslog-ng configuration file u
    source <identifier> {
         source-driver(params); source-driver(params); ...
     };
-
 ```
 
 
@@ -24,7 +23,6 @@ The following source statement receives messages on the TCP port `1999` of the i
    source s_demo_tcp {
         network(ip(10.1.2.3) port(1999));
     };
-
 ```
 
 
@@ -38,7 +36,6 @@ The following source statement receives messages on the `1999` TCP port and the 
         network(ip(10.1.2.3) port(1999));
         network(ip(10.1.2.3) port(1999) transport("udp"));
     };
-
 ```
 
 
@@ -49,7 +46,6 @@ If the message received by the source does not have a proper syslog header, you 
 
 ```c
    source headerless_messages { network(default-facility(syslog) default-priority(emerg)); };
-
 ```
 
 
@@ -82,7 +78,6 @@ The following source statement collects the following log messages:
         network(transport("udp"));
         unix-dgram("/dev/log");
     };
-
 ```
 
 

@@ -33,7 +33,6 @@ The following configuration example uses the default value for the `namespace()`
     { 
       systemd-journal(namespace("*"));
     };
-
 ```
 
 The following configuration example uses a prefixed namespace identifier in the `namespace()` option:
@@ -43,7 +42,6 @@ The following configuration example uses a prefixed namespace identifier in the 
     { 
       systemd-journal(namespace("+foobar"));
     };
-
 ```
 
 

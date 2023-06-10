@@ -36,7 +36,6 @@ You can define your own template function as a regular configuration object (for
 
 ```c
    template-function <name-of-the-template-function> "<template-expression-using-strings-macros-template-functions>";
-
 ```
 
 
@@ -50,7 +49,6 @@ The following template function can be used to reformat the message. It adds the
     destination d_file {
         file("/tmp/mylogs.log" template("$(my-template-function)\n"));
     };
-
 ```
 
 You can also refer to existing templates in your template function.
@@ -58,6 +56,5 @@ You can also refer to existing templates in your template function.
 ```c
    template my-custom-header-template "${ISODATE} ${HOST_FROM} ${MSGHDR}";
     template-function my-template-function "$(my-custom-header-template) message-length=$(length "${MESSAGE}") ${MESSAGE}";
-
 ```
 

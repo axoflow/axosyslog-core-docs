@@ -83,7 +83,6 @@ In case of soft flow-control there is no message lost if the destination can acc
         destination(d_file);
         destination(d_tcp);
     };
-
 ```
 
 
@@ -115,7 +114,6 @@ Hazard of data loss\! For destinations other than file, soft flow-control is not
         destination(d_tcp);
         flags(flow-control);
     };
-
 ```
 
 

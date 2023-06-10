@@ -35,7 +35,6 @@ To replace your existing `tcp()`, `tcp6()`, `udp()`, `udp6()` sources with a `ne
                 )
             );
         };
-    
     ```
     
     When replaced with the `network()` driver, it looks like this.
@@ -52,5 +51,4 @@ To replace your existing `tcp()`, `tcp6()`, `udp()`, `udp6()` sources with a `ne
                 )
             );
         };
-    
     ```

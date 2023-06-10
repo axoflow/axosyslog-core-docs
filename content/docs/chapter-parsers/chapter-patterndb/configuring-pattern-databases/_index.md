@@ -13,7 +13,6 @@ To classify messages using a pattern database, include a `db-parser()` statement
    parser <identifier> {
         db-parser(file("<database_filename>"));
     };
-
 ```
 
 
@@ -30,7 +29,6 @@ The following statement uses the database located at `/opt/syslog-ng/var/db/patt
             file("/opt/syslog-ng/var/db/patterndb.xml")
         );
     };
-
 ```
 
 To apply the patterns on the incoming messages, include the parser in a log statement:
@@ -41,7 +39,6 @@ To apply the patterns on the incoming messages, include the parser in a log stat
         parser(pattern_db);
         destination( di_messages_class);
     };
-
 ```
 
 By default, syslog-ng tries to apply the patterns to the body of the incoming messages, that is, to the value of the $MESSAGE macro. If you want to apply patterns to a specific field, or to an expression created from the log message (for example, using template functions or other parsers), use the `message-template()` option. For example:
@@ -53,7 +50,6 @@ By default, syslog-ng tries to apply the patterns to the body of the incoming me
             message-template("${MY-CUSTOM-FIELD-TO-PROCESS}")
         );
     };
-
 ```
 
 By default, syslog-ng uses the name of the application (content of the ${PROGRAM} macro) to select which rules to apply to the message. If the content of the ${PROGRAM} macro is not the proper name of the application, you can use the `program-template()` option to specify it. For example:
@@ -65,7 +61,6 @@ By default, syslog-ng uses the name of the application (content of the ${PROGRAM
             program-template("${MY-CUSTOM-FIELD-TO-SELECT-RULES}")
         );
     };
-
 ```
 
 Note that the `program-template()` option is available in {{% param "product.abbrev" %}} version 3.21 and later.
@@ -90,7 +85,6 @@ The following destination separates the log messages into different files based 
             template-escape(no)
         );
     };
-
 ```
 
 Note that if you chain pattern databases, that is, use multiple databases in the same log path, the class assigned to the message (the value of `${.classifier.class}`) will be the one assigned by the last pattern database. As a result, a message might be classified as unknown even if a previous parser successfully classified it. For example, consider the following configuration:
@@ -102,7 +96,6 @@ Note that if you chain pattern databases, that is, use multiple databases in the
         parser(db_parser2);
         ...
     };
-
 ```
 
 Even if `db_parser1` matches the message, `db_parser2` might set `${.classifier.class}` to unknown. To avoid this problem, you can use an 'if' statement to apply the second parser only if the first parser could not classify the message:
@@ -116,7 +109,6 @@ Even if `db_parser1` matches the message, `db_parser2` might set `${.classifier.
         };
         ...
     };
-
 ```
 
 
@@ -134,7 +126,6 @@ If you want to automatically drop unmatched messages (that is, discard every mes
             drop-unmatched(yes)
         );
     };
-
 ```
 
 Note that the `drop-unmatched()` option is available in {{% param "product.abbrev" %}} version 3.11 and later.

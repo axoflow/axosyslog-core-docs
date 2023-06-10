@@ -53,7 +53,6 @@ This section describes server-style sources. For details on fetcher-style source
             print("exit")
             self.exit = True
     };
-
 ```
 
 

@@ -15,7 +15,6 @@ Available in {{% param "product.abbrev" %}} version 3.33 and later.
    destination {
         discord(url("https://discord.com/api/webhooks/x/y"));
     };
-
 ```
 
 By default the message sending is throttled to 5 message/sec, see [Discord: Rate Limits](https://discord.com/developers/docs/topics/rate-limits#global-rate-limit). To change this, use the `throttle()` option.

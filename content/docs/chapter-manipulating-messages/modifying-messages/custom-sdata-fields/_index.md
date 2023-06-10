@@ -15,7 +15,6 @@ The following example sets the sequence ID field of the RFC5424-formatted (IETF-
    rewrite r_sd {
         set("55555" value(".SDATA.meta.sequenceId"));
     };
-
 ```
 
 It is also possible to set the value of a field that does not exist yet, and create a new, custom name-value pair that is associated with the message. The following example creates the `.SDATA.groupID.fieldID@18372.4` field and sets its value to `yes`. If you use the **${.SDATA.groupID.fieldID@18372.4}** macro in a template or SQL table, its value will be `yes` for every message that was processed with this rewrite rule, and empty for every other message.
@@ -26,7 +25,6 @@ The next example creates a new SDATA field-group and field called `custom` and `
    rewrite r_rewrite_set {
         set("${SOURCEIP}" value(".SDATA.custom@18372.4.sourceip"));
     };
-
 ```
 
 If you use the **${.SDATA.custom@18372.4.sourceip}** macro in a template or SQL table, its value will be that of the `SOURCEIP` macro (as seen on the machine where the SDATA field was created) for every message that was processed with this rewrite rule, and empty for every other message.

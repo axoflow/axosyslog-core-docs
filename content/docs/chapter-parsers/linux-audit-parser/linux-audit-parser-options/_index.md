@@ -14,7 +14,6 @@ By default, `linux-audit-parser()` uses the `.auditd.` prefix. To modify it, use
    parser {
         linux-audit-parser(prefix("myprefix."));
     };
-
 ```
 
 {{% include-headless "chunk/option-parser-template.md" %}}

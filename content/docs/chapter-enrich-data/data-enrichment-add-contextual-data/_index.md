@@ -52,7 +52,6 @@ Technically, `add-contextual-data()` is a parser in {{% param "product.abbrev" %
             database("context-info-db.csv"),
         );
     };
-
 ```
 
 
@@ -85,7 +84,6 @@ The following example defines uses a CSV database to add the role of the host ba
         parser(p_add_context_data);
         destination(d_local);
     };
-
 ```
 
 ```c

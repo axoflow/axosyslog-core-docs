@@ -80,7 +80,6 @@ If you use more than one delimiter, note the following points:
             columns("column1", "column2", "column3")
         );
     };
-
 ```
 
 
@@ -96,9 +95,7 @@ If you use more than one delimiter, note the following points:
   - *drop-invalid*: When the `drop-invalid` option is set, the parser does not process messages that do not match the parser. For example, a message does not match the parser if it has less columns than specified in the parser, or it has more columns but the `greedy` flag is not enabled. Using the `drop-invalid` option practically turns the parser into a special filter, that matches messages that have the predefined number of columns (using the specified delimiters).
     
     {{% alert title="Note" color="info" %}}
-    
-    Messages dropped as invalid can be processed by a `fallback` log path. For details on the `fallback` option, see {{% xref "/docs/chapter-routing-filters/logpath/reference-logflags/_index.md" %}}.
-    
+Messages dropped as invalid can be processed by a `fallback` log path. For details on the `fallback` option, see {{% xref "/docs/chapter-routing-filters/logpath/reference-logflags/_index.md" %}}.
     {{% /alert %}}
 
   - *greedy*: The `greedy` option assigns the remainder of the message to the last column, regardless of the delimiter characters set. You can use this option to process messages where the number of columns varies.
@@ -112,7 +109,6 @@ If you use more than one delimiter, note the following points:
     
     ```c
         csv-parser(columns("COLUMN1", "COLUMN2", "COLUMN3") delimiters(","));
-    
     ```
     
     The `COLUMN1`, `COLUMN2`, and `COLUMN3` variables will contain the strings `example1`, `example2`, and `example3`, respectively. If the message looks like `example 1, example2, example3, some more information`, then any text appearing after the third comma (that is, `some more information`) is not parsed, and possibly lost if you use only the variables to reconstruct the message (for example, to send it to different columns of an SQL table).
@@ -121,7 +117,6 @@ If you use more than one delimiter, note the following points:
     
     ```c
         csv-parser(columns("COLUMN1", "COLUMN2", "COLUMN3") delimiters(",") flags(greedy));
-    
     ```
     
 
@@ -146,7 +141,6 @@ If you use more than one delimiter, note the following points:
    parser {
         csv-parser(prefix("myprefix."));
     };
-
 ```
 
 

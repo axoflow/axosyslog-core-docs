@@ -16,9 +16,7 @@ Currently, using the `sumologic-http()` and `sumologic-syslog()` destinations wi
     If you do not yet have a Sumo Logic account, visit [the official Sumo Logic website](https://www.sumologic.com/), and click **Start free trial** to create an account.
     
     {{% alert title="Note" color="info" %}}
-    
-    A free trial version of the Sumo Logic account has limited functionalities and is only available for 90 days.
-    
+A free trial version of the Sumo Logic account has limited functionalities and is only available for 90 days.
     {{% /alert %}}
 
   - A [Cloud Syslog Source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-Syslog-Source) configured with your Sumo Logic account.
@@ -26,9 +24,7 @@ Currently, using the `sumologic-http()` and `sumologic-syslog()` destinations wi
     For details, follow the configuration instructions under [the Configure a Cloud Syslog Source section](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-Syslog-Source#configure-a-cloud%C2%A0syslog%C2%A0source) on the official Sumo Logic website.
     
     {{% alert title="Note" color="info" %}}
-    
-    Transport-level security (TLS) 1.2 over TCP is required.
-    
+Transport-level security (TLS) 1.2 over TCP is required.
     {{% /alert %}}
 
   - A Cloud Syslog Source Token (from the Cloud Syslog Source side).
@@ -38,9 +34,7 @@ Currently, using the `sumologic-http()` and `sumologic-syslog()` destinations wi
     For detailed information about setting up TLS in your Sumo Logic account, see [the description for setting up TLS on the Sumo Logic official website](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-Syslog-Source#set%C2%A0up-tls).
     
     {{% alert title="Note" color="info" %}}
-    
-    After you download the **DigiCert** certificate, make sure you follow the certificate setup steps under [the syslog-ng section](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-Syslog-Source#syslog-ng-1).
-    
+After you download the **DigiCert** certificate, make sure you follow the certificate setup steps under [the syslog-ng section](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-Syslog-Source#syslog-ng-1).
     {{% /alert %}}
 
   - Your Sumo Logic syslog client, configured to send data to the Sumo Logic cloud syslog service, by using {{% param "product.abbrev" %}}.
@@ -50,9 +44,7 @@ Currently, using the `sumologic-http()` and `sumologic-syslog()` destinations wi
   - A verified connection and client configuration with the Sumo Logic service.
     
     {{% alert title="Warning" color="warning" %}}
-    
-    To avoid potential data loss, One Identity strongly recommends that you verify your [connection](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-Syslog-Source#verify-connection-with-sumo-service) and [client configuration](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-Syslog-Source#verify-client-configuration) with the Sumo Logic service before you start using the `sumologic-http()` or `sumologic-syslog()` destination with {{% param "product.abbrev" %}} in a production environment.
-    
+To avoid potential data loss, One Identity strongly recommends that you verify your [connection](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-Syslog-Source#verify-connection-with-sumo-service) and [client configuration](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-Syslog-Source#verify-client-configuration) with the Sumo Logic service before you start using the `sumologic-http()` or `sumologic-syslog()` destination with {{% param "product.abbrev" %}} in a production environment.
     {{% /alert %}}
 
   - (Optional) For using the `sumologic-http()` destination, you need a [HTTP Hosted Collector](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/HTTP-Source) configured in the Sumo Logic service.
@@ -76,9 +68,7 @@ Currently, using the `sumologic-syslog()` and `sumologic-http()` destinations wi
   - 64 characters long Sumo Logic tokens must be passed in the message body.
     
     {{% alert title="Note" color="info" %}}
-    
-    Although [RFC 5424](https://tools.ietf.org/html/rfc5424) limits the structured data field ([SD-ID](https://tools.ietf.org/html/rfc5424#page-15)) to 32 characters, Sumo Logic tokens are 64 characters long. If your logging client enforces the 32 characters length limit, you must pass the token in the message body.
-    
+Although [RFC 5424](https://tools.ietf.org/html/rfc5424) limits the structured data field ([SD-ID](https://tools.ietf.org/html/rfc5424#page-15)) to 32 characters, Sumo Logic tokens are 64 characters long. If your logging client enforces the 32 characters length limit, you must pass the token in the message body.
     {{% /alert %}}
 
 
@@ -93,7 +83,6 @@ Currently, using the `sumologic-syslog()` and `sumologic-http()` destinations wi
         tls(peer-verify(yes) ca-dir('/etc/syslog-ng/ca.d'))
       );
     };
-
 ```
 
 
@@ -107,7 +96,6 @@ Currently, using the `sumologic-syslog()` and `sumologic-http()` destinations wi
         tls(peer-verify(yes) ca-dir('/etc/syslog-ng/ca.d'))
       );
     };
-
 ```
 
 

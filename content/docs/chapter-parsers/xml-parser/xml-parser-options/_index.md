@@ -60,7 +60,6 @@ The XML parser has the following options.
             exclude-tags("tag1", "tag2", "inner*")
         );
     };
-
 ```
 
 From this XML input:
@@ -107,7 +106,6 @@ The `prefix()` option is optional and its default value is `".xml"`.
             strip-whitespaces(yes)
         );
     };
-
 ```
 
 From this XML input:

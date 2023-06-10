@@ -21,7 +21,6 @@ The `sun-streams()` driver has a single required argument specifying the `STREAM
 
 ```c
    sun-streams(<name_of_the_streams_device> door(<filename_of_the_door>));
-
 ```
 
 
@@ -32,6 +31,5 @@ The `sun-streams()` driver has a single required argument specifying the `STREAM
    source s_stream {
         sun-streams("/dev/log" door("/etc/.syslog_door"));
     };
-
 ```
 

@@ -49,7 +49,6 @@ The following code sample illustrates how you can use the Proxy Protocol in your
       source(s_tcp_pp);
       destination(d_file);
     };
-
 ```
 
 With this configuration, the Proxy Protocol method will perform injecting the information of the original connection into the forwarded TCP session, based on the working mechanism described in {{% xref "/docs/chapter-sources/configuring-sources-network/proxy-prot-intro/proxy-prot-w-mech/_index.md" %}}.

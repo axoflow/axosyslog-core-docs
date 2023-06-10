@@ -55,9 +55,7 @@ The status of the object. One of the following:
   - `o` - This object was once active, but stopped receiving messages. (For example, a dynamic object may disappear and become orphan.)
     
     {{% alert title="Note" color="info" %}}
-    
-    The {{% param "product.abbrev" %}} application stores the statistics of the objects when {{% param "product.abbrev" %}} is reloaded. However, if the configuration of {{% param "product.abbrev" %}} was changed since the last reload, the statistics of orphaned objects are deleted.
-    
+The {{% param "product.abbrev" %}} application stores the statistics of the objects when {{% param "product.abbrev" %}} is reloaded. However, if the configuration of {{% param "product.abbrev" %}} was changed since the last reload, the statistics of orphaned objects are deleted.
     {{% /alert %}}
 
 The `connections` statistics counter displays the number of connections tracked by {{% param "product.abbrev" %}} for the selected source driver.
@@ -75,7 +73,6 @@ Configuration:
         port(8001)  
       ); 
     };
-
 ```
 
 Statistics output:
@@ -145,10 +142,10 @@ When using the `eps_last_1h`, the `eps_last_24h`, and the `eps_since_start` stat
 ```c
    dst.network;d_net#0;tcp,127.0.0.1:9999;a;memory_usage;0
 
-``` {{% alert title="Note" color="info" %}}
+```
 
+{{% alert title="Note" color="info" %}}
 The memory usage (size) of queues is not equal to the memory usage (size) of the log messages in {{% param "product.abbrev" %}}. A log message can be in multiple queues, thus its size is added to multiple queue sizes. To check the size of all log messages, use `global.msg_allocated_bytes.value` metric.
-
 {{% /alert %}}
 
 `msg_size_max`: The current largest message size of the given source or destination.
@@ -156,32 +153,28 @@ The memory usage (size) of queues is not equal to the memory usage (size) of the
 `msg_size_avg`: The current average message size of the given source or destination.
 
 {{% alert title="Note" color="info" %}}
-
 When using the `msg_size_avg` and `msg_size_max` statistics, consider that message sizes are calculated as follows:
 
   - on the source side: the length of the incoming raw message
 
   - on the destination side: the length of the outgoing formatted message
-
 {{% /alert %}}
 
 `not_matched`: The number of messages that are filtered out by a given filter. Available for filters and similar objects (for example, a conditional rewrite rule). For example, if a filter matches a specific hostname, then the `not_matched` counter contains the number of messages that reached the filter from other hosts, and so the filter discarded them.
 
 {{% alert title="Note" color="info" %}}
-
 Since the `not_matched` metric applies to filters, and filters are expected to discard messages that do not match the filter condition, `not_matched` messages are not included in the `dropped` metric of other objects.
 
 ```c
    filter;demo_filter;;a;not_matched;0
 
-``` {{% /alert %}}
+```
+{{% /alert %}}
 
 `processed`: The number of messages that successfully reached their destination driver.
 
 {{% alert title="Note" color="info" %}}
-
 Consider that a message that has successfully reached its destination driver does not necessarily mean that the destination driver successfully delivered the messages as well. For example, a message can be written to disk or sent to a remote server after reaching the destination driver.
-
 {{% /alert %}}
 
 `queued`: The number of messages passed to the message queue of the destination driver, waiting to be sent to the destination.
@@ -195,7 +188,6 @@ Consider that a message that has successfully reached its destination driver doe
 {{% include-headless "chunk/para-metrics-calculated-reset.md" %}}
 
 {{% alert title="Note" color="info" %}}
-
 Consider that for {{% param "product.abbrev" %}} version 3.36, the following statistics counters are only supported for the `http()` destination, or the `http()` destination and all `network()` sources and destinations, and all `file()` sources and destinations, respectively:
 
   - `msg_size_max`
@@ -211,7 +203,6 @@ Consider that for {{% param "product.abbrev" %}} version 3.36, the following sta
   - `eps_last_24h`
 
   - `eps_since_start`
-
 {{% /alert %}}
 
 The number of such messages.

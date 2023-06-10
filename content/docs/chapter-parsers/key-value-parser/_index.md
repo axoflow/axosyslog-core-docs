@@ -33,7 +33,6 @@ To parse `key=value` pairs, define a parser that has the `kv-parser()` option. D
             prefix()
         );
     };
-
 ```
 
 
@@ -68,7 +67,6 @@ The kv-parser inserts the "`.kv.`" prefix before all extracted name-value pairs.
         parser(p_kv);
         destination(d_json);
     };
-
 ```
 
 You can also define the parser inline in the log path.
@@ -90,7 +88,6 @@ You can also define the parser inline in the log path.
         };
         destination(d_json);
     };
-
 ```
 
 You can set the separator character between the key and the value to parse for example, `key:value` pairs, like MySQL logs:
@@ -104,6 +101,5 @@ You can set the separator character between the key and the value to parse for e
    parser p_mysql {
         kv-parser(value-separator(":") prefix(".mysql."));
     };
-
 ```
 

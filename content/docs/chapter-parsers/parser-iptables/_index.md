@@ -17,7 +17,6 @@ The iptables parser can parse the log messages of the iptables command. Availabl
         parser { iptables-parser(); };
         destination { ... };
     };
-
 ```
 
 
@@ -34,6 +33,5 @@ By default, `iptables-parser()` uses the `.iptables.` prefix. To modify it, use 
    parser { 
         iptables-parser(prefix("myprefix.")); 
     };
-
 ```
 

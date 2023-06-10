@@ -24,7 +24,6 @@ If the parameter value is not a valid parameter value, the function ignores it a
                         destination { file("/var/log/mail.log"); };
                         flags(flow-control);
                     };
-
 ```
 
 
@@ -58,6 +57,5 @@ The following example can be used in production for the `set-facility()` rewrite
     set-facility("info");
     set-facility("6");
     set-facility("${.json.severity}");};
-
 ```
 

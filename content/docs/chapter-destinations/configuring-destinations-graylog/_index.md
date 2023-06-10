@@ -36,7 +36,6 @@ You can send syslog messages to Graylog using the **graylog2()** destination. Th
             transport(tcp)
           );
         };
-    
     ```
     
     If you parsed your messages using syslog-ng, the template also forwards any name-value pairs where the name starts with a dot or underscore.
@@ -68,6 +67,5 @@ While sending nested JSON inside GELF is possible, it is not convenient. If you 
             template("$(format-json --scope all-nv-pairs)\n")
           );
         };
-    
     ```
 

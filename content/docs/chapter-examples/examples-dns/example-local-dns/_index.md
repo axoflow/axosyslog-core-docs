@@ -23,6 +23,5 @@ Resolving hostnames locally enables you to display hostnames in the log files fo
             use-dns(persist_only);
             dns-cache-hosts(/etc/hosts);
         };
-    
     ```
 

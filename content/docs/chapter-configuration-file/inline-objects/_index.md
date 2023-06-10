@@ -25,7 +25,6 @@ The following two configuration examples are equivalent. The first one uses trad
         source(s_local);
         destination(d_local);
     };
-
 ```
 
 ```c
@@ -38,6 +37,5 @@ The following two configuration examples are equivalent. The first one uses trad
             file("/var/log/messages");
         };
     };
-
 ```
 

@@ -92,7 +92,6 @@ Note that the time format parameter requires:
        [...]
        );
     };
-
 ```
 
 
@@ -239,7 +238,6 @@ If an error occurs while sending the messages to the server, {{% param "product.
             )
         );
     };
-
 ```
 
 An alternative way to specify TLS options is to group them into a `tls()` block. This allows you to separate them and ensure better readability.
@@ -261,7 +259,6 @@ An alternative way to specify TLS options is to group them into a `tls()` block.
             )
         );
     };
-
 ```
 
 Make sure that you specify TLS options either using `type()` or using the `tls()` block. Avoid mixing the two methods. In case you do specify TLS options in both ways, the one that comes later in the configuration file will take effect.

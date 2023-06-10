@@ -13,6 +13,5 @@ The following log statement drops all `debug` level messages without any further
 ```c
    filter demo_debugfilter { level(debug); };
     log { source(s_all); filter(demo_debugfilter); flags(final); };
-
 ```
 

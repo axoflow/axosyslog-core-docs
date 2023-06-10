@@ -13,7 +13,6 @@ To see an example of how the `graphite()` destination is used to collect statist
 
 ```c
    graphite(payload());
-
 ```
 
 
@@ -24,7 +23,6 @@ To use the <span>graphite()</span> destination, the only mandatory parameter is 
 
 ```c
    destination d_graphite { graphite(payload("--key monitor.*")); };
-
 ```
 
 

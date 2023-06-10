@@ -17,15 +17,13 @@ When {{% param "product.abbrev" %}} connects the MongoDB server during startup, 
 3.  When {{% param "product.abbrev" %}} connects the master MongoDB server, it retrieves the list of replicas (from the `replSet` option of the server), and appends this list to the `servers()` option.
     
     {{% alert title="Warning" color="warning" %}}
-    
-      - This means that {{% param "product.abbrev" %}} can send log messages to addresses that are not listed in its configuration.
+  - This means that {{% param "product.abbrev" %}} can send log messages to addresses that are not listed in its configuration.
     
       - Make sure to include the address of your master server in your {{% param "product.abbrev" %}} configuration file, otherwise you risk losing log messages if all the addresses listed in the {{% param "product.abbrev" %}} configuration are offline.
     
       - Addresses retrieved from the MongoDB servers are not stored, and can be lost when {{% param "product.abbrev" %}} is restarted. The retrieved addresses are not lost if the `server()` option of the destination was not changed in the configuration file since the last restart.
     
       - The failover mechanism used in the `mongodb()` driver is different from the client-side failover used in other drivers.
-    
     {{% /alert %}}
 
 4.  The {{% param "product.abbrev" %}} application attempts to connect another server if the `servers()` list contains at least two addresses, and one of the following events happens:

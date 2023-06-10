@@ -41,7 +41,6 @@ When including configuration files, consider the following points:
         source s_example {
             @include "example.conf"
         };
-    
     ```
 
 {{% alert title="Warning" color="warning" %}}

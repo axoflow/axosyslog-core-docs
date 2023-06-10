@@ -26,6 +26,5 @@ For example:
         cluster-url("http://node01:9200 http://node02:9200")
       );
     };
-
 ```
 

@@ -26,7 +26,6 @@ You can also use log-path flags in the channels of the junction. Within the junc
         channel { <other-syslog-ng-objects> <log-path-flags>};
         ...
     };
-
 ```
 
 

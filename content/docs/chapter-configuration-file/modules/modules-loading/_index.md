@@ -41,8 +41,9 @@ To ensure that a module is loaded, include the following statement in the {{% pa
 ```c
    @requires <module-name>
 
-``` {{% alert title="Note" color="info" %}}
+```
 
+{{% alert title="Note" color="info" %}}
 If you include the `@requires` statement in the:
 
   - {{% param "product.abbrev" %}} configuration file, {{% param "product.abbrev" %}} attempts to load the required module. If it fails to load the module, {{% param "product.abbrev" %}} stops and an error message is displayed.
@@ -54,5 +55,4 @@ Note that this is not true for modules marked as mandatory. You can make a depen
 Example
 @requires http "The http() driver is required for elasticsearch-http(). Install syslog-ng-mod-http to continue."
 ```
-
-``` {{% /alert %}}
+{{% /alert %}}

@@ -144,7 +144,6 @@ The `null()` parameter of the SQL driver can be used to replace the contents of 
         indexes("datetime", "host", "program", "pid", "message")
         null(""));
     };
-
 ```
 
 To replace only a specific column (for example, `pid`) if it is empty, assign a default value to the column, and use this default value in the `null()` parameter:
@@ -160,7 +159,6 @@ To replace only a specific column (for example, `pid`) if it is empty, assign a 
         indexes("datetime", "host", "program", "pid", "message")
         null("@@NULL@@"));
     };
-
 ```
 
 Ensure that the default value you use does not appear in the actual log messages, because other occurrences of this string will be replaced with NULL as well.

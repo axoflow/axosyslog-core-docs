@@ -17,7 +17,6 @@ weight:  2500
    source s_tcp {
         network(ip(192.168.1.1) port(1514) tags("tcp", "router"));
     };
-
 ```
 
 Use the **tags()** option of the filters to select only specific messages:
@@ -30,7 +29,6 @@ Use the **tags()** option of the filters to select only specific messages:
     filter f_router {
         tags("router");
     };
-
 ```
 
 

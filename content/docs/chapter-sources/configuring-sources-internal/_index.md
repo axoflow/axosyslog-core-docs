@@ -18,7 +18,6 @@ The syslog-ng application will issue a warning upon startup if none of the defin
 
 ```c
    source s_local { internal(); };
-
 ```
 
 

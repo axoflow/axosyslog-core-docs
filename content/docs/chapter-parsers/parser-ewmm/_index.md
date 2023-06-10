@@ -13,6 +13,5 @@ The `ewmm-parser()` can be used to parse messages sent by another syslog-ng host
    parser parser_name {
         ewmm-parser();
     };
-
 ```
 

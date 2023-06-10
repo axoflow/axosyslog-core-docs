@@ -40,7 +40,6 @@ By default, the Check Point-specific fields are extracted into name-value pairs 
         parser { checkpoint-parser(); };
         destination { ... };
     };
-
 ```
 
 
@@ -57,6 +56,5 @@ By default, `checkpoint-parser()` uses the `.checkpoint.` prefix. To modify it, 
    parser {
         checkpoint-parser(prefix("myprefix."));
     };
-
 ```
 
