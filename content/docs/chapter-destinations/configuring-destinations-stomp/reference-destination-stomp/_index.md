@@ -35,7 +35,7 @@ The `stomp()` destination has the following options:
 
 *Description:* The name of the destination (message queue) on the STOMP server. It can include macros and templates.
 
-{{% include-headless "chunk/option-destination-diskbuffer.md" %}}
+{{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
 {{% include-headless "chunk/option-destination-batch-bytes.md" %}}
 

@@ -14,7 +14,7 @@ The `pipe()` destination has the following options:
 
 {{% include-headless "chunk/option-destination-flush-lines.md" %}}
 
-{{% include-headless "chunk/option-destination-frac-digits.md" %}}
+{{< include-headless "chunk/option-destination-frac-digits.md" >}}
 
 {{% include-headless "chunk/option-destination-group.md" %}}
 
@@ -24,11 +24,11 @@ The `pipe()` destination has the following options:
 
 {{% include-headless "chunk/option-destination-mark-freq.md" %}}
 
-{{% include-headless "chunk/option-destination-mark-mode.md" %}}
+{{< include-headless "chunk/option-destination-mark-mode.md" >}}
 
 {{% include-headless "chunk/option-destination-owner.md" %}}
 
-{{% include-headless "chunk/option-destination-pad-size.md" %}}
+{{< include-headless "chunk/option-destination-pad-size.md" >}}
 
 {{% include-headless "chunk/option-destination-perm-pipe.md" %}}
 
@@ -50,4 +50,4 @@ The `pipe()` destination has the following options:
 
 {{% include-headless "chunk/option-destination-timezone.md" %}}
 
-{{% include-headless "chunk/option-destination-ts-format.md" %}}
+{{< include-headless "chunk/option-destination-ts-format.md" >}}

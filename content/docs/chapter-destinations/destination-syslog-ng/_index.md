@@ -31,7 +31,7 @@ The `syslog-ng()` destination is a special version of the `network()` destinatio
 
 {{< include-headless "chunk/option-destination-tls-ca-file.md" >}}
 
-{{% include-headless "chunk/option-destination-diskbuffer.md" %}}
+{{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
 {{% include-headless "chunk/option-destination-failover.md" %}}
 
@@ -41,7 +41,7 @@ The `syslog-ng()` destination is a special version of the `network()` destinatio
 
 {{% include-headless "chunk/option-destination-flush-lines.md" %}}
 
-{{% include-headless "chunk/option-destination-frac-digits.md" %}}
+{{< include-headless "chunk/option-destination-frac-digits.md" >}}
 
 {{% include-headless "chunk/option-source-ip-protocol.md" %}}
 
@@ -59,7 +59,7 @@ The `syslog-ng()` destination is a special version of the `network()` destinatio
 
 {{% include-headless "chunk/option-destination-mark-freq.md" %}}
 
-{{% include-headless "chunk/option-destination-mark-mode.md" %}}
+{{< include-headless "chunk/option-destination-mark-mode.md" >}}
 
 {{% include-headless "chunk/option-destination-syslog-port.md" %}}
 
@@ -103,4 +103,4 @@ The `syslog-ng()` destination is a special version of the `network()` destinatio
 
 {{% include-headless "chunk/option-destination-transport.md" %}}
 
-{{% include-headless "chunk/option-destination-ts-format.md" %}}
+{{< include-headless "chunk/option-destination-ts-format.md" >}}

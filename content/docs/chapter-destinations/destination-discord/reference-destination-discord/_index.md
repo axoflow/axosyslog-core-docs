@@ -59,7 +59,7 @@ For details on how this option influences HTTP batch mode, see [http: Posting me
 {{% include-headless "chunk/example-tls-block-http.md" %}}
 
 
-{{% include-headless "chunk/option-destination-diskbuffer.md" %}}
+{{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
 {{< include-headless "chunk/option-destination-hook.md" >}}
 
@@ -87,7 +87,7 @@ The `http()` destination supports only unencrypted key files (that is, the priva
 
 
 
-{{% include-headless "chunk/option-peer-verify-simple.md" %}}
+{{< include-headless "chunk/option-peer-verify-simple.md" >}}
 
 {{% include-headless "chunk/topic-tls-block-http.md" %}}
 
@@ -181,7 +181,7 @@ The `http()` destination supports only unencrypted key files (that is, the priva
     |------+-----------------------------------+------------|
 ```
 
-To customize the action to take for a particular response code, use the following format: `response-action(\<response-code\> =\> \<action\>`. To customize multiple response code-action pairs, separate them with a comma, for example:
+To customize the action to take for a particular response code, use the following format: `response-action(<response-code> => <action>`. To customize multiple response code-action pairs, separate them with a comma, for example:
 
 ```c
  http(

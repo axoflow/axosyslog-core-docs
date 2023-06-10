@@ -59,7 +59,7 @@ The `amqp()` destination has the following options:
 {{% include-headless "chunk/topic-tls-block-amqp.md" %}}
 
 
-{{% include-headless "chunk/option-destination-diskbuffer.md" %}}
+{{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
 
 ## exchange() {#amqp-option-exchange}
@@ -168,7 +168,7 @@ Available in {{% param "product.abbrev" %}} version 3.21 and later.
 *Description:* The password used to authenticate on the AMQP server.
 
 
-{{% include-headless "chunk/option-peer-verify-simple.md" %}}
+{{< include-headless "chunk/option-peer-verify-simple.md" >}}
 
 {{% include-headless "chunk/topic-tls-block-amqp.md" %}}
 

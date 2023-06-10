@@ -6,7 +6,7 @@
 
 
 
-{{% include-headless "chunk/option-destination-diskbuffer.md" %}}
+{{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
 
 
@@ -22,7 +22,7 @@
 
 
 
-{{% include-headless "chunk/option-destination-frac-digits.md" %}}
+{{< include-headless "chunk/option-destination-frac-digits.md" >}}
 
 
 
@@ -62,7 +62,7 @@
 
 
 
-{{% include-headless "chunk/option-destination-mark-mode.md" %}}
+{{< include-headless "chunk/option-destination-mark-mode.md" >}}
 
 
 
@@ -136,5 +136,5 @@
 
 
 
-{{% include-headless "chunk/option-destination-ts-format.md" %}}
+{{< include-headless "chunk/option-destination-ts-format.md" >}}
 

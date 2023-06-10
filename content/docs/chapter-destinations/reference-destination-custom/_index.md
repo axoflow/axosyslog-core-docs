@@ -10,4 +10,4 @@ The {{% param "product.abbrev" %}} application is open source, so if you have th
 
   - For details on extending {{% param "product.abbrev" %}} in Java, see the [{{% param "product.abbrev" %}} Developer Guide](https://www.gitbook.com/book/syslog-ng/getting-started/details)
 
-{{% include-headless "wnt/note-jvm-reload.md" %}}
+{{< include-headless "wnt/note-jvm-reload.md" >}}

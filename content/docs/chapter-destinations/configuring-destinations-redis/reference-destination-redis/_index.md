@@ -38,7 +38,7 @@ Note the following points when using the `redis()` destination:
 
   - The {{% param "product.abbrev" %}} application ignores the return value of the command. If the Redis server returns an error, {{% param "product.abbrev" %}} closes the connection.
 
-{{% include-headless "chunk/option-destination-diskbuffer.md" %}}
+{{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
 {{% include-headless "chunk/option-destination-batch-bytes.md" %}}
 
@@ -80,5 +80,5 @@ Note the following points when using the `redis()` destination:
 | Type:    | integer |
 | Default: | 1       |
 
-{{% include-headless "chunk/option-destination-description-workers.md" %}}
+{{< include-headless "chunk/option-destination-description-workers.md" >}}
 

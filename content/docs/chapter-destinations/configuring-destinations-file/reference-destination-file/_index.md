@@ -6,7 +6,7 @@ weight:  100
 
 The `file()` driver outputs messages to the specified text file, or to a set of files. The `file()` destination has the following options:
 
-{{% include-headless "wnt/warning-fd-ulimit.md" %}}
+{{< include-headless "wnt/warning-fd-ulimit.md" >}}
 
 {{% include-headless "chunk/option-destination-create-dirs.md" %}}
 
@@ -16,15 +16,15 @@ The `file()` driver outputs messages to the specified text file, or to a set of 
 
 {{% include-headless "chunk/option-destination-dir-perm.md" %}}
 
-{{% include-headless "chunk/option-destination-diskbuffer.md" %}}
+{{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
 {{% include-headless "chunk/option-destination-flags-file.md" %}}
 
 {{% include-headless "chunk/option-destination-flush-lines.md" %}}
 
-{{% include-headless "chunk/option-destination-frac-digits.md" %}}
+{{< include-headless "chunk/option-destination-frac-digits.md" >}}
 
-{{% include-headless "chunk/option-destination-fsync.md" %}}
+{{< include-headless "chunk/option-destination-fsync.md" >}}
 
 {{< include-headless "chunk/option-destination-hook.md" >}}
 
@@ -36,13 +36,13 @@ The `file()` driver outputs messages to the specified text file, or to a set of 
 
 {{% include-headless "chunk/option-destination-mark-freq.md" %}}
 
-{{% include-headless "chunk/option-destination-mark-mode.md" %}}
+{{< include-headless "chunk/option-destination-mark-mode.md" >}}
 
 {{% include-headless "chunk/option-destination-overwrite-if-older-file.md" %}}
 
 {{% include-headless "chunk/option-destination-owner.md" %}}
 
-{{% include-headless "chunk/option-destination-pad-size.md" %}}
+{{< include-headless "chunk/option-destination-pad-size.md" >}}
 
 {{% include-headless "chunk/option-destination-perm.md" %}}
 
@@ -91,4 +91,4 @@ The symlink uses the same permissions as the file destination.
 
 {{% include-headless "chunk/option-destination-timezone.md" %}}
 
-{{% include-headless "chunk/option-destination-ts-format.md" %}}
+{{< include-headless "chunk/option-destination-ts-format.md" >}}

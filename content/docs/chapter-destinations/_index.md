@@ -46,7 +46,7 @@ If name resolution is configured, you can use the hostname of the target server 
 
   - Do not use the same destination in different log paths, because it can cause problems with most destination types. Instead, use filters and log paths to avoid such situations.
 
-  - {{% include-headless "chunk/para-initializing-sources-destinations.md" %}}
+  - {{< include-headless "chunk/para-initializing-sources-destinations.md" >}}
 
 {{% /alert %}}
 

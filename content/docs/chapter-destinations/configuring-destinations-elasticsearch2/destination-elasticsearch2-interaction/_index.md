@@ -12,4 +12,4 @@ The {{% param "product.abbrev" %}} application sends the log messages to the off
     
     {{% include-headless "chunk/option-destination-elasticsearch-flush-limit-description.md" %}}
 
-  - {{% include-headless "chunk/option-destination-elasticsearch-timezone.md" %}}
+  - {{< include-headless "chunk/option-destination-elasticsearch-timezone.md" >}}

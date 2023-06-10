@@ -1,10 +1,8 @@
 ---
-title: "iv>"
+title: "Batch mode and load balancing"
 weight:  100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
-
-# Batch mode and load balancing
 
 Starting with version 3.18, you can send multiple log messages in a single HTTP request if the destination HTTP server supports that.
 
@@ -51,7 +49,7 @@ The following destination sends [log messages to an Elasticsearch server using t
 
 ## Load balancing between multiple servers {#http-load-balancing}
 
-{{% include-headless "chunk/destination-load-balancing-url.md" %}}
+{{< include-headless "chunk/destination-load-balancing-url.md" >}}
 
 
 ## Example: HTTP load balancing {#example-http-load-balancing}

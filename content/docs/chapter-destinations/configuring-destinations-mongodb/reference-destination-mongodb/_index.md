@@ -25,7 +25,7 @@ Hazard of data loss! The {{% param "product.abbrev" %}} application does not ver
 {{% /alert %}}
 
 
-{{% include-headless "chunk/option-destination-diskbuffer.md" %}}
+{{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
 {{% include-headless "chunk/option-destination-batch-bytes.md" %}}
 
@@ -33,7 +33,7 @@ Hazard of data loss! The {{% param "product.abbrev" %}} application does not ver
 
 {{% include-headless "chunk/option-destination-batch-timeout.md" %}}
 
-{{% include-headless "chunk/option-destination-frac-digits.md" %}}
+{{< include-headless "chunk/option-destination-frac-digits.md" >}}
 
 {{< include-headless "chunk/option-destination-hook.md" >}}
 
@@ -79,6 +79,6 @@ For MongoDB operations, {{% param "product.abbrev" %}} uses a one-minute timeout
 
 *Description:* Specifies the number of worker threads (at least 1) that {{% param "product.abbrev" %}} uses to send messages to the server. Increasing the number of worker threads can drastically improve the performance of the destination.
 
-{{% include-headless "wnt/warning-diskbuffer-workers.md" %}}
+{{< include-headless "wnt/warning-diskbuffer-workers.md" >}}
 
 

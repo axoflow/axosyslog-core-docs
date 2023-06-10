@@ -13,5 +13,4 @@
 
 {{% include-headless "chunk/option-tls-peer-verify-yesno.md" %}}
 
-{{% include-headless "chunk/option-destination-tls-peer-verify-notes.md" %}}
-
+{{< include-headless "chunk/option-destination-tls-peer-verify-notes.md" >}}

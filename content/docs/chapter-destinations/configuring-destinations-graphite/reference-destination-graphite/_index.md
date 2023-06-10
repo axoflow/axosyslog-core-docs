@@ -33,24 +33,9 @@ The `graphite()` destination has the following options:
 
 ## payload() {#graphite-option-payload}
 
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td>Type:</td>
-<td>parameter list of the `payload()` option</td>
-</tr>
-<tr class="even">
-<td>Default:</td>
-<td>```c
-empty string
-```</td>
-</tr>
-</tbody>
-</table>
+| Type:        | parameter list of the `payload()` option    |
+|--------------|-----------|
+| Default:     | empty string   |
 
 *Description:* The payload() option allows you to select which value pairs to forward to graphite.
 

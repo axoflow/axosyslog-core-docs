@@ -4,7 +4,7 @@ weight:  900
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-{{% include-headless "wnt/warning-elasticsearch2-deprecated.md" %}}
+{{< include-headless "wnt/warning-elasticsearch2-deprecated.md" >}}
 
 The `elasticsearch2` destination can directly send log messages to [Elasticsearch](https://www.elastic.co/products/elasticsearch), allowing you to search and analyze your data in real time, and visualize it with [Kibana](https://www.elastic.co/products/kibana). The `elasticsearch2` destination has the following options.
 
@@ -78,7 +78,7 @@ Hazard of data loss! Using the `concurrent-requests()` option increases the numb
 *Description:* Use this option to specify a custom ID for the records inserted into Elasticsearch. If this option is not set, the Elasticsearch server automatically generates and ID for the message. For example: `custom-id(${UNIQID})` (Note that to use the `${UNIQID}` macro, the `use-uniqid()` global option must be enabled. For details, see [use-uniqid()]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}).)
 
 
-{{% include-headless "chunk/option-destination-diskbuffer.md" %}}
+{{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
 
 ## flush-limit() {#elasticsearch2-option-elasticsearch2-flush-limit}
@@ -93,7 +93,7 @@ Hazard of data loss! Using the `concurrent-requests()` option increases the numb
 {{% include-headless "chunk/option-destination-elasticsearch-flush-limit-description.md" %}}
 
 
-{{% include-headless "chunk/option-destination-frac-digits.md" %}}
+{{< include-headless "chunk/option-destination-frac-digits.md" >}}
 
 {{< include-headless "chunk/option-destination-hook.md" >}}
 
@@ -342,7 +342,7 @@ For details on formatting messages in JSON format, see [format-json]({{< relref 
 {{% include-headless "chunk/option-destination-elasticsearch-timezone.md" %}}
 
 
-{{% include-headless "chunk/option-destination-ts-format.md" %}}
+{{< include-headless "chunk/option-destination-ts-format.md" >}}
 
 
 ## type() {#elasticsearch2-option-elasticsearch2-type}

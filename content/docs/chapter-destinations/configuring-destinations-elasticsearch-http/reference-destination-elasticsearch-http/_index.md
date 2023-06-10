@@ -96,7 +96,7 @@ For details on how this option influences batch mode, see {{% xref "/docs/chapte
 For details on how this option influences batch mode, see {{% xref "/docs/chapter-destinations/configuring-destinations-elasticsearch-http/elasticsearch-http-batch-mode/_index.md" %}}
 
 
-{{% include-headless "chunk/option-destination-diskbuffer.md" %}}
+{{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
 {{< include-headless "chunk/option-destination-hook.md" >}}
 
@@ -137,7 +137,7 @@ This destination supports only unencrypted key files (that is, the private key c
 
 
 
-{{% include-headless "chunk/option-peer-verify-simple.md" %}}
+{{< include-headless "chunk/option-peer-verify-simple.md" >}}
 
 {{% include-headless "chunk/topic-tls-block-http.md" %}}
 
@@ -217,7 +217,7 @@ Make sure that the URL ends with `_bulk`, this is the Elasticsearch API endpoint
 
 In case the server on the specified URL returns a redirect request, {{% param "product.abbrev" %}} automatically follows maximum 3 redirects. Only HTTP and HTTPS based redirections are supported.
 
-{{% include-headless "chunk/destination-load-balancing-url.md" %}}
+{{< include-headless "chunk/destination-load-balancing-url.md" >}}
 
 
 
@@ -241,5 +241,5 @@ In case the server on the specified URL returns a redirect request, {{% param "p
 | Type:    | integer |
 | Default: | 4       |
 
-{{% include-headless "chunk/option-destination-description-workers.md" %}}
+{{< include-headless "chunk/option-destination-description-workers.md" >}}
 

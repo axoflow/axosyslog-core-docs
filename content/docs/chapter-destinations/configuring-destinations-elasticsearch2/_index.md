@@ -4,7 +4,7 @@ weight:  700
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-{{% include-headless "wnt/warning-elasticsearch2-deprecated.md" %}}
+{{< include-headless "wnt/warning-elasticsearch2-deprecated.md" >}}
 
 Starting with version 3.7 of {{% param "product.abbrev" %}} can directly send log messages to [Elasticsearch](https://www.elastic.co/products/elasticsearch), allowing you to search and analyze your data in real time, and visualize it with [Kibana](https://www.elastic.co/products/kibana).
 
@@ -116,4 +116,4 @@ The following example send messages to Elasticsearch over HTTP using its REST AP
 
 The `elasticsearch2()` driver is actually a reusable configuration snippet configured to receive log messages using the Java language-binding of {{% param "product.abbrev" %}}. For details on using or writing such configuration snippets, see {{% xref "/docs/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of the elasticsearch configuration snippet on [GitHub](https://github.com/syslog-ng/syslog-ng/blob/master/scl/elasticsearch/plugin.conf). For details on extending {{% param "product.abbrev" %}} in Java, see the [Getting started with syslog-ng development](https://syslog-ng.gitbooks.io/getting-started/content/chapters/chapter_5/section_2.html) guide.
 
-{{% include-headless "wnt/note-jvm-reload.md" %}}
+{{< include-headless "wnt/note-jvm-reload.md" >}}

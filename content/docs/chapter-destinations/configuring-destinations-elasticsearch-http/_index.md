@@ -30,7 +30,7 @@ HTTPS connection, as well as password- and certificate-based authentication is s
 
 {{% include-headless "chunk/destination-http-proxy-settings3.md" %}}
 
-{{% include-headless "chunk/destination-http-proxy-settings4.md" %}}
+{{< include-headless "chunk/destination-http-proxy-settings4.md" >}}
 
 
 ## Example: Sending log data to Elasticsearch {#example-destination-elasticsearch-http}

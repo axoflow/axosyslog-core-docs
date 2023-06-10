@@ -281,7 +281,7 @@ Starting with version 3.16, the default value of this option is -1, so {{% param
 {{% include-headless "chunk/option-description-destination-flush-lines.md" %}}
 
 
-{{% include-headless "chunk/option-destination-frac-digits.md" %}}
+{{< include-headless "chunk/option-destination-frac-digits.md" >}}
 
 
 ## group() {#global-option-group}
@@ -350,7 +350,7 @@ For example:
 
 {{% include-headless "chunk/option-destination-mark-freq.md" %}}
 
-{{% include-headless "chunk/option-destination-mark-mode.md" %}}
+{{< include-headless "chunk/option-destination-mark-mode.md" >}}
 
 {{% include-headless "chunk/option-source-normalize-hostnames.md" %}}
 
@@ -598,7 +598,7 @@ If you set a lower value to `stats-max-dynamics()` (or, any limiting value, if t
 
 By default, timestamps include only seconds. To include fractions of a second (for example, milliseconds) use the `frac-digits()` option.
 
-{{% include-headless "wnt/note-ts-format-network.md" %}}
+{{< include-headless "wnt/note-ts-format-network.md" >}}
 
 
 {{< include-headless "chunk/option-source-use-dns.md" >}}

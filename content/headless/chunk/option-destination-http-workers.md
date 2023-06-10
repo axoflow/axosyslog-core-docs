@@ -9,5 +9,5 @@
 | Type:    | integer |
 | Default: | 1       |
 
-{{% include-headless "chunk/option-destination-description-workers.md" %}}
+{{< include-headless "chunk/option-destination-description-workers.md" >}}
 

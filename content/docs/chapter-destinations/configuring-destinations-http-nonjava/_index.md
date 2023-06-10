@@ -53,7 +53,7 @@ If the server returns a status code beginning with 2 (for example, 200), {{% par
 
 {{% include-headless "chunk/destination-http-proxy-settings3.md" %}}
 
-{{% include-headless "chunk/destination-http-proxy-settings4.md" %}}
+{{< include-headless "chunk/destination-http-proxy-settings4.md" >}}
 
 
 ## Example: Sending log data to a web service {#example-destination-http-nonjava}

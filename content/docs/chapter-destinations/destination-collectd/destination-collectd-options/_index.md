@@ -6,11 +6,11 @@ weight:  100
 
 The `collectd()` destination has the following options. The `plugin()` and `type()` options are required options. You can also set other options of the underlying `unix-stream()` driver (for example, socket buffer size).
 
-{{% include-headless "chunk/option-destination-diskbuffer.md" %}}
+{{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
 {{% include-headless "chunk/option-destination-flush-lines.md" %}}
 
-{{% include-headless "chunk/option-destination-frac-digits.md" %}}
+{{< include-headless "chunk/option-destination-frac-digits.md" >}}
 
 {{< include-headless "chunk/option-destination-hook.md" >}}
 

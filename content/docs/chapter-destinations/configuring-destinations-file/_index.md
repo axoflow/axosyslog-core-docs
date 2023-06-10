@@ -40,7 +40,7 @@ The `file()` has a single required parameter that specifies the filename that st
 ```
 
 
-{{% include-headless "wnt/note-logrotate.md" %}}
+{{< include-headless "wnt/note-logrotate.md" >}}
 
 {{% alert title="Warning" color="warning" %}}
 

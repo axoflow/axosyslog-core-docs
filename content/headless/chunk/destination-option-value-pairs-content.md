@@ -4,24 +4,9 @@
 
 ## value-pairs()
 
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td>Type:</td>
-<td>parameter list of the `value-pairs()` option</td>
-</tr>
-<tr class="even">
-<td>Default:</td>
-<td>```c
-scope(&quot;selected-macros&quot; &quot;nv-pairs&quot;)
-```</td>
-</tr>
-</tbody>
-</table>
+| Type:        | parameter list of the `value-pairs()` option   |
+|--------------|-----------|
+| Default:     | ```scope("selected-macros" "nv-pairs")``` |
 
 *Description:* The `value-pairs()` option creates structured name-value pairs from the data and metadata of the log message. For details on using `value-pairs()`, see {{% xref "/docs/chapter-concepts/concepts-value-pairs/_index.md" %}}.
 
