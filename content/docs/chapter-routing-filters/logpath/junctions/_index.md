@@ -29,7 +29,7 @@ You can also use log-path flags in the channels of the junction. Within the junc
 ```
 
 
-{{% include-headless "chunk/example-junctions-syslog-parser.md" %}}
+{{< include-headless "chunk/example-junctions-syslog-parser.md" >}}
 
 
 {{% alert title="Note" color="info" %}}

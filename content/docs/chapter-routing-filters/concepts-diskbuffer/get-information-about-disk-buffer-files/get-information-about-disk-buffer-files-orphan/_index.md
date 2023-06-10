@@ -11,7 +11,7 @@ This section describes orphan disk-buffer files used in {{% param "product.name"
 
 ## Orphan disk-buffer files
 
-{{% include-headless "chunk/orphan-d-buf-intro.md" %}}
+{{< include-headless "chunk/orphan-d-buf-intro.md" >}}
 
 
 

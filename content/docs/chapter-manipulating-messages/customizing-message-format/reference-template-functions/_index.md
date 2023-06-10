@@ -1041,7 +1041,7 @@ Output: `foofoofoofmymessage`
 
 *Description:* This template function enables you to write a custom template function in Python. You can define a Python block in your {{% param "product.abbrev" %}} configuration file, define one or more Python functions in it, and use the methods as template functions. If you use a Python block, {{% param "product.abbrev" %}} embeds a Python interpreter to process the messages.
 
-{{% include-headless "chunk/python-blocks.md" %}}
+{{< include-headless "chunk/python-blocks.md" >}}
 
 The following points apply to Python parsers.
 

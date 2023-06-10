@@ -6,4 +6,4 @@ weight:  1100
 
 The following functions may be used in the filter statement, as described in {{% xref "/docs/chapter-routing-filters/filters/_index.md" %}}.
 
-{{% include-headless "chunk/table-filter-functions.md" %}}
+{{< include-headless "chunk/table-filter-functions.md" >}}

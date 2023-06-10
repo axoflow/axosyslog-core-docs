@@ -336,4 +336,4 @@ In case the server on the specified URL returns a redirect request, {{% param "p
 
 {{% include-headless "chunk/option-destination-http-use-system-cert-store.md" %}}
 
-{{% include-headless "chunk/option-destination-http-workers.md" %}}
+{{< include-headless "chunk/option-destination-http-workers.md" >}}

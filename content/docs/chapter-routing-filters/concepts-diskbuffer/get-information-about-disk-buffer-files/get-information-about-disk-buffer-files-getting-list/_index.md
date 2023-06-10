@@ -25,5 +25,5 @@ The example output will look like the following:
    afsocket_dd_qfile(stream,10.21.10.20:601)  ==> /opt/syslog-ng/var/syslog-ng-00000.rqf
 ```
 
-{{% include-headless "chunk/disk-buffer-7lts-output-note.md" %}}
+{{< include-headless "chunk/disk-buffer-7lts-output-note.md" >}}
 

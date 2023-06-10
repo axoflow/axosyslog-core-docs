@@ -33,7 +33,7 @@ The `syslog-ng()` destination is a special version of the `network()` destinatio
 
 {{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
-{{% include-headless "chunk/option-destination-failover.md" %}}
+{{< include-headless "chunk/option-destination-failover.md" >}}
 
 {{% include-headless "chunk/example-failover-server-syslog.md" %}}
 
@@ -85,7 +85,7 @@ The `syslog-ng()` destination is a special version of the `network()` destinatio
 
 {{% include-headless "chunk/option-destination-suppress.md" %}}
 
-{{% include-headless "chunk/option-tcp-keepalive-intvl.md" %}}
+{{< include-headless "chunk/option-tcp-keepalive-intvl.md" >}}
 
 {{% include-headless "chunk/option-tcp-keepalive-probes.md" %}}
 

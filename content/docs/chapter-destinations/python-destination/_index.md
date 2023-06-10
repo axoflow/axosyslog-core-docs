@@ -6,7 +6,7 @@ weight:  4500
 
 The Python destination allows you to write your own destination in Python. You can import external Python modules to process the messages, and send them to other services or servers. Since many services have a Python library, the Python destination makes integrating {{% param "product.abbrev" %}} very easy and quick.
 
-{{% include-headless "chunk/python-blocks.md" %}}
+{{< include-headless "chunk/python-blocks.md" >}}
 
 {{< include-headless "wnt/note-python-persist-name.md" >}}
 

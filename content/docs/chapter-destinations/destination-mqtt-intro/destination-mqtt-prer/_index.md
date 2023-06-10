@@ -6,4 +6,4 @@ weight:  100
 
 Using the current implementation of the `mqtt()` destination has the following prerequisites:
 
-{{% include-headless "chunk/source-mqtt-prer-list.md" %}}
+{{< include-headless "chunk/source-mqtt-prer-list.md" >}}

@@ -93,7 +93,7 @@ The following example sets the `dont-create-tables` and `explicit-commits` flags
 
 {{< include-headless "chunk/option-destination-hook.md" >}}
 
-{{% include-headless "chunk/option-sql-host.md" %}}
+{{< include-headless "chunk/option-sql-host.md" >}}
 
 ## indexes() {#sql-option-indexes}
 

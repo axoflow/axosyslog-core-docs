@@ -8,4 +8,4 @@ weight:  500
 
 This section describes how to get information about disk-buffer files used in {{% param "product.name" %}} ({{% param "product.abbrev" %}}).
 
-{{% include-headless "chunk/get-info-about-disk-buffer-files-intro.md" %}}
+{{< include-headless "chunk/get-info-about-disk-buffer-files-intro.md" >}}

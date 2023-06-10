@@ -70,7 +70,7 @@ For details, see {{% xref "/docs/chapter-configuration-file/python-code-external
 
 <span id="python-options"></span>
 
-{{% include-headless "chunk/option-python-options.md" %}}
+{{< include-headless "chunk/option-python-options.md" >}}
 
 
 {{% include-headless "chunk/option-persist-name.md" %}}

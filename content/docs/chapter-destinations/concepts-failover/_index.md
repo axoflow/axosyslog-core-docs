@@ -8,7 +8,7 @@ weight:  7900
 
 The primary server is the address you provided in the destination driver configuration and it has a special role. {{% param "product.abbrev" %}} nominates this destination over the failover servers, and handles it as the primary address.
 
-{{% include-headless "chunk/option-destination-description-failback.md" %}}
+{{< include-headless "chunk/option-destination-description-failback.md" >}}
 
 If {{% param "product.abbrev" %}} is restarted, it attempts to connect the primary server.
 
