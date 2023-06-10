@@ -1,10 +1,8 @@
 ---
-title: "iv>"
+title: "Perl Compatible Regular Expressions (PCRE)"
 weight:  100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
-
-# Perl Compatible Regular Expressions (PCRE)
 
 Starting with {{% param "product.abbrev" %}} version 3.1, PCRE expressions are supported on every platform. If the `type()` parameter is not specified, {{% param "product.abbrev" %}} uses PCRE regular expressions by default.
 
@@ -58,7 +56,7 @@ When configured, it changes the newline definition used in PCRE regular expressi
 This newline definition is used when the circumflex and dollar patterns (`^` and `$`) are matched against an input. By default, PCRE interprets the linefeed character as indicating the end of a line. It does not affect the `\\r`, `\\n` or `\\R` characters used in patterns.
 
 
-{{% include-headless "chunk/regex-shared-store-matches.md" %}}
+{{< include-headless "chunk/regex-shared-store-matches.md" >}}
 
 
 ## unicode

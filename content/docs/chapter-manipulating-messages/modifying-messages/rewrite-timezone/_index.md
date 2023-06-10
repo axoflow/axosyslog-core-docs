@@ -19,7 +19,7 @@ By default, these operations modify the date-related macros of the message that 
 ```
 
 
-## {#rewrite-timezone-fix}
+## fix-time-zone() {#rewrite-timezone-fix}
 
 Use the `fix-time-zone()` operation to correct the timezone of a message if it was parsed incorrectly for some reason, or if the client did not include any timezone information in the message. You can specify the new timezone as the name of a timezone, or as a template string. For example, use the following rewrite rule to set the timezone to EST5EDT:
 
@@ -31,7 +31,7 @@ If you have lots of clients that do not send timezone information in the log mes
 
 
 
-## {#rewrite-timezone-guess}
+## guess-time-zone() {#rewrite-timezone-guess}
 
 Use the `guess-time-zone()` operation attempts to set the timezone of the message automatically, using heuristics on the timestamps. Normally the {{% param "product.abbrev" %}} application performs this operation automatically when it parses the incoming message. Using this operation in a rewrite rule can be useful if you cannot parse the incoming message for some reason (and use the `flags(no-parse)` option in your source, but you want to set the timezone automatically later (for example, after you have preprocessed the message).
 
@@ -39,7 +39,7 @@ Using this operation is identical to using the `flags(guess-timezone)` flag in t
 
 
 
-## {#rewrite-timezone-set}
+## set-time-zone() {#rewrite-timezone-set}
 
 Use the `set-time-zone()` operation to set the timezone of the message to a specific value, that is to convert an existing timezone to a different one. This operation is identical to setting the `time-zone()` option in a destination or as a global option, but can be applied selectively to the messages using conditions.
 

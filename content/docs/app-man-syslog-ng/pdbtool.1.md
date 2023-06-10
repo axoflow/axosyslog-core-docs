@@ -155,7 +155,7 @@ The `match` command has the following options:
     
     Process the messages of the specified log file with the pattern database. This option allows to classify messages offline, and to apply the pattern database to already existing logfiles. To read the messages from the standard input (`stdin`), specify a hyphen (`-`) character instead of a filename.
 
-- `--filter=\<filter-expression\>` or `-F`
+- `--filter=<filter-expression>` or `-F`
     
     Print only messages matching the specified `syslog-ng` filter expression.
 
