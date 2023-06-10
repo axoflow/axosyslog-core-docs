@@ -18,7 +18,7 @@ The `pipe()` destination has the following options:
 
 {{% include-headless "chunk/option-destination-group.md" %}}
 
-{{% include-headless "chunk/option-destination-hook.md" %}}
+{{< include-headless "chunk/option-destination-hook.md" >}}
 
 {{% include-headless "chunk/option-destination-log-fifo-size.md" %}}
 

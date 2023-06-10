@@ -6,4 +6,4 @@ weight:  100
 
 The `mbox()` driver has the following option.
 
-{{% include-headless "chunk/option-destination-hook.md" %}}
+{{< include-headless "chunk/option-destination-hook.md" >}}

@@ -206,7 +206,7 @@ Starting with version 3.16, the default value of this option is -1, so {{% param
 
 *Description:* Enable or disable DNS cache usage.
 
-{{% include-headless "chunk/p-keep-hostname.md" %}}
+{{< include-headless "chunk/p-keep-hostname.md" >}}
 
 
 
@@ -311,9 +311,9 @@ For example:
 ```
 
 
-{{% include-headless "chunk/option-source-keep-hostname.md" %}}
+{{< include-headless "chunk/option-source-keep-hostname.md" >}}
 
-{{% include-headless "chunk/option-source-keep-timestamp.md" %}}
+{{< include-headless "chunk/option-source-keep-timestamp.md" >}}
 
 
 ## log-fifo-size() {#global-option-log-fifo-size}
@@ -601,9 +601,9 @@ By default, timestamps include only seconds. To include fractions of a second (f
 {{% include-headless "wnt/note-ts-format-network.md" %}}
 
 
-{{% include-headless "chunk/option-source-use-dns.md" %}}
+{{< include-headless "chunk/option-source-use-dns.md" >}}
 
-{{% include-headless "chunk/option-source-use-fqdn.md" %}}
+{{< include-headless "chunk/option-source-use-fqdn.md" >}}
 
 
 ## use-rcptid() {#global-option-use-rcptid}

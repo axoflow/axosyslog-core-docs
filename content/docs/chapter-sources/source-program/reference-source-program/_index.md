@@ -6,11 +6,11 @@ weight:  100
 
 The `program` driver has the following options:
 
-{{% include-headless "chunk/option-source-flags.md" %}}
+{{< include-headless "chunk/option-source-flags.md" >}}
 
-{{% include-headless "chunk/option-destination-hook.md" %}}
+{{< include-headless "chunk/option-destination-hook.md" >}}
 
-{{% include-headless "chunk/option-source-keep-timestamp.md" %}}
+{{< include-headless "chunk/option-source-keep-timestamp.md" >}}
 
 {{% include-headless "chunk/option-source-log-fetch-limit.md" %}}
 
@@ -18,9 +18,9 @@ The `program` driver has the following options:
 
 {{% include-headless "chunk/option-source-log-iw-size.md" %}}
 
-{{% include-headless "chunk/option-source-log-msg-size.md" %}}
+{{< include-headless "chunk/option-source-log-msg-size.md" >}}
 
-{{% include-headless "chunk/option-source-log-prefix.md" %}}
+{{< include-headless "chunk/option-source-log-prefix.md" >}}
 
 {{% include-headless "chunk/option-source-optional.md" %}}
 

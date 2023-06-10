@@ -129,7 +129,7 @@ The `amqp()` destination has the following options:
 Available in {{% param "product.abbrev" %}} version 3.21 and later.
 
 
-{{% include-headless "chunk/option-destination-hook.md" %}}
+{{< include-headless "chunk/option-destination-hook.md" >}}
 
 
 ## host() {#amqp-option-host}

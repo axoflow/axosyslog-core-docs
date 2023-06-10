@@ -11,5 +11,5 @@
 
 *Description:* Specifies whether `syslog-ng` should accept the timestamp received from the sending application or client. If disabled, the time of reception will be used instead. This option can be specified globally, and per-source as well. The local setting of the source overrides the global option if available.
 
-{{% include-headless "wnt/warning-keep-timestamp-s-macros.md" %}}
+{{< include-headless "wnt/warning-keep-timestamp-s-macros.md" >}}
 

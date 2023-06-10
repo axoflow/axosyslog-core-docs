@@ -10,7 +10,7 @@ These two drivers behave similarly: they open an `AF_UNIX` socket and start list
 
 {{% include-headless "chunk/option-source-encoding.md" %}}
 
-{{% include-headless "chunk/option-source-flags.md" %}}
+{{< include-headless "chunk/option-source-flags.md" >}}
 
 
 ## group()
@@ -23,7 +23,7 @@ These two drivers behave similarly: they open an `AF_UNIX` socket and start list
 *Description:* Set the gid of the socket.
 
 
-{{% include-headless "chunk/option-destination-hook.md" %}}
+{{< include-headless "chunk/option-destination-hook.md" >}}
 
 {{% include-headless "chunk/option-source-host-override.md" %}}
 
@@ -38,7 +38,7 @@ These two drivers behave similarly: they open an `AF_UNIX` socket and start list
 *Description:* Selects whether to keep connections open when `syslog-ng` is restarted, cannot be used with `unix-dgram()`.
 
 
-{{% include-headless "chunk/option-source-keep-timestamp.md" %}}
+{{< include-headless "chunk/option-source-keep-timestamp.md" >}}
 
 {{% include-headless "chunk/option-source-listen-backlog.md" %}}
 
@@ -46,9 +46,9 @@ These two drivers behave similarly: they open an `AF_UNIX` socket and start list
 
 {{% include-headless "chunk/option-source-log-iw-size.md" %}}
 
-{{% include-headless "chunk/option-source-log-msg-size.md" %}}
+{{< include-headless "chunk/option-source-log-msg-size.md" >}}
 
-{{% include-headless "chunk/option-source-log-prefix.md" %}}
+{{< include-headless "chunk/option-source-log-prefix.md" >}}
 
 
 ## max-connections()
@@ -91,7 +91,7 @@ These two drivers behave similarly: they open an `AF_UNIX` socket and start list
 
 {{% include-headless "chunk/option-source-so-keepalive.md" %}}
 
-{{% include-headless "chunk/option-source-so-rcvbuf.md" %}}
+{{< include-headless "chunk/option-source-so-rcvbuf.md" >}}
 
 {{% include-headless "chunk/option-source-so-reuseport.md" %}}
 

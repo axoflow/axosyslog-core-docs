@@ -98,7 +98,7 @@ For details on how this option influences batch mode, see {{% xref "/docs/chapte
 
 {{% include-headless "chunk/option-destination-diskbuffer.md" %}}
 
-{{% include-headless "chunk/option-destination-hook.md" %}}
+{{< include-headless "chunk/option-destination-hook.md" >}}
 
 
 ## index()

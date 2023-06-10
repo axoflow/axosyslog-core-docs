@@ -56,13 +56,13 @@ For example, `filename-pattern("\*.log")` matches the `syslog.log` and `auth.log
 
 {{% include-headless "chunk/synopsis-wildcard-file-source-example.md" %}}
 
-{{% include-headless "chunk/option-source-flags.md" %}}
+{{< include-headless "chunk/option-source-flags.md" >}}
 
 {{% include-headless "chunk/option-source-follow-freq.md" %}}
 
-{{% include-headless "chunk/option-destination-hook.md" %}}
+{{< include-headless "chunk/option-destination-hook.md" >}}
 
-{{% include-headless "chunk/option-source-keep-timestamp.md" %}}
+{{< include-headless "chunk/option-source-keep-timestamp.md" >}}
 
 {{% include-headless "chunk/option-source-log-fetch-limit.md" %}}
 
@@ -72,15 +72,15 @@ For example, `filename-pattern("\*.log")` matches the `syslog.log` and `auth.log
 When using wildcards in the filenames, {{% param "product.abbrev" %}} attempts to read `log-fetch-limit()` number of messages from each file. For optimal performance, make sure that `log-iw-size()` is greater than `log-fetch-limit()\*max-files()`. Note that to avoid performance problems, if `log-iw-size()/max-files()` is smaller than 100, {{% param "product.abbrev" %}} automatically sets `log-iw-size()` to `max-files()\*100`.
 
 
-## Example: Initial window size of file sources
+### Example: Initial window size of file sources
 
 If `log-fetch-limit()` is 100, and your wildcard file source has 200 files, then `log-iw-size()` should be at least 20000.
 
 
 
-{{% include-headless "chunk/option-source-log-msg-size.md" %}}
+{{< include-headless "chunk/option-source-log-msg-size.md" >}}
 
-{{% include-headless "chunk/option-source-log-prefix.md" %}}
+{{< include-headless "chunk/option-source-log-prefix.md" >}}
 
 
 ## max-files() {#source-wildcard-file-max-files}
@@ -106,11 +106,11 @@ If `log-fetch-limit()` is 100, and your wildcard file source has 200 files, then
 *Description:* If the platform supports inotify, {{% param "product.abbrev" %}} uses it automatically to detect changes to the source files. If inotify is not available, {{% param "product.abbrev" %}} polls the files as set in the `follow-freq()` option. To force {{% param "product.abbrev" %}} poll the files even if inotify is available, set this option to `poll`.
 
 
-{{% include-headless "chunk/option-source-multi-line-garbage.md" %}}
+{{< include-headless "chunk/option-source-multi-line-garbage.md" >}}
 
-{{% include-headless "chunk/option-source-multi-line-mode.md" %}}
+{{< include-headless "chunk/option-source-multi-line-mode.md" >}}
 
-{{% include-headless "chunk/option-source-multi-line-prefix.md" %}}
+{{< include-headless "chunk/option-source-multi-line-prefix.md" >}}
 
 {{% include-headless "chunk/option-source-multi-line-suffix.md" %}}
 

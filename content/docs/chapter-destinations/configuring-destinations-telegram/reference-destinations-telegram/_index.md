@@ -66,7 +66,7 @@ The following example illustrates how you can configure the `disable_notificatio
 *Description:* Disables link previews for links in the message. By default, the disable-web-page-preview value is `true`. From a security point of view, {{% param "product.companyabbrev" %}} recommends to leave it true, otherwise malicious messages can trick the telegram destination to generate traffic to any URL.
 
 
-{{% include-headless "chunk/option-destination-hook.md" %}}
+{{< include-headless "chunk/option-destination-hook.md" >}}
 
 
 ## parse-mode() {#https-options-timeout}

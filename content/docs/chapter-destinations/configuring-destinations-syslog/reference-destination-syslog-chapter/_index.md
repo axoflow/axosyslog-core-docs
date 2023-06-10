@@ -10,6 +10,6 @@ These destinations have the following options:
 
 {{% include-headless "chunk/option-destination-tls-ca-dir.md" %}}
 
-{{% include-headless "chunk/option-destination-tls-ca-file.md" %}}
+{{< include-headless "chunk/option-destination-tls-ca-file.md" >}}
 
 {{% include-headless "chunk/destination-syslog-options.md" %}}

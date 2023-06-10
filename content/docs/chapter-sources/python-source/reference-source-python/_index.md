@@ -45,12 +45,12 @@ For details, see {{% xref "/docs/chapter-configuration-file/python-code-external
 
 
 
-{{% include-headless "chunk/option-source-flags.md" %}}
+{{< include-headless "chunk/option-source-flags.md" >}}
 
 The flags and the hostname-related options (for example, `use-dns`) set in the configuration file influence the behavior of the `LogMessage.parse()` method of the Python source. They have no effect if you set the message or the hostname directly, without using `LogMessage.parse()`.
 
 
-{{% include-headless "chunk/option-source-keep-hostname.md" %}}
+{{< include-headless "chunk/option-source-keep-hostname.md" >}}
 
 {{% include-headless "chunk/option-source-log-iw-size.md" %}}
 
@@ -61,7 +61,7 @@ The flags and the hostname-related options (for example, `use-dns`) set in the c
 
 {{% include-headless "chunk/option-persist-name.md" %}}
 
-{{% include-headless "wnt/note-python-persist-name.md" %}}
+{{< include-headless "wnt/note-python-persist-name.md" >}}
 
 
 {{% include-headless "chunk/option-source-tags.md" %}}

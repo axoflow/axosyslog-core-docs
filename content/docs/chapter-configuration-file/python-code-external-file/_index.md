@@ -22,7 +22,7 @@ When referencing a Python class from an external file in the `class()` option of
     };
 ```
 
-{{% include-headless "wnt/note-python-persist-name.md" %}}
+{{< include-headless "wnt/note-python-persist-name.md" >}}
 
 {{% include-headless "chunk/python-code-external-file-pythonpath.md" %}}
 

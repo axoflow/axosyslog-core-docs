@@ -67,7 +67,7 @@ For fetcher-style Python sources, {{% param "product.abbrev" %}} handles the eve
 
 You can retrieve messages using the `fetch()` method.
 
-{{% include-headless "chunk/python-method-init.md" %}}
+{{< include-headless "chunk/python-method-init.md" >}}
 
 
 ## open(self) method (optional)
@@ -109,7 +109,7 @@ If you use blocking operations within the `fetch()` method, use `request_exit()`
 Close the connection to the target service. Usually it is called right before `deinit()` when stopping or reloading {{% param "product.abbrev" %}}. It is also called when `fecth()` fails.
 
 
-{{% include-headless "chunk/python-method-deinit.md" %}}
+{{< include-headless "chunk/python-method-deinit.md" >}}
 
 
 For the list of available optional parameters, see {{% xref "/docs/chapter-sources/python-source/reference-source-python/_index.md" %}}.

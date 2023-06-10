@@ -30,7 +30,7 @@ Essentially, the `no-header` flag signals {{% param "product.abbrev" %}} that th
     {{% /alert %}}
     
     
-    ## Example: using the no-header flag with the syslog-parser() parser
+    ### Example: using the no-header flag with the syslog-parser() parser
     
     The following example illustrates using the `no-header` flag with the `syslog-parser()` parser:
     

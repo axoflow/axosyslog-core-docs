@@ -35,7 +35,7 @@ For the `kafka` destination, include the path to the directory where you copied 
 
 {{% include-headless "chunk/option-destination-frac-digits.md" %}}
 
-{{% include-headless "chunk/option-destination-hook.md" %}}
+{{< include-headless "chunk/option-destination-hook.md" >}}
 
 {{% include-headless "chunk/option-destination-jvm-options.md" %}}
 

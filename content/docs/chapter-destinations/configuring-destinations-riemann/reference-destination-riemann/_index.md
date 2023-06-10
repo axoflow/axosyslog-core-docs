@@ -104,7 +104,7 @@ If an error occurs while sending the messages to the server, {{% param "product.
 
 {{% include-headless "chunk/option-destination-batch-timeout.md" %}}
 
-{{% include-headless "chunk/option-destination-hook.md" %}}
+{{< include-headless "chunk/option-destination-hook.md" >}}
 
 ## host() {#riemann-option-host}
 

@@ -8,7 +8,7 @@ The Python destination allows you to write your own destination in Python. You c
 
 {{% include-headless "chunk/python-blocks.md" %}}
 
-{{% include-headless "wnt/note-python-persist-name.md" %}}
+{{< include-headless "wnt/note-python-persist-name.md" >}}
 
 
 ## Declaration:
@@ -68,7 +68,7 @@ From version 3.27, {{% param "product.abbrev" %}} supports the arrow syntax in d
 
 ## Methods of the python() destination {#python-destination-methods}
 
-{{% include-headless "chunk/python-method-init.md" %}}
+{{< include-headless "chunk/python-method-init.md" >}}
 
 
 <span id="python-destination-method-is-opened"></span>
@@ -142,7 +142,7 @@ The method can return True, False, or one of the following constants:
 Close the connection to the target service. Usually it is called right before `deinit()` when stopping or reloading {{% param "product.abbrev" %}}. It is also called when `send()` fails.
 
 
-{{% include-headless "chunk/python-method-deinit.md" %}}
+{{< include-headless "chunk/python-method-deinit.md" >}}
 
 
 

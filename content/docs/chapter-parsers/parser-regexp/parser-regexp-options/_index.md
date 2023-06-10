@@ -6,7 +6,7 @@ weight:  100
 
 The Regular expression parser has the following options.
 
-{{% include-headless "chunk/option-source-flags.md" %}}
+{{< include-headless "chunk/option-source-flags.md" >}}
 
 
 ## patterns()

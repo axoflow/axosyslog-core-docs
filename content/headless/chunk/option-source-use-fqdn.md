@@ -17,5 +17,4 @@ Set `use-fqdn()` to `yes` if you want to use the `custom-domain()` global option
 
 {{% /alert %}}
 
-{{% include-headless "chunk/p-keep-hostname.md" %}}
-
+{{< include-headless "chunk/p-keep-hostname.md" >}}

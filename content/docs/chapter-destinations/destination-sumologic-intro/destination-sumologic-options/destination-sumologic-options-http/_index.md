@@ -13,7 +13,7 @@ In addition, the `sumologic-http()` destination also has the following options.
 
 
 
-{{% include-headless "chunk/option-destination-tls-ca-file.md" %}}
+{{< include-headless "chunk/option-destination-tls-ca-file.md" >}}
 
 
 

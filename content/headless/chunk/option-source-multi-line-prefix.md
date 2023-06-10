@@ -11,10 +11,9 @@
 
 *Description:* Use the `multi-line-prefix()` option to process multi-line messages, that is, log messages that contain newline characters (for example, Tomcat logs). Specify a string or regular expression that matches the beginning of the log messages (always start with the `^` character). Use as simple regular expressions as possible, because complex regular expressions can severely reduce the rate of processing multi-line messages. If the `multi-line-prefix()` option is set, {{% param "product.abbrev" %}} ignores newline characters from the source until a line matches the regular expression again, and treats the lines between the matching lines as a single message. See also the `multi-line-garbage()` option.
 
-{{% include-headless "wnt/tip-multi-line-output.md" %}}
+{{< include-headless "wnt/tip-multi-line-output.md" >}}
 
-
-## Example: Processing Tomcat logs
+### Example: Processing Tomcat logs
 
 The log messages of the Apache Tomcat server are a typical example for multi-line log messages. The messages start with the date and time of the query in the `YYYY.MM.DD HH:MM:SS` format, as you can see in the following example.
 

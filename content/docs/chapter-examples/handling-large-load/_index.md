@@ -14,6 +14,6 @@ This section provides tips on optimizing the performance of `syslog-ng`. Optimiz
 
 - Do not use regular expressions in our filters. Evaluating general regular expressions puts a high load on the CPU. Use simple filter functions and logical operators instead. For details, see {{% xref "/docs/chapter-manipulating-messages/regular-expressions/_index.md" %}}.
 
-- {{% include-headless "wnt/warning-udp-recvbuf.md" %}}
+- {{< include-headless "wnt/warning-udp-recvbuf.md" >}}
 
 - Increase the value of the `flush-lines()` parameter. Increasing `flush-lines()` from `0` to `100` can increase the performance of {{% param "product.abbrev" %}} by 100%.
