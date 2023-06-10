@@ -149,19 +149,18 @@ twitter = "AxoFlowIO"
 ##########
 
 [params.product]
-name = "syslog-ng Open Source Edition"
-abbrev = "syslog-ng OSE"
+name = "AxoSyslog"
+abbrev = "AxoSyslog"
 version = "4.0"
 techversion = "4.0"
 configversion = "4.0"
-ose = "syslog-ng OSE"
-contact-support = "contact our support team at [FIXME]()"
+ose = "AxoSyslog"
 syslog-ng = "syslog-ng"
-downloads = "FIXME"
 selinux = "SELinux"
 apparmor = "AppArmor"
 companyname = "Axoflow"
 companyabbrev = "Axoflow"
+contact = "[contact us](https://axoflow.com/contact/)"
 
 ###############################################################################
 # Hugo - Top-level navigation (horizontal)
