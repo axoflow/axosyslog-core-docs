@@ -142,7 +142,7 @@ Available in {{% param "product.abbrev" %}} version 3.21 and later.
 
 Type:
 
-name value pairs in `"\<NAME\>" "\<VALUE\>"` format
+name value pairs in `"<NAME>" "<VALUE>"` format
 
 Default:
 
@@ -162,7 +162,7 @@ empty string
 
 Type:
 
-\<pattern-to-select-names\>, \<list of transformations\>
+<pattern-to-select-names>, <list of transformations>
 
 Default:
 
@@ -178,21 +178,21 @@ If you want to modify the names of several message fields, see also {{% xref "/d
 
 The following transformations are available:
 
-  - `add-prefix("\<my-prefix\>")`
+  - `add-prefix("<my-prefix>")`
     
     Adds the specified prefix to every name. For example, `rekey( add-prefix("my-prefix."))`
 
-  - `replace-prefix("\<prefix-to-replace\>", "\<new-prefix\>")`
+  - `replace-prefix("<prefix-to-replace>", "<new-prefix>")`
     
     Replaces a substring at the beginning of the key with another string. Only prefixes can be replaced. For example, `replace-prefix(".class", ".patterndb")` changes the beginning tag `.class` to `.patterndb`
     
     This option was called `replace()` in {{% param "product.abbrev" %}} version 3.4.
 
-  - `shift("\<number\>")`
+  - `shift("<number>")`
     
     Cuts the specified number of characters from the beginning of the name.
 
-  - `shift-levels("\<number\>")`
+  - `shift-levels("<number>")`
     
     Similar to --shift, but instead of cutting characters, it cuts dot-delimited "levels" in the name (including the initial dot). For example, `--shift-levels 2` deletes the prefix up to the second dot in the name of the key: `.iptables.SRC` becomes `SRC`
 

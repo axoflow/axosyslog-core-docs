@@ -46,7 +46,7 @@ If you include the `@requires` statement in the:
   - {{% param "product.abbrev" %}} configuration file, {{% param "product.abbrev" %}} attempts to load the required module. If it fails to load the module, {{% param "product.abbrev" %}} stops and an error message is displayed.
   - external files included in the configuration file, {{% param "product.abbrev" %}} attempts to load the required module. If it fails to load the module, only the external file is not processed.
 
-Note that this is not true for modules marked as mandatory. You can make a dependency module mandatory by defining an error message after the `@requires \<module-name\>` statement, for example:
+Note that this is not true for modules marked as mandatory. You can make a dependency module mandatory by defining an error message after the `@requires <module-name>` statement, for example:
 
 ```c
 Example

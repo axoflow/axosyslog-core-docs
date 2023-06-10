@@ -21,15 +21,15 @@ If the following characters appear in the message, they must be escaped in the r
 
   - `@`: Use @@, for example, `user@@example.com`
 
-  - *\<*: Use `\&lt;`
+  - *<*: Use `\&lt;`
 
-  - *\>*: Use `\&gt;`
+  - *>*: Use `\&gt;`
 
   - &: Use `\&amp;`
 
 {{% /alert %}}
 
-The *\<rules\>* element may contain any number of *\<rule\>* elements.
+The *<rules>* element may contain any number of *<rule>* elements.
 
 
 

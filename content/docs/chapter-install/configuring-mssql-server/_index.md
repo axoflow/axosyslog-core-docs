@@ -7,7 +7,7 @@ weight:  700
 Complete the following steps to configure your Microsoft SQL Server to enable remote logins and accept log messages from `syslog-ng`.
 
 
-1.  Start the SQL Server Management Studio application. Select `Start \> Programs \> Microsoft SQL Server 2005 \> SQL Server Management Studio`.
+1.  Start the SQL Server Management Studio application. Select `Start >Programs >>icrosoft SQL Server 2005 > >L Server Management Studio`.
 
 2.  Create a new database.
     

@@ -6,7 +6,7 @@
 
 |           |                                            |
 | --------- | ------------------------------------------ |
-| Synopsis: | value-separator("\<separator-character\>") |
+| Synopsis: | value-separator("<separator-character>") |
 
 *Description:* Specifies the character that separates the keys from the values. Default value: `=`.
 

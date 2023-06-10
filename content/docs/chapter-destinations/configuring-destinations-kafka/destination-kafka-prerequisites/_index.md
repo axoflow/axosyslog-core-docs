@@ -15,9 +15,9 @@ To publish messages from {{% param "product.abbrev" %}} to Apache Kafka, complet
 
 3.  Extract the Apache Kafka libraries into a single directory. If needed, collect the various `.jar` files into a single directory (for example, `/opt/kafka/lib/`) where {{% param "product.abbrev" %}} can access them. You must specify this directory in the {{% param "product.abbrev" %}} configuration file.
 
-4.  Check if the following files in the Kafka libraries have the same version number: `slf4j-api-\<version-number\>.jar`, `slf4j-log4j12-\<version-number\>.jar`. If the version number of these files is different, complete the following steps:
+4.  Check if the following files in the Kafka libraries have the same version number: `slf4j-api-<version-number>.jar`, `slf4j-log4j12-<version-number>.jar`. If the version number of these files is different, complete the following steps:
     
-    1.  Delete one of the files (for example, `slf4j-log4j12-\<version-number\>.jar`).
+    1.  Delete one of the files (for example, `slf4j-log4j12-<version-number>.jar`).
     
     2.  Download a version that matches the version number of the other file (for example, 1.7.6) from the [official SLF4J distribution](http://www.slf4j.org/download.html).
     

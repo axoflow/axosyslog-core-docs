@@ -234,7 +234,7 @@ Starting with version 3.16, the default value of this option is -1, so {{% param
 | Accepted values: | filename |
 | Default:         | unset    |
 
-*Description:* Name of a file in `/etc/hosts` format that contains static IP-\>hostname mappings. Use this option to resolve hostnames locally without using a DNS. Note that any change to this file triggers a reload in `syslog-ng` and is instantaneous.
+*Description:* Name of a file in `/etc/hosts` format that contains static IP->hostname mappings. Use this option to resolve hostnames locally without using a DNS. Note that any change to this file triggers a reload in `syslog-ng` and is instantaneous.
 
 
 
@@ -480,7 +480,7 @@ In some cases, there might be even millions of dynamic counters
 
 - Limited dynamic counter clusters:
     
-    To limit dynamic counters, enter a number, and only a maximum of \<number\> counters will be registered in the statistics.
+    To limit dynamic counters, enter a number, and only a maximum of <number> counters will be registered in the statistics.
     
     In practice, this means dynamic counter clusters. A program name produces one dynamic counter cluster, that can include several counters, such as `processed`, `stamp`, and so on.
 

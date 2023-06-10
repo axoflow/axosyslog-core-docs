@@ -21,9 +21,9 @@ An obsolete alias of the `@FLOAT@` parser.
 
 ## @EMAIL@ {#patterndb-parser-email}
 
-This parser matches an email address. The parameter is a set of characters to strip from the beginning and the end of the email address. That way email addresses enclosed between other characters can be matched easily (for example, `\<user@example.com\>` or `"user@example.com"`. Characters that are valid for a hostname are not stripped from the end of the hostname. This includes a trailing period if present.
+This parser matches an email address. The parameter is a set of characters to strip from the beginning and the end of the email address. That way email addresses enclosed between other characters can be matched easily (for example, `<user@example.com> or `"user@example.com"`. Characters that are valid for a hostname are not stripped from the end of the hostname. This includes a trailing period if present.
 
-For example, the `@EMAIL:email:"[\<]\>@` parser will match any of the following email addresses: `\<user@example.com\>`, `[user@example.com]`, `"user@example.com"`, and set the value of the `email` macro to `user@example.com`.
+For example, the `@EMAIL:email:"[<]>` parser will match any of the following email addresses: `<user@example.com>> `[user@example.com]`, `"user@example.com"`, and set the value of the `email` macro to `user@example.com`.
 
 
 

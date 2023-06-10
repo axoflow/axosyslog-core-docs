@@ -128,16 +128,16 @@ This option is a required parameter when using the SNMPv3 protocol.
 
 |          |                                                                                 |
 | -------- | ------------------------------------------------------------------------------- |
-| Type:    | \<oid_of_the_object\>, \<type_of_the_object\>, \<value_of_the_object\> |
+| Type:    | <oid_of_the_object> <type_of_the_object>><value_of_the_object> >
 | Default: | n/a                                                                             |
 
 *Description:* The `snmp-obj()` option can be used to create custom SNMP trap elements. To create a trap element, specify the OID, type, and value of the element in the `snmp-obj()` option. To send SNMP traps, at least one `snmp-obj()` option must be defined. The `snmp-obj()` option requires the following parameters. Note that {{% param "product.abbrev" %}} does not validate the values of these elements.
 
-  - `\<oid_of_the_object\>`: The object id of the SNMP object, for example, `.1.3.6.1.4.1.18372.3.1.1.1.1.1`.
+  - `<oid_of_the_object>: The object id of the SNMP object, for example, `.1.3.6.1.4.1.18372.3.1.1.1.1.1`.
 
-  - `\<type_of_the_object\>`: The type of the object specified as an ASN.1 primitive. One of: `Integer, Timeticks, Octetstring, Counter32, Ipaddress, Objectid`. The type names are not case sensitive.
+  - `<type_of_the_object>: The type of the object specified as an ASN.1 primitive. One of: `Integer, Timeticks, Octetstring, Counter32, Ipaddress, Objectid`. The type names are not case sensitive.
 
-  - `\<value_of_the_object\>`: The value of the object as a string. The macros of {{% param "product.abbrev" %}} can be used to set these values, making it possible to transfer the content and other metadata from the the syslog message to the SNMP trap. Note that if the value of an `Integer, Counter32` or `Timeticks` object is not a number (for example, is an empty string or other not-number string), {{% param "product.abbrev" %}} will automatically replace the value with 0. The values of other types of objects are not validated.
+  - `<value_of_the_object>: The value of the object as a string. The macros of {{% param "product.abbrev" %}} can be used to set these values, making it possible to transfer the content and other metadata from the the syslog message to the SNMP trap. Note that if the value of an `Integer, Counter32` or `Timeticks` object is not a number (for example, is an empty string or other not-number string), {{% param "product.abbrev" %}} will automatically replace the value with 0. The values of other types of objects are not validated.
 
 
 ## Example: Defining SNMP objects
@@ -161,10 +161,10 @@ The following are SNMP object definitions:
 
 |          |                                                                  |
 | -------- | ---------------------------------------------------------------- |
-| Type:    | \<oid_of_the_object\>, "Objectid", \<value_of_the_object\> |
+| Type:    | <oid_of_the_object> "Objectid", <value_of_the_object>>
 | Default: | n/a                                                              |
 
-*Description:* The `trap-obj()` is a specialized version of the `snmp-obj()` option that is used to identify the SNMP trap object. The type of the trap object is always `Objectid`. The `\<oid_of_the_object\>` and the `\<value_of_the_object\>` parameters are identical to the respective parameters of the `snmp-obj()` option. For details on these parameters, see [snmp-obj()](#snmp-destination-option-snmp-obj).
+*Description:* The `trap-obj()` is a specialized version of the `snmp-obj()` option that is used to identify the SNMP trap object. The type of the trap object is always `Objectid`. The `<oid_of_the_object> and the `<value_of_the_object>>parameters are identical to the respective parameters of the `snmp-obj()` option. For details on these parameters, see [snmp-obj()](#snmp-destination-option-snmp-obj).
 
 {{% alert title="Note" color="info" %}}
 

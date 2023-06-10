@@ -45,11 +45,11 @@ The `syslog-debun` tool collects and saves information about your {{% param "pro
     
     Do not collect privacy-sensitive data, for example, process tree, fstab, and so on. If you use with `-d`, then the following parameters will be used for debug mode:`-Fev`
 
-- `-R \<directory\>`
+- `-R <directory>`
     
     The directory where {{% param "product.ose" %}} is installed instead of `/opt/syslog-ng`.
 
-- `-W \<directory\>`
+- `-W <directory>`
     
     Set the working directory, where the debug bundle will be saved. Default value: `/tmp`. The name of the created file is `syslog.debun.${host}.${date}.${3-random-characters-or-pid}.tgz`
 
@@ -65,17 +65,17 @@ The `syslog-debun` tool collects and saves information about your {{% param "pro
 Using this option under high message load may increase disk I/O during the debug, and the resulting debug bundle can be huge. To exit debug mode, press Enter.
     {{% /alert %}}
 
-- `-D \<options\>`
+- `-D <options>`
     
     Start {{% param "product.ose" %}} in debug mode, using the specified command-line options. To exit debug mode, press Enter.
 
-  - `-t \<seconds\>`
+  - `-t <seconds>`
     
-    Run {{% param "product.ose" %}} in noninteractive debug mode for <span class="code">\<seconds\></span>, and automatically exit debug mode after the specified number of seconds.
+    Run {{% param "product.ose" %}} in noninteractive debug mode for <span class="code"><seconds></span>, and automatically exit debug mode after the specified number of seconds.
 
-- `-w \<seconds\>`
+- `-w <seconds>`
     
-    Wait <span class="code">\<seconds\></span> seconds before starting debug mode.
+    Wait <span class="code"><seconds></span> seconds before starting debug mode.
 
 
 
@@ -91,7 +91,7 @@ Using this option under high message load may increase disk I/O during the debug
 
 Capturing packets requires a packet capture tool on the host. The `syslog-debun` tool attempts to use `tcpdump` on most platforms, except for Solaris, where it uses `snoop`.
 
-- `-i \<interface\>`
+- `-i <interface>`
     
     Capture packets only on the specified interface, for example, `eth0`.
 
@@ -99,13 +99,13 @@ Capturing packets requires a packet capture tool on the host. The `syslog-debun`
     
     Capture incoming packets using the following filter: `port 514 or port 601 or port 53`
 
-- `-P \<options\>`
+- `-P <options>`
     
     Capture incoming packets using the specified filter.
 
-- `-t \<seconds\>`
+- `-t <seconds>`
     
-    Run {{% param "product.ose" %}} in noninteractive debug mode for `\<seconds\>`, and automatically exit debug mode after the specified number of seconds.
+    Run {{% param "product.ose" %}} in noninteractive debug mode for `<seconds>`, and automatically exit debug mode after the specified number of seconds.
 
 
 

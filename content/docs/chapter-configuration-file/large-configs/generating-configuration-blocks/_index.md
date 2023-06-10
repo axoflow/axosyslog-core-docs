@@ -24,7 +24,7 @@ The {{% param "product.abbrev" %}} application can automatically execute scripts
     
     ```
     
-    Replace `\<directory-name\>` with the name of the directory (for example, `apache-access-logs`), and `\<my-script\>` with the filename of your script (for example, `apache-access-logs.sh`). You can reference the script in your {{% param "product.abbrev" %}} configuration file as a configuration block using the value `name` option.
+    Replace `<directory-name>` with the name of the directory (for example, `apache-access-logs`), and `<my-script>` with the filename of your script (for example, `apache-access-logs.sh`). You can reference the script in your {{% param "product.abbrev" %}} configuration file as a configuration block using the value `name` option.
     
     The `context` option determines the type of the configuration snippet that the script generates, and must be one of the following: `destination`, `filter`, `log`, `parser`, `rewrite`, `root`, `source`. The `root` blocks can be used in the "root" context of the configuration file, that is, outside any other statements. In the example, `context(source)` means that the output of the script will be used within a source statement.
     

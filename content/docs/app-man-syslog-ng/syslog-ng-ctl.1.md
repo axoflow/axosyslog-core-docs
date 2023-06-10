@@ -165,7 +165,7 @@ The `syslog-ng-ctl query list` command has the following options:
 
 `syslog-ng-ctl query get [options]`
 
-The `syslog-ng-ctl query get \<query\>` command lists the nodes that match the query, and their values.
+The `syslog-ng-ctl query get \<query>` command lists the nodes that match the query, and their values.
 
 For example, the `destination` query lists the configured destinations, and the metrics related to each destination. An example output:
 
@@ -327,11 +327,11 @@ echo "<passphrase-of-the-key>" | syslog-ng-ctl credentials add --id=<path-to-the
     
     Specify the socket to use to access {{% param "product.ose" %}}. Only needed when using a non-standard socket.
 
-- `--id=\<path-to-the-key\>` or `-i`
+- `--id=\<path-to-the-key>` or `-i`
     
     The path to the password-protected private key file. This is the same path that you use in the `key-file()` option of the {{% param "product.ose" %}} configuration file.
 
-- `--secret=\<passphrase-of-the-key\>` or `-s`
+- `--secret=\<passphrase-of-the-key>` or `-s`
     
     The password or passphrase of the private key.
 

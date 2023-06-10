@@ -37,7 +37,7 @@ The `set-pri()` rewrite function expects a template string as its only parameter
 
 ## Accepted values
 
-The template string specified for the `set-pri()` rewrite function must expand to a natural number in the interval of 0–1023, inclusive. This means that if you, for example, extract the value from a syslog `\<PRI\>` header (such as `\<42\>`), then you need to remove the opening and closing brackets (`\<` `\>`) in the specified template string.
+The template string specified for the `set-pri()` rewrite function must expand to a natural number in the interval of 0–1023, inclusive. This means that if you, for example, extract the value from a syslog `<PRI>` header (such as `<42>`), then you need to remove the opening and closing brackets (`<` `>`) in the specified template string.
 
 
 

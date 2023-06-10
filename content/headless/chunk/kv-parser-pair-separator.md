@@ -6,7 +6,7 @@
 
 |           |                                        |
 | --------- | -------------------------------------- |
-| Synopsis: | pair-separator("\<separator-string\>") |
+| Synopsis: | pair-separator("<separator-string>) |
 
 *Description:* Specifies the character or string that separates the key-value pairs from each other. Default value: `,` .
 

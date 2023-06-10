@@ -42,7 +42,7 @@ The `cat` command has the following options:
 
     Display a brief help message.
 
-- `--template=\<template\>` or `-t`
+- `--template=<template>` or `-t`
 
     Format the messages using the specified template.
 

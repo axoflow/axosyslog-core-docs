@@ -676,7 +676,7 @@ To replace the hostname with its hash, use a rewrite rule:
 
 *Syntax:* `$(if (<condition>) <true template> <false template>)`
 
-*Description:* Returns the value of the `\<true template\>` parameter if the `\<condition\>` is true. If the `\<condition\>` is false, the value of `\<false template\>` is returned.
+*Description:* Returns the value of the `<true template> parameter if the `<condition>>is true. If the `<condition>`>s false, the value of `<false template>` > returned.
 
 
 ## Example: Using pattern databases and the if template function
@@ -849,7 +849,7 @@ You can concatenate existing lists into a single list using:
 
 *Syntax:* `$(list-search [OPTIONS] <pattern> ${list})`
 
-*Description:* The `list-search` template function searches the elements of `${list}` starting at the specified `start_index`, then returns the index of the first match of `\<pattern\>` within `${list}`.
+*Description:* The `list-search` template function searches the elements of `${list}` starting at the specified `start_index`, then returns the index of the first match of `<pattern> within `${list}`.
 
 {{% alert title="Note" color="info" %}}
 
@@ -1009,7 +1009,7 @@ When you are correlating messages and a name-value pair contains numerical value
  $(padding <macro> <width> <prepended-character-or-string>)
 ```
 
-*Description:* This template function returns the value of its first parameter (a string or macro), prepended with a string. This string is `\<width\>` long, and repeats the character or string set in the third parameter. If you use a single character, it is added `\<width\>` times. If you use a string, it is repeated until its length reaches `\<width\>`. The default padding character is ' ' (space). For example:
+*Description:* This template function returns the value of its first parameter (a string or macro), prepended with a string. This string is `<width> long, and repeats the character or string set in the third parameter. If you use a single character, it is added `<width>>times. If you use a string, it is repeated until its length reaches `<width>`>The default padding character is ' ' (space). For example:
 
 
 ## Example: Using the padding template function
@@ -1262,7 +1262,7 @@ $(template $<dynamic-template-name>)
 $(template $<dynamic-template-name> '<optional-fallback-template>')
 ```
 
-*Description:* This template function looks up the \<template-name\> in the configuration and uses that to format its result. The referenced template can be static or dynamic. For static templates, {{% param "product.abbrev" %}} resolves the template when it starts, or when the configuration is reloaded. For dynamic templates, the results are resolved runtime (for dynamic templates, the template name contains at least one '$' character). For example, the name of the template to be invoked can be extracted from the message, or from a name-value pair set using the [`add-contextual-data()`]({{< relref "/docs/chapter-enrich-data/data-enrichment-add-contextual-data/_index.md" >}}) feature.
+*Description:* This template function looks up the <template-name>in the configuration and uses that to format its result. The referenced template can be static or dynamic. For static templates, {{% param "product.abbrev" %}} resolves the template when it starts, or when the configuration is reloaded. For dynamic templates, the results are resolved runtime (for dynamic templates, the template name contains at least one '$' character). For example, the name of the template to be invoked can be extracted from the message, or from a name-value pair set using the [`add-contextual-data()`]({{< relref "/docs/chapter-enrich-data/data-enrichment-add-contextual-data/_index.md" >}}) feature.
 
 For dynamic templates, you can set an optional second template. This second template will be the results of the template function if resolving the dynamic template fails for some reason. For example:
 
@@ -1294,7 +1294,7 @@ Available in {{% param "product.abbrev" %}} 3.5 and later.
 
 *Syntax:* `$(url-decode <string-pr-macro-1> <string-pr-macro-2> ... )`
 
-*Description:* You can use the `url-decode` template function to decode url-encoded strings and macros. For example, `$(url-decode %3C%3E)` yields `\<\>`. The `url-decode` can receive multiple parameters (maximum 64). In this case, each parameter is decoded separately, and simply concatenated.
+*Description:* You can use the `url-decode` template function to decode url-encoded strings and macros. For example, `$(url-decode %3C%3E)` yields `<>. The `url-decode` can receive multiple parameters (maximum 64). In this case, each parameter is decoded separately, and simply concatenated.
 
 Available in {{% param "product.abbrev" %}} version 3.18 and later.
 
