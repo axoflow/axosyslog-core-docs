@@ -47,7 +47,7 @@ The `syslog-ng()` destination is a special version of the `network()` destinatio
 
 {{% include-headless "chunk/option-destination-frac-digits.md" %}}
 
-{{% include-headless "chunk/option-source-ip-protocol.flnp" %}}
+{{% include-headless "chunk/option-source-ip-protocol.md" %}}
 
 {{% include-headless "chunk/option-ip-tos.md" %}}
 

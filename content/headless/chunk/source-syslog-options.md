@@ -34,7 +34,7 @@
 
 {{% include-headless "chunk/option-source-ip.md" %}}
 
-{{% include-headless "chunk/option-source-ip-protocol.flnp" %}}
+{{% include-headless "chunk/option-source-ip-protocol.md" %}}
 
 {{% include-headless "chunk/option-ip-tos.md" %}}
 
