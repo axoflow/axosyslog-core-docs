@@ -23,8 +23,6 @@ During the course of a message from the sending application to the final destina
   - When syslog-ng is receiving messages:
     
       - The receiving syslog-ng (for example, the syslog-ng server or relay) may drop messages if the fifo of the destination file gets full. The number of dropped messages is displayed per destination in the log message statistics of syslog-ng (for details, see {{% xref "/docs/chapter-log-statistics/_index.md" %}}).
-    
-      - {{% include-headless "chunk/pe-para-license-limit.md" %}}
 
   - When the destination cannot handle large load: When syslog-ng is sending messages at a high rate into an SQL database, a file, or another destination, it is possible that the destination cannot handle the load, and processes the messages slowly. As a result, the buffers of syslog-ng fill up, syslog-ng cannot process the incoming messages, and starts to loose messages. For details, see the previous entry. Use the `throttle` parameter to avoid this problem.
 

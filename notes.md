@@ -6,4 +6,9 @@
 
 - cimsor vegi kettospontok (descirption: prurpose: steps: )
 
-- bolditott speci karakterek helyett backtikk `
+- DONE bolditott speci karakterek helyett backtikk `
+
+- includeolt note-okban a szoveget quote-ba rakja valamiert
+    > kacsacsoros includenal jo
+
+- procedure-ben cimsorok, pl     ## Example: creating the /tmp/qdisk/qdisk.conf 

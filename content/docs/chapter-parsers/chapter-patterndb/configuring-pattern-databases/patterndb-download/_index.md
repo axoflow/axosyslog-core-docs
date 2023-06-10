@@ -4,7 +4,7 @@ weight:  300
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-To simplify the building of pattern databases, {{% param "product.companyabbrev" %}} has released (and will continue to release) sample databases. You can download sample pattern databases from the [{{% param "product.companyabbrev" %}} GitHub page](https://github.com/syslog-ng/syslog-ng-patterndb/) (older samples are temporarily available [here](https://my.balabit.com/downloads/patterndb-snapshot/)).
+To simplify the building of pattern databases, {{% param "product.companyabbrev" %}} has released sample databases. You can download sample pattern databases from the [{{% param "product.companyabbrev" %}} GitHub page](https://github.com/syslog-ng/syslog-ng-patterndb/).
 
 Note that these pattern databases are only samples and experimental databases. They are not officially supported, and may or may not work in your environment.
 

@@ -8,6 +8,4 @@ weight:  300
 
 In relay mode, syslog-ng receives logs through the network from syslog-ng clients and forwards them to the central syslog-ng server using a network connection. Relays also log the messages from the relay host into a local file, or forward these messages to the central syslog-ng server.
 
-No license file is required to run syslog-ng in relay mode.
-
 {{% include-headless "chunk/relay-mode-uses.md" %}}
