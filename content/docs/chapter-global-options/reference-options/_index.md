@@ -239,7 +239,7 @@ Starting with version 3.16, the default value of this option is -1, so {{% param
 | Accepted values: | filename |
 | Default:         | unset    |
 
-*Description:* Name of a file in `/etc/hosts` format that contains static IP-\>hostname mappings. Use this option to resolve hostnames locally without using a DNS. Note that any change to this file triggers a reload in syslog-ng and is instantaneous.
+*Description:* Name of a file in `/etc/hosts` format that contains static IP-\>hostname mappings. Use this option to resolve hostnames locally without using a DNS. Note that any change to this file triggers a reload in `syslog-ng` and is instantaneous.
 
 
 
@@ -291,7 +291,7 @@ Starting with version 3.16, the default value of this option is -1, so {{% param
 | Accepted values: | groupid |
 | Default:         | root    |
 
-*Description:* The default group of output files. By default, syslog-ng changes the privileges of accessed files (for example, `/dev/null`) to `root.root 0600`. To disable modifying privileges, use this option with the `-1` value.
+*Description:* The default group of output files. By default, `syslog-ng` changes the privileges of accessed files (for example, `/dev/null`) to `root.root 0600`. To disable modifying privileges, use this option with the `-1` value.
 
 
 
@@ -345,7 +345,7 @@ For example:
 | Accepted values: | number |
 | Default:         | 1200   |
 
-*Description:* The `mark-freq()` option is an alias for the deprecated `mark()` option. This is retained for compatibility with syslog-ng version 1.6.x.
+*Description:* The `mark-freq()` option is an alias for the deprecated `mark()` option. This is retained for compatibility with `syslog-ng` version 1.6.x.
 
 
 {{% include-headless "chunk/option-destination-mark-freq.md" %}}
@@ -386,7 +386,7 @@ For example:
 | Accepted values: | userid |
 | Default:         | root   |
 
-*Description:* The default owner of output files. If set, syslog-ng changes the owner of accessed files (for example, `/dev/null`) to this value, and the permissions to the value set in the `perm()` option.
+*Description:* The default owner of output files. If set, `syslog-ng` changes the owner of accessed files (for example, `/dev/null`) to this value, and the permissions to the value set in the `perm()` option.
 
 Starting with version 3.16, the default value of this option is -1, so {{% param "product.abbrev" %}} does not change the ownership, unless explicitly configured to do so.
 
@@ -410,7 +410,7 @@ Starting with version 3.16, the default value of this option is -1, so {{% param
 | Accepted values: | permission value |
 | Default:         | 0600             |
 
-*Description:* The default permission for output files. If set, syslog-ng changes the permissions of accessed files (for example, `/dev/null`) to this value, and the onwer to the value set in the `owner()` option.
+*Description:* The default permission for output files. If set, `syslog-ng` changes the permissions of accessed files (for example, `/dev/null`) to this value, and the onwer to the value set in the `owner()` option.
 
 Starting with version 3.16, the default value of this option is -1, so {{% param "product.abbrev" %}} does not change the permissions, unless explicitly configured to do so.
 
@@ -459,7 +459,7 @@ Starting with version 3.16, the default value of this option is -1, so {{% param
 | Accepted values: | number |
 | Default:         | 600    |
 
-*Description:* The period between two STATS messages in seconds. STATS are log messages sent by syslog-ng, containing statistics about dropped log messages. Set to `0` to disable the STATS messages.
+*Description:* The period between two STATS messages in seconds. STATS are log messages sent by `syslog-ng`, containing statistics about dropped log messages. Set to `0` to disable the STATS messages.
 
 
 
@@ -470,7 +470,7 @@ Starting with version 3.16, the default value of this option is -1, so {{% param
 | Accepted values: | `0` | `1` | `2` | `3` |
 | Default:         | `0`                         |
 
-*Description:* Specifies the detail of statistics syslog-ng collects about the processed messages.
+*Description:* Specifies the detail of statistics `syslog-ng` collects about the processed messages.
 
 {{% include-headless "chunk/option-stats-level-description.md" %}}
 
@@ -594,7 +594,7 @@ If you set a lower value to `stats-max-dynamics()` (or, any limiting value, if t
 | Accepted values: | `rfc3164` | `bsd` | `rfc3339` | `iso` |
 | Default:         | `rfc3164`                                   |
 
-*Description:* Specifies the timestamp format used when syslog-ng itself formats a timestamp and nothing else specifies a format (for example: `STAMP` macros, internal messages, messages without original timestamps). For details, see also {{% xref "/docs/chapter-concepts/timezone-handling/example-timezones/_index.md" %}}.
+*Description:* Specifies the timestamp format used when `syslog-ng` itself formats a timestamp and nothing else specifies a format (for example: `STAMP` macros, internal messages, messages without original timestamps). For details, see also {{% xref "/docs/chapter-concepts/timezone-handling/example-timezones/_index.md" %}}.
 
 By default, timestamps include only seconds. To include fractions of a second (for example, milliseconds) use the `frac-digits()` option.
 
@@ -628,7 +628,7 @@ This option is deprecated, use the `use-uniqid()` option instead.
 
 *Description:* This option enables generating a globally unique ID. It is generated from the HOSTID and the RCPTID in the format of HOSTID@RCPTID. It has a fixed length: 16+@+8 characters. You can include the unique ID in the message by using the macro. For details, see [UNIQID]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}).
 
-Enabling this option automatically generates the HOSTID. The HOSTID is a persistent, 32-bits-long cryptographically secure pseudo random number, that belongs to the host that the syslog-ng is running on. If the persist file is damaged, the HOSTID might change.
+Enabling this option automatically generates the HOSTID. The HOSTID is a persistent, 32-bits-long cryptographically secure pseudo random number, that belongs to the host that the `syslog-ng` is running on. If the persist file is damaged, the HOSTID might change.
 
 Enabling this option automatically enables the RCPTID functionality. For details, see [RCPTID]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}})
 

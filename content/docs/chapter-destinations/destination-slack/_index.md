@@ -53,7 +53,7 @@ The following example sets the colors and the author of the message.
         hook-url("https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX")
         colors("#000000,#222222,#444444,#666666,#888888,#AAAAAA,#CCCCCC,#EEEEEE")
         color-chooser(7)
-        author-name("syslog-ng BOT")
+        author-name("Example BOT")
         author-link("https://www.syslog-ng.com/products/open-source-log-management")
         author-icon("https://raw.githubusercontent.com/MrAnno/vscode-syslog-ng/master/images/syslog-ng-icon.png")
       );

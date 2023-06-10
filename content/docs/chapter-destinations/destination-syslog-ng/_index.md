@@ -4,7 +4,7 @@ weight:  6700
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The `syslog-ng()` destination driver forwards log messages to another syslog-ng node in EWMM format.
+The `syslog-ng()` destination driver forwards log messages to another `syslog-ng` node in EWMM format.
 
 {{% include-headless "chunk/ewmm-intro.md" %}}
 
@@ -23,9 +23,7 @@ The `syslog-ng()` destination driver is available in version 3.16 and later. The
 
 Note in this driver you have to set the address of the destination server using the `server()` parameter (in some other destinations, this parameter does not have an explicit name).
 
-
-
-## syslog-ng() destination options {#reference-destination-syslog-ng}
+## `syslog-ng()` destination options {#reference-destination-syslog-ng}
 
 The `syslog-ng()` destination is a special version of the `network()` destination driver: by default, it sends EWMM-formatted log messages to the TCP514 port of the server.
 
@@ -74,7 +72,7 @@ The `syslog-ng()` destination is a special version of the `network()` destinatio
 | Type:    | hostname or IP address |
 | Default: | 127.0.0.1              |
 
-*Description:* The hostname or IP address of the syslog-ng server.
+*Description:* The hostname or IP address of the `syslog-ng` server.
 
 
 {{% include-headless "chunk/option-so-broadcast.md" %}}

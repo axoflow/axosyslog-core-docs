@@ -4,11 +4,11 @@ weight:  900
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The syslog-ng application can encrypt incoming and outgoing syslog message flows using TLS if you use the `network()` or `syslog()` drivers.
+The `syslog-ng` application can encrypt incoming and outgoing syslog message flows using TLS if you use the `network()` or `syslog()` drivers.
 
 {{% alert title="Note" color="info" %}}
 
-The format of the TLS connections used by syslog-ng is similar to using syslog-ng and stunnel, but the source IP information is not lost.
+The format of the TLS connections used by `syslog-ng` is similar to using `syslog-ng` and stunnel, but the source IP information is not lost.
 
 {{% /alert %}}
 
@@ -60,7 +60,7 @@ Available in version 3.19 and later.
 
 *Description:* A colon-separated list that specifies the curves that are permitted in the connection when using Elliptic Curve Cryptography (ECC).
 
-This option is only available when syslog-ng is compiled with OpenSSL version 1.0.2 or later. In the case of older versions, prime256v1 (NIST P-256) is used.
+This option is only available when `syslog-ng` is compiled with OpenSSL version 1.0.2 or later. In the case of older versions, prime256v1 (NIST P-256) is used.
 
 The following example curves work for all versions of OpenSSL that are equal to or later than version 1.0.2:
 
@@ -220,7 +220,7 @@ Passphrase is currently not supported.
 
 ## Example: Using pkcs12-file()
 
-In the following example, the first command creates a single `PKCS #12` file from the private key, X.509 certificate, and CA certificate files. Then, the second half of the example uses the same `PKCS #12` file in the syslog-ng configuration.
+In the following example, the first command creates a single `PKCS #12` file from the private key, X.509 certificate, and CA certificate files. Then, the second half of the example uses the same `PKCS #12` file in the `syslog-ng` configuration.
 
 
 ## Example:

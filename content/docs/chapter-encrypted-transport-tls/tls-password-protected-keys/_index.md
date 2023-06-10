@@ -27,5 +27,5 @@ Starting with {{% param "product.abbrev" %}} version 3.14, you can use password-
 
 {{% include-headless "chunk/syslog-ng-ctl-credentials-add-description.md" %}}
 
-For details on the `syslog-ng-ctl credentials` command, see <span class="mcFormatColor" style="color: #04aada;">The syslog-ng control tool manual page</span>.
+For details on the `syslog-ng-ctl credentials` command, see <span class="mcFormatColor" style="color: #04aada;">The `syslog-ng` control tool manual page</span>.
 
