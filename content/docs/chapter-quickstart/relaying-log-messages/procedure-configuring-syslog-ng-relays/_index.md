@@ -27,7 +27,7 @@ It is recommended to use these options on your {{% param "product.abbrev" %}} se
 
 8.  Set filters and options (for example, TLS encryption) as necessary.
     
-    {{% include-headless "wnt/note-relaying-hostname.md" %}}
+    {{< include-headless "wnt/note-relaying-hostname.md" >}}
     
     
     ## Example: A simple configuration for relays {#example-relayconfig}

@@ -69,7 +69,7 @@ Starting with {{% param "product.abbrev" %}} version 3.2, the `syslog()` source 
 
 6.  Set filters, options (for example, TLS encryption) and other advanced features as necessary.
     
-    {{% include-headless "wnt/note-relaying-hostname.md" %}}
+    {{< include-headless "wnt/note-relaying-hostname.md" >}}
     
     
     ## Example: A simple configuration for servers {#example-serverconfig}
