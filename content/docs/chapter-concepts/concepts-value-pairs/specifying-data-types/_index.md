@@ -8,7 +8,7 @@ By default, {{% param "product.abbrev" %}} handles every data as strings. Howeve
 
 {{% alert title="Warning" color="warning" %}}
 
-Hazard of data loss\! If {{% param "product.abbrev" %}} cannot convert the data into the specified type, an error occurs, and {{% param "product.abbrev" %}} drops the message by default. To change how {{% param "product.abbrev" %}} handles data-conversion errors, see [Global options]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}).
+Hazard of data loss! If {{% param "product.abbrev" %}} cannot convert the data into the specified type, an error occurs, and {{% param "product.abbrev" %}} drops the message by default. To change how {{% param "product.abbrev" %}} handles data-conversion errors, see [Global options]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}).
 
 {{% /alert %}}
 

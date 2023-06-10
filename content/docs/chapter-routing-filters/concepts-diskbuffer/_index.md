@@ -35,7 +35,7 @@ When you use disk-based buffering, and the `reliable()` option is set to `no`, {
 
 {{% alert title="Warning" color="warning" %}}
 
-Hazard of data loss\!
+Hazard of data loss!
 
 In case of normal disk-buffers, the messages stored in the output queue and the overflow queue can be lost in case of power failures or if {{% param "product.abbrev" %}} crashes.
 

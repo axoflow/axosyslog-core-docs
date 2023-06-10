@@ -36,7 +36,7 @@ When compiling {{% param "product.abbrev" %}} from source, you can use the follo
 
   - *--enable-json* Enables JSON support (by default, it uses the `json-c` library included in the source code package of {{% param "product.abbrev" %}}). JSON support is required for `json-parser`, and the `format-cim` and `format-json` template functions.
 
-  - *--enable-linux-caps* Enable support for capabilities on Linux. For details, see <span class="mcFormatColor" style="color: #04aada;">The `syslog-ng` manual page</span>.
+  - *--enable-linux-caps* Enable support for capabilities on Linux. For details, see {{% xref "/docs/app-man-syslog-ng/syslog-ng.8/_index.md" %}}.
 
   - *--enable-mongodb* Enable the mongodb destination (enabled by default). To use <span class="code">mongodb()</span>, an external MongoDB client is needed. For further details on using this destination, see {{% xref "/docs/chapter-destinations/configuring-destinations-mongodb/_index.md" %}}.
 

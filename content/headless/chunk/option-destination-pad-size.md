@@ -13,7 +13,7 @@
 
 {{% alert title="Warning" color="warning" %}}
 
-Hazard of data loss\! If the size of the incoming message is larger than the previously set `pad-size()` value, `syslog-ng` will truncate the message to the specified size. Therefore, all message content above that size will be lost.
+Hazard of data loss! If the size of the incoming message is larger than the previously set `pad-size()` value, `syslog-ng` will truncate the message to the specified size. Therefore, all message content above that size will be lost.
 
 {{% /alert %}}
 

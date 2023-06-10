@@ -88,7 +88,7 @@ In case of soft flow-control there is no message lost if the destination can acc
 
 {{% alert title="Warning" color="warning" %}}
 
-Hazard of data loss\! For destinations other than file, soft flow-control is not available. Thus, it is possible to lose log messages on those destinations. To avoid data loss on those destinations, use hard flow-control.
+Hazard of data loss! For destinations other than file, soft flow-control is not available. Thus, it is possible to lose log messages on those destinations. To avoid data loss on those destinations, use hard flow-control.
 
 {{% /alert %}}
 
