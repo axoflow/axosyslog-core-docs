@@ -4,7 +4,7 @@ weight:  3700
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The Fortigate parser can parse the log messages of FortiGate/FortiOS (Fortigate Next-Generation Firewall (NGFW)). These messages do not completely comply with the syslog RFCs, making them difficult to parse. The `fortigate-parser()` of {{% param "product.abbrev" %}} solves this problem, and can separate these log messages to name-value pairs. For details on using value-pairs in syslog-ng OSE see Structuring macros, metadata, and other value-pairs. The parser can parse messages in the following format:
+The Fortigate parser can parse the log messages of FortiGate/FortiOS (Fortigate Next-Generation Firewall (NGFW)). These messages do not completely comply with the syslog RFCs, making them difficult to parse. The `fortigate-parser()` of {{% param "product.abbrev" %}} solves this problem, and can separate these log messages to name-value pairs. For details on using value-pairs, see Structuring macros, metadata, and other value-pairs. The parser can parse messages in the following format:
 
 ```c
    <PRI><NAME=VALUE PAIRS>
@@ -45,7 +45,7 @@ By default, `websense-parser()` uses the `.websense.` prefix. To modify it, use 
 
 ```c
    parser {
-                    websense-parser(prefix("myprefix."));
-                };
+        websense-parser(prefix("myprefix."));
+    };
 ```
 
