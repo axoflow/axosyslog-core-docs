@@ -3,7 +3,6 @@
 Documentation for the AxoSyslog 4 release, based on [this version of the syslog-ng Open Source Edition documentation](https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2).
 
 The documentation is built using [Hugo](https://gohugo.io/) and the [Docsy theme](https://www.docsy.dev/docs/).
-
 ## Using this repository
 
 You can run the website locally using Hugo (Extended version).
