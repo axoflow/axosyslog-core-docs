@@ -19,7 +19,7 @@ weight:  2500
     };
 ```
 
-Use the **tags()** option of the filters to select only specific messages:
+Use the `tags()` option of the filters to select only specific messages:
 
 ```c
    filter f_tcp {

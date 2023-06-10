@@ -18,7 +18,7 @@ When referencing an earlier message of the context, always enclose the field nam
 {{% include-headless "chunk/example-grouping-by-referencing-earlier-values.md" %}}
 
 
-If you do not know in which message of the context contains the information you need, you can use the **grep** template function. For details, see [grep]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}).
+If you do not know in which message of the context contains the information you need, you can use the `grep` template function. For details, see [grep]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}).
 
 
 {{% include-headless "chunk/example-grep-template-function.md" %}}

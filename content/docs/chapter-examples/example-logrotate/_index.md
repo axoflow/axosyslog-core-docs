@@ -14,7 +14,7 @@ The {{% param "product.abbrev" %}} application does not rotate logs by itself. T
 
   - Less scripting is required, only `logrotate` has to be configured correctly.
 
-  - Requires frequent restart ({{% param "product.abbrev" %}} must be reloaded/restarted when the files are rotated). After rotating the log files, reload {{% param "product.abbrev" %}} using the **syslog-ng-ctl reload** command, or use another method to send a SIGHUP to {{% param "product.abbrev" %}}.
+  - Requires frequent restart ({{% param "product.abbrev" %}} must be reloaded/restarted when the files are rotated). After rotating the log files, reload {{% param "product.abbrev" %}} using the `syslog-ng-ctl reload` command, or use another method to send a SIGHUP to {{% param "product.abbrev" %}}.
 
   - The statistics collected by {{% param "product.abbrev" %}}, and the correlation information gathered with Pattern Database, are lost with each restart.
 

@@ -10,5 +10,5 @@
 
 *Description:* Specifies the character that separates the keys from the values. Default value: `=`.
 
-For example, to parse `key:value` pairs, use **kv-parser(value-separator(":"));**.
+For example, to parse `key:value` pairs, use `kv-parser(value-separator(":"));`.
 

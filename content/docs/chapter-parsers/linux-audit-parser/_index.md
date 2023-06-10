@@ -38,7 +38,7 @@ The {{% param "product.abbrev" %}} application extracts every field into name-va
 
   - `new`
 
-To parse the log messages of the Linux Audit subsystem, define a parser that has the `linux-audit-parser()` option. By default, the parser will process the `${MESSAGE}` part of the log message. To process other parts of a log message, use the **template()** option. You can also define the parser inline in the log path.
+To parse the log messages of the Linux Audit subsystem, define a parser that has the `linux-audit-parser()` option. By default, the parser will process the `${MESSAGE}` part of the log message. To process other parts of a log message, use the `template()` option. You can also define the parser inline in the log path.
 
 
 ## Declaration:

@@ -11,9 +11,9 @@
 
 *Description:* Specifies the log parsing options of the source.
 
-  - *assume-utf8*: The `assume-utf8` flag assumes that the incoming messages are UTF-8 encoded, but does not verify the encoding. If you explicitly want to validate the UTF-8 encoding of the incoming message, use the **validate-utf8** flag.
+  - *assume-utf8*: The `assume-utf8` flag assumes that the incoming messages are UTF-8 encoded, but does not verify the encoding. If you explicitly want to validate the UTF-8 encoding of the incoming message, use the `validate-utf8` flag.
 
-  - *empty-lines*: Use the **empty-lines** flag to keep the empty lines of the messages. By default, {{% param "product.abbrev" %}} removes empty lines automatically.
+  - *empty-lines*: Use the `empty-lines` flag to keep the empty lines of the messages. By default, {{% param "product.abbrev" %}} removes empty lines automatically.
 
   - *expect-hostname*: If the `expect-hostname` flag is enabled, {{% param "product.abbrev" %}} will assume that the log message contains a hostname and parse the message accordingly. This is the default behavior for TCP sources. Note that pipe sources use the `no-hostname` flag by default.
 
@@ -60,7 +60,7 @@ Essentially, the `no-header` flag signals {{% param "product.abbrev" %}} that th
     
     {{% include-headless "chunk/para-flags-no-parse.md" %}}
 
-  - *dont-store-legacy-msghdr*: By default, syslog-ng stores the original incoming header of the log message. This is useful if the original format of a non-syslog-compliant message must be retained (syslog-ng automatically corrects minor header errors, for example, adds a whitespace before `msg` in the following message: `Jan 22 10:06:11 host program:msg`). If you do not want to store the original header of the message, enable the **dont-store-legacy-msghdr** flag.
+  - *dont-store-legacy-msghdr*: By default, syslog-ng stores the original incoming header of the log message. This is useful if the original format of a non-syslog-compliant message must be retained (syslog-ng automatically corrects minor header errors, for example, adds a whitespace before `msg` in the following message: `Jan 22 10:06:11 host program:msg`). If you do not want to store the original header of the message, enable the `dont-store-legacy-msghdr` flag.
 
   - *sanitize-utf8*: When using the `sanitize-utf8` flag, {{% param "product.abbrev" %}} converts non-UTF-8 input to an escaped form, which is valid UTF-8.
 

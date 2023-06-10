@@ -25,7 +25,7 @@ The {{% param "product.abbrev" %}} application collects various statistics and m
     
     For further information about using `syslog-ng-ctl` commands, see <span class="mcFormatColor" style="color: #04aada;">The syslog-ng manual pages</span>.
 
-  - Use the `socat` application: **echo STATS | socat -vv UNIX-CONNECT:/opt/syslog-ng/var/run/syslog-ng.ctl -**
+  - Use the `socat` application: `echo STATS | socat -vv UNIX-CONNECT:/opt/syslog-ng/var/run/syslog-ng.ctl -`
 
-  - If you have an OpenBSD-style `netcat` application installed, use the **echo STATS | nc -U /opt/syslog-ng/var/run/syslog-ng.ctl** command. Note that the `netcat` included in most Linux distributions is a GNU-style version that is not suitable to query the statistics of syslog-ng.
+  - If you have an OpenBSD-style `netcat` application installed, use the `echo STATS | nc -U /opt/syslog-ng/var/run/syslog-ng.ctl` command. Note that the `netcat` included in most Linux distributions is a GNU-style version that is not suitable to query the statistics of syslog-ng.
 

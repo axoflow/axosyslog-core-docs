@@ -41,9 +41,9 @@ To create a sample failure script, complete the following steps.
     
     ```
 
-2.  Make the file executable: **chmod +x /opt/syslog-ng/sbin/syslog-ng-failure**
+2.  Make the file executable: `chmod +x /opt/syslog-ng/sbin/syslog-ng-failure`
 
-3.  Run the following command in the `/opt/syslog-ng/sbin` directory: **./syslog-ng --process-mode=safe-background; sleep 0.5; ps aux | grep './syslog-ng' | grep -v grep | awk '{print $2}' | xargs kill -KILL; sleep 0.5; cat /tmp/test.txt**
+3.  Run the following command in the `/opt/syslog-ng/sbin` directory: `./syslog-ng --process-mode=safe-background; sleep 0.5; ps aux | grep './syslog-ng' | grep -v grep | awk '{print $2}' | xargs kill -KILL; sleep 0.5; cat /tmp/test.txt`
     
     The command starts {{% param "product.abbrev" %}} in safe-background mode (which is needed to use the failure script) and then kills it. You should see that the relevant information is written into the `/tmp/test.txt` file, for example:
     

@@ -14,7 +14,7 @@ The `kubernetes()` source has the following options:
 | Type:    | path without filename   |
 | Default: | `/var/log/containers` |
 
-*Description:* The path to the directory that contains the log files, for example, **base-dir("/var/log/pods")**.
+*Description:* The path to the directory that contains the log files, for example, `base-dir("/var/log/pods")`.
 
 
 

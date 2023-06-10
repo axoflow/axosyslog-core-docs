@@ -28,7 +28,7 @@ The `redis()` destination has the following options:
 | Type:    | comma-separated list of strings ("\<redis-command\>", "\<first-command-parameter\>", "\<second-command-parameter\>", "\<third-command-parameter\>") |
 | Default: | empty string                                                                                                                                        |
 
-*Description:* The [Redis command](https://redis.io/commands) to execute, for example, LPUSH, INCR, or HINCRBY. Using the HINCRBY command with an increment value of 1 allows you to create various statistics. For example, the **command("HINCRBY" "${HOST}/programs" "${PROGRAM}" "1")** command counts the number of log messages on each host for each program.
+*Description:* The [Redis command](https://redis.io/commands) to execute, for example, LPUSH, INCR, or HINCRBY. Using the HINCRBY command with an increment value of 1 allows you to create various statistics. For example, the `command("HINCRBY" "${HOST}/programs" "${PROGRAM}" "1")` command counts the number of log messages on each host for each program.
 
 Note the following points when using the `redis()` destination:
 

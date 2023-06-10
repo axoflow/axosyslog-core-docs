@@ -34,14 +34,14 @@ weight:  100
 </tbody>
 </table>
 
-*Description:* The delimiter is the character or string that separates the columns in the message. If you specify multiple characters using the `delimiters(chars("\<delimiter_characters\>"))` option, every character will be treated as a delimiter. To separate the columns at the tabulator (tab character), specify `\\t`. For example, to separate the text at every hyphen (-) and colon (:) character, use **delimiters(chars("-:"))**, Note that the delimiters will not be included in the column values.
+*Description:* The delimiter is the character or string that separates the columns in the message. If you specify multiple characters using the `delimiters(chars("\<delimiter_characters\>"))` option, every character will be treated as a delimiter. To separate the columns at the tabulator (tab character), specify `\\t`. For example, to separate the text at every hyphen (-) and colon (:) character, use `delimiters(chars("-:"))`, Note that the delimiters will not be included in the column values.
 
 
 ## String delimiters:
 
 If you have to use a string as a delimiter, list your string delimiters in the `delimiters(strings("\<delimiter_string1\>", "\<delimiter_string2\>", ...)")` format.
 
-By default, {{% param "product.abbrev" %}} uses space as a delimiter. If you want to use only the strings as delimiters, you have to disable the space delimiter, for example: **delimiters(chars(""), strings("\<delimiter_string\>"))**
+By default, {{% param "product.abbrev" %}} uses space as a delimiter. If you want to use only the strings as delimiters, you have to disable the space delimiter, for example: `delimiters(chars(""), strings("\<delimiter_string\>"))`
 
 Otherwise, {{% param "product.abbrev" %}} will use the string delimiters in addition to the default character delimiter, so `delimiters(strings("=="))` actually equals `delimiters(chars(" "), strings("=="))`, and not `delimiters(chars(""), strings("=="))`
 
@@ -150,7 +150,7 @@ Messages dropped as invalid can be processed by a `fallback` log path. For detai
 | --------- | ------------------------------- |
 | Synopsis: | quote-pairs('\<quote_pairs\>') |
 
-*Description:* List quote-pairs between single quotes. Delimiter characters or strings enclosed between quote characters are ignored. Note that the beginning and ending quote character does not have to be identical, for example, **[}** can also be a quote-pair. For an example of using `quote-pairs()` to parse Apache log files, see [Example: Parsing Apache log files]({{< relref "/docs/chapter-parsers/csv-parser/_index.md" >}}).
+*Description:* List quote-pairs between single quotes. Delimiter characters or strings enclosed between quote characters are ignored. Note that the beginning and ending quote character does not have to be identical, for example, `[}` can also be a quote-pair. For an example of using `quote-pairs()` to parse Apache log files, see [Example: Parsing Apache log files]({{< relref "/docs/chapter-parsers/csv-parser/_index.md" >}}).
 
 
 

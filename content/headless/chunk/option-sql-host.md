@@ -13,9 +13,9 @@
 
 {{% alert title="Note" color="info" %}}
 
-If you specify **host="localhost"**, syslog-ng will use a socket to connect to the local database server. Use **host="127.0.0.1"** to force TCP communication between syslog-ng and the local database server.
+If you specify `host="localhost"`, syslog-ng will use a socket to connect to the local database server. Use `host="127.0.0.1"` to force TCP communication between syslog-ng and the local database server.
 
-To specify the socket to use, set and export the **MYSQL_UNIX_PORT** environment variable, for example, **MYSQL_UNIX_PORT=/var/lib/mysql/mysql.sock; export MYSQL_UNIX_PORT**.
+To specify the socket to use, set and export the `MYSQL_UNIX_PORT` environment variable, for example, `MYSQL_UNIX_PORT=/var/lib/mysql/mysql.sock; export MYSQL_UNIX_PORT`.
 
 {{% /alert %}}
 

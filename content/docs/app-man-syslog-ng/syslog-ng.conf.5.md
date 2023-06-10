@@ -96,7 +96,7 @@ Other optional elements that can appear in log statements are parsers and rewrit
         follow-freq(1) flags(no-parse, validate-utf8)); };
     ```
     
-    Objects may have required and optional parameters. Required parameters are positional, meaning that they must be specified in a defined order. Optional parameters can be specified in any order using the **option(value)** format. If a parameter (optional or required) is not specified, its default value is used. The parameters and their default values are listed in the reference section of the particular object.
+    Objects may have required and optional parameters. Required parameters are positional, meaning that they must be specified in a defined order. Optional parameters can be specified in any order using the `option(value)` format. If a parameter (optional or required) is not specified, its default value is used. The parameters and their default values are listed in the reference section of the particular object.
     
     
 ## Example: Using required and optional parameters

@@ -8,7 +8,7 @@ Starting with in {{% param "product.abbrev" %}} 3.24 and later, you can use shel
 
 To use globs in a selector
 
-1.  Use the **glob()** option within the `selector()` option in your {{% param "product.abbrev" %}} configuration file, for example:
+1.  Use the `glob()` option within the `selector()` option in your {{% param "product.abbrev" %}} configuration file, for example:
     
     ```c
         parser p_add_context_data {

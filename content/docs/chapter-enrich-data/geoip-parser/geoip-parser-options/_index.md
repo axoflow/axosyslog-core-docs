@@ -9,7 +9,7 @@ The `geoip` parser has the following options.
 
 {{% include-headless "chunk/option-parser-prefix.md" %}}
 
-For example, to insert the `geoip.` prefix, use the **prefix(.geoip.)** option. To refer to a particular data when using a prefix, use the prefix in the name of the macro, for example, `${geoip.country_code}` .
+For example, to insert the `geoip.` prefix, use the `prefix(.geoip.)` option. To refer to a particular data when using a prefix, use the prefix in the name of the macro, for example, `${geoip.country_code}` .
 
 
 

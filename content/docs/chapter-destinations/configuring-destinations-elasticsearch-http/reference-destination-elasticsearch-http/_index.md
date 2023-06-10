@@ -209,7 +209,7 @@ To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% param 
 | Type:    | URL or list of URLs, for example, url("site1" "site2") |
 | Default: | N/A                                                    |
 
-*Description:* Specifies the hostname or IP address and optionally the port number of the Elasticsearch indexer. Use a colon (**:**) after the address to specify the port number of the server. For example: `http://your-elasticsearch-indexer.server:8088/_bulk`
+*Description:* Specifies the hostname or IP address and optionally the port number of the Elasticsearch indexer. Use a colon (`:`) after the address to specify the port number of the server. For example: `http://your-elasticsearch-indexer.server:8088/_bulk`
 
 This option is mandatory for this destination.
 

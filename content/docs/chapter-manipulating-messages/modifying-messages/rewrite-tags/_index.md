@@ -20,4 +20,4 @@ To delete a tag, use the following syntax:
     };
 ```
 
-Templates (macros, template functions) can be used when specifying tags, for example, **set-tag("dyn::$HOST");**.
+Templates (macros, template functions) can be used when specifying tags, for example, `set-tag("dyn::$HOST");`.

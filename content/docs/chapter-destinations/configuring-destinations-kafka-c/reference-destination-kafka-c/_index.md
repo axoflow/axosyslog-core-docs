@@ -52,13 +52,13 @@ For more information about the default values of the `transaction.timeout.ms` Ka
 | Type:    | string |
 | Default: |        |
 
-*Description:* Specifies the hostname or IP address of the Kafka server. When specifying an IP address, IPv4 (for example, `192.168.0.1`) or IPv6 (for example, `[::1]`) can be used as well. Use a colon (**:**) after the address to specify the port number of the server. When specifying multiple addresses, use a comma to separate the addresses, for example, `bootstrap-servers("127.0.0.1:2525,remote-server-hostname:6464")`
+*Description:* Specifies the hostname or IP address of the Kafka server. When specifying an IP address, IPv4 (for example, `192.168.0.1`) or IPv6 (for example, `[::1]`) can be used as well. Use a colon (`:`) after the address to specify the port number of the server. When specifying multiple addresses, use a comma to separate the addresses, for example, `bootstrap-servers("127.0.0.1:2525,remote-server-hostname:6464")`
 
 
 
 {{% include-headless "chunk/option-destination-java-class-path.md" %}}
 
-For the `kafka` destination, include the path to the directory where you copied the required libraries (see {{% xref "/docs/chapter-destinations/configuring-destinations-kafka/destination-kafka-prerequisites/_index.md" %}}), for example, **client-lib-dir("/opt/syslog-ng/lib/syslog-ng/java-modules/KafkaDestination.jar:/usr/share/kafka/lib/\*.jar")**.
+For the `kafka` destination, include the path to the directory where you copied the required libraries (see {{% xref "/docs/chapter-destinations/configuring-destinations-kafka/destination-kafka-prerequisites/_index.md" %}}), for example, `client-lib-dir("/opt/syslog-ng/lib/syslog-ng/java-modules/KafkaDestination.jar:/usr/share/kafka/lib/\*.jar")`.
 
 {{% alert title="Note" color="info" %}}
 

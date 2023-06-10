@@ -28,6 +28,6 @@ To use the <span>graphite()</span> destination, the only mandatory parameter is 
 
 {{% alert title="Note" color="info" %}}
 
-The `graphite()` destination is only a wrapper around the `network()` destination and the `graphite-output` template function. If you want to fine-tune the TCP parameters, use the **network()** destination instead, as described in [graphite-output]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}).
+The `graphite()` destination is only a wrapper around the `network()` destination and the `graphite-output` template function. If you want to fine-tune the TCP parameters, use the `network()` destination instead, as described in [graphite-output]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}).
 
 {{% /alert %}}

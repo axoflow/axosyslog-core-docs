@@ -14,11 +14,11 @@
 For detailed information about how {{% param "product.abbrev" %}} supports the `proxied-tcp`, the `proxied-tls`, and the `proxied-tls-passthrough` parameters, see {{% xref "/docs/chapter-sources/configuring-sources-network/proxy-prot-intro/_index.md" %}}.
 
 
-`text-with-nuls`: Allows embedded **NUL** characters in the message from a TCP source, that is, {{% param "product.abbrev" %}} will not delimiter the incoming messages on **NUL** characters, only on **newline** characters (contrary to `tcp` transport, which splits the incoming log on **newline** characters and **NUL** characters).
+`text-with-nuls`: Allows embedded `NUL` characters in the message from a TCP source, that is, {{% param "product.abbrev" %}} will not delimiter the incoming messages on `NUL` characters, only on `newline` characters (contrary to `tcp` transport, which splits the incoming log on `newline` characters and `NUL` characters).
 
 {{% alert title="Note" color="info" %}}
 
-The {{% param "product.abbrev" %}} application does not support embedded **NUL** characters everywhere, so it is recommended that you also use `flags(no-multi-line)` that causes **NUL** characters to be replaced by space.
+The {{% param "product.abbrev" %}} application does not support embedded `NUL` characters everywhere, so it is recommended that you also use `flags(no-multi-line)` that causes `NUL` characters to be replaced by space.
 
 {{% /alert %}}
 

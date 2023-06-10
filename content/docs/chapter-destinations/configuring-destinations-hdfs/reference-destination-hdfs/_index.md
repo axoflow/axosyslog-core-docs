@@ -35,7 +35,7 @@ For the `hdfs` destination, include the path to the directory where you copied t
 
 {{% alert title="Note" color="info" %}}
 
-When `hdfs-append-enabled` is set to **true**, archiving is automatically disabled, and {{% param "product.abbrev" %}} will ignore the `hdfs-archive-dir` option.
+When `hdfs-append-enabled` is set to `true`, archiving is automatically disabled, and {{% param "product.abbrev" %}} will ignore the `hdfs-archive-dir` option.
 
 {{% /alert %}}
 
@@ -160,7 +160,7 @@ Available in {{% param "product.abbrev" %}} version 3.10 and later.
 | Accepted values: | number (seconds) |
 | Default:         | 0 (disabled)     |
 
-*Description:* The time to wait in seconds before an idle destination file is closed. Note that if `hdfs-archive-dir` option is set and **time-reap** expires, archiving is triggered for the affected file.
+*Description:* The time to wait in seconds before an idle destination file is closed. Note that if `hdfs-archive-dir` option is set and `time-reap` expires, archiving is triggered for the affected file.
 
 
 {{% include-headless "chunk/option-destination-timezone.md" %}}

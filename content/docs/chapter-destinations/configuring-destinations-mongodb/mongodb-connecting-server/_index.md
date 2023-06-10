@@ -28,9 +28,9 @@ When {{% param "product.abbrev" %}} connects the MongoDB server during startup, 
 
 4.  The {{% param "product.abbrev" %}} application attempts to connect another server if the `servers()` list contains at least two addresses, and one of the following events happens:
     
-      - The `safe-mode()` option is set to **no**, and the MongoDB server becomes unreachable.
+      - The `safe-mode()` option is set to `no`, and the MongoDB server becomes unreachable.
     
-      - The `safe-mode()` option is set to **yes**, and {{% param "product.abbrev" %}} cannot insert a log message into the database because of an error.
+      - The `safe-mode()` option is set to `yes`, and {{% param "product.abbrev" %}} cannot insert a log message into the database because of an error.
     
     In this case, {{% param "product.abbrev" %}} starts to connect the addresses in from the `servers()` list (starting from the first address) to find the new master server, authenticates on the new server (if needed), then continues to send the log messages to the new master server.
     

@@ -41,7 +41,7 @@ To compile syslog-ng Open Source Edition (OSE) from the source code, complete th
 
 7.  If you want to use the */etc/hosts.deny* and */etc/hosts.allow* for TCP access, install the development files of the *libwrap* (also called TCP-wrappers) library, [available here](http://ftp.porcupine.org/pub/security/index.html).
 
-8.  Enter the new directory and issue the following commands. (If the `./configure` file does not exist, for example, because you cloned the repository from GitHub instead of using a release tarball, execute the **./autogen.sh** command.)
+8.  Enter the new directory and issue the following commands. (If the `./configure` file does not exist, for example, because you cloned the repository from GitHub instead of using a release tarball, execute the `./autogen.sh` command.)
     
     ```c
         $ ./configure
@@ -80,9 +80,9 @@ To compile syslog-ng Open Source Edition (OSE) from the source code, complete th
     {{% alert title="Note" color="info" %}}
 When using the `make` command, consider the following:
     
-      - On Solaris, use **gmake** (GNU make) instead of **make**.
+      - On Solaris, use `gmake` (GNU make) instead of `make`.
     
-      - To build {{% param "product.abbrev" %}} with less verbose output, use the **make V=0** command. This results in shorter, less verbose output, making warnings and other anomalies easier to notice. Note that silent-rules support is only available in recent automake versions.
+      - To build {{% param "product.abbrev" %}} with less verbose output, use the `make V=0` command. This results in shorter, less verbose output, making warnings and other anomalies easier to notice. Note that silent-rules support is only available in recent automake versions.
     {{% /alert %}}
 
 11. If needed, use the following options to change how syslog-ng is compiled using the following command syntax:

@@ -13,7 +13,7 @@
 
 {{% alert title="Note" color="info" %}}
 
-This option is deprecated. Use **program-override** instead.
+This option is deprecated. Use `program-override` instead.
 
 {{% /alert %}}
 

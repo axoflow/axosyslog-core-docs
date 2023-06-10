@@ -4,7 +4,7 @@ weight:  4100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-Starting with version 3.2, {{% param "product.abbrev" %}} can automatically collect the system-specific log messages of the host on a number of platforms using the **system()** driver. If the `system()` driver is included in the {{% param "product.abbrev" %}} configuration file, {{% param "product.abbrev" %}} automatically adds the following sources to the {{% param "product.abbrev" %}} configuration.
+Starting with version 3.2, {{% param "product.abbrev" %}} can automatically collect the system-specific log messages of the host on a number of platforms using the `system()` driver. If the `system()` driver is included in the {{% param "product.abbrev" %}} configuration file, {{% param "product.abbrev" %}} automatically adds the following sources to the {{% param "product.abbrev" %}} configuration.
 
 {{% alert title="Note" color="info" %}}
 
@@ -12,7 +12,7 @@ Starting with version 3.2, {{% param "product.abbrev" %}} can automatically coll
 
 {{% /alert %}}
 
-The `system()` driver is also used in the default configuration file of {{% param "product.abbrev" %}}. For details on the default configuration file, see [Example: The default configuration file of [%=General.OSE%]]({{< relref "/docs/chapter-quickstart/configure-clients/_index.md" >}}). Starting with {{% param "product.abbrev" %}} version 3.6, you can use the **system-expand** command-line utility (which is a shell script, located in the `modules/system-source/` directory) to display the configuration that the `system()` source will use.
+The `system()` driver is also used in the default configuration file of {{% param "product.abbrev" %}}. For details on the default configuration file, see [Example: The default configuration file of [%=General.OSE%]]({{< relref "/docs/chapter-quickstart/configure-clients/_index.md" >}}). Starting with {{% param "product.abbrev" %}} version 3.6, you can use the `system-expand` command-line utility (which is a shell script, located in the `modules/system-source/` directory) to display the configuration that the `system()` source will use.
 
 {{% alert title="Warning" color="warning" %}}
 

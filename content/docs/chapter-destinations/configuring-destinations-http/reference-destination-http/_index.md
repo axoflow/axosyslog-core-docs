@@ -30,7 +30,7 @@ The following options are required: `url()`.
 
 {{% include-headless "chunk/option-destination-java-class-name.md" %}}
 
-For the `http` destination, use this option as **class-name("org.syslog_ng.http.HTTPDestination")**.
+For the `http` destination, use this option as `class-name("org.syslog_ng.http.HTTPDestination")`.
 
 
 
@@ -69,5 +69,5 @@ For the `http` destination, include the path to the java modules of {{% param "p
 | Type:    | URL |
 | Default: |     |
 
-*Description:* Specifies the hostname or IP address and optionally the port number of the web service that can receive log data via HTTP. Use a colon (**:**) after the address to specify the port number of the server. You can also use macros, templates, and template functions in the URL, for example: `http://host.example.com:8080/${MACRO1}/${MACRO2}/script")`
+*Description:* Specifies the hostname or IP address and optionally the port number of the web service that can receive log data via HTTP. Use a colon (`:`) after the address to specify the port number of the server. You can also use macros, templates, and template functions in the URL, for example: `http://host.example.com:8080/${MACRO1}/${MACRO2}/script")`
 

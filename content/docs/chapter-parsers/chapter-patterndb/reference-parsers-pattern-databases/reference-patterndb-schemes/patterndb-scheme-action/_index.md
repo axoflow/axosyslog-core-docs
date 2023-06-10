@@ -19,7 +19,7 @@ OPTIONAL — A container element describing an action that is performed when a m
 
 ## Attributes
 
-  - *condition*: A syslog-ng filter expression. The action is performed only if the message matches the filter. The filter can include macros and name-value pairs extracted from the message. When using actions together with message-correlation, you can also use the **$(context-length)** macro, which returns the number of messages in the current context. For example, this can be used to determine if the expected number of messages has arrived to the context: `condition='"$(context-length)" \>= "5"'`
+  - *condition*: A syslog-ng filter expression. The action is performed only if the message matches the filter. The filter can include macros and name-value pairs extracted from the message. When using actions together with message-correlation, you can also use the `$(context-length)` macro, which returns the number of messages in the current context. For example, this can be used to determine if the expected number of messages has arrived to the context: `condition='"$(context-length)" \>= "5"'`
 
   - *rate*: Specifies maximum how many messages should be generated in the specified time period in the following format: `\<number-of-messages\>/\<period-in-seconds\>`. For example: `1/60` allows 1 message per minute. Rates apply within the scope of the context, that is, if `context-scope="host"` and `rate="1/60"`, then maximum one message is generated per minute for every host that sends a log message matching the rule. Excess messages are dropped. Note that when applying the rate to the generated messages, {{% param "product.abbrev" %}} uses the timestamps of the log messages, similarly to calculating the `context-timeout`. That way `rate` is applied correctly even if the log messages are processed offline.
 
@@ -45,11 +45,11 @@ OPTIONAL — A container element describing an action that is performed when a m
     
     <!-- end list -->
     
-      - *inherit-properties*: This attribute is deprecated. Use the **inherit-mode** attribute instead.
+      - *inherit-properties*: This attribute is deprecated. Use the `inherit-mode` attribute instead.
         
-        If set to **TRUE**, the original message that triggered the action is cloned, including its name-value pairs and tags.
+        If set to `TRUE`, the original message that triggered the action is cloned, including its name-value pairs and tags.
         
-        If set to **context**, {{% param "product.abbrev" %}} collects every name-value pair from each message stored in the context, and includes them in the generated message. If a name-value pair appears in multiple messages of the context, the value in the latest message will be used. Note that tags are not merged, the generated message will inherit the tags assigned to the last message of the context.
+        If set to `context`, {{% param "product.abbrev" %}} collects every name-value pair from each message stored in the context, and includes them in the generated message. If a name-value pair appears in multiple messages of the context, the value in the latest message will be used. Note that tags are not merged, the generated message will inherit the tags assigned to the last message of the context.
         
         For details on the message context, see {{% xref "/docs/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-correlation/_index.md" %}} and {{% xref "/docs/chapter-parsers/chapter-patterndb/patterndb-triggers-actions/patterndb-actions-correlation/_index.md" %}}. For details on triggering messages, see {{% xref "/docs/chapter-parsers/chapter-patterndb/patterndb-triggers-actions/_index.md" %}}
         

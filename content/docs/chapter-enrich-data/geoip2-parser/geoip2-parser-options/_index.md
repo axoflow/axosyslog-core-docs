@@ -9,7 +9,7 @@ The `geoip2` parser has the following options.
 
 {{% include-headless "chunk/option-parser-prefix.md" %}}
 
-For example, to insert the `.geoip2` prefix, use the **prefix(.geoip2)** option. To refer to a particular data when using a prefix, use the prefix in the name of the macro, for example, `${geoip2.country_code}` .
+For example, to insert the `.geoip2` prefix, use the `prefix(.geoip2)` option. To refer to a particular data when using a prefix, use the prefix in the name of the macro, for example, `${geoip2.country_code}` .
 
 
 

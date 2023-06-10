@@ -6,7 +6,7 @@ weight:  700
 
 Starting with {{% param "product.abbrev" %}} 3.4, you can define configuration objects inline, where they are actually used, without having to define them in a separate placement. This is useful if you need an object only once, for example, a filter or a rewrite rule. Every object can be defined inline: sources, destinations, filters, parsers, rewrite rules, and so on.
 
-To define an object inline, use braces instead of parentheses. That is, instead of `\<object-type\> (\<object-id\>);`, you use **\<object-type\> {\<object-definition\>};**
+To define an object inline, use braces instead of parentheses. That is, instead of `\<object-type\> (\<object-id\>);`, you use `\<object-type\> {\<object-definition\>};`
 
 
 ## Example: Using inline definitions

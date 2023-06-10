@@ -8,7 +8,7 @@
 | --------- | -------------------------------------- |
 | Synopsis: | pair-separator("\<separator-string\>") |
 
-*Description:* Specifies the character or string that separates the key-value pairs from each other. Default value: **,** .
+*Description:* Specifies the character or string that separates the key-value pairs from each other. Default value: `,` .
 
-For example, to parse `key1=value1;key2=value2` pairs, use **kv-parser(pair-separator(";"));** .
+For example, to parse `key1=value1;key2=value2` pairs, use `kv-parser(pair-separator(";"));` .
 

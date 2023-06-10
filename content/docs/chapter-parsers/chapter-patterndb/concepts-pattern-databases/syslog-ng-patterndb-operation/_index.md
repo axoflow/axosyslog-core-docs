@@ -12,7 +12,7 @@ Patterns can consist of literals (keywords, or rather, keycharacters) and patter
 
 {{% alert title="Note" color="info" %}}
 
-Wildcards and regular expressions cannot be used in patterns. The `@` character must be escaped, that is, to match for this character, you have to write **@@** in your pattern. This is required because pattern parsers of syslog-ng are enclosed between `@` characters.
+Wildcards and regular expressions cannot be used in patterns. The `@` character must be escaped, that is, to match for this character, you have to write `@@` in your pattern. This is required because pattern parsers of syslog-ng are enclosed between `@` characters.
 
 {{% /alert %}}
 

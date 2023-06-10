@@ -18,7 +18,7 @@ To increase the performance of the destination, increase the number of worker th
 
 ## Example: Redis batch mode
 
-The following destination sends log messages to a Redis server using the pipelining feature. A batch consists of **100** messages and is sent every **10** seconds (**10000** milliseconds) if there is less than **100** messages are in the queue.
+The following destination sends log messages to a Redis server using the pipelining feature. A batch consists of `100` messages and is sent every `10` seconds (`10000` milliseconds) if there is less than `100` messages are in the queue.
 
 ```c
    destination d_redis {

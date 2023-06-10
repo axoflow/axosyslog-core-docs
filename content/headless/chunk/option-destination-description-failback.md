@@ -5,7 +5,7 @@ When {{% param "product.abbrev" %}} starts up, it always connects to the primary
 
 Depending on how you set the `failback()` option, {{% param "product.abbrev" %}} behaves as follows:
 
-  - **round-robin mode**: If `failback()` is not set, {{% param "product.abbrev" %}} does not attempt to return to the primary server even if it becomes available. In case the failover server fails, {{% param "product.abbrev" %}} attempts to connect the next failover server in the list in round-robin fashion.<span data-conditions="General.PE"> This is the default behavior in {{% param "product.abbrev" %}} version 7.0.9 and earlier.</span>
+  - `round-robin mode`: If `failback()` is not set, {{% param "product.abbrev" %}} does not attempt to return to the primary server even if it becomes available. In case the failover server fails, {{% param "product.abbrev" %}} attempts to connect the next failover server in the list in round-robin fashion.<span data-conditions="General.PE"> This is the default behavior in {{% param "product.abbrev" %}} version 7.0.9 and earlier.</span>
     
     
     ## Example: round-robin mode
@@ -23,7 +23,7 @@ Depending on how you set the `failback()` option, {{% param "product.abbrev" %}}
     ```
     
 
-  - **failback mode**: If `failback()` is set, {{% param "product.abbrev" %}} attempts to return to the primary server.
+  - `failback mode`: If `failback()` is set, {{% param "product.abbrev" %}} attempts to return to the primary server.
     
     After {{% param "product.abbrev" %}} connects a secondary server during a failover, it sends a probe every `tcp-probe-interval()` seconds towards the primary server. If the primary logserver responds with a TCP ACK packet, the probe is successful. When the number of successful probes reaches the value set in the `successful-probes-required()` option, {{% param "product.abbrev" %}} tries to connect the primary server using the last probe.
     

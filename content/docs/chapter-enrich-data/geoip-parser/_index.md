@@ -14,7 +14,7 @@ To access longitude and latitude information, download the [GeoLiteCity](http://
 
 {{% /alert %}}
 
-You can refer to the separated parts of the message using the key of the value as a macro. For example, if the message contains `KEY1=value1,KEY2=value2`, you can refer to the values as **${KEY1}** and **${KEY2}**.
+You can refer to the separated parts of the message using the key of the value as a macro. For example, if the message contains `KEY1=value1,KEY2=value2`, you can refer to the values as `${KEY1}` and `${KEY2}`.
 
 
 ## Declaration:

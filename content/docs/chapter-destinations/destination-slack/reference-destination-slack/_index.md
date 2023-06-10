@@ -151,7 +151,7 @@ For details on how this option influences batch mode, see [http: Posting message
 | Type:    | URL  |
 | Default: | None |
 
-*Description:* The Webhook URL for the Incoming Webhook of your Slack app. This URL must also include the authentication token that {{% param "product.abbrev" %}} uses to authenticate to Slack. For example: **https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX**
+*Description:* The Webhook URL for the Incoming Webhook of your Slack app. This URL must also include the authentication token that {{% param "product.abbrev" %}} uses to authenticate to Slack. For example: `https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX`
 
 For details, see the [Slack documentation about Incoming Webhooks](https://api.slack.com/incoming-webhooks).
 

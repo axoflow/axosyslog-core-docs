@@ -45,6 +45,6 @@ When including configuration files, consider the following points:
 
 {{% alert title="Warning" color="warning" %}}
 
-The syslog-ng application will not start if it cannot find a file that is to be included in its configuration. Always double-check the filenames, paths, and access rights when including configuration files, and use the **--syntax-only** command-line option to check your configuration.
+The syslog-ng application will not start if it cannot find a file that is to be included in its configuration. Always double-check the filenames, paths, and access rights when including configuration files, and use the `--syntax-only` command-line option to check your configuration.
 
 {{% /alert %}}

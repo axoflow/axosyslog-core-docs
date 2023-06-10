@@ -15,4 +15,4 @@ This section provides tips on optimizing the performance of syslog-ng. Optimizin
 
   - {{% include-headless "wnt/warning-udp-recvbuf.md" %}}
 
-  - Increase the value of the `flush-lines()` parameter. Increasing `flush-lines()` from `0` to **100** can increase the performance of {{% param "product.abbrev" %}} by 100%.
+  - Increase the value of the `flush-lines()` parameter. Increasing `flush-lines()` from `0` to `100` can increase the performance of {{% param "product.abbrev" %}} by 100%.

@@ -6,12 +6,12 @@ weight:  500
 
 The {{% param "product.abbrev" %}} application can generate (trigger) messages automatically if certain events occur, for example, a specific log message is received, or the correlation timeout of a message expires. Basically, you can define messages for every pattern database rule that are emitted when a message matching the rule is received. Triggering messages is often used together with message correlation, but can also be used separately. When used together with message correlation, you can also create a new correlation context when a new message is received.
 
-The generated message is injected into the same place where the `db-parser()` statement is referenced in the log path. To post the generated message into the `internal()` source instead, use the **inject-mode()** option in the definition of the parser.
+The generated message is injected into the same place where the `db-parser()` statement is referenced in the log path. To post the generated message into the `internal()` source instead, use the `inject-mode()` option in the definition of the parser.
 
 
 ## Example: Sending triggered messages to the internal() source
 
-To send the generated messages to the `internal` source, use the **inject-mode(internal)** option:
+To send the generated messages to the `internal` source, use the `inject-mode(internal)` option:
 
 ```c
    parser p_db {
@@ -22,7 +22,7 @@ To send the generated messages to the `internal` source, use the **inject-mode(i
     };
 ```
 
-To inject the generated messages where the pattern database is referenced, use the **inject-mode(pass-through)** option:
+To inject the generated messages where the pattern database is referenced, use the `inject-mode(pass-through)` option:
 
 ```c
    parser p_db {

@@ -30,7 +30,7 @@ The `dqtool` application is a utility that can be used to display and format the
 
 `cat [options] [file]`
 
-Use the `cat` command to display the log messages stored in the disk-buffer (also called disk-queue) file, and also information from the header of the disk queue file. The messages are printed to the standard output (`stdout`), so it is possible to use `grep` and other tools to find particular log messages, for example, **dqtool cat /var/log/messages.lgs |grep 192.168.1.1**.
+Use the `cat` command to display the log messages stored in the disk-buffer (also called disk-queue) file, and also information from the header of the disk queue file. The messages are printed to the standard output (`stdout`), so it is possible to use `grep` and other tools to find particular log messages, for example, `dqtool cat /var/log/messages.lgs |grep 192.168.1.1`.
 
 The `cat` command has the following options:
 

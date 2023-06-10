@@ -23,7 +23,7 @@ Note the following points about the `@module` statement:
 
 {{% alert title="Note" color="info" %}}
 
-To disable loading every module automatically, set the `autoload-compiled-modules` global variable to **0** in your configuration file:
+To disable loading every module automatically, set the `autoload-compiled-modules` global variable to `0` in your configuration file:
 
 ```c
    @define autoload-compiled-modules 0

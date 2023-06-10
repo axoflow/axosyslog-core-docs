@@ -13,7 +13,7 @@ Currently, using the `sumologic-http()` and `sumologic-syslog()` destinations wi
 
   - A Sumo Logic account.
     
-    If you do not yet have a Sumo Logic account, visit [the official Sumo Logic website](https://www.sumologic.com/), and click **Start free trial** to create an account.
+    If you do not yet have a Sumo Logic account, visit [the official Sumo Logic website](https://www.sumologic.com/), and click `Start free trial` to create an account.
     
     {{% alert title="Note" color="info" %}}
 A free trial version of the Sumo Logic account has limited functionalities and is only available for 90 days.
@@ -34,7 +34,7 @@ Transport-level security (TLS) 1.2 over TCP is required.
     For detailed information about setting up TLS in your Sumo Logic account, see [the description for setting up TLS on the Sumo Logic official website](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-Syslog-Source#set%C2%A0up-tls).
     
     {{% alert title="Note" color="info" %}}
-After you download the **DigiCert** certificate, make sure you follow the certificate setup steps under [the syslog-ng section](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-Syslog-Source#syslog-ng-1).
+After you download the `DigiCert` certificate, make sure you follow the certificate setup steps under [the syslog-ng section](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-Syslog-Source#syslog-ng-1).
     {{% /alert %}}
 
   - Your Sumo Logic syslog client, configured to send data to the Sumo Logic cloud syslog service, by using {{% param "product.abbrev" %}}.

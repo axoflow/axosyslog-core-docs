@@ -13,7 +13,7 @@
 
 When receiving multi-line messages from a source when the `multi-line-garbage()` option is set, but no matching line is received between two lines that match `multi-line-prefix()`, {{% param "product.abbrev" %}} will continue to process the incoming lines as a single message until a line matching `multi-line-garbage()` is received.
 
-To use the `multi-line-garbage()` option, set the `multi-line-mode()` option to **prefix-garbage**.
+To use the `multi-line-garbage()` option, set the `multi-line-mode()` option to `prefix-garbage`.
 
 {{% alert title="Warning" color="warning" %}}
 

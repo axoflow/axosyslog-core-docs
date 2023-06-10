@@ -40,8 +40,8 @@ As a syslog-ng user described on a [mailing list](https://lists.gt.net/gentoo/us
 
 {{% include-headless "chunk/global-objects-syntax.md" %}} {{% alert title="Note" color="info" %}}
 
-Before activating a new configuration, check that your configuration file is syntactically correct using the **syslog-ng --syntax-only** command.
+Before activating a new configuration, check that your configuration file is syntactically correct using the `syslog-ng --syntax-only` command.
 
-To activate the configuration, reload the configuration of syslog-ng using the **/etc/init.d/syslog-ng reload** command.
+To activate the configuration, reload the configuration of syslog-ng using the `/etc/init.d/syslog-ng reload` command.
 
 {{% /alert %}}

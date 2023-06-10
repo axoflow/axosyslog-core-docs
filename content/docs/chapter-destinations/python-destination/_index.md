@@ -191,7 +191,7 @@ The following sample code writes the body of log messages into the `/tmp/example
     };
 ```
 
-The following code is similar to the previous example, but it opens and closes the file using the **open()** and **close()** methods.
+The following code is similar to the previous example, but it opens and closes the file using the `open()` and `close()` methods.
 
 ```c
    destination d_python_to_file {

@@ -18,7 +18,7 @@ You can use the RLTP protocol as well. For details about the RLTP protocol, see 
 ```
 
 
-By default, the `network()` driver binds to `0.0.0.0`, meaning that it listens on every available IPV4 interface on the TCP/514 port. To limit accepted connections to only one interface, use the **localip()** parameter. To listen on IPv6 addresses, use the **ip-protocol(6)** option.
+By default, the `network()` driver binds to `0.0.0.0`, meaning that it listens on every available IPV4 interface on the TCP/514 port. To limit accepted connections to only one interface, use the `localip()` parameter. To listen on IPv6 addresses, use the `ip-protocol(6)` option.
 
 
 ## Example: Using the network() driver {#example-source-network}

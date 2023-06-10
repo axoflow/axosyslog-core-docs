@@ -7,7 +7,7 @@
 |          |                                                                                 |
 | -------- | ------------------------------------------------------------------------------- |
 | Type:    | number (bytes)                                                                  |
-| Default: | Use the global **log-msg-size()** option, which defaults to `65536` (64 KiB). |
+| Default: | Use the global `log-msg-size()` option, which defaults to `65536` (64 KiB). |
 
 {{% include-headless "chunk/option-description-log-msg-size.md" %}}
 

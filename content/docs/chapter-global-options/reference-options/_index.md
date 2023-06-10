@@ -291,7 +291,7 @@ Starting with version 3.16, the default value of this option is -1, so {{% param
 | Accepted values: | groupid |
 | Default:         | root    |
 
-*Description:* The default group of output files. By default, syslog-ng changes the privileges of accessed files (for example, `/dev/null`) to **root.root 0600**. To disable modifying privileges, use this option with the **-1** value.
+*Description:* The default group of output files. By default, syslog-ng changes the privileges of accessed files (for example, `/dev/null`) to `root.root 0600`. To disable modifying privileges, use this option with the `-1` value.
 
 
 
@@ -460,7 +460,7 @@ Starting with version 3.16, the default value of this option is -1, so {{% param
 | Accepted values: | number |
 | Default:         | 600    |
 
-*Description:* The period between two STATS messages in seconds. STATS are log messages sent by syslog-ng, containing statistics about dropped log messages. Set to **0** to disable the STATS messages.
+*Description:* The period between two STATS messages in seconds. STATS are log messages sent by syslog-ng, containing statistics about dropped log messages. Set to `0` to disable the STATS messages.
 
 
 
@@ -513,18 +513,18 @@ In some cases, there might be even millions of dynamic counters
     
     ## Example: Limiting dynamic counter clusters 1
     
-    If you set `stats-max-dynamics()` to **1**, and 2 programs send messages, only one of these programs will be tracked in the dynamic counters, but it will have more than one counters.
+    If you set `stats-max-dynamics()` to `1`, and 2 programs send messages, only one of these programs will be tracked in the dynamic counters, but it will have more than one counters.
     
     
     
     ## Example: Limiting dynamic counter clusters 2
     
-    If you have 500 clients, and set `stats-max-dynamics()` to **1000**, you will have enough number of counters reserved for these clients, but at the same time, you limit the use of your resources and therefore protect your system from being overloaded.
+    If you have 500 clients, and set `stats-max-dynamics()` to `1000`, you will have enough number of counters reserved for these clients, but at the same time, you limit the use of your resources and therefore protect your system from being overloaded.
     
 
   - ## No dynamic counters:
     
-    To disable dynamic counters completely, set the value of this option to **0**. This is the recommended value if you do not use statistics, or if you are not interested in dynamic counters in particular (for example, the number of logs arriving from programs).
+    To disable dynamic counters completely, set the value of this option to `0`. This is the recommended value if you do not use statistics, or if you are not interested in dynamic counters in particular (for example, the number of logs arriving from programs).
 
 {{% alert title="Note" color="info" %}}
 
@@ -552,7 +552,7 @@ If you set a lower value to `stats-max-dynamics()` (or, any limiting value, if t
 | Accepted values: | yes|no |
 | Default:         | yes    |
 
-*Description:* Enable {{% param "product.abbrev" %}} to run in multithreaded mode and use multiple CPUs. Available only in {{% param "product.name" %}} 3.3 and later. Note that setting **threaded(no)** does not mean that {{% param "product.abbrev" %}} will use only a single thread. For details, see {{% xref "/docs/chapter-multithreading/_index.md" %}}.
+*Description:* Enable {{% param "product.abbrev" %}} to run in multithreaded mode and use multiple CPUs. Available only in {{% param "product.name" %}} 3.3 and later. Note that setting `threaded(no)` does not mean that {{% param "product.abbrev" %}} will use only a single thread. For details, see {{% xref "/docs/chapter-multithreading/_index.md" %}}.
 
 
 

@@ -22,7 +22,7 @@ If you find a message that the `websense-parser()` cannot properly parse, [conta
 
 The {{% param "product.abbrev" %}} application sets the `${PROGRAM}` field to `Websense`.
 
-By default, the websense-specific fields are extracted into name-value pairs prefixed with `.websense`. For example, the `product_version` in the previous message becomes `${.websense.product_version}`. You can change the prefix using the **prefix** option of the parser.
+By default, the websense-specific fields are extracted into name-value pairs prefixed with `.websense`. For example, the `product_version` in the previous message becomes `${.websense.product_version}`. You can change the prefix using the `prefix` option of the parser.
 
 
 ## Declaration:
@@ -38,7 +38,7 @@ By default, the websense-specific fields are extracted into name-value pairs pre
 ```
 
 
-Note that you have to disable message parsing in the source using the **flags(no-parse)** option for the parser to work.
+Note that you have to disable message parsing in the source using the `flags(no-parse)` option for the parser to work.
 
 The `websense-parser()` is actually a reusable configuration snippet configured to parse websense messages. For details on using or writing such configuration snippets, see {{% xref "/docs/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/syslog-ng/syslog-ng/blob/master/scl/websense/plugin.conf).
 

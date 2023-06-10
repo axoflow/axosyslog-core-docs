@@ -11,9 +11,9 @@
 
 *Description:* Enable or disable hostname rewriting.
 
-  - If enabled (**keep-hostname(yes)**), {{% param "product.abbrev" %}} assumes that the incoming log message was sent by the host specified in the `HOST` field of the message.
+  - If enabled (`keep-hostname(yes)`), {{% param "product.abbrev" %}} assumes that the incoming log message was sent by the host specified in the `HOST` field of the message.
 
-  - If disabled (**keep-hostname(no)**), {{% param "product.abbrev" %}} rewrites the `HOST` field of the message, either to the IP address (if the `use-dns()` parameter is set to **no**), or to the hostname (if the `use-dns()` parameter is set to **yes** and the IP address can be resolved to a hostname) of the host sending the message to {{% param "product.abbrev" %}}. For details on using name resolution in {{% param "product.abbrev" %}}, see {{% xref "/docs/chapter-examples/examples-dns/_index.md" %}}.
+  - If disabled (`keep-hostname(no)`), {{% param "product.abbrev" %}} rewrites the `HOST` field of the message, either to the IP address (if the `use-dns()` parameter is set to `no`), or to the hostname (if the `use-dns()` parameter is set to `yes` and the IP address can be resolved to a hostname) of the host sending the message to {{% param "product.abbrev" %}}. For details on using name resolution in {{% param "product.abbrev" %}}, see {{% xref "/docs/chapter-examples/examples-dns/_index.md" %}}.
     
     s
 

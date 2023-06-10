@@ -33,7 +33,7 @@ If you have lots of clients that do not send timezone information in the log mes
 
 ## {#rewrite-timezone-guess}
 
-Use the `guess-time-zone()` operation attempts to set the timezone of the message automatically, using heuristics on the timestamps. Normally the {{% param "product.abbrev" %}} application performs this operation automatically when it parses the incoming message. Using this operation in a rewrite rule can be useful if you cannot parse the incoming message for some reason (and use the **flags(no-parse)** option in your source, but you want to set the timezone automatically later (for example, after you have preprocessed the message).
+Use the `guess-time-zone()` operation attempts to set the timezone of the message automatically, using heuristics on the timestamps. Normally the {{% param "product.abbrev" %}} application performs this operation automatically when it parses the incoming message. Using this operation in a rewrite rule can be useful if you cannot parse the incoming message for some reason (and use the `flags(no-parse)` option in your source, but you want to set the timezone automatically later (for example, after you have preprocessed the message).
 
 Using this operation is identical to using the `flags(guess-timezone)` flag in the source.
 

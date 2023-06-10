@@ -12,9 +12,9 @@ For a sample database containing only a single pattern, see [Example: A pattern 
 
 {{% alert title="Note" color="info" %}}
 
-Use the **pdbtool** utility that is bundled with syslog-ng to test message patterns and convert existing databases to the latest format. For details, see <span class="mcFormatColor" style="color: #04aada;">The pdbtool manual page</span>.
+Use the `pdbtool` utility that is bundled with syslog-ng to test message patterns and convert existing databases to the latest format. For details, see <span class="mcFormatColor" style="color: #04aada;">The pdbtool manual page</span>.
 
-To automatically create an initial pattern database from an existing log file, use the **pdbtool patternize** command. For details, see <span class="mcFormatColor" style="color: #04aada;">The pdbtool manual page</span>.
+To automatically create an initial pattern database from an existing log file, use the `pdbtool patternize` command. For details, see <span class="mcFormatColor" style="color: #04aada;">The pdbtool manual page</span>.
 
 {{% /alert %}}
 
@@ -46,7 +46,7 @@ The following is a simple pattern database containing a matching rule.
 
 ```
 
-Note that the rule uses macros that refer to parts of the message, for example, you can use the **${SSH_USERNAME}** macro refer to the username used in the connection.
+Note that the rule uses macros that refer to parts of the message, for example, you can use the `${SSH_USERNAME}` macro refer to the username used in the connection.
 
 The following is the same example, but with a test message and test values for the parsers.
 

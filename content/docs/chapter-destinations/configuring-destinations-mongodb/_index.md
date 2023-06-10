@@ -16,7 +16,7 @@ The `mongodb()` driver sends messages to a [MongoDB](https://www.mongodb.com/) d
 
 The `mongodb()` driver does not support creating indexes, as that can be a very complex operation in MongoDB. If needed, the administrator of the MongoDB database must ensure that indexes are created on the collections.
 
-The `mongodb()` driver does not add the `_id` field to the message: the MongoDB server will do that automatically, if none is present. If you want to override this field from {{% param "product.abbrev" %}}, use the **key()** parameter of the `value-pairs()` option.
+The `mongodb()` driver does not add the `_id` field to the message: the MongoDB server will do that automatically, if none is present. If you want to override this field from {{% param "product.abbrev" %}}, use the `key()` parameter of the `value-pairs()` option.
 
 The {{% param "product.abbrev" %}} `mongodb()` driver is compatible with MongoDB server version 1.4 and newer.
 

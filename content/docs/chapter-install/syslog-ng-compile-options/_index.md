@@ -8,7 +8,7 @@ When compiling {{% param "product.abbrev" %}} from source, you can use the follo
 
   - *--enable-all-modules* This option will turn on or off all modules and most features when enabled, unless a feature is explicitly disabled, or not detected automatically. Currently, this means that you must explicitly enable the `pacct()` source, since it is not detected automatically (all other modules are compiled automatically if the required libraries are available).
     
-    This also means that the Sun Streams source is enabled on every platform, not only on Solaris, causing a compile error. Use **--enable-all-modules** together with **--disable-sun-streams**.
+    This also means that the Sun Streams source is enabled on every platform, not only on Solaris, causing a compile error. Use `--enable-all-modules` together with `--disable-sun-streams`.
 
   - *--disable-http* Disable support for the `http()` destination that is based on *libcurl*.
 
@@ -20,7 +20,7 @@ When compiling {{% param "product.abbrev" %}} from source, you can use the follo
 
   - *--disable-snmp* Disable SNMP support. By default, SNMP support is enabled if the libsnmp-dev library is detected.
 
-  - *--enable-amqp* Enable the amqp destination (enabled by default). The source of the RabbitMQ client is included in the source code package of {{% param "product.abbrev" %}}. To use an external client instead, use the **--with-librabbitmq-client=system** compiling option. For details on using this destination, see {{% xref "/docs/chapter-destinations/configuring-destinations-amqp/_index.md" %}}.
+  - *--enable-amqp* Enable the amqp destination (enabled by default). The source of the RabbitMQ client is included in the source code package of {{% param "product.abbrev" %}}. To use an external client instead, use the `--with-librabbitmq-client=system` compiling option. For details on using this destination, see {{% xref "/docs/chapter-destinations/configuring-destinations-amqp/_index.md" %}}.
 
   - *--enable-debug* Include debug information.
 
@@ -44,7 +44,7 @@ When compiling {{% param "product.abbrev" %}} from source, you can use the follo
 
   - *--enable-python* Enable support for Python-based modules.
 
-  - *--enable-redis* Enable the redis destination (enabled by default). The source of the libhiredis client (0.11 or newer) must be available. To specify the location of the library, use the **--with-libhiredis=\<path-to-libhiredis\>** compiling option. For details on using this destination, see {{% xref "/docs/chapter-destinations/configuring-destinations-redis/_index.md" %}}.
+  - *--enable-redis* Enable the redis destination (enabled by default). The source of the libhiredis client (0.11 or newer) must be available. To specify the location of the library, use the `--with-libhiredis=\<path-to-libhiredis\>` compiling option. For details on using this destination, see {{% xref "/docs/chapter-destinations/configuring-destinations-redis/_index.md" %}}.
 
   - *--enable-riemann* Enable the riemann destination (enabled by default). The source of the libriemann client must be available. For details on using this destination, see {{% xref "/docs/chapter-destinations/configuring-destinations-riemann/_index.md" %}}.
 
@@ -66,13 +66,13 @@ When compiling {{% param "product.abbrev" %}} from source, you can use the follo
 
   - *--with-embedded-crypto* If this option is set, the crypto library is linked directly into libsyslog-ng: the sources of libsyslog-ng-crypto will be appended to the libsyslog-ng sources, and -crypto is not built.
 
-  - *--with-ivykis* Specifies which ivykis implementation to use (default value: internal). The source of ivykis is included in the source code package of {{% param "product.abbrev" %}} and is used by default. To use an external implementation instead, use the **--with-ivykis=system** compiling option.
+  - *--with-ivykis* Specifies which ivykis implementation to use (default value: internal). The source of ivykis is included in the source code package of {{% param "product.abbrev" %}} and is used by default. To use an external implementation instead, use the `--with-ivykis=system` compiling option.
 
   - *--with-libcurl* Specifies the path to the libcurl library. For details on using this destination, see {{% xref "/docs/chapter-destinations/configuring-destinations-http-nonjava/_index.md" %}}.
 
   - *--with-libhiredis* Specifies the path to the libhiredis library (0.11 or newer). For details on using this destination, see {{% xref "/docs/chapter-destinations/configuring-destinations-redis/_index.md" %}}.
 
-  - *--with-librabbitmq-client* Specifies which RabbitMQ client to use (default value: internal). The source of the rabbitmq client is included in the source code package of {{% param "product.abbrev" %}} and is used by default. To use an external client instead, use the **--with-librabbitmq-client=system** compiling option. For details on using this destination, see {{% xref "/docs/chapter-destinations/configuring-destinations-amqp/_index.md" %}}.
+  - *--with-librabbitmq-client* Specifies which RabbitMQ client to use (default value: internal). The source of the rabbitmq client is included in the source code package of {{% param "product.abbrev" %}} and is used by default. To use an external client instead, use the `--with-librabbitmq-client=system` compiling option. For details on using this destination, see {{% xref "/docs/chapter-destinations/configuring-destinations-amqp/_index.md" %}}.
 
   - *--with-module-dir* Specifies a single directory where the {{% param "product.abbrev" %}} Makefile will install the modules.
 
@@ -82,7 +82,7 @@ When compiling {{% param "product.abbrev" %}} from source, you can use the follo
 
   - *--with-net-snmp* Specifies the path to the libsnmp-dev library, required for the `snmp()` destination.
 
-  - *--with-python* Specifies which Python version to use, for example, **--with-python=2.7**
+  - *--with-python* Specifies which Python version to use, for example, `--with-python=2.7`
 
   - *--with-timezone-dir* Specifies the directory where syslog-ng looks for the timezone files to resolve the `time-zone()` and `local-time-zone()` options. If not specified, the `/opt/syslog-ng/share/zoneinfo/` and `/usr/share/zoneinfo/` directories are checked, respectively. Note that HP-UX uses a unique file format (`tztab`) to describe the timezone information, but that format is currently not supported in syslog-ng. As a workaround, copy the zoneinfo files from another, non-HP-UX system to the `/opt/syslog-ng/share/zoneinfo/` directory of your HP-UX system.
 

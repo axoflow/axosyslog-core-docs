@@ -117,7 +117,7 @@ For details on how to create your own pattern databases see {{% xref "/docs/chap
 
 ## Drop unmatched messages {#patterndb-drop-unmatched-messages}
 
-If you want to automatically drop unmatched messages (that is, discard every message that does not match a pattern in the pattern database), use the **drop-unmatched()** option in the definition of the pattern database:
+If you want to automatically drop unmatched messages (that is, discard every message that does not match a pattern in the pattern database), use the `drop-unmatched()` option in the definition of the pattern database:
 
 ```c
    parser pattern_db {

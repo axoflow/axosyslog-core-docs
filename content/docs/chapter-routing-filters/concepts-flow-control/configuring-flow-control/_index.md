@@ -33,9 +33,9 @@ If you modify the `max-connections()` or the `log-fetch-limit()` parameter, do n
 
 Suppose that syslog-ng has a source that must accept up to 300 parallel connections. Such situation can arise when a network source receives connections from many clients, or if many applications log to the same socket.
 
-Set the `max-connections()` parameter of the source to **300**. However, the `log-fetch-limit()` (default value: 10) parameter applies to every connection of the source individually, while the `log-iw-size()` (default value: 1000) parameter applies to the source. In a worst-case scenario, the destination does not accept any messages, while all 300 connections send at least `log-fetch-limit()` number of messages to the source during every poll loop. Therefore, the control window must accommodate at least `max-connections()`\*`log-fetch-limit()` messages to be able to read every incoming message of a poll loop. In the current example this means that `log-iw-size()` should be greater than **300\*10=3000**. If the control window is smaller than this value, the control window might fill up with messages from the first connections — causing syslog-ng to read only one message of the last connections in every poll loop.
+Set the `max-connections()` parameter of the source to `300`. However, the `log-fetch-limit()` (default value: 10) parameter applies to every connection of the source individually, while the `log-iw-size()` (default value: 1000) parameter applies to the source. In a worst-case scenario, the destination does not accept any messages, while all 300 connections send at least `log-fetch-limit()` number of messages to the source during every poll loop. Therefore, the control window must accommodate at least `max-connections()`\*`log-fetch-limit()` messages to be able to read every incoming message of a poll loop. In the current example this means that `log-iw-size()` should be greater than `300\*10=3000`. If the control window is smaller than this value, the control window might fill up with messages from the first connections — causing syslog-ng to read only one message of the last connections in every poll loop.
 
-The output buffer of the destination must accommodate at least `log-iw-size()` messages, but use a greater value: in the current example **3000\*10=30000** messages. That way all incoming messages of ten poll loops fit in the output buffer. If the output buffer is full, syslog-ng does not read any messages from the source until some messages are successfully sent to the destination.
+The output buffer of the destination must accommodate at least `log-iw-size()` messages, but use a greater value: in the current example `3000\*10=30000` messages. That way all incoming messages of ten poll loops fit in the output buffer. If the output buffer is full, syslog-ng does not read any messages from the source until some messages are successfully sent to the destination.
 
 ```c
    source s_localhost {
@@ -59,7 +59,7 @@ The output buffer of the destination must accommodate at least `log-iw-size()` m
     };
 ```
 
-If other sources send messages to this destination, then the output buffer must be further increased. For example, if a network host with maximum **100** connections also logs into the destination, then increase the `log-fifo-size()` by **10000**.
+If other sources send messages to this destination, then the output buffer must be further increased. For example, if a network host with maximum `100` connections also logs into the destination, then increase the `log-fifo-size()` by `10000`.
 
 ```c
    source s_localhost {

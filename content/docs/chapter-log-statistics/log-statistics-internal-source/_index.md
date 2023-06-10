@@ -53,4 +53,4 @@ The statistics include a list of source groups and destinations, as well as the 
 
 The statistics are semicolon separated: every line contains statistics for a particular object (for example, source, destination, tag, and so on). The statistics have the following fields:
 
-To reset the statistics to zero, use the following command: **syslog-ng-ctl stats --reset**
+To reset the statistics to zero, use the following command: `syslog-ng-ctl stats --reset`

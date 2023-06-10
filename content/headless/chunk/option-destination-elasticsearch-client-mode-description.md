@@ -24,7 +24,7 @@
     The {{% param "product.abbrev" %}} application acts as an Elasticsearch node (client no-data), using the node client API of Elasticsearch. Further options for the node can be describe in an Elasticsearch configuration file specified in the `resource()` option.
     
     {{% alert title="Note" color="info" %}}
-In Node mode, it is required to define the home of the elasticsearch installation with the `path.home` parameter in the `.yml` file. For example: **path.home: /usr/share/elasticsearch**.
+In Node mode, it is required to define the home of the elasticsearch installation with the `path.home` parameter in the `.yml` file. For example: `path.home: /usr/share/elasticsearch`.
     {{% /alert %}}
 
   - ## Search Guard mode

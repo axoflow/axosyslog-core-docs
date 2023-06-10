@@ -56,7 +56,7 @@ In the {{% param "product.abbrev" %}} configuration file:
 | Synopsis: | ignore-case()   |
 | Default:  | ignore-case(no) |
 
-*Description:* Specifies if selectors are handled as case insensitive. If you set the `ignore-case()` option to **yes**, selectors are handled as case insensitive.
+*Description:* Specifies if selectors are handled as case insensitive. If you set the `ignore-case()` option to `yes`, selectors are handled as case insensitive.
 
 
 

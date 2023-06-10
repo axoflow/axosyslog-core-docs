@@ -14,11 +14,11 @@ The `facility()` filter accepts both the name and the numerical code of the faci
 
 You can use the facility filter the following ways:
 
-  - Use a single facility name, for example, **facility(user)**
+  - Use a single facility name, for example, `facility(user)`
 
-  - Use a single facility code, for example, **facility(1)**
+  - Use a single facility code, for example, `facility(1)`
 
-  - Use a facility range (works only with facility names), for example, **facility(local0..local5)**
+  - Use a facility range (works only with facility names), for example, `facility(local0..local5)`
 
 The syslog-ng application recognizes the following facilities: (Note that some of these facilities are available only on specific platforms.)
 
