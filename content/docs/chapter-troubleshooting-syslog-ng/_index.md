@@ -26,4 +26,4 @@ This chapter provides tips and guidelines about troubleshooting problems related
     
     To report bugs found in {{% param "product.abbrev" %}}, [visit our GitHub issues page](https://github.com/syslog-ng/syslog-ng/issues/).
     
-    Precompiled binary packages are available for free from various third-parties. See [the list of precompiled {{% param "product.abbrev" %}} binary packages](https://github.com/syslog-ng/syslog-ng/#installation-from-binaries).
+    Precompiled binary packages are available for free from various third-parties. See [the list of precompiled binary packages](https://github.com/syslog-ng/syslog-ng/#installation-from-binaries).
