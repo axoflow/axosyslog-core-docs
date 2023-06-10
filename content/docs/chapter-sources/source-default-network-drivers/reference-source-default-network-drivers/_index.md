@@ -8,11 +8,11 @@ The `systemd-journal()` driver has the following options.
 
 {{% include-headless "chunk/option-destination-tls-ca-dir.md" %}}
 
-{{% include-headless "chunk/option-destination-tls-ca-file.md" %}}
+{{< include-headless "chunk/option-destination-tls-ca-file.md" >}}
 
-{{% include-headless "chunk/option-source-flags.md" %}}
+{{< include-headless "chunk/option-source-flags.md" >}}
 
-{{% include-headless "chunk/option-source-log-msg-size.md" %}}
+{{< include-headless "chunk/option-source-log-msg-size.md" >}}
 
 
 {{% include-headless "chunk/option-source-max-connections.md" %}}

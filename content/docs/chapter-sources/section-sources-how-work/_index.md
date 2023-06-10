@@ -80,6 +80,7 @@ The following source statement collects the following log messages:
     };
 ```
 
+## Sources list
 
 The following table lists the source drivers available in `syslog-ng`.
 

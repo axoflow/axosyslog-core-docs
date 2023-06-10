@@ -68,7 +68,7 @@ Essentially, the `no-header` flag signals {{% param "product.abbrev" %}} that th
 
   - *syslog-protocol*: The `syslog-protocol` flag specifies that incoming messages are expected to be formatted according to the new IETF syslog protocol standard (RFC5424), but without the frame header. Note that this flag is not needed for the `syslog` driver, which handles only messages that have a frame header.
 
-  - *validate-utf8*: The `validate-utf8` flag enables encoding-verification for messages formatted according to the new IETF syslog standard (for details, see {{% xref "/docs/chapter-concepts/concepts-message-structure/concepts-message-ietfsyslog/_index.md" %}}). If the BOM
+  - *validate-utf8*: The `validate-utf8` flag enables encoding-verification for messages formatted according to the new IETF syslog standard (for details, see {{% xref "/docs/chapter-concepts/concepts-message-structure/concepts-message-ietfsyslog/_index.md" %}}). If the BOM character is missing, but the message is otherwise UTF-8 compliant, `syslog-ng` automatically adds the BOM character to the message.
     
-    {{% include-headless "chunk/para-bom-definition.md" %}} character is missing, but the message is otherwise UTF-8 compliant, `syslog-ng` automatically adds the BOM character to the message.
+    {{% include-headless "chunk/para-bom-definition.md" %}}
 
