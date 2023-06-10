@@ -47,11 +47,10 @@ Other optional elements that can appear in log statements are parsers and rewrit
 
 ## Configuring {{% param "product.ose" %}}
 
-  - The main body of the configuration file consists of object definitions: sources, destinations, logpaths define which log message are received and where they are sent. All identifiers, option names and attributes, and any other strings used in the syslog-ng configuration file are case sensitive. Object definitions (also called statements) have the following syntax:
+- The main body of the configuration file consists of object definitions: sources, destinations, logpaths define which log message are received and where they are sent. All identifiers, option names and attributes, and any other strings used in the syslog-ng configuration file are case sensitive. Object definitions (also called statements) have the following syntax:
     
     ```c
         type-of-the-object identifier-of-the-object {<parameters>};
-    
     ```
     
       - Type of the object: One of `source`, `destination`, `log`, `filter`, `parser`, `rewrite` rule, or `template`.
@@ -104,24 +103,22 @@ Other optional elements that can appear in log statements are parsers and rewrit
     Objects may have required and optional parameters. Required parameters are positional, meaning that they must be specified in a defined order. Optional parameters can be specified in any order using the **option(value)** format. If a parameter (optional or required) is not specified, its default value is used. The parameters and their default values are listed in the reference section of the particular object.
     
     
-    ## Example: Using required and optional parameters
-    
-    The `unix-stream()` source driver has a single required argument: the name of the socket to listen on. Optional parameters follow the socket name in any order, so the following source definitions have the same effect:
-    
-    ```c
-        source s_demo_stream1 {
-                            unix-stream("<path-to-socket>" max-connections(10) group(log)); };
-                            source s_demo_stream2 {
-        unix-stream("<path-to-socket>" group(log) max-connections(10)); };
-    
-    ```
-    
+## Example: Using required and optional parameters
 
-  - Some options are global options, or can be set globally, for example, whether {{% param "product.ose" %}} should use DNS resolution to resolve IP addresses.
+The `unix-stream()` source driver has a single required argument: the name of the socket to listen on. Optional parameters follow the socket name in any order, so the following source definitions have the same effect:
+
+```c
+source s_demo_stream1 {
+    unix-stream("<path-to-socket>" max-connections(10) group(log)); };
+    source s_demo_stream2 {
+unix-stream("<path-to-socket>" group(log) max-connections(10)); };
+```
+
+
+- Some options are global options, or can be set globally, for example, whether {{% param "product.ose" %}} should use DNS resolution to resolve IP addresses.
     
     ```c
         options { use-dns(no); };
-    
     ```
 
   - Objects can be used before definition.
@@ -131,12 +128,9 @@ Other optional elements that can appear in log statements are parsers and rewrit
   - To add comments to the configuration file, start a line with `#` and write your comments. These lines are ignored by {{% param "product.ose" %}}.
     
     ```c
-    ``` 
-        #Comment: This is a stream source
+    #Comment: This is a stream source
     source s_demo_stream {
     unix-stream("<path-to-socket>" max-connections(10) group(log)); };
-    ```
-    
     ```
 
 The syntax of log statements is as follows:
@@ -150,29 +144,20 @@ The syntax of log statements is as follows:
     destination(d1); destination(d2); ...
     flags(flag1[, flag2...]);
             };
-
 ```
 
 The following log statement sends all messages arriving to the `localhost` to a remote server.
 
 ```c
-
-``` 
-        source s_localhost { network(ip(127.0.0.1) port(1999)); };
-        destination d_tcp { network("10.1.2.3" port(1999) localport(999)); };
-        log { source(s_localhost); destination(d_tcp); };
-```
-
+source s_localhost { network(ip(127.0.0.1) port(1999)); };
+destination d_tcp { network("10.1.2.3" port(1999) localport(999)); };
+log { source(s_localhost); destination(d_tcp); };
 ```
 
 The {{% param "product.ose" %}} application has a number of global options governing DNS usage, the timestamp format used, and other general points. Each option may have parameters, similarly to driver specifications. To set global options add an option statement to the {{% param "product.ose" %}} configuration file using the following syntax:
 
 ```c
-
-``` 
-    options { option1(params); option2(params); ... };
-```
-
+options { option1(params); option2(params); ... };
 ```
 
 
@@ -181,8 +166,7 @@ The {{% param "product.ose" %}} application has a number of global options gover
 To disable domain name resolving, add the following line to the {{% param "product.ose" %}} configuration file:
 
 ```c
-   options { use-dns(no); };
-
+options { use-dns(no); };
 ```
 
 

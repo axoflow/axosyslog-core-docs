@@ -6,18 +6,13 @@ weight:  4900
 
 <span id="dqtool.1"></span>
 
-
 ## Name
 
 `dqtool` — Display the contents of a disk-buffer file created with {{% param "product.abbrev" %}}.
 
-
-
 ## Synopsis
 
 `dqtool [command] [options]`
-
-
 
 ## Description
 
@@ -31,8 +26,6 @@ This manual page is only an abstract, for the complete documentation of {{% para
 
 The `dqtool` application is a utility that can be used to display and format the messages stored in a disk-buffer file.
 
-
-
 ## The cat command
 
 `cat [options] [file]`
@@ -41,49 +34,41 @@ Use the `cat` command to display the log messages stored in the disk-buffer (als
 
 The `cat` command has the following options:
 
-  - `--debug` or `-d`
-    
+- `--debug` or `-d`
+
     Print diagnostic and debugging messages to `stderr`.
 
-  - `--help` or `-h`
-    
+- `--help` or `-h`
+
     Display a brief help message.
 
-  - `--template=\<template\>` or `-t`
-    
+- `--template=\<template\>` or `-t`
+
     Format the messages using the specified template.
 
-  - `--verbose` or `-v`
-    
+- `--verbose` or `-v`
+
     Print verbose messages to `stderr`.
 
-  - `--version` or `-V`
-    
-    Display version information.
+- `--version` or `-V`
 
+    Display version information.
 
 ## Example: The cat command
 
 ```c
-   ./dqtool cat ../var/syslog-ng-00000.qf
-
+./dqtool cat ../var/syslog-ng-00000.qf
 ```
 
 The output looks like:
 
 ```c
-
-``` 
-    Disk-buffer state loaded;
+Disk-buffer state loaded;
 filename='../var/syslog-ng-00000.qf', qout_length='65', qbacklog_length='0', qoverflow_length='9205', qdisk_length='0'
 Mar  3 10:52:05 tristram localprg[1234]: seq: 0000011630, runid: 1267609923, stamp: 2010-03-03T10:52:05 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
 Mar  3 10:52:05 tristram localprg[1234]: seq: 0000011631, runid: 1267609923, stamp: 2010-03-03T10:52:05 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
-```
 
 ```
-
-
-
 
 <span id="dqtool-relocate"></span>
 
@@ -95,52 +80,43 @@ Use the `relocate` command to move or rename disk-buffer (also called disk-queue
 
 The `cat` command has the following options:
 
-  - `--all` or `-a`
-    
+- `--all` or `-a`
+
     Relocate every disk-buffer file that is listed in the {{% param "product.ose" %}} persist file.
 
-  - `--new_path` or `-n`
-    
+- `--new_path` or `-n`
+
     The directory where you want to move the disk-bufffer files. For example: `/var/disk-buffers`
 
-  - `--persist` or `-p`
-    
+- `--persist` or `-p`
+
     The path to the {{% param "product.ose" %}} persist file. The `relocate` command automatically updates the entries of the disk-buffer files in the persist file.
 
-
-## Examples:
+## Examples
 
 Relocate a single queue file:
 
 ```c
-   bin/dqtool relocate --new_path /tmp/dq --persist var/syslog-ng.persist /tmp/syslog-ng-00000.rqf
-
+bin/dqtool relocate --new_path /tmp/dq --persist var/syslog-ng.persist /tmp/syslog-ng-00000.rqf
 ```
 
 Relocate multiple queue files:
 
 ```c
-   bin/dqtool relocate --new_path /tmp/dq --persist var/syslog-ng.persist /tmp/syslog-ng-00000.rqf /tmp/syslog-ng-00001.rqf
-
+bin/dqtool relocate --new_path /tmp/dq --persist var/syslog-ng.persist /tmp/syslog-ng-00000.rqf /tmp/syslog-ng-00001.rqf
 ```
 
 Relocate every queue file:
 
 ```c
-   bin/dqtool relocate --new_path /tmp/dq --persist var/syslog-ng.persist --all
-
+bin/dqtool relocate --new_path /tmp/dq --persist var/syslog-ng.persist --all
 ```
-
-
-
 
 <span id="idm45327922098864"></span>
 
 ## Files
 
-/opt/syslog-ng/bin/dqtooldqtool
-
-
+`/opt/syslog-ng/bin/dqtool`
 
 ## See also
 
@@ -157,4 +133,3 @@ If you experience any problems or need help with {{% param "product.abbrev" %}},
 For news and notifications about {{% param "product.abbrev" %}}, visit the [{{% param "product.syslog-ng" %}} blogs](https://syslog-ng.com/blog/).
 
 {{% /alert %}}
-

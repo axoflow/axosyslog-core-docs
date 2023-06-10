@@ -11,13 +11,9 @@ weight:  4900
 
 `syslog-ng-ctl` — Display message statistics and enable verbose, debug and trace modes in {{% param "product.pe" %}}
 
-
-
 ## Synopsis
 
 `syslog-ng-ctl [command] [options]`
-
-
 
 <span id="syslog-ng-ctl-mandescription"></span>
 
@@ -33,17 +29,15 @@ This manual page is only an abstract, for the complete documentation of {{% para
 
 The `syslog-ng-ctl` application is a utility that can be used to:
 
-  - enable/disable various {{% param "product.ose" %}} messages for troubleshooting
+- enable/disable various {{% param "product.ose" %}} messages for troubleshooting
 
-  - display statistics about the processed messages
+- display statistics about the processed messages
 
-  - handling password-protected private keys
+- handling password-protected private keys
 
-  - display the currently running configuration of {{% param "product.ose" %}}
+- display the currently running configuration of {{% param "product.ose" %}}
 
-  - reload the configuration of {{% param "product.ose" %}}.
-
-
+- reload the configuration of {{% param "product.ose" %}}.
 
 <span id="syslog-ng-ctl"></span>
 
@@ -57,27 +51,23 @@ Use `syslog-ng-ctl \<command\>` without any parameters to display whether the pa
 
 If you need to use a non-standard control socket to access syslog-ng, use the `syslog-ng-ctl \<command\> --set=on --control=\<socket\>` command to specify the socket to use.
 
-  - `verbose`
+- `verbose`
     
     Print verbose messages. If {{% param "product.ose" %}} was started with the `--stderr` or `-e` option, the messages will be sent to `stderr`. If not specified, {{% param "product.ose" %}} will log such messages to its internal source.
 
-  - `trace`
+- `trace`
     
     Print trace messages of how messages are processed. If {{% param "product.ose" %}} was started with the `--stderr` or `-e` option, the messages will be sent to `stderr`. If not specified, {{% param "product.ose" %}} will log such messages to its internal source.
 
-  - `debug`
+- `debug`
     
     Print debug messages. If {{% param "product.ose" %}} was started with the `--stderr` or `-e` option, the messages will be sent to `stderr`. If not specified, {{% param "product.ose" %}} will log such messages to its internal source.
 
-
-## Example:
+## Example
 
 ```c
-   syslog-ng-ctl verbose --set=on
-
+syslog-ng-ctl verbose --set=on
 ```
-
-
 
 
 <span id="syslog-ng-ctl-query"></span>
@@ -87,19 +77,19 @@ If you need to use a non-standard control socket to access syslog-ng, use the `s
 The {{% param "product.ose" %}} application stores various data, metrics, and statistics in a hash table. Every property has a name and a value. For example:
 
 ```c
-   [syslog-ng]
-    |       
-    |_[destinations]-[network]-[tcp]->[stats]->{received=12;dropped=2}
-    |
-    |_[sources]-[sql]-[stats]->{received=501;dropped=0}
+[syslog-ng]
+  |       
+  |_[destinations]-[network]-[tcp]->[stats]->{received=12;dropped=2}
+  |
+  |_[sources]-[sql]-[stats]->{received=501;dropped=0}
 
 ```
 
 You can query the nodes of this tree, and also use filters to select the information you need. A query is actually a path in the tree. You can also use the `?` and `\*` wildcards. For example:
 
-  - Select every property: `\*`
+- Select every property: `\*`
 
-  - Select all `dropped` value from every `stats` node: `\*.stats.dropped`
+- Select all `dropped` value from every `stats` node: `\*.stats.dropped`
 
 The nodes and properties available in the tree depend on your {{% param "product.ose" %}} configuration (that is, the sources, destinations, and other objects you have configured), and also on your `stats-level()` settings.
 
@@ -116,56 +106,56 @@ Use the `syslog-ng-ctl query list` command to display the list of metrics that {
 An example output:
 
 ```c
-   center.received.stats.processed
-    center.queued.stats.processed
-    destination.java.d_elastic#0.java_dst(ElasticSearch,elasticsearch-syslog-ng-test,t7cde889529c034aea9ec_micek).stats.dropped
-    destination.java.d_elastic#0.java_dst(ElasticSearch,elasticsearch-syslog-ng-test,t7cde889529c034aea9ec_micek).stats.processed
-    destination.java.d_elastic#0.java_dst(ElasticSearch,elasticsearch-syslog-ng-test,t7cde889529c034aea9ec_micek).stats.queued
-    destination.d_elastic.stats.processed
-    source.s_tcp.stats.processed
-    source.severity.7.stats.processed
-    source.severity.0.stats.processed
-    source.severity.1.stats.processed
-    source.severity.2.stats.processed
-    source.severity.3.stats.processed
-    source.severity.4.stats.processed
-    source.severity.5.stats.processed
-    source.severity.6.stats.processed
-    source.facility.7.stats.processed
-    source.facility.16.stats.processed
-    source.facility.8.stats.processed
-    source.facility.17.stats.processed
-    source.facility.9.stats.processed
-    source.facility.18.stats.processed
-    source.facility.19.stats.processed
-    source.facility.20.stats.processed
-    source.facility.0.stats.processed
-    source.facility.21.stats.processed
-    source.facility.1.stats.processed
-    source.facility.10.stats.processed
-    source.facility.22.stats.processed
-    source.facility.2.stats.processed
-    source.facility.11.stats.processed
-    source.facility.23.stats.processed
-    source.facility.3.stats.processed
-    source.facility.12.stats.processed
-    source.facility.4.stats.processed
-    source.facility.13.stats.processed
-    source.facility.5.stats.processed
-    source.facility.14.stats.processed
-    source.facility.6.stats.processed
-    source.facility.15.stats.processed
-    source.facility.other.stats.processed
-    global.payload_reallocs.stats.processed
-    global.msg_clones.stats.processed
-    global.sdata_updates.stats.processed
-                tag..source.s_tcp.stats.processed
+  center.received.stats.processed
+  center.queued.stats.processed
+  destination.java.d_elastic#0.java_dst(ElasticSearch,elasticsearch-syslog-ng-test,t7cde889529c034aea9ec_micek).stats.dropped
+  destination.java.d_elastic#0.java_dst(ElasticSearch,elasticsearch-syslog-ng-test,t7cde889529c034aea9ec_micek).stats.processed
+  destination.java.d_elastic#0.java_dst(ElasticSearch,elasticsearch-syslog-ng-test,t7cde889529c034aea9ec_micek).stats.queued
+  destination.d_elastic.stats.processed
+  source.s_tcp.stats.processed
+  source.severity.7.stats.processed
+  source.severity.0.stats.processed
+  source.severity.1.stats.processed
+  source.severity.2.stats.processed
+  source.severity.3.stats.processed
+  source.severity.4.stats.processed
+  source.severity.5.stats.processed
+  source.severity.6.stats.processed
+  source.facility.7.stats.processed
+  source.facility.16.stats.processed
+  source.facility.8.stats.processed
+  source.facility.17.stats.processed
+  source.facility.9.stats.processed
+  source.facility.18.stats.processed
+  source.facility.19.stats.processed
+  source.facility.20.stats.processed
+  source.facility.0.stats.processed
+  source.facility.21.stats.processed
+  source.facility.1.stats.processed
+  source.facility.10.stats.processed
+  source.facility.22.stats.processed
+  source.facility.2.stats.processed
+  source.facility.11.stats.processed
+  source.facility.23.stats.processed
+  source.facility.3.stats.processed
+  source.facility.12.stats.processed
+  source.facility.4.stats.processed
+  source.facility.13.stats.processed
+  source.facility.5.stats.processed
+  source.facility.14.stats.processed
+  source.facility.6.stats.processed
+  source.facility.15.stats.processed
+  source.facility.other.stats.processed
+  global.payload_reallocs.stats.processed
+  global.msg_clones.stats.processed
+  global.sdata_updates.stats.processed
+              tag..source.s_tcp.stats.processed
 
 ```
 
 The `syslog-ng-ctl query list` command has the following options:
 
-  - `--reset`
+- `--reset`
     
     Use `--reset` to set the selected counters to 0 after executing the query.
 
@@ -182,25 +172,21 @@ The `syslog-ng-ctl query get \<query\>` command lists the nodes that match the q
 For example, the `destination` query lists the configured destinations, and the metrics related to each destination. An example output:
 
 ```c
-
-``` 
-          destination.java.d_elastic#0.java_dst(ElasticSearch,elasticsearch-syslog-ng-test,t7cde889529c034aea9ec_micek).stats.dropped=0
+destination.java.d_elastic#0.java_dst(ElasticSearch,elasticsearch-syslog-ng-test,t7cde889529c034aea9ec_micek).stats.dropped=0
 destination.java.d_elastic#0.java_dst(ElasticSearch,elasticsearch-syslog-ng-test,t7cde889529c034aea9ec_micek).stats.processed=0
 destination.java.d_elastic#0.java_dst(ElasticSearch,elasticsearch-syslog-ng-test,t7cde889529c034aea9ec_micek).stats.queued=0
-            destination.d_elastic.stats.processed=0
-```
-
+destination.d_elastic.stats.processed=0
 ```
 
 The `syslog-ng-ctl query get` command has the following options:
 
-  - `--sum`
+- `--sum`
     
     Add up the result of each matching node and return only a single number.
     
     For example, the `syslog-ng-ctl query get --sum "destination\*.dropped"` command displays the number of messages dropped by the {{% param "product.ose" %}} instance.
 
-  - `--reset`
+- `--reset`
     
     Use `--reset` to set the selected counters to 0 after executing the query.
 
@@ -214,15 +200,15 @@ The `syslog-ng-ctl query get` command has the following options:
 
 Use the `stats` command to display statistics about the processed messages. For details about the displayed statistics, see [The {{% param "product.ose" %}} Administrator Guide](https://www.syslog-ng.com). The `stats` command has the following options:
 
-  - `--control=\<socket\>` or `-c`
+- `--control=\<socket\>` or `-c`
     
     Specify the socket to use to access {{% param "product.pe" %}}. Only needed when using a non-standard socket.
 
-  - `--reset=\<socket\>` or `-r`
+- `--reset=\<socket\>` or `-r`
     
     Reset all statistics to zero, except for the `queued` counters. (The `queued` counters show the number of messages in the message queue of the destination driver, waiting to be sent to the destination.)
 
-  - `--remove-orphans`
+- `--remove-orphans`
     
     Safely removes all counters that are not referenced by any syslog-ng stat producer objects.
     
@@ -240,19 +226,16 @@ Use the `stats` command to display statistics about the processed messages. For 
     {{% /alert %}}
 
 
-## Example:
+## Example
 
 ```c
-   syslog-ng-ctl stats
-
+syslog-ng-ctl stats
 ```
 
 An example output:
 
 ```c
-
-``` 
-        src.internal;s_all#0;;a;processed;6445
+src.internal;s_all#0;;a;processed;6445
 src.internal;s_all#0;;a;stamp;1268989330
 destination;df_auth;;a;processed;404
 destination;df_news_dot_notice;;a;processed;0
@@ -281,11 +264,6 @@ center;;queued;a;processed;0
 destination;df_facility_dot_err;;a;processed;0
 ```
 
-```
-
-
-
-
 <span id="syslog-ng-ctl-credentials"></span>
 
 ## Handling password-protected private keys
@@ -305,10 +283,9 @@ The `syslog-ng-ctl credentials status` command allows you to query the status of
 The `syslog-ng-ctl credentials status` command allows you to query the status of the private keys that {{% param "product.ose" %}} uses in the `network()` and `syslog()` drivers. The command returns the list of private keys used, and their status. For example:
 
 ```c
-   syslog-ng-ctl credentials status
-    Secret store status:
-    /home/user/ssl_test/client-1/client-encrypted.key SUCCESS
-
+  syslog-ng-ctl credentials status
+  Secret store status:
+  /home/user/ssl_test/client-1/client-encrypted.key SUCCESS
 ```
 
 If the status of a key is PENDING, you must provide the passphrase for the key, otherwise {{% param "product.ose" %}} cannot use it. The sources and destinations that use these keys will not work until you provide the passwords. Other parts of the {{% param "product.ose" %}} configuration will be unaffected. You must provide the passphrase of the password-protected keys every time {{% param "product.ose" %}} is restarted.
@@ -316,11 +293,10 @@ If the status of a key is PENDING, you must provide the passphrase for the key, 
 The following log message also notifies you of PENDING passphrases:
 
 ```c
-   Waiting for password; keyfile='private.key'
-
+Waiting for password; keyfile='private.key'
 ```
 
-  - `--control=\<socket\>` or `-c`
+- `--control=\<socket\>` or `-c`
     
     Specify the socket to use to access {{% param "product.ose" %}}. Only needed when using a non-standard socket.
 
@@ -335,39 +311,30 @@ The following log message also notifies you of PENDING passphrases:
 You can add the passphrase to a password-protected private key file using the following command. {{% param "product.ose" %}} will display a prompt for you to enter the passphrase. We recommend that you use this method.
 
 ```c
-   syslog-ng-ctl credentials add --id=<path-to-the-key>
-
+syslog-ng-ctl credentials add --id=<path-to-the-key>
 ```
 
 Alternatively, you can include the passphrase in the `--secret` parameter:
 
 ```c
-
-``` 
-    syslog-ng-ctl credentials add --id=<path-to-the-key> --secret=<passphrase-of-the-key>
-```
-
+syslog-ng-ctl credentials add --id=<path-to-the-key> --secret=<passphrase-of-the-key>
 ```
 
 Or you can pipe the passphrase to the syslog-ng-ctl command, for example:
 
 ```c
-
-``` 
-    echo "<passphrase-of-the-key>" | syslog-ng-ctl credentials add --id=<path-to-the-key>
+echo "<passphrase-of-the-key>" | syslog-ng-ctl credentials add --id=<path-to-the-key>
 ```
 
-```
-
-  - `--control=\<socket\>` or `-c`
+- `--control=\<socket\>` or `-c`
     
     Specify the socket to use to access {{% param "product.pe" %}}. Only needed when using a non-standard socket.
 
-  - `--id=\<path-to-the-key\>` or `-i`
+- `--id=\<path-to-the-key\>` or `-i`
     
     The path to the password-protected private key file. This is the same path that you use in the `key-file()` option of the {{% param "product.ose" %}} configuration file.
 
-  - `--secret=\<passphrase-of-the-key\>` or `-s`
+- `--secret=\<passphrase-of-the-key\>` or `-s`
     
     The password or passphrase of the private key.
 
@@ -402,8 +369,6 @@ The `syslog-ng-ctl reload` command returns 0 if the operation was successful, 1 
 
 
 ## See also
-
-[<span class="mcFormatColor" style="color: #04aada;">syslog-ng Documentation page</span>](https://www.syslog-ng.com/)
 
 <span class="mcFormatColor" style="color: #04aada;">The syslog-ng.conf manual page</span>
 

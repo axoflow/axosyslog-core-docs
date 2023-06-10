@@ -37,51 +37,51 @@ The `loggen` application is a tool to test and stress-test your syslog server an
 
 When `loggen` finishes sending the messages, it displays the following statistics:
 
-  - `average rate`: The average rate of the sent messages in messages/second.
+- `average rate`: The average rate of the sent messages in messages/second.
 
-  - `count`: The total number of messages sent.
+- `count`: The total number of messages sent.
 
-  - `time`: The time required to send the messages in seconds.
+- `time`: The time required to send the messages in seconds.
 
-  - `average message size`: The average size of the sent messages in bytes.
+- `average message size`: The average size of the sent messages in bytes.
 
-  - `bandwidth`: The average bandwidth used for sending the messages in kilobytes/second.
+- `bandwidth`: The average bandwidth used for sending the messages in kilobytes/second.
 
 
 
 ## Options
 
-  - `--active-connections \<number-of-connections\>`
+- `--active-connections \<number-of-connections\>`
     
     Number of connections `loggen` will use to send messages to the destination. This option is usable only when using TCP or TLS connections to the destination. Default value: 1
     
     The `loggen` utility waits until every connection is established before starting to send messages. See also the `--idle-connections` option.
 
-  - `--csv` or `-C`
+- `--csv` or `-C`
     
     Send the statistics of the sent messages to `stdout` as CSV. This can be used for plotting the message rate.
 
-  - `--dgram` or `-D`
+- `--dgram` or `-D`
     
     Use datagram socket (`UDP` or `unix-dgram`) to send the messages to the target. Requires the `--inet` option as well.
 
-  - `dont-parse` or `-d`
+- `dont-parse` or `-d`
     
     Do not parse the lines read from the input files, send them as received.
 
-  - `--help` or `-h`
+- `--help` or `-h`
     
     Display a brief help message.
 
-  - `--idle-connection \<number-of-connections\>`
+- `--idle-connection \<number-of-connections\>`
     
     Number of idle connections `loggen` will establish to the destination. Note that `loggen` will not send any messages on idle connections, but the connection is kept open using keep-alive messages. This option is usable only when using TCP or TLS connections to the destination. See also the `--active-connections` option. Default value: 0
 
-  - `--inet` or `-i`
+- `--inet` or `-i`
     
     Use the TCP (by default) or UDP (when used together with the `--dgram` option) protocol to send the messages to the target.
 
-  - `--interval \<seconds\>` or `-I \<seconds\>`
+- `--interval \<seconds\>` or `-I \<seconds\>`
     
     The number of seconds `loggen` will run. Default value: 10
     
@@ -91,15 +91,15 @@ When `loggen` finishes sending the messages, it displays the following statistic
     
     {{% /alert %}}
 
-  - `--ipv6` or `-6`
+- `--ipv6` or `-6`
     
     Specify the destination using its IPv6 address. Note that the destination must have a real IPv6 address.
 
-  - `--loop-reading` or `-l`
+- `--loop-reading` or `-l`
     
     Read the file specified in `--read-file` option in loop: loggen will start reading from the beginning of the file when it reaches the end of the file.
 
-  - `--number \<number-of-messages\>` or `-n \<number-of-messages\>`
+- `--number \<number-of-messages\>` or `-n \<number-of-messages\>`
     
     Number of messages to generate.
     
@@ -109,19 +109,19 @@ When `loggen` finishes sending the messages, it displays the following statistic
     
     {{% /alert %}}
 
-  - `--no-framing` or `-F`
+- `--no-framing` or `-F`
     
     Do not use the framing of the IETF-syslog protocol style, even if the `--syslog-proto` option is set.
 
-  - `--quiet` or `-Q`
+- `--quiet` or `-Q`
     
     Display statistics only when `loggen` is finished. If not set, the statistics are displayed every second.
 
-  - `--permanent` or `-T`
+- `--permanent` or `-T`
     
     Keep sending logs indefinitely, without time limit.
 
-  - `--rate \<message/second\>` or `-r \<message/second\>`
+- `--rate \<message/second\>` or `-r \<message/second\>`
     
     The number of messages generated per second for every active connection. Default value: 1000
     
@@ -129,98 +129,85 @@ When `loggen` finishes sending the messages, it displays the following statistic
     
     `kill -USR1 \<loggen-pid\>``kill -USR2 \<loggen-pid\>`
 
-  - `--read-file \<filename\>` or `-R \<filename\>`
+- `--read-file \<filename\>` or `-R \<filename\>`
     
     Read the messages from a file and send them to the target. See also the `--skip-tokens` option.
     
     Specify `-` as the input file to read messages from the standard input (stdio). Note that when reading messages from the standard input, `loggen` can only use a single thread. The `-R -`parameters must be placed at end of command, like: `loggen 127.0.0.1 1061 --read-file -`
 
-  - `--sdata \<data-to-send\>` or `-p \<data-to-send\>`
+- `--sdata \<data-to-send\>` or `-p \<data-to-send\>`
     
     Send the argument of the `--sdata` option as the SDATA part of IETF-syslog (RFC5424 formatted) messages. Use it together with the `--syslog-proto` option. For example: **--sdata "[test name=\\"value\\"]**
 
-  - `--size \<message-size\>` or `-s \<message-size\>`
+- `--size \<message-size\>` or `-s \<message-size\>`
     
     The size of a syslog message in bytes. Default value: 256. Minimum value: 127 bytes, maximum value: 8192 bytes.
 
-  - `--skip-tokens \<number\>`
+- `--skip-tokens \<number\>`
     
     Skip the specified number of space-separated tokens (words) at the beginning of every line. For example, if the messages in the file look like `foo bar message`, `--skip-tokens 2` skips the `foo bar` part of the line, and sends only the `message` part. Works only when used together with the `--read-file` parameter. Default value: 0
 
-  - `--stream` or `-S`
+- `--stream` or `-S`
     
     Use a stream socket (TCP or unix-stream) to send the messages to the target.
 
-  - `--syslog-proto` or `-P`
+- `--syslog-proto` or `-P`
     
     Use the new IETF-syslog message format as specified in RFC5424. By default, loggen uses the legacy BSD-syslog message format (as described in RFC3164). See also the `--no-framing` option.
 
-  - `--unix \</path/to/socket\>` or `-x \</path/to/socket\>`
+- `--unix \</path/to/socket\>` or `-x \</path/to/socket\>`
     
     Use a UNIX domain socket to send the messages to the target.
 
-  - `--use-ssl` or `-U`
+- `--use-ssl` or `-U`
     
     Use an SSL-encrypted channel to send the messages to the target. Note that it is not possible to check the certificate of the target, or to perform mutual authentication.
 
-  - `--version` or `-V`
+- `--version` or `-V`
     
     Display version number of syslog-ng.
-
-
-
 
 ## Examples
 
 The following command generates 100 messages per second for ten minutes, and sends them to port 2010 of the localhost via TCP. Each message is 300 bytes long.
 
 ```c
-   loggen --size 300 --rate 100 --interval 600 127.0.0.1 2010
-
+loggen --size 300 --rate 100 --interval 600 127.0.0.1 2010
 ```
 
 The following command is similar to the one above, but uses the UDP protocol.
 
 ```c
-   loggen --inet --dgram --size 300 --rate 100 --interval 600 127.0.0.1 2010
-
+loggen --inet --dgram --size 300 --rate 100 --interval 600 127.0.0.1 2010
 ```
 
 Send a single message on TCP6 to the `::1` IPv6 address, port `1061:`
 
 ```c
-   loggen --ipv6 --number 1 ::1 1061
-
+loggen --ipv6 --number 1 ::1 1061
 ```
 
 Send a single message on UDP6 to the `::1` IPv6 address, port `1061:`
 
 ```c
-   loggen --ipv6 --dgram --number 1 ::1 1061
-
+loggen --ipv6 --dgram --number 1 ::1 1061
 ```
 
 Send a single message using a unix domain-socket:
 
 ```c
-   loggen --unix --stream --number 1 </path/to/socket>
-
+loggen --unix --stream --number 1 </path/to/socket>
 ```
 
 Read messages from the standard input (`stdio`) and send them to the localhost:
 
 ```c
-   loggen 127.0.0.1 1061 --read-file -
-
+loggen 127.0.0.1 1061 --read-file -
 ```
-
-
 
 ## Files
 
 `/opt/syslog-ng/bin/loggen`
-
-
 
 ## See also
 
