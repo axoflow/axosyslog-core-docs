@@ -1,7 +1,9 @@
 ---
+title: Load balancing with a round robin load balancing method based on the R_MSEC macro of syslog-ng OSE
+linktitle: Round robin
+weight: 100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
-# Load balancing with a round robin load balancing method based on the R_MSEC macro of syslog-ng OSE
 
 This section describes a round robin load balancing method based on the `R_MSEC` macro of {{% param "product.name" %}} ({{% param "product.abbrev" %}}) to load balance your logs between multiple {{% param "product.abbrev" %}} destinations.
 

@@ -1,32 +1,33 @@
 ---
+title: Configuring log rotation
+weight: 700
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
-# Configuring log rotation
 
 The {{% param "product.abbrev" %}} application does not rotate logs by itself. To use {{% param "product.abbrev" %}} for log rotation, consider the following approaches:
 
 
 ## Use logrotate together with {{% param "product.abbrev" %}}:
 
-  - It is ideal for workstations or when processing fewer logs.
+- It is ideal for workstations or when processing fewer logs.
 
-  - It is included in most distributions by default.
+- It is included in most distributions by default.
 
-  - Less scripting is required, only `logrotate` has to be configured correctly.
+- Less scripting is required, only `logrotate` has to be configured correctly.
 
-  - Requires frequent restart ({{% param "product.abbrev" %}} must be reloaded/restarted when the files are rotated). After rotating the log files, reload {{% param "product.abbrev" %}} using the `syslog-ng-ctl reload` command, or use another method to send a SIGHUP to {{% param "product.abbrev" %}}.
+- Requires frequent restart ({{% param "product.abbrev" %}} must be reloaded/restarted when the files are rotated). After rotating the log files, reload {{% param "product.abbrev" %}} using the `syslog-ng-ctl reload` command, or use another method to send a SIGHUP to {{% param "product.abbrev" %}}.
 
-  - The statistics collected by {{% param "product.abbrev" %}}, and the correlation information gathered with Pattern Database, are lost with each restart.
+- The statistics collected by {{% param "product.abbrev" %}}, and the correlation information gathered with Pattern Database, are lost with each restart.
 
 
 
 ## Separate incoming logs based on time, host or other information:
 
-  - It is ideal for central log servers, where regular restart of {{% param "product.abbrev" %}} is unfavorable.
+- It is ideal for central log servers, where regular restart of {{% param "product.abbrev" %}} is unfavorable.
 
-  - Requires shell scripts or cron jobs to remove old logs.
+- Requires shell scripts or cron jobs to remove old logs.
 
-  - It can be done by using macros in the destination name (in the filename, directory name, or the database table name). (For details on using macros, see {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/configuring-macros/_index.md" %}}.)
+- It can be done by using macros in the destination name (in the filename, directory name, or the database table name). (For details on using macros, see {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/configuring-macros/_index.md" %}}.)
 
 
 ## Example: File destination for log rotation
