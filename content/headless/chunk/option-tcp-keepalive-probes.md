@@ -11,7 +11,7 @@
 
 *Description:* Specifies the number of unacknowledged probes to send before considering the connection dead. This option is equivalent to `/proc/sys/net/ipv4/tcp_keepalive_probes`. The default value is `0`, which means using the kernel default.
 
-{{% include-headless "wnt/warning-tcp-keepalive.md" %}}
+{{< include-headless "wnt/warning-tcp-keepalive.md" >}}
 
 Available in {{% param "product.abbrev" %}} version 3.4 and later.
 

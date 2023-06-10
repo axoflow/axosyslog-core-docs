@@ -41,7 +41,7 @@ Hazard of data loss! The {{% param "product.abbrev" %}} application does not ver
 
 {{% include-headless "chunk/option-destination-log-fifo-size.md" %}}
 
-{{% include-headless "chunk/option-destination-on-error.md" %}}
+{{< include-headless "chunk/option-destination-on-error.md" >}}
 
 
 {{% include-headless "chunk/option-destination-retries.md" %}}
@@ -64,9 +64,9 @@ For MongoDB operations, {{% param "product.abbrev" %}} uses a one-minute timeout
 *Description:* Available in {{< param "product.name" >}} 3.8 and later. Please refer to the [MongoDB URI format documentation](https://docs.mongodb.com/manual/reference/connection-string/) for detailed syntax.
 
 
-{{% include-headless "chunk/destination-option-value-pairs-content.md" %}}
+{{< include-headless "chunk/destination-option-value-pairs-content.md" >}}
 
-{{% include-headless "wnt/note-typehinting.md" %}}
+{{< include-headless "wnt/note-typehinting.md" >}}
 
 
 ## workers()

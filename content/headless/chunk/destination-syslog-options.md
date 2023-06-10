@@ -110,7 +110,7 @@
 
 
 
-{{% include-headless "wnt/note-formatting-messages.md" %}}
+{{< include-headless "wnt/note-formatting-messages.md" >}}
 
 
 

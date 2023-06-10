@@ -11,7 +11,7 @@
 
 *Description:* Specifies the interval (in seconds) between the last data packet sent and the first keepalive probe. This option is equivalent to `/proc/sys/net/ipv4/tcp_keepalive_time`. The default value is `0`, which means using the kernel default.
 
-{{% include-headless "wnt/warning-tcp-keepalive.md" %}}
+{{< include-headless "wnt/warning-tcp-keepalive.md" >}}
 
 Available in {{% param "product.abbrev" %}} version 3.4 and later.
 

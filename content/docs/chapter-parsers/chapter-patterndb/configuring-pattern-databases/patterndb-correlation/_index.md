@@ -12,7 +12,7 @@ The {{% param "product.abbrev" %}} application can correlate log messages identi
 
 There are two attributes for pattern database rules that determine if a message matching the rule is added to a context: `context-scope` and `context-id`. The `context-scope` attribute acts as an early filter, selecting messages sent by the same process (${HOST}${PROGRAM}${PID} is identical), application (${HOST}${PROGRAM} is identical), or host, while the `context-id` actually adds the message to the context specified in the id. The `context-id` can be a simple string, or can contain macros or values extracted from the log messages for further filtering. Starting with {{% param "product.abbrev" %}} version 3.5, if a message is added to a context, {{% param "product.abbrev" %}} automatically adds the identifier of the context to the `.classifier.context_id` macro of the message.
 
-{{% include-headless "wnt/note-message-context.md" %}}
+{{< include-headless "wnt/note-message-context.md" >}}
 
 Another parameter of a rule is the `context-timeout` attribute, which determines how long a context is stored, that is, how long {{% param "product.abbrev" %}} waits for related messages to arrive.
 

@@ -96,4 +96,4 @@ The `stomp()` destination has the following options:
 
 *Description:* The username used to authenticate on the STOMP server.
 
-{{% include-headless "chunk/destination-option-value-pairs.md" %}}
+{{< include-headless "chunk/destination-option-value-pairs.md" >}}

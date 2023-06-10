@@ -28,4 +28,4 @@ If {{% param "product.abbrev" %}} sends the message is to the destination using 
 
 5.  When macro expansions are used in the destination filenames, the local timezone is used. (Also, if the timestamp of the received message does not contain the year of the message, {{% param "product.abbrev" %}} uses the local year.)
     
-    {{% include-headless "wnt/note-rewrite-timezone.md" %}}
+    {{< include-headless "wnt/note-rewrite-timezone.md" >}}

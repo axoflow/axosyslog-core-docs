@@ -77,7 +77,7 @@ The return value of the `parse()` method must be `True`. If it returns `False`, 
 
 This method is executed when {{% param "product.abbrev" %}} is stopped or reloaded.
 
-{{% include-headless "wnt/warning-python-parser-deinit.md" %}}
+{{< include-headless "wnt/warning-python-parser-deinit.md" >}}
 
 ## Example: Parse loggen logs {#python-parser-example}
 

@@ -9,5 +9,5 @@
 | Type:    | number |
 | Default: | 1      |
 
-{{% include-headless "chunk/option-description-destination-batch-lines.md" %}}
+{{< include-headless "chunk/option-description-destination-batch-lines.md" >}}
 

@@ -20,7 +20,7 @@ Log statements are processed in the order they appear in the configuration file,
 
 {{% /alert %}}
 
-{{% include-headless "wnt/note-element-order.md" %}}
+{{< include-headless "wnt/note-element-order.md" >}}
 
 
 ## Example: A simple log statement {#log-statement-example}

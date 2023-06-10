@@ -365,15 +365,18 @@ For example:
 <tbody>
 <tr class="odd">
 <td>Accepted values:</td>
-<td><p>drop-message|drop-property|fallback-to-string|</p>
-<p>silently-drop-message|silently-drop-property|silently-fallback-to-string</p></td>
+<td><p></p></td>
 </tr>
 <tr class="even">
 <td>Default:</td>
-<td>drop-message</td>
+<td></td>
 </tr>
 </tbody>
 </table>
+
+| Accepted values:  | `drop-message|drop-property|fallback-to-string| silently-drop-message|silently-drop-property|silently-fallback-to-string` |
+|--------------|-----------|
+| Default:     | `drop-message` |
 
 {{% include-headless "chunk/option-description-destination-on-error.md" %}}
 

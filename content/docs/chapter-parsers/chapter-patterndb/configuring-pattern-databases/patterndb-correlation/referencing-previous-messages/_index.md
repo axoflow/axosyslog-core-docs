@@ -12,7 +12,7 @@ When referencing an earlier message of the context, always enclose the field nam
 
 {{% /alert %}}
 
-{{% include-headless "wnt/note-escape-at.md" %}}
+{{< include-headless "wnt/note-escape-at.md" >}}
 
 
 {{% include-headless "chunk/example-patterndb-referencing-earlier-values.md" %}}

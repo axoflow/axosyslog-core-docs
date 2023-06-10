@@ -14,4 +14,4 @@ Rewriting messages is often used in conjunction with message parsing {{% xref "/
 
 Rewrite rules are similar to filters: they must be defined in the `syslog-ng` configuration file and used in the log statement. You can also define the rewrite rule inline in the log path.
 
-{{% include-headless "wnt/note-element-order.md" %}}
+{{< include-headless "wnt/note-element-order.md" >}}

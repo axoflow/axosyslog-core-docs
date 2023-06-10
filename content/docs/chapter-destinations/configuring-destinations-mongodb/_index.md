@@ -20,7 +20,7 @@ The `mongodb()` driver does not add the `_id` field to the message: the MongoDB 
 
 The {{% param "product.abbrev" %}} `mongodb()` driver is compatible with MongoDB server version 1.4 and newer.
 
-{{% include-headless "wnt/note-typehinting.md" %}}
+{{< include-headless "wnt/note-typehinting.md" >}}
 
 
 ## Example: Using the mongodb() driver {#example-destination-mongodb}

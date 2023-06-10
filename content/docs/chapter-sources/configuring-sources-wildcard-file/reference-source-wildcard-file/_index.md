@@ -18,7 +18,9 @@ The `wildcard-file()` driver has the following options:
 
 {{% alert title="Warning" color="warning" %}}
 
-{{% include-headless "wnt/warning-wildcard-overlapping-files.md" %}} {{% /alert %}}
+{{< include-headless "wnt/warning-wildcard-overlapping-files.md" >}}
+
+{{% /alert %}}
 
 
 {{% include-headless "chunk/synopsis-wildcard-file-source-example.md" %}}
@@ -51,7 +53,9 @@ For example, `filename-pattern("\*.log")` matches the `syslog.log` and `auth.log
 
 {{% alert title="Warning" color="warning" %}}
 
-{{% include-headless "wnt/warning-wildcard-overlapping-files.md" %}} {{% /alert %}}
+{{< include-headless "wnt/warning-wildcard-overlapping-files.md" >}}
+
+{{% /alert %}}
 
 
 {{% include-headless "chunk/synopsis-wildcard-file-source-example.md" %}}
@@ -130,7 +134,9 @@ If `log-fetch-limit()` is 100, and your wildcard file source has 200 files, then
 
 {{% alert title="Warning" color="warning" %}}
 
-{{% include-headless "wnt/warning-wildcard-overlapping-files.md" %}} {{% /alert %}}
+{{< include-headless "wnt/warning-wildcard-overlapping-files.md" >}}
+
+{{% /alert %}}
 
 
 

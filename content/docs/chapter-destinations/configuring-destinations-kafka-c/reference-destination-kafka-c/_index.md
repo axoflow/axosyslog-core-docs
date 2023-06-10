@@ -15,12 +15,12 @@ The following options are required: `bootstrap-servers()`, `topic()`. Note that 
    @define kafka-implementation kafka-c
 ```
 
-{{% include-headless "chunk/kafka-c-impl-required-options-note.md" %}}
+{{< include-headless "chunk/kafka-c-impl-required-options-note.md" >}}
 
 
 {{% include-headless "chunk/option-destination-batch-lines.md" %}}
 
-{{% include-headless "wnt/n-options-only-effective-for-sync-send(yes).md" %}}
+{{< include-headless "wnt/n-options-only-effective-for-sync-send(yes).md" >}}
 
 {{% alert title="Note" color="info" %}}
 
@@ -32,7 +32,7 @@ If you set `sync-send()` to `"yes"`, the number you specify for `batch-lines()` 
 
 {{% include-headless "chunk/option-destination-batch-timeout.md" %}}
 
-{{% include-headless "wnt/n-options-only-effective-for-sync-send(yes).md" %}}
+{{< include-headless "wnt/n-options-only-effective-for-sync-send(yes).md" >}}
 
 {{% alert title="Note" color="info" %}}
 
@@ -67,16 +67,11 @@ Unlike in the Java implementation, the <span class="code">client-lib-dir()</span
 
 
 
-## 
-
-|          |  |
-| -------- |  |
-| Type:    |  |
-| Default: |  |
+## config()
 
 *Description:* You can use this option to expand or override the options of the properties-file().
 
-{{% include-headless "chunk/kafka-c-impl-required-options-note.md" %}}
+{{< include-headless "chunk/kafka-c-impl-required-options-note.md" >}}
 
 The {{% param "product.abbrev" %}}`kafka` destination supports all properties of the official Kafka producer. For details, see [the librdkafka documentation](https://github.com/edenhill/librdkafka/blob/master/CONFIGURATION.md).
 
@@ -135,7 +130,7 @@ The syntax of the config() option is the following:
 
 {{% include-headless "chunk/option-destination-local-timezone.md" %}}
 
-{{% include-headless "chunk/option-destination-on-error.md" %}}
+{{< include-headless "chunk/option-destination-on-error.md" >}}
 
 {{% include-headless "chunk/option-persist-name.md" %}}
 
@@ -172,7 +167,7 @@ example
 compression.type=snappy`.
 ```
 
-{{% include-headless "chunk/kafka-c-impl-required-options-note.md" %}}
+{{< include-headless "chunk/kafka-c-impl-required-options-note.md" >}}
 
 
 {{% include-headless "chunk/option-destination-retries.md" %}}
@@ -182,7 +177,7 @@ compression.type=snappy`.
 
 {{% include-headless "chunk/kafka-kafka-c-sync-send.md" %}}
 
-{{% include-headless "wnt/n-sync-send(yes)-limit-ose-pe.md" %}}
+{{< include-headless "wnt/n-sync-send(yes)-limit-ose-pe.md" >}}
 
 
 ## template() {#kafka-option-template}
