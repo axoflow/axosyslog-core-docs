@@ -17,7 +17,7 @@ The `final`, `fallback`, and `catchall` flags apply only for the top-level log p
 
 ## Example: Using log path flags {#example-logpath-flags}
 
-Let's suppose that you have two hosts (`myhost_A` and `myhost_B`) that run two applications each (`application_A` and `application_B`), and you collect the log messages to a central `syslog-ng` server. On the server, you create two log paths:
+Let's suppose that you have two hosts (`myhost_A` and `myhost_B`) that run two applications each (`application_A` and `application_B`), and you collect the log messages to a central AxoSyslog server. On the server, you create two log paths:
 
   - one that processes only the messages sent by `myhost_A`, and
 
@@ -29,7 +29,7 @@ This means that messages sent by `application_A` running on `myhost_A` will be p
 
   - If you create a third log path that includes the `fallback` flag, it will process the messages not processed by the first two log paths, in this case, the messages of `application_B` running on `myhost_B`.
 
-  - Adding a fourth log path with the `catchall` flag would process every message received by the `syslog-ng` server.
+  - Adding a fourth log path with the `catchall` flag would process every message received by the AxoSyslog server.
     
     ```c
         log { source(s_localhost); destination(d_file); flags(catchall); };

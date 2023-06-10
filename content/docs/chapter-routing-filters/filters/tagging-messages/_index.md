@@ -12,7 +12,7 @@ You can label the messages with custom tags. Tags are simple labels, identified 
 
   - Tags can be also added and deleted using rewrite rules. For details, see {{% xref "/docs/chapter-manipulating-messages/modifying-messages/rewrite-tags/_index.md" %}}.
 
-When `syslog-ng` receives a message, it automatically adds the `.source.<id_of_the_source_statement> tag to the message. Use the `tags()` option of the source to add custom tags, and the `tags()` option of the filters to select only specific messages.
+When AxoSyslog receives a message, it automatically adds the `.source.<id_of_the_source_statement> tag to the message. Use the `tags()` option of the source to add custom tags, and the `tags()` option of the filters to select only specific messages.
 
   - Tagging messages and also filtering on the tags is very fast, much faster than other types of filters.
 

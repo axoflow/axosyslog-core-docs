@@ -4,7 +4,7 @@ weight:  100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-A source is where `syslog-ng` receives log messages. Sources consist of one or more drivers, each defining where and how messages are received.
+A source is where AxoSyslog receives log messages. Sources consist of one or more drivers, each defining where and how messages are received.
 
 To define a source, add a source statement to the `syslog-ng.conf` configuration file using the following syntax:
 
@@ -49,7 +49,7 @@ If the message received by the source does not have a proper syslog header, you 
 ```
 
 
-Define a source only once. The same source can be used in several log paths. Duplicating sources causes `syslog-ng` to open the source (TCP/IP port, file, and so on) more than once, which might cause problems. For example, include the `/dev/log` file source only in one source statement, and use this statement in more than one log path if needed.
+Define a source only once. The same source can be used in several log paths. Duplicating sources causes AxoSyslog to open the source (TCP/IP port, file, and so on) more than once, which might cause problems. For example, include the `/dev/log` file source only in one source statement, and use this statement in more than one log path if needed.
 
 {{% alert title="Warning" color="warning" %}}
 

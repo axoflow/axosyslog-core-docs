@@ -18,7 +18,7 @@ Hard macros cannot be modified, so they will not be overwritten. For details on 
 
 {{% alert title="Note" color="info" %}}
 
-The JSON parser currently supports only integer, double and string values when interpreting JSON structures. As `syslog-ng` does not handle different data types internally, the JSON parser converts all JSON data to string values. In case of boolean types, the value is converted to 'TRUE' or 'FALSE' as their string representation.
+The JSON parser currently supports only integer, double and string values when interpreting JSON structures. As AxoSyslog does not handle different data types internally, the JSON parser converts all JSON data to string values. In case of boolean types, the value is converted to 'TRUE' or 'FALSE' as their string representation.
 
 The JSON parser discards messages if it cannot parse them as JSON messages, so it acts as a JSON-filter as well.
 

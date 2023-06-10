@@ -6,7 +6,7 @@ weight:  300
 
 The `mssql` database driver can access Microsoft SQL (MSSQL) destinations. This driver has some special aspects that are important to note.
 
-  - The date format used by the MSSQL database must be explicitly set in the `/etc/locales.conf` file of the `syslog-ng` server. For details, see the following example.
+  - The date format used by the MSSQL database must be explicitly set in the `/etc/locales.conf` file of the AxoSyslog server. For details, see the following example.
 
   - As certain database versions limit the maximum length of table names, macros in the table names should be used with care.
 
@@ -21,7 +21,7 @@ The `mssql` database driver can access Microsoft SQL (MSSQL) destinations. This 
 
 ## Example: Using the sql() driver with an MSSQL database {#example-destination-sql-mssql}
 
-The following example sends the log messages into an MSSQL database running on the `logserver` host. The messages are inserted into the `syslogng` database, the name of the table includes the exact date when the messages were sent. The `syslog-ng` application automatically creates the required tables and columns, if the user account used to connect to the database has the required privileges.
+The following example sends the log messages into an MSSQL database running on the `logserver` host. The messages are inserted into the `syslogng` database, the name of the table includes the exact date when the messages were sent. The AxoSyslog application automatically creates the required tables and columns, if the user account used to connect to the database has the required privileges.
 
 ```c
    destination d_mssql {
@@ -34,7 +34,7 @@ The following example sends the log messages into an MSSQL database running on t
     };
 ```
 
-The date format used by the MSSQL database must be explicitly set in the `/etc/locales.conf` file of the `syslog-ng` server. Edit or create this file as needed for your configuration. A sample is provided below.
+The date format used by the MSSQL database must be explicitly set in the `/etc/locales.conf` file of the AxoSyslog server. Edit or create this file as needed for your configuration. A sample is provided below.
 
 ```c
    [default]

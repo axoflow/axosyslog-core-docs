@@ -4,9 +4,9 @@ weight:  5100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The `stdin()` driver collects messages from the standard input stream. When the standard input stream is closed, `syslog-ng` stops and `stdin()` inherits all options from the `file()` source, including multi-line options, or `flags(no-parse)`.
+The `stdin()` driver collects messages from the standard input stream. When the standard input stream is closed, AxoSyslog stops and `stdin()` inherits all options from the `file()` source, including multi-line options, or `flags(no-parse)`.
 
-The `stdin()` driver causes `syslog-ng` to exit once it hits end-of-file (EOF).
+The `stdin()` driver causes AxoSyslog to exit once it hits end-of-file (EOF).
 
 
 ## Declaration:

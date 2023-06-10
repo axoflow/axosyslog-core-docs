@@ -98,7 +98,7 @@ The syntax of the config() option is the following:
 | Type:    | integer in msec |
 | Default: | 1000            |
 
-*Description:* When `syslog-ng` reloads, the Kafka client will also reload. The `flush-timeout-on-reload()` option specifies the number of milliseconds `syslog-ng` waits for the Kafka client to send the unsent messages. The unsent messages will be retained in `syslog-ng`'s own queue and `syslog-ng` will continue sending them after reload. This works without disk-buffering, too.
+*Description:* When AxoSyslog reloads, the Kafka client will also reload. The `flush-timeout-on-reload()` option specifies the number of milliseconds AxoSyslog waits for the Kafka client to send the unsent messages. The unsent messages will be retained in `syslog-ng`'s own queue and AxoSyslog will continue sending them after reload. This works without disk-buffering, too.
 
 
 
@@ -109,7 +109,7 @@ The syntax of the config() option is the following:
 | Type:    | integer in msec |
 | Default: | 60000           |
 
-*Description:* When `syslog-ng` shuts down, the Kafka client will also shut down. The `flush-timeout-on-shutdown()` option specifies the number of milliseconds `syslog-ng` waits for the Kafka client to send the unsent messages. Any messages not sent after the specified time will be lost. To avoid losing messages, we recommend you use the disk-buffer option.
+*Description:* When AxoSyslog shuts down, the Kafka client will also shut down. The `flush-timeout-on-shutdown()` option specifies the number of milliseconds AxoSyslog waits for the Kafka client to send the unsent messages. Any messages not sent after the specified time will be lost. To avoid losing messages, we recommend you use the disk-buffer option.
 
 
 {{< include-headless "chunk/option-destination-hook.md" >}}
@@ -142,7 +142,7 @@ The syntax of the config() option is the following:
 | Type:    | integer in msec |
 | Default: | 1000            |
 
-*Description:* Specifies the frequency your `syslog-ng` queries the Kafka client about the amount of messages sent since the last `poll-timeout ()`. In case of multithreading, the first `syslog-ng` worker is responsible for `poll-timeout()`.
+*Description:* Specifies the frequency your AxoSyslog queries the Kafka client about the amount of messages sent since the last `poll-timeout ()`. In case of multithreading, the first AxoSyslog worker is responsible for `poll-timeout()`.
 
 
 
@@ -222,6 +222,6 @@ For details on formatting messages in JSON format, see [format-json]({{< relref 
 
 {{% alert title="Note" color="info" %}}
 
-Kafka clients have their own threadpool, entirely independent from any `syslog-ng` settings. The `workers()` option has no effect on this threadpool.
+Kafka clients have their own threadpool, entirely independent from any AxoSyslog settings. The `workers()` option has no effect on this threadpool.
 
 {{% /alert %}}

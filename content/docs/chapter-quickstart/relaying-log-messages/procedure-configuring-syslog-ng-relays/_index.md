@@ -4,20 +4,20 @@ weight:  100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-To configure `syslog-ng` on a relay host, complete the following steps:
+To configure AxoSyslog on a relay host, complete the following steps:
 
 
-1.  Install the `syslog-ng` application on the host. For details on installing `syslog-ng` on specific operating systems, see {{% xref "/docs/chapter-install/_index.md" %}}.
+1.  Install the AxoSyslog application on the host. For details on installing AxoSyslog on specific operating systems, see {{% xref "/docs/chapter-install/_index.md" %}}.
 
 2.  Configure the network sources that collect the log messages sent by the clients.
 
-3.  Create a network destination that points to the `syslog-ng` server.
+3.  Create a network destination that points to the AxoSyslog server.
 
-4.  Create a log statement connecting the network sources to the `syslog-ng` server.
+4.  Create a log statement connecting the network sources to the AxoSyslog server.
 
 5.  Configure the local sources that collect the log messages of the relay host.
 
-6.  Create a log statement connecting the local sources to the `syslog-ng` server.
+6.  Create a log statement connecting the local sources to the AxoSyslog server.
 
 7.  Enable the `keep-hostname()` and disable the `chain-hostnames()` options. (For details on how these options work, see [Global options]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}).)
     

@@ -4,13 +4,13 @@ weight:  500
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-All messages generated internally by `syslog-ng` use this special source. To collect warnings, errors and notices from `syslog-ng` itself, include this source in one of your source statements.
+All messages generated internally by AxoSyslog use this special source. To collect warnings, errors and notices from AxoSyslog itself, include this source in one of your source statements.
 
 ```c
    internal()
 ```
 
-The `syslog-ng` application will issue a warning upon startup if none of the defined log paths reference this driver.
+The AxoSyslog application will issue a warning upon startup if none of the defined log paths reference this driver.
 
 
 ## Example: Using the internal() driver {#example-source-internal}

@@ -89,7 +89,7 @@ For an example use case when using the macro is recommended, see {{% xref "/docs
 
 ## FULLHOST_FROM {#macro-fullhost-from}
 
-*Description:* The FQDN of the host that sent the message to `syslog-ng` as resolved by `syslog-ng` using DNS. If the message traverses several hosts, this is the last host in the chain.
+*Description:* The FQDN of the host that sent the message to AxoSyslog as resolved by AxoSyslog using DNS. If the message traverses several hosts, this is the last host in the chain.
 
 The {{% param "product.abbrev" %}} application uses the following procedure to determine the value of the `$FULLHOST_FROM` macro:
 
@@ -129,7 +129,7 @@ The {{% param "product.abbrev" %}} application uses the following procedure to d
 
 ## HOST_FROM {#macro-host-from}
 
-*Description:* The FQDN of the host that sent the message to `syslog-ng` as resolved by `syslog-ng` using DNS. If the message traverses several hosts, this is the last host in the chain.
+*Description:* The FQDN of the host that sent the message to AxoSyslog as resolved by AxoSyslog using DNS. If the message traverses several hosts, this is the last host in the chain.
 
 The {{% param "product.abbrev" %}} application uses the following procedure to determine the value of the `$HOST_FROM` macro:
 
@@ -145,7 +145,7 @@ The {{% param "product.abbrev" %}} application uses the following procedure to d
 
 ## ISODATE, C_ISODATE, R_ISODATE, S_ISODATE {#macro-isodate}
 
-*Description:* Date of the message in the ISO 8601 compatible standard timestamp format (yyyy-mm-ddThh:mm:ss+-ZONE), for example: `2006-06-13T15:58:00.123+01:00`. If possible, it is recommended to use `${ISODATE}` for timestamping. Note that `syslog-ng` can produce fractions of a second (for example, milliseconds) in the timestamp by using the `frac-digits()` global or per-destination option.
+*Description:* Date of the message in the ISO 8601 compatible standard timestamp format (yyyy-mm-ddThh:mm:ss+-ZONE), for example: `2006-06-13T15:58:00.123+01:00`. If possible, it is recommended to use `${ISODATE}` for timestamping. Note that AxoSyslog can produce fractions of a second (for example, milliseconds) in the timestamp by using the `frac-digits()` global or per-destination option.
 
 {{< include-headless "wnt/n-frac-trunc.md" >}}
 
@@ -183,7 +183,7 @@ Available in 3.24 and later.
 
 The ${MSG} macro is an alias of the ${MESSAGE} macro: using ${MSG} in {{% param "product.abbrev" %}} is equivalent to ${MESSAGE}.
 
-Note that before `syslog-ng` version 3.0, the ${MESSAGE} macro included the program name and the pid. In `syslog-ng` 3.0, the `${MESSAGE}` macro became equivalent with the `${MSGONLY}` macro.
+Note that before AxoSyslog version 3.0, the ${MESSAGE} macro included the program name and the pid. In AxoSyslog 3.0, the `${MESSAGE}` macro became equivalent with the `${MSGONLY}` macro.
 
 
 {{% include-headless "chunk/macro-min.md" %}}
@@ -271,7 +271,7 @@ For an example use case when using the macro is recommended, see {{% xref "/docs
 
 ## RAWMSG {#macro-rawmsg}
 
-*Description:* The original message as received from the client. Note that this macro is available only in 3.16 and later, and only if `syslog-ng` received the message using the [`default-network-drivers-ng()` source]({{< relref "/docs/chapter-sources/source-default-network-drivers/_index.md" >}}), or the source receiving the message has the [`store-raw-message`](shared/chunk/option-source-flags.htm) flag set.
+*Description:* The original message as received from the client. Note that this macro is available only in 3.16 and later, and only if AxoSyslog received the message using the [`default-network-drivers-ng()` source]({{< relref "/docs/chapter-sources/source-default-network-drivers/_index.md" >}}), or the source receiving the message has the [`store-raw-message`](shared/chunk/option-source-flags.htm) flag set.
 
 
 
@@ -289,7 +289,7 @@ For an example use case when using the macro is recommended, see {{% xref "/docs
 
 ## SDATA, .SDATA.SDID.SDNAME {#macro-sdata}
 
-*Description:* The `syslog-ng` application automatically parses the STRUCTURED-DATA part of IETF-syslog messages, which can be referenced in macros. The `${SDATA}` macro references the entire STRUCTURED-DATA part of the message, while structured data elements can be referenced using the `${.SDATA.SDID.SDNAME}` macro.
+*Description:* The AxoSyslog application automatically parses the STRUCTURED-DATA part of IETF-syslog messages, which can be referenced in macros. The `${SDATA}` macro references the entire STRUCTURED-DATA part of the message, while structured data elements can be referenced using the `${.SDATA.SDID.SDNAME}` macro.
 
 {{% alert title="Note" color="info" %}}
 

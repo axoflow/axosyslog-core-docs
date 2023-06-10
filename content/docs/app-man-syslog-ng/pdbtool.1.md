@@ -157,7 +157,7 @@ The `match` command has the following options:
 
 - `--filter=<filter-expression>` or `-F`
     
-    Print only messages matching the specified `syslog-ng` filter expression.
+    Print only messages matching the specified AxoSyslog filter expression.
 
 - `--message` or `-M`
     
@@ -173,7 +173,7 @@ The `match` command has the following options:
 
 - `--template=\<template-expression\>` or `-T`
     
-    A `syslog-ng` template expression that is used to format the output messages.
+    An AxoSyslog template expression that is used to format the output messages.
 
 - `--verbose` or `-v`
     

@@ -4,7 +4,7 @@ weight:  100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The `syslog-ng` application supports including external files in its configuration file, so parts of its configuration can be managed separately. To include the contents of a file in the `syslog-ng` configuration, use the following syntax:
+The AxoSyslog application supports including external files in its configuration file, so parts of its configuration can be managed separately. To include the contents of a file in the AxoSyslog configuration, use the following syntax:
 
 ```c
    @include "<filename>"
@@ -44,6 +44,6 @@ When including configuration files, consider the following points:
 
 {{% alert title="Warning" color="warning" %}}
 
-The `syslog-ng` application will not start if it cannot find a file that is to be included in its configuration. Always double-check the filenames, paths, and access rights when including configuration files, and use the `--syntax-only` command-line option to check your configuration.
+The AxoSyslog application will not start if it cannot find a file that is to be included in its configuration. Always double-check the filenames, paths, and access rights when including configuration files, and use the `--syntax-only` command-line option to check your configuration.
 
 {{% /alert %}}

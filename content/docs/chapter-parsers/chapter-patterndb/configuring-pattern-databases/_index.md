@@ -41,7 +41,7 @@ To apply the patterns on the incoming messages, include the parser in a log stat
     };
 ```
 
-By default, `syslog-ng` tries to apply the patterns to the body of the incoming messages, that is, to the value of the $MESSAGE macro. If you want to apply patterns to a specific field, or to an expression created from the log message (for example, using template functions or other parsers), use the `message-template()` option. For example:
+By default, AxoSyslog tries to apply the patterns to the body of the incoming messages, that is, to the value of the $MESSAGE macro. If you want to apply patterns to a specific field, or to an expression created from the log message (for example, using template functions or other parsers), use the `message-template()` option. For example:
 
 ```c
    parser pattern_db {
@@ -52,7 +52,7 @@ By default, `syslog-ng` tries to apply the patterns to the body of the incoming 
     };
 ```
 
-By default, `syslog-ng` uses the name of the application (content of the `${PROGRAM}` macro) to select which rules to apply to the message. If the content of the `${PROGRAM}` macro is not the proper name of the application, you can use the `program-template()` option to specify it. For example:
+By default, AxoSyslog uses the name of the application (content of the `${PROGRAM}` macro) to select which rules to apply to the message. If the content of the `${PROGRAM}` macro is not the proper name of the application, you can use the `program-template()` option to specify it. For example:
 
 ```c
    parser pattern_db {
