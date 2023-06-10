@@ -7,7 +7,7 @@ weight:  100
 
 ## Purpose:
 
-To compile syslog-ng Open Source Edition (OSE) from the source code, complete the following steps. Alternatively, you can use precompiled binary packages on several platforms. For a list of third-party packages available for various Linux, UNIX, and other platforms, see [syslog-ng Open Source Edition installation packages](https://www.syslog-ng.com/products/open-source-log-management/3rd-party-binaries.aspx).
+To compile syslog-ng Open Source Edition (OSE) from the source code, complete the following steps. Alternatively, you can use precompiled binary packages on several platforms. For a list of third-party packages available for various Linux, UNIX, and other platforms, see [syslog-ng Open Source Edition installation packages](https://github.com/syslog-ng/syslog-ng/#installation-from-binaries).
 
 
 

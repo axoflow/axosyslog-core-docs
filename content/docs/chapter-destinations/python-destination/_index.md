@@ -229,8 +229,6 @@ The following code is similar to the previous example, but it opens and closes t
 
 For a more detailed example about sending log messages to an MQTT (Message Queuing Telemetry Transport) server, see the [Writing Python destination in syslog-ng: how to send log messages to MQTT blog post](https://www.syslog-ng.com/community/b/blog/posts/writing-python-destination-in-syslog-ng-how-to-send-log-messages-to-mqtt).
 
-
-
 ## Example: Print logs in batch mode {#python-destination-batch-mode-example}
 
 The following is a simple destination that uses the `flush()` method to print the messages in batch mode.

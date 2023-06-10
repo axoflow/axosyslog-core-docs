@@ -16,7 +16,7 @@ For example:
    <159>Dec 19 10:48:57 EST 192.168.1.1 vendor=Websense product=Security product_version=7.7.0 action=permitted severity=1 category=153 user=- src_host=192.168.2.1 src_port=62189 dst_host=example.com dst_ip=192.168.3.1 dst_port=443 bytes_out=197 bytes_in=76 http_response=200 http_method=CONNECT http_content_type=- http_user_agent=Mozilla/5.0_(Windows;_U;_Windows_NT_6.1;_enUS;_rv:1.9.2.23)_Gecko/20110920_Firefox/3.6.23 http_proxy_status_code=200 reason=- disposition=1034 policy=- role=8 duration=0 url=https://example.com
 ```
 
-If you find a message that the `websense-parser()` cannot properly parse, [contact Support](https://www.syslog-ng.com/support/), so we can improve the parser.
+If you find a message that the `websense-parser()` cannot properly parse, {{< param "product.contact" >}}, so we can improve the parser.
 
 The {{% param "product.abbrev" %}} application sets the `${PROGRAM}` field to `Websense`.
 
