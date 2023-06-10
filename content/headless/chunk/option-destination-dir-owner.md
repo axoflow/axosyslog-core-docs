@@ -11,5 +11,5 @@
 
 *Description:* The owner of the directories created by syslog-ng. To preserve the original properties of an existing directory, use the option without specifying an attribute: `dir-owner()`.
 
-Starting with version {{% conditional-text include-if="pe" %}}7.0.9{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.16{{% /conditional-text %}}, the default value of this option is -1, so {{% param "product.abbrev" %}} does not change the ownership, unless explicitly configured to do so.
+Starting with version 3.16, the default value of this option is -1, so {{% param "product.abbrev" %}} does not change the ownership, unless explicitly configured to do so.
 

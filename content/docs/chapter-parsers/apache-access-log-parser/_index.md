@@ -11,7 +11,7 @@ The Apache access log parser can parse the access log messages of the Apache HTT
 
 ```
 
-Starting with version {{% conditional-text include-if="pe" %}}7.0.15{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.21{{% /conditional-text %}}, virtualhost and the port of the virtualhost (vhost) is also supported, for example:
+Starting with version 3.21, virtualhost and the port of the virtualhost (vhost) is also supported, for example:
 
 ```c
    foo.com:443 1.2.3.4 - - [15/Apr/2019:14:30:16 -0400] "GET /bar.html HTTP/2.0" 500 - "https://foo.com/referer.html" "Mozilla/5.0 ..."

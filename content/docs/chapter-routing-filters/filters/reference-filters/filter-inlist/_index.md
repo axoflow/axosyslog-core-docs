@@ -16,7 +16,7 @@ weight:  700
 
   - If you modify the list file, reload the configuration of {{% param "product.abbrev" %}} for the changes to take effect.
 
-Available in {{% param "product.abbrev" %}} {{% conditional-text include-if="ose" %}}3.5{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}} 3.5 and later.
 
 
 ## Example: Selecting messages using the in-list() filter {#example-whitelist-filter}

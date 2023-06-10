@@ -6,7 +6,7 @@ weight:  100
 
 # Batch mode and load balancing
 
-Starting with version {{% conditional-text include-if="ose" %}}3.18{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.12{{% /conditional-text %}}, you can send multiple log messages in a single HTTP request if the destination HTTP server supports that.
+Starting with version 3.18, you can send multiple log messages in a single HTTP request if the destination HTTP server supports that.
 
 {{% include-headless "chunk/concept-batch-size.md" %}}
 

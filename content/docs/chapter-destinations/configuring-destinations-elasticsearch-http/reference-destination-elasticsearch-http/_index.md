@@ -6,7 +6,7 @@ weight:  300
 
 The `elasticsearch-http` destination of {{% param "product.abbrev" %}} can directly post log messages to an Elasticsearch deployment using the Elasticsearch Bulk API over the HTTP and Secure HTTP (HTTPS) protocols. The `elasticsearch-http` destination has the following options. The required options are: `index()`, `type()`, and `url()`.
 
-This destination is available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="pe" %}}7.0.14{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.21{{% /conditional-text %}} and later.
+This destination is available in {{% param "product.abbrev" %}} version 3.21 and later.
 
 
 {{% include-headless "chunk/option-destination-batch-bytes.md" %}}

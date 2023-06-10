@@ -3,13 +3,13 @@
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
   - ## HTTP mode
     
-    The {{% param "product.abbrev" %}} application sends messages over HTTP using the REST API of Elasticsearch, and uses the `cluster-url()` and `cluster()` options from the {{% param "product.abbrev" %}} configuration file. In HTTP mode, {{% param "product.abbrev" %}}`elasticsearch2` driver can send log messages to every Elasticsearch version, including 1.x-6.x. Note that HTTP mode is available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.8{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7{{% /conditional-text %}} and newer.
+    The {{% param "product.abbrev" %}} application sends messages over HTTP using the REST API of Elasticsearch, and uses the `cluster-url()` and `cluster()` options from the {{% param "product.abbrev" %}} configuration file. In HTTP mode, {{% param "product.abbrev" %}}`elasticsearch2` driver can send log messages to every Elasticsearch version, including 1.x-6.x. Note that HTTP mode is available in {{% param "product.abbrev" %}} version 3.8 and newer.
     
     {{% include-headless "chunk/para-elasticsearch-loadbalancing.md" %}}
 
   - ## HTTPS mode
     
-    The {{% param "product.abbrev" %}} application sends messages over an encrypted and optionally authenticated HTTPS channel using the REST API of Elasticsearch, and uses the `cluster-url()` and `cluster()` options from the {{% param "product.abbrev" %}} configuration file. In HTTPS mode, {{% param "product.abbrev" %}}`elasticsearch2` driver can send log messages to every Elasticsearch version, including 1.x-6.x. Note that HTTPS mode is available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and newer.
+    The {{% param "product.abbrev" %}} application sends messages over an encrypted and optionally authenticated HTTPS channel using the REST API of Elasticsearch, and uses the `cluster-url()` and `cluster()` options from the {{% param "product.abbrev" %}} configuration file. In HTTPS mode, {{% param "product.abbrev" %}}`elasticsearch2` driver can send log messages to every Elasticsearch version, including 1.x-6.x. Note that HTTPS mode is available in {{% param "product.abbrev" %}} version 3.10 and newer.
     
     This mode supports password-based and certificate-based authentication of the client, and can verify the certificate of the server as well.
     

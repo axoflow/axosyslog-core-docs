@@ -30,7 +30,7 @@ The following options are required: `index()`, `type()`. In node mode, either th
 
 |          |                                                                                                                                                                                                                                           |
 | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Type:    | {{% conditional-text include-if="ose" %}}http | https | {{% /conditional-text %}}transport | node{{% conditional-text include-if="ose" %}} | searchguard{{% /conditional-text %}} |
+| Type:    | http | https | transport | node | searchguard |
 | Default: | node                                                                                                                                                                                                                                      |
 
 *Description:* Specifies the client mode used to connect to the Elasticsearch server, for example, `client-mode("node")`.
@@ -114,7 +114,7 @@ Hazard of data loss\! Using the `concurrent-requests()` option increases the num
 
   - `clientcert`: Use a certificate to authenticate. The certificate must be available in a Java keystore. Also set the [`java-keystore-filepath`]({{< relref "/docs/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) and [`java-keystore-password`]({{< relref "/docs/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) options.
 
-This option is used only in HTTPS mode: `client-mode("https")`, and is available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and newer.
+This option is used only in HTTPS mode: `client-mode("https")`, and is available in {{% param "product.abbrev" %}} version 3.10 and newer.
 
 
 ## Example: HTTPS authentication examples {#elasticsearch2-https-auth-examples}
@@ -141,7 +141,7 @@ The following simple examples show the different authentication modes.
 
 *Description:* The password to use for password-authentication on the Elasticsearch server. You must also set the [`http-auth-type-basic-username`]({{< relref "/docs/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) option.
 
-This option is used only in HTTPS mode with basic authentication: `client-mode("https")` and `http-auth-type("basic")`, and is available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and newer.
+This option is used only in HTTPS mode with basic authentication: `client-mode("https")` and `http-auth-type("basic")`, and is available in {{% param "product.abbrev" %}} version 3.10 and newer.
 
 {{% include-headless "chunk/example-elasticsearch-https-password.md" %}}
 
@@ -156,7 +156,7 @@ This option is used only in HTTPS mode with basic authentication: `client-mode("
 
 *Description:* The username to use for password-authentication on the Elasticsearch server. You must also set the [`http-auth-type-basic-password`]({{< relref "/docs/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) option.
 
-This option is used only in HTTPS mode with basic authentication: `client-mode("https")` and `http-auth-type("basic")`, and is available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and newer.
+This option is used only in HTTPS mode with basic authentication: `client-mode("https")` and `http-auth-type("basic")`, and is available in {{% param "product.abbrev" %}} version 3.10 and newer.
 
 {{% include-headless "chunk/example-elasticsearch-https-password.md" %}}
 
@@ -184,7 +184,7 @@ This option is used only in HTTPS mode with basic authentication: `client-mode("
 
 {{% include-headless "chunk/example-elasticsearch-https-java-keystore-import.md" %}}
 
-This option is used only in HTTPS mode with basic authentication: `client-mode("https")` and `http-auth-type("clientcert")`, and is available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and newer.
+This option is used only in HTTPS mode with basic authentication: `client-mode("https")` and `http-auth-type("clientcert")`, and is available in {{% param "product.abbrev" %}} version 3.10 and newer.
 
 {{% include-headless "chunk/example-elasticsearch-https-clientcert.md" %}}
 
@@ -203,7 +203,7 @@ This option is used only in HTTPS mode with basic authentication: `client-mode("
 
 {{% include-headless "chunk/example-elasticsearch-https-java-keystore-import.md" %}}
 
-This option is used only in HTTPS mode with basic authentication: `client-mode("https")` and `http-auth-type("clientcert")`, and is available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and newer.
+This option is used only in HTTPS mode with basic authentication: `client-mode("https")` and `http-auth-type("clientcert")`, and is available in {{% param "product.abbrev" %}} version 3.10 and newer.
 
 {{% include-headless "chunk/example-elasticsearch-https-clientcert.md" %}}
 
@@ -224,7 +224,7 @@ If you do not set the `java-truststore-filepath` option, {{% param "product.abbr
 
 {{% include-headless "chunk/example-elasticsearch-https-java-keystore-import.md" %}}
 
-This option is used only in HTTPS mode: `client-mode("https")`, and is available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and newer.
+This option is used only in HTTPS mode: `client-mode("https")`, and is available in {{% param "product.abbrev" %}} version 3.10 and newer.
 
 {{% include-headless "chunk/example-elasticsearch-https-verifycert.md" %}}
 
@@ -243,7 +243,7 @@ This option is used only in HTTPS mode: `client-mode("https")`, and is available
 
 {{% include-headless "chunk/example-elasticsearch-https-java-keystore-import.md" %}}
 
-This option is used only in HTTPS mode: `client-mode("https")`, and is available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and newer.
+This option is used only in HTTPS mode: `client-mode("https")`, and is available in {{% param "product.abbrev" %}} version 3.10 and newer.
 
 {{% include-headless "chunk/example-elasticsearch-https-verifycert.md" %}}
 

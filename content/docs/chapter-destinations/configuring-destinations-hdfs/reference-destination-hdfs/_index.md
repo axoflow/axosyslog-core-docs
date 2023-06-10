@@ -125,7 +125,7 @@ As an example, if it is the 31st day of the month and it is 12 o'clock, then the
 
 {{% include-headless "chunk/synopsis-hdfs-kerberos-example.md" %}}
 
-Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}} version 3.10 and later.
 
 
 
@@ -140,7 +140,7 @@ Available in {{% param "product.abbrev" %}} version {{% conditional-text include
 
 {{% include-headless "chunk/synopsis-hdfs-kerberos-example.md" %}}
 
-Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}} version 3.10 and later.
 
 
 {{% include-headless "chunk/option-destination-log-fifo-size.md" %}}

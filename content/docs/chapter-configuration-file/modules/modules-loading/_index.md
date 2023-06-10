@@ -4,7 +4,7 @@ weight:  100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The {{% param "product.name" %}} application loads every available module during startup{{% conditional-text include-if="pe" %}}, except the `snmp()` module. For details on using the `snmp()` destination driver, see <span></span>{{% /conditional-text %}}.
+The {{% param "product.name" %}} application loads every available module during startup.
 
 To load a module that is not loaded automatically, include the following statement in the {{% param "product.abbrev" %}} configuration file:
 

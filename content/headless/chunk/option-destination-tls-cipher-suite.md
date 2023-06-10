@@ -25,5 +25,5 @@ You can also use the following command to automatically list only ciphers permit
 
 ```
 
-Note that starting with version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}, when {{% param "product.abbrev" %}} receives TLS-encrypted connections, the order of ciphers set on the {{% param "product.abbrev" %}} server takes precedence over the client settings.
+Note that starting with version 3.10, when {{% param "product.abbrev" %}} receives TLS-encrypted connections, the order of ciphers set on the {{% param "product.abbrev" %}} server takes precedence over the client settings.
 

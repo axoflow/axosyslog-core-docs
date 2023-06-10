@@ -6,7 +6,7 @@ weight:  5500
 
 The `snmp()` driver sends SNMP traps using the Simple Network Management Protocol version 2c or version 3. Incoming log messages can be converted to SNMP traps, as the fields of the SNMP messages can be customized using {{% param "product.abbrev" %}} macros.
 
-The `snmp()` driver is available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="pe" %}}7.0.15{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.22{{% /conditional-text %}} and later.
+The `snmp()` driver is available in {{% param "product.abbrev" %}} version 3.22 and later.
 
 
 {{% alert title="Note" color="info" %}}

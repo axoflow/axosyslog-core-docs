@@ -4,7 +4,7 @@ weight:  4100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-This chapter provides tips and guidelines about troubleshooting problems related to syslog-ng.{{% conditional-text include-if="pe" %}} Troubleshooting the {{% param "product.windowsagent" %}} application is discussed in <span></span>.{{% /conditional-text %}}
+This chapter provides tips and guidelines about troubleshooting problems related to syslog-ng.
 
   - As a general rule, first try to log the messages to a local file. Once this is working, you know that syslog-ng is running correctly and receiving messages, and you can proceed to forwarding the messages to the server.
 

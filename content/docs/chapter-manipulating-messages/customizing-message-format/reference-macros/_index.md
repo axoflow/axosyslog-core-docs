@@ -15,7 +15,7 @@ These macros are available when {{% param "product.abbrev" %}} successfully pars
 
 ## AMPM {#macro-ampm}
 
-*Description:* Typically used together with the [`${HOUR12}`]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) macro, `${AMPM}` returns the period of the day: AM for hours before mid day and PM for hours after mid day. In reference to a 24-hour clock format, AM is between 00:00-12:00 and PM is between 12:00-24:00. 12AM is midnight. Available in {{% conditional-text include-if="pe" %}}{{% param "product.abbrev" %}} 3.2{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}{{% param "product.abbrev" %}} 3.4{{% /conditional-text %}} and later.
+*Description:* Typically used together with the [`${HOUR12}`]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) macro, `${AMPM}` returns the period of the day: AM for hours before mid day and PM for hours after mid day. In reference to a 24-hour clock format, AM is between 00:00-12:00 and PM is between 12:00-24:00. 12AM is midnight. Available in {{% param "product.abbrev" %}} 3.4 and later.
 
 
 
@@ -107,7 +107,7 @@ The {{% param "product.abbrev" %}} application uses the following procedure to d
 
 ## HOUR12, C_HOUR12, R_HOUR12, S_HOUR12 {#macro-hour12}
 
-*Description:* The hour of day the message was sent in 12-hour clock format. See also the [`${AMPM}`]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) macro. 12AM is midnight. Available in {{% conditional-text include-if="pe" %}}{{% param "product.abbrev" %}} 3.2{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}{{% param "product.abbrev" %}} 3.4{{% /conditional-text %}} and later.
+*Description:* The hour of day the message was sent in 12-hour clock format. See also the [`${AMPM}`]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) macro. 12AM is midnight. Available in {{% param "product.abbrev" %}} 3.4 and later.
 
 
 
@@ -155,7 +155,7 @@ The {{% param "product.abbrev" %}} application uses the following procedure to d
 
 *Description:* The number of week according to the ISO 8601 standard. Note that the `${WEEK}` macro that has been available in returns a non-standard week number that can differ from the value returned by the `${ISOWEEK}` macro.
 
-Available in {{% conditional-text include-if="pe" %}}7.0.17{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.24{{% /conditional-text %}} and later.
+Available in 3.24 and later.
 
 
 
@@ -169,7 +169,7 @@ Available in {{% conditional-text include-if="pe" %}}7.0.17{{% /conditional-text
 
 *Description:* The hostname of the computer running {{% param "product.abbrev" %}}.
 
-  - In version {{% conditional-text include-if="pe" %}}7.0.17{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.24{{% /conditional-text %}} and later: the `${LOGHOST}` macro returns the fully-qualified domain name (FQDN) only if the `use-fqdn()` option is set to yes, and the hostname otherwise.
+  - In version 3.24 and later: the `${LOGHOST}` macro returns the fully-qualified domain name (FQDN) only if the `use-fqdn()` option is set to yes, and the hostname otherwise.
 
   - In earlier versions: the `${LOGHOST}` macro returns the fully-qualified domain name (FQDN).
 
@@ -213,7 +213,7 @@ Note that before syslog-ng version 3.0, the ${MESSAGE} macro included the progra
 
 *Description:* The millisecond the message was sent.
 
-Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="pe" %}}4 F2{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.4{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}} version 3.4 and later.
 
 
 
@@ -271,7 +271,7 @@ For an example use case when using the macro is recommended, see {{% xref "/docs
 
 ## RAWMSG {#macro-rawmsg}
 
-*Description:* The original message as received from the client. Note that this macro is available only in {{% conditional-text include-if="pe" %}}7.0.9{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.16{{% /conditional-text %}} and later, and only if syslog-ng received the message using the [`default-network-drivers-ng()` source]({{< relref "/docs/chapter-sources/source-default-network-drivers/_index.md" >}}), or the source receiving the message has the [`store-raw-message`](shared/chunk/option-source-flags.htm) flag set.
+*Description:* The original message as received from the client. Note that this macro is available only in 3.16 and later, and only if syslog-ng received the message using the [`default-network-drivers-ng()` source]({{< relref "/docs/chapter-sources/source-default-network-drivers/_index.md" >}}), or the source receiving the message has the [`store-raw-message`](shared/chunk/option-source-flags.htm) flag set.
 
 
 
@@ -289,7 +289,7 @@ For an example use case when using the macro is recommended, see {{% xref "/docs
 
 ## SDATA, .SDATA.SDID.SDNAME {#macro-sdata}
 
-*Description:* The syslog-ng application automatically parses the STRUCTURED-DATA part of IETF-syslog messages, which can be referenced in macros. The `${SDATA}` macro references the entire STRUCTURED-DATA part of the message, while structured data elements can be referenced using the `${.SDATA.SDID.SDNAME}` macro.{{% conditional-text include-if="pe" %}}Available only in {{% param "product.name" %}} 4.0 and later.{{% /conditional-text %}}
+*Description:* The syslog-ng application automatically parses the STRUCTURED-DATA part of IETF-syslog messages, which can be referenced in macros. The `${SDATA}` macro references the entire STRUCTURED-DATA part of the message, while structured data elements can be referenced using the `${.SDATA.SDID.SDNAME}` macro.
 
 {{% alert title="Note" color="info" %}}
 
@@ -363,7 +363,7 @@ If you need a sequence number for every log message that {{% param "product.abbr
 
 *Description:* The time elapsed since the {{% param "product.abbrev" %}} instance was started (that is, the uptime of the {{% param "product.abbrev" %}} process). The value of this macro is an integer containing the time in 1/100th of the second.
 
-Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="pe" %}}4 F1{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.4{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}} version 3.4 and later.
 
 
 
@@ -375,7 +375,7 @@ Available in {{% param "product.abbrev" %}} version {{% conditional-text include
 
 ## TAGS {#macro-tags}
 
-*Description:* A comma-separated list of the tags assigned to the message.{{% conditional-text include-if="pe" %}} Available only in {{% param "product.name" %}} 3.2 and later.{{% /conditional-text %}}
+*Description:* A comma-separated list of the tags assigned to the message.
 
 {{% alert title="Note" color="info" %}}
 
@@ -395,7 +395,7 @@ When sent as structured metadata, it is possible to reference to the list of tag
 
 ## .tls.x509 {#macro-tls-x509}
 
-*Description:* When using a transport that uses TLS, these macros contain information about the peer's certificate. That way, you can use information from the client certificate in filenames, database values, or as other metadata. If you clients have their own certificates, then these values are unique per client, but unchangeable by the client. The following macros are available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="pe" %}}7{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.9{{% /conditional-text %}} and later.
+*Description:* When using a transport that uses TLS, these macros contain information about the peer's certificate. That way, you can use information from the client certificate in filenames, database values, or as other metadata. If you clients have their own certificates, then these values are unique per client, but unchangeable by the client. The following macros are available in {{% param "product.abbrev" %}} version 3.9 and later.
 
   - `.tls.x509_cn`: The Common Name of the certificate.
 
@@ -409,7 +409,7 @@ When sent as structured metadata, it is possible to reference to the list of tag
 
 *Description:* A globally unique ID generated from the HOSTID and the RCPTID in the format of HOSTID@RCPTID. For details, see [use-uniqid()]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) and [RCPTID](#macro-rcptid).
 
-Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="pe" %}}5 F2{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.7{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}} version 3.7 and later.
 
 
 
@@ -417,7 +417,7 @@ Available in {{% param "product.abbrev" %}} version {{% conditional-text include
 
 *Description:* The microsecond the message was sent.
 
-Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="pe" %}}4 F2{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.4{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}} version 3.4 and later.
 
 
 {{% include-headless "chunk/macro-year.md" %}}

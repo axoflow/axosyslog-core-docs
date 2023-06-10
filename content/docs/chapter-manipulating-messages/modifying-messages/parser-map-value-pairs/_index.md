@@ -6,7 +6,7 @@ weight:  2100
 
 The `map-value-pairs()` parser allows you to map existing name-value pairs to a different set of name-value pairs. You can rename them in bulk, making it easy to use for log normalization tasks (for example, when you parse information from different log messages, and want to convert them into a uniform naming scheme). You can use the [normal value-pairs expressions]({{< relref "/docs/chapter-concepts/concepts-value-pairs/_index.md" >}}), similarly to value-pairs based destinations.
 
-Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}} version 3.10 and later.
 
 
 ## Declaration:

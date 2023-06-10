@@ -13,7 +13,7 @@ To create a reusable configuration snippet and reuse parts of a configuration fi
 
 Type must be one of the following: `destination`, `filter`, `log`, `options`, `parser`, `rewrite`, `root`, `source`. The `root` blocks can be used in the "root" context of the configuration file, that is, outside any other statements.
 
-Note that `options` can be used in blocks only in version {{% conditional-text include-if="ose" %}}3.22{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.15{{% /conditional-text %}} and later.
+Note that `options` can be used in blocks only in version 3.22 and later.
 
 Blocks may be nested into each other, so for example, a block can be built from other blocks. Blocks are somewhat similar to C++ templates.
 
@@ -21,7 +21,7 @@ The type and name combination of each block must be unique, that is, two blocks 
 
 To use a block in your configuration file, you have to do two things:
 
-  - Include the file defining the block in the `syslog-ng.conf` file — or a file already included into `syslog-ng.conf`. Version {{% conditional-text include-if="ose" %}}3.7{{% /conditional-text %}} and newer automatically includes the `\*.conf` files from the `\<directory-where-syslog-ng-is-installed\>/scl/\*/` directories.
+  - Include the file defining the block in the `syslog-ng.conf` file — or a file already included into `syslog-ng.conf`. Version 3.7 and newer automatically includes the `\*.conf` files from the `\<directory-where-syslog-ng-is-installed\>/scl/\*/` directories.
 
   - Reference the name of the block in your configuration file. This will insert the block into your configuration. For example, to use a block called `myblock`, include the following line in your configuration:
     

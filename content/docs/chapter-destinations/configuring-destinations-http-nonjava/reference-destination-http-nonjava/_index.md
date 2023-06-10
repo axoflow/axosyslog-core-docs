@@ -43,7 +43,7 @@ For details on how this option influences HTTP batch mode, see [http: Posting me
 | Accepted values: | string |
 | Default:         | none   |
 
-*Description:* The string {{% param "product.abbrev" %}} puts at the beginning of the body of the HTTP request, before the log message. Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.18{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.11{{% /conditional-text %}} and later.
+*Description:* The string {{% param "product.abbrev" %}} puts at the beginning of the body of the HTTP request, before the log message. Available in {{% param "product.abbrev" %}} version 3.18 and later.
 
 For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/docs/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
 
@@ -56,7 +56,7 @@ For details on how this option influences HTTP batch mode, see [http: Posting me
 | Accepted values: | string |
 | Default:         | none   |
 
-*Description:* The string {{% param "product.abbrev" %}} puts to the end of the body of the HTTP request, after the log message. Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.18{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.11{{% /conditional-text %}} and later.
+*Description:* The string {{% param "product.abbrev" %}} puts to the end of the body of the HTTP request, after the log message. Available in {{% param "product.abbrev" %}} version 3.18 and later.
 
 For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/docs/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
 
@@ -108,7 +108,7 @@ For details on how this option influences HTTP batch mode, see [http: Posting me
 | Accepted values: | string            |
 | Default:         | newline character |
 
-*Description:* By default, {{% param "product.abbrev" %}} separates the log messages of the batch with a newline character. You can specify a different delimiter by using the `delimiter()` option. Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.18{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.11{{% /conditional-text %}} and later.
+*Description:* By default, {{% param "product.abbrev" %}} separates the log messages of the batch with a newline character. You can specify a different delimiter by using the `delimiter()` option. Available in {{% param "product.abbrev" %}} version 3.18 and later.
 
 For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/docs/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
 

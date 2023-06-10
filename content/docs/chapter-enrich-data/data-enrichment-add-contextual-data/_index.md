@@ -4,7 +4,7 @@ weight:  100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-In {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.8{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0{{% /conditional-text %}} and later, you can use an external database file to add additional metadata to your log messages. For example, you can create a database (or export it from an existing tool) that contains a list of hostnames or IP addresses, and the department of your organization that the host belongs to, the role of the host (mailserver, webserver, and so on), or similar contextual information.
+In {{% param "product.abbrev" %}} version 3.8 and later, you can use an external database file to add additional metadata to your log messages. For example, you can create a database (or export it from an existing tool) that contains a list of hostnames or IP addresses, and the department of your organization that the host belongs to, the role of the host (mailserver, webserver, and so on), or similar contextual information.
 
 The database file is a simple text file in comma-separated value (CSV) format, where each line contains the following information:
 
@@ -12,7 +12,7 @@ The database file is a simple text file in comma-separated value (CSV) format, w
 
   - The name of the name-value pair that {{% param "product.abbrev" %}} adds to matching log messages.
 
-  - The value of the name-value pairs. Starting with {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.22{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.15{{% /conditional-text %}}, the value of the name-value pair can be a template or a template function, for example, `"selector3,name,$(echo $HOST_FROM)";`
+  - The value of the name-value pairs. Starting with {{% param "product.abbrev" %}} version 3.22, the value of the name-value pair can be a template or a template function, for example, `"selector3,name,$(echo $HOST_FROM)";`
 
 For example, the following csv-file contains three lines identified with the IP address, and adds the `host-role` field to the log message.
 

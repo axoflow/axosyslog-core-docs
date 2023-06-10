@@ -118,7 +118,7 @@ Parse any combination of the specified characters. For example, specifying a whi
 
 For example, the `@OPTIONALSET:: "@` parser will parse any combination of whitespaces and double-quotes.
 
-Available in {{% conditional-text include-if="ose" %}}{{% param "product.abbrev" %}} 3.31{{% /conditional-text %}} and later.
+Available in 3.31 and later.
 
 {{% alert title="Note" color="info" %}}
 
@@ -148,7 +148,7 @@ Parse any combination of the specified characters until another character is fou
 
 For example, the `@SET:: "@` parser will parse any combination of whitespaces and double-quotes.
 
-Available in {{% conditional-text include-if="ose" %}}{{% param "product.abbrev" %}} 3.4{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}} 3.4 and later.
 
 
 

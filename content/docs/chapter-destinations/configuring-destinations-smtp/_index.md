@@ -14,7 +14,7 @@ The `smtp()` driver has the following required parameters: `host()`, `port()`, `
 
 {{% alert title="Note" color="info" %}}
 
-The `smtp()` destination driver is available only in {{% conditional-text include-if="ose" %}}{{% param "product.abbrev" %}} 3.4{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}5 F2{{% /conditional-text %}} and later.
+The `smtp()` destination driver is available only in {{% param "product.abbrev" %}} 3.4 and later.
 
 {{% /alert %}}
 

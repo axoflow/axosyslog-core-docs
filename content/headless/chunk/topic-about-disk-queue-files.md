@@ -4,11 +4,9 @@
 
 ## Normal and reliable queue files
 
-The key difference between disk queue files that employ the `reliable(yes)` option and not is the strategy they employ. Reliable disk queues guarantee that all the messages passing through them are written to disk first, and removed from the queue only after the destination has confirmed that the message has been successfully received. This prevents message loss, for example, due to {{% param "product.abbrev" %}} crashes if the client and the destination server communicate using the {{% param "product.ALTP" %}} ({{% param "product.ALTPuppercase" %}}). Note that the {{% param "product.ALTP" %}} is available only in {{% conditional-text include-if="ose" %}}[{{% param "product.pe" %}} version 6 LTS](https://syslog-ng.com/log-management-software){{% /conditional-text %}}{{% conditional-text include-if="pe" %}}[{{% param "product.pe" %}} version 6 LTS](hhttps://syslog-ng.com/log-management-software){{% /conditional-text %}}. Of course, using the `reliable(yes)` option introduces a significant performance penalty as well.
+The key difference between disk queue files that employ the `reliable(yes)` option and not is the strategy they employ. Reliable disk queues guarantee that all the messages passing through them are written to disk first, and removed from the queue only after the destination has confirmed that the message has been successfully received. This prevents message loss, for example, due to {{% param "product.abbrev" %}} crashes. Of course, using the `reliable(yes)` option introduces a significant performance penalty as well.
 
 Both reliable and normal disk-buffers employ an in-memory output queue (set in `quot-size()`) and an in-memory overflow queue (set in `mem-buf-size()` for reliable disk-buffers, or `mem-buf-length()` for normal disk-buffers). The difference between reliable and normal disk-buffers is that when the reliable disk-buffer uses one of its in-memory queues, it also stores the message on the disk, whereas the normal disk-buffer stores the message only in memory. The normal disk-buffer only uses the disk if the in-memory output buffer is filled up completely. This approach has better performance (due to fewer disk I/O operations), but also carries the risk of losing a maximum of `quot-size()` plus `mem-buf-length()` number of messages in case of an unexpected power failure or application crash.
-
-
 
 ## Size of the queue files
 

@@ -4,4 +4,4 @@ weight:  500
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The {{% param "product.name" %}} application has three {{% conditional-text include-if="pe" %}}distinct {{% /conditional-text %}}{{% conditional-text include-if="ose" %}}typical {{% /conditional-text %}}operation scenarios: *Client*, *Server*, and *Relay*.{{% conditional-text include-if="pe" %}} The {{% param "product.abbrev" %}} application running on a host determines the mode of operation automatically based on the license and the configuration file.{{% /conditional-text %}}
+The {{% param "product.name" %}} application has three typical operation scenarios: *Client*, *Server*, and *Relay*.

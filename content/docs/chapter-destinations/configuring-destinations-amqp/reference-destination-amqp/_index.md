@@ -127,7 +127,7 @@ The `amqp()` destination has the following options:
 
 ```
 
-Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="pe" %}}7.0.15{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.21{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}} version 3.21 and later.
 
 
 {{% include-headless "chunk/option-destination-hook.md" %}}

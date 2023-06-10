@@ -29,17 +29,17 @@ The syslog-ng application uses flow-control in the following cases:
 
   - Hard flow-control: the `flow-control` flag is enabled for the particular log path.
 
-  - Soft flow-control: the log path includes a file{{% conditional-text include-if="pe" %}} or a logstore {{% /conditional-text %}} destination.
+  - Soft flow-control: the log path includes a file destination.
 
 {{% alert title="Note" color="info" %}}
 
-The way flow-control works has changed significantly in version {{% param "product.abbrev" %}}{{% conditional-text include-if="ose" %}}3.22{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.16{{% /conditional-text %}}. If you are using an older version of {{% param "product.abbrev" %}}, consult the documentation of the version you are using for details about flow-control.
+The way flow-control works has changed significantly in version {{% param "product.abbrev" %}} 3.22. If you are using an older version of {{% param "product.abbrev" %}}, consult the documentation of the version you are using for details about flow-control.
 
 {{% /alert %}}
 
 The flow-control of syslog-ng introduces a control window to the source that tracks how many messages can syslog-ng accept from the source. Every message that syslog-ng reads from the source lowers the window size by one, every message that syslog-ng successfully sends from the output buffer increases the window size by one. If the window is full (that is, its size decreases to zero), syslog-ng stops reading messages from the source. The initial size of the control window is by default `100`. If a source accepts messages from multiple connections, all messages use the same control window.
 
-When using flow-control, syslog-ng automatically sets the size of the output buffer so that it matches the size of the control window of the sources. Note that starting with {{% param "product.abbrev" %}}{{% conditional-text include-if="ose" %}}3.22{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.16{{% /conditional-text %}}, `log-fifo-size()` only affects log paths that are not flow-controlled.
+When using flow-control, syslog-ng automatically sets the size of the output buffer so that it matches the size of the control window of the sources. Note that starting with {{% param "product.abbrev" %}} 3.22, `log-fifo-size()` only affects log paths that are not flow-controlled.
 
 {{% alert title="Note" color="info" %}}
 
@@ -59,7 +59,7 @@ When flow-control is used, every source has its own control window. As a worst-c
 If dynamic flow-control is disabled (which is the default behavior), the value of the `log-iw-size()` option cannot be lower than 100. If dynamic flow-control is enabled, you can decrease the value of the `log-iw-size()` option (to the minimum of 1).
 
 
-In case of soft flow-control there is no message lost if the destination can accept messages. It is possible to lose messages if it cannot accept messages (for example, the file destination is not writable, or the disk becomes full), and all buffers are full. Soft flow-control cannot be configured, it is automatically available for file {{% conditional-text include-if="pe" %}} and logstore {{% /conditional-text %}}destinations.
+In case of soft flow-control there is no message lost if the destination can accept messages. It is possible to lose messages if it cannot accept messages (for example, the file destination is not writable, or the disk becomes full), and all buffers are full. Soft flow-control cannot be configured, it is automatically available for filedestinations.
 
 *Hard flow-control:* In case of hard flow-control there is no message lost. To use hard flow-control, enable the `flow-control` flag in the log path. Hard flow-control is available for all destinations.
 
@@ -89,7 +89,7 @@ In case of soft flow-control there is no message lost if the destination can acc
 
 {{% alert title="Warning" color="warning" %}}
 
-Hazard of data loss\! For destinations other than file{{% conditional-text include-if="pe" %}} and logstore{{% /conditional-text %}}, soft flow-control is not available. Thus, it is possible to lose log messages on those destinations. To avoid data loss on those destinations, use hard flow-control.
+Hazard of data loss\! For destinations other than file, soft flow-control is not available. Thus, it is possible to lose log messages on those destinations. To avoid data loss on those destinations, use hard flow-control.
 
 {{% /alert %}}
 

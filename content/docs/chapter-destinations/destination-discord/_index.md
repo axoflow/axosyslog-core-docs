@@ -6,7 +6,7 @@ weight:  500
 
 The `discord()` destination driver sends messages to [Discord](https://discord.com/) using [Discord Webhook](https://discord.com/developers/docs/resources/webhook). For the list of available optional parameters, see Discord destination options.
 
-Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.33{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}} version 3.33 and later.
 
 
 ## Declaration:

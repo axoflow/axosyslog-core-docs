@@ -13,5 +13,5 @@
 
 {{% include-headless "wnt/warning-tcp-keepalive.md" %}}
 
-Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.4{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}} version 3.4 and later.
 

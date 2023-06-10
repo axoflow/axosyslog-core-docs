@@ -8,7 +8,7 @@
 
 *Description:* The time to wait in seconds before an idle destination file or pipe is closed. Note that only destination files having macros in their filenames are closed automatically.
 
-Starting with version {{% conditional-text include-if="ose" %}}3.23{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.17{{% /conditional-text %}}, the way how `time-reap()` works is the following.
+Starting with version 3.23, the way how `time-reap()` works is the following.
 
 1.  If the `time-reap()` option of the destination is set, that value is used, for example:
     

@@ -12,7 +12,7 @@ To debug and troubleshoot your Python code, {{% param "product.abbrev" %}} allow
 
   - You can follow what your Python code is doing even if {{% param "product.abbrev" %}} is running as a daemon in the background.
 
-Logging to the `internal()` source is available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.20{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.14{{% /conditional-text %}} and later.
+Logging to the `internal()` source is available in {{% param "product.abbrev" %}} version 3.20 and later.
 
 To send log messages to the internal() source from Python
 

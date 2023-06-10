@@ -11,7 +11,7 @@ Among others, {{% param "product.abbrev" %}} allows you the following.
 
 ## Secure and reliable log transfer
 
-The {{% param "product.abbrev" %}} application enables you to send the log messages of your hosts to remote servers using the latest protocol standards. You can collect and store your log data centrally on dedicated log servers. Transfer log messages using the {{% conditional-text include-if="ose" %}}TCP{{% /conditional-text %}} protocol ensures that no messages are lost.
+The {{% param "product.abbrev" %}} application enables you to send the log messages of your hosts to remote servers using the latest protocol standards. You can collect and store your log data centrally on dedicated log servers. Transfer log messages using the TCP protocol ensures that no messages are lost.
 
 
 
@@ -55,7 +55,7 @@ The log data that your organization has to process, store, and review increases 
 
 ## Message queue support
 
-Large organizations increasingly rely on queuing infrastructure to transfer their data. For that purpose, {{% param "product.abbrev" %}} supports Apache Kafka{{% conditional-text include-if="ose" %}}, the Advanced Message Queuing Protocol (AMQP), and the Simple Text Oriented Messaging Protocol (STOMP){{% /conditional-text %}}.
+Large organizations increasingly rely on queuing infrastructure to transfer their data. For that purpose, {{% param "product.abbrev" %}} supports Apache Kafka, the Advanced Message Queuing Protocol (AMQP), and the Simple Text Oriented Messaging Protocol (STOMP).
 
 
 

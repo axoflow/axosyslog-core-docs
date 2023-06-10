@@ -12,7 +12,7 @@ These RFCs describe the format and the structure of the log message, and add a (
 
 The `tcp()` and `udp()` drivers are now deprecated, they are essentially equivalent with the `network(transport(tcp))` and `network(transport(udp))` drivers.
 
-In addition to selecting the driver to use, both drivers allow you to use different transport-layer protocols: TCP and UDP, and optionally also higher-level transport protocols: TLS (over TCP{{% conditional-text include-if="pe" %}}, and RLTP (optionally using TLS){{% /conditional-text %}}. To complicate things a bit more, you can configure the `network()` driver (corresponding to the BSD (RFC3164) protocol) to send the messages in the syslog (RFC5424) format (but without the framing used in RFC5424) using the **flag(syslog-protocol)** option.
+In addition to selecting the driver to use, both drivers allow you to use different transport-layer protocols: TCP and UDP, and optionally also higher-level transport protocols: TLS (over TCP. To complicate things a bit more, you can configure the `network()` driver (corresponding to the BSD (RFC3164) protocol) to send the messages in the syslog (RFC5424) format (but without the framing used in RFC5424) using the **flag(syslog-protocol)** option.
 
 Because some combination of drivers and options are invalid, you can use the following drivers and options as sources and as destinations:
 

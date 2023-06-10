@@ -50,7 +50,7 @@ The {{% param "product.abbrev" %}} application can automatically execute scripts
     
     ```
 
-5.  Include the `plugin.conf` file in the `syslog-ng.conf` file — or a file already included into `syslog-ng.conf`. Version {{% conditional-text include-if="ose" %}}3.7{{% /conditional-text %}} and newer automatically includes the `\*.conf` files from the `\<directory-where-syslog-ng-is-installed\>/scl/\*/` directories. For details on including configuration files, see {{% xref "/docs/chapter-configuration-file/large-configs/including-config-files/_index.md" %}}.
+5.  Include the `plugin.conf` file in the `syslog-ng.conf` file — or a file already included into `syslog-ng.conf`. Version 3.7 and newer automatically includes the `\*.conf` files from the `\<directory-where-syslog-ng-is-installed\>/scl/\*/` directories. For details on including configuration files, see {{% xref "/docs/chapter-configuration-file/large-configs/including-config-files/_index.md" %}}.
 
 6.  Add the block you defined in the `plugin.conf` file to your {{% param "product.abbrev" %}} configuration file. You can reference the block using the value of the `name` option from the `plugin.conf` file, followed by parentheses, for example, `apache-access-logs()`. Make sure to use the block in the appropriate context of the configuration file, for example, within a source statement if the value of the `context` option in the `plugin.conf` file is source.
     

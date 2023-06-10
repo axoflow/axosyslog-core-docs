@@ -193,7 +193,7 @@ This global option works only if the `use-fqdn()` global option is set to `yes`.
 
 {{% include-headless "chunk/option-description-destination-file-dir-perm.md" %}}
 
-Starting with version {{% conditional-text include-if="pe" %}}7.0.9{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.16{{% /conditional-text %}}, the default value of this option is -1, so {{% param "product.abbrev" %}} does not change the ownership, unless explicitly configured to do so.
+Starting with version 3.16, the default value of this option is -1, so {{% param "product.abbrev" %}} does not change the ownership, unless explicitly configured to do so.
 
 
 
@@ -390,7 +390,7 @@ For example:
 
 *Description:* The default owner of output files. If set, syslog-ng changes the owner of accessed files (for example, `/dev/null`) to this value, and the permissions to the value set in the `perm()` option.
 
-Starting with version {{% conditional-text include-if="pe" %}}7.0.9{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.16{{% /conditional-text %}}, the default value of this option is -1, so {{% param "product.abbrev" %}} does not change the ownership, unless explicitly configured to do so.
+Starting with version 3.16, the default value of this option is -1, so {{% param "product.abbrev" %}} does not change the ownership, unless explicitly configured to do so.
 
 
 
@@ -401,7 +401,7 @@ Starting with version {{% conditional-text include-if="pe" %}}7.0.9{{% /conditio
 | Accepted values: | yes|no |
 | Default:         | yes    |
 
-*Description:* Enable {{% param "product.abbrev" %}} to collect UNIX credential information (that is, the PID, user ID, and group of the sender process) for messages received using UNIX domain sockets. Available only in {{% conditional-text include-if="pe" %}}{{% param "product.name" %}} 5 F5{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}{{% param "product.name" %}} 3.7{{% /conditional-text %}} and later. Note that collecting UNIX credential information from sockets in high-traffic environments can be resource intensive, therefore `pass-unix-credentials()` can be disabled globally, or separately for each source.
+*Description:* Enable {{% param "product.abbrev" %}} to collect UNIX credential information (that is, the PID, user ID, and group of the sender process) for messages received using UNIX domain sockets. Available only in {{% param "product.name" %}} 3.7 and later. Note that collecting UNIX credential information from sockets in high-traffic environments can be resource intensive, therefore `pass-unix-credentials()` can be disabled globally, or separately for each source.
 
 
 
@@ -414,7 +414,7 @@ Starting with version {{% conditional-text include-if="pe" %}}7.0.9{{% /conditio
 
 *Description:* The default permission for output files. If set, syslog-ng changes the permissions of accessed files (for example, `/dev/null`) to this value, and the onwer to the value set in the `owner()` option.
 
-Starting with version {{% conditional-text include-if="pe" %}}7.0.9{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.16{{% /conditional-text %}}, the default value of this option is -1, so {{% param "product.abbrev" %}} does not change the permissions, unless explicitly configured to do so.
+Starting with version 3.16, the default value of this option is -1, so {{% param "product.abbrev" %}} does not change the permissions, unless explicitly configured to do so.
 
 
 
@@ -556,7 +556,7 @@ If you set a lower value to `stats-max-dynamics()` (or, any limiting value, if t
 | Accepted values: | yes|no |
 | Default:         | yes    |
 
-*Description:* Enable {{% param "product.abbrev" %}} to run in multithreaded mode and use multiple CPUs. Available only in {{% conditional-text include-if="pe" %}}{{% param "product.name" %}} 4 F1{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}{{% param "product.name" %}} 3.3{{% /conditional-text %}} and later. Note that setting **threaded(no)** does not mean that {{% param "product.abbrev" %}} will use only a single thread. For details, see {{% xref "/docs/chapter-multithreading/_index.md" %}}.
+*Description:* Enable {{% param "product.abbrev" %}} to run in multithreaded mode and use multiple CPUs. Available only in {{% param "product.name" %}} 3.3 and later. Note that setting **threaded(no)** does not mean that {{% param "product.abbrev" %}} will use only a single thread. For details, see {{% xref "/docs/chapter-multithreading/_index.md" %}}.
 
 
 
@@ -611,7 +611,7 @@ By default, timestamps include only seconds. To include fractions of a second (f
 {{% include-headless "chunk/option-source-use-fqdn.md" %}}
 
 
-## use-rcptid(){{% conditional-text include-if="pe" %}} (DEPRECATED){{% /conditional-text %}} {#global-option-use-rcptid}
+## use-rcptid() {#global-option-use-rcptid}
 
 |                  |          |
 | ---------------- | -------- |

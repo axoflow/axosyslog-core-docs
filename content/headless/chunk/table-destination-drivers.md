@@ -53,7 +53,7 @@ Sends messages to a [MongoDB](https://www.mongodb.com) database.
 
 [network()]({{< relref "/docs/chapter-destinations/configuring-destinations-network/_index.md" >}})
 
-Sends messages to a remote host using the [BSD-syslog protocol]({{< relref "/docs/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/_index.md" >}}) over IPv4 and IPv6. Supports the TCP, UDP,{{% conditional-text include-if="pe" %}}RLTP,{{% /conditional-text %}} and TLS network protocols.
+Sends messages to a remote host using the [BSD-syslog protocol]({{< relref "/docs/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/_index.md" >}}) over IPv4 and IPv6. Supports the TCP, UDP, and TLS network protocols.
 
 logstore()
 

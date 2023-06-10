@@ -12,7 +12,7 @@ weight:  1700
 
 Use the netmask (also called prefix) to specify how many of the leftmost bits of the address comprise the netmask (values 1-128 are valid). For example, the following specify a 60-bit prefix: `12AB:0000:0000:CD30:0000:0000:0000:0000/60` or `12AB::CD30:0:0:0:0/60`. Note that if you set an IP address and a prefix, {{% param "product.abbrev" %}} will ignore the bits of the address after the prefix. To filter IPv4 addresses, see {{% xref "/docs/chapter-routing-filters/filters/reference-filters/filter-netmask/_index.md" %}}.
 
-The `netmask6()` filter is available in {{% param "product.abbrev" %}} {{% conditional-text include-if="pe" %}}5.0.8 and 5.2.2{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.7{{% /conditional-text %}} and later.
+The `netmask6()` filter is available in {{% param "product.abbrev" %}} 3.7 and later.
 
 {{% alert title="Warning" color="warning" %}}
 
