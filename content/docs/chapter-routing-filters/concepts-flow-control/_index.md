@@ -10,12 +10,11 @@ The `syslog-ng` application monitors (polls) the sources defined in its configur
 
 In large-traffic environments many messages can arrive during a single poll loop, therefore `syslog-ng` reads only a fixed number of messages from each source. The `log-fetch-limit()` option specifies the number of messages read during a poll loop from a single source.
 
-![](/images/figures/fig-syslog-ng-io-01.png)
+![Reading messages](/images/figures/fig-syslog-ng-io-01.png)
 
 TCP and unix-stream sources can receive the logs from several incoming connections (for example, many different clients or applications). For such sources, `syslog-ng` reads messages from every connection, thus the `log-fetch-limit()` parameter applies individually to every connection of the source.
 
-![](/images/figures/fig-syslog-ng-io-02.png)
-
+![Reading messages from a stream](/images/figures/fig-syslog-ng-io-02.png)
 
 ## Log paths without flow-control
 
@@ -122,7 +121,7 @@ Hazard of data loss! For destinations other than file, soft flow-control is not 
 
 The `syslog-ng` application handles outgoing messages the following way:
 
-![](/images/figures/disk-buffer-diagram-normal.png)
+![Disk buffering](/images/figures/disk-buffer-diagram-normal.png)
 
   - *Output queue*: Messages from the output queue are sent to the target `syslog-ng` server. The `syslog-ng` application puts the outgoing messages directly into the output queue, unless the output queue is full. The output queue can hold 64 messages, this is a fixed value and cannot be modified.
 
