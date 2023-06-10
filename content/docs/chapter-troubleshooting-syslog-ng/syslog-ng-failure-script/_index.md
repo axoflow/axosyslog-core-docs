@@ -7,7 +7,7 @@ weight:  700
 
 ## Purpose:
 
-You can create a failure script that is executed when {{% productparam "abbrev" %}} terminates abnormally, that is, when it exits with a non-zero exit code. For example, you can use this script to send an automatic email notification.
+You can create a failure script that is executed when {{% param "product.abbrev" %}} terminates abnormally, that is, when it exits with a non-zero exit code. For example, you can use this script to send an automatic email notification.
 
 
 
@@ -46,7 +46,7 @@ To create a sample failure script, complete the following steps.
 
 3.  Run the following command in the `/opt/syslog-ng/sbin` directory: **./syslog-ng --process-mode=safe-background; sleep 0.5; ps aux | grep './syslog-ng' | grep -v grep | awk '{print $2}' | xargs kill -KILL; sleep 0.5; cat /tmp/test.txt**
     
-    The command starts {{% productparam "abbrev" %}} in safe-background mode (which is needed to use the failure script) and then kills it. You should see that the relevant information is written into the `/tmp/test.txt` file, for example:
+    The command starts {{% param "product.abbrev" %}} in safe-background mode (which is needed to use the failure script) and then kills it. You should see that the relevant information is written into the `/tmp/test.txt` file, for example:
     
     ```c
     
@@ -63,7 +63,7 @@ To create a sample failure script, complete the following steps.
     
     ```
 
-4.  You should also see messages similar to the following in system syslog. The exact message depends on the signal (or the reason why {{% productparam "abbrev" %}} stopped):
+4.  You should also see messages similar to the following in system syslog. The exact message depends on the signal (or the reason why {{% param "product.abbrev" %}} stopped):
     
     ```c
     

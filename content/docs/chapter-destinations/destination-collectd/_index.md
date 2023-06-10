@@ -6,7 +6,7 @@ weight:  300
 
 The `collectd()` destination uses the [unixsock plugin of the collectd application](https://collectd.org/documentation/manpages/collectd-unixsock.5.shtml) to send log messages to the [collectd system statistics collection daemon](https://collectd.org). You must install and configure collectd separately before using this destination.
 
-Available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="ose" %}}3.20{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.20{{% /conditional-text %}} and later.
 
 
 ## Declaration:
@@ -53,7 +53,7 @@ The following example uses the name of the application sending the log message a
 ```
 
 
-To use the `collectd()` driver, the `scl.conf` file must be included in your {{% productparam "abbrev" %}} configuration:
+To use the `collectd()` driver, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 
 ```c
 

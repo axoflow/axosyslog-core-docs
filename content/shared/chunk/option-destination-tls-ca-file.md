@@ -9,7 +9,7 @@
 | Accepted values: | File name |
 | Default:         | empty     |
 
-*Description:* Optional. The name of a file that contains a set of trusted CA certificates in PEM format. The {{% productparam "abbrev" %}} application uses the CA certificates in this file to validate the certificate of the peer.
+*Description:* Optional. The name of a file that contains a set of trusted CA certificates in PEM format. The {{% param "product.abbrev" %}} application uses the CA certificates in this file to validate the certificate of the peer.
 
 Example format in configuration:
 

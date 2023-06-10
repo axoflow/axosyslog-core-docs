@@ -30,4 +30,4 @@ During the course of a message from the sending application to the final destina
 
   - As a result of an unclean shutdown of the syslog-ng server: If the host running the syslog-ng server experiences an unclean shutdown, it takes time until the clients realize that the connection to the syslog-ng server is down. Messages that are put into the output TCP buffer of the clients during this period are not sent to the server.
 
-  - When {{% productparam "abbrev" %}} is writing messages into files: If {{% productparam "abbrev" %}} receives a signal (SIG) while writing log messages to file, the log message that is processed by the *write* call can be lost if the `flush_lines` parameter is higher than 1.
+  - When {{% param "product.abbrev" %}} is writing messages into files: If {{% param "product.abbrev" %}} receives a signal (SIG) while writing log messages to file, the log message that is processed by the *write* call can be lost if the `flush_lines` parameter is higher than 1.

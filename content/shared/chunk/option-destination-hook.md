@@ -9,14 +9,14 @@
 
 {{% alert title="Note" color="info" %}}
 
-The {{% productparam "abbrev" %}} application must be able to start and restart the external program, and have the necessary permissions to do so. For example, if your host is running AppArmor or {{% productparam "selinux" %}}, you might have to modify your AppArmor or {{% productparam "selinux" %}} configuration to enable {{% productparam "abbrev" %}} to execute external applications.
+The {{% param "product.abbrev" %}} application must be able to start and restart the external program, and have the necessary permissions to do so. For example, if your host is running AppArmor or {{% param "product.selinux" %}}, you might have to modify your AppArmor or {{% param "product.selinux" %}} configuration to enable {{% param "product.abbrev" %}} to execute external applications.
 
 {{% /alert %}}
 
 
-## Using the hook-commands() when {{% productparam "abbrev" %}} starts or stops
+## Using the hook-commands() when {{% param "product.abbrev" %}} starts or stops
 
-To execute an external program when {{% productparam "abbrev" %}} starts or stops, use the following options:
+To execute an external program when {{% param "product.abbrev" %}} starts or stops, use the following options:
 
 *startup()*
 
@@ -29,7 +29,7 @@ Default:
 
 N/A
 
-*Description:* Defines the external program that is executed as {{% productparam "abbrev" %}} starts.
+*Description:* Defines the external program that is executed as {{% param "product.abbrev" %}} starts.
 
 *shutdown()*
 
@@ -41,12 +41,12 @@ Default:
 
 N/A
 
-*Description:* Defines the external program that is executed as {{% productparam "abbrev" %}} stops.
+*Description:* Defines the external program that is executed as {{% param "product.abbrev" %}} stops.
 
 
-## Using the hook-commands() when {{% productparam "abbrev" %}} reloads
+## Using the hook-commands() when {{% param "product.abbrev" %}} reloads
 
-To execute an external program when the {{% productparam "abbrev" %}} configuration is initiated or torn down, for example, on startup/shutdown or during a {{% productparam "abbrev" %}} reload, use the following options:
+To execute an external program when the {{% param "product.abbrev" %}} configuration is initiated or torn down, for example, on startup/shutdown or during a {{% param "product.abbrev" %}} reload, use the following options:
 
 *setup()*
 
@@ -59,7 +59,7 @@ Default:
 
 N/A
 
-*Description:* Defines an external program that is executed when the {{% productparam "abbrev" %}} configuration is initiated, for example, on startup or during a {{% productparam "abbrev" %}} reload.
+*Description:* Defines an external program that is executed when the {{% param "product.abbrev" %}} configuration is initiated, for example, on startup or during a {{% param "product.abbrev" %}} reload.
 
 *teardown()*
 
@@ -71,14 +71,14 @@ Default:
 
 N/A
 
-*Description:* Defines an external program that is executed when the {{% productparam "abbrev" %}} configuration is stopped or torn down, for example, on shutdown or during a {{% productparam "abbrev" %}} reload.
+*Description:* Defines an external program that is executed when the {{% param "product.abbrev" %}} configuration is stopped or torn down, for example, on shutdown or during a {{% param "product.abbrev" %}} reload.
 
 
 ## Example: Using the hook-commands() with a network source
 
-In the following example, the `hook-commands()` is used with the `network()` driver and it opens an [iptables](https://en.wikipedia.org/wiki/Iptables "https://en.wikipedia.org/wiki/Iptables") port automatically as {{% productparam "abbrev" %}} is started/stopped.
+In the following example, the `hook-commands()` is used with the `network()` driver and it opens an [iptables](https://en.wikipedia.org/wiki/Iptables "https://en.wikipedia.org/wiki/Iptables") port automatically as {{% param "product.abbrev" %}} is started/stopped.
 
-The assumption in this example is that the `LOGCHAIN` chain is part of a larger ruleset that routes traffic to it. Whenever the {{% productparam "abbrev" %}} created rule is there, packets can flow, otherwise the port is closed.
+The assumption in this example is that the `LOGCHAIN` chain is part of a larger ruleset that routes traffic to it. Whenever the {{% param "product.abbrev" %}} created rule is there, packets can flow, otherwise the port is closed.
 
 ```c
 

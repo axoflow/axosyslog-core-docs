@@ -11,7 +11,7 @@ weight:  500
 
   - If the given table does not exist, syslog-ng tries to create it with the given column types.
 
-  - The {{% productparam "abbrev" %}} application automatically creates the required tables and columns, if the user account used to connect to the database has the required privileges.
+  - The {{% param "product.abbrev" %}} application automatically creates the required tables and columns, if the user account used to connect to the database has the required privileges.
 
   - If syslog-ng cannot create or alter a table, it tries to do it again when it reaches the next `time-reopen()`.
 
@@ -19,9 +19,9 @@ weight:  500
 
   - If the table structure is different from given structure in an existing table, syslog-ng tries to add columns in this table but never will delete or modify an existing column.
 
-  - If {{% productparam "abbrev" %}} cannot create or alter a table, it tries to do it again when reach the next `time-reopen()`.
+  - If {{% param "product.abbrev" %}} cannot create or alter a table, it tries to do it again when reach the next `time-reopen()`.
 
-  - The {{% productparam "abbrev" %}} application requires read and write access to the SQL table, otherwise it cannot verify that the destination table exists.
+  - The {{% param "product.abbrev" %}} application requires read and write access to the SQL table, otherwise it cannot verify that the destination table exists.
 
 *Insert table:*
 
@@ -29,7 +29,7 @@ weight:  500
 
   - Inserting the records into the database is performed by a separate thread.
 
-  - The {{% productparam "abbrev" %}} application automatically performs the escaping required to insert the messages into the database.
+  - The {{% param "product.abbrev" %}} application automatically performs the escaping required to insert the messages into the database.
 
   - If insert returns with error, syslog-ng tries to insert the message +two times by default, then drops it. Retrying time is the value of `time-reopen()`.
 
@@ -37,7 +37,7 @@ weight:  500
 
 ## Encoding
 
-The {{% productparam "abbrev" %}} application uses UTF-8 by default when writes logs into database.
+The {{% param "product.abbrev" %}} application uses UTF-8 by default when writes logs into database.
 
 
 
@@ -45,21 +45,21 @@ The {{% productparam "abbrev" %}} application uses UTF-8 by default when writes 
 
 *Start:*
 
-  - The {{% productparam "abbrev" %}} application will connect to database automatically after starting regardless existing incoming messages.
+  - The {{% param "product.abbrev" %}} application will connect to database automatically after starting regardless existing incoming messages.
 
 *Stop:*
 
-  - The {{% productparam "abbrev" %}} application will close the connection to database before shutting down.
+  - The {{% param "product.abbrev" %}} application will close the connection to database before shutting down.
 
 *Possibility of losing logs:*
 
-  - The {{% productparam "abbrev" %}} application cannot lose logs during shutting down if disk buffer was given and it is not full yet.
+  - The {{% param "product.abbrev" %}} application cannot lose logs during shutting down if disk buffer was given and it is not full yet.
 
-  - The {{% productparam "abbrev" %}} application cannot lose logs during shutting down if disk buffer was not given.
+  - The {{% param "product.abbrev" %}} application cannot lose logs during shutting down if disk buffer was not given.
 
 *Reload:*
 
-  - The {{% productparam "abbrev" %}} application will close the connection to database if it received SIGHUP signal (reload).
+  - The {{% param "product.abbrev" %}} application will close the connection to database if it received SIGHUP signal (reload).
 
   - It will reconnect to the database when it tries to send a new message to this database again.
 

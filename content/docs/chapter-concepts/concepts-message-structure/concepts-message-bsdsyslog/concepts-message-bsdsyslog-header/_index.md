@@ -26,6 +26,6 @@ The <span class="code">HEADER</span> message part contains a timestamp and the h
 
 {{% alert title="Note" color="info" %}}
 
-The {{% productparam "name" %}} ({{% productparam "abbrev" %}}) application supports other timestamp formats as well, like ISO, or the PIX extended format. For details, see the `ts-format()` option in {{% xref "/docs/chapter-global-options/reference-options/_index.md" %}}.
+The {{% param "product.name" %}} ({{% param "product.abbrev" %}}) application supports other timestamp formats as well, like ISO, or the PIX extended format. For details, see the `ts-format()` option in {{% xref "/docs/chapter-global-options/reference-options/_index.md" %}}.
 
 {{% /alert %}}

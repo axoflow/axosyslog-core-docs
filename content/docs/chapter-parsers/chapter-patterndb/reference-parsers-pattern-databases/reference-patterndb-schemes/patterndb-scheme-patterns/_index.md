@@ -35,7 +35,7 @@ N/A
     
     {{% alert title="Note" color="info" %}}
     
-    If the `\<pattern\>` element of a ruleset is not specified, {{% productparam "abbrev" %}} will use this ruleset as a fallback ruleset: it will apply the ruleset to messages that have an empty PROGRAM header, or if none of the program patterns matched the PROGRAM header of the incoming message.
+    If the `\<pattern\>` element of a ruleset is not specified, {{% param "product.abbrev" %}} will use this ruleset as a fallback ruleset: it will apply the ruleset to messages that have an empty PROGRAM header, or if none of the program patterns matched the PROGRAM header of the incoming message.
     
     {{% /alert %}}
 

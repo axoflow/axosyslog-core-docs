@@ -9,5 +9,5 @@
 | Type:    | string list |
 | Default: | "tag"       |
 
-*Description:* Optional. This option specifies the list of tags to add as the tags fields of Sumo Logic messages. If not specified, {{% productparam "abbrev" %}} automatically adds the tags already assigned to the message. If you set the `tag()` option, only the tags you specify will be added to the messages.
+*Description:* Optional. This option specifies the list of tags to add as the tags fields of Sumo Logic messages. If not specified, {{% param "product.abbrev" %}} automatically adds the tags already assigned to the message. If you set the `tag()` option, only the tags you specify will be added to the messages.
 

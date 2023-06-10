@@ -60,7 +60,7 @@ The following example parses the access logs of an Apache webserver from a file 
 ```
 
 
-To use the `loggly()` driver, the `scl.conf` file must be included in your {{% productparam "abbrev" %}} configuration:
+To use the `loggly()` driver, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 
 ```c
 

@@ -8,15 +8,15 @@ The Oracle sql destination has some special aspects that are important to note.
 
   - The hostname of the database server is set in the `tnsnames.ora` file, not in the `host` parameter of the `sql()` destination.
     
-    If the `tnsnames.ora` file is not located in the /etc directory (or in the /var/opt/oracle directory on Solaris), set the following Oracle-related environment variables, so {{% productparam "abbrev" %}} will find the file: `ORACLE_BASE`, `ORACLE_HOME`, and `ORACLE_SID`. For details, see the documentation of the Oracle Instant Client.
+    If the `tnsnames.ora` file is not located in the /etc directory (or in the /var/opt/oracle directory on Solaris), set the following Oracle-related environment variables, so {{% param "product.abbrev" %}} will find the file: `ORACLE_BASE`, `ORACLE_HOME`, and `ORACLE_SID`. For details, see the documentation of the Oracle Instant Client.
 
-  - You cannot use the same `database()` settings in more than one destination, because the `database()` option of the SQL driver is just a reference to the connection string of the `tnsnames.ora` file. To overcome this problem, you can duplicate the connections in the `tnsnames.ora` file under a different name, and use a different table in each Oracle destination in {{% productparam "abbrev" %}}.
+  - You cannot use the same `database()` settings in more than one destination, because the `database()` option of the SQL driver is just a reference to the connection string of the `tnsnames.ora` file. To overcome this problem, you can duplicate the connections in the `tnsnames.ora` file under a different name, and use a different table in each Oracle destination in {{% param "product.abbrev" %}}.
 
   - As certain database versions limit the maximum length of table names, macros in the table names should be used with care.
 
-  - In the current version of {{% productparam "abbrev" %}}, the types of database columns must be explicitly set for the Oracle destination. The column used to store the text part of the syslog messages should be able to store messages as long as the longest message permitted by syslog-ng, therefore it is usually recommended to use the **varchar2** or **clob** column type. (The maximum length of the messages can be set using the `log-msg-size()` option.) For details, see the following example.
+  - In the current version of {{% param "product.abbrev" %}}, the types of database columns must be explicitly set for the Oracle destination. The column used to store the text part of the syslog messages should be able to store messages as long as the longest message permitted by syslog-ng, therefore it is usually recommended to use the **varchar2** or **clob** column type. (The maximum length of the messages can be set using the `log-msg-size()` option.) For details, see the following example.
 
-  - The Oracle Instant Client used by {{% productparam "abbrev" %}} supports only the following character sets:
+  - The Oracle Instant Client used by {{% param "product.abbrev" %}} supports only the following character sets:
     
       - Single-byte character sets: `US7ASCII, WE8DEC, WE8MSWIN1252, and WE8ISO8859P1`
     

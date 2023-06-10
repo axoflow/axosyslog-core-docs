@@ -4,14 +4,14 @@ weight:  100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-By default, {{% productparam "abbrev" %}} uses PCRE-style regular expressions, which are supported on every platform starting with {{% productparam "abbrev" %}} version 3.1. To use other expression types, add the **type()** option after the regular expression.
+By default, {{% param "product.abbrev" %}} uses PCRE-style regular expressions, which are supported on every platform starting with {{% param "product.abbrev" %}} version 3.1. To use other expression types, add the **type()** option after the regular expression.
 
-The {{% productparam "abbrev" %}} application supports the following `type()` options:
+The {{% param "product.abbrev" %}} application supports the following `type()` options:
 
 
 ## Perl Compatible Regular Expressions (pcre) {#reference-regexp-pcre}
 
-*Description:* Uses Perl Compatible Regular Expressions (PCRE).{{% conditional-text include-if="pe" %}} Starting with {{% productparam "abbrev" %}} version 3.1, PCRE expressions are supported on every platform.{{% /conditional-text %}} If the `type()` parameter is not specified, {{% productparam "abbrev" %}} uses PCRE regular expressions by default.
+*Description:* Uses Perl Compatible Regular Expressions (PCRE).{{% conditional-text include-if="pe" %}} Starting with {{% param "product.abbrev" %}} version 3.1, PCRE expressions are supported on every platform.{{% /conditional-text %}} If the `type()` parameter is not specified, {{% param "product.abbrev" %}} uses PCRE regular expressions by default.
 
 For more information about the `flags()` options of PCRE regular expressions, see {{% xref "/docs/chapter-manipulating-messages/regular-expressions/reference-regexp-types/regexp-flags-options/_index.md" %}}.
 

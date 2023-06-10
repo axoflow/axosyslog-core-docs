@@ -9,5 +9,5 @@
 | Accepted values: | string (filename) |
 | Default:         | none              |
 
-*Description:* Specifies a file containing Diffie-Hellman parameters, generated using the `openssl dhparam` utility. Note that {{% productparam "abbrev" %}} supports only DH parameter files in the PEM format. If you do not set this parameter, [{{% productparam "abbrev" %}} uses the 2048-bit MODP Group, as described in RFC 3526](https://www.ietf.org/rfc/rfc3526.txt).
+*Description:* Specifies a file containing Diffie-Hellman parameters, generated using the `openssl dhparam` utility. Note that {{% param "product.abbrev" %}} supports only DH parameter files in the PEM format. If you do not set this parameter, [{{% param "product.abbrev" %}} uses the 2048-bit MODP Group, as described in RFC 3526](https://www.ietf.org/rfc/rfc3526.txt).
 

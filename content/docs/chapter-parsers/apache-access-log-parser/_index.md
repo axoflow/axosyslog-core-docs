@@ -4,7 +4,7 @@ weight:  1700
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The Apache access log parser can parse the access log messages of the Apache HTTP Server. The {{% productparam "abbrev" %}} application can separate these log messages to name-value pairs. For details on using value-pairs in {{% productparam "abbrev" %}} see {{% xref "/docs/chapter-concepts/concepts-value-pairs/_index.md" %}}. The `apache-accesslog-parser()` supports both the Common Log Format and the Combined Log Format of Apache (for details, see the [Apache HTTP Server documentation](https://httpd.apache.org/docs/2.4/logs.html#accesslog)). The following is a sample log message:
+The Apache access log parser can parse the access log messages of the Apache HTTP Server. The {{% param "product.abbrev" %}} application can separate these log messages to name-value pairs. For details on using value-pairs in {{% param "product.abbrev" %}} see {{% xref "/docs/chapter-concepts/concepts-value-pairs/_index.md" %}}. The `apache-accesslog-parser()` supports both the Common Log Format and the Combined Log Format of Apache (for details, see the [Apache HTTP Server documentation](https://httpd.apache.org/docs/2.4/logs.html#accesslog)). The following is a sample log message:
 
 ```c
 
@@ -20,7 +20,7 @@ Starting with version {{% conditional-text include-if="pe" %}}7.0.15{{% /conditi
 
 ```
 
-The {{% productparam "abbrev" %}} application extracts every field into name-value pairs, and adds the `.apache.` prefix to the name of the field.
+The {{% param "product.abbrev" %}} application extracts every field into name-value pairs, and adds the `.apache.` prefix to the name of the field.
 
 
 ## Declaration:
@@ -36,7 +36,7 @@ The {{% productparam "abbrev" %}} application extracts every field into name-val
 ```
 
 
-The parser extracts the following fields from the messages: `vhost`, `port`, `clientip`, `ident`, `auth`, `timestamp`, `rawrequest`, `response`, `bytes`, `referrer`, and `agent`. The `rawrequest` field is further segmented into the `verb`, `request`, and `httpversion` fields. The {{% productparam "abbrev" %}} `apache-accesslog-parser()` parser uses the same naming convention as Logstash.
+The parser extracts the following fields from the messages: `vhost`, `port`, `clientip`, `ident`, `auth`, `timestamp`, `rawrequest`, `response`, `bytes`, `referrer`, and `agent`. The `rawrequest` field is further segmented into the `verb`, `request`, and `httpversion` fields. The {{% param "product.abbrev" %}} `apache-accesslog-parser()` parser uses the same naming convention as Logstash.
 
 
 ## Example: Using the apache-accesslog-parser parser
@@ -65,7 +65,7 @@ In the following example, the source is a log file created by an Apache web serv
 ```
 
 
-To use this parser, the `scl.conf` file must be included in your {{% productparam "abbrev" %}} configuration:
+To use this parser, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 
 ```c
 

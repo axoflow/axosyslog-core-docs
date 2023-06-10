@@ -4,11 +4,11 @@ weight:  100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-By default, {{% productparam "abbrev" %}} handles every data as strings. However, certain destinations and data formats (for example, SQL, MongoDB, JSON{{% conditional-text include-if="ose" %}}, AMQP{{% /conditional-text %}}) support other types of data as well, for example, numbers or dates. The {{% productparam "abbrev" %}} application allows you to specify the data type in templates (this is also called type-hinting). If the destination driver supports data types, it converts the incoming data to the specified data type. For example, this allows you to store integer numbers as numbers in MongoDB, instead of strings.
+By default, {{% param "product.abbrev" %}} handles every data as strings. However, certain destinations and data formats (for example, SQL, MongoDB, JSON{{% conditional-text include-if="ose" %}}, AMQP{{% /conditional-text %}}) support other types of data as well, for example, numbers or dates. The {{% param "product.abbrev" %}} application allows you to specify the data type in templates (this is also called type-hinting). If the destination driver supports data types, it converts the incoming data to the specified data type. For example, this allows you to store integer numbers as numbers in MongoDB, instead of strings.
 
 {{% alert title="Warning" color="warning" %}}
 
-Hazard of data loss\! If {{% productparam "abbrev" %}} cannot convert the data into the specified type, an error occurs, and {{% productparam "abbrev" %}} drops the message by default. To change how {{% productparam "abbrev" %}} handles data-conversion errors, see [Global options]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}).
+Hazard of data loss\! If {{% param "product.abbrev" %}} cannot convert the data into the specified type, an error occurs, and {{% param "product.abbrev" %}} drops the message by default. To change how {{% param "product.abbrev" %}} handles data-conversion errors, see [Global options]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}).
 
 {{% /alert %}}
 
@@ -50,7 +50,7 @@ The following example formats the MESSAGE field as a JSON list.
 ```
 
 
-The {{% productparam "abbrev" %}} application currently supports the following data-types.
+The {{% param "product.abbrev" %}} application currently supports the following data-types.
 
   - `boolean`: Converts the data to a boolean value. Anything that begins with a `t` or `1` is converted to true, anything that begins with an `f` or `0` is converted to false.
 

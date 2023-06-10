@@ -23,9 +23,9 @@ weight:  4900
 
 ## Description
 
-This manual page is only an abstract, for the complete documentation of {{% productparam "abbrev" %}}, see the [{{% productparam "abbrev" %}} Documentation page](https://support.oneidentity.com/syslog-ng-premium-edition/technical-documents/)[{{% productparam "abbrev" %}} Documentation page](https://www.syslog-ng.com/).
+This manual page is only an abstract, for the complete documentation of {{% param "product.abbrev" %}}, see the [{{% param "product.abbrev" %}} Documentation page](https://support.oneidentity.com/syslog-ng-premium-edition/technical-documents/)[{{% param "product.abbrev" %}} Documentation page](https://www.syslog-ng.com/).
 
-The {{% productparam "abbrev" %}} application can match the contents of the log messages to a database of predefined message patterns (also called `patterndb`). By comparing the messages to the known patterns, {{% productparam "abbrev" %}} is able to identify the exact type of the messages, tag the messages, and sort them into message classes. The message classes can be used to classify the type of the event described in the log message. The functionality of the pattern database is similar to that of the logcheck project, but the {{% productparam "syslog-ng" %}} approach is faster, scales better, and is much easier to maintain compared to the regular expressions of logcheck.
+The {{% param "product.abbrev" %}} application can match the contents of the log messages to a database of predefined message patterns (also called `patterndb`). By comparing the messages to the known patterns, {{% param "product.abbrev" %}} is able to identify the exact type of the messages, tag the messages, and sort them into message classes. The message classes can be used to classify the type of the event described in the log message. The functionality of the pattern database is similar to that of the logcheck project, but the {{% param "product.syslog-ng" %}} approach is faster, scales better, and is much easier to maintain compared to the regular expressions of logcheck.
 
 The `pdbtool` application is a utility that can be used to:
 
@@ -69,7 +69,7 @@ Lists every name-value pair that can be set by the rules of the pattern database
 
 `dump [options]`
 
-Display the RADIX tree built from the patterns. This shows how are the patterns represented in {{% productparam "ose" %}} and it might also help to track down pattern-matching problems. The dump utility can dump the tree used for matching the PROGRAM or the MSG parts.
+Display the RADIX tree built from the patterns. This shows how are the patterns represented in {{% param "product.ose" %}} and it might also help to track down pattern-matching problems. The dump utility can dump the tree used for matching the PROGRAM or the MSG parts.
 
   - `--debug` or `-d`
     
@@ -330,7 +330,7 @@ Automatically create a pattern database from a log file containing a large numbe
 
 `test [options]`
 
-Use the `test` command to validate a pattern database XML file. Note that you must have the `xmllint` application installed. The `test` command is available only in {{% productparam "ose" %}} version 3.2 and later.
+Use the `test` command to validate a pattern database XML file. Note that you must have the `xmllint` application installed. The `test` command is available only in {{% param "product.ose" %}} version 3.2 and later.
 
   - `--color-out` or `-c`
     
@@ -386,11 +386,11 @@ Use the `test` command to validate a pattern database XML file. Note that you mu
 
 {{% alert title="Note" color="info" %}}
 
-For the detailed documentation of {{% productparam "abbrev" %}} see [{{% productparam "abbrev" %}} Documentation page](https://support.oneidentity.com/syslog-ng-premium-edition/technical-documents/)[{{% productparam "abbrev" %}} Documentation page](https://www.syslog-ng.com/).
+For the detailed documentation of {{% param "product.abbrev" %}} see [{{% param "product.abbrev" %}} Documentation page](https://support.oneidentity.com/syslog-ng-premium-edition/technical-documents/)[{{% param "product.abbrev" %}} Documentation page](https://www.syslog-ng.com/).
 
-If you experience any problems or need help with {{% productparam "abbrev" %}}, visit the [{{% productparam "syslog-ng" %}} mailing list](https://lists.balabit.hu/mailman/listinfo/syslog-ng).
+If you experience any problems or need help with {{% param "product.abbrev" %}}, visit the [{{% param "product.syslog-ng" %}} mailing list](https://lists.balabit.hu/mailman/listinfo/syslog-ng).
 
-For news and notifications about {{% productparam "abbrev" %}}, visit the [{{% productparam "syslog-ng" %}} blogs](https://syslog-ng.com/blog/).
+For news and notifications about {{% param "product.abbrev" %}}, visit the [{{% param "product.syslog-ng" %}} blogs](https://syslog-ng.com/blog/).
 
 {{% /alert %}}
 

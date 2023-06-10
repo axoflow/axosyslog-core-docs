@@ -9,7 +9,7 @@
 | Type:    | number (of attempts) |
 | Default: | 3                    |
 
-*Description:* If {{% productparam "abbrev" %}} cannot send a message, it will try again until the number of attempts reaches `retries()`.
+*Description:* If {{% param "product.abbrev" %}} cannot send a message, it will try again until the number of attempts reaches `retries()`.
 
-If the number of attempts reaches `retries()`, {{% productparam "abbrev" %}} will wait for `time-reopen()` time, then tries sending the message again.
+If the number of attempts reaches `retries()`, {{% param "product.abbrev" %}} will wait for `time-reopen()` time, then tries sending the message again.
 

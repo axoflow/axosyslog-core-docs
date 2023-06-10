@@ -13,7 +13,7 @@ The `grouping-by` has the following options.
 | --------- | ----------- |
 | Synopsis: | aggregate() |
 
-*Description:* Specifies the message that {{% productparam "abbrev" %}} generates when the context is closed. This option is mandatory.
+*Description:* Specifies the message that {{% param "product.abbrev" %}} generates when the context is closed. This option is mandatory.
 
 Note that the `aggregate()` option has access to every message of the context, and has the following options:
 
@@ -35,7 +35,7 @@ Note that the `aggregate()` option has access to every message of the context, a
 | --------- | -------- |
 | Synopsis: | having() |
 
-*Description:* Specifies a filter: {{% productparam "abbrev" %}} generates the aggregate message only if the result of the filter expression is true. Note that the `having()` filter has access to every message of the context. For details on accessing other messages of the context, see {{% xref "/docs/chapter-correlating-log-messages/grouping-by-parser/referencing-previous-messages-grouping-by/_index.md" %}}.
+*Description:* Specifies a filter: {{% param "product.abbrev" %}} generates the aggregate message only if the result of the filter expression is true. Note that the `having()` filter has access to every message of the context. For details on accessing other messages of the context, see {{% xref "/docs/chapter-correlating-log-messages/grouping-by-parser/referencing-previous-messages-grouping-by/_index.md" %}}.
 
 
 
@@ -45,7 +45,7 @@ Note that the `aggregate()` option has access to every message of the context, a
 | --------- | ------------- |
 | Synopsis: | inject-mode() |
 
-*Description:* By default, the aggregated message that {{% productparam "abbrev" %}} generates is injected into the same place where the `grouping-by()` statement is referenced in the log path. To post the generated message into the `internal()` source instead, use the **inject-mode()** option in the definition of the parser.
+*Description:* By default, the aggregated message that {{% param "product.abbrev" %}} generates is injected into the same place where the `grouping-by()` statement is referenced in the log path. To post the generated message into the `internal()` source instead, use the **inject-mode()** option in the definition of the parser.
 
 
 ## Example: Sending triggered messages to the internal() source
@@ -127,8 +127,8 @@ If the value of the key is static (for example, key("PROGRAM") instead of key("$
 
 {{% alert title="Note" color="info" %}}
 
-  - Sorting is done by {{% productparam "abbrev" %}} when the context is about to be closed by trigger() or timeout(), but before {{% productparam "abbrev" %}} evaluates the [having()](#grouping-by-parser-having) option.
-  - {{% productparam "abbrev" %}} can slow down if you specify several sort-key macro or template options, for example, `sort-key("${3}${4}")`.
+  - Sorting is done by {{% param "product.abbrev" %}} when the context is about to be closed by trigger() or timeout(), but before {{% param "product.abbrev" %}} evaluates the [having()](#grouping-by-parser-having) option.
+  - {{% param "product.abbrev" %}} can slow down if you specify several sort-key macro or template options, for example, `sort-key("${3}${4}")`.
 
 {{% /alert %}}
 
@@ -140,7 +140,7 @@ If the value of the key is static (for example, key("PROGRAM") instead of key("$
 | --------- | -------------------- |
 | Synopsis: | timeout([seconds]) |
 
-*Description:* Specifies the maximum time to wait for all messages of the context to arrive. If no new message is added to the context during this period, the context is assumed to be complete and {{% productparam "abbrev" %}} generates and sends the triggered message (specified in the [aggregate()](#grouping-by-parser-aggregate) option), and clears the context. If a new message is added to the context, the timeout period is restarted.
+*Description:* Specifies the maximum time to wait for all messages of the context to arrive. If no new message is added to the context during this period, the context is assumed to be complete and {{% param "product.abbrev" %}} generates and sends the triggered message (specified in the [aggregate()](#grouping-by-parser-aggregate) option), and clears the context. If a new message is added to the context, the timeout period is restarted.
 
 This option is mandatory, and its value must be equal to or greater than **1**.
 
@@ -152,7 +152,7 @@ This option is mandatory, and its value must be equal to or greater than **1**.
 | --------- | --------- |
 | Synopsis: | trigger() |
 
-*Description:* A filter that specifies the final message of the context. If the filter matches the incoming message, {{% productparam "abbrev" %}} generates and sends the triggered message (specified in the [aggregate()](#grouping-by-parser-aggregate) option), and clears the context.
+*Description:* A filter that specifies the final message of the context. If the filter matches the incoming message, {{% param "product.abbrev" %}} generates and sends the triggered message (specified in the [aggregate()](#grouping-by-parser-aggregate) option), and clears the context.
 
 
 

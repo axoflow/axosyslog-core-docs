@@ -9,7 +9,7 @@ weight:  4900
 
 ## Name
 
-`dqtool` — Display the contents of a disk-buffer file created with {{% productparam "abbrev" %}}.
+`dqtool` — Display the contents of a disk-buffer file created with {{% param "product.abbrev" %}}.
 
 
 
@@ -23,11 +23,11 @@ weight:  4900
 
 {{% alert title="Note" color="info" %}}
 
-The `dqtool` application is distributed with the {{% productparam "abbrev" %}} system logging application, and is usually part of the {{% productparam "abbrev" %}} package. The latest version of the {{% productparam "ose" %}} application is available at the [{{% productparam "ose" %}} page](https://syslog-ng.com/).
+The `dqtool` application is distributed with the {{% param "product.abbrev" %}} system logging application, and is usually part of the {{% param "product.abbrev" %}} package. The latest version of the {{% param "product.ose" %}} application is available at the [{{% param "product.ose" %}} page](https://syslog-ng.com/).
 
 {{% /alert %}}
 
-This manual page is only an abstract, for the complete documentation of {{% productparam "abbrev" %}}, see the [{{% productparam "abbrev" %}} Documentation page](https://support.oneidentity.com/syslog-ng-premium-edition/technical-documents/)[{{% productparam "abbrev" %}} Documentation page](https://www.syslog-ng.com/).
+This manual page is only an abstract, for the complete documentation of {{% param "product.abbrev" %}}, see the [{{% param "product.abbrev" %}} Documentation page](https://support.oneidentity.com/syslog-ng-premium-edition/technical-documents/)[{{% param "product.abbrev" %}} Documentation page](https://www.syslog-ng.com/).
 
 The `dqtool` application is a utility that can be used to display and format the messages stored in a disk-buffer file.
 
@@ -92,13 +92,13 @@ Mar  3 10:52:05 tristram localprg[1234]: seq: 0000011631, runid: 1267609923, sta
 
 `relocate [options] [files]`
 
-Use the `relocate` command to move or rename disk-buffer (also called disk-queue) files. Note that this option modifies the persist file. Stop {{% productparam "ose" %}} before using this command.
+Use the `relocate` command to move or rename disk-buffer (also called disk-queue) files. Note that this option modifies the persist file. Stop {{% param "product.ose" %}} before using this command.
 
 The `cat` command has the following options:
 
   - `--all` or `-a`
     
-    Relocate every disk-buffer file that is listed in the {{% productparam "ose" %}} persist file.
+    Relocate every disk-buffer file that is listed in the {{% param "product.ose" %}} persist file.
 
   - `--new_path` or `-n`
     
@@ -106,7 +106,7 @@ The `cat` command has the following options:
 
   - `--persist` or `-p`
     
-    The path to the {{% productparam "ose" %}} persist file. The `relocate` command automatically updates the entries of the disk-buffer files in the persist file.
+    The path to the {{% param "product.ose" %}} persist file. The `relocate` command automatically updates the entries of the disk-buffer files in the persist file.
 
 
 ## Examples:
@@ -154,11 +154,11 @@ Relocate every queue file:
 
 {{% alert title="Note" color="info" %}}
 
-For the detailed documentation of {{% productparam "abbrev" %}} see [{{% productparam "abbrev" %}} Documentation page](https://support.oneidentity.com/syslog-ng-premium-edition/technical-documents/)[{{% productparam "abbrev" %}} Documentation page](https://www.syslog-ng.com/).
+For the detailed documentation of {{% param "product.abbrev" %}} see [{{% param "product.abbrev" %}} Documentation page](https://support.oneidentity.com/syslog-ng-premium-edition/technical-documents/)[{{% param "product.abbrev" %}} Documentation page](https://www.syslog-ng.com/).
 
-If you experience any problems or need help with {{% productparam "abbrev" %}}, visit the [{{% productparam "syslog-ng" %}} mailing list](https://lists.balabit.hu/mailman/listinfo/syslog-ng).
+If you experience any problems or need help with {{% param "product.abbrev" %}}, visit the [{{% param "product.syslog-ng" %}} mailing list](https://lists.balabit.hu/mailman/listinfo/syslog-ng).
 
-For news and notifications about {{% productparam "abbrev" %}}, visit the [{{% productparam "syslog-ng" %}} blogs](https://syslog-ng.com/blog/).
+For news and notifications about {{% param "product.abbrev" %}}, visit the [{{% param "product.syslog-ng" %}} blogs](https://syslog-ng.com/blog/).
 
 {{% /alert %}}
 

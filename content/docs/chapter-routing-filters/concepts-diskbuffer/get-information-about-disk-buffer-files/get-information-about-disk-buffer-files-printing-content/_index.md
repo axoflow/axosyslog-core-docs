@@ -6,12 +6,12 @@ weight:  700
 
 ## Purpose
 
-This section describes printing the content of the disk-buffer files used in {{% productparam "name" %}}({{% productparam "abbrev" %}}).
+This section describes printing the content of the disk-buffer files used in {{% param "product.name" %}}({{% param "product.abbrev" %}}).
 
 
 ## Command syntax
 
-The command syntax for printing the content of the disk-buffer files used in {{% productparam "abbrev" %}} looks like the following:
+The command syntax for printing the content of the disk-buffer files used in {{% param "product.abbrev" %}} looks like the following:
 
 ```c
 
@@ -24,9 +24,9 @@ The command syntax for printing the content of the disk-buffer files used in {{%
 ## Short example output for printed content
 
 
-## Example: short output that shows the printed content of the disk-buffer files used in {{% productparam "abbrev" %}}
+## Example: short output that shows the printed content of the disk-buffer files used in {{% param "product.abbrev" %}}
 
-The following short output example shows the printed content of the disk-buffer files used in {{% productparam "abbrev" %}}:
+The following short output example shows the printed content of the disk-buffer files used in {{% param "product.abbrev" %}}:
 
 ```c
 

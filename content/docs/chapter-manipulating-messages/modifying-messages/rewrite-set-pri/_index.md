@@ -10,7 +10,7 @@ When configured, the `set-pri()` function will only rewrite the `PRI` value of t
 
 {{% alert title="Note" color="info" %}}
 
-If the specified parameter value is not a valid value, the function ignores it and sends a debug message. However, the {{% productparam "name" %}} ({{% productparam "abbrev" %}}) application will still send the message.
+If the specified parameter value is not a valid value, the function ignores it and sends a debug message. However, the {{% param "product.name" %}} ({{% param "product.abbrev" %}}) application will still send the message.
 
 {{% /alert %}}
 

@@ -24,4 +24,4 @@ To look up all keys:
     
     The resulting dump file will contain the keys that you can use.
 
-For a more complete list of keys, you can also check the [GeoIP2 City and Country CSV Databases](https://dev.maxmind.com/geoip/geoip2/geoip2-city-country-csv-databases/). However, note that the {{% productparam "abbrev" %}} application works with the `mmdb` (GeoIP2) format of these databases. Other formats, like `csv` are not supported.
+For a more complete list of keys, you can also check the [GeoIP2 City and Country CSV Databases](https://dev.maxmind.com/geoip/geoip2/geoip2-city-country-csv-databases/). However, note that the {{% param "product.abbrev" %}} application works with the `mmdb` (GeoIP2) format of these databases. Other formats, like `csv` are not supported.

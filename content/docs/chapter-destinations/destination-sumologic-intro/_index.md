@@ -4,12 +4,12 @@ weight:  6300
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-From version 3.27.1, the {{% productparam "name" %}} ({{% productparam "abbrev" %}}) application can send log messages to [Sumo Logic](https://www.sumologic.com/), a cloud-based log management and security analytics service, by using the `sumologic-http()` and `sumologic-syslog()` destinations.
+From version 3.27.1, the {{% param "product.name" %}} ({{% param "product.abbrev" %}}) application can send log messages to [Sumo Logic](https://www.sumologic.com/), a cloud-based log management and security analytics service, by using the `sumologic-http()` and `sumologic-syslog()` destinations.
 
 
 ## Prerequisites
 
-Currently, using the `sumologic-http()` and `sumologic-syslog()` destinations with {{% productparam "abbrev" %}} has the following prerequisites:
+Currently, using the `sumologic-http()` and `sumologic-syslog()` destinations with {{% param "product.abbrev" %}} has the following prerequisites:
 
   - A Sumo Logic account.
     
@@ -43,7 +43,7 @@ Currently, using the `sumologic-http()` and `sumologic-syslog()` destinations wi
     
     {{% /alert %}}
 
-  - Your Sumo Logic syslog client, configured to send data to the Sumo Logic cloud syslog service, by using {{% productparam "abbrev" %}}.
+  - Your Sumo Logic syslog client, configured to send data to the Sumo Logic cloud syslog service, by using {{% param "product.abbrev" %}}.
     
     For detailed information, follow the instructions under [the Send data to cloud syslog source with syslog-ng section](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-Syslog-Source#send-data-to%C2%A0cloud-syslog-source-with-syslog-ng) on the official Sumo Logic website.
 
@@ -51,7 +51,7 @@ Currently, using the `sumologic-http()` and `sumologic-syslog()` destinations wi
     
     {{% alert title="Warning" color="warning" %}}
     
-    To avoid potential data loss, One Identity strongly recommends that you verify your [connection](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-Syslog-Source#verify-connection-with-sumo-service) and [client configuration](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-Syslog-Source#verify-client-configuration) with the Sumo Logic service before you start using the `sumologic-http()` or `sumologic-syslog()` destination with {{% productparam "abbrev" %}} in a production environment.
+    To avoid potential data loss, One Identity strongly recommends that you verify your [connection](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-Syslog-Source#verify-connection-with-sumo-service) and [client configuration](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-Syslog-Source#verify-client-configuration) with the Sumo Logic service before you start using the `sumologic-http()` or `sumologic-syslog()` destination with {{% param "product.abbrev" %}} in a production environment.
     
     {{% /alert %}}
 
@@ -65,9 +65,9 @@ Currently, using the `sumologic-http()` and `sumologic-syslog()` destinations wi
 
 ## Limitations
 
-Currently, using the `sumologic-syslog()` and `sumologic-http()` destinations with {{% productparam "abbrev" %}} has the following limitations:
+Currently, using the `sumologic-syslog()` and `sumologic-http()` destinations with {{% param "product.abbrev" %}} has the following limitations:
 
-  - The minimum required version of {{% productparam "abbrev" %}} is version 3.27.1.
+  - The minimum required version of {{% param "product.abbrev" %}} is version 3.27.1.
 
   - Message format must be in [RFC 5424-compliant form](https://tools.ietf.org/html/rfc5424#page-8). Messages over 64KB in length are truncated.
     
@@ -116,7 +116,7 @@ Currently, using the `sumologic-syslog()` and `sumologic-http()` destinations wi
 
 ## Using the sumologic() driver
 
-To use the `sumologic()` driver, the `scl.conf` file must be included in your {{% productparam "abbrev" %}} configuration:
+To use the `sumologic()` driver, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 
 ```c
 

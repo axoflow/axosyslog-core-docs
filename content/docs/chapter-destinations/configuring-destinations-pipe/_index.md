@@ -19,7 +19,7 @@ The pipe driver has a single required parameter, specifying the filename of the 
 
 {{% alert title="Warning" color="warning" %}}
 
-Starting with {{% productparam "abbrev" %}} 3.0.2, pipes are created automatically. In earlier versions, you had to create the pipe using the `mkfifo(1)` command.
+Starting with {{% param "product.abbrev" %}} 3.0.2, pipes are created automatically. In earlier versions, you had to create the pipe using the `mkfifo(1)` command.
 
 {{% /alert %}}
 

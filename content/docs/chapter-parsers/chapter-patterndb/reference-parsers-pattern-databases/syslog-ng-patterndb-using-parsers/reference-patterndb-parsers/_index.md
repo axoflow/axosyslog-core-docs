@@ -4,7 +4,7 @@ weight:  100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The following parsers are available in {{% productparam "abbrev" %}}.
+The following parsers are available in {{% param "product.abbrev" %}}.
 
 
 ## @ANYSTRING@ {#patterndb-parser-anystring}
@@ -120,7 +120,7 @@ Parse any combination of the specified characters. For example, specifying a whi
 
 For example, the `@OPTIONALSET:: "@` parser will parse any combination of whitespaces and double-quotes.
 
-Available in {{% conditional-text include-if="ose" %}}{{% productparam "abbrev" %}} 3.31{{% /conditional-text %}} and later.
+Available in {{% conditional-text include-if="ose" %}}{{% param "product.abbrev" %}} 3.31{{% /conditional-text %}} and later.
 
 {{% alert title="Note" color="info" %}}
 
@@ -150,7 +150,7 @@ Parse any combination of the specified characters until another character is fou
 
 For example, the `@SET:: "@` parser will parse any combination of whitespaces and double-quotes.
 
-Available in {{% conditional-text include-if="ose" %}}{{% productparam "abbrev" %}} 3.4{{% /conditional-text %}} and later.
+Available in {{% conditional-text include-if="ose" %}}{{% param "product.abbrev" %}} 3.4{{% /conditional-text %}} and later.
 
 
 

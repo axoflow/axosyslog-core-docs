@@ -6,7 +6,7 @@ weight:  300
 
 This parser is deprecated. Use {{% xref "/docs/chapter-enrich-data/geoip2-parser/_index.md" %}} instead.
 
-The {{% productparam "abbrev" %}} application can lookup IPv4 addresses from an offline GeoIP database, and make the retrieved data available in name-value pairs. IPv6 addresses are not supported. Depending on the database used, you can access country code, longitude, and latitude information.
+The {{% param "product.abbrev" %}} application can lookup IPv4 addresses from an offline GeoIP database, and make the retrieved data available in name-value pairs. IPv6 addresses are not supported. Depending on the database used, you can access country code, longitude, and latitude information.
 
 {{% alert title="Note" color="info" %}}
 
@@ -35,7 +35,7 @@ You can refer to the separated parts of the message using the key of the value a
 
 ## Example: Using the GeoIP parser
 
-In the following example, {{% productparam "abbrev" %}} retrieves the GeoIP data of the IP address contained in the ${HOST} field of the incoming message, and includes the data (prefixed with the `geoip.` string) in the output JSON message.
+In the following example, {{% param "product.abbrev" %}} retrieves the GeoIP data of the IP address contained in the ${HOST} field of the incoming message, and includes the data (prefixed with the `geoip.` string) in the output JSON message.
 
 ```c
 

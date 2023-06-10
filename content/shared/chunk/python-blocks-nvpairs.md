@@ -5,7 +5,7 @@
 
   - You can define new name-value pairs in the Python function. For example, if the first argument in the definition of the function is called `log-message`, you can create a new name-value pair like this: `log_message["new-macro-name"]="value"`. This is useful when you parse a part of the message from Python, or lookup a value based on data extracted from the log message.
     
-    Note that the names of the name-value pairs are case-sensitive. If you create a new name-value pair called `new-macro-name` in Python, and want to reference it in another part of the {{% productparam "abbrev" %}} configuration file (for example, in a template), use the **${new-macro-name}** macro.
+    Note that the names of the name-value pairs are case-sensitive. If you create a new name-value pair called `new-macro-name` in Python, and want to reference it in another part of the {{% param "product.abbrev" %}} configuration file (for example, in a template), use the **${new-macro-name}** macro.
 
   - You cannot override hard macros (see {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/macros-hard-vs-soft/_index.md" %}}).
 

@@ -44,7 +44,7 @@ The following example creates a statistic from Apache webserver logs about the b
 
 ```c
 
-    @version: {{% productparam "techversion" %}}
+    @version: {{% param "product.techversion" %}}
     
     source s_apache {
         file("/var/log/apache2/access.log");

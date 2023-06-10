@@ -20,5 +20,5 @@ For example, to insert the `geoip.` prefix, use the **prefix(.geoip.)** option. 
 | Synopsis: | database()                     |
 | Default:  | `/usr/share/GeoIP/GeoIP.dat` |
 
-*Description:* The full path to the GeoIP database to use. Note that {{% productparam "abbrev" %}} must have the required privileges to read this file. Do not modify or delete this file while {{% productparam "abbrev" %}} is running, it can crash {{% productparam "abbrev" %}}.
+*Description:* The full path to the GeoIP database to use. Note that {{% param "product.abbrev" %}} must have the required privileges to read this file. Do not modify or delete this file while {{% param "product.abbrev" %}} is running, it can crash {{% param "product.abbrev" %}}.
 

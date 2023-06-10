@@ -6,7 +6,7 @@ weight:  500
 
 Certain features of generating messages can be used only if message correlation is used as well. For details on correlating messages, see {{% xref "/docs/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-correlation/_index.md" %}}.
 
-  - The {{% productparam "abbrev" %}} application automatically fills the fields for the generated message based on the scope of the context, for example, the HOST and PROGRAM fields if the `context-scope` is `program`.
+  - The {{% param "product.abbrev" %}} application automatically fills the fields for the generated message based on the scope of the context, for example, the HOST and PROGRAM fields if the `context-scope` is `program`.
 
   - When used together with message correlation, you can also refer to fields and values of earlier messages of the context by adding the `@\<distance-of-referenced-message-from-the-current\>` suffix to the macro. For details, see {{% xref "/docs/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-correlation/referencing-previous-messages/_index.md" %}}.
     
@@ -14,7 +14,7 @@ Certain features of generating messages can be used only if message correlation 
     {{% include-headless "chunk/example-patterndb-referencing-earlier-values.md" %}}
     
 
-  - You can use the name-value pairs of other messages of the context. If you set the `inherit-properties` attribute of the generated message to **context**, {{% productparam "abbrev" %}} collects every name-value pair from each message stored in the context, and includes them in the generated message. This means that you can refer to a name-value pair without having to know which message of the context included it. If a name-value pair appears in multiple messages of the context, the value in the latest message will be used. To refer to an earlier value, use the **@\<distance-of-referenced-message-from-the-current\>** suffix format.
+  - You can use the name-value pairs of other messages of the context. If you set the `inherit-properties` attribute of the generated message to **context**, {{% param "product.abbrev" %}} collects every name-value pair from each message stored in the context, and includes them in the generated message. This means that you can refer to a name-value pair without having to know which message of the context included it. If a name-value pair appears in multiple messages of the context, the value in the latest message will be used. To refer to an earlier value, use the **@\<distance-of-referenced-message-from-the-current\>** suffix format.
     
     ```c
     
@@ -100,13 +100,13 @@ Certain features of generating messages can be used only if message correlation 
     
     ## Example: Sending alert when a client disappears {#patterndb-timeout-action}
     
-    The following example shows how to combine various features of {{% productparam "abbrev" %}} to send an email alert if a client stops sending messages.
+    The following example shows how to combine various features of {{% param "product.abbrev" %}} to send an email alert if a client stops sending messages.
     
-      - Configure your clients to send MARK messages periodically. It is enough to configure MARK messages for the destination that forwards your log messages to your {{% productparam "abbrev" %}} server (`mark-mode(periodical)`).
+      - Configure your clients to send MARK messages periodically. It is enough to configure MARK messages for the destination that forwards your log messages to your {{% param "product.abbrev" %}} server (`mark-mode(periodical)`).
     
-      - On your {{% productparam "abbrev" %}} server, create a pattern database rule that matches on the incoming MARK messages. In the rule, set the `context-scope` attribute to **host**, and the `context-timeout` attribute to a value that is higher than the `mark-freq` value set on your clients (by default, `mark-freq` is 1200 seconds, so set `context-timeout` at least to 1500 seconds, but you might want to use a higher value, depending on your environment).
+      - On your {{% param "product.abbrev" %}} server, create a pattern database rule that matches on the incoming MARK messages. In the rule, set the `context-scope` attribute to **host**, and the `context-timeout` attribute to a value that is higher than the `mark-freq` value set on your clients (by default, `mark-freq` is 1200 seconds, so set `context-timeout` at least to 1500 seconds, but you might want to use a higher value, depending on your environment).
     
       - Add an action to this rule that sends you an email alert if the `context-timeout` expires, and the server does not receive a new MARK message (`\<action trigger="timeout"\>`).
     
-      - On your {{% productparam "abbrev" %}} server, use the pattern database in the log path that handles incoming log messages.
+      - On your {{% param "product.abbrev" %}} server, use the pattern database in the log path that handles incoming log messages.
     

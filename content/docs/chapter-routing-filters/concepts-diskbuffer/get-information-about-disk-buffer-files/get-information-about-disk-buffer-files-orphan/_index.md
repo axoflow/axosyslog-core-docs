@@ -6,7 +6,7 @@ weight:  900
 
 ## Purpose
 
-This section describes orphan disk-buffer files used in {{% productparam "name" %}}({{% productparam "abbrev" %}}).
+This section describes orphan disk-buffer files used in {{% param "product.name" %}}({{% param "product.abbrev" %}}).
 
 
 ## Orphan disk-buffer files
@@ -49,4 +49,4 @@ Disk-buffer files' saving directory content:
 
 The disk-buffer files `syslog-ng-00000.qf` and `syslog-ng-00000.rqf` don't exist in the persist file. These two files are the orphan disk-buffer files.
 
-For more information about orphan disk-buffer files and how to process the messages in orphan disk-buffer files using a separate {{% productparam "abbrev" %}} instance, see {{% xref "/docs/chapter-routing-filters/concepts-diskbuffer/get-information-about-disk-buffer-files/diskb-proc-sep-sysl-inst/_index.md" %}}.
+For more information about orphan disk-buffer files and how to process the messages in orphan disk-buffer files using a separate {{% param "product.abbrev" %}} instance, see {{% xref "/docs/chapter-routing-filters/concepts-diskbuffer/get-information-about-disk-buffer-files/diskb-proc-sep-sysl-inst/_index.md" %}}.

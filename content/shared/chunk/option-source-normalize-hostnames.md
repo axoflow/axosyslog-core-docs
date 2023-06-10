@@ -9,7 +9,7 @@
 | Accepted values: | **yes** | **no** |
 | Default:         | **no**           |
 
-*Description:* If enabled (**normalize-hostnames(yes)**), {{% productparam "abbrev" %}} converts the hostnames to lowercase.
+*Description:* If enabled (**normalize-hostnames(yes)**), {{% param "product.abbrev" %}} converts the hostnames to lowercase.
 
 {{% alert title="Note" color="info" %}}
 

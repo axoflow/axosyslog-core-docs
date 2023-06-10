@@ -4,26 +4,26 @@ weight:  300
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-This section provides information about enabling Proxy Protocol support in your `network()` source options, and an example configuration and output to illustrate how the Proxy Protocol method works in {{% productparam "name" %}} ({{% productparam "abbrev" %}}).
+This section provides information about enabling Proxy Protocol support in your `network()` source options, and an example configuration and output to illustrate how the Proxy Protocol method works in {{% param "product.name" %}} ({{% param "product.abbrev" %}}).
 
 For more information about the working mechanism of the Proxy Protocol, see {{% xref "/docs/chapter-sources/configuring-sources-network/proxy-prot-intro/proxy-prot-w-mech/_index.md" %}}.
 
 
 ## Enabling Proxy Protocol support for your network() source options
 
-Unless you enable Proxy Protocol support for your `network()` source, {{% productparam "abbrev" %}} identifies every connection that is connected to the load balancers identically by default, regardless of the source IP or the source protocol.
+Unless you enable Proxy Protocol support for your `network()` source, {{% param "product.abbrev" %}} identifies every connection that is connected to the load balancers identically by default, regardless of the source IP or the source protocol.
 
 To enable Proxy Protocol for your `network()` source, set [the `transport()` parameter of your `network()` source]({{< relref "/docs/chapter-sources/configuring-sources-network/reference-source-network/_index.md" >}}) to `proxied-tcp` or `proxied-tls-passthrough`, depending on your preference and configuration.
 
 `proxied-tls` can be used in complex MITM (man in the middle) configurations, where the proxy header is sent encrypted within the same TLS session as the proxied messages.
 
-When you enable Proxy Protocol support for your `network()` source, you can use the following configuration example with your {{% productparam "abbrev" %}} application.
+When you enable Proxy Protocol support for your `network()` source, you can use the following configuration example with your {{% param "product.abbrev" %}} application.
 
 
 
 ## Configuration
 
-The following code sample illustrates how you can use the Proxy Protocol in your {{% productparam "abbrev" %}} configuration (using the `transport()` parameter set to `proxied-tls-passthrough`).
+The following code sample illustrates how you can use the Proxy Protocol in your {{% param "product.abbrev" %}} configuration (using the `transport()` parameter set to `proxied-tls-passthrough`).
 
 ```c
 
@@ -68,6 +68,6 @@ With the `PROXY TCP4 192.168.1.1 10.10.0.1 1111 2222` input header, the output l
 
 ```
 
-Note that the [macros]({{< relref "/docs/chapter-sources/configuring-sources-network/proxy-prot-intro/proxy-prot-w-mech/_index.md#proxy-prot-adds-macros" >}}) that {{% productparam "abbrev" %}} adds to the message appear in the output.
+Note that the [macros]({{< relref "/docs/chapter-sources/configuring-sources-network/proxy-prot-intro/proxy-prot-w-mech/_index.md#proxy-prot-adds-macros" >}}) that {{% param "product.abbrev" %}} adds to the message appear in the output.
 
 

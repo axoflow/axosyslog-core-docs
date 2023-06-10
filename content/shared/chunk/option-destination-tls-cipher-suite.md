@@ -7,9 +7,9 @@
 |                  |                                                                              |
 | ---------------- | ---------------------------------------------------------------------------- |
 | Accepted values: | Name of a cipher, or a colon-separated list                                  |
-| Default:         | Depends on the OpenSSL version that {{% productparam "abbrev" %}} uses |
+| Default:         | Depends on the OpenSSL version that {{% param "product.abbrev" %}} uses |
 
-*Description:* Specifies the cipher, hash, and key-exchange algorithms used for the encryption, for example, `ECDHE-ECDSA-AES256-SHA384`. The list of available algorithms depends on the version of OpenSSL used to compile {{% productparam "abbrev" %}}. To specify multiple ciphers, separate the cipher names with a colon, and enclose the list between double-quotes, for example:
+*Description:* Specifies the cipher, hash, and key-exchange algorithms used for the encryption, for example, `ECDHE-ECDSA-AES256-SHA384`. The list of available algorithms depends on the version of OpenSSL used to compile {{% param "product.abbrev" %}}. To specify multiple ciphers, separate the cipher names with a colon, and enclose the list between double-quotes, for example:
 
 ```c
 
@@ -27,5 +27,5 @@ You can also use the following command to automatically list only ciphers permit
 
 ```
 
-Note that starting with version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}, when {{% productparam "abbrev" %}} receives TLS-encrypted connections, the order of ciphers set on the {{% productparam "abbrev" %}} server takes precedence over the client settings.
+Note that starting with version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}, when {{% param "product.abbrev" %}} receives TLS-encrypted connections, the order of ciphers set on the {{% param "product.abbrev" %}} server takes precedence over the client settings.
 

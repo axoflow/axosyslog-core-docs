@@ -9,7 +9,7 @@
 | Type:    | number |
 | Default: | 0      |
 
-*Description:* If set, {{% productparam "abbrev" %}} will pad output messages to the specified size (in bytes). Some operating systems (such as HP-UX) pad all messages to block boundary. This option can be used to specify the block size. (HP-UX uses 2048 bytes).
+*Description:* If set, {{% param "product.abbrev" %}} will pad output messages to the specified size (in bytes). Some operating systems (such as HP-UX) pad all messages to block boundary. This option can be used to specify the block size. (HP-UX uses 2048 bytes).
 
 {{% alert title="Warning" color="warning" %}}
 

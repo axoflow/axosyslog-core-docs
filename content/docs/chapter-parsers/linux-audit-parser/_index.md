@@ -4,7 +4,7 @@ weight:  1900
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The Linux audit parser can parse the log messages of the Linux Audit subsystem (`auditd`). The {{% productparam "abbrev" %}} application can separate these log messages to name-value pairs. For details on using value-pairs in {{% productparam "abbrev" %}} see {{% xref "/docs/chapter-concepts/concepts-value-pairs/_index.md" %}}. The following is a sample log message of `auditd`:
+The Linux audit parser can parse the log messages of the Linux Audit subsystem (`auditd`). The {{% param "product.abbrev" %}} application can separate these log messages to name-value pairs. For details on using value-pairs in {{% param "product.abbrev" %}} see {{% xref "/docs/chapter-concepts/concepts-value-pairs/_index.md" %}}. The following is a sample log message of `auditd`:
 
 ```c
 
@@ -17,9 +17,9 @@ The Linux audit parser can parse the log messages of the Linux Audit subsystem (
 
 ```
 
-Certain fields of the audit log can be encoded in hexadecimal format, for example, the `arch` field, or the `a\<number\>` fields in the previous example. The {{% productparam "abbrev" %}} application automatically decodes these fields (for example, the `c000003e` value becomes `x86_64`).
+Certain fields of the audit log can be encoded in hexadecimal format, for example, the `arch` field, or the `a\<number\>` fields in the previous example. The {{% param "product.abbrev" %}} application automatically decodes these fields (for example, the `c000003e` value becomes `x86_64`).
 
-The {{% productparam "abbrev" %}} application extracts every field into name-value pairs. It automatically decodes the following fields:
+The {{% param "product.abbrev" %}} application extracts every field into name-value pairs. It automatically decodes the following fields:
 
   - `name`
 
@@ -59,7 +59,7 @@ To parse the log messages of the Linux Audit subsystem, define a parser that has
 
 ## Example: Using the linux-audit-parser() parser
 
-In the following example, the source is a log file created by auditd. Since the audit log format is not a syslog format, the syslog parser is disabled, so that {{% productparam "abbrev" %}} does not parse the message: `flags(no-parse)`. The parser inserts "`.auditd.`" prefix before all extracted name-value pairs. The destination is a file, that uses the `format-json` template function. Every name-value pair that begins with a dot ("`.`") character will be written to the file (`dot-nv-pairs`). The log line connects the source, the destination, and the parser.
+In the following example, the source is a log file created by auditd. Since the audit log format is not a syslog format, the syslog parser is disabled, so that {{% param "product.abbrev" %}} does not parse the message: `flags(no-parse)`. The parser inserts "`.auditd.`" prefix before all extracted name-value pairs. The destination is a file, that uses the `format-json` template function. Every name-value pair that begins with a dot ("`.`") character will be written to the file (`dot-nv-pairs`). The log line connects the source, the destination, and the parser.
 
 ```c
 

@@ -86,7 +86,7 @@
     ```
     
 
-  - Some options are global options, or can be set globally, for example, whether {{% productparam "abbrev" %}} should use DNS resolution to resolve IP addresses. Global options are detailed in {{% xref "/docs/chapter-global-options/_index.md" %}}.
+  - Some options are global options, or can be set globally, for example, whether {{% param "product.abbrev" %}} should use DNS resolution to resolve IP addresses. Global options are detailed in {{% xref "/docs/chapter-global-options/_index.md" %}}.
     
     ```c
     

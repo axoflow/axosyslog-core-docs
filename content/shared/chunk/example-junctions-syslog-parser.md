@@ -4,7 +4,7 @@
 
 ## Example: Using junctions
 
-For example, suppose that you have a single network source that receives log messages from different devices, and some devices send messages that are not RFC-compliant (some routers are notorious for that). To solve this problem in earlier versions of {{% productparam "abbrev" %}}, you had to create two different network sources using different IP addresses or ports: one that received the RFC-compliant messages, and one that received the improperly formatted messages (for example, using the **flags(no-parse)** option). Using junctions this becomes much more simple: you can use a single network source to receive every message, then use a junction and two channels. The first channel processes the RFC-compliant messages, the second everything else. At the end, every message is stored in a single file. The filters used in the example can be `host()` filters (if you have a list of the IP addresses of the devices sending non-compliant messages), but that depends on your environment.
+For example, suppose that you have a single network source that receives log messages from different devices, and some devices send messages that are not RFC-compliant (some routers are notorious for that). To solve this problem in earlier versions of {{% param "product.abbrev" %}}, you had to create two different network sources using different IP addresses or ports: one that received the RFC-compliant messages, and one that received the improperly formatted messages (for example, using the **flags(no-parse)** option). Using junctions this becomes much more simple: you can use a single network source to receive every message, then use a junction and two channels. The first channel processes the RFC-compliant messages, the second everything else. At the end, every message is stored in a single file. The filters used in the example can be `host()` filters (if you have a list of the IP addresses of the devices sending non-compliant messages), but that depends on your environment.
 
 ```c
 
@@ -66,7 +66,7 @@ Since every channel receives every message that reaches the junction, use the **
 
 ``` {{% alert title="Note" color="info" %}}
 
-{{% productparam "abbrev" %}} has several parsers that you can use to parse non-compliant messages. You can even [write a custom syslog-ng parser in Python]({{< relref "/docs/chapter-parsers/python-parser/_index.md" >}}). For details, see {{% xref "/docs/chapter-parsers/_index.md" %}}.
+{{% param "product.abbrev" %}} has several parsers that you can use to parse non-compliant messages. You can even [write a custom syslog-ng parser in Python]({{< relref "/docs/chapter-parsers/python-parser/_index.md" >}}). For details, see {{% xref "/docs/chapter-parsers/_index.md" %}}.
 
 {{% /alert %}}
 

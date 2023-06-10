@@ -4,7 +4,7 @@ weight:  900
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-Version {{% conditional-text include-if="pe" %}}7.0.14{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.21{{% /conditional-text %}} of {{% productparam "abbrev" %}} can directly post log messages to an Elasticsearch deployment using the Elasticsearch Bulk API over the HTTP and Secure HTTP (HTTPS) protocols.
+Version {{% conditional-text include-if="pe" %}}7.0.14{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.21{{% /conditional-text %}} of {{% param "product.abbrev" %}} can directly post log messages to an Elasticsearch deployment using the Elasticsearch Bulk API over the HTTP and Secure HTTP (HTTPS) protocols.
 
 HTTPS connection, as well as password- and certificate-based authentication is supported. The content of the events is sent in JSON format.
 

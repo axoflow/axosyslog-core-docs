@@ -9,5 +9,5 @@
 | Type:    | yes|no |
 | Default: | yes    |
 
-*Description:* If set to **yes**, {{% productparam "abbrev" %}} will start reading the records from the beginning of the journal, if the journal has not been read yet. If set to **no**, {{% productparam "abbrev" %}} will read only the new records. If the source has a state in the persist file, this option will have no effect.
+*Description:* If set to **yes**, {{% param "product.abbrev" %}} will start reading the records from the beginning of the journal, if the journal has not been read yet. If set to **no**, {{% param "product.abbrev" %}} will read only the new records. If the source has a state in the persist file, this option will have no effect.
 

@@ -4,7 +4,7 @@ weight:  100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The `slack` destination of {{% productparam "abbrev" %}} can directly post log messages and notifications to Slack channels. The `slack` destination has the following options.
+The `slack` destination of {{% param "product.abbrev" %}} can directly post log messages and notifications to Slack channels. The `slack` destination has the following options.
 
 
 ## author-name()
@@ -71,7 +71,7 @@ For details on how this option influences batch mode, see [http: Posting message
 | Accepted values: | Filename |
 | Default:         | none     |
 
-*Description:* Name of a file that contains an X.509 CA certificate (or a certificate chain) in PEM format. The {{% productparam "abbrev" %}} application uses this certificate to validate the certificate of the HTTPS server. If the file contains a certificate chain, the file must begin with the certificate of the host, followed by the CA certificate that signed the certificate of the host, and any other signing CAs in order.
+*Description:* Name of a file that contains an X.509 CA certificate (or a certificate chain) in PEM format. The {{% param "product.abbrev" %}} application uses this certificate to validate the certificate of the HTTPS server. If the file contains a certificate chain, the file must begin with the certificate of the host, followed by the CA certificate that signed the certificate of the host, and any other signing CAs in order.
 
 {{% include-headless "chunk/topic-tls-block-http.md" %}}
 
@@ -151,7 +151,7 @@ For details on how this option influences batch mode, see [http: Posting message
 | Type:    | URL  |
 | Default: | None |
 
-*Description:* The Webhook URL for the Incoming Webhook of your Slack app. This URL must also include the authentication token that {{% productparam "abbrev" %}} uses to authenticate to Slack. For example: **https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX**
+*Description:* The Webhook URL for the Incoming Webhook of your Slack app. This URL must also include the authentication token that {{% param "product.abbrev" %}} uses to authenticate to Slack. For example: **https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX**
 
 For details, see the [Slack documentation about Incoming Webhooks](https://api.slack.com/incoming-webhooks).
 
@@ -185,7 +185,7 @@ For details, see the [Slack documentation about Incoming Webhooks](https://api.s
 
 {{% include-headless "chunk/option-destination-retries.md" %}}
 
-To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% productparam "abbrev" %}} will attempt to resend messages until the number of attempts reaches `retries`. If the HTTP server returns 4xx codes, {{% productparam "abbrev" %}} will drop the messages.
+To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% param "product.abbrev" %}} will attempt to resend messages until the number of attempts reaches `retries`. If the HTTP server returns 4xx codes, {{% param "product.abbrev" %}} will drop the messages.
 
 
 

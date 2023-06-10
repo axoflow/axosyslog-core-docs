@@ -8,7 +8,7 @@ The date parser can extract dates from non-syslog messages. It operates by defau
 
 {{% alert title="Note" color="info" %}}
 
-Note that parsing will fail if the format string does not match the entire template or field. Since by default {{% productparam "name" %}} ({{% productparam "abbrev" %}}) uses the ${MESSAGE} part of the log message, parsing will fail, unless the log message contains only a date, but that is unlikely, so practically you will have to segment the message (for example, using a [csv-parser()]({{< relref "/docs/chapter-parsers/csv-parser/_index.md" >}})) before using the `date-parser()`. You can also use `date-parser()` to parse dates received in a JSON or key-value-formatted log message.
+Note that parsing will fail if the format string does not match the entire template or field. Since by default {{% param "product.name" %}} ({{% param "product.abbrev" %}}) uses the ${MESSAGE} part of the log message, parsing will fail, unless the log message contains only a date, but that is unlikely, so practically you will have to segment the message (for example, using a [csv-parser()]({{< relref "/docs/chapter-parsers/csv-parser/_index.md" >}})) before using the `date-parser()`. You can also use `date-parser()` to parse dates received in a JSON or key-value-formatted log message.
 
 {{% /alert %}}
 
@@ -30,7 +30,7 @@ Note that parsing will fail if the format string does not match the entire templ
 
 ## Example: Using the date-parser()
 
-In the following example, {{% productparam "abbrev" %}} parses dates like `01/Jan/2016:13:05:05 PST` from a field called `MY_DATE` using the following format string: `format("%d/%b/%Y:%H:%M:%S %Z")` (how you create this field from the incoming message is not shown in the example). In the destination template every message will begin with the timestamp in ISODATE format. Since the syslog parser is disabled, {{% productparam "abbrev" %}} will include the entire original message (including the original timestamp) in the ${MESSAGE} macro.
+In the following example, {{% param "product.abbrev" %}} parses dates like `01/Jan/2016:13:05:05 PST` from a field called `MY_DATE` using the following format string: `format("%d/%b/%Y:%H:%M:%S %Z")` (how you create this field from the incoming message is not shown in the example). In the destination template every message will begin with the timestamp in ISODATE format. Since the syslog parser is disabled, {{% param "product.abbrev" %}} will include the entire original message (including the original timestamp) in the ${MESSAGE} macro.
 
 ```c
 

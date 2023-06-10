@@ -48,7 +48,7 @@ The `amqp()` destination has the following options:
 | Type:    | string |
 | Default: | N/A    |
 
-*Description:* Name of a file, that contains the trusted CA certificate in PEM format. For example: `ca-file("/home/certs/syslog-ng/tls/cacert.pem")`. The {{% productparam "abbrev" %}} application uses this CA certificate to validate the certificate of the peer.
+*Description:* Name of a file, that contains the trusted CA certificate in PEM format. For example: `ca-file("/home/certs/syslog-ng/tls/cacert.pem")`. The {{% param "product.abbrev" %}} application uses this CA certificate to validate the certificate of the peer.
 
 {{% include-headless "chunk/topic-tls-block-amqp.md" %}}
 
@@ -69,7 +69,7 @@ The `amqp()` destination has the following options:
 | Type:    | string |
 | Default: | syslog |
 
-*Description:* The name of the AMQP exchange where {{% productparam "abbrev" %}} sends the message. Exchanges take a message and route it into zero or more queues.
+*Description:* The name of the AMQP exchange where {{% param "product.abbrev" %}} sends the message. Exchanges take a message and route it into zero or more queues.
 
 
 
@@ -80,7 +80,7 @@ The `amqp()` destination has the following options:
 | Type:    | yes|no |
 | Default: | no     |
 
-*Description:* By default, {{% productparam "abbrev" %}} does not create non-existing exchanges. Use the **exchange-declare(yes)** option to automatically create exchanges.
+*Description:* By default, {{% param "product.abbrev" %}} does not create non-existing exchanges. Use the **exchange-declare(yes)** option to automatically create exchanges.
 
 
 
@@ -113,7 +113,7 @@ The `amqp()` destination has the following options:
 | Type:    | number [seconds] |
 | Default: | 0 (disabled)       |
 
-*Description:* If enabled, the {{% productparam "abbrev" %}} amqp destination sends heartbeat messages to the server periodically. During negotiation, both the amqp server and the client provide a heartbeat parameter, and the smaller is chosen for heartbeat interval. For example:
+*Description:* If enabled, the {{% param "product.abbrev" %}} amqp destination sends heartbeat messages to the server periodically. During negotiation, both the amqp server and the client provide a heartbeat parameter, and the smaller is chosen for heartbeat interval. For example:
 
 ```c
 
@@ -128,7 +128,7 @@ The `amqp()` destination has the following options:
 
 ```
 
-Available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="pe" %}}7.0.15{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.21{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="pe" %}}7.0.15{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.21{{% /conditional-text %}} and later.
 
 
 {{% include-headless "chunk/option-destination-hook.md" %}}

@@ -4,7 +4,7 @@ weight:  4100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The {{% productparam "abbrev" %}} application can parse fields from a message with the help of regular expressions. This can be also achieved with the `match()` filter, by setting the store-matches flag, but the `regexp-parser()` offers more flexibility, like multiple patterns and setting the prefix of the created name-value pairs.
+The {{% param "product.abbrev" %}} application can parse fields from a message with the help of regular expressions. This can be also achieved with the `match()` filter, by setting the store-matches flag, but the `regexp-parser()` offers more flexibility, like multiple patterns and setting the prefix of the created name-value pairs.
 
 {{% alert title="Note" color="info" %}}
 
@@ -12,7 +12,7 @@ The `regexp-parser()` can create additional name-value pairs only if "named capt
 
 {{% /alert %}}
 
-For more information about regular expressions in {{% productparam "abbrev" %}}, see {{% xref "/docs/chapter-manipulating-messages/regular-expressions/_index.md" %}}.
+For more information about regular expressions in {{% param "product.abbrev" %}}, see {{% xref "/docs/chapter-manipulating-messages/regular-expressions/_index.md" %}}.
 
 For example:
 

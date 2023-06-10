@@ -6,7 +6,7 @@ weight:  1100
 
 The file driver is one of the most important destination drivers in syslog-ng. It allows to output messages to the specified text file, or to a set of files.
 
-The destination filename may include macros which get expanded when the message is written, thus a simple `file()` driver may create several files: for example, {{% productparam "abbrev" %}} can store the messages of client hosts in a separate file for each host. For more information on available macros see {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" %}}.
+The destination filename may include macros which get expanded when the message is written, thus a simple `file()` driver may create several files: for example, {{% param "product.abbrev" %}} can store the messages of client hosts in a separate file for each host. For more information on available macros see {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" %}}.
 
 If the expanded filename refers to a directory which does not exist, it will be created depending on the `create-dirs()` setting (both global and a per destination option).
 

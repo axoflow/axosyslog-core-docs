@@ -4,7 +4,7 @@ weight:  300
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The `http` destination of {{% productparam "abbrev" %}} can directly post log messages to web services using the HTTP protocol. The `http` destination has the following options.
+The `http` destination of {{% param "product.abbrev" %}} can directly post log messages to web services using the HTTP protocol. The `http` destination has the following options.
 
 
 {{% include-headless "chunk/option-destination-batch-bytes.md" %}}
@@ -43,7 +43,7 @@ For details on how this option influences HTTP batch mode, see [http: Posting me
 | Accepted values: | string |
 | Default:         | none   |
 
-*Description:* The string {{% productparam "abbrev" %}} puts at the beginning of the body of the HTTP request, before the log message. Available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="ose" %}}3.18{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.11{{% /conditional-text %}} and later.
+*Description:* The string {{% param "product.abbrev" %}} puts at the beginning of the body of the HTTP request, before the log message. Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.18{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.11{{% /conditional-text %}} and later.
 
 For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/docs/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
 
@@ -56,7 +56,7 @@ For details on how this option influences HTTP batch mode, see [http: Posting me
 | Accepted values: | string |
 | Default:         | none   |
 
-*Description:* The string {{% productparam "abbrev" %}} puts to the end of the body of the HTTP request, after the log message. Available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="ose" %}}3.18{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.11{{% /conditional-text %}} and later.
+*Description:* The string {{% param "product.abbrev" %}} puts to the end of the body of the HTTP request, after the log message. Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.18{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.11{{% /conditional-text %}} and later.
 
 For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/docs/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
 
@@ -77,7 +77,7 @@ For details on how this option influences HTTP batch mode, see [http: Posting me
 | Accepted values: | Filename |
 | Default:         | none     |
 
-*Description:* Name of a file that contains an X.509 CA certificate (or a certificate chain) in PEM format. The {{% productparam "abbrev" %}} application uses this certificate to validate the certificate of the HTTPS server. If the file contains a certificate chain, the file must begin with the certificate of the host, followed by the CA certificate that signed the certificate of the host, and any other signing CAs in order.
+*Description:* Name of a file that contains an X.509 CA certificate (or a certificate chain) in PEM format. The {{% param "product.abbrev" %}} application uses this certificate to validate the certificate of the HTTPS server. If the file contains a certificate chain, the file must begin with the certificate of the host, followed by the CA certificate that signed the certificate of the host, and any other signing CAs in order.
 
 {{% include-headless "chunk/topic-tls-block-http.md" %}}
 
@@ -108,7 +108,7 @@ For details on how this option influences HTTP batch mode, see [http: Posting me
 | Accepted values: | string            |
 | Default:         | newline character |
 
-*Description:* By default, {{% productparam "abbrev" %}} separates the log messages of the batch with a newline character. You can specify a different delimiter by using the `delimiter()` option. Available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="ose" %}}3.18{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.11{{% /conditional-text %}} and later.
+*Description:* By default, {{% param "product.abbrev" %}} separates the log messages of the batch with a newline character. You can specify a different delimiter by using the `delimiter()` option. Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.18{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.11{{% /conditional-text %}} and later.
 
 For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/docs/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
 
@@ -169,7 +169,7 @@ The `http()` destination supports only unencrypted key files (that is, the priva
 | Type:    | string |
 | Default: |        |
 
-*Description:* The password that {{% productparam "abbrev" %}} uses to authenticate on the server where it sends the messages.
+*Description:* The password that {{% param "product.abbrev" %}} uses to authenticate on the server where it sends the messages.
 
 
 
@@ -192,7 +192,7 @@ The `http()` destination supports only unencrypted key files (that is, the priva
 | Type:    | list            |
 | Default: | N/A (see below) |
 
-*Description:* Specifies what {{% productparam "abbrev" %}} does with the log message, based on the response code received from the HTTP server. If the server returns a status code beginning with 2 (for example, 200), {{% productparam "abbrev" %}} assumes the message was successfully sent. Otherwise, the action listed in the following table is applied. For status codes not listed in the following table, if the status code begins with 2 (for example, 299), {{% productparam "abbrev" %}} assumes the message was successfully sent. For other status codes, {{% productparam "abbrev" %}} disconnects. The following actions are possible:
+*Description:* Specifies what {{% param "product.abbrev" %}} does with the log message, based on the response code received from the HTTP server. If the server returns a status code beginning with 2 (for example, 200), {{% param "product.abbrev" %}} assumes the message was successfully sent. Otherwise, the action listed in the following table is applied. For status codes not listed in the following table, if the status code begins with 2 (for example, 299), {{% param "product.abbrev" %}} assumes the message was successfully sent. For other status codes, {{% param "product.abbrev" %}} disconnects. The following actions are possible:
 
   - `disconnect`: Keep trying to resend the message indefinitely.
 
@@ -286,7 +286,7 @@ To customize the action to take for a particular response code, use the followin
 
 {{% include-headless "chunk/option-destination-retries.md" %}}
 
-To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% productparam "abbrev" %}} will attempt to resend messages until the number of attempts reaches `retries`. If the HTTP server returns 4xx codes, {{% productparam "abbrev" %}} will drop the messages.
+To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% param "product.abbrev" %}} will attempt to resend messages until the number of attempts reaches `retries`. If the HTTP server returns 4xx codes, {{% param "product.abbrev" %}} will drop the messages.
 
 
 
@@ -322,7 +322,7 @@ To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% produc
 
 *Description:* Specifies the hostname or IP address and optionally the port number of the web service that can receive log data via HTTP. Use a colon (**:**) after the address to specify the port number of the server. For example: `http://127.0.0.1:8000`
 
-In case the server on the specified URL returns a redirect request, {{% productparam "abbrev" %}} automatically follows maximum 3 redirects. Only HTTP and HTTPS based redirections are supported.
+In case the server on the specified URL returns a redirect request, {{% param "product.abbrev" %}} automatically follows maximum 3 redirects. Only HTTP and HTTPS based redirections are supported.
 
 {{% include-headless "chunk/destination-load-balancing-url.md" %}}
 
@@ -337,7 +337,7 @@ In case the server on the specified URL returns a redirect request, {{% productp
 | Type:    | string |
 | Default: |        |
 
-*Description:* The username that {{% productparam "abbrev" %}} uses to authenticate on the server where it sends the messages.
+*Description:* The username that {{% param "product.abbrev" %}} uses to authenticate on the server where it sends the messages.
 
 
 {{% include-headless "chunk/option-destination-http-use-system-cert-store.md" %}}

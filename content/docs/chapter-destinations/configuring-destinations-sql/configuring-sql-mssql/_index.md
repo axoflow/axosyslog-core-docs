@@ -10,7 +10,7 @@ The `mssql` database driver can access Microsoft SQL (MSSQL) destinations. This 
 
   - As certain database versions limit the maximum length of table names, macros in the table names should be used with care.
 
-  - In the current version of {{% productparam "abbrev" %}}, the types of database columns must be explicitly set for the MSSQL destination.
+  - In the current version of {{% param "product.abbrev" %}}, the types of database columns must be explicitly set for the MSSQL destination.
     
     {{% include-headless "wnt/warning-destination-mssql-columntypes.md" %}}
 

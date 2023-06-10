@@ -13,7 +13,7 @@ This flag means that the source of the message is ignored, only the filters of t
 
 drop-unmatched
 
-This flag means that the message is dropped along a log path when it does not match a filter or is discarded by a parser. Without using the `drop-unmatched` flag, {{% productparam "abbrev" %}} would continue to process the message along alternative paths.
+This flag means that the message is dropped along a log path when it does not match a filter or is discarded by a parser. Without using the `drop-unmatched` flag, {{% param "product.abbrev" %}} would continue to process the message along alternative paths.
 
 fallback
 
@@ -23,7 +23,7 @@ This flag makes a log statement 'fallback'. Fallback log statements process mess
 
 final
 
-This flag means that the processing of log messages processed by the log statement ends here, other log statements appearing later in the configuration file will not process the messages processed by the log statement labeled as 'final'. Note that this does not necessarily mean that matching messages will be stored only once, as there can be matching log statements processed before the current one ({{% productparam "abbrev" %}} evaluates log statements in the order they appear in the configuration file).
+This flag means that the processing of log messages processed by the log statement ends here, other log statements appearing later in the configuration file will not process the messages processed by the log statement labeled as 'final'. Note that this does not necessarily mean that matching messages will be stored only once, as there can be matching log statements processed before the current one ({{% param "product.abbrev" %}} evaluates log statements in the order they appear in the configuration file).
 
 {{% include-headless "chunk/para-flags-processed.md" %}}
 

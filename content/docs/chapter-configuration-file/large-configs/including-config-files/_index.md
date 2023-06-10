@@ -12,15 +12,15 @@ The syslog-ng application supports including external files in its configuration
 
 ```
 
-This imports the entire file into the configuration of {{% productparam "abbrev" %}}, at the location of the include statement. The \<filename\> can be one of the following:
+This imports the entire file into the configuration of {{% param "product.abbrev" %}}, at the location of the include statement. The \<filename\> can be one of the following:
 
-  - A filename, optionally with full path. The filename (not the path) can include UNIX-style wildcard characters (`\*`, `?`). When using wildcard characters, {{% productparam "abbrev" %}} will include every matching file. For details on using wildcard characters, see [Types and options of regular expressions]({{< relref "/docs/chapter-manipulating-messages/regular-expressions/reference-regexp-types/_index.md" >}}).
+  - A filename, optionally with full path. The filename (not the path) can include UNIX-style wildcard characters (`\*`, `?`). When using wildcard characters, {{% param "product.abbrev" %}} will include every matching file. For details on using wildcard characters, see [Types and options of regular expressions]({{< relref "/docs/chapter-manipulating-messages/regular-expressions/reference-regexp-types/_index.md" >}}).
 
-  - A directory. When including a directory, {{% productparam "abbrev" %}} will try to include every file from the directory, except files beginning with a \~ (tilde) or a . (dot) character. Including a directory is not recursive. The files are included in alphabetic order, first files beginning with uppercase characters, then files beginning with lowercase characters. For example, if the directory contains the `a.conf, B. conf, c.conf, D.conf` files, they will be included in the following order: `B.conf, D. conf, a.conf, c.conf`.
+  - A directory. When including a directory, {{% param "product.abbrev" %}} will try to include every file from the directory, except files beginning with a \~ (tilde) or a . (dot) character. Including a directory is not recursive. The files are included in alphabetic order, first files beginning with uppercase characters, then files beginning with lowercase characters. For example, if the directory contains the `a.conf, B. conf, c.conf, D.conf` files, they will be included in the following order: `B.conf, D. conf, a.conf, c.conf`.
 
 When including configuration files, consider the following points:
 
-  - The default path where {{% productparam "abbrev" %}} looks for the file depends on where {{% productparam "abbrev" %}} is installed. The `syslog-ng --version` command displays this path as `Include-Path`.
+  - The default path where {{% param "product.abbrev" %}} looks for the file depends on where {{% param "product.abbrev" %}} is installed. The `syslog-ng --version` command displays this path as `Include-Path`.
 
   - Defining an object twice is not allowed, unless you use the `@define allow-config-dups 1` definition in the configuration file. If an object is defined twice (for example, the original syslog-ng configuration file and the file imported into this configuration file both define the same option, source, or other object), then the object that is defined later in the configuration file will be effective. For example, if you set a global option at the beginning of the configuration file, and later include a file that defines the same option with a different value, then the option defined in the imported file will be used.
 
@@ -32,7 +32,7 @@ When including configuration files, consider the following points:
     
     ```c
     
-        @version: {{% productparam "techversion" %}}
+        @version: {{% param "product.techversion" %}}
         @include "example.conf"
     
     ```

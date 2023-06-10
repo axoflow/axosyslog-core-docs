@@ -14,7 +14,7 @@ The `osquery()` driver has the following options.
 | Type:    | path                                  |
 | Default: | /var/log/osquery/osqueryd.results.log |
 
-*Description:* The log file of `osquery` that stores the results of periodic queries. The {{% productparam "abbrev" %}} application reads the messages from this file.
+*Description:* The log file of `osquery` that stores the results of periodic queries. The {{% param "product.abbrev" %}} application reads the messages from this file.
 
 
 {{% include-headless "chunk/option-destination-hook.md" %}}

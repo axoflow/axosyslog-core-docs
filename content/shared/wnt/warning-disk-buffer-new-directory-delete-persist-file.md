@@ -5,6 +5,6 @@
 
 When creating a new `dir()` option for a disk buffer, or modifying an existing one, make sure you delete the persist file.
 
-{{% productparam "abbrev" %}} creates disk-buffer files based on the path recorded in the persist file. Therefore, if the persist file is not deleted after modifying the `dir()` option, then following a restart, {{% productparam "abbrev" %}} will look for or create disk-buffer files in their old location. To ensure that {{% productparam "abbrev" %}} uses the new `dir()` setting, the persist file must not contain any information about the destinations which the disk-buffer file in question belongs to.
+{{% param "product.abbrev" %}} creates disk-buffer files based on the path recorded in the persist file. Therefore, if the persist file is not deleted after modifying the `dir()` option, then following a restart, {{% param "product.abbrev" %}} will look for or create disk-buffer files in their old location. To ensure that {{% param "product.abbrev" %}} uses the new `dir()` setting, the persist file must not contain any information about the destinations which the disk-buffer file in question belongs to.
 
 {{% /alert %}}

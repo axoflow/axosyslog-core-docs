@@ -10,7 +10,7 @@ On platforms running systemd, the `systemd-syslog()` driver reads the log messag
 
   - The socket activation of systemd is buggy, causing some log messages to get lost during system startup.
 
-  - If {{% productparam "abbrev" %}} is running in a jail or a Linux Container (LXC), it will not read from the `/dev/kmsg` or `/proc/kmsg` files.
+  - If {{% param "product.abbrev" %}} is running in a jail or a Linux Container (LXC), it will not read from the `/dev/kmsg` or `/proc/kmsg` files.
 
 
 ## Declaration:
@@ -27,7 +27,7 @@ On platforms running systemd, the `systemd-syslog()` driver reads the log messag
 
 ```c
 
-    @version: {{% productparam "techversion" %}}
+    @version: {{% param "product.techversion" %}}
     
     source s_systemdd {
         systemd-syslog();

@@ -6,7 +6,7 @@ weight:  100
 
 # Perl Compatible Regular Expressions (PCRE)
 
-Starting with {{% productparam "abbrev" %}} version 3.1, PCRE expressions are supported on every platform. If the `type()` parameter is not specified, {{% productparam "abbrev" %}} uses PCRE regular expressions by default.
+Starting with {{% param "product.abbrev" %}} version 3.1, PCRE expressions are supported on every platform. If the `type()` parameter is not specified, {{% param "product.abbrev" %}} uses PCRE regular expressions by default.
 
 The following example shows the structure of PCRE-style regular expressions in use.
 

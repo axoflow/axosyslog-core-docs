@@ -4,12 +4,12 @@ weight:  500
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The `kafka` destination of {{% productparam "abbrev" %}} can directly publish log messages to the [Apache Kafka](http://kafka.apache.org) message bus, where subscribers can access them. The `kafka` destination has the following options.
+The `kafka` destination of {{% param "product.abbrev" %}} can directly publish log messages to the [Apache Kafka](http://kafka.apache.org) message bus, where subscribers can access them. The `kafka` destination has the following options.
 
 
 ## Required options:
 
-The following options are required: `kafka-bootstrap-servers()`, `topic()`. Note that to use `kafka`, you must add the following lines to the beginning of your {{% productparam "abbrev" %}} configuration:
+The following options are required: `kafka-bootstrap-servers()`, `topic()`. Note that to use `kafka`, you must add the following lines to the beginning of your {{% param "product.abbrev" %}} configuration:
 
 ```c
 
@@ -64,9 +64,9 @@ For the `kafka` destination, include the path to the directory where you copied 
 | Type:    | string (absolute path) |
 | Default: | N/A                    |
 
-*Description:* The absolute path and filename of the Kafka properties file to load. For example, `properties-file("/opt/syslog-ng/etc/kafka_dest.properties")`. The {{% productparam "abbrev" %}} application reads this file and passes the properties to the Kafka Producer. If a property is defined both in the {{% productparam "abbrev" %}} configuration file (`syslog-ng.conf`) and in the properties file, then {{% productparam "abbrev" %}} uses the definition from the {{% productparam "abbrev" %}} configuration file.
+*Description:* The absolute path and filename of the Kafka properties file to load. For example, `properties-file("/opt/syslog-ng/etc/kafka_dest.properties")`. The {{% param "product.abbrev" %}} application reads this file and passes the properties to the Kafka Producer. If a property is defined both in the {{% param "product.abbrev" %}} configuration file (`syslog-ng.conf`) and in the properties file, then {{% param "product.abbrev" %}} uses the definition from the {{% param "product.abbrev" %}} configuration file.
 
-The {{% productparam "abbrev" %}} `kafka` destination supports all properties of the official Kafka producer. For details, see the [Apache Kafka documentation](http://kafka.apache.org/documentation.html#newproducerconfigs).
+The {{% param "product.abbrev" %}} `kafka` destination supports all properties of the official Kafka producer. For details, see the [Apache Kafka documentation](http://kafka.apache.org/documentation.html#newproducerconfigs).
 
 The `kafka-bootstrap-servers` option is translated to the `bootstrap.servers` property.
 

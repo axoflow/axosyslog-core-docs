@@ -9,5 +9,5 @@
 | Type:    | yes or no |
 | Default: | no        |
 
-*Description:* Specifies whether the external program should be closed when {{% productparam "abbrev" %}} is reloaded.
+*Description:* Specifies whether the external program should be closed when {{% param "product.abbrev" %}} is reloaded.
 

@@ -10,9 +10,9 @@ The macros related to the date of the message (for example: `${ISODATE}`, `${HOU
     
     {{% include-headless "wnt/warning-keep-timestamp-s-macros.md" %}}
 
-  - `R_` prefix, for example, `${R_DATE}`: `${R_DATE}` is the date when {{% productparam "abbrev" %}} has received the message.
+  - `R_` prefix, for example, `${R_DATE}`: `${R_DATE}` is the date when {{% param "product.abbrev" %}} has received the message.
 
-  - `C_` prefix, for example, `${C_DATE}`: `${C_DATE}` is the current date, that is when {{% productparam "abbrev" %}} processes the message and resolves the macro.
+  - `C_` prefix, for example, `${C_DATE}`: `${C_DATE}` is the current date, that is when {{% param "product.abbrev" %}} processes the message and resolves the macro.
 
 The `${DATE}` macro equals the `${S_DATE}` macro.
 

@@ -33,13 +33,13 @@ The syslog-ng application uses flow-control in the following cases:
 
 {{% alert title="Note" color="info" %}}
 
-The way flow-control works has changed significantly in version {{% productparam "abbrev" %}}{{% conditional-text include-if="ose" %}}3.22{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.16{{% /conditional-text %}}. If you are using an older version of {{% productparam "abbrev" %}}, consult the documentation of the version you are using for details about flow-control.
+The way flow-control works has changed significantly in version {{% param "product.abbrev" %}}{{% conditional-text include-if="ose" %}}3.22{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.16{{% /conditional-text %}}. If you are using an older version of {{% param "product.abbrev" %}}, consult the documentation of the version you are using for details about flow-control.
 
 {{% /alert %}}
 
 The flow-control of syslog-ng introduces a control window to the source that tracks how many messages can syslog-ng accept from the source. Every message that syslog-ng reads from the source lowers the window size by one, every message that syslog-ng successfully sends from the output buffer increases the window size by one. If the window is full (that is, its size decreases to zero), syslog-ng stops reading messages from the source. The initial size of the control window is by default `100`. If a source accepts messages from multiple connections, all messages use the same control window.
 
-When using flow-control, syslog-ng automatically sets the size of the output buffer so that it matches the size of the control window of the sources. Note that starting with {{% productparam "abbrev" %}}{{% conditional-text include-if="ose" %}}3.22{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.16{{% /conditional-text %}}, `log-fifo-size()` only affects log paths that are not flow-controlled.
+When using flow-control, syslog-ng automatically sets the size of the output buffer so that it matches the size of the control window of the sources. Note that starting with {{% param "product.abbrev" %}}{{% conditional-text include-if="ose" %}}3.22{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.16{{% /conditional-text %}}, `log-fifo-size()` only affects log paths that are not flow-controlled.
 
 {{% alert title="Note" color="info" %}}
 

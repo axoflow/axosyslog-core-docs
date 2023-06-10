@@ -7,6 +7,6 @@
 | Default:  | `tcp://localhost:1883` |
 | Required: | yes                      |
 
-*Description:* Specifies the hostname or IP address, and the port number of the MQTT broker to which {{% productparam "abbrev" %}} will send the log messages.
+*Description:* Specifies the hostname or IP address, and the port number of the MQTT broker to which {{% param "product.abbrev" %}} will send the log messages.
 
 Syntax: `\<protocol type\>://\<host\>:\<port\>`

@@ -5,6 +5,6 @@
 
 When using this destination, update the configuration of your log rotation program to rotate these files. Otherwise, the log files can become very large.
 
-Also, after rotating the log files, reload {{% productparam "abbrev" %}} using the `syslog-ng-ctl reload` command, or use another method to send a SIGHUP to {{% productparam "abbrev" %}}.
+Also, after rotating the log files, reload {{% param "product.abbrev" %}} using the `syslog-ng-ctl reload` command, or use another method to send a SIGHUP to {{% param "product.abbrev" %}}.
 
 {{% /alert %}}

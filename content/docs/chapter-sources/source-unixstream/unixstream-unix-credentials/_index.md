@@ -4,7 +4,7 @@ weight:  100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-Starting with {{% productparam "abbrev" %}} {{% conditional-text include-if="ose" %}}3.6{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}5.2{{% /conditional-text %}}, the `unix-stream()` and `unix-dgram()` sources automatically extract the available UNIX credentials and other metainformation from the received log messages. The {{% productparam "abbrev" %}} application can extract the following information on Linux and FreeBSD platforms (examples show the value of the macro for the `su - myuser` command). Similar information is available for the [systemd-journal]({{< relref "/docs/chapter-sources/configuring-sources-journal/_index.md" >}}) source.
+Starting with {{% param "product.abbrev" %}} {{% conditional-text include-if="ose" %}}3.6{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}5.2{{% /conditional-text %}}, the `unix-stream()` and `unix-dgram()` sources automatically extract the available UNIX credentials and other metainformation from the received log messages. The {{% param "product.abbrev" %}} application can extract the following information on Linux and FreeBSD platforms (examples show the value of the macro for the `su - myuser` command). Similar information is available for the [systemd-journal]({{< relref "/docs/chapter-sources/configuring-sources-journal/_index.md" >}}) source.
 
 <table>
 <caption>UNIX credentials available via UNIX domain sockets</caption>

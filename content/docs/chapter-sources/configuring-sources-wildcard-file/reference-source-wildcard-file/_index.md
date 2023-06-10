@@ -69,7 +69,7 @@ For example, **filename-pattern("\*.log")** matches the `syslog.log` and `auth.l
 
 {{% include-headless "chunk/option-source-file-log-iw-size.md" %}}
 
-When using wildcards in the filenames, {{% productparam "abbrev" %}} attempts to read `log-fetch-limit()` number of messages from each file. For optimal performance, make sure that `log-iw-size()` is greater than `log-fetch-limit()\*max-files()`. Note that to avoid performance problems, if `log-iw-size()/max-files()` is smaller than 100, {{% productparam "abbrev" %}} automatically sets `log-iw-size()` to **max-files()\*100**.
+When using wildcards in the filenames, {{% param "product.abbrev" %}} attempts to read `log-fetch-limit()` number of messages from each file. For optimal performance, make sure that `log-iw-size()` is greater than `log-fetch-limit()\*max-files()`. Note that to avoid performance problems, if `log-iw-size()/max-files()` is smaller than 100, {{% param "product.abbrev" %}} automatically sets `log-iw-size()` to **max-files()\*100**.
 
 
 ## Example: Initial window size of file sources
@@ -103,7 +103,7 @@ If `log-fetch-limit()` is 100, and your wildcard file source has 200 files, then
 | Type:    | auto | inotify | poll |
 | Default: | auto                  |
 
-*Description:* If the platform supports inotify, {{% productparam "abbrev" %}} uses it automatically to detect changes to the source files. If inotify is not available, {{% productparam "abbrev" %}} polls the files as set in the `follow-freq()` option. To force {{% productparam "abbrev" %}} poll the files even if inotify is available, set this option to **poll**.
+*Description:* If the platform supports inotify, {{% param "product.abbrev" %}} uses it automatically to detect changes to the source files. If inotify is not available, {{% param "product.abbrev" %}} polls the files as set in the `follow-freq()` option. To force {{% param "product.abbrev" %}} poll the files even if inotify is available, set this option to **poll**.
 
 
 {{% include-headless "chunk/option-source-multi-line-garbage.md" %}}
@@ -126,7 +126,7 @@ If `log-fetch-limit()` is 100, and your wildcard file source has 200 files, then
 | Type:    | yes | no |
 | Default: | no       |
 
-*Description:* When enabled, {{% productparam "abbrev" %}} monitors every subdirectory of the path set in the [base-dir()](#source-wildcard-file-base-dir) option, and reads log messages from files with matching filenames. The `recursive` option can be used together with wildcards in the filename.
+*Description:* When enabled, {{% param "product.abbrev" %}} monitors every subdirectory of the path set in the [base-dir()](#source-wildcard-file-base-dir) option, and reads log messages from files with matching filenames. The `recursive` option can be used together with wildcards in the filename.
 
 {{% alert title="Warning" color="warning" %}}
 

@@ -1,7 +1,7 @@
 ---
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
-Filter functions available in {{% productparam "abbrev" %}}
+Filter functions available in {{% param "product.abbrev" %}}
 
 Name
 
@@ -49,7 +49,7 @@ Limits messages rate based on arbitrary keys in each message.
 
 {{% xref "/docs/chapter-routing-filters/filters/reference-filters/filter-source/_index.md" %}}
 
-Select messages of the specified {{% productparam "abbrev" %}} source statement.
+Select messages of the specified {{% param "product.abbrev" %}} source statement.
 
 {{% xref "/docs/chapter-routing-filters/filters/reference-filters/filter-tags/_index.md" %}}
 

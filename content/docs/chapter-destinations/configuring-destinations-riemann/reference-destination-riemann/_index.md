@@ -40,7 +40,7 @@ The `riemann()` destination has the following options:
 | Type:    | template, macro, or string |
 | Default: | ${UNIXTIME}                |
 
-*Description:* Instead of the arrival time into Riemann, {{% productparam "abbrev" %}} can also send its own timestamp value.
+*Description:* Instead of the arrival time into Riemann, {{% param "product.abbrev" %}} can also send its own timestamp value.
 
 This can be useful if Riemann is inaccessible for a while, and the messages are collected in the disk buffer until Riemann is accessible again. In this case, it would be difficult to differentiate between messages based on the arrival time only, because this would mean that there would be hundreds of messages with the same arrival time. This issue can be solved by using this option.
 
@@ -55,7 +55,7 @@ The `event-time()` option takes an optional parameter specifying whether the tim
 
 ```
 
-In case the parameter is omitted, {{% productparam "abbrev" %}} defaults to the seconds version. In case the `event-time()` option is omitted altogether, {{% productparam "abbrev" %}} defaults to the seconds version with `$UNIXTIME`.
+In case the parameter is omitted, {{% param "product.abbrev" %}} defaults to the seconds version. In case the `event-time()` option is omitted altogether, {{% param "product.abbrev" %}} defaults to the seconds version with `$UNIXTIME`.
 
 Note that the time format parameter requires:
 
@@ -104,7 +104,7 @@ Note that the time format parameter requires:
 
 {{% include-headless "chunk/option-destination-batch-lines.md" %}}
 
-If an error occurs while sending the messages to the server, {{% productparam "abbrev" %}} will try to resend every message from the batch. If it does not succeed (you can set the number of retry attempts in the `retries()` option), {{% productparam "abbrev" %}} drops every message in the batch.
+If an error occurs while sending the messages to the server, {{% param "product.abbrev" %}} will try to resend every message from the batch. If it does not succeed (you can set the number of retry attempts in the `retries()` option), {{% param "product.abbrev" %}} drops every message in the batch.
 
 
 {{% include-headless "chunk/option-destination-batch-timeout.md" %}}
@@ -189,7 +189,7 @@ If an error occurs while sending the messages to the server, {{% productparam "a
 | Type:    | string list                              |
 | Default: | the tags already assigned to the message |
 
-*Description:* The list of tags to add as the tags field of the Riemann event. If not specified {{% productparam "abbrev" %}} automatically adds the tags already assigned to the message. If you set the `tags()` option, only the tags you specify will be added to the event.
+*Description:* The list of tags to add as the tags field of the Riemann event. If not specified {{% param "product.abbrev" %}} automatically adds the tags already assigned to the message. If you set the `tags()` option, only the tags you specify will be added to the event.
 
 {{% include-headless "chunk/option-destination-throttle.md" %}}
 
@@ -281,7 +281,7 @@ path to a CA certificate in PEM format
 
 Default:
 
-*Description:* Path to the CA certificate in PEM format that signed the certificate of the Riemann server. When establishing TLS connection, {{% productparam "abbrev" %}} verifies the certificate of the Riemann server using this CA.
+*Description:* Path to the CA certificate in PEM format that signed the certificate of the Riemann server. When establishing TLS connection, {{% param "product.abbrev" %}} verifies the certificate of the Riemann server using this CA.
 
 *Alternative 1:*
 
@@ -308,7 +308,7 @@ Default:
 
 ```
 
-This option was called `cacert()` up until (and including) {{% productparam "abbrev" %}} version 3.12.
+This option was called `cacert()` up until (and including) {{% param "product.abbrev" %}} version 3.12.
 
 *cert-file()*
 
@@ -318,11 +318,11 @@ path to a certificate in PEM format
 
 Default:
 
-*Description:* Path to the a certificate file in PEM format. When establishing TLS connection, {{% productparam "abbrev" %}} authenticates on the Riemann server using this certificate and the matching private key set in the `key-file()` option.
+*Description:* Path to the a certificate file in PEM format. When establishing TLS connection, {{% param "product.abbrev" %}} authenticates on the Riemann server using this certificate and the matching private key set in the `key-file()` option.
 
 {{% include-headless "chunk/destination-riemann-tls-description.md" %}}
 
-This option was called `cert()` in {{% productparam "abbrev" %}} version 3.7.
+This option was called `cert()` in {{% param "product.abbrev" %}} version 3.7.
 
 *key-file()*
 
@@ -332,8 +332,8 @@ path to a private key file
 
 Default:
 
-*Description:* Path to the private key of the certificate file set in the `cert-file()` option. When establishing TLS connection, {{% productparam "abbrev" %}} authenticates on the Riemann server using this private key and the matching certificate set in the `cert-file()` option.
+*Description:* Path to the private key of the certificate file set in the `cert-file()` option. When establishing TLS connection, {{% param "product.abbrev" %}} authenticates on the Riemann server using this private key and the matching certificate set in the `cert-file()` option.
 
 {{% include-headless "chunk/destination-riemann-tls-description.md" %}}
 
-This option was called `key()` in {{% productparam "abbrev" %}} version 3.7.
+This option was called `key()` in {{% param "product.abbrev" %}} version 3.7.

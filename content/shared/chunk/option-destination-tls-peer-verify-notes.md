@@ -5,6 +5,6 @@ For untrusted certificates only the existence of the certificate is checked, but
 
 {{% alert title="Warning" color="warning" %}}
 
-When validating a certificate, the entire certificate chain must be valid, including the CA certificate. If any certificate of the chain is invalid, {{% productparam "abbrev" %}} will reject the connection.
+When validating a certificate, the entire certificate chain must be valid, including the CA certificate. If any certificate of the chain is invalid, {{% param "product.abbrev" %}} will reject the connection.
 
 {{% /alert %}}

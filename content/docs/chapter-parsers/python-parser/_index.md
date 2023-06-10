@@ -4,14 +4,14 @@ weight:  1300
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The Python log parser (available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.2{{% /conditional-text %}} and later) allows you to write your own parser in Python. Practically, that way you can process the log message (or parts of the log message) any way you need. For example, you can import external Python modules to process the messages, query databases to enrich the messages with additional data, and many other things.
+The Python log parser (available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.2{{% /conditional-text %}} and later) allows you to write your own parser in Python. Practically, that way you can process the log message (or parts of the log message) any way you need. For example, you can import external Python modules to process the messages, query databases to enrich the messages with additional data, and many other things.
 
 {{% include-headless "chunk/python-blocks.md" %}}
 
 
 ## Declaration:
 
-Python parsers consist of two parts. The first is a {{% productparam "abbrev" %}} parser object that you use in your {{% productparam "abbrev" %}} configuration, for example, in the log path. This parser references a Python class, which is the second part of the Python parsers. The Python class processes the log messages it receives, and can do virtually anything that you can code in Python.
+Python parsers consist of two parts. The first is a {{% param "product.abbrev" %}} parser object that you use in your {{% param "product.abbrev" %}} configuration, for example, in the log path. This parser references a Python class, which is the second part of the Python parsers. The Python class processes the log messages it receives, and can do virtually anything that you can code in Python.
 
 ```c
 
@@ -43,9 +43,9 @@ Python parsers consist of two parts. The first is a {{% productparam "abbrev" %}
 
 ## The init (self, options) method (optional)
 
-The {{% productparam "abbrev" %}} application initializes Python objects only when it is started or reloaded. That means it keeps the state of internal variables while {{% productparam "abbrev" %}} is running. The `init` method is executed as part of the initialization. You can perform any initialization steps that are necessary for your parser to work. For example, if you want to perform a lookup from a file or a database, you can open the file or connect to the database here, or you can initialize a counter that you will increase in the `parse()` method.
+The {{% param "product.abbrev" %}} application initializes Python objects only when it is started or reloaded. That means it keeps the state of internal variables while {{% param "product.abbrev" %}} is running. The `init` method is executed as part of the initialization. You can perform any initialization steps that are necessary for your parser to work. For example, if you want to perform a lookup from a file or a database, you can open the file or connect to the database here, or you can initialize a counter that you will increase in the `parse()` method.
 
-The return value of the `init()` method must be `True`. If it returns `False`, or raises an exception, {{% productparam "abbrev" %}} will not start.
+The return value of the `init()` method must be `True`. If it returns `False`, or raises an exception, {{% param "product.abbrev" %}} will not start.
 
 `options`: This optional argument contains the contents of the `options()` parameter of the parser object as a Python dict.
 
@@ -70,9 +70,9 @@ The return value of the `init()` method must be `True`. If it returns `False`, o
 
 ## The parse(self, log_message) method
 
-The `parse()` method processes the log messages it receives, and can do virtually anything that you can code in Python. This method is required, otherwise {{% productparam "abbrev" %}} will not start.
+The `parse()` method processes the log messages it receives, and can do virtually anything that you can code in Python. This method is required, otherwise {{% param "product.abbrev" %}} will not start.
 
-The return value of the `parse()` method must be `True`. If it returns `False`, or raises an exception, {{% productparam "abbrev" %}} will drop the message.
+The return value of the `parse()` method must be `True`. If it returns `False`, or raises an exception, {{% param "product.abbrev" %}} will drop the message.
 
 {{% include-headless "chunk/python-blocks-nvpairs.md" %}}
 
@@ -80,7 +80,7 @@ The return value of the `parse()` method must be `True`. If it returns `False`, 
 
 ## The deinit(self) method (optional)
 
-This method is executed when {{% productparam "abbrev" %}} is stopped or reloaded.
+This method is executed when {{% param "product.abbrev" %}} is stopped or reloaded.
 
 {{% include-headless "wnt/warning-python-parser-deinit.md" %}}
 
@@ -97,11 +97,11 @@ The following sample code parses the messages of the `loggen` tool (for details,
 
 ```
 
-The {{% productparam "abbrev" %}} parser object references the LoggenParser class and passes a set of regular expressions to parse the loggen messages. The `init()` method of the LoggenParser class compiles these expressions into a pattern. The `parse` method uses these patterns to extract the fields of the message into name-value pairs. The destination template of the {{% productparam "abbrev" %}} log statement uses the extracted fields to format the output message.
+The {{% param "product.abbrev" %}} parser object references the LoggenParser class and passes a set of regular expressions to parse the loggen messages. The `init()` method of the LoggenParser class compiles these expressions into a pattern. The `parse` method uses these patterns to extract the fields of the message into name-value pairs. The destination template of the {{% param "product.abbrev" %}} log statement uses the extracted fields to format the output message.
 
 ```c
 
-    @version: {{% productparam "techversion" %}}
+    @version: {{% param "product.techversion" %}}
     @include "scl.conf"
     parser my_python_parser{
         python(
@@ -143,11 +143,11 @@ The {{% productparam "abbrev" %}} parser object references the LoggenParser clas
 
 ## Example: Parse Windows eventlogs in Python - performance {#python-parser-example-windows-logs}
 
-The following example uses regular expressions to process Windows log messages received in XML format from the {{% productparam "agent" %}} application. The parser extracts different fields from messages received from the Security and the Application eventlog containers. Using the following configuration file, {{% productparam "abbrev" %}} could process about 25000 real-life Windows log messages per second.
+The following example uses regular expressions to process Windows log messages received in XML format from the {{% param "product.windowsagent" %}} application. The parser extracts different fields from messages received from the Security and the Application eventlog containers. Using the following configuration file, {{% param "product.abbrev" %}} could process about 25000 real-life Windows log messages per second.
 
 ```c
 
-    @version: {{% productparam "techversion" %}}
+    @version: {{% param "product.techversion" %}}
     options {
         keep-hostname(yes);
         keep-timestamp(no);

@@ -15,7 +15,7 @@ The `redis()` destination has the following options:
 | Type:    | hostname or IP address |
 | Default: | N/A                    |
 
-*Description:* The password used for authentication on a password-protected Redis server. Available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}} and later.
+*Description:* The password used for authentication on a password-protected Redis server. Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}} and later.
 
 {{% include-headless "chunk/option-destination-batch-lines.md" %}}
 
@@ -36,7 +36,7 @@ Note the following points when using the `redis()` destination:
 
   - Currently you can use only one command in a redis() destination.
 
-  - The {{% productparam "abbrev" %}} application ignores the return value of the command. If the Redis server returns an error, {{% productparam "abbrev" %}} closes the connection.
+  - The {{% param "product.abbrev" %}} application ignores the return value of the command. If the Redis server returns an error, {{% param "product.abbrev" %}} closes the connection.
 
 {{% include-headless "chunk/option-destination-diskbuffer.md" %}}
 

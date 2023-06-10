@@ -9,7 +9,7 @@
 | Type:    | string  |
 | Default: | 0.0.0.0 |
 
-*Description:* The IP address to bind to. By default, {{% productparam "abbrev" %}} listens on every available interface. Note that this is not the address where messages are accepted from.
+*Description:* The IP address to bind to. By default, {{% param "product.abbrev" %}} listens on every available interface. Note that this is not the address where messages are accepted from.
 
-If you specify a multicast bind address and use the **udp** transport, {{% productparam "abbrev" %}} automatically joins the necessary multicast group. TCP does not support multicasting.
+If you specify a multicast bind address and use the **udp** transport, {{% param "product.abbrev" %}} automatically joins the necessary multicast group. TCP does not support multicasting.
 

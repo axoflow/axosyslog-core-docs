@@ -15,7 +15,7 @@ To configure syslog-ng on a client host, complete the following steps.
 
 1.  Install the syslog-ng application on the host. For details installing syslog-ng on specific operating systems, see {{% xref "/docs/chapter-install/_index.md" %}}.
 
-2.  Configure the local sources to collect the log messages of the host. Starting with version 3.2, {{% productparam "abbrev" %}} automatically collects the log messages that use the native system logging method of the platform, for example, messages from `/dev/log` on Linux, or `/dev/klog` on FreeBSD. For a complete list of messages that are collected automatically, see {{% xref "/docs/chapter-sources/source-system/_index.md" %}}.
+2.  Configure the local sources to collect the log messages of the host. Starting with version 3.2, {{% param "product.abbrev" %}} automatically collects the log messages that use the native system logging method of the platform, for example, messages from `/dev/log` on Linux, or `/dev/klog` on FreeBSD. For a complete list of messages that are collected automatically, see {{% xref "/docs/chapter-sources/source-system/_index.md" %}}.
     
     {{% include-headless "chunk/para-config-file-location.md" %}}
     
@@ -37,7 +37,7 @@ To configure syslog-ng on a client host, complete the following steps.
     
     {{% /alert %}} {{% alert title="Note" color="info" %}}
     
-    The default configuration file of {{% productparam "abbrev" %}} collects platform-specific log messages and the internal log messages of {{% productparam "abbrev" %}}.
+    The default configuration file of {{% param "product.abbrev" %}} collects platform-specific log messages and the internal log messages of {{% param "product.abbrev" %}}.
     
     ```c
     
@@ -80,7 +80,7 @@ To configure syslog-ng on a client host, complete the following steps.
     
     {{% alert title="Note" color="info" %}}
     
-    The default configuration of {{% productparam "abbrev" %}} places the collected messages into the `/var/log/messages` file:
+    The default configuration of {{% param "product.abbrev" %}} places the collected messages into the `/var/log/messages` file:
     
     ```c
     
@@ -94,7 +94,7 @@ To configure syslog-ng on a client host, complete the following steps.
     
     {{% alert title="Note" color="info" %}}
     
-    The default configuration of {{% productparam "abbrev" %}} has only one log statement:
+    The default configuration of {{% param "product.abbrev" %}} has only one log statement:
     
     ```c
     
@@ -107,13 +107,13 @@ To configure syslog-ng on a client host, complete the following steps.
 7.  Set filters, macros and other features and options (for example, TLS encryption) as necessary.
     
     
-    ## Example: The default configuration file of {{% productparam "abbrev" %}} {#example-defaultconfig}
+    ## Example: The default configuration file of {{% param "product.abbrev" %}} {#example-defaultconfig}
     
-    The following is the default configuration file of {{% productparam "abbrev" %}}{{% productparam "techversion" %}}. It collects local log messages and the log messages of {{% productparam "abbrev" %}} and saves them in the `/var/log/messages` file.
+    The following is the default configuration file of {{% param "product.abbrev" %}}{{% param "product.techversion" %}}. It collects local log messages and the log messages of {{% param "product.abbrev" %}} and saves them in the `/var/log/messages` file.
     
     ```c
     
-        @version: {{% productparam "techversion" %}}
+        @version: {{% param "product.techversion" %}}
         @include "scl.conf"
         source s_local {
             system(); internal();
@@ -135,7 +135,7 @@ To configure syslog-ng on a client host, complete the following steps.
     
     ```c
     
-        @version: {{% productparam "techversion" %}}
+        @version: {{% param "product.techversion" %}}
         @include "scl.conf"
         source s_local {
             system(); internal();

@@ -4,12 +4,12 @@ weight:  700
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The C implementation of the `kafka()` destination of {{% productparam "abbrev" %}} can directly publish log messages to the [Apache Kafka](http://kafka.apache.org) message bus, where subscribers can access them. The C implementation of the `kafka()` destination has the following options.
+The C implementation of the `kafka()` destination of {{% param "product.abbrev" %}} can directly publish log messages to the [Apache Kafka](http://kafka.apache.org) message bus, where subscribers can access them. The C implementation of the `kafka()` destination has the following options.
 
 
 ## Required options:
 
-The following options are required: `bootstrap-servers()`, `topic()`. Note that to use the C implementation of the `kafka()` destination, you must add the following lines to the beginning of your {{% productparam "abbrev" %}} configuration:
+The following options are required: `bootstrap-servers()`, `topic()`. Note that to use the C implementation of the `kafka()` destination, you must add the following lines to the beginning of your {{% param "product.abbrev" %}} configuration:
 
 ```c
 
@@ -26,7 +26,7 @@ The following options are required: `bootstrap-servers()`, `topic()`. Note that 
 
 {{% alert title="Note" color="info" %}}
 
-If you set `sync-send()` to `"yes"`, the number you specify for `batch-lines()` affects how many messages {{% productparam "abbrev" %}} packs into once transaction.
+If you set `sync-send()` to `"yes"`, the number you specify for `batch-lines()` affects how many messages {{% param "product.abbrev" %}} packs into once transaction.
 
 {{% /alert %}}
 
@@ -38,7 +38,7 @@ If you set `sync-send()` to `"yes"`, the number you specify for `batch-lines()` 
 
 {{% alert title="Note" color="info" %}}
 
-When setting `batch-timeout()`, consider the value of the `transaction.timeout.ms` Kafka property. If in case of timeout (that is, if {{% productparam "abbrev" %}} does not receive `batch-lines()` amount of messages) the value of `batch-timeout()` exceeds the value of `transaction.timeout.ms`, {{% productparam "abbrev" %}} will not send out messages in time.
+When setting `batch-timeout()`, consider the value of the `transaction.timeout.ms` Kafka property. If in case of timeout (that is, if {{% param "product.abbrev" %}} does not receive `batch-lines()` amount of messages) the value of `batch-timeout()` exceeds the value of `transaction.timeout.ms`, {{% param "product.abbrev" %}} will not send out messages in time.
 
 For more information about the default values of the `transaction.timeout.ms` Kafka property, see [the librdkafka documentation](https://github.com/edenhill/librdkafka/blob/master/CONFIGURATION.md).
 
@@ -80,7 +80,7 @@ Unlike in the Java implementation, the <span class="code">client-lib-dir()</span
 
 {{% include-headless "chunk/kafka-c-impl-required-options-note.md" %}}
 
-The {{% productparam "abbrev" %}}`kafka` destination supports all properties of the official Kafka producer. For details, see [the librdkafka documentation](https://github.com/edenhill/librdkafka/blob/master/CONFIGURATION.md).
+The {{% param "product.abbrev" %}}`kafka` destination supports all properties of the official Kafka producer. For details, see [the librdkafka documentation](https://github.com/edenhill/librdkafka/blob/master/CONFIGURATION.md).
 
 The syntax of the config() option is the following:
 
@@ -162,9 +162,9 @@ The syntax of the config() option is the following:
 | Type:    | string (absolute path) |
 | Default: | N/A                    |
 
-*Description:* The absolute path and filename of the Kafka properties file to load. For example, `properties-file("/opt/syslog-ng/etc/kafka_dest.properties")`. The {{% productparam "abbrev" %}} application reads this file and passes the properties to the Kafka Producer.
+*Description:* The absolute path and filename of the Kafka properties file to load. For example, `properties-file("/opt/syslog-ng/etc/kafka_dest.properties")`. The {{% param "product.abbrev" %}} application reads this file and passes the properties to the Kafka Producer.
 
-The {{% productparam "abbrev" %}}`kafka` destination supports all properties of the official Kafka producer. For details, see [the librdkafka documentation](https://github.com/edenhill/librdkafka/blob/master/CONFIGURATION.md).
+The {{% param "product.abbrev" %}}`kafka` destination supports all properties of the official Kafka producer. For details, see [the librdkafka documentation](https://github.com/edenhill/librdkafka/blob/master/CONFIGURATION.md).
 
 The `bootstrap-servers` option is translated to the `bootstrap.servers` property.
 

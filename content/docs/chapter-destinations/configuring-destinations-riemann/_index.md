@@ -29,7 +29,7 @@ The following destination sends the value of the SEQNUM macro (the number of mes
 
 ```c
 
-    @version: {{% productparam "techversion" %}}
+    @version: {{% param "product.techversion" %}}
     
     source s_network {
         network(port(12345));
@@ -58,4 +58,4 @@ The following destination sends the value of the SEQNUM macro (the number of mes
 ```
 
 
-For a detailed use-case on using {{% productparam "abbrev" %}} with the Riemann monitoring system, see the article [A How to Guide on Modern Monitoring and Alerting by Fabien Wernli](https://devops.com/guide-modern-monitoring-alerting/).
+For a detailed use-case on using {{% param "product.abbrev" %}} with the Riemann monitoring system, see the article [A How to Guide on Modern Monitoring and Alerting by Fabien Wernli](https://devops.com/guide-modern-monitoring-alerting/).

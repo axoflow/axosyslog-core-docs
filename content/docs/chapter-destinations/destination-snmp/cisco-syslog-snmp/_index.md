@@ -4,9 +4,9 @@ weight:  100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The {{% productparam "abbrev" %}} application can convert the syslog messages sent by Cisco devices to Cisco-specific SNMP traps defined by the CISCO-SYSLOG-MIB (`enterprises.cisco.ciscoMgmt.ciscoCiscoMIB`) is also supported (such traps are also referred to as `clogMessageGenerated` notifications). That way, the incoming log messages can be forwarded to devices used to process and analyze Cisco-specific SNMP traps. For this to work correctly, the following requirements must be met:
+The {{% param "product.abbrev" %}} application can convert the syslog messages sent by Cisco devices to Cisco-specific SNMP traps defined by the CISCO-SYSLOG-MIB (`enterprises.cisco.ciscoMgmt.ciscoCiscoMIB`) is also supported (such traps are also referred to as `clogMessageGenerated` notifications). That way, the incoming log messages can be forwarded to devices used to process and analyze Cisco-specific SNMP traps. For this to work correctly, the following requirements must be met:
 
-  - The syslog-ng Source Configuration Library (SCL) must be included in the {{% productparam "abbrev" %}} configuration file:
+  - The syslog-ng Source Configuration Library (SCL) must be included in the {{% param "product.abbrev" %}} configuration file:
     
     ```c
     
@@ -16,7 +16,7 @@ The {{% productparam "abbrev" %}} application can convert the syslog messages se
 
   - The pattern database described in [Parsing Cisco-specific message fields with patterndb](#cisco-snmp-patterndb) must be used to parse the incoming log messages.
 
-To accomplish this, {{% productparam "abbrev" %}} has to use a special pattern database to parse the Cisco-specific syslog messages, because these messages do not comply with the standard syslog formats.
+To accomplish this, {{% param "product.abbrev" %}} has to use a special pattern database to parse the Cisco-specific syslog messages, because these messages do not comply with the standard syslog formats.
 
 For details on the Cisco-specific SNMP trap format, see [CISCO-SYSLOG-MIB](http://tools.cisco.com/ITDIT/MIBS/servlet/index) on the Cisco website.
 

@@ -8,7 +8,7 @@ It reads and automatically parses the Linux audit logs. You can override the fil
 
 {{% alert title="Note" color="info" %}}
 
-Most recent Linux distributions enable Security-Enhanced Linux (SELinux) or AppArmor as a security measure. If enabled, these technologies might disable access to the Linux Audit log file by default. Consult their manuals to enable Linux Audit log access for {{% productparam "abbrev" %}}.
+Most recent Linux distributions enable Security-Enhanced Linux (SELinux) or AppArmor as a security measure. If enabled, these technologies might disable access to the Linux Audit log file by default. Consult their manuals to enable Linux Audit log access for {{% param "product.abbrev" %}}.
 
 {{% /alert %}}
 

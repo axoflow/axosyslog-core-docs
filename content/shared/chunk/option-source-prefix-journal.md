@@ -9,5 +9,5 @@
 | Type:    | string     |
 | Default: | .journald. |
 
-*Description:* If this option is set, every non-built-in mapped names get a prefix (for example: `".SDATA.journald."`). By default, {{% productparam "abbrev" %}} adds the `.journald.` prefix to every value.
+*Description:* If this option is set, every non-built-in mapped names get a prefix (for example: `".SDATA.journald."`). By default, {{% param "product.abbrev" %}} adds the `.journald.` prefix to every value.
 

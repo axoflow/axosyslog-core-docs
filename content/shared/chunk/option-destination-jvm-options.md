@@ -9,7 +9,7 @@
 | Type:    | list |
 | Default: | N/A  |
 
-*Description:* Specify the Java Virtual Machine (JVM) settings of your Java destination from the {{% productparam "abbrev" %}} configuration file.
+*Description:* Specify the Java Virtual Machine (JVM) settings of your Java destination from the {{% param "product.abbrev" %}} configuration file.
 
 For example:
 

@@ -11,7 +11,7 @@ The `elasticsearch2` destination can directly send log messages to [Elasticsearc
 
 ## Required options:
 
-The following options are required: `index()`, `type()`. In node mode, either the `cluster()` or the `resource()` option is required as well. Note that to use `elasticsearch2`, you must add the following lines to the beginning of your {{% productparam "abbrev" %}} configuration:
+The following options are required: `index()`, `type()`. In node mode, either the `cluster()` or the `resource()` option is required as well. Note that to use `elasticsearch2`, you must add the following lines to the beginning of your {{% param "product.abbrev" %}} configuration:
 
 ```c
 
@@ -60,7 +60,7 @@ The following options are required: `index()`, `type()`. In node mode, either th
 | Type:    | number |
 | Default: | 0      |
 
-*Description:* The number of concurrent (simultaneous) requests that {{% productparam "abbrev" %}} sends to the Elasticsearch server. Set this option to 1 or higher to increase performance. When using the `concurrent-requests()` option, make sure that the `flush-limit()` option is higher than one, otherwise it will not have any noticeable effect. For details, see [flush-limit()](#elasticsearch2-option-elasticsearch2-flush-limit).
+*Description:* The number of concurrent (simultaneous) requests that {{% param "product.abbrev" %}} sends to the Elasticsearch server. Set this option to 1 or higher to increase performance. When using the `concurrent-requests()` option, make sure that the `flush-limit()` option is higher than one, otherwise it will not have any noticeable effect. For details, see [flush-limit()](#elasticsearch2-option-elasticsearch2-flush-limit).
 
 {{% alert title="Warning" color="warning" %}}
 
@@ -90,7 +90,7 @@ Hazard of data loss\! Using the `concurrent-requests()` option increases the num
 | Type:    | number |
 | Default: | 5000   |
 
-*Description:* The number of messages that {{% productparam "abbrev" %}} sends to the Elasticsearch server in a single batch.
+*Description:* The number of messages that {{% param "product.abbrev" %}} sends to the Elasticsearch server in a single batch.
 
 {{% include-headless "chunk/option-destination-elasticsearch-flush-limit-description.md" %}}
 
@@ -107,7 +107,7 @@ Hazard of data loss\! Using the `concurrent-requests()` option increases the num
 | Type:    | none | basic | clientcert |
 | Default: | none                      |
 
-*Description:* Determines how {{% productparam "abbrev" %}} authenticates to the Elasticsearch server. Depending on the value of this option, you might have to set other options as well. Possible values:
+*Description:* Determines how {{% param "product.abbrev" %}} authenticates to the Elasticsearch server. Depending on the value of this option, you might have to set other options as well. Possible values:
 
   - `none`: Connect to the Elasticsearch server without authentication.
 
@@ -115,7 +115,7 @@ Hazard of data loss\! Using the `concurrent-requests()` option increases the num
 
   - `clientcert`: Use a certificate to authenticate. The certificate must be available in a Java keystore. Also set the [`java-keystore-filepath`]({{< relref "/docs/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) and [`java-keystore-password`]({{< relref "/docs/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) options.
 
-This option is used only in HTTPS mode: `client-mode("https")`, and is available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and newer.
+This option is used only in HTTPS mode: `client-mode("https")`, and is available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and newer.
 
 
 ## Example: HTTPS authentication examples {#elasticsearch2-https-auth-examples}
@@ -142,7 +142,7 @@ The following simple examples show the different authentication modes.
 
 *Description:* The password to use for password-authentication on the Elasticsearch server. You must also set the [`http-auth-type-basic-username`]({{< relref "/docs/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) option.
 
-This option is used only in HTTPS mode with basic authentication: `client-mode("https")` and `http-auth-type("basic")`, and is available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and newer.
+This option is used only in HTTPS mode with basic authentication: `client-mode("https")` and `http-auth-type("basic")`, and is available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and newer.
 
 {{% include-headless "chunk/example-elasticsearch-https-password.md" %}}
 
@@ -157,7 +157,7 @@ This option is used only in HTTPS mode with basic authentication: `client-mode("
 
 *Description:* The username to use for password-authentication on the Elasticsearch server. You must also set the [`http-auth-type-basic-password`]({{< relref "/docs/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) option.
 
-This option is used only in HTTPS mode with basic authentication: `client-mode("https")` and `http-auth-type("basic")`, and is available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and newer.
+This option is used only in HTTPS mode with basic authentication: `client-mode("https")` and `http-auth-type("basic")`, and is available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and newer.
 
 {{% include-headless "chunk/example-elasticsearch-https-password.md" %}}
 
@@ -181,11 +181,11 @@ This option is used only in HTTPS mode with basic authentication: `client-mode("
 | Type:    | string |
 | Default: | N/A    |
 
-*Description:* Path to the Java keystore file that stores the certificate that {{% productparam "abbrev" %}} uses to authenticate on the Elasticsearch server. You must also set the [`java-keystore-password`]({{< relref "/docs/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) option.
+*Description:* Path to the Java keystore file that stores the certificate that {{% param "product.abbrev" %}} uses to authenticate on the Elasticsearch server. You must also set the [`java-keystore-password`]({{< relref "/docs/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) option.
 
 {{% include-headless "chunk/example-elasticsearch-https-java-keystore-import.md" %}}
 
-This option is used only in HTTPS mode with basic authentication: `client-mode("https")` and `http-auth-type("clientcert")`, and is available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and newer.
+This option is used only in HTTPS mode with basic authentication: `client-mode("https")` and `http-auth-type("clientcert")`, and is available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and newer.
 
 {{% include-headless "chunk/example-elasticsearch-https-clientcert.md" %}}
 
@@ -204,7 +204,7 @@ This option is used only in HTTPS mode with basic authentication: `client-mode("
 
 {{% include-headless "chunk/example-elasticsearch-https-java-keystore-import.md" %}}
 
-This option is used only in HTTPS mode with basic authentication: `client-mode("https")` and `http-auth-type("clientcert")`, and is available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and newer.
+This option is used only in HTTPS mode with basic authentication: `client-mode("https")` and `http-auth-type("clientcert")`, and is available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and newer.
 
 {{% include-headless "chunk/example-elasticsearch-https-clientcert.md" %}}
 
@@ -219,13 +219,13 @@ This option is used only in HTTPS mode with basic authentication: `client-mode("
 | Type:    | string |
 | Default: | N/A    |
 
-*Description:* Path to the Java keystore file that stores the CA certificate that {{% productparam "abbrev" %}} uses to verify the certificate of the Elasticsearch server. You must also set the [`java-truststore-password`]({{< relref "/docs/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) option.
+*Description:* Path to the Java keystore file that stores the CA certificate that {{% param "product.abbrev" %}} uses to verify the certificate of the Elasticsearch server. You must also set the [`java-truststore-password`]({{< relref "/docs/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) option.
 
-If you do not set the `java-truststore-filepath` option, {{% productparam "abbrev" %}} does accepts any certificate that the Elasticsearch server shows. In this case, the identity of the server is not verified, only the connection is encrypted.
+If you do not set the `java-truststore-filepath` option, {{% param "product.abbrev" %}} does accepts any certificate that the Elasticsearch server shows. In this case, the identity of the server is not verified, only the connection is encrypted.
 
 {{% include-headless "chunk/example-elasticsearch-https-java-keystore-import.md" %}}
 
-This option is used only in HTTPS mode: `client-mode("https")`, and is available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and newer.
+This option is used only in HTTPS mode: `client-mode("https")`, and is available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and newer.
 
 {{% include-headless "chunk/example-elasticsearch-https-verifycert.md" %}}
 
@@ -244,7 +244,7 @@ This option is used only in HTTPS mode: `client-mode("https")`, and is available
 
 {{% include-headless "chunk/example-elasticsearch-https-java-keystore-import.md" %}}
 
-This option is used only in HTTPS mode: `client-mode("https")`, and is available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and newer.
+This option is used only in HTTPS mode: `client-mode("https")`, and is available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and newer.
 
 {{% include-headless "chunk/example-elasticsearch-https-verifycert.md" %}}
 
@@ -322,7 +322,7 @@ For example:
 | Type:    | yes|no |
 | Default: | no     |
 
-*Description:* By default, when connecting to an Elasticsearch cluster, {{% productparam "abbrev" %}} checks the state of the cluster. If the primary shards of the cluster are not active, {{% productparam "abbrev" %}} will not send messages, but wait for them to become active. To disable this health check and send the messages to Elasticsearch anyway, use the **skip-cluster-health-check(yes)** option in your configuration.
+*Description:* By default, when connecting to an Elasticsearch cluster, {{% param "product.abbrev" %}} checks the state of the cluster. If the primary shards of the cluster are not active, {{% param "product.abbrev" %}} will not send messages, but wait for them to become active. To disable this health check and send the messages to Elasticsearch anyway, use the **skip-cluster-health-check(yes)** option in your configuration.
 
 
 ## template() {#elasticsearch2-option-elasticsearch2-template}

@@ -26,7 +26,7 @@ The value of the global variable can be also specified using the following metho
 
 The environmental variables of the host are automatically imported and can be used as global variables.
 
-In {{% productparam "abbrev" %}} {{% conditional-text include-if="pe" %}}7.0.18{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.24{{% /conditional-text %}} and later, the location of the syslog-ng configuration file is available as the ``syslog-ng-sysconfdir`` variable.
+In {{% param "product.abbrev" %}} {{% conditional-text include-if="pe" %}}7.0.18{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.24{{% /conditional-text %}} and later, the location of the syslog-ng configuration file is available as the ``syslog-ng-sysconfdir`` variable.
 
 {{% /alert %}}
 
@@ -50,7 +50,7 @@ For example, if an application is creating multiple log files in a directory, yo
 
 ```
 
-The {{% productparam "abbrev" %}} application will interpret this as:
+The {{% param "product.abbrev" %}} application will interpret this as:
 
 ```c
 

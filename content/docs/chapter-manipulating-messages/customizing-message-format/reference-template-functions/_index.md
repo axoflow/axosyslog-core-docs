@@ -4,7 +4,7 @@ weight:  1300
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The following template functions are available in {{% productparam "abbrev" %}}.
+The following template functions are available in {{% param "product.abbrev" %}}.
 
 
 ## base64-encode {#template-function-base64-encode}
@@ -13,9 +13,9 @@ The following template functions are available in {{% productparam "abbrev" %}}.
 
     $(base64-encode argument)
 
-*Description:* You can use the `base64-encode` template function to [base64-encode](https://tools.ietf.org/html/rfc4648) strings and macros. The template function can receive multiple parameters (maximum 64). In this case, {{% productparam "abbrev" %}} joins the parameters into a single string and encodes this string. For example, `$(base64-encode string1 string2)` is equivalent to `$(base64-encode string1string2)`.
+*Description:* You can use the `base64-encode` template function to [base64-encode](https://tools.ietf.org/html/rfc4648) strings and macros. The template function can receive multiple parameters (maximum 64). In this case, {{% param "product.abbrev" %}} joins the parameters into a single string and encodes this string. For example, `$(base64-encode string1 string2)` is equivalent to `$(base64-encode string1string2)`.
 
-Available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="ose" %}}3.18{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.11{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.18{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.11{{% /conditional-text %}} and later.
 
 
 
@@ -27,7 +27,7 @@ Available in {{% productparam "abbrev" %}} version {{% conditional-text include-
 
 *Description:* Returns the filename from an argument (for example, a macro: `$(basename ${FILE_NAME})`) that contains a filename with a path. For example, `$(basename "/var/log/messages.log")` returns `messages.log`. To [extract the path, use the dirname template function]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}).
 
-Available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and later.
 
 
 
@@ -65,7 +65,7 @@ To limit the number of matches that the template function returns, use the **--m
 
 You can to specify multiple name-value pairs as parameters, separated with commas. If multiple messages match the condition of `context-lookup`, these will be returned also separated by commas. This can be used for example, to collect the email recipients from postfix messages.
 
-Available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}} and later.
 
 
 
@@ -77,7 +77,7 @@ Available in {{% productparam "abbrev" %}} version {{% conditional-text include-
 
 *Description:* The `context-values` template function returns a list of every occurrence of the specified name-value pairs from the entire context. For example, if the context contains multiple messages, the `$(context-values ${HOST})` template function will return a comma-separated list of the `${HOST}` values that appear in the context.
 
-Available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}} and later.
 
 
 
@@ -89,7 +89,7 @@ Available in {{% productparam "abbrev" %}} version {{% conditional-text include-
 
 *Description:* Returns the path (without the filename) from an argument (for example, a macro: `$(basename ${FILE_NAME}`) that contains a filename with a path. For example, `$(dirname "/var/log/messages.log")` returns `/var/log` path. To [extract the filename, use the basename template function]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}).
 
-Available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.3{{% /conditional-text %}} and later.
 
 
 
@@ -109,7 +109,7 @@ Available in {{% productparam "abbrev" %}} version {{% conditional-text include-
 
     $(env <environment-variable>)
 
-*Description:* Returns the value of the specified environment variable. Available in {{% productparam "abbrev" %}}{{% conditional-text include-if="ose" %}}3.5{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7{{% /conditional-text %}} and later.
+*Description:* Returns the value of the specified environment variable. Available in {{% param "product.abbrev" %}}{{% conditional-text include-if="ose" %}}3.5{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7{{% /conditional-text %}} and later.
 
 
 
@@ -119,12 +119,12 @@ Available in {{% productparam "abbrev" %}} version {{% conditional-text include-
 
     $(explode <separator> <string1> <string2> ...)
 
-*Description:* Turns a string separated by a specific character into a list. You can also use the [implode](#template-function-implode) template function, which turns a list into a string combining the pieces together with a separator. Available in {{% productparam "abbrev" %}}{{% conditional-text include-if="ose" %}}3.21{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7{{% /conditional-text %}} and later.
+*Description:* Turns a string separated by a specific character into a list. You can also use the [implode](#template-function-implode) template function, which turns a list into a string combining the pieces together with a separator. Available in {{% param "product.abbrev" %}}{{% conditional-text include-if="ose" %}}3.21{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7{{% /conditional-text %}} and later.
 
 
 ## Example: Using the explode template function
 
-The following configuration example turns strings into a list. If there are several strings, {{% productparam "abbrev" %}} looks for a separator within each individual string. For example, **string 2** is separated as **string, 2** in the example below:
+The following configuration example turns strings into a list. If there are several strings, {{% param "product.abbrev" %}} looks for a separator within each individual string. For example, **string 2** is separated as **string, 2** in the example below:
 
 | Configuration                                   | Result                             |
 | ----------------------------------------------- | ---------------------------------- |
@@ -162,7 +162,7 @@ You can use macros, logical expressions, and template functions inside the expre
 
 {{% /alert %}}
 
-Available in {{% productparam "abbrev" %}} version 3.30 and later.
+Available in {{% param "product.abbrev" %}} version 3.30 and later.
 
 
 ## Example: using the filter template function in your configuration
@@ -226,15 +226,15 @@ The returned values are `0` and `2`.
 
   - `list`
     
-    Mandatory parameter. A {{% productparam "abbrev" %}} list.
+    Mandatory parameter. A {{% param "product.abbrev" %}} list.
 
 
 
 ## format-cef-extension {#template-function-format-cef-extension}
 
-{{% productparam "abbrev" %}} version {{% conditional-text include-if="pe" %}}5 F6{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.8{{% /conditional-text %}} includes a new template function (`format-cef-extension`) to format name-value pairs as ArcSight Common Event Format extensions. Note that the template function only formats the selected name-value pairs, it does not provide any mapping. There is no special support for creating the prefix part of a Common Event Format (CEF) message. Note that the order of the elements is random. For details on the CEF extension escaping rules format, see the [ArcSight Common Event Format](https://kc.mcafee.com/resources/sites/MCAFEE/content/live/CORP_KNOWLEDGEBASE/78000/KB78712/en_US/CEF_White_Paper_20100722.pdf).
+{{% param "product.abbrev" %}} version {{% conditional-text include-if="pe" %}}5 F6{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.8{{% /conditional-text %}} includes a new template function (`format-cef-extension`) to format name-value pairs as ArcSight Common Event Format extensions. Note that the template function only formats the selected name-value pairs, it does not provide any mapping. There is no special support for creating the prefix part of a Common Event Format (CEF) message. Note that the order of the elements is random. For details on the CEF extension escaping rules format, see the [ArcSight Common Event Format](https://kc.mcafee.com/resources/sites/MCAFEE/content/live/CORP_KNOWLEDGEBASE/78000/KB78712/en_US/CEF_White_Paper_20100722.pdf).
 
-You can use the [value-pairs]({{< relref "/docs/chapter-concepts/concepts-value-pairs/_index.md" >}}) that {{% productparam "abbrev" %}} stores about the log message as CEF fields. Using value-pairs, you can:
+You can use the [value-pairs]({{< relref "/docs/chapter-concepts/concepts-value-pairs/_index.md" >}}) that {{% param "product.abbrev" %}} stores about the log message as CEF fields. Using value-pairs, you can:
 
   - select which value-pairs to use as CEF fields,
 
@@ -246,7 +246,7 @@ For details, see {{% xref "/docs/chapter-concepts/concepts-value-pairs/_index.md
 
 Using the `format-cef-extension` template function has the following prerequisites:
 
-  - Set the `on-error` global option to **drop-property**, otherwise if the name of a name-value pair includes an invalid character, {{% productparam "abbrev" %}} drops the entire message. (Key name in CEF extensions can contain only the A-Z, a-z and 0-9 characters.)
+  - Set the `on-error` global option to **drop-property**, otherwise if the name of a name-value pair includes an invalid character, {{% param "product.abbrev" %}} drops the entire message. (Key name in CEF extensions can contain only the A-Z, a-z and 0-9 characters.)
     
     ```c
     
@@ -311,11 +311,11 @@ The following example shows how to use this template function to store log messa
 
 ```
 
-You can find the exact source of this template function in the [{{% productparam "abbrev" %}} GitHub repository](https://github.com/syslog-ng/syslog-ng/blob/master/scl/cim/template.conf).
+You can find the exact source of this template function in the [{{% param "product.abbrev" %}} GitHub repository](https://github.com/syslog-ng/syslog-ng/blob/master/scl/cim/template.conf).
 
 {{% alert title="Note" color="info" %}}
 
-To use the `format-cim()` template function, {{% productparam "abbrev" %}} must be compiled with JSON support. For details, see {{% xref "/docs/chapter-install/syslog-ng-compile-options/_index.md" %}}. To see if your {{% productparam "abbrev" %}} binary was compiled with JSON support, execute the **syslog-ng --version** command.
+To use the `format-cim()` template function, {{% param "product.abbrev" %}} must be compiled with JSON support. For details, see {{% xref "/docs/chapter-install/syslog-ng-compile-options/_index.md" %}}. To see if your {{% param "product.abbrev" %}} binary was compiled with JSON support, execute the **syslog-ng --version** command.
 
 {{% /alert %}}
 
@@ -381,7 +381,7 @@ For details on formatting log messages into JSON format, see [](#template-functi
 
     $(format-gelf)
 
-*Description:* Available in {{% productparam "abbrev" %}}{{% conditional-text include-if="ose" %}}3.13{{% /conditional-text %}} and later.
+*Description:* Available in {{% param "product.abbrev" %}}{{% conditional-text include-if="ose" %}}3.13{{% /conditional-text %}} and later.
 
 You can use the Graylog Extended Log Format (GELF) template together with the `graylog2()` destination to send syslog messages to [Graylog](http://docs.graylog.org). GELF is the native data format of Graylog.
 
@@ -414,7 +414,7 @@ The following configuration example shows how you can use the `format-gelf` temp
 
 *Description:* The `format-json` template function receives value-pairs as parameters and converts them into JavaScript Object Notation (JSON) format. Including the template function in a message template allows you to store selected information about a log message (that is, its content, macros, or other metadata) in JSON format. Note that the input log message does not have to be in JSON format to use `format-json`, you can reformat any incoming message as JSON.
 
-You can use the [value-pairs]({{< relref "/docs/chapter-concepts/concepts-value-pairs/_index.md" >}}) that {{% productparam "abbrev" %}} stores about the log message as JSON fields. Using value-pairs, you can:
+You can use the [value-pairs]({{< relref "/docs/chapter-concepts/concepts-value-pairs/_index.md" >}}) that {{% param "product.abbrev" %}} stores about the log message as JSON fields. Using value-pairs, you can:
 
   - select which value-pairs to use as JSON fields,
 
@@ -519,7 +519,7 @@ This template function is deprecated. Use [geoip2](#template-function-geoip2) in
 
 {{% alert title="Note" color="info" %}}
 
-This template function is available only if {{% productparam "abbrev" %}} has been compiled with the `--enable-geoip` compiling option.
+This template function is available only if {{% param "product.abbrev" %}} has been compiled with the `--enable-geoip` compiling option.
 
 {{% /alert %}}
 
@@ -539,7 +539,7 @@ To retrieve additional GeoIP information, see {{% xref "/docs/chapter-enrich-dat
 
 {{% alert title="Note" color="info" %}}
 
-This template function is available only if {{% productparam "abbrev" %}} has been compiled with geoip2 support. To enable it, use the **--enable-geoip** compiling option.
+This template function is available only if {{% param "product.abbrev" %}} has been compiled with geoip2 support. To enable it, use the **--enable-geoip** compiling option.
 
 {{% /alert %}}
 
@@ -556,7 +556,7 @@ To retrieve additional GeoIP information, see {{% xref "/docs/chapter-enrich-dat
 
     $(getent)
 
-*Description:* Available in {{% productparam "abbrev" %}}{{% conditional-text include-if="ose" %}}3.13{{% /conditional-text %}} and later.
+*Description:* Available in {{% param "product.abbrev" %}}{{% conditional-text include-if="ose" %}}3.13{{% /conditional-text %}} and later.
 
 You can use the **getent** template function to look up entries from the Name Service Switch libraries, such as, passwd, services, or protocols.
 
@@ -644,9 +644,9 @@ The following databases are supported:
 
     $(graphite-output parameters)
 
-*Description:* Available in {{% productparam "abbrev" %}}{{% conditional-text include-if="ose" %}}3.6{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0{{% /conditional-text %}} and later{{% conditional-text include-if="ose" %}} (Originally appeared in the {{% productparam "abbrev" %}} incubator for syslog-ng 3.5){{% /conditional-text %}}. This template function converts value-pairs from the incoming message to the Graphite plain text protocol format. It is ideal to use with the messages generated by the [monitor-source plugin](https://github.com/syslog-ng/syslog-ng-incubator/tree/master/modules/monitor-source/) (currently available in the syslog-ng incubator project).
+*Description:* Available in {{% param "product.abbrev" %}}{{% conditional-text include-if="ose" %}}3.6{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0{{% /conditional-text %}} and later{{% conditional-text include-if="ose" %}} (Originally appeared in the {{% param "product.abbrev" %}} incubator for syslog-ng 3.5){{% /conditional-text %}}. This template function converts value-pairs from the incoming message to the Graphite plain text protocol format. It is ideal to use with the messages generated by the [monitor-source plugin](https://github.com/syslog-ng/syslog-ng-incubator/tree/master/modules/monitor-source/) (currently available in the syslog-ng incubator project).
 
-For details on selecting value-pairs in {{% productparam "abbrev" %}} and for possibilities to specify which information to convert to Graphite plain text protocol format, see {{% xref "/docs/chapter-concepts/concepts-value-pairs/_index.md" %}}. Note that the syntax of `graphite-output` is different from the syntax of `value-pairs()`: `graphite-output` uses a the command-line syntax used in the [format-json template function]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}).
+For details on selecting value-pairs in {{% param "product.abbrev" %}} and for possibilities to specify which information to convert to Graphite plain text protocol format, see {{% xref "/docs/chapter-concepts/concepts-value-pairs/_index.md" %}}. Note that the syntax of `graphite-output` is different from the syntax of `value-pairs()`: `graphite-output` uses a the command-line syntax used in the [format-json template function]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}).
 
 
 ## Example: Using the graphite-output template function
@@ -704,7 +704,7 @@ Also, using this template, quasi-unique IDs can be generated for data, using the
 
 {{% alert title="Note" color="info" %}}
 
-These template functions are available only if {{% conditional-text include-if="ose" %}}{{% productparam "abbrev" %}} has been compiled with the `--enable-ssl` compile option and {{% /conditional-text %}}the `tfhash` module has been loaded.
+These template functions are available only if {{% conditional-text include-if="ose" %}}{{% param "product.abbrev" %}} has been compiled with the `--enable-ssl` compile option and {{% /conditional-text %}}the `tfhash` module has been loaded.
 
 {{% include-headless "chunk/para-load-module.md" %}} {{% /alert %}}
 
@@ -797,7 +797,7 @@ Since template functions can be embedded into each other, it is possible to use 
 
     $(implode <separator> <string1>, <string2>, ...)
 
-*Description:* Turns a list into a string combining the pieces together with a separator. You can also use the [explode](#template-function-explode) template function, which turns a string separated by a specific character into a list. Available in {{% productparam "abbrev" %}}{{% conditional-text include-if="ose" %}}3.21{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7{{% /conditional-text %}} and later.
+*Description:* Turns a list into a string combining the pieces together with a separator. You can also use the [explode](#template-function-explode) template function, which turns a string separated by a specific character into a list. Available in {{% param "product.abbrev" %}}{{% conditional-text include-if="ose" %}}3.21{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7{{% /conditional-text %}} and later.
 
 
 ## Example: Using the implode template function
@@ -862,7 +862,7 @@ This template function is available only if the `convertfuncs` module has been l
 
 ## List manipulation {#template-function-list}
 
-The `list-\*` template functions allow you to manipulate comma-separated lists. Such lists represent a simple array type in {{% productparam "abbrev" %}}. Note the following about formatting lists:
+The `list-\*` template functions allow you to manipulate comma-separated lists. Such lists represent a simple array type in {{% param "product.abbrev" %}}. Note the following about formatting lists:
 
   - Values are separated by commas, for example, `"item1","item2","item3"`. The single-element list is an element without a comma.
 
@@ -872,7 +872,7 @@ The `list-\*` template functions allow you to manipulate comma-separated lists. 
 
 These template functions return a well-formed list, properly encoding and quoting all elements. If a template function returns a single element, all quotation is decoded and the value contains the literal value.
 
-Starting with {{% productparam "abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}, the following list-related template functions are available. Certain functions allow you to reference an element using its number: note that the list index starts with zero, so the index of the first element is 0, the second element is 1, and so on.
+Starting with {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.10{{% /conditional-text %}}, the following list-related template functions are available. Certain functions allow you to reference an element using its number: note that the list index starts with zero, so the index of the first element is 0, the second element is 1, and so on.
 
 
 <span id="template-function-list-append"></span>
@@ -1037,7 +1037,7 @@ Negative numbers select an element from the end of the list, for example, `-3:` 
 
 ```
 
-Available in {{% productparam "abbrev" %}}{{% conditional-text include-if="ose" %}}3.5{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}}{{% conditional-text include-if="ose" %}}3.5{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0{{% /conditional-text %}} and later.
 
 
 
@@ -1051,7 +1051,7 @@ Available in {{% productparam "abbrev" %}}{{% conditional-text include-if="ose" 
 
 *Description:* Returns with a list that contains the results of applying a template function for each elements of a list.
 
-Available in {{% productparam "abbrev" %}} version 3.28 and later.
+Available in {{% param "product.abbrev" %}} version 3.28 and later.
 
 *Parameters:*
 
@@ -1093,7 +1093,7 @@ The returned values are `1`, `2`, and `3`.
 
 ```
 
-Starting with {{% productparam "abbrev" %}} version {{% conditional-text include-if="ose" %}}3.22{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.15{{% /conditional-text %}} and later, the numerical operators support floating-point values. They behave like the operators in the C programming language:
+Starting with {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.22{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.15{{% /conditional-text %}} and later, the numerical operators support floating-point values. They behave like the operators in the C programming language:
 
   - If both operands are integers, they return an integer.
 
@@ -1175,7 +1175,7 @@ Output: `foofoofoofmymessage`
  $(python <name-of-the-python-method-to-use> <arguments-of-the-method>)
 ```
 
-*Description:* This template function enables you to write a custom template function in Python. You can define a Python block in your {{% productparam "abbrev" %}} configuration file, define one or more Python functions in it, and use the methods as template functions. If you use a Python block, {{% productparam "abbrev" %}} embeds a Python interpreter to process the messages.
+*Description:* This template function enables you to write a custom template function in Python. You can define a Python block in your {{% param "product.abbrev" %}} configuration file, define one or more Python functions in it, and use the methods as template functions. If you use a Python block, {{% param "product.abbrev" %}} embeds a Python interpreter to process the messages.
 
 {{% include-headless "chunk/python-blocks.md" %}}
 
@@ -1214,7 +1214,7 @@ The following example creates a Python template function called `return_message`
 
 ```c
 
-    @version: {{% productparam "techversion" %}}
+    @version: {{% param "product.techversion" %}}
     
     python {
     def return_message(log_message):
@@ -1231,7 +1231,7 @@ The following example creates a Python template function called `resolve_host` t
 
 ```c
 
-    @version: {{% productparam "techversion" %}}
+    @version: {{% param "product.techversion" %}}
     
     python {
     import socket
@@ -1269,7 +1269,7 @@ The following example creates a Python template function called `resolve_host` t
 
 ```
 
-Available in {{% productparam "abbrev" %}}{{% conditional-text include-if="ose" %}}3.5{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}}{{% conditional-text include-if="ose" %}}3.5{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0{{% /conditional-text %}} and later.
 
 
 
@@ -1440,7 +1440,7 @@ A template that converts the message to RFC3164 (BSD-syslog) format and truncate
     $(template $<dynamic-template-name>)
     $(template $<dynamic-template-name> '<optional-fallback-template>')
 
-*Description:* This template function looks up the \<template-name\> in the configuration and uses that to format its result. The referenced template can be static or dynamic. For static templates, {{% productparam "abbrev" %}} resolves the template when it starts, or when the configuration is reloaded. For dynamic templates, the results are resolved runtime (for dynamic templates, the template name contains at least one '$' character). For example, the name of the template to be invoked can be extracted from the message, or from a name-value pair set using the [`add-contextual-data()`]({{< relref "/docs/chapter-enrich-data/data-enrichment-add-contextual-data/_index.md" >}}) feature.
+*Description:* This template function looks up the \<template-name\> in the configuration and uses that to format its result. The referenced template can be static or dynamic. For static templates, {{% param "product.abbrev" %}} resolves the template when it starts, or when the configuration is reloaded. For dynamic templates, the results are resolved runtime (for dynamic templates, the template name contains at least one '$' character). For example, the name of the template to be invoked can be extracted from the message, or from a name-value pair set using the [`add-contextual-data()`]({{< relref "/docs/chapter-enrich-data/data-enrichment-add-contextual-data/_index.md" >}}) feature.
 
 For dynamic templates, you can set an optional second template. This second template will be the results of the template function if resolving the dynamic template fails for some reason. For example:
 
@@ -1450,7 +1450,7 @@ For dynamic templates, you can set an optional second template. This second temp
 
 ```
 
-Available in {{% productparam "abbrev" %}}{{% conditional-text include-if="ose" %}}3.22{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.15{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}}{{% conditional-text include-if="ose" %}}3.22{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.15{{% /conditional-text %}} and later.
 
 
 
@@ -1470,7 +1470,7 @@ Available in {{% productparam "abbrev" %}}{{% conditional-text include-if="ose" 
 
 ```
 
-Available in {{% productparam "abbrev" %}}{{% conditional-text include-if="ose" %}}3.5{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}}{{% conditional-text include-if="ose" %}}3.5{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0{{% /conditional-text %}} and later.
 
 
 
@@ -1482,7 +1482,7 @@ Available in {{% productparam "abbrev" %}}{{% conditional-text include-if="ose" 
 
 *Description:* You can use the `url-decode` template function to decode url-encoded strings and macros. For example, `$(url-decode %3C%3E)` yields `\<\>`. The `url-decode` can receive multiple parameters (maximum 64). In this case, each parameter is decoded separately, and simply concatenated.
 
-Available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="ose" %}}3.18{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.11{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.18{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.11{{% /conditional-text %}} and later.
 
 
 
@@ -1494,7 +1494,7 @@ Available in {{% productparam "abbrev" %}} version {{% conditional-text include-
 
 *Description:* You can use the `url-encode` template function together with the `telegram()` destination to send syslog messages to [Telegram.](https://core.telegram.org/ "https://core.telegram.org") The `url-encode` template function escapes strings. All input characters that are not a-z, A-Z, 0-9, '-', '.', '_' or '\~' are converted to their "URL escaped" version.
 
-Available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="ose" %}}3.18{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.11{{% /conditional-text %}} and later.{{% conditional-text include-if="ose" %}} (In version 3.16-3.17, this template function was called `urlencode`.){{% /conditional-text %}}
+Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="ose" %}}3.18{{% /conditional-text %}}{{% conditional-text include-if="pe" %}}7.0.11{{% /conditional-text %}} and later.{{% conditional-text include-if="ose" %}} (In version 3.16-3.17, this template function was called `urlencode`.){{% /conditional-text %}}
 
 
 

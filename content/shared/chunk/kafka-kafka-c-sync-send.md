@@ -9,11 +9,11 @@
 | Type:    | true | false |
 | Default: | false        |
 
-*Description:* When `sync-send` is set to **true**, {{% productparam "abbrev" %}} sends the message reliably: it sends a message to the Kafka server, then waits for a reply. In case of failure, {{% productparam "abbrev" %}} repeats sending the message, as set in the `retries()` parameter. If sending the message fails for `retries()` times, {{% productparam "abbrev" %}} drops the message.
+*Description:* When `sync-send` is set to **true**, {{% param "product.abbrev" %}} sends the message reliably: it sends a message to the Kafka server, then waits for a reply. In case of failure, {{% param "product.abbrev" %}} repeats sending the message, as set in the `retries()` parameter. If sending the message fails for `retries()` times, {{% param "product.abbrev" %}} drops the message.
 
 This method ensures reliable message transfer, but is very slow.
 
-When `sync-send()` is set to **false**, {{% productparam "abbrev" %}} sends messages asynchronously, and receives the response asynchronously. In case of a problem, {{% productparam "abbrev" %}} cannot resend the messages.
+When `sync-send()` is set to **false**, {{% param "product.abbrev" %}} sends messages asynchronously, and receives the response asynchronously. In case of a problem, {{% param "product.abbrev" %}} cannot resend the messages.
 
-This method is fast, but the transfer is not reliable. Several thousands of messages can be lost before {{% productparam "abbrev" %}} recognizes the error.
+This method is fast, but the transfer is not reliable. Several thousands of messages can be lost before {{% param "product.abbrev" %}} recognizes the error.
 

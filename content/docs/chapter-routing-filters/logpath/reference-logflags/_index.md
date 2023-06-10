@@ -37,7 +37,7 @@ This means that messages sent by `application_A` running on `myhost_A` will be p
     
     ```
 
-The following example shows a scenario that can result in message loss. Do NOT use such a configuration, unless you know exactly what you are doing. The problem is if a message matches the filters in the first part of the first log path, {{% productparam "abbrev" %}} treats the message as 'processed'. Since the first log path includes the `final` flag, {{% productparam "abbrev" %}} will not pass the message to the second log path (the one with the `fallback` flag). As a result, {{% productparam "abbrev" %}} drops messages that do not match the filter of the embedded log path.
+The following example shows a scenario that can result in message loss. Do NOT use such a configuration, unless you know exactly what you are doing. The problem is if a message matches the filters in the first part of the first log path, {{% param "product.abbrev" %}} treats the message as 'processed'. Since the first log path includes the `final` flag, {{% param "product.abbrev" %}} will not pass the message to the second log path (the one with the `fallback` flag). As a result, {{% param "product.abbrev" %}} drops messages that do not match the filter of the embedded log path.
 
 ```c
 
@@ -69,7 +69,7 @@ The following example shows a scenario that can result in message loss. Do NOT u
 
 ## Example: Using the drop-unmatched flag
 
-In the following example, if a log message arrives whose `$MSG` part does not contain the string `foo`, then {{% productparam "abbrev" %}} will discard the message and will not check compliance with the second `if` condition.
+In the following example, if a log message arrives whose `$MSG` part does not contain the string `foo`, then {{% param "product.abbrev" %}} will discard the message and will not check compliance with the second `if` condition.
 
 ```c
 
@@ -85,5 +85,5 @@ In the following example, if a log message arrives whose `$MSG` part does not co
 
 ```
 
-(Without the `drop-unmatched` flag, {{% productparam "abbrev" %}} would check if the message complies with the second `if` condition, that is, whether or not the message contains the string `bar` .)
+(Without the `drop-unmatched` flag, {{% param "product.abbrev" %}} would check if the message complies with the second `if` condition, that is, whether or not the message contains the string `bar` .)
 

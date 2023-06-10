@@ -6,11 +6,11 @@ weight:  1100
 
 Match macros (**$1, $2, ... $255**) are temporary variables. You can use them for general purposes when operating with list-like items. For example, the [match() filter]({{< relref "/docs/chapter-manipulating-messages/regular-expressions/_index.md" >}}) stores capture group results in match variables when the `store-matches` flag is set, or the {{% xref "/docs/chapter-parsers/json-parser/_index.md" %}} produces match variables if the parsed JSON data is an array.
 
-It is possible to set match variables in a single operation with the `set-matches()` rewrite function. `set-matches()` uses {{% productparam "abbrev" %}} list expressions to set **$1, $2, ... $255**, so it can be considered as a conversion function between {{% productparam "abbrev" %}} lists and match variables.
+It is possible to set match variables in a single operation with the `set-matches()` rewrite function. `set-matches()` uses {{% param "product.abbrev" %}} list expressions to set **$1, $2, ... $255**, so it can be considered as a conversion function between {{% param "product.abbrev" %}} lists and match variables.
 
 {{% alert title="Note" color="info" %}}
 
-To convert match variables into a {{% productparam "abbrev" %}} list, use the `$\*` macro, which can be further manipulated using [list template functions]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}), or turned into a list in type-aware destinations.
+To convert match variables into a {{% param "product.abbrev" %}} list, use the `$\*` macro, which can be further manipulated using [list template functions]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}), or turned into a list in type-aware destinations.
 
 {{% /alert %}} {{% alert title="Note" color="info" %}}
 

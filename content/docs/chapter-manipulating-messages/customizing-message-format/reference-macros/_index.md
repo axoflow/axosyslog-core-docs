@@ -4,18 +4,18 @@ weight:  900
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The following macros are available in {{% productparam "abbrev" %}}.
+The following macros are available in {{% param "product.abbrev" %}}.
 
 {{% alert title="Warning" color="warning" %}}
 
-These macros are available when {{% productparam "abbrev" %}} successfully parses the incoming message as a syslog message, or you use some other parsing method and map the parsed values to these macros.
+These macros are available when {{% param "product.abbrev" %}} successfully parses the incoming message as a syslog message, or you use some other parsing method and map the parsed values to these macros.
 
 {{% include-headless "chunk/para-flags-no-parse.md" %}} {{% /alert %}}
 
 
 ## AMPM {#macro-ampm}
 
-*Description:* Typically used together with the [`${HOUR12}`]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) macro, `${AMPM}` returns the period of the day: AM for hours before mid day and PM for hours after mid day. In reference to a 24-hour clock format, AM is between 00:00-12:00 and PM is between 12:00-24:00. 12AM is midnight. Available in {{% conditional-text include-if="pe" %}}{{% productparam "abbrev" %}} 3.2{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}{{% productparam "abbrev" %}} 3.4{{% /conditional-text %}} and later.
+*Description:* Typically used together with the [`${HOUR12}`]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) macro, `${AMPM}` returns the period of the day: AM for hours before mid day and PM for hours after mid day. In reference to a 24-hour clock format, AM is between 00:00-12:00 and PM is between 12:00-24:00. 12AM is midnight. Available in {{% conditional-text include-if="pe" %}}{{% param "product.abbrev" %}} 3.2{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}{{% param "product.abbrev" %}} 3.4{{% /conditional-text %}} and later.
 
 
 
@@ -65,7 +65,7 @@ For an example use case when using the macro is recommended, see {{% xref "/docs
 
 ## FILE_NAME {#macro-filename}
 
-*Description:* Name of the log file (including its path) from where {{% productparam "abbrev" %}} received the message (only available if {{% productparam "abbrev" %}} received the message from a [file]({{< relref "/docs/chapter-sources/configuring-sources-file/_index.md" >}}) or a [wildcard-file]({{< relref "/docs/chapter-sources/configuring-sources-wildcard-file/_index.md" >}}) source). If you need only the path or the filename, use the [dirname]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}) and [basename]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}) template functions.
+*Description:* Name of the log file (including its path) from where {{% param "product.abbrev" %}} received the message (only available if {{% param "product.abbrev" %}} received the message from a [file]({{< relref "/docs/chapter-sources/configuring-sources-file/_index.md" >}}) or a [wildcard-file]({{< relref "/docs/chapter-sources/configuring-sources-wildcard-file/_index.md" >}}) source). If you need only the path or the filename, use the [dirname]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}) and [basename]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}) template functions.
 
 
 {{% include-headless "chunk/macro-fulldate.md" %}}
@@ -77,7 +77,7 @@ For an example use case when using the macro is recommended, see {{% xref "/docs
 
   - If the message traverses several hosts and the [`chain-hostnames()`]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) option is on, the first host in the chain is used.
 
-  - If the [`keep-hostname()`]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) option is disabled (**keep-hostname(no)**), the value of the $FULLHOST macro will be the DNS hostname of the host that sent the message to {{% productparam "abbrev" %}} (that is, the DNS hostname of the last hop). In this case the $FULLHOST and $FULLHOST_FROM macros will have the same value.
+  - If the [`keep-hostname()`]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) option is disabled (**keep-hostname(no)**), the value of the $FULLHOST macro will be the DNS hostname of the host that sent the message to {{% param "product.abbrev" %}} (that is, the DNS hostname of the last hop). In this case the $FULLHOST and $FULLHOST_FROM macros will have the same value.
 
   - If the [`keep-hostname()`]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) option is enabled (**keep-hostname(yes)**), the value of the $FULLHOST macro will be the hostname retrieved from the log message. That way the name of the original sender host can be used, even if there are log relays between the sender and the server.
     
@@ -91,11 +91,11 @@ For an example use case when using the macro is recommended, see {{% xref "/docs
 
 *Description:* The FQDN of the host that sent the message to syslog-ng as resolved by syslog-ng using DNS. If the message traverses several hosts, this is the last host in the chain.
 
-The {{% productparam "abbrev" %}} application uses the following procedure to determine the value of the `$FULLHOST_FROM` macro:
+The {{% param "product.abbrev" %}} application uses the following procedure to determine the value of the `$FULLHOST_FROM` macro:
 
-1.  The {{% productparam "abbrev" %}} application takes the IP address of the host sending the message.
+1.  The {{% param "product.abbrev" %}} application takes the IP address of the host sending the message.
 
-2.  If the `use-dns()` option is enabled, {{% productparam "abbrev" %}} attempts to resolve the IP address to a hostname. If it succeeds, the returned hostname will be the value of the `$FULLHOST_FROM` macro. This value will be the FQDN of the host if the `use-fqdn()` option is enabled, but only the hostname if `use-fqdn()` is disabled.
+2.  If the `use-dns()` option is enabled, {{% param "product.abbrev" %}} attempts to resolve the IP address to a hostname. If it succeeds, the returned hostname will be the value of the `$FULLHOST_FROM` macro. This value will be the FQDN of the host if the `use-fqdn()` option is enabled, but only the hostname if `use-fqdn()` is disabled.
 
 3.  If the `use-dns()` option is disabled, or the address resolution fails, the `${FULLHOST_FROM}` macro will return the IP address of the sender host.
 
@@ -107,7 +107,7 @@ The {{% productparam "abbrev" %}} application uses the following procedure to de
 
 ## HOUR12, C_HOUR12, R_HOUR12, S_HOUR12 {#macro-hour12}
 
-*Description:* The hour of day the message was sent in 12-hour clock format. See also the [`${AMPM}`]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) macro. 12AM is midnight. Available in {{% conditional-text include-if="pe" %}}{{% productparam "abbrev" %}} 3.2{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}{{% productparam "abbrev" %}} 3.4{{% /conditional-text %}} and later.
+*Description:* The hour of day the message was sent in 12-hour clock format. See also the [`${AMPM}`]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) macro. 12AM is midnight. Available in {{% conditional-text include-if="pe" %}}{{% param "product.abbrev" %}} 3.2{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}{{% param "product.abbrev" %}} 3.4{{% /conditional-text %}} and later.
 
 
 
@@ -117,7 +117,7 @@ The {{% productparam "abbrev" %}} application uses the following procedure to de
 
   - If the message traverses several hosts and the [`chain-hostnames()`]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) option is on, the first host in the chain is used.
 
-  - If the [`keep-hostname()`]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) option is disabled (**keep-hostname(no)**), the value of the $HOST macro will be the DNS hostname of the host that sent the message to {{% productparam "abbrev" %}} (that is, the DNS hostname of the last hop). In this case the $HOST and $HOST_FROM macros will have the same value.
+  - If the [`keep-hostname()`]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) option is disabled (**keep-hostname(no)**), the value of the $HOST macro will be the DNS hostname of the host that sent the message to {{% param "product.abbrev" %}} (that is, the DNS hostname of the last hop). In this case the $HOST and $HOST_FROM macros will have the same value.
 
   - If the [`keep-hostname()`]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) option is enabled (**keep-hostname(yes)**), the value of the $HOST macro will be the hostname retrieved from the log message. That way the name of the original sender host can be used, even if there are log relays between the sender and the server.
     
@@ -131,11 +131,11 @@ The {{% productparam "abbrev" %}} application uses the following procedure to de
 
 *Description:* The FQDN of the host that sent the message to syslog-ng as resolved by syslog-ng using DNS. If the message traverses several hosts, this is the last host in the chain.
 
-The {{% productparam "abbrev" %}} application uses the following procedure to determine the value of the `$HOST_FROM` macro:
+The {{% param "product.abbrev" %}} application uses the following procedure to determine the value of the `$HOST_FROM` macro:
 
-1.  The {{% productparam "abbrev" %}} application takes the IP address of the host sending the message.
+1.  The {{% param "product.abbrev" %}} application takes the IP address of the host sending the message.
 
-2.  If the `use-dns()` option is enabled, {{% productparam "abbrev" %}} attempts to resolve the IP address to a hostname. If it succeeds, the returned hostname will be the value of the `$HOST_FROM` macro. This value will be the FQDN of the host if the `use-fqdn()` option is enabled, but only the hostname if `use-fqdn()` is disabled.
+2.  If the `use-dns()` option is enabled, {{% param "product.abbrev" %}} attempts to resolve the IP address to a hostname. If it succeeds, the returned hostname will be the value of the `$HOST_FROM` macro. This value will be the FQDN of the host if the `use-fqdn()` option is enabled, but only the hostname if `use-fqdn()` is disabled.
 
 3.  If the `use-dns()` option is disabled, or the address resolution fails, the `${HOST_FROM}` macro will return the IP address of the sender host.
 
@@ -167,7 +167,7 @@ Available in {{% conditional-text include-if="pe" %}}7.0.17{{% /conditional-text
 
 ## LOGHOST {#macro-loghost}
 
-*Description:* The hostname of the computer running {{% productparam "abbrev" %}}.
+*Description:* The hostname of the computer running {{% param "product.abbrev" %}}.
 
   - In version {{% conditional-text include-if="pe" %}}7.0.17{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.24{{% /conditional-text %}} and later: the `${LOGHOST}` macro returns the fully-qualified domain name (FQDN) only if the `use-fqdn()` option is set to yes, and the hostname otherwise.
 
@@ -181,7 +181,7 @@ Available in {{% conditional-text include-if="pe" %}}7.0.17{{% /conditional-text
 
 {{% include-headless "chunk/para-flags-no-parse.md" %}}
 
-The ${MSG} macro is an alias of the ${MESSAGE} macro: using ${MSG} in {{% productparam "abbrev" %}} is equivalent to ${MESSAGE}.
+The ${MSG} macro is an alias of the ${MESSAGE} macro: using ${MSG} in {{% param "product.abbrev" %}} is equivalent to ${MESSAGE}.
 
 Note that before syslog-ng version 3.0, the ${MESSAGE} macro included the program name and the pid. In syslog-ng 3.0, the `${MESSAGE}` macro became equivalent with the `${MSGONLY}` macro.
 
@@ -213,13 +213,13 @@ Note that before syslog-ng version 3.0, the ${MESSAGE} macro included the progra
 
 *Description:* The millisecond the message was sent.
 
-Available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="pe" %}}4 F2{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.4{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="pe" %}}4 F2{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.4{{% /conditional-text %}} and later.
 
 
 
 ## MSG {#macro-msg}
 
-The ${MSG} macro is an alias of the ${MESSAGE} macro, using ${MSG} in {{% productparam "abbrev" %}} is equivalent to ${MESSAGE}. For details on this macro, see [MESSAGE](#macro-message).
+The ${MSG} macro is an alias of the ${MESSAGE} macro, using ${MSG} in {{% param "product.abbrev" %}} is equivalent to ${MESSAGE}. For details on this macro, see [MESSAGE](#macro-message).
 
 
 {{% include-headless "chunk/macro-msghdr.md" %}}
@@ -227,13 +227,13 @@ The ${MSG} macro is an alias of the ${MESSAGE} macro, using ${MSG} in {{% produc
 
 ## MSGID {#macro-msgid}
 
-*Description:* A string specifying the type of the message in IETF-syslog (RFC5424-formatted) messages. For example, a firewall might use the ${MSGID} "TCPIN" for incoming TCP traffic and the ${MSGID} "TCPOUT" for outgoing TCP traffic. By default, {{% productparam "abbrev" %}} does not specify this value, but uses a dash (-) character instead. If an incoming message includes the ${MSGID} value, it is retained and relayed without modification.
+*Description:* A string specifying the type of the message in IETF-syslog (RFC5424-formatted) messages. For example, a firewall might use the ${MSGID} "TCPIN" for incoming TCP traffic and the ${MSGID} "TCPOUT" for outgoing TCP traffic. By default, {{% param "product.abbrev" %}} does not specify this value, but uses a dash (-) character instead. If an incoming message includes the ${MSGID} value, it is retained and relayed without modification.
 
 
 
 ## MSGONLY {#macro-msgonly}
 
-*Description:* Message contents without the program name or pid. Starting with {{% productparam "abbrev" %}} 3.0, the following macros are equivalent: ${MSGONLY}, ${MSG}, ${MESSAGE}. For consistency, use the ${MESSAGE} macro. For details, see [MESSAGE](#macro-message).
+*Description:* Message contents without the program name or pid. Starting with {{% param "product.abbrev" %}} 3.0, the following macros are equivalent: ${MSGONLY}, ${MSG}, ${MESSAGE}. For consistency, use the ${MESSAGE} macro. For details, see [MESSAGE](#macro-message).
 
 
 
@@ -283,13 +283,13 @@ For an example use case when using the macro is recommended, see {{% xref "/docs
 
 ## RUNID {#macro-runid}
 
-*Description:* An ID that changes its value every time {{% productparam "abbrev" %}} is restarted, but not when reloaded.
+*Description:* An ID that changes its value every time {{% param "product.abbrev" %}} is restarted, but not when reloaded.
 
 
 
 ## SDATA, .SDATA.SDID.SDNAME {#macro-sdata}
 
-*Description:* The syslog-ng application automatically parses the STRUCTURED-DATA part of IETF-syslog messages, which can be referenced in macros. The `${SDATA}` macro references the entire STRUCTURED-DATA part of the message, while structured data elements can be referenced using the `${.SDATA.SDID.SDNAME}` macro.{{% conditional-text include-if="pe" %}}Available only in {{% productparam "name" %}} 4.0 and later.{{% /conditional-text %}}
+*Description:* The syslog-ng application automatically parses the STRUCTURED-DATA part of IETF-syslog messages, which can be referenced in macros. The `${SDATA}` macro references the entire STRUCTURED-DATA part of the message, while structured data elements can be referenced using the `${.SDATA.SDID.SDNAME}` macro.{{% conditional-text include-if="pe" %}}Available only in {{% param "product.name" %}} 4.0 and later.{{% /conditional-text %}}
 
 {{% alert title="Note" color="info" %}}
 
@@ -315,9 +315,9 @@ For example, if a log message contains the following structured data: **[example
 
 *Description:* The `${SEQNUM}` macro contains a sequence number for the log message. The value of the macro depends on the scenario, and can be one of the following:
 
-  - If {{% productparam "abbrev" %}} receives a message via the IETF-syslog protocol that includes a sequence ID, this ID is automatically available in the `${SEQNUM}` macro.
+  - If {{% param "product.abbrev" %}} receives a message via the IETF-syslog protocol that includes a sequence ID, this ID is automatically available in the `${SEQNUM}` macro.
 
-  - If the message is a Cisco IOS log message using the extended timestamp format, then {{% productparam "abbrev" %}} stores the sequence number from the message in this macro. If you forward this message the IETF-syslog protocol, {{% productparam "abbrev" %}} includes the sequence number received from the Cisco device in the `${.SDATA.meta.sequenceId}` part of the message.
+  - If the message is a Cisco IOS log message using the extended timestamp format, then {{% param "product.abbrev" %}} stores the sequence number from the message in this macro. If you forward this message the IETF-syslog protocol, {{% param "product.abbrev" %}} includes the sequence number received from the Cisco device in the `${.SDATA.meta.sequenceId}` part of the message.
     
     {{% alert title="Note" color="info" %}}
     
@@ -325,17 +325,17 @@ For example, if a log message contains the following structured data: **[example
     
     {{% /alert %}}
 
-  - For locally generated messages (that is, for messages that are received from a local source, and not from the network), {{% productparam "abbrev" %}} calculates a sequence number when sending the message to a destination (it is not calculated for relayed messages).
+  - For locally generated messages (that is, for messages that are received from a local source, and not from the network), {{% param "product.abbrev" %}} calculates a sequence number when sending the message to a destination (it is not calculated for relayed messages).
     
       - The sequence number is not global, but per-destination. Essentially, it counts the number of messages sent to the destination.
     
-      - This sequence number increases by one for every message sent to the destination. It not lost when {{% productparam "abbrev" %}} is reloaded, but it is reset when {{% productparam "abbrev" %}} is restarted.
+      - This sequence number increases by one for every message sent to the destination. It not lost when {{% param "product.abbrev" %}} is reloaded, but it is reset when {{% param "product.abbrev" %}} is restarted.
     
       - This sequence number is added to every message that uses the IETF-syslog protocol (**${.SDATA.meta.sequenceId}**), and can be added to BSD-syslog messages using the **${SEQNUM}** macro.
 
 {{% alert title="Note" color="info" %}}
 
-If you need a sequence number for every log message that {{% productparam "abbrev" %}} receives, use the [RCPTID]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) macro.
+If you need a sequence number for every log message that {{% param "product.abbrev" %}} receives, use the [RCPTID]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) macro.
 
 {{% /alert %}}
 
@@ -343,7 +343,7 @@ If you need a sequence number for every log message that {{% productparam "abbre
 
 ## SOURCE {#macro-source}
 
-*Description:* The identifier of the source statement in the {{% productparam "abbrev" %}} configuration file that received the message. For example, if {{% productparam "abbrev" %}} received the log message from the `source s_local { internal(); };` source statement, the value of the ${SOURCE} macro is `s_local`. This macro is mainly useful for debugging and troubleshooting purposes.
+*Description:* The identifier of the source statement in the {{% param "product.abbrev" %}} configuration file that received the message. For example, if {{% param "product.abbrev" %}} received the log message from the `source s_local { internal(); };` source statement, the value of the ${SOURCE} macro is `s_local`. This macro is mainly useful for debugging and troubleshooting purposes.
 
 
 
@@ -361,9 +361,9 @@ If you need a sequence number for every log message that {{% productparam "abbre
 
 ## SYSUPTIME {#macro-sysuptime}
 
-*Description:* The time elapsed since the {{% productparam "abbrev" %}} instance was started (that is, the uptime of the {{% productparam "abbrev" %}} process). The value of this macro is an integer containing the time in 1/100th of the second.
+*Description:* The time elapsed since the {{% param "product.abbrev" %}} instance was started (that is, the uptime of the {{% param "product.abbrev" %}} process). The value of this macro is an integer containing the time in 1/100th of the second.
 
-Available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="pe" %}}4 F1{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.4{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="pe" %}}4 F1{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.4{{% /conditional-text %}} and later.
 
 
 
@@ -375,7 +375,7 @@ Available in {{% productparam "abbrev" %}} version {{% conditional-text include-
 
 ## TAGS {#macro-tags}
 
-*Description:* A comma-separated list of the tags assigned to the message.{{% conditional-text include-if="pe" %}} Available only in {{% productparam "name" %}} 3.2 and later.{{% /conditional-text %}}
+*Description:* A comma-separated list of the tags assigned to the message.{{% conditional-text include-if="pe" %}} Available only in {{% param "product.name" %}} 3.2 and later.{{% /conditional-text %}}
 
 {{% alert title="Note" color="info" %}}
 
@@ -395,7 +395,7 @@ When sent as structured metadata, it is possible to reference to the list of tag
 
 ## .tls.x509 {#macro-tls-x509}
 
-*Description:* When using a transport that uses TLS, these macros contain information about the peer's certificate. That way, you can use information from the client certificate in filenames, database values, or as other metadata. If you clients have their own certificates, then these values are unique per client, but unchangeable by the client. The following macros are available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="pe" %}}7{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.9{{% /conditional-text %}} and later.
+*Description:* When using a transport that uses TLS, these macros contain information about the peer's certificate. That way, you can use information from the client certificate in filenames, database values, or as other metadata. If you clients have their own certificates, then these values are unique per client, but unchangeable by the client. The following macros are available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="pe" %}}7{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.9{{% /conditional-text %}} and later.
 
   - `.tls.x509_cn`: The Common Name of the certificate.
 
@@ -409,7 +409,7 @@ When sent as structured metadata, it is possible to reference to the list of tag
 
 *Description:* A globally unique ID generated from the HOSTID and the RCPTID in the format of HOSTID@RCPTID. For details, see [use-uniqid()]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) and [RCPTID](#macro-rcptid).
 
-Available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="pe" %}}5 F2{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.7{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="pe" %}}5 F2{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.7{{% /conditional-text %}} and later.
 
 
 
@@ -417,7 +417,7 @@ Available in {{% productparam "abbrev" %}} version {{% conditional-text include-
 
 *Description:* The microsecond the message was sent.
 
-Available in {{% productparam "abbrev" %}} version {{% conditional-text include-if="pe" %}}4 F2{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.4{{% /conditional-text %}} and later.
+Available in {{% param "product.abbrev" %}} version {{% conditional-text include-if="pe" %}}4 F2{{% /conditional-text %}}{{% conditional-text include-if="ose" %}}3.4{{% /conditional-text %}} and later.
 
 
 {{% include-headless "chunk/macro-year.md" %}}

@@ -22,7 +22,7 @@ The `collectd()` destination has the following options. The `plugin()` and `type
 | Type:    | string, macro, or template |
 | Default: | ${HOST}                    |
 
-*Description:* The hostname that is passed to collectd. By default, {{% productparam "abbrev" %}} uses the host from the log message as the hostname.
+*Description:* The hostname that is passed to collectd. By default, {{% param "product.abbrev" %}} uses the host from the log message as the hostname.
 
 ```c
 

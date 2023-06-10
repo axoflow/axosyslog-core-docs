@@ -34,7 +34,7 @@ To use a block in your configuration file, you have to do two things:
     
     Blocks may have parameters, but even if they do not, the reference must include opening and closing parentheses like in the previous example.
 
-The contents of the block will be inserted into the configuration when {{% productparam "abbrev" %}} is started or reloaded.
+The contents of the block will be inserted into the configuration when {{% param "product.abbrev" %}} is started or reloaded.
 
 
 ## Example: Reusing configuration blocks {#example-configuration-block}
@@ -52,7 +52,7 @@ Include this file in your main syslog-ng configuration file, reference the block
 
 ```c
 
-    @version: {{% productparam "techversion" %}}
+    @version: {{% param "product.techversion" %}}
     @include "<correct/path>/myblocks.conf"
     source s_myappsource { myappsource(); };
     ...
@@ -61,7 +61,7 @@ Include this file in your main syslog-ng configuration file, reference the block
 ```
 
 
-To define a block that defines more than one object, use **root** as the type of the block, and reference the block from the main part of the {{% productparam "abbrev" %}} configuration file.
+To define a block that defines more than one object, use **root** as the type of the block, and reference the block from the main part of the {{% param "product.abbrev" %}} configuration file.
 
 
 ## Example: Defining blocks with multiple elements {#example-configuration-block-root}
@@ -87,7 +87,7 @@ The following example defines a source, a destination, and a log path to connect
 
 {{% alert title="Note" color="info" %}}
 
-Since the block is inserted into the {{% productparam "abbrev" %}} configuration when {{% productparam "abbrev" %}} is started, the block can be generated dynamically using an external script if needed. This is useful when you are running {{% productparam "abbrev" %}} on different hosts and you want to keep the main configuration identical.
+Since the block is inserted into the {{% param "product.abbrev" %}} configuration when {{% param "product.abbrev" %}} is started, the block can be generated dynamically using an external script if needed. This is useful when you are running {{% param "product.abbrev" %}} on different hosts and you want to keep the main configuration identical.
 
 If you want to reuse more than a single configuration object, for example, a logpath and the definitions of its sources and destinations, use the include feature to reuse the entire snippet. For details, see {{% xref "/docs/chapter-configuration-file/large-configs/including-config-files/_index.md" %}}.
 
@@ -103,7 +103,7 @@ To make a parameter expand into nothing (for example, because it has no default 
 
 ## Example: Mandatory parameters
 
-The following example defines a TCP source that can receive the following parameters: the port where {{% productparam "abbrev" %}} listens (`localport`), and optionally source flags (`flags`).
+The following example defines a TCP source that can receive the following parameters: the port where {{% param "product.abbrev" %}} listens (`localport`), and optionally source flags (`flags`).
 
 ```c
 
@@ -164,7 +164,7 @@ The following sample defines a file source block, which can receive the name of 
 
 If you reference the block with more arguments then specified in its definition, you can use these additional arguments as a single argument-list within the block. That way, you can use a variable number of optional arguments in your block. This can be useful when passing arguments to a template, or optional arguments to an underlying driver.
 
-The three dots (`…`) at the end of the argument list refer to any additional parameters. It tells {{% productparam "abbrev" %}} that this macro accepts ``__VARARGS__``, therefore any name-value pair can be passed without validation. To reference this argument-list, insert **`__VARARGS__`** to the place in the block where you want to insert the argument-list. Note that you can use this only once in a block.
+The three dots (`…`) at the end of the argument list refer to any additional parameters. It tells {{% param "product.abbrev" %}} that this macro accepts ``__VARARGS__``, therefore any name-value pair can be passed without validation. To reference this argument-list, insert **`__VARARGS__`** to the place in the block where you want to insert the argument-list. Note that you can use this only once in a block.
 
 The following definition extends the logfile block from the previous example, and passes the optional arguments (`follow-freq(1) flags(no-parse)`) to the `file()` source.
 

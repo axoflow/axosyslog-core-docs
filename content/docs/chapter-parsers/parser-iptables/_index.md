@@ -11,7 +11,7 @@ The iptables parser can parse the log messages of the iptables command. Availabl
 
 ```c
 
-    @version: {{% productparam "configversion" %}}
+    @version: {{% param "product.configversion" %}}
     @include "scl.conf"
     log {
         source { system(); };

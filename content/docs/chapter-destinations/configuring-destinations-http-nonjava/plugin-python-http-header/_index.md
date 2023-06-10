@@ -4,14 +4,14 @@ weight:  700
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-This section describes the {{% productparam "name" %}} ({{% productparam "abbrev" %}}) application's Python HTTP header plugin.
+This section describes the {{% param "product.name" %}} ({{% param "product.abbrev" %}}) application's Python HTTP header plugin.
 
-For more information about modules in {{% productparam "abbrev" %}}, see {{% xref "/docs/chapter-configuration-file/modules/_index.md" %}}.
+For more information about modules in {{% param "product.abbrev" %}}, see {{% xref "/docs/chapter-configuration-file/modules/_index.md" %}}.
 
 
 ## The Python HTTP header plugin
 
-The {{% productparam "abbrev" %}} application supports adding custom headers to HTTP requests using the Python programming language.
+The {{% param "product.abbrev" %}} application supports adding custom headers to HTTP requests using the Python programming language.
 
 
 
@@ -19,7 +19,7 @@ The {{% productparam "abbrev" %}} application supports adding custom headers to 
 
 {{% alert title="Note" color="info" %}}
 
-Before you use the `python-http-header` plugin, make sure that your {{% productparam "abbrev" %}} appliance was compiled with Python support. If you installed {{% productparam "abbrev" %}} from a package, make sure that the subpackage containing Python support is also installed.
+Before you use the `python-http-header` plugin, make sure that your {{% param "product.abbrev" %}} appliance was compiled with Python support. If you installed {{% param "product.abbrev" %}} from a package, make sure that the subpackage containing Python support is also installed.
 
 {{% /alert %}}
 
@@ -50,7 +50,7 @@ Before you use the `python-http-header` plugin, make sure that your {{% productp
     
     {{% /alert %}}
 
-  - `options("key" "value")`: Optional option. Multiple options can be specified at the same time. The {{% productparam "abbrev" %}} application will build a Python dictionary, which will be available in the `__init__` method.
+  - `options("key" "value")`: Optional option. Multiple options can be specified at the same time. The {{% param "product.abbrev" %}} application will build a Python dictionary, which will be available in the `__init__` method.
 
   - `mark-errors-as-critical(yes|no)`: Optional option. Its default value is `yes`. In case there is a Python error, this parameter decides if the HTTP destination will still try to send the request with the failed headers, or disconnect instead.
 
@@ -85,9 +85,9 @@ If the plugin fails, the HTTP module does not send the HTTP request without the 
 
 **Methods used in the configuration**
 
-  - `__init__(self, options)`: Optional method. The options specified in the {{% productparam "abbrev" %}} configuration can be stored in the instance using this method.
+  - `__init__(self, options)`: Optional method. The options specified in the {{% param "product.abbrev" %}} configuration can be stored in the instance using this method.
   - `get_headers(self, body, headers)`: Mandatory method. Returns a list of strings of form [`"header: value"`, ...]. The returned headers will be set for the outgoing HTTP request. The body contains the body of the HTTP request. The headers contain the current headers that the HTTP destination has already added to the request.
-  - `on_http_response_received(self, http_code)`: Optional method. If specified, {{% productparam "abbrev" %}} inserts the `http_code` of the previous response. This can be used to handle error (for example, for recreating auth headers, or dropping cache).
+  - `on_http_response_received(self, http_code)`: Optional method. If specified, {{% param "product.abbrev" %}} inserts the `http_code` of the previous response. This can be used to handle error (for example, for recreating auth headers, or dropping cache).
 
 
 

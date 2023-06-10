@@ -65,7 +65,7 @@ The following example illustrates how you can configure the `disable_notificatio
 | Type:    | boolean |
 | Default: | true    |
 
-*Description:* Disables link previews for links in the message. By default, the disable-web-page-preview value is `true`. From a security point of view, {{% productparam "companyabbrev" %}} recommends to leave it true, otherwise malicious messages can trick the telegram destination to generate traffic to any URL.
+*Description:* Disables link previews for links in the message. By default, the disable-web-page-preview value is `true`. From a security point of view, {{% param "product.companyabbrev" %}} recommends to leave it true, otherwise malicious messages can trick the telegram destination to generate traffic to any URL.
 
 
 {{% include-headless "chunk/option-destination-hook.md" %}}
@@ -89,7 +89,7 @@ The following example illustrates how you can configure the `disable_notificatio
 | Type:    | string          |
 | Default: | ${MESSAGE} \\") |
 
-*Description:* Specifies the content of the message. The {{% productparam "abbrev" %}} application will automatically encode the content of this option using the `url-encode()` template function.
+*Description:* Specifies the content of the message. The {{% param "product.abbrev" %}} application will automatically encode the content of this option using the `url-encode()` template function.
 
 
 {{% include-headless "chunk/option-source-time-reopen.md" %}}

@@ -9,7 +9,7 @@
 | Type:    | regular expression starting with the ^ character |
 | Default: | empty string                                     |
 
-*Description:* Use the `multi-line-prefix()` option to process multi-line messages, that is, log messages that contain newline characters (for example, Tomcat logs). Specify a string or regular expression that matches the beginning of the log messages (always start with the **^** character). Use as simple regular expressions as possible, because complex regular expressions can severely reduce the rate of processing multi-line messages. If the `multi-line-prefix()` option is set, {{% productparam "abbrev" %}} ignores newline characters from the source until a line matches the regular expression again, and treats the lines between the matching lines as a single message. See also the `multi-line-garbage()` option.
+*Description:* Use the `multi-line-prefix()` option to process multi-line messages, that is, log messages that contain newline characters (for example, Tomcat logs). Specify a string or regular expression that matches the beginning of the log messages (always start with the **^** character). Use as simple regular expressions as possible, because complex regular expressions can severely reduce the rate of processing multi-line messages. If the `multi-line-prefix()` option is set, {{% param "product.abbrev" %}} ignores newline characters from the source until a line matches the regular expression again, and treats the lines between the matching lines as a single message. See also the `multi-line-garbage()` option.
 
 {{% include-headless "wnt/tip-multi-line-output.md" %}}
 
@@ -55,6 +55,6 @@ To process these messages, specify a regular expression matching the timestamp o
 
 ```
 
-Note that `flags(no-parse)` is needed to prevent {{% productparam "abbrev" %}} trying to interpret the date in the message.
+Note that `flags(no-parse)` is needed to prevent {{% param "product.abbrev" %}} trying to interpret the date in the message.
 
 
