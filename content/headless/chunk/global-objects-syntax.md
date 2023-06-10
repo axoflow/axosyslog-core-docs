@@ -1,31 +1,26 @@
 ---
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
-  - The main body of the configuration file consists of object definitions: sources, destinations, logpaths define which log message are received and where they are sent. All identifiers, option names and attributes, and any other strings used in the syslog-ng configuration file are case sensitive. Object definitions (also called statements) have the following syntax:
+- The main body of the configuration file consists of object definitions: sources, destinations, logpaths define which log message are received and where they are sent. All identifiers, option names and attributes, and any other strings used in the syslog-ng configuration file are case sensitive. Object definitions (also called statements) have the following syntax:
     
     ```c
         type-of-the-object identifier-of-the-object {<parameters>};
     ```
     
-      - *Type of the object*: One of `source`, `destination`, `log`, `filter`, `parser`, `rewrite` rule, or `template`.
+    - *Type of the object*: One of `source`, `destination`, `log`, `filter`, `parser`, `rewrite` rule, or `template`.
     
-      - *Identifier of the object*: A unique name identifying the object. When using a reserved word as an identifier, enclose the identifier in quotation marks.
+    - *Identifier of the object*: A unique name identifying the object. When using a reserved word as an identifier, enclose the identifier in quotation marks.
         
         All identifiers, attributes, and any other strings used in the syslog-ng configuration file are case sensitive.
         
-        {{% alert title="Note" color="info" %}}
-        
-        Use identifiers that refer to the type of the object they identify. For example, prefix source objects with `s_`, destinations with `d_`, and so on.
-        
-        {{% /alert %}} {{% alert title="Note" color="info" %}}
-        
-        Repeating a definition of an object (that is, defining the same object with the same id more than once) is not allowed, unless you use the `@define allow-config-dups 1` definition in the configuration file.
-        
-        {{% /alert %}}
+        {{< alert title="Note" color="info" >}}Use identifiers that refer to the type of the object they identify. For example, prefix source objects with `s_`, destinations with `d_`, and so on.
+
+Repeating a definition of an object (that is, defining the same object with the same id more than once) is not allowed, unless you use the `@define allow-config-dups 1` definition in the configuration file.
+        {{< /alert >}}
     
-      - *Parameters*: The parameters of the object, enclosed in braces `{parameters}`.
-    
-      - *Semicolon*: Object definitions end with a semicolon (`;`).
+    - *Parameters*: The parameters of the object, enclosed in braces `{parameters}`.
+
+    - *Semicolon*: Object definitions end with a semicolon (`;`).
     
     For example, the following line defines a source and calls it `s_internal`.
     
@@ -43,7 +38,7 @@
         };
     ```
 
-  - The parameters and options within a statement are similar to function calls of the C programming language: the name of the option followed by a list of its parameters enclosed within brackets and terminated with a semicolon.
+- The parameters and options within a statement are similar to function calls of the C programming language: the name of the option followed by a list of its parameters enclosed within brackets and terminated with a semicolon.
     
     ```c
         option(parameter1, parameter2); option2(parameter1, parameter2);
