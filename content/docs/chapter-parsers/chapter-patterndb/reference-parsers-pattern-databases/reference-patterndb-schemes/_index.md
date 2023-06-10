@@ -1,5 +1,5 @@
 ---
-title: "The syslog-ng pattern database format"
+title: "The pattern database format"
 weight:  500
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
@@ -12,7 +12,7 @@ For a sample database containing only a single pattern, see [Example: A pattern 
 
 {{% alert title="Note" color="info" %}}
 
-Use the `pdbtool` utility that is bundled with syslog-ng to test message patterns and convert existing databases to the latest format. For details, see <span class="mcFormatColor" style="color: #04aada;">The pdbtool manual page</span>.
+Use the `pdbtool` utility that is bundled with `syslog-ng` to test message patterns and convert existing databases to the latest format. For details, see <span class="mcFormatColor" style="color: #04aada;">The pdbtool manual page</span>.
 
 To automatically create an initial pattern database from an existing log file, use the `pdbtool patternize` command. For details, see <span class="mcFormatColor" style="color: #04aada;">The pdbtool manual page</span>.
 

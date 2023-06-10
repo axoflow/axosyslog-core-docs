@@ -4,7 +4,7 @@ weight:  700
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-Complete the following steps to configure your Microsoft SQL Server to enable remote logins and accept log messages from syslog-ng.
+Complete the following steps to configure your Microsoft SQL Server to enable remote logins and accept log messages from `syslog-ng`.
 
 
 1.  Start the SQL Server Management Studio application. Select `Start \> Programs \> Microsoft SQL Server 2005 \> SQL Server Management Studio`.
@@ -37,11 +37,11 @@ Complete the following steps to configure your Microsoft SQL Server to enable re
         
         {{% alert title="Warning" color="warning" %}}
         
-        Incorrect language settings may result in the database converting the messages to a different character-encoding format. That way the log messages may become unreadable, causing information loss.
+Incorrect language settings may result in the database converting the messages to a different character-encoding format. That way the log messages may become unreadable, causing information loss.
         
         {{% /alert %}}
     
-    6.  In the `Object Explorer`, select `Security \> Logins`, then right-click on the new login created in the previous step, and select `Properties`.
+    6.  In the `Object Explorer`, select `Security > Logins`, then right-click on the new login created in the previous step, and select `Properties`.
     
     7.  ![](../Images/Screenshots/mssql-newuser-setowner.png)
         
@@ -51,5 +51,5 @@ Complete the following steps to configure your Microsoft SQL Server to enable re
     
     Enable remote logins for SQL users.
     
-    In the `Object Explorer` right-click on your database server, and select `Properties \> Security`, and set the `Server Authentication` option to `SQL Server and Windows Authentication mode`.
+    In the `Object Explorer` right-click on your database server, and select `Properties > Security`, and set the `Server Authentication` option to `SQL Server and Windows Authentication mode`.
 

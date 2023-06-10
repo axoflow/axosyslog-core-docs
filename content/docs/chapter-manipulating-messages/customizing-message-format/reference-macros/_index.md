@@ -89,7 +89,7 @@ For an example use case when using the macro is recommended, see {{% xref "/docs
 
 ## FULLHOST_FROM {#macro-fullhost-from}
 
-*Description:* The FQDN of the host that sent the message to syslog-ng as resolved by syslog-ng using DNS. If the message traverses several hosts, this is the last host in the chain.
+*Description:* The FQDN of the host that sent the message to `syslog-ng` as resolved by `syslog-ng` using DNS. If the message traverses several hosts, this is the last host in the chain.
 
 The {{% param "product.abbrev" %}} application uses the following procedure to determine the value of the `$FULLHOST_FROM` macro:
 
@@ -129,7 +129,7 @@ The {{% param "product.abbrev" %}} application uses the following procedure to d
 
 ## HOST_FROM {#macro-host-from}
 
-*Description:* The FQDN of the host that sent the message to syslog-ng as resolved by syslog-ng using DNS. If the message traverses several hosts, this is the last host in the chain.
+*Description:* The FQDN of the host that sent the message to `syslog-ng` as resolved by `syslog-ng` using DNS. If the message traverses several hosts, this is the last host in the chain.
 
 The {{% param "product.abbrev" %}} application uses the following procedure to determine the value of the `$HOST_FROM` macro:
 
@@ -145,7 +145,7 @@ The {{% param "product.abbrev" %}} application uses the following procedure to d
 
 ## ISODATE, C_ISODATE, R_ISODATE, S_ISODATE {#macro-isodate}
 
-*Description:* Date of the message in the ISO 8601 compatible standard timestamp format (yyyy-mm-ddThh:mm:ss+-ZONE), for example: `2006-06-13T15:58:00.123+01:00`. If possible, it is recommended to use `${ISODATE}` for timestamping. Note that syslog-ng can produce fractions of a second (for example, milliseconds) in the timestamp by using the `frac-digits()` global or per-destination option.
+*Description:* Date of the message in the ISO 8601 compatible standard timestamp format (yyyy-mm-ddThh:mm:ss+-ZONE), for example: `2006-06-13T15:58:00.123+01:00`. If possible, it is recommended to use `${ISODATE}` for timestamping. Note that `syslog-ng` can produce fractions of a second (for example, milliseconds) in the timestamp by using the `frac-digits()` global or per-destination option.
 
 {{% include-headless "wnt/n-frac-trunc.md" %}}
 
@@ -183,7 +183,7 @@ Available in 3.24 and later.
 
 The ${MSG} macro is an alias of the ${MESSAGE} macro: using ${MSG} in {{% param "product.abbrev" %}} is equivalent to ${MESSAGE}.
 
-Note that before syslog-ng version 3.0, the ${MESSAGE} macro included the program name and the pid. In syslog-ng 3.0, the `${MESSAGE}` macro became equivalent with the `${MSGONLY}` macro.
+Note that before `syslog-ng` version 3.0, the ${MESSAGE} macro included the program name and the pid. In `syslog-ng` 3.0, the `${MESSAGE}` macro became equivalent with the `${MSGONLY}` macro.
 
 
 {{% include-headless "chunk/macro-min.md" %}}
@@ -219,7 +219,7 @@ Available in {{% param "product.abbrev" %}} version 3.4 and later.
 
 ## MSG {#macro-msg}
 
-The ${MSG} macro is an alias of the ${MESSAGE} macro, using ${MSG} in {{% param "product.abbrev" %}} is equivalent to ${MESSAGE}. For details on this macro, see [MESSAGE](#macro-message).
+The `${MSG}` macro is an alias of the `${MESSAGE}` macro, using `${MSG}` in {{% param "product.abbrev" %}} is equivalent to `${MESSAGE}`. For details on this macro, see [MESSAGE](#macro-message).
 
 
 {{% include-headless "chunk/macro-msghdr.md" %}}
@@ -227,13 +227,13 @@ The ${MSG} macro is an alias of the ${MESSAGE} macro, using ${MSG} in {{% param 
 
 ## MSGID {#macro-msgid}
 
-*Description:* A string specifying the type of the message in IETF-syslog (RFC5424-formatted) messages. For example, a firewall might use the ${MSGID} "TCPIN" for incoming TCP traffic and the ${MSGID} "TCPOUT" for outgoing TCP traffic. By default, {{% param "product.abbrev" %}} does not specify this value, but uses a dash (-) character instead. If an incoming message includes the ${MSGID} value, it is retained and relayed without modification.
+*Description:* A string specifying the type of the message in IETF-syslog (RFC5424-formatted) messages. For example, a firewall might use the `${MSGID}` "TCPIN" for incoming TCP traffic and the `${MSGID}` "TCPOUT" for outgoing TCP traffic. By default, {{% param "product.abbrev" %}} does not specify this value, but uses a dash (-) character instead. If an incoming message includes the `${MSGID}` value, it is retained and relayed without modification.
 
 
 
-## MSGONLY {#macro-msgonly}
+## MSGONLY {#macro-msgonly}`
 
-*Description:* Message contents without the program name or pid. Starting with {{% param "product.abbrev" %}} 3.0, the following macros are equivalent: ${MSGONLY}, ${MSG}, ${MESSAGE}. For consistency, use the ${MESSAGE} macro. For details, see [MESSAGE](#macro-message).
+*Description:* Message contents without the program name or pid. Starting with {{% param "product.abbrev" %}} 3.0, the following macros are equivalent: `${MSGONLY}`, `${MSG}`, `${MESSAGE}`. For consistency, use the `${MESSAGE}` macro. For details, see [MESSAGE](#macro-message).
 
 
 
@@ -257,7 +257,7 @@ The ${MSG} macro is an alias of the ${MESSAGE} macro, using ${MSG} in {{% param 
 
 ## PROGRAM {#macro-program}
 
-*Description:* The name of the program sending the message. Note that the content of the ${PROGRAM} variable may not be completely trusted as it is provided by the client program that constructed the message.
+*Description:* The name of the program sending the message. Note that the content of the `${PROGRAM}` variable may not be completely trusted as it is provided by the client program that constructed the message.
 
 
 
@@ -271,7 +271,7 @@ For an example use case when using the macro is recommended, see {{% xref "/docs
 
 ## RAWMSG {#macro-rawmsg}
 
-*Description:* The original message as received from the client. Note that this macro is available only in 3.16 and later, and only if syslog-ng received the message using the [`default-network-drivers-ng()` source]({{< relref "/docs/chapter-sources/source-default-network-drivers/_index.md" >}}), or the source receiving the message has the [`store-raw-message`](shared/chunk/option-source-flags.htm) flag set.
+*Description:* The original message as received from the client. Note that this macro is available only in 3.16 and later, and only if `syslog-ng` received the message using the [`default-network-drivers-ng()` source]({{< relref "/docs/chapter-sources/source-default-network-drivers/_index.md" >}}), or the source receiving the message has the [`store-raw-message`](shared/chunk/option-source-flags.htm) flag set.
 
 
 
@@ -289,7 +289,7 @@ For an example use case when using the macro is recommended, see {{% xref "/docs
 
 ## SDATA, .SDATA.SDID.SDNAME {#macro-sdata}
 
-*Description:* The syslog-ng application automatically parses the STRUCTURED-DATA part of IETF-syslog messages, which can be referenced in macros. The `${SDATA}` macro references the entire STRUCTURED-DATA part of the message, while structured data elements can be referenced using the `${.SDATA.SDID.SDNAME}` macro.
+*Description:* The `syslog-ng` application automatically parses the STRUCTURED-DATA part of IETF-syslog messages, which can be referenced in macros. The `${SDATA}` macro references the entire STRUCTURED-DATA part of the message, while structured data elements can be referenced using the `${.SDATA.SDID.SDNAME}` macro.
 
 {{% alert title="Note" color="info" %}}
 
@@ -347,7 +347,7 @@ If you need a sequence number for every log message that {{% param "product.abbr
 
 ## SOURCEIP {#macro-sourceip}
 
-*Description:* IP address of the host that sent the message to syslog-ng. (That is, the IP address of the host in the `${FULLHOST_FROM}` macro.) Please note that when a message traverses several relays, this macro contains the IP of the last relay.
+*Description:* IP address of the host that sent the message to `syslog-ng`. (That is, the IP address of the host in the `${FULLHOST_FROM}` macro.) Please note that when a message traverses several relays, this macro contains the IP of the last relay.
 
 
 

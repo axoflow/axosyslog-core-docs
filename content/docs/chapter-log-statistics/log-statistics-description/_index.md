@@ -1,5 +1,5 @@
 ---
-title: "Metrics and counters of syslog-ng OSE"
+title: "Metrics and counters"
 weight:  100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
@@ -12,7 +12,7 @@ The displayed metrics have the following structure.
 
 The type of the object (for example, `dst.file`, `tag`, `src.facility`)
 
-The ID of the object used in the syslog-ng configuration file, for example, `d_internal` or `source.src_tcp`. The `#0` part means that this is the first destination in the destination group.
+The ID of the object used in the `syslog-ng` configuration file, for example, `d_internal` or `source.src_tcp`. The `#0` part means that this is the first destination in the destination group.
 
 The instance ID (destination) of the object, for example, the filename of a file destination, or the name of the application for a program source or destination.
 

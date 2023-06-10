@@ -10,8 +10,8 @@ Message parsing, rewrite rules, filters, and other types of message processing i
 
 To improve the processing power of {{% param "product.abbrev" %}} and scale to more processors, use the following methods:
 
-  - To improve scaling on the source side, use more sources, for example, more source files, or receive the messages from more parallel connections. For network sources, you can also configure a part of your clients to send the messages to a different port of your syslog-ng server, and use separate source definitions for each port.
+  - To improve scaling on the source side, use more sources, for example, more source files, or receive the messages from more parallel connections. For network sources, you can also configure a part of your clients to send the messages to a different port of your `syslog-ng` server, and use separate source definitions for each port.
 
-  - On the destination side, when writing the log messages to files, use macros in the filename to split the messages to separate files (for example, using the ${HOST} macro). Files with macros in their filenames are processed in separate writer threads.
+  - On the destination side, when writing the log messages to files, use macros in the filename to split the messages to separate files (for example, using the `${HOST}` macro). Files with macros in their filenames are processed in separate writer threads.
 
-  - On the destination side, when sending messages to a syslog-ng server, you can use multiple connections to the server if you configure the syslog-ng server to receive messages on multiple ports, and configure separate destinations on the clients to use both ports.
+  - On the destination side, when sending messages to a `syslog-ng` server, you can use multiple connections to the server if you configure the `syslog-ng` server to receive messages on multiple ports, and configure separate destinations on the clients to use both ports.

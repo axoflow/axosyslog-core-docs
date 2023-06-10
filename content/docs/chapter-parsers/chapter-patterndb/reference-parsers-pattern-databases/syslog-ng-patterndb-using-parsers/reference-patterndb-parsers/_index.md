@@ -1,5 +1,5 @@
 ---
-title: "Pattern parsers of syslog-ng OSE"
+title: "Pattern parsers"
 weight:  100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
@@ -35,7 +35,7 @@ This parser has a required parameter that acts as the stopcharacter: the parser 
 
 ## @FLOAT@ {#patterndb-parser-float}
 
-A floating-point number that may contain a dot (.) character. (Up to syslog-ng 3.1, the name of this parser was `@DOUBLE@`.)
+A floating-point number that may contain a dot (.) character. (Up to `syslog-ng` 3.1, the name of this parser was `@DOUBLE@`.)
 
 
 
