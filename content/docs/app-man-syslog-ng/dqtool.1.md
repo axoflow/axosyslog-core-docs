@@ -124,11 +124,8 @@ bin/dqtool relocate --new_path /tmp/dq --persist var/syslog-ng.persist --all
 <span class="mcFormatColor" style="color: #04aada;">The syslog-ng manual page</span>
 
 {{% alert title="Note" color="info" %}}
+If you experience any problems or need help with {{% param "product.abbrev" %}}, {{% param "product.contact" %}}.
 
-For the detailed documentation of {{% param "product.abbrev" %}} see [{{% param "product.abbrev" %}} Documentation page](https://support.oneidentity.com/syslog-ng-premium-edition/technical-documents/)[{{% param "product.abbrev" %}} Documentation page](https://www.syslog-ng.com/).
-
-If you experience any problems or need help with {{% param "product.abbrev" %}}, visit the [{{% param "product.syslog-ng" %}} mailing list](https://lists.balabit.hu/mailman/listinfo/syslog-ng).
-
-For news and notifications about {{% param "product.abbrev" %}}, visit the [{{% param "product.syslog-ng" %}} blogs](https://syslog-ng.com/blog/).
+For news and notifications about {{% param "product.abbrev" %}}, visit the [AxoFlow blog](https://axoflow.com/blog/).
 
 {{% /alert %}}

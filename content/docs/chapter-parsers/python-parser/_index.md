@@ -135,7 +135,7 @@ The {{% param "product.abbrev" %}} parser object references the LoggenParser cla
 
 ## Example: Parse Windows eventlogs in Python - performance {#python-parser-example-windows-logs}
 
-The following example uses regular expressions to process Windows log messages received in XML format from the {{% param "product.windowsagent" %}} application. The parser extracts different fields from messages received from the Security and the Application eventlog containers. Using the following configuration file, {{% param "product.abbrev" %}} could process about 25000 real-life Windows log messages per second.
+The following example uses regular expressions to process Windows log messages received in XML format. The parser extracts different fields from messages received from the Security and the Application eventlog containers. Using the following configuration file, {{% param "product.abbrev" %}} could process about 25000 real-life Windows log messages per second.
 
 ```c
    @version: {{% param "product.techversion" %}}

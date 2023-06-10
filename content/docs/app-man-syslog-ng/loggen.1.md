@@ -211,11 +211,11 @@ loggen 127.0.0.1 1061 --read-file -
 
 {{% alert title="Note" color="info" %}}
 
-For the detailed documentation of {{% param "product.abbrev" %}} see [{{% param "product.abbrev" %}} Documentation page](https://support.oneidentity.com/syslog-ng-premium-edition/technical-documents/)[{{% param "product.abbrev" %}} Documentation page](https://www.syslog-ng.com/).
 
-If you experience any problems or need help with {{% param "product.abbrev" %}}, visit the [{{% param "product.syslog-ng" %}} mailing list](https://lists.balabit.hu/mailman/listinfo/syslog-ng).
 
-For news and notifications about {{% param "product.abbrev" %}}, visit the [{{% param "product.syslog-ng" %}} blogs](https://syslog-ng.com/blog/).
+If you experience any problems or need help with {{% param "product.abbrev" %}}, {{% param "product.contact" %}}.
+
+For news and notifications about {{% param "product.abbrev" %}}, visit the [AxoFlow blog](https://axoflow.com/blog/).
 
 {{% /alert %}}
 
