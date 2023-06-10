@@ -51,7 +51,6 @@ The `event-time()` option takes an optional parameter specifying whether the tim
     event-time("12345678" microseconds)
     event-time("12345678" seconds)
     event-time("12345678")
-
 ```
 
 In case the parameter is omitted, {{% param "product.abbrev" %}} defaults to the seconds version. In case the `event-time()` option is omitted altogether, {{% param "product.abbrev" %}} defaults to the seconds version with `$UNIXTIME`.
@@ -129,7 +128,6 @@ If an error occurs while sending the messages to the server, {{% param "product.
 
 ```c
    metric(int("$SEQNUM"))
-
 ```
 
 
@@ -281,7 +279,6 @@ Default:
         "tls"
         ca-file("/opt/syslog-ng/etc/syslog-ng/riemann-cacert.pem")
         )
-
 ```
 
 *Alternative 2:*
@@ -294,7 +291,6 @@ Default:
      tls(
                 ca-file("/opt/syslog-ng/etc/syslog-ng/riemann-cacert.pem")
         )
-
 ```
 
 This option was called `cacert()` up until (and including) {{% param "product.abbrev" %}} version 3.12.

@@ -64,7 +64,6 @@ For example, for the `\<38\>Jan 1 14:45:22 192.168.1.1 prg00000[1234]: test mess
 
 ```c
    {"geoip":{"longitude":"47.460704","latitude":"19.049968","country_code":"HU"},"PROGRAM":"prg00000","PRIORITY":"info","PID":"1234","MESSAGE":"test message","HOST":"192.168.1.1","FACILITY":"auth","DATE":"Jan  1 14:45:22"}
-
 ```
 
 If you are transferring your log messages into Elasticsearch, use the following rewrite rule to combine the longitude and latitude information into a single value (called `geoip.location`), and set the mapping in Elasticsearch accordingly. Do not forget to include the rewrite in your log path. For details on transferring your log messages to Elasticsearch, see {{% xref "/docs/chapter-destinations/configuring-destinations-elasticsearch2/_index.md" %}}.
@@ -112,6 +111,5 @@ In your Elasticsearch configuration, set the appropriate mappings:
           }
        }
     }
-
 ```
 

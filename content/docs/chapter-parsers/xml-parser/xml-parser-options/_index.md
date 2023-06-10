@@ -66,14 +66,12 @@ From this XML input:
 
 ```c
    <tag1>Text1</tag1><tag2>Text2</tag2><tag3>Text3<innertag>TextInner</innertag></tag3>
-
 ```
 
 The following output is generated:
 
 ```c
    {"_xml":{"tag3":"Text3"}}
-
 ```
 
 
@@ -112,14 +110,12 @@ From this XML input:
 
 ```c
    <tag1> Tag </tag1>
-
 ```
 
 The following output is generated:
 
 ```c
    {"_xml":{"tag1":"Tag"}}
-
 ```
 
 

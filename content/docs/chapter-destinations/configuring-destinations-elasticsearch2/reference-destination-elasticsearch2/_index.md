@@ -15,7 +15,6 @@ The following options are required: `index()`, `type()`. In node mode, either th
 
 ```c
    @include "scl.conf"
-
 ```
 
 

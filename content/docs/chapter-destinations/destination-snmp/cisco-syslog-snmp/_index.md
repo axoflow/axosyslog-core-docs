@@ -48,7 +48,6 @@ The `${PROGRAM}` part of the syslog messages sent by Cisco devices contain not o
             </rules>
         </ruleset>
     </patterndb>
-
 ```
 
 

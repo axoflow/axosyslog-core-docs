@@ -15,13 +15,11 @@ Using the `panos-parser()`, the parsed messages in {{% param "product.abbrev" %}
 
 ```c
    <PRI><TIMESTAMP> <HOST> <PALO-ALTO-fields-in-CSV-format>
-
 ```
 
 There are several "types" of log formats in Palo Alto Networks PAN-OS. For example, the most commonly used [SYSTEM type](https://docs.paloaltonetworks.com/pan-os/9-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/system-log-fields.html) has the following message format on the {{% param "product.abbrev" %}} side after parsing:
 
 ```c
    <12>Apr 14 16:48:54 paloalto.test.net 1,2020/04/14 16:48:54,unknown,SYSTEM,auth,0,2020/04/14 16:48:54,,auth-fail,,0,0,general,medium,failed authentication for user 'admin'. Reason: Invalid username/password. From: 10.0.10.55.,1718,0x0,0,0,0,0,,paloalto
-
 ```
 

@@ -42,7 +42,6 @@ The log messages of the Apache Tomcat server are a typical example for multi-lin
     INFO: Pausing Coyote HTTP/1.1 on http-8080
     2010.06.09. 12:45:09 org.apache.catalina.core.StandardService stop
     INFO: Stopping service Catalina
-
 ```
 
 To process these messages, specify a regular expression matching the timestamp of the messages in the `multi-line-prefix()` option. Such an expression is the following:

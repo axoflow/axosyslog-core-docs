@@ -44,6 +44,5 @@ The following shell script writes the incoming messages into the `/tmp/testlog` 
     while read line ; do
     echo $line >> /tmp/testlog
     done
-
 ```
 

@@ -18,14 +18,12 @@ It is not possible to address each element of a vector-like structure individual
         ...
         <entry>valueN</entry>
     </vector>
-
 ```
 
 After parsing, the entries cannot be addressed individually. Instead, the text of the entries will be concatenated:
 
 ```c
    vector.entry = "value1value2...valueN"
-
 ```
 
 Note that `xmllint` has the same behavior:
@@ -33,7 +31,6 @@ Note that `xmllint` has the same behavior:
 ```c
    $ xmllint --xpath "/vector/entry/text()" test.xml
     value1value2valueN%
-
 ```
 
 

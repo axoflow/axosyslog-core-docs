@@ -8,6 +8,5 @@ The following example selects the message of the context that has a `username` n
 
 ```c
    $(grep ("${username}" == "root") ${auth_method})
-
 ```
 

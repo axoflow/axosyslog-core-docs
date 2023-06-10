@@ -18,14 +18,12 @@ The following is a sample syslog message:
 
 ```c
    <133>Feb 25 14:09:07 webserver syslogd: restart
-
 ```
 
 The message corresponds to the following format:
 
 ```c
    <priority>timestamp hostname application: message
-
 ```
 
 The different parts of the message are explained in the following sections.

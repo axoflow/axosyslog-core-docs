@@ -26,7 +26,6 @@ The `collectd()` destination has the following options. The `plugin()` and `type
 
 ```c
    type("gauge"),
-
 ```
 
 
@@ -57,7 +56,6 @@ The `collectd()` destination has the following options. The `plugin()` and `type
 
 ```c
    plugin("${PROGRAM}"),
-
 ```
 
 
@@ -84,7 +82,6 @@ The `collectd()` destination has the following options. The `plugin()` and `type
 
 ```c
    type("gauge"),
-
 ```
 
 
@@ -112,7 +109,6 @@ The `collectd()` destination has the following options. The `plugin()` and `type
 
 ```c
    type("gauge"),
-
 ```
 
 
@@ -128,7 +124,6 @@ The `collectd()` destination has the following options. The `plugin()` and `type
 
 ```c
    type-instance("seqnum"),
-
 ```
 
 
@@ -144,6 +139,5 @@ The `collectd()` destination has the following options. The `plugin()` and `type
 
 ```c
    values("${SEQNUM}"),
-
 ```
 

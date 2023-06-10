@@ -28,14 +28,12 @@ This driver sends messages into an SQL database. The `sql()` destination has the
 
 ```c
    create-statement-append(<options-to-append>)
-
 ```
 
 For example, you can appends the `ROW_FORMAT=COMPRESSED` option to MySQL create table statements:
 
 ```c
    create-statement-append(ROW_FORMAT=COMPRESSED)
-
 ```
 
 {{% include-headless "chunk/option-sql-database.md" %}}
@@ -51,7 +49,6 @@ For example, you can appends the `ROW_FORMAT=COMPRESSED` option to MySQL create 
 
 ```c
    dbd-option(OPTION_NAME VALUE)
-
 ```
 
 OPTION_NAME is always a string, VALUE is a string or a number. For example:
@@ -59,7 +56,6 @@ OPTION_NAME is always a string, VALUE is a string or a number. For example:
 ```c
    dbd-option("null.sleep.connect" 1)
     dbd-option("null.sleep.query" 5)
-
 ```
 
 {{% include-headless "chunk/option-destination-diskbuffer.md" %}}
@@ -84,7 +80,6 @@ The following example sets the `dont-create-tables` and `explicit-commits` flags
 
 ```c
    flags(dont-create-tables,explicit-commits)
-
 ```
 
 
@@ -188,7 +183,6 @@ Ensure that the default value you use does not appear in the actual log messages
 
 ```c
    session-statements("SET COLLATION_CONNECTION='utf8_general_ci'")
-
 ```
 
 {{% alert title="Warning" color="warning" %}}
@@ -238,6 +232,5 @@ It is possible to give a special value calling: default (without quotation marks
 ```c
    columns("date datetime", "host varchar(32)", "row_id serial")
         values("${R_DATE}", "${HOST}", default)
-
 ```
 

@@ -12,7 +12,6 @@ For example, the database file can contain the entries. (For details on the acce
    f_auth,domain,all
     f_localhost,source,localhost
     f_kern,domain,kernel
-
 ```
 
 Note that {{% param "product.abbrev" %}} does not evaluate other filters after the first match. For example, if you use the previous database file, and a message matches both the `f_auth` and `f_localhost` filters, {{% param "product.abbrev" %}} adds only the name-value pair of `f_auth` to the message.
@@ -23,7 +22,6 @@ To add multiple name-value pairs to a message, include a separate line in the da
    f_localhost,host-role,firewall
     f_localhost,contact-person,"John Doe"
     f_localhost,contact-email,johndoe@example.com
-
 ```
 
 You can also add data to messages that do not have a matching selector entry in the database using the `default-selector()` option.

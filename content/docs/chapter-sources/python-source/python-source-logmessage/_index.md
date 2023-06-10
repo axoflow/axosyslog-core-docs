@@ -16,7 +16,6 @@ You can use the `LogMessage()` method to create a structured log message instanc
     
     msg = LogMessage() # Initialize an empty message with default values (recvd timestamp, rcptid, hostid, ...)
     msg = LogMessage("string or bytes-like object") # Initialize a message and set its ${MESSAGE} field to the specified argument
-
 ```
 
 You can also explicitly set the different values of the log message. For example:
@@ -24,7 +23,6 @@ You can also explicitly set the different values of the log message. For example
 ```c
    msg["MESSAGE"] = "message"
     msg["HOST"] = "hostname"
-
 ```
 
 You can set certain special field (timestamp, priority) by using specific methods.
@@ -50,7 +48,6 @@ If `keep-hostname()` is set to `no`, {{% param "product.abbrev" %}} ignores the 
 ```c
    msg_ietf = LogMessage.parse('<165>1 2003-10-11T22:14:15.003Z mymachine.example.com evntslog - ID47 [exampleSDID@32473 iut="3" eventSource="Application" eventID="1011"] An application event log entry', self.parse_options)
     msg_bsd = LogMessage.parse('<34>Oct 11 22:14:15 mymachine su: \'su root\' failed for lonvick on /dev/pts/8', self.parse_options)
-
 ```
 
 
@@ -61,7 +58,6 @@ You can set the priority of the message with the `set_pri()` method.
 
 ```c
    msg.set_pri(165)
-
 ```
 
 
@@ -73,7 +69,6 @@ You can use the `set_timestamp()` method to set the date and time of the log mes
 ```c
    timestamp = datetime.fromisoformat("2018-09-11T14:49:02.100+02:00")
     msg.set_timestamp(timestamp) # datetime object, includes timezone information
-
 ```
 
 In Python 2, timezone information cannot be attached to the datetime instance without using an external library. The {{% param "product.abbrev" %}} represents naive datetime objects in UTC.

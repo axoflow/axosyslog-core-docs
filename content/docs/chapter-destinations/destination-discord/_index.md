@@ -23,7 +23,6 @@ To use this destination, the `scl.conf` file must be included in your {{% param 
 
 ```c
    @include "scl.conf"
-
 ```
 
 The `discord()` driver is actually a reusable configuration snippet configured to send log messages using the `http()` driver. For details on using or writing such configuration snippets, see Reusing configuration blocks. You can find the source of this configuration snippet on GitHub.
@@ -51,6 +50,5 @@ The following example sends messages with custom avatar, and text-to-speech enab
             template("${MSG:-[empty message]}") # Message to send, can't be empty
         );
     ó}
-
 ```
 

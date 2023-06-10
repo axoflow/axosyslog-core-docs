@@ -69,14 +69,12 @@ The XML parser inserts an "`.xml`" prefix by default before the extracted name-v
 
 ```c
    <tags attr='attrval'>part1<tag1>Tag1 Leaf</tag1>part2<tag2>Tag2 Leaf</tag2>part3</tags>
-
 ```
 
 The following output is generated:
 
 ```c
    {"_xml":{"tags":{"tag2":"Tag2 Leaf","tag1":"Tag1 Leaf","_attr":"attrval","tags":"part1part2part3"}}}
-
 ```
 
 When the text is separated by tags on different levels or tags on the same level, the parser simply concatenates the different parts of text. For example, from this input XML:
@@ -86,28 +84,24 @@ When the text is separated by tags on different levels or tags on the same level
      <tag1>text1</tag1>
      <tag1>text2</tag1>
     </tag>
-
 ```
 
 The following output is generated:
 
 ```c
    .xml.tag.tag1 = text1text2
-
 ```
 
 Whitespaces are kept as they are in the XML input. No collapsing happens on significant whitespaces. For example, from this input XML:
 
 ```c
    <133>Feb 25 14:09:07 webserver syslogd: <b>|Test\n\n   Test2|</b>\n
-
 ```
 
 The following output is generated:
 
 ```c
    [2017-09-04T13:20:27.417266] Setting value; msg='0x7f2fd8002df0', name='.xml.b', value='|Test\x0a\x0a   Test2|'
-
 ```
 
 However, note that users can choose to strip whitespaces using the [`strip-whitespaces()`]({{< relref "/docs/chapter-parsers/xml-parser/xml-parser-options/_index.md" >}}) option.

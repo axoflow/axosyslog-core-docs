@@ -82,7 +82,6 @@ The following {{% param "product.abbrev" %}} configuration sample reads osquery 
 
 ```c
    {"name":"pack_osquery-monitoring_osquery_info","hostIdentifier":"testhost","calendarTime":"Fri Jul 21 10:04:41 2017 UTC","unixTime":"1500631481","decorations":{"host_uuid":"4C4C4544-004D-3610-8043-C2C04F4D3332","username":"myuser"},"columns":{"build_distro":"xenial","build_platform":"ubuntu","config_hash":"43cd1c6a7d0c283e21e026a53e619b2e582e94ee","config_valid":"1","counter":"4","extensions":"active","instance_id":"d0c3eb0d-f8e0-4bea-868b-18a2c61b438d","pid":"19764","resident_size":"26416000","start_time":"1500629552","system_time":"223","user_time":"476","uuid":"4C4C4544-004D-3610-8043-C2C04F4D3332","version":"2.5.0","watcher":"19762"},"action":"added"}
-
 ```
 
 
@@ -115,7 +114,6 @@ The following {{% param "product.abbrev" %}} configuration sample reads osquery 
 
 ```c
    Outgoing message; message='{"_osquery":{"unixTime":"1500631481","name":"pack_osquery-monitoring_osquery_info","hostIdentifier":"testhost","decorations":{"username":"myuser","host_uuid":"4C4C4544-004D-3610-8043-C2C04F4D3332"},"columns":{"watcher":"19762","version":"2.5.0","uuid":"4C4C4544-004D-3610-8043-C2C04F4D3332","user_time":"476","system_time":"223","start_time":"1500629552","resident_size":"26416000","pid":"19764","instance_id":"d0c3eb0d-f8e0-4bea-868b-18a2c61b438d","extensions":"active","counter":"4","config_valid":"1","config_hash":"43cd1c6a7d0c283e21e026a53e619b2e582e94ee","build_platform":"ubuntu","build_distro":"xenial"},"calendarTime":"Fri Jul 21 10:04:41 2017 UTC","action":"added"}}\x0a'
-
 ```
 
 

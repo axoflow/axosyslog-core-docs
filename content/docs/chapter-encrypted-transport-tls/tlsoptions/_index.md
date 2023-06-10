@@ -66,7 +66,6 @@ The following example curves work for all versions of OpenSSL that are equal to 
 
 ```c
    ecdh-curve-list("prime256v1:secp384r1")
-
 ```
 
 
@@ -228,7 +227,6 @@ In the following example, the first command creates a single `PKCS #12` file fro
 
 ```c
    $ openssl pkcs12 -export -inkey server.key -in server.crt -certfile ca.crt -out server.p12
-
 ```
 
 
@@ -297,7 +295,6 @@ The following destination sends the hostname of its destination during the TLS h
 
 ```c
    ssl-options(no-sslv2, no-sslv3, no-tlsv1)
-
 ```
 
 Using `ssl-options(none)` means that {{% param "product.abbrev" %}} does not specify any restrictions on the protocol used. However, in this case, the underlying OpenSSL library can restrict the available protocols, for example, certain OpenSSL versions automatically disable SSLv2.

@@ -27,7 +27,6 @@ Create a text file that contains the programs (as in the ${PROGRAM} field of the
    kernel
     sshd
     sudo
-
 ```
 
 The following filter selects only the messages of the listed applications:

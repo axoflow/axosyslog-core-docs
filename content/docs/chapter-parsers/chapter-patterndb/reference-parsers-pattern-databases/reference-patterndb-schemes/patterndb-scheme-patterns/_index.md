@@ -45,14 +45,12 @@ If the `\<pattern\>` element of a ruleset is not specified, {{% param "product.a
         <pattern>firstapplication</pattern>
         <pattern>otherapplication</pattern>
     </patterns>
-
 ```
 
 Using parsers in the program pattern:
 
 ```c
    <pattern>postfix\@ESTRING:.postfix.component:[@</pattern>
-
 ```
 
 

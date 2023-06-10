@@ -39,6 +39,5 @@ The date format used by the MSSQL database must be explicitly set in the `/etc/l
 ```c
    [default]
     date = "%Y-%m-%d %H:%M:%S"
-
 ```
 

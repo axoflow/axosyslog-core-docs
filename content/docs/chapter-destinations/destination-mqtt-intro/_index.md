@@ -25,7 +25,6 @@ The rest of this chapter and its sections build on your familiarity with the MQT
         fallback_topic("<fallback-topic-name>")
       ); 
     }
-
 ```
 
 

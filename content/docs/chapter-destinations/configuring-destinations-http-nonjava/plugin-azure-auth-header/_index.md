@@ -27,7 +27,6 @@ You can define the Azure auth header plugin by the following:
       workspace-id("<workspace-id>")
       secret("<auth-secret>")
     )
-
 ```
 
 

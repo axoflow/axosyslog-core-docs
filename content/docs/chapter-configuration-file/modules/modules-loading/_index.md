@@ -10,7 +10,6 @@ To load a module that is not loaded automatically, include the following stateme
 
 ```c
    @module <module-name>
-
 ```
 
 Note the following points about the `@module` statement:
@@ -27,7 +26,6 @@ To disable loading every module automatically, set the `autoload-compiled-module
 
 ```c
    @define autoload-compiled-modules 0
-
 ```
 
 Note that in this case you have to explicitly load the modules you want to use.
@@ -40,7 +38,6 @@ To ensure that a module is loaded, include the following statement in the {{% pa
 
 ```c
    @requires <module-name>
-
 ```
 
 {{% alert title="Note" color="info" %}}

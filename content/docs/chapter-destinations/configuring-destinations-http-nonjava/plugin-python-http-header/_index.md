@@ -66,7 +66,6 @@ You can define the Python interface with the following:
     
       def on_http_response_received(self, http_code):
         print("HTTP response code received: {}".format(http_code))
-
 ```
 
 By default, when the `signal_http_header_request` is emitted by the HTTP module, the connected slot automatically executes the Python code.

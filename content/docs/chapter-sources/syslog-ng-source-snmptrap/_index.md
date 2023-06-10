@@ -47,7 +47,6 @@ To use the `snmptrap()` driver, the `scl.conf` file must be included in your {{%
 
 ```c
    @include "scl.conf"
-
 ```
 
 
@@ -60,7 +59,6 @@ A sample `snmptrapd` configuration:
    authCommunity log,execute,net public
     format1 %.4y-%.2m-%.2l %.2h:%.2j:%.2k %B [%b]: %N\n\t%W Trap (%q) Uptime: %#T\n%v\n
     outputOption s
-
 ```
 
 Starting `snmptrapd`: `snmptrapd -A -Lf /var/log/snmptrapd.log`
@@ -70,7 +68,6 @@ Sending a sample V2 trap message: `snmptrap -v2c -c public 127.0.0.1 666 NET-SNM
 ```c
    2017-05-23 15:29:40 localhost [UDP: [127.0.0.1]:59993->[127.0.0.1]:162]:
     SNMPv2-SMI::mib-2.1.3.0 = Timeticks: (666) 0:00:06.66   SNMPv2-SMI::snmpModules.1.1.4.1.0 = OID: NET-SNMP-EXAMPLES-MIB::netSnmpExampleHeartbeatNotification     NET-SNMP-EXAMPLES-MIB::netSnmpExampleHeartbeatRate = INTEGER: 60        NET-SNMP-EXAMPLES-MIB::netSnmpExampleString = STRING: string
-
 ```
 
 The following {{% param "product.abbrev" %}} configuration sample uses the default settings of the driver, reading SNMP traps from the `/var/log/snmptrapd.log` file, and writes the log messages generated from the traps into a file.
@@ -91,7 +88,6 @@ From the trap, {{% param "product.abbrev" %}} writes the following into the log 
 
 ```c
    May 23 15:29:40 myhostname snmptrapd: hostname='localhost', transport_info='UDP: [127.0.0.1]:59993->[127.0.0.1]:162', SNMPv2-SMI::mib-2.1.3.0='(666) 0:00:06.66', SNMPv2-SMI::snmpModules.1.1.4.1.0='NET-SNMP-EXAMPLES-MIB::netSnmpExampleHeartbeatNotification', NET-SNMP-EXAMPLES-MIB::netSnmpExampleHeartbeatRate='60', NET-SNMP-EXAMPLES-MIB::netSnmpExampleString='string'
-
 ```
 
 Using the same input trap, the following configuration example formats the SNMP traps as JSON messages.
@@ -141,6 +137,5 @@ The previous trap formatted as JSON:
           "NET-SNMP-EXAMPLES-MIB_netSnmpExampleHeartbeatRate":"60"
        }
     }
-
 ```
 

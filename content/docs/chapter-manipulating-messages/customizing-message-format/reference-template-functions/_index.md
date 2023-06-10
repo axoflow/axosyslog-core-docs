@@ -56,7 +56,6 @@ The following example selects the message of the context that has a `username` n
 
 ```c
    $(context-lookup ("${username}" == "root") ${tags})
-
 ```
 
 
@@ -257,14 +256,12 @@ The following example selects every available information about the log message,
    $(format-cef-extension --scope syslog,all_macros,selected_macros \
       --exclude R_* --exclude S_* --key .SDATA.meta.sequenceId \
       --pair MSGHDR=\"$PROGRAM[$PID]: \")
-
 ```
 
 The following example selects every value-pair that has a name beginning with `.cef.`, but removes the `.cef.` prefix from the key names.
 
 ```c
    template("$(format-cef-extension --subkeys .cef.)\n")
-
 ```
 
 The following example shows how to use this template function to store log messages in CEF format:
@@ -415,7 +412,6 @@ The following example selects every available information about the log message,
    $(format-json --scope syslog,all_macros,selected_macros \
       --exclude R_* --exclude S_* --key .SDATA.meta.sequenceId \
       --pair MSGHDR=\"$PROGRAM[$PID]: \")
-
 ```
 
 The following example shows how to use this template function to store log messages in JSON format:
@@ -459,7 +455,6 @@ The following example selects every available information about the log message,
    $(format-welf --scope syslog,all_macros,selected_macros \
       --exclude R_* --exclude S_* --key .SDATA.meta.sequenceId \
       --pair MSGHDR=\"$PROGRAM[$PID]: \")
-
 ```
 
 The following example shows how to use this template function to store log messages in WELF format:
@@ -677,21 +672,18 @@ The following example calculates the SHA1 hash of the hostname of the message:
 
 ```c
    $(sha1 $HOST)
-
 ```
 
 The following example calculates the SHA256 hash of the hostname, using the `salted` string to salt the result:
 
 ```c
    $(sha1 $HOST salted)
-
 ```
 
 To use shorter hashes, set the `--length`:
 
 ```c
    $(sha1 --length 6 $HOST)
-
 ```
 
 To replace the hostname with its hash, use a rewrite rule:
@@ -722,14 +714,12 @@ The following example returns `violation` if the `username` name-value pair of a
 
 ```c
    $(if ("${username}" == "root") "violation" "system")
-
 ```
 
 This can be used to set the class of a message in pattern database rules based on the condition.
 
 ```c
    <value name="username">$(if ("${username}" == "root") "violation" "system")</value>
-
 ```
 
 Since template functions can be embedded into each other, it is possible to use another template function as the template of the first one. For example, the following expression returns `root` if the username is `root`, `admin` if the username is `joe`, and `normal user` otherwise.
@@ -739,7 +729,6 @@ Since template functions can be embedded into each other, it is possible to use 
         $(if ("${username}" == "root")
             "root"
             $(if ("${username}" == "joe") "admin" "normal user"))</value>
-
 ```
 
 
@@ -857,7 +846,6 @@ You can concatenate existing lists into a single list using:
 
 ```c
    $(list-concat ${list1} ${list2})
-
 ```
 
 
@@ -1050,7 +1038,6 @@ For example:
     $(/ 3.0 2) # = 1.500000
     $(/ 3 2.0) # = 1.500000
     $(/ 3.0 2.0) # = 1.500000
-
 ```
 
 To round floating-point numbers, you can use the `ceil`, `floor`, and `round` template functions.
@@ -1059,7 +1046,6 @@ When you are correlating messages and a name-value pair contains numerical value
 
 ```c
    $(max ${.myfields.load})
-
 ```
 
 
@@ -1091,14 +1077,12 @@ If the value of the `${MESSAGE}` macro is `mymessage`, then the output of the `p
 
 ```c
    $(padding ${MESSAGE} 10 X)
-
 ```
 
 Output: `XXXXXXXXXXmymessage`
 
 ```c
    $(padding ${MESSAGE} 10 foo)
-
 ```
 
 Output: `foofoofoofmymessage`
@@ -1198,7 +1182,6 @@ The following example creates a Python template function called `resolve_host` t
 
 ```c
    $(replace-delimiter "\t" ";" "${MESSAGE}")
-
 ```
 
 Available in {{% param "product.abbrev" %}} 3.5 and later.
@@ -1277,7 +1260,6 @@ This is equivalent to `file("/var/log/$HOST/$PROGRAM/messages");`, but any slash
 
 ```c
    $(stardate --digits 2 "${R_UNIXTIME}")
-
 ```
 
 
@@ -1292,7 +1274,6 @@ This is equivalent to `file("/var/log/$HOST/$PROGRAM/messages");`, but any slash
 
 ```c
    $(strip "${MESSAGE}" "${PROGRAM}")
-
 ```
 
 
@@ -1364,7 +1345,6 @@ For dynamic templates, you can set an optional second template. This second temp
 
 ```c
    $(template ${my-dynamic-template} '$DATE $HOST $MSGHDR$MSG\n')
-
 ```
 
 Available in {{% param "product.abbrev" %}} 3.22 and later.

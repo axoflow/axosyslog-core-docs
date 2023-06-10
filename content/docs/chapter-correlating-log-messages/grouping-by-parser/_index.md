@@ -59,7 +59,6 @@ Linux audit logs tend to be broken into several log messages (generated as a lis
     type=PATH msg=audit(1440927434.124:40347): item=0 name="/usr/sbin/ntpdate" inode=2006003 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL
     type=PATH msg=audit(1440927434.124:40347): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=5243184 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL
     type=PROCTITLE msg=audit(1440927434.124:40347): proctitle=2F62696E2F7368002F7573722F7362696E2F6E7470646174652D64656269616E002D73
-
 ```
 
 These lines are connected by their second field: `msg=audit(1440927434.124:40347)`. You can parse such messages using the [Linux audit parser of {{% param "product.abbrev" %}}]({{< relref "/docs/chapter-parsers/linux-audit-parser/_index.md" >}}), and then use the parsed `.auditd.msg` field to group the messages.

@@ -8,14 +8,12 @@ The Apache access log parser can parse the access log messages of the Apache HTT
 
 ```c
    127.0.0.1 - frank [10/Oct/2000:13:55:36 -0700] "GET /apache_pb.gif HTTP/1.0" 200 2326
-
 ```
 
 Starting with version 3.21, virtualhost and the port of the virtualhost (vhost) is also supported, for example:
 
 ```c
    foo.com:443 1.2.3.4 - - [15/Apr/2019:14:30:16 -0400] "GET /bar.html HTTP/2.0" 500 - "https://foo.com/referer.html" "Mozilla/5.0 ..."
-
 ```
 
 The {{% param "product.abbrev" %}} application extracts every field into name-value pairs, and adds the `.apache.` prefix to the name of the field.
@@ -63,7 +61,6 @@ To use this parser, the `scl.conf` file must be included in your {{% param "prod
 
 ```c
    @include "scl.conf"
-
 ```
 
 The `apache-accesslog-parser()` is actually a reusable configuration snippet configured parse Apache access log messages. For details on using or writing such configuration snippets, see {{% xref "/docs/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/syslog-ng/syslog-ng/blob/master/scl/apache/apache.conf).

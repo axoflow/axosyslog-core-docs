@@ -15,7 +15,6 @@ The following is a sample log statistics message for a configuration that has a 
             processed='destination(d_tcp)=234413',
             processed='destination(d_local)=234413',
             processed='source(s_local)=234413'
-
 ```
 
 The statistics include a list of source groups and destinations, as well as the number of processed messages for each. You can control the verbosity of the statistics using the [`stats-level()` global option]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}). The following is an example output.
@@ -48,7 +47,6 @@ The statistics include a list of source groups and destinations, as well as the 
     destination;df_kern;;a;processed;70
     center;;queued;a;processed;0
     destination;df_facility_dot_err;;a;processed;0
-
 ```
 
 The statistics are semicolon separated: every line contains statistics for a particular object (for example, source, destination, tag, and so on). The statistics have the following fields:

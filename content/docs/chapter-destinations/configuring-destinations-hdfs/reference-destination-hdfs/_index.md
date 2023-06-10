@@ -10,7 +10,6 @@ The following options are required: `hdfs-file()`, `hdfs-uri()`. Note that to us
 
 ```c
    @include "scl.conf"
-
 ```
 
 {{% include-headless "chunk/option-destination-java-class-path.md" %}}

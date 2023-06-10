@@ -58,7 +58,6 @@ The `date-parser()` parser has the following options.
     %Y      year (4 digits)
     %Z      timezone in ascii format (for example, PST), or in format -/+0000
     %z      timezone in ascii format (for example, PST), or in format -/+0000  (Required element)
-
 ```
 
 {{% alert title="Warning" color="warning" %}}

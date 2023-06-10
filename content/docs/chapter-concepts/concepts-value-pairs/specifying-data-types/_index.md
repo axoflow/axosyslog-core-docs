@@ -35,14 +35,12 @@ The following example formats the same fields into JSON.
 
 ```c
    $(format-json date=datetime($UNIXTIME) pid=int64($PID) program=$PROGRAM message=$MESSAGE)
-
 ```
 
 The following example formats the MESSAGE field as a JSON list.
 
 ```c
    $(format-json message=list($MESSAGE))"
-
 ```
 
 

@@ -13,7 +13,6 @@ The following options are required: `bootstrap-servers()`, `topic()`. Note that 
 
 ```c
    @define kafka-implementation kafka-c
-
 ```
 
 {{% include-headless "chunk/kafka-c-impl-required-options-note.md" %}}
@@ -88,7 +87,6 @@ The syntax of the config() option is the following:
      “key1” => “value1” 
      “key2” => “value2” 
     )
-
 ```
 
 

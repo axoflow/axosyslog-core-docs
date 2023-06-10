@@ -13,7 +13,6 @@ The Linux audit parser can parse the log messages of the Linux Audit subsystem (
     type=PATH msg=audit(1441988805.991:239): item=0 name="/sbin/dumpe2fs" inode=137078 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL
     type=PATH msg=audit(1441988805.991:239): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=5243184 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL
     type=PROCTITLE msg=audit(1441988805.991:239): proctitle=64756D7065326673002D68002F6465762F73646131
-
 ```
 
 Certain fields of the audit log can be encoded in hexadecimal format, for example, the `arch` field, or the `a\<number\>` fields in the previous example. The {{% param "product.abbrev" %}} application automatically decodes these fields (for example, the `c000003e` value becomes `x86_64`).

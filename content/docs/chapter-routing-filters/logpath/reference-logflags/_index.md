@@ -77,7 +77,6 @@ In the following example, if a log message arrives whose `$MSG` part does not co
         filter { message('bar') };
     };
     ...
-
 ```
 
 (Without the `drop-unmatched` flag, {{% param "product.abbrev" %}} would check if the message complies with the second `if` condition, that is, whether or not the message contains the string `bar` .)

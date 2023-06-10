@@ -25,7 +25,6 @@ The Priority value is calculated using the following formula:
 
 ```c
    <PRI> = ( <facility> * 8) + <severity> 
-
 ```
 
 That is, you first multiply the Facility number by 8, and then add the numerical value of the Severity to the multiplied sum.
@@ -38,7 +37,6 @@ The following example illustrates a sample syslog message with a sample `PRI` fi
 
 ```c
    <133> Feb 25 14:09:07 webserver syslogd: restart
-
 ```
 
 In this example, `\<133\>` represents the `PRI` field (Priority value). The syslog message's Facility value is `16`, and the Severity value is `5`.

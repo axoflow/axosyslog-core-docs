@@ -29,7 +29,6 @@ The `set-severity()` rewrite function has a single, mandatory parameter that can
 
 ```c
    `set-severity( "parameter1" );`
-
 ```
 
 

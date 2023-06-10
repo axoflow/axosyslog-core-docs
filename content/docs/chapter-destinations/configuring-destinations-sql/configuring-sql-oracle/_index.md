@@ -53,6 +53,5 @@ The Oracle Instant Client retrieves the address of the database server from the 
     (SERVICE_NAME = EXAMPLE.SERVICE)
     )
     )
-
 ```
 

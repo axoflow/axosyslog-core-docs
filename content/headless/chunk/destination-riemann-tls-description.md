@@ -11,7 +11,6 @@ Note that you have to set the `cert-file()` and `key-file()` options only if the
      cert-file("/opt/syslog-ng/etc/syslog-ng/riemann-client-cert.pem")
         key-file("/opt/syslog-ng/etc/syslog-ng/riemann-client-cert.key")
         )
-
 ```
 
 *Alternative 2:*

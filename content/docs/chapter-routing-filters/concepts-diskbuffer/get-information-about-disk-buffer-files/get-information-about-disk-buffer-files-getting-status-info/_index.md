@@ -15,7 +15,6 @@ The basic command syntax for getting the status information of the disk-buffer f
 
 ```c
    /opt/syslog-ng/bin/dqtooldqtoolinfo DISK-BUFFER_FILE
-
 ```
 
 
@@ -50,6 +49,5 @@ You can use the following one-liner command to get the state of disk-buffer file
 
 ```c
    for qfile in /opt/syslog-ng/var/*.?(r)qf ; do /opt/syslog-ng/bin/dqtooldqtool info $qfile 2>&1 ; done
-
 ```
 

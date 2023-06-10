@@ -13,6 +13,5 @@
 
 ```c
    python(class(usermodule.HyParser) loaders(hy))
-
 ```
 

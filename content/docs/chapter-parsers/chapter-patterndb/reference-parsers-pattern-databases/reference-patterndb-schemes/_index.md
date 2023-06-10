@@ -25,7 +25,6 @@ The following pattern database contains a single rule that matches a log message
 
 ```c
    Accepted password for sampleuser from 10.50.0.247 port 42156 ssh2
-
 ```
 
 The following is a simple pattern database containing a matching rule.
@@ -43,7 +42,6 @@ The following is a simple pattern database containing a matching rule.
                 </rules>
         </ruleset>
     </patterndb>
-
 ```
 
 Note that the rule uses macros that refer to parts of the message, for example, you can use the `${SSH_USERNAME}` macro refer to the username used in the connection.
@@ -74,6 +72,5 @@ The following is the same example, but with a test message and test values for t
                 </rules>
         </ruleset>
     </patterndb>
-
 ```
 

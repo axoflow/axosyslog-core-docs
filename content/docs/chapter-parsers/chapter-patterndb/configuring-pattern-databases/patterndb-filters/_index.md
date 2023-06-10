@@ -64,14 +64,12 @@ For example, you want to parse messages of an application that look like `"Trans
 
 ```c
    'Transaction: @ESTRING::.@'
-
 ```
 
 Here the @ESTRING@ parser parses the message until the next full stop character. To use the results in a filter or a filename template, include a name in the parser of the pattern, for example:
 
 ```c
    'Transaction: @ESTRING:TRANSACTIONTYPE:.@'
-
 ```
 
 After that, add a custom template to the log path that uses this template. For example, to select every `accepted` transaction, use the following custom filter in the log path:

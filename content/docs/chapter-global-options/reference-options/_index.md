@@ -308,7 +308,6 @@ For example:
 
 ```c
    jvm-options("-Xss1M -XX:+TraceClassLoading")
-
 ```
 
 
