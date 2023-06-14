@@ -75,7 +75,7 @@ twitter = "AxoFlowIO"
   # url_latest_version = "/"
 
   # Repository configuration (URLs for in-page links to opening issues and suggesting changes)
-  github_repo = "https://github.com/axoflow/axosyslog-4-docs"
+  github_repo = "https://github.com/axoflow/axosyslog-core-docs"
   # An optional link to a related project repo. For example, the sibling repository where your product code lives.
   github_project_repo = "https://github.com/syslog-ng/syslog-ng"
 
