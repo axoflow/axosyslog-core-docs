@@ -120,4 +120,9 @@ window.markmap = {
 </script>
 {{ end }}
 
+<!-- load the HubSpot js if hubspot id is set -->
+{{ if .Site.Params.hubspotId }}
+{{ partial "hubspot.html" . }}
+{{ end }}
+
 {{ partial "hooks/body-end.html" . -}}
