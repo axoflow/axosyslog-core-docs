@@ -8,9 +8,9 @@ This section describes the `PRI` message part of a syslog message, according to 
 
 For further details about the `HEADER` and `MSG` parts of a syslog message, see the following sections:
 
-  - `[HEADER]({{< relref "/docs/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-header/_index.md" >}})`
+  - `[HEADER]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-header/_index.md" >}})`
 
-  - `[MSG]({{< relref "/docs/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-msg/_index.md" >}})`
+  - `[MSG]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-msg/_index.md" >}})`
 
 
 ## The PRI message part

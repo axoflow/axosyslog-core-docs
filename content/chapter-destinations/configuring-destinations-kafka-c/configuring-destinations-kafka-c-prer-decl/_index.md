@@ -12,11 +12,11 @@ This section describes the prerequisites and restrictions for using the `kafka` 
 
   - Since the new C implementation uses the [librdkafka client library](https://docs.confluent.io/2.0.0/clients/librdkafka/index.html), the `kafka` destination has less memory usage than the previous Java implementation (which uses the official Java Kafka producer).
 
-  - If you used the Java implementation before, see {{% xref "/docs/chapter-destinations/configuring-destinations-kafka-c/destination-kafka-c-from-java/_index.md" %}}.
+  - If you used the Java implementation before, see {{% xref "/chapter-destinations/configuring-destinations-kafka-c/destination-kafka-c-from-java/_index.md" %}}.
 
   - The {{% param "product.abbrev" %}} `kafka` destination supports all properties of the official Kafka producer. For details, see [the librdkafka documentation](https://github.com/edenhill/librdkafka/blob/master/CONFIGURATION.md).
 
-  - For the list of options, see {{% xref "/docs/chapter-destinations/configuring-destinations-kafka-c/reference-destination-kafka-c/_index.md" %}}.
+  - For the list of options, see {{% xref "/chapter-destinations/configuring-destinations-kafka-c/reference-destination-kafka-c/_index.md" %}}.
 
 
 

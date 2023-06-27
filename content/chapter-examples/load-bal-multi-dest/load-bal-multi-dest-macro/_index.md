@@ -13,7 +13,7 @@ If `R_MSEC` is not precise enough, you can replace it with `R_USEC` (which uses 
 
 {{% /alert %}}
 
-For more information about the `R_MSEC` macro and further macros of {{% param "product.abbrev" %}}, see {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" %}}.
+For more information about the `R_MSEC` macro and further macros of {{% param "product.abbrev" %}}, see {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" %}}.
 
 
 ## Example: round robin load balancing between multiple destinations
@@ -54,4 +54,4 @@ The `filter {" <return value >" == "$(% ${R_MSEC} 2)"};` code snippets (in bold)
 
 If you need a file instead of a network destination, replace the network destination with the file in the example (and use the same analogy for any other {{% param "product.abbrev" %}} destinations).
 
-For an alternative method to use the round robin load balancing method based on the `R_MSEC` macro, see {{% xref "/docs/chapter-examples/load-bal-multi-dest/load-bal-multi-dest-msec-h/_index.md" %}}.
+For an alternative method to use the round robin load balancing method based on the `R_MSEC` macro, see {{% xref "/chapter-examples/load-bal-multi-dest/load-bal-multi-dest-msec-h/_index.md" %}}.

@@ -13,7 +13,7 @@ The Python destination allows you to write your own destination in Python. You c
 
 ## Declaration:
 
-Python destinations consist of two parts. The first is a {{% param "product.abbrev" %}} destination object that you define in your {{% param "product.abbrev" %}} configuration and use in the log path. This object references a Python class, which is the second part of the Python destination. The Python class processes the log messages it receives, and can do virtually anything that you can code in Python. You can either embed the Python class into your {{% param "product.abbrev" %}} configuration file, or [store it in an external Python file]({{< relref "/docs/chapter-configuration-file/python-code-external-file/_index.md" >}}).
+Python destinations consist of two parts. The first is a {{% param "product.abbrev" %}} destination object that you define in your {{% param "product.abbrev" %}} configuration and use in the log path. This object references a Python class, which is the second part of the Python destination. The Python class processes the log messages it receives, and can do virtually anything that you can code in Python. You can either embed the Python class into your {{% param "product.abbrev" %}} configuration file, or [store it in an external Python file]({{< relref "/chapter-configuration-file/python-code-external-file/_index.md" >}}).
 
 ```c
    destination <name_of_the_python_destination>{
@@ -63,7 +63,7 @@ Python destinations consist of two parts. The first is a {{% param "product.abbr
 ```
 
 {{% alert title="Note" color="info" %}}
-From version 3.27, {{% param "product.abbrev" %}} supports the arrow syntax in declaration. For more information, see [the options() of the python() destination]({{< relref "/docs/chapter-destinations/python-destination/reference-destination-python/_index.md#python-options" >}}).
+From version 3.27, {{% param "product.abbrev" %}} supports the arrow syntax in declaration. For more information, see [the options() of the python() destination]({{< relref "/chapter-destinations/python-destination/reference-destination-python/_index.md#python-options" >}}).
 {{% /alert %}}
 
 ## Methods of the python() destination {#python-destination-methods}
@@ -166,7 +166,7 @@ The Python destination handles errors as follows.
 
 ## Example: Write logs into a file {#python-destination-example}
 
-The purpose of this example is only to demonstrate the basics of the Python destination, if you really want to write log messages into text files, use the [file destination]({{< relref "/docs/chapter-destinations/configuring-destinations-file/_index.md" >}}) instead.
+The purpose of this example is only to demonstrate the basics of the Python destination, if you really want to write log messages into text files, use the [file destination]({{< relref "/chapter-destinations/configuring-destinations-file/_index.md" >}}) instead.
 
 The following sample code writes the body of log messages into the `/tmp/example.txt` file. Only the `send()` method is implemented, meaning that {{% param "product.abbrev" %}} opens and closes the file for every message.
 
@@ -250,4 +250,4 @@ The following is a simple destination that uses the `flush()` method to print th
 ```
 
 
-For the list of available optional parameters, see {{% xref "/docs/chapter-destinations/python-destination/reference-destination-python/_index.md" %}}.
+For the list of available optional parameters, see {{% xref "/chapter-destinations/python-destination/reference-destination-python/_index.md" %}}.

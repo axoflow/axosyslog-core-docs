@@ -24,7 +24,7 @@ Template functions can be nested into each other, so the parameter of a template
    $(echo $(echo ${HOST}))
 ```
 
-For details on the available template functions, see the descriptions of the individual template functions in {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" %}}.
+For details on the available template functions, see the descriptions of the individual template functions in {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" %}}.
 
 You can define your own template function as a regular configuration object (for example, to reuse the same function in different places in your configuration).
 

@@ -21,7 +21,7 @@ The following options are required: `index()`, `type()`. In node mode, either th
 
 {{% include-headless "chunk/option-destination-java-class-path.md" %}}
 
-*Description:* Include the path to the directory where you copied the required libraries (see {{% xref "/docs/chapter-destinations/configuring-destinations-elasticsearch2/destination-elasticsearch2-prerequisites/_index.md" %}}), for example, `client-lib-dir(/user/share/elasticsearch-2.2.0/lib)`.
+*Description:* Include the path to the directory where you copied the required libraries (see {{% xref "/chapter-destinations/configuring-destinations-elasticsearch2/destination-elasticsearch2-prerequisites/_index.md" %}}), for example, `client-lib-dir(/user/share/elasticsearch-2.2.0/lib)`.
 
 
 
@@ -75,7 +75,7 @@ Hazard of data loss! Using the `concurrent-requests()` option increases the numb
 | Type:    | template or template function |
 | Default: | N/A                           |
 
-*Description:* Use this option to specify a custom ID for the records inserted into Elasticsearch. If this option is not set, the Elasticsearch server automatically generates and ID for the message. For example: `custom-id(${UNIQID})` (Note that to use the `${UNIQID}` macro, the `use-uniqid()` global option must be enabled. For details, see [use-uniqid()]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}).)
+*Description:* Use this option to specify a custom ID for the records inserted into Elasticsearch. If this option is not set, the Elasticsearch server automatically generates and ID for the message. For example: `custom-id(${UNIQID})` (Note that to use the `${UNIQID}` macro, the `use-uniqid()` global option must be enabled. For details, see [use-uniqid()]({{< relref "/chapter-global-options/reference-options/_index.md" >}}).)
 
 
 {{< include-headless "chunk/option-destination-diskbuffer.md" >}}
@@ -109,9 +109,9 @@ Hazard of data loss! Using the `concurrent-requests()` option increases the numb
 
   - `none`: Connect to the Elasticsearch server without authentication.
 
-  - `basic`: Use password authentication. Also set the [`http-auth-type-basic-username`]({{< relref "/docs/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) and [`http-auth-type-basic-password`]({{< relref "/docs/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) options.
+  - `basic`: Use password authentication. Also set the [`http-auth-type-basic-username`]({{< relref "/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) and [`http-auth-type-basic-password`]({{< relref "/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) options.
 
-  - `clientcert`: Use a certificate to authenticate. The certificate must be available in a Java keystore. Also set the [`java-keystore-filepath`]({{< relref "/docs/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) and [`java-keystore-password`]({{< relref "/docs/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) options.
+  - `clientcert`: Use a certificate to authenticate. The certificate must be available in a Java keystore. Also set the [`java-keystore-filepath`]({{< relref "/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) and [`java-keystore-password`]({{< relref "/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) options.
 
 This option is used only in HTTPS mode: `client-mode("https")`, and is available in {{% param "product.abbrev" %}} version 3.10 and newer.
 
@@ -138,7 +138,7 @@ The following simple examples show the different authentication modes.
 | Type:    | string |
 | Default: | N/A    |
 
-*Description:* The password to use for password-authentication on the Elasticsearch server. You must also set the [`http-auth-type-basic-username`]({{< relref "/docs/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) option.
+*Description:* The password to use for password-authentication on the Elasticsearch server. You must also set the [`http-auth-type-basic-username`]({{< relref "/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) option.
 
 This option is used only in HTTPS mode with basic authentication: `client-mode("https")` and `http-auth-type("basic")`, and is available in {{% param "product.abbrev" %}} version 3.10 and newer.
 
@@ -153,7 +153,7 @@ This option is used only in HTTPS mode with basic authentication: `client-mode("
 | Type:    | string |
 | Default: | N/A    |
 
-*Description:* The username to use for password-authentication on the Elasticsearch server. You must also set the [`http-auth-type-basic-password`]({{< relref "/docs/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) option.
+*Description:* The username to use for password-authentication on the Elasticsearch server. You must also set the [`http-auth-type-basic-password`]({{< relref "/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) option.
 
 This option is used only in HTTPS mode with basic authentication: `client-mode("https")` and `http-auth-type("basic")`, and is available in {{% param "product.abbrev" %}} version 3.10 and newer.
 
@@ -179,7 +179,7 @@ This option is used only in HTTPS mode with basic authentication: `client-mode("
 | Type:    | string |
 | Default: | N/A    |
 
-*Description:* Path to the Java keystore file that stores the certificate that {{% param "product.abbrev" %}} uses to authenticate on the Elasticsearch server. You must also set the [`java-keystore-password`]({{< relref "/docs/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) option.
+*Description:* Path to the Java keystore file that stores the certificate that {{% param "product.abbrev" %}} uses to authenticate on the Elasticsearch server. You must also set the [`java-keystore-password`]({{< relref "/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) option.
 
 {{% include-headless "chunk/example-elasticsearch-https-java-keystore-import.md" %}}
 
@@ -198,7 +198,7 @@ This option is used only in HTTPS mode with basic authentication: `client-mode("
 | Type:    | string |
 | Default: | N/A    |
 
-*Description:* The password of the Java keystore file set in the [`java-keystore-filepath`]({{< relref "/docs/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) option.
+*Description:* The password of the Java keystore file set in the [`java-keystore-filepath`]({{< relref "/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) option.
 
 {{% include-headless "chunk/example-elasticsearch-https-java-keystore-import.md" %}}
 
@@ -217,7 +217,7 @@ This option is used only in HTTPS mode with basic authentication: `client-mode("
 | Type:    | string |
 | Default: | N/A    |
 
-*Description:* Path to the Java keystore file that stores the CA certificate that {{% param "product.abbrev" %}} uses to verify the certificate of the Elasticsearch server. You must also set the [`java-truststore-password`]({{< relref "/docs/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) option.
+*Description:* Path to the Java keystore file that stores the CA certificate that {{% param "product.abbrev" %}} uses to verify the certificate of the Elasticsearch server. You must also set the [`java-truststore-password`]({{< relref "/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) option.
 
 If you do not set the `java-truststore-filepath` option, {{% param "product.abbrev" %}} does accepts any certificate that the Elasticsearch server shows. In this case, the identity of the server is not verified, only the connection is encrypted.
 
@@ -238,7 +238,7 @@ This option is used only in HTTPS mode: `client-mode("https")`, and is available
 | Type:    | string |
 | Default: | N/A    |
 
-*Description:* The password of the Java truststore file set in the [`java-truststore-filepath`]({{< relref "/docs/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) option.
+*Description:* The password of the Java truststore file set in the [`java-truststore-filepath`]({{< relref "/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" >}}) option.
 
 {{% include-headless "chunk/example-elasticsearch-https-java-keystore-import.md" %}}
 
@@ -332,7 +332,7 @@ For example:
 
 To add a `@timestamp` field to the message, for example, to use with Kibana, include the `@timestamp=${ISODATE}` expression in the template. For example: `template($(format-json --scope rfc5424 --exclude DATE --key ISODATE @timestamp=${ISODATE}))`
 
-For details on formatting messages in JSON format, see [format-json]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}).
+For details on formatting messages in JSON format, see [format-json]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}).
 
 {{% include-headless "chunk/option-destination-throttle.md" %}}
 

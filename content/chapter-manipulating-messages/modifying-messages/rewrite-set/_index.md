@@ -10,7 +10,7 @@ To set a field of the message to a specific value, you have to:
 
   - select the field where it should be included.
 
-You can set the value of available macros, for example, HOST, MESSAGE, PROGRAM, or any user-defined macros created using parsers (for details, see {{% xref "/docs/chapter-parsers/_index.md" %}} and {{% xref "/docs/chapter-parsers/chapter-patterndb/_index.md" %}}). Note that the rewrite operation completely replaces any previous value of that field.
+You can set the value of available macros, for example, HOST, MESSAGE, PROGRAM, or any user-defined macros created using parsers (for details, see {{% xref "/chapter-parsers/_index.md" %}} and {{% xref "/chapter-parsers/chapter-patterndb/_index.md" %}}). Note that the rewrite operation completely replaces any previous value of that field.
 
 {{< include-headless "wnt/note-rewrite-hard-macros.md" >}}
 
@@ -45,7 +45,7 @@ The following example appends the "suffix" string to the MESSAGE field:
     };
 ```
 
-For details on rewriting SDATA fields, see {{% xref "/docs/chapter-manipulating-messages/modifying-messages/custom-sdata-fields/_index.md" %}}.
+For details on rewriting SDATA fields, see {{% xref "/chapter-manipulating-messages/modifying-messages/custom-sdata-fields/_index.md" %}}.
 
 
 You can also use the following options in rewrite rules that use the `set()` operator.
@@ -57,5 +57,5 @@ You can also use the following options in rewrite rules that use the `set()` ope
 ```
 
 {{% alert title="Note" color="info" %}}
-The `severity` and `facility` fields can only be set by the `set-severity()` rewrite functions. For more information, see {{% xref "/docs/chapter-manipulating-messages/modifying-messages/rewrite-set-severity/_index.md" %}}.
+The `severity` and `facility` fields can only be set by the `set-severity()` rewrite functions. For more information, see {{% xref "/chapter-manipulating-messages/modifying-messages/rewrite-set-severity/_index.md" %}}.
 {{% /alert %}}

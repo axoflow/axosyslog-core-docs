@@ -15,7 +15,7 @@ To format multi-line messages to your individual needs, consider the following:
         };
     ```
     
-    For details on using templates, see {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/configuring-macros/_index.md" %}}.
+    For details on using templates, see {{% xref "/chapter-manipulating-messages/customizing-message-format/configuring-macros/_index.md" %}}.
 
   - To actually convert the lines of multi-line messages to single line (by replacing the newline characters with whitespaces), use the `flags(no-multi-line)` option in the source.
 

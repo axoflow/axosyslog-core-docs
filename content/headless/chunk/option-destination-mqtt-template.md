@@ -11,5 +11,5 @@
 
 *Description:* Specifies the message template that {{% param "product.abbrev" %}} sends to the MQTT broker.
 
-If you want to use macros in templates, see {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" %}}.
+If you want to use macros in templates, see {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" %}}.
 

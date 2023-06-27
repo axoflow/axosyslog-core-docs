@@ -4,7 +4,7 @@ weight:  300
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-If the [`stats-freq()` global option]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) is higher than 0, {{% param "product.abbrev" %}} periodically sends a log statistics message. This message contains statistics about the received messages, and about any lost messages since the last such message. It includes a `processed` entry for every source and destination, listing the number of messages received or sent, and a `dropped` entry including the IP address of the server for every destination where AxoSyslog has lost messages. The `center(received)` entry shows the total number of messages received from every configured sources.
+If the [`stats-freq()` global option]({{< relref "/chapter-global-options/reference-options/_index.md" >}}) is higher than 0, {{% param "product.abbrev" %}} periodically sends a log statistics message. This message contains statistics about the received messages, and about any lost messages since the last such message. It includes a `processed` entry for every source and destination, listing the number of messages received or sent, and a `dropped` entry including the IP address of the server for every destination where AxoSyslog has lost messages. The `center(received)` entry shows the total number of messages received from every configured sources.
 
 The following is a sample log statistics message for a configuration that has a single source (`s_local`) and a network and a local file destination (`d_network` and `d_local`, respectively). All incoming messages are sent to both destinations.
 
@@ -17,7 +17,7 @@ The following is a sample log statistics message for a configuration that has a 
             processed='source(s_local)=234413'
 ```
 
-The statistics include a list of source groups and destinations, as well as the number of processed messages for each. You can control the verbosity of the statistics using the [`stats-level()` global option]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}). The following is an example output.
+The statistics include a list of source groups and destinations, as well as the number of processed messages for each. You can control the verbosity of the statistics using the [`stats-level()` global option]({{< relref "/chapter-global-options/reference-options/_index.md" >}}). The following is an example output.
 
 ```c
    src.internal;s_all#0;;a;processed;6445

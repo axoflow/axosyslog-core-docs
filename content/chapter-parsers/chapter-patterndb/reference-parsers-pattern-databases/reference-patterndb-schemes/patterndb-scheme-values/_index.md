@@ -7,7 +7,7 @@ weight:  1500
 
 ## Location
 
-/[patterndb]({{< relref "/docs/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/patterndb-scheme-patterndb/_index.md" >}})/[ruleset]({{< relref "/docs/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/patterndb-scheme-ruleset/_index.md" >}})/[rules]({{< relref "/docs/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/patterndb-scheme-rules/_index.md" >}})/[rule]({{< relref "/docs/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/patterndb-scheme-rule/_index.md" >}})/[patterns]({{< relref "/docs/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/patterndb-scheme-patterns2/_index.md" >}})/*values*
+/[patterndb]({{< relref "/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/patterndb-scheme-patterndb/_index.md" >}})/[ruleset]({{< relref "/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/patterndb-scheme-ruleset/_index.md" >}})/[rules]({{< relref "/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/patterndb-scheme-rules/_index.md" >}})/[rule]({{< relref "/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/patterndb-scheme-rule/_index.md" >}})/[patterns]({{< relref "/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/patterndb-scheme-patterns2/_index.md" >}})/*values*
 
 
 
@@ -27,9 +27,9 @@ N/A
 
   - *value*: OPTIONAL — Contains the value of the name-value pair that is assigned to the message.
     
-    The <value> element of name-value pairs can include template functions. For details, see {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/template-functions/_index.md" %}}, for examples, see [if]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}).
+    The <value> element of name-value pairs can include template functions. For details, see {{% xref "/chapter-manipulating-messages/customizing-message-format/template-functions/_index.md" %}}, for examples, see [if]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}).
     
-    When used together with message correlation, the <value> element of name-value pairs can include references to the values of earlier messages from the same context. For details, see {{% xref "/docs/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-correlation/_index.md" %}}.
+    When used together with message correlation, the <value> element of name-value pairs can include references to the values of earlier messages from the same context. For details, see {{% xref "/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-correlation/_index.md" %}}.
 
   - *name*: The name of the name-value pair. It can also be used as a macro to reference the assigned value.
 

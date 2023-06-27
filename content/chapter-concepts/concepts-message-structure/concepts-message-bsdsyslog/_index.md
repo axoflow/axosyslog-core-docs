@@ -6,11 +6,11 @@ weight:  100
 
 This section describes the format of a syslog message, according to the [legacy-syslog or BSD-syslog protocol](https://tools.ietf.org/search/rfc3164). A syslog message consists of the following parts:
 
-  - `[PRI]({{< relref "/docs/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-pri/_index.md" >}})`
+  - `[PRI]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-pri/_index.md" >}})`
 
-  - `[HEADER]({{< relref "/docs/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-header/_index.md" >}})`
+  - `[HEADER]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-header/_index.md" >}})`
 
-  - `[MSG]({{< relref "/docs/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-msg/_index.md" >}})`
+  - `[MSG]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-msg/_index.md" >}})`
 
 The total message cannot be longer than 1024 bytes.
 
@@ -30,6 +30,6 @@ The different parts of the message are explained in the following sections.
 
 {{% alert title="Note" color="info" %}}
 
-The {{% param "product.name" %}} application supports longer messages as well. For details, see the `log-msg-size()` option in {{% xref "/docs/chapter-global-options/reference-options/_index.md" %}}. However, it is not recommended to enable messages larger than the packet size when using UDP destinations.
+The {{% param "product.name" %}} application supports longer messages as well. For details, see the `log-msg-size()` option in {{% xref "/chapter-global-options/reference-options/_index.md" %}}. However, it is not recommended to enable messages larger than the packet size when using UDP destinations.
 
 {{% /alert %}}

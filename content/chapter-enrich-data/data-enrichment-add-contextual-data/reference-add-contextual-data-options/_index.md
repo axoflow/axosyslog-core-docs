@@ -81,9 +81,9 @@ In the {{% param "product.abbrev" %}} configuration file:
 
   - A single macro (for example, `selector("${HOST}")`)
 
-  - To use filters as selectors, see {{% xref "/docs/chapter-enrich-data/data-enrichment-add-contextual-data/add-contextual-data-filters/_index.md" %}}.
+  - To use filters as selectors, see {{% xref "/chapter-enrich-data/data-enrichment-add-contextual-data/add-contextual-data-filters/_index.md" %}}.
 
-  - To use shell-style globbing (wildcards) in selectors, see {{% xref "/docs/chapter-enrich-data/data-enrichment-add-contextual-data/add-contextual-data-globs/_index.md" %}}.
+  - To use shell-style globbing (wildcards) in selectors, see {{% xref "/chapter-enrich-data/data-enrichment-add-contextual-data/add-contextual-data-globs/_index.md" %}}.
 
   - Using templates as selectors is not supported.
 

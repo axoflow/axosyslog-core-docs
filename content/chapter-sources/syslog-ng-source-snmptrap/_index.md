@@ -11,7 +11,7 @@ The `snmptrap()` source is available in {{% param "product.abbrev" %}} version 3
 
 ## Limitations:
 
-  - The `snmptrap()` source has only the options listed in {{% xref "/docs/chapter-sources/syslog-ng-source-snmptrap/reference-source-snmptrap/_index.md" %}}. Other options commonly available in other source drivers are not supported.
+  - The `snmptrap()` source has only the options listed in {{% xref "/chapter-sources/syslog-ng-source-snmptrap/reference-source-snmptrap/_index.md" %}}. Other options commonly available in other source drivers are not supported.
 
   - {{< include-headless "chunk/para-snmptrap-discards-messages.md" >}}
 

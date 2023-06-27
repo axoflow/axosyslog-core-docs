@@ -12,4 +12,4 @@ weight:  100
 {{% include-headless "chunk/example-global-options.md" %}}
 
 
-For a detailed list of the available options, see {{% xref "/docs/chapter-global-options/reference-options/_index.md" %}}. For important global options and recommendations on their use, see {{% xref "/docs/chapter-examples/_index.md" %}}.
+For a detailed list of the available options, see {{% xref "/chapter-global-options/reference-options/_index.md" %}}. For important global options and recommendations on their use, see {{% xref "/chapter-examples/_index.md" %}}.

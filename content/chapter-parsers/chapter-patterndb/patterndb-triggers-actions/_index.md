@@ -41,7 +41,7 @@ The generated message must be configured in the pattern database rule. It is pos
 
 ## Example: Creating a new context from an action
 
-In {{% param "product.abbrev" %}} version 3.8 and newer, you can create a new context as an action. For details, see {{% xref "/docs/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/patterndb-scheme-create-context/_index.md" %}}.
+In {{% param "product.abbrev" %}} version 3.8 and newer, you can create a new context as an action. For details, see {{% xref "/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/patterndb-scheme-create-context/_index.md" %}}.
 
 {{% include-headless "chunk/example-create-context-action.md" %}}
 

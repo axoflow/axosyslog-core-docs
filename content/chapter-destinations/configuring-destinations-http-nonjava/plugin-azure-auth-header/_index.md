@@ -6,7 +6,7 @@ weight:  500
 
 This section describes the {{% param "product.name" %}} application's Azure auth header plugin.
 
-For more information about modules in {{% param "product.abbrev" %}}, see {{% xref "/docs/chapter-configuration-file/modules/_index.md" %}}.
+For more information about modules in {{% param "product.abbrev" %}}, see {{% xref "/chapter-configuration-file/modules/_index.md" %}}.
 
 
 ## The Azure auth header plugin

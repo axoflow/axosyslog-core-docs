@@ -4,7 +4,7 @@ weight:  5100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The `slack()` destination driver sends messages to a [Slack](https://slack.com/) channel using the Slack Web API. For the list of available optional parameters, see {{% xref "/docs/chapter-destinations/destination-slack/reference-destination-slack/_index.md" %}}. This destination is available in version 3.19 and later.
+The `slack()` destination driver sends messages to a [Slack](https://slack.com/) channel using the Slack Web API. For the list of available optional parameters, see {{% xref "/chapter-destinations/destination-slack/reference-destination-slack/_index.md" %}}. This destination is available in version 3.19 and later.
 
 
 ## Declaration:
@@ -18,7 +18,7 @@ The `slack()` destination driver sends messages to a [Slack](https://slack.com/)
 ```
 
 
-The driver allows you to modify nearly every field of the HTTP request. For details, see the [Slack API documentation](https://api.slack.com/docs/message-attachments).
+The driver allows you to modify nearly every field of the HTTP request. For details, see the [Slack API documentation](https://api.slack.com/message-attachments).
 
 {{% include-headless "chunk/destination-http-proxy-settings.md" %}}
 
@@ -31,7 +31,7 @@ To use this destination, the `scl.conf` file must be included in your {{% param 
    @include "scl.conf"
 ```
 
-The `slack()` driver is actually a reusable configuration snippet configured to send log messages using the `http()` driver. For details on using or writing such configuration snippets, see {{% xref "/docs/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/syslog-ng/syslog-ng/blob/master/scl/slack/slack.conf).
+The `slack()` driver is actually a reusable configuration snippet configured to send log messages using the `http()` driver. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/syslog-ng/syslog-ng/blob/master/scl/slack/slack.conf).
 
 
 

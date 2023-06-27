@@ -16,7 +16,7 @@ This section aims to give you some practical examples about how to make the most
     
       - [heat maps](https://syslog-ng.com/blog/creating-heat-maps-using-new-syslog-ng-geoip2-parser/)
         
-        This example uses the GeoIP2 parser. For details about the GeoIP2 parser, see {{% xref "/docs/chapter-enrich-data/geoip2-parser/_index.md" %}}.
+        This example uses the GeoIP2 parser. For details about the GeoIP2 parser, see {{% xref "/chapter-enrich-data/geoip2-parser/_index.md" %}}.
     
       - [time lapse videos](https://syslog-ng.com/blog/creating-time-lapse-videos-log-messages-using-openshot/)
 

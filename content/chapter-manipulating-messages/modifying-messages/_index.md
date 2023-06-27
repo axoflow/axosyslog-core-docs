@@ -10,7 +10,7 @@ The AxoSyslog application can rewrite parts of the messages using rewrite rules.
 
   - General rewriting searches for a string in the entire message (or only a part of the message specified by a macro) and replaces it with another string. Optionally, this replacement string can be a template that contains macros.
 
-Rewriting messages is often used in conjunction with message parsing {{% xref "/docs/chapter-parsers/_index.md" %}}.
+Rewriting messages is often used in conjunction with message parsing {{% xref "/chapter-parsers/_index.md" %}}.
 
 Rewrite rules are similar to filters: they must be defined in the `syslog-ng.conf` configuration file and used in the log statement. You can also define the rewrite rule inline in the log path.
 

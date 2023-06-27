@@ -11,7 +11,7 @@ This destination is available in {{% param "product.abbrev" %}} version 3.21 and
 
 {{% include-headless "chunk/option-destination-batch-bytes.md" %}}
 
-For details on how this option influences batch mode, see {{% xref "/docs/chapter-destinations/configuring-destinations-elasticsearch-http/elasticsearch-http-batch-mode/_index.md" %}}
+For details on how this option influences batch mode, see {{% xref "/chapter-destinations/configuring-destinations-elasticsearch-http/elasticsearch-http-batch-mode/_index.md" %}}
 
 
 
@@ -24,13 +24,13 @@ For details on how this option influences batch mode, see {{% xref "/docs/chapte
 
 {{% include-headless "chunk/option-description-destination-batch-lines.md" %}}
 
-For details on how this option influences batch mode, see {{% xref "/docs/chapter-destinations/configuring-destinations-elasticsearch-http/elasticsearch-http-batch-mode/_index.md" %}}
+For details on how this option influences batch mode, see {{% xref "/chapter-destinations/configuring-destinations-elasticsearch-http/elasticsearch-http-batch-mode/_index.md" %}}
 
 
 
 {{% include-headless "chunk/option-destination-batch-timeout.md" %}}
 
-For details on how this option influences batch mode, see {{% xref "/docs/chapter-destinations/configuring-destinations-elasticsearch-http/elasticsearch-http-batch-mode/_index.md" %}}
+For details on how this option influences batch mode, see {{% xref "/chapter-destinations/configuring-destinations-elasticsearch-http/elasticsearch-http-batch-mode/_index.md" %}}
 
 
 
@@ -93,7 +93,7 @@ For details on how this option influences batch mode, see {{% xref "/docs/chapte
 
 *Description:* By default, {{% param "product.abbrev" %}} separates the log messages of the batch with a newline character. You can specify a different delimiter by using the `delimiter()` option.
 
-For details on how this option influences batch mode, see {{% xref "/docs/chapter-destinations/configuring-destinations-elasticsearch-http/elasticsearch-http-batch-mode/_index.md" %}}
+For details on how this option influences batch mode, see {{% xref "/chapter-destinations/configuring-destinations-elasticsearch-http/elasticsearch-http-batch-mode/_index.md" %}}
 
 
 {{< include-headless "chunk/option-destination-diskbuffer.md" >}}

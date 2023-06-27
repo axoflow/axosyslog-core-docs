@@ -25,7 +25,7 @@ Available in {{% param "product.abbrev" %}} version 3.18 and later.
 
     $(basename argument)
 
-*Description:* Returns the filename from an argument (for example, a macro: `$(basename ${FILE_NAME})`) that contains a filename with a path. For example, `$(basename "/var/log/messages.log")` returns `messages.log`. To [extract the path, use the dirname template function]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}).
+*Description:* Returns the filename from an argument (for example, a macro: `$(basename ${FILE_NAME})`) that contains a filename with a path. For example, `$(basename "/var/log/messages.log")` returns `messages.log`. To [extract the path, use the dirname template function]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}).
 
 Available in {{% param "product.abbrev" %}} version 3.10 and later.
 
@@ -47,7 +47,7 @@ Available in {{% param "product.abbrev" %}} version 3.10 and later.
 
     $(context-lookup [option] condition value-to-select)
 
-*Description:* The `context-lookup` template function can search a message context when correlating messages (for example, when you use a [pattern database]({{< relref "/docs/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-correlation/_index.md" >}}) or the [grouping-by parser]({{< relref "/docs/chapter-correlating-log-messages/grouping-by-parser/_index.md" >}})). The `context-lookup` template function requires a condition (a filter or a string), and returns a specific macro or template of the matching messages (for example, the ${MESSAGE}) as a list. It works similarly to the [`$(grep)`]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}) template function, but it escapes its output properly, so that the returned value is a list that can be processed with other template functions that work on lists, for example, `$(list-slice)`.
+*Description:* The `context-lookup` template function can search a message context when correlating messages (for example, when you use a [pattern database]({{< relref "/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-correlation/_index.md" >}}) or the [grouping-by parser]({{< relref "/chapter-correlating-log-messages/grouping-by-parser/_index.md" >}})). The `context-lookup` template function requires a condition (a filter or a string), and returns a specific macro or template of the matching messages (for example, the ${MESSAGE}) as a list. It works similarly to the [`$(grep)`]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}) template function, but it escapes its output properly, so that the returned value is a list that can be processed with other template functions that work on lists, for example, `$(list-slice)`.
 
 
 ## Example: Using the context-lookup template function
@@ -85,7 +85,7 @@ Available in {{% param "product.abbrev" %}} version 3.10 and later.
 
     $(dirname argument)
 
-*Description:* Returns the path (without the filename) from an argument (for example, a macro: `$(basename ${FILE_NAME}`) that contains a filename with a path. For example, `$(dirname "/var/log/messages.log")` returns `/var/log` path. To [extract the filename, use the basename template function]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}).
+*Description:* Returns the path (without the filename) from an argument (for example, a macro: `$(basename ${FILE_NAME}`) that contains a filename with a path. For example, `$(dirname "/var/log/messages.log")` returns `/var/log` path. To [extract the filename, use the basename template function]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}).
 
 Available in {{% param "product.abbrev" %}} version 3.10 and later.
 
@@ -224,7 +224,7 @@ To refer to the variable bound to the current element of the list, use `$_ macro
 
 {{% param "product.abbrev" %}} version 3.8 includes a new template function (`format-cef-extension`) to format name-value pairs as ArcSight Common Event Format extensions. Note that the template function only formats the selected name-value pairs, it does not provide any mapping. There is no special support for creating the prefix part of a Common Event Format (CEF) message. Note that the order of the elements is random. For details on the CEF extension escaping rules format, see the [ArcSight Common Event Format](https://kc.mcafee.com/resources/sites/MCAFEE/content/live/CORP_KNOWLEDGEBASE/78000/KB78712/en_US/CEF_White_Paper_20100722.pdf).
 
-You can use the [value-pairs]({{< relref "/docs/chapter-concepts/concepts-value-pairs/_index.md" >}}) that {{% param "product.abbrev" %}} stores about the log message as CEF fields. Using value-pairs, you can:
+You can use the [value-pairs]({{< relref "/chapter-concepts/concepts-value-pairs/_index.md" >}}) that {{% param "product.abbrev" %}} stores about the log message as CEF fields. Using value-pairs, you can:
 
   - select which value-pairs to use as CEF fields,
 
@@ -232,7 +232,7 @@ You can use the [value-pairs]({{< relref "/docs/chapter-concepts/concepts-value-
 
   - rename value-pairs, and so on.
 
-For details, see {{% xref "/docs/chapter-concepts/concepts-value-pairs/_index.md" %}}. Note that the syntax of `format-\*` template functions is different from the syntax of `value-pairs()`: these template functions use a syntax similar to command lines.
+For details, see {{% xref "/chapter-concepts/concepts-value-pairs/_index.md" %}}. Note that the syntax of `format-\*` template functions is different from the syntax of `value-pairs()`: these template functions use a syntax similar to command lines.
 
 Using the `format-cef-extension` template function has the following prerequisites:
 
@@ -293,7 +293,7 @@ You can find the exact source of this template function in the [{{% param "produ
 
 {{% alert title="Note" color="info" %}}
 
-To use the `format-cim()` template function, {{% param "product.abbrev" %}} must be compiled with JSON support. For details, see {{% xref "/docs/chapter-install/syslog-ng-compile-options/_index.md" %}}. To see if your {{% param "product.abbrev" %}} binary was compiled with JSON support, execute the `syslog-ng --version` command.
+To use the `format-cim()` template function, {{% param "product.abbrev" %}} must be compiled with JSON support. For details, see {{% xref "/chapter-install/syslog-ng-compile-options/_index.md" %}}. To see if your {{% param "product.abbrev" %}} binary was compiled with JSON support, execute the `syslog-ng --version` command.
 
 {{% /alert %}}
 
@@ -303,7 +303,7 @@ To use the `format-cim()` template function, {{% param "product.abbrev" %}} must
 
 *Syntax:* `$(format-ewmm)`
 
-*Description:* The `format-ewmm` template function converts the message into the [Enterprise-wide message model (EWMM) format]({{< relref "/docs/chapter-concepts/concepts-message-structure/syslog-ng-message-format/_index.md" >}}). Available in version 3.16 and later.
+*Description:* The `format-ewmm` template function converts the message into the [Enterprise-wide message model (EWMM) format]({{< relref "/chapter-concepts/concepts-message-structure/syslog-ng-message-format/_index.md" >}}). Available in version 3.16 and later.
 
 {{% include-headless "chunk/example-ewmm-message-format.md" %}}
 
@@ -378,7 +378,7 @@ The following configuration example shows how you can use the `format-gelf` temp
 
 *Description:* The `format-json` template function receives value-pairs as parameters and converts them into JavaScript Object Notation (JSON) format. Including the template function in a message template allows you to store selected information about a log message (that is, its content, macros, or other metadata) in JSON format. Note that the input log message does not have to be in JSON format to use `format-json`, you can reformat any incoming message as JSON.
 
-You can use the [value-pairs]({{< relref "/docs/chapter-concepts/concepts-value-pairs/_index.md" >}}) that {{% param "product.abbrev" %}} stores about the log message as JSON fields. Using value-pairs, you can:
+You can use the [value-pairs]({{< relref "/chapter-concepts/concepts-value-pairs/_index.md" >}}) that {{% param "product.abbrev" %}} stores about the log message as JSON fields. Using value-pairs, you can:
 
   - select which value-pairs to use as JSON fields,
 
@@ -386,7 +386,7 @@ You can use the [value-pairs]({{< relref "/docs/chapter-concepts/concepts-value-
 
   - rename value-pairs, and so on.
 
-For details, see {{% xref "/docs/chapter-concepts/concepts-value-pairs/_index.md" %}}. Note that the syntax of `format-json` is different from the syntax of `value-pairs()`: `format-json` uses a syntax similar to command lines.
+For details, see {{% xref "/chapter-concepts/concepts-value-pairs/_index.md" %}}. Note that the syntax of `format-json` is different from the syntax of `value-pairs()`: `format-json` uses a syntax similar to command lines.
 
 {{< include-headless "wnt/note-typehinting.md" >}}
 
@@ -472,7 +472,7 @@ This template function is available only if {{% param "product.abbrev" %}} has b
 
 {{% /alert %}}
 
-To retrieve additional GeoIP information, see {{% xref "/docs/chapter-enrich-data/geoip-parser/_index.md" %}}.
+To retrieve additional GeoIP information, see {{% xref "/chapter-enrich-data/geoip-parser/_index.md" %}}.
 
 
 
@@ -495,7 +495,7 @@ This template function is available only if {{% param "product.abbrev" %}} has b
 {{% /alert %}}
 
 
-To retrieve additional GeoIP information, see {{% xref "/docs/chapter-enrich-data/geoip2-parser/_index.md" %}}.
+To retrieve additional GeoIP information, see {{% xref "/chapter-enrich-data/geoip2-parser/_index.md" %}}.
 
 {{% include-headless "chunk/option-parser-geoip.md" %}}
 
@@ -583,7 +583,7 @@ The following databases are supported:
 
 *Description:* Available in {{% param "product.abbrev" %}} 3.6 and later. This template function converts value-pairs from the incoming message to the Graphite plain text protocol format. It is ideal to use with the messages generated by the [monitor-source plugin](https://github.com/syslog-ng/syslog-ng-incubator/tree/master/modules/monitor-source/) (currently available in the syslog-ng incubator project).
 
-For details on selecting value-pairs in {{% param "product.abbrev" %}} and for possibilities to specify which information to convert to Graphite plain text protocol format, see {{% xref "/docs/chapter-concepts/concepts-value-pairs/_index.md" %}}. Note that the syntax of `graphite-output` is different from the syntax of `value-pairs()`: `graphite-output` uses a the command-line syntax used in the [format-json template function]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}).
+For details on selecting value-pairs in {{% param "product.abbrev" %}} and for possibilities to specify which information to convert to Graphite plain text protocol format, see {{% xref "/chapter-concepts/concepts-value-pairs/_index.md" %}}. Note that the syntax of `graphite-output` is different from the syntax of `value-pairs()`: `graphite-output` uses a the command-line syntax used in the [format-json template function]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}).
 
 
 ## Example: Using the graphite-output template function
@@ -603,7 +603,7 @@ The following configuration example shows, how to send value-pairs with names st
 
 *Syntax:* `$(grep condition value-to-select)`
 
-*Description:* The `grep` template function can search a message context when correlating messages (for example, when you use a [pattern database]({{< relref "/docs/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-correlation/_index.md" >}}) or the [grouping-by parser]({{< relref "/docs/chapter-correlating-log-messages/grouping-by-parser/_index.md" >}})). The `context-lookup` template function requires a condition (a filter or a string), and returns a specific macro or template of the matching message (for example, the ${MESSAGE} field of the message).
+*Description:* The `grep` template function can search a message context when correlating messages (for example, when you use a [pattern database]({{< relref "/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-correlation/_index.md" >}}) or the [grouping-by parser]({{< relref "/chapter-correlating-log-messages/grouping-by-parser/_index.md" >}})). The `context-lookup` template function requires a condition (a filter or a string), and returns a specific macro or template of the matching message (for example, the ${MESSAGE} field of the message).
 
 
 {{% include-headless "chunk/example-grep-template-function.md" %}}
@@ -985,7 +985,7 @@ For example:
 
 To round floating-point numbers, you can use the `ceil`, `floor`, and `round` template functions.
 
-When you are correlating messages and a name-value pair contains numerical values in the messages, you can calculate the lowest (min), highest (max), total (sum), and mean (average) values. These calculations process every message of the correlation context. For details on message correlation, see {{% xref "/docs/chapter-correlating-log-messages/_index.md" %}}. For example, if the messages of the context have a `.myfields.load` name-value pair, you can find the highest load value using the following template function.
+When you are correlating messages and a name-value pair contains numerical values in the messages, you can calculate the lowest (min), highest (max), total (sum), and mean (average) values. These calculations process every message of the correlation context. For details on message correlation, see {{% xref "/chapter-correlating-log-messages/_index.md" %}}. For example, if the messages of the context have a `.myfields.load` name-value pair, you can find the highest load value using the following template function.
 
 ```c
    $(max ${.myfields.load})
@@ -1262,7 +1262,7 @@ $(template $<dynamic-template-name>)
 $(template $<dynamic-template-name> '<optional-fallback-template>')
 ```
 
-*Description:* This template function looks up the <template-name>in the configuration and uses that to format its result. The referenced template can be static or dynamic. For static templates, {{% param "product.abbrev" %}} resolves the template when it starts, or when the configuration is reloaded. For dynamic templates, the results are resolved runtime (for dynamic templates, the template name contains at least one '$' character). For example, the name of the template to be invoked can be extracted from the message, or from a name-value pair set using the [`add-contextual-data()`]({{< relref "/docs/chapter-enrich-data/data-enrichment-add-contextual-data/_index.md" >}}) feature.
+*Description:* This template function looks up the <template-name>in the configuration and uses that to format its result. The referenced template can be static or dynamic. For static templates, {{% param "product.abbrev" %}} resolves the template when it starts, or when the configuration is reloaded. For dynamic templates, the results are resolved runtime (for dynamic templates, the template name contains at least one '$' character). For example, the name of the template to be invoked can be extracted from the message, or from a name-value pair set using the [`add-contextual-data()`]({{< relref "/chapter-enrich-data/data-enrichment-add-contextual-data/_index.md" >}}) feature.
 
 For dynamic templates, you can set an optional second template. This second template will be the results of the template function if resolving the dynamic template fails for some reason. For example:
 

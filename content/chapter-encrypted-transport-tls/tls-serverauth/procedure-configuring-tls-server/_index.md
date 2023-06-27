@@ -19,7 +19,7 @@ Complete the following steps on the AxoSyslog server:
 
 2.  Copy the certificate (for example, `syslog-ng.cert`) of the AxoSyslog server to the AxoSyslog server host, for example, into the `/opt/syslog-ng/etc/syslog-ng/cert.d` directory. The certificate must be a valid X.509 certificate in PEM format.
 
-3.  Copy the private key (for example, `syslog-ng.key`) matching the certificate of the AxoSyslog server to the AxoSyslog server host, for example, into the `/opt/syslog-ng/etc/syslog-ng/key.d` directory. The key must be in PEM format. If you want to use a password-protected key, see {{% xref "/docs/chapter-encrypted-transport-tls/tls-password-protected-keys/_index.md" %}}.
+3.  Copy the private key (for example, `syslog-ng.key`) matching the certificate of the AxoSyslog server to the AxoSyslog server host, for example, into the `/opt/syslog-ng/etc/syslog-ng/key.d` directory. The key must be in PEM format. If you want to use a password-protected key, see {{% xref "/chapter-encrypted-transport-tls/tls-password-protected-keys/_index.md" %}}.
 
 4.  Add a source statement to the `syslog-ng.conf` configuration file that uses the `tls( key-file(key_file_fullpathname) cert-file(cert_file_fullpathname) )` option and specify the key and certificate files. The source must use the source driver (`network()` or `syslog()`) matching the destination driver used by the AxoSyslog client.
     
@@ -57,9 +57,9 @@ Complete the following steps on the AxoSyslog server:
 
 5.  Disable mutual authentication for the source by setting the following TLS option in the source statement: `tls( peer-verify(optional-untrusted);`
     
-    If you want to authenticate the clients, you have to configure mutual authentication. For details, see {{% xref "/docs/chapter-encrypted-transport-tls/tls-mutualauth/_index.md" %}}.
+    If you want to authenticate the clients, you have to configure mutual authentication. For details, see {{% xref "/chapter-encrypted-transport-tls/tls-mutualauth/_index.md" %}}.
     
-    For the details of the available `tls()` options, see {{% xref "/docs/chapter-encrypted-transport-tls/tlsoptions/_index.md" %}}.
+    For the details of the available `tls()` options, see {{% xref "/chapter-encrypted-transport-tls/tlsoptions/_index.md" %}}.
     
     
     ## Example: Disabling mutual authentication

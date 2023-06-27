@@ -9,5 +9,5 @@
 | Type:    | tls options |
 | Default: | n/a         |
 
-*Description:* Required option. This option sets various options related to TLS encryption, for example, key/certificate files and trusted CA locations. TLS can be used only with tcp-based transport protocols. For details, see {{% xref "/docs/chapter-encrypted-transport-tls/tlsoptions/_index.md" %}}.
+*Description:* Required option. This option sets various options related to TLS encryption, for example, key/certificate files and trusted CA locations. TLS can be used only with tcp-based transport protocols. For details, see {{% xref "/chapter-encrypted-transport-tls/tlsoptions/_index.md" %}}.
 

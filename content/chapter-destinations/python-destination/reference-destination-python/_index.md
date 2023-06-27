@@ -4,7 +4,7 @@ weight:  100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The Python destination allows you to write your own destination in Python. The `python()` destination has the following options. The `class()` option is mandatory. For details on writing destinations in Python, see {{% xref "/docs/chapter-destinations/python-destination/_index.md" %}}.
+The Python destination allows you to write your own destination in Python. The `python()` destination has the following options. The `class()` option is mandatory. For details on writing destinations in Python, see {{% xref "/chapter-destinations/python-destination/_index.md" %}}.
 
 
 {{% include-headless "chunk/option-destination-batch-bytes.md" %}}
@@ -55,7 +55,7 @@ If you want to store the Python code in an external Python file, the `class()` o
     );
 ```
 
-For details, see {{% xref "/docs/chapter-configuration-file/python-code-external-file/_index.md" %}}
+For details, see {{% xref "/chapter-configuration-file/python-code-external-file/_index.md" %}}
 
 
 {{< include-headless "chunk/option-destination-diskbuffer.md" >}}

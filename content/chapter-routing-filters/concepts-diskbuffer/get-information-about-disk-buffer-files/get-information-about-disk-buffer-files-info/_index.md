@@ -10,7 +10,7 @@ The following list contains information about how disk-buffer files are used in 
 
   - You can configure `disk-buffer()` for a remote destination in the `destination()` statement.
     
-    For more information about an example of configuring `disk-buffer()` for a remote destination in the `destination()` statement, see [disk-buffer()]({{< relref "/docs/chapter-destinations/configuring-destinations-elasticsearch-http/reference-destination-elasticsearch-http/_index.md#elasticsearch-http-options-disk-buffer" >}}).
+    For more information about an example of configuring `disk-buffer()` for a remote destination in the `destination()` statement, see [disk-buffer()]({{< relref "/chapter-destinations/configuring-destinations-elasticsearch-http/reference-destination-elasticsearch-http/_index.md#elasticsearch-http-options-disk-buffer" >}}).
 
   - By default, {{% param "product.abbrev" %}} creates disk-buffer files under `/opt/syslog-ng/var` directory, unless `dir()` option is set in `disk-buffer()`.
 

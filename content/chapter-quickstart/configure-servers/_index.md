@@ -13,9 +13,9 @@ To configure AxoSyslog on a server host, complete the following steps.
 
 ## Steps:
 
-1.  Install the AxoSyslog application on the host. For details installing AxoSyslog on specific operating systems, see {{% xref "/docs/chapter-install/_index.md" %}}.
+1.  Install the AxoSyslog application on the host. For details installing AxoSyslog on specific operating systems, see {{% xref "/chapter-install/_index.md" %}}.
 
-2.  Starting with version 3.2, {{% param "product.abbrev" %}} automatically collects the log messages that use the native system logging method of the platform, for example, messages from `/dev/log` on Linux, or `/dev/klog` on FreeBSD. For a complete list of messages that are collected automatically, see {{% xref "/docs/chapter-sources/source-system/_index.md" %}}.
+2.  Starting with version 3.2, {{% param "product.abbrev" %}} automatically collects the log messages that use the native system logging method of the platform, for example, messages from `/dev/log` on Linux, or `/dev/klog` on FreeBSD. For a complete list of messages that are collected automatically, see {{% xref "/chapter-sources/source-system/_index.md" %}}.
 
 3.  {{< include-headless "chunk/para-config-file-location.md" >}}
     
@@ -35,7 +35,7 @@ To configure AxoSyslog on a server host, complete the following steps.
         };
     ```
     
-    For other options, see {{% xref "/docs/chapter-sources/source-syslog/_index.md" %}} and {{% xref "/docs/chapter-sources/configuring-sources-tcpudp/_index.md" %}}.
+    For other options, see {{% xref "/chapter-sources/source-syslog/_index.md" %}} and {{% xref "/chapter-sources/configuring-sources-tcpudp/_index.md" %}}.
     
     {{% alert title="Note" color="info" %}}
 Starting with {{% param "product.abbrev" %}} version 3.2, the `syslog()` source driver can handle both BSD-syslog (RFC 3164) and IETF-syslog (RFC 5424-26) messages.
@@ -57,7 +57,7 @@ Starting with {{% param "product.abbrev" %}} version 3.2, the `syslog()` source 
         };
     ```
     
-    For details on further macros and how to use them, see {{% xref "/docs/chapter-manipulating-messages/_index.md" %}}.
+    For details on further macros and how to use them, see {{% xref "/chapter-manipulating-messages/_index.md" %}}.
 
 5.  Create a log statement connecting the sources to the local destinations.
     

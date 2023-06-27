@@ -4,11 +4,11 @@ weight:  500
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-Certain features of generating messages can be used only if message correlation is used as well. For details on correlating messages, see {{% xref "/docs/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-correlation/_index.md" %}}.
+Certain features of generating messages can be used only if message correlation is used as well. For details on correlating messages, see {{% xref "/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-correlation/_index.md" %}}.
 
   - The {{% param "product.abbrev" %}} application automatically fills the fields for the generated message based on the scope of the context, for example, the HOST and PROGRAM fields if the `context-scope` is `program`.
 
-  - When used together with message correlation, you can also refer to fields and values of earlier messages of the context by adding the `@<distance-of-referenced-message-from-the-current>` suffix to the macro. For details, see {{% xref "/docs/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-correlation/referencing-previous-messages/_index.md" %}}.
+  - When used together with message correlation, you can also refer to fields and values of earlier messages of the context by adding the `@<distance-of-referenced-message-from-the-current>` suffix to the macro. For details, see {{% xref "/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-correlation/referencing-previous-messages/_index.md" %}}.
     
     
     {{% include-headless "chunk/example-patterndb-referencing-earlier-values.md" %}}

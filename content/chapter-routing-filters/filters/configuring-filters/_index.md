@@ -21,7 +21,7 @@ Then use the filter in a log path, for example:
         destination(d1); };
 ```
 
-You can also define the filter inline. For details, see {{% xref "/docs/chapter-configuration-file/inline-objects/_index.md" %}}.
+You can also define the filter inline. For details, see {{% xref "/chapter-configuration-file/inline-objects/_index.md" %}}.
 
 
 ## Example: A simple filter statement

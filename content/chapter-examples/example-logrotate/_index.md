@@ -27,7 +27,7 @@ The {{% param "product.abbrev" %}} application does not rotate logs by itself. T
 
 - Requires shell scripts or cron jobs to remove old logs.
 
-- It can be done by using macros in the destination name (in the filename, directory name, or the database table name). (For details on using macros, see {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/configuring-macros/_index.md" %}}.)
+- It can be done by using macros in the destination name (in the filename, directory name, or the database table name). (For details on using macros, see {{% xref "/chapter-manipulating-messages/customizing-message-format/configuring-macros/_index.md" %}}.)
 
 
 ## Example: File destination for log rotation

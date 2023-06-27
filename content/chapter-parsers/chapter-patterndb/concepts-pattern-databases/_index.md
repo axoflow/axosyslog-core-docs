@@ -20,4 +20,4 @@ A regular expression matching this message from the logcheck project: `Accepted 
 
 An AxoSyslog database pattern for this message: `Accepted @QSTRING:auth_method: @ for@QSTRING:username: @from @QSTRING:client_addr: @port @NUMBER:port:@ ssh2`
 
-For details on using pattern databases to classify log messages, see {{% xref "/docs/chapter-parsers/chapter-patterndb/configuring-pattern-databases/_index.md" %}}.
+For details on using pattern databases to classify log messages, see {{% xref "/chapter-parsers/chapter-patterndb/configuring-pattern-databases/_index.md" %}}.

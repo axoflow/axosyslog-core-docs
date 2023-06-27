@@ -4,7 +4,7 @@ weight:  700
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-Flags influence the behavior of `syslog-ng`, and the way it processes messages. The following flags may be used in the log paths, as described in {{% xref "/docs/chapter-routing-filters/logpath/_index.md" %}}.
+Flags influence the behavior of `syslog-ng`, and the way it processes messages. The following flags may be used in the log paths, as described in {{% xref "/chapter-routing-filters/logpath/_index.md" %}}.
 
 {{% include-headless "chunk/table-logflags-routing-filters.md" %}}
 

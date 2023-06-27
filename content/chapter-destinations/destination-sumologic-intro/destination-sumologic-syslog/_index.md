@@ -8,7 +8,7 @@ weight:  300
 
 Using the `sumologic-syslog()` destination, you can send data (both in JSON and in non-JSON format) to the Sumo Logic service.
 
-For more information about the `sumologic-http()` destination, see {{% xref "/docs/chapter-destinations/destination-sumologic-intro/destination-sumologic-http/_index.md" %}}.
+For more information about the `sumologic-http()` destination, see {{% xref "/chapter-destinations/destination-sumologic-intro/destination-sumologic-http/_index.md" %}}.
 
 
 ## Sending data using the sumologic-syslog() destination

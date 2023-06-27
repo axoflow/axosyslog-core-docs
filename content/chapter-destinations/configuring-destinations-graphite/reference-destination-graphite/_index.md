@@ -39,7 +39,7 @@ The `graphite()` destination has the following options:
 
 *Description:* The payload() option allows you to select which value pairs to forward to graphite.
 
-The syntax of `payload` is different from the syntax of `value-pairs()`: use the command-line syntax used in the [format-json template function]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}). For details on using the payload() option, see [graphite-output]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}).
+The syntax of `payload` is different from the syntax of `value-pairs()`: use the command-line syntax used in the [format-json template function]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}). For details on using the payload() option, see [graphite-output]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}).
 
 {{% alert title="Note" color="info" %}}
 

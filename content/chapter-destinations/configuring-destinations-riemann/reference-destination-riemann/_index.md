@@ -16,7 +16,7 @@ The `riemann()` destination has the following options:
 | Type:    | parameter list of the `value-pairs()` option |
 | Default: |                                                |
 
-*Description:* The `attributes()` option adds extra metadata to the Riemann event, that can be displayed on the Riemann dashboard. To specify the metadata to add, use the syntax of the `value-pairs()` option. For details on using `value-pairs()`, see {{% xref "/docs/chapter-concepts/concepts-value-pairs/_index.md" %}}.
+*Description:* The `attributes()` option adds extra metadata to the Riemann event, that can be displayed on the Riemann dashboard. To specify the metadata to add, use the syntax of the `value-pairs()` option. For details on using `value-pairs()`, see {{% xref "/chapter-concepts/concepts-value-pairs/_index.md" %}}.
 
 
 

@@ -6,10 +6,10 @@ weight:  1500
 
 The following sections describe the structure of log messages. Currently there are two standard syslog message formats:
 
-  - The old standard described in RFC 3164 (also called the BSD-syslog or the legacy-syslog protocol): see {{% xref "/docs/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/_index.md" %}}
+  - The old standard described in RFC 3164 (also called the BSD-syslog or the legacy-syslog protocol): see {{% xref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/_index.md" %}}
 
-  - The new standard described in RFC 5424 (also called the IETF-syslog protocol): see {{% xref "/docs/chapter-concepts/concepts-message-structure/concepts-message-ietfsyslog/_index.md" %}}
+  - The new standard described in RFC 5424 (also called the IETF-syslog protocol): see {{% xref "/chapter-concepts/concepts-message-structure/concepts-message-ietfsyslog/_index.md" %}}
 
-  - The Enterprise-wide message model or EWMM allows you to deliver structured messages between {{% param "product.ose" %}} nodes: see {{% xref "/docs/chapter-concepts/concepts-message-structure/syslog-ng-message-format/_index.md" %}}
+  - The Enterprise-wide message model or EWMM allows you to deliver structured messages between {{% param "product.ose" %}} nodes: see {{% xref "/chapter-concepts/concepts-message-structure/syslog-ng-message-format/_index.md" %}}
 
-  - How messages are represented in {{% param "product.abbrev" %}}: see {{% xref "/docs/chapter-concepts/concepts-message-representation/_index.md" %}}.
+  - How messages are represented in {{% param "product.abbrev" %}}: see {{% xref "/chapter-concepts/concepts-message-representation/_index.md" %}}.

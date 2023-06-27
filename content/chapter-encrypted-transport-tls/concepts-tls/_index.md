@@ -8,7 +8,7 @@ The AxoSyslog application can send and receive log messages securely over the ne
 
 {{% alert title="Note" color="info" %}}
 
-This chapter describes how to use TLS encryption when using the standard syslog protocols, that is, the `network()` and `syslog()` drivers, for example, to forward log messages between two AxoSyslog nodes, or to send log data to a log server. Other destinations that support TLS-encryption are not discussed in this chapter (for example, [`http()`]({{< relref "/docs/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})).
+This chapter describes how to use TLS encryption when using the standard syslog protocols, that is, the `network()` and `syslog()` drivers, for example, to forward log messages between two AxoSyslog nodes, or to send log data to a log server. Other destinations that support TLS-encryption are not discussed in this chapter (for example, [`http()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})).
 
 {{% /alert %}}
 
@@ -32,6 +32,6 @@ When using mutual authentication to verify the identity of the clients, the foll
 
 Mutual authentication ensures that the AxoSyslog server accepts log messages only from authorized clients.
 
-For more information about configuring TLS communication, see {{% xref "/docs/chapter-encrypted-transport-tls/tls-serverauth/_index.md" %}}.
+For more information about configuring TLS communication, see {{% xref "/chapter-encrypted-transport-tls/tls-serverauth/_index.md" %}}.
 
-For more information about TLS-related error messages, see {{% xref "/docs/chapter-troubleshooting-syslog-ng/error-messages/_index.md" %}}.
+For more information about TLS-related error messages, see {{% xref "/chapter-troubleshooting-syslog-ng/error-messages/_index.md" %}}.

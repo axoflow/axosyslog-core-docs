@@ -9,6 +9,6 @@ Stores the matches of the regular expression into the `$0, ... $255` variables. 
 
 {{% alert title="Note" color="info" %}}
 
-To convert match variables into a {{% param "product.abbrev" %}} list, use the `$\*` macro, which can be further manipulated using [List manipulation]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}), or turned into a list in type-aware destinations.
+To convert match variables into a {{% param "product.abbrev" %}} list, use the `$\*` macro, which can be further manipulated using [List manipulation]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}), or turned into a list in type-aware destinations.
 
 {{% /alert %}}

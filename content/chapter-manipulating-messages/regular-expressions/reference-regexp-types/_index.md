@@ -10,8 +10,8 @@ By default, {{% param "product.abbrev" %}} uses PCRE-style regular expressions. 
 
 The {{% param "product.abbrev" %}} application supports the following regular expression `type()` options:
 
-  - [Perl Compatible Regular Expressions (pcre)]({{< relref "/docs/chapter-manipulating-messages/regular-expressions/reference-regexp-types/regexp-type-options/_index.md" >}})
+  - [Perl Compatible Regular Expressions (pcre)]({{< relref "/chapter-manipulating-messages/regular-expressions/reference-regexp-types/regexp-type-options/_index.md" >}})
 
-  - [Literal string searches (string)]({{< relref "/docs/chapter-manipulating-messages/regular-expressions/reference-regexp-types/regexp-type-options/_index.md" >}})
+  - [Literal string searches (string)]({{< relref "/chapter-manipulating-messages/regular-expressions/reference-regexp-types/regexp-type-options/_index.md" >}})
 
-  - [Glob patterns without regular expression support (glob)]({{< relref "/docs/chapter-manipulating-messages/regular-expressions/reference-regexp-types/regexp-type-options/_index.md" >}})
+  - [Glob patterns without regular expression support (glob)]({{< relref "/chapter-manipulating-messages/regular-expressions/reference-regexp-types/regexp-type-options/_index.md" >}})

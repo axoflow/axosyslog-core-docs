@@ -11,5 +11,5 @@
 
 {{% include-headless "chunk/option-description-trim-large-messages.md" %}}
 
-Uses the value of the [global option]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) if not specified.
+Uses the value of the [global option]({{< relref "/chapter-global-options/reference-options/_index.md" >}}) if not specified.
 

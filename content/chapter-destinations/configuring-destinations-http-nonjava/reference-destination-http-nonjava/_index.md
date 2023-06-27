@@ -9,19 +9,19 @@ The `http` destination of {{% param "product.abbrev" %}} can directly post log m
 
 {{% include-headless "chunk/option-destination-batch-bytes.md" %}}
 
-For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/docs/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
+For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
 
 
 
 {{% include-headless "chunk/option-destination-batch-lines.md" %}}
 
-For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/docs/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
+For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
 
 
 
 {{% include-headless "chunk/option-d-b-t-http-spl-sent-pub.md" %}}
 
-For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/docs/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
+For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
 
 
 
@@ -45,7 +45,7 @@ For details on how this option influences HTTP batch mode, see [http: Posting me
 
 *Description:* The string {{% param "product.abbrev" %}} puts at the beginning of the body of the HTTP request, before the log message. Available in {{% param "product.abbrev" %}} version 3.18 and later.
 
-For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/docs/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
+For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
 
 
 
@@ -58,7 +58,7 @@ For details on how this option influences HTTP batch mode, see [http: Posting me
 
 *Description:* The string {{% param "product.abbrev" %}} puts to the end of the body of the HTTP request, after the log message. Available in {{% param "product.abbrev" %}} version 3.18 and later.
 
-For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/docs/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
+For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
 
 
 
@@ -110,7 +110,7 @@ For details on how this option influences HTTP batch mode, see [http: Posting me
 
 *Description:* By default, {{% param "product.abbrev" %}} separates the log messages of the batch with a newline character. You can specify a different delimiter by using the `delimiter()` option. Available in {{% param "product.abbrev" %}} version 3.18 and later.
 
-For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/docs/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
+For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
 
 
 {{< include-headless "chunk/option-destination-diskbuffer.md" >}}

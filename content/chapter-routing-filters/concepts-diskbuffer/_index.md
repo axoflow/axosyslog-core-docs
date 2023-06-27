@@ -8,7 +8,7 @@ The {{% param "product.name" %}} application can store messages on the local har
 
 {{% alert title="Note" color="info" %}}
 
-Disk-based buffering can be used in conjunction with flow-control. For details on flow-control, see {{% xref "/docs/chapter-routing-filters/concepts-flow-control/_index.md" %}}.
+Disk-based buffering can be used in conjunction with flow-control. For details on flow-control, see {{% xref "/chapter-routing-filters/concepts-flow-control/_index.md" %}}.
 
 {{% /alert %}}
 
@@ -18,7 +18,7 @@ Every such destination uses a separate disk buffer (similarly to the output buff
 
 If {{% param "product.abbrev" %}} is restarted (using the `/etc/init.d/syslog-ng restart` command, or another appropriate command on your platform), it automatically saves any unsent messages from the disk buffer and in-memory queues. After the restart, {{% param "product.abbrev" %}} sends the saved messages to the destination. In other words, the disk buffer is persistent. The disk buffer is also resistant to {{% param "product.abbrev" %}} crashes.
 
-The {{% param "product.abbrev" %}} application supports two types of disk buffering: reliable and normal. For details, see {{% xref "/docs/chapter-routing-filters/concepts-diskbuffer/configuring-diskbuffer-reliable/_index.md" %}} and {{% xref "/docs/chapter-routing-filters/concepts-diskbuffer/configuring-diskbuffer-normal/_index.md" %}}, respectively.
+The {{% param "product.abbrev" %}} application supports two types of disk buffering: reliable and normal. For details, see {{% xref "/chapter-routing-filters/concepts-diskbuffer/configuring-diskbuffer-reliable/_index.md" %}} and {{% xref "/chapter-routing-filters/concepts-diskbuffer/configuring-diskbuffer-normal/_index.md" %}}, respectively.
 
 
 ## Message handling and normal disk-based buffering

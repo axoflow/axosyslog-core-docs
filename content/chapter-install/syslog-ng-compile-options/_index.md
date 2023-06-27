@@ -20,7 +20,7 @@ When compiling {{% param "product.abbrev" %}} from source, you can use the follo
 
   - *--disable-snmp* Disable SNMP support. By default, SNMP support is enabled if the libsnmp-dev library is detected.
 
-  - *--enable-amqp* Enable the amqp destination (enabled by default). The source of the RabbitMQ client is included in the source code package of {{% param "product.abbrev" %}}. To use an external client instead, use the `--with-librabbitmq-client=system` compiling option. For details on using this destination, see {{% xref "/docs/chapter-destinations/configuring-destinations-amqp/_index.md" %}}.
+  - *--enable-amqp* Enable the amqp destination (enabled by default). The source of the RabbitMQ client is included in the source code package of {{% param "product.abbrev" %}}. To use an external client instead, use the `--with-librabbitmq-client=system` compiling option. For details on using this destination, see {{% xref "/chapter-destinations/configuring-destinations-amqp/_index.md" %}}.
 
   - *--enable-debug* Include debug information.
 
@@ -30,23 +30,23 @@ When compiling {{% param "product.abbrev" %}} from source, you can use the follo
 
   - *--enable-ipv6* Enable IPv6 support.
 
-  - *--enable-java* Enable support for Java-based modules. For other requirements, see the description of the Java-based module (for example, {{% xref "/docs/chapter-destinations/configuring-destinations-elasticsearch2/destination-elasticsearch2-prerequisites/_index.md" %}}) that you want to use.
+  - *--enable-java* Enable support for Java-based modules. For other requirements, see the description of the Java-based module (for example, {{% xref "/chapter-destinations/configuring-destinations-elasticsearch2/destination-elasticsearch2-prerequisites/_index.md" %}}) that you want to use.
 
   - *--enable-java-modules* Compile the Gradle projects of every Java module available in `modules/java-modules`.
 
   - *--enable-json* Enables JSON support (by default, it uses the `json-c` library included in the source code package of {{% param "product.abbrev" %}}). JSON support is required for `json-parser`, and the `format-cim` and `format-json` template functions.
 
-  - *--enable-linux-caps* Enable support for capabilities on Linux. For details, see {{% xref "/docs/app-man-syslog-ng/syslog-ng.8/_index.md" %}}.
+  - *--enable-linux-caps* Enable support for capabilities on Linux. For details, see {{% xref "/app-man-syslog-ng/syslog-ng.8/_index.md" %}}.
 
-  - *--enable-mongodb* Enable the mongodb destination (enabled by default). To use <span class="code">mongodb()</span>, an external MongoDB client is needed. For further details on using this destination, see {{% xref "/docs/chapter-destinations/configuring-destinations-mongodb/_index.md" %}}.
+  - *--enable-mongodb* Enable the mongodb destination (enabled by default). To use <span class="code">mongodb()</span>, an external MongoDB client is needed. For further details on using this destination, see {{% xref "/chapter-destinations/configuring-destinations-mongodb/_index.md" %}}.
 
   - *--enable-pacct* Enable using the `pacct()` driver to collect process-accounting logs on Linux systems.
 
   - *--enable-python* Enable support for Python-based modules.
 
-  - *--enable-redis* Enable the redis destination (enabled by default). The source of the libhiredis client (0.11 or newer) must be available. To specify the location of the library, use the `--with-libhiredis=<path-to-libhiredis>` compiling option. For details on using this destination, see {{% xref "/docs/chapter-destinations/configuring-destinations-redis/_index.md" %}}.
+  - *--enable-redis* Enable the redis destination (enabled by default). The source of the libhiredis client (0.11 or newer) must be available. To specify the location of the library, use the `--with-libhiredis=<path-to-libhiredis>` compiling option. For details on using this destination, see {{% xref "/chapter-destinations/configuring-destinations-redis/_index.md" %}}.
 
-  - *--enable-riemann* Enable the riemann destination (enabled by default). The source of the libriemann client must be available. For details on using this destination, see {{% xref "/docs/chapter-destinations/configuring-destinations-riemann/_index.md" %}}.
+  - *--enable-riemann* Enable the riemann destination (enabled by default). The source of the libriemann client must be available. For details on using this destination, see {{% xref "/chapter-destinations/configuring-destinations-riemann/_index.md" %}}.
 
   - *--enable-snmp-dest* Enable SNMP support even if not detected (autodetected by default).
 
@@ -68,11 +68,11 @@ When compiling {{% param "product.abbrev" %}} from source, you can use the follo
 
   - *--with-ivykis* Specifies which ivykis implementation to use (default value: internal). The source of ivykis is included in the source code package of {{% param "product.abbrev" %}} and is used by default. To use an external implementation instead, use the `--with-ivykis=system` compiling option.
 
-  - *--with-libcurl* Specifies the path to the libcurl library. For details on using this destination, see {{% xref "/docs/chapter-destinations/configuring-destinations-http-nonjava/_index.md" %}}.
+  - *--with-libcurl* Specifies the path to the libcurl library. For details on using this destination, see {{% xref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" %}}.
 
-  - *--with-libhiredis* Specifies the path to the libhiredis library (0.11 or newer). For details on using this destination, see {{% xref "/docs/chapter-destinations/configuring-destinations-redis/_index.md" %}}.
+  - *--with-libhiredis* Specifies the path to the libhiredis library (0.11 or newer). For details on using this destination, see {{% xref "/chapter-destinations/configuring-destinations-redis/_index.md" %}}.
 
-  - *--with-librabbitmq-client* Specifies which RabbitMQ client to use (default value: internal). The source of the rabbitmq client is included in the source code package of {{% param "product.abbrev" %}} and is used by default. To use an external client instead, use the `--with-librabbitmq-client=system` compiling option. For details on using this destination, see {{% xref "/docs/chapter-destinations/configuring-destinations-amqp/_index.md" %}}.
+  - *--with-librabbitmq-client* Specifies which RabbitMQ client to use (default value: internal). The source of the rabbitmq client is included in the source code package of {{% param "product.abbrev" %}} and is used by default. To use an external client instead, use the `--with-librabbitmq-client=system` compiling option. For details on using this destination, see {{% xref "/chapter-destinations/configuring-destinations-amqp/_index.md" %}}.
 
   - *--with-module-dir* Specifies a single directory where the {{% param "product.abbrev" %}} Makefile will install the modules.
 

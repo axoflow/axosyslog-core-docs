@@ -8,7 +8,7 @@ weight:  100
 
 Using the `sumologic-http()` destination, you can send data to the Sumo Logic service by utilizing a [Hosted Collector hosted by Sumo Logic](https://help.sumologic.com/03Send-Data/Hosted-Collectors).
 
-For more information about the `sumologic-http()` destination, see {{% xref "/docs/chapter-destinations/destination-sumologic-intro/destination-sumologic-syslog/_index.md" %}}.
+For more information about the `sumologic-http()` destination, see {{% xref "/chapter-destinations/destination-sumologic-intro/destination-sumologic-syslog/_index.md" %}}.
 
 
 ## Sending data using the sumologic-http() destination

@@ -30,7 +30,7 @@ If you want to store the Python code in an external Python file, the `class()` o
     );
 ```
 
-For details, see {{% xref "/docs/chapter-configuration-file/python-code-external-file/_index.md" %}}
+For details, see {{% xref "/chapter-configuration-file/python-code-external-file/_index.md" %}}
 
 
 

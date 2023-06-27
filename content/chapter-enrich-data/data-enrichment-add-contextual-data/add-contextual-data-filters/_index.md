@@ -6,7 +6,7 @@ weight:  100
 
 To better control to which log messages you add contextual data, you can use filters as selectors. In this case, the first column of the CSV database file must contain the name of a filter. For each message, {{% param "product.abbrev" %}} evaluates the filters in the order they appear in the database file. If a filter matches the message, {{% param "product.abbrev" %}} adds the name-value pair related to the filter.
 
-For example, the database file can contain the entries. (For details on the accepted CSV-format, see [database()]({{< relref "/docs/chapter-enrich-data/data-enrichment-add-contextual-data/reference-add-contextual-data-options/_index.md" >}}).)
+For example, the database file can contain the entries. (For details on the accepted CSV-format, see [database()]({{< relref "/chapter-enrich-data/data-enrichment-add-contextual-data/reference-add-contextual-data-options/_index.md" >}}).)
 
 ```c
    f_auth,domain,all

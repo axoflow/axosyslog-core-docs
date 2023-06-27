@@ -40,6 +40,6 @@ Message filtering, parsing, and rewriting is performed in the order that the ope
 9.  The {{% param "product.ose" %}} server processes the next log statement, repeating Steps 7-9.
     
     {{% alert title="Note" color="info" %}}
-The {{% param "product.ose" %}} application can stop reading messages from its sources if the destinations cannot process the sent messages. This feature is called flow-control and is detailed in {{% xref "/docs/chapter-routing-filters/concepts-flow-control/_index.md" %}}.
+The {{% param "product.ose" %}} application can stop reading messages from its sources if the destinations cannot process the sent messages. This feature is called flow-control and is detailed in {{% xref "/chapter-routing-filters/concepts-flow-control/_index.md" %}}.
     {{% /alert %}}
 

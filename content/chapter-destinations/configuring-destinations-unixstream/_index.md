@@ -6,7 +6,7 @@ weight:  7300
 
 The `unix-stream()` and `unix-dgram()` drivers send messages to a UNIX domain socket in either `SOCK_STREAM` or `SOCK_DGRAM` mode.
 
-Both drivers have a single required argument specifying the name of the socket to connect to. For the list of available optional parameters, see {{% xref "/docs/chapter-destinations/configuring-destinations-unixstream/reference-destination-unixstream/_index.md" %}}.
+Both drivers have a single required argument specifying the name of the socket to connect to. For the list of available optional parameters, see {{% xref "/chapter-destinations/configuring-destinations-unixstream/reference-destination-unixstream/_index.md" %}}.
 
 
 ## Declaration:

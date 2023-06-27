@@ -8,13 +8,13 @@ This section describes a configuration generator for the load balancing method b
 
 {{% alert title="Warning" color="warning" %}}
 
-Consider that `network-load-balancer()` is not a destination, only a script that generates the example configuration described in {{% xref "/docs/chapter-examples/load-bal-multi-dest/load-bal-multi-dest-macro/_index.md" %}}.
+Consider that `network-load-balancer()` is not a destination, only a script that generates the example configuration described in {{% xref "/chapter-examples/load-bal-multi-dest/load-bal-multi-dest-macro/_index.md" %}}.
 
 Also consider that the configuration generator script may change incompatibly in the future. As a result, {{% param "product.companyabbrev" %}} does not officially support using this script, and recommends that you only use this script at your own risk.
 
 {{% /alert %}}
 
-As an alternative to using the example configuration described in {{% xref "/docs/chapter-examples/load-bal-multi-dest/load-bal-multi-dest-macro/_index.md" %}}, a configuration generator script is also available in {{% param "product.abbrev" %}}:
+As an alternative to using the example configuration described in {{% xref "/chapter-examples/load-bal-multi-dest/load-bal-multi-dest-macro/_index.md" %}}, a configuration generator script is also available in {{% param "product.abbrev" %}}:
 
 ```c
    destination d_lb {network-load-balancer(targets(myhost1 myhost2 myhost3))};

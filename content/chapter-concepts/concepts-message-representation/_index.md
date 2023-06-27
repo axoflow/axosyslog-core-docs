@@ -10,7 +10,7 @@ When the {{% param "product.abbrev" %}} application receives a message, it autom
 
 In case you need to relay messages that cannot be parsed without any modifications or changes, use the `flags(no-parse)` option in the source definition, and a template containing only the `${MESSAGE}` macro in the destination definition.
 
-To parse non-syslog messages, for example, JSON, CSV, or other messages, you can use the built-in parsers of {{% param "product.abbrev" %}}. For details, see {{% xref "/docs/chapter-parsers/_index.md" %}}.
+To parse non-syslog messages, for example, JSON, CSV, or other messages, you can use the built-in parsers of {{% param "product.abbrev" %}}. For details, see {{% xref "/chapter-parsers/_index.md" %}}.
 
 {{% /alert %}}
 
@@ -49,7 +49,7 @@ It is also possible to set the value of built-in soft macros using parsers, for 
     
     The data extracted from the log messages using named pattern parsers in the pattern database are also soft macros.
     {{% /alert %}} {{% alert title="Note" color="info" %}}
-For the list of hard and soft macros, see {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/macros-hard-vs-soft/_index.md" %}}.
+For the list of hard and soft macros, see {{% xref "/chapter-manipulating-messages/customizing-message-format/macros-hard-vs-soft/_index.md" %}}.
     {{% /alert %}}
 
 

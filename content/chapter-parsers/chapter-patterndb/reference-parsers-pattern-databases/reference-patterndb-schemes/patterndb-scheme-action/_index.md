@@ -7,7 +7,7 @@ weight:  2300
 
 ## Location
 
-/[patterndb]({{< relref "/docs/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/patterndb-scheme-patterndb/_index.md" >}})/[ruleset]({{< relref "/docs/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/patterndb-scheme-ruleset/_index.md" >}})/[actions]({{< relref "/docs/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/patterndb-scheme-actions/_index.md" >}})/*action*
+/[patterndb]({{< relref "/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/patterndb-scheme-patterndb/_index.md" >}})/[ruleset]({{< relref "/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/patterndb-scheme-ruleset/_index.md" >}})/[actions]({{< relref "/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/patterndb-scheme-actions/_index.md" >}})/*action*
 
 
 
@@ -27,7 +27,7 @@ OPTIONAL — A container element describing an action that is performed when a m
     
       - *match*: Execute the action immediately when a message matching the rule is received.
     
-      - *timeout*: Execute the action when the correlation timer ([`context-timeout`]({{< relref "/docs/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/_index.md" >}})) of the pattern database rule expires. This is available only if actions are used together with correlating messages.
+      - *timeout*: Execute the action when the correlation timer ([`context-timeout`]({{< relref "/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/_index.md" >}})) of the pattern database rule expires. This is available only if actions are used together with correlating messages.
 
 
 
@@ -37,7 +37,7 @@ OPTIONAL — A container element describing an action that is performed when a m
 
   - *message*: A container element storing the message to be sent when the action is executed. Currently {{% param "product.abbrev" %}} sends these messages to the `internal()` destination.
     
-      - For details on the message context, see {{% xref "/docs/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-correlation/_index.md" %}} and {{% xref "/docs/chapter-parsers/chapter-patterndb/patterndb-triggers-actions/patterndb-actions-correlation/_index.md" %}}. For details on triggering messages, see {{% xref "/docs/chapter-parsers/chapter-patterndb/patterndb-triggers-actions/_index.md" %}}
+      - For details on the message context, see {{% xref "/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-correlation/_index.md" %}} and {{% xref "/chapter-parsers/chapter-patterndb/patterndb-triggers-actions/patterndb-actions-correlation/_index.md" %}}. For details on triggering messages, see {{% xref "/chapter-parsers/chapter-patterndb/patterndb-triggers-actions/_index.md" %}}
         
         {{% include-headless "chunk/option-inherit-mode.md" %}}
         
@@ -51,7 +51,7 @@ OPTIONAL — A container element describing an action that is performed when a m
         
         If set to `context`, {{% param "product.abbrev" %}} collects every name-value pair from each message stored in the context, and includes them in the generated message. If a name-value pair appears in multiple messages of the context, the value in the latest message will be used. Note that tags are not merged, the generated message will inherit the tags assigned to the last message of the context.
         
-        For details on the message context, see {{% xref "/docs/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-correlation/_index.md" %}} and {{% xref "/docs/chapter-parsers/chapter-patterndb/patterndb-triggers-actions/patterndb-actions-correlation/_index.md" %}}. For details on triggering messages, see {{% xref "/docs/chapter-parsers/chapter-patterndb/patterndb-triggers-actions/_index.md" %}}
+        For details on the message context, see {{% xref "/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-correlation/_index.md" %}} and {{% xref "/chapter-parsers/chapter-patterndb/patterndb-triggers-actions/patterndb-actions-correlation/_index.md" %}}. For details on triggering messages, see {{% xref "/chapter-parsers/chapter-patterndb/patterndb-triggers-actions/_index.md" %}}
         
         This option is available in {{% param "product.abbrev" %}} 5.3.2 and later.
 

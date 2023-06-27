@@ -4,7 +4,7 @@ weight:  300
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The following options can be specified in the options statement, as described in {{% xref "/docs/chapter-global-options/options/_index.md" %}}.
+The following options can be specified in the options statement, as described in {{% xref "/chapter-global-options/options/_index.md" %}}.
 
 
 ## bad-hostname() {#global-option-bad-hostname}
@@ -422,7 +422,7 @@ Starting with version 3.16, the default value of this option is -1, so {{% param
 | Accepted values: | name of the timezone, or the timezone offset |
 | Default:         | local timezone                               |
 
-*Description:* Specifies the time zone associated with the incoming messages, if not specified otherwise in the message or in the source driver. For details, see also {{% xref "/docs/chapter-concepts/timezone-handling/_index.md" %}} and {{% xref "/docs/chapter-concepts/timezone-handling/example-timezones/_index.md" %}}.
+*Description:* Specifies the time zone associated with the incoming messages, if not specified otherwise in the message or in the source driver. For details, see also {{% xref "/chapter-concepts/timezone-handling/_index.md" %}} and {{% xref "/chapter-concepts/timezone-handling/example-timezones/_index.md" %}}.
 
 {{% include-headless "chunk/para-timezone-format.md" %}}
 
@@ -456,7 +456,7 @@ Starting with version 3.16, the default value of this option is -1, so {{% param
 
 {{% include-headless "chunk/option-stats-level-description.md" %}}
 
-Note that level 2 and 3 increase the memory requirements and CPU load. For details on message statistics, see {{% xref "/docs/chapter-log-statistics/_index.md" %}}.
+Note that level 2 and 3 increase the memory requirements and CPU load. For details on message statistics, see {{% xref "/chapter-log-statistics/_index.md" %}}.
 
 
 
@@ -467,7 +467,7 @@ Note that level 2 and 3 increase the memory requirements and CPU load. For detai
 | Accepted values: | number  |
 | Default:         | `N/A` |
 
-*Description:* To avoid performance issues or even overloading {{% param "product.abbrev" %}} (for example, if a script starts to send logs from different IP addresses to {{% param "product.abbrev" %}}), you might want to limit the number of registered dynamic counters in the message statistics. For details on message statistics, see {{% xref "/docs/chapter-log-statistics/_index.md" %}}.
+*Description:* To avoid performance issues or even overloading {{% param "product.abbrev" %}} (for example, if a script starts to send logs from different IP addresses to {{% param "product.abbrev" %}}), you might want to limit the number of registered dynamic counters in the message statistics. For details on message statistics, see {{% xref "/chapter-log-statistics/_index.md" %}}.
 
 - Unlimited dynamic counters:
     
@@ -521,7 +521,7 @@ If you set a lower value to `stats-max-dynamics()` (or, any limiting value, if t
 | Accepted values: | yes|no |
 | Default:         | yes    |
 
-*Description:* Enable {{% param "product.abbrev" %}} to run in multithreaded mode and use multiple CPUs. Available only in {{% param "product.name" %}} 3.3 and later. Note that setting `threaded(no)` does not mean that {{% param "product.abbrev" %}} will use only a single thread. For details, see {{% xref "/docs/chapter-multithreading/_index.md" %}}.
+*Description:* Enable {{% param "product.abbrev" %}} to run in multithreaded mode and use multiple CPUs. Available only in {{% param "product.name" %}} 3.3 and later. Note that setting `threaded(no)` does not mean that {{% param "product.abbrev" %}} will use only a single thread. For details, see {{% xref "/chapter-multithreading/_index.md" %}}.
 
 
 
@@ -564,7 +564,7 @@ If you set a lower value to `stats-max-dynamics()` (or, any limiting value, if t
 | Accepted values: | `rfc3164` | `bsd` | `rfc3339` | `iso` |
 | Default:         | `rfc3164`                                   |
 
-*Description:* Specifies the timestamp format used when AxoSyslog itself formats a timestamp and nothing else specifies a format (for example: `STAMP` macros, internal messages, messages without original timestamps). For details, see also {{% xref "/docs/chapter-concepts/timezone-handling/example-timezones/_index.md" %}}.
+*Description:* Specifies the timestamp format used when AxoSyslog itself formats a timestamp and nothing else specifies a format (for example: `STAMP` macros, internal messages, messages without original timestamps). For details, see also {{% xref "/chapter-concepts/timezone-handling/example-timezones/_index.md" %}}.
 
 By default, timestamps include only seconds. To include fractions of a second (for example, milliseconds) use the `frac-digits()` option.
 
@@ -596,9 +596,9 @@ This option is deprecated, use the `use-uniqid()` option instead.
 | Accepted values: | `yes` | `no` |
 | Default:         | `no`           |
 
-*Description:* This option enables generating a globally unique ID. It is generated from the HOSTID and the RCPTID in the format of HOSTID@RCPTID. It has a fixed length: 16+@+8 characters. You can include the unique ID in the message by using the macro. For details, see [UNIQID]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}).
+*Description:* This option enables generating a globally unique ID. It is generated from the HOSTID and the RCPTID in the format of HOSTID@RCPTID. It has a fixed length: 16+@+8 characters. You can include the unique ID in the message by using the macro. For details, see [UNIQID]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}).
 
 Enabling this option automatically generates the HOSTID. The HOSTID is a persistent, 32-bits-long cryptographically secure pseudo random number, that belongs to the host that the AxoSyslog is running on. If the persist file is damaged, the HOSTID might change.
 
-Enabling this option automatically enables the RCPTID functionality. For details, see [RCPTID]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}})
+Enabling this option automatically enables the RCPTID functionality. For details, see [RCPTID]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}})
 

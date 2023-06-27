@@ -6,8 +6,8 @@ weight:  2900
 
 This chapter explains the methods that you can use to customize, reformat, and modify log messages using {{% param "product.name" %}}.
 
-  - {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/_index.md" %}} explains how to use templates and macros to change the format of log messages, or the names of logfiles and database tables.
+  - {{% xref "/chapter-manipulating-messages/customizing-message-format/_index.md" %}} explains how to use templates and macros to change the format of log messages, or the names of logfiles and database tables.
 
-  - {{% xref "/docs/chapter-manipulating-messages/modifying-messages/_index.md" %}} describes how to use rewrite rules to search and replace certain parts of the message content.
+  - {{% xref "/chapter-manipulating-messages/modifying-messages/_index.md" %}} describes how to use rewrite rules to search and replace certain parts of the message content.
 
-  - {{% xref "/docs/chapter-manipulating-messages/regular-expressions/_index.md" %}} lists the different types of regular expressions that can be used in various {{% param "product.abbrev" %}} objects like filters and rewrite rules.
+  - {{% xref "/chapter-manipulating-messages/regular-expressions/_index.md" %}} lists the different types of regular expressions that can be used in various {{% param "product.abbrev" %}} objects like filters and rewrite rules.

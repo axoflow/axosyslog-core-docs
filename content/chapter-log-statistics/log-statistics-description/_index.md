@@ -50,7 +50,7 @@ The status of the object. One of the following:
     ```
     
     
-    To avoid performance issues or even overloading {{% param "product.abbrev" %}}, you might want to limit the number of registered dynamic counters in the message statistics. To do this, configure the [stats-max-dynamics()]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) global option.
+    To avoid performance issues or even overloading {{% param "product.abbrev" %}}, you might want to limit the number of registered dynamic counters in the message statistics. To do this, configure the [stats-max-dynamics()]({{< relref "/chapter-global-options/reference-options/_index.md" >}}) global option.
 
   - `o` - This object was once active, but stopped receiving messages. (For example, a dynamic object may disappear and become orphan.)
     
@@ -206,7 +206,7 @@ The number of such messages.
 
 ## Availability of statistics
 
-Certain statistics are available only if the [`stats-level()` global option]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) is set to a higher value.
+Certain statistics are available only if the [`stats-level()` global option]({{< relref "/chapter-global-options/reference-options/_index.md" >}}) is set to a higher value.
 
 {{% include-headless "chunk/option-stats-level-description.md" %}}
 

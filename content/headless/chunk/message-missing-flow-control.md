@@ -27,7 +27,7 @@ persist_name=&#39;afsocket_dd_qfile(stream,serverdown:514)&#39;</code></td>
 <td>Solution:</td>
 <td><p>Enable flow-control in the log path.</p>
 <p>If flow-control is disabled, <code>syslog-ng</code> will drop messages if the destination queues are full. Note that <code>syslog-ng</code> will drop messages even if the server is alive. If the remote server accepts logs at a slower rate than the sender <code>syslog-ng</code> receives them, the sender <code>syslog-ng</code> will fill up the destination queue, then drop the newer messages. Sometimes this error occurs only at a specific time interval, for example, only between<code>7:00</code>AM and<code>8:00</code>AM or between<code>16:00</code>PM and<code>17:00</code>PM when your users log in or log off and that generates a lot of messages within a short interval.</p>
-<p>For more information, see {{% xref "/docs/chapter-routing-filters/concepts-flow-control/_index.md" %}}.</p></td>
+<p>For more information, see {{% xref "/chapter-routing-filters/concepts-flow-control/_index.md" %}}.</p></td>
 </tr>
 </tbody>
 </table>

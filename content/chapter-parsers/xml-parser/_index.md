@@ -104,7 +104,7 @@ The following output is generated:
    [2017-09-04T13:20:27.417266] Setting value; msg='0x7f2fd8002df0', name='.xml.b', value='|Test\x0a\x0a   Test2|'
 ```
 
-However, note that users can choose to strip whitespaces using the [`strip-whitespaces()`]({{< relref "/docs/chapter-parsers/xml-parser/xml-parser-options/_index.md" >}}) option.
+However, note that users can choose to strip whitespaces using the [`strip-whitespaces()`]({{< relref "/chapter-parsers/xml-parser/xml-parser-options/_index.md" >}}) option.
 
 
 ## Configuration hints

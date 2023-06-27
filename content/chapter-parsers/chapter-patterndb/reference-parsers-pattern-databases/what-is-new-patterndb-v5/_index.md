@@ -6,8 +6,8 @@ weight:  300
 
 The V5 database format has the following differences compared to the V4 format:
 
-  - The `<ruleset>` element can now store multiple reference URLs using the new `<rule_urls>` element. For details, see {{% xref "/docs/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/patterndb-scheme-ruleset/_index.md" %}}.
+  - The `<ruleset>` element can now store multiple reference URLs using the new `<rule_urls>` element. For details, see {{% xref "/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/patterndb-scheme-ruleset/_index.md" %}}.
 
-  - In an `<action>`, you can now initialize a new context. As a result, the `<message>` element is not required. For details, see {{% xref "/docs/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/patterndb-scheme-create-context/_index.md" %}}.
+  - In an `<action>`, you can now initialize a new context. As a result, the `<message>` element is not required. For details, see {{% xref "/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/patterndb-scheme-create-context/_index.md" %}}.
 
-  - The `inherit-properties` attribute is deprecated, use the `inherit-mode` attribute instead. For details, see {{% xref "/docs/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/patterndb-scheme-action/_index.md" %}}.
+  - The `inherit-properties` attribute is deprecated, use the `inherit-mode` attribute instead. For details, see {{% xref "/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/patterndb-scheme-action/_index.md" %}}.

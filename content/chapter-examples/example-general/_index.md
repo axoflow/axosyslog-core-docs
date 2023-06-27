@@ -14,4 +14,4 @@ This section provides general tips and recommendations on using `syslog-ng`. Som
         options {ts-format(iso) ; };
     ```
 
-- Resolving the IP addresses of the clients to domain names can decrease the performance. For details, see {{% xref "/docs/chapter-examples/examples-dns/_index.md" %}}.
+- Resolving the IP addresses of the clients to domain names can decrease the performance. For details, see {{% xref "/chapter-examples/examples-dns/_index.md" %}}.

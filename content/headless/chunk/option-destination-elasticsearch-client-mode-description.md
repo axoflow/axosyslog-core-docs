@@ -29,4 +29,4 @@ In Node mode, it is required to define the home of the elasticsearch installatio
 
 ## Search Guard mode
     
-Use the [Search Guard](https://search-guard.com/) Elasticsearch plugin to encrypt and authenticate your connections from {{% param "product.abbrev" %}} to Elasticsearch 2.x. For Elasticsearch versions 5.x and newer, use HTTPS mode. For details on configuring Search Guard mode, see {{% xref "/docs/chapter-destinations/configuring-destinations-elasticsearch2/syslog-ng-elasticsearch2-search-guard/_index.md" %}}.
+Use the [Search Guard](https://search-guard.com/) Elasticsearch plugin to encrypt and authenticate your connections from {{% param "product.abbrev" %}} to Elasticsearch 2.x. For Elasticsearch versions 5.x and newer, use HTTPS mode. For details on configuring Search Guard mode, see {{% xref "/chapter-destinations/configuring-destinations-elasticsearch2/syslog-ng-elasticsearch2-search-guard/_index.md" %}}.

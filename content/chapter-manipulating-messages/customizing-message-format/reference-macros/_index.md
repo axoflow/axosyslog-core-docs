@@ -15,7 +15,7 @@ These macros are available when {{% param "product.abbrev" %}} successfully pars
 
 ## AMPM {#macro-ampm}
 
-*Description:* Typically used together with the [`${HOUR12}`]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) macro, `${AMPM}` returns the period of the day: AM for hours before mid day and PM for hours after mid day. In reference to a 24-hour clock format, AM is between 00:00-12:00 and PM is between 12:00-24:00. 12AM is midnight. Available in {{% param "product.abbrev" %}} 3.4 and later.
+*Description:* Typically used together with the [`${HOUR12}`]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) macro, `${AMPM}` returns the period of the day: AM for hours before mid day and PM for hours after mid day. In reference to a 24-hour clock format, AM is between 00:00-12:00 and PM is between 12:00-24:00. 12AM is midnight. Available in {{% param "product.abbrev" %}} 3.4 and later.
 
 
 
@@ -27,7 +27,7 @@ These macros are available when {{% param "product.abbrev" %}} successfully pars
 
 ## Custom macros {#macro-custom}
 
-*Description:* CSV parsers and pattern databases can also define macros from the content of the messages, for example, a pattern database rule can extract the username from a login message and create a macro that references the username. For details on using custom macros created with CSV parsers and pattern databases, see {{% xref "/docs/chapter-parsers/_index.md" %}} and {{% xref "/docs/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-filters/_index.md" %}}, respectively.
+*Description:* CSV parsers and pattern databases can also define macros from the content of the messages, for example, a pattern database rule can extract the username from a login message and create a macro that references the username. For details on using custom macros created with CSV parsers and pattern databases, see {{% xref "/chapter-parsers/_index.md" %}} and {{% xref "/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-filters/_index.md" %}}, respectively.
 
 
 {{% include-headless "chunk/macro-date.md" %}}
@@ -39,7 +39,7 @@ These macros are available when {{% param "product.abbrev" %}} successfully pars
 
 Description: When used, the output specifies the local IP address of the source from which the message originates.
 
-For an example use case when using the macro is recommended, see {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/use-case-3-macros/_index.md" %}}.
+For an example use case when using the macro is recommended, see {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/use-case-3-macros/_index.md" %}}.
 
 
 
@@ -47,7 +47,7 @@ For an example use case when using the macro is recommended, see {{% xref "/docs
 
 Description: When used, the output specifies the local port of the source from which the message originates.
 
-For an example use case when using the macro is recommended, see {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/use-case-3-macros/_index.md" %}}.
+For an example use case when using the macro is recommended, see {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/use-case-3-macros/_index.md" %}}.
 
 
 
@@ -65,7 +65,7 @@ For an example use case when using the macro is recommended, see {{% xref "/docs
 
 ## FILE_NAME {#macro-filename}
 
-*Description:* Name of the log file (including its path) from where {{% param "product.abbrev" %}} received the message (only available if {{% param "product.abbrev" %}} received the message from a [file]({{< relref "/docs/chapter-sources/configuring-sources-file/_index.md" >}}) or a [wildcard-file]({{< relref "/docs/chapter-sources/configuring-sources-wildcard-file/_index.md" >}}) source). If you need only the path or the filename, use the [dirname]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}) and [basename]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}) template functions.
+*Description:* Name of the log file (including its path) from where {{% param "product.abbrev" %}} received the message (only available if {{% param "product.abbrev" %}} received the message from a [file]({{< relref "/chapter-sources/configuring-sources-file/_index.md" >}}) or a [wildcard-file]({{< relref "/chapter-sources/configuring-sources-wildcard-file/_index.md" >}}) source). If you need only the path or the filename, use the [dirname]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}) and [basename]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}) template functions.
 
 
 {{% include-headless "chunk/macro-fulldate.md" %}}
@@ -75,11 +75,11 @@ For an example use case when using the macro is recommended, see {{% xref "/docs
 
 *Description:* The name of the source host where the message originates from.
 
-- If the message traverses several hosts and the [`chain-hostnames()`]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) option is on, the first host in the chain is used.
+- If the message traverses several hosts and the [`chain-hostnames()`]({{< relref "/chapter-global-options/reference-options/_index.md" >}}) option is on, the first host in the chain is used.
 
-- If the [`keep-hostname()`]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) option is disabled (`keep-hostname(no)`), the value of the $FULLHOST macro will be the DNS hostname of the host that sent the message to {{% param "product.abbrev" %}} (that is, the DNS hostname of the last hop). In this case the $FULLHOST and $FULLHOST_FROM macros will have the same value.
+- If the [`keep-hostname()`]({{< relref "/chapter-global-options/reference-options/_index.md" >}}) option is disabled (`keep-hostname(no)`), the value of the $FULLHOST macro will be the DNS hostname of the host that sent the message to {{% param "product.abbrev" %}} (that is, the DNS hostname of the last hop). In this case the $FULLHOST and $FULLHOST_FROM macros will have the same value.
 
-- If the [`keep-hostname()`]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) option is enabled (`keep-hostname(yes)`), the value of the $FULLHOST macro will be the hostname retrieved from the log message. That way the name of the original sender host can be used, even if there are log relays between the sender and the server.
+- If the [`keep-hostname()`]({{< relref "/chapter-global-options/reference-options/_index.md" >}}) option is enabled (`keep-hostname(yes)`), the value of the $FULLHOST macro will be the hostname retrieved from the log message. That way the name of the original sender host can be used, even if there are log relays between the sender and the server.
     
     {{< include-headless "chunk/p-keep-hostname-macro.md" >}}
 
@@ -107,7 +107,7 @@ The {{% param "product.abbrev" %}} application uses the following procedure to d
 
 ## HOUR12, C_HOUR12, R_HOUR12, S_HOUR12 {#macro-hour12}
 
-*Description:* The hour of day the message was sent in 12-hour clock format. See also the [`${AMPM}`]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) macro. 12AM is midnight. Available in {{% param "product.abbrev" %}} 3.4 and later.
+*Description:* The hour of day the message was sent in 12-hour clock format. See also the [`${AMPM}`]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) macro. 12AM is midnight. Available in {{% param "product.abbrev" %}} 3.4 and later.
 
 
 
@@ -115,11 +115,11 @@ The {{% param "product.abbrev" %}} application uses the following procedure to d
 
 *Description:* The name of the source host where the message originates from.
 
-- If the message traverses several hosts and the [`chain-hostnames()`]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) option is on, the first host in the chain is used.
+- If the message traverses several hosts and the [`chain-hostnames()`]({{< relref "/chapter-global-options/reference-options/_index.md" >}}) option is on, the first host in the chain is used.
 
-- If the [`keep-hostname()`]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) option is disabled (`keep-hostname(no)`), the value of the $HOST macro will be the DNS hostname of the host that sent the message to {{% param "product.abbrev" %}} (that is, the DNS hostname of the last hop). In this case the $HOST and $HOST_FROM macros will have the same value.
+- If the [`keep-hostname()`]({{< relref "/chapter-global-options/reference-options/_index.md" >}}) option is disabled (`keep-hostname(no)`), the value of the $HOST macro will be the DNS hostname of the host that sent the message to {{% param "product.abbrev" %}} (that is, the DNS hostname of the last hop). In this case the $HOST and $HOST_FROM macros will have the same value.
 
-- If the [`keep-hostname()`]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) option is enabled (`keep-hostname(yes)`), the value of the $HOST macro will be the hostname retrieved from the log message. That way the name of the original sender host can be used, even if there are log relays between the sender and the server.
+- If the [`keep-hostname()`]({{< relref "/chapter-global-options/reference-options/_index.md" >}}) option is enabled (`keep-hostname(yes)`), the value of the $HOST macro will be the hostname retrieved from the log message. That way the name of the original sender host can be used, even if there are log relays between the sender and the server.
     
     {{< include-headless "chunk/p-keep-hostname-macro.md" >}}
 
@@ -177,7 +177,7 @@ Available in 3.24 and later.
 
 ## MESSAGE {#macro-message}
 
-*Description:* Text contents of the log message without the program name and pid. The program name and the pid together are available in the [`${MSGHDR}`](shared/chunk/macro-msghdr.htm) macro, and separately in the [${PROGRAM}]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) and [${PID}]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) macros.
+*Description:* Text contents of the log message without the program name and pid. The program name and the pid together are available in the [`${MSGHDR}`](shared/chunk/macro-msghdr.htm) macro, and separately in the [${PROGRAM}]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) and [${PID}]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) macros.
 
 {{% include-headless "chunk/para-flags-no-parse.md" %}}
 
@@ -265,13 +265,13 @@ The `${MSG}` macro is an alias of the `${MESSAGE}` macro, using `${MSG}` in {{% 
 
 Description: When used, the output specifies the protocol used on the source from which the message originates.
 
-For an example use case when using the macro is recommended, see {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/use-case-3-macros/_index.md" %}}.
+For an example use case when using the macro is recommended, see {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/use-case-3-macros/_index.md" %}}.
 
 
 
 ## RAWMSG {#macro-rawmsg}
 
-*Description:* The original message as received from the client. Note that this macro is available only in 3.16 and later, and only if AxoSyslog received the message using the [`default-network-drivers-ng()` source]({{< relref "/docs/chapter-sources/source-default-network-drivers/_index.md" >}}), or the source receiving the message has the [`store-raw-message`](shared/chunk/option-source-flags.htm) flag set.
+*Description:* The original message as received from the client. Note that this macro is available only in 3.16 and later, and only if AxoSyslog received the message using the [`default-network-drivers-ng()` source]({{< relref "/chapter-sources/source-default-network-drivers/_index.md" >}}), or the source receiving the message has the [`store-raw-message`](shared/chunk/option-source-flags.htm) flag set.
 
 
 
@@ -333,7 +333,7 @@ To enable sequence numbering of log messages on Cisco devices, use the following
 
 {{% alert title="Note" color="info" %}}
 
-If you need a sequence number for every log message that {{% param "product.abbrev" %}} receives, use the [RCPTID]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) macro.
+If you need a sequence number for every log message that {{% param "product.abbrev" %}} receives, use the [RCPTID]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) macro.
 
 {{% /alert %}}
 
@@ -353,7 +353,7 @@ If you need a sequence number for every log message that {{% param "product.abbr
 
 ## STAMP, R_STAMP, S_STAMP {#macro-stamp}
 
-*Description:* A timestamp formatted according to the [`ts-format()`]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) global or per-destination option.
+*Description:* A timestamp formatted according to the [`ts-format()`]({{< relref "/chapter-global-options/reference-options/_index.md" >}}) global or per-destination option.
 
 
 
@@ -405,7 +405,7 @@ When sent as structured metadata, it is possible to reference to the list of tag
 
 ## UNIQID {#macro-uniqid}
 
-*Description:* A globally unique ID generated from the HOSTID and the RCPTID in the format of HOSTID@RCPTID. For details, see [use-uniqid()]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}) and [RCPTID](#macro-rcptid).
+*Description:* A globally unique ID generated from the HOSTID and the RCPTID in the format of HOSTID@RCPTID. For details, see [use-uniqid()]({{< relref "/chapter-global-options/reference-options/_index.md" >}}) and [RCPTID](#macro-rcptid).
 
 Available in {{% param "product.abbrev" %}} version 3.7 and later.
 
@@ -437,7 +437,7 @@ Available in {{% param "product.abbrev" %}} version 3.4 and later.
 
 ## WEEKDAY, C_WEEKDAY, R_WEEKDAY, S_WEEKDAY {#macro-weekday}
 
-*Description:* These macros are deprecated, use [${WEEK_DAY_ABBREV}, ${R_WEEK_DAY_ABBREV}, ${S_WEEK_DAY_ABBREV}]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) instead. The 3-letter name of the day of week the message was sent, for example, `Thu`.
+*Description:* These macros are deprecated, use [${WEEK_DAY_ABBREV}, ${R_WEEK_DAY_ABBREV}, ${S_WEEK_DAY_ABBREV}]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) instead. The 3-letter name of the day of week the message was sent, for example, `Thu`.
 
 
 

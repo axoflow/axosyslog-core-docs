@@ -4,7 +4,7 @@ weight:  300
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-For details on how flow-control works, see {{% xref "/docs/chapter-routing-filters/concepts-flow-control/_index.md" %}}. The summary of the main points is as follows:
+For details on how flow-control works, see {{% xref "/chapter-routing-filters/concepts-flow-control/_index.md" %}}. The summary of the main points is as follows:
 
   - The AxoSyslog application normally reads a maximum of `log-fetch-limit()` number of messages from a source.
 

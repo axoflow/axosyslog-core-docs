@@ -25,4 +25,4 @@ To enable reliable disk-based buffering, use the `disk-buffer(reliable(yes))` pa
 ```
 
 
-For details on the differences between normal and reliable disk-based buffering, see also {{% xref "/docs/chapter-routing-filters/concepts-diskbuffer/about-disk-buffer-files/_index.md" %}}.
+For details on the differences between normal and reliable disk-based buffering, see also {{% xref "/chapter-routing-filters/concepts-diskbuffer/about-disk-buffer-files/_index.md" %}}.

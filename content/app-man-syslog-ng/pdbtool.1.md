@@ -203,7 +203,7 @@ The following example applies the `sshd.pdb` pattern database file to the log me
 
 `merge [options]`
 
-Use the `merge` command to combine separate pattern database files into a single file (pattern databases are usually stored in separate files per applications to simplify maintenance). If a file uses an older database format, it is automatically updated to the latest format (`V3`). See the [AxoSyslog documentation](https://axoflow.com/docs/) for details on the different pattern database versions.
+Use the `merge` command to combine separate pattern database files into a single file (pattern databases are usually stored in separate files per applications to simplify maintenance). If a file uses an older database format, it is automatically updated to the latest format (`V3`). See the [AxoSyslog documentation](https://axoflow.com/) for details on the different pattern database versions.
 
 - `--debug` or `-d`
     
@@ -247,7 +247,7 @@ Currently it is not possible to convert a file without merging, so if you only w
 
 `patternize [options]`
 
-Automatically create a pattern database from a log file containing a large number of log messages. The resulting pattern database is printed to the standard output (`stdout`). The `pdbtool patternize` command uses a data clustering technique to find similar log messages and replacing the differing parts with `@ESTRING:: @` parsers. For details on pattern databases and message parsers, see the [AxoSyslog documentation](https://axoflow.com/docs/). The `patternize` command is available only in version 3.2 and later.
+Automatically create a pattern database from a log file containing a large number of log messages. The resulting pattern database is printed to the standard output (`stdout`). The `pdbtool patternize` command uses a data clustering technique to find similar log messages and replacing the differing parts with `@ESTRING:: @` parsers. For details on pattern databases and message parsers, see the [AxoSyslog documentation](https://axoflow.com/). The `patternize` command is available only in version 3.2 and later.
 
 - `--debug` or `-d`
     
@@ -337,11 +337,11 @@ pdbtool test --validate /home/me/mypatterndb.pdb
 
 ## See also
 
-[<span class="mcFormatColor" style="color: #04aada;">AxoSyslog documentation</span>](https://axoflow.com/docs/)
+[<span class="mcFormatColor" style="color: #04aada;">AxoSyslog documentation</span>](https://axoflow.com/)
 
 <span class="mcFormatColor" style="color: #04aada;">The `syslog-ng.conf` manual page</span>
 
-{{% xref "/docs/app-man-syslog-ng/syslog-ng.8/_index.md" %}}
+{{% xref "/app-man-syslog-ng/syslog-ng.8/_index.md" %}}
 
 {{% alert title="Note" color="info" %}}
 

@@ -33,6 +33,6 @@ When you are editing the `syslog-ng.conf` configuration file, note the following
         };
     ```
 
-  - For notes on using regular expressions, see {{% xref "/docs/chapter-manipulating-messages/regular-expressions/_index.md" %}}.
+  - For notes on using regular expressions, see {{% xref "/chapter-manipulating-messages/regular-expressions/_index.md" %}}.
 
-  - You can use `if {}`, `elif {}`, and `else {}` blocks to configure conditional expressions. For details, see {{% xref "/docs/chapter-routing-filters/logpath/concepts-if-else-conditional-expressions/_index.md" %}}.
+  - You can use `if {}`, `elif {}`, and `else {}` blocks to configure conditional expressions. For details, see {{% xref "/chapter-routing-filters/logpath/concepts-if-else-conditional-expressions/_index.md" %}}.

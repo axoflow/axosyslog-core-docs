@@ -69,7 +69,7 @@ Repeating a definition of an object (that is, defining the same object with the 
     ```
     
 
-  - Some options are global options, or can be set globally, for example, whether {{% param "product.abbrev" %}} should use DNS resolution to resolve IP addresses. Global options are detailed in {{% xref "/docs/chapter-global-options/_index.md" %}}.
+  - Some options are global options, or can be set globally, for example, whether {{% param "product.abbrev" %}} should use DNS resolution to resolve IP addresses. Global options are detailed in {{% xref "/chapter-global-options/_index.md" %}}.
     
     ```c
         options {
@@ -79,7 +79,7 @@ Repeating a definition of an object (that is, defining the same object with the 
 
   - Objects can be used before definition.
 
-  - Objects can be defined inline as well. This is useful if you use the object only once (for example, a filter). For details, see {{% xref "/docs/chapter-configuration-file/inline-objects/_index.md" %}}.
+  - Objects can be defined inline as well. This is useful if you use the object only once (for example, a filter). For details, see {{% xref "/chapter-configuration-file/inline-objects/_index.md" %}}.
 
   - To add comments to the configuration file, start a line with `#` and write your comments. These lines are ignored by `syslog-ng`.
     

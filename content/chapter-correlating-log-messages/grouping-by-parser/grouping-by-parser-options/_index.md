@@ -21,11 +21,11 @@ Note that the `aggregate()` option has access to every message of the context, a
     
     The default value of `inherit-mode()` is `context`.
     
-    For details on the message context, see {{% xref "/docs/chapter-correlating-log-messages/grouping-by-parser/_index.md" %}}.
+    For details on the message context, see {{% xref "/chapter-correlating-log-messages/grouping-by-parser/_index.md" %}}.
 
   - *tags*: Adds the specified tag to the list of tags.
 
-  - *value*: Adds a name-value pair to the generated message. You can include text, macros, template functions, and you can also reference every message of the context. For details on accessing other messages of the context, see {{% xref "/docs/chapter-correlating-log-messages/grouping-by-parser/referencing-previous-messages-grouping-by/_index.md" %}}.
+  - *value*: Adds a name-value pair to the generated message. You can include text, macros, template functions, and you can also reference every message of the context. For details on accessing other messages of the context, see {{% xref "/chapter-correlating-log-messages/grouping-by-parser/referencing-previous-messages-grouping-by/_index.md" %}}.
 
 
 
@@ -35,7 +35,7 @@ Note that the `aggregate()` option has access to every message of the context, a
 | --------- | -------- |
 | Synopsis: | having() |
 
-*Description:* Specifies a filter: {{% param "product.abbrev" %}} generates the aggregate message only if the result of the filter expression is true. Note that the `having()` filter has access to every message of the context. For details on accessing other messages of the context, see {{% xref "/docs/chapter-correlating-log-messages/grouping-by-parser/referencing-previous-messages-grouping-by/_index.md" %}}.
+*Description:* Specifies a filter: {{% param "product.abbrev" %}} generates the aggregate message only if the result of the filter expression is true. Note that the `having()` filter has access to every message of the context. For details on accessing other messages of the context, see {{% xref "/chapter-correlating-log-messages/grouping-by-parser/referencing-previous-messages-grouping-by/_index.md" %}}.
 
 
 

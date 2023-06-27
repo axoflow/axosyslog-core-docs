@@ -20,7 +20,7 @@ The MariaDB parser can parse the log messages of the MariaDB Audit Plugin. The p
 ```
 
 
-The `mariadb-audit` is a reusable configuration snippet configured to parse MariaDB Audit Plugin messages. For details on using or writing such configuration snippets, see {{% xref "/docs/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/syslog-ng/syslog-ng/blob/master/scl/mariadb/audit.conf).
+The `mariadb-audit` is a reusable configuration snippet configured to parse MariaDB Audit Plugin messages. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/syslog-ng/syslog-ng/blob/master/scl/mariadb/audit.conf).
 
 
 {{% include-headless "chunk/option-parser-prefix.md" %}}

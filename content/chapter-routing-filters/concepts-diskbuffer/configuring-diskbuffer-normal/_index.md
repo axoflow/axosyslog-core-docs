@@ -27,4 +27,4 @@ When using the disk-buffer plugin:
 ```
 
 
-For details on the differences between normal and reliable disk-based buffering, see also {{% xref "/docs/chapter-routing-filters/concepts-diskbuffer/about-disk-buffer-files/_index.md" %}}.
+For details on the differences between normal and reliable disk-based buffering, see also {{% xref "/chapter-routing-filters/concepts-diskbuffer/about-disk-buffer-files/_index.md" %}}.

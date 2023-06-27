@@ -100,5 +100,5 @@ Multiple parsers can be used to split a part of an already parsed message into f
 
 ## Further examples:
 
-  - For an example on using the `greedy` option, see [Example: Adding the end of the message to the last column]({{< relref "/docs/chapter-parsers/csv-parser/reference-parsers-csv/_index.md" >}}).
+  - For an example on using the `greedy` option, see [Example: Adding the end of the message to the last column]({{< relref "/chapter-parsers/csv-parser/reference-parsers-csv/_index.md" >}}).
 

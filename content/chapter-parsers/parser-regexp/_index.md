@@ -12,7 +12,7 @@ The `regexp-parser()` can create additional name-value pairs only if "named capt
 
 {{% /alert %}}
 
-For more information about regular expressions in {{% param "product.abbrev" %}}, see {{% xref "/docs/chapter-manipulating-messages/regular-expressions/_index.md" %}}.
+For more information about regular expressions in {{% param "product.abbrev" %}}, see {{% xref "/chapter-manipulating-messages/regular-expressions/_index.md" %}}.
 
 For example:
 

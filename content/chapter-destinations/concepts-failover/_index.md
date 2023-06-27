@@ -12,7 +12,7 @@ The primary server is the address you provided in the destination driver configu
 
 If {{% param "product.abbrev" %}} is restarted, it attempts to connect the primary server.
 
-If {{% param "product.abbrev" %}} uses TLS-encryption to communicate with the remote server, {{% param "product.abbrev" %}} checks the certificate of the failover server as well. The certificates of the failover servers should match their domain names or IP addresses — for details, see {{% xref "/docs/chapter-encrypted-transport-tls/tls-serverauth/_index.md" %}}. Note that when mutual authentication is used, the {{% param "product.abbrev" %}} client sends the same certificate to every server.
+If {{% param "product.abbrev" %}} uses TLS-encryption to communicate with the remote server, {{% param "product.abbrev" %}} checks the certificate of the failover server as well. The certificates of the failover servers should match their domain names or IP addresses — for details, see {{% xref "/chapter-encrypted-transport-tls/tls-serverauth/_index.md" %}}. Note that when mutual authentication is used, the {{% param "product.abbrev" %}} client sends the same certificate to every server.
 
 The primary server and the failover servers must be accessible with the same communication method: it is not possible to use different destination drivers or options for the different servers.
 
@@ -24,4 +24,4 @@ Client-side failover is not supported in the `sql()` driver, even though it may 
 
 {{% /alert %}}
 
-For details on configuring failover servers, see {{% xref "/docs/chapter-destinations/configuring-destinations-network/reference-destination-network-chapter/_index.md" %}} and {{% xref "/docs/chapter-destinations/configuring-destinations-syslog/reference-destination-syslog-chapter/_index.md" %}}.
+For details on configuring failover servers, see {{% xref "/chapter-destinations/configuring-destinations-network/reference-destination-network-chapter/_index.md" %}} and {{% xref "/chapter-destinations/configuring-destinations-syslog/reference-destination-syslog-chapter/_index.md" %}}.

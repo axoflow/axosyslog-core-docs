@@ -29,9 +29,9 @@ Note the following important points:
 
   - If the message does not have a proper syslog header, {{% param "product.abbrev" %}} treats messages received from files as sent by the `user` facility. Use the `default-facility()` and `default-priority()` options in the source definition to assign a different facility if needed.
 
-  - For every message that {{% param "product.abbrev" %}} reads from the source files, the path and name of the file is available in the [`${FILE_NAME}` macro]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}).
+  - For every message that {{% param "product.abbrev" %}} reads from the source files, the path and name of the file is available in the [`${FILE_NAME}` macro]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}).
 
-Required parameters: `base-dir()`, `filename-pattern()`. For the list of available optional parameters, see {{% xref "/docs/chapter-sources/configuring-sources-wildcard-file/reference-source-wildcard-file/_index.md" %}}.
+Required parameters: `base-dir()`, `filename-pattern()`. For the list of available optional parameters, see {{% xref "/chapter-sources/configuring-sources-wildcard-file/reference-source-wildcard-file/_index.md" %}}.
 
 
 ## Example: Using the wildcard-file() driver

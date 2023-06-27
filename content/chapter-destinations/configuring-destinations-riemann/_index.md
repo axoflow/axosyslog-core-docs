@@ -6,7 +6,7 @@ weight:  4900
 
 The `riemann()` driver sends your data (for example, metrics or events) to a [Riemann](http://riemann.io/) monitoring system.
 
-For the list of available parameters, see {{% xref "/docs/chapter-destinations/configuring-destinations-riemann/reference-destination-riemann/_index.md" %}}.
+For the list of available parameters, see {{% xref "/chapter-destinations/configuring-destinations-riemann/reference-destination-riemann/_index.md" %}}.
 
 
 ## Declaration:

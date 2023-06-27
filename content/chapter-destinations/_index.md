@@ -50,6 +50,6 @@ If name resolution is configured, you can use the hostname of the target server 
 
 {{% /alert %}}
 
-The following table lists the destination drivers available in {{% param "product.abbrev" %}}. If these destinations do not satisfy your needs, you can extend {{% param "product.abbrev" %}} and write your own destination, for example, in C, Java, or Python. For details, see {{% xref "/docs/chapter-destinations/reference-destination-custom/_index.md" %}}.
+The following table lists the destination drivers available in {{% param "product.abbrev" %}}. If these destinations do not satisfy your needs, you can extend {{% param "product.abbrev" %}} and write your own destination, for example, in C, Java, or Python. For details, see {{% xref "/chapter-destinations/reference-destination-custom/_index.md" %}}.
 
 The following destination driver groups are available in {{% param "product.abbrev" %}}:

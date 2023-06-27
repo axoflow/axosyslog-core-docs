@@ -58,7 +58,7 @@ To send out clogMessageGenerated SNMP traps, use the `cisco_snmp()` destination 
 
 {{% alert title="Note" color="info" %}}
 
-The `cisco-snmp()` driver is actually a reusable configuration snippet. For details on using or writing SCLs, see {{% xref "/docs/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}.
+The `cisco-snmp()` driver is actually a reusable configuration snippet. For details on using or writing SCLs, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}.
 
 {{% /alert %}}
 

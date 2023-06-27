@@ -112,7 +112,7 @@ Even if `db_parser1` matches the message, `db_parser2` might set `${.classifier.
 ```
 
 
-For details on how to create your own pattern databases see {{% xref "/docs/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/_index.md" %}}.
+For details on how to create your own pattern databases see {{% xref "/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/_index.md" %}}.
 
 
 ## Drop unmatched messages {#patterndb-drop-unmatched-messages}

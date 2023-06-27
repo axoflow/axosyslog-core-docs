@@ -13,7 +13,7 @@ If you were using the Java implementation of the `kafka` destination and want to
 
   - The `kafka-bootstrap-servers()` option has been renamed `bootstrap-servers()`.
 
-  - The `properties-file()` is a Java properties file with options that are similar to, but not identical with, the options in the old, Java implementation's <span class="userinput">properties-file()</span>. For more information, click [here]({{< relref "/docs/chapter-destinations/configuring-destinations-kafka-c/reference-destination-kafka-c/_index.md#kafka-options-properties-file" >}}).
+  - The `properties-file()` is a Java properties file with options that are similar to, but not identical with, the options in the old, Java implementation's <span class="userinput">properties-file()</span>. For more information, click [here]({{< relref "/chapter-destinations/configuring-destinations-kafka-c/reference-destination-kafka-c/_index.md#kafka-options-properties-file" >}}).
 
   - The `sync-send()` option has been deprecated. Remove it from the configuration file.
 
@@ -21,5 +21,5 @@ If you were using the Java implementation of the `kafka` destination and want to
 
   - The old implementation's `option()` option has been removed and replaced by the `config()` option, which has a different syntax.
 
-For more information, see {{% xref "/docs/chapter-destinations/configuring-destinations-kafka-c/reference-destination-kafka-c/_index.md" %}}.
+For more information, see {{% xref "/chapter-destinations/configuring-destinations-kafka-c/reference-destination-kafka-c/_index.md" %}}.
 

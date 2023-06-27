@@ -10,7 +10,7 @@ weight:  1700
 
 *Description:* Select only messages sent by a host whose IP address belongs to the specified IPv6 subnet. Note that this filter checks the IP address of the last-hop relay (the host that actually sent the message to {{% param "product.abbrev" %}}), not the contents of the `HOST` field of the message. You can use both the regular and the compressed format to specify the IP address, for example, `1080:0:0:0:8:800:200C:417A` or `1080::8:800:200C:417A`. If you do not specify the address, `localhost` is used.
 
-Use the netmask (also called prefix) to specify how many of the leftmost bits of the address comprise the netmask (values 1-128 are valid). For example, the following specify a 60-bit prefix: `12AB:0000:0000:CD30:0000:0000:0000:0000/60` or `12AB::CD30:0:0:0:0/60`. Note that if you set an IP address and a prefix, {{% param "product.abbrev" %}} will ignore the bits of the address after the prefix. To filter IPv4 addresses, see {{% xref "/docs/chapter-routing-filters/filters/reference-filters/filter-netmask/_index.md" %}}.
+Use the netmask (also called prefix) to specify how many of the leftmost bits of the address comprise the netmask (values 1-128 are valid). For example, the following specify a 60-bit prefix: `12AB:0000:0000:CD30:0000:0000:0000:0000/60` or `12AB::CD30:0:0:0:0/60`. Note that if you set an IP address and a prefix, {{% param "product.abbrev" %}} will ignore the bits of the address after the prefix. To filter IPv4 addresses, see {{% xref "/chapter-routing-filters/filters/reference-filters/filter-netmask/_index.md" %}}.
 
 The `netmask6()` filter is available in {{% param "product.abbrev" %}} 3.7 and later.
 

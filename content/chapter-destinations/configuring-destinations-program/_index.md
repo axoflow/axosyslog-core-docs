@@ -6,7 +6,7 @@ weight:  4100
 
 The `program()` driver starts an external application or script and sends the log messages to its standard input (`stdin`). Usually, every message is a single line (ending with a newline character), which your script can process. Make sure that your script runs in a loop and keeps reading the standard input — it should not exit. (If your script exits, {{% param "product.abbrev" %}} tries to restart it.)
 
-The `program()` driver has a single required parameter, specifying a program name to start. The program is executed with the help of the current shell, so the command may include both file patterns and I/O redirections. For the list of available optional parameters, see {{% xref "/docs/chapter-destinations/configuring-destinations-program/reference-destination-program/_index.md" %}}.
+The `program()` driver has a single required parameter, specifying a program name to start. The program is executed with the help of the current shell, so the command may include both file patterns and I/O redirections. For the list of available optional parameters, see {{% xref "/chapter-destinations/configuring-destinations-program/reference-destination-program/_index.md" %}}.
 
 
 ## Declaration:

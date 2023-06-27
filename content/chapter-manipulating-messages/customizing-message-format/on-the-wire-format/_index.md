@@ -8,7 +8,7 @@ Macros, templates, and template functions allow you to fully customize the forma
 
 {{% alert title="Note" color="info" %}}
 
-The purpose of this example is to demonstrate the flexibility of {{% param "product.abbrev" %}}. A dedicated Redis destination is available in {{% param "product.abbrev" %}} version 3.5. For details, see {{% xref "/docs/chapter-destinations/configuring-destinations-redis/_index.md" %}}.
+The purpose of this example is to demonstrate the flexibility of {{% param "product.abbrev" %}}. A dedicated Redis destination is available in {{% param "product.abbrev" %}} version 3.5. For details, see {{% xref "/chapter-destinations/configuring-destinations-redis/_index.md" %}}.
 
 {{% /alert %}}
 

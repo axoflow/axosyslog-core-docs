@@ -44,16 +44,16 @@ The following example defines an `hdfs` destination using only the required para
 ```
 
 
-  - To install the software required for the `hdfs` destination, see {{% xref "/docs/chapter-destinations/configuring-destinations-hdfs/destination-hdfs-prerequisites/_index.md" %}}.
+  - To install the software required for the `hdfs` destination, see {{% xref "/chapter-destinations/configuring-destinations-hdfs/destination-hdfs-prerequisites/_index.md" %}}.
 
-  - For details on how the `hdfs` destination works, see {{% xref "/docs/chapter-destinations/configuring-destinations-hdfs/destination-hdfs-interaction/_index.md" %}}.
+  - For details on how the `hdfs` destination works, see {{% xref "/chapter-destinations/configuring-destinations-hdfs/destination-hdfs-interaction/_index.md" %}}.
 
-  - For details on using MapR-FS, see {{% xref "/docs/chapter-destinations/configuring-destinations-hdfs/destination-hdfs-maprfs/_index.md" %}}.
+  - For details on using MapR-FS, see {{% xref "/chapter-destinations/configuring-destinations-hdfs/destination-hdfs-maprfs/_index.md" %}}.
 
-  - For details on using Kerberos authentication, see {{% xref "/docs/chapter-destinations/configuring-destinations-hdfs/destination-hdfs-kerberos-authentication/_index.md" %}}.
+  - For details on using Kerberos authentication, see {{% xref "/chapter-destinations/configuring-destinations-hdfs/destination-hdfs-kerberos-authentication/_index.md" %}}.
 
-  - For the list of options, see {{% xref "/docs/chapter-destinations/configuring-destinations-hdfs/reference-destination-hdfs/_index.md" %}}.
+  - For the list of options, see {{% xref "/chapter-destinations/configuring-destinations-hdfs/reference-destination-hdfs/_index.md" %}}.
 
-The `hdfs()` driver is actually a reusable configuration snippet configured to receive log messages using the Java language-binding of {{% param "product.abbrev" %}}. For details on using or writing such configuration snippets, see {{% xref "/docs/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of the hdfs configuration snippet on [GitHub](https://github.com/syslog-ng/syslog-ng/blob/master/scl/hdfs/plugin.conf). For details on extending {{% param "product.abbrev" %}} in Java, see the [Getting started with syslog-ng development](https://syslog-ng.gitbooks.io/getting-started/content/chapters/chapter_5/section_2.html) guide.
+The `hdfs()` driver is actually a reusable configuration snippet configured to receive log messages using the Java language-binding of {{% param "product.abbrev" %}}. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of the hdfs configuration snippet on [GitHub](https://github.com/syslog-ng/syslog-ng/blob/master/scl/hdfs/plugin.conf). For details on extending {{% param "product.abbrev" %}} in Java, see the [Getting started with syslog-ng development](https://syslog-ng.gitbooks.io/getting-started/content/chapters/chapter_5/section_2.html) guide.
 
 {{< include-headless "wnt/note-jvm-reload.md" >}}

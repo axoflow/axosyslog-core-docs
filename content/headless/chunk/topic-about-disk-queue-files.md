@@ -23,7 +23,7 @@ The disk-buffer file's size should be considered as the configured `disk-buf-siz
 
 {{% alert title="Note" color="info" %}}
 
-The disk-buffer file's size does not strictly correlate to the number of stored messages. If you want to get information about the disk-buffer, use `dqtool` (for more information, see {{% xref "/docs/chapter-routing-filters/concepts-diskbuffer/get-information-about-disk-buffer-files/get-information-about-disk-buffer-files-getting-status-info/_index.md" %}}).
+The disk-buffer file's size does not strictly correlate to the number of stored messages. If you want to get information about the disk-buffer, use `dqtool` (for more information, see {{% xref "/chapter-routing-filters/concepts-diskbuffer/get-information-about-disk-buffer-files/get-information-about-disk-buffer-files-getting-status-info/_index.md" %}}).
 
 {{% /alert %}} {{% alert title="Note" color="info" %}}
 

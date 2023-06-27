@@ -196,7 +196,7 @@ The `syslog-ng-ctl query get` command has the following options:
 
 `stats [options]`
 
-Use the `stats` command to display statistics about the processed messages. For details about the displayed statistics, see [The {{% param "product.ose" %}} documentation](https://axoflow.com/docs/). The `stats` command has the following options:
+Use the `stats` command to display statistics about the processed messages. For details about the displayed statistics, see [The {{% param "product.ose" %}} documentation](https://axoflow.com/). The `stats` command has the following options:
 
 - `--control=<socket>` or `-c`
     
@@ -369,7 +369,7 @@ The `syslog-ng-ctl reload` command returns 0 if the operation was successful, 1 
 
 <span class="mcFormatColor" style="color: #04aada;">The `syslog-ng.conf` manual page</span>
 
-{{% xref "/docs/app-man-syslog-ng/syslog-ng.8/_index.md" %}}
+{{% xref "/app-man-syslog-ng/syslog-ng.8/_index.md" %}}
 
 {{% alert title="Note" color="info" %}}
 

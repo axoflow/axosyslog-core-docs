@@ -70,7 +70,7 @@ A TCP source listening on a TLS-encrypted channel.
     };
 ```
 
-A TCP source listening for messages using the IETF-syslog message format. Note that for transferring IETF-syslog messages, generally you are recommended to use the `syslog()` driver on both the client and the server, as it uses both the IETF-syslog message format and the protocol. For details, see {{% xref "/docs/chapter-sources/source-syslog/_index.md" %}}.
+A TCP source listening for messages using the IETF-syslog message format. Note that for transferring IETF-syslog messages, generally you are recommended to use the `syslog()` driver on both the client and the server, as it uses both the IETF-syslog message format and the protocol. For details, see {{% xref "/chapter-sources/source-syslog/_index.md" %}}.
 
 ```c
    source s_tcp_syslog {
@@ -82,4 +82,4 @@ A TCP source listening for messages using the IETF-syslog message format. Note t
 ```
 
 
-For details on the options of the `network()` source, see {{% xref "/docs/chapter-sources/configuring-sources-network/reference-source-network/_index.md" %}}.
+For details on the options of the `network()` source, see {{% xref "/chapter-sources/configuring-sources-network/reference-source-network/_index.md" %}}.

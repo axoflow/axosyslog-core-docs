@@ -111,7 +111,7 @@ To use the `sumologic()` driver, the `scl.conf` file must be included in your {{
 
 {{% alert title="Note" color="info" %}}
 
-The `sumologic()` driver is actually a reusable configuration snippet configured to send log messages using the `network()` and `http()` destination by using a template. For details on using or writing such configuration snippets, see {{% xref "/docs/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/syslog-ng/syslog-ng/blob/master/scl/sumologic/sumologic.conf).
+The `sumologic()` driver is actually a reusable configuration snippet configured to send log messages using the `network()` and `http()` destination by using a template. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/syslog-ng/syslog-ng/blob/master/scl/sumologic/sumologic.conf).
 
 {{% /alert %}}
 

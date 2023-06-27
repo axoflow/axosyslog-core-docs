@@ -8,13 +8,13 @@ The `syslog()` driver can receive messages from the network using the standard I
 
 {{% alert title="Note" color="info" %}}
 
-The `syslog()` driver can also receive BSD-syslog-formatted messages (described in RFC 3164, see {{% xref "/docs/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/_index.md" %}}) if they are sent using the IETF-syslog protocol.
+The `syslog()` driver can also receive BSD-syslog-formatted messages (described in RFC 3164, see {{% xref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/_index.md" %}}) if they are sent using the IETF-syslog protocol.
 
 In {{% param "product.abbrev" %}} versions 3.1 and earlier, the `syslog()` driver could handle only messages in the IETF-syslog (RFC 5424-26) format.
 
 {{% /alert %}}
 
-For the list of available optional parameters, see {{% xref "/docs/chapter-sources/source-syslog/reference-source-syslog-chapter/_index.md" %}}.
+For the list of available optional parameters, see {{% xref "/chapter-sources/source-syslog/reference-source-syslog-chapter/_index.md" %}}.
 
 
 ## Declaration:
@@ -39,7 +39,7 @@ UDP source with defaults.
    source s_udp { syslog( transport("udp")); };
 ```
 
-Encrypted source where the client is also authenticated. For details on the encryption settings, see {{% xref "/docs/chapter-encrypted-transport-tls/tlsoptions/_index.md" %}}.
+Encrypted source where the client is also authenticated. For details on the encryption settings, see {{% xref "/chapter-encrypted-transport-tls/tlsoptions/_index.md" %}}.
 
 ```c
    source s_syslog_tls{ syslog(

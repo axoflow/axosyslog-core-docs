@@ -6,4 +6,4 @@ weight:  100
 
 {{< include-headless "wnt/note-use-network-driver.md" >}}
 
-To convert your existing `tcp()`, `tcp6()`, `udp()`, `udp6()` source drivers to use the `network()` driver, see {{% xref "/docs/chapter-sources/configuring-sources-tcpudp/reference-source-tcpudp/source-tcpudp-to-network/_index.md" %}}.
+To convert your existing `tcp()`, `tcp6()`, `udp()`, `udp6()` source drivers to use the `network()` driver, see {{% xref "/chapter-sources/configuring-sources-tcpudp/reference-source-tcpudp/source-tcpudp-to-network/_index.md" %}}.

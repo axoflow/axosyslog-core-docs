@@ -15,7 +15,7 @@
    cipher-suite("ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384")
 ```
 
-For a list of available algorithms, execute the `openssl ciphers -v` command. The first column of the output contains the name of the algorithms to use in the `cipher-suite()` option, the second column specifies which encryption protocol uses the algorithm (for example, `TLSv1.2`). That way, the `cipher-suite()` also determines the encryption protocol used in the connection: to disable SSLv3, use an algorithm that is available only in TLSv1.2, and that both the client and the server supports. You can also specify the encryption protocols using [ssl-options()]({{< relref "/docs/chapter-encrypted-transport-tls/tlsoptions/_index.md" >}}).
+For a list of available algorithms, execute the `openssl ciphers -v` command. The first column of the output contains the name of the algorithms to use in the `cipher-suite()` option, the second column specifies which encryption protocol uses the algorithm (for example, `TLSv1.2`). That way, the `cipher-suite()` also determines the encryption protocol used in the connection: to disable SSLv3, use an algorithm that is available only in TLSv1.2, and that both the client and the server supports. You can also specify the encryption protocols using [ssl-options()]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/_index.md" >}}).
 
 You can also use the following command to automatically list only ciphers permitted in a specific encryption protocol, for example, `TLSv1.2`:
 

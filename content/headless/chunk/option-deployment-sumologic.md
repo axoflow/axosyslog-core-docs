@@ -11,7 +11,7 @@
 
 *Description:* Required. This option specifies your [Sumo Logic deployment](https://help.sumologic.com/APIs/General-API-Information/Sumo-Logic-Endpoints-and-Firewall-Security).
 
-For details on the `deployment()` option in the `sumologic-http()` destination's declaration, see [Declaration for the sumologic-http() destination]({{< relref "/docs/chapter-destinations/destination-sumologic-intro/_index.md" >}}).
+For details on the `deployment()` option in the `sumologic-http()` destination's declaration, see [Declaration for the sumologic-http() destination]({{< relref "/chapter-destinations/destination-sumologic-intro/_index.md" >}}).
 
-For details on the `deployment()` option in the `sumologic-syslog()` destination's declaration, see [Declaration for the sumologic-syslog() destination]({{< relref "/docs/chapter-destinations/destination-sumologic-intro/_index.md" >}}).
+For details on the `deployment()` option in the `sumologic-syslog()` destination's declaration, see [Declaration for the sumologic-syslog() destination]({{< relref "/chapter-destinations/destination-sumologic-intro/_index.md" >}}).
 

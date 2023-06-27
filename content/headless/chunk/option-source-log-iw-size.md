@@ -9,5 +9,5 @@
 | Type:    | number |
 | Default: | 100    |
 
-*Description:* The size of the initial window, this value is used during flow-control. Its value cannot be lower than 100, unless the `dynamic-window-size()` option is enabled. For details on flow-control, see {{% xref "/docs/chapter-routing-filters/concepts-flow-control/_index.md" %}}.
+*Description:* The size of the initial window, this value is used during flow-control. Its value cannot be lower than 100, unless the `dynamic-window-size()` option is enabled. For details on flow-control, see {{% xref "/chapter-routing-filters/concepts-flow-control/_index.md" %}}.
 

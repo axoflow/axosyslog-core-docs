@@ -43,7 +43,7 @@ Alternatively, you can use parentheses to avoid this confusion:
    filter demo_filter { not (host("example1") or host("example2")); };
 ```
 
-For a complete description on filter functions, see {{% xref "/docs/chapter-routing-filters/filters/reference-filters/_index.md" %}}.
+For a complete description on filter functions, see {{% xref "/chapter-routing-filters/filters/reference-filters/_index.md" %}}.
 
 The following filter statement selects the messages that contain the word `deny` and come from the host `example`.
 
@@ -51,10 +51,10 @@ The following filter statement selects the messages that contain the word `deny`
    filter demo_filter { host("example") and match("deny" value("MESSAGE")); };
 ```
 
-The `value()` parameter of the `match` function limits the scope of the function to the text part of the message (that is, the part returned by the `${MESSAGE}` macro), or optionally to the content of any other macro. The `template()` parameter of the `match` function can be used to run a filter against a combination of macros. For details on using the `match()` filter function, see {{% xref "/docs/chapter-routing-filters/filters/reference-filters/filter-match/_index.md" %}}.
+The `value()` parameter of the `match` function limits the scope of the function to the text part of the message (that is, the part returned by the `${MESSAGE}` macro), or optionally to the content of any other macro. The `template()` parameter of the `match` function can be used to run a filter against a combination of macros. For details on using the `match()` filter function, see {{% xref "/chapter-routing-filters/filters/reference-filters/filter-match/_index.md" %}}.
 
 {{% alert title="Note" color="info" %}}
 
-Filters are often used together with log path flags. For details, see {{% xref "/docs/chapter-routing-filters/logpath/reference-logflags/_index.md" %}}.
+Filters are often used together with log path flags. For details, see {{% xref "/chapter-routing-filters/logpath/reference-logflags/_index.md" %}}.
 
 {{% /alert %}}

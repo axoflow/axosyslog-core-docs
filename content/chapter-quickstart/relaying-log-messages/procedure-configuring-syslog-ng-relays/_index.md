@@ -7,7 +7,7 @@ weight:  100
 To configure AxoSyslog on a relay host, complete the following steps:
 
 
-1.  Install the AxoSyslog application on the host. For details on installing AxoSyslog on specific operating systems, see {{% xref "/docs/chapter-install/_index.md" %}}.
+1.  Install the AxoSyslog application on the host. For details on installing AxoSyslog on specific operating systems, see {{% xref "/chapter-install/_index.md" %}}.
 
 2.  Configure the network sources that collect the log messages sent by the clients.
 
@@ -19,7 +19,7 @@ To configure AxoSyslog on a relay host, complete the following steps:
 
 6.  Create a log statement connecting the local sources to the AxoSyslog server.
 
-7.  Enable the `keep-hostname()` and disable the `chain-hostnames()` options. (For details on how these options work, see [Global options]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}).)
+7.  Enable the `keep-hostname()` and disable the `chain-hostnames()` options. (For details on how these options work, see [Global options]({{< relref "/chapter-global-options/reference-options/_index.md" >}}).)
     
     {{% alert title="Note" color="info" %}}
 It is recommended to use these options on your {{% param "product.abbrev" %}} server as well.

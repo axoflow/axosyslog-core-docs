@@ -4,7 +4,7 @@ weight:  500
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-Pattern databases are XML files that contain rules describing the message patterns. For sample pattern databases, see {{% xref "/docs/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-download/_index.md" %}}.
+Pattern databases are XML files that contain rules describing the message patterns. For sample pattern databases, see {{% xref "/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-download/_index.md" %}}.
 
 The following scheme describes the V5 format of the pattern database. This format is backwards-compatible with the earlier formats.
 

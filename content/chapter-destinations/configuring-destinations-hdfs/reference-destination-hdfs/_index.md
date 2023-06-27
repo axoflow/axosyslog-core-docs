@@ -14,7 +14,7 @@ The following options are required: `hdfs-file()`, `hdfs-uri()`. Note that to us
 
 {{% include-headless "chunk/option-destination-java-class-path.md" %}}
 
-For the `hdfs` destination, include the path to the directory where you copied the required libraries (see {{% xref "/docs/chapter-destinations/configuring-destinations-hdfs/destination-hdfs-prerequisites/_index.md" %}}), for example, `client-lib-dir("/opt/syslog-ng/lib/syslog-ng/java-modules/:/opt/hadoop/libs/")`.
+For the `hdfs` destination, include the path to the directory where you copied the required libraries (see {{% xref "/chapter-destinations/configuring-destinations-hdfs/destination-hdfs-prerequisites/_index.md" %}}), for example, `client-lib-dir("/opt/syslog-ng/lib/syslog-ng/java-modules/:/opt/hadoop/libs/")`.
 
 {{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
@@ -119,7 +119,7 @@ As an example, if it is the 31st day of the month and it is 12 o'clock, then the
 | Type:    | string |
 | Default: | N/A    |
 
-*Description:* The path to the Kerberos keytab file that you received from your Kerberos administrator. For example, `kerberos-keytab-file("/opt/syslog-ng/etc/hdfs.headless.keytab")`. This option is needed only if you want to authenticate using Kerberos in Hadoop. You also have to set the [`hdfs-option-kerberos-principal()`]({{< relref "/docs/chapter-destinations/configuring-destinations-hdfs/reference-destination-hdfs/_index.md" >}}) option. For details on the using Kerberos authentication with the `hdfs()` destination, see {{% xref "/docs/chapter-destinations/configuring-destinations-hdfs/destination-hdfs-kerberos-authentication/_index.md" %}}.
+*Description:* The path to the Kerberos keytab file that you received from your Kerberos administrator. For example, `kerberos-keytab-file("/opt/syslog-ng/etc/hdfs.headless.keytab")`. This option is needed only if you want to authenticate using Kerberos in Hadoop. You also have to set the [`hdfs-option-kerberos-principal()`]({{< relref "/chapter-destinations/configuring-destinations-hdfs/reference-destination-hdfs/_index.md" >}}) option. For details on the using Kerberos authentication with the `hdfs()` destination, see {{% xref "/chapter-destinations/configuring-destinations-hdfs/destination-hdfs-kerberos-authentication/_index.md" %}}.
 
 {{% include-headless "chunk/synopsis-hdfs-kerberos-example.md" %}}
 
@@ -134,7 +134,7 @@ Available in {{% param "product.abbrev" %}} version 3.10 and later.
 | Type:    | string |
 | Default: | N/A    |
 
-*Description:* The Kerberos principal you want to authenticate with. For example, `kerberos-principal("hdfs-user@MYREALM")`. This option is needed only if you want to authenticate using Kerberos in Hadoop. You also have to set the [`hdfs-option-kerberos-keytab-file()`]({{< relref "/docs/chapter-destinations/configuring-destinations-hdfs/reference-destination-hdfs/_index.md" >}}) option. For details on the using Kerberos authentication with the `hdfs()` destination, see {{% xref "/docs/chapter-destinations/configuring-destinations-hdfs/destination-hdfs-kerberos-authentication/_index.md" %}}.
+*Description:* The Kerberos principal you want to authenticate with. For example, `kerberos-principal("hdfs-user@MYREALM")`. This option is needed only if you want to authenticate using Kerberos in Hadoop. You also have to set the [`hdfs-option-kerberos-keytab-file()`]({{< relref "/chapter-destinations/configuring-destinations-hdfs/reference-destination-hdfs/_index.md" >}}) option. For details on the using Kerberos authentication with the `hdfs()` destination, see {{% xref "/chapter-destinations/configuring-destinations-hdfs/destination-hdfs-kerberos-authentication/_index.md" %}}.
 
 {{% include-headless "chunk/synopsis-hdfs-kerberos-example.md" %}}
 

@@ -6,7 +6,7 @@ weight:  3100
 
 {{% include-headless "chunk/python-source-intro.md" %}}
 
-This section describes server-style sources. For details on fetcher-style sources, see {{% xref "/docs/chapter-sources/python-fetcher-source/_index.md" %}}.
+This section describes server-style sources. For details on fetcher-style sources, see {{% xref "/chapter-sources/python-fetcher-source/_index.md" %}}.
 
 {{< include-headless "chunk/python-blocks.md" >}}
 
@@ -74,7 +74,7 @@ Use the `run` method to implement an event loop, or start a server framework or 
 
 Currently, `run` stops permanently if an unhandled exception happens.
 
-For details on parsing and posting messages, see {{% xref "/docs/chapter-sources/python-source/python-source-logmessage/_index.md" %}}.
+For details on parsing and posting messages, see {{% xref "/chapter-sources/python-source/python-source-logmessage/_index.md" %}}.
 
 
 
@@ -86,4 +86,4 @@ The {{% param "product.abbrev" %}} application calls this method when {{% param 
 {{< include-headless "chunk/python-method-deinit.md" >}}
 
 
-For the list of available optional parameters, see {{% xref "/docs/chapter-sources/python-source/reference-source-python/_index.md" %}}.
+For the list of available optional parameters, see {{% xref "/chapter-sources/python-source/reference-source-python/_index.md" %}}.

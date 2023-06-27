@@ -74,4 +74,4 @@ The configuration results in the following console printout:
 ```
 
 
-An alternative, less straightforward way to implement conditional evaluation is to use junctions. For details on junctions and channels, see {{% xref "/docs/chapter-routing-filters/logpath/junctions/_index.md" %}}.
+An alternative, less straightforward way to implement conditional evaluation is to use junctions. For details on junctions and channels, see {{% xref "/chapter-routing-filters/logpath/junctions/_index.md" %}}.

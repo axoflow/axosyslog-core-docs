@@ -4,7 +4,7 @@ weight:  1900
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The `groupset()` rewrite rule allows you to modify the value of multiple message fields at once, for example, to change the value of sensitive fields extracted using patterndb, or received in a JSON format. (If you want to modify the names of message fields, see {{% xref "/docs/chapter-manipulating-messages/modifying-messages/parser-map-value-pairs/_index.md" %}}.)
+The `groupset()` rewrite rule allows you to modify the value of multiple message fields at once, for example, to change the value of sensitive fields extracted using patterndb, or received in a JSON format. (If you want to modify the names of message fields, see {{% xref "/chapter-manipulating-messages/modifying-messages/parser-map-value-pairs/_index.md" %}}.)
 
   - The first parameter is the new value of the modified fields. This can be a simple string, a macro, or a template (which can include template functions as well).
 

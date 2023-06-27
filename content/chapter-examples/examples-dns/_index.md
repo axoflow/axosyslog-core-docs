@@ -18,7 +18,7 @@ The AxoSyslog application can resolve the hostnames of the clients and include t
         options { dns-cache-expire(87600); };
     ```
 
-- If possible, resolve the hostnames locally. For details, see {{% xref "/docs/chapter-examples/examples-dns/example-local-dns/_index.md" %}}.
+- If possible, resolve the hostnames locally. For details, see {{% xref "/chapter-examples/examples-dns/example-local-dns/_index.md" %}}.
 
 {{% alert title="Note" color="info" %}}
 Domain name resolution is important mainly in relay and server mode.

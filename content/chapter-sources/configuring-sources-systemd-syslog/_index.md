@@ -6,7 +6,7 @@ weight:  4500
 
 On platforms running systemd, the `systemd-syslog()` driver reads the log messages of systemd using the `/run/systemd/journal/syslog` socket. Note the following points about this driver:
 
-  - If possible, use the more reliable [systemd-journal()]({{< relref "/docs/chapter-sources/configuring-sources-journal/_index.md" >}}) driver instead.
+  - If possible, use the more reliable [systemd-journal()]({{< relref "/chapter-sources/configuring-sources-journal/_index.md" >}}) driver instead.
 
   - The socket activation of systemd is buggy, causing some log messages to get lost during system startup.
 

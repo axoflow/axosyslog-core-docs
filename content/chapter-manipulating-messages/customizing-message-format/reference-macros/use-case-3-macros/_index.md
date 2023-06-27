@@ -27,11 +27,11 @@ Using the $DESTIP, the $DESTPORT, and the $PROTO macros is relevant when multipl
 
 To solve either of the challenges listed previously, {{% param "product.name" %}} supports the following macros that you can include in your configuration:
 
-  - [`$DESTIP`]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-destip" >}})
+  - [`$DESTIP`]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-destip" >}})
 
-  - [`$DESTPORT`]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-destport" >}})
+  - [`$DESTPORT`]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-destport" >}})
 
-  - [`$PROTO`]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-proto" >}})
+  - [`$PROTO`]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-proto" >}})
 
 
 

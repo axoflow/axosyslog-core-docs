@@ -8,7 +8,7 @@ The `syslog-ng()` destination driver forwards log messages to another AxoSyslog 
 
 {{% include-headless "chunk/ewmm-intro.md" %}}
 
-The `syslog-ng()` destination driver is available in version 3.16 and later. The node that receives this message must use the [default-network-drivers() source]({{< relref "/docs/chapter-sources/source-default-network-drivers/_index.md" >}}) to properly handle the messages.
+The `syslog-ng()` destination driver is available in version 3.16 and later. The node that receives this message must use the [default-network-drivers() source]({{< relref "/chapter-sources/source-default-network-drivers/_index.md" >}}) to properly handle the messages.
 
 {{% include-headless "chunk/example-ewmm-message-format.md" %}}
 

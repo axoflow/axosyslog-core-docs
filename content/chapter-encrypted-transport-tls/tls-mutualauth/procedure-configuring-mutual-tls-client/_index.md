@@ -15,7 +15,7 @@ Complete the following steps on every AxoSyslog client host. Examples are provid
 
 1.  Create an X.509 certificate for the AxoSyslog client.
 
-2.  Copy the certificate (for example, `client_cert.pem`) and the matching private key (for example, `client.key`) to the AxoSyslog client host, for example, into the `/opt/syslog-ng/etc/syslog-ng/cert.d` directory. The certificate must be a valid X.509 certificate in PEM format. If you want to use a password-protected key, see {{% xref "/docs/chapter-encrypted-transport-tls/tls-password-protected-keys/_index.md" %}}.
+2.  Copy the certificate (for example, `client_cert.pem`) and the matching private key (for example, `client.key`) to the AxoSyslog client host, for example, into the `/opt/syslog-ng/etc/syslog-ng/cert.d` directory. The certificate must be a valid X.509 certificate in PEM format. If you want to use a password-protected key, see {{% xref "/chapter-encrypted-transport-tls/tls-password-protected-keys/_index.md" %}}.
 
 3.  Copy the CA certificate of the Certificate Authority (for example, `cacert.pem`) that issued the certificate of the AxoSyslog server (or the self-signed certificate of the syslog-ng server) to the AxoSyslog client hosts, for example, into the `/opt/syslog-ng/etc/syslog-ng/ca.d` directory.
     

@@ -47,7 +47,7 @@ TCP destination that sends messages to the `::1` IPv6 address, port `2222`.
     };
 ```
 
-To send messages using the IETF-syslog message format without using the IETF-syslog protocol, enable the `syslog-protocol` flag. (For details on how to use the IETF-syslog protocol, see {{% xref "/docs/chapter-destinations/configuring-destinations-syslog/reference-destination-syslog-chapter/_index.md" %}}.)
+To send messages using the IETF-syslog message format without using the IETF-syslog protocol, enable the `syslog-protocol` flag. (For details on how to use the IETF-syslog protocol, see {{% xref "/chapter-destinations/configuring-destinations-syslog/reference-destination-syslog-chapter/_index.md" %}}.)
 
 ```c
    destination d_tcp { network("10.1.2.3" port(1999) flags(syslog-protocol) ); };

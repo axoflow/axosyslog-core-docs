@@ -57,13 +57,13 @@ Every macro is included in the selection only once, but redundant information ma
 
 The `value-pairs()` option has the following parameters. The parameters are evaluated in the following order:
 
-1.  [`scope()`]({{< relref "/docs/chapter-concepts/concepts-value-pairs/_index.md" >}})
+1.  [`scope()`]({{< relref "/chapter-concepts/concepts-value-pairs/_index.md" >}})
 
-2.  [`exclude()`]({{< relref "/docs/chapter-concepts/concepts-value-pairs/_index.md" >}})
+2.  [`exclude()`]({{< relref "/chapter-concepts/concepts-value-pairs/_index.md" >}})
 
-3.  [`key()`]({{< relref "/docs/chapter-concepts/concepts-value-pairs/_index.md" >}})
+3.  [`key()`]({{< relref "/chapter-concepts/concepts-value-pairs/_index.md" >}})
 
-4.  [`pair()`]({{< relref "/docs/chapter-concepts/concepts-value-pairs/_index.md" >}})
+4.  [`pair()`]({{< relref "/chapter-concepts/concepts-value-pairs/_index.md" >}})
 
 *exclude()*
 
@@ -169,9 +169,9 @@ Default:
 
 empty string
 
-*Description:* This option allows you to manipulate and modify the name of the value-pairs. You can define transformations, which are are applied to the selected name-value pairs. The first parameter of the `rekey()` option is a glob pattern that selects the name-value pairs to modify. If you omit the pattern, the transformations are applied to every key of the scope. For details on globs, see [glob]({{< relref "/docs/chapter-manipulating-messages/regular-expressions/reference-regexp-types/_index.md" >}}).
+*Description:* This option allows you to manipulate and modify the name of the value-pairs. You can define transformations, which are are applied to the selected name-value pairs. The first parameter of the `rekey()` option is a glob pattern that selects the name-value pairs to modify. If you omit the pattern, the transformations are applied to every key of the scope. For details on globs, see [glob]({{< relref "/chapter-manipulating-messages/regular-expressions/reference-regexp-types/_index.md" >}}).
 
-If you want to modify the names of several message fields, see also {{% xref "/docs/chapter-manipulating-messages/modifying-messages/parser-map-value-pairs/_index.md" %}}.
+If you want to modify the names of several message fields, see also {{% xref "/chapter-manipulating-messages/modifying-messages/parser-map-value-pairs/_index.md" %}}.
 
   - If `rekey()` is used within a `key()` option, the name-value pairs specified in the glob of the `key()` option are transformed.
 

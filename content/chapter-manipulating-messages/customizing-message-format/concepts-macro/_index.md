@@ -12,8 +12,8 @@ Another use of macros and templates is to customize the format of the syslog mes
 
 {{< include-headless "wnt/note-formatting-messages.md" >}}
 
-  - For details on using templates and macros, see {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/configuring-macros/_index.md" %}}.
+  - For details on using templates and macros, see {{% xref "/chapter-manipulating-messages/customizing-message-format/configuring-macros/_index.md" %}}.
 
-  - For a list and description of the macros available in {{% param "product.abbrev" %}}, see {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" %}}.
+  - For a list and description of the macros available in {{% param "product.abbrev" %}}, see {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" %}}.
 
-  - For details on using custom macros created with CSV parsers and pattern databases, see {{% xref "/docs/chapter-parsers/_index.md" %}} and {{% xref "/docs/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-filters/_index.md" %}}, respectively.
+  - For details on using custom macros created with CSV parsers and pattern databases, see {{% xref "/chapter-parsers/_index.md" %}} and {{% xref "/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-filters/_index.md" %}}, respectively.

@@ -8,7 +8,7 @@ In {{% param "product.abbrev" %}} version 3.8 and later, you can use an external
 
 The database file is a simple text file in comma-separated value (CSV) format, where each line contains the following information:
 
-  - A selector or ID that appears in the log messages, for example, the hostname. To use shell-style globbing (wildcards) in selectors, see {{% xref "/docs/chapter-enrich-data/data-enrichment-add-contextual-data/add-contextual-data-globs/_index.md" %}}. You can also reference the name of a filter that matches the messages, see {{% xref "/docs/chapter-enrich-data/data-enrichment-add-contextual-data/add-contextual-data-filters/_index.md" %}}
+  - A selector or ID that appears in the log messages, for example, the hostname. To use shell-style globbing (wildcards) in selectors, see {{% xref "/chapter-enrich-data/data-enrichment-add-contextual-data/add-contextual-data-globs/_index.md" %}}. You can also reference the name of a filter that matches the messages, see {{% xref "/chapter-enrich-data/data-enrichment-add-contextual-data/add-contextual-data-filters/_index.md" %}}
 
   - The name of the name-value pair that {{% param "product.abbrev" %}} adds to matching log messages.
 

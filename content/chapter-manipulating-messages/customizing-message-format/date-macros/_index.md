@@ -16,7 +16,7 @@ The macros related to the date of the message (for example: `${ISODATE}`, `${HOU
 
 The `${DATE}` macro equals the `${S_DATE}` macro.
 
-The values of the date-related macros are calculated using the original timezone information of the message. To convert it to a different timezone, use the `time-zone()` option. You can set the `time-zone()` option as a global option, or per destination. For sources, it applies only if the original message does not contain timezone information. Alternatively, you can modify the timezone of the message using timezone-specific rewrite rules. For details, see {{% xref "/docs/chapter-manipulating-messages/modifying-messages/rewrite-timezone/_index.md" %}}.
+The values of the date-related macros are calculated using the original timezone information of the message. To convert it to a different timezone, use the `time-zone()` option. You can set the `time-zone()` option as a global option, or per destination. For sources, it applies only if the original message does not contain timezone information. Alternatively, you can modify the timezone of the message using timezone-specific rewrite rules. For details, see {{% xref "/chapter-manipulating-messages/modifying-messages/rewrite-timezone/_index.md" %}}.
 
 Converting the timezone changes the values of the following date-related macros (macros `MSEC` and `USEC` are not changed):
 

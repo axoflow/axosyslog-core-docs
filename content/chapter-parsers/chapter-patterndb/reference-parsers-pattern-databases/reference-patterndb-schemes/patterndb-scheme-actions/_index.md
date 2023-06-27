@@ -7,13 +7,13 @@ weight:  2100
 
 ## Location
 
-/[patterndb]({{< relref "/docs/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/patterndb-scheme-patterndb/_index.md" >}})/[ruleset]({{< relref "/docs/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/patterndb-scheme-ruleset/_index.md" >}})/*actions*
+/[patterndb]({{< relref "/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/patterndb-scheme-patterndb/_index.md" >}})/[ruleset]({{< relref "/chapter-parsers/chapter-patterndb/reference-parsers-pattern-databases/reference-patterndb-schemes/patterndb-scheme-ruleset/_index.md" >}})/*actions*
 
 
 
 ## Description
 
-OPTIONAL — A container element for actions that are performed if a message is recognized by the pattern. For details on actions, see {{% xref "/docs/chapter-parsers/chapter-patterndb/patterndb-triggers-actions/_index.md" %}}.
+OPTIONAL — A container element for actions that are performed if a message is recognized by the pattern. For details on actions, see {{% xref "/chapter-parsers/chapter-patterndb/patterndb-triggers-actions/_index.md" %}}.
 
 
 

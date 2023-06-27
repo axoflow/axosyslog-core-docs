@@ -10,4 +10,4 @@ If the Kafka client collects too many unsent messages, it will not accept any mo
 
 You can specify a "high water mark" limit for the Kafka client in the `properties-file()`.
 
-For more information about how the C implementation of the `kafka()` destination works with {{% param "product.abbrev" %}}, click [here]({{< relref "/docs/chapter-destinations/configuring-destinations-kafka-c/_index.md#how-it-works" >}}).
+For more information about how the C implementation of the `kafka()` destination works with {{% param "product.abbrev" %}}, click [here]({{< relref "/chapter-destinations/configuring-destinations-kafka-c/_index.md#how-it-works" >}}).

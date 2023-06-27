@@ -14,7 +14,7 @@ Consider the following example: *client-host > relay > server*, where the IP add
 - To resolve the `192.168.1.2` IP address to a hostname on `relay` using a DNS server, use the `keep-hostname(no)` and `use-dns(yes)` options. If the DNS server is properly configured and reverse DNS lookup is available for the `192.168.1.2` address, {{% param "product.abbrev" %}} will rewrite the HOST field of the log message to `client-host`.
 
     {{% alert title="Note" color="info" %}}
-It is also possible to resolve IP addresses locally, without relying on the DNS server. For details on local name resolution, see {{% xref "/docs/chapter-examples/examples-dns/example-local-dns/_index.md" %}}.
+It is also possible to resolve IP addresses locally, without relying on the DNS server. For details on local name resolution, see {{% xref "/chapter-examples/examples-dns/example-local-dns/_index.md" %}}.
     {{% /alert %}}
 
 - The above points apply to the {{% param "product.abbrev" %}} server (`server`) as well, so if `relay` is configured properly, use the `keep-hostname(yes)` option on `server` to retain the proper HOST field. Setting `keep-hostname(no)` on `server` would result in {{% param "product.abbrev" %}} rewriting the HOST field to the address of the host that sent the message to `server`, which is `relay` in this case.

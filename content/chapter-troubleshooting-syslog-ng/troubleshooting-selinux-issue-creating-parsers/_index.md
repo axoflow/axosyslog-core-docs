@@ -12,4 +12,4 @@ If you are using a recent enough PCRE library, {{% param "product.abbrev" %}} wi
     python [21631 ] : SELinux is preventing <syslog-ng path> from using the execmem access on a process.
 ```
 
-To resolve this issue, switch off the PCRE JIT compile function by using the [disable-jit]({{< relref "/docs/chapter-manipulating-messages/regular-expressions/reference-regexp-types/regexp-flags-options/regexp-flags-options-pcre/_index.md" >}}) <span class="code">flags()</span> option in the given filter or rewrite rule of your configuration.
+To resolve this issue, switch off the PCRE JIT compile function by using the [disable-jit]({{< relref "/chapter-manipulating-messages/regular-expressions/reference-regexp-types/regexp-flags-options/regexp-flags-options-pcre/_index.md" >}}) <span class="code">flags()</span> option in the given filter or rewrite rule of your configuration.

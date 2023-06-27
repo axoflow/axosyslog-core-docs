@@ -11,7 +11,7 @@
 
 *Description:* Specifies the protocol used to receive messages from the source.
 
-For detailed information about how {{% param "product.abbrev" %}} supports the `proxied-tcp`, the `proxied-tls`, and the `proxied-tls-passthrough` parameters, see {{% xref "/docs/chapter-sources/configuring-sources-network/proxy-prot-intro/_index.md" %}}.
+For detailed information about how {{% param "product.abbrev" %}} supports the `proxied-tcp`, the `proxied-tls`, and the `proxied-tls-passthrough` parameters, see {{% xref "/chapter-sources/configuring-sources-network/proxy-prot-intro/_index.md" %}}.
 
 
 `text-with-nuls`: Allows embedded `NUL` characters in the message from a TCP source, that is, {{% param "product.abbrev" %}} will not delimiter the incoming messages on `NUL` characters, only on `newline` characters (contrary to `tcp` transport, which splits the incoming log on `newline` characters and `NUL` characters).

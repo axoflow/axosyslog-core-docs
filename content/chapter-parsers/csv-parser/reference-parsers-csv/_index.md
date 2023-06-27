@@ -95,7 +95,7 @@ If you use more than one delimiter, note the following points:
   - *drop-invalid*: When the `drop-invalid` option is set, the parser does not process messages that do not match the parser. For example, a message does not match the parser if it has less columns than specified in the parser, or it has more columns but the `greedy` flag is not enabled. Using the `drop-invalid` option practically turns the parser into a special filter, that matches messages that have the predefined number of columns (using the specified delimiters).
     
     {{% alert title="Note" color="info" %}}
-Messages dropped as invalid can be processed by a `fallback` log path. For details on the `fallback` option, see {{% xref "/docs/chapter-routing-filters/logpath/reference-logflags/_index.md" %}}.
+Messages dropped as invalid can be processed by a `fallback` log path. For details on the `fallback` option, see {{% xref "/chapter-routing-filters/logpath/reference-logflags/_index.md" %}}.
     {{% /alert %}}
 
   - *greedy*: The `greedy` option assigns the remainder of the message to the last column, regardless of the delimiter characters set. You can use this option to process messages where the number of columns varies.
@@ -150,11 +150,11 @@ Messages dropped as invalid can be processed by a `fallback` log path. For detai
 | --------- | ------------------------------- |
 | Synopsis: | quote-pairs('<quote_pairs>) |
 
-*Description:* List quote-pairs between single quotes. Delimiter characters or strings enclosed between quote characters are ignored. Note that the beginning and ending quote character does not have to be identical, for example, `[}` can also be a quote-pair. For an example of using `quote-pairs()` to parse Apache log files, see [Example: Parsing Apache log files]({{< relref "/docs/chapter-parsers/csv-parser/_index.md" >}}).
+*Description:* List quote-pairs between single quotes. Delimiter characters or strings enclosed between quote characters are ignored. Note that the beginning and ending quote character does not have to be identical, for example, `[}` can also be a quote-pair. For an example of using `quote-pairs()` to parse Apache log files, see [Example: Parsing Apache log files]({{< relref "/chapter-parsers/csv-parser/_index.md" >}}).
 
 
 
 {{% include-headless "chunk/option-parser-template.md" %}}
 
-For examples, see [Example: Segmenting hostnames separated with a dash]({{< relref "/docs/chapter-parsers/csv-parser/_index.md" >}}) and [Example: Segmenting a part of a message]({{< relref "/docs/chapter-parsers/csv-parser/_index.md" >}}).
+For examples, see [Example: Segmenting hostnames separated with a dash]({{< relref "/chapter-parsers/csv-parser/_index.md" >}}) and [Example: Segmenting a part of a message]({{< relref "/chapter-parsers/csv-parser/_index.md" >}}).
 

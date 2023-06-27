@@ -8,9 +8,9 @@ This section describes the <span class="code">HEADER</span> message part of a sy
 
 For further details about the <span class="code">MSG</span> and <span class="code">PRI</span> parts of a syslog message, see the following sections:
 
-  - `[MSG]({{< relref "/docs/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-msg/_index.md" >}})`
+  - `[MSG]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-msg/_index.md" >}})`
 
-  - `[PRI]({{< relref "/docs/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-pri/_index.md" >}})`
+  - `[PRI]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-pri/_index.md" >}})`
 
 
 ## The HEADER message part
@@ -26,6 +26,6 @@ The <span class="code">HEADER</span> message part contains a timestamp and the h
 
 {{% alert title="Note" color="info" %}}
 
-The {{% param "product.name" %}} application supports other timestamp formats as well, like ISO, or the PIX extended format. For details, see the `ts-format()` option in {{% xref "/docs/chapter-global-options/reference-options/_index.md" %}}.
+The {{% param "product.name" %}} application supports other timestamp formats as well, like ISO, or the PIX extended format. For details, see the `ts-format()` option in {{% xref "/chapter-global-options/reference-options/_index.md" %}}.
 
 {{% /alert %}}

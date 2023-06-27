@@ -4,7 +4,7 @@
 
 ## failover()
 
-*Description:* Available only in {{% param "product.name" %}} version 3.17 and later. For details about how client-side failover works, see {{% xref "/docs/chapter-destinations/concepts-failover/_index.md" %}}.
+*Description:* Available only in {{% param "product.name" %}} version 3.17 and later. For details about how client-side failover works, see {{% xref "/chapter-destinations/concepts-failover/_index.md" %}}.
 
 
 

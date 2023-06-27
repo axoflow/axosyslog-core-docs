@@ -14,25 +14,25 @@ The `discord()` destination of {{% param "product.abbrev" %}} can directly post 
 | Type:    | URL |
 | Default: | N/A |
 
-*Description:* A hyperlink for icon of the author to be displayed in Discord. For details, see the `avatar_url` option in the [Discord documentation](https://discord.com/developers/docs/intro).
+*Description:* A hyperlink for icon of the author to be displayed in Discord. For details, see the `avatar_url` option in the [Discord documentation](https://discord.com/developers/intro).
 
 
 
 {{% include-headless "chunk/option-destination-batch-bytes.md" %}}
 
-For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/docs/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
+For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
 
 
 
 {{% include-headless "chunk/option-destination-batch-lines.md" %}}
 
-For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/docs/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
+For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
 
 
 
 {{% include-headless "chunk/option-d-b-t-http-spl-sent-pub.md" %}}
 
-For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/docs/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
+For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
 
 
 
@@ -83,7 +83,7 @@ The `http()` destination supports only unencrypted key files (that is, the priva
 | Type:    | Number |
 | Default: | 2000   |
 
-*Description:* Removes every character above the set limit. For details, see the content option in the [Discord documentation](https://discord.com/developers/docs/resources/webhook#webhook-object-jsonform-params).
+*Description:* Removes every character above the set limit. For details, see the content option in the [Discord documentation](https://discord.com/developers/resources/webhook#webhook-object-jsonform-params).
 
 
 
@@ -217,7 +217,7 @@ Hazard of data loss! Make sure to include a fallback value, as if the template g
 
 {{% include-headless "chunk/option-throttle-description.md" %}}
 
-For more information, see [Discord: Rate Limits](https://discord.com/developers/docs/topics/rate-limits#global-rate-limit).
+For more information, see [Discord: Rate Limits](https://discord.com/developers/topics/rate-limits#global-rate-limit).
 
 
 {{% include-headless "chunk/option-destination-http-timeout.md" %}}
@@ -230,7 +230,7 @@ For more information, see [Discord: Rate Limits](https://discord.com/developers/
 | Type:    | true | false |
 | Default: | false        |
 
-*Description:* Enables TTS (Text-To-Speech) mode. For more information, see the tts option in the [Discord documentation](https://discord.com/developers/docs/%5Dresources/webhook#webhook-object-jsonform-params).
+*Description:* Enables TTS (Text-To-Speech) mode. For more information, see the tts option in the [Discord documentation](https://discord.com/developers/%5Dresources/webhook#webhook-object-jsonform-params).
 
 
 
@@ -254,7 +254,7 @@ For more information, see [Discord: Rate Limits](https://discord.com/developers/
 | Type:    | string |
 | Default: | N/A    |
 
-*Description:* Overrides the default username of the webhook. For details, see the username option in the [Discord documentation](https://discord.com/developers/docs/%5Dresources/webhook#webhook-object-jsonform-params).
+*Description:* Overrides the default username of the webhook. For details, see the username option in the [Discord documentation](https://discord.com/developers/%5Dresources/webhook#webhook-object-jsonform-params).
 
 
 {{% include-headless "chunk/option-destination-http-use-system-cert-store.md" %}}

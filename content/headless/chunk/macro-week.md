@@ -6,5 +6,5 @@
 
 *Description:* The week number of the year, prefixed with a zero for the first nine weeks of the year. (The first Monday in the year marks the first week.)
 
-See also [ISOWEEK, C_ISOWEEK, R_ISOWEEK, S_ISOWEEK]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}).
+See also [ISOWEEK, C_ISOWEEK, R_ISOWEEK, S_ISOWEEK]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}).
 

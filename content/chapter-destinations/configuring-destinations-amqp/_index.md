@@ -8,7 +8,7 @@ The `amqp()` driver publishes messages using the [AMQP (Advanced Message Queuing
 
 The name-value pairs selected with the `value-pairs()` option will be sent as AMQP headers, while the body of the AMQP message is empty by default (but you can add custom content using the `body()` option). Publishing the name-value pairs as headers makes it possible to use the Headers exchange-type and subscribe only to interesting log streams. This solution is more flexible than using the `routing-key()` option.
 
-For the list of available parameters, see {{% xref "/docs/chapter-destinations/configuring-destinations-amqp/reference-destination-amqp/_index.md" %}}.
+For the list of available parameters, see {{% xref "/chapter-destinations/configuring-destinations-amqp/reference-destination-amqp/_index.md" %}}.
 
 
 ## Declaration:

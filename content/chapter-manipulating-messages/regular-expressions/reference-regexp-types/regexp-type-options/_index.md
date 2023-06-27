@@ -13,7 +13,7 @@ The {{% param "product.abbrev" %}} application supports the following `type()` o
 
 *Description:* Uses Perl Compatible Regular Expressions (PCRE). If the `type()` parameter is not specified, {{% param "product.abbrev" %}} uses PCRE regular expressions by default.
 
-For more information about the `flags()` options of PCRE regular expressions, see {{% xref "/docs/chapter-manipulating-messages/regular-expressions/reference-regexp-types/regexp-flags-options/_index.md" %}}.
+For more information about the `flags()` options of PCRE regular expressions, see {{% xref "/chapter-manipulating-messages/regular-expressions/reference-regexp-types/regexp-flags-options/_index.md" %}}.
 
 
 
@@ -21,7 +21,7 @@ For more information about the `flags()` options of PCRE regular expressions, se
 
 *Description:* Matches the strings literally, without regular expression support. By default, only identical strings are matched. For partial matches, use the `flags("prefix")` or the `flags("substring")` flags.
 
-For more information about the `flags()` options of literal string searches, see {{% xref "/docs/chapter-manipulating-messages/regular-expressions/reference-regexp-types/regexp-flags-options/_index.md" %}}.
+For more information about the `flags()` options of literal string searches, see {{% xref "/chapter-manipulating-messages/regular-expressions/reference-regexp-types/regexp-flags-options/_index.md" %}}.
 
 
 

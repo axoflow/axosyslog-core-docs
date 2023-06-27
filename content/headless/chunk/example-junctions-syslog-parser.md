@@ -63,6 +63,6 @@ Since every channel receives every message that reaches the junction, use the `f
 ```
 
 {{% alert title="Note" color="info" %}}
-{{% param "product.abbrev" %}} has several parsers that you can use to parse non-compliant messages. You can even [write a custom parser in Python]({{< relref "/docs/chapter-parsers/python-parser/_index.md" >}}). For details, see {{% xref "/docs/chapter-parsers/_index.md" %}}.
+{{% param "product.abbrev" %}} has several parsers that you can use to parse non-compliant messages. You can even [write a custom parser in Python]({{< relref "/chapter-parsers/python-parser/_index.md" >}}). For details, see {{% xref "/chapter-parsers/_index.md" %}}.
 {{% /alert %}}
 

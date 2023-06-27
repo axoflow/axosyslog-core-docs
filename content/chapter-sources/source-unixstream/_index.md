@@ -8,7 +8,7 @@ The `unix-stream()` and `unix-dgram()` drivers open an `AF_UNIX` socket and star
 
 To avoid denial of service attacks when using connection-oriented protocols, the number of simultaneously accepted connections should be limited. This can be achieved using the `max-connections()` parameter. The default value of this parameter is quite strict, you might have to increase it on a busy system.
 
-Both unix-stream and unix-dgram have a single required argument that specifies the filename of the socket to create. For the list of available optional parameters, see {{% xref "/docs/chapter-sources/source-unixstream/reference-source-unixstream/_index.md" %}}
+Both unix-stream and unix-dgram have a single required argument that specifies the filename of the socket to create. For the list of available optional parameters, see {{% xref "/chapter-sources/source-unixstream/reference-source-unixstream/_index.md" %}}
 
 
 ## Declaration:

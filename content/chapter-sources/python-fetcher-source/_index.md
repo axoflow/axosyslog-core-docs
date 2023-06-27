@@ -6,7 +6,7 @@ weight:  3300
 
 {{% include-headless "chunk/python-source-intro.md" %}}
 
-This section describes fetcher-style sources. For details on server-style sources, see {{% xref "/docs/chapter-sources/python-source/_index.md" %}}.
+This section describes fetcher-style sources. For details on server-style sources, see {{% xref "/chapter-sources/python-source/_index.md" %}}.
 
 {{< include-headless "chunk/python-blocks.md" >}}
 
@@ -82,7 +82,7 @@ The `open(self)` method opens the resources required for the source, for example
 
 Use the `fetch` method to fetch messages and pass them to the log paths.
 
-For details on parsing messages, see {{% xref "/docs/chapter-sources/python-source/python-source-logmessage/_index.md" %}}.
+For details on parsing messages, see {{% xref "/chapter-sources/python-source/python-source-logmessage/_index.md" %}}.
 
 The `fetch` method must return one of the following values:
 
@@ -112,4 +112,4 @@ Close the connection to the target service. Usually it is called right before `d
 {{< include-headless "chunk/python-method-deinit.md" >}}
 
 
-For the list of available optional parameters, see {{% xref "/docs/chapter-sources/python-source/reference-source-python/_index.md" %}}.
+For the list of available optional parameters, see {{% xref "/chapter-sources/python-source/reference-source-python/_index.md" %}}.

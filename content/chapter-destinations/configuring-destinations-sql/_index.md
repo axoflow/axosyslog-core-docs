@@ -13,7 +13,7 @@ The `sql()` driver sends messages into an SQL database. Currently the Microsoft 
    sql(database_type host_parameters database_parameters [options]);
 ```
 
-The `sql()` driver has the following required parameters: [`type()`]({{< relref "/docs/chapter-destinations/configuring-destinations-sql/reference-destination-sql/_index.md" >}}), [`database()`]({{< relref "/docs/chapter-destinations/configuring-destinations-sql/reference-destination-sql/_index.md" >}}), [`table()`]({{< relref "/docs/chapter-destinations/configuring-destinations-sql/reference-destination-sql/_index.md" >}}), [`columns()`]({{< relref "/docs/chapter-destinations/configuring-destinations-sql/reference-destination-sql/_index.md" >}}), and [`values()`]({{< relref "/docs/chapter-destinations/configuring-destinations-sql/reference-destination-sql/_index.md" >}}).
+The `sql()` driver has the following required parameters: [`type()`]({{< relref "/chapter-destinations/configuring-destinations-sql/reference-destination-sql/_index.md" >}}), [`database()`]({{< relref "/chapter-destinations/configuring-destinations-sql/reference-destination-sql/_index.md" >}}), [`table()`]({{< relref "/chapter-destinations/configuring-destinations-sql/reference-destination-sql/_index.md" >}}), [`columns()`]({{< relref "/chapter-destinations/configuring-destinations-sql/reference-destination-sql/_index.md" >}}), and [`values()`]({{< relref "/chapter-destinations/configuring-destinations-sql/reference-destination-sql/_index.md" >}}).
 
 {{% alert title="Warning" color="warning" %}}
 
@@ -30,7 +30,7 @@ The `sql()` destination requires database-specific packages to be installed. The
 
 {{% /alert %}}
 
-The `table` and `value` parameters can include macros to create tables and columns dynamically (for details, see {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" %}}).
+The `table` and `value` parameters can include macros to create tables and columns dynamically (for details, see {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" %}}).
 
 {{% alert title="Warning" color="warning" %}}
 

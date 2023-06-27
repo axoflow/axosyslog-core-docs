@@ -8,8 +8,8 @@ To properly interpret the events that the log messages describe, you must be abl
 
 The {{% param "product.abbrev" %}} application currently provides the following possibilities to enrich log messages.
 
-  - You can add name-value pairs from an external CSV file. For details, see {{% xref "/docs/chapter-enrich-data/data-enrichment-add-contextual-data/_index.md" %}}.
+  - You can add name-value pairs from an external CSV file. For details, see {{% xref "/chapter-enrich-data/data-enrichment-add-contextual-data/_index.md" %}}.
 
-  - You can resolve the IP addresses from log messages to include GeoIP information in the log messages. For details, see {{% xref "/docs/chapter-enrich-data/geoip-parser/_index.md" %}}.
+  - You can resolve the IP addresses from log messages to include GeoIP information in the log messages. For details, see {{% xref "/chapter-enrich-data/geoip-parser/_index.md" %}}.
 
-  - You can write custom Python modules to process the messages and add data from external files or databases. For details, see {{% xref "/docs/chapter-parsers/python-parser/_index.md" %}}.
+  - You can write custom Python modules to process the messages and add data from external files or databases. For details, see {{% xref "/chapter-parsers/python-parser/_index.md" %}}.

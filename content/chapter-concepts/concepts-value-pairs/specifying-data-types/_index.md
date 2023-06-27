@@ -8,7 +8,7 @@ By default, {{% param "product.abbrev" %}} handles every data as strings. Howeve
 
 {{% alert title="Warning" color="warning" %}}
 
-Hazard of data loss! If {{% param "product.abbrev" %}} cannot convert the data into the specified type, an error occurs, and {{% param "product.abbrev" %}} drops the message by default. To change how {{% param "product.abbrev" %}} handles data-conversion errors, see [Global options]({{< relref "/docs/chapter-global-options/reference-options/_index.md" >}}).
+Hazard of data loss! If {{% param "product.abbrev" %}} cannot convert the data into the specified type, an error occurs, and {{% param "product.abbrev" %}} drops the message by default. To change how {{% param "product.abbrev" %}} handles data-conversion errors, see [Global options]({{< relref "/chapter-global-options/reference-options/_index.md" >}}).
 
 {{% /alert %}}
 
@@ -54,7 +54,7 @@ The {{% param "product.abbrev" %}} application currently supports the following 
 
   - `literal`: The data as a literal string, without adding any quotes or escape characters.
 
-  - `list`: The data as a list. For details, see the list manipulation template functions in {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" %}}.
+  - `list`: The data as a list. For details, see the list manipulation template functions in {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" %}}.
 
   - `int` or `int32`: 32-bit integer.
 

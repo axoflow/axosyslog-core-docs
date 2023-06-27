@@ -64,11 +64,11 @@ Essentially, the `no-header` flag signals {{% param "product.abbrev" %}} that th
 
   - *sanitize-utf8*: When using the `sanitize-utf8` flag, {{% param "product.abbrev" %}} converts non-UTF-8 input to an escaped form, which is valid UTF-8.
 
-  - *store-raw-message*: Save the original message as received from the client in the `${RAWMSG}` macro. You can forward this raw message in its original form to another AxoSyslog node using the [`syslog-ng()` destination]({{< relref "/docs/chapter-destinations/destination-syslog-ng/_index.md" >}}), or to a SIEM system, ensuring that the SIEM can process it. Available only in 3.16 and later.
+  - *store-raw-message*: Save the original message as received from the client in the `${RAWMSG}` macro. You can forward this raw message in its original form to another AxoSyslog node using the [`syslog-ng()` destination]({{< relref "/chapter-destinations/destination-syslog-ng/_index.md" >}}), or to a SIEM system, ensuring that the SIEM can process it. Available only in 3.16 and later.
 
   - *syslog-protocol*: The `syslog-protocol` flag specifies that incoming messages are expected to be formatted according to the new IETF syslog protocol standard (RFC5424), but without the frame header. Note that this flag is not needed for the `syslog` driver, which handles only messages that have a frame header.
 
-  - *validate-utf8*: The `validate-utf8` flag enables encoding-verification for messages formatted according to the new IETF syslog standard (for details, see {{% xref "/docs/chapter-concepts/concepts-message-structure/concepts-message-ietfsyslog/_index.md" %}}). If the BOM character is missing, but the message is otherwise UTF-8 compliant, AxoSyslog automatically adds the BOM character to the message.
+  - *validate-utf8*: The `validate-utf8` flag enables encoding-verification for messages formatted according to the new IETF syslog standard (for details, see {{% xref "/chapter-concepts/concepts-message-structure/concepts-message-ietfsyslog/_index.md" %}}). If the BOM character is missing, but the message is otherwise UTF-8 compliant, AxoSyslog automatically adds the BOM character to the message.
     
     {{% include-headless "chunk/para-bom-definition.md" %}}
 

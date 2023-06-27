@@ -10,7 +10,7 @@ Version 3.8 of {{% param "product.abbrev" %}} can directly post log messages to 
 
 HTTPS connection, as well as password- and certificate-based authentication is supported.
 
-If the server returns a status code beginning with 2 (for example, 200), {{% param "product.abbrev" %}} assumes the message was successfully sent. For other response codes, see {{% xref "/docs/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" %}}. You can override the behavior of {{% param "product.abbrev" %}} using the `response-action()` option.
+If the server returns a status code beginning with 2 (for example, 200), {{% param "product.abbrev" %}} assumes the message was successfully sent. For other response codes, see {{% xref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" %}}. You can override the behavior of {{% param "product.abbrev" %}} using the `response-action()` option.
 
 
 ## Example: Client certificate authentication with HTTPS
@@ -81,4 +81,4 @@ The following example defines an `http` destination.
 ```
 
 
-You can also use the http() destination to [forward log messages to Splunk using {{% param "product.abbrev" %}}]({{< relref "/docs/chapter-destinations/syslog-ng-with-splunk/_index.md" >}}).
+You can also use the http() destination to [forward log messages to Splunk using {{% param "product.abbrev" %}}]({{< relref "/chapter-destinations/syslog-ng-with-splunk/_index.md" >}}).

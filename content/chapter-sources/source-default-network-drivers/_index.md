@@ -33,21 +33,21 @@ If you do not configure the TLS keys to dislay to the clients, {{% param "produc
 
 For RFC3164-formatted messages (that is, messages received on the ports set in options `udp-port()` and `tcp-port()` which default to port 514), {{% param "product.abbrev" %}} attempts to use the following parsers. If a parser cannot parse the message, it passes the original message to the next parser.
 
-1.  Parse the incoming raw message as a [message from a Cisco device]({{< relref "/docs/chapter-parsers/cisco-parser/_index.md" >}}).
+1.  Parse the incoming raw message as a [message from a Cisco device]({{< relref "/chapter-parsers/cisco-parser/_index.md" >}}).
 
-2.  Parse the incoming message as an [RFC3164-formatted message]({{< relref "/docs/chapter-parsers/parser-syslog/_index.md" >}}).
+2.  Parse the incoming message as an [RFC3164-formatted message]({{< relref "/chapter-parsers/parser-syslog/_index.md" >}}).
     
-      - If the incoming message was sent by a {{% param "product.abbrev" %}} client using the [`syslog-ng()` destination]({{< relref "/docs/chapter-destinations/destination-syslog-ng/_index.md" >}}), parse its fields as a [AxoSyslog message]({{< relref "/docs/chapter-parsers/parser-ewmm/_index.md" >}}).
+      - If the incoming message was sent by a {{% param "product.abbrev" %}} client using the [`syslog-ng()` destination]({{< relref "/chapter-destinations/destination-syslog-ng/_index.md" >}}), parse its fields as a [AxoSyslog message]({{< relref "/chapter-parsers/parser-ewmm/_index.md" >}}).
         
         {{% include-headless "chunk/ewmm-intro.md" %}}
     
-      - Otherwise, apply the application adapters if the message was sent from an application that already has a specific parser in {{% param "product.abbrev" %}} (for example, Splunk Common Information Model (CIM), [iptables]({{< relref "/docs/chapter-parsers/parser-iptables/_index.md" >}}), or [sudo]({{< relref "/docs/chapter-parsers/parser-sudo/_index.md" >}})).
+      - Otherwise, apply the application adapters if the message was sent from an application that already has a specific parser in {{% param "product.abbrev" %}} (for example, Splunk Common Information Model (CIM), [iptables]({{< relref "/chapter-parsers/parser-iptables/_index.md" >}}), or [sudo]({{< relref "/chapter-parsers/parser-sudo/_index.md" >}})).
 
 
 
 ## Parsing RFC5424-formatted messages
 
-For RFC5424-formatted messages (that is, messages received on the ports set in options `rfc5424-tls-port()` and `rfc5424-tcp-port()`, which default to port 601 and 6514), {{% param "product.abbrev" %}} parses the message according to RFC5424, then attempts apply the application adapters if the message was sent from an application that already has a specific parser in {{% param "product.abbrev" %}} (for example, Splunk Common Information Model (CIM), [iptables]({{< relref "/docs/chapter-parsers/parser-iptables/_index.md" >}}), or [sudo]({{< relref "/docs/chapter-parsers/parser-sudo/_index.md" >}})).
+For RFC5424-formatted messages (that is, messages received on the ports set in options `rfc5424-tls-port()` and `rfc5424-tcp-port()`, which default to port 601 and 6514), {{% param "product.abbrev" %}} parses the message according to RFC5424, then attempts apply the application adapters if the message was sent from an application that already has a specific parser in {{% param "product.abbrev" %}} (for example, Splunk Common Information Model (CIM), [iptables]({{< relref "/chapter-parsers/parser-iptables/_index.md" >}}), or [sudo]({{< relref "/chapter-parsers/parser-sudo/_index.md" >}})).
 
 
 ## Example: Using the default-network-drivers() driver {#example-source-default-network-drivers}

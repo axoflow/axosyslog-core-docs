@@ -10,9 +10,9 @@ During the course of a message from the sending application to the final destina
 
   - When AxoSyslog is sending messages: If AxoSyslog cannot send messages to the destination and the output buffer gets full, AxoSyslog will drop messages.
     
-    Use flags (flow-control) to avoid this (for details, see {{% xref "/docs/chapter-routing-filters/concepts-flow-control/configuring-flow-control/_index.md" %}}). For more information about the error caused by the missing flow-control, see `Destination queue full` in {{% xref "/docs/chapter-troubleshooting-syslog-ng/error-messages/_index.md" %}}.
+    Use flags (flow-control) to avoid this (for details, see {{% xref "/chapter-routing-filters/concepts-flow-control/configuring-flow-control/_index.md" %}}). For more information about the error caused by the missing flow-control, see `Destination queue full` in {{% xref "/chapter-troubleshooting-syslog-ng/error-messages/_index.md" %}}.
     
-    The number of dropped messages is displayed per destination in the log message statistics of AxoSyslog (for details, see {{% xref "/docs/chapter-log-statistics/_index.md" %}}).
+    The number of dropped messages is displayed per destination in the log message statistics of AxoSyslog (for details, see {{% xref "/chapter-log-statistics/_index.md" %}}).
 
   - On the network: When transferring messages using the UDP protocol, messages may be lost without any notice or feedback — such is the nature of the UDP protocol. Always use the TCP protocol to transfer messages over the network whenever possible.
     
@@ -22,7 +22,7 @@ During the course of a message from the sending application to the final destina
 
   - When AxoSyslog is receiving messages:
     
-      - The receiving AxoSyslog (for example, the AxoSyslog server or relay) may drop messages if the fifo of the destination file gets full. The number of dropped messages is displayed per destination in the log message statistics of AxoSyslog (for details, see {{% xref "/docs/chapter-log-statistics/_index.md" %}}).
+      - The receiving AxoSyslog (for example, the AxoSyslog server or relay) may drop messages if the fifo of the destination file gets full. The number of dropped messages is displayed per destination in the log message statistics of AxoSyslog (for details, see {{% xref "/chapter-log-statistics/_index.md" %}}).
 
   - When the destination cannot handle large load: When AxoSyslog is sending messages at a high rate into an SQL database, a file, or another destination, it is possible that the destination cannot handle the load, and processes the messages slowly. As a result, the buffers of AxoSyslog fill up, AxoSyslog cannot process the incoming messages, and starts to loose messages. For details, see the previous entry. Use the `throttle` parameter to avoid this problem.
 

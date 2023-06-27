@@ -9,7 +9,7 @@
 | Accepted values: | name of the timezone, or the timezone offset |
 | Default:         | local timezone                               |
 
-*Description:* Specifies the time zone associated with the messages sent by `syslog-ng`, if not specified otherwise in the message or in the destination driver. For details, see {{% xref "/docs/chapter-concepts/timezone-handling/_index.md" %}}.
+*Description:* Specifies the time zone associated with the messages sent by `syslog-ng`, if not specified otherwise in the message or in the destination driver. For details, see {{% xref "/chapter-concepts/timezone-handling/_index.md" %}}.
 
 {{% include-headless "chunk/para-timezone-format.md" %}}
 

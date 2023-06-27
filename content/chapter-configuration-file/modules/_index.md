@@ -14,6 +14,6 @@ Each module contains one or more plugins that add some functionality to {{% para
 
   - To customize which modules {{% param "product.abbrev" %}} automatically loads when {{% param "product.abbrev" %}} starts, use the `--default-modules` command-line option of {{% param "product.abbrev" %}}.
 
-  - To request loading a module from the {{% param "product.abbrev" %}} configuration file, see {{% xref "/docs/chapter-configuration-file/modules/modules-loading/_index.md" %}}.
+  - To request loading a module from the {{% param "product.abbrev" %}} configuration file, see {{% xref "/chapter-configuration-file/modules/modules-loading/_index.md" %}}.
 
-For details on the command-line parameters of {{% param "product.abbrev" %}} mentioned in the previous list, see the {{% param "product.abbrev" %}} man page at {{% xref "/docs/app-man-syslog-ng/syslog-ng.8/_index.md" %}}.
+For details on the command-line parameters of {{% param "product.abbrev" %}} mentioned in the previous list, see the {{% param "product.abbrev" %}} man page at {{% xref "/app-man-syslog-ng/syslog-ng.8/_index.md" %}}.

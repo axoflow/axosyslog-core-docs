@@ -7,6 +7,6 @@
     
     Note that the names of the name-value pairs are case-sensitive. If you create a new name-value pair called `new-macro-name` in Python, and want to reference it in another part of the {{% param "product.abbrev" %}} configuration file (for example, in a template), use the `${new-macro-name}` macro.
 
-  - You cannot override hard macros (see {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/macros-hard-vs-soft/_index.md" %}}).
+  - You cannot override hard macros (see {{% xref "/chapter-manipulating-messages/customizing-message-format/macros-hard-vs-soft/_index.md" %}}).
 
   - To list all available keys (names of name-value pairs), use the `log_message.keys()` function.

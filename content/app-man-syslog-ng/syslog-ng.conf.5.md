@@ -166,7 +166,7 @@ options { use-dns(no); };
 ```
 
 
-The sources, destinations, and filters available in {{% param "product.ose" %}} are listed below. For details, see the [{{% param "product.ose" %}} documentation](https://axoflow.com/docs/).
+The sources, destinations, and filters available in {{% param "product.ose" %}} are listed below. For details, see the [{{% param "product.ose" %}} documentation](https://axoflow.com/).
 
 
 ## Table: Source drivers available in {{% param "product.ose" %}}
@@ -258,7 +258,7 @@ The sources, destinations, and filters available in {{% param "product.ose" %}} 
 
 ## See also
 
-{{% xref "/docs/app-man-syslog-ng/syslog-ng.8/_index.md" %}}
+{{% xref "/app-man-syslog-ng/syslog-ng.8/_index.md" %}}
 
 {{% alert title="Note" color="info" %}}
 

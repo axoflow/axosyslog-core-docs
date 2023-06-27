@@ -18,7 +18,7 @@ To replace your existing `tcp()`, `tcp6()`, `udp()`, `udp6()` sources with a `ne
 
 3.  If you use IPv6 (that is, the `udp6` or `tcp6` driver), add the `ip-protocol(6)` option.
 
-4.  If you did not specify the port used in the old driver, check {{% xref "/docs/chapter-sources/configuring-sources-network/reference-source-network/_index.md" %}} and verify that your clients send the messages to the default port of the transport protocol you use. Otherwise, set the appropriate port number in your source using the `port()` option.
+4.  If you did not specify the port used in the old driver, check {{% xref "/chapter-sources/configuring-sources-network/reference-source-network/_index.md" %}} and verify that your clients send the messages to the default port of the transport protocol you use. Otherwise, set the appropriate port number in your source using the `port()` option.
 
 5.  All other options are identical. Test your configuration with the `syslog-ng --syntax-only` command.
     

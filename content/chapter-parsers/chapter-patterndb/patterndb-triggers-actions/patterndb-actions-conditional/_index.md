@@ -10,7 +10,7 @@ To limit when a message is triggered, use the `condition` attribute and specify 
    <action condition="'${HOST}' == 'myhost'">
 ```
 
-You can use the same operators in the condition that can be used in filters. For details, see {{% xref "/docs/chapter-routing-filters/filters/filters-comparing/_index.md" %}}.
+You can use the same operators in the condition that can be used in filters. For details, see {{% xref "/chapter-routing-filters/filters/filters-comparing/_index.md" %}}.
 
 The following action can be used to log the length of an SSH session (the time difference between a login and a logout message in the context):
 

@@ -11,6 +11,6 @@ In most cases, `log-msg-size()` does not need to be set higher than 10 MiB.
 
 {{% /alert %}}
 
-For details on how encoding affects the size of the message, see [Message size and encoding]({{< relref "/docs/chapter-concepts/concepts-message-representation/_index.md" >}}).
+For details on how encoding affects the size of the message, see [Message size and encoding]({{< relref "/chapter-concepts/concepts-message-representation/_index.md" >}}).
 
-You can use human-readable units when setting configuration options. For details, see{{% xref "/docs/chapter-configuration-file/configuration-syntax-notes/_index.md" %}}.
+You can use human-readable units when setting configuration options. For details, see{{% xref "/chapter-configuration-file/configuration-syntax-notes/_index.md" %}}.

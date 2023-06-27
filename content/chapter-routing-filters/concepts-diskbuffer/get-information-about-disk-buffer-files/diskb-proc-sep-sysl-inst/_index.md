@@ -33,13 +33,13 @@ Before starting a separate {{% param "product.abbrev" %}} instance to process th
 
 To process the messages from an orphan disk-buffer file using a separate {{% param "product.abbrev" %}} instance,
 
-1.  Identify the orphan disk-buffer files and make a record of them. For more information, see {{% xref "/docs/chapter-routing-filters/concepts-diskbuffer/get-information-about-disk-buffer-files/_index.md" %}}.
+1.  Identify the orphan disk-buffer files and make a record of them. For more information, see {{% xref "/chapter-routing-filters/concepts-diskbuffer/get-information-about-disk-buffer-files/_index.md" %}}.
     
     It is important to know the type of the disk-buffer file. Disk-buffer file types can be normal (`.qf`) or reliable (`.rqf`).
     
     In the examples during this process, the `/opt/syslog-ng/var/syslog-ng-00005.rqf` orphan reliable disk-buffer file is used.
 
-2.  Determine the destination of the logs. The content of the disk-buffer may help you determine the logs' destination. For more information, see {{% xref "/docs/chapter-routing-filters/concepts-diskbuffer/get-information-about-disk-buffer-files/_index.md" %}}.
+2.  Determine the destination of the logs. The content of the disk-buffer may help you determine the logs' destination. For more information, see {{% xref "/chapter-routing-filters/concepts-diskbuffer/get-information-about-disk-buffer-files/_index.md" %}}.
     
     In the examples during this process, the destination `10.21.10.20` is used with the standard `network()` port `514`.
 
@@ -115,7 +115,7 @@ Add the `dir()` option and set the disk-buffer file's destination directory to t
         mv /opt/syslog-ng/var/syslog-ng-00005.rqf /tmp/qdisk/syslog-ng-00000.rqf
     ```
 
-9.  Start {{% param "product.abbrev" %}} using the command used in [Start the temporary {{% param "product.abbrev" %}} instance in the foreground]({{< relref "/docs/chapter-routing-filters/concepts-diskbuffer/get-information-about-disk-buffer-files/diskb-proc-sep-sysl-inst/_index.md#start-temp-instance" >}}) step.
+9.  Start {{% param "product.abbrev" %}} using the command used in [Start the temporary {{% param "product.abbrev" %}} instance in the foreground]({{< relref "/chapter-routing-filters/concepts-diskbuffer/get-information-about-disk-buffer-files/diskb-proc-sep-sysl-inst/_index.md#start-temp-instance" >}}) step.
     
     ```c
         syslog-ng -Fe -f /tmp/qdisk/qdisk.conf -R /tmp/qdisk/qdisk.persist -c /tmp/qdisk/qdisk.ctl
@@ -149,9 +149,9 @@ Add the `dir()` option and set the disk-buffer file's destination directory to t
 
 11. Press `CTRL+C` to stop {{% param "product.abbrev" %}}.
 
-12. Check the state of the orphan disk-buffer file. For more information, see {{% xref "/docs/chapter-routing-filters/concepts-diskbuffer/get-information-about-disk-buffer-files/_index.md" %}}.
+12. Check the state of the orphan disk-buffer file. For more information, see {{% xref "/chapter-routing-filters/concepts-diskbuffer/get-information-about-disk-buffer-files/_index.md" %}}.
 
-13. If you have more than one orphan disk-buffer file, repeat [the steps following the {{% param "product.abbrev" %}} stop]({{< relref "/docs/chapter-routing-filters/concepts-diskbuffer/get-information-about-disk-buffer-files/diskb-proc-sep-sysl-inst/_index.md#repeat-steps-from-here" >}}) (that is, the steps beginning from overwriting the empty disk-buffer file with the orphan disk-buffer file) for each orphan disk-buffer file.
+13. If you have more than one orphan disk-buffer file, repeat [the steps following the {{% param "product.abbrev" %}} stop]({{< relref "/chapter-routing-filters/concepts-diskbuffer/get-information-about-disk-buffer-files/diskb-proc-sep-sysl-inst/_index.md#repeat-steps-from-here" >}}) (that is, the steps beginning from overwriting the empty disk-buffer file with the orphan disk-buffer file) for each orphan disk-buffer file.
 
 14. Remove the temporary directory.
     

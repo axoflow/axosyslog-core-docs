@@ -12,7 +12,7 @@ This driver has only one required option, the filename of the mbox file. To use 
    @include "scl.conf"
 ```
 
-The `mbox()` driver is actually a reusable configuration snippet configured to read log messages using the `file()` driver. For details on using or writing such configuration snippets, see {{% xref "/docs/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of the configuration snippet on [GitHub](https://github.com/syslog-ng/syslog-ng/blob/master/scl/mbox/mbox.conf).
+The `mbox()` driver is actually a reusable configuration snippet configured to read log messages using the `file()` driver. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of the configuration snippet on [GitHub](https://github.com/syslog-ng/syslog-ng/blob/master/scl/mbox/mbox.conf).
 
 
 ## Example: Using the mbox() driver {#example-source-mbox}

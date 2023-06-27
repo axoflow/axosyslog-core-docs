@@ -12,4 +12,4 @@ The following macros in {{% param "product.abbrev" %}} are hard macros and canno
 
 The following macros can be modified:`FULLHOST_FROM`, `FULLHOST`, `HOST_FROM`, `HOST`, `LEGACY_MSGHDR`, `MESSAGE`, `MSG`,`MSGID`, `MSGONLY`, `PID`, `PROGRAM`, `SOURCE`. Custom values created using rewrite rules or parsers can be modified as well, just like stored matches of regular expressions ($0 ... $255).
 
-Note that you can modify the timezone of the message, and change the timezone-related macros that way. For details, see {{% xref "/docs/chapter-manipulating-messages/modifying-messages/rewrite-timezone/_index.md" %}}.
+Note that you can modify the timezone of the message, and change the timezone-related macros that way. For details, see {{% xref "/chapter-manipulating-messages/modifying-messages/rewrite-timezone/_index.md" %}}.

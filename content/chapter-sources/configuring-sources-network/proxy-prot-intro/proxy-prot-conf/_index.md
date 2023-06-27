@@ -6,14 +6,14 @@ weight:  300
 
 This section provides information about enabling Proxy Protocol support in your `network()` source options, and an example configuration and output to illustrate how the Proxy Protocol method works in {{% param "product.name" %}}.
 
-For more information about the working mechanism of the Proxy Protocol, see {{% xref "/docs/chapter-sources/configuring-sources-network/proxy-prot-intro/proxy-prot-w-mech/_index.md" %}}.
+For more information about the working mechanism of the Proxy Protocol, see {{% xref "/chapter-sources/configuring-sources-network/proxy-prot-intro/proxy-prot-w-mech/_index.md" %}}.
 
 
 ## Enabling Proxy Protocol support for your network() source options
 
 Unless you enable Proxy Protocol support for your `network()` source, {{% param "product.abbrev" %}} identifies every connection that is connected to the load balancers identically by default, regardless of the source IP or the source protocol.
 
-To enable Proxy Protocol for your `network()` source, set [the `transport()` parameter of your `network()` source]({{< relref "/docs/chapter-sources/configuring-sources-network/reference-source-network/_index.md" >}}) to `proxied-tcp` or `proxied-tls-passthrough`, depending on your preference and configuration.
+To enable Proxy Protocol for your `network()` source, set [the `transport()` parameter of your `network()` source]({{< relref "/chapter-sources/configuring-sources-network/reference-source-network/_index.md" >}}) to `proxied-tcp` or `proxied-tls-passthrough`, depending on your preference and configuration.
 
 `proxied-tls` can be used in complex MITM (man in the middle) configurations, where the proxy header is sent encrypted within the same TLS session as the proxied messages.
 
@@ -51,7 +51,7 @@ The following code sample illustrates how you can use the Proxy Protocol in your
     };
 ```
 
-With this configuration, the Proxy Protocol method will perform injecting the information of the original connection into the forwarded TCP session, based on the working mechanism described in {{% xref "/docs/chapter-sources/configuring-sources-network/proxy-prot-intro/proxy-prot-w-mech/_index.md" %}}.
+With this configuration, the Proxy Protocol method will perform injecting the information of the original connection into the forwarded TCP session, based on the working mechanism described in {{% xref "/chapter-sources/configuring-sources-network/proxy-prot-intro/proxy-prot-w-mech/_index.md" %}}.
 
 The following example illustrates how the parsed macros will appear in the output.
 
@@ -64,6 +64,6 @@ With the `PROXY TCP4 192.168.1.1 10.10.0.1 1111 2222` input header, the output l
    {"SOURCE":"s_tcp_pp","PROXIED_SRCPORT":"1111","PROXIED_SRCIP":"192.168.1.1","PROXIED_IP_VERSION":"4","PROXIED_DSTPORT":"2222","PROXIED_DSTIP":"10.10.0.1","PROGRAM":"TestMsg","MESSAGE":"","LEGACY_MSGHDR":"TestMsg","HOST_FROM":"localhost","HOST":"localhost"}
 ```
 
-Note that the [macros]({{< relref "/docs/chapter-sources/configuring-sources-network/proxy-prot-intro/proxy-prot-w-mech/_index.md#proxy-prot-adds-macros" >}}) that {{% param "product.abbrev" %}} adds to the message appear in the output.
+Note that the [macros]({{< relref "/chapter-sources/configuring-sources-network/proxy-prot-intro/proxy-prot-w-mech/_index.md#proxy-prot-adds-macros" >}}) that {{% param "product.abbrev" %}} adds to the message appear in the output.
 
 

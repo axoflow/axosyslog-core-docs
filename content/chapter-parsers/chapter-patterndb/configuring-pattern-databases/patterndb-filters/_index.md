@@ -10,7 +10,7 @@ The results of message classification and parsing can be used in custom filters 
 
   - The `.classifier.rule_id` macro contains the identifier of the message pattern that matched the message.
 
-  - The `.classifier.context_id` macro contains the identifier of the context for messages that were correlated. For details on correlating messages, see {{% xref "/docs/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-correlation/_index.md" %}}.
+  - The `.classifier.context_id` macro contains the identifier of the context for messages that were correlated. For details on correlating messages, see {{% xref "/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-correlation/_index.md" %}}.
 
 
 ## Example: Using classification results for filtering messages

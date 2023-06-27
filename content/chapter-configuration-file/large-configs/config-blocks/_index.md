@@ -80,7 +80,7 @@ The following example defines a source, a destination, and a log path to connect
 
 Since the block is inserted into the {{% param "product.abbrev" %}} configuration when {{% param "product.abbrev" %}} is started, the block can be generated dynamically using an external script if needed. This is useful when you are running {{% param "product.abbrev" %}} on different hosts and you want to keep the main configuration identical.
 
-If you want to reuse more than a single configuration object, for example, a logpath and the definitions of its sources and destinations, use the include feature to reuse the entire snippet. For details, see {{% xref "/docs/chapter-configuration-file/large-configs/including-config-files/_index.md" %}}.
+If you want to reuse more than a single configuration object, for example, a logpath and the definitions of its sources and destinations, use the include feature to reuse the entire snippet. For details, see {{% xref "/chapter-configuration-file/large-configs/including-config-files/_index.md" %}}.
 
 {{% /alert %}}
 
@@ -169,7 +169,7 @@ The following definition extends the logfile block from the previous example, an
 
 ## Example: Using arguments in blocks
 
-The following example is the code of the [`pacct()` source driver]({{< relref "/docs/chapter-sources/source-pacct/_index.md" >}}), which is actually a block that can optionally receive two arguments.
+The following example is the code of the [`pacct()` source driver]({{< relref "/chapter-sources/source-pacct/_index.md" >}}), which is actually a block that can optionally receive two arguments.
 
 ```c
    block source pacct(file("/var/log/account/pacct") follow-freq(1) ...) {

@@ -12,7 +12,7 @@ Starting with version 3.2, {{% param "product.abbrev" %}} can automatically coll
 
 {{% /alert %}}
 
-The <code>system()</code> driver is also used in the default configuration file of {{% param "product.abbrev" %}}. For details on the default configuration file, see [Example: The default configuration file of [%=General.OSE%]]({{< relref "/docs/chapter-quickstart/configure-clients/_index.md" >}}). Starting with {{% param "product.abbrev" %}} version 3.6, you can use the <code>system-expand</code> command-line utility (which is a shell script, located in the <code>modules/system-source/</code> directory) to display the configuration that the <code>system()</code> source will use.
+The <code>system()</code> driver is also used in the default configuration file of {{% param "product.abbrev" %}}. For details on the default configuration file, see [Example: The default configuration file of [%=General.OSE%]]({{< relref "/chapter-quickstart/configure-clients/_index.md" >}}). Starting with {{% param "product.abbrev" %}} version 3.6, you can use the <code>system-expand</code> command-line utility (which is a shell script, located in the <code>modules/system-source/</code> directory) to display the configuration that the <code>system()</code> source will use.
 
 {{% alert title="Warning" color="warning" %}}
 

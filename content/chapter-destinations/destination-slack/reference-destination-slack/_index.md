@@ -14,7 +14,7 @@ The `slack` destination of {{% param "product.abbrev" %}} can directly post log 
 | Type:    | string or template                                                    |
 | Default: | 'host: ${HOST} | program: ${PROGRAM}(${PID}) | severity: ${PRIORITY}' |
 
-*Description:* The sender of the message as displayed in Slack. For details, see the [author_name option in the Slack documentation](https://api.slack.com/docs/message-attachments).
+*Description:* The sender of the message as displayed in Slack. For details, see the [author_name option in the Slack documentation](https://api.slack.com/message-attachments).
 
 
 
@@ -25,7 +25,7 @@ The `slack` destination of {{% param "product.abbrev" %}} can directly post log 
 | Type:    | string or URL |
 | Default: | None          |
 
-*Description:* A hyperlink for the sender of the message as displayed in Slack. For details, see the [author_link option in the Slack documentation](https://api.slack.com/docs/message-attachments).
+*Description:* A hyperlink for the sender of the message as displayed in Slack. For details, see the [author_link option in the Slack documentation](https://api.slack.com/message-attachments).
 
 
 
@@ -36,25 +36,25 @@ The `slack` destination of {{% param "product.abbrev" %}} can directly post log 
 | Type:    | URL  |
 | Default: | None |
 
-*Description:* A hyperlink for icon of the author to be displayed in Slack. For details, see the [author_icon option in the Slack documentation](https://api.slack.com/docs/message-attachments).
+*Description:* A hyperlink for icon of the author to be displayed in Slack. For details, see the [author_icon option in the Slack documentation](https://api.slack.com/message-attachments).
 
 
 
 {{% include-headless "chunk/option-destination-batch-bytes.md" %}}
 
-For details on how this option influences batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/docs/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
+For details on how this option influences batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
 
 
 
 {{% include-headless "chunk/option-destination-batch-lines.md" %}}
 
-For details on how this option influences batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/docs/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
+For details on how this option influences batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
 
 
 
 {{% include-headless "chunk/option-destination-batch-timeout.md" %}}
 
-For details on how this option influences batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/docs/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
+For details on how this option influences batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
 
 
 
@@ -116,7 +116,7 @@ For details on how this option influences batch mode, see [http: Posting message
 | Type:    | string or template                                                             |
 | Default: | '${MSG} - host: ${HOST} | program: ${PROGRAM}(${PID}) | severity: ${PRIORITY}' |
 
-*Description:* The plain-text summary of the Slack attachment. For details, see the [fallback option in the Slack documentation](https://api.slack.com/docs/message-attachments).
+*Description:* The plain-text summary of the Slack attachment. For details, see the [fallback option in the Slack documentation](https://api.slack.com/message-attachments).
 
 
 
@@ -127,7 +127,7 @@ For details on how this option influences batch mode, see [http: Posting message
 | Type:    | URL                |
 | Default: | string or template |
 
-*Description:* The footer of the message. For details, see the [footer option in the Slack documentation](https://api.slack.com/docs/message-attachments).
+*Description:* The footer of the message. For details, see the [footer option in the Slack documentation](https://api.slack.com/message-attachments).
 
 
 
@@ -138,7 +138,7 @@ For details on how this option influences batch mode, see [http: Posting message
 | Type:    | URL  |
 | Default: | None |
 
-*Description:* A hyperlink for an image. For details, see the [footer_icon option in the Slack documentation](https://api.slack.com/docs/message-attachments).
+*Description:* A hyperlink for an image. For details, see the [footer_icon option in the Slack documentation](https://api.slack.com/message-attachments).
 
 
 {{< include-headless "chunk/option-destination-hook.md" >}}
@@ -164,7 +164,7 @@ For details, see the [Slack documentation about Incoming Webhooks](https://api.s
 | Type:    | URL  |
 | Default: | None |
 
-*Description:* A hyperlink for an image. For details, see the [image_url option in the Slack documentation](https://api.slack.com/docs/message-attachments).
+*Description:* A hyperlink for an image. For details, see the [image_url option in the Slack documentation](https://api.slack.com/message-attachments).
 
 
 {{% include-headless "chunk/option-destination-log-fifo-size.md" %}}
@@ -179,7 +179,7 @@ For details, see the [Slack documentation about Incoming Webhooks](https://api.s
 | Type:    | string or template |
 | Default: | None               |
 
-*Description:* The text that appears above the attachment block. For details, see the [pretext option in the Slack documentation](https://api.slack.com/docs/message-attachments).
+*Description:* The text that appears above the attachment block. For details, see the [pretext option in the Slack documentation](https://api.slack.com/message-attachments).
 
 
 
@@ -217,7 +217,7 @@ To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% param 
 | Type:    | URL  |
 | Default: | None |
 
-*Description:* A hyperlink for a thumbnail image. For details, see the [thumb_url option in the Slack documentation](https://api.slack.com/docs/message-attachments).
+*Description:* A hyperlink for a thumbnail image. For details, see the [thumb_url option in the Slack documentation](https://api.slack.com/message-attachments).
 
 
 {{% include-headless "chunk/option-destination-http-timeout.md" %}}
@@ -230,7 +230,7 @@ To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% param 
 | Type:    | string or template |
 | Default: | None               |
 
-*Description:* The message title in Slack. For details, see the [title option in the Slack documentation](https://api.slack.com/docs/message-attachments).
+*Description:* The message title in Slack. For details, see the [title option in the Slack documentation](https://api.slack.com/message-attachments).
 
 
 
@@ -241,7 +241,7 @@ To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% param 
 | Type:    | URL  |
 | Default: | None |
 
-*Description:* A hyperlink for the message title in Slack. For details, see the [title_link option in the Slack documentation](https://api.slack.com/docs/message-attachments).
+*Description:* A hyperlink for the message title in Slack. For details, see the [title_link option in the Slack documentation](https://api.slack.com/message-attachments).
 
 
 {{% include-headless "chunk/option-destination-http-user-agent.md" %}}

@@ -89,7 +89,7 @@ When using the `make` command, consider the following:
     ```
     
     {{% alert title="Note" color="info" %}}
-You can also use *--disable options*, to explicitly disable a feature and override autodetection. For example, to disable the TCP-wrapper support, use the *--disable-tcp-wrapper* option. For the list of available compiling options, see {{% xref "/docs/chapter-install/syslog-ng-compile-options/_index.md" %}}.
+You can also use *--disable options*, to explicitly disable a feature and override autodetection. For example, to disable the TCP-wrapper support, use the *--disable-tcp-wrapper* option. For the list of available compiling options, see {{% xref "/chapter-install/syslog-ng-compile-options/_index.md" %}}.
     {{% /alert %}}
     
     {{% alert title="Warning" color="warning" %}}

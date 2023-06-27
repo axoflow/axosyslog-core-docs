@@ -8,7 +8,7 @@ Version 3.7 of {{% param "product.abbrev" %}} can directly post log messages to 
 
   - Only HTTP connections are supported, HTTPS is not.
 
-  - This destination requires Java. For an `http` destination that does not use Java, see {{% xref "/docs/chapter-destinations/configuring-destinations-http-nonjava/_index.md" %}}.
+  - This destination requires Java. For an `http` destination that does not use Java, see {{% xref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" %}}.
 
 
 ## Declaration:

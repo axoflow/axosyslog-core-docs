@@ -8,7 +8,7 @@
 |--------------|-----------|
 | Default:     | ```scope("selected-macros" "nv-pairs")``` |
 
-*Description:* The `value-pairs()` option creates structured name-value pairs from the data and metadata of the log message. For details on using `value-pairs()`, see {{% xref "/docs/chapter-concepts/concepts-value-pairs/_index.md" %}}.
+*Description:* The `value-pairs()` option creates structured name-value pairs from the data and metadata of the log message. For details on using `value-pairs()`, see {{% xref "/chapter-concepts/concepts-value-pairs/_index.md" %}}.
 
 {{% alert title="Note" color="info" %}}
 

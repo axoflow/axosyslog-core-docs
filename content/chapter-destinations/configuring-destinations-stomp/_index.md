@@ -8,7 +8,7 @@ The `stomp()` driver sends messages to servers (message brokers) using the [Simp
 
 The name-value pairs selected with the `value-pairs()` option will be sent as STOMP headers, while the body of the STOMP message is empty by default (but you can add custom content using the `body()` option). Publishing the name-value pairs as headers makes it possible to use the Headers exchange-type and subscribe only to interesting log streams.
 
-For the list of available parameters, see {{% xref "/docs/chapter-destinations/configuring-destinations-stomp/reference-destination-stomp/_index.md" %}}.
+For the list of available parameters, see {{% xref "/chapter-destinations/configuring-destinations-stomp/reference-destination-stomp/_index.md" %}}.
 
 
 ## Declaration:

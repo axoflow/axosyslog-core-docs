@@ -19,7 +19,7 @@ This section describes orphan disk-buffer files used in {{% param "product.name"
 
 To discover orphan disk-buffer files, get the list of disk-buffer files from the persist file, then compare the list with the contents of the disk-buffer files' saving directory.
 
-For more information about how you can get the list of disk-buffer files from the persist file, see {{% xref "/docs/chapter-routing-filters/concepts-diskbuffer/get-information-about-disk-buffer-files/get-information-about-disk-buffer-files-getting-list/_index.md" %}}).
+For more information about how you can get the list of disk-buffer files from the persist file, see {{% xref "/chapter-routing-filters/concepts-diskbuffer/get-information-about-disk-buffer-files/get-information-about-disk-buffer-files-getting-list/_index.md" %}}).
 
 
 
@@ -45,4 +45,4 @@ Disk-buffer files' saving directory content:
 
 The disk-buffer files `syslog-ng-00000.qf` and `syslog-ng-00000.rqf` don't exist in the persist file. These two files are the orphan disk-buffer files.
 
-For more information about orphan disk-buffer files and how to process the messages in orphan disk-buffer files using a separate {{% param "product.abbrev" %}} instance, see {{% xref "/docs/chapter-routing-filters/concepts-diskbuffer/get-information-about-disk-buffer-files/diskb-proc-sep-sysl-inst/_index.md" %}}.
+For more information about orphan disk-buffer files and how to process the messages in orphan disk-buffer files using a separate {{% param "product.abbrev" %}} instance, see {{% xref "/chapter-routing-filters/concepts-diskbuffer/get-information-about-disk-buffer-files/diskb-proc-sep-sysl-inst/_index.md" %}}.

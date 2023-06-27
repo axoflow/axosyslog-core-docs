@@ -8,15 +8,15 @@ weight:  1900
 
 The {{% param "product.abbrev" %}} application allows you to select and construct name-value pairs from any information already available about the log message, or extracted from the message itself. You can directly use this structured information, for example, in the following places:
 
-  - [`amqp()`]({{< relref "/docs/chapter-destinations/configuring-destinations-amqp/_index.md" >}}) destination
+  - [`amqp()`]({{< relref "/chapter-destinations/configuring-destinations-amqp/_index.md" >}}) destination
 
-  - [`format-welf()`]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}) template function
+  - [`format-welf()`]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}) template function
 
-  - [`mongodb()`]({{< relref "/docs/chapter-destinations/configuring-destinations-mongodb/_index.md" >}}) destination
+  - [`mongodb()`]({{< relref "/chapter-destinations/configuring-destinations-mongodb/_index.md" >}}) destination
 
-  - [`stomp()`]({{< relref "/docs/chapter-destinations/configuring-destinations-stomp/_index.md" >}}) destination
+  - [`stomp()`]({{< relref "/chapter-destinations/configuring-destinations-stomp/_index.md" >}}) destination
 
-  - or in other destinations using the [format-json()]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}) template function.
+  - or in other destinations using the [format-json()]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}) template function.
 
 When using `value-pairs`, there are three ways to specify which information (that is, macros or other name-value pairs) to include in the selection.
 

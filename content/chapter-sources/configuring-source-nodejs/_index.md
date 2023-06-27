@@ -12,7 +12,7 @@ To use the `nodejs()` driver, the `scl.conf` file must be included in your {{% p
    @include "scl.conf"
 ```
 
-The `nodejs()` driver is actually a reusable configuration snippet configured to receive log messages using the `network()` driver, and process its JSON contents. For details on using or writing such configuration snippets, see {{% xref "/docs/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of the nodejs configuration snippet on [GitHub](https://github.com/syslog-ng/syslog-ng/blob/master/scl/nodejs/plugin.conf).
+The `nodejs()` driver is actually a reusable configuration snippet configured to receive log messages using the `network()` driver, and process its JSON contents. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of the nodejs configuration snippet on [GitHub](https://github.com/syslog-ng/syslog-ng/blob/master/scl/nodejs/plugin.conf).
 
 
 ## Example: Using the nodejs() driver {#example-source-nodejs}
@@ -39,6 +39,6 @@ The following example listens only on IP address `192.168.1.1`, port `9999`.
 
 {{% alert title="Note" color="info" %}}
 
-For details on the parameters of the `nodejs()` driver, see {{% xref "/docs/chapter-sources/configuring-source-nodejs/reference-source-nodejs/_index.md" %}}.
+For details on the parameters of the `nodejs()` driver, see {{% xref "/chapter-sources/configuring-source-nodejs/reference-source-nodejs/_index.md" %}}.
 
 {{% /alert %}}

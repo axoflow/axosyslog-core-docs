@@ -8,9 +8,9 @@ The destination is aimed at a fully controlled local, or near-local, trusted SMT
 
 The `smtp()` driver sends email messages triggered by log messages. The `smtp()` driver uses SMTP, without needing external applications. You can customize the main fields of the email, add extra headers, send the email to multiple recipients, and so on.
 
-The `subject()`, `body()`, and `header()` fields may include macros which get expanded in the email. For more information on available macros see {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" %}}.
+The `subject()`, `body()`, and `header()` fields may include macros which get expanded in the email. For more information on available macros see {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" %}}.
 
-The `smtp()` driver has the following required parameters: `host()`, `port()`, `from()`, `to()`, `subject()`, and `body()`. For the list of available optional parameters, see {{% xref "/docs/chapter-destinations/configuring-destinations-smtp/reference-destination-smtp/_index.md" %}}.
+The `smtp()` driver has the following required parameters: `host()`, `port()`, `from()`, `to()`, `subject()`, and `body()`. For the list of available optional parameters, see {{% xref "/chapter-destinations/configuring-destinations-smtp/reference-destination-smtp/_index.md" %}}.
 
 {{% alert title="Note" color="info" %}}
 

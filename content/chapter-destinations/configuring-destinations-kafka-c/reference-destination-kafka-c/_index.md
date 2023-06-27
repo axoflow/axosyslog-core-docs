@@ -57,7 +57,7 @@ For more information about the default values of the `transaction.timeout.ms` Ka
 
 {{% include-headless "chunk/option-destination-java-class-path.md" %}}
 
-For the `kafka` destination, include the path to the directory where you copied the required libraries (see {{% xref "/docs/chapter-destinations/configuring-destinations-kafka/destination-kafka-prerequisites/_index.md" %}}), for example, `client-lib-dir("/opt/syslog-ng/lib/syslog-ng/java-modules/KafkaDestination.jar:/usr/share/kafka/lib/\*.jar")`.
+For the `kafka` destination, include the path to the directory where you copied the required libraries (see {{% xref "/chapter-destinations/configuring-destinations-kafka/destination-kafka-prerequisites/_index.md" %}}), for example, `client-lib-dir("/opt/syslog-ng/lib/syslog-ng/java-modules/KafkaDestination.jar:/usr/share/kafka/lib/\*.jar")`.
 
 {{% alert title="Note" color="info" %}}
 
@@ -189,7 +189,7 @@ compression.type=snappy`.
 
 *Description:* The message as published to Apache Kafka. You can use templates and template functions (for example, `format-json()`) to format the message, for example, `template("$(format-json --scope rfc5424 --exclude DATE --key ISODATE)")`.
 
-For details on formatting messages in JSON format, see [format-json]({{< relref "/docs/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}).
+For details on formatting messages in JSON format, see [format-json]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}).
 
 
 {{% include-headless "chunk/option-destination-throttle.md" %}}

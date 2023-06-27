@@ -9,7 +9,7 @@
 | Type:    | name of the timezone, or the timezone offset |
 | Default: | unspecified                                  |
 
-*Description:* Convert timestamps to the timezone specified by this option. If this option is not set, then the original timezone information in the message is used. Converting the timezone changes the values of all date-related macros derived from the timestamp, for example, `HOUR`. For the complete list of such macros, see {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/date-macros/_index.md" %}}.
+*Description:* Convert timestamps to the timezone specified by this option. If this option is not set, then the original timezone information in the message is used. Converting the timezone changes the values of all date-related macros derived from the timestamp, for example, `HOUR`. For the complete list of such macros, see {{% xref "/chapter-manipulating-messages/customizing-message-format/date-macros/_index.md" %}}.
 
 {{% include-headless "chunk/para-timezone-format.md" %}}
 

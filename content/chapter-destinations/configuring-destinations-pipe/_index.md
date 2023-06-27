@@ -6,7 +6,7 @@ weight:  3900
 
 The `pipe()` driver sends messages to a named pipe like `/dev/xconsole`.
 
-The pipe driver has a single required parameter, specifying the filename of the pipe to open. The filename can include macros. For the list of available optional parameters, see {{% xref "/docs/chapter-destinations/configuring-destinations-pipe/reference-destination-pipe/_index.md" %}}.
+The pipe driver has a single required parameter, specifying the filename of the pipe to open. The filename can include macros. For the list of available optional parameters, see {{% xref "/chapter-destinations/configuring-destinations-pipe/reference-destination-pipe/_index.md" %}}.
 
 
 ## Declaration:

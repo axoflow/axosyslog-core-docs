@@ -6,7 +6,7 @@ weight:  2500
 
 The pipe driver opens a named pipe with the specified name and listens for messages. It is used as the native message delivery protocol on HP-UX.
 
-The pipe driver has a single required parameter, specifying the filename of the pipe to open. For the list of available optional parameters, see {{% xref "/docs/chapter-sources/source-pipe/reference-source-pipe/_index.md" %}}.
+The pipe driver has a single required parameter, specifying the filename of the pipe to open. For the list of available optional parameters, see {{% xref "/chapter-sources/source-pipe/reference-source-pipe/_index.md" %}}.
 
 
 ## Declaration:

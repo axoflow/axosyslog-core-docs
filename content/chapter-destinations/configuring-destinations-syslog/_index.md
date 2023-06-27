@@ -4,9 +4,9 @@ weight:  6500
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The `syslog()` driver sends messages to a remote host (for example, a syslog-ng server or relay) on the local intranet or internet using the new standard syslog protocol developed by IETF (for details about the new protocol, see {{% xref "/docs/chapter-concepts/concepts-message-structure/concepts-message-ietfsyslog/_index.md" %}}). The protocol supports sending messages using the UDP, TCP, or the encrypted TLS networking protocols.
+The `syslog()` driver sends messages to a remote host (for example, a syslog-ng server or relay) on the local intranet or internet using the new standard syslog protocol developed by IETF (for details about the new protocol, see {{% xref "/chapter-concepts/concepts-message-structure/concepts-message-ietfsyslog/_index.md" %}}). The protocol supports sending messages using the UDP, TCP, or the encrypted TLS networking protocols.
 
-The required arguments of the driver are the address of the destination host (where messages should be sent). The transport method (networking protocol) is optional, syslog-ng uses the TCP protocol by default. For the list of available optional parameters, see {{% xref "/docs/chapter-destinations/configuring-destinations-syslog/reference-destination-syslog-chapter/_index.md" %}}.
+The required arguments of the driver are the address of the destination host (where messages should be sent). The transport method (networking protocol) is optional, syslog-ng uses the TCP protocol by default. For the list of available optional parameters, see {{% xref "/chapter-destinations/configuring-destinations-syslog/reference-destination-syslog-chapter/_index.md" %}}.
 
 
 ## Declaration:
@@ -43,7 +43,7 @@ If name resolution is configured, the hostname of the target server can be used 
    destination d_tcp { syslog("target_host" transport("tcp") port(1999) localport(999)); };
 ```
 
-Send the log messages using TLS encryption and use mutual authentication. For details on the encryption and authentication options, see {{% xref "/docs/chapter-encrypted-transport-tls/tlsoptions/_index.md" %}}.
+Send the log messages using TLS encryption and use mutual authentication. For details on the encryption and authentication options, see {{% xref "/chapter-encrypted-transport-tls/tlsoptions/_index.md" %}}.
 
 ```c
    destination d_syslog_tls {

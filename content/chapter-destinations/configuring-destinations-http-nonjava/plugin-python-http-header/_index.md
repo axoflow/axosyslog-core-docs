@@ -6,7 +6,7 @@ weight:  700
 
 This section describes the {{% param "product.name" %}} application's Python HTTP header plugin.
 
-For more information about modules in {{% param "product.abbrev" %}}, see {{% xref "/docs/chapter-configuration-file/modules/_index.md" %}}.
+For more information about modules in {{% param "product.abbrev" %}}, see {{% xref "/chapter-configuration-file/modules/_index.md" %}}.
 
 
 ## The Python HTTP header plugin

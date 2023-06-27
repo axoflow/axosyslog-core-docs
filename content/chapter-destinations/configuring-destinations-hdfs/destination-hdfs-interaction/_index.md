@@ -11,7 +11,7 @@ The {{% param "product.abbrev" %}} application sends the log messages to the off
 2.  {{% param "product.abbrev" %}} checks if the path to the logfile exists. If a directory does not exist {{% param "product.abbrev" %}} automatically creates it. {{% param "product.abbrev" %}} creates the destination file (using the filename set in the {{% param "product.abbrev" %}} configuration file, with a UUID suffix to make it unique, for example, `/usr/hadoop/logfile.txt.3dc1c59e-ab3b-4b71-9e81-93db477ed9d9`) and writes the message into the file. After the file is created, {{% param "product.abbrev" %}} will write all incoming messages into the `hdfs` destination.
     
     {{% alert title="Note" color="info" %}}
-When the [`hdfs-append-enabled()`]({{< relref "/docs/chapter-destinations/configuring-destinations-hdfs/reference-destination-hdfs/_index.md" >}}) option is set to `true`, {{% param "product.abbrev" %}} will not assign a new UUID suffix to an existing file, because it is then possible to open a closed file and append data to that.
+When the [`hdfs-append-enabled()`]({{< relref "/chapter-destinations/configuring-destinations-hdfs/reference-destination-hdfs/_index.md" >}}) option is set to `true`, {{% param "product.abbrev" %}} will not assign a new UUID suffix to an existing file, because it is then possible to open a closed file and append data to that.
     {{% /alert %}} {{% alert title="Note" color="info" %}}
 {{% include-headless "chunk/para-hdfs-flush.md" %}}
     {{% /alert %}}

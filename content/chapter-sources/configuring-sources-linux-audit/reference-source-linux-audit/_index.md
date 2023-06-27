@@ -33,5 +33,5 @@ The `file()` driver has the following options:
 
   - If you forward the parsed messages using the IETF-syslog protocol, you can insert all the parsed data into the SDATA part of the message using the `prefix(.SDATA.my-parsed-data.)` option.
 
-Names starting with a dot (for example, `.example`) are reserved for use by {{% param "product.abbrev" %}}. Note that if you use an empty prefix (`prefix("")`) or one starting with a dot, {{% param "product.abbrev" %}} might replace the original value of an existing macro (note that only soft macros can be overwritten, see {{% xref "/docs/chapter-manipulating-messages/customizing-message-format/macros-hard-vs-soft/_index.md" %}} for details). To avoid such problems, use a prefix when naming the parsed values, for example, `prefix(my-parsed-data.)`
+Names starting with a dot (for example, `.example`) are reserved for use by {{% param "product.abbrev" %}}. Note that if you use an empty prefix (`prefix("")`) or one starting with a dot, {{% param "product.abbrev" %}} might replace the original value of an existing macro (note that only soft macros can be overwritten, see {{% xref "/chapter-manipulating-messages/customizing-message-format/macros-hard-vs-soft/_index.md" %}} for details). To avoid such problems, use a prefix when naming the parsed values, for example, `prefix(my-parsed-data.)`
 

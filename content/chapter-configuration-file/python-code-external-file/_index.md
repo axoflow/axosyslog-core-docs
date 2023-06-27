@@ -4,7 +4,7 @@ weight:  1700
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-You can extend and customize {{% param "product.abbrev" %}} easily by writing [destinations]({{< relref "/docs/chapter-destinations/python-destination/_index.md" >}}), [parsers]({{< relref "/docs/chapter-parsers/python-parser/_index.md" >}}), [template functions]({{< relref "/docs/chapter-destinations/python-destination/_index.md#template-function-python" >}}), and [sources]({{< relref "/docs/chapter-sources/python-source/_index.md" >}}) in Python.
+You can extend and customize {{% param "product.abbrev" %}} easily by writing [destinations]({{< relref "/chapter-destinations/python-destination/_index.md" >}}), [parsers]({{< relref "/chapter-parsers/python-parser/_index.md" >}}), [template functions]({{< relref "/chapter-destinations/python-destination/_index.md#template-function-python" >}}), and [sources]({{< relref "/chapter-sources/python-source/_index.md" >}}) in Python.
 
 Instead of writing Python code into your {{% param "product.abbrev" %}} configuration file, you can store the Python code for your Python object in an external file. That way, it is easier to write, maintain, and debug the code. You can store the Python code in any directory in your system, but make sure to include it in your Python path.
 

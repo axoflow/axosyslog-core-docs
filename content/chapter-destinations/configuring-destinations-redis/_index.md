@@ -6,7 +6,7 @@ weight:  4700
 
 The `redis()` driver sends messages as name-value pairs to a [Redis](https://redis.io/) key-value store.
 
-For the list of available parameters, see {{% xref "/docs/chapter-destinations/configuring-destinations-redis/reference-destination-redis/_index.md" %}}.
+For the list of available parameters, see {{% xref "/chapter-destinations/configuring-destinations-redis/reference-destination-redis/_index.md" %}}.
 
 
 ## Declaration:

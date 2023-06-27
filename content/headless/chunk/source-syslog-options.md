@@ -8,7 +8,7 @@
 
 {{< include-headless "chunk/option-source-flags.md" >}}
 
-- *threaded*: The `threaded` flag enables multithreading for the source. For details on multithreading, see {{% xref "/docs/chapter-multithreading/_index.md" %}}.
+- *threaded*: The `threaded` flag enables multithreading for the source. For details on multithreading, see {{% xref "/chapter-multithreading/_index.md" %}}.
     
     {{% alert title="Note" color="info" %}}
 The `syslog` source uses multiple threads only if the source uses the `tls` or `tcp` transport protocols.

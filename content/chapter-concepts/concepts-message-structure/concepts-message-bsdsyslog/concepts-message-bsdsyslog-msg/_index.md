@@ -8,9 +8,9 @@ This section describes the <span class="code">MSG</span> message part of a syslo
 
 For further details about the <span class="code">HEADER</span> and <span class="code">PRI</span> message parts of a syslog message, see the following sections:
 
-  - `[HEADER]({{< relref "/docs/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-header/_index.md" >}})`
+  - `[HEADER]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-header/_index.md" >}})`
 
-  - `[PRI]({{< relref "/docs/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-pri/_index.md" >}})`
+  - `[PRI]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-pri/_index.md" >}})`
 
 
 ## The MSG message part

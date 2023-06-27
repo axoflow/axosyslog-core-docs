@@ -8,4 +8,4 @@ weight:  4700
 
 The `tcp()`, `tcp6()`, `udp()`, `udp6()` drivers can receive syslog messages conforming to RFC3164 from the network using the TCP and UDP networking protocols. The `tcp6()` and `udp6()` drivers use the IPv6 network protocol, while `tcp()` and `udp()` use IPv4.
 
-To convert your existing `tcp()`, `tcp6()`, `udp()`, `udp6()` source drivers to use the `network()` driver, see {{% xref "/docs/chapter-sources/configuring-sources-tcpudp/reference-source-tcpudp/source-tcpudp-to-network/_index.md" %}}.
+To convert your existing `tcp()`, `tcp6()`, `udp()`, `udp6()` source drivers to use the `network()` driver, see {{% xref "/chapter-sources/configuring-sources-tcpudp/reference-source-tcpudp/source-tcpudp-to-network/_index.md" %}}.
