@@ -1,4 +1,4 @@
-baseurl = "https://axoflow.github.io/axosyslog-4-docs/"
+baseurl = "https://axoflow.github.io/axosyslog-core-docs/"
 buildDrafts = false
 
 enableRobotsTXT = false
@@ -9,4 +9,4 @@ enableRobotsTXT = false
 
 [params]
 
-url_latest_version = "https://axoflow.github.io/axosyslog-4-docs/"
+url_latest_version = "https://axoflow.github.io/axosyslog-core-docs/"
