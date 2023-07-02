@@ -20,7 +20,7 @@ The `smtp()` destination driver is available only in {{% param "product.abbrev" 
 
 ## Declaration:
 
-```c
+```shell
    smtp(host() port() from() to() subject() body() options());
 ```
 
@@ -29,7 +29,7 @@ The `smtp()` destination driver is available only in {{% param "product.abbrev" 
 
 The following example defines an `smtp()` destination using only the required parameters.
 
-```c
+```shell
    destination d_smtp {
         smtp(
             host("localhost")
@@ -44,7 +44,7 @@ The following example defines an `smtp()` destination using only the required pa
 
 The following example sets some optional parameters as well.
 
-```c
+```shell
    destination d_smtp {
         smtp(
             host("localhost")
@@ -69,7 +69,7 @@ The following example sets some optional parameters as well.
 
 The following example sends an email alert if the eth0 network interface of the host is down.
 
-```c
+```shell
    filter f_linkdown {
         match("eth0: link down" value("MESSAGE"));
     };

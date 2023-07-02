@@ -63,7 +63,7 @@ The `file()` driver outputs messages to the specified text file, or to a set of 
 
 An example when time-based macro is used:
 
-```c
+```shell
    file("/var/log/cron.${YEAR}${MONTH}" symlink-as("/var/log/cron"));
 ```
 

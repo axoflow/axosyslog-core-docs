@@ -9,7 +9,7 @@ Log messages of banking and e-commerce applications might include credit card nu
 
 ## Declaration:
 
-```c
+```shell
    @include "scl/rewrite/cc-mask.conf"
     
     rewrite {

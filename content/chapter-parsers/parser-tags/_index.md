@@ -8,6 +8,6 @@ The {{% param "product.name" %}} application can tag log messages, and can inclu
 
 Specify the macro that contains the list of tags to parse in the `template()` option of the parser, for example, the SDATA field that you used to transfer the tags, or the name of the JSON field that contains the tags after using the `json-parser()`.
 
-```c
+```shell
    tags-parser(template("${<macro-or-field-with-tags>}"));
 ```

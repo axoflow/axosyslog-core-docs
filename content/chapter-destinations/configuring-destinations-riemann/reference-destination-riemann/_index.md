@@ -46,7 +46,7 @@ This can be useful if Riemann is inaccessible for a while, and the messages are 
 
 The `event-time()` option takes an optional parameter specifying whether the time format is in seconds or microseconds. For example:
 
-```c
+```shell
    event-time("$(* $UNIXTIME 1000000)" microseconds)
     event-time("12345678" microseconds)
     event-time("12345678" seconds)
@@ -67,7 +67,7 @@ Note that the time format parameter requires:
     
     After calling `configure`, you should see the following message in the case of successful installation:
     
-    ```c
+    ```shell
         [...]
          Riemann destination (module): yes, microseconds: yes
         [...]
@@ -82,7 +82,7 @@ Note that the time format parameter requires:
 
 ## Example: Example event-time() option
 
-```c
+```shell
    destination d_riemann {
        riemann(
        server("127.0.0.1")
@@ -126,7 +126,7 @@ If an error occurs while sending the messages to the server, {{% param "product.
 
 *Description:* The numeric value to add as the metric field of the Riemann event. If possible, include type-hinting as well, otherwise the Riemann server will interpret the value as a floating-point number. The following example specifies the SEQNUM macro as an integer.
 
-```c
+```shell
    metric(int("$SEQNUM"))
 ```
 
@@ -223,7 +223,7 @@ If an error occurs while sending the messages to the server, {{% param "product.
 
 ### Declaration 1:
 
-```c
+```shell
    destination d_riemann {
         riemann(
             server("127.0.0.1")
@@ -244,7 +244,7 @@ An alternative way to specify TLS options is to group them into a `tls()` block.
 
 ### Declaration 2:
 
-```c
+```shell
    destination d_riemann {
         riemann(
             server("127.0.0.1")
@@ -272,7 +272,7 @@ Make sure that you specify TLS options either using `type()` or using the `tls()
 
 *Alternative 1*
 
-```c
+```shell
    type(
         "tls"
         ca-file("/opt/syslog-ng/etc/syslog-ng/riemann-cacert.pem")
@@ -281,7 +281,7 @@ Make sure that you specify TLS options either using `type()` or using the `tls()
 
 *Alternative 2*
 
-```c
+```shell
    riemann(
         .
         .

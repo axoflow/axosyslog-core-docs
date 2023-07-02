@@ -6,7 +6,7 @@ weight:  500
 
 All messages generated internally by AxoSyslog use this special source. To collect warnings, errors and notices from AxoSyslog itself, include this source in one of your source statements.
 
-```c
+```shell
    internal()
 ```
 
@@ -15,7 +15,7 @@ The AxoSyslog application will issue a warning upon startup if none of the defin
 
 ## Example: Using the internal() driver {#example-source-internal}
 
-```c
+```shell
    source s_local { internal(); };
 ```
 

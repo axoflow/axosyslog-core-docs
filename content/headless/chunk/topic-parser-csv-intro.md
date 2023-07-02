@@ -12,7 +12,7 @@ To create a `csv-parser()`, you have to define the columns of the message, the s
 
 ## Declaration:
 
-```c
+```shell
    parser <parser_name> {
         csv-parser(
             columns(column1, column2, ...)

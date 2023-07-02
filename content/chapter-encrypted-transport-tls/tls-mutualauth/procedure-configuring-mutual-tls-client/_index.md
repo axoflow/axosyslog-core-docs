@@ -32,7 +32,7 @@ Complete the following steps on every AxoSyslog client host. Examples are provid
     
     The following destination encrypts the log messages using TLS and sends them to the `1999/TCP` port of the AxoSyslog server having the `10.1.2.3` IP address. The private key and the certificate file authenticating the client is also specified.
     
-    ```c
+    ```shell
         destination demo_tls_destination {
             network(
                 "10.1.2.3" port(1999)
@@ -46,7 +46,7 @@ Complete the following steps on every AxoSyslog client host. Examples are provid
         };
     ```
     
-    ```c
+    ```shell
         destination demo_tls_syslog_destination {
             syslog(
                 "10.1.2.3" port(1999)

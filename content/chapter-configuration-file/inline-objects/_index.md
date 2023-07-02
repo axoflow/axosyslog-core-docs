@@ -13,7 +13,7 @@ To define an object inline, use braces instead of parentheses. That is, instead 
 
 The following two configuration examples are equivalent. The first one uses traditional statements, while the second uses inline definitions.
 
-```c
+```shell
    source s_local {
         system();
         internal();
@@ -27,7 +27,7 @@ The following two configuration examples are equivalent. The first one uses trad
     };
 ```
 
-```c
+```shell
    log {
         source {
             system();

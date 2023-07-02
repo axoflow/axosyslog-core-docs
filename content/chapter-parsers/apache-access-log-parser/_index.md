@@ -6,13 +6,13 @@ weight:  1700
 
 The Apache access log parser can parse the access log messages of the Apache HTTP Server. The {{% param "product.abbrev" %}} application can separate these log messages to name-value pairs. For details on using value-pairs in {{% param "product.abbrev" %}} see {{% xref "/chapter-concepts/concepts-value-pairs/_index.md" %}}. The `apache-accesslog-parser()` supports both the Common Log Format and the Combined Log Format of Apache (for details, see the [Apache HTTP Server documentation](https://httpd.apache.org/2.4/logs.html#accesslog)). The following is a sample log message:
 
-```c
+```shell
    127.0.0.1 - frank [10/Oct/2000:13:55:36 -0700] "GET /apache_pb.gif HTTP/1.0" 200 2326
 ```
 
 Starting with version 3.21, virtualhost and the port of the virtualhost (vhost) is also supported, for example:
 
-```c
+```shell
    foo.com:443 1.2.3.4 - - [15/Apr/2019:14:30:16 -0400] "GET /bar.html HTTP/2.0" 500 - "https://foo.com/referer.html" "Mozilla/5.0 ..."
 ```
 
@@ -21,7 +21,7 @@ The {{% param "product.abbrev" %}} application extracts every field into name-va
 
 ## Declaration:
 
-```c
+```shell
    parser parser_name {
         apache-accesslog-parser(
             prefix()
@@ -37,7 +37,7 @@ The parser extracts the following fields from the messages: `vhost`, `port`, `cl
 
 In the following example, the source is a log file created by an Apache web server. The parser automatically inserts the `.apache.` prefix before all extracted name-value pairs. The destination is a file that uses the `format-json` template function. Every name-value pair that begins with a dot (`.`) character will be written to the file (`dot-nv-pairs`). The log statement connects the source, the destination, and the parser.
 
-```c
+```shell
    source s_apache {
         file(/var/log/access_log);
     };
@@ -59,7 +59,7 @@ In the following example, the source is a log file created by an Apache web serv
 
 To use this parser, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 
-```c
+```shell
    @include "scl.conf"
 ```
 

@@ -144,7 +144,7 @@ If `log-fetch-limit()` is 100, and your wildcard file source has 200 files, then
 
 The following example reads files having the `.log` extension from the `/var/log/` directory and its subdirectories, including for example, the `/var/log/apt/history.log` file.
 
-```c
+```shell
    source s_file_subdirectories {
         wildcard-file(
             base-dir("/var/log")

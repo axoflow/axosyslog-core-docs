@@ -33,7 +33,7 @@ The status of the object. One of the following:
     
     The following example contains 6 different dynamic values: a sender, a host, and four different programs.
     
-    ```c
+    ```shell
         src.sender;;localhost;d;processed;4
         src.sender;;localhost;d;stamp;1509121934
         src.program;;P-18069;d;processed;1
@@ -67,7 +67,7 @@ The following configuration will display the following `syslog-ng-ctl` statistic
 
 Configuration:
 
-```c
+```shell
    source s_network { 
       tcp( 
         port(8001)  
@@ -77,7 +77,7 @@ Configuration:
 
 Statistics output:
 
-```c
+```shell
    src.tcp;s_network#0;tcp,127.0.0.5;a;processed;1
     src.tcp;s_network#0;tcp,127.0.0.1;a;processed;3
     src.tcp;s_network;afsocket_sd.(stream,AF_INET(0.0.0.0:8001));a;connections;2
@@ -104,7 +104,7 @@ In version 7.0.27, {{% param "product.abbrev" %}} only supports the `batch_size_
 
 `discarded`: The number of messages discarded by the given parser. These are messages that the parser could not parsed, and are therefore not processed. For example:
 
-```c
+```shell
    parser;demo_parser;;a;discarded;20
 ```
 
@@ -130,13 +130,13 @@ When using the `eps_last_1h`, the `eps_last_24h`, and the `eps_since_start` stat
 
 `matched`: The number of messages that are accepted by a given filter. Available for filters and similar objects (for example, a conditional rewrite rule). For example, if a filter matches a specific hostname, then the `matched` counter contains the number of messages that reached the filter from this hosts.
 
-```c
+```shell
    filter;demo_filter;;a;matched;28
 ```
 
 `memory_usage`: The memory used by the messages in the different queue types (in bytes). This includes every queue used by the object, including memory buffers (log-fifo) and disk-based buffers (both reliable and non-reliable). For example:
 
-```c
+```shell
    dst.network;d_net#0;tcp,127.0.0.1:9999;a;memory_usage;0
 ```
 
@@ -161,7 +161,7 @@ When using the `msg_size_avg` and `msg_size_max` statistics, consider that messa
 {{% alert title="Note" color="info" %}}
 Since the `not_matched` metric applies to filters, and filters are expected to discard messages that do not match the filter condition, `not_matched` messages are not included in the `dropped` metric of other objects.
 
-```c
+```shell
    filter;demo_filter;;a;not_matched;0
 
 ```

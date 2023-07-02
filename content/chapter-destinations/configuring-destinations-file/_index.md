@@ -15,7 +15,7 @@ The `file()` has a single required parameter that specifies the filename that st
 
 ## Declaration:
 
-```c
+```shell
    file(filename options());
 ```
 
@@ -23,7 +23,7 @@ The `file()` has a single required parameter that specifies the filename that st
 
 ## Example: Using the file() driver {#example-destination-file}
 
-```c
+```shell
    destination d_file { file("/var/log/messages"); };
 ```
 
@@ -31,7 +31,7 @@ The `file()` has a single required parameter that specifies the filename that st
 
 ## Example: Using the file() driver with macros in the file name and a template for the message {#example-destination-file-macro}
 
-```c
+```shell
    destination d_file {
         file("/var/log/${YEAR}.${MONTH}.${DAY}/messages"
              template("${HOUR}:${MIN}:${SEC} ${TZ} ${HOST} [${LEVEL}] ${MESSAGE}\n")

@@ -11,7 +11,7 @@ The `usertty()` driver has a single required argument, specifying a username who
 
 ## Declaration:
 
-```c
+```shell
    usertty(username);
 ```
 
@@ -20,7 +20,7 @@ The `usertty()` does not have any further options nor does it support templates.
 
 ## Example: Using the usertty() driver
 
-```c
+```shell
    destination d_usertty { usertty("root"); };
 ```
 

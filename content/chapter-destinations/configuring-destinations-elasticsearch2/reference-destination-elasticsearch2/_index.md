@@ -13,7 +13,7 @@ The `elasticsearch2` destination can directly send log messages to [Elasticsearc
 
 The following options are required: `index()`, `type()`. In node mode, either the `cluster()` or the `resource()` option is required as well. Note that to use `elasticsearch2`, you must add the following lines to the beginning of your {{% param "product.abbrev" %}} configuration:
 
-```c
+```shell
    @include "scl.conf"
 ```
 
@@ -295,7 +295,7 @@ This option is used only in transport mode: `client-mode("transport")`
 
 For example:
 
-```c
+```shell
    destination d_elasticsearch {
       elasticsearch2(
         client-lib-dir("/usr/share/elasticsearch/lib/")

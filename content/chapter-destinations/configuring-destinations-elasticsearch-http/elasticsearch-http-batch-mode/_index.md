@@ -13,7 +13,7 @@ The `elasticsearch-http()` destination automatically sends multiple log messages
 
 In the following example, a batch consists of 100 messages, or a maximum of 512 kilobytes, and is sent every 20 seconds (20000 milliseconds).
 
-```c
+```shell
    destination d_elasticsearch-http {
         elasticsearch-http(url("http://your-elasticsearch-server:9200/_bulk")
             index("<elasticsearch-index-to-store-messages>")
@@ -38,7 +38,7 @@ In the following example, a batch consists of 100 messages, or a maximum of 512 
 
 The following destination sends log messages to 3 different Elasticsearch indexer nodes. Each node is assigned a separate worker thread. A batch consists of 100 messages, or a maximum of 512 kilobytes, and is sent every 20 seconds (20000 milliseconds).
 
-```c
+```shell
    destination d_elasticsearch-http {
         elasticsearch-http(url("http://your-elasticsearch-server1:9200/_bulk" "http://your-elasticsearch-server2:9200/_bulk" "http://your-elasticsearch-server3:9200/_bulk")
             batch-lines(100)

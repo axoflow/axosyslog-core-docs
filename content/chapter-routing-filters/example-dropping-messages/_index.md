@@ -11,7 +11,7 @@ To skip the processing of a message without sending it to a destination, create 
 
 The following log statement drops all `debug` level messages without any further processing.
 
-```c
+```shell
    filter demo_debugfilter { level(debug); };
     log { source(s_all); filter(demo_debugfilter); flags(final); };
 ```

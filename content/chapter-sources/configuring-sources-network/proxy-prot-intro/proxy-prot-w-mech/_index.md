@@ -29,7 +29,7 @@ Consider the following about macros and headers:
 
   - When {{% param "product.abbrev" %}} cannot parse a proxy protocol header, the connection is closed:
     
-    ```c
+    ```shell
         [2020-11-20T17:33:22.189458] PROXY protocol header received; line='PROXYdsfj'
         [2020-11-20T17:33:22.189475] Error parsing PROXY protocol header;
         [2020-11-20T17:33:22.189517] Syslog connection closed; fd='13', client='AF_INET(127.0.0.1:51665)', local='AF_INET(0.0.0.0:6666)'

@@ -65,7 +65,7 @@ If you need to use a non-standard control socket to access `syslog-ng`, use the 
 
 ## Example
 
-```c
+```shell
 syslog-ng-ctl verbose --set=on
 ```
 
@@ -76,7 +76,7 @@ syslog-ng-ctl verbose --set=on
 
 The {{% param "product.ose" %}} application stores various data, metrics, and statistics in a hash table. Every property has a name and a value. For example:
 
-```c
+```shell
 [syslog-ng]
   |       
   |_[destinations]-[network]-[tcp]->[stats]->{received=12;dropped=2}
@@ -104,7 +104,7 @@ Use the `syslog-ng-ctl query list` command to display the list of metrics that {
 
 An example output:
 
-```c
+```shell
   center.received.stats.processed
   center.queued.stats.processed
   destination.java.d_elastic#0.java_dst(ElasticSearch,elasticsearch-syslog-ng-test,t7cde889529c034aea9ec_micek).stats.dropped
@@ -169,7 +169,7 @@ The `syslog-ng-ctl query get \<query>` command lists the nodes that match the qu
 
 For example, the `destination` query lists the configured destinations, and the metrics related to each destination. An example output:
 
-```c
+```shell
 destination.java.d_elastic#0.java_dst(ElasticSearch,elasticsearch-syslog-ng-test,t7cde889529c034aea9ec_micek).stats.dropped=0
 destination.java.d_elastic#0.java_dst(ElasticSearch,elasticsearch-syslog-ng-test,t7cde889529c034aea9ec_micek).stats.processed=0
 destination.java.d_elastic#0.java_dst(ElasticSearch,elasticsearch-syslog-ng-test,t7cde889529c034aea9ec_micek).stats.queued=0
@@ -212,7 +212,7 @@ Use the `stats` command to display statistics about the processed messages. For 
     
     The flag can be used to prune dynamic and static counters manually. This is useful, for example, when a templated file destination produces a lot of stats:
     
-    ```c
+    ```shell
         dst.file;#anon-destination0#0;/tmp/2021-08-16.log;o;processed;253592
         dst.file;#anon-destination0#0;/tmp/2021-08-17.log;o;processed;156
         dst.file;#anon-destination0#0;/tmp/2021-08-18.log;a;processed;961
@@ -225,13 +225,13 @@ The `stats-lifetime()` can be used to do the same automatically and periodically
 
 ## Example
 
-```c
+```shell
 syslog-ng-ctl stats
 ```
 
 An example output:
 
-```c
+```shell
 src.internal;s_all#0;;a;processed;6445
 src.internal;s_all#0;;a;stamp;1268989330
 destination;df_auth;;a;processed;404
@@ -279,7 +279,7 @@ The `syslog-ng-ctl credentials status` command allows you to query the status of
 
 The `syslog-ng-ctl credentials status` command allows you to query the status of the private keys that {{% param "product.ose" %}} uses in the `network()` and `syslog()` drivers. The command returns the list of private keys used, and their status. For example:
 
-```c
+```shell
   syslog-ng-ctl credentials status
   Secret store status:
   /home/user/ssl_test/client-1/client-encrypted.key SUCCESS
@@ -289,7 +289,7 @@ If the status of a key is PENDING, you must provide the passphrase for the key, 
 
 The following log message also notifies you of PENDING passphrases:
 
-```c
+```shell
 Waiting for password; keyfile='private.key'
 ```
 
@@ -307,19 +307,19 @@ Waiting for password; keyfile='private.key'
 
 You can add the passphrase to a password-protected private key file using the following command. {{% param "product.ose" %}} will display a prompt for you to enter the passphrase. We recommend that you use this method.
 
-```c
+```shell
 syslog-ng-ctl credentials add --id=<path-to-the-key>
 ```
 
 Alternatively, you can include the passphrase in the `--secret` parameter:
 
-```c
+```shell
 syslog-ng-ctl credentials add --id=<path-to-the-key> --secret=<passphrase-of-the-key>
 ```
 
 Or you can pipe the passphrase to the syslog-ng-ctl command, for example:
 
-```c
+```shell
 echo "<passphrase-of-the-key>" | syslog-ng-ctl credentials add --id=<path-to-the-key>
 ```
 

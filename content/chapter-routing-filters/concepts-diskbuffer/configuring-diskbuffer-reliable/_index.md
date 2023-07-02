@@ -11,7 +11,7 @@ To enable reliable disk-based buffering, use the `disk-buffer(reliable(yes))` pa
 
 ## Example: Example for using reliable disk-based buffering
 
-```c
+```shell
    destination d_BSD {
         network("127.0.0.1"
             port(3333)

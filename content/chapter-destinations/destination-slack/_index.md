@@ -9,7 +9,7 @@ The `slack()` destination driver sends messages to a [Slack](https://slack.com/)
 
 ## Declaration:
 
-```c
+```shell
    destination d_slack {
       slack(
         hook-url("https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX")
@@ -27,7 +27,7 @@ The driver allows you to modify nearly every field of the HTTP request. For deta
 
 To use this destination, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 
-```c
+```shell
    @include "scl.conf"
 ```
 
@@ -45,7 +45,7 @@ To send messages and notifications from {{% param "product.abbrev" %}} to Slack,
 
 The following example sets the colors and the author of the message.
 
-```c
+```shell
    @include "scl.conf"
     
     destination d_slack1 {

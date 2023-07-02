@@ -11,7 +11,7 @@ The pipe driver has a single required parameter, specifying the filename of the 
 
 ## Declaration:
 
-```c
+```shell
    pipe(filename);
 ```
 
@@ -25,7 +25,7 @@ Starting with {{% param "product.abbrev" %}} 3.0.2, pipes are created automatica
 
 ## Example: Using the pipe() driver {#example-destination-pipe}
 
-```c
+```shell
    destination d_pipe { pipe("/dev/xconsole"); };
 ```
 

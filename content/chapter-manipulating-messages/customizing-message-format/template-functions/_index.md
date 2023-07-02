@@ -6,7 +6,7 @@ weight:  1100
 
 A template function is a transformation: it modifies the way macros or name-value pairs are expanded. Template functions can be used in template definitions, or when macros are used in the configuration of {{% param "product.abbrev" %}}. Template functions use the following syntax:
 
-```c
+```shell
    $(function-name parameter1 parameter2 parameter3 ...)
 ```
 
@@ -14,13 +14,13 @@ For example, the `$(echo)` template function simply returns the value of the mac
 
 The parameters of template functions are separated by a whitespace character. A template function can have maximum 64 parameters. If you want to use a longer string or multiple macros as a single parameter, enclose the parameter in double-quotes or apostrophes. For example:
 
-```c
+```shell
    $(echo "${HOST} ${PROGRAM} ${PID}")
 ```
 
 Template functions can be nested into each other, so the parameter of a template function can be another template function, like:
 
-```c
+```shell
    $(echo $(echo ${HOST}))
 ```
 
@@ -31,7 +31,7 @@ You can define your own template function as a regular configuration object (for
 
 ## Declaration:
 
-```c
+```shell
    template-function <name-of-the-template-function> "<template-expression-using-strings-macros-template-functions>";
 ```
 
@@ -41,7 +41,7 @@ You can define your own template function as a regular configuration object (for
 
 The following template function can be used to reformat the message. It adds the length of the message to the message template.
 
-```c
+```shell
    template-function my-template-function "${ISODATE} ${HOST} message-length=$(length "${MSG}") ${MESSAGE}";
     destination d_file {
         file("/tmp/mylogs.log" template("$(my-template-function)\n"));
@@ -50,7 +50,7 @@ The following template function can be used to reformat the message. It adds the
 
 You can also refer to existing templates in your template function.
 
-```c
+```shell
    template my-custom-header-template "${ISODATE} ${HOST_FROM} ${MSGHDR}";
     template-function my-template-function "$(my-custom-header-template) message-length=$(length "${MESSAGE}") ${MESSAGE}";
 ```

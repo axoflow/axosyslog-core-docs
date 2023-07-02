@@ -12,7 +12,7 @@ Note the following points about timeout values:
     
     Consider the following two messages:
     
-    ```c
+    ```shell
         <38>1990-01-01T14:45:25 customhostname program6[1234]: program6 testmessage
         <38>1990-01-01T14:46:25 customhostname program6[1234]: program6 testmessage
     

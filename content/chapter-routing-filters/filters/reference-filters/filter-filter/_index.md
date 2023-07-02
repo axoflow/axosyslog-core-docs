@@ -10,7 +10,7 @@ weight:  300
 
 *Description:* Call another filter rule and evaluate its value. For example:
 
-```c
+```shell
    filter demo_filter { host("example") and match("deny" value("MESSAGE")) };
     filter inverted_demo_filter { not filter(demo_filter) }
 

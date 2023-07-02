@@ -23,7 +23,7 @@ The Regular expression parser has the following options.
 
 {{% include-headless "chunk/no-default-prefix.md" %}}
 
-```c
+```shell
    parser p_regexp{
         regexp-parser(
             patterns( ... )

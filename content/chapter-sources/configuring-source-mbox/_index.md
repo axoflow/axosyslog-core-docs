@@ -8,7 +8,7 @@ Using the `mbox()` driver, {{% param "product.abbrev" %}} can read email message
 
 This driver has only one required option, the filename of the mbox file. To use the `mbox()` driver, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 
-```c
+```shell
    @include "scl.conf"
 ```
 
@@ -19,7 +19,7 @@ The `mbox()` driver is actually a reusable configuration snippet configured to r
 
 The following example reads the emails of the root user on the {{% param "product.abbrev" %}} host.
 
-```c
+```shell
    @include "scl.conf"
     source root-mbox {
         mbox("/var/spool/mail/root");

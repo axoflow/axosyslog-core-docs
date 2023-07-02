@@ -19,7 +19,7 @@ For the list of available optional parameters, see {{% xref "/chapter-sources/so
 
 ## Declaration:
 
-```c
+```shell
    syslog(ip() port() transport() options());
 ```
 
@@ -29,19 +29,19 @@ For the list of available optional parameters, see {{% xref "/chapter-sources/so
 
 TCP source listening on the localhost on port 1999.
 
-```c
+```shell
    source s_syslog { syslog(ip(127.0.0.1) port(1999) transport("tcp")); };
 ```
 
 UDP source with defaults.
 
-```c
+```shell
    source s_udp { syslog( transport("udp")); };
 ```
 
 Encrypted source where the client is also authenticated. For details on the encryption settings, see {{% xref "/chapter-encrypted-transport-tls/tlsoptions/_index.md" %}}.
 
-```c
+```shell
    source s_syslog_tls{ syslog(
         ip(10.100.20.40)
         transport("tls")

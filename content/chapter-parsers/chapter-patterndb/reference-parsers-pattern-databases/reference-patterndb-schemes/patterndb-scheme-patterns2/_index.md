@@ -27,7 +27,7 @@ N/A
 
   - *pattern*: A pattern describing a log message. This element is also called `message pattern`. For example:
     
-    ```c
+    ```shell
         <pattern>+ ??? root-</pattern>
     
     ```
@@ -47,7 +47,7 @@ Support for XML entities is limited, you can use only the following entities: `\
 
 ## Example
 
-```c
+```shell
    <patterns>
         <pattern>Accepted @QSTRING:SSH.AUTH_METHOD: @ for@QSTRING:SSH_USERNAME: @from\ @QSTRING:SSH_CLIENT_ADDRESS: @port @NUMBER:SSH_PORT_NUMBER:@ ssh2</pattern>
     </patterns>

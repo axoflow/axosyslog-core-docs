@@ -9,7 +9,7 @@ The `logmatic()` destination sends log messages to the [Logmatic.io](https://log
 
 ## Declaration:
 
-```c
+```shell
    logmatic(token());
 ```
 
@@ -18,7 +18,7 @@ The `logmatic()` destination sends log messages to the [Logmatic.io](https://log
 
 To use the logmatic() destination, the only mandatory parameter is your user token. The following example sends every log from the `system()` source to your Logmatic.io account.
 
-```c
+```shell
    log {
         source { system(); };
         destination { logmatic(token("<API-KEY-AS-PROVIDED-BY-LOGMATIC.IO>")); };
@@ -27,7 +27,7 @@ To use the logmatic() destination, the only mandatory parameter is your user tok
 
 The following example uses TLS encryption. Before using it, download the CA certificate of Logmatic.io and copy it to your hosts (for example, into the `/etc/ssl/certs/` directory.
 
-```c
+```shell
    log {
         destination {
             logmatic(token("<API-KEY-AS-PROVIDED-BY-LOGMATIC.IO>") port(6514)
@@ -39,7 +39,7 @@ The following example uses TLS encryption. Before using it, download the CA cert
 
 The following example parses the access logs of an Apache webserver from a file and sends them to Logmatic.io in JSON format.
 
-```c
+```shell
    log {
         source { file("/var/log/apache2/access.log" flags(no-parse)); };
         parser { apache-accesslog-parser(); };
@@ -54,7 +54,7 @@ The following example parses the access logs of an Apache webserver from a file 
 
 To use the `logmatic()` driver, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 
-```c
+```shell
    @include "scl.conf"
 ```
 

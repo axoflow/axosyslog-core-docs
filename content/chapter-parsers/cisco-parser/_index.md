@@ -6,13 +6,13 @@ weight:  2100
 
 The Cisco parser can parse the log messages of various Cisco devices. The messages of these devices often do not completely comply with the syslog RFCs, making them difficult to parse. The `cisco-parser()` of {{% param "product.abbrev" %}} solves this problem, and can separate these log messages to name-value pairs, extracting also the Cisco-specific values, for example, the mnemonic. For details on using value-pairs in {{% param "product.abbrev" %}} see {{% xref "/chapter-concepts/concepts-value-pairs/_index.md" %}}. The parser can parse variations of the following message format:
 
-```c
+```shell
    <pri>(sequence: )?(origin-id: )?(timestamp? timezone?: )?%msg
 ```
 
 For example:
 
-```c
+```shell
    <189>29: foo: *Apr 29 13:58:40.411: %SYS-5-CONFIG_I: Configured from console by console
     <190>30: foo: *Apr 29 13:58:46.411: %SYS-6-LOGGINGHOST_STARTSTOP: Logging to host 192.168.1.239 stopped - CLI initiated
     <190>31: foo: *Apr 29 13:58:46.411: %SYS-6-LOGGINGHOST_STARTSTOP: Logging to host 192.168.1.239 started - CLI initiated
@@ -26,7 +26,7 @@ Not every Cisco log message conforms to this format. If you find a message that 
 
 The {{% param "product.abbrev" %}} application normalizes the parsed log messages into the following format:
 
-```c
+```shell
    ${MESSAGE}=%FAC-SEV-MNEMONIC: message
     ${HOST}=origin-id
 ```
@@ -36,7 +36,7 @@ By default, the Cisco-specific fields are extracted into the following name-valu
 
 ## Declaration:
 
-```c
+```shell
    @version: {{% param "product.techversion" %}}
     @include "scl.conf"
     log {
@@ -56,7 +56,7 @@ The `cisco-parser()` is actually a reusable configuration snippet configured to 
 
 By default, `cisco-parser()` uses the `.cisco.` prefix. To modify it, use the following format:
 
-```c
+```shell
    parser {
         cisco-parser(prefix("myprefix."));
     };

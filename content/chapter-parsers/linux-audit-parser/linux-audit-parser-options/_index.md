@@ -10,7 +10,7 @@ The `linux-audit-parser()` has the following options.
 
 By default, `linux-audit-parser()` uses the `.auditd.` prefix. To modify it, use the following format:
 
-```c
+```shell
    parser {
         linux-audit-parser(prefix("myprefix."));
     };

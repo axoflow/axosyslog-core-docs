@@ -13,7 +13,7 @@ Use the following syntax:
 
 ## Declaration:
 
-```c
+```shell
    rewrite <name_of_the_rule> {
         unset(value("<field-name>"));
     };
@@ -25,7 +25,7 @@ Use the following syntax:
 
 The following example unsets the HOST field of the message.
 
-```c
+```shell
    rewrite r_rewrite_unset{
         unset(value("HOST"));
     };
@@ -37,7 +37,7 @@ To unset a group of fields, you can use the `groupunset()` rewrite rule.
 
 ## Declaration:
 
-```c
+```shell
    rewrite <name_of_the_rule> {
         groupunset(values("<expression-for-field-names>"));
     };
@@ -49,7 +49,7 @@ To unset a group of fields, you can use the `groupunset()` rewrite rule.
 
 The following rule clears all SDATA fields:
 
-```c
+```shell
    rewrite r_rewrite_unset_SDATA{
         groupunset(values(".SDATA.*"));
     };

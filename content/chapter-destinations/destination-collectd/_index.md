@@ -11,11 +11,11 @@ Available in {{% param "product.abbrev" %}} version 3.20 and later.
 
 ## Declaration:
 
-```c
+```shell
    collectd();
 ```
 
-```c
+```shell
    destination d_collectd {
       collectd(
         socket("<path-to-collectd-socket>"),
@@ -33,7 +33,7 @@ Available in {{% param "product.abbrev" %}} version 3.20 and later.
 
 The following example uses the name of the application sending the log message as the plugin name, and the value of the ${SEQNUM} macro as the value of the metric sent to collectd.
 
-```c
+```shell
    destination d_collectd {
       collectd(
         socket("/var/run/collectd-unixsock"),
@@ -49,7 +49,7 @@ The following example uses the name of the application sending the log message a
 
 To use the `collectd()` driver, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 
-```c
+```shell
    @include "scl.conf"
 ```
 

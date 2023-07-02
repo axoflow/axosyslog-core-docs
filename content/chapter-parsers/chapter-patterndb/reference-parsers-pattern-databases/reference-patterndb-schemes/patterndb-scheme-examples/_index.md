@@ -28,7 +28,7 @@ N/A
 
 ## Example
 
-```c
+```shell
    <examples>
         <example>
             <test_message>Accepted password for sampleuser from 10.50.0.247 port 42156 ssh2</test_message>

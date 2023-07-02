@@ -44,7 +44,7 @@ A container element to group log patterns for an application or program. A `<pat
 
 ## Example
 
-```c
+```shell
    <ruleset name='su' id='480de478-d4a6-4a7f-bea4-0c0245d361e1'>
 ```
 

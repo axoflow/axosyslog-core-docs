@@ -10,7 +10,7 @@ To use globs in a selector
 
 1.  Use the `glob()` option within the `selector()` option in your {{% param "product.abbrev" %}} configuration file, for example:
     
-    ```c
+    ```shell
         parser p_add_context_data {
             add-contextual-data(
                 selector(glob("${HOST}"))
@@ -21,7 +21,7 @@ To use globs in a selector
 
 2.  Use globs and wildcards in the selector column of your CSV-file, for example:
     
-    ```c
+    ```shell
         example-glob-entry1*,sourcetype,:hec:user
         example-glob-entry2*,sourcetype,:hec:user
         postfix*,sourcetype,:hec:mta
@@ -38,7 +38,7 @@ Note the following points when using globbing in the selector:
 
   - In debug mode, {{% param "product.abbrev" %}} sends log messages to its `internal()` destination to help troubleshooting. For example:
     
-    ```c
+    ```shell
         [2019-09-21T06:01:10.748237] add-contextual-data(): Evaluating glob against message; glob-template='$PROGRAM', string='postfix/smtpd', pattern='example-glob-entry1*', matched='0'
         [2019-09-21T06:01:10.748562] add-contextual-data(): Evaluating glob against message; glob-template='$PROGRAM', string='postfix/smtpd', pattern='example-glob-entry2*', matched='0'
         [2019-09-21T06:01:10.748697] add-contextual-data(): Evaluating glob against message; glob-template='$PROGRAM', string='postfix/smtpd', pattern='postfix*', matched='1'

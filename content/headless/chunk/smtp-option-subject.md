@@ -11,7 +11,7 @@
 
 *Description:* The SUBJECT field of the email. You can also use macros. For example:
 
-```c
+```shell
    subject("[SYSLOG ALERT]: Critical error message received from $HOST")
 ```
 

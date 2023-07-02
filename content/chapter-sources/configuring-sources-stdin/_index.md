@@ -11,7 +11,7 @@ The `stdin()` driver causes AxoSyslog to exit once it hits end-of-file (EOF).
 
 ## Declaration:
 
-```c
+```shell
    stdin(); 
 ```
 
@@ -19,7 +19,7 @@ The `stdin()` driver causes AxoSyslog to exit once it hits end-of-file (EOF).
 
 ## Example: Using the stdin() driver
 
-```c
+```shell
    @version: {{% param "product.techversion" %}}
     log { 
         source { stdin(); };
@@ -29,7 +29,7 @@ The `stdin()` driver causes AxoSyslog to exit once it hits end-of-file (EOF).
 
 The following code snippet is an example of how the `stdin()` driver is used to collect a test message:
 
-```c
+```shell
    $ echo "this is a test message" | ./syslog-ng -Fe --no-caps
     [2017-11-14T13:47:16.757938] syslog-ng starting up; version='3.12.1'
     [2017-11-14T13:47:16.758195] syslog-ng shutting down; version='3.12.1'

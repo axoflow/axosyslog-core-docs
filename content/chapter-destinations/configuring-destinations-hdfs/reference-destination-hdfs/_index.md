@@ -8,7 +8,7 @@ The `hdfs` destination stores the log messages in files on the Hadoop Distribute
 
 The following options are required: `hdfs-file()`, `hdfs-uri()`. Note that to use `hdfs`, you must add the following line to the beginning of your {{% param "product.abbrev" %}} configuration:
 
-```c
+```shell
    @include "scl.conf"
 ```
 
@@ -62,7 +62,7 @@ When a filename resolved from the macros contains a character that HDFS does not
 
 In the following example, a `/var/testdb_working_dir/$DAY-$HOUR.txt` file will be created (with a UUID suffix):
 
-```c
+```shell
    destination d_hdfs_9bf3ff45341643c69bf46bfff940372a {
         hdfs(client-lib-dir(/hdfs-libs)
      hdfs-uri("hdfs://hdp2.syslog-ng.example:8020")

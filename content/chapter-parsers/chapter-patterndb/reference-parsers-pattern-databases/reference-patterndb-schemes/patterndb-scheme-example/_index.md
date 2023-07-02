@@ -25,14 +25,14 @@ N/A
 
   - *test_message*: OPTIONAL — A sample log message that should match this pattern. For example:
     
-    ```c
+    ```shell
         <test_message program="myapplication">Content filter has been enabled</test_message>
     
     ```
     
       - *program*: The program pattern of the test message. For example:
         
-        ```c
+        ```shell
         
             <test_message program="proftpd">ubuntu (::ffff:192.168.2.179[::ffff:192.168.2.179]) - FTP session closed.</test_message>
         
@@ -42,7 +42,7 @@ N/A
     
       - *test_value*: OPTIONAL — The expected value of the parser when matching the pattern to the test message. For example:
         
-        ```c
+        ```shell
         
             <test_value name=".dict.ContentFilter">enabled</test_value>
         
@@ -53,7 +53,7 @@ N/A
 
 ## Example
 
-```c
+```shell
    <examples>
         <example>
             <test_message>Accepted password for sampleuser from 10.50.0.247 port 42156 ssh2</test_message>

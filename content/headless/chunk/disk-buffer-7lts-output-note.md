@@ -4,7 +4,7 @@
 {{% alert title="Note" color="info" %}}
 If you receive the following error message instead of the example output, install a vim-common package on your system:
 
-```c
+```shell
    xxd: command not found
 ```
 {{% /alert %}}

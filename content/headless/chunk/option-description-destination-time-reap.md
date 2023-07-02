@@ -12,7 +12,7 @@ Starting with version 3.23, the way how `time-reap()` works is the following.
 
 1.  If the `time-reap()` option of the destination is set, that value is used, for example:
     
-    ```c
+    ```shell
         destination d_fifo {
             pipe(
                 "/tmp/test.fifo",
@@ -23,7 +23,7 @@ Starting with version 3.23, the way how `time-reap()` works is the following.
 
 2.  If the `time-reap()` option of the destination is not set, and the destination does not use a template or macro in its filename or path, `time-reap()` is automatically set to 0. For example:
     
-    ```c
+    ```shell
         destination d_fifo {
             pipe(
                 "/tmp/test.fifo",

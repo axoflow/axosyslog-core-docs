@@ -15,7 +15,7 @@
 </tr>
 <tr class="even">
 <td>Default:</td>
-<td>```c
+<td>```shell
 empty string
 ```</td>
 </tr>
@@ -29,7 +29,7 @@ empty string
 
 The following example selects every available information about the log message, except for the date-related macros (`R_\*` and `S_\*`), selects the `.SDATA.meta.sequenceId` macro, and defines a new value-pair called `MSGHDR` that contains the program name and PID of the application that sent the log message.
 
-```c
+```shell
    value-pairs(
         scope(nv_pairs core syslog all_macros selected_macros everything)
         exclude("R_*")
@@ -41,7 +41,7 @@ The following example selects every available information about the log message,
 
 The following example selects the same information as the previous example, but converts it into JSON format.
 
-```c
+```shell
    $(format-json --scope nv_pairs,core,syslog,all_macros,selected_macros,everything \
         --exclude R_* --exclude S_* --key .SDATA.meta.sequenceId \
         --pair MSGHDR="$PROGRAM[$PID]: ")
@@ -78,7 +78,7 @@ empty string
 
 For example, the following example removes the SDATA macros from the selection.
 
-```c
+```shell
    value-pairs(
         scope(rfc5424 selected_macros)
         exclude(".SDATA*")
@@ -99,14 +99,14 @@ empty string
 
 *Description:* This option selects the specified macros. The selected macros will be included as `MACRONAME = MACROVALUE`, that is using `key("HOST")` will result in `HOST = $HOST`. You can use wildcards `(\*, ?)` to select multiple macros. For example:
 
-```c
+```shell
    value-pairs(
         scope(rfc3164)
         key("HOST")
     )
 ```
 
-```c
+```shell
    value-pairs(
         scope(rfc3164)
         key("HOST", "PROGRAM")
@@ -127,7 +127,7 @@ N/A
 
 *Description:* If this option is specified, {{% param "product.abbrev" %}} does not include value-pairs with empty values in the output. For example: `$(format-json --scope none --omit-empty-values)` or
 
-```c
+```shell
    value-pairs(
         scope(rfc3164 selected-macros)
         omit-empty-values()
@@ -150,7 +150,7 @@ empty string
 
 *Description:* This option defines a new name-value pair to be included in the message. The value part can include macros, templates, and template functions as well. For example:
 
-```c
+```shell
    value-pairs(
         scope(rfc3164)
         pair("TIME" "$HOUR:$MIN")
@@ -201,7 +201,7 @@ The following transformations are available:
 
 The following sample selects every value-pair that begins with `.cee.`, deletes this prefix by cutting 4 characters from the names, and adds a new prefix (`events.`).
 
-```c
+```shell
    value-pairs(
         key(".cee.*"
             rekey(
@@ -214,7 +214,7 @@ The following sample selects every value-pair that begins with `.cee.`, deletes 
 
 The `rekey()` option can be used with the `format-json` template-function as well, using the following syntax:
 
-```c
+```shell
    $(format-json --rekey .cee.* --add-prefix events.)
 ```
 
@@ -257,7 +257,7 @@ empty string
 
 For example:
 
-```c
+```shell
    value-pairs(
         scope(rfc3164 selected-macros)
     )

@@ -9,7 +9,7 @@ The `sql()` driver sends messages into an SQL database. Currently the Microsoft 
 
 ## Declaration:
 
-```c
+```shell
    sql(database_type host_parameters database_parameters [options]);
 ```
 
@@ -45,7 +45,7 @@ Inserting the records into the database is performed by a separate thread. The A
 
 The following example sends the log messages into a PostgreSQL database running on the `logserver` host. The messages are inserted into the `logs` database, the name of the table includes the exact date and the name of the host sending the messages. The AxoSyslog application automatically creates the required tables and columns, if the user account used to connect to the database has the required privileges.
 
-```c
+```shell
    destination d_sql {
         sql(type(pgsql)
         host("logserver") username("syslog-ng") password("password")
@@ -59,7 +59,7 @@ The following example sends the log messages into a PostgreSQL database running 
 
 The following example specifies the type of the database columns as well:
 
-```c
+```shell
    destination d_sql {
         sql(type(pgsql)
         host("logserver") username("syslog-ng") password("password")

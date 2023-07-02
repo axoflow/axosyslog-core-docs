@@ -13,7 +13,7 @@ You can use the RLTP protocol as well. For details about the RLTP protocol, see 
 
 ## Declaration:
 
-```c
+```shell
    network([options]);
 ```
 
@@ -25,7 +25,7 @@ By default, the `network()` driver binds to `0.0.0.0`, meaning that it listens o
 
 Using only the default settings: listen on every available IPV4 interface on the TCP/514 port.
 
-```c
+```shell
    source s_network {
         network();
     };
@@ -33,7 +33,7 @@ Using only the default settings: listen on every available IPV4 interface on the
 
 UDP source listening on `192.168.1.1` (the default port for UDP is 514):
 
-```c
+```shell
    source s_network {
         network(
             ip("192.168.1.1")
@@ -44,7 +44,7 @@ UDP source listening on `192.168.1.1` (the default port for UDP is 514):
 
 TCP source listening on the IPv6 localhost, port 2222:
 
-```c
+```shell
    source s_network6 {
         network(
             ip("::1")
@@ -57,7 +57,7 @@ TCP source listening on the IPv6 localhost, port 2222:
 
 A TCP source listening on a TLS-encrypted channel.
 
-```c
+```shell
    source s_network {
         network(
             transport("tls")
@@ -72,7 +72,7 @@ A TCP source listening on a TLS-encrypted channel.
 
 A TCP source listening for messages using the IETF-syslog message format. Note that for transferring IETF-syslog messages, generally you are recommended to use the `syslog()` driver on both the client and the server, as it uses both the IETF-syslog message format and the protocol. For details, see {{% xref "/chapter-sources/source-syslog/_index.md" %}}.
 
-```c
+```shell
    source s_tcp_syslog {
         network(
             ip("127.0.0.1")

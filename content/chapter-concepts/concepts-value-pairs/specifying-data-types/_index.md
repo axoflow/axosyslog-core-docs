@@ -21,7 +21,7 @@ Currently the `mongodb()` destination and the `format-json` and `format-flat-jso
 
 The following example stores the MESSAGE, PID, DATE, and PROGRAM fields of a log message in a MongoDB database. The DATE and PID parts are stored as numbers instead of strings.
 
-```c
+```shell
    mongodb(
         value-pairs(pair("date", datetime("$UNIXTIME"))
             pair("pid", int64("$PID"))
@@ -33,13 +33,13 @@ The following example stores the MESSAGE, PID, DATE, and PROGRAM fields of a log
 
 The following example formats the same fields into JSON.
 
-```c
+```shell
    $(format-json date=datetime($UNIXTIME) pid=int64($PID) program=$PROGRAM message=$MESSAGE)
 ```
 
 The following example formats the MESSAGE field as a JSON list.
 
-```c
+```shell
    $(format-json message=list($MESSAGE))"
 ```
 

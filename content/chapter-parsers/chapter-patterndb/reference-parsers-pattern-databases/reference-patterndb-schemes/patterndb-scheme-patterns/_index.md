@@ -40,7 +40,7 @@ If the `<pattern>element of a ruleset is not specified, {{% param "product.abbre
 
 ## Example
 
-```c
+```shell
    <patterns>
         <pattern>firstapplication</pattern>
         <pattern>otherapplication</pattern>
@@ -49,7 +49,7 @@ If the `<pattern>element of a ruleset is not specified, {{% param "product.abbre
 
 Using parsers in the program pattern:
 
-```c
+```shell
    <pattern>postfix\@ESTRING:.postfix.component:[@</pattern>
 ```
 

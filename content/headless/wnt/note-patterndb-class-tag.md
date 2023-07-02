@@ -5,7 +5,7 @@
 
 The {{% param "product.abbrev" %}} application automatically adds the class of the message as a tag using the `.classifier.<message-class>` format. For example, messages classified as "system" receive the `.classifier.system` tag. Use the `tags()` filter function to select messages of a specific class.
 
-```c
+```shell
    filter f_tag_filter {tags(".classifier.system");};
 ```
 {{% /alert %}}

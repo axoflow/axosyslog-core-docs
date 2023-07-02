@@ -24,7 +24,7 @@ When using the `;:#` characters, you must use quotes or double quotes, but escap
 
 By default, all regular expressions are case sensitive. To disable the case sensitivity of the expression, add the `flags(ignore-case)` option to the regular expression.
 
-```c
+```shell
    filter demo_regexp_insensitive {
         host("system" flags(ignore-case));
     };

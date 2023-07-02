@@ -15,7 +15,7 @@ The Python destination allows you to write your own destination in Python. You c
 
 Python destinations consist of two parts. The first is a {{% param "product.abbrev" %}} destination object that you define in your {{% param "product.abbrev" %}} configuration and use in the log path. This object references a Python class, which is the second part of the Python destination. The Python class processes the log messages it receives, and can do virtually anything that you can code in Python. You can either embed the Python class into your {{% param "product.abbrev" %}} configuration file, or [store it in an external Python file]({{< relref "/chapter-configuration-file/python-code-external-file/_index.md" >}}).
 
-```c
+```shell
    destination <name_of_the_python_destination>{
         python(
             class("<name_of_the_python_class_executed_by_the_destination>")
@@ -170,7 +170,7 @@ The purpose of this example is only to demonstrate the basics of the Python dest
 
 The following sample code writes the body of log messages into the `/tmp/example.txt` file. Only the `send()` method is implemented, meaning that {{% param "product.abbrev" %}} opens and closes the file for every message.
 
-```c
+```shell
    destination d_python_to_file {
         python(
             class("TextDestination")
@@ -193,7 +193,7 @@ The following sample code writes the body of log messages into the `/tmp/example
 
 The following code is similar to the previous example, but it opens and closes the file using the `open()` and `close()` methods.
 
-```c
+```shell
    destination d_python_to_file {
         python(
             class("TextDestination")
@@ -233,7 +233,7 @@ For a more detailed example about sending log messages to an MQTT (Message Queui
 
 The following is a simple destination that uses the `flush()` method to print the messages in batch mode.
 
-```c
+```shell
    class MyDestination(object):
         def init(self, options):
             self.bulk = list()

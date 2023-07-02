@@ -19,7 +19,7 @@ The Azure auth header plugin is a signal-slot mechanism-based {{% param "product
 
 You can define the Azure auth header plugin by the following:
 
-```c
+```shell
    azure-auth-header(
       method("POST")
       path("/api/logs")

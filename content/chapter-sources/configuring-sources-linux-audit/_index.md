@@ -15,7 +15,7 @@ Most recent Linux distributions enable Security-Enhanced Linux (SELinux) or AppA
 
 ## Declaration:
 
-```c
+```shell
    linux-audit(options);
 ```
 
@@ -23,7 +23,7 @@ Most recent Linux distributions enable Security-Enhanced Linux (SELinux) or AppA
 
 ## Example: Using the linux-audit() driver {#example-source-file}
 
-```c
+```shell
 source s_auditd {
     linux-audit(
         prefix("test.")

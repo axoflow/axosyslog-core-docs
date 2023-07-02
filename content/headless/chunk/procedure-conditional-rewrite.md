@@ -7,7 +7,7 @@
 
 The following procedure summarizes how conditional rewrite rules (rewrite rules that have the `condition()` parameter set) work. The following configuration snippet is used to illustrate the procedure:
 
-```c
+```shell
    rewrite r_rewrite_set{
         set(
             "myhost",

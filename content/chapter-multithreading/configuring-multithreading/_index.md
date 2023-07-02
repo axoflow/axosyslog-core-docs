@@ -15,7 +15,7 @@ Starting with version 3.6, {{% param "product.abbrev" %}} runs in multithreaded 
 
 To enable multithreading globally, use the `threaded` option:
 
-```c
+```shell
    options {
         threaded(yes) ;
     };
@@ -23,7 +23,7 @@ To enable multithreading globally, use the `threaded` option:
 
 To enable multithreading only for a selected source or destination, use the `flags("threaded")` option:
 
-```c
+```shell
    source s_tcp_syslog {
         network(
             ip(127.0.0.1)

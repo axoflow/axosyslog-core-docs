@@ -16,13 +16,13 @@ The total message cannot be longer than 1024 bytes.
 
 The following is a sample syslog message:
 
-```c
+```shell
    <133>Feb 25 14:09:07 webserver syslogd: restart
 ```
 
 The message corresponds to the following format:
 
-```c
+```shell
    <priority>timestamp hostname application: message
 ```
 

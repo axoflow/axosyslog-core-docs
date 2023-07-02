@@ -57,7 +57,7 @@ To check the status of {{% param "product.abbrev" %}} service
     
     - `active (running)` - {{% param "product.abbrev" %}} service is up and running
 
-        ```c
+        ```shell
             syslog-ng.service - System Logger Daemon
             Loaded: loaded (/lib/systemd/system/syslog-ng.service; enabled; vendor preset: enabled)
             Active: active (running) since Tue 2019-06-25 08:58:09 CEST; 5s ago
@@ -71,7 +71,7 @@ To check the status of {{% param "product.abbrev" %}} service
 
     - `inactive (dead)` - syslog-ng service is stopped
 
-        ```c
+        ```shell
             syslog-ng.service - System Logger Daemon
             Loaded: loaded (/lib/systemd/system/syslog-ng.service; enabled; vendor preset: enabled)
             Active: inactive (dead) since Tue 2019-06-25 09:14:16 CEST; 2min 18s ago
@@ -125,7 +125,7 @@ To check the central statistics, execute the following command to see the number
 
 The output will be updated in every 2 seconds. If the numbers are changing, {{% param "product.abbrev" %}} is processing the messages. Output example:
 
-```c
+```shell
     Every 2.0s: /opt/syslog-ng/sbin/syslog-ng-ctl stats | grep ^center       Tue Jun 25 10:33:25 2019
     center;;queued;a;processed;112
     center;;received;a;processed;28
@@ -139,7 +139,7 @@ To check the source statistics, execute the following command to see the number 
 
 The output will be updated in every 2 seconds. If the numbers are changing, {{% param "product.abbrev" %}} is receiving messages on the sources. Output example:
 
-```c
+```shell
     Every 2.0s: /opt/syslog-ng/sbin/syslog-ng-ctl stats | grep ^source      Tue Jun 25 10:40:50 2019
     source;s_null;;a;processed;0
     source;s_net;;a;processed;0
@@ -154,7 +154,7 @@ To check the source statistics, execute the following command to see the number 
 
 The output will be updated in every 2 seconds. If the numbers are changing, {{% param "product.abbrev" %}} is receiving messages on the sources. Output example:
 
-```c
+```shell
     Every 2.0s: /opt/syslog-ng/sbin/syslog-ng-ctl stats | grep ^destination      Tue Jun 25 10:41:02 2019
     destination;d_logserver2;;a;processed;90
     destination;d_messages;;a;processed;180

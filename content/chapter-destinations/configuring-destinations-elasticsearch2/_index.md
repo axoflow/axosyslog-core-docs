@@ -15,7 +15,7 @@ Note the following limitations when using the {{% param "product.abbrev" %}} `el
 
 ## Declaration:
 
-```c
+```shell
    @include "scl.conf"
     
     elasticsearch2(
@@ -31,7 +31,7 @@ Note the following limitations when using the {{% param "product.abbrev" %}} `el
 
 The following example defines an `elasticsearch2` destination that sends messages in transport mode to an Elasticsearch server running on the localhost, using only the required parameters.
 
-```c
+```shell
    @include "scl.conf"
     
     destination d_elastic {
@@ -44,7 +44,7 @@ The following example defines an `elasticsearch2` destination that sends message
 
 The following example sends 10000 messages in a batch, in transport mode, and includes a custom unique ID for each message.
 
-```c
+```shell
    @include "scl.conf"
     
     options {
@@ -80,7 +80,7 @@ The following example sends 10000 messages in a batch, in transport mode, and in
 
 The following example send messages to Elasticsearch over HTTP using its REST API:
 
-```c
+```shell
    @include "scl.conf"
     
     source s_network {

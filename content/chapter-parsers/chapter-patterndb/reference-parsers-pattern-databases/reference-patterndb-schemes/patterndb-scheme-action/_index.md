@@ -59,7 +59,7 @@ OPTIONAL — A container element describing an action that is performed when a m
     
       - *value*: Sets the value of the message field specified in the `name` attribute of the element. For example, to specify the body of the generated message, use the following syntax:
         
-        ```c
+        ```shell
         
             <value name="MESSAGE">A log message matched rule number $.classifier.rule_id</value>
         

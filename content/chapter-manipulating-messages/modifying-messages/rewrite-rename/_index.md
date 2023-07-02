@@ -11,7 +11,7 @@ The `rename()` rewrite rule uses positional arguments and they are both required
 
 ## Declaration
 
-```c
+```shell
    rewrite r_rewrite_rename {
         rename("<string1>" "<string2>");
     };
@@ -23,7 +23,7 @@ The `rename()` rewrite rule uses positional arguments and they are both required
 
 The following example renames the `.app.name` into `.container` if the `.app.name` exists. Otherwise, it does nothing.
 
-```c
+```shell
    rewrite r_rewrite_rename {
         rename(".app.name" ".container");
     };

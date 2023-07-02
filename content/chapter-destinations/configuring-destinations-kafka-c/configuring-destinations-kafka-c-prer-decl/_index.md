@@ -23,7 +23,7 @@ This section describes the prerequisites and restrictions for using the `kafka` 
 
 ## Declaration:
 
-```c
+```shell
    @define kafka-implementation kafka-c
     
     kafka(
@@ -39,7 +39,7 @@ This section describes the prerequisites and restrictions for using the `kafka` 
 
 The following example defines a `kafka` destination in the new C implementation, using only the required parameters.
 
-```c
+```shell
 
 @define kafka-implementation kafka-c 
 @include "scl.conf"

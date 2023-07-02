@@ -21,7 +21,7 @@ To configure AxoSyslog on a client host, complete the following steps.
     
     Add sources to collect the messages from your log files. File sources look like this:
     
-    ```c
+    ```shell
         source s_myfilesource {
             file("/var/log/myapplication.log" follow-freq(1));
         };
@@ -34,7 +34,7 @@ Many applications send log messages to logfiles by default (for example, the Rou
     {{% /alert %}} {{% alert title="Note" color="info" %}}
 The default configuration file of {{% param "product.abbrev" %}} collects platform-specific log messages and the internal log messages of {{% param "product.abbrev" %}}.
     
-```c
+```shell
     source s_local {
         system();
         internal();
@@ -44,13 +44,13 @@ The default configuration file of {{% param "product.abbrev" %}} collects platfo
 
 3.  Create a network destination that points directly to the AxoSyslog server, or to a local relay. The network destination greatly depends on the protocol that your log server or relay accepts messages. Many systems still use the legacy BSD-syslog protocol (RFC3162) over the unreliable UDP transport:
     
-    ```c
+    ```shell
         destination d_network { network("10.1.2.3" transport("udp")); };
     ```
     
     However, if possible, use the much more reliable IETF-syslog protocol over TCP transport:
     
-    ```c
+    ```shell
         destination d_network {
             syslog("10.1.2.3" transport("tcp"));
         };
@@ -58,7 +58,7 @@ The default configuration file of {{% param "product.abbrev" %}} collects platfo
 
 4.  Create a log statement connecting the local sources to the AxoSyslog server or relay. For example:
     
-    ```c
+    ```shell
         log {
             source(s_local); destination(d_network);
         };
@@ -69,7 +69,7 @@ The default configuration file of {{% param "product.abbrev" %}} collects platfo
     {{< alert title="Note" color="info" >}}
 The default configuration of {{% param "product.abbrev" %}} places the collected messages into the `/var/log/messages` file:
     
-```c
+```shell
     destination d_local {
         file("/var/log/messages");
     };
@@ -81,7 +81,7 @@ The default configuration of {{% param "product.abbrev" %}} places the collected
     {{% alert title="Note" color="info" %}}
 The default configuration of {{% param "product.abbrev" %}} has only one log statement:
     
-```c
+```shell
     log {
         source(s_local); destination(d_local);
     };
@@ -95,7 +95,7 @@ The default configuration of {{% param "product.abbrev" %}} has only one log sta
 
 The following is the default configuration file of {{% param "product.abbrev" %}}{{% param "product.techversion" %}}. It collects local log messages and the log messages of {{% param "product.abbrev" %}} and saves them in the `/var/log/messages` file.
 
-```c
+```shell
     @version: {{% param "product.techversion" %}}
     @include "scl.conf"
     source s_local {
@@ -113,7 +113,7 @@ The following is the default configuration file of {{% param "product.abbrev" %}
 
 The following is a simple configuration file that collects local log messages and forwards them to a logserver using the IETF-syslog protocol.
 
-```c
+```shell
     @version: {{% param "product.techversion" %}}
     @include "scl.conf"
     source s_local {

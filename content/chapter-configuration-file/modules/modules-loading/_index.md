@@ -8,7 +8,7 @@ The {{% param "product.name" %}} application loads every available module during
 
 To load a module that is not loaded automatically, include the following statement in the {{% param "product.abbrev" %}} configuration file:
 
-```c
+```shell
    @module <module-name>
 ```
 
@@ -24,7 +24,7 @@ Note the following points about the `@module` statement:
 
 To disable loading every module automatically, set the `autoload-compiled-modules` global variable to `0` in your configuration file:
 
-```c
+```shell
    @define autoload-compiled-modules 0
 ```
 
@@ -36,7 +36,7 @@ Note that in this case you have to explicitly load the modules you want to use.
 
 To ensure that a module is loaded, include the following statement in the {{% param "product.abbrev" %}} configuration file or the external files included in the configuration file:
 
-```c
+```shell
    @requires <module-name>
 ```
 
@@ -48,7 +48,7 @@ If you include the `@requires` statement in the:
 
 Note that this is not true for modules marked as mandatory. You can make a dependency module mandatory by defining an error message after the `@requires <module-name>` statement, for example:
 
-```c
+```shell
 Example
 @requires http "The http() driver is required for elasticsearch-http(). Install syslog-ng-mod-http to continue."
 ```

@@ -8,7 +8,7 @@ The `default-network-drivers()` source is a special source that uses multiple so
 
 To use the `default-network-drivers()` source, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 
-```c
+```shell
    @include "scl.conf"
 ```
 
@@ -54,7 +54,7 @@ For RFC5424-formatted messages (that is, messages received on the ports set in o
 
 The following example uses only the default settings.
 
-```c
+```shell
    source s_network {
         default-network-drivers();
     };
@@ -62,7 +62,7 @@ The following example uses only the default settings.
 
 The following example can receive TLS-encrypted connections on the default port (port 6514).
 
-```c
+```shell
    source s_network {
         default-network-drivers(
             tls(

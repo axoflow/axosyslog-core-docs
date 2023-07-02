@@ -6,7 +6,7 @@ weight:  300
 
 When a log statement includes multiple filter statements, AxoSyslog sends a message to the destination only if all filters are true for the message. In other words, the filters are connected with the logical `AND` operator. In the following example, no message arrives to the destination, because the filters are exclusive (the hostname of a client cannot be `example1` and `example2` at the same time):
 
-```c
+```shell
    filter demo_filter1 { host("example1"); };
     filter demo_filter2 { host("example2"); };
     log {
@@ -17,7 +17,7 @@ When a log statement includes multiple filter statements, AxoSyslog sends a mess
 
 To select the messages that come from either host `example1` or `example2`, use a single filter expression:
 
-```c
+```shell
    filter demo_filter { host("example1") or host("example2"); };
     log {
         source(s1); source(s2);
@@ -27,19 +27,19 @@ To select the messages that come from either host `example1` or `example2`, use 
 
 Use the `not` operator to invert filters, for example, to select the messages that were not sent by host `example1`:
 
-```c
+```shell
    filter demo_filter { not host("example1"); };
 ```
 
 However, to select the messages that were not sent by host `example1` or `example2`, you have to use the `and` operator (that's how boolean logic works):
 
-```c
+```shell
    filter demo_filter { not host("example1") and not host("example2"); };
 ```
 
 Alternatively, you can use parentheses to avoid this confusion:
 
-```c
+```shell
    filter demo_filter { not (host("example1") or host("example2")); };
 ```
 
@@ -47,7 +47,7 @@ For a complete description on filter functions, see {{% xref "/chapter-routing-f
 
 The following filter statement selects the messages that contain the word `deny` and come from the host `example`.
 
-```c
+```shell
    filter demo_filter { host("example") and match("deny" value("MESSAGE")); };
 ```
 

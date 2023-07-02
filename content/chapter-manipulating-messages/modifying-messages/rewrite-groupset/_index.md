@@ -17,7 +17,7 @@ The `groupset()` rewrite rule allows you to modify the value of multiple message
 
 ## Declaration:
 
-```c
+```shell
    rewrite <name_of_the_rule> {
         groupset("<new-value-of-the-fields>", values("<field-name-or-glob>" ["<another-field-name-or-glob>"]));
     };
@@ -31,35 +31,35 @@ The following examples show how to change the values of multiple fields at the s
 
   - Change the value of the `HOST` field to `myhost`.
     
-    ```c
+    ```shell
         groupset ("myhost" values("HOST"))
     
     ```
 
   - Change the value of the `HOST` and `FULLHOST` fields to `myhost`.
     
-    ```c
+    ```shell
         groupset ("myhost" values("HOST" "FULLHOST"))
     
     ```
 
   - Change the value of the `HOST`, `FULLHOST` and fields to lowercase.
     
-    ```c
+    ```shell
         groupset ("$(lowercase "$_")" values("HOST" "FULLHOST"))
     
     ```
 
   - Change the value of each field and macro that begins with `.USER` to `nobody`.
     
-    ```c
+    ```shell
         groupset ("nobody" values(".USER.*"))
     
     ```
 
   - Change the value of each field and macro that begins with `.USER` to its SHA-1 hash (truncated to 6 characters).
     
-    ```c
+    ```shell
         groupset ("$(sha1 --length 6 $_)" values(".USER.*"))
     
     ```

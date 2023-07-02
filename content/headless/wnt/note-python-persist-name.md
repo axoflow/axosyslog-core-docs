@@ -5,7 +5,7 @@
 
 Starting with 3.26, {{% param "product.abbrev" %}} assigns a persist name to Python sources and destinations. The persist name is generated from the class name. If you want to use the same Python class multiple times in your {{% param "product.abbrev" %}} configuration, add a unique `persist-name()` to each source or destination, otherwise {{% param "product.abbrev" %}} will not start. For example:
 
-```c
+```shell
    log {
         source { python(class(PyNetworkSource) options("port" "8080") persist-name("<unique-string>); };
         source { python(class(PyNetworkSource) options("port" "8081")); };
@@ -14,7 +14,7 @@ Starting with 3.26, {{% param "product.abbrev" %}} assigns a persist name to Pyt
 
 Alternatively, you can include the following line in the Python package: `@staticmethod generate_persist_name`. For example:
 
-```c
+```shell
    from syslogng import LogSource
       class PyNetworSource(LogSource):
         @staticmethod

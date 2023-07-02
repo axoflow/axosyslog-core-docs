@@ -7,7 +7,7 @@ Starting with version 3.19, you can specify multiple URLs, for example, `url("si
 
 Starting with version {{% param "product.abbrev" %}} version 3.22, you can use any of the following formats to specify multiple URLs:
 
-```c
+```shell
    url("server1", "server2", "server3"); # comma-separated strings
     url("server1" "server2" "server3"); # space-separated strings
     url("server1 server2 server3"); # space-separated within a single string

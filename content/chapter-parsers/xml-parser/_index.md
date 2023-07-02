@@ -13,7 +13,7 @@ To create an XML parser, define an `xml_parser` that has the `xml()` option. By 
 
 ## Declaration:
 
-```c
+```shell
    parser xml_name {
         xml(
             template()
@@ -31,7 +31,7 @@ To create an XML parser, define an `xml_parser` that has the `xml()` option. By 
 
 In the following example, the source is an XML-encoded log message. The destination is a file that uses the `format-json` template. The log line connects the source, the destination and the parser.
 
-```c
+```shell
    source s_local {
         file("/tmp/aaa");
     };
@@ -56,7 +56,7 @@ In the following example, the source is an XML-encoded log message. The destinat
 
 You can also define the parser inline in the log path.
 
-```c
+```shell
    log {
         source(s_file);
         parser { xml(prefix(".SDATA")); };
@@ -67,19 +67,19 @@ You can also define the parser inline in the log path.
 
 The XML parser inserts an "`.xml`" prefix by default before the extracted name-value pairs. Since `format-json` replaces a dot with an underscore at the beginning of keys, the "`.xml`" prefix becomes "`_xml`". Attributes get an `_` prefix. For example, from the XML input:
 
-```c
+```shell
    <tags attr='attrval'>part1<tag1>Tag1 Leaf</tag1>part2<tag2>Tag2 Leaf</tag2>part3</tags>
 ```
 
 The following output is generated:
 
-```c
+```shell
    {"_xml":{"tags":{"tag2":"Tag2 Leaf","tag1":"Tag1 Leaf","_attr":"attrval","tags":"part1part2part3"}}}
 ```
 
 When the text is separated by tags on different levels or tags on the same level, the parser simply concatenates the different parts of text. For example, from this input XML:
 
-```c
+```shell
    <tag>
      <tag1>text1</tag1>
      <tag1>text2</tag1>
@@ -88,19 +88,19 @@ When the text is separated by tags on different levels or tags on the same level
 
 The following output is generated:
 
-```c
+```shell
    .xml.tag.tag1 = text1text2
 ```
 
 Whitespaces are kept as they are in the XML input. No collapsing happens on significant whitespaces. For example, from this input XML:
 
-```c
+```shell
    <133>Feb 25 14:09:07 webserver syslogd: <b>|Test\n\n   Test2|</b>\n
 ```
 
 The following output is generated:
 
-```c
+```shell
    [2017-09-04T13:20:27.417266] Setting value; msg='0x7f2fd8002df0', name='.xml.b', value='|Test\x0a\x0a   Test2|'
 ```
 
@@ -123,7 +123,7 @@ To ensure that the end of the XML document is accurately detected, use any of th
         
             For example:
             
-            ```c
+            ```shell
             
                 59 <133>Feb 25 14:09:07 webserver syslogd: <book>\nText\n</book>
             

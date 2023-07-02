@@ -31,13 +31,13 @@ This means that messages sent by `application_A` running on `myhost_A` will be p
 
   - Adding a fourth log path with the `catchall` flag would process every message received by the AxoSyslog server.
     
-    ```c
+    ```shell
         log { source(s_localhost); destination(d_file); flags(catchall); };
     ```
 
 The following example shows a scenario that can result in message loss. Do NOT use such a configuration, unless you know exactly what you are doing. The problem is if a message matches the filters in the first part of the first log path, {{% param "product.abbrev" %}} treats the message as 'processed'. Since the first log path includes the `final` flag, {{% param "product.abbrev" %}} will not pass the message to the second log path (the one with the `fallback` flag). As a result, {{% param "product.abbrev" %}} drops messages that do not match the filter of the embedded log path.
 
-```c
+```shell
    # Do not use such a configuration, unless you know exactly what you are doing.
     log {
         source(s_network);
@@ -67,7 +67,7 @@ The following example shows a scenario that can result in message loss. Do NOT u
 
 In the following example, if a log message arrives whose `$MSG` part does not contain the string `foo`, then {{% param "product.abbrev" %}} will discard the message and will not check compliance with the second `if` condition.
 
-```c
+```shell
    ...
     if {
         filter { message('foo') };

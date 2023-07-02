@@ -11,7 +11,7 @@
 
 *Description:* This option allows you to pass custom values from the configuration file to the Python code. Enclose both the option names and their values in double-quotes. The Python code will receive these values during initialization as the `options` dictionary. For example, you can use this to set the IP address of the server from the configuration file, so it is not hard-coded in the Python object.
 
-```c
+```shell
    python(
         class("MyPythonClass")
         options(

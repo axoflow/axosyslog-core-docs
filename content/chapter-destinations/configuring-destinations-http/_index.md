@@ -13,7 +13,7 @@ Version 3.7 of {{% param "product.abbrev" %}} can directly post log messages to 
 
 ## Declaration:
 
-```c
+```shell
    java(
         class-path("/syslog-ng/install_dir/lib/syslog-ng/java-modules/*.jar")
         class-name("org.syslog_ng.http.HTTPDestination")
@@ -29,7 +29,7 @@ Version 3.7 of {{% param "product.abbrev" %}} can directly post log messages to 
 
 The following example defines an `http` destination.
 
-```c
+```shell
    destination d_http {
         java(
             class-path("/syslog-ng/install_dir/lib/syslog-ng/java-modules/*.jar")

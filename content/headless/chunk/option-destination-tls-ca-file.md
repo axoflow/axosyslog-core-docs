@@ -13,7 +13,7 @@
 
 Example format in configuration:
 
-```c
+```shell
    ca-file("/etc/pki/tls/certs/ca-bundle.crt")
 ```
 

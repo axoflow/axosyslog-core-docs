@@ -24,7 +24,7 @@ The `collectd()` destination has the following options. The `plugin()` and `type
 
 *Description:* The hostname that is passed to collectd. By default, {{% param "product.abbrev" %}} uses the host from the log message as the hostname.
 
-```c
+```shell
    type("gauge"),
 ```
 
@@ -54,7 +54,7 @@ The `collectd()` destination has the following options. The `plugin()` and `type
 
 *Description:* The name of the plugin that submits the data to collectd. For example:
 
-```c
+```shell
    plugin("${PROGRAM}"),
 ```
 
@@ -80,7 +80,7 @@ The `collectd()` destination has the following options. The `plugin()` and `type
 
 *Description:* The path to the socket of collectd. For details, see the [collectd-unixsock(5) manual page](https://collectd.org/documentation/manpages/collectd-unixsock.5.shtml).
 
-```c
+```shell
    type("gauge"),
 ```
 
@@ -107,7 +107,7 @@ The `collectd()` destination has the following options. The `plugin()` and `type
 
 *Description:* Identifies the type and number of values passed to collectd. For details, see the [types.db manual page](https://collectd.org/documentation/manpages/types.db.5.shtml). For example:
 
-```c
+```shell
    type("gauge"),
 ```
 
@@ -122,7 +122,7 @@ The `collectd()` destination has the following options. The `plugin()` and `type
 
 *Description:* For example:
 
-```c
+```shell
    type-instance("seqnum"),
 ```
 
@@ -137,7 +137,7 @@ The `collectd()` destination has the following options. The `plugin()` and `type
 
 *Description:* Colon-separated list of the values to send to collectd. For example:
 
-```c
+```shell
    values("${SEQNUM}"),
 ```
 

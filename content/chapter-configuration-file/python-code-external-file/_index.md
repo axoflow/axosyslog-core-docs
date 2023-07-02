@@ -10,7 +10,7 @@ Instead of writing Python code into your {{% param "product.abbrev" %}} configur
 
 When referencing a Python class from an external file in the `class()` option of a Python block in the {{% param "product.abbrev" %}} configuration file, the class name must include the name of the Python file containing the class, without the path and the .py extension. For example, if the MyDestination class is available in the `/etc/syslog-ng/etc/pythonexample.py` file, use `class("pythonexample.MyDestination")`:
 
-```c
+```shell
    destination d_python_to_file {
         python(
             class("pythonexample.MyDestination")

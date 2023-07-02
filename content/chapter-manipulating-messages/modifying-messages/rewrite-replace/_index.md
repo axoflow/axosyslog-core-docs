@@ -21,7 +21,7 @@ Substitution rules use the following syntax:
 
 ## Declaration:
 
-```c
+```shell
    rewrite <name_of_the_rule> {
         subst(
             "<string or regular expression to find>",
@@ -46,7 +46,7 @@ For case-insensitive searches, add the `flags(ignore-case)` option. To replace e
 
 The following example replaces the `IP` in the text of the message with the string `IP-Address`.
 
-```c
+```shell
    rewrite r_rewrite_subst{
         subst("IP", "IP-Address", value("MESSAGE"));
     };
@@ -54,7 +54,7 @@ The following example replaces the `IP` in the text of the message with the stri
 
 To replace every occurrence, use:
 
-```c
+```shell
    rewrite r_rewrite_subst{
         subst("IP", "IP-Address", value("MESSAGE"), flags("global"));
     };
@@ -62,7 +62,7 @@ To replace every occurrence, use:
 
 Multiple substitution rules are applied sequentially. The following rules replace the first occurrence of the string `IP` with the string `IP-Addresses`.
 
-```c
+```shell
    rewrite r_rewrite_subst{
         subst("IP", "IP-Address", value("MESSAGE"));
         subst("Address", "Addresses", value("MESSAGE"));

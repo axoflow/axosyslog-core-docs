@@ -19,7 +19,7 @@ Use the following syntax:
 
 ## Declaration:
 
-```c
+```shell
    rewrite <name_of_the_rule> {
         set("<string to include>", value(<field name>));
     };
@@ -31,7 +31,7 @@ Use the following syntax:
 
 The following example sets the HOST field of the message to `myhost`.
 
-```c
+```shell
    rewrite r_rewrite_set{
         set("myhost", value("HOST"));
     };
@@ -39,7 +39,7 @@ The following example sets the HOST field of the message to `myhost`.
 
 The following example appends the "suffix" string to the MESSAGE field:
 
-```c
+```shell
    rewrite r_rewrite_set{
         set("$MESSAGE suffix", value("MESSAGE"));
     };
@@ -50,7 +50,7 @@ For details on rewriting SDATA fields, see {{% xref "/chapter-manipulating-messa
 
 You can also use the following options in rewrite rules that use the `set()` operator.
 
-```c
+```shell
    rewrite <name_of_the_rule> {
         set("<string to include>", value(<field name>), on-error("fallback-to-string");
     };

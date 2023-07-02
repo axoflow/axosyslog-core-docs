@@ -15,7 +15,7 @@
 
 For example:
 
-```c
+```shell
    destination d_elasticsearch {
       elasticsearch2(
         client-lib-dir("/usr/share/elasticsearch/lib/")

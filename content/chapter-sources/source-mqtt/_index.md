@@ -17,7 +17,7 @@ The rest of this chapter and its sections build on your familiarity with the MQT
 
 ## Declaration:
 
-```c
+```shell
    source s_mqtt{
         mqtt(
             address("tcp://<hostname>:<port-number>")
@@ -32,7 +32,7 @@ The rest of this chapter and its sections build on your familiarity with the MQT
 
 The following example illustrates an `mqtt()` source configured to fetch messages from the MQTT broker running on `localhost:4444` using the `test/test topic`, and send them to the `localhost:4445` address.
 
-```c
+```shell
    @version: 3.35
     @include "scl.conf"
     source s_mqtt {

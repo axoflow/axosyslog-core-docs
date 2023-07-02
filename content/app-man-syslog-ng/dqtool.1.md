@@ -56,13 +56,13 @@ The `cat` command has the following options:
 
 ## Example: The cat command
 
-```c
+```shell
 ./dqtool cat ../var/syslog-ng-00000.qf
 ```
 
 The output looks like:
 
-```c
+```shell
 Disk-buffer state loaded;
 filename='../var/syslog-ng-00000.qf', qout_length='65', qbacklog_length='0', qoverflow_length='9205', qdisk_length='0'
 Mar  3 10:52:05 tristram localprg[1234]: seq: 0000011630, runid: 1267609923, stamp: 2010-03-03T10:52:05 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
@@ -95,19 +95,19 @@ The `cat` command has the following options:
 
 Relocate a single queue file:
 
-```c
+```shell
 bin/dqtool relocate --new_path /tmp/dq --persist var/syslog-ng.persist /tmp/syslog-ng-00000.rqf
 ```
 
 Relocate multiple queue files:
 
-```c
+```shell
 bin/dqtool relocate --new_path /tmp/dq --persist var/syslog-ng.persist /tmp/syslog-ng-00000.rqf /tmp/syslog-ng-00001.rqf
 ```
 
 Relocate every queue file:
 
-```c
+```shell
 bin/dqtool relocate --new_path /tmp/dq --persist var/syslog-ng.persist --all
 ```
 

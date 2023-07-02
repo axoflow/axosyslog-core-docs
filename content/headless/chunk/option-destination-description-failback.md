@@ -12,7 +12,7 @@ Depending on how you set the `failback()` option, {{% param "product.abbrev" %}}
     
     In the following example {{% param "product.abbrev" %}} handles the logservers in round-robin fashion if the primary logserver becomes inaccessible (therefore `failback()` option is not set).
     
-    ```c
+    ```shell
         destination d_network {
              network(
                   "primary-server.com"
@@ -36,7 +36,7 @@ Depending on how you set the `failback()` option, {{% param "product.abbrev" %}}
     
     In the following example {{% param "product.abbrev" %}} attempts to return to the primary logserver, as set in the `failback()` option: it will check if the server is accessible every `tcp-probe-interval()` seconds, and reconnect to the primary logserver after three successful connection attempts.
     
-    ```c
+    ```shell
         destination d_network_2 {
              network(
                   "primary-server.com"

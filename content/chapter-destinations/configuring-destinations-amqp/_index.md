@@ -13,7 +13,7 @@ For the list of available parameters, see {{% xref "/chapter-destinations/config
 
 ## Declaration:
 
-```c
+```shell
    amqp( host("<amqp-server-address>") );
 ```
 
@@ -23,7 +23,7 @@ For the list of available parameters, see {{% xref "/chapter-destinations/config
 
 The following example shows the default values of the available options.
 
-```c
+```shell
    destination d_amqp {
         amqp(
             vhost("/")

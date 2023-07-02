@@ -6,7 +6,7 @@ weight:  1100
 
 You can define global variables in the configuration file. Global variables are actually `name-value` pairs. When `syslog-ng` processes the configuration file during startup, it automatically replaces ``name`` with `value`. To define a global variable, use the following syntax:
 
-```c
+```shell
    @define name "value"
 ```
 
@@ -37,7 +37,7 @@ In {{% param "product.abbrev" %}} 3.24 and later, the location of the configurat
 
 For example, if an application is creating multiple log files in a directory, you can store the path in a global variable, and use it in your source definitions.
 
-```c
+```shell
    @define mypath "/opt/myapp/logs"
     source s_myapp_1 {
         file("`mypath`/access.log" follow-freq(1));
@@ -52,7 +52,7 @@ For example, if an application is creating multiple log files in a directory, yo
 
 The {{% param "product.abbrev" %}} application will interpret this as:
 
-```c
+```shell
    @define mypath "/opt/myapp/logs"
     source s_myapp_1 {
         file("/opt/myapp/logs/access.log" follow-freq(1));

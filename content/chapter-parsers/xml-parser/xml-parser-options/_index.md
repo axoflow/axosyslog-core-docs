@@ -53,7 +53,7 @@ The XML parser has the following options.
 
 ## Example: Using exclude_tags
 
-```c
+```shell
    parser xml_parser {
         xml(
             template("$MSG")
@@ -64,13 +64,13 @@ The XML parser has the following options.
 
 From this XML input:
 
-```c
+```shell
    <tag1>Text1</tag1><tag2>Text2</tag2><tag3>Text3<innertag>TextInner</innertag></tag3>
 ```
 
 The following output is generated:
 
-```c
+```shell
    {"_xml":{"tag3":"Text3"}}
 ```
 
@@ -97,7 +97,7 @@ The `prefix()` option is optional and its default value is `".xml"`.
 
 ## Example: Using strip-whitespaces
 
-```c
+```shell
    parser xml_parser {
         xml(
             template("$MSG")
@@ -108,13 +108,13 @@ The `prefix()` option is optional and its default value is `".xml"`.
 
 From this XML input:
 
-```c
+```shell
    <tag1> Tag </tag1>
 ```
 
 The following output is generated:
 
-```c
+```shell
    {"_xml":{"tag1":"Tag"}}
 ```
 

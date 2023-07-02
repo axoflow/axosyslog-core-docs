@@ -16,13 +16,13 @@ The `value()` parameter accepts both built-in macros and user-defined ones creat
 
 Starting with version 3.22, the `match()` filter can work on templates as well. This means that you can a match against an expression combined of macros, instead of a single macro. Note that when using a template, you must reference macros with the $ sign (unlike when using the `value()` parameter). For example:
 
-```c
+```shell
    match("^my-regular-expression" template("${HOST}|${PROGRAM}${PID}|${MESSAGE}"));
 ```
 
 Using a template with a single macro is equivalent with using the `value()` parameter. For example, the following two lines are equivalent:
 
-```c
+```shell
    match("^my-regular-expression" value("MESSAGE"));
     match("^my-regular-expression" template("${MESSAGE}"));
 ```

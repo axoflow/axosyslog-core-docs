@@ -70,7 +70,7 @@ If you use more than one delimiter, note the following points:
 
 *Description:* Specifies how to handle escaping in the parsed message. The following values are available. Default value: `escape-none`
 
-```c
+```shell
    parser p_demo_parser {
         csv-parser(
             prefix(".csv.")
@@ -107,7 +107,7 @@ Messages dropped as invalid can be processed by a `fallback` log path. For detai
     
     For example, you receive the following comma-separated message: `example 1, example2, example3`, and you segment it with the following parser:
     
-    ```c
+    ```shell
         csv-parser(columns("COLUMN1", "COLUMN2", "COLUMN3") delimiters(","));
     ```
     
@@ -115,7 +115,7 @@ Messages dropped as invalid can be processed by a `fallback` log path. For detai
     
     Using the `greedy` flag will assign the remainder of the message to the last column, so that the `COLUMN1`, `COLUMN2`, and `COLUMN3` variables will contain the strings `example1`, `example2`, and `example3, some more information`.
     
-    ```c
+    ```shell
         csv-parser(columns("COLUMN1", "COLUMN2", "COLUMN3") delimiters(",") flags(greedy));
     ```
     
@@ -137,7 +137,7 @@ Messages dropped as invalid can be processed by a `fallback` log path. For detai
 
 {{% include-headless "chunk/no-default-prefix.md" %}}
 
-```c
+```shell
    parser {
         csv-parser(prefix("myprefix."));
     };

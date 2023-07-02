@@ -8,7 +8,7 @@ When stopping the {{% param "product.abbrev" %}} application, {{% param "product
 
 The {{% param "product.abbrev" %}} `kafka` destination tries to reconnect to the brokers in a tight loop. This can look as spinning, because of a lot of similar debug messages. To decrease the amount of such messages, set a bigger timeout using the following properties:
 
-```c
+```shell
    retry.backoff.ms=1000
     reconnect.backoff.ms=1000
 ```

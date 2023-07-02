@@ -25,7 +25,7 @@ Like every other filter, messages unmatched (outside of the rate limit) by the `
 
 The following example depicts the scenario described in the description part of this section.
 
-```c
+```shell
    filter f_rate_limit {
                     rate-limit(
                     template("$HOST")

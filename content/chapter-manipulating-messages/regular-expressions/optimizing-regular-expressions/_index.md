@@ -11,13 +11,13 @@ The `host()`, `match()`, and `program()` filter functions and some other objects
 
 Suppose you need a filter that matches the following error message logged by the `xntpd` NTP daemon:
 
-```c
+```shell
    xntpd[1567]: time error -1159.777379 is too large (set clock manually);
 ```
 
 The following filter uses regular expressions and matches every instance and variant of this message.
 
-```c
+```shell
    filter f_demo_regexp {
         program("demo_program") and
         match("time error .* is too large .* set clock manually");
@@ -26,7 +26,7 @@ The following filter uses regular expressions and matches every instance and var
 
 Segmenting the `match()` part of this filter into separate `match()` functions greatly improves the performance of the filter.
 
-```c
+```shell
    filter f_demo_optimized_regexp {
         program("demo_program") and
         match("time error") and

@@ -15,7 +15,7 @@ You can forward simple name-value pairs where the name starts with a dot or unde
 
 ## Declaration:
 
-```c
+```shell
    graylog2();
 ```
 
@@ -29,7 +29,7 @@ You can send syslog messages to Graylog using the `graylog2()` destination. The 
 
 2.  On the AxoSyslog side, configure the name or IP address of the host running Graylog.
     
-    ```c
+    ```shell
         destination d_graylog {
           graylog2(
             host("172.16.146.142")
@@ -58,7 +58,7 @@ While sending nested JSON inside GELF is possible, it is not convenient. If you 
 
 3.  On the AxoSyslog side, use a network destination combined with a template utilizing format-json as shown in the example below:
     
-    ```c
+    ```shell
         destination d_jsontcp {
           network(
             "172.16.146.142"

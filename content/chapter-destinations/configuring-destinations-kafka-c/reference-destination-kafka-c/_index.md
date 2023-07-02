@@ -11,7 +11,7 @@ The C implementation of the `kafka()` destination of {{% param "product.abbrev" 
 
 The following options are required: `bootstrap-servers()`, `topic()`. Note that to use the C implementation of the `kafka()` destination, you must add the following lines to the beginning of your {{% param "product.abbrev" %}} configuration:
 
-```c
+```shell
    @define kafka-implementation kafka-c
 ```
 
@@ -77,7 +77,7 @@ The {{% param "product.abbrev" %}}`kafka` destination supports all properties of
 
 The syntax of the config() option is the following:
 
-```c
+```shell
    config( 
      “key1” => “value1” 
      “key2” => “value2” 
@@ -161,7 +161,7 @@ The `bootstrap-servers` option is translated to the `bootstrap.servers` property
 
 For example, the following properties file defines the acknowledgment method and compression:
 
-```c
+```shell
 example
 `acks=all
 compression.type=snappy`.

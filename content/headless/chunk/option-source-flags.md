@@ -34,7 +34,7 @@ Essentially, the `no-header` flag signals {{% param "product.abbrev" %}} that th
     
     The following example illustrates using the `no-header` flag with the `syslog-parser()` parser:
     
-    ```c
+    ```shell
         parser p_syslog {
           syslog-parser(
             flags(no-header)
@@ -45,7 +45,7 @@ Essentially, the `no-header` flag signals {{% param "product.abbrev" %}} that th
 
   - *no-hostname*: Enable the `no-hostname` flag if the log message does not include the hostname of the sender host. That way {{% param "product.abbrev" %}} assumes that the first part of the message header is ${PROGRAM} instead of ${HOST}. For example:
     
-    ```c
+    ```shell
         source s_dell {
             network(
                 port(2000)

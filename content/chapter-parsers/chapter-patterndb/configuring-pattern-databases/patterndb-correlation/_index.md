@@ -21,7 +21,7 @@ Another parameter of a rule is the `context-timeout` attribute, which determines
 
 ## Example: Using message correlation
 
-```c
+```shell
    <rule xml:id="..." context-id="ssh-session" context-timeout="86400" context-scope="process">
         <patterns>
             <pattern>Accepted @ESTRING:usracct.authmethod: @for @ESTRING:usracct.username: @from @ESTRING:usracct.device: @port @ESTRING:: @@ANYSTRING:usracct.service@</pattern>

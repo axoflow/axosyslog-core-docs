@@ -9,7 +9,7 @@ The `mongodb()` driver sends messages to a [MongoDB](https://www.mongodb.com/) d
 
 ## Declaration
 
-```c
+```shell
    mongodb(parameters);
 ```
 
@@ -27,7 +27,7 @@ The {{% param "product.abbrev" %}} `mongodb()` driver is compatible with MongoDB
 
 The following example creates a `mongodb()` destination using only default values.
 
-```c
+```shell
    destination d_mongodb {
         mongodb();
     };
@@ -35,7 +35,7 @@ The following example creates a `mongodb()` destination using only default value
 
 The following example displays the default values.
 
-```c
+```shell
    destination d_mongodb {
         mongodb(
             uri("mongodb://localhost:27017/syslog")
@@ -49,7 +49,7 @@ The following example displays the default values.
 
 The following example shows the same setup using the deprecated libmongo-client syntax (as used in {{% param "product.abbrev" %}} version 3.7), and is equivalent with the previous example.
 
-```c
+```shell
    destination d_mongodb {
         mongodb(
             servers("localhost:27017")

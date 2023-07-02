@@ -19,7 +19,7 @@ For example:
 
 ## Declaration:
 
-```c
+```shell
    parser p_regexp {
         regexp-parser(
         patterns( ... )
@@ -33,13 +33,13 @@ For example:
 
 In the following example, the incoming log message is the following:
 
-```c
+```shell
    Apr 20 11:09:46 test_field -> test_value
 ```
 
 The regexp-parser inserts the `.regexp.` prefix before all extracted name-value pairs. The destination is a file, that uses the format-json template function. Every name-value pair that begins with a dot (`.`) character will be written to the file (dot-nv-pairs). The log line connects the source, the parser and the destination.
 
-```c
+```shell
    source s_network {
         network(
             port(21514)
@@ -67,7 +67,7 @@ The regexp-parser inserts the `.regexp.` prefix before all extracted name-value 
 
 You can also define the parser inline in the log path.
 
-```c
+```shell
    source s_network {
         network(
             port(21514)
@@ -94,7 +94,7 @@ You can also define the parser inline in the log path.
 
 You can set multiple patterns:
 
-```c
+```shell
    parser p_regexp {
         regexp-parser(
             patterns(".*test_field -> (?<test_field>.*)$", ".*other_format: (?<foo>.*)$")

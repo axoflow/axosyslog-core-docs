@@ -13,7 +13,7 @@ You can use the RLTP protocol as well. For details about the RLTP protocol, see 
 
 ## Declaration:
 
-```c
+```shell
    network("<destination-address>" [options]);
 ```
 
@@ -24,19 +24,19 @@ The `network()` destination has a single required parameter that specifies the d
 
 TCP destination that sends messages to `10.1.2.3`, port `1999`:
 
-```c
+```shell
    destination d_tcp { network("10.1.2.3" port(1999)); };
 ```
 
 If name resolution is configured, you can use the hostname of the target server as well.
 
-```c
+```shell
    destination d_tcp { network("target_host" port(1999)); };
 ```
 
 TCP destination that sends messages to the `::1` IPv6 address, port `2222`.
 
-```c
+```shell
    destination d_tcp6 {
         network(
             "::1"
@@ -49,7 +49,7 @@ TCP destination that sends messages to the `::1` IPv6 address, port `2222`.
 
 To send messages using the IETF-syslog message format without using the IETF-syslog protocol, enable the `syslog-protocol` flag. (For details on how to use the IETF-syslog protocol, see {{% xref "/chapter-destinations/configuring-destinations-syslog/reference-destination-syslog-chapter/_index.md" %}}.)
 
-```c
+```shell
    destination d_tcp { network("10.1.2.3" port(1999) flags(syslog-protocol) ); };
 ```
 

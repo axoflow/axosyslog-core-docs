@@ -14,6 +14,6 @@ Note the following points when reading kernel messages on various platforms.
 
   - To read the kernel messages on HP-UX platforms, use the following options in the source statement:
     
-    ```c
+    ```shell
         file("/dev/klog" program-override("kernel") flags(kernel) follow-freq(0));
     ```

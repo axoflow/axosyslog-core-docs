@@ -43,7 +43,7 @@ To compile `syslog-ng` from the source code, complete the following steps. Alter
 
 8.  Enter the new directory and issue the following commands. (If the `./configure` file does not exist, for example, because you cloned the repository from GitHub instead of using a release tarball, execute the `./autogen.sh` command.)
     
-    ```c
+    ```shell
         $ ./configure
         $ make
         $ make install
@@ -51,13 +51,13 @@ To compile `syslog-ng` from the source code, complete the following steps. Alter
 
 9.  Uncompress the `syslog-ng` archive using the
     
-    ```c
+    ```shell
         tar xvfz syslog-ng-x.xx.tar.gz
     ```
     
     or the
     
-    ```c
+    ```shell
         unzip -c syslog-ng-x.xx.tar.gz | tar xvf -
     ```
     
@@ -65,7 +65,7 @@ To compile `syslog-ng` from the source code, complete the following steps. Alter
 
 10. Enter the new directory and issue the following commands:
     
-    ```c
+    ```shell
         $ ./configure
         $ make
         $ make install
@@ -83,7 +83,7 @@ When using the `make` command, consider the following:
 
 11. If needed, use the following options to change how `syslog-ng` is compiled using the following command syntax:
     
-    ```c
+    ```shell
         $ ./configure --compile-time-option-name
     
     ```

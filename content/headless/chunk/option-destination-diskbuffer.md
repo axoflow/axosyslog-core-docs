@@ -92,7 +92,7 @@ Options `reliable()` and `disk-buf-size()` are required options.
 
 In the following case reliable disk-buffer() is used.
 
-```c
+```shell
    destination d_demo {
         network(
             "127.0.0.1"
@@ -109,7 +109,7 @@ In the following case reliable disk-buffer() is used.
 
 In the following case normal disk-buffer() is used.
 
-```c
+```shell
    destination d_demo {
         network(
             "127.0.0.1"

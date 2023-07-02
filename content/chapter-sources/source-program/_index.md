@@ -11,7 +11,7 @@ The program driver has a single required parameter, specifying the name of the a
 
 ## Declaration:
 
-```c
+```shell
    program(filename);
 ```
 
@@ -19,7 +19,7 @@ The program driver has a single required parameter, specifying the name of the a
 
 ## Example: Using the program() driver {#example-source-program}
 
-```c
+```shell
    source s_program {
         program("/etc/init.d/mydaemon");
     };

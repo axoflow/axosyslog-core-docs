@@ -11,7 +11,7 @@ Starting with version 3.7, {{% param "product.abbrev" %}} can directly publish l
 
 ## Declaration:
 
-```c
+```shell
    @include "scl.conf"
     
     kafka(
@@ -28,7 +28,7 @@ Starting with version 3.7, {{% param "product.abbrev" %}} can directly publish l
 
 The following example defines a `kafka` destination, using only the required parameters.
 
-```c
+```shell
    @include "scl.conf"
     
     destination d_kafka {

@@ -6,7 +6,7 @@ weight:  300
 
 To create a reusable configuration snippet and reuse parts of a configuration file, you have to define the block (for example, a source) once, and reference it later. Any {{< param "product.name" >}} object can be a block. Use the following syntax to define a block:
 
-```c
+```shell
    block type name() {<contents of the block>};
 ```
 
@@ -24,7 +24,7 @@ To use a block in your configuration file, you have to do two things:
 
   - Reference the name of the block in your configuration file. This will insert the block into your configuration. For example, to use a block called `myblock`, include the following line in your configuration:
     
-    ```c
+    ```shell
         myblock()
     
     ```
@@ -38,14 +38,14 @@ The contents of the block will be inserted into the configuration when {{% param
 
 Suppose you are running an application on your hosts that logs into the `/opt/var/myapplication.log` file. Create a file (for example, `myblocks.conf`) that stores a source describing this file and how it should be read:
 
-```c
+```shell
    block source myappsource() {
             file("/opt/var/myapplication.log" follow-freq(1) default-facility(syslog)); };
 ```
 
 Include this file in your main `syslog-ng.conf` configuration file, reference the block, and use it in a logpath:
 
-```c
+```shell
    @version: {{% param "product.techversion" %}}
     @include "<correct/path>/myblocks.conf"
     source s_myappsource { myappsource(); };
@@ -61,7 +61,7 @@ To define a block that defines more than one object, use `root` as the type of t
 
 The following example defines a source, a destination, and a log path to connect them.
 
-```c
+```shell
    block root mylogs() {
         source s_file {
             file("/var/log/mylogs.log" follow-freq(1));
@@ -96,7 +96,7 @@ To make a parameter expand into nothing (for example, because it has no default 
 
 The following example defines a TCP source that can receive the following parameters: the port where {{% param "product.abbrev" %}} listens (`localport`), and optionally source flags (`flags`).
 
-```c
+```shell
    block source my_tcp_source(localport() flags("")) {
         network(port(`localport`) transport(tcp) flags(`flags`));
     };
@@ -104,13 +104,13 @@ The following example defines a TCP source that can receive the following parame
 
 Because `localport` is defined with empty brackets `()`, it is a mandatory parameter. However, the `flags` parameter is not mandatory, because it is defined with an empty double quote bracket pair `("")`. If you do not enter a specific value when referencing this parameter, the value will be an empty string. This means that in this case
 
-```c
+```shell
    my_tcp_source(localport(8080))
 ```
 
 will be expanded to:
 
-```c
+```shell
    network(port(8080) transport(tcp) flags());
 ```
 
@@ -121,7 +121,7 @@ will be expanded to:
 
 Configuration blocks can receive arguments as well. The parameters the block can receive must be specified when the block is defined, using the following syntax:
 
-```c
+```shell
    block type block_name(argument1(<default-value-of-the-argument>) argument2(<default-value-of-the-argument>) argument3())
 ```
 
@@ -135,7 +135,7 @@ If an argument does not have a default value, use an empty double quote bracket 
 
 The following sample defines a file source block, which can receive the name of the file as a parameter. If no parameter is set, it reads messages from the `/var/log/messages` file.
 
-```c
+```shell
    block source s_logfile (filename("messages")) {
         file("/var/log/`filename`" );
     };
@@ -152,7 +152,7 @@ The three dots (`…`) at the end of the argument list refer to any additional p
 
 The following definition extends the logfile block from the previous example, and passes the optional arguments (`follow-freq(1) flags(no-parse)`) to the `file()` source.
 
-```c
+```shell
    block source s_logfile(filename("messages") ...) {
         file("/var/log/`filename`" `__VARARGS__`);
     };
@@ -171,7 +171,7 @@ The following definition extends the logfile block from the previous example, an
 
 The following example is the code of the [`pacct()` source driver]({{< relref "/chapter-sources/source-pacct/_index.md" >}}), which is actually a block that can optionally receive two arguments.
 
-```c
+```shell
    block source pacct(file("/var/log/account/pacct") follow-freq(1) ...) {
         file("`file`" follow-freq(`follow-freq`) format("pacct") tags(".pacct") `__VARARGS__`);
     };
@@ -183,7 +183,7 @@ The following example is the code of the [`pacct()` source driver]({{< relref "/
 
 The following example defines a block called `setup-dns()` to set DNS-related settings at a single place.
 
-```c
+```shell
    block options setup-dns(use-dns()) {
         keep-hostname(no);
         use-dns(`use-dns`);

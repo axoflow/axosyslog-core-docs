@@ -30,7 +30,7 @@ N/A
 
 ## Example
 
-```c
+```shell
    <rules>
         <rule provider='me' id='182437592347598' class='system'>
             <patterns>

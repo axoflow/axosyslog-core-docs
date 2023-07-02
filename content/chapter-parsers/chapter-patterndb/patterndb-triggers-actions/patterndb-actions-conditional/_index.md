@@ -6,7 +6,7 @@ weight:  100
 
 To limit when a message is triggered, use the `condition` attribute and specify a filter expression: the action will be executed only if the condition is met. For example, the following action is executed only if the message was sent by the host called `myhost`.
 
-```c
+```shell
    <action condition="'${HOST}' == 'myhost'">
 ```
 
@@ -14,7 +14,7 @@ You can use the same operators in the condition that can be used in filters. For
 
 The following action can be used to log the length of an SSH session (the time difference between a login and a logout message in the context):
 
-```c
+```shell
    <actions>
         <action>
             <message>
@@ -31,7 +31,7 @@ The following action can be used to log the length of an SSH session (the time d
 
 The following example triggers different actions based on the number of messages in the context. This way you can check if the context contains enough messages for the event to be complete, and execute a different action if it does not.
 
-```c
+```shell
    <actions>
         <action condition='"$(context-length)" >= "4"'>
             <message>

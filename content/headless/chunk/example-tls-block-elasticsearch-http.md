@@ -4,7 +4,7 @@
 
 ## Declaration:
 
-```c
+```shell
    destination d_elasticsearch-http {
         elasticsearch-http(
             url("http://your-elasticsearch-server:9200/_bulk")

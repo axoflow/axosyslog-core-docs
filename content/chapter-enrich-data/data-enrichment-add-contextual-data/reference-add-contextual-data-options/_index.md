@@ -32,13 +32,13 @@ The following options are required: `selector()`, `database()`.
 
 *Description:* Specifies the ID of the entry (line) that is corresponds to log messages that do not have a selector that matches an entry in the database. For example, if you add name-value pairs from the database based on the hostname from the log message (`selector("${HOST}")`), then you can include a line for unknown hosts in the database, and set `default-selector()` to the ID of the line for unknown hosts. In the CSV file:
 
-```c
+```shell
    unknown-hostname,host-role,unknown
 ```
 
 In the {{% param "product.abbrev" %}} configuration file:
 
-```c
+```shell
    add-contextual-data(
         selector("$HOST")
         database("context-info-db.csv")

@@ -9,7 +9,7 @@ The iptables parser can parse the log messages of the iptables command. Availabl
 
 ## Declaration:
 
-```c
+```shell
    @version: {{% param "product.configversion" %}}
     @include "scl.conf"
     log {
@@ -29,7 +29,7 @@ The `iptables-parser()` is actually a reusable configuration snippet configured 
 
 By default, `iptables-parser()` uses the `.iptables.` prefix. To modify it, use the following format:
 
-```c
+```shell
    parser { 
         iptables-parser(prefix("myprefix.")); 
     };

@@ -31,7 +31,7 @@ With the `drop-invalid(no)` option `syslog-parser()` will work in the same way a
 
 ## Example: enabling the drop-invalid() option
 
-```c
+```shell
    parser p_syslog {  syslog-parser(drop-invalid(yes)); };
 ```
 

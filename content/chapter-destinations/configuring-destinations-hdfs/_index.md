@@ -15,7 +15,7 @@ Note the following limitations when using the {{% param "product.abbrev" %}} `hd
 
 ## Declaration:
 
-```c
+```shell
    @include "scl.conf"
     
     hdfs(
@@ -31,7 +31,7 @@ Note the following limitations when using the {{% param "product.abbrev" %}} `hd
 
 The following example defines an `hdfs` destination using only the required parameters.
 
-```c
+```shell
    @include "scl.conf"
     
     destination d_hdfs {

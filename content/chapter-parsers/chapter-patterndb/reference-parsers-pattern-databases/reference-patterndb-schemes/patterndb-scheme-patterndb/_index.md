@@ -32,7 +32,7 @@ The container element of the pattern database.
 
 ## Example
 
-```c
+```shell
    <patterndb version='4' pub_date='2010-10-25'>
 ```
 

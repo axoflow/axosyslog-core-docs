@@ -11,7 +11,7 @@ For the list of available parameters, see {{% xref "/chapter-destinations/config
 
 ## Declaration:
 
-```c
+```shell
    riemann(
         server("<riemann-server-address>")
         port("<riemann-server-port>")
@@ -25,7 +25,7 @@ For the list of available parameters, see {{% xref "/chapter-destinations/config
 
 The following destination sends the value of the SEQNUM macro (the number of messages sent to this destination) as a metric to the Riemann server.
 
-```c
+```shell
    @version: {{% param "product.techversion" %}}
     
     source s_network {

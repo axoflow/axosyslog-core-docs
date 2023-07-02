@@ -88,7 +88,7 @@ Certain features of generating messages can be used only if message correlation 
 
   - It is possible to generate a message when the `context-timeout` of the original message expires and no new message is added to the context during this time. To accomplish this, include the `trigger="timeout"` attribute in the action element:
     
-    ```c
+    ```shell
         <action trigger="timeout">
     
     ```

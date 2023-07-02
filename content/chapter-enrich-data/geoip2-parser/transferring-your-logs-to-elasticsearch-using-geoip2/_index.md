@@ -6,7 +6,7 @@ weight:  500
 
 If you are transferring your log messages into Elasticsearch, use the following rewrite rule to combine the longitude and latitude information into a single value (called `geoip2.location`), and set the mapping in Elasticsearch accordingly. Do not forget to include the rewrite in your log path. These examples assume that you used `prefix("geoip2.")` instead of the default for the `geoip2` parser. For details on transferring your log messages to Elasticsearch, see {{% xref "/chapter-destinations/configuring-destinations-elasticsearch2/_index.md" %}}.
 
-```c
+```shell
    rewrite r_geoip2 {
         set(
             "${geoip2.location.latitude},${geoip2.location.longitude}",
@@ -18,7 +18,7 @@ If you are transferring your log messages into Elasticsearch, use the following 
 
 In your Elasticsearch configuration, set the appropriate mappings:
 
-```c
+```shell
    {
        "mappings" : {
           "_default_" : {

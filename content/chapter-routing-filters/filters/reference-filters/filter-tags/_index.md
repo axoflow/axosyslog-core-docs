@@ -13,7 +13,7 @@ weight:  2500
 
 ## Example: Adding tags and filtering messages with tags {#example-tags-filtering}
 
-```c
+```shell
    source s_tcp {
         network(ip(192.168.1.1) port(1514) tags("tcp", "router"));
     };
@@ -21,7 +21,7 @@ weight:  2500
 
 Use the `tags()` option of the filters to select only specific messages:
 
-```c
+```shell
    filter f_tcp {
         tags(".source.s_tcp");
     };

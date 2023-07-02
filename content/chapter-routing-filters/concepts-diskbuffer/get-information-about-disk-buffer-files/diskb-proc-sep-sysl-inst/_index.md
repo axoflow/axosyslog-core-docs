@@ -45,7 +45,7 @@ To process the messages from an orphan disk-buffer file using a separate {{% par
 
 3.  Create a directory for the temporary instance. In the examples during this process, the `/tmp/qdisk` directory is used.
     
-    ```c
+    ```shell
         mkdir /tmp/qdisk
     ```
     
@@ -58,7 +58,7 @@ Make sure that there is sufficient disk space in the directory. The minimum reco
     
     ## Example: creating the /tmp/qdisk/qdisk.conf configuration file for the temporary instance
     
-    ```c
+    ```shell
         @version:7.0
         @include "scl.conf"
         
@@ -86,7 +86,7 @@ Add the `dir()` option and set the disk-buffer file's destination directory to t
 
 6.  <span id="start-temp-instance"></span>Start the temporary {{% param "product.abbrev" %}} instance in the foreground.
     
-    ```c
+    ```shell
         syslog-ng -Fe -f /tmp/qdisk/qdisk.conf -R /tmp/qdisk/qdisk.persist -c /tmp/qdisk/qdisk.ctl
     ```
     
@@ -97,7 +97,7 @@ Add the `dir()` option and set the disk-buffer file's destination directory to t
     
     ## Example: output displaying newly created empty disk-buffer file and connection established to remote destination
     
-    ```c
+    ```shell
         Follow-mode file source not found, deferring open; filename='/no_such_file_or.dir'
         Reliable disk-buffer state saved; filename='/tmp/qdisk/syslog-ng-00000.rqf', qdisk_length='0'
         No server license found, running in client mode;
@@ -111,13 +111,13 @@ Add the `dir()` option and set the disk-buffer file's destination directory to t
 
 8.  <span id="repeat-steps-from-here"></span>Overwrite the empty disk-buffer file with the orphan disk-buffer file.
     
-    ```c
+    ```shell
         mv /opt/syslog-ng/var/syslog-ng-00005.rqf /tmp/qdisk/syslog-ng-00000.rqf
     ```
 
 9.  Start {{% param "product.abbrev" %}} using the command used in [Start the temporary {{% param "product.abbrev" %}} instance in the foreground]({{< relref "/chapter-routing-filters/concepts-diskbuffer/get-information-about-disk-buffer-files/diskb-proc-sep-sysl-inst/_index.md#start-temp-instance" >}}) step.
     
-    ```c
+    ```shell
         syslog-ng -Fe -f /tmp/qdisk/qdisk.conf -R /tmp/qdisk/qdisk.persist -c /tmp/qdisk/qdisk.ctl
     ```
 
@@ -125,13 +125,13 @@ Add the `dir()` option and set the disk-buffer file's destination directory to t
     
       - Checking the number of stored logs in the disk-buffer (that is, the last number from the output).
         
-        ```c
+        ```shell
             /opt/syslog-ng/sbin/syslog-ng-ctl stats -c /tmp/qdisk/qdisk.ctl | grep 'dst.*queued'
         ```
     
       - Checking the status of the disk-buffer file.
         
-        ```c
+        ```shell
             /opt/syslog-ng/bin/dqtooldqtool info /tmp/qdisk/syslog-ng-00000.rqf
         ```
         
@@ -142,7 +142,7 @@ Add the `dir()` option and set the disk-buffer file's destination directory to t
         
         When checking the status of the disk-buffer files, the terminal will display a similar status message for an empty disk-buffer file:
         
-        ```c
+        ```shell
             Reliable disk-buffer state loaded; filename='/tmp/qdisk/syslog-ng-00000.rqf', queue_length='0', size='0'
         ```
         
@@ -160,6 +160,6 @@ Add the `dir()` option and set the disk-buffer file's destination directory to t
     
     The following command removes the `/mp/qdisk` temporary directory:
     
-    ```c
+    ```shell
         rm -rf /tmp/qdisk
     ```

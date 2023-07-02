@@ -6,7 +6,7 @@ weight:  300
 
 Every `syslog-ng.conf` configuration file must begin with a line containing version information. For `syslog-ng` version {{% param "product.version" %}}, this line looks like:
 
-```c
+```shell
    @version: {{% param "product.techversion" %}}
 ```
 
@@ -16,7 +16,7 @@ If the configuration file does not contain the version information, `syslog-ng` 
 
 The following is a very simple configuration file for `syslog-ng`: it collects the internal messages of `syslog-ng` and the messages from `/dev/log` into the `/var/log/messages_syslog-ng.log` file.
 
-```c
+```shell
    @version: {{% param "product.techversion" %}}
     source s_local {
         unix-dgram("/dev/log"); internal();

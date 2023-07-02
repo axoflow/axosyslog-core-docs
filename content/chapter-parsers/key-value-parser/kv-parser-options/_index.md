@@ -13,7 +13,7 @@ The `kv-parser` has the following options.
 
 By default, `kv-parser()` uses the `.kv.` prefix. To modify it, use the following format:
 
-```c
+```shell
    parser {
         kv-parser(prefix("myprefix."));
     };

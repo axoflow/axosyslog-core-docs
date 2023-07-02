@@ -65,7 +65,7 @@ In case of soft flow-control there is no message lost if the destination can acc
 
 ## Example: Soft flow-control
 
-```c
+```shell
    source s_file {
         file("/tmp/input_file.log");
     };
@@ -95,7 +95,7 @@ Hazard of data loss! For destinations other than file, soft flow-control is not 
 
 ## Example: Hard flow-control
 
-```c
+```shell
    source s_file {
         file("/tmp/input_file.log");
     };

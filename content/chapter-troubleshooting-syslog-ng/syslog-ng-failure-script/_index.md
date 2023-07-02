@@ -23,7 +23,7 @@ To create a sample failure script, complete the following steps.
 
 1.  Create a file named `/opt/syslog-ng/sbin/syslog-ng-failure` with the following content:
     
-    ```c
+    ```shell
         #!/usr/bin/env bash
         cat >>/tmp/test.txt <<EOF
         $(date)
@@ -47,7 +47,7 @@ To create a sample failure script, complete the following steps.
     
     The command starts {{% param "product.abbrev" %}} in safe-background mode (which is needed to use the failure script) and then kills it. You should see that the relevant information is written into the `/tmp/test.txt` file, for example:
     
-    ```c
+    ```shell
         Thu May 18 12:08:58 UTC 2017
         Name............syslog-ng
         Chroot dir......NULL
@@ -63,7 +63,7 @@ To create a sample failure script, complete the following steps.
 
 4.  You should also see messages similar to the following in system syslog. The exact message depends on the signal (or the reason why {{% param "product.abbrev" %}} stopped):
     
-    ```c
+    ```shell
         May 18 13:56:09 myhost supervise/syslog-ng[10820]: Daemon exited gracefully, not restarting; exitcode='0'
         May 18 13:57:01 myhost supervise/syslog-ng[10996]: Daemon exited due to a deadlock/signal/failure, restarting; exitcode='131'
         May 18 13:57:37 myhost supervise/syslog-ng[11480]: Daemon was killed, not restarting; exitcode='9'

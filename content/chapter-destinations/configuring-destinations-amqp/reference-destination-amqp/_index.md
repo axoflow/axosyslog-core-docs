@@ -115,7 +115,7 @@ The `amqp()` destination has the following options:
 
 *Description:* If enabled, the {{% param "product.abbrev" %}} amqp destination sends heartbeat messages to the server periodically. During negotiation, both the amqp server and the client provide a heartbeat parameter, and the smaller is chosen for heartbeat interval. For example:
 
-```c
+```shell
    destination { amqp(
         vhost("/")
         exchange("logs")

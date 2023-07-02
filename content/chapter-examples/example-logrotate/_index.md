@@ -34,7 +34,7 @@ The {{% param "product.abbrev" %}} application does not rotate logs by itself. T
 
 This sample file destination configuration stores incoming logs in files that are named based on the current year, month and day, and places these files in directories that are named based on the hostname:
 
-```c
+```shell
    destination d_sorted {
         file(
             "/var/log/remote/${HOST}/${YEAR}_${MONTH}_${DAY}.log"
@@ -49,7 +49,7 @@ This sample file destination configuration stores incoming logs in files that ar
 
 This sample logstore destination configuration stores incoming logs in logstores that are named based on the current year, month and day, and places these logstores in directories that are named based on the hostname:
 
-```c
+```shell
    destination d_logstore {
         logstore(
             "/var/log/remote/${HOST}/${YEAR}_${MONTH}_${DAY}.lgs"
@@ -65,7 +65,7 @@ This sample logstore destination configuration stores incoming logs in logstores
 
 This sample command for `cron` removes files older than two weeks from the `/var/log/remote` directory:
 
-```c
+```shell
    find /var/log/remote/ -daystart -mtime +14 -type f -exec rm {} \;
 ```
 

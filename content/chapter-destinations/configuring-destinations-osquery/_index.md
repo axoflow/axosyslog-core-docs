@@ -13,14 +13,14 @@ The syslog table contains logs forwarded over a named pipe from `syslog-ng`. Whe
 
 Run osqueryi:
 
-```c
+```shell
    osqueryi --enable_syslog
              --disable-events=false
 ```
 
 To store the database on disk:
 
-```c
+```shell
    osqueryi --enable_syslog
              --disable-events=false
              --database_path=/tmp/osquery.db
@@ -28,7 +28,7 @@ To store the database on disk:
 
 To set up a custom named pipe:
 
-```c
+```shell
    osqueryi --enable_syslog
              --disable-events=false
              --database_path=/tmp/osquery.db
@@ -37,7 +37,7 @@ To set up a custom named pipe:
 
 Example configuration:
 
-```c
+```shell
    @version: 3.12
     @include "scl.conf"
     

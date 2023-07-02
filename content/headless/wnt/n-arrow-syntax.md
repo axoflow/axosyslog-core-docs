@@ -5,7 +5,7 @@
 
 From version 3.27, {{% param "product.abbrev" %}} supports the arrow syntax for declaring custom Java and Python options. You can alternatively declare them using a similar syntax:
 
-```c
+```shell
 options(
   "host" => "localhost"
   "port" => "1883"

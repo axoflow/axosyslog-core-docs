@@ -36,7 +36,7 @@ N/A
 
 ## Example
 
-```c
+```shell
    <values>
         <value name=".classifier.outcome">/Success</value>
     </values>

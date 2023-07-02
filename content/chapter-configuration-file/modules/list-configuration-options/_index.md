@@ -10,7 +10,7 @@ The `syslog-ng-cfg-db.py` utility has the following options:
 
 - The following command lists the contexts that the utility supports.
     
-    ```c
+    ```shell
         syslog-ng-cfg-db.py
     ```
     
@@ -20,25 +20,25 @@ Currently, sources and destinations are supported.
 
 - The following command lists the available drivers of a context:
     
-    ```c
+    ```shell
         syslog-ng-cfg-db.py -c <source|destination>
     ```
 
 - The following command lists the available options of a specific driver and specifies the context and the driver:
     
-    ```c
+    ```shell
         syslog-ng-cfg-db.py -c <source|destination> -d <driver>
     ```
     
     For example, to list the options of the `kafka-c()` destination driver:
     
-    ```c
+    ```shell
         syslog-ng-cfg-db.py -c destination -d kafka-c
     ```
     
     The output includes the available options of the driver in alphabetical order, and the type of the option. For example:
     
-    ```c
+    ```shell
         destination kafka-c(
             bootstrap-servers/kafka-bootstrap-servers(<string>)
             client-lib-dir(<string>)

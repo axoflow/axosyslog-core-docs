@@ -21,7 +21,7 @@ The `snmp()` driver requires the `host()`, `trap-obj()`, and `snmp-obj()` option
 
 ## Declaration:
 
-```c
+```shell
    destination d_snmp {snmp(host() trap-obj() snmp-obj() ...);};
 ```
 
@@ -47,7 +47,7 @@ The `snmp()` destination driver does not generate MARK signals itself, but can r
 
 The following example defines an SNMP destination that uses the SNMPv2c protocol.
 
-```c
+```shell
    destination d_snmpv2c{
         snmp(
             version('v2c')
@@ -62,7 +62,7 @@ The following example defines an SNMP destination that uses the SNMPv2c protocol
 
 The following example defines an SNMP destination that uses the SNMPv3 protocol and uses macros to fill the values of the SNMP objects.
 
-```c
+```shell
    destination d_snmpv3{
         snmp(
             version('v3')

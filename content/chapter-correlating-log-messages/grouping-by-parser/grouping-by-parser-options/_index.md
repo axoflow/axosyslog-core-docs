@@ -52,7 +52,7 @@ Note that the `aggregate()` option has access to every message of the context, a
 
 To send the generated messages to the `internal` source, use the `inject-mode("internal")` option:
 
-```c
+```shell
    parser p_grouping-by {grouping-by(
         ...
         inject-mode("internal")
@@ -61,7 +61,7 @@ To send the generated messages to the `internal` source, use the `inject-mode("i
 
 To inject the generated messages where the parser is referenced, use the `inject-mode("pass-through")` option:
 
-```c
+```shell
    parser p_grouping-by {grouping-by(
         ...
         inject-mode("pass-through")

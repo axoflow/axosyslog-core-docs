@@ -49,7 +49,7 @@ Other optional elements that can appear in log statements are parsers and rewrit
 
 - The main body of the configuration file consists of object definitions: sources, destinations, logpaths define which log message are received and where they are sent. All identifiers, option names and attributes, and any other strings used in the `syslog-ng.conf` configuration file are case sensitive. Object definitions (also called statements) have the following syntax:
     
-    ```c
+    ```shell
         type-of-the-object identifier-of-the-object {<parameters>};
     ```
     
@@ -73,25 +73,25 @@ Use identifiers that refer to the type of the object they identify. For example,
   
     For example, the following line defines a source and calls it `s_internal`.
     
-    ```c
+    ```shell
         source s_internal { internal(); };
     ```
     
     The object can be later referenced in other statements using its ID, for example, the previous source is used as a parameter of the following log statement:
     
-    ```c
+    ```shell
         log { source(s_internal); destination(d_file); };
     ```
 
 - The parameters and options within a statement are similar to function calls of the C programming language: the name of the option followed by a list of its parameters enclosed within brackets and terminated with a semicolon.
     
-    ```c
+    ```shell
         option(parameter1, parameter2); option2(parameter1, parameter2);
     ```
     
     For example, the `file()` driver in the following source statement has three options: the filename (`/var/log/apache/access.log`), `follow-freq()`, and `flags()`. The `follow-freq()` option also has a parameter, while the `flags()` option has two parameters.
     
-    ```c
+    ```shell
         source s_tail { file("/var/log/apache/access.log"
         follow-freq(1) flags(no-parse, validate-utf8)); };
     ```
@@ -103,7 +103,7 @@ Use identifiers that refer to the type of the object they identify. For example,
 
 The `unix-stream()` source driver has a single required argument: the name of the socket to listen on. Optional parameters follow the socket name in any order, so the following source definitions have the same effect:
 
-```c
+```shell
 source s_demo_stream1 {
     unix-stream("<path-to-socket>" max-connections(10) group(log)); };
     source s_demo_stream2 {
@@ -113,7 +113,7 @@ unix-stream("<path-to-socket>" group(log) max-connections(10)); };
 
 - Some options are global options, or can be set globally, for example, whether {{% param "product.ose" %}} should use DNS resolution to resolve IP addresses.
     
-    ```c
+    ```shell
         options { use-dns(no); };
     ```
 
@@ -123,7 +123,7 @@ unix-stream("<path-to-socket>" group(log) max-connections(10)); };
 
   - To add comments to the configuration file, start a line with `#` and write your comments. These lines are ignored by {{% param "product.ose" %}}.
     
-    ```c
+    ```shell
     #Comment: This is a stream source
     source s_demo_stream {
     unix-stream("<path-to-socket>" max-connections(10) group(log)); };
@@ -131,7 +131,7 @@ unix-stream("<path-to-socket>" group(log) max-connections(10)); };
 
 The syntax of log statements is as follows:
 
-```c
+```shell
    log {
         source(s1); source(s2); ...
     optional_element(filter1|parser1|rewrite1);
@@ -144,7 +144,7 @@ The syntax of log statements is as follows:
 
 The following log statement sends all messages arriving to the `localhost` to a remote server.
 
-```c
+```shell
 source s_localhost { network(ip(127.0.0.1) port(1999)); };
 destination d_tcp { network("10.1.2.3" port(1999) localport(999)); };
 log { source(s_localhost); destination(d_tcp); };
@@ -152,7 +152,7 @@ log { source(s_localhost); destination(d_tcp); };
 
 The {{% param "product.ose" %}} application has a number of global options governing DNS usage, the timestamp format used, and other general points. Each option may have parameters, similarly to driver specifications. To set global options add an option statement to the {{% param "product.ose" %}} configuration file using the following syntax:
 
-```c
+```shell
 options { option1(params); option2(params); ... };
 ```
 
@@ -161,7 +161,7 @@ options { option1(params); option2(params); ... };
 
 To disable domain name resolving, add the following line to the {{% param "product.ose" %}} configuration file:
 
-```c
+```shell
 options { use-dns(no); };
 ```
 

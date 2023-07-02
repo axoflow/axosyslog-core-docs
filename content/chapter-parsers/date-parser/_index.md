@@ -15,7 +15,7 @@ Note that parsing will fail if the format string does not match the entire templ
 
 ## Declaration
 
-```c
+```shell
    parser parser_name {
         date-parser(
             format("<format-string-for-the-date>")
@@ -30,7 +30,7 @@ Note that parsing will fail if the format string does not match the entire templ
 
 In the following example, {{% param "product.abbrev" %}} parses dates like `01/Jan/2016:13:05:05 PST` from a field called `MY_DATE` using the following format string: `format("%d/%b/%Y:%H:%M:%S %Z")` (how you create this field from the incoming message is not shown in the example). In the destination template every message will begin with the timestamp in ISODATE format. Since the syslog parser is disabled, {{% param "product.abbrev" %}} will include the entire original message (including the original timestamp) in the ${MESSAGE} macro.
 
-```c
+```shell
    source s_file {
         file("/tmp/input" flags(no-parse));
     };
@@ -51,7 +51,7 @@ In the following example, {{% param "product.abbrev" %}} parses dates like `01/J
 
 In the template option, you can use template functions to specify which part of the message to parse with the format string. The following example selects the first 24 characters of the ${MESSAGE} macro.
 
-```c
+```shell
    date-parser(format("%d/%b/%Y:%H:%M:%S %Z") template("$(substr ${MESSAGE} 0 24)") );
 ```
 

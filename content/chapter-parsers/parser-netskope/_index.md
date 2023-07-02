@@ -6,13 +6,13 @@ weight:  2700
 
 The Netskope parser can parse Netskope log messages. These messages do not completely comply with the syslog RFCs, making them difficult to parse. The `netskope-parser()` of {{% param "product.abbrev" %}} solves this problem, and can separate these log messages to name-value pairs. For details on using value-pairs in {{% param "product.abbrev" %}} see {{% xref "/chapter-concepts/concepts-value-pairs/_index.md" %}}. The parser can parse messages in the following format:
 
-```c
+```shell
    <PRI>{JSON-formatted-log-message}
 ```
 
 For example:
 
-```c
+```shell
    <134>{"count": 1, "supporting_data": {"data_values": ["x.x.x.x", "user@domain.com"], "data_type": "user"}, "organization_unit": "domain/domain/Domain Users/Enterprise Users", "severity_level": 2, "category": null, "timestamp": 1547421943, "_insertion_epoch_timestamp": 1547421943, "ccl": "unknown", "user": "user@domain.com", "audit_log_event": "Login Successful", "ur_normalized": "user@domain.com", "_id": "936289", "type": "admin_audit_logs", "appcategory": null}
 ```
 
@@ -25,7 +25,7 @@ By default, the Netskope-specific fields are extracted into name-value pairs pre
 
 ## Declaration:
 
-```c
+```shell
    @version: {{% param "product.techversion" %}}
     @include "scl.conf"
     log {
@@ -45,7 +45,7 @@ The `netskope-parser()` is actually a reusable configuration snippet configured 
 
 By default, `netskope-parser()` uses the `.netskope.` prefix. To modify it, use the following format:
 
-```c
+```shell
    parser {
         netskope-parser(prefix("myprefix."));
     };

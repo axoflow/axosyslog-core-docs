@@ -13,7 +13,7 @@ This section describes printing the content of the disk-buffer files used in {{%
 
 The command syntax for printing the content of the disk-buffer files used in {{% param "product.abbrev" %}} looks like the following:
 
-```c
+```shell
    /opt/syslog-ng/bin/dqtooldqtool cat DISK-BUFFER_FILE
 ```
 
@@ -26,7 +26,7 @@ The command syntax for printing the content of the disk-buffer files used in {{%
 
 The following short output example shows the printed content of the disk-buffer files used in {{% param "product.abbrev" %}}:
 
-```c
+```shell
    /opt/syslog-ng/bin/dqtooldqtool cat /opt/syslog-ng/var/syslog-ng-00000.rqf
     
     Reliable disk-buffer state loaded; filename='/opt/syslog-ng/var/syslog-ng-00000.rqf', queue_length='2952', size='-437712'

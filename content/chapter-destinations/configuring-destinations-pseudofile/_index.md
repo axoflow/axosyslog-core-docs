@@ -9,7 +9,7 @@ The `pseudofile()` destination driver is a very simple driver, aimed at deliveri
 
 ## Declaration:
 
-```c
+```shell
    pseudofile(filename options());
 ```
 

@@ -11,7 +11,7 @@ HTTPS connection, as well as password- and certificate-based authentication is s
 
 ## Declaration:
 
-```c
+```shell
    d_elasticsearch_http {
         elasticsearch-http(
             index("<elasticsearch-index-to-store-messages>")
@@ -37,7 +37,7 @@ HTTPS connection, as well as password- and certificate-based authentication is s
 
 The following example defines a `elasticsearch-http()` destination, with only the required options.
 
-```c
+```shell
    destination d_elasticsearch_http {
         elasticsearch-http(
             index("<name-of-the-index>")
@@ -56,7 +56,7 @@ The following example defines a `elasticsearch-http()` destination, with only th
 
 The following example uses mutually-authenticated HTTPS connection, templated index, and also sets the `type()` and some other options.
 
-```c
+```shell
    destination d_elasticsearch_https {
         elasticsearch-http(
             url("https://node01.example.com:9200/_bulk")

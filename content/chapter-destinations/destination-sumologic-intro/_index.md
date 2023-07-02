@@ -75,7 +75,7 @@ Although [RFC 5424](https://tools.ietf.org/html/rfc5424) limits the structured d
 
 ## Declaration for the sumologic-http() destination
 
-```c
+```shell
    destination d_sumo_http {
       sumologic-http(
         collector("ZaVnC4dhaV3_[...]UF2D8DRSnHiGKoq9Onvz-XT7RJG2FA6RuyE5z4A==")
@@ -88,7 +88,7 @@ Although [RFC 5424](https://tools.ietf.org/html/rfc5424) limits the structured d
 
 ## Declaration for the sumologic-syslog() destination
 
-```c
+```shell
    destination d_sumo_syslog {
       sumologic-syslog(
         token("rqf/bdxYVaBLFMoU39[...]CCC5jwETm@41123")
@@ -104,7 +104,7 @@ Although [RFC 5424](https://tools.ietf.org/html/rfc5424) limits the structured d
 
 To use the `sumologic()` driver, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 
-```c
+```shell
    @include "scl.conf"
 ```
 

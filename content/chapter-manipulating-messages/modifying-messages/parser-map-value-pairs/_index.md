@@ -11,7 +11,7 @@ Available in {{% param "product.abbrev" %}} version 3.10 and later.
 
 ## Declaration:
 
-```c
+```shell
    parser parser_name {
         map-value-pairs(
             <list-of-value-pairs-options>
@@ -25,7 +25,7 @@ Available in {{% param "product.abbrev" %}} version 3.10 and later.
 
 The following example creates a new name-value pair called `username`, adds the hashed value of the `.apache.username` to this new name-value pair, then adds the `webserver` prefix to the name of every name-value pair of the message that starts with `.apache`
 
-```c
+```shell
    parser p_remap_name_values {
         map-value-pairs(
             pair("username", "'($sha1 $.apache.username)")

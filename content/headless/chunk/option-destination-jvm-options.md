@@ -13,7 +13,7 @@
 
 For example:
 
-```c
+```shell
    jvm-options("-Xss1M -XX:+TraceClassLoading")
 ```
 

@@ -258,7 +258,7 @@ Starting with version 3.16, the default value of this option is -1, so {{% param
 
 *Description:* Specifies a template that file-like destinations use by default. For example:
 
-```c
+```shell
    template t_isostamp { template("$ISODATE $HOST $MSGHDR$MSG\n"); };
     
     options { file-template(t_isostamp); };
@@ -301,7 +301,7 @@ Starting with version 3.16, the default value of this option is -1, so {{% param
 
 For example:
 
-```c
+```shell
    jvm-options("-Xss1M -XX:+TraceClassLoading")
 ```
 
@@ -407,7 +407,7 @@ Starting with version 3.16, the default value of this option is -1, so {{% param
 
 *Description:* Specifies a template that protocol-like destinations (for example, network() and syslog()) use by default. For example:
 
-```c
+```shell
    template t_isostamp { template("$ISODATE $HOST $MSGHDR$MSG\n"); };
     
     options { proto-template(t_isostamp); };

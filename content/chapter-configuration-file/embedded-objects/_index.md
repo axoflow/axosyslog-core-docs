@@ -8,7 +8,7 @@ Starting with {{% param "product.abbrev" %}} 3.4, every configuration object is 
 
 To embed multiple objects into a configuration object, use the following syntax. Note that you must enclose the configuration block between braces instead of parenthesis.
 
-```c
+```shell
    <type-of-top-level-object> <name-of-top-level-object> {
         channel {
             <configuration-objects>
@@ -21,7 +21,7 @@ To embed multiple objects into a configuration object, use the following syntax.
 
 For example, to process a log file in a specific way, you can define the required processing rules (parsers and rewrite expressions) and combine them in a single object:
 
-```c
+```shell
    source s_apache {
         channel {
             source {
@@ -42,7 +42,7 @@ The `s_apache` source uses a file source (the error log of an Apache webserver) 
 
 You must start the object definition with a `channel` even if you will use a `junction`, for example:
 
-```c
+```shell
    parser demo-parser() {
         channel {
             junction {
@@ -55,7 +55,7 @@ You must start the object definition with a `channel` even if you will use a `ju
 
 If you want to embed configuration objects into sources or destinations, always use channels, otherwise the source or destination will not behave as expected. For example, the following configuration is good:
 
-```c
+```shell
    source s_filtered_hosts {
         channel{
             source {

@@ -15,7 +15,7 @@ If the parameter value is not a valid parameter value, the function ignores it a
 
 ## Declaration
 
-```c
+```shell
    log {
                     source { system(); };
                         if (program("postfix")) {
@@ -32,7 +32,7 @@ If the parameter value is not a valid parameter value, the function ignores it a
 
 The `set-facility()` rewrite function has a single, mandatory parameter that can be defined as follows:
 
-```c
+```shell
    `set-facility( "parameter1" );`
 ```
 
@@ -51,7 +51,7 @@ The `set-facility()` rewrite function accepts the following values:
 
 The following example can be used in production for the `set-facility()` rewrite function.
 
-```c
+```shell
    rewrite {
     set-facility("info");
     set-facility("6");

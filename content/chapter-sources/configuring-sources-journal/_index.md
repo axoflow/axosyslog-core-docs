@@ -37,7 +37,7 @@ Only one `systemd-journal()` source can be configured in the configuration file.
 
 ## Declaration:
 
-```c
+```shell
    systemd-journal(options);
 ```
 
@@ -47,7 +47,7 @@ Only one `systemd-journal()` source can be configured in the configuration file.
 
 To send all fields through the syslog protocol, enter the prefix in the following format: "`.SDATA.<name>`".
 
-```c
+```shell
    @version: {{% param "product.techversion" %}}
     
     source s_journald {
@@ -68,7 +68,7 @@ To send all fields through the syslog protocol, enter the prefix in the followin
 
 ## Example: Filtering for a specific field using the systemd-journal() driver {#example-source-journal-filtering}
 
-```c
+```shell
    @version: {{% param "product.techversion" %}}
     
     source s_journald {
@@ -92,7 +92,7 @@ To send all fields through the syslog protocol, enter the prefix in the followin
 
 ## Example: Sending all fields in value-pairs using the systemd-journal() driver {#example-source-journal-valuepairs}
 
-```c
+```shell
    @version: {{% param "product.techversion" %}}
     
     source s_local {

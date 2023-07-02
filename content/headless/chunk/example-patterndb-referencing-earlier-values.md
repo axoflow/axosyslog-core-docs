@@ -6,7 +6,7 @@
 
 The following action can be used to log the length of an SSH session (the time difference between a login and a logout message in the context):
 
-```c
+```shell
    <actions>
         <action>
             <message>

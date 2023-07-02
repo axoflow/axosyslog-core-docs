@@ -6,13 +6,13 @@ weight:  3500
 
 The Websense parser can parse the log messages of Websense Content Gateway (Raytheon|Websense, now Forcepoint). These messages do not completely comply with the syslog RFCs, making them difficult to parse. The `websense-parser()` of {{% param "product.abbrev" %}} solves this problem, and can separate these log messages to name-value pairs. For details on using value-pairs in {{% param "product.abbrev" %}} see {{% xref "/chapter-concepts/concepts-value-pairs/_index.md" %}}. The parser can parse messages in the following format:
 
-```c
+```shell
    <PRI><DATE> <TIMEZONE> <IP-ADDRESS> <NAME=VALUE PAIRS>
 ```
 
 For example:
 
-```c
+```shell
    <159>Dec 19 10:48:57 EST 192.168.1.1 vendor=Websense product=Security product_version=7.7.0 action=permitted severity=1 category=153 user=- src_host=192.168.2.1 src_port=62189 dst_host=example.com dst_ip=192.168.3.1 dst_port=443 bytes_out=197 bytes_in=76 http_response=200 http_method=CONNECT http_content_type=- http_user_agent=Mozilla/5.0_(Windows;_U;_Windows_NT_6.1;_enUS;_rv:1.9.2.23)_Gecko/20110920_Firefox/3.6.23 http_proxy_status_code=200 reason=- disposition=1034 policy=- role=8 duration=0 url=https://example.com
 ```
 
@@ -25,7 +25,7 @@ By default, the websense-specific fields are extracted into name-value pairs pre
 
 ## Declaration:
 
-```c
+```shell
    @version: {{% param "product.techversion" %}}
     @include "scl.conf"
     log {
@@ -45,7 +45,7 @@ The `websense-parser()` is actually a reusable configuration snippet configured 
 
 By default, `websense-parser()` uses the `.websense.` prefix. To modify it, use the following format:
 
-```c
+```shell
    parser {
         websense-parser(prefix("myprefix."));
     };

@@ -19,7 +19,7 @@ The {{% param "product.abbrev" %}} application can automatically execute scripts
 
 3.  Edit the `plugin.conf` file and add the following line:
     
-    ```c
+    ```shell
         @module confgen context(source) name(<directory-name>) exec("`scl-root`/<directory-name>/<my-script>")
     
     ```
@@ -34,7 +34,7 @@ The {{% param "product.abbrev" %}} application can automatically execute scripts
     
     The following example checks the `/var/log/apache2/` directory and its subdirectories, and creates a source driver for every directory that contains an `access.log` file.
     
-    ```c
+    ```shell
         #!/bin/bash
         for i in `find /var/log/apache2/ -type d`; do
             echo "file(\"$i/access.log\" flags(no-parse) program-override(\"apache2\"));";
@@ -43,7 +43,7 @@ The {{% param "product.abbrev" %}} application can automatically execute scripts
     
     The script generates an output similar to this one, where `service\*` is the actual name of a subdirectory:
     
-    ```c
+    ```shell
         file("/var/log/apache2/service1/access.log" flags(no-parse) program-override("apache2"));
         file("/var/log/apache2/service2/access.log" flags(no-parse) program-override("apache2"));
     ```
@@ -52,7 +52,7 @@ The {{% param "product.abbrev" %}} application can automatically execute scripts
 
 6.  Add the block you defined in the `plugin.conf` file to your {{% param "product.abbrev" %}} configuration file. You can reference the block using the value of the `name` option from the `plugin.conf` file, followed by parentheses, for example, `apache-access-logs()`. Make sure to use the block in the appropriate context of the configuration file, for example, within a source statement if the value of the `context` option in the `plugin.conf` file is source.
     
-    ```c
+    ```shell
         @include "scl.conf"
         ...
         source s_apache {

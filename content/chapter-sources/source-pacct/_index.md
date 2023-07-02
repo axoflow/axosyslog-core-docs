@@ -14,7 +14,7 @@ To use the `pacct()` driver, the following conditions must be met:
 
   - The `scl.conf` file must be included in your AxoSyslog configuration:
     
-    ```c
+    ```shell
         @include "scl.conf"
     
     ```
@@ -25,7 +25,7 @@ The `pacct()` driver parses the fields of the accounting logs and transforms the
 
 To use the `pacct()` driver, use the following syntax.
 
-```c
+```shell
    @version: {{% param "product.techversion" %}}
     @include "scl.conf"
     source s_pacct { pacct(); };

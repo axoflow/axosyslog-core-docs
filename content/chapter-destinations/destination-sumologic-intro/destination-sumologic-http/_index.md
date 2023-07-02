@@ -18,7 +18,7 @@ For more information about the `sumologic-http()` destination, see {{% xref "/ch
 
 The following example sends every log from the `system()` source to your Sumo Logic account.
 
-```c
+```shell
    log {
       source { system(); };
     

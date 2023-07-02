@@ -6,7 +6,7 @@ weight:  100
 
 The AxoSyslog application supports including external files in its configuration file, so parts of its configuration can be managed separately. To include the contents of a file in the AxoSyslog configuration, use the following syntax:
 
-```c
+```shell
    @include "<filename>"
 ```
 
@@ -28,7 +28,7 @@ When including configuration files, consider the following points:
 
   - Include statements can only be used at top level of the configuration file. For example, the following is correct:
     
-    ```c
+    ```shell
         @version: {{% param "product.techversion" %}}
         @include "example.conf"
     
@@ -36,7 +36,7 @@ When including configuration files, consider the following points:
     
     But the following is not:
     
-    ```c
+    ```shell
         source s_example {
             @include "example.conf"
         };

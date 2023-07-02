@@ -27,7 +27,7 @@ The Oracle sql destination has some special aspects that are important to note.
 
 The following example sends the log messages into an Oracle database running on the `logserver` host, which must be set in the `/etc/tnsnames.ora` file. The messages are inserted into the `LOGS` database, the name of the table includes the exact date when the messages were sent. The AxoSyslog application automatically creates the required tables and columns, if the user account used to connect to the database has the required privileges.
 
-```c
+```shell
    destination d_sql {
       sql(type(oracle)
       username("syslog-ng") password("password")
@@ -41,7 +41,7 @@ The following example sends the log messages into an Oracle database running on 
 
 The Oracle Instant Client retrieves the address of the database server from the `/etc/tnsnames.ora` file. Edit or create this file as needed for your configuration. A sample is provided below.
 
-```c
+```shell
    LOGS =
     (DESCRIPTION =
     (ADDRESS_LIST =

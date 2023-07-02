@@ -5,7 +5,7 @@ Note that you have to set the `cert-file()` and `key-file()` options only if the
 
 *Alternative 1:*
 
-```c
+```shell
    type(
         "tls"
      cert-file("/opt/syslog-ng/etc/syslog-ng/riemann-client-cert.pem")
@@ -15,7 +15,7 @@ Note that you have to set the `cert-file()` and `key-file()` options only if the
 
 *Alternative 2:*
 
-```c
+```shell
    riemann(
         .
         .

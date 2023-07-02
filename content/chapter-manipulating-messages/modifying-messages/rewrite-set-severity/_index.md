@@ -15,7 +15,7 @@ If the parameter value is not a valid parameter value, the function ignores it a
 
 ## Declaration
 
-```c
+```shell
    rewrite <name_of_the_rule> {
         set-severity("severity string or number");
     };
@@ -27,7 +27,7 @@ If the parameter value is not a valid parameter value, the function ignores it a
 
 The `set-severity()` rewrite function has a single, mandatory parameter that can be defined as follows:
 
-```c
+```shell
    `set-severity( "parameter1" );`
 ```
 
@@ -48,7 +48,7 @@ The following examples can be used in production for the `set-severity()` rewrit
 
 `Example using string:`
 
-```c
+```shell
    rewrite {
         set-severity("info");
     };
@@ -56,7 +56,7 @@ The following examples can be used in production for the `set-severity()` rewrit
 
 `Example using numeric string:`
 
-```c
+```shell
    rewrite {
         set-severity("6");
     };
@@ -64,7 +64,7 @@ The following examples can be used in production for the `set-severity()` rewrit
 
 `Example using template:`
 
-```c
+```shell
    rewrite {
         set-severity("${.json.severity}");
     };

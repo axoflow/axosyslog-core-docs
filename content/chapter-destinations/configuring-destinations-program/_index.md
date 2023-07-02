@@ -11,7 +11,7 @@ The `program()` driver has a single required parameter, specifying a program nam
 
 ## Declaration:
 
-```c
+```shell
    program(command_to_run);
 ```
 
@@ -33,13 +33,13 @@ When using the `program()` driver, consider the following:
 
 The message format does not include the priority and facility values by default. To add these values, specify a template for the program destination, as shown in the following example. Make sure to end your template with a newline character (`\\n`).
 
-```c
+```shell
    destination d_prog { program("/bin/script" template("<${PRI}>${DATE} ${HOST} ${MESSAGE}\n") ); };
 ```
 
 The following shell script writes the incoming messages into the `/tmp/testlog` file.
 
-```c
+```shell
    #!/bin/bash
     while read line ; do
     echo $line >> /tmp/testlog

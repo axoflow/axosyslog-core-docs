@@ -30,7 +30,7 @@ N/A
 
 ## Example
 
-```c
+```shell
    <tags><tag>UserLogin</tag></tags>
 ```
 

@@ -8,13 +8,13 @@ The AxoSyslog application can resolve the hostnames of the clients and include t
 
 - Use DNS caching. Verify that the DNS cache is large enough to store all important hostnames. (By default, the AxoSyslog DNS cache stores `1007` entries.)
     
-    ```c
+    ```shell
         options { dns-cache-size(2000); };
     ```
 
 - If the IP addresses of the clients change only rarely, set the expiry of the DNS cache large.
     
-    ```c
+    ```shell
         options { dns-cache-expire(87600); };
     ```
 

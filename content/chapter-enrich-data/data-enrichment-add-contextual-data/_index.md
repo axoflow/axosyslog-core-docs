@@ -16,7 +16,7 @@ The database file is a simple text file in comma-separated value (CSV) format, w
 
 For example, the following csv-file contains three lines identified with the IP address, and adds the `host-role` field to the log message.
 
-```c
+```shell
    192.168.1.1,host-role,webserver
     192.168.2.1,host-role,firewall
     192.168.3.1,host-role,mailserver
@@ -31,7 +31,7 @@ The database file must comply with the [RFC4180 CSV format](https://tools.ietf.o
 
 To add multiple name-value pairs to a message, include a separate line in the database for each name-value pair, for example:
 
-```c
+```shell
    192.168.1.1,host-role,webserver
     192.168.1.1,contact-person,"John Doe"
     192.168.1.1,contact-email,johndoe@example.com
@@ -43,7 +43,7 @@ Technically, `add-contextual-data()` is a parser in {{% param "product.abbrev" %
 
 ## Declaration:
 
-```c
+```shell
    parser p_add_context_data {
         add-contextual-data(
             selector("${HOST}"),
@@ -62,7 +62,7 @@ If you modify the database file, you have to reload {{% param "product.abbrev" %
 
 The following example defines uses a CSV database to add the role of the host based on its IP address, and prefixes the added name-value pairs with `.metadata`. The destination includes a template that simply appends the added name-value pairs to the end of the log message.
 
-```c
+```shell
    @include "scl.conf"
     
     source s_network {
@@ -84,7 +84,7 @@ The following example defines uses a CSV database to add the role of the host ba
     };
 ```
 
-```c
+```shell
    192.168.1.1,host-role,webserver
     192.168.2.1,host-role,firewall
     192.168.3.1,host-role,mailserver

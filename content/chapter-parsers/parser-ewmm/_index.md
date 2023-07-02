@@ -9,7 +9,7 @@ The `ewmm-parser()` can be used to parse messages sent by another AxoSyslog host
 
 ## Declaration:
 
-```c
+```shell
    parser parser_name {
         ewmm-parser();
     };

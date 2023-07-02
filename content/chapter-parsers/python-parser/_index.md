@@ -12,7 +12,7 @@ The Python log parser (available in {{% param "product.abbrev" %}} version 3.10 
 
 Python parsers consist of two parts. The first is a {{% param "product.abbrev" %}} parser object that you use in your {{% param "product.abbrev" %}} configuration, for example, in the log path. This parser references a Python class, which is the second part of the Python parsers. The Python class processes the log messages it receives, and can do virtually anything that you can code in Python.
 
-```c
+```shell
    parser <name_of_the_python_parser>{
         python(
             class("<name_of_the_python_class_executed_by_the_parser>")
@@ -46,7 +46,7 @@ The return value of the `init()` method must be `True`. If it returns `False`, o
 
 `options`: This optional argument contains the contents of the `options()` parameter of the parser object as a Python dict.
 
-```c
+```shell
    parser my_python_parser{
         python(
             class("MyParser")
@@ -83,13 +83,13 @@ This method is executed when {{% param "product.abbrev" %}} is stopped or reload
 
 The following sample code parses the messages of the `loggen` tool (for details, see <span class="mcFormatColor" style="color: #04aada;">The loggen manual page</span>). The following is a sample loggen message:
 
-```c
+```shell
    <38>2017-04-05T12:16:46 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1491387406, stamp: 2017-04-05T12:16:46 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD
 ```
 
 The {{% param "product.abbrev" %}} parser object references the LoggenParser class and passes a set of regular expressions to parse the loggen messages. The `init()` method of the LoggenParser class compiles these expressions into a pattern. The `parse` method uses these patterns to extract the fields of the message into name-value pairs. The destination template of the {{% param "product.abbrev" %}} log statement uses the extracted fields to format the output message.
 
-```c
+```shell
    @version: {{% param "product.techversion" %}}
     @include "scl.conf"
     parser my_python_parser{
@@ -133,7 +133,7 @@ The {{% param "product.abbrev" %}} parser object references the LoggenParser cla
 
 The following example uses regular expressions to process Windows log messages received in XML format. The parser extracts different fields from messages received from the Security and the Application eventlog containers. Using the following configuration file, {{% param "product.abbrev" %}} could process about 25000 real-life Windows log messages per second.
 
-```c
+```shell
    @version: {{% param "product.techversion" %}}
     options {
         keep-hostname(yes);

@@ -23,7 +23,7 @@ The `PRI` part of the syslog message (known as Priority value) represents the Fa
 
 The Priority value is calculated using the following formula:
 
-```c
+```shell
    <PRI> = ( <facility> * 8) + <severity> 
 ```
 
@@ -35,7 +35,7 @@ That is, you first multiply the Facility number by 8, and then add the numerical
 
 The following example illustrates a sample syslog message with a sample `PRI` field (that is, Priority value):
 
-```c
+```shell
    <133> Feb 25 14:09:07 webserver syslogd: restart
 ```
 

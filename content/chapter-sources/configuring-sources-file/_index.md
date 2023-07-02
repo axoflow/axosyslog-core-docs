@@ -13,7 +13,7 @@ The file driver has a single required parameter specifying the file to open. If 
 
 ## Declaration:
 
-```c
+```shell
    file("filename");
 ```
 
@@ -21,7 +21,7 @@ The file driver has a single required parameter specifying the file to open. If 
 
 ## Example: Using the file() driver {#example-source-file}
 
-```c
+```shell
    source s_file {
         file("/var/log/messages");
     };
@@ -33,7 +33,7 @@ The file driver has a single required parameter specifying the file to open. If 
 
 The following source checks the `access.log` file every second for new messages.
 
-```c
+```shell
    source s_tail {
         file("/var/log/apache/access.log" follow-freq(1) flags(no-parse));
     };

@@ -18,7 +18,7 @@ For more information about the `sumologic-http()` destination, see {{% xref "/ch
 
 The following example illustrates how you can use the `sumologic-syslog()` destination to send data to your Sumo Logic account.
 
-```c
+```shell
    log {
       source { system(); };
     
@@ -41,7 +41,7 @@ The following example illustrates how you can use the `sumologic-syslog()` desti
 
 The following example illustrates how you can use the `sumologic-syslog()` destination to send JSON data to your Sumo Logic account.
 
-```c
+```shell
    log {
       source{ system(); };
     

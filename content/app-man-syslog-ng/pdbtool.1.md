@@ -94,11 +94,11 @@ Display the RADIX tree built from the patterns. This shows how are the patterns 
 
 ## Example and sample output:
 
-```c
+```shell
 pdbtool dump -p patterndb.xml  -P 'sshd'
 ```
 
-```c
+```shell
 'p'
      'assword for'
     @QSTRING:@
@@ -183,7 +183,7 @@ The `match` command has the following options:
 
 The following command checks if the `patterndb.xml` file recognizes the `Accepted publickey for myuser from 127.0.0.1 port 59357 ssh6` message:
 
-```c
+```shell
 pdbtool match -p patterndb.xml -P sshd -M "Accepted publickey for myuser from 127.0.0.1 port 59357 ssh6"
 ```
 
@@ -191,7 +191,7 @@ pdbtool match -p patterndb.xml -P sshd -M "Accepted publickey for myuser from 12
 
 The following example applies the `sshd.pdb` pattern database file to the log messages stored in the `/var/log/messages` file, and displays only the messages that received a `useracct` tag.
 
-```c
+```shell
    pdbtool match -p sshd.pdb \
                         –file /var/log/messages \
                     –filter ‘tags(“usracct”);’ 
@@ -235,7 +235,7 @@ Use the `merge` command to combine separate pattern database files into a single
 
 ## Example
 
-```c
+```shell
 pdbtool merge --recursive --directory /home/me/mypatterns/  --pdb /var/lib/syslog-ng/patterndb.xml
 ```
 
@@ -285,7 +285,7 @@ Automatically create a pattern database from a log file containing a large numbe
 
 ## Example
 
-```c
+```shell
 pdbtool patternize --support=2.5 --file=/var/log/messages
 ```
 
@@ -323,7 +323,7 @@ Use the `test` command to validate a pattern database XML file. Note that you mu
 
 ## Example
 
-```c
+```shell
 pdbtool test --validate /home/me/mypatterndb.pdb
 ```
 

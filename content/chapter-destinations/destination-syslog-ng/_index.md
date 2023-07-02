@@ -15,7 +15,7 @@ The `syslog-ng()` destination driver is available in version 3.16 and later. The
 
 ## Declaration:
 
-```c
+```shell
    destination d_ewmm {
         syslog-ng(server("192.168.1.1"));
     };

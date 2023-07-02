@@ -8,7 +8,7 @@ To better control to which log messages you add contextual data, you can use fil
 
 For example, the database file can contain the entries. (For details on the accepted CSV-format, see [database()]({{< relref "/chapter-enrich-data/data-enrichment-add-contextual-data/reference-add-contextual-data-options/_index.md" >}}).)
 
-```c
+```shell
    f_auth,domain,all
     f_localhost,source,localhost
     f_kern,domain,kernel
@@ -18,7 +18,7 @@ Note that {{% param "product.abbrev" %}} does not evaluate other filters after t
 
 To add multiple name-value pairs to a message, include a separate line in the database for each name-value pair, for example:
 
-```c
+```shell
    f_localhost,host-role,firewall
     f_localhost,contact-person,"John Doe"
     f_localhost,contact-email,johndoe@example.com
@@ -28,7 +28,7 @@ You can also add data to messages that do not have a matching selector entry in 
 
 You must store the filters you reference in a database in a separate file. This file is similar to a {{% param "product.abbrev" %}} configuration file, but must contain only a version string and filters (and optionally comments). You can use the `syslog-ng --syntax-only <filename> command to ensure that the file is valid. For example, the content of such a file can be:
 
-```c
+```shell
    @version: {{% param "product.techversion" %}}
     filter f_localhost { host("mymachine.example.com") };
     filter f_auth { facility(4) };
@@ -38,7 +38,7 @@ You must store the filters you reference in a database in a separate file. This 
 
 ## Declaration:
 
-```c
+```shell
    parser p_add_context_data_filter {
         add-contextual-data(
             selector(filters("filters.conf")),

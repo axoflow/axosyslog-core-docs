@@ -11,13 +11,13 @@
 
 *Description:* The sender of the email (contents of the FROM field). You can specify the email address, or the name and the email address. For example:
 
-```c
+```shell
    from("admin@example.com")
 ```
 
 or
 
-```c
+```shell
    from("Admin" "admin@example.com")
 ```
 
