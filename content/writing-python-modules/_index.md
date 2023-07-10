@@ -3,29 +3,27 @@ title: Writing Python modules
 weight: 4300
 ---
 
-{{% param "product.name" %}} has a quite comprehensive support for implementing various logging components in Python. The goal of this file is to document how to use this functionality.
+{{% param "product.name" %}} has comprehensive support for implementing various logging components in Python. This chapter shows you how to use this functionality.
 
 ## When to use Python
 
-These Python bindinds are useful if the facilities provided by the {{% param "product.name" %}} configuration language is not sufficient, that is:
+The Python bindings are useful if the facilities provided by the {{% param "product.name" %}} configuration language is not sufficient, that is:
 
--  if there's no native functionality that would implement the integration with a specific service (e.g. API based log sources or information sources that
-    you want to use for data enrichment purposes)
-- if the configuration language does not have the features to do some specific transformation need (but in that case, please let me know about your usecase)
-- if you intend to work on some complex data structures (e.g. JSON) which is more natural in a real programming language.
+- {{% param "product.name" %}} doesn't support a specific service (for example, API based log sources or information sources that you want to use for data enrichment purposes).
+- The {{% param "product.name" %}} configuration language does not support a specific transformation (in that case, please [tell us about your use-case](https://axoflow.com/contact/)).
+- You want to work on complex data structures (for example, JSON) which easier to do in a real programming language.
 
-While Python is very powerful and you can produce clean and production ready solutions using it, the drawback is usually performance. Python code tends to be slower than the native functionality that {{% param "product.name" %}} provides.
+While Python is very powerful and you can produce clean and production ready solutions with it, the drawback is usually performance. Python code is usually slower than the native functionality that {{% param "product.name" %}} provides.
 
-To offset this impact of performance degradation, it's a good strategy to only process a subset of the incoming log stream via Python code and to use native configuration elements to select which subset is traversing said Python code.
+To offset this impact of performance degradation, it's a good strategy to only process a subset of the incoming log stream with Python code and use native configuration elements to select which subset is traversing said Python code.
 
 ## Creating and storing the Python code
 
-{{% param "product.name" %}} is able to work with both Python code directly embedded into its main configuration file or to work with Python modules.
+You can embed Python code directly into `syslog-ng.conf`, or work with Python modules.
 
 ### Embedding Python into {{% param "product.name" %}} configuration
 
-You can simply use a top-level `python {}` block to embed your Python code,
-like this:
+You can simply use a top-level `python {}` block to embed your Python code, like this:
 
 ```shell
 @version: 4.0
@@ -52,7 +50,7 @@ def template_function(msg):
     return b"Hello World from Python! Original message: " + msg['MSGHDR'] + msg['MESSAGE']
 ```
 
-The Python glue in {{% param "product.name" %}} will automatically import modules when it encounters an identifier in dotted notation, so if you use this {{% param "product.name" %}} config:
+The Python glue in {{% param "product.name" %}} automatically imports modules when it encounters an identifier in dotted notation, so if you use this {{% param "product.name" %}} config:
 
 ```shell
 @version: 4.0
@@ -63,21 +61,17 @@ log {
 };
 ```
 
-{{% param "product.name" %}} would recognize that `mytemplate.template_function` is a qualified name and would attempt to import `mytemplate` as a module and then look up `template_function` within that module.
+{{% param "product.name" %}} recognizes that `mytemplate.template_function` is a qualified name and attempts to import `mytemplate` as a module and then looks up `template_function` within that module.
 
-Note that modules are only imported once, so you will need to restart {{% param "product.name" %}} for a change to take effect.
+> Note: Modules are only imported once, so you will need to restart {{% param "product.name" %}} for a change to take effect.
 
 ## {{% param "product.name" %}} reload and Python
 
-When you reload `syslog-ng` (with `syslog-ng-ctl` reload or `systemctl reload syslog-ng`) then the `python` block in your configuration is reloaded along with the rest of the configuration file.
+When you reload `syslog-ng` (with `syslog-ng-ctl` reload or `systemctl reload syslog-ng`) then the `python` block in your configuration is reloaded with the rest of the configuration file. Any changes you make in Python code directly embedded in your configuration takes effect after the reload. This also means that any global variables are reset, so you cannot store state across reloads in your `python {}` block.
 
-So any changes you make in Python code directly embedded in your configuration will be considered as the reload completes. This also means that any global variables will be reset, you cannot store state across reloads in your `python {}` block.
+Modules are only imported once and kept across reloads, even if the {{% param "product.name" %}} configuration is reloaded. This means that you van store global state in modules and they will be kept, even as {{% param "product.name" %}} reinitializes the configuration.
 
-The same behavior is however not the case with code you import from modules. Modules are only imported once and kept across reloads, even if the {{% param "product.name" %}} configuration is reloaded in the meanwhile.
-
-This means that global state can be stored in modules and they will be kept, even as {{% param "product.name" %}} reinitializes the configuration.
-
-In case you want to reload a module every time {{% param "product.name" %}} config is reinitialized, you need to do this explicitly with a code similar to this:
+In case you want to reload a module every time {{% param "product.name" %}} configuration is reinitialized, you need to do this explicitly with a code similar to this:
 
 ```python
 python {
@@ -93,7 +87,7 @@ importlib.reload(mymodule)
 
 ## Destination driver
 
-A destination driver in Python needs to be derived from the `LogDestination` class, as defined by the `syslogng` module, like the example below:
+You can derive a destination driver in Python from the `LogDestination` class, as defined by the `syslogng` module, like in the following example:
 
 `mydestination.py`:
 
@@ -102,13 +96,12 @@ from syslogng import LogDestination
 
 class MyDestination(LogDestination):
     def send(self, msg):
-	return True
-
+    return True
 ```
 
-The interface of the `LogDestination` class is documented in the `syslogng.dest` module, which is stored in the file `modules/python/pylib/syslogng/dest.py` of the source tree.
+The interface of the `LogDestination` class is documented in the `syslogng.dest` module, which is stored in the [`modules/python-modules/syslogng/dest.py`](https://github.com/syslog-ng/syslog-ng/blob/master/modules/python-modules/syslogng/dest.py) file of the source tree.
 
-Once all required methods are implemented, you can use this using the "python" destination in the {{% param "product.name" %}} configuration language.
+Once all required methods are implemented, you can use the [`python` destination]({{< relref "/chapter-destinations/python-destination/_index.md" >}}) in the {{% param "product.name" %}} configuration language.
 
 ```shell
 destination whatever {
@@ -116,7 +109,7 @@ destination whatever {
 };
 ```
 
-There's a more complete example destination in the `python_example()` destination plugin, that is located in the directory `modules/python-modules/example/` within the source tree or the same files installed under `${exec_prefix}/syslog-ng/python/syslogng/modules` in a production deployment.
+There's a more complete example destination in the `python_example()` destination plugin, that is located in the directory [`modules/python-modules/syslogng/modules/example/`](https://github.com/syslog-ng/syslog-ng/tree/master/modules/python-modules/syslogng/modules/example) directory within the source tree, or the same files installed under `${exec_prefix}/syslog-ng/python/syslogng/modules` in a production deployment.
 
 ## Template function plugin
 
