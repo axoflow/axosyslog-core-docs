@@ -114,9 +114,7 @@ There's a more complete example destination in the `python_example()` destinatio
 ## Template function plugin
 
 Template functions extend the {{% param "product.name" %}} template language. They get a `LogMessage` object and return a string which gets embedded into the
-output of the template.
-
-You can have {{% param "product.name" %}} call a Python function from the template language using the `$(python)` template function, as you have seen in the previous chapter.
+output of the template. You can have {{% param "product.name" %}} call a Python function from the template language using the `$(python)` template function.
 
 ```shell
 @version: 4.0
@@ -135,13 +133,11 @@ destination d_file {
 };
 ```
 
-The Python function needs to be any kind of callable, it receives a `LogMessage` instance and returns a string (`str` or `bytes`).
-
-The message passed to a template function is read-only, if you are trying to change a name-value pair, you will receive an exception.
+The Python function must be callable. IT receives a `LogMessage` instance and returns a string (`str` or `bytes`). The message passed to the template function is read-only. If you are trying to change a name-value pair, you will receive an exception.
 
 ## Parser plugin
 
-A parser plugin in Python needs to be derived from the `LogParser` class as this example shows:
+You can derive parser plugins in Python from the `LogParser` class as this example shows:
 
 ```python
 from syslogng import LogParser
@@ -153,18 +149,22 @@ class MyParser(LogParser):
         return True
 ```
 
-In contrast to template functions, parsers receive a read-writable `LogMessage` object, so you are free to modify its contents.
+In contrast to template functions, parsers receive a read-writable `LogMessage` object, so you can modify its contents.
 
-## Source driver based on LogFetcher
+## Source plugins
 
 There are two kinds of source plugins that can be implemented in Python:
 
-- `LogFetcher`
-- `LogSource`
+- [`LogFetcher`](#logfetcher): `LogFetcher` provides a convenient interface for fetching messages from backend services via blocking APIs, but it is limited to performing the fetching operation in a sequential manner: you fetch a batch of messages, feed them to the {{% param "product.name" %}} pipeline, then repeat.
+- [`LogSource`](#logsource): `LogSource` is more low-level but allows the use of an asynchronous framework (for example, `asyncio`) to perform message fetching along multiple threads of execution.
 
 Both are defined by the `syslogng.source` module.
 
-The main entry point that you will need to implement for a `LogFetcher` class is the `fetch()` method, which is automatically invoked by `syslog-ng`, whenever it is able to consume incoming messages.
+## Source driver based on LogFetcher {#logfetcher}
+
+`LogFetcher` provides a convenient interface for fetching messages from backend services via blocking APIs, but it is limited to performing the fetching operation in a sequential manner: you fetch a batch of messages, feed them to the {{% param "product.name" %}} pipeline, then repeat.
+
+For a `LogFetcher` class, you have to implement the `fetch()` method. This is the main entry point, which is automatically invoked by `syslog-ng`, whenever it consumes incoming messages.
 
 ```shell
 @version: 4.0
@@ -189,19 +189,19 @@ log {
 };
 ```
 
-This example would generate one message every second, based on a literal string that is parsed as a syslog message.
+This example generates one message every second, based on a literal string that is parsed as a syslog message.
 
-Our source in this case is running in a dedicated thread, so it is free to block.
+The source is running in a dedicated thread, so it is free to block.
 
-Note the `time.sleep(1)` call as the very first line in our `fetch()` method. As you can see we were sleeping 1 second between invocations of our method, thereby limiting the rate the source is producing messages. If that sleep wasn't there, we would be producing somewhere between 100-110k messages per second, depending on the speed of your CPU, the performance of the Python interpreter and the `syslog-ng` core.
+To limit the rate of generating messages, the `time.sleep(1)` call in the first line of the `fetch()` method sleeps for 1 second between the invocations of the method. If that sleep wasn't there, the source would produce about 100-110k messages per second, depending on the speed of your CPU, the performance of the Python interpreter and the `syslog-ng` core.
 
-Usually, when our fetcher would be connecting to an external API, the sleep would not be needed and the response times of the API would be the limiting factor.
+If the fetcher connects to an external API, the sleep is usually not needed, as the response time of the API is a limiting factor.
 
 ### Adding persistent state
 
-Usually, if we are fetching messages from an API, we will need to keep track where we are in fetching messages. If we were to store the position in a variable, that value would be lost when `syslog-ng` is reloaded or restarted (depending on where we store that variable, in our `python {}` block or in a module).
+If you are fetching messages from an API, you need to keep track of which messages were already fetched. Storing the position in a variable is not a good solution, because the value of the variable is lost when `syslog-ng` is reloaded or restarted (depending on where you store that variable, in the `python {}` block or in a module).
 
-A better option is to use the `Persist()` class that ties into syslog-ng's own persistent state handling functionality.  This allows you to store variables persisted in a file that gets stored in `${localstatedir}/syslog-ng.persist` along with the rest of syslog-ng's states.
+Use the `Persist()` class that uses the persistent state handling functionality of {{% param "product.name" %}}. This allows you to persist variables in a file that gets stored in the `${localstatedir}/syslog-ng.persist` file along with the rest of the `syslog-ng` states.
 
 ```python
 class MyFetcher(LogFetcher):
@@ -218,31 +218,26 @@ class MyFetcher(LogFetcher):
         return self.SUCCESS, msg
 ```
 
-Once initialized, a `Persist()` instance behaves as a dict where you can store Python values (currently only `str`, `bytes` and `int` are supported).
+Once initialized, a `Persist()` instance behaves as a dict where you can store Python values. Currently `str`, `bytes` and `int` are supported. Anything you store in a persist instance is remembered even across restarts. The entries are backed up to disk immediately after changing them (using an `mmap()`-ped file), so you don't have to explicitly commit them to disk.
 
-Anything you store in a persist instance will be remembered even across restarts.
+You can store position information in a `Persist()` entry, but it's not always the best choice. In {{% param "product.name" %}}, producing messages is decoupled from their delivery: sometimes a message is still in-flight for a while before being delivered. This time can be significant if a destination consumes messages at a slow rate. In this case, if you store the position once fetched, the message would still be sitting in a queue waiting to be delivered. If the queue is not backed by a disk-buffer, then these messages would be lost, once `syslog-ng` is restarted.
 
-The entries themselves are backed up to disk immediately after changing them (using an `mmap()`-ped file), so no need to care about committing them to disk explicitly.
+To anticipate this case, use [bookmarks](#bookmarks).
 
-Albeit you can store position information in a `Persist()` entry, it's not always the best choice.  In syslog-ng, producing of messages and their delivery is decoupled: sometimes a message is still in-flight for a while before being delivered. This time can be significant, if a destination consumes messages at a slow rate. In this case, if you store the position once fetched, the message would still be sitting in a queue waiting to be delivered. If the queue is not backed by disk (e.g. disk-buffer), then these messages would be lost, once syslog-ng is restarted.
+### Bookmarks in a source {#bookmarks}
 
-To anticipate this case, you will need to use bookmarks, as described in the next section.
+The bookmarking mechanism allows messages to carry individual markers that uniquely identify a message and its position in a source stream. For example, in a source file the bookmark would contain the position of the message within that file. An API may have a similar mechanism in place in which the source API associates an opaque to each message, which signifies its position in the repository.
 
-### Using bookmarks in a source
+A specific example for bookmarks is systemd-journald, which has a "cursor" indicating the position of each journal record. The cursor can be used to restart the reading of the log stream.
 
-The bookmarking mechanism allows messages to carry individual markers that uniquely identify a message and its position in a source stream.
+Once you've identified what mechanism the source offers that maps to the bookmark concept, decide how you want to track these bookmarks. Which bookmark tracking strategy you should use depends on the API specifics.
 
-In a source file for example, the bookmark would contain the position of the message within that file. An API may have a similar mechanism in place in which the source API associates an opaque to each message, which signifies its position in the repository.
+- Some APIs are sequential in nature, thus you can only acknowledge the "last fetch position" in that sequence.
+- Other APIs allow you to acknowledge messages individually.
 
-A specific example for bookmarks is systemd-journald, which has a "cursor" indicating the position of each journal record. The cursor can then be used to restart the reading of the log stream.
+{{% param "product.name" %}} supports both methods.
 
-Once you identified what mechanism the source offers that would map to the bookmark concept, you can decide how you want syslog-ng to track these bookmarks.
-
-Which one you will need from syslog-ng's selection of bookmark tracking strategies is again up to the API specifics.
-
-Sometimes an API is sequential in nature, thus you can only acknowledge the "last fetch position" in that sequence.  In other cases the API allows you to acknowledge messages individually. These are both supported by syslog-ng.
-
-But first, here's a Python example that only updates the current position in a source stream when the messages in sequence were acknowledged by syslog-ng destinations (e.g.  they were properly sent).
+The following Python example updates the current position in a source stream only when the {{% param "product.name" %}} destination has acknowledged the messages in the sequence (that is, when the messages were properly sent).
 
 ```python
 class MyFetcher(LogFetcher):
@@ -277,15 +272,14 @@ class MyFetcher(LogFetcher):
 
 ### Acknowledgement tracking strategies
 
-As mentioned some APIs will provide simple others somewhat more complex ways to track messages that are processed. There are three strategies within syslog-ng to cope with them.
+Some APIs provide simple, while others provide more complex ways to track messages that are processed. {{% param "product.name" %}} provides the following strategies to cope with them.
 
-- instant tracking (`InstantAckTracker`): messages are considered delivered as soon as our destination driver (or the disk based queue) acknowledges them. Out-of-order deliveries are reported as they happen, so an earlier message may be acknowledged later than a message originally encountered later in the source stream.
+- Instant tracking (`InstantAckTracker`): Messages are considered delivered as soon as the destination driver (or the disk-buffer) acknowledges them. Out-of-order deliveries are reported as they happen, so an earlier message may be acknowledged later than a message originally encountered later in the source stream.
+- Consecutive tracking (`ConsecutiveAckTracker`): Messages are assumed to form a stream and the bookmark is a position in that stream. Unordered deliveries are properly handled by only acknowledging messages that were delivered in order. If unordered delivery happens, the tracker waits for the sequence to fill up, that is, it waits for all preceeding messages to be delivered as well.
 
-- consecutive tracking (`ConsecutiveAckTracker`): messages are assumed to form a stream and the bookmark to be a position in that stream. Unordered deliveries are properly handled by only acknowledging messages that were delivered in order.  If an unordered delivery happens, the tracker waits for the sequence to fill up, e.g. waits all preceeding messages to be delivered as well.
+- Batched tracking (`BatchedAckTracker`): Messages are assumed to be independent, not forming a sequence of events. Each message is individually tracked, the source driver has the means to get delivery notifications of each and every message independently. The acknowledgements are accumulated until a timeout happens, at which point they get reported as a single batch.
 
-- batched tracking (`BatchedAckTracker`): messages are assumed to be independent, not forming a sequence of events.  Each message is individually tracked, the source driver has the means to get delivery notifications of each and every message independently. The acknowledgements are accumulated until a timeout happens, at which point they get reported as a single batch.
-
-You can initialize your ack_tracker in the `init` method, like this:
+You can initialize your `ack_tracker` in the `init` method, like this:
 
 ```python
 class MyFetcher(LogFetcher):
@@ -306,7 +300,7 @@ class MyFetcher(LogFetcher):
     ...
 ```
 
-In the case above, we were using `ConsecutiveAckTracker`, e.g. we would only get acknowledgements in the order messages were generated. The argument of the `message_acked` callback would be the "bookmark" value that we set using `set_bookmark()`.
+The previous example uses `ConsecutiveAckTracker`, so you get acknowledgements in the order messages were generated. The argument of the `message_acked` callback is the "bookmark" value that you set using `set_bookmark()`.
 
 Using `InstantAckTracker` is very similar, just replace `ConsecutiveAckTracker` with `InstantAckTracker`. In this case you'd get a callback as soon as a message is delivered without preserving the original ordering.
 
@@ -323,9 +317,9 @@ class MyFetcher(LogFetcher):
         pass
 ```
 
-While `ConsecutiveAckTracker()` seems to provide a much more useful service, but `InstantAckTracker()` performs better, as it does not have to track acknowledgements of individual messages.
+While `ConsecutiveAckTracker()` seems to provide a much more useful service, `InstantAckTracker()` performs better, as it does not have to track acknowledgements of individual messages.
 
-The most complex scenario is implemented by `BatchedAckTracker`, this allows you to track the acks for individual messages, as they happen, not enforcing any kind of ordering.
+The most complex scenario is implemented by `BatchedAckTracker`, this allows you to track the acknowledgements for individual messages, as they happen, not enforcing any kind of ordering.
 
 ```python
 class MyFetcher(LogFetcher):
@@ -341,7 +335,9 @@ class MyFetcher(LogFetcher):
         pass
 ```
 
-`BatchedAckTracker` would call your callback every now and then, as specified by the `timeout` argument in milliseconds. `batch_size` specifies the number of outstanding messages at a time. With this interface it's quite easy to perform acknowledgements back to the source interface where per-message acknowledgements are needed (e.g. Google PubSub).
+`BatchedAckTracker` calls your callback periodically, as set by the `timeout` argument in milliseconds. `batch_size` specifies the number of outstanding messages at a time.
+
+With this interface it's quite easy to send acknowledgements back to the source interface where per-message acknowledgements are needed (for example, Google PubSub).
 
 ### Accessing the `flags()` option
 
@@ -365,15 +361,13 @@ The state of the `flags()` option is mapped to the `self.flags` variable, which 
 }
 ```
 
-### Creating a syslog-ng LogSource based Source plugin
+## Source driver based on LogSource {#logsource}
 
-While `LogFetcher` gives us a convenient interface for fetching messages from backend services via blocking APIs, it is limited to performing the fetching operation in a sequential manner: you fetch a batch of messages, feed the syslog-ng pipeline with those messages and then repeat.
+`LogSource` allows the use of an asynchronous framework (for example, `asyncio`) to perform message fetching along multiple threads of execution.
 
-`LogSource` is more low-level but allows the use of an asynchronous framework (`asyncio`, etc) to perform message fetching along multiple threads of execution.
+The following example uses `asyncio` to generate two independent sequences of messages: the first is generated every second, the other every 1.5 seconds, running concurrently via an `asyncio` event loop.
 
-This sample uses `asyncio` to generate two independent sequences of messages, one is generated every second, the other is every 1.5 seconds, running concurrently via an `asyncio` event loop.
-
-It is also pretty easy to create a source that implements a HTTP server, and which injects messages coming via HTTP to the syslog-ng pipeline.
+It is also easy to create a source that implements an HTTP server, and which injects messages coming via HTTP to the {{% param "product.name" %}} pipeline.
 
 ```python
 from syslogng import LogSource
@@ -403,12 +397,11 @@ class MySource(LogSource):
         self.cancelled = True
 ```
 
-Acknowledgement mechanisms (`ConsecutiveAckTracker`, `BatchedAckTracker`) and
-`flags()` mapping can be used similarly to how it was described at `LogFetcher`.
+Acknowledgement mechanisms (`ConsecutiveAckTracker`, `BatchedAckTracker`) and `flags()` mapping can be used similarly to how it was described at `LogFetcher`.
 
 ## Making it more native config-wise
 
-All the examples above used some form of `python()` driver to be actually used, for instance, this was our Python based destination driver:
+The examples so far used some form of `python()` driver, for instance, this was the Python based destination driver:
 
 ```shell
 destination whatever {
@@ -418,7 +411,7 @@ destination whatever {
 };
 ```
 
-while this works, this syntax is a bit foreign from a syslog-ng perspective and somewhat hard to read. The usual syntax for referencing regular drivers is something like this:
+While this works, the syntax doesn't look like other parts of the configuration, and is also hard to read. The usual syntax for referencing regular drivers is something like this:
 
 ```shell
 destination whatever {
@@ -426,7 +419,7 @@ destination whatever {
 };
 ```
 
-To make the syntax more native, you can use syslog-ng's block functionality to wrap your Python driver, hide that it's actually Python and provide a syntax to users of your code that is more convenient to use.
+To make the syntax more native, you can use the block functionality to wrap your Python driver, hide that it's actually Python, and provide a syntax to your code that is more convenient to use.
 
 ```shell
 block destination my-destination(option1(value)
@@ -437,9 +430,9 @@ block destination my-destination(option1(value)
 };
 ```
 
-This block allows the use of the more "native" syntax, completely hiding the fact that the implementation is Python based, concentrating on functionality.
+This block allows the use of the more {{% param "product.name" %}}-native syntax, completely hiding the fact that the implementation is Python based, concentrating on functionality.
 
-You should add this wrapper to your Python module in an "scl" subdirectory as a file with a .conf extension. syslog-ng will automatically include these files along the rest of the SCL.
+Add this wrapper to your Python module in an `scl` subdirectory as a file with a .conf extension. {{% param "product.name" %}} automatically includes these files along the rest of the SCL.
 
 ## Adding the code to syslog-ng
 
@@ -449,7 +442,7 @@ With that a "make install" command should install your module along the rest of 
 
 You will also need to add your files to the source tarball by listing them in the EXTRA_DIST variable of the `modules/python-modules/Makefile.am` file.
 
-## External dependencies
+### External dependencies
 
 If your Python code depends on third party libraries, those need to be installed on the system where your code is deployed.
 
@@ -460,7 +453,7 @@ If your deployment mechanism is based on packages (deb or rpm), make sure that y
 
 If you would like to use `pip/requirements.txt` to deploy dependencies, you can invoke pip at "make install" time so that syslog-ng's private Python directory would contain all the dependencies that you require.
 
-## Adding Python code to syslog-ng deb package
+### Adding Python code to syslog-ng deb package
 
 To add your module to the syslog-ng deb package, create a new file in `packaging/debian/` with a name like `syslog-ng-mod-<yourmodule>.install`. Populate this file with wildcard patterns that capture the files of your package after installation.
 
@@ -485,7 +478,7 @@ Description: The short description of the package
 
 Make sure that your `.install` file is included in the tarball by adding it to `EXTRA_DIST` in the `Makefile.am`.
 
-## Adding Python code to syslog-ng RPM packages
+### Adding Python code to syslog-ng RPM packages
 
 The RPM package is less modular than the Debian one and it automatically captures all Python modules in the `syslog-ng-python` package without having to list them explicitly.
 
