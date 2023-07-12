@@ -436,50 +436,50 @@ Add this wrapper to your Python module in an `scl` subdirectory as a file with a
 
 ## Adding the code to syslog-ng
 
-To add Python based modules to syslog-ng, create a Python package (e.g. a directory with `__init__.py` and anything that file references).  Add these files to `modules/python-modules/<subdirectory>` and open a pull request.
+To add your Python-based modules to `syslog-ng`, complete the following steps.
 
-With that a "make install" command should install your module along the rest of the `syslog-ng` binaries.
-
-You will also need to add your files to the source tarball by listing them in the EXTRA_DIST variable of the `modules/python-modules/Makefile.am` file.
+1. Create a Python package: add the `__init__.py` file and anything that the file references to the `modules/python-modules/<name-of-your-module>` directory of the [syslog-ng repository](https://github.com/syslog-ng/syslog-ng/).
+1. Add your files to the source tarball by listing them in the EXTRA_DIST variable of the `modules/python-modules/Makefile.am` file.
+1. Run `make install` to install your module along the rest of the `syslog-ng` binaries.
+1. Open a pull request.
 
 ### External dependencies
 
-If your Python code depends on third party libraries, those need to be installed on the system where your code is deployed.
+If your Python code depends on third-party libraries, those need to be installed on the system where your code is deployed. If your deployment mechanism is based on DEB or RPM packages, make sure that you add these OS-level dependencies to the packages generated.
 
-If your deployment mechanism is based on packages (deb or rpm), make sure that you add these OS level dependencies to the packages generated.
+- For DEB packages, add the dependency package to the `Depends` line.
+- For RPM packages, add the dependency package as a `Requires` line to the `.spec` file.
 
-- In deb this usually means adding the right package to your Depends line.
-- In rpm this means adding the right package as a Requires line in the .spec file.
+If you want to use `pip/requirements.txt` to deploy dependencies, you can invoke pip during `make install` time so that syslog-ng's private Python directory would contain all the dependencies that you require.
 
-If you would like to use `pip/requirements.txt` to deploy dependencies, you can invoke pip at "make install" time so that syslog-ng's private Python directory would contain all the dependencies that you require.
+### Adding Python code to the syslog-ng DEB package
 
-### Adding Python code to syslog-ng deb package
+To add your module to the syslog-ng DEB package, complete the following steps.
 
-To add your module to the syslog-ng deb package, create a new file in `packaging/debian/` with a name like `syslog-ng-mod-<yourmodule>.install`. Populate this file with wildcard patterns that capture the files of your package after installation.
+1. Create a new file in `packaging/debian/` called `syslog-ng-mod-<yourmodule>.install`.
+1. Populate this file with wildcard patterns that capture the files of your package after installation. For example:
 
-For example:
+    ```
+    usr/lib/syslog-ng/python/syslogng/modules/<yourmodule>/*
+    ```
 
-```
-usr/lib/syslog-ng/python/syslogng/modules/<yourmodule>/*
-```
+1. Add an entry to `packaging/debian/control`:
 
-You will also need to add an entry to `packaging/debian/control`:
+    ```yaml
+    Package: syslog-ng-mod-<yourmodule>
+    Architecture: any
+    Multi-Arch: foreign
+    Depends: ${shlibs:Depends}, ${misc:Depends}, syslog-ng-core (>= ${source:Version}), syslog-ng-core (<< ${source:Version}.1~), syslog-ng-mod-python
+    Description: The short description of the package
+      This is a longer description with dots separating paragraphs.
+      .
+      This package provides a collection of example plugins.
+    ```
 
-```yaml
-Package: syslog-ng-mod-<yourmodule>
-Architecture: any
-Multi-Arch: foreign
-Depends: ${shlibs:Depends}, ${misc:Depends}, syslog-ng-core (>= ${source:Version}), syslog-ng-core (<< ${source:Version}.1~), syslog-ng-mod-python
-Description: The short description of the package
- This is a longer description with dots separating paragraphs.
- .
- This package provides a collection of example plugins.
-```
-
-Make sure that your `.install` file is included in the tarball by adding it to `EXTRA_DIST` in the `Makefile.am`.
+1. Add your `.install` file to the tarball by adding it to the `EXTRA_DIST` in the `Makefile.am`.
 
 ### Adding Python code to syslog-ng RPM packages
 
-The RPM package is less modular than the Debian one and it automatically captures all Python modules in the `syslog-ng-python` package without having to list them explicitly.
+The RPM package is less modular than the Debian package and it automatically captures all Python modules in the `syslog-ng-python` package without having to list them explicitly.
 
-If you need to customize installation, you can find our spec file in `packaging/rhel/syslog-ng.spec` which is populated and copied to the root at tarball creation.
+If you need to customize the installation, you can find the spec file in `packaging/rhel/syslog-ng.spec` which is populated and copied to the root at tarball creation.
