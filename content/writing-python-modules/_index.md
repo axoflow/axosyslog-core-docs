@@ -434,7 +434,7 @@ This block allows the use of the more {{% param "product.name" %}}-native syntax
 
 Add this wrapper to your Python module in an `scl` subdirectory as a file with a .conf extension. {{% param "product.name" %}} automatically includes these files along the rest of the SCL.
 
-## Adding the code to syslog-ng
+## Adding the code to `syslog-ng`
 
 To add your Python-based modules to `syslog-ng`, complete the following steps.
 
@@ -450,11 +450,11 @@ If your Python code depends on third-party libraries, those need to be installed
 - For DEB packages, add the dependency package to the `Depends` line.
 - For RPM packages, add the dependency package as a `Requires` line to the `.spec` file.
 
-If you want to use `pip/requirements.txt` to deploy dependencies, you can invoke pip during `make install` time so that syslog-ng's private Python directory would contain all the dependencies that you require.
+If you want to use `pip/requirements.txt` to deploy dependencies, you can invoke pip during `make install` time so that {{% param "product.name" %}}'s private Python directory would contain all the dependencies that you require.
 
-### Adding Python code to the syslog-ng DEB package
+### Adding Python code to the DEB package
 
-To add your module to the syslog-ng DEB package, complete the following steps.
+To add your module to the `syslog-ng` DEB package, complete the following steps.
 
 1. Create a new file in `packaging/debian/` called `syslog-ng-mod-<yourmodule>.install`.
 1. Populate this file with wildcard patterns that capture the files of your package after installation. For example:
@@ -478,7 +478,7 @@ To add your module to the syslog-ng DEB package, complete the following steps.
 
 1. Add your `.install` file to the tarball by adding it to the `EXTRA_DIST` in the `Makefile.am`.
 
-### Adding Python code to syslog-ng RPM packages
+### Adding Python code to RPM packages
 
 The RPM package is less modular than the Debian package and it automatically captures all Python modules in the `syslog-ng-python` package without having to list them explicitly.
 
