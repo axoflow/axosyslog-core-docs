@@ -28,7 +28,3 @@ The following points apply to using Python blocks in {{% param "product.abbrev" 
 - You can access the name-value pairs of {{% param "product.abbrev" %}} directly through a message object or a dictionary.
 
 - {{< include-headless "chunk/python-code-logging-to-internal.md" >}}
-
-## Support disclaimer
-
-Using Python in {{% param "product.abbrev" %}} is recommended only if you are familiar with both Python and {{% param "product.abbrev" %}}. Product support applies only to {{% param "product.abbrev" %}}: that is, until the entry point of the Python code and passing the specified arguments to the Python code. {{% param "product.companyabbrev" %}} is not responsible for the quality, resource requirements, or any bugs in the Python code, nor any {{% param "product.abbrev" %}} crashes, message losses, or any other damage caused by the improper use of this feature, unless explicitly stated in a contract with {{% param "product.companyabbrev" %}}.
