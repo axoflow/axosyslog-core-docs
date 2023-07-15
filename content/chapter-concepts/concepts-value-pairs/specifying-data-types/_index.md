@@ -68,7 +68,8 @@ In {{% param "product.abbrev" %}} 4.0 and later, the following {{% param "produc
 
     {{< include-headless "chunk/json-parser-type-support.md" >}}
 
-- `set()`, `groupset()`: Where you can use of templates in `set()` and `groupset()`, you can use type-casting, and the type information is properly promoted.
+- [`set()`]({{< relref "/chapter-manipulating-messages/modifying-messages/rewrite-set/_index.md" >}}), [`groupset()`]({{< relref "/chapter-manipulating-messages/modifying-messages/rewrite-groupset/_index.md" >}}) rewrite rules:
+    {{< include-headless "chunk/set-groupset-type-support.md" >}}
 - `db-parser()`: The `db-parser()` rules can associate types with values using the `"type"` attribute, for example:
     ```xml
     <value name="foobar" type="integer">$PID</value>

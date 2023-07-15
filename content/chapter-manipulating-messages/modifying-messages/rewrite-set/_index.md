@@ -6,16 +6,15 @@ weight:  300
 
 To set a field of the message to a specific value, you have to:
 
-  - define the string to include in the message, and
-
-  - select the field where it should be included.
+- define the string to include in the message, and
+- select the field where it should be included.
+- {{< include-headless "chunk/set-groupset-type-support.md" >}}
 
 You can set the value of available macros, for example, HOST, MESSAGE, PROGRAM, or any user-defined macros created using parsers (for details, see {{% xref "/chapter-parsers/_index.md" %}} and {{% xref "/chapter-parsers/chapter-patterndb/_index.md" %}}). Note that the rewrite operation completely replaces any previous value of that field.
 
 {{< include-headless "wnt/note-rewrite-hard-macros.md" >}}
 
 Use the following syntax:
-
 
 ## Declaration:
 
@@ -24,8 +23,6 @@ Use the following syntax:
         set("<string to include>", value(<field name>));
     };
 ```
-
-
 
 ## Example: Setting message fields to a particular value {#example-rewrite-set}
 
@@ -46,7 +43,6 @@ The following example appends the "suffix" string to the MESSAGE field:
 ```
 
 For details on rewriting SDATA fields, see {{% xref "/chapter-manipulating-messages/modifying-messages/custom-sdata-fields/_index.md" %}}.
-
 
 You can also use the following options in rewrite rules that use the `set()` operator.
 
