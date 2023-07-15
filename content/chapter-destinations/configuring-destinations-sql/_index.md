@@ -4,8 +4,7 @@ weight:  5900
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The `sql()` driver sends messages into an SQL database. Currently the Microsoft SQL (MSSQL), MySQL, Oracle, PostgreSQL, and SQLite databases are supported.
-
+The `sql()` driver sends messages into an SQL database. Currently the Microsoft SQL (MSSQL), MySQL, Oracle, PostgreSQL, and SQLite databases are supported. Starting with {{% param "product.abbrev" %}} 4.0, type information is automatically added to the stored columns if available. For details, see {{% xref "/chapter-concepts/concepts-value-pairs/specifying-data-types/_index.md" %}}.
 
 ## Declaration:
 
@@ -17,9 +16,9 @@ The `sql()` driver has the following required parameters: [`type()`]({{< relref 
 
 {{% alert title="Warning" color="warning" %}}
 
-The AxoSyslog application requires read and write access to the SQL table, otherwise it cannot verify that the destination table exists.
+The {{% param "product.abbrev" %}} application requires read and write access to the SQL table, otherwise it cannot verify that the destination table exists.
 
-Currently the AxoSyslog application has default schemas for the different databases and uses these defaults if the database schema (for example, columns and column types) is not defined in the configuration file. However, these schemas will be deprecated and specifying the exact database schema will be required in later versions.
+Currently the {{% param "product.abbrev" %}} application has default schemas for the different databases and uses these defaults if the database schema (for example, columns and column types) is not defined in the configuration file. However, these schemas will be deprecated and specifying the exact database schema will be required in later versions.
 
 {{% /alert %}}
 
