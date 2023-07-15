@@ -60,13 +60,13 @@ The message-segments parsed by the pattern parsers can also be used as macros as
 
 ## Example: Using pattern parsers as macros
 
-For example, you want to parse messages of an application that look like `"Transaction: <type>"`, where <type>>s a string that has different values (for example, refused, accepted, incomplete, and so on). To parse these messages, you can use the following pattern:
+For example, you want to parse messages of an application that look like `"Transaction: <type>"`, where `<type>` is a string that has different values (for example, refused, accepted, incomplete, and so on). To parse these messages, you can use the following pattern:
 
 ```shell
    'Transaction: @ESTRING::.@'
 ```
 
-Here the @ESTRING@ parser parses the message until the next full stop character. To use the results in a filter or a filename template, include a name in the parser of the pattern, for example:
+Here the `@ESTRING@` parser parses the message until the next full stop character. To use the results in a filter or a filename template, include a name in the parser of the pattern, for example:
 
 ```shell
    'Transaction: @ESTRING:TRANSACTIONTYPE:.@'

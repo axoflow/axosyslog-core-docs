@@ -25,13 +25,21 @@ N/A
 
 ## Children
 
-  - *value*: OPTIONAL — Contains the value of the name-value pair that is assigned to the message.
-    
-    The <value> element of name-value pairs can include template functions. For details, see {{% xref "/chapter-manipulating-messages/customizing-message-format/template-functions/_index.md" %}}, for examples, see [if]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}).
-    
-    When used together with message correlation, the <value> element of name-value pairs can include references to the values of earlier messages from the same context. For details, see {{% xref "/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-correlation/_index.md" %}}.
+- *value*: OPTIONAL — Contains the value of the name-value pair that is assigned to the message.
 
-  - *name*: The name of the name-value pair. It can also be used as a macro to reference the assigned value.
+    The `<value>` element of name-value pairs can include template functions. For details, see {{% xref "/chapter-manipulating-messages/customizing-message-format/template-functions/_index.md" %}}, for examples, see [if]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}).
+
+    You can associate types with values using the `"type"` attribute, for example, `integer` is a type-cast that associates `$foobar` with an integer type. For details on data types, see {{% xref "/chapter-concepts/concepts-value-pairs/specifying-data-types/_index.md" %}}.
+
+    ```xml
+    <value name="foobar" type="integer">$PID</value>
+    ```
+
+    `db-parser()`’s internal parsers (for example, `@NUMBER@`) automatically associate type information to the parsed name-value pair.
+
+    When used together with message correlation, the `<value>` element of name-value pairs can include references to the values of earlier messages from the same context. For details, see {{% xref "/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-correlation/_index.md" %}}.
+
+- *name*: The name of the name-value pair. It can also be used as a macro to reference the assigned value.
 
 
 ## Example
@@ -41,5 +49,3 @@ N/A
         <value name=".classifier.outcome">/Success</value>
     </values>
 ```
-
-

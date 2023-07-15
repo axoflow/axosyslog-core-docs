@@ -30,8 +30,6 @@ N/A
 
 ## Example
 
-```shell
+```xml
    <tags><tag>UserLogin</tag></tags>
 ```
-
-

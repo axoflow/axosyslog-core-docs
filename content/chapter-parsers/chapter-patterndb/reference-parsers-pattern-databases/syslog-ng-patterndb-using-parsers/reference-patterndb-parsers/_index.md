@@ -4,8 +4,7 @@ weight:  100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The following parsers are available in {{% param "product.abbrev" %}}.
-
+The following parsers are available in {{% param "product.abbrev" %}}. The internal parsers (for example, `@NUMBER@`) automatically associate type information to the parsed name-value pair. For details on data types, see {{% xref "/chapter-concepts/concepts-value-pairs/specifying-data-types/_index.md" %}}.
 
 ## @ANYSTRING@ {#patterndb-parser-anystring}
 
@@ -21,9 +20,9 @@ An obsolete alias of the `@FLOAT@` parser.
 
 ## @EMAIL@ {#patterndb-parser-email}
 
-This parser matches an email address. The parameter is a set of characters to strip from the beginning and the end of the email address. That way email addresses enclosed between other characters can be matched easily (for example, `<user@example.com> or `"user@example.com"`. Characters that are valid for a hostname are not stripped from the end of the hostname. This includes a trailing period if present.
+This parser matches an email address. The parameter is a set of characters to strip from the beginning and the end of the email address. That way email addresses enclosed between other characters can be matched easily (for example, `<user@example.com>` or `"user@example.com"`. Characters that are valid for a hostname are not stripped from the end of the hostname. This includes a trailing period if present.
 
-For example, the `@EMAIL:email:"[<]>` parser will match any of the following email addresses: `<user@example.com>> `[user@example.com]`, `"user@example.com"`, and set the value of the `email` macro to `user@example.com`.
+For example, the `@EMAIL:email:"[<]>` parser will match any of the following email addresses: `<user@example.com>`, `[user@example.com]`, `"user@example.com"`, and set the value of the `email` macro to `user@example.com`.
 
 
 
