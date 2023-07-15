@@ -369,9 +369,6 @@ The following configuration example shows how you can use the `format-gelf` temp
     };
 ```
 
-
-
-
 ## format-json {#template-function-format-json}
 
 *Syntax:* `$(format-json parameters)`
@@ -380,18 +377,15 @@ The following configuration example shows how you can use the `format-gelf` temp
 
 You can use the [value-pairs]({{< relref "/chapter-concepts/concepts-value-pairs/_index.md" >}}) that {{% param "product.abbrev" %}} stores about the log message as JSON fields. Using value-pairs, you can:
 
-  - select which value-pairs to use as JSON fields,
+- select which value-pairs to use as JSON fields,
+- add custom value-pairs as JSON fields,
+- rename value-pairs, and so on.
 
-  - add custom value-pairs as JSON fields,
-
-  - rename value-pairs, and so on.
-
-For details, see {{% xref "/chapter-concepts/concepts-value-pairs/_index.md" %}}. Note that the syntax of `format-json` is different from the syntax of `value-pairs()`: `format-json` uses a syntax similar to command lines.
+If the value-pair includes type information `format-json` can propagate it to the next component of the log path. For details, see {{% xref "/chapter-concepts/concepts-value-pairs/_index.md" %}}. Note that the syntax of `format-json` is different from the syntax of `value-pairs()`: `format-json` uses a syntax similar to command lines.
 
 {{< include-headless "wnt/note-typehinting.md" >}}
 
-
-## Example: Using the format-json template function
+### Example: Using the format-json template function
 
 The following example selects every available information about the log message, except for the date-related macros (`R_\*` and `S_\*`), selects the `.SDATA.meta.sequenceId` macro, and defines a new value-pair called `MSGHDR` that contains the program name and PID of the application that sent the log message (since you will use the template-function in a template, you must escape the double-quotes).
 
@@ -412,7 +406,6 @@ The following example shows how to use this template function to store log messa
     };
 ```
 
-
 {{% alert title="Note" color="info" %}}
 In the case of syslog-ng macros starting with a dot (for example, "`.SDATA.meta.sequenceID`"), `format-json` replaces the dot with an underscore character (for example, `{"_SDATA":{"meta":{"sequenceId":"55555"}}}`).
 
@@ -423,9 +416,7 @@ $(format-json --leave-initial-dot .SDATA.meta.sequenceID)
 ```
 {{% /alert %}}
 
-If you have to forward your log messages in JSON format, but the receiving application cannot handle nested JSON objects, use the `format-flat-json` template function. For details, see [](#template-function-format-flat-json).
-
-
+If you have to forward your log messages in JSON format, but the receiving application cannot handle nested JSON objects, use the `format-flat-json` template function. For details, see [`format-flat-json`](#template-function-format-flat-json).
 
 ## format-welf {#template-function-format-welf}
 
