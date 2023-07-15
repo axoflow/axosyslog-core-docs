@@ -64,9 +64,9 @@ The {{% param "product.abbrev" %}} application currently supports the following 
 In {{% param "product.abbrev" %}} 4.0 and later, the following {{% param "product.abbrev" %}} components that support data types. Other components treat every data as strings.
 
 - Comparisons in filter expressions: the previously numeric operators are type-aware. The exact comparison depends on the types associated with the values you compare. For details, see {{% xref "/chapter-routing-filters/filters/filters-comparing/_index.md" %}}.
-- `json-parser()` and the `$(format-json)` template function: When using the `json-parser()`, {{% param "product.abbrev" %}} converts all elements of the JSON object to name-value pairs. Any type information originally present in the incoming JSON object is retained, and automatically propagated to other {{% param "product.abbrev" %}} components (for example, a destination) if they support types.
-   - Elements without a type are treated as strings.
-   - JSON lists (arrays) are converted to {{% param "product.abbrev" %}} lists, so you can manipulate them using the [`$(list-*)` template functions]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md#template-function-list" >}}).
+- [`json-parser()`]({{< relref "/chapter-parsers/json-parser/_index.md" >}}) and the [`$(format-json)` template function]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md#template-function-format-flat-json" >}}): 
+
+    {{< include-headless "chunk/json-parser-type-support.md" >}}
 
 - `set()`, `groupset()`: Where you can use of templates in `set()` and `groupset()`, you can use type-casting, and the type information is properly promoted.
 - `db-parser()`: The `db-parser()` rules can associate types with values using the `"type"` attribute, for example:

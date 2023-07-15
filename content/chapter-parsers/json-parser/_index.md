@@ -15,7 +15,9 @@ Hard macros cannot be modified, so they will not be overwritten. For details on 
 {{% /alert %}}
 
 {{% alert title="Note" color="info" %}}
-When using the `json-parser()`, {{% param "product.abbrev" %}} converts all elements of the JSON object to name-value pairs. Any type information originally present in the incoming JSON object is retained, and automatically propagated to other {{% param "product.abbrev" %}} components (for example, a destination) if they support types. Note that prior to version 4.0, {{% param "product.abbrev" %}} handled every data as strings.
+{{< include-headless "chunk/json-parser-type-support.md" >}}
+
+Note that prior to version 4.0, {{% param "product.abbrev" %}} handled every data as strings.
 
 The JSON parser discards messages if it cannot parse them as JSON messages, so it acts as a JSON-filter as well.
 {{% /alert %}}
