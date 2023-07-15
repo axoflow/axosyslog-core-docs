@@ -49,5 +49,3 @@ N/A
         <value name=".classifier.outcome">/Success</value>
     </values>
 ```
-
-

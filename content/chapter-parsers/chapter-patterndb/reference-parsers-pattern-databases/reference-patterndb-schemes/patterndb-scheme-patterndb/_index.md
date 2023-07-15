@@ -32,8 +32,6 @@ The container element of the pattern database.
 
 ## Example
 
-```shell
+```xml
    <patterndb version='4' pub_date='2010-10-25'>
 ```
-
-

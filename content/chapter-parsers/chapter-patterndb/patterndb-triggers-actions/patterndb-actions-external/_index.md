@@ -13,7 +13,7 @@ The following sample configuration selects the triggered messages and sends them
 
 1.  Set a field in the triggered message that is easy to identify and filter. For example:
     
-    ```shell
+    ```xml
         <values>
             <value name="MESSAGE">A log message from ${HOST} matched rule number $.classifier.rule_id</value>
             <value name="TRIGGER">yes</value>
