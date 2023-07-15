@@ -50,7 +50,7 @@ Available in {{% param "product.abbrev" %}} version 3.10 and later.
 *Description:* The `context-lookup` template function can search a message context when correlating messages (for example, when you use a [pattern database]({{< relref "/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-correlation/_index.md" >}}) or the [grouping-by parser]({{< relref "/chapter-correlating-log-messages/grouping-by-parser/_index.md" >}})). The `context-lookup` template function requires a condition (a filter or a string), and returns a specific macro or template of the matching messages (for example, the ${MESSAGE}) as a list. It works similarly to the [`$(grep)`]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}) template function, but it escapes its output properly, so that the returned value is a list that can be processed with other template functions that work on lists, for example, `$(list-slice)`.
 
 
-## Example: Using the context-lookup template function
+### Example: Using the context-lookup template function
 
 The following example selects the message of the context that has a `username` name-value pair with the `root` value, and returns the value of the `tags` name-value pair.
 
@@ -120,7 +120,7 @@ Available in {{% param "product.abbrev" %}} version 3.10 and later.
 *Description:* Turns a string separated by a specific character into a list. You can also use the [implode](#template-function-implode) template function, which turns a list into a string combining the pieces together with a separator. Available in {{% param "product.abbrev" %}} 3.21 and later.
 
 
-## Example: Using the explode template function
+### Example: Using the explode template function
 
 The following configuration example turns strings into a list. If there are several strings, {{% param "product.abbrev" %}} looks for a separator within each individual string. For example, `string 2` is separated as `string, 2` in the example below:
 
@@ -163,7 +163,7 @@ You can use macros, logical expressions, and template functions inside the expre
 Available in {{% param "product.abbrev" %}} version 3.30 and later.
 
 
-## Example: using the filter template function in your configuration
+### Example: using the filter template function in your configuration
 
 When used in configuration as seen in the example, the `filter` template function filters even numbers from an input list of `0`, `1`, `2` and `3`:
 
@@ -247,7 +247,7 @@ Using the `format-cef-extension` template function has the following prerequisit
   - The log messages must be encoded in UTF-8. Use the `encoding()` option or the `validate-utf8` flag in the message source.
 
 
-## Example: Using the format-cef-extension template function
+### Example: Using the format-cef-extension template function
 
 The following example selects every available information about the log message, except for the date-related macros (`R_\*` and `S_\*`), selects the `.SDATA.meta.sequenceId` macro, and defines a new value-pair called `MSGHDR` that contains the program name and PID of the application that sent the log message (since you will use the template-function in a template, you must escape the double-quotes).
 
@@ -315,13 +315,12 @@ To use the `format-cim()` template function, {{% param "product.abbrev" %}} must
 
 *Description:* The `format-flat-json` template function is identical to the `format-json` template function, but nested JSON objects are flattened in the output. If you have to forward your log messages in JSON format, but the receiving application cannot handle nested JSON objects, use the `format-flat-json` template function.
 
-
-## Example: Flattened JSON output
+### Example: Flattened JSON output
 
 The following example shows the difference between nested and flattened JSON objects.
 
-  - The output of `$(format-json a.b.c=1)` is a nested JSON object (whitespace added for better readability):
-    
+- The output of `$(format-json a.b.c=1)` is a nested JSON object (whitespace added for better readability):
+
     ```shell
         {
             "a": {
@@ -332,16 +331,15 @@ The following example shows the difference between nested and flattened JSON obj
         }
     ```
 
-  - The output of `$(format-flat-json a.b.c=1)` is a flattened JSON object (whitespace added for better readability):
-    
+- The output of `$(format-flat-json a.b.c=1)` is a flattened JSON object (whitespace added for better readability):
+
     ```shell
         {
             "a.b.c": "1"
         }
     ```
 
-
-For details on formatting log messages into JSON format, see [](#template-function-format-json).
+For details on formatting log messages into JSON format, see [`format-json`](#template-function-format-json).
 
 
 
@@ -354,7 +352,7 @@ For details on formatting log messages into JSON format, see [](#template-functi
 You can use the Graylog Extended Log Format (GELF) template together with the `graylog2()` destination to send syslog messages to [Graylog](http://docs.graylog.org). GELF is the native data format of Graylog.
 
 
-## Example: Using the format-gelf template function
+### Example: Using the format-gelf template function
 
 The following configuration example shows how you can use the `format-gelf` template:
 
@@ -425,7 +423,7 @@ This template function converts value-pairs into the WebTrends Enhanced Log file
 To select which value-pairs to convert, use the command-line syntax of the `value-pairs()` option. For details on selecting value-pairs, see <span class="mcFormatColor" style="color: #04aada;">value-pairs()</span>.
 
 
-## Example: Using the format-welf() template function
+### Example: Using the format-welf() template function
 
 The following example selects every available information about the log message, except for the date-related macros (`R_\*` and `S_\*`), selects the `.SDATA.meta.sequenceId` macro, and defines a new value-pair called `MSGHDR` that contains the program name and PID of the application that sent the log message (since you will use the template-function in a template, you must escape the double-quotes).
 
@@ -577,7 +575,7 @@ The following databases are supported:
 For details on selecting value-pairs in {{% param "product.abbrev" %}} and for possibilities to specify which information to convert to Graphite plain text protocol format, see {{% xref "/chapter-concepts/concepts-value-pairs/_index.md" %}}. Note that the syntax of `graphite-output` is different from the syntax of `value-pairs()`: `graphite-output` uses a the command-line syntax used in the [format-json template function]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}).
 
 
-## Example: Using the graphite-output template function
+### Example: Using the graphite-output template function
 
 The following configuration example shows, how to send value-pairs with names starting with "`vmstat.`" to Graphite running on `localhost`, port `2003`:
 
@@ -630,7 +628,7 @@ These template functions are available only if {{% param "product.abbrev" %}} ha
 {{% /alert %}}
 
 
-## Example: Using the $(hash) template function {#template-function-hash-example}
+### Example: Using the $(hash) template function {#template-function-hash-example}
 
 The following example calculates the SHA1 hash of the hostname of the message:
 
@@ -670,7 +668,7 @@ To replace the hostname with its hash, use a rewrite rule:
 *Description:* Returns the value of the `<true template> parameter if the `<condition>>is true. If the `<condition>`>s false, the value of `<false template>` > returned.
 
 
-## Example: Using pattern databases and the if template function
+### Example: Using pattern databases and the if template function
 
 The following example returns `violation` if the `username` name-value pair of a message is `root`, and `system` otherwise.
 
@@ -703,7 +701,7 @@ Since template functions can be embedded into each other, it is possible to use 
 *Description:* Turns a list into a string combining the pieces together with a separator. You can also use the [explode](#template-function-explode) template function, which turns a string separated by a specific character into a list. Available in {{% param "product.abbrev" %}} 3.21 and later.
 
 
-## Example: Using the implode template function
+### Example: Using the implode template function
 
 The following configuration example shows how you can use the `implode` template to turn a list into a string:
 
@@ -727,7 +725,7 @@ You can also use a <span>$(list-\*)</span> template function to further manipula
 *Description:* This template function makes it possible to write multi-line log messages into a file. The first line is written like a regular message, subsequent lines are indented with a tab, in compliance with RFC822.
 
 
-## Example: Using the indent-multi-line template function
+### Example: Using the indent-multi-line template function
 
 The following example writes multi-line messages into a text file.
 
@@ -1003,7 +1001,7 @@ When you are correlating messages and a name-value pair contains numerical value
 *Description:* This template function returns the value of its first parameter (a string or macro), prepended with a string. This string is `<width> long, and repeats the character or string set in the third parameter. If you use a single character, it is added `<width>>times. If you use a string, it is repeated until its length reaches `<width>`>The default padding character is ' ' (space). For example:
 
 
-## Example: Using the padding template function
+### Example: Using the padding template function
 
 If the value of the `${MESSAGE}` macro is `mymessage`, then the output of the `padding()` template function is the following:
 
@@ -1061,7 +1059,7 @@ The following points apply to Python parsers.
 
 
 
-## Example: Writing template functions in Python {#example-python-template-functions}
+### Example: Writing template functions in Python {#example-python-template-functions}
 
 The following example creates a Python template function called `return_message` that returns the MESSAGE part of the log message.
 
@@ -1161,7 +1159,7 @@ The function has the following options:
     ```
 
 
-## Example: Using the sanitize template function
+### Example: Using the sanitize template function
 
 The following example uses the sanitize function on two macros, and the results are used as directory names in a file destination.
 
@@ -1211,7 +1209,7 @@ This is equivalent to `file("/var/log/$HOST/$PROGRAM/messages");`, but any slash
   - `length` *Optional parameter*: The number of characters to extract. If not specified, the substring will be extracted from the offset to the end of the string. Use negative numbers to stop the substring before the end of the string, for example, `-5` means the substring ends five characters before the end of the string.
 
 
-## Example: Using the substr template function
+### Example: Using the substr template function
 
 Skip the first 15 characters of the message, and select the rest:
 
@@ -1309,7 +1307,7 @@ Available in {{% param "product.abbrev" %}} version 3.18 and later. (In version 
 To generate a UUID, you can use a rewrite rule to create a new value-pair for the message.
 
 
-## Example: Using Universally Unique Identifiers
+### Example: Using Universally Unique Identifiers
 
 The following example adds a value-pair called `MESSAGE_UUID` to the message using a rewrite rule and a template.
 
