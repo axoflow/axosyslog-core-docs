@@ -22,7 +22,7 @@ The following options can be specified in the options statement, as described in
 
 |                  |                  |
 | ---------------- | ---------------- |
-| Accepted values: | `yes` | `no` |
+| Accepted values: | `yes`, `no` |
 | Default:         | `no`           |
 
 *Description:* Enable or disable the chained hostname format. If a client sends the log message directly to the {{% param "product.abbrev" %}} server, the `chain-hostnames()` option is enabled on the server, and the client sends a hostname in the message that is different from its DNS hostname (as resolved from DNS by the {{% param "product.abbrev" %}} server), then the server can append the resolved hostname to the hostname in the message (separated with a `/` character) when the message is written to the destination.
@@ -118,7 +118,7 @@ For example, consider a client-relay-server scenario with the following hostname
 
 |                  |                  |
 | ---------------- | ---------------- |
-| Accepted values: | `yes` | `no` |
+| Accepted values: | `yes`, `no` |
 | Default:         | `no`           |
 
 *Description:* Enable or disable checking whether the hostname contains valid characters.
@@ -129,7 +129,7 @@ For example, consider a client-relay-server scenario with the following hostname
 
 |                  |                  |
 | ---------------- | ---------------- |
-| Accepted values: | `yes` | `no` |
+| Accepted values: | `yes`, `no` |
 | Default:         | `no`           |
 
 *Description:* Enable or disable directory creation for destination files and sockets.
@@ -196,7 +196,7 @@ Starting with version 3.16, the default value of this option is -1, so {{% param
 
 |                  |                  |
 | ---------------- | ---------------- |
-| Accepted values: | `yes` | `no` |
+| Accepted values: | `yes`, `no` |
 | Default:         | `yes`          |
 
 *Description:* Enable or disable DNS cache usage.
@@ -593,7 +593,7 @@ This option is deprecated, use the `use-uniqid()` option instead.
 
 |                  |                  |
 | ---------------- | ---------------- |
-| Accepted values: | `yes` | `no` |
+| Accepted values: | `yes`, `no` |
 | Default:         | `no`           |
 
 *Description:* This option enables generating a globally unique ID. It is generated from the HOSTID and the RCPTID in the format of HOSTID@RCPTID. It has a fixed length: 16+@+8 characters. You can include the unique ID in the message by using the macro. For details, see [UNIQID]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}).

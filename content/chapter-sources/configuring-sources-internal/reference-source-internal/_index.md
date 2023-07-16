@@ -15,7 +15,7 @@ The `internal()` driver has the following options:
 
 |                  |                  |
 | ---------------- | ---------------- |
-| Accepted values: | `yes` | `no` |
+| Accepted values: | `yes`, `no` |
 | Default:         | `no`           |
 
 *Description:* If enabled (`normalize-hostnames(yes)`), {{% param "product.abbrev" %}} converts the hostnames to lowercase.
