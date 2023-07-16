@@ -320,7 +320,29 @@ For example:
 
 *Description:* The number of messages that the output queue can store.
 
+## log-level() {#global-options-log-level}
 
+|                  |                  |
+| ---------------- | ---------------- |
+| Accepted values: | `default`, `verbose`, `debug`, `trace` |
+| Default:         | `default`        |
+
+*Description:* Controls {{% param "product.abbrev" %}}'s own internal log level. Corresponds to setting the internal log level using `syslog-ng-ctl` or the command line options of `syslog-ng` (the `-d`, `-v`, and `-t` ). Setting the log level in the configuration makes it easier to control logging in containerized environments where changing command line options is more problematic.
+
+Available in {{% param "product.abbrev" %}} 4.0 and later.
+
+Higher log-levels automatically include messages from lower log-levels:
+
+- `default`: Just normal log messages.
+- `verbose`: Normal and verbose log messages.
+- `debug`: Include debug messages of {{% param "product.abbrev" %}}.
+- `trace`: Include trace messages of how messages are processed.
+
+```shell
+    options {
+      log-level(debug);
+    };
+```
 
 ## log-msg-size() {#global-option-log-msg-size}
 
