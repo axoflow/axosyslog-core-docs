@@ -93,7 +93,15 @@ If the value of the key is static (for example, key("PROGRAM") instead of key("$
 
 {{% /alert %}}
 
+## prefix()
 
+|           |         |
+| --------- | ------- |
+| Synopsis: | prefix("your-prefix") |
+
+*Description:* Prepends the specified extra prefix to every name-value pairs extracted from the message.
+
+Available in {{% param "product.abbrev" %}} 4.0 and later.
 
 ## scope() {#grouping-by-parser-scope}
 
