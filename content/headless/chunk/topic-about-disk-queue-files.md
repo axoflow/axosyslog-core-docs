@@ -14,19 +14,16 @@ Disk queue files tend to grow. Each may take up to `disk-buf-size()` bytes on th
 
 The disk-buffer file's size should be considered as the configured `disk-buf-size()` at any point of time, even if it does not have messages in it. Truncating the disk-buffer file can slow down disk I/O operations, so {{% param "product.abbrev" %}} does not always truncate the file when it would be possible (see the `truncate-size-ratio()` option). If a large disk-buffer file is not desirable, you should set the `disk-buf-size()` option to a smaller value.
 
-{{% alert title="Warning" color="warning" %}}
-
-{{% param "product.companyabbrev" %}} recommends that you do not build upon the current truncating logic of the disk-buffer files, because {{% param "product.abbrev" %}} might pre-allocate the disk-buffer files and never truncate them in the future.
-
-{{% /alert %}}
-
+Starting with {{% param "product.abbrev" %}} version 4.0, you can [preallocate disk-buffer files](#preallocate).
 
 {{% alert title="Note" color="info" %}}
-
 The disk-buffer file's size does not strictly correlate to the number of stored messages. If you want to get information about the disk-buffer, use `dqtool` (for more information, see {{% xref "/chapter-routing-filters/concepts-diskbuffer/get-information-about-disk-buffer-files/get-information-about-disk-buffer-files-getting-status-info/_index.md" %}}).
-
-{{% /alert %}} {{% alert title="Note" color="info" %}}
-
-If a queue file becomes corrupt, {{% param "product.abbrev" %}} starts a new one. This might lead to the queue files consuming more space in total than their maximal configured size and the number of configured queue files multiplied together.
-
 {{% /alert %}}
+
+{{% alert title="Note" color="info" %}}
+If a queue file becomes corrupt, {{% param "product.abbrev" %}} starts a new one. This might lead to the queue files consuming more space in total than their maximal configured size and the number of configured queue files multiplied together.
+{{% /alert %}}
+
+## Preallocating disk-buffer files {#preallocate}
+
+{{< include-headless "chunk/option-description-destination-diskbuffer-prealloc.md" >}}
