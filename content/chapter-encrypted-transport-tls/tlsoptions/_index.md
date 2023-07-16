@@ -135,7 +135,22 @@ Using `keylog-file()` makes TLS connections less secure by writing secret key ma
 
 {{% /alert %}}
 
+{{< include-headless "chunk/option-destination-tls-ocsp-stapling-verify.md" >}}
 
+Example configuration:
+
+```shell
+destination {
+
+    network("example.com" transport(tls)
+        tls(
+            pkcs12-file("/path/to/test.p12")
+            peer-verify(yes)
+            ocsp-stapling-verify(yes)
+        )
+    );
+};
+```
 
 ## peer-verify() {#tls-options-peer-verify}
 
