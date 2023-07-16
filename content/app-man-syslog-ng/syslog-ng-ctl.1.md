@@ -43,30 +43,24 @@ The `syslog-ng-ctl` application is a utility that can be used to:
 
 ## Enabling troubleshooting messages
 
-`command [options]`
+`syslog-ng-ctl log-level <level>`
 
-Use the `syslog-ng-ctl <command> --set=on` command to display verbose, trace, or debug messages. If you are trying to solve configuration problems, the verbose (and occasionally trace) messages are usually sufficient. Debug messages are needed mostly for finding software errors. After solving the problem, do not forget to turn these messages off using the `syslog-ng-ctl <command> --set=off` command. Note that enabling debug messages does not enable verbose and trace messages.
+Available in {{% param "product.abbrev" %}} 4.0 and later.
 
-Use `syslog-ng-ctl <command>` without any parameters to display whether the particular type of messages are enabled or not.
+Use the `syslog-ng-ctl log-level <level>` command to display verbose, trace, or debug messages. If you are trying to solve configuration problems, the verbose (and occasionally trace) messages are usually sufficient. Debug messages are needed mostly for finding software errors. After solving the problem, do not forget to return the log level to the default using the `syslog-ng-ctl log-level default` command.
+
+Use `syslog-ng-ctl log-level` without any parameters to display the current log level.
+
+If {{% param "product.ose" %}} was started with the `--stderr` or `-e` option, the messages will be sent to `stderr`. If not specified, {{% param "product.ose" %}} will log such messages to its internal source.
 
 If you need to use a non-standard control socket to access `syslog-ng`, use the `syslog-ng-ctl <command> --set=on --control=<socket>` command to specify the socket to use.
 
-- `verbose`
-    
-    Print verbose messages. If {{% param "product.ose" %}} was started with the `--stderr` or `-e` option, the messages will be sent to `stderr`. If not specified, {{% param "product.ose" %}} will log such messages to its internal source.
+{{< include-headless "chunk/internal-log-levels.md" >}}
 
-- `trace`
-    
-    Print trace messages of how messages are processed. If {{% param "product.ose" %}} was started with the `--stderr` or `-e` option, the messages will be sent to `stderr`. If not specified, {{% param "product.ose" %}} will log such messages to its internal source.
-
-- `debug`
-    
-    Print debug messages. If {{% param "product.ose" %}} was started with the `--stderr` or `-e` option, the messages will be sent to `stderr`. If not specified, {{% param "product.ose" %}} will log such messages to its internal source.
-
-## Example
+### Example
 
 ```shell
-syslog-ng-ctl verbose --set=on
+syslog-ng-ctl log-level verbose
 ```
 
 
