@@ -10,9 +10,9 @@ Both reliable and normal disk-buffers employ an in-memory output queue (set in `
 
 ## Size of the queue files
 
-Disk queue files tend to grow. Each may take up to `disk-buf-size()` bytes on the disk. Due to the nature of reliable queue files, all the messages traversing the queue are written to disk, constantly increasing the size of the queue file.
+Disk queue files grow. Each may take up to `disk-buf-size()` bytes on the disk. Due to the nature of reliable queue files, all the messages traversing the queue are written to disk, constantly increasing the size of the queue file.
 
-The disk-buffer file's size should be considered as the configured `disk-buf-size()` at any point of time, even if it does not have messages in it. Truncating the disk-buffer file can slow down disk I/O operations, so {{% param "product.abbrev" %}} does not always truncate the file when it would be possible (see the `truncate-size-ratio()` option). If a large disk-buffer file is not desirable, you should set the `disk-buf-size()` option to a smaller value.
+The disk-buffer file's size should be considered as the configured `disk-buf-size()` at any point of time, even if it does not have messages in it. Truncating the disk-buffer file can slow down disk I/O operations, so {{% param "product.abbrev" %}} does not always truncate the file when it would be possible (see the `truncate-size-ratio()` option). If a large disk-buffer file is not desirable, you should set the `disk-buf-size()` option to a smaller value. Note that {{% param "product.abbrev" %}} version 4.0 and later doesn't truncate disk-buffer files by default.
 
 Starting with {{% param "product.abbrev" %}} version 4.0, you can [preallocate disk-buffer files](#preallocate).
 
