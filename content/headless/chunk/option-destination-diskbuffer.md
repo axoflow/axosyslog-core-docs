@@ -96,6 +96,27 @@ Available in {{% param "product.abbrev" %}} 4.0 and later.
 
 Options `reliable()` and `disk-buf-size()` are required options.
 
+### truncate-size-ratio() {#diskbuf-trunkate-size-ratio}
+
+| Type:        | number((between 0 and 1))    |
+|--------------|-----------|
+| Default:     | 0.1 (10%)   |
+
+*Description:* Limits the truncation of the disk-buffer file. Truncating the disk-buffer file can slow down the disk IO operations, but it saves disk space, so {{% param "product.abbrev" %}} only truncates the file, if the possible disk gain is more than `truncate-size-ratio()` times `disk-buf-size()`.
+
+By default, {{% param "product.abbrev" %}} frees the disk-space only when it can free up at least 10% of the disk-buffer file (`truncate-size-ratio(0.1)`):
+
+- Smaller values free disk space quicker.
+- Larger ratios result in better performance.
+
+If you want to avoid performance fluctuations:
+
+- use `truncate-size-ratio(1)` (never truncate), or
+- use `prealloc(yes)` to [reserve the entire size of the disk-buffer on disk](#diskbuf-prealloc).
+
+{{% alert title="Warning" color="warning" %}}
+{{% param "product.companyabbrev" %}} does not recommend you to change `truncate-size-ratio()`. Only change its value if you know the performance implications of doing so.
+{{% /alert %}}
 
 ### Example: Examples for using disk-buffer()
 
@@ -132,25 +153,3 @@ In the following case normal disk-buffer() is used.
         );
     };
 ```
-
-### truncate-size-ratio() {#diskbuf-trunkate-size-ratio}
-
-| Type:        | number((between 0 and 1))    |
-|--------------|-----------|
-| Default:     | 0.1 (10%)   |
-
-*Description:* Limits the truncation of the disk-buffer file. Truncating the disk-buffer file can slow down the disk IO operations, but it saves disk space, so {{% param "product.abbrev" %}} only truncates the file, if the possible disk gain is more than `truncate-size-ratio()` times `disk-buf-size()`.
-
-By default, {{% param "product.abbrev" %}} frees the disk-space only when it can free up at least 10% of the disk-buffer file (`truncate-size-ratio(0.1)`):
-
-- Smaller values free disk space quicker.
-- Larger ratios result in better performance.
-
-If you want to avoid performance fluctuations:
-
-- use `truncate-size-ratio(1)` (never truncate), or
-- use `prealloc(yes)` to [reserve the entire size of the disk-buffer on disk](#diskbuf-prealloc).
-
-{{% alert title="Warning" color="warning" %}}
-{{% param "product.companyabbrev" %}} does not recommend you to change `truncate-size-ratio()`. Only change its value if you know the performance implications of doing so.
-{{% /alert %}}
