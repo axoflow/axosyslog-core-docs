@@ -160,7 +160,15 @@ The `http()` destination supports only unencrypted key files (that is, the priva
 
 *Description:* Specifies the HTTP method to use when sending the message to the server.
 
+{{< include-headless "chunk/option-destination-tls-ocsp-stapling-verify.md" >}}
 
+Example configuration:
+
+```shell
+destination {
+    http(url("https://example.com") method("POST") tls(peer-verify(yes) ocsp-stapling-verify(yes)));
+};
+```
 
 ## password()
 
