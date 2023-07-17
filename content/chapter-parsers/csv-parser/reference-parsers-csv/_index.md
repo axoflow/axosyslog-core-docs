@@ -66,9 +66,9 @@ If you use more than one delimiter, note the following points:
 
 |           |                                                 |
 | --------- | ----------------------------------------------- |
-| Synopsis: | escape-none|escape-backslash|escape-double-char |
+| Synopsis: | `escape-none`, `escape-backslash`, `escape-double-char`, or `escape-backslash-with-sequences` |
 
-*Description:* Specifies how to handle escaping in the parsed message. The following values are available. Default value: `escape-none`
+*Description:* Specifies how to handle escaping in the parsed message. Default value: `escape-none`
 
 ```shell
    parser p_demo_parser {
@@ -82,6 +82,9 @@ If you use more than one delimiter, note the following points:
     };
 ```
 
+The following values are available.
+
+{{< include-headless "chunk/option-escaping.md" >}}
 
 
 ## flags() {#csv-parser-flags}
