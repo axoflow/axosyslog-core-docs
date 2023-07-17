@@ -69,7 +69,7 @@ log {
 
 When you reload `syslog-ng` (with `syslog-ng-ctl` reload or `systemctl reload syslog-ng`) then the `python` block in your configuration is reloaded with the rest of the configuration file. Any changes you make in Python code directly embedded in your configuration takes effect after the reload. This also means that any global variables are reset, so you cannot store state across reloads in your `python {}` block.
 
-Modules are only imported once and kept across reloads, even if the {{% param "product.name" %}} configuration is reloaded. This means that you van store global state in modules and they will be kept, even as {{% param "product.name" %}} reinitializes the configuration.
+Modules are only imported once and kept across reloads, even if the {{% param "product.name" %}} configuration is reloaded. This means that you can store global state in modules and they will be kept, even as {{% param "product.name" %}} reinitializes the configuration.
 
 In case you want to reload a module every time {{% param "product.name" %}} configuration is reinitialized, you need to do this explicitly with a code similar to this:
 
@@ -96,7 +96,7 @@ from syslogng import LogDestination
 
 class MyDestination(LogDestination):
     def send(self, msg):
-    return True
+        return True
 ```
 
 The interface of the `LogDestination` class is documented in the `syslogng.dest` module, which is stored in the [`modules/python-modules/syslogng/dest.py`](https://github.com/syslog-ng/syslog-ng/blob/master/modules/python-modules/syslogng/dest.py) file of the source tree.
