@@ -88,9 +88,13 @@ The {{% param "product.ose" %}} application is a flexible and highly scalable sy
     
     Display a brief help message.
 
+- `--log-level <level>`
+
+    Set the internal log level of {{% param "product.ose" %}} to `default`, `verbose`, `debug`, or `trace`. Available in {{% param "product.ose" %}} 4.0 and later.
+
 - `--module-registry`
     
-    Display the list and description of the available modules. Note that not all of these modules are loaded automatically, only the ones specified in the `--default-modules` option. Available only in {{% param "product.ose" %}} 4 F1 and later.
+    Display the list and description of the available modules. Note that not all of these modules are loaded automatically, only the ones specified in the `--default-modules` option.
 
 - `--no-caps`
     
