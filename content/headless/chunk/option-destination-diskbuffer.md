@@ -76,6 +76,15 @@ If the `dir()` path provided by the user does not exist, {{% param "product.ose"
 
 *Description:* Use this option if the option `reliable()` is set to `yes`. This option contains the size of the messages in bytes that is used in the memory part of the disk buffer. It replaces the old `log-fifo-size()` option. It does not inherit the value of the global `log-fifo-size()` option, even if it is provided. Note that this option will be ignored if the option `reliable()` is set to `no`.
 
+### prealloc() {#diskbuf-prealloc}
+
+| Type:        | yes/no    |
+|--------------|-----------|
+| Default:     | no        |
+
+*Description:* {{< include-headless "chunk/option-description-destination-diskbuffer-prealloc.md" >}}
+
+Available in {{% param "product.abbrev" %}} 4.0 and later.
 
 ### qout-size()
 
@@ -87,6 +96,27 @@ If the `dir()` path provided by the user does not exist, {{% param "product.ose"
 
 Options `reliable()` and `disk-buf-size()` are required options.
 
+### truncate-size-ratio() {#diskbuf-trunkate-size-ratio}
+
+| Type:        | number((between 0 and 1))    |
+|--------------|-----------|
+| Default:     | 1 (do not truncate)   |
+
+*Description:* Limits the truncation of the disk-buffer file. Truncating the disk-buffer file can slow down the disk IO operations, but it saves disk space. By default, {{% param "product.abbrev" %}} version 4.0 and later doesn't truncate disk-buffer files by default (`truncate-size-ratio(1)`). Earlier versions freed the disk-space when at least 10% of the disk-buffer file could be freed (`truncate-size-ratio(0.1)`).
+
+{{% param "product.abbrev" %}} only truncates the file if the possible disk gain is more than `truncate-size-ratio()` times `disk-buf-size()`.
+
+- Smaller values free disk space quicker.
+- Larger ratios result in better performance.
+
+If you want to avoid performance fluctuations:
+
+- use `truncate-size-ratio(1)` (never truncate), or
+- use `prealloc(yes)` to [reserve the entire size of the disk-buffer on disk](#diskbuf-prealloc).
+
+{{% alert title="Warning" color="warning" %}}
+{{% param "product.companyabbrev" %}} does not recommend you to change `truncate-size-ratio()`. Only change its value if you understand the performance implications of doing so.
+{{% /alert %}}
 
 ### Example: Examples for using disk-buffer()
 
@@ -123,17 +153,3 @@ In the following case normal disk-buffer() is used.
         );
     };
 ```
-
-### truncate-size-ratio() {#diskbuf-trunkate-size-ratio}
-
-| Type:        | number((between 0 and 1))    |
-|--------------|-----------|
-| Default:     | 0.1 (10%)   |
-
-*Description:* Limits the truncation of the disk-buffer file. Truncating the disk-buffer file can slow down the disk IO operations, but it saves disk space, so AxoSyslog only truncates the file, if the possible disk gain is more than `truncate-size-ratio()` times `disk-buf-size()`.
-
-{{% alert title="Warning" color="warning" %}}
-
-{{% param "product.companyabbrev" %}} does not recommend you to change `truncate-size-ratio()`. Only change its value if you know the performance implications of doing so.
-
-{{% /alert %}}
