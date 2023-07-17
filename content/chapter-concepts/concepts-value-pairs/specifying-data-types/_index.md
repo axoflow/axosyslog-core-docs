@@ -52,11 +52,9 @@ The {{% param "product.abbrev" %}} application currently supports the following 
 - `datetime`: Use it only with UNIX timestamps, anything else will likely result in an error. This means that currently you can use only the `$UNIXTIME` macro for this purpose.
 - `double`: A floating-point number.
 - `json`: A JSON snippet. (Available in {{% param "product.abbrev" %}} 4.0 and later.)
-- `literal`: The data as a literal string, without adding any quotes or escape characters.
 - `list`: The data as a list. For details, see the list manipulation template functions in {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" %}}.
 - `null`: An unset value.
-- `int` or `int32`: 32-bit integer.
-- `int64`: 64-bit integer.
+- `integer`: A 32-bit or 64-bit integer, determined by the destination. For example, mongodb uses int32 if the number is less than MAXINT32 and int64 otherwise.
 - `string`: The data as a string.
 
 ## Components that support data types {#data-types-components}
