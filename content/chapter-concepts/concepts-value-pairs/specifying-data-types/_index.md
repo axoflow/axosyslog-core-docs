@@ -52,11 +52,9 @@ The {{% param "product.abbrev" %}} application currently supports the following 
 - `datetime`: Use it only with UNIX timestamps, anything else will likely result in an error. This means that currently you can use only the `$UNIXTIME` macro for this purpose.
 - `double`: A floating-point number.
 - `json`: A JSON snippet. (Available in {{% param "product.abbrev" %}} 4.0 and later.)
-- `literal`: The data as a literal string, without adding any quotes or escape characters.
 - `list`: The data as a list. For details, see the list manipulation template functions in {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" %}}.
 - `null`: An unset value.
-- `int` or `int32`: 32-bit integer.
-- `int64`: 64-bit integer.
+- `integer`: A 32-bit or 64-bit integer, determined by the destination. For example, mongodb uses int32 if the number is less than MAXINT32 and int64 otherwise.
 - `string`: The data as a string.
 
 ## Components that support data types {#data-types-components}
@@ -78,8 +76,8 @@ In {{% param "product.abbrev" %}} 4.0 and later, the following {{% param "produc
     The `integer` is a type-cast that associates `$foobar` with an integer type. `db-parser()`’s internal parsers (for example, `@NUMBER@`) automatically associate type information to the parsed name-value pair.
 
 - `add-contextual-data()`: Name-value pairs that are populated using `add-contextual-data()` propagate type information, similarly to `db-parser()`.
-- `map-value-pairs()`: `map-value-pairs()` propagates type information.
-- SQL type support: The `sql()` driver supports types, so that columns with specific types are stored as those types.
+- [`map-value-pairs()`]({{< relref "/chapter-manipulating-messages/modifying-messages/parser-map-value-pairs/_index.md" >}}): `map-value-pairs()` propagates type information.
+- SQL type support: The [`sql()` driver]({{< relref "/chapter-destinations/configuring-destinations-sql/_index.md" >}}) supports types, so that columns with specific types are stored as those types.
 - Template type support: You can cast templates explicitly to a specific type. Templates also propagate type information from macros, template functions, and values in the template string.
 - `python()` typing: All Python components (sources, destinations, parsers, and template functions) support all data types, except `json()`.
 - On-disk serialized formats (that is, disk buffer): Version 4.0 and newer are compatible with messages serialized with an earlier version, and the format is compatible for downgrades as well. This means that even if a newer version of {{% param "product.abbrev" %}} serialized a message, older versions and associated tools are able to read it (but drop the type information of course).
