@@ -6,6 +6,12 @@ weight:  700
 
 This driver sends messages into an SQL database. The `sql()` destination has the following options:
 
+{{% include-headless "chunk/option-destination-batch-bytes.md" %}}
+
+{{% include-headless "chunk/option-destination-batch-lines.md" %}}
+
+{{% include-headless "chunk/option-destination-batch-timeout.md" %}}
+
 ## columns() {#sql-option-columns}
 
 |          |                                                                  |
@@ -73,21 +79,13 @@ OPTION_NAME is always a string, VALUE is a string or a number. For example:
 
   - *explicit-commits*: By default, {{% param "product.abbrev" %}} commits every log message to the target database individually. When the `explicit-commits` option is enabled, messages are committed in batches. This improves the performance, but results in some latency, as the messages are not immediately sent to the database. The size and frequency of batched commits can be set using the `batch-lines()` parameter. The `explicit-commits` option is available in {{% param "product.abbrev" %}} version 3.2 and later.
 
-
-## Example: Setting flags for SQL destinations
+### Example: Setting flags for SQL destinations
 
 The following example sets the `dont-create-tables` and `explicit-commits` flags for an `sql()` destination.
 
 ```shell
    flags(dont-create-tables,explicit-commits)
 ```
-
-
-{{% include-headless "chunk/option-destination-batch-bytes.md" %}}
-
-{{% include-headless "chunk/option-destination-batch-lines.md" %}}
-
-{{% include-headless "chunk/option-destination-batch-timeout.md" %}}
 
 {{< include-headless "chunk/option-destination-frac-digits.md" >}}
 
@@ -123,8 +121,7 @@ The {{% param "product.abbrev" %}} application will create the name of indexes a
 
 *Description:* If the content of a column matches the string specified in the `null()` parameter, the contents of the column will be replaced with an SQL NULL value. If unset (by default), the option does not match on any string. For details, see the [Example: Using SQL NULL values](#example-destination-sql-null).
 
-
-## Example: Using SQL NULL values {#example-destination-sql-null}
+### Example: Using SQL NULL values {#example-destination-sql-null}
 
 The `null()` parameter of the SQL driver can be used to replace the contents of a column with a special SQL NULL value. To replace every column that contains an empty string with NULL, use the `null("")` option, for example
 
@@ -226,11 +223,9 @@ The {{% param "product.abbrev" %}} application does not validate or limit the co
 
 It is possible to give a special value calling: default (without quotation marks).It means that the value will be used that is the default of the column type of this value.
 
-
-## Example: Value: default
+### Example: Value: default
 
 ```shell
    columns("date datetime", "host varchar(32)", "row_id serial")
         values("${R_DATE}", "${HOST}", default)
 ```
-
