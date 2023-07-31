@@ -64,6 +64,15 @@ OPTION_NAME is always a string, VALUE is a string or a number. For example:
     dbd-option("null.sleep.query" 5)
 ```
 
+## dbdi-driver-dir() {#sql-option-dbdi-driver-dir}
+
+|          |              |
+| -------- | ------------ |
+| Type:    | string       |
+| Default: | empty string |
+
+*Description:* Defines an optional DBI driver location for DBD initialization.
+
 {{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
 ## flags() {#sql-option-flags}
@@ -159,6 +168,19 @@ Ensure that the default value you use does not appear in the actual log messages
 {{% include-headless "chunk/option-sql-password.md" %}}
 
 {{% include-headless "chunk/option-sql-port.md" %}}
+
+## quote-char() {#sql-option-quote-char}
+
+|          |        |
+| -------- | ------ |
+| Type:    | string |
+| Default: |        |
+
+Available in {{% param "product_name" %}} version 4.3.0 and newer.
+
+*Description:* Set custom quoting for table and index names (for example, MySQL needs sometimes this for certain identifiers).
+
+> Note: Using a backtick character needs special formatting, because {{% param "product.abbrev" %}} uses backticks for configuration parameter names. To use backticks as quote character, set a double backtick: `quote-char("``")`
 
 ## retries() {#sql-option-retry-sql-inserts}
 
