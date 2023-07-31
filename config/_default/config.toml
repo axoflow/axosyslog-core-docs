@@ -191,7 +191,7 @@ contact = "[contact us](https://axoflow.com/contact/)"
     name = "Documentation"
     weight = -100
     #pre = "<i class='fas fa-book pr-2'></i>"
-    url = "/docs/"
+    url = "/"
   [[menu.main]]
     name = "Contact"
     weight = 100
