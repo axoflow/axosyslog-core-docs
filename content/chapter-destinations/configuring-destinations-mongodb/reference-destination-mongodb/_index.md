@@ -8,6 +8,40 @@ The `mongodb()` driver sends messages to a MongoDB database. MongoDB is a schema
 
 The `mongodb()` destination has the following options:
 
+## bulk() {#mongodb-option-bulk}
+
+|          |         |
+| -------- | ------- |
+| Type:    | `yes`, `no` |
+| Default: | `yes`  |
+
+Available in {{% param "product_name" %}} version 4.3.0 and newer.
+
+*Description:* Enables [bulk insert](http://mongoc.org/libmongoc/current/bulk.html) mode. If disabled, each messages is inserted individually.
+
+> Note: Bulk sending is only efficient if you use a constant [collection](#mongodb-option-collection) (without templates), or the used template does not lead to too many collections switching within a reasonable time range.
+
+## bulk-bypass-validation() {#mongodb-option-bulk-bypass-validation}
+
+|          |         |
+| -------- | ------- |
+| Type:    | `yes`, `no` |
+| Default: | `no`  |
+
+Available in {{% param "product_name" %}} version 4.3.0 and newer.
+
+*Description:* If set to `yes`, it disables [MongoDB bulk operations validation](http://mongoc.org/libmongoc/1.23.3/bulk.html#bulk-operation-bypassing-document-validation) mode.
+
+## bulk-unordered() {#mongodb-option-bulk-unordered}
+
+|          |         |
+| -------- | ------- |
+| Type:    | `yes`, `no` |
+| Default: | `no`  |
+
+Available in {{% param "product_name" %}} version 4.3.0 and newer.
+
+*Description:* Enables [unordered bulk operations](http://mongoc.org/libmongoc/current/bulk.html) mode.
 
 ## collection() {#mongodb-option-collection}
 
@@ -81,4 +115,13 @@ For MongoDB operations, {{% param "product.abbrev" %}} uses a one-minute timeout
 
 {{< include-headless "wnt/warning-diskbuffer-workers.md" >}}
 
+## write-concern() {#mongodb-option-write-concern}
 
+|          |         |
+| -------- | ------- |
+| Type:    | `unacked`, `acked`, or `majority` |
+| Default: | `acked`  |
+
+Available in {{% param "product_name" %}} version 4.3.0 and newer.
+
+*Description:* Sets the [write concern mode of the MongoDB operations](http://mongoc.org/libmongoc/1.23.3/bulk.html#bulk-operation-write-concerns), for both bulk and single mode.
