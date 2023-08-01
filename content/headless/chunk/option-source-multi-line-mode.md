@@ -6,7 +6,7 @@
 
 |          |                 |
 | -------- | --------------- |
-| Type:    | indented|regexp |
+| Type:    | `indented`, `prefix-garbage`, `prefix-suffix`, `regexp`, `smart` |
 | Default: | empty string    |
 
 *Description:* Use the `multi-line-mode()` option when processing multi-line messages. The {{% param "product.abbrev" %}} application provides the following methods to process multi-line messages:
@@ -24,5 +24,11 @@
 - `prefix-suffix`: The `prefix-suffix` mode uses a string or regular expression (set in `multi-line-prefix()`) that matches the beginning of the log messages, ignores newline characters from the source until a line matches the regular expression set in `multi-line-suffix()`, and treats the lines between `multi-line-prefix()` and `multi-line-suffix()` as a single message. Any other lines between the end of the message and the beginning of a new message (that is, a line that matches the `multi-line-prefix()` expression) are discarded. For details on using `multi-line-mode(prefix-suffix)`, see the `multi-line-prefix()` and `multi-line-suffix()` options.
 
     The `prefix-suffix` mode is similar to the `prefix-garbage` mode, but it appends the garbage part to the message instead of discarding it.
+
+- `smart`: The `smart` mode recognizes multi-line data backtraces even if they span multiple lines in the input. The backtraces are converted to a single log message for easier analysis. Backtraces for the following programming languages are recognized : Python, Java, JavaScript, PHP, Go, Ruby, and Dart.
+
+    `smart` mode is available in {{% param "product.name" %}} version 4.2 and newer.
+
+    The regular expressions to recognize these programming languages are specified in an external file called `/usr/share/syslog-ng/smart-multi-line.fsm` (installation path depends on configure arguments), in a format that is described in that file.
 
 {{< include-headless "wnt/tip-multi-line-output.md" >}}
