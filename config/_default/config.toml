@@ -18,7 +18,7 @@ enableGitInfo = true
 
 [languages]
 [languages.en]
-title = "AxoSyslog - a syslog-ng distribution 4.0"
+title = "AxoSyslog - a syslog-ng distribution 4.0-4.x"
 description = "Documentation for AxoSyslog version 4, a syslog-ng distribution"
 languageName ="English"
 # Weight used for sorting.
