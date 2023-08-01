@@ -3,6 +3,8 @@
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 {{% include-headless "chunk/option-source-dynamic-window-size.md" %}}
 
+{{% include-headless "chunk/option-source-ebpf.md" %}}
+
 {{% include-headless "chunk/option-source-encoding.md" %}}
 
 
@@ -54,7 +56,7 @@ The `syslog` source uses multiple threads only if the source uses the `tls` or `
 If the `max-connections()` option is set, the `log-iw-size()` will be divided by the number of connections, otherwise `log-iw-size()` is divided by 10 (the default value of the `max-connections()` option). The resulting number is the initial window size of each connection. For optimal performance when receiving messages from {{% param "product.abbrev" %}} clients, make sure that the window size is larger than the `flush-lines()` option set in the destination of your clients.
 
 
-## Example: Initial window size of a connection
+### Example: Initial window size of a connection
 
 If `log-iw-size(1000)` and `max-connections(10)`, then each connection will have an initial window size of 100.
 
