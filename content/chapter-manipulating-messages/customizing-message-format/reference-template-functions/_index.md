@@ -1271,7 +1271,7 @@ Available in {{% param "product.abbrev" %}} 3.22 and later.
 
 ```shell
    destination d_file {
-        file ("/var/log/${MONTH}/${DAY}/$(uppercase "${HOST}")/messages");
+        file ("/var/log/${MONTH}/${DAY}/$(uppercase ${HOST})/messages");
     };
 ```
 
