@@ -50,7 +50,7 @@ If the `dir()` path provided by the user does not exist, {{% param "product.ose"
 
 {{% /alert %}}
 
-### disk-buf-size()
+### capacity-bytes()
 
 | Type:        | number (bytes) |
 |--------------|-----------|
@@ -58,8 +58,9 @@ If the `dir()` path provided by the user does not exist, {{% param "product.ose"
 
 *Description:* This is a required option. The maximum size of the disk-buffer in bytes. The minimum value is `1048576` bytes. If you set a smaller value, the minimum value will be used automatically. It replaces the old `log-disk-fifo-size()` option.
 
+In {{% param "product.ose" %}} version 4.2 and earlier, this option was called `disk-buf-size()`.
 
-### mem-buf-length()
+### flow-control-window-size()
 
 | Type:        | number(messages)    |
 |--------------|-----------|
@@ -67,14 +68,17 @@ If the `dir()` path provided by the user does not exist, {{% param "product.ose"
 
 *Description:* Use this option if the option `reliable()` is set to `no`. This option contains the number of messages stored in overflow queue. It replaces the old `log-fifo-size()` option. It inherits the value of the global `log-fifo-size()` option if provided. If it is not provided, the default value is `10000` messages. Note that this option will be ignored if the option `reliable()` is set to `yes`.
 
+In {{% param "product.ose" %}} version 4.2 and earlier, this option was called `mem-buf-length()`.
 
-### mem-buf-size()
+### flow-control-window-bytes()
 
 | Type:        | number (bytes) |
 |--------------|-----------|
 | Default:     | 163840000       |
 
 *Description:* Use this option if the option `reliable()` is set to `yes`. This option contains the size of the messages in bytes that is used in the memory part of the disk buffer. It replaces the old `log-fifo-size()` option. It does not inherit the value of the global `log-fifo-size()` option, even if it is provided. Note that this option will be ignored if the option `reliable()` is set to `no`.
+
+In {{% param "product.ose" %}} version 4.2 and earlier, this option was called `mem-buf-size()`.
 
 ### prealloc() {#diskbuf-prealloc}
 
@@ -86,7 +90,7 @@ If the `dir()` path provided by the user does not exist, {{% param "product.ose"
 
 Available in {{% param "product.abbrev" %}} 4.0 and later.
 
-### qout-size()
+### front-cache-size()
 
 | Type:        | number(messages)    |
 |--------------|-----------|
@@ -94,7 +98,9 @@ Available in {{% param "product.abbrev" %}} 4.0 and later.
 
 *Description:* The number of messages stored in the output buffer of the destination. Note that if you change the value of this option and the disk-buffer already exists, the change will take effect when the disk-buffer becomes empty.
 
-Options `reliable()` and `disk-buf-size()` are required options.
+Options `reliable()` and `capacity-bytes()` are required options.
+
+In {{% param "product.ose" %}} version 4.2 and earlier, this option was called `qout-size()`.
 
 ### truncate-size-ratio() {#diskbuf-trunkate-size-ratio}
 
@@ -104,7 +110,7 @@ Options `reliable()` and `disk-buf-size()` are required options.
 
 *Description:* Limits the truncation of the disk-buffer file. Truncating the disk-buffer file can slow down the disk IO operations, but it saves disk space. By default, {{% param "product.abbrev" %}} version 4.0 and later doesn't truncate disk-buffer files by default (`truncate-size-ratio(1)`). Earlier versions freed the disk-space when at least 10% of the disk-buffer file could be freed (`truncate-size-ratio(0.1)`).
 
-{{% param "product.abbrev" %}} only truncates the file if the possible disk gain is more than `truncate-size-ratio()` times `disk-buf-size()`.
+{{% param "product.abbrev" %}} only truncates the file if the possible disk gain is more than `truncate-size-ratio()` times `capacity-bytes()`.
 
 - Smaller values free disk space quicker.
 - Larger ratios result in better performance.
@@ -128,8 +134,8 @@ In the following case reliable disk-buffer() is used.
             "127.0.0.1"
             port(3333)
             disk-buffer(
-                mem-buf-size(10000)
-                disk-buf-size(2000000)
+                flow-control-window-bytes(10000)
+                capacity-bytes(2000000)
                 reliable(yes)
                 dir("/tmp/disk-buffer")
             )
@@ -145,8 +151,8 @@ In the following case normal disk-buffer() is used.
             "127.0.0.1"
             port(3333)
                disk-buffer(
-                mem-buf-length(10000)
-                disk-buf-size(2000000)
+                flow-control-window-size(10000)
+                capacity-bytes(2000000)
                 reliable(no)
                 dir("/tmp/disk-buffer")
             )

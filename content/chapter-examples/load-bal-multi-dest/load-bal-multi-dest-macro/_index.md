@@ -29,7 +29,7 @@ The following example is a round-robin load balancing method, based on {{% param
           }; 
           destination { 
             network("myhost1" 
-              disk-buffer(mem-buf-length(10000) disk-buf-size(2000000))); 
+              disk-buffer(flow-control-window-size(10000) capacity-bytes(2000000))); 
           }; 
           flags(final); 
         }; 
@@ -41,7 +41,7 @@ The following example is a round-robin load balancing method, based on {{% param
     
         destination { 
           network("myhost2" 
-            disk-buffer(mem-buf-length(10000) disk-buf-size(2000000))); 
+            disk-buffer(flow-control-window-size(10000) capacity-bytes(2000000))); 
         }; 
         flags(final); 
         }; 

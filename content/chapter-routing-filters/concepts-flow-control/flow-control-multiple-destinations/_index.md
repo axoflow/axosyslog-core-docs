@@ -16,4 +16,4 @@ If you use flow-control and reliable disk-based buffering together with multiple
 
   - one destination is down, and
 
-  - the number of messages stored in the disk buffer of the destination reaches (`disk-buf-size()` minus `mem-buf-size()`).
+  - the number of messages stored in the disk buffer of the destination reaches (`capacity-bytes()` minus `flow-control-window-bytes()`).
