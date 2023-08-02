@@ -337,9 +337,9 @@ echo "<passphrase-of-the-key>" | syslog-ng-ctl credentials add --id=<path-to-the
 
 `syslog-ng-ctl config [options]`
 
-Use the `syslog-ng-ctl config` command to display the configuration that {{% param "product.ose" %}} is currently running. Note by default, only the content of the main configuration file are displayed, included files are not resolved. To resolve included files and display the entire configuration, use the `syslog-ng-ctl config --preprocessed` command.
+Use the `syslog-ng-ctl config` command to display the configuration that {{% param "product.ose" %}} is currently running. By default, only the content of the main configuration file is displayed, included files are not resolved. To resolve included files and display the entire configuration, use the `syslog-ng-ctl config --preprocessed` command.
 
-
+Starting with {{% param "product.name" %}} version 4.2, you can display the configuration identifier (if set) and the SHA256 has of the output of the `syslog-ng-ctl config --preprocessed` command by running `syslog-ng-ctl config --id`. For details, see {{% xref "/chapter-configuration-file/configuration-identifier/_index.md" %}}.
 
 <span id="syslog-ng-ctl-reload"></span>
 
