@@ -6,19 +6,15 @@
 
 *Description:* This option enables putting outgoing messages into the disk buffer of the destination to avoid message loss in case of a system failure on the destination side. It has the following options:
 
-### reliable()
+### capacity-bytes()
 
-| Type:        | yes/no    |
+| Type:        | number (bytes) |
 |--------------|-----------|
-| Default:     | no        |
+| Default:     | 1MiB       |
 
-*Description:* If set to `yes`, {{% param "product.abbrev" %}} cannot lose logs in case of reload/restart, unreachable destination or {{% param "product.abbrev" %}} crash. This solution provides a slower, but reliable disk-buffer option. It is created and initialized at startup and gradually grows as new messages arrive. If set to `no`, the normal disk-buffer will be used. This provides a faster, but less reliable disk-buffer option.
+*Description:* This is a required option. The maximum size of the disk-buffer in bytes. The minimum value is `1048576` bytes. If you set a smaller value, the minimum value will be used automatically. It replaces the old `log-disk-fifo-size()` option.
 
-{{% alert title="Warning" color="warning" %}}
-
-Hazard of data loss! If you change the value of `reliable()` option when there are messages in the disk-buffer, the messages stored in the disk-buffer will be lost.
-
-{{% /alert %}}
+In {{% param "product.ose" %}} version 4.2 and earlier, this option was called `disk-buf-size()`.
 
 ### compaction()
 
@@ -50,26 +46,6 @@ If the `dir()` path provided by the user does not exist, {{% param "product.ose"
 
 {{% /alert %}}
 
-### capacity-bytes()
-
-| Type:        | number (bytes) |
-|--------------|-----------|
-| Default:     | 1MiB       |
-
-*Description:* This is a required option. The maximum size of the disk-buffer in bytes. The minimum value is `1048576` bytes. If you set a smaller value, the minimum value will be used automatically. It replaces the old `log-disk-fifo-size()` option.
-
-In {{% param "product.ose" %}} version 4.2 and earlier, this option was called `disk-buf-size()`.
-
-### flow-control-window-size()
-
-| Type:        | number(messages)    |
-|--------------|-----------|
-| Default:     | 10000   |
-
-*Description:* Use this option if the option `reliable()` is set to `no`. This option contains the number of messages stored in overflow queue. It replaces the old `log-fifo-size()` option. It inherits the value of the global `log-fifo-size()` option if provided. If it is not provided, the default value is `10000` messages. Note that this option will be ignored if the option `reliable()` is set to `yes`.
-
-In {{% param "product.ose" %}} version 4.2 and earlier, this option was called `mem-buf-length()`.
-
 ### flow-control-window-bytes()
 
 | Type:        | number (bytes) |
@@ -80,15 +56,15 @@ In {{% param "product.ose" %}} version 4.2 and earlier, this option was called `
 
 In {{% param "product.ose" %}} version 4.2 and earlier, this option was called `mem-buf-size()`.
 
-### prealloc() {#diskbuf-prealloc}
+### flow-control-window-size()
 
-| Type:        | yes/no    |
+| Type:        | number(messages)    |
 |--------------|-----------|
-| Default:     | no        |
+| Default:     | 10000   |
 
-*Description:* {{< include-headless "chunk/option-description-destination-diskbuffer-prealloc.md" >}}
+*Description:* Use this option if the option `reliable()` is set to `no`. This option contains the number of messages stored in overflow queue. It replaces the old `log-fifo-size()` option. It inherits the value of the global `log-fifo-size()` option if provided. If it is not provided, the default value is `10000` messages. Note that this option will be ignored if the option `reliable()` is set to `yes`.
 
-Available in {{% param "product.abbrev" %}} 4.0 and later.
+In {{% param "product.ose" %}} version 4.2 and earlier, this option was called `mem-buf-length()`.
 
 ### front-cache-size()
 
@@ -101,6 +77,28 @@ Available in {{% param "product.abbrev" %}} 4.0 and later.
 Options `reliable()` and `capacity-bytes()` are required options.
 
 In {{% param "product.ose" %}} version 4.2 and earlier, this option was called `qout-size()`.
+
+### prealloc() {#diskbuf-prealloc}
+
+| Type:        | yes/no    |
+|--------------|-----------|
+| Default:     | no        |
+
+*Description:* {{< include-headless "chunk/option-description-destination-diskbuffer-prealloc.md" >}}
+
+Available in {{% param "product.abbrev" %}} 4.0 and later.
+
+### reliable()
+
+| Type:        | yes/no    |
+|--------------|-----------|
+| Default:     | no        |
+
+*Description:* If set to `yes`, {{% param "product.abbrev" %}} cannot lose logs in case of reload/restart, unreachable destination or {{% param "product.abbrev" %}} crash. This solution provides a slower, but reliable disk-buffer option. It is created and initialized at startup and gradually grows as new messages arrive. If set to `no`, the normal disk-buffer will be used. This provides a faster, but less reliable disk-buffer option.
+
+{{% alert title="Warning" color="warning" %}}
+Hazard of data loss! If you change the value of `reliable()` option when there are messages in the disk-buffer, the messages stored in the disk-buffer will be lost.
+{{% /alert %}}
 
 ### truncate-size-ratio() {#diskbuf-trunkate-size-ratio}
 
