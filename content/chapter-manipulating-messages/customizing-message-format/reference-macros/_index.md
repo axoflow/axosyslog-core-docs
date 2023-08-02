@@ -267,13 +267,15 @@ Description: When used, the output specifies the protocol used on the source fro
 
 For an example use case when using the macro is recommended, see {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/use-case-3-macros/_index.md" %}}.
 
-
-
 ## RAWMSG {#macro-rawmsg}
 
 *Description:* The original message as received from the client. Note that this macro is available only in 3.16 and later, and only if AxoSyslog received the message using the [`default-network-drivers-ng()` source]({{< relref "/chapter-sources/source-default-network-drivers/_index.md" >}}), or the source receiving the message has the [`store-raw-message`](shared/chunk/option-source-flags.htm) flag set.
 
+## RAWMSG_SIZE {#macro-rawmsg-size}
 
+Available in {{% param "product.name" %}} version 4.2 and newer.
+
+*Description:* The original size of the incoming message in bytes. Might not be available for every source driver.
 
 ## RCPTID {#macro-rcptid}
 
