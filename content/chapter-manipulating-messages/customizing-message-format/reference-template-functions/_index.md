@@ -1291,9 +1291,9 @@ Available in {{% param "product.abbrev" %}} version 3.18 and later.
 
 ## url-encode {#template-function-url-encode}
 
-*Syntax:* `$(url-encode ${MESSAGE} )\n")`
+*Syntax:* `$(url-encode ${MESSAGE})`
 
-*Description:* You can use the `url-encode` template function together with the `telegram()` destination to send syslog messages to [Telegram.](https://core.telegram.org/ "https://core.telegram.org") The `url-encode` template function escapes strings. All input characters that are not a-z, A-Z, 0-9, '-', '.', '_' or '\~' are converted to their "URL escaped" version.
+*Description:* The `url-encode` template function escapes strings for use as URI path or query parameter segments or form encoded HTTP POST data. All input characters that are not a-z, A-Z, 0-9, '-', '.', '_' or '\~' are converted to their "URL escaped" version.
 
 Available in {{% param "product.abbrev" %}} version 3.18 and later. (In version 3.16-3.17, this template function was called `urlencode`.)
 
