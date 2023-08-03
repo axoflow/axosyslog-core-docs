@@ -82,12 +82,11 @@ pipe(&quot;/dev/log&quot; pad-size(2048));
 </li>
 <li><p>Without systemd, on kernel 3.5 or newer:</p>
 <code>unix-dgram("/dev/log");
-file("/dev/kmsg" program-override("kernel") flags(kernel)
-     multi-line-mode(indented) keep-timestamp(no) format(linux-kmsg));</code>
+file("/dev/kmsg" program-override("kernel") flags(kernel) format("linux-kmsg") keep-timestamp(no));</code>
 </li>
 <li><p>Without systemd, on kernels older than 3.5:</p>
 <code>unix-dgram("/dev/log");
-file("/proc/kmsg" program-override("kernel") flags(kernel));</code>
+file("/proc/kmsg" program-override("kernel") flags(kernel) keep-timestamp(no));</code>
 </li>
 </ul>
 </td>
