@@ -148,6 +148,10 @@ The following transformations are available:
 
     This option was called `replace()` in {{% param "product.abbrev" %}} version 3.4.
 
+- `lower`
+
+    Convert all keys to lowercase. Only supports US ASCII.
+
 - `shift("<number>")`
 
     Cuts the specified number of characters from the beginning of the name.
@@ -155,6 +159,10 @@ The following transformations are available:
 - `shift-levels("<number>")`
 
     Similar to --shift, but instead of cutting characters, it cuts dot-delimited "levels" in the name (including the initial dot). For example, `--shift-levels 2` deletes the prefix up to the second dot in the name of the key: `.iptables.SRC` becomes `SRC`
+
+- `upper`
+
+    Convert all keys to uppercase. Only supports US ASCII.
 
 #### Example: Using the rekey() option {#example-value-pairs-rekey}
 
