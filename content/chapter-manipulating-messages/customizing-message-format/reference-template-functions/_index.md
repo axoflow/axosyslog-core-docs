@@ -388,9 +388,9 @@ If the value-pair includes type information `format-json` can propagate it to th
 The following example selects every available information about the log message, except for the date-related macros (`R_\*` and `S_\*`), selects the `.SDATA.meta.sequenceId` macro, and defines a new value-pair called `MSGHDR` that contains the program name and PID of the application that sent the log message (since you will use the template-function in a template, you must escape the double-quotes).
 
 ```shell
-   $(format-json --scope syslog,all_macros,selected_macros \
-      --exclude R_* --exclude S_* --key .SDATA.meta.sequenceId \
-      --pair MSGHDR=\"$PROGRAM[$PID]: \")
+   $(format-json --scope syslog,all_macros,selected_macros
+      --exclude R_* --exclude S_* --key .SDATA.meta.sequenceId
+      --pair MSGHDR="$PROGRAM[$PID]: ")
 ```
 
 The following example shows how to use this template function to store log messages in JSON format:
@@ -428,9 +428,9 @@ To select which value-pairs to convert, use the command-line syntax of the `valu
 The following example selects every available information about the log message, except for the date-related macros (`R_\*` and `S_\*`), selects the `.SDATA.meta.sequenceId` macro, and defines a new value-pair called `MSGHDR` that contains the program name and PID of the application that sent the log message (since you will use the template-function in a template, you must escape the double-quotes).
 
 ```shell
-   $(format-welf --scope syslog,all_macros,selected_macros \
-      --exclude R_* --exclude S_* --key .SDATA.meta.sequenceId \
-      --pair MSGHDR=\"$PROGRAM[$PID]: \")
+   $(format-welf --scope syslog,all_macros,selected_macros
+      --exclude R_* --exclude S_* --key .SDATA.meta.sequenceId
+      --pair MSGHDR="$PROGRAM[$PID]: ")
 ```
 
 The following example shows how to use this template function to store log messages in WELF format:
