@@ -351,7 +351,18 @@ Use the `syslog-ng-ctl reload` command to reload the configuration file of {{% p
 
 The `syslog-ng-ctl reload` command returns 0 if the operation was successful, 1 otherwise.
 
+<span id="syslog-ng-ctl-healthcheck"></span>
 
+## The healthcheck command
+
+You can use the `syslog-ng-ctl healthcheck` command to query the healthcheck status of {{% param "product.ose" %}}. Currently, two health values are reported:
+
+- `mainloop_io_worker_roundtrip_latency_nanoseconds`: mainloop->io-worker-job->mainloop roundtrip - a basic measure latency measure for {{% param "product.ose" %}}.
+- `io_worker_latency_nanoseconds`: io-worker-job start latency.
+
+You can run `syslog-ng-ctl healthcheck --timeout <seconds>` to use as a boolean healthy/unhealthy check.
+
+Health checks are also published as periodically updated metrics. You can configure the frequency of these checks with the `stats(healthcheck-freq())` option. The default is 5 minutes.
 
 ## Files
 
