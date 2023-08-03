@@ -90,7 +90,7 @@ The nodes and properties available in the tree depend on your {{% param "product
 
 <span id="syslog-ng-ctl-query-list"></span>
 
-## The list command
+### The list command
 
 `syslog-ng-ctl query list`
 
@@ -155,7 +155,7 @@ The `syslog-ng-ctl query list` command has the following options:
 
 <span id="syslog-ng-ctl-query-sum"></span>
 
-## Displaying metrics and statistics
+### Displaying metrics and statistics
 
 `syslog-ng-ctl query get [options]`
 
@@ -217,7 +217,7 @@ The `stats-lifetime()` can be used to do the same automatically and periodically
     {{% /alert %}}
 
 
-## Example
+### Example
 
 ```shell
 syslog-ng-ctl stats
@@ -267,7 +267,7 @@ The `syslog-ng-ctl credentials status` command allows you to query the status of
 
 <span id="idm46098617680288"></span>
 
-## Displaying the status of private keys
+### Displaying the status of private keys
 
 `syslog-ng-ctl credentials status [options]`
 
@@ -295,7 +295,7 @@ Waiting for password; keyfile='private.key'
 
 <span id="idm46098617667936"></span>
 
-## Opening password-protected private keys
+### Opening password-protected private keys
 
 `syslog-ng-ctl credentials add [options]`
 
