@@ -115,9 +115,11 @@ For example, for the date `01/Jan/2016:13:05:05 PST` use the following format st
 
 ## value()
 
+|           |                   |
+| --------- | ----------------- |
+| Synopsis: | string |
+| Default:  |                   |
 
 Available in {{% param "product.abbrev" %}} 4.1 and later.
 
-nstruct date-parser() to store
-the resulting timestamp in a name-value pair, instead of changing the
-timestamp value of the LogMessage.
+*Description:* Instruct `date-parser()` to store the resulting timestamp in a name-value pair specified in `value()`, instead of changing the timestamp value of the LogMessage.
