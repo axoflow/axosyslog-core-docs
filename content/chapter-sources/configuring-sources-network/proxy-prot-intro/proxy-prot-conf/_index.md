@@ -13,7 +13,7 @@ For more information about the working mechanism of the Proxy Protocol, see {{% 
 
 Unless you enable Proxy Protocol support for your `network()` source, {{% param "product.abbrev" %}} identifies every connection that is connected to the load balancers identically by default, regardless of the source IP or the source protocol.
 
-To enable Proxy Protocol for your `network()` source, set [the `transport()` parameter of your `network()` source]({{< relref "/chapter-sources/configuring-sources-network/reference-source-network/_index.md" >}}) to `proxied-tcp` or `proxied-tls-passthrough`, depending on your preference and configuration.
+To enable Proxy Protocol for your `network()` source, set [the `transport()` parameter of your `network()` source]({{< relref "/chapter-sources/configuring-sources-network/reference-source-network/_index.md#transport" >}}) to `proxied-tcp` or `proxied-tls-passthrough`, depending on your preference and configuration.
 
 `proxied-tls` can be used in complex MITM (man in the middle) configurations, where the proxy header is sent encrypted within the same TLS session as the proxied messages.
 

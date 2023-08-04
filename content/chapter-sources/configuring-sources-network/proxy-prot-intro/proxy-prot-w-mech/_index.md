@@ -38,9 +38,8 @@ Consider the following about macros and headers:
     
     ```
 
-{{% /alert %}} {{% alert title="Note" color="info" %}}
-
-Since the driver only implements version 1 of the protocol, it only supports TCP4 and TCP6 connections. TLS connections also supported.
-
 {{% /alert %}}
 
+{{% alert title="Note" color="info" %}}
+Originally, the driver supported version 1 of the PROXY protocol (TCP4, TCP6, and TLS connections). PROXY protocol v2 support is available in {{% param "product.abbrev" %}} version 4.1 and later.
+{{% /alert %}}
