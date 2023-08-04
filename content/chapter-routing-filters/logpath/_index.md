@@ -15,13 +15,28 @@ To define a log path, add a log statement to the syslog-ng configuration file us
 
 
 {{% alert title="Warning" color="warning" %}}
-
 Log statements are processed in the order they appear in the configuration file, thus the order of log paths may influence what happens to a message, especially when using filters and log flags.
-
 {{% /alert %}}
 
 {{< include-headless "wnt/note-element-order.md" >}}
 
+In {{% param "product.abbrev" %}} version 4.1 and later, you can add an ID or name to the log path to make the configuration file more readable. Also, {{% param "product.abbrev" %}} collects ingress and egress metrics for named log paths. For example:
+
+```shell
+log top-level {
+    source(s_local);
+
+    log inner-1 {
+        filter(f_inner_1);
+        destination(d_local_1);
+    };
+
+    log inner-2 {
+        filter(f_inner_2);
+        destination(d_local_2);
+    };
+};
+```
 
 ## Example: A simple log statement {#log-statement-example}
 
