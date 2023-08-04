@@ -297,7 +297,20 @@ To use the `format-cim()` template function, {{% param "product.abbrev" %}} must
 
 {{% /alert %}}
 
+## format-date {#template-function-format-date}
 
+*Syntax:* `$(format-date [options] format-string [timestamp])`
+
+Available in {{% param "product.abbrev" %}} 4.1 and later.
+
+*Description:* The `$(format-date)` template function takes a timestamp in the DATETIME representation and formats it according to an [strftime() format string](https://linux.die.net/man/3/strftime). The DATETIME representation is a UNIX timestamp formatted as a decimal number, with an optional fractional part, where the seconds and the fraction of seconds are separated by a dot.
+
+If the timestamp argument is missing, the timestamp of the message is used.
+
+Options:
+`--time-zone <TZstring>`: Override timezone of the original timestamp
+
+For example: `$(format-date --time-zone PST8PDT %Y-%m-%dT%H:%M:%S 1667500613)` corresponds to the following format and sets the timezone to Pacific Standard Time, Daylight Saving: "2022-11-03T11:36:53"
 
 ## format-ewmm {#template-function-format-ewmm}
 
