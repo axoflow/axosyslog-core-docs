@@ -95,7 +95,7 @@ For example, for the date `01/Jan/2016:13:05:05 PST` use the following format st
 
 |           |               |
 | --------- | ------------- |
-| Synopsis: | stamp | recvd |
+| Synopsis: | `stamp` or `recvd` |
 | Default:  | stamp         |
 
 *Description:* Determines if the parsed date values are treated as sent or received date. If you use `time-stamp(stamp)`, {{% param "product.abbrev" %}} adds the parsed date to the S_ macros (corresponding to the sent date). If you use `time-stamp(recvd)`, {{% param "product.abbrev" %}} adds the parsed date to the R_ macros (corresponding to the received date).
@@ -113,3 +113,11 @@ For example, for the date `01/Jan/2016:13:05:05 PST` use the following format st
 
 {{% include-headless "chunk/para-timezone-format.md" %}}
 
+## value()
+
+
+Available in {{% param "product.abbrev" %}} 4.1 and later.
+
+nstruct date-parser() to store
+the resulting timestamp in a name-value pair, instead of changing the
+timestamp value of the LogMessage.
