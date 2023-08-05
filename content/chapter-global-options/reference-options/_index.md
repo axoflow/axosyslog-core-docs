@@ -1,5 +1,5 @@
 ---
-title: "Global options"
+title: "Global options reference"
 weight:  300
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
@@ -449,9 +449,25 @@ Starting with version 3.16, the default value of this option is -1, so {{% param
 
 {{% include-headless "chunk/para-timezone-format.md" %}}
 
+## stats() {#global-option-stats}
 
+Available in {{% param "product.abbrev" %}} 4.1 and later.
 
-## stats-freq() {#global-option-stats-freq}
+*Description:* The `stats()` option is a collection of statistics-related options.
+
+```shell
+options {
+    stats(
+        freq(1)
+        level(1)
+        lifetime(1000)
+        max-dynamics(10000)
+        syslog-stats(yes)
+    );
+};
+```
+
+### freq() {#global-option-stats-freq}
 
 |                  |        |
 | ---------------- | ------ |
@@ -460,45 +476,42 @@ Starting with version 3.16, the default value of this option is -1, so {{% param
 
 *Description:* The period between two STATS messages in seconds. STATS are log messages sent by `syslog-ng`, containing statistics about dropped log messages. Set to `0` to disable the STATS messages.
 
-
-
-## stats-level() {#global-option-stats-level}
+### level() {#global-option-stats-level}
 
 |                  |                               |
 | ---------------- | ----------------------------- |
 | Accepted values: | `0` | `1` | `2` | `3` |
 | Default:         | `0`                         |
 
-*Description:* Specifies the detail of statistics AxoSyslog collects about the processed messages.
+*Description:* Specifies the detail of statistics {{% param "product.abbrev" %}} collects about the processed messages.
 
 {{% include-headless "chunk/option-stats-level-description.md" %}}
 
 Note that level 2 and 3 increase the memory requirements and CPU load. For details on message statistics, see {{% xref "/chapter-log-statistics/_index.md" %}}.
 
-
-
-## stats-max-dynamics() {#global-option-stats-max-dynamics}
+### max-dynamics() {#global-option-stats-max-dynamics}
 
 |                  |         |
 | ---------------- | ------- |
 | Accepted values: | number  |
 | Default:         | `N/A` |
 
+Available in {{% param "product.abbrev" %}} 4.1 and later.
+
 *Description:* To avoid performance issues or even overloading {{% param "product.abbrev" %}} (for example, if a script starts to send logs from different IP addresses to {{% param "product.abbrev" %}}), you might want to limit the number of registered dynamic counters in the message statistics. For details on message statistics, see {{% xref "/chapter-log-statistics/_index.md" %}}.
 
 - Unlimited dynamic counters:
-    
+
     If you do not use this option, dynamic counters will not be limited. This can be useful in cases where you are extremely interested in dynamic counters, and use these statistics extensively.
-    
+
     {{% alert title="Warning" color="warning" %}}
 In some cases, there might be even millions of dynamic counters
     {{% /alert %}}
-    
 
 - Limited dynamic counter clusters:
-    
-    To limit dynamic counters, enter a number, and only a maximum of <number> counters will be registered in the statistics.
-    
+
+    To limit dynamic counters, enter a number, and only a maximum of `<number>` counters will be registered in the statistics.
+
     In practice, this means dynamic counter clusters. A program name produces one dynamic counter cluster, that can include several counters, such as `processed`, `stamp`, and so on.
 
     **Example: Limiting dynamic counter clusters 1:**
@@ -510,15 +523,41 @@ In some cases, there might be even millions of dynamic counters
     If you have 500 clients, and set `stats-max-dynamics()` to `1000`, you will have enough number of counters reserved for these clients, but at the same time, you limit the use of your resources and therefore protect your system from being overloaded.
 
 - No dynamic counters:
-    
+
     To disable dynamic counters completely, set the value of this option to `0`. This is the recommended value if you do not use statistics, or if you are not interested in dynamic counters in particular (for example, the number of logs arriving from programs).
 
 {{% alert title="Note" color="info" %}}
-
 If you set a lower value to `stats-max-dynamics()` (or, any limiting value, if this option has not been configured before) and restart {{% param "product.abbrev" %}}, the changes will only be applied after `stats-freq()` time has passed. That is, the previously allocated dynamic clusters will only be removed after this time.
-
 {{% /alert %}}
 
+### syslog-stats() {#global-option-stats-syslog-stats}
+
+|                  |        |
+| ---------------- | ------ |
+| Accepted values: | `yes`, `no`, `auto` |
+| Default:         | `auto` |
+
+Available in {{% param "product.abbrev" %}} 4.1 and later.
+
+*Description:* Changes the behavior of counting messages based on different syslog fields, like `SEVERITY`, `FACILITY`, `HOST`.
+
+Possible values:
+
+- `yes`: Enable syslog stats.
+- `no`: Disable syslog stats.
+- `auto`: Use the setting of the old [`stats-level()` option](#global-option-stats-level).
+
+## stats-freq()
+
+Deprecated legacy option. Use [`stats(freq())`](#global-option-stats-syslog-stats) instead.
+
+## stats-level() {#global-option-stats-level}
+
+Deprecated legacy option. Use [`stats(level())`](#global-option-stats-level) instead.
+
+## stats-max-dynamics() {#global-option-stats-max-dynamics}
+
+Deprecated legacy option. Use [`stats(max-dynamics())`](#global-option-stats-max-dynamics) instead.
 
 ## sync() or sync-freq() (DEPRECATED)
 
