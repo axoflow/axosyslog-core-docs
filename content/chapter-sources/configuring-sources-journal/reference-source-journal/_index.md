@@ -18,8 +18,37 @@ The `systemd-journal()` driver has the following options:
 
 {{% include-headless "chunk/option-source-keep-hostname-journal.md" %}}
 
-{{% include-headless "chunk/option-source-max-field-size-journal.md" %}}<span id="systemd-namespace"></span>
+## match-boot()
 
+|          |                     |
+| -------- | ------------------- |
+| Type:    | `yes`, `no` |
+| Default: | no |
+
+Available in {{% param "product.abbrev" %}} 4.1 and later.
+
+*Description:* If set to yes, {{% param "product.abbrev" %}} fetches only journal messages that relate to the current boot, and to ignores messages generated in previous boots.
+
+## matches()
+
+|          |                     |
+| -------- | ------------------- |
+| Type:    | string |
+| Default: |                |
+
+Available in {{% param "product.abbrev" %}} 4.1 and later.
+
+*Description:* Specifies one or more filters to apply on the journal fields, similarly how you can use `journalctl`. For example:
+
+```shell
+matches(
+    "_COMM" => "systemd"
+    )
+```
+
+{{% include-headless "chunk/option-source-max-field-size-journal.md" %}}
+
+<span id="systemd-namespace"></span>
 {{% include-headless "chunk/systemd-journal-namespace.md" %}}
 
 {{% include-headless "chunk/option-source-prefix-journal.md" %}}
