@@ -19,7 +19,7 @@ Note that parsing will fail if the format string does not match the entire templ
    parser parser_name {
         date-parser(
             format("<format-string-for-the-date>")
-            template("<field-to-parse>'")
+            template("<field-to-parse>")
         );
     };
 ```
