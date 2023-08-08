@@ -8,25 +8,27 @@ weight:  700
 | --------- | --------------------------------------------------------------- |
 | Synopsis: | in-list("</path/to/file.list>", value("<field-to-filter>")) |
 
-*Description:* Matches the value of the specified field to a list stored in a file, allowing you to do simple, file-based black- and whitelisting. The file must be a plain-text file, containing one entry per line. The {{% param "product.abbrev" %}} application loads the entire file, and compares the value of the specified field (for example, ${PROGRAM}) to entries in the file. When you use the `in-list()` filter, note the following points:
+*Description:* Matches the value of the specified field to a list stored in a file, allowing you to do simple, file-based black- and whitelisting. The file must be a plain-text file, containing one entry per line. 
 
-  - Comparing the values is case-sensitive.
+The {{% param "product.abbrev" %}} application loads the entire file, and compares the value of the specified field (for example, `${PROGRAM}`) to entries in the file. When you use the `in-list()` filter, note the following points:
 
-  - Only exact matches are supported, partial and substring matches are not.
-
-  - If you modify the list file, reload the configuration of {{% param "product.abbrev" %}} for the changes to take effect.
+- Comparing the values is case-sensitive.
+- Only exact matches are supported, partial and substring matches are not.
+- If you modify the list file, reload the configuration of {{% param "product.abbrev" %}} for the changes to take effect.
+- Make sure that there is an empty line in the file after the last entry. If the last entry is the last line, it will be excluded from the list.
 
 Available in {{% param "product.abbrev" %}} 3.5 and later.
 
 
 ## Example: Selecting messages using the in-list() filter {#example-whitelist-filter}
 
-Create a text file that contains the programs (as in the ${PROGRAM} field of their log messages) you want to select. For example, you want to forward only the logs of a few applications from a host: kernel, sshd, and sudo. Create the `/etc/syslog-ng/programlist.list` file with the following contents:
+Create a text file that contains the programs (as in the ${PROGRAM} field of their log messages) you want to select. For example, you want to forward only the logs of a few applications from a host: kernel, sshd, and sudo. Create the `/etc/syslog-ng/programlist.list` file with the following contents. Note the empty line after the last entry.
 
 ```shell
-   kernel
-    sshd
-    sudo
+kernel
+sshd
+sudo
+
 ```
 
 The following filter selects only the messages of the listed applications:
