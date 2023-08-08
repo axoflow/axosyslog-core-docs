@@ -13,10 +13,12 @@ The `sdata-parser()` allows you to parse an RFC5424-style structured data string
 ```shell
    parser parser_name {
         sdata-parser(
-            format("<string-or-template-to-parse>")
+            template("<string-or-template-to-parse>")
             prefix("<prefix-for-parsed-name-value-pairs>")
         );
     };
 ```
 
 {{% include-headless "chunk/option-parser-prefix.md" %}}
+
+{{% include-headless "chunk/option-parser-template.md" %}}
