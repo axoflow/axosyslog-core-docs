@@ -71,16 +71,25 @@ pipe(&quot;/dev/log&quot; pad-size(2048));
 </tr>
 <tr class="odd">
 <td>Linux</td>
-<td><code>
-unix-dgram(&quot;/dev/log&quot;);
-</code>
-<code>
-file(&quot;/proc/kmsg&quot; program-override(&quot;kernel&quot;) flags(kernel));
-</code>
+<td>
 <p>Note that on Linux, the <code>so-rcvbuf()</code> option of the <code>system()</code> source is automatically set to 8192.</p>
-<p>If the host is running under systemd, {{% param "product.abbrev" %}} reads directly from the systemd journal file using the <code>systemd-journal()</code> source.</p>
+<p>If the host is running under systemd, {{% param "product.abbrev" %}} reads both syslog and kernel messages directly from the systemd journal file using the <code>systemd-journal()</code> source. In this case, {{% param "product.abbrev" %}} doesn't read from `/dev/log` nor `/proc/kmsg`.</p>
 <p>If the kernel of the host is version 3.5 or newer, and <code>/dev/kmsg</code> is seekable, {{% param "product.abbrev" %}} will use that instead of <code>/proc/kmsg</code>, using the <code>multi-line-mode(indented)</code>, <code>keep-timestamp(no)</code>, and the <code>format(linux-kmsg)</code> options.</p>
-<p>If {{% param "product.abbrev" %}} is running in a jail or a Linux Container (LXC), it will not read from the <code>/dev/kmsg</code> or <code>/proc/kmsg</code> files.</p></td>
+<p>If {{% param "product.abbrev" %}} is running in a jail or a Linux Container (LXC), it will not read from the <code>/dev/kmsg</code> or <code>/proc/kmsg</code> files.</p>
+<ul>
+<li><p>With systemd:</p>
+<code>systemd-journal();</code>
+</li>
+<li><p>Without systemd, on kernel 3.5 or newer:</p>
+<code>unix-dgram("/dev/log");
+file("/dev/kmsg" program-override("kernel") flags(kernel) format("linux-kmsg") keep-timestamp(no));</code>
+</li>
+<li><p>Without systemd, on kernels older than 3.5:</p>
+<code>unix-dgram("/dev/log");
+file("/proc/kmsg" program-override("kernel") flags(kernel) keep-timestamp(no));</code>
+</li>
+</ul>
+</td>
 </tr>
 <tr class="even">
 <td>macOS</td>
