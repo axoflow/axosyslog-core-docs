@@ -294,7 +294,7 @@ Using `ssl-options(none)` means that {{% param "product.abbrev" %}} does not spe
 This option is available in {{% param "product.abbrev" %}} 3.7 and newer.
 
 
-## # Example: Using ssl-options
+### Example: Using ssl-options
 
 The following destination explicitly disables SSL and TLSv1.0
 

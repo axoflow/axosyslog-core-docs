@@ -16,7 +16,7 @@
 
 *Description:* Specifies a secondary destination server where log messages are sent if the primary server becomes inaccessible. To list several failover servers, separate the address of the servers with comma. By default, {{% param "product.abbrev" %}} waits for the a server before switching to the next failover server is set in the `time-reopen()` option.
 
-If `failback()` is not set, {{% param "product.abbrev" %}} does not attempt to return to the primary server even if it becomes available. In case the failover server fails, {{% param "product.abbrev" %}} attempts to connect the next failover server in the list in round-robin fashion.<span data-conditions="General.PE"> This is the default behavior in {{% param "product.abbrev" %}} version 7.0.9 and earlier.</span>
+If `failback()` is not set, {{% param "product.abbrev" %}} does not attempt to return to the primary server even if it becomes available. In case the failover server fails, {{% param "product.abbrev" %}} attempts to connect the next failover server in the list in round-robin fashion.
 
 {{% alert title="Warning" color="warning" %}}
 
