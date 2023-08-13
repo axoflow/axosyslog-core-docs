@@ -355,10 +355,13 @@ The `syslog-ng-ctl reload` command returns 0 if the operation was successful, 1 
 
 ## The healthcheck command
 
-You can use the `syslog-ng-ctl healthcheck` command to query the healthcheck status of {{% param "product.ose" %}}. Currently, two health values are reported:
+Available in {{% param "product.abbrev" %}} 4.2 and later.
 
-- `mainloop_io_worker_roundtrip_latency_nanoseconds`: mainloop->io-worker-job->mainloop roundtrip - a basic measure latency measure for {{% param "product.ose" %}}.
+You can use the `syslog-ng-ctl healthcheck` command to query the healthcheck status of {{% param "product.ose" %}}. The following health values are reported:
+
+- `mainloop_io_worker_roundtrip_latency_nanoseconds`: mainloop->io-worker-job->mainloop roundtrip - a basic latency measure for {{% param "product.ose" %}}.
 - `io_worker_latency_nanoseconds`: io-worker-job start latency.
+- `syslogng_internal_events_queue_usage_ratio`: If you are using the [`internal()`]({{< relref "/chapter-sources/configuring-sources-internal/_index.md" >}}) source in your configuration, then this value shows the saturation of the internal source's queue, ranging from 0 to 1. Non-zero values indicate some kind of disruption in the pipelines.
 
 You can run `syslog-ng-ctl healthcheck --timeout <seconds>` to use as a boolean healthy/unhealthy check.
 
