@@ -94,17 +94,8 @@ For clients, this value is used directly for the supported signature algorithms 
 
 *Description:* A colon-separated list that specifies the supported signature algorithms associated with client authentication for TLSv1.2 and higher, for example, `RSA-PSS+SHA256:ed25519`.
 
-For servers, the value is used in the
-
-    signature_algorithms
-
-field of a
-
-    CertificateRequest
-
-message.
-
-For clients, it is used to determine which signature algorithm to use with the client certificate.
+- For servers, the value is used in the `signature_algorithms` field of a `CertificateRequest` message.
+- For clients, it is used to determine which signature algorithm to use with the client certificate.
 
 
 {{% include-headless "chunk/option-destination-tls-key-file.md" %}}
