@@ -127,6 +127,37 @@ destination {
 };
 ```
 
+## openssl-conf-cmds() {tls-options-openssl-conf-cmds}
+
+Available in {{% param "product.abbrev" %}} version 4.0 and later.
+
+IMPORTANT: `openssl-conf-cmds()` always has the highest priority, so it overrides any other options that can be found in the `tls()` section.
+
+OpenSSL offers an alternative, software-independent configuration mechanism through the [SSL_CONF_cmd](https://www.openssl.org/docs/man1.1.1/man3/SSL_CONF_cmd.html) interface for setting the various SSL_CTX and SSL options.
+
+The order of operations within `openssl-conf-cmds()` is significant and the commands are executed in top-down order. This means that if the same option occurs multiple times, then the 'last one wins'. This is also true for options that can be set multiple ways (for example, cipher suites or protocols).
+
+Example configuration:
+
+```shell
+    tls(
+        ca-dir("/etc/ca.d")
+        key-file("/etc/cert.d/serverkey.pem")
+        cert-file("/etc/cert.d/servercert.pem")
+        peer-verify(yes)
+
+        openssl-conf-cmds(
+            # For system wide available cipher suites use: /usr/bin/openssl ciphers -v
+            # For formatting rules see: https://www.openssl.org/docs/man1.1.1/man3/SSL_CONF_cmd.html
+            "CipherString" => "ECDHE-RSA-AES128-SHA",                                   # TLSv1.2 and bellow
+            "CipherSuites" => "TLS_CHACHA20_POLY1305_SHA256:TLS_AES_256_GCM_SHA384",    # TLSv1.3+ (OpenSSl 1.1.1+)
+
+            "Options" => "PrioritizeChaCha",
+            "Protocol" => "-ALL,TLSv1.3",
+        )
+    )
+```
+
 ## peer-verify() {#tls-options-peer-verify}
 
 |                  |                                                                                                                  |
