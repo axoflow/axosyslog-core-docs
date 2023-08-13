@@ -37,6 +37,19 @@ Available in version 3.19 and later.
 
 {{% include-headless "chunk/option-destination-tls-cipher-suite.md" %}}
 
+## client-sigalgs() {#tls-options-client-sigalgs}
+
+|                  |                                 |
+| ---------------- | ------------------------------- |
+| Accepted values: | string [colon-separated list] |
+| Default:         | none                            |
+
+*Description:* A colon-separated list that specifies the supported signature algorithms associated with client authentication for TLSv1.2 and higher, for example, `RSA-PSS+SHA256:ed25519`.
+
+- For servers, the value is used in the `signature_algorithms` field of a `CertificateRequest` message.
+- For clients, it is used to determine which signature algorithm to use with the client certificate.
+
+If `client-sigalgs()` is not set but `sigalgs()` is, then the values of [`sigalgs()`](#tls-options-sigalgs) are used.
 
 ## crl-dir() {#tls-options-crl-dir}
 
@@ -68,22 +81,7 @@ The following example curves work for all versions of OpenSSL that are equal to 
    ecdh-curve-list("prime256v1:secp384r1")
 ```
 
-
-## sigalgs {#tls-options-sigalgs}
-
-|                  |                                 |
-| ---------------- | ------------------------------- |
-| Accepted values: | string [colon-separated list] |
-| Default:         | none                            |
-
-*Description:* A colon-separated list that specifies the supported signature algorithms associated with client authentication for TLSv1.2 and higher, for example, `RSA-PSS+SHA256:ed25519`.
-
-- For servers, the value is used in the `signature_algorithms` field of a `CertificateRequest` message.
-- For clients, it is used to determine which signature algorithm to use with the client certificate.
-
-
 {{% include-headless "chunk/option-destination-tls-key-file.md" %}}
-
 
 ## keylog-file()
 
@@ -257,6 +255,18 @@ Example configuration:
     };
 ```
 
+## sigalgs() {#tls-options-sigalgs}
+
+|                  |                                 |
+| ---------------- | ------------------------------- |
+| Accepted values: | string [colon-separated list] |
+| Default:         | none                            |
+
+*Description:* A colon-separated list that specifies the supported signature algorithms (in order of decreasing preference) for TLSv1.2 and higher, for example, `RSA-PSS+SHA256:ed25519`. If this option is not set then all supported signature algorithms supported are permissible.
+
+- For servers, it is used to determine which signature algorithms to support.
+- For clients, this value is used directly for the supported signature algorithms extension.
+
 ## sni() {#tls-options-sni}
 
 |                  |          |
@@ -287,9 +297,6 @@ The following destination sends the hostname of its destination during the TLS h
         );
     };
 ```
-
-
-
 
 ## ssl-options() {#tls-options-ssl-options}
 
@@ -328,9 +335,6 @@ The following destination explicitly disables SSL and TLSv1.0
     };
 ```
 
-
-
-
 ## trusted-dn() {#tls-options-trusted-dn}
 
 |                  |                                      |
@@ -339,8 +343,6 @@ The following destination explicitly disables SSL and TLSv1.0
 | Default:         | none                                 |
 
 *Description:* To accept connections only from hosts using certain certificates signed by the trusted CAs, list the distinguished names of the accepted certificates in this parameter. For example, using `trusted-dn("\*, O=Example Inc, ST=Some-State, C=\*")` will accept only certificates issued for the `Example Inc` organization in `Some-State` state.
-
-
 
 ## trusted-keys() {#tls-options-trusted-keys}
 
