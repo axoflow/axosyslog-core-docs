@@ -69,23 +69,7 @@ The following example curves work for all versions of OpenSSL that are equal to 
 ```
 
 
-
-## tls-options-sigalgs {#tls-options-sigalgs}
-
-|                  |                                 |
-| ---------------- | ------------------------------- |
-| Accepted values: | string [colon-separated list] |
-| Default:         | none                            |
-
-*Description:* A colon-separated list that specifies the supported signature algorithms for TLSv1.2 and higher, for example, `RSA-PSS+SHA256:ed25519`.
-
-For servers, it is used to determine which signature algorithms to support.
-
-For clients, this value is used directly for the supported signature algorithms extension.
-
-
-
-## tls-options-sigalgs {#tls-options-client-sigalgs}
+## sigalgs {#tls-options-sigalgs}
 
 |                  |                                 |
 | ---------------- | ------------------------------- |
