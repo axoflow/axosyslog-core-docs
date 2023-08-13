@@ -8,14 +8,13 @@ The `sumologic-http()` destination supports all {{% xref "/chapter-destinations/
 
 In addition, the `sumologic-http()` destination also has the following options.
 
+{{% include-headless "chunk/option-destination-batch-bytes.md" %}}
+
+{{% include-headless "chunk/option-destination-batch-lines.md" %}}
 
 {{% include-headless "chunk/option-destination-tls-ca-dir.md" %}}
 
-
-
 {{< include-headless "chunk/option-destination-tls-ca-file.md" >}}
-
-
 
 <span id="sumologic-option-token"></span>
 

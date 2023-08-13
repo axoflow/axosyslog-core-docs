@@ -80,7 +80,6 @@ Although [RFC 5424](https://tools.ietf.org/html/rfc5424) limits the structured d
       sumologic-http(
         collector("ZaVnC4dhaV3_[...]UF2D8DRSnHiGKoq9Onvz-XT7RJG2FA6RuyE5z4A==")
         deployment("eu")
-        tls(peer-verify(yes) ca-dir('/etc/syslog-ng/ca.d'))
       );
     };
 ```

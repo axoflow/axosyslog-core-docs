@@ -9,5 +9,6 @@
 | Type:    | tls options |
 | Default: | n/a         |
 
-*Description:* Required option. This option sets various options related to TLS encryption, for example, key/certificate files and trusted CA locations. TLS can be used only with tcp-based transport protocols. For details, see {{% xref "/chapter-encrypted-transport-tls/tlsoptions/_index.md" %}}.
+*Description:* This option sets various options related to TLS encryption, for example, key/certificate files and trusted CA locations. TLS can be used only with tcp-based transport protocols. For details, see {{% xref "/chapter-encrypted-transport-tls/tlsoptions/_index.md" %}}.
 
+In version 4.0 and newer, using the `tls()` option is optional, and Sumo Logic servers are verified using the system certificate store by default. In earlier versions, this was a required option.
