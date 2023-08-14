@@ -125,7 +125,7 @@ destination {
 };
 ```
 
-## openssl-conf-cmds() {tls-options-openssl-conf-cmds}
+## openssl-conf-cmds() {#tls-options-openssl-conf-cmds}
 
 Available in {{% param "product.abbrev" %}} version 4.0 and later.
 
