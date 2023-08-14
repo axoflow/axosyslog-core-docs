@@ -181,44 +181,28 @@ When used in configuration as seen in the example, the `filter` template functio
 The returned values are `0` and `2`.
 
 
-*Parameters:*
+### Parameters
 
-  - `<filter-expression>`
-    
-    Mandatory parameter.
-    
-    The `<filter-expression>` parameter can be:
-    
-      - a comparison
-    
-      - a filter
-    
-      - a logical expression built from filters (using `and`, `or`, and `not`)
+- `<filter-expression>`: Mandatory parameter. The `<filter-expression>` parameter can be:
+    - a comparison
+    - a filter
+    - a logical expression built from filters (using `and`, `or`, and `not`)
     
     {{% alert title="Note" color="info" %}}
-When using the `<filter-expression>` parameter, you can refer other template functions, or use macros.
-    {{% /alert %}} {{% alert title="Note" color="info" %}}
-To refer to the variable bound to the current element of the list, use `$_ macro`.
+- When using the `<filter-expression>` parameter, you can refer other template functions, or use macros.
+- To refer to the variable bound to the current element of the list, use `$_ macro`.
     {{% /alert %}}
-    
-    
-    ## Examples for <filter-expression>
-    
+
     The following examples illustrate several ways that you can use a single filter, or a logical expression built from several filters.
-    
+
     ```shell
         ('1' == '1')
         ('$_' le '1')
         ('$(% $_ 2)' eq '0')
         ('$_' le '1') and ('$(% $_ 2)' eq '0')
     ```
-    
 
-  - `list`
-    
-    Mandatory parameter. A {{% param "product.abbrev" %}} list.
-
-
+- `list`: Mandatory parameter. A {{% param "product.abbrev" %}} list.
 
 ## format-cef-extension {#template-function-format-cef-extension}
 
@@ -226,26 +210,25 @@ To refer to the variable bound to the current element of the list, use `$_ macro
 
 You can use the [value-pairs]({{< relref "/chapter-concepts/concepts-value-pairs/_index.md" >}}) that {{% param "product.abbrev" %}} stores about the log message as CEF fields. Using value-pairs, you can:
 
-  - select which value-pairs to use as CEF fields,
+- select which value-pairs to use as CEF fields,
 
-  - add custom value-pairs as CEF fields,
+- add custom value-pairs as CEF fields,
 
-  - rename value-pairs, and so on.
+- rename value-pairs, and so on.
 
 For details, see {{% xref "/chapter-concepts/concepts-value-pairs/_index.md" %}}. Note that the syntax of `format-\*` template functions is different from the syntax of `value-pairs()`: these template functions use a syntax similar to command lines.
 
 Using the `format-cef-extension` template function has the following prerequisites:
 
-  - Set the `on-error` global option to `drop-property`, otherwise if the name of a name-value pair includes an invalid character, {{% param "product.abbrev" %}} drops the entire message. (Key name in CEF extensions can contain only the A-Z, a-z and 0-9 characters.)
-    
+- Set the `on-error` global option to `drop-property`, otherwise if the name of a name-value pair includes an invalid character, {{% param "product.abbrev" %}} drops the entire message. (Key name in CEF extensions can contain only the A-Z, a-z and 0-9 characters.)
+
     ```shell
         options {
            on-error("drop-property");
         };
     ```
 
-  - The log messages must be encoded in UTF-8. Use the `encoding()` option or the `validate-utf8` flag in the message source.
-
+- The log messages must be encoded in UTF-8. Use the `encoding()` option or the `validate-utf8` flag in the message source.
 
 ### Example: Using the format-cef-extension template function
 
@@ -667,18 +650,13 @@ To replace the hostname with its hash, use a rewrite rule:
    rewrite r_rewrite_hostname{set("$(sha1 $HOST)", value("HOST"));};
 ```
 
-
-
 {{% include-headless "chunk/example-rewrite-hash.md" %}}
-
-
-
 
 ## if {#template-function-if}
 
 *Syntax:* `$(if (<condition>) <true template> <false template>)`
 
-*Description:* Returns the value of the `<true template> parameter if the `<condition>>is true. If the `<condition>`>s false, the value of `<false template>` > returned.
+*Description:* Returns the value of the `<true template>` parameter if the `<condition>` is true. If the `<condition>` is false, the value of `<false template>` is returned.
 
 
 ### Example: Using pattern databases and the if template function
@@ -1047,16 +1025,15 @@ Output: `foofoofoofmymessage`
 
 The following points apply to Python parsers.
 
-  - The first argument in the definition of the Python function is the actual log message. This is implicitly passed to the function, you do not have to use it in the template function.
+- The first argument in the definition of the Python function is the actual log message. This is implicitly passed to the function, you do not have to use it in the template function.
 
-  - The value of the template function is return value of the Python function.
+- The value of the template function is return value of the Python function.
 
-  - To reference a name-value pair or a macro in the Python function, use the dot-notation. For example, if the first argument in the definition of the function is called `log-message`, the value of the HOST macro is `log-message.HOST`, and so on.
+- To reference a name-value pair or a macro in the Python function, use the dot-notation. For example, if the first argument in the definition of the function is called `log-message`, the value of the HOST macro is `log-message.HOST`, and so on.
 
-  - You can define new name-value pairs in the Python function. For example, if the first argument in the definition of the function is called `log-message`, you can create a new name-value pair like this: `log_message["new-macro-name"]="value"`. This is useful when you parse a part of the message from Python, or lookup a value based on data extracted from the log message.
+- You can define new name-value pairs in the Python function. For example, if the first argument in the definition of the function is called `log-message`, you can create a new name-value pair like this: `log_message["new-macro-name"]="value"`. This is useful when you parse a part of the message from Python, or lookup a value based on data extracted from the log message.
 
-
-## Declaration:
+### Declaration:
 
 ```shell
    python {
@@ -1069,8 +1046,6 @@ The following points apply to Python parsers.
         template($(python <name_of_the_python_function>));
     };
 ```
-
-
 
 ### Example: Writing template functions in Python {#example-python-template-functions}
 
