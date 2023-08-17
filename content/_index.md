@@ -15,7 +15,7 @@ New files and modifications compared to the [syslog-ng Open Source Edition docum
 
 The Axoflow and AxoSyslog trademarks and logos are trademarks of Axoflow Inc.
 
-This documentation is maintained by Axoflow. We are planning to update it to release 4.0.
+This documentation is maintained by Axoflow, and continually updated for new releases.
 
 ## Acknowledgements
 
