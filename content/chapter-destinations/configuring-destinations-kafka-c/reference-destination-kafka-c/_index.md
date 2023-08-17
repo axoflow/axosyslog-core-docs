@@ -18,7 +18,7 @@ The following options are required: `bootstrap-servers()`, `topic()`. Note that 
 {{< include-headless "chunk/kafka-c-impl-required-options-note.md" >}}
 
 
-{{% include-headless "chunk/option-destination-batch-lines.md" %}}
+{{% include-headless "chunk/option-destination-threaded-batching.md" %}}
 
 {{< include-headless "wnt/n-options-only-effective-for-sync-send(yes).md" >}}
 
@@ -27,12 +27,6 @@ The following options are required: `bootstrap-servers()`, `topic()`. Note that 
 If you set `sync-send()` to `"yes"`, the number you specify for `batch-lines()` affects how many messages {{% param "product.abbrev" %}} packs into once transaction.
 
 {{% /alert %}}
-
-
-
-{{% include-headless "chunk/option-destination-batch-timeout.md" %}}
-
-{{< include-headless "wnt/n-options-only-effective-for-sync-send(yes).md" >}}
 
 {{% alert title="Note" color="info" %}}
 

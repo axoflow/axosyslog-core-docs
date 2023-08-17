@@ -24,16 +24,9 @@ For details on how this option influences HTTP batch mode, see [http: Posting me
 
 
 
-{{% include-headless "chunk/option-destination-batch-lines.md" %}}
+{{% include-headless "chunk/option-destination-threaded-batching.md" %}}
 
 For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
-
-
-
-{{% include-headless "chunk/option-d-b-t-http-spl-sent-pub.md" %}}
-
-For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
-
 
 
 {{% include-headless "chunk/option-destination-tls-ca-dir.md" %}}

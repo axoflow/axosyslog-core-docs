@@ -17,9 +17,8 @@ The `redis()` destination has the following options:
 
 *Description:* The password used for authentication on a password-protected Redis server. Available in {{% param "product.abbrev" %}} version 3.10 and later.
 
-{{% include-headless "chunk/option-destination-batch-lines.md" %}}
+{{% include-headless "chunk/option-destination-threaded-batching.md" %}}
 
-{{% include-headless "chunk/option-destination-batch-timeout.md" %}}
 
 ## command() {#redis-option-command}
 
@@ -42,9 +41,7 @@ Note the following points when using the `redis()` destination:
 
 {{% include-headless "chunk/option-destination-batch-bytes.md" %}}
 
-{{% include-headless "chunk/option-destination-batch-lines.md" %}}
-
-{{% include-headless "chunk/option-destination-batch-timeout.md" %}}
+{{% include-headless "chunk/option-destination-threaded-batching.md" %}}
 
 {{< include-headless "chunk/option-destination-hook.md" >}}
 

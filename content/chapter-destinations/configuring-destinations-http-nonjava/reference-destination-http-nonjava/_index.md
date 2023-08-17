@@ -12,17 +12,9 @@ The `http` destination of {{% param "product.abbrev" %}} can directly post log m
 For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
 
 
-
-{{% include-headless "chunk/option-destination-batch-lines.md" %}}
-
-For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
-
-
-
-{{% include-headless "chunk/option-d-b-t-http-spl-sent-pub.md" %}}
+{{% include-headless "chunk/option-destination-threaded-batching.md" %}}
 
 For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
-
 
 
 ## body()

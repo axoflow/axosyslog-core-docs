@@ -63,9 +63,7 @@ Hazard of data loss! The {{% param "product.abbrev" %}} application does not ver
 
 {{% include-headless "chunk/option-destination-batch-bytes.md" %}}
 
-{{% include-headless "chunk/option-destination-batch-lines.md" %}}
-
-{{% include-headless "chunk/option-destination-batch-timeout.md" %}}
+{{% include-headless "chunk/option-destination-threaded-batching.md" %}}
 
 {{< include-headless "chunk/option-destination-frac-digits.md" >}}
 
