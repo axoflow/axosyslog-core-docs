@@ -248,4 +248,4 @@ To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% param 
 
 {{% include-headless "chunk/option-destination-http-use-system-cert-store.md" %}}
 
-{{< include-headless "chunk/option-destination-http-workers.md" >}}
+{{< include-headless "chunk/option-destination-threaded-workers.md" >}}

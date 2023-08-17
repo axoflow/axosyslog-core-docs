@@ -259,4 +259,4 @@ For more information, see [Discord: Rate Limits](https://discord.com/developers/
 
 {{% include-headless "chunk/option-destination-http-use-system-cert-store.md" %}}
 
-{{< include-headless "chunk/option-destination-http-workers.md" >}}
+{{< include-headless "chunk/option-destination-threaded-workers.md" >}}
