@@ -72,13 +72,5 @@ Note the following points when using the `redis()` destination:
 
 {{% include-headless "chunk/option-source-time-reopen.md" %}}
 
-
-## workers()
-
-|          |         |
-| -------- | ------- |
-| Type:    | integer |
-| Default: | 1       |
-
-{{< include-headless "chunk/option-destination-description-workers.md" >}}
+{{< include-headless "chunk/option-destination-threaded-workers.md" >}}
 

@@ -210,15 +210,13 @@ For details on formatting messages in JSON format, see [format-json]({{< relref 
 {{< include-headless "chunk/option-destination-ts-format.md" >}}
 
 
-## workers() {#kafka-option-kafka-topic}
+{{< include-headless "chunk/option-destination-threaded-workers.md" >}} 
 
-|          |         |
-| -------- | ------- |
-| Type:    | integer |
-| Default: | 1       |
+{{% alert title="Note" color="info" %}}
 
-*Description:* The workers are only responsible for formatting the messages that need to be delivered to the Kafka clients. Configure this option only if your Kafka clients have many threads and they do not receive enough messages.
+The workers are only responsible for formatting the messages that need to be delivered to the Kafka clients. Configure this option only if your Kafka clients have many threads and they do not receive enough messages.
 
+{{% /alert %}}
 
 {{% alert title="Note" color="info" %}}
 
