@@ -3,6 +3,7 @@ title: Parse OpenTelemetry messages
 linktitle: OpenTelemetry
 weight: 1550
 ---
+<!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
 By default, {{% param "product_name" %}} doesn't parse the fields of incoming OpenTelemetry messages into name-value pairs, but are only available for forwarding using the `opentelemetry()` destination. To parse the fields into name-value pairs, use the `opentelemetry()` parser.
 

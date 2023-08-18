@@ -3,6 +3,7 @@ title: Hypr Audit Trail and Hypr App Audit Trail
 linktitle: Hypr
 weight: 1250
 ---
+<!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
 Starting with version 4.2.0, {{% param "product_name" %}} can fetch events from the [Hypr REST API](https://apidocs.hypr.com/) using the `hypr-audit-trail()` and `hypr-app-audit-trail()` source drivers.
 

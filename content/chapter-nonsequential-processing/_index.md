@@ -2,7 +2,7 @@
 title: Nonsequential message processing
 weight: 3950
 ---
-
+<!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 By default, {{% param "product.abbrev" %}} processes log messages arriving from a single connection sequentially. Sequential processing:
 
 - ensures message ordering, and the

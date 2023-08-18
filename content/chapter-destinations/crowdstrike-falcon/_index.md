@@ -3,6 +3,7 @@ title: Sending messages to Falcon LogScale
 linktitle: "logscale: Sending messages to Falcon LogScale"
 weight:  2950
 ---
+<!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
 Starting with version 4.3.0, {{% param "product_name" %}} can send messages to [Falcon LogScale](https://library.humio.com/) using its [Ingest Structured Data API](https://library.humio.com/integrations/api-ingest.html#api-ingest-structured-data).
 

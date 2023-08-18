@@ -3,6 +3,7 @@ title: Receive logs, metrics, and traces from OpenTelemetry
 linktitle: OpenTelemetry
 weight: 2350
 ---
+<!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
 Starting with version 4.3.0, {{% param "product_name" %}} can receive logs, metrics, and traces from [OpenTelemetry](https://opentelemetry.io/) clients over the [OpenTelemetry Protocol (OTLP/gRPC)](https://opentelemetry.io/docs/specs/otlp/).
 

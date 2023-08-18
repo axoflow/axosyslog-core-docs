@@ -2,6 +2,7 @@
 title: metrics-probe
 weight: 1400
 ---
+<!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
 Available in {{% param "product_name" %}} version 4.1.1 and newer.
 

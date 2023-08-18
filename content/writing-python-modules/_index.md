@@ -2,7 +2,7 @@
 title: Writing Python modules
 weight: 4300
 ---
-
+<!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 {{% param "product.name" %}} has comprehensive support for implementing various logging components in Python. This chapter shows you how to use this functionality.
 
 ## When to use Python
