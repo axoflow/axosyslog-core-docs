@@ -1,3 +1,5 @@
+---
+---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 By default, {{% param "product.abbrev" %}} doesn’t reserve the disk space for the disk-buffer file, since in a properly configured and sized environment the disk-buffer is practically empty, so a large preallocated disk-buffer file is just a waste of disk space. But a preallocated buffer can prevent other data from using the intended buffer space (and elicit a warning from the OS if disk space is low), preventing message loss if the buffer is actually needed. To avoid this problem, when using {{% param "product.abbrev" %}} 4.0 or later, you can preallocate the space for your disk-buffer files by setting `prealloc(yes)`.
 
