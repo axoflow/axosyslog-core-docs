@@ -100,6 +100,25 @@ Available in {{% param "product.abbrev" %}} 4.0 and later.
 Hazard of data loss! If you change the value of `reliable()` option when there are messages in the disk-buffer, the messages stored in the disk-buffer will be lost.
 {{% /alert %}}
 
+## stats()
+
+| Type:        | `number [minutes]` |
+|--------------|-----------|
+| Default:     | 5        |
+
+Available in {{% param "product.abbrev" %}} 4.2 and later.
+
+*Description:* Set the frequency of generating [disk-buffer related metrics]({{< relref "/metrics/reference-metrics/_index.md#disk-buffer-metrics" >}}). Set it to zero to disable metrics.
+
+```shell
+options {
+  disk-buffer(
+    stats(
+      freq(10)
+    )
+  );
+};```
+
 ### truncate-size-ratio() {#diskbuf-trunkate-size-ratio}
 
 | Type:        | number((between 0 and 1))    |

@@ -4,6 +4,10 @@ weight:  3700
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
+{{% alert title="Note" color="info" %}}
+This chapter describes the legacy statistics of {{% param "product.abbrev" %}}. For the Prometheus-like metrics framework, see {{% xref "/metrics/_index.md" %}}.
+{{% /alert %}}
+
 The {{% param "product.abbrev" %}} application collects and measures various statistics about the messages it receives and delivers. These statistics are collected into different counters, depending on the configuration of {{% param "product.abbrev" %}}. The [`stats-level()` global option]({{< relref "/chapter-global-options/reference-options/_index.md" >}}) determines exactly which statistics {{% param "product.abbrev" %}} collects. You can access these statistics and metrics using the following methods.
 
 ## Structured, selective method
