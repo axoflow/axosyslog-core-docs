@@ -13,7 +13,8 @@
         
         All identifiers, attributes, and any other strings used in the `syslog-ng.conf` configuration file are case sensitive.
         
-        {{< alert title="Note" color="info" >}}Use identifiers that refer to the type of the object they identify. For example, prefix source objects with `s_`, destinations with `d_`, and so on.
+        {{< alert title="Note" color="info" >}}
+Use identifiers that refer to the type of the object they identify. For example, prefix source objects with `s_`, destinations with `d_`, and so on.
 
 Repeating a definition of an object (that is, defining the same object with the same id more than once) is not allowed, unless you use the `@define allow-config-dups 1` definition in the configuration file.
         {{< /alert >}}

@@ -6,7 +6,7 @@
 
 |          |              |
 | -------- | ------------ |
-| Type:    | true | false |
+| Type:    | `true | false` |
 | Default: | false        |
 
 

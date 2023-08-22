@@ -34,7 +34,7 @@ The `telegram()` destination has the following options:
 |          |              |
 | -------- | ------------ |
 | Type:    | boolean      |
-| Default: | true | false |
+| Default: | `false` |
 
 *Description:* Enables the `telegram()` destination to send silent messages. By default, the `disable_notification()` value is `false`.
 
