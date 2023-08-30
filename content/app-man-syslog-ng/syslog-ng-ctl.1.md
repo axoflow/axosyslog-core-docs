@@ -190,7 +190,12 @@ The `syslog-ng-ctl query get` command has the following options:
 
 `stats [options]`
 
-Use the `stats` command to display statistics about the processed messages. For details about the displayed statistics, see [The {{% param "product.ose" %}} documentation](https://axoflow.com/). The `stats` command has the following options:
+Use the `stats` command to display statistics and metrics about the processed messages.
+
+- For details about the available Prometheus-like metrics, see {{% xref "/metrics/reference-metrics/_index.md" %}}. You can retrieve these metrics with the [`syslog-ng-ctl stats prometheus` command](#syslog-ng-ctl-stats-prometheus).
+- For details about legacy statistics, see {{% xref "/chapter-log-statistics/_index.md" %}}.
+
+The `stats` command has the following options:
 
 - `--control=<socket>` or `-c`
     
@@ -202,7 +207,7 @@ Use the `stats` command to display statistics about the processed messages. For 
 
 - `--remove-orphans`
     
-    Safely removes all counters that are not referenced by any syslog-ng stat producer objects.
+    Safely removes all counters that are not referenced by any statistics producer objects.
     
     The flag can be used to prune dynamic and static counters manually. This is useful, for example, when a templated file destination produces a lot of stats:
     
@@ -216,8 +221,7 @@ Use the `stats` command to display statistics about the processed messages. For 
 The `stats-lifetime()` can be used to do the same automatically and periodically, but currently stats-lifetime() removes only dynamic counters that have a timestamp field set.
     {{% /alert %}}
 
-
-### Example
+### Example for statistics
 
 ```shell
 syslog-ng-ctl stats
@@ -254,6 +258,44 @@ destination;df_kern;;a;processed;70
 center;;queued;a;processed;0
 destination;df_facility_dot_err;;a;processed;0
 ```
+
+For details about legacy statistics, see {{% xref "/chapter-log-statistics/_index.md" %}}.
+
+<span id="syslog-ng-ctl-stats-prometheus"></span>
+
+### Example for statistics
+
+```shell
+syslog-ng-ctl stats prometheus
+```
+
+The output is similar to:
+
+```shell
+syslogng_events_allocated_bytes 18446744073709550560
+syslogng_filtered_events_total{id="#anon-filter0",result="matched"} 0
+syslogng_filtered_events_total{id="#anon-filter0",result="not_matched"} 2
+syslogng_filtered_events_total{id="ff",result="matched"} 0
+syslogng_filtered_events_total{id="ff",result="not_matched"} 2
+syslogng_input_events_total{id="#anon-source0#0",driver_instance="-",result="processed"} 0
+syslogng_input_events_total{id="s_network#1",result="processed"} 2
+syslogng_internal_source{result="dropped"} 0
+syslogng_internal_source{result="queued"} 0
+syslogng_output_events_total{id="d_dest#0",driver_instance="tcp,127.0.0.1:5555",result="delivered"} 0
+syslogng_output_events_total{id="d_dest#0",driver_instance="tcp,127.0.0.1:5555",result="dropped"} 0
+syslogng_output_events_total{id="d_dest#0",driver_instance="tcp,127.0.0.1:5555",result="queued"} 0
+syslogng_output_events_total{id="d_dest#1",driver_instance="http,https://localhost:8080",result="delivered"} 0
+syslogng_output_events_total{id="d_dest#1",driver_instance="http,https://localhost:8080",result="dropped"} 0
+syslogng_output_events_total{id="d_dest#1",driver_instance="http,https://localhost:8080",result="queued"} 0
+syslogng_parsed_events_total{id="#anon-parser0",result="discarded"} 0
+syslogng_parsed_events_total{id="#anon-parser0",result="processed"} 0
+syslogng_scratch_buffers_bytes 0
+syslogng_scratch_buffers_total 3
+syslogng_tagged_events_total{id=".source.#anon-source0",result="processed"} 0
+syslogng_tagged_events_total{id=".source.s_network",result="processed"} 2
+```
+
+For details about the available Prometheus-like metrics, see {{% xref "/metrics/reference-metrics/_index.md" %}}.
 
 <span id="syslog-ng-ctl-credentials"></span>
 
