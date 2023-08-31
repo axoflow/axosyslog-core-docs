@@ -5,11 +5,11 @@ weight:  2950
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-Starting with version 4.3.0, {{% param "product_name" %}} can send messages to [Falcon LogScale](https://library.humio.com/) using its [Ingest Structured Data API](https://library.humio.com/integrations/api-ingest.html#api-ingest-structured-data).
+Starting with version 4.3.0, {{% param "product_name" %}} can send messages to [Falcon LogScale](https://library.humio.com/) using its [Ingest Structured Data API](https://library.humio.com/integrations/api-ingest.html#api-ingest-structured-data). That way you don’t have to parse the data on Falcon LogScale, because {{% param "product_name" %}} already sends it in a structured format that LogScale understands and can show in a structured manner as separate columns.
 
 ## Prerequisites
 
-- Create an [Ingest token](https://library.humio.com/falcon-logscale-self-hosted/ingesting-data-tokens.html) for {{% param "product_name" %}} to use in the `token()` option of the destination. <!-- FIXME When creating the token, [set/do not set a parser](https://library.humio.com/data-analysis/parsers-assigning-to-ingest-tokens.html) for the token. -->
+- Create an [Ingest token](https://library.humio.com/falcon-logscale-self-hosted/ingesting-data-tokens.html) for {{% param "product_name" %}} to use in the `token()` option of the destination. This token is specific to a LogScale repository.
 
 ## Ingest Structured Data API
 
@@ -32,16 +32,6 @@ This driver is actually a reusable configuration snippet configured to send log 
 The following options are specific to the `logscale()` destination. But since this destination is based on the `http()` destination, you can use the [options of the `http()` destination]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}) as well if needed.
 <!-- FIXME xinclude the http options instead of just linking them -->
 
-```sh
-url()
-rawstring()
-timestamp()
-timezone()
-attributes()
-extra-headers()
-content-type()
-```
-
 ## attributes()
 
 |          |                            |
@@ -49,7 +39,7 @@ content-type()
 | Type:    | string |
 | Default: | `"--scope rfc5424 --exclude MESSAGE --exclude DATE --leave-initial-dot"` |
 
-*Description:* A JSON object representing key-value pairs for the LogScale Event, formatted as [{{% param "product_name" %}} value-pairs]({{< relref "/chapter-concepts/concepts-value-pairs/option-value-pairs/_index.md" >}}).
+*Description:* A JSON object representing key-value pairs for the LogScale Event, formatted as [{{% param "product_name" %}} value-pairs]({{< relref "/chapter-concepts/concepts-value-pairs/option-value-pairs/_index.md" >}}). By default, the `logscale()` destination sends the RFC5424 fields as attributes. If you want to send different fields, override the default template.
 
 ## content-type()
 
