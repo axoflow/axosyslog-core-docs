@@ -6,7 +6,7 @@
 
 |          |              |
 | -------- | ------------ |
-| Type:    | true | false |
+| Type:    | `true | false` |
 | Default: | false        |
 
 *Description:* When `sync-send` is set to `true`, {{% param "product.abbrev" %}} sends the message reliably: it sends a message to the Kafka server, then waits for a reply. In case of failure, {{% param "product.abbrev" %}} repeats sending the message, as set in the `retries()` parameter. If sending the message fails for `retries()` times, {{% param "product.abbrev" %}} drops the message.
