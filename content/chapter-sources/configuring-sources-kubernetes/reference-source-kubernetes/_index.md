@@ -6,7 +6,6 @@ weight:  100
 
 The `kubernetes()` source has the following options:
 
-
 ## base-dir() {#source-kubernetes-base-dir}
 
 |          |                         |
@@ -16,20 +15,15 @@ The `kubernetes()` source has the following options:
 
 *Description:* The path to the directory that contains the log files, for example, `base-dir("/var/log/pods")`.
 
-
-
 ## cluster-name() {#source-kubernetes-cluster-name}
 
 |          |        |
 | -------- | ------ |
 | Type:    | string |
-| Default: | k8s    |
+| Default: | `k8s`    |
 
 *Description:* The name of the Kubernetes cluster.
-
-
 
 {{% include-headless "chunk/option-parser-prefix.md" %}}
 
 The `prefix()` option is optional and its default value is `".k8s."`.
-
