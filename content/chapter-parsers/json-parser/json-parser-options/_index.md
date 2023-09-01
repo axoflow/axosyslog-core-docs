@@ -21,7 +21,6 @@ In addition to alphanumeric characters, the key of the JSON object can contain t
 
 It cannot contain the following characters: `.[]`
 
-
 ## Example: Convert logstash eventlog format v0 to v1
 
 The following parser converts messages in the logstash eventlog v0 format to the v1 format.
@@ -44,8 +43,7 @@ The following parser converts messages in the logstash eventlog v0 format to the
     };
 ```
 
-
-
+{{< include-headless "chunk/option-parser-key-delimiter.md" >}}
 
 ## marker {#json-parser-marker}
 
@@ -56,7 +54,6 @@ The following parser converts messages in the logstash eventlog v0 format to the
 *Description:* Use a marker in case of mixed log messages, to identify JSON encoded messages for the parser.
 
 Some logging implementations require a marker to be set before the JSON payload. The JSON parser is able to find these markers and parse the message only if it is present.
-
 
 ## Example: Using the marker option in JSON parser
 
@@ -70,8 +67,6 @@ This json parser parses log messages which use the "@cee:" marker in front of th
             );
         };
 ```
-
-
 
 {{% include-headless "chunk/option-parser-prefix.md" %}}
 

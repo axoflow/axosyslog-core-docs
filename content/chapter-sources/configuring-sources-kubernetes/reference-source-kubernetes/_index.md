@@ -24,6 +24,8 @@ The `kubernetes()` source has the following options:
 
 *Description:* The name of the Kubernetes cluster.
 
+{{< include-headless "chunk/option-parser-key-delimiter.md" >}}
+
 {{% include-headless "chunk/option-parser-prefix.md" %}}
 
 The `prefix()` option is optional and its default value is `".k8s."`.
