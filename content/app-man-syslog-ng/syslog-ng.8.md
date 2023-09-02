@@ -152,7 +152,7 @@ The {{% param "product.ose" %}} application is a flexible and highly scalable sy
 
 ## See also
 
-<span class="mcFormatColor" style="color: #04aada;">The `syslog-ng.conf` manual page</span>
+{{% xref "/app-man-syslog-ng/syslog-ng.conf.5.md" %}}
 
 {{% alert title="Note" color="info" %}}
 

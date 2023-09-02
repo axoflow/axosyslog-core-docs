@@ -337,9 +337,9 @@ pdbtool test --validate /home/me/mypatterndb.pdb
 
 ## See also
 
-[<span class="mcFormatColor" style="color: #04aada;">AxoSyslog documentation</span>](https://axoflow.com/)
+[AxoSyslog documentation](https://axoflow.com/)
 
-<span class="mcFormatColor" style="color: #04aada;">The `syslog-ng.conf` manual page</span>
+{{% xref "/app-man-syslog-ng/syslog-ng.conf.5.md" %}}
 
 {{% xref "/app-man-syslog-ng/syslog-ng.8/_index.md" %}}
 

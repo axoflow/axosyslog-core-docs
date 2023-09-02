@@ -12,6 +12,6 @@ Practically, the code stored under the `lib` directory of the source code packag
 
 {{% /alert %}}
 
-For details about the LGPL and GPL licenses, see <span class="mcFormatColor" style="color: #04aada;">GNU Lesser General Public License</span> and <span class="mcFormatColor" style="color: #04aada;">GNU General Public License</span>, respectively.
+For details about the LGPL and GPL licenses, see [GNU Lesser General Public License](https://github.com/syslog-ng/syslog-ng/blob/master/LGPL.txt) and [GNU General Public License](https://github.com/syslog-ng/syslog-ng/blob/master/GPL.txt), respectively.
 
-For clarity, the Documentation is licensed separately. For details, see <span class="mcFormatColor" style="color: #04aada;">The {{% param "product.ose" %}} Documentation License</span>.
+The Documentation is licensed separately. For details, see {{% xref "/documentation-license/_index.md" %}}.

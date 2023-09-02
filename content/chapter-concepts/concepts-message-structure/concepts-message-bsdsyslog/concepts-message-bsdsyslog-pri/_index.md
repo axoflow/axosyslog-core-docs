@@ -48,91 +48,40 @@ Substituting the numerical values into the `<PRI>` = ( `<facility>` \* `8`) + `<
 
 ## Facility and Severity values
 
-The possible Facility values (between `0` and `23`) and Severity values (between `0` and `7`) each correspond to a message type (see [<span class="mcFormatColor" style="color: #04aada;">Table 1: syslog Message Facilities</span>](#facility-codes)), or a message importance level (see [<span class="mcFormatColor" style="color: #04aada;">Table 2: syslog Message Severities</span>](#severity-codes)).
+The possible Facility values (between `0` and `23`) and Severity values (between `0` and `7`) each correspond to a message type (see [Table 1: syslog Message Facilities</span>](#facility-codes)), or a message importance level (see [Table 2: syslog Message Severities](#severity-codes)).
 
 {{% alert title="Note" color="info" %}}
 
 Facility codes may slightly vary between different platforms. The {{% param "product.name" %}} application accepts Facility codes as numerical values as well.
 
-{{% /alert %}}<span id="facility-codes"></span>
+{{% /alert %}}
+
+## syslog Message Facilities {#facility-codes}
 
 The following table lists possible Facility values.
 
-syslog Message Facilities
 
-Numerical Code
+| Numerical Code | Facility                                 |
+| -------------- | ---------------------------------------- |
+| 0              | kernel messages            |
+| 1              | user-level messages  |
+| 2              | mail system            |
+| 3              | system daemons                  |
+| 4              | security/authorization messages |
+| 5              | messages generated internally by syslogd |
+| 6              | line printer subsystem |
+| 7              | network news subsystem |
+| 8              | UUCP subsystem |
+| 9              | clock daemon |
+| 10             | security/authorization messages |
+| 11             | FTP daemon |
+| 12             | NTP subsystem |
+| 13             | log audit |
+| 14             | log alert |
+| 15             | clock daemon |
+| 16-23          | locally used facilities (local0-local7) |
 
-Facility
-
-0
-
-kernel messages
-
-1
-
-user-level messages
-
-2
-
-mail system
-
-3
-
-system daemons
-
-4
-
-security/authorization messages
-
-5
-
-messages generated internally by syslogd
-
-6
-
-line printer subsystem
-
-7
-
-network news subsystem
-
-8
-
-UUCP subsystem
-
-9
-
-clock daemon
-
-10
-
-security/authorization messages
-
-11
-
-FTP daemon
-
-12
-
-NTP subsystem
-
-13
-
-log audit
-
-14
-
-log alert
-
-15
-
-clock daemon
-
-16-23
-
-locally used facilities (local0-local7)
-
-<span id="severity-codes"></span>
+## syslog Message Severities {#severity-codes}
 
 The following table lists possible Severity values.
 
@@ -146,5 +95,3 @@ The following table lists possible Severity values.
 | 5              | Notice: normal but significant condition |
 | 6              | Informational: informational messages    |
 | 7              | Debug: debug-level messages              |
-
-syslog Message Severities

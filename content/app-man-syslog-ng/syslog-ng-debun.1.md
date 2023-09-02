@@ -184,7 +184,7 @@ Collect `pcap` and debug mode output following this scenario:
 
 ## See also
 
-<span class="mcFormatColor" style="color: #04aada;">The `syslog-ng.conf` manual page</span>
+{{% xref "/app-man-syslog-ng/syslog-ng.conf.5.md" %}}
 
 {{% alert title="Note" color="info" %}}
 

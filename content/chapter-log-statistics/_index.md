@@ -9,23 +9,17 @@ The {{% param "product.abbrev" %}} application collects various statistics and m
 
 ## Recommended: Structured, selective methods:
 
-  - Using the `monitoring()` source.
+- Using the `monitoring()` source.
+- Using the [`syslog-ng-ctl`]({{< relref "/chapter-quickstart/managing-and-checking-linux/_index.md#stats" >}}) query command. For further information about using `syslog-ng-ctl` commands, see {{% xref "/app-man-syslog-ng/syslog-ng-ctl.1.md" %}}.
 
-  - Using the [`syslog-ng-ctl`]({{< relref "/chapter-quickstart/managing-and-checking-linux/_index.md#stats" >}}) query command.
-    
-    For further information about using `syslog-ng-ctl` commands, see <span class="mcFormatColor" style="color: #04aada;">The `syslog-ng` manual pages</span>.
+## Legacy: Unstructured, bulk methods
 
+- Using the [`internal()` source]({{< relref "/chapter-log-statistics/log-statistics-internal-source/_index.md" >}}).
 
+- Using the [`syslog-ng-ctl stats`]({{< relref "/chapter-quickstart/managing-and-checking-linux/_index.md#stats" >}}) command.
+  
+  For further information about using `syslog-ng-ctl` commands, see {{% xref "/app-man-syslog-ng/syslog-ng-ctl.1.md" %}}.
 
-## Legacy: Unstructured, bulk methods:
+- Use the `socat` application: `echo STATS | socat -vv UNIX-CONNECT:/opt/syslog-ng/var/run/syslog-ng.ctl -`
 
-  - Using the [`internal()` source]({{< relref "/chapter-log-statistics/log-statistics-internal-source/_index.md" >}}).
-
-  - Using the [`syslog-ng-ctl stats`]({{< relref "/chapter-quickstart/managing-and-checking-linux/_index.md#stats" >}}) command.
-    
-    For further information about using `syslog-ng-ctl` commands, see <span class="mcFormatColor" style="color: #04aada;">The `syslog-ng` manual pages</span>.
-
-  - Use the `socat` application: `echo STATS | socat -vv UNIX-CONNECT:/opt/syslog-ng/var/run/syslog-ng.ctl -`
-
-  - If you have an OpenBSD-style `netcat` application installed, use the `echo STATS | nc -U /opt/syslog-ng/var/run/syslog-ng.ctl` command. Note that the `netcat` included in most Linux distributions is a GNU-style version that is not suitable to query the statistics of `syslog-ng`.
-
+- If you have an OpenBSD-style `netcat` application installed, use the `echo STATS | nc -U /opt/syslog-ng/var/run/syslog-ng.ctl` command. Note that the `netcat` included in most Linux distributions is a GNU-style version that is not suitable to query the statistics of `syslog-ng`.

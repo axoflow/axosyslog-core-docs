@@ -26,4 +26,4 @@ When using `value-pairs`, there are three ways to specify which information (tha
 
   - Define new name-value pairs to include using the `pair()` parameter.
 
-These parameters are detailed in <span class="mcFormatColor" style="color: #04aada;">value-pairs()</span>.
+These parameters are detailed in {{% xref "/chapter-concepts/concepts-value-pairs/option-value-pairs/_index.md" %}}.

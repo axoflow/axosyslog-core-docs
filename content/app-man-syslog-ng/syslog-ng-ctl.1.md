@@ -375,7 +375,7 @@ Health checks are also published as periodically updated metrics. You can config
 
 ## See also
 
-<span class="mcFormatColor" style="color: #04aada;">The `syslog-ng.conf` manual page</span>
+{{% xref "/app-man-syslog-ng/syslog-ng.conf.5.md" %}}
 
 {{% xref "/app-man-syslog-ng/syslog-ng.8/_index.md" %}}
 

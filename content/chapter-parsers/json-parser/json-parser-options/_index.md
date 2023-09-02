@@ -57,7 +57,7 @@ Some logging implementations require a marker to be set before the JSON payload.
 
 ## Example: Using the marker option in JSON parser
 
-This json parser parses log messages which use the "@cee:" marker in front of the json payload. It inserts "`.cee.`" in front of the name of name-value pairs, so later on it is easier to find name-value pairs that were parsed using this parser. (For details on selecting name-value pairs, see <span class="mcFormatColor" style="color: #04aada;">value-pairs()</span>.)
+This json parser parses log messages which use the "@cee:" marker in front of the json payload. It inserts "`.cee.`" in front of the name of name-value pairs, so later on it is easier to find name-value pairs that were parsed using this parser. (For details on selecting name-value pairs, see {{% xref "/chapter-concepts/concepts-value-pairs/option-value-pairs/_index.md" %}}.)
 
 ```shell
    parser {

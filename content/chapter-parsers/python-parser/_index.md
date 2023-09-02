@@ -81,7 +81,7 @@ This method is executed when {{% param "product.abbrev" %}} is stopped or reload
 
 ## Example: Parse loggen logs {#python-parser-example}
 
-The following sample code parses the messages of the `loggen` tool (for details, see <span class="mcFormatColor" style="color: #04aada;">The loggen manual page</span>). The following is a sample loggen message:
+The following sample code parses the messages of the `loggen` tool (for details, see {{% xref "/app-man-syslog-ng/loggen.1.md" %}}). The following is a sample loggen message:
 
 ```shell
    <38>2017-04-05T12:16:46 localhost prg00000[1234]: seq: 0000000000, thread: 0000, runid: 1491387406, stamp: 2017-04-05T12:16:46 PADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADDPADD

@@ -148,11 +148,9 @@ The following examples replace the separator `';'` character with a `','` charac
 
 ## filter
 
-*Syntax:*
+*Syntax:* `$(filter <filter-expression> <list>)`
 
-    $(filter <filter-expression> <list>)
-
-*Description:* Runs the filter expression on each element of a given list, and returns only those list elements that meet the requirements of the filter expression. The current value is referred by `$_`, similarly to the [<span class="mcFormatColor" style="color: #04aada;">`map` template function</span>](#template-map).
+*Description:* Runs the filter expression on each element of a given list, and returns only those list elements that meet the requirements of the filter expression. The current value is referred by `$_`, similarly to the [`map` template function](#template-map).
 
 {{% alert title="Note" color="info" %}}
 
@@ -416,8 +414,7 @@ If you have to forward your log messages in JSON format, but the receiving appli
 
 This template function converts value-pairs into the WebTrends Enhanced Log file Format (WELF). The WELF format is a comma-separated list of `name=value` elements. Note that the order of the elements is random. If the value contains whitespace, it is enclosed in double-quotes, for example, `name="value"`. For details on the WELF format, see <https://www3.trustwave.com/support/kb/article.aspx?id=10899>.
 
-To select which value-pairs to convert, use the command-line syntax of the `value-pairs()` option. For details on selecting value-pairs, see <span class="mcFormatColor" style="color: #04aada;">value-pairs()</span>.
-
+To select which value-pairs to convert, use the command-line syntax of the `value-pairs()` option. For details on selecting value-pairs, see {{% xref "/chapter-concepts/concepts-value-pairs/option-value-pairs/_index.md" %}}.
 
 ### Example: Using the format-welf() template function
 
