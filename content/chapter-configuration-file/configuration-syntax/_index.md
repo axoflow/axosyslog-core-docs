@@ -10,7 +10,8 @@ Every `syslog-ng.conf` configuration file must begin with a line containing vers
    @version: {{% param "product.techversion" %}}
 ```
 
-If the configuration file does not contain the version information, `syslog-ng` assumes that the file is for version 2.x. In this case it interprets the configuration and sends warnings about the parts of the configuration that should be updated. Version 3.0 and later can operate with configuration files of version 2.x, but the default values of certain parameters have changed since 3.0.
+- If the configuration file does not contain the version information, `syslog-ng` assumes that the file is for version 2.x. In this case it interprets the configuration and sends warnings about the parts of the configuration that should be updated. Version 3.0 and later can operate with configuration files of version 2.x, but the default values of certain parameters have changed since 3.0.
+- `@version: current` sets the configuration version to the currently installed version.
 
 ## Example: A simple configuration file
 
