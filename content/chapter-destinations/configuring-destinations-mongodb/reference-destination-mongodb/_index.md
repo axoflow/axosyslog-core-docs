@@ -63,9 +63,7 @@ Hazard of data loss! The {{% param "product.abbrev" %}} application does not ver
 
 {{% include-headless "chunk/option-destination-batch-bytes.md" %}}
 
-{{% include-headless "chunk/option-destination-batch-lines.md" %}}
-
-{{% include-headless "chunk/option-destination-batch-timeout.md" %}}
+{{% include-headless "chunk/option-destination-threaded-batching.md" %}}
 
 {{< include-headless "chunk/option-destination-frac-digits.md" >}}
 
@@ -102,18 +100,7 @@ For MongoDB operations, {{% param "product.abbrev" %}} uses a one-minute timeout
 
 {{< include-headless "wnt/note-typehinting.md" >}}
 
-
-## workers()
-
-|          |         |
-| -------- | ------- |
-| Type:    | integer |
-| Default: | 1       |
-
-
-*Description:* Specifies the number of worker threads (at least 1) that {{% param "product.abbrev" %}} uses to send messages to the server. Increasing the number of worker threads can drastically improve the performance of the destination.
-
-{{< include-headless "wnt/warning-diskbuffer-workers.md" >}}
+{{< include-headless "chunk/option-destination-threaded-workers.md" >}}
 
 ## write-concern() {#mongodb-option-write-concern}
 

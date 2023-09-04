@@ -58,7 +58,9 @@ log non_otel_to_otel_tls {
 
 {{< include-headless "chunk/opentelemetry-authentication.md" >}}
 
+{{< include-headless "chunk/option-destination-threaded-batching.md" >}}
+
+{{< include-headless "chunk/option-destination-threaded-workers.md" >}}
+
 <!-- FIXME xinclude other common options
- threaded_dest_driver_general_option
-  | threaded_dest_driver_batch_option
-  | threaded_dest_driver_workers_option -->
+ threaded_dest_driver_general_option-->

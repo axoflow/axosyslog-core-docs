@@ -8,9 +8,7 @@ This driver sends messages into an SQL database. The `sql()` destination has the
 
 {{% include-headless "chunk/option-destination-batch-bytes.md" %}}
 
-{{% include-headless "chunk/option-destination-batch-lines.md" %}}
-
-{{% include-headless "chunk/option-destination-batch-timeout.md" %}}
+{{% include-headless "chunk/option-destination-threaded-batching.md" %}}
 
 ## columns() {#sql-option-columns}
 

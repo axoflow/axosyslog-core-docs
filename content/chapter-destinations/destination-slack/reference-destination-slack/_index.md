@@ -46,16 +46,9 @@ For details on how this option influences batch mode, see [http: Posting message
 
 
 
-{{% include-headless "chunk/option-destination-batch-lines.md" %}}
+{{% include-headless "chunk/option-destination-threaded-batching.md" %}}
 
 For details on how this option influences batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
-
-
-
-{{% include-headless "chunk/option-destination-batch-timeout.md" %}}
-
-For details on how this option influences batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
-
 
 
 {{% include-headless "chunk/option-destination-tls-ca-dir.md" %}}
@@ -248,4 +241,6 @@ To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% param 
 
 {{% include-headless "chunk/option-destination-http-use-system-cert-store.md" %}}
 
-{{< include-headless "chunk/option-destination-http-workers.md" >}}
+{{< include-headless "chunk/option-destination-threaded-workers.md" >}}
+
+{{% include-headless "chunk/http-load-balance-workers.md" %}}
