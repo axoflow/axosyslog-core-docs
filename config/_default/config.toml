@@ -1,7 +1,7 @@
 
 title = "AxoSyslog 4"
 
-theme = ["docsy"]
+theme = ["docsy-axoflow", "docsy"]
 
 baseurl = "/"
 
