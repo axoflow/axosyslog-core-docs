@@ -8,8 +8,6 @@ Available in {{% param "product_name" %}} version 4.1.1 and newer.
 
 `metrics-probe()` is a special parser that counts the messages that pass through the log path, and creates labeled stats counters based on the fields of the passing messages.
 
-> Note: This feature is experimental, the counters created by `metrics-probe()` (names, labels, and so on) may change in the next 2-3 releases.
-
 You can configure the name of the keys and the labels. Note that the keys are automatically prefixes with the `syslogng_` string. You can use templates in the values of the labels.
 
 The minimal configuration creates counters with the key `syslogng_classified_events_total` and labels `app`, `host`, `program` and `source`. For example:
