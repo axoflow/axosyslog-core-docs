@@ -326,7 +326,7 @@ For example:
 |          |                                                                                   |
 | -------- | --------------------------------------------------------------------------------- |
 | Type:    | template or template function                                                     |
-| Default: | $(format-json --scope rfc5424 --exclude DATE --key ISODATE @timestamp=${ISODATE}) |
+| Default: | `$(format-json --scope rfc5424 --exclude DATE --key ISODATE @timestamp=${ISODATE})` |
 
 *Description:* The message as sent to the Elasticsearch server. Typically, you will want to use the command-line notation of the `format-json` template function.
 
