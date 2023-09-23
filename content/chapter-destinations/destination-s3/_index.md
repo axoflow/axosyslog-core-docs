@@ -4,6 +4,8 @@ weight:  2700
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
+Available in {{% param "product.abbrev" %}} version 4.4 and later.
+
 The `s3()` destination sends log messages to the [Amazon Simple Storage Service (Amazon S3)](https://aws.amazon.com/s3/) object storage service. You can send log messages over TCP, or encrypted with TLS.
 
 <!-- FIXME minimal config example, required options -->
