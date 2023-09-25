@@ -5,27 +5,4 @@ Nothing defined here. The Hugo project that uses this theme can override Bootstr
 assets/scss/_styles_project.scss
 
 */
-@import "tocbot";
-
-.warning-block {
-    border-left: 6px solid red;
-    background: #FFFFFF;
-    padding: 16px;
-  }
-.property-optional::after {
-  content: "optional";
-  background-color: $secondary;
-  font-size: 14px;
-  line-height: 22px;
-  padding: 3px 6px;
-  text-transform: uppercase;
-}
-.property-required::after {
-  content: "required";
-  background-color: $primary;
-  color: white;
-  font-size: 14px;
-  line-height: 22px;
-  padding: 3px 6px;
-  text-transform: uppercase;
-}
+@import "../../themes/docsy-axoflow/assets/scss/_styles_project.scss";
