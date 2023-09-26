@@ -56,7 +56,7 @@ The `loki()` destination has the following options.
   { "target_service_accounts", KW_TARGET_SERVICE_ACCOUNTS },
    -->
 
-{{< include-headless "chunk/opentelemetry-authentication.md" >}}
+{{< include-headless "chunk/grpc-authentication.md" >}}
 <!-- FIXME generalize the authentication chunk, now it refers only to opentelemetry -->
 
 ## keep-alive()

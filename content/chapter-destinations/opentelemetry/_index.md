@@ -56,7 +56,7 @@ log non_otel_to_otel_tls {
 };
 ```
 
-{{< include-headless "chunk/opentelemetry-authentication.md" >}}
+{{< include-headless "chunk/grpc-authentication.md" >}}
 
 {{< include-headless "chunk/option-destination-threaded-batching.md" >}}
 
