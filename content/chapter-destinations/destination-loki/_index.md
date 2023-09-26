@@ -45,11 +45,9 @@ The `loki()` destination has the following options.
 |          |        |
 | -------- | ------ |
 | Type:    | number |
-| Default: | 25     |
+| Default: | 0      |
 
 {{% include-headless "chunk/option-description-destination-batch-lines.md" %}}
-
-<!-- FIXME should we add batch-bytes as well? -->
 
 {{% include-headless "chunk/option-destination-batch-timeout.md" %}}
 
@@ -111,12 +109,21 @@ Default value:
 
 <!-- FIXME -->
 
+## template()
+
+|          |                                                    |
+| -------- | -------------------------------------------------- |
+| Type:    | template or template-function             |
+| Default: | `$ISODATE $HOST $MSGHDR$MSG` |
+
+*Description:* Specifies a template defining the logformat to be used in the destination. Macros are described in {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" %}}. For details on template functions, see {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" %}}.
+
 ## timestamp()
 
 |          |                            |
 | -------- | -------------------------- |
 | Type:    | `current`, `received`, or `msg` |
-| Default: | `received` |
+| Default: | `current` |
 
 *Description:* Sets the timestamp to use for the messages sent to Loki. This is important because Loki accepts data only if their timestamp is monotonously increasing, out of order messages are rejected. The possible values for this option are:
 
@@ -129,7 +136,7 @@ Default value:
 |          |                            |
 | -------- | -------------------------- |
 | Type:    | string |
-| Default: |  |
+| Default: | `localhost:9095` |
 
 *Description:* The URL of the Loki endpoint.
 
