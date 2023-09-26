@@ -63,32 +63,34 @@ The `loki()` destination has the following options.
 
 <!-- FIXME add example -->
 
+Configures how {{% param "product.abbrev" %}} sends [gRPC keepalive pings](https://grpc.io/docs/guides/keepalive/).
+
 ### max-pings-without-data()
 
 |          |                    |
 | -------- | ------------------ |
-| Type:    | number [seconds] |
+| Type:    | integer |
 | Default: |                 |
 
-<!-- FIXME -->
+*Description:* The maximum number of gRPC pings that can be sent when there is no data/header frame to be sent. {{% param "product.abbrev" %}} won't send any pings after this limit. Set it to 0 disable this restriction and keep sending pings.
 
 ### time()
 
 |          |                    |
 | -------- | ------------------ |
-| Type:    | number [seconds] |
+| Type:    | number [milliseconds] |
 | Default: |                 |
 
-<!-- FIXME -->
+*Description:* The period (in milliseconds) after which {{% param "product.abbrev" %}} sends a gRPC keepalive ping.
 
 ### timeout()
 
 |          |                    |
 | -------- | ------------------ |
-| Type:    | number [seconds] |
+| Type:    | number [milliseconds] |
 | Default: | 10                 |
 
-*Description:* The value (in seconds) to wait for an operation to complete, and attempt to reconnect the server if exceeded.
+*Description:* The time (in milliseconds) {{% param "product.abbrev" %}} waits for an acknowledgement.
 
 ## labels()
 
