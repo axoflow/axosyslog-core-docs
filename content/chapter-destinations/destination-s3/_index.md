@@ -213,8 +213,6 @@ If you configure an invalid value, the default is used.
 
 *Description:* The message as written to the Amazon S3 object. You can use templates and [template functions]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}) to format the message.
 
-<!-- FIXME What else do we write into the object? Timestamp/and so on? -->
-
 ## url()
 
 |          |                            |
