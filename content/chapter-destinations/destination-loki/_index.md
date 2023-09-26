@@ -24,21 +24,9 @@ loki(
 );
 ```
 
-## Prerequisites
-
-<!-- FIXME  -->
-
 ## Options
 
 The `loki()` destination has the following options.
-
-<!-- FIXME  required options -->
-
-<!-- FIXME other inherited options
- threaded_dest_driver_general_option
-  | threaded_dest_driver_workers_option
-  | threaded_dest_driver_batch_option
- -->
 
 ## batch-lines()
 
@@ -51,17 +39,9 @@ The `loki()` destination has the following options.
 
 {{% include-headless "chunk/option-destination-batch-timeout.md" %}}
 
-
-<!--
-  { "target_service_accounts", KW_TARGET_SERVICE_ACCOUNTS },
-   -->
-
 {{< include-headless "chunk/grpc-authentication.md" >}}
-<!-- FIXME generalize the authentication chunk, now it refers only to opentelemetry -->
 
 ## keep-alive()
-
-<!-- FIXME add example -->
 
 Configures how {{% param "product.abbrev" %}} sends [gRPC keepalive pings](https://grpc.io/docs/guides/keepalive/).
 
