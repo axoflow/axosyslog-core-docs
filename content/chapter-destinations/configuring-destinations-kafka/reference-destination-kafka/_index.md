@@ -90,7 +90,7 @@ For example, the following properties file defines the acknowledgment method and
 |          |                               |
 | -------- | ----------------------------- |
 | Type:    | template or template function |
-| Default: | $ISODATE $HOST $MSGHDR$MSG\\n |
+| Default: | `$ISODATE $HOST $MSGHDR$MSG\\n` |
 
 *Description:* The message as published to Apache Kafka. You can use templates and template functions (for example, `format-json()`) to format the message, for example, `template("$(format-json --scope rfc5424 --exclude DATE --key ISODATE)")`.
 
