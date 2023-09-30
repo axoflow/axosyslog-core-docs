@@ -28,6 +28,8 @@ loki(
 
 The `loki()` destination has the following options.
 
+{{< include-headless "chunk/grpc-authentication.md" >}}
+
 ## batch-lines()
 
 |          |        |
@@ -38,8 +40,6 @@ The `loki()` destination has the following options.
 {{% include-headless "chunk/option-description-destination-batch-lines.md" %}}
 
 {{% include-headless "chunk/option-destination-batch-timeout.md" %}}
-
-{{< include-headless "chunk/grpc-authentication.md" >}}
 
 ## keep-alive()
 

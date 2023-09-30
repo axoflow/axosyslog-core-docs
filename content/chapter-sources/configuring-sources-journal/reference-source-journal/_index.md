@@ -10,8 +10,6 @@ The `systemd-journal()` driver has the following options:
 
 {{% include-headless "chunk/option-source-default-level-journal.md" %}}
 
-{{% include-headless "chunk/option-source-default-level-journal.md" %}}
-
 {{< include-headless "chunk/option-destination-hook.md" >}}
 
 {{% include-headless "chunk/option-source-host-override.md" %}}
