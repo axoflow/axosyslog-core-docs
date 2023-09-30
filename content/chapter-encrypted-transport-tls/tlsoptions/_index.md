@@ -302,10 +302,12 @@ The following destination sends the hostname of its destination during the TLS h
 
 |                  |                                                                                                                    |
 | ---------------- | ------------------------------------------------------------------------------------------------------------------ |
-| Accepted values: | comma-separated list of the following options: no-sslv2, no-sslv3, no-tlsv1, no-tlsv11, no-tlsv12, no-tlsv13, none |
+| Accepted values: | comma-separated list of the following options: no-sslv2, no-sslv3, no-tlsv1, no-tlsv11, no-tlsv12, no-tlsv13, none, ignore-hostname-mismatch |
 | Default:         | no-sslv2                                                                                                           |
 
-*Description:* Sets the specified options of the SSL/TLS protocols. Currently, you can use it to disable specific protocol versions. Note that disabling a newer protocol version (for example, TLSv1.1) does not automatically disable older versions of the same protocol (for example, TLSv1.0). For example, use the following option to permit using only TLSv1.1 or newer:
+Available in {{% param "product.abbrev" %}} 3.7 and newer.
+
+*Description:* Sets the specified options of the SSL/TLS protocols. You can use it to disable specific protocol versions, and set other options. Note that disabling a newer protocol version (for example, TLSv1.1) does not automatically disable older versions of the same protocol (for example, TLSv1.0). For example, use the following option to permit using only TLSv1.1 or newer:
 
 ```shell
    ssl-options(no-sslv2, no-sslv3, no-tlsv1)
@@ -313,8 +315,7 @@ The following destination sends the hostname of its destination during the TLS h
 
 Using `ssl-options(none)` means that {{% param "product.abbrev" %}} does not specify any restrictions on the protocol used. However, in this case, the underlying OpenSSL library can restrict the available protocols, for example, certain OpenSSL versions automatically disable SSLv2.
 
-This option is available in {{% param "product.abbrev" %}} 3.7 and newer.
-
+By specifying `ignore-hostname-mismatch`, you can ignore the subject name of a certificate during the validation process. This means that {{% param "product.abbrev" %}} checks only that the certificate itself is trusted by the current set of trust anchors (e.g. trusted CAs), and ignores the mismatch between the targeted hostname and the certificate subject. `ignore-hostname-mismatch` is available in {{% param "product.abbrev" %}} 4.4 and newer.
 
 ### Example: Using ssl-options
 
