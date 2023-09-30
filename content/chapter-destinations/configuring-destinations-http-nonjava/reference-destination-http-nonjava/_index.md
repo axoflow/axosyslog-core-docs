@@ -6,6 +6,17 @@ weight:  300
 
 The `http` destination of {{% param "product.abbrev" %}} can directly post log messages to web services using the HTTP protocol. The `http` destination has the following options.
 
+## accept-encoding()
+
+|          |                    |
+| -------- | ------------------ |
+| Type:    | `"identity"`, `"gzip"`, `"deflate"`, `"all"` |
+| Default: |                    |
+
+*Description:* Use `accept-encoding()` to request the server to compress the HTTP responses. ({{% param "product.abbrev" %}} doesn't currently use them, but they still contribute to network traffic.) To compress the messages sent by {{% param "product.abbrev" %}}, see the [`content-compression()` option](#content-compression).
+
+{{< include-headless "chunk/option-destination-http-compression.md" >}}
+
 ## azure-auth-header()
 
 See {{% xref "/chapter-destinations/configuring-destinations-http-nonjava/plugin-azure-auth-header/_index.md" %}}.
@@ -89,6 +100,17 @@ For details on how this option influences HTTP batch mode, see [http: Posting me
 
 
 {{% include-headless "chunk/option-destination-tls-cipher-suite.md" %}}
+
+## content-compression()
+
+|          |                    |
+| -------- | ------------------ |
+| Type:    | `"identity"`, `"gzip"`, `"deflate"`, `"all"` |
+| Default: |                    |
+
+*Description:* Use `content-compression()` to compress the messages sent by {{% param "product.abbrev" %}}. To accept compressed responses from the server, see the [`accept-encoding()` option](#accept-encoding).
+
+{{< include-headless "chunk/option-destination-http-compression.md" >}}
 
 {{% include-headless "chunk/topic-tls-block-http.md" %}}
 
