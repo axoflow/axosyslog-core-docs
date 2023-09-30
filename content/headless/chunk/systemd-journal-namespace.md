@@ -18,6 +18,7 @@ The following modes of operation are available:
 - If `namespace(<specific-namespace>)` is specified, the `systemd-journal()` source only reads and displays log data from the specified namespace.
 - If the namespace identifier is prefixed with `"+"` when you specify your `namespace()` option, the `systemd-journal()` source only reads and displays log data from the specified namespace and the default namespace, interleaved.
 
+Starting with {{% param "product.abbrev" %}} 4.4, you can use multiple `systemd-journal()` sources in your configuration. In this case, each source must use unique systemd namespaces.
 
 *Syntax:* `namespace(string)`
 

@@ -26,14 +26,13 @@ If you are using RHEL-7, the default source in the configuration is `systemd-jou
 Only one `systemd-journal()` source can be configured in the configuration file. If there is more than one `systemd-journal()` source configured, {{% param "product.abbrev" %}} will not start.
 {{% /alert %}}
 
-
 ## Declaration:
 
 ```shell
    systemd-journal(options);
 ```
 
-
+If you want to use multiple `systemd-journal()` sources in your configuration, the sources must use unique systemd namespaces. For details, see the [`namespace()` option]({{< relref "/chapter-sources/configuring-sources-journal/reference-source-journal/_index.md#namespace" >}}).
 
 ## Example: Send all fields through syslog protocol {#example-source-journal-allfields}
 
