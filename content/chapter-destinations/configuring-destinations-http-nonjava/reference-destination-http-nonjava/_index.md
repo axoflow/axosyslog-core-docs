@@ -147,7 +147,7 @@ The `http()` destination supports only unencrypted key files (that is, the priva
 
 |          |            |
 | -------- | ---------- |
-| Type:    | POST | PUT |
+| Type:    | `POST` or `PUT` |
 | Default: | POST       |
 
 *Description:* Specifies the HTTP method to use when sending the message to the server.
