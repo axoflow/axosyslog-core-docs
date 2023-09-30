@@ -6,6 +6,9 @@ weight:  300
 
 The `http` destination of {{% param "product.abbrev" %}} can directly post log messages to web services using the HTTP protocol. The `http` destination has the following options.
 
+## azure-auth-header()
+
+See {{% xref "/chapter-destinations/configuring-destinations-http-nonjava/plugin-azure-auth-header/_index.md" %}}.
 
 {{% include-headless "chunk/option-destination-batch-bytes.md" %}}
 
