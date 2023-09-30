@@ -47,7 +47,7 @@ matches(
 {{% include-headless "chunk/option-source-max-field-size-journal.md" %}}
 
 <span id="systemd-namespace"></span>
-{{% include-headless "chunk/systemd-journal-namespace.md" %}}
+{{< include-headless "chunk/systemd-journal-namespace.md" >}}
 
 {{% include-headless "chunk/option-source-prefix-journal.md" %}}
 

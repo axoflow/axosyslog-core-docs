@@ -9,29 +9,21 @@ The `systemd-journal()` source is used on various Linux distributions, such as R
 The `systemd-journal()` source driver is designed to read only local messages through the <span>systemd-journal</span> API. It is not possible to set the location of the journal files, or the directories.
 
 {{% alert title="Note" color="info" %}}
-
 The `log-msg-size()` option is not applicable for this source. Use the `max-field-size()` option instead.
-
 {{% /alert %}} {{% alert title="Note" color="info" %}}
 
 This source will not handle the following cases:
 
-  - Corrupted journal file
-
-  - Incorrect journal configuration
-
-  - Any other journald-related bugs
+- Corrupted journal file
+- Incorrect journal configuration
+- Any other journald-related bugs
 
 {{% /alert %}} {{% alert title="Note" color="info" %}}
-
 If you are using RHEL-7, the default source in the configuration is `systemd-journal()` instead of `unix-dgram("/dev/log")` and `file("/proc/kmsg")`. If you are using `unix-dgram("/dev/log")` or `unix-stream("/dev/log")` in your configuration as a source, {{% param "product.abbrev" %}} will revert to using `systemd-journal()` instead.
-
 {{% /alert %}}
 
 {{% alert title="Warning" color="warning" %}}
-
 Only one `systemd-journal()` source can be configured in the configuration file. If there is more than one `systemd-journal()` source configured, {{% param "product.abbrev" %}} will not start.
-
 {{% /alert %}}
 
 
@@ -43,7 +35,7 @@ Only one `systemd-journal()` source can be configured in the configuration file.
 
 
 
-## Example: Sending all fields through syslog protocol using the systemd-journal() driver {#example-source-journal-allfields}
+## Example: Send all fields through syslog protocol {#example-source-journal-allfields}
 
 To send all fields through the syslog protocol, enter the prefix in the following format: "`.SDATA.<name>`".
 
@@ -64,9 +56,7 @@ To send all fields through the syslog protocol, enter the prefix in the followin
     };
 ```
 
-
-
-## Example: Filtering for a specific field using the systemd-journal() driver {#example-source-journal-filtering}
+## Example: Filter for a specific field {#example-source-journal-filtering}
 
 ```shell
    @version: {{% param "product.techversion" %}}
@@ -88,9 +78,7 @@ To send all fields through the syslog protocol, enter the prefix in the followin
     };
 ```
 
-
-
-## Example: Sending all fields in value-pairs using the systemd-journal() driver {#example-source-journal-valuepairs}
+## Example: Send all fields in value-pairs {#example-source-journal-valuepairs}
 
 ```shell
    @version: {{% param "product.techversion" %}}
@@ -108,7 +96,6 @@ To send all fields through the syslog protocol, enter the prefix in the followin
         destination(d_network);
     };
 ```
-
 
 The journal contains credential information about the process that sent the log message. The {{% param "product.abbrev" %}} application makes this information available in the following macros:
 
