@@ -17,6 +17,17 @@ The `http` destination of {{% param "product.abbrev" %}} can directly post log m
 
 {{< include-headless "chunk/option-destination-http-compression.md" >}}
 
+## accept-redirects()
+
+|          |                    |
+| -------- | ------------------ |
+| Type:    | `yes` or `no` |
+| Default: |                    |
+
+*Description:* Accept and follow redirect responses.
+
+<!-- FIXME default? -->
+
 ## azure-auth-header()
 
 See {{% xref "/chapter-destinations/configuring-destinations-http-nonjava/plugin-azure-auth-header/_index.md" %}}.
@@ -29,7 +40,6 @@ For details on how this option influences HTTP batch mode, see [http: Posting me
 {{% include-headless "chunk/option-destination-threaded-batching.md" %}}
 
 For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
-
 
 ## body()
 
@@ -132,6 +142,11 @@ For details on how this option influences HTTP batch mode, see [http: Posting me
 
 {{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
+{{% include-headless "chunk/option-destination-flush-lines.md" %}}
+
+{{% include-headless "chunk/option-destination-flush-timeout.md" %}}
+
+{{< include-headless "chunk/option-destination-frac-digits.md" >}}
 
 ## headers()
 
@@ -162,6 +177,9 @@ The `http()` destination supports only unencrypted key files (that is, the priva
 {{% include-headless "chunk/topic-tls-block-http.md" %}}
 
 {{% include-headless "chunk/example-tls-block-http.md" %}}
+<!--  -->
+
+{{% include-headless "chunk/option-destination-local-timezone.md" %}}
 
 {{% include-headless "chunk/option-destination-log-fifo-size.md" %}}
 
@@ -184,6 +202,8 @@ destination {
 };
 ```
 
+{{< include-headless "chunk/option-destination-on-error.md" >}}
+
 ## password()
 
 |          |        |
@@ -192,8 +212,6 @@ destination {
 | Default: |        |
 
 *Description:* The password that {{% param "product.abbrev" %}} uses to authenticate on the server where it sends the messages.
-
-
 
 {{< include-headless "chunk/option-peer-verify-simple.md" >}}
 
@@ -301,13 +319,11 @@ To customize the action to take for a particular response code, use the followin
 );
 ```
 
-
-
 {{% include-headless "chunk/option-destination-retries.md" %}}
 
 To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% param "product.abbrev" %}} will attempt to resend messages until the number of attempts reaches `retries`. If the HTTP server returns 4xx codes, {{% param "product.abbrev" %}} will drop the messages.
 
-
+{{% include-headless "chunk/option-destination-send-timezone.md" %}}
 
 ## ssl-version() {#https-options-ssl-version}
 
@@ -331,6 +347,7 @@ To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% param 
 
 {{% include-headless "chunk/option-destination-http-timeout.md" %}}
 
+{{% include-headless "chunk/option-destination-timezone.md" %}}
 
 ## url()
 
