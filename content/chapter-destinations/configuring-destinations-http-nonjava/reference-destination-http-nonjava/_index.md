@@ -130,9 +130,6 @@ The following headers are included by default:
 
 {{< include-headless "chunk/option-destination-hook.md" >}}
 
-{{% include-headless "chunk/option-destination-log-fifo-size.md" %}}
-
-
 {{% include-headless "chunk/option-destination-tls-key-file.md" %}}
 
 The `http()` destination supports only unencrypted key files (that is, the private key cannot be password-protected).
@@ -141,7 +138,7 @@ The `http()` destination supports only unencrypted key files (that is, the priva
 
 {{% include-headless "chunk/example-tls-block-http.md" %}}
 
-
+{{% include-headless "chunk/option-destination-log-fifo-size.md" %}}
 
 ## method()
 
@@ -184,6 +181,9 @@ destination {
 
 {{% include-headless "chunk/option-dest-http-proxy.md" %}}
 
+## python-http-header()
+
+See {{% xref "/chapter-destinations/configuring-destinations-http-nonjava/plugin-python-http-header/_index.md" %}}
 
 ## response-action()
 
