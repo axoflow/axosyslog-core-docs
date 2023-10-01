@@ -4,6 +4,9 @@ weight: 3950
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
+Available in {{% param "product.abbrev" %}} version 4.4 and later.
+
+{{< include-headless "chunk/syslog-ng-otlp-intro.md" >}}
 
 <!-- 
 
