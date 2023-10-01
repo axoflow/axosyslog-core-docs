@@ -38,7 +38,7 @@ syslogng_classified_events_total{app="example-app", host="localhost", program="b
 syslogng_classified_events_total{app="example-app", host="localhost", program="foo", source="s_local_1"} 1
 ```
 
-You can query the metrics by running the following command: 
+You can query the metrics by running the following command:
 
 ```shell
 syslog-ng-ctl stats prometheus
@@ -65,6 +65,8 @@ syslogng_custom_key{custom_label_name_1="foobar", custom_label_name_2="bar"} 1
 syslogng_custom_key{custom_label_name_1="foobar", custom_label_name_2="foo"} 1
 syslogng_custom_key{custom_label_name_1="foobar", custom_label_name_2="baz"} 3
 ```
+
+Starting with {{% param "product_name" %}} 4.4, you can create [dynamic labels](#dynamic-labels) as well.
 
 ## Options
 
@@ -132,6 +134,28 @@ This results in counters like:
 
 ```shell
 syslogng_classified_events_total{app="example-app", host="localhost", program="baz", source="s_local_1"} 3
+```
+
+### Dynamic labels
+
+Available in {{% param "product_name" %}} 4.4 and newer.
+
+Dynamic labelling allows you to use every available [`value-pairs()` options]({{< relref "/chapter-concepts/concepts-value-pairs/option-value-pairs/_index.md" >}}) in the labels, for example, `key()`, `rekey()`, `pair()`, or `scope()`.
+
+For example:
+
+```shell
+metrics-probe(
+  key("foo")
+  labels(
+    "static-label" => "bar"
+    key(".my_prefix.*" rekey(shift-levels(1)))
+  )
+);
+```
+
+```shell
+syslogng_foo{static_label="bar",my_prefix_baz="anotherlabel",my_prefix_foo="bar",my_prefix_nested_axo="flow"} 4
 ```
 
 ## level() {#metrics-probe-option-level}
