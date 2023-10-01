@@ -177,7 +177,7 @@ Available in 3.24 and later.
 
 ## MESSAGE {#macro-message}
 
-*Description:* Text contents of the log message without the program name and pid. The program name and the pid together are available in the [`${MSGHDR}`](shared/chunk/macro-msghdr.htm) macro, and separately in the [${PROGRAM}]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) and [${PID}]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) macros.
+*Description:* Text contents of the log message without the program name and pid. The program name and the pid together are available in the [`${MSGHDR}`](#macro-msghdr) macro, and separately in the [${PROGRAM}]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) and [${PID}]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) macros.
 
 {{% include-headless "chunk/para-flags-no-parse.md" %}}
 
@@ -269,7 +269,7 @@ For an example use case when using the macro is recommended, see {{% xref "/chap
 
 ## RAWMSG {#macro-rawmsg}
 
-*Description:* The original message as received from the client. Note that this macro is available only in 3.16 and later, and only if AxoSyslog received the message using the [`default-network-drivers-ng()` source]({{< relref "/chapter-sources/source-default-network-drivers/_index.md" >}}), or the source receiving the message has the [`store-raw-message`](shared/chunk/option-source-flags.htm) flag set.
+*Description:* The original message as received from the client. Note that this macro is available only in 3.16 and later, and only if AxoSyslog received the message using the [`default-network-drivers-ng()` source]({{< relref "/chapter-sources/source-default-network-drivers/_index.md" >}}), or the source receiving the message has the `store-raw-message` flag set.
 
 ## RAWMSG_SIZE {#macro-rawmsg-size}
 
