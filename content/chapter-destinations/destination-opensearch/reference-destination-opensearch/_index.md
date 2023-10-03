@@ -10,7 +10,7 @@ This destination is available in {{% param "product.abbrev" %}} version 4.4 and 
 
 {{% include-headless "chunk/option-destination-batch-bytes.md" %}}
 
-For details on how this option influences batch mode, see {{% xref "/chapter-destinations/configuring-destinations-elasticsearch-http/elasticsearch-http-batch-mode/_index.md" %}}
+For details on how this option influences batch mode, see {{% xref "/chapter-destinations/destination-opensearch/batch-mode/_index.md" %}}.
 
 ## batch-lines()
 
@@ -21,23 +21,34 @@ For details on how this option influences batch mode, see {{% xref "/chapter-des
 
 {{% include-headless "chunk/option-description-destination-batch-lines.md" %}}
 
-For details on how this option influences batch mode, see {{% xref "/chapter-destinations/configuring-destinations-elasticsearch-http/elasticsearch-http-batch-mode/_index.md" %}}
-
-
+For details on how this option influences batch mode, see {{% xref "/chapter-destinations/destination-opensearch/batch-mode/_index.md" %}}.
 
 {{% include-headless "chunk/option-destination-batch-timeout.md" %}}
 
-For details on how this option influences batch mode, see {{% xref "/chapter-destinations/configuring-destinations-elasticsearch-http/elasticsearch-http-batch-mode/_index.md" %}}
-
-
+For details on how this option influences batch mode, see {{% xref "/chapter-destinations/destination-opensearch/batch-mode/_index.md" %}}.
 
 {{% include-headless "chunk/option-destination-tls-ca-dir.md" %}}
 
 {{% include-headless "chunk/topic-tls-block-http.md" %}}
 
-{{% include-headless "chunk/example-tls-block-elasticsearch-http-ca-dir.md" %}}
+### Declaration:
 
-
+```shell
+   destination d_opensearch {
+        opensearch(
+            url("http://your-server:9200/_bulk")
+            index("example-index")
+            tls(
+                ca-dir("dir")
+                cert-file("cert")
+                cipher-suite("cipher")
+                key-file("key")
+                peer-verify(yes|no)
+                ssl-version(<the permitted SSL/TLS version>)
+            )
+        );
+    };
+```
 
 ## ca-file() {#opensearch-options-ca-file}
 
@@ -50,25 +61,36 @@ For details on how this option influences batch mode, see {{% xref "/chapter-des
 
 {{% include-headless "chunk/topic-tls-block-http.md" %}}
 
-{{% include-headless "chunk/example-tls-block-elasticsearch-http-ca-file.md" %}}
+### Declaration:
 
-
+```shell
+   destination d_opensearch {
+        opensearch(
+            url("http://your-server:9200/_bulk")
+            index("example-index")
+            tls(
+                ca-file("ca")
+                cert-file("cert")
+                cipher-suite("cipher")
+                key-file("key")
+                peer-verify(yes|no)
+                ssl-version(<the permitted SSL/TLS version>)
+            )
+        );
+    };
+```
 
 {{% include-headless "chunk/option-destination-tls-cert-file.md" %}}
 
 {{% include-headless "chunk/topic-tls-block-http.md" %}}
 
-{{% include-headless "chunk/example-tls-block-elasticsearch-http.md" %}}
-
-
+{{% include-headless "chunk/example-tls-block-opensearch.md" %}}
 
 {{% include-headless "chunk/option-destination-tls-cipher-suite.md" %}}
 
 {{% include-headless "chunk/topic-tls-block-http.md" %}}
 
-{{% include-headless "chunk/example-tls-block-elasticsearch-http.md" %}}
-
-
+{{% include-headless "chunk/example-tls-block-opensearch.md" %}}
 
 ## custom-id() {#opensearch-options-custom-id}
 
@@ -79,8 +101,6 @@ For details on how this option influences batch mode, see {{% xref "/chapter-des
 
 *Description:* Sets the specified value as the ID of the OpenSearch index (`_id`).
 
-
-
 ## delimiter() {#opensearch-options-delimiter}
 
 |                  |                   |
@@ -90,13 +110,11 @@ For details on how this option influences batch mode, see {{% xref "/chapter-des
 
 *Description:* By default, {{% param "product.abbrev" %}} separates the log messages of the batch with a newline character. You can specify a different delimiter by using the `delimiter()` option.
 
-For details on how this option influences batch mode, see {{% xref "/chapter-destinations/configuring-destinations-elasticsearch-http/elasticsearch-http-batch-mode/_index.md" %}}
-
+For details on how this option influences batch mode, see {{% xref "/chapter-destinations/destination-opensearch/batch-mode/_index.md" %}}.
 
 {{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
 {{< include-headless "chunk/option-destination-hook.md" >}}
-
 
 ## index()
 
@@ -119,7 +137,7 @@ This destination supports only unencrypted key files (that is, the private key c
 
 {{% include-headless "chunk/topic-tls-block-http.md" %}}
 
-{{% include-headless "chunk/example-tls-block-elasticsearch-http.md" %}}
+{{% include-headless "chunk/example-tls-block-opensearch.md" %}}
 
 
 
@@ -132,29 +150,22 @@ This destination supports only unencrypted key files (that is, the private key c
 
 *Description:* The password that {{% param "product.abbrev" %}} uses to authenticate on the server where it sends the messages.
 
-
-
 {{< include-headless "chunk/option-peer-verify-simple.md" >}}
 
 {{% include-headless "chunk/topic-tls-block-http.md" %}}
 
-{{% include-headless "chunk/example-tls-block-elasticsearch-http.md" %}}
-
+{{% include-headless "chunk/example-tls-block-opensearch.md" %}}
 
 {{% include-headless "chunk/option-persist-name.md" %}}
 
 
 <span id="http-proxy"></span>
 
-{{% include-headless "chunk/option-destination-http-proxy.md" %}}
-
-
+{{< include-headless "chunk/option-dest-http-proxy.md" >}}
 
 {{% include-headless "chunk/option-destination-retries.md" %}}
 
 To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% param "product.abbrev" %}} will attempt to resend messages until the number of attempts reaches `retries`. If the HTTP server returns 4xx codes, {{% param "product.abbrev" %}} will drop the messages.
-
-
 
 ## ssl-version() {#opensearch-options-ssl-version}
 
@@ -167,14 +178,11 @@ To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% param 
 
 {{% include-headless "chunk/topic-tls-block-http.md" %}}
 
-{{% include-headless "chunk/example-tls-block-elasticsearch-http.md" %}}
-
+{{% include-headless "chunk/example-tls-block-opensearch.md" %}}
 
 {{% include-headless "chunk/option-destination-throttle.md" %}}
 
-
 {{% include-headless "chunk/option-source-time-reopen.md" %}}
-
 
 ## timeout() {#opensearch-options-timeout}
 
@@ -185,8 +193,6 @@ To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% param 
 
 *Description:* The value (in seconds) to wait for an operation to complete, and attempt to reconnect the server if exceeded.
 
-
-
 ## url()
 
 |          |                                                        |
@@ -194,7 +200,7 @@ To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% param 
 | Type:    | URL or list of URLs, for example, url("site1" "site2") |
 | Default: | N/A                                                    |
 
-*Description:* Specifies the hostname or IP address and optionally the port number of the OpenSearch indexer. Use a colon (`:`) after the address to specify the port number of the server. For example: `http://your-OpenSearch-indexer.server:8088/_bulk`
+*Description:* Specifies the hostname or IP address and optionally the port number of the OpenSearch indexer. Use a colon (`:`) after the address to specify the port number of the server. For example: `http://your-opensearch-indexer.server:8088/_bulk`
 
 This option is mandatory for this destination.
 
@@ -203,8 +209,6 @@ Make sure that the URL ends with `_bulk`, this is the OpenSearch API endpoint th
 In case the server on the specified URL returns a redirect request, {{% param "product.abbrev" %}} automatically follows maximum 3 redirects. Only HTTP and HTTPS based redirections are supported.
 
 {{< include-headless "chunk/destination-load-balancing-url.md" >}}
-
-
 
 ## user()
 
@@ -215,9 +219,7 @@ In case the server on the specified URL returns a redirect request, {{% param "p
 
 *Description:* The username that {{% param "product.abbrev" %}} uses to authenticate on the server where it sends the messages.
 
-
 {{% include-headless "chunk/option-destination-http-use-system-cert-store.md" %}}
-
 
 ## workers()
 

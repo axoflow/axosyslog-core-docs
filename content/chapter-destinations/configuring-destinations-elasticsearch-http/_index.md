@@ -15,7 +15,7 @@ HTTPS connection, as well as password- and certificate-based authentication is s
    d_elasticsearch_http {
         elasticsearch-http(
             index("<elasticsearch-index-to-store-messages>")
-            url("https://your-elasticsearch-server1:9200/_bulk" "https://your-elasticsearch-server2:9200/_bulk")
+            url("https://your-elasticsearch-server1:9200/_bulk")
             type("<type-of-the-index>")
         );
     };
@@ -35,7 +35,7 @@ HTTPS connection, as well as password- and certificate-based authentication is s
 
 ## Example: Sending log data to Elasticsearch {#example-destination-elasticsearch-http}
 
-The following example defines a `elasticsearch-http()` destination, with only the required options.
+The following example defines an `elasticsearch-http()` destination, with only the required options.
 
 ```shell
    destination d_elasticsearch_http {

@@ -22,12 +22,9 @@ HTTPS connection, as well as password- and certificate-based authentication is s
     };
 ```
 
-{{< include-headless "chunk/option-dest-http-proxy.md" >}}
+## Example: Sending log data to OpenSearch {#example-destination-opensearch}
 
-
-## Example: Sending log data to Elasticsearch {#example-destination-elasticsearch-http}
-
-The following example defines a `elasticsearch-http()` destination, with only the required options.
+The following example defines an `opensearch()` destination, with only the required options.
 
 ```shell
    destination opensearch {
@@ -45,7 +42,7 @@ The following example defines a `elasticsearch-http()` destination, with only th
     };
 ```
 
-The following example uses mutually-authenticated HTTPS connection, templated index, and also sets the `type()` and some other options.
+The following example uses mutually-authenticated HTTPS connection, templated index, and also sets some other options.
 
 ```shell
    destination opensearch_https {
@@ -53,7 +50,6 @@ The following example uses mutually-authenticated HTTPS connection, templated in
             url("https://node01.example.com:9200/_bulk")
             index("test-${YEAR}${MONTH}${DAY}")
             time-zone("UTC")
-            type("test")
             workers(4)
             batch-lines(16)
             timeout(10)
