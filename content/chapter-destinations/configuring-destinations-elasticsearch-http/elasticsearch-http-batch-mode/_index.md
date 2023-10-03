@@ -15,19 +15,16 @@ In the following example, a batch consists of 100 messages, or a maximum of 512 
 
 ```shell
    destination d_elasticsearch-http {
-        elasticsearch-http(url("http://your-elasticsearch-server:9200/_bulk")
+        elasticsearch-http(
+            url("http://your-elasticsearch-server:9200/_bulk")
             index("<elasticsearch-index-to-store-messages>")
             type("")
-            url("http://your-elasticsearch-server:9200/_bulk")
             batch-lines(100)
             batch-bytes(512Kb)
             batch-timeout(10000)
         );
     };
 ```
-
-
-
 
 ## Load balancing between multiple Elasticsearch indexers {#elasticsearch-http-load-balancing}
 
@@ -50,5 +47,3 @@ The following destination sends log messages to 3 different Elasticsearch indexe
 ```
 
 {{% include-headless "chunk/http-load-balance-workers.md" %}}
-
-
