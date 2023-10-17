@@ -5,8 +5,7 @@ title: Metrics reference
 This page lists the different metrics available in {{% param "product.abbrev" %}}. Note that although the metrics framework was introduced in {{% param "product.abbrev" %}} version 4.0, some of the metrics were added in later versions.
 
 <!-- 
-Available metrics: https://docs.google.com/spreadsheets/d/1QveI61EvL1BQ8MTmuZWzMHaEoxu_FZR-MU947bKCYhA/edit#gid=0 
-
+FIXME: We should also document the labels available for the different drivers
 -->
 
 <!-- FIXME can we export the metrics in a machine-readable format, so we could process them as hugo data and produce lists by stats level, and alphabetical lists, ... ? -->
@@ -183,7 +182,13 @@ syslogng_disk_queue_memory_usage_bytes{driver_instance="http,http://localhost:12
 
 ## Incoming and outgoing event metrics
 
-Available for the `file()`, `http()`, `network()`, `syslog()` drivers.
+Available for the `file()`, `http()`, `kubernetes()`, `network()`, `otel()`, `syslog()` drivers. 
+
+Note that metrics of the `kubernetes()` source (`driver="kubernetes"`) have some special labels: `cluster`, `namespace`, `pod`, for example:
+
+```json
+syslogng_input_event_bytes_total{cluster="k8s",driver="kubernetes",id="#anon-source0",namespace="default",pod="log-generator-1682517834-7797487dcc-49hqc"} 1859
+```
 
 ### input_event_bytes_total
 
@@ -250,40 +255,6 @@ syslogng_output_event_bytes_total{id="d_http#0",driver_instance="http,http://127
 
 ```json
 
-```
-
-## `kubernetes()` metrics
-
-### input_event_bytes_total
-
-|          |                         |
-| -------- | ----------------------- |
-| Type:    |  |
-| Level: |  |
-| Labels: | `cluster`, `driver`, `id`, `namespace`, `pod` |
-
-*Description:* 
-
-*Example:*
-
-```json
-syslogng_input_event_bytes_total{cluster="k8s",driver="kubernetes",id="#anon-source0",namespace="default",pod="log-generator-1682517834-7797487dcc-49hqc"} 1859
-```
-
-### input_events_total
-
-|          |                         |
-| -------- | ----------------------- |
-| Type:    |  |
-| Level: |  |
-| Labels: | `cluster`, `driver`, `id`, `namespace`, `pod` |
-
-*Description:* 
-
-*Example:*
-
-```json
-syslogng_input_events_total{cluster="k8s",driver="kubernetes",id="#anon-source0",namespace="default",pod="log-generator-1682517834-7797487dcc-49hqc"} 25
 ```
 
 ## Memory queue metrics
