@@ -1,0 +1,13 @@
+baseurl = "https://axoflow.com/docs/axosyslog-core/"
+buildDrafts = false
+
+
+[markup.goldmark.renderer]
+xhtml = true
+
+
+[params]
+
+[params.product]
+name = "syslog-ng"
+abbrev = "syslog-ng"
