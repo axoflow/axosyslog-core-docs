@@ -8,7 +8,12 @@
               indent="no"
               media-type="text/plain" />
 
-  <xsl:param name="section">7</xsl:param>
+  <xsl:param name="section">
+    <xsl:choose>
+      <xsl:when test="../xhtml:head/xhtml:meta[@name='section']"><xsl:value-of select="../xhtml:head/xhtml:meta[@name='section']/@content"/></xsl:when>
+      <xsl:otherwise>7</xsl:otherwise>
+    </xsl:choose>
+  </xsl:param>
   <xsl:param name="name"><xsl:choose>
   <xsl:when test="//xhtml:meta[@name='unix:name']"><xsl:value-of select="//xhtml:meta[@name='unix:name']/@content"/></xsl:when>
   <xsl:otherwise><xsl:value-of select="//xhtml:name"/></xsl:otherwise>
