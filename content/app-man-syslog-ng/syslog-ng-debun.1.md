@@ -27,7 +27,7 @@ The `syslog-debun` application is distributed with the {{% param "product.abbrev
 
 {{% /alert %}}
 
-The `syslog-debun` tool collects and saves information about your {{% param "product.ose" %}} installation, making troubleshooting easier, especially if you ask help about your {{% param "product.ose" %}} related problem.
+The `syslog-debun` tool collects and saves information about your {{% param "product.abbrev" %}} installation, making troubleshooting easier, especially if you ask help about your {{% param "product.abbrev" %}} related problem.
 
 
 
@@ -47,7 +47,7 @@ The `syslog-debun` tool collects and saves information about your {{% param "pro
 
 - `-R <directory>`
     
-    The directory where {{% param "product.ose" %}} is installed instead of `/opt/syslog-ng`.
+    The directory where {{% param "product.abbrev" %}} is installed instead of `/opt/syslog-ng`.
 
 - `-W <directory>`
     
@@ -59,7 +59,7 @@ The `syslog-debun` tool collects and saves information about your {{% param "pro
 
 - `-d`
     
-    Start {{% param "product.ose" %}} in debug mode, using the `-Fedv --enable-core` options.
+    Start {{% param "product.abbrev" %}} in debug mode, using the `-Fedv --enable-core` options.
     
     {{% alert title="Warning" color="warning" %}}
 Using this option under high message load may increase disk I/O during the debug, and the resulting debug bundle can be huge. To exit debug mode, press Enter.
@@ -67,11 +67,11 @@ Using this option under high message load may increase disk I/O during the debug
 
 - `-D <options>`
     
-    Start {{% param "product.ose" %}} in debug mode, using the specified command-line options. To exit debug mode, press Enter.
+    Start {{% param "product.abbrev" %}} in debug mode, using the specified command-line options. To exit debug mode, press Enter.
 
   - `-t <seconds>`
     
-    Run {{% param "product.ose" %}} in noninteractive debug mode for <span class="code"><seconds></span>, and automatically exit debug mode after the specified number of seconds.
+    Run {{% param "product.abbrev" %}} in noninteractive debug mode for <span class="code"><seconds></span>, and automatically exit debug mode after the specified number of seconds.
 
 - `-w <seconds>`
     
@@ -83,7 +83,7 @@ Using this option under high message load may increase disk I/O during the debug
 
 - `-s`
     
-    Enable syscall tracing (`strace -f` or `truss -f`). Note that using `-s` itself does not enable debug mode, only traces the system calls of an already running {{% param "product.ose" %}} process. To trace system calls in debug mode, use both the `-s` and `-d` options.
+    Enable syscall tracing (`strace -f` or `truss -f`). Note that using `-s` itself does not enable debug mode, only traces the system calls of an already running {{% param "product.abbrev" %}} process. To trace system calls in debug mode, use both the `-s` and `-d` options.
 
 
 
@@ -105,7 +105,7 @@ Capturing packets requires a packet capture tool on the host. The `syslog-debun`
 
 - `-t <seconds>`
     
-    Run {{% param "product.ose" %}} in noninteractive debug mode for `<seconds>`, and automatically exit debug mode after the specified number of seconds.
+    Run {{% param "product.abbrev" %}} in noninteractive debug mode for `<seconds>`, and automatically exit debug mode after the specified number of seconds.
 
 
 
@@ -129,19 +129,19 @@ Similar to `syslog-ng-debun -r`, but without privacy-sensitive information. For 
 syslog-ng-debun -r -d
 ```
 
-Similar to `syslog-ng-debun -r`, but it also stops {{% param "product.ose" %}}, then restarts it in debug mode (`-Fedv --enable-core`). To stop debug mode, press Enter. The output of the debug mode collected into a separate file, and also added to the debug bundle.
+Similar to `syslog-ng-debun -r`, but it also stops {{% param "product.abbrev" %}}, then restarts it in debug mode (`-Fedv --enable-core`). To stop debug mode, press Enter. The output of the debug mode collected into a separate file, and also added to the debug bundle.
 
 ```shell
 syslog-ng-debun -r -s
 ```
 
-Trace the system calls (using `strace` or `truss`) of an already running {{% param "product.ose" %}} process.
+Trace the system calls (using `strace` or `truss`) of an already running {{% param "product.abbrev" %}} process.
 
 ```shell
 syslog-ng-debun -r -d -s
 ```
 
-Restart {{% param "product.ose" %}} in debug mode, and also trace the system calls (using `strace` or `truss`) of the {{% param "product.ose" %}} process.
+Restart {{% param "product.abbrev" %}} in debug mode, and also trace the system calls (using `strace` or `truss`) of the {{% param "product.abbrev" %}} process.
 
 ```shell
 syslog-ng-debun -r -p
@@ -169,11 +169,11 @@ Collect `pcap` and debug mode output following this scenario:
 
 - Start packet capture with default parameters (`-p`)
 - Wait 5 seconds (`-w 5`)
-- Stop {{% param "product.ose" %}}
-- Start {{% param "product.ose" %}} in debug mode with default parameters (`-d`)
+- Stop {{% param "product.abbrev" %}}
+- Start {{% param "product.abbrev" %}} in debug mode with default parameters (`-d`)
 - Wait 10 seconds (`-t 10`)
-- Stop {{% param "product.ose" %}} debugging
-- Start {{% param "product.ose" %}}
+- Stop {{% param "product.abbrev" %}} debugging
+- Start {{% param "product.abbrev" %}}
 - Stop packet capturing
 
 ## Files

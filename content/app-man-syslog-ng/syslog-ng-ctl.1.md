@@ -21,7 +21,7 @@ weight:  4900
 
 {{% alert title="Note" color="info" %}}
 
-The `syslog-ng-ctl` application is distributed with the {{% param "product.ose" %}} system logging application, and is usually part of the {{% param "product.ose" %}} package. 
+The `syslog-ng-ctl` application is distributed with the {{% param "product.abbrev" %}} system logging application, and is usually part of the {{% param "product.abbrev" %}} package. 
 
 {{% /alert %}}
 
@@ -29,15 +29,15 @@ The `syslog-ng-ctl` application is distributed with the {{% param "product.ose" 
 
 The `syslog-ng-ctl` application is a utility that can be used to:
 
-- enable/disable various {{% param "product.ose" %}} messages for troubleshooting
+- enable/disable various {{% param "product.abbrev" %}} messages for troubleshooting
 
 - display statistics about the processed messages
 
 - handling password-protected private keys
 
-- display the currently running configuration of {{% param "product.ose" %}}
+- display the currently running configuration of {{% param "product.abbrev" %}}
 
-- reload the configuration of {{% param "product.ose" %}}.
+- reload the configuration of {{% param "product.abbrev" %}}.
 
 <span id="syslog-ng-ctl"></span>
 
@@ -51,7 +51,7 @@ Use the `syslog-ng-ctl log-level <level>` command to display verbose, trace, or 
 
 Use `syslog-ng-ctl log-level` without any parameters to display the current log level.
 
-If {{% param "product.ose" %}} was started with the `--stderr` or `-e` option, the messages will be sent to `stderr`. If not specified, {{% param "product.ose" %}} will log such messages to its internal source.
+If {{% param "product.abbrev" %}} was started with the `--stderr` or `-e` option, the messages will be sent to `stderr`. If not specified, {{% param "product.abbrev" %}} will log such messages to its internal source.
 
 If you need to use a non-standard control socket to access `syslog-ng`, use the `syslog-ng-ctl <command> --control=<socket>` command to specify the socket to use.
 
@@ -68,7 +68,7 @@ syslog-ng-ctl log-level verbose
 
 ## syslog-ng-ctl query
 
-The {{% param "product.ose" %}} application stores various data, metrics, and statistics in a hash table. Every property has a name and a value. For example:
+The {{% param "product.abbrev" %}} application stores various data, metrics, and statistics in a hash table. Every property has a name and a value. For example:
 
 ```shell
 [syslog-ng]
@@ -84,7 +84,7 @@ You can query the nodes of this tree, and also use filters to select the informa
 
 - Select all `dropped` value from every `stats` node: `\*.stats.dropped`
 
-The nodes and properties available in the tree depend on your {{% param "product.ose" %}} configuration (that is, the sources, destinations, and other objects you have configured), and also on your `stats-level()` settings.
+The nodes and properties available in the tree depend on your {{% param "product.abbrev" %}} configuration (that is, the sources, destinations, and other objects you have configured), and also on your `stats-level()` settings.
 
 
 
@@ -94,7 +94,7 @@ The nodes and properties available in the tree depend on your {{% param "product
 
 `syslog-ng-ctl query list`
 
-Use the `syslog-ng-ctl query list` command to display the list of metrics that {{% param "product.ose" %}} collects about the processed messages.
+Use the `syslog-ng-ctl query list` command to display the list of metrics that {{% param "product.abbrev" %}} collects about the processed messages.
 
 An example output:
 
@@ -176,7 +176,7 @@ The `syslog-ng-ctl query get` command has the following options:
     
     Add up the result of each matching node and return only a single number.
     
-    For example, the `syslog-ng-ctl query get --sum "destination\*.dropped"` command displays the number of messages dropped by the {{% param "product.ose" %}} instance.
+    For example, the `syslog-ng-ctl query get --sum "destination\*.dropped"` command displays the number of messages dropped by the {{% param "product.abbrev" %}} instance.
 
 - `--reset`
     
@@ -190,11 +190,11 @@ The `syslog-ng-ctl query get` command has the following options:
 
 `stats [options]`
 
-Use the `stats` command to display statistics about the processed messages. For details about the displayed statistics, see [The {{% param "product.ose" %}} documentation](https://axoflow.com/). The `stats` command has the following options:
+Use the `stats` command to display statistics about the processed messages. For details about the displayed statistics, see [The {{% param "product.abbrev" %}} documentation](https://axoflow.com/). The `stats` command has the following options:
 
 - `--control=<socket>` or `-c`
     
-    Specify the socket to use to access {{% param "product.ose" %}}. Only needed when using a non-standard socket.
+    Specify the socket to use to access {{% param "product.abbrev" %}}. Only needed when using a non-standard socket.
 
 - `--reset=<socket>` or `-r`
     
@@ -261,7 +261,7 @@ destination;df_facility_dot_err;;a;processed;0
 
 `syslog-ng-ctl credentials [options]`
 
-The `syslog-ng-ctl credentials status` command allows you to query the status of the private keys that {{% param "product.ose" %}} uses in the `network()` and `syslog()` drivers. You can also provide the passphrase for password-protected private keys using the `syslog-ng-ctl credentials add` command. For details on using password-protected keys, see [The syslog-ng Administrator Guide](https://www.syslog-ng.com).
+The `syslog-ng-ctl credentials status` command allows you to query the status of the private keys that {{% param "product.abbrev" %}} uses in the `network()` and `syslog()` drivers. You can also provide the passphrase for password-protected private keys using the `syslog-ng-ctl credentials add` command. For details on using password-protected keys, see [The syslog-ng Administrator Guide](https://www.syslog-ng.com).
 
 
 
@@ -271,7 +271,7 @@ The `syslog-ng-ctl credentials status` command allows you to query the status of
 
 `syslog-ng-ctl credentials status [options]`
 
-The `syslog-ng-ctl credentials status` command allows you to query the status of the private keys that {{% param "product.ose" %}} uses in the `network()` and `syslog()` drivers. The command returns the list of private keys used, and their status. For example:
+The `syslog-ng-ctl credentials status` command allows you to query the status of the private keys that {{% param "product.abbrev" %}} uses in the `network()` and `syslog()` drivers. The command returns the list of private keys used, and their status. For example:
 
 ```shell
   syslog-ng-ctl credentials status
@@ -279,7 +279,7 @@ The `syslog-ng-ctl credentials status` command allows you to query the status of
   /home/user/ssl_test/client-1/client-encrypted.key SUCCESS
 ```
 
-If the status of a key is PENDING, you must provide the passphrase for the key, otherwise {{% param "product.ose" %}} cannot use it. The sources and destinations that use these keys will not work until you provide the passwords. Other parts of the {{% param "product.ose" %}} configuration will be unaffected. You must provide the passphrase of the password-protected keys every time {{% param "product.ose" %}} is restarted.
+If the status of a key is PENDING, you must provide the passphrase for the key, otherwise {{% param "product.abbrev" %}} cannot use it. The sources and destinations that use these keys will not work until you provide the passwords. Other parts of the {{% param "product.abbrev" %}} configuration will be unaffected. You must provide the passphrase of the password-protected keys every time {{% param "product.abbrev" %}} is restarted.
 
 The following log message also notifies you of PENDING passphrases:
 
@@ -289,7 +289,7 @@ Waiting for password; keyfile='private.key'
 
 - `--control=<socket>` or `-c`
     
-    Specify the socket to use to access {{% param "product.ose" %}}. Only needed when using a non-standard socket.
+    Specify the socket to use to access {{% param "product.abbrev" %}}. Only needed when using a non-standard socket.
 
 
 
@@ -299,7 +299,7 @@ Waiting for password; keyfile='private.key'
 
 `syslog-ng-ctl credentials add [options]`
 
-You can add the passphrase to a password-protected private key file using the following command. {{% param "product.ose" %}} will display a prompt for you to enter the passphrase. We recommend that you use this method.
+You can add the passphrase to a password-protected private key file using the following command. {{% param "product.abbrev" %}} will display a prompt for you to enter the passphrase. We recommend that you use this method.
 
 ```shell
 syslog-ng-ctl credentials add --id=<path-to-the-key>
@@ -319,11 +319,11 @@ echo "<passphrase-of-the-key>" | syslog-ng-ctl credentials add --id=<path-to-the
 
 - `--control=<socket>` or `-c`
     
-    Specify the socket to use to access {{% param "product.ose" %}}. Only needed when using a non-standard socket.
+    Specify the socket to use to access {{% param "product.abbrev" %}}. Only needed when using a non-standard socket.
 
 - `--id=<path-to-the-key>` or `-i`
     
-    The path to the password-protected private key file. This is the same path that you use in the `key-file()` option of the {{% param "product.ose" %}} configuration file.
+    The path to the password-protected private key file. This is the same path that you use in the `key-file()` option of the {{% param "product.abbrev" %}} configuration file.
 
 - `--secret=<passphrase-of-the-key>` or `-s`
     
@@ -337,7 +337,7 @@ echo "<passphrase-of-the-key>" | syslog-ng-ctl credentials add --id=<path-to-the
 
 `syslog-ng-ctl config [options]`
 
-Use the `syslog-ng-ctl config` command to display the configuration that {{% param "product.ose" %}} is currently running. By default, only the content of the main configuration file is displayed, included files are not resolved. To resolve included files and display the entire configuration, use the `syslog-ng-ctl config --preprocessed` command.
+Use the `syslog-ng-ctl config` command to display the configuration that {{% param "product.abbrev" %}} is currently running. By default, only the content of the main configuration file is displayed, included files are not resolved. To resolve included files and display the entire configuration, use the `syslog-ng-ctl config --preprocessed` command.
 
 Starting with {{% param "product.name" %}} version 4.2, you can display the configuration identifier (if set) and the SHA256 has of the output of the `syslog-ng-ctl config --preprocessed` command by running `syslog-ng-ctl config --id`. For details, see {{% xref "/chapter-configuration-file/configuration-identifier/_index.md" %}}.
 
@@ -347,7 +347,7 @@ Starting with {{% param "product.name" %}} version 4.2, you can display the conf
 
 `syslog-ng-ctl reload [options]`
 
-Use the `syslog-ng-ctl reload` command to reload the configuration file of {{% param "product.ose" %}} without having to restart the {{% param "product.ose" %}} application. The `syslog-ng-ctl reload` works like a SIGHUP.
+Use the `syslog-ng-ctl reload` command to reload the configuration file of {{% param "product.abbrev" %}} without having to restart the {{% param "product.abbrev" %}} application. The `syslog-ng-ctl reload` works like a SIGHUP.
 
 The `syslog-ng-ctl reload` command returns 0 if the operation was successful, 1 otherwise.
 
@@ -357,9 +357,9 @@ The `syslog-ng-ctl reload` command returns 0 if the operation was successful, 1 
 
 Available in {{% param "product.abbrev" %}} 4.2 and later.
 
-You can use the `syslog-ng-ctl healthcheck` command to query the healthcheck status of {{% param "product.ose" %}}. The following health values are reported:
+You can use the `syslog-ng-ctl healthcheck` command to query the healthcheck status of {{% param "product.abbrev" %}}. The following health values are reported:
 
-- `mainloop_io_worker_roundtrip_latency_nanoseconds`: mainloop->io-worker-job->mainloop roundtrip - a basic latency measure for {{% param "product.ose" %}}.
+- `mainloop_io_worker_roundtrip_latency_nanoseconds`: mainloop->io-worker-job->mainloop roundtrip - a basic latency measure for {{% param "product.abbrev" %}}.
 - `io_worker_latency_nanoseconds`: io-worker-job start latency.
 - `syslogng_internal_events_queue_usage_ratio`: If you are using the [`internal()`]({{< relref "/chapter-sources/configuring-sources-internal/_index.md" >}}) source in your configuration, then this value shows the saturation of the internal source's queue, ranging from 0 to 1. Non-zero values indicate some kind of disruption in the pipelines.
 

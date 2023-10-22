@@ -24,7 +24,7 @@ weight:  4900
 
 
 
-The {{% param "product.ose" %}} application is a flexible and highly scalable system logging application. Typically, {{% param "product.ose" %}} is used to manage log messages and implement centralized logging, where the aim is to collect the log messages of several devices on a single, central log server. The different devices - called clients - all run {{% param "product.ose" %}}, and collect the log messages from the various applications, files, and other sources. The clients send all important log messages to the remote {{% param "product.ose" %}} server, where the server sorts and stores them.
+The {{% param "product.abbrev" %}} application is a flexible and highly scalable system logging application. Typically, {{% param "product.abbrev" %}} is used to manage log messages and implement centralized logging, where the aim is to collect the log messages of several devices on a single, central log server. The different devices - called clients - all run {{% param "product.abbrev" %}}, and collect the log messages from the various applications, files, and other sources. The clients send all important log messages to the remote {{% param "product.abbrev" %}} server, where the server sorts and stores them.
 
 
 
@@ -32,11 +32,11 @@ The {{% param "product.ose" %}} application is a flexible and highly scalable sy
 
 - `--caps`
     
-    Run {{% param "product.ose" %}} process with the specified POSIX capability flags.
+    Run {{% param "product.abbrev" %}} process with the specified POSIX capability flags.
     
-    - If the `--no-caps` option is not set, {{% param "product.ose" %}} has been compiled with the `--enable-linux-caps compile` option, and the host supports `CAP_SYSLOG`, {{% param "product.ose" %}} uses the following capabilities: `cap_net_bind_service`, `cap_net_broadcast`, `cap_net_raw`, `cap_dac_read_search`, `cap_dac_override`, `cap_chown`, `cap_fowner=p cap_syslog=ep`
+    - If the `--no-caps` option is not set, {{% param "product.abbrev" %}} has been compiled with the `--enable-linux-caps compile` option, and the host supports `CAP_SYSLOG`, {{% param "product.abbrev" %}} uses the following capabilities: `cap_net_bind_service`, `cap_net_broadcast`, `cap_net_raw`, `cap_dac_read_search`, `cap_dac_override`, `cap_chown`, `cap_fowner=p cap_syslog=ep`
   
-    - If the `--no-caps` option is not set, and the host does not support `CAP_SYSLOG`, {{% param "product.ose" %}} uses the following capabilities: `cap_net_bind_service`, `cap_net_broadcast`, `cap_net_raw`, `cap_dac_read_search`, `cap_dac_override`, `cap_chown`, `cap_fowner=p cap_sys_admin=ep`
+    - If the `--no-caps` option is not set, and the host does not support `CAP_SYSLOG`, {{% param "product.abbrev" %}} uses the following capabilities: `cap_net_bind_service`, `cap_net_broadcast`, `cap_net_raw`, `cap_dac_read_search`, `cap_dac_override`, `cap_chown`, `cap_fowner=p cap_sys_admin=ep`
     
     For example:
     
@@ -66,11 +66,11 @@ The {{% param "product.ose" %}} application is a flexible and highly scalable sy
 
 - `--default-modules`
     
-    A comma-separated list of the modules that are loaded automatically. Modules not loaded automatically can be loaded by including the `@module <modulename>` statement in the {{% param "product.ose" %}} configuration file. Available only in {{% param "product.ose" %}} version 4.1 and later.
+    A comma-separated list of the modules that are loaded automatically. Modules not loaded automatically can be loaded by including the `@module <modulename>` statement in the {{% param "product.abbrev" %}} configuration file. Available only in {{% param "product.abbrev" %}} version 4.1 and later.
 
 - `--enable-core`
     
-    Enable {{% param "product.ose" %}} to write core files in case of a crash to help support and debugging.
+    Enable {{% param "product.abbrev" %}} to write core files in case of a crash to help support and debugging.
 
 - `--fd-limit <number>`
     
@@ -78,7 +78,7 @@ The {{% param "product.ose" %}} application is a flexible and highly scalable sy
 
 - `--foreground` or `-F`
     
-    Do not daemonize, run in the foreground. When running in the foreground, {{% param "product.ose" %}} starts from the current directory (`$CWD`) so it can create core files (normally, {{% param "product.ose" %}} starts from `/$PREFIX/var`).
+    Do not daemonize, run in the foreground. When running in the foreground, {{% param "product.abbrev" %}} starts from the current directory (`$CWD`) so it can create core files (normally, {{% param "product.abbrev" %}} starts from `/$PREFIX/var`).
 
 - `--group <group>` or `-g <group>`
     
@@ -90,7 +90,7 @@ The {{% param "product.ose" %}} application is a flexible and highly scalable sy
 
 - `--log-level <level>`
 
-    Set the internal log level of {{% param "product.ose" %}} to `default`, `verbose`, `debug`, or `trace`. Available in {{% param "product.ose" %}} 4.0 and later.
+    Set the internal log level of {{% param "product.abbrev" %}} to `default`, `verbose`, `debug`, or `trace`. Available in {{% param "product.abbrev" %}} 4.0 and later.
 
 - `--module-registry`
     
@@ -98,9 +98,9 @@ The {{% param "product.ose" %}} application is a flexible and highly scalable sy
 
 - `--no-caps`
     
-    Run {{% param "product.ose" %}} as root, without capability-support. This is the default behavior. On Linux, it is possible to run {{% param "product.ose" %}} as non-root with capability-support if {{% param "product.ose" %}} was compiled with the `--enable-linux-caps` option enabled. (Run `syslog-ng --version` to display the list of enabled build parameters.)
+    Run {{% param "product.abbrev" %}} as root, without capability-support. This is the default behavior. On Linux, it is possible to run {{% param "product.abbrev" %}} as non-root with capability-support if {{% param "product.abbrev" %}} was compiled with the `--enable-linux-caps` option enabled. (Run `syslog-ng --version` to display the list of enabled build parameters.)
     
-    To run {{% param "product.ose" %}} with specific capabilities, use the `--caps` option.
+    To run {{% param "product.abbrev" %}} with specific capabilities, use the `--caps` option.
 
 - `--persist-file <persist-file>` or `-R <persist-file>`
     
@@ -112,15 +112,15 @@ The {{% param "product.ose" %}} application is a flexible and highly scalable sy
 
 - `--preprocess-into <output-file>`
     
-    After processing the configuration file and resolving included files and variables, write the resulting configuration into the specified output file. Available only in {{% param "product.ose" %}} 4 F1 and later.
+    After processing the configuration file and resolving included files and variables, write the resulting configuration into the specified output file. Available only in {{% param "product.abbrev" %}} 4 F1 and later.
 
 - `--process-mode <mode>`
     
-    Sets how to run {{% param "product.ose" %}}: in the `foreground` (mainly used for debugging), in the `background` as a daemon, or in `safe-background` mode. By default, `syslog-ng` runs in `safe-background` mode. This mode creates a supervisor process called `supervising syslog-ng`, that restarts {{% param "product.ose" %}} if it crashes.
+    Sets how to run {{% param "product.abbrev" %}}: in the `foreground` (mainly used for debugging), in the `background` as a daemon, or in `safe-background` mode. By default, `syslog-ng` runs in `safe-background` mode. This mode creates a supervisor process called `supervising syslog-ng`, that restarts {{% param "product.abbrev" %}} if it crashes.
 
 - `--stderr` or `-e`
 
-    Log internal messages of {{% param "product.ose" %}} to `stderr`. Mainly used for debugging purposes in conjunction with the `--foreground` option. If not specified, `syslog-ng` logs such messages to its internal source.
+    Log internal messages of {{% param "product.abbrev" %}} to `stderr`. Mainly used for debugging purposes in conjunction with the `--foreground` option. If not specified, `syslog-ng` logs such messages to its internal source.
 
 - `--syntax-only` or `-s`
     
@@ -132,7 +132,7 @@ The {{% param "product.ose" %}} application is a flexible and highly scalable sy
 
 - `--verbose` or `-v`
     
-    Enable verbose logging used to troubleshoot {{% param "product.ose" %}}.
+    Enable verbose logging used to troubleshoot {{% param "product.abbrev" %}}.
 
 - `--version` or `-V`
     
@@ -140,7 +140,7 @@ The {{% param "product.ose" %}} application is a flexible and highly scalable sy
 
 - `--worker-threads`
     
-    Sets the number of worker threads {{% param "product.ose" %}} can use, including the main {{% param "product.ose" %}} thread. Note that certain operations in {{% param "product.ose" %}} can use threads that are not limited by this option. This setting has effect only when {{% param "product.ose" %}} is running in multithreaded mode. Available only in {{% param "product.ose" %}} 4 F1 and later. See `The {{% param "product.ose" %}} 7 Administrator Guide` for details.
+    Sets the number of worker threads {{% param "product.abbrev" %}} can use, including the main {{% param "product.abbrev" %}} thread. Note that certain operations in {{% param "product.abbrev" %}} can use threads that are not limited by this option. This setting has effect only when {{% param "product.abbrev" %}} is running in multithreaded mode. Available only in {{% param "product.abbrev" %}} 4 F1 and later. See `The {{% param "product.abbrev" %}} 7 Administrator Guide` for details.
 
 ## Files
 

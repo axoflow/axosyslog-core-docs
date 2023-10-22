@@ -166,7 +166,7 @@ The HEADER part contains the following elements:
 
 {{% alert title="Note" color="info" %}}
 
-The {{% param "product.ose" %}} application supports other timestamp formats as well, like ISO, or the PIX extended format. The timestamp used in the IETF-syslog protocol is derived from RFC3339, which is based on ISO8601. For details, see the `ts-format()` option in {{% xref "/chapter-global-options/reference-options/_index.md" %}}.
+The {{% param "product.abbrev" %}} application supports other timestamp formats as well, like ISO, or the PIX extended format. The timestamp used in the IETF-syslog protocol is derived from RFC3339, which is based on ISO8601. For details, see the `ts-format()` option in {{% xref "/chapter-global-options/reference-options/_index.md" %}}.
 
 {{% /alert %}}
 

@@ -14,7 +14,7 @@ The message has the following parts:
 
   - The header of the complies with the [RFC5424 message format]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-ietfsyslog/_index.md" >}}), where the PROGRAM field is set to `@syslog-ng`, and the SDATA field is empty.
 
-  - The MESSAGE part is in JSON format, and contains the actual message, as well as any name-value pairs that {{% param "product.abbrev" %}} has attached to or extracted from the message. The `${._TAGS}` field contains the identifier of the {{% param "product.ose" %}} source that has originally received the message on the first {{% param "product.ose" %}} node.
+  - The MESSAGE part is in JSON format, and contains the actual message, as well as any name-value pairs that {{% param "product.abbrev" %}} has attached to or extracted from the message. The `${._TAGS}` field contains the identifier of the {{% param "product.abbrev" %}} source that has originally received the message on the first {{% param "product.abbrev" %}} node.
 
 To send a message in EWMM format, you can use the [`syslog-ng()` destination driver]({{< relref "/chapter-destinations/destination-syslog-ng/_index.md" >}}), or the [`format-ewmm()` template function]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md#template-function-format-ewmm" >}}).
 

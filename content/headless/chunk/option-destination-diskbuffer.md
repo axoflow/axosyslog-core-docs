@@ -14,7 +14,7 @@
 
 *Description:* This is a required option. The maximum size of the disk-buffer in bytes. The minimum value is `1048576` bytes. If you set a smaller value, the minimum value will be used automatically. It replaces the old `log-disk-fifo-size()` option.
 
-In {{% param "product.ose" %}} version 4.2 and earlier, this option was called `disk-buf-size()`.
+In {{% param "product.abbrev" %}} version 4.2 and earlier, this option was called `disk-buf-size()`.
 
 ### compaction()
 
@@ -42,7 +42,7 @@ Simply unsetting these name-value pairs by using the `unset()` rewrite operation
 
 {{% alert title="Note" color="info" %}}
 
-If the `dir()` path provided by the user does not exist, {{% param "product.ose" %}} creates the path with the same permission as the running instance.
+If the `dir()` path provided by the user does not exist, {{% param "product.abbrev" %}} creates the path with the same permission as the running instance.
 
 {{% /alert %}}
 
@@ -54,7 +54,7 @@ If the `dir()` path provided by the user does not exist, {{% param "product.ose"
 
 *Description:* Use this option if the option `reliable()` is set to `yes`. This option contains the size of the messages in bytes that is used in the memory part of the disk buffer. It replaces the old `log-fifo-size()` option. It does not inherit the value of the global `log-fifo-size()` option, even if it is provided. Note that this option will be ignored if the option `reliable()` is set to `no`.
 
-In {{% param "product.ose" %}} version 4.2 and earlier, this option was called `mem-buf-size()`.
+In {{% param "product.abbrev" %}} version 4.2 and earlier, this option was called `mem-buf-size()`.
 
 ### flow-control-window-size()
 
@@ -64,7 +64,7 @@ In {{% param "product.ose" %}} version 4.2 and earlier, this option was called `
 
 *Description:* Use this option if the option `reliable()` is set to `no`. This option contains the number of messages stored in overflow queue. It replaces the old `log-fifo-size()` option. It inherits the value of the global `log-fifo-size()` option if provided. If it is not provided, the default value is `10000` messages. Note that this option will be ignored if the option `reliable()` is set to `yes`.
 
-In {{% param "product.ose" %}} version 4.2 and earlier, this option was called `mem-buf-length()`.
+In {{% param "product.abbrev" %}} version 4.2 and earlier, this option was called `mem-buf-length()`.
 
 ### front-cache-size()
 
@@ -76,7 +76,7 @@ In {{% param "product.ose" %}} version 4.2 and earlier, this option was called `
 
 Options `reliable()` and `capacity-bytes()` are required options.
 
-In {{% param "product.ose" %}} version 4.2 and earlier, this option was called `qout-size()`.
+In {{% param "product.abbrev" %}} version 4.2 and earlier, this option was called `qout-size()`.
 
 ### prealloc() {#diskbuf-prealloc}
 

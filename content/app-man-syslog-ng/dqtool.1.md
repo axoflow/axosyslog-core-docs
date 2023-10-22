@@ -75,13 +75,13 @@ Mar  3 10:52:05 tristram localprg[1234]: seq: 0000011631, runid: 1267609923, sta
 
 `relocate [options] [files]`
 
-Use the `relocate` command to move or rename disk-buffer (also called disk-queue) files. Note that this option modifies the persist file. Stop {{% param "product.ose" %}} before using this command.
+Use the `relocate` command to move or rename disk-buffer (also called disk-queue) files. Note that this option modifies the persist file. Stop {{% param "product.abbrev" %}} before using this command.
 
 The `cat` command has the following options:
 
 - `--all` or `-a`
 
-    Relocate every disk-buffer file that is listed in the {{% param "product.ose" %}} persist file.
+    Relocate every disk-buffer file that is listed in the {{% param "product.abbrev" %}} persist file.
 
 - `--new_path` or `-n`
 
@@ -89,7 +89,7 @@ The `cat` command has the following options:
 
 - `--persist` or `-p`
 
-    The path to the {{% param "product.ose" %}} persist file. The `relocate` command automatically updates the entries of the disk-buffer files in the persist file.
+    The path to the {{% param "product.abbrev" %}} persist file. The `relocate` command automatically updates the entries of the disk-buffer files in the persist file.
 
 ## Examples
 

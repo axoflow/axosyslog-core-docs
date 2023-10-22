@@ -21,31 +21,31 @@ weight:  4900
 
 
 
-The {{% param "product.ose" %}} application is a flexible and highly scalable system logging application. Typically, {{% param "product.ose" %}} is used to manage log messages and implement centralized logging, where the aim is to collect the log messages of several devices on a single, central log server. The different devices - called {{% param "product.syslog-ng" %}} clients - all run {{% param "product.ose" %}}, and collect the log messages from the various applications, files, and other sources. The clients send all important log messages to the remote {{% param "product.ose" %}} server, where the server sorts and stores them.
+The {{% param "product.abbrev" %}} application is a flexible and highly scalable system logging application. Typically, {{% param "product.abbrev" %}} is used to manage log messages and implement centralized logging, where the aim is to collect the log messages of several devices on a single, central log server. The different devices - called {{% param "product.syslog-ng" %}} clients - all run {{% param "product.abbrev" %}}, and collect the log messages from the various applications, files, and other sources. The clients send all important log messages to the remote {{% param "product.abbrev" %}} server, where the server sorts and stores them.
 
 
 
 <span id="idm45287286179568"></span>
 
-## Basic concepts of {{% param "product.ose" %}}
+## Basic concepts of {{% param "product.abbrev" %}}
 
-The {{% param "product.ose" %}} application reads incoming messages and forwards them to the selected destinations. The {{% param "product.ose" %}} application can receive messages from files, remote hosts, and other sources.
+The {{% param "product.abbrev" %}} application reads incoming messages and forwards them to the selected destinations. The {{% param "product.abbrev" %}} application can receive messages from files, remote hosts, and other sources.
 
 <span id="idm45287286176944"></span>
 
-Log messages enter {{% param "product.ose" %}} in one of the defined sources, and are sent to one or more destinations.
+Log messages enter {{% param "product.abbrev" %}} in one of the defined sources, and are sent to one or more destinations.
 
 <span id="idm45287286175248"></span><span id="idm45287286174480"></span>
 
-Sources and destinations are independent objects, log paths define what {{% param "product.ose" %}} does with a message, connecting the sources to the destinations. A log path consists of one or more sources and one or more destinations: messages arriving from a source are sent to every destination listed in the log path. A log path defined in {{% param "product.ose" %}} is called a log statement.
+Sources and destinations are independent objects, log paths define what {{% param "product.abbrev" %}} does with a message, connecting the sources to the destinations. A log path consists of one or more sources and one or more destinations: messages arriving from a source are sent to every destination listed in the log path. A log path defined in {{% param "product.abbrev" %}} is called a log statement.
 
-Optionally, log paths can include filters. Filters are rules that select only certain messages, for example, selecting only messages sent by a specific application. If a log path includes filters, {{% param "product.ose" %}} sends only the messages satisfying the filter rules to the destinations set in the log path.
+Optionally, log paths can include filters. Filters are rules that select only certain messages, for example, selecting only messages sent by a specific application. If a log path includes filters, {{% param "product.abbrev" %}} sends only the messages satisfying the filter rules to the destinations set in the log path.
 
 Other optional elements that can appear in log statements are parsers and rewriting rules. Parsers segment messages into different fields to help processing the messages, while rewrite rules modify the messages by adding, replacing, or removing parts of the messages.
 
 
 
-## Configuring {{% param "product.ose" %}}
+## Configuring {{% param "product.abbrev" %}}
 
 - The main body of the configuration file consists of object definitions: sources, destinations, logpaths define which log message are received and where they are sent. All identifiers, option names and attributes, and any other strings used in the `syslog-ng.conf` configuration file are case sensitive. Object definitions (also called statements) have the following syntax:
     
@@ -57,7 +57,7 @@ Other optional elements that can appear in log statements are parsers and rewrit
       
         Identifier of the object: A unique name identifying the object. When using a reserved word as an identifier, enclose the identifier in quotation marks (`""`).
       
-        All identifiers, attributes, and any other strings used in the {{% param "product.ose" %}} configuration file are case sensitive.
+        All identifiers, attributes, and any other strings used in the {{% param "product.abbrev" %}} configuration file are case sensitive.
       
         {{% alert title="Note" color="info" %}}
       
@@ -111,7 +111,7 @@ unix-stream("<path-to-socket>" group(log) max-connections(10)); };
 ```
 
 
-- Some options are global options, or can be set globally, for example, whether {{% param "product.ose" %}} should use DNS resolution to resolve IP addresses.
+- Some options are global options, or can be set globally, for example, whether {{% param "product.abbrev" %}} should use DNS resolution to resolve IP addresses.
     
     ```shell
         options { use-dns(no); };
@@ -121,7 +121,7 @@ unix-stream("<path-to-socket>" group(log) max-connections(10)); };
 
   - Objects can be defined inline as well. This is useful if you use the object only once (for example, a filter).
 
-  - To add comments to the configuration file, start a line with `#` and write your comments. These lines are ignored by {{% param "product.ose" %}}.
+  - To add comments to the configuration file, start a line with `#` and write your comments. These lines are ignored by {{% param "product.abbrev" %}}.
     
     ```shell
     #Comment: This is a stream source
@@ -150,7 +150,7 @@ destination d_tcp { network("10.1.2.3" port(1999) localport(999)); };
 log { source(s_localhost); destination(d_tcp); };
 ```
 
-The {{% param "product.ose" %}} application has a number of global options governing DNS usage, the timestamp format used, and other general points. Each option may have parameters, similarly to driver specifications. To set global options add an option statement to the {{% param "product.ose" %}} configuration file using the following syntax:
+The {{% param "product.abbrev" %}} application has a number of global options governing DNS usage, the timestamp format used, and other general points. Each option may have parameters, similarly to driver specifications. To set global options add an option statement to the {{% param "product.abbrev" %}} configuration file using the following syntax:
 
 ```shell
 options { option1(params); option2(params); ... };
@@ -159,23 +159,23 @@ options { option1(params); option2(params); ... };
 
 ## Example: Using global options
 
-To disable domain name resolving, add the following line to the {{% param "product.ose" %}} configuration file:
+To disable domain name resolving, add the following line to the {{% param "product.abbrev" %}} configuration file:
 
 ```shell
 options { use-dns(no); };
 ```
 
 
-The sources, destinations, and filters available in {{% param "product.ose" %}} are listed below. For details, see the [{{% param "product.ose" %}} documentation](https://axoflow.com/).
+The sources, destinations, and filters available in {{% param "product.abbrev" %}} are listed below. For details, see the [{{% param "product.abbrev" %}} documentation](https://axoflow.com/).
 
 
-## Table: Source drivers available in {{% param "product.ose" %}}
+## Table: Source drivers available in {{% param "product.abbrev" %}}
 
 | Name                             | Description                                                                                                                                  |
 | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | [file()](#)                      | Opens the specified file and reads messages.                                                                                                 |
 | [wildcard-file()](#)             | Reads messages from multiple files and directories.                                                                                          |
-| [internal()](#)                  | Messages generated internally in {{% param "product.ose" %}}.                                                                           |
+| [internal()](#)                  | Messages generated internally in {{% param "product.abbrev" %}}.                                                                           |
 | [network()](#)                   | Receives messages from remote hosts using the [BSD-syslog protocol](#) over IPv4 and IPv6. Supports the TCP, UDP, and TLS network protocols. |
 | [nodejs()](#)                    | Receives JSON messages from nodejs applications.                                                                                             |
 | [mbox()](#)                      | Read e-mail messages from local mbox files, and convert them to multiline log messages.                                                      |
@@ -186,7 +186,7 @@ The sources, destinations, and filters available in {{% param "product.ose" %}} 
 | [snmptrap()](#)                  | Read and parse the SNMP traps of the Net-SNMP's snmptrapd application.                                                                       |
 | [sun-stream(), sun-streams()](#) | Opens the specified STREAMS device on Solaris systems and reads incoming messages.                                                           |
 | [syslog()](#)                    | Listens for incoming messages using the new [IETF-standard syslog protocol](#).                                                              |
-| [system()](#)                    | Automatically detects which platform {{% param "product.ose" %}} is running on, and collects the native log messages of that platform.  |
+| [system()](#)                    | Automatically detects which platform {{% param "product.abbrev" %}} is running on, and collects the native log messages of that platform.  |
 | [systemd-journal()](#)           | Collects messages directly from the journal of platforms that use systemd.                                                                   |
 | [systemd-syslog()](#)            | Collects messages from the journal using a socket on platforms that use `systemd`.                                                         |
 | [unix-dgram()](#)                | Opens the specified unix socket in <span>SOCK_DGRAM</span> mode and listens for incoming messages.                                          |
@@ -218,7 +218,7 @@ The sources, destinations, and filters available in {{% param "product.ose" %}} 
 | [redis()](#)        | Sends messages as name-value pairs to a [Redis](https://redis.io/) key-value store.                                                                                                                 |
 | [riemann()](#)      | Sends metrics or events to a [Riemann](http://riemann.io/) monitoring system.                                                                                                                       |
 | [smtp()](#)         | Sends e-mail messages to the specified recipients.                                                                                                                                                  |
-| [sql()](#)          | Sends messages into an SQL database. In addition to the standard {{% param "product.ose" %}} packages, the <span>sql()</span> destination requires database-specific packages to be installed. |
+| [sql()](#)          | Sends messages into an SQL database. In addition to the standard {{% param "product.abbrev" %}} packages, the <span>sql()</span> destination requires database-specific packages to be installed. |
 | [stomp()](#)        | Sends messages to a STOMP server.                                                                                                                                                                   |
 | [syslog()](#)       | Sends messages to the specified remote host using the [IETF-syslog protocol](#). The IETF standard supports message transport using the UDP, TCP, and TLS networking protocols.                     |
 | [unix-dgram()](#)   | Sends messages to the specified unix socket in `SOCK_DGRAM` style (BSD).                                                                                                                         |
@@ -242,7 +242,7 @@ The sources, destinations, and filters available in {{% param "product.ose" %}} 
 | [message()](#)             | Use a regular expression to filter messages based on their content.                       |
 | [netmask()](#)             | Filter messages based on the IP address of the sending host.                              |
 | [program()](#)             | Filter messages based on the sending application.                                         |
-| [source()](#)              | Select messages of the specified {{% param "product.ose" %}} source statement.       |
+| [source()](#)              | Select messages of the specified {{% param "product.abbrev" %}} source statement.       |
 | [tags()](#)                | Select messages having the specified tag.                                                 |
 
 

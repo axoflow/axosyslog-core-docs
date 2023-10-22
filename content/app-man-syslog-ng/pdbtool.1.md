@@ -69,7 +69,7 @@ Lists every name-value pair that can be set by the rules of the pattern database
 
 `dump [options]`
 
-Display the RADIX tree built from the patterns. This shows how are the patterns represented in {{% param "product.ose" %}} and it might also help to track down pattern-matching problems. The dump utility can dump the tree used for matching the PROGRAM or the MSG parts.
+Display the RADIX tree built from the patterns. This shows how are the patterns represented in {{% param "product.abbrev" %}} and it might also help to track down pattern-matching problems. The dump utility can dump the tree used for matching the PROGRAM or the MSG parts.
 
 - `--debug` or `-d`
     
@@ -295,7 +295,7 @@ pdbtool patternize --support=2.5 --file=/var/log/messages
 
 `test [options]`
 
-Use the `test` command to validate a pattern database XML file. Note that you must have the `xmllint` application installed. The `test` command is available only in {{% param "product.ose" %}} version 3.2 and later.
+Use the `test` command to validate a pattern database XML file. Note that you must have the `xmllint` application installed. The `test` command is available only in {{% param "product.abbrev" %}} version 3.2 and later.
 
 - `--color-out` or `-c`
     
