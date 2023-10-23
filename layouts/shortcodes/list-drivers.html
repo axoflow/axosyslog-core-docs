@@ -1,0 +1,18 @@
+<!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
+{{ $section := .Get 0 }}
+
+{{- range where .Site.Sections "Section" $section -}}
+<table>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+    {{ range .Pages }}
+      {{ if not .Page.Params.excludeFromDriverList }}
+      <tr>
+        <td> <a href="{{ .Permalink }}">{{ .Page.Params.driver }}</a> </td><td> {{ .Page.Params.short_description }} </td>
+      </tr>
+      {{ end }}
+    {{ end }}
+</table> 
+{{ end }}
