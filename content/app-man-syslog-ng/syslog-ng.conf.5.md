@@ -169,63 +169,15 @@ options { use-dns(no); };
 The sources, destinations, and filters available in {{% param "product.abbrev" %}} are listed below. For details, see the [{{% param "product.abbrev" %}} documentation](https://axoflow.com/).
 
 
-## Table: Source drivers available in {{% param "product.abbrev" %}}
+## Table: Available source drivers
 
-| Name                             | Description                                                                                                                                  |
-| -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| [file()](#)                      | Opens the specified file and reads messages.                                                                                                 |
-| [wildcard-file()](#)             | Reads messages from multiple files and directories.                                                                                          |
-| [internal()](#)                  | Messages generated internally in {{% param "product.abbrev" %}}.                                                                           |
-| [network()](#)                   | Receives messages from remote hosts using the [BSD-syslog protocol](#) over IPv4 and IPv6. Supports the TCP, UDP, and TLS network protocols. |
-| [nodejs()](#)                    | Receives JSON messages from nodejs applications.                                                                                             |
-| [mbox()](#)                      | Read e-mail messages from local mbox files, and convert them to multiline log messages.                                                      |
-| [osquery()](#)                   | Run osquery queries, and convert their results into log messages.                                                                            |
-| [pacct()](#)                     | Reads messages from the process accounting logs on Linux.                                                                                    |
-| [pipe()](#)                      | Opens the specified named pipe and reads messages.                                                                                           |
-| [program()](#)                   | Opens the specified application and reads messages from its standard output.                                                                 |
-| [snmptrap()](#)                  | Read and parse the SNMP traps of the Net-SNMP's snmptrapd application.                                                                       |
-| [sun-stream(), sun-streams()](#) | Opens the specified STREAMS device on Solaris systems and reads incoming messages.                                                           |
-| [syslog()](#)                    | Listens for incoming messages using the new [IETF-standard syslog protocol](#).                                                              |
-| [system()](#)                    | Automatically detects which platform {{% param "product.abbrev" %}} is running on, and collects the native log messages of that platform.  |
-| [systemd-journal()](#)           | Collects messages directly from the journal of platforms that use systemd.                                                                   |
-| [systemd-syslog()](#)            | Collects messages from the journal using a socket on platforms that use `systemd`.                                                         |
-| [unix-dgram()](#)                | Opens the specified unix socket in <span>SOCK_DGRAM</span> mode and listens for incoming messages.                                          |
-| [unix-stream()](#)               | Opens the specified unix socket in `SOCK_STREAM` mode and listens for incoming messages.                                                  |
-| [stdin()](#)                     | Collects messages from the standard input stream.                                                                                            |
-
-
+{{< list-drivers "chapter-sources" >}}
 
 <span id="idm45287286060496"></span>
 
 ## Table 2. Available destination drivers
 
-| Name                | Description                                                                                                                                                                                         |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [amqp()](#)         | Publishes messages using the `AMQP` (Advanced Message Queuing Protocol).                                                                                                                          |
-| [elasticsearch2](#) | Sends messages to an Elasticsearch server. The `elasticsearch2` driver supports Elasticsearch version 2 and newer.                                                                                |
-| [file()](#)         | Writes messages to the specified file.                                                                                                                                                              |
-| [graphite()](#)     | Sends metrics to a [Graphite](http://graphite.readthedocs.io/en/latest/index.html) server to store numeric time-series data.                                                                        |
-| [graylog2()](#)     | Sends syslog messages to [Graylog](http://docs.graylog.org).                                                                                                                                        |
-| [hdfs()](#)         | Sends messages into a file on a [Hadoop Distributed File System (HDFS)](http://hadoop.apache.org/) node.                                                                                            |
-| http()              | Sends messages over the HTTP protocol. There are two different implementations of this driver: a [Java-based http driver](#), and an [http driver without Java](#).                                 |
-| [kafka()](#)        | Publishes log messages to the [Apache Kafka](http://kafka.apache.org) message bus, where subscribers can access them.                                                                               |
-| [loggly()](#)       | Sends log messages to the [Loggly](https://www.loggly.com/) Logging-as-a-Service provider.                                                                                                          |
-| [logmatic()](#)     | Sends log messages to the [Logmatic.io](https://logmatic.io/) Logging-as-a-Service provider.                                                                                                        |
-| [mongodb()](#)      | Sends messages to a [MongoDB](https://www.mongodb.com) database.                                                                                                                                    |
-| [network()](#)      | Sends messages to a remote host using the [BSD-syslog protocol](#) over IPv4 and IPv6. Supports the TCP, UDP, and TLS network protocols.                                                            |
-| [pipe()](#)         | Writes messages to the specified named pipe.                                                                                                                                                        |
-| [program()](#)      | Forks and launches the specified program, and sends messages to its standard input.                                                                                                                 |
-| [redis()](#)        | Sends messages as name-value pairs to a [Redis](https://redis.io/) key-value store.                                                                                                                 |
-| [riemann()](#)      | Sends metrics or events to a [Riemann](http://riemann.io/) monitoring system.                                                                                                                       |
-| [smtp()](#)         | Sends e-mail messages to the specified recipients.                                                                                                                                                  |
-| [sql()](#)          | Sends messages into an SQL database. In addition to the standard {{% param "product.abbrev" %}} packages, the <span>sql()</span> destination requires database-specific packages to be installed. |
-| [stomp()](#)        | Sends messages to a STOMP server.                                                                                                                                                                   |
-| [syslog()](#)       | Sends messages to the specified remote host using the [IETF-syslog protocol](#). The IETF standard supports message transport using the UDP, TCP, and TLS networking protocols.                     |
-| [unix-dgram()](#)   | Sends messages to the specified unix socket in `SOCK_DGRAM` style (BSD).                                                                                                                         |
-| [unix-stream()](#)  | Sends messages to the specified unix socket in `SOCK_STREAM` style (Linux).                                                                                                                      |
-| [usertty()](#)      | Sends messages to the terminal of the specified user, if the user is logged in.                                                                                                                     |
-
-
+{{< list-drivers "chapter-destinations" >}}
 
 <span id="idm45287285998944"></span>
 
@@ -233,20 +185,21 @@ The sources, destinations, and filters available in {{% param "product.abbrev" %
 
 | Name                       | Description                                                                               |
 | -------------------------- | ----------------------------------------------------------------------------------------- |
-| [facility()](#)            | Filter messages based on the sending facility.                                            |
-| [filter()](#)              | Call another filter function.                                                             |
-| [host()](#)                | Filter messages based on the sending host.                                                |
-| [inlist()](#)              | File-based whitelisting and blacklisting.                                                 |
-| [level() or priority()](#) | Filter messages based on their priority.                                                  |
-| [match()](#)               | Use a regular expression to filter messages based on a specified header or content field. |
-| [message()](#)             | Use a regular expression to filter messages based on their content.                       |
-| [netmask()](#)             | Filter messages based on the IP address of the sending host.                              |
-| [program()](#)             | Filter messages based on the sending application.                                         |
-| [source()](#)              | Select messages of the specified {{% param "product.abbrev" %}} source statement.       |
-| [tags()](#)                | Select messages having the specified tag.                                                 |
+| [facility()]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-facility/_index.md" >}}) | Filter messages based on the sending facility.                                            |
+| [filter()]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-filter/_index.md" >}}) | Call another filter function.                                                             |
+| [host()]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-host/_index.md" >}}) | Filter messages based on the sending host.                                                |
+| [in-list()]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-inlist/_index.md" >}}) | File-based whitelisting and blacklisting.                                                 |
+| [level() or priority()]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-priority/_index.md" >}}) | Filter messages based on their priority.                                                  |
+| [match()]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-match/_index.md" >}}) | Use a regular expression to filter messages based on a specified header or content field. |
+| [message()]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-message/_index.md" >}}) | Use a regular expression to filter messages based on their content.                       |
+| [netmask()]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-netmask/_index.md" >}}) | Filter messages based on the IPv4 address of the sending host.                              |
+| [netmask6()]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-netmask6/_index.md" >}}) | Filter messages based on the IPv6 address of the sending host.                              |
+| [program()]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-program/_index.md" >}}) | Filter messages based on the sending application.                                         |
+| [rate-limit()]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-rate-limit/_index.md" >}}) | Limit messages rate based on arbitrary keys in each message.       |
+| [source()]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-source/_index.md" >}}) | Select messages of the specified {{% param "product.abbrev" %}} source statement.       |
+| [tags()]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-tags/_index.md" >}}) | Select messages having the specified tag.                                                 |
 
-
-
+<!-- FIXME Add a similar table for parsers-->
 
 ## Files
 
