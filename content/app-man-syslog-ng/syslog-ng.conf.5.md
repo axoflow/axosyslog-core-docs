@@ -213,13 +213,4 @@ The sources, destinations, and filters available in {{% param "product.abbrev" %
 
 {{% xref "/app-man-syslog-ng/syslog-ng.8/_index.md" %}}
 
-{{% alert title="Note" color="info" %}}
-
-
-
-If you experience any problems or need help with {{% param "product.abbrev" %}}, {{% param "product.contact" %}}.
-
-For news and notifications about {{% param "product.abbrev" %}}, visit the [AxoFlow blog](https://axoflow.com/blog/).
-
-{{% /alert %}}
-
+{{< include-headless "chunk/manpage-more-info.md" >}}
