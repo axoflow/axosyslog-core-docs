@@ -1,6 +1,8 @@
 ---
-title: "unix-stream, unix-dgram: Collecting messages from UNIX domain sockets"
+title: "unix-stream, unix-dgram: Collect messages from UNIX domain sockets"
 weight:  4900
+driver: "unix-stream(), unix-dgram()"
+short_description: "Collect messages from UNIX domain sockets"
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 

@@ -1,7 +1,9 @@
 ---
-title: Sending messages to Falcon LogScale
-linktitle: "logscale: Sending messages to Falcon LogScale"
+title: Send messages to Falcon LogScale
+linktitle: "logscale: Send messages to Falcon LogScale"
 weight:  2950
+driver: "logscale()"
+short_description: "Send messages to Falcon LogScale"
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 

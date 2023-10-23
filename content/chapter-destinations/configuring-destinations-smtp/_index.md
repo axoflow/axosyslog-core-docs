@@ -1,6 +1,8 @@
 ---
-title: "smtp: Generating SMTP messages (email) from logs"
+title: "smtp: Generate SMTP messages (emails) from logs"
 weight:  5300
+driver: "smtp()"
+short_description: "Generate SMTP messages (emails) from logs"
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 

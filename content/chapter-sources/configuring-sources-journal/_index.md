@@ -1,6 +1,8 @@
 ---
-title: "systemd-journal: Collecting messages from the systemd-journal system log storage"
+title: "systemd-journal: Collect messages from the systemd-journal system log storage"
 weight:  4300
+driver: "systemd-journal()"
+short_description: "Collect messages from the systemd-journal system log storage"
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 

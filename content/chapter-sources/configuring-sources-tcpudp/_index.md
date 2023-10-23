@@ -1,6 +1,8 @@
 ---
-title: "tcp, tcp6, udp, udp6: Collecting messages from remote hosts using the BSD syslog protocol— OBSOLETE"
+title: "tcp, tcp6, udp, udp6: OBSOLETE - Collect messages from remote hosts using the BSD syslog protocol"
 weight:  4700
+driver: "tcp(), tcp6(), udp(), udp6()"
+short_description: "OBSOLETE - Collect messages from remote hosts using the BSD syslog protocol"
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
