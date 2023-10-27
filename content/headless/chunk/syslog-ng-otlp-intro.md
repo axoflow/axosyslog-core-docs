@@ -19,6 +19,6 @@ destination d_syslog_ng_otlp {
 
 ```shell
 source s_syslog_ng_otlp {
-  syslog-ng-otlp();
+  syslog-ng-otlp(port(12346));
 };
 ```
