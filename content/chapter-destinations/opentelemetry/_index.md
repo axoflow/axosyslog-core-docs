@@ -1,7 +1,9 @@
 ---
-title: Sending logs, metrics, and traces to OpenTelemetry
+title: Send logs, metrics, and traces to OpenTelemetry
 linktitle: OpenTelemetry
 weight: 3750
+driver: "opentelemetry()"
+short_description: "Send logs, metrics, and traces to OpenTelemetry"
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 

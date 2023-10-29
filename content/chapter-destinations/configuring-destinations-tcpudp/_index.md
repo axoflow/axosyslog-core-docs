@@ -1,6 +1,8 @@
 ---
-title: "tcp, tcp6, udp, udp6: Sending messages to a remote log server using the legacy BSD-syslog protocol (tcp(), udp() drivers)"
+title: "tcp, tcp6, udp, udp6: OBSOLETE - Send messages to a remote log server using the legacy BSD-syslog protocol (tcp(), udp() drivers)"
 weight:  6900
+driver: "tcp(), tcp6(), udp(), udp6()"
+short_description: "OBSOLETE - Send messages to a remote log server using the legacy BSD-syslog protocol"
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 

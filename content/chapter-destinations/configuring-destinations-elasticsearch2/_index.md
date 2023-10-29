@@ -1,6 +1,8 @@
 ---
-title: "elasticsearch2: Sending messages directly to Elasticsearch version 2.0 or higher (DEPRECATED)"
+title: "elasticsearch2: DEPRECATED - Send messages directly to Elasticsearch version 2.0 or higher"
 weight:  700
+driver: "elasticsearch2()"
+short_description: "DEPRECATED - Send messages directly to Elasticsearch version 2.0 or higher"
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 

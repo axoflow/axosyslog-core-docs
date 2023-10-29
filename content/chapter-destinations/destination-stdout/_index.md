@@ -1,6 +1,8 @@
 ---
-title: "stdout: Sending messages to standard output"
+title: "stdout: Send messages to standard output"
 weight:  6050
+driver: "stdout()"
+short_description: "Send messages to standard output"
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 

@@ -2,6 +2,8 @@
 title: Hypr Audit Trail and Hypr App Audit Trail
 linktitle: Hypr
 weight: 1250
+driver: "hypr-audit-trail(), hypr-app-audit-trail()"
+short_description: "Fetch events from the Hypr REST API"
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 

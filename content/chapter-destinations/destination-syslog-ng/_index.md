@@ -1,10 +1,14 @@
 ---
 title: "syslog-ng(): Forward logs to another syslog-ng node"
 weight:  6700
+driver: "syslog-ng()"
+short_description: "Forward logs to another syslog-ng node"
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
 The `syslog-ng()` destination driver forwards log messages to another {{% param "product.abbrev" %}} node in EWMM format.
+
+> Note: For similar functionality using the OpenTelemetry protocol, see {{% xref "/chapter-destinations/destination-syslog-ng-otlp/_index.md" %}}.
 
 {{% include-headless "chunk/ewmm-intro.md" %}}
 

@@ -2,6 +2,8 @@
 title: Receive logs, metrics, and traces from OpenTelemetry
 linktitle: OpenTelemetry
 weight: 2350
+driver: "opentelemetry()"
+short_description: "Receive logs, metrics, and traces from OpenTelemetry clients over the OpenTelemetry Protocol (OTLP/gRPC)"
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
