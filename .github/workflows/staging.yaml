@@ -52,6 +52,15 @@ jobs:
       - name: Build
         run: hugo --environment staging --baseURL ${{ steps.pages.outputs.base_url }}/
 
+      # Build hugo output with manpages environment, run scripts, copy output manpages to public so it gets uploaded
+      - name: Build manpage environment
+        run: hugo --environment manpage --baseURL ${{ steps.pages.outputs.base_url }}/ --destination manpages
+      - name: Convert manpages
+        run: |
+          sudo apt-get install -y xsltproc
+          python3 scripts/create-man-from-html.py
+          mv manpages/syslog-ng-manpages/ public/
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
