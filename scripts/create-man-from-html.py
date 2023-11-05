@@ -107,7 +107,7 @@ def convert_html_to_man(rawhtml, original_file, output_dir):
     manfile.close()
     
     ## Delete html file
-    # subprocess.run(["rm", output_html_file])
+    subprocess.run(["rm", output_html_file])
 
 global errors, unix_name, section
 errors = []
@@ -117,8 +117,8 @@ section = 0
 # Process manpages files
 print("Processing manpages files")
 
-input_manpage_dir = "public/app-man-syslog-ng"
-output_manpage_dir = "public/syslog-ng-manpages"
+input_manpage_dir = "manpages/app-man-syslog-ng"
+output_manpage_dir = "manpages/syslog-ng-manpages"
 
 for root, dirs, files in os.walk(input_manpage_dir):
     for file in files:
