@@ -58,6 +58,7 @@ jobs:
       - name: Convert manpages
         run: |
           sudo apt-get install -y xsltproc
+          pip install beautifulsoup4 lxml
           python3 scripts/create-man-from-html.py
           mv manpages/syslog-ng-manpages/ public/
 
