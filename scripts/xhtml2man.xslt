@@ -72,6 +72,19 @@ This article was written by:
 <xsl:apply-templates select="*|text()"/>
 </xsl:template>
 
+<xsl:template match="xhtml:li/xhtml:p">
+<!-- Do not add .PP for first child paragraph, add .IP for others -->
+<xsl:choose>
+  <xsl:when test="preceding-sibling::*">
+.IP
+<xsl:apply-templates select="*|text()"/>
+  </xsl:when>
+  <xsl:otherwise>
+    <xsl:apply-templates select="*|text()"/>
+  </xsl:otherwise>
+</xsl:choose>
+</xsl:template>
+
 <xsl:template match="text()"><xsl:value-of select="."/></xsl:template>
 
 <xsl:template match="xhtml:a[@href]">\fB<xsl:apply-templates select="*|text()"/>\fP (\fI<xsl:value-of select="@href"/>\fP)</xsl:template>
