@@ -105,10 +105,10 @@ This article was written by:
 <xsl:template match="xhtml:ul/xhtml:li">
 <xsl:choose>
   <xsl:when test="preceding-sibling::xhtml:li">
-.IP \[bu]
+.IP *
 <xsl:apply-templates select="*|text()"/></xsl:when>
   <xsl:otherwise>
-.IP \[bu] 2
+.IP * 2
 <xsl:apply-templates select="*|text()"/></xsl:otherwise>
 </xsl:choose>
 </xsl:template>
