@@ -149,7 +149,7 @@ The `syslog-ng-ctl query list` command has the following options:
 
 - `--reset`
     
-    Use `--reset` to set the selected counters to 0 after executing the query.
+    Use `--reset` to set the selected counters to 0 after executing the query, except for the `queued` and the `memory_usage` counters. (The `queued` counters show the number of messages in the message queue of the destination driver, waiting to be sent to the destination. The `memory_usage` counters show the amount of memory used by the messages in the different queue types (in bytes). This includes every queue used by the object, including memory buffers (log-fifo) and disk-based buffers (both reliable and non-reliable))
 
 
 
@@ -180,7 +180,7 @@ The `syslog-ng-ctl query get` command has the following options:
 
 - `--reset`
     
-    Use `--reset` to set the selected counters to 0 after executing the query.
+    Use `--reset` to set the selected counters to 0 after executing the query, except for the `queued` and the `memory_usage` counters. (The `queued` counters show the number of messages in the message queue of the destination driver, waiting to be sent to the destination. The `memory_usage` counters show the amount of memory used by the messages in the different queue types (in bytes). This includes every queue used by the object, including memory buffers (log-fifo) and disk-based buffers (both reliable and non-reliable))
 
 
 
@@ -198,7 +198,7 @@ Use the `stats` command to display statistics about the processed messages. For 
 
 - `--reset=<socket>` or `-r`
     
-    Reset all statistics to zero, except for the `queued` counters. (The `queued` counters show the number of messages in the message queue of the destination driver, waiting to be sent to the destination.)
+    Reset all statistics to zero, except for the `queued` and the `memory_usage` counters. (The `queued` counters show the number of messages in the message queue of the destination driver, waiting to be sent to the destination. The `memory_usage` counters show the amount of memory used by the messages in the different queue types (in bytes). This includes every queue used by the object, including memory buffers (log-fifo) and disk-based buffers (both reliable and non-reliable))
 
 - `--remove-orphans`
     
