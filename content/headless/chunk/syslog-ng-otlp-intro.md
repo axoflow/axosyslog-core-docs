@@ -13,12 +13,12 @@ To use it, configure a `syslog-ng-otlp()` destination on the sender node, and a 
 
 ```shell
 destination d_syslog_ng_otlp {
-  syslog-ng-otlp(url("your-receiver-syslog-ng-instance:12346"));
+  syslog-ng-otlp(url("your-receiver-syslog-ng-instance:4317"));
 };
 ```
 
 ```shell
 source s_syslog_ng_otlp {
-  syslog-ng-otlp(port(12346));
+  syslog-ng-otlp(port(4317));
 };
 ```

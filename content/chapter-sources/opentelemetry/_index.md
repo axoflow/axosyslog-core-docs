@@ -17,7 +17,7 @@ The following example receives OpenTelemetry data and forwards it to an OpenTele
 log otel_forward_mode_alts {
   source {
     opentelemetry(
-      port(12345)
+      port(4317)
       auth(alts())
     );
   };
