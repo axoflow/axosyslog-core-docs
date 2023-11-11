@@ -1,6 +1,6 @@
 ---
 title: "syslog-ng-otlp(): Forward logs to another node using OpenTelemetry"
-weight: 3950
+weight: 6750
 driver: "syslog-ng-otlp()"
 short_description: "Forward logs to another node using OpenTelemetry"
 ---
