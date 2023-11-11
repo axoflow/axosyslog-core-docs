@@ -2,7 +2,7 @@
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-<!-- Used in the opentelemetry() and loki() drivers -->
+<!-- Used in the opentelemetry(), loki(), and syslog-ng-otlp drivers -->
 ## auth() {#auth}
 
 You can set authentication in the `auth()` option of the driver. By default, authentication is disabled (`auth(insecure())`).
@@ -23,7 +23,7 @@ The following authentication methods are available in the `auth()` block:
 ```shell
 source {
     opentelemetry(
-      port(12345)
+      port(4317)
       auth(alts())
     );
   };
@@ -34,6 +34,16 @@ source {
 destination {
     loki(
       port(12345)
+      auth(alts())
+    );
+  };
+```
+{{% /tab %}}
+{{% tab header="`syslog-ng-otlp()`" lang="syslog-ng-otlp" %}}
+```shell
+source {
+    syslog-ng-otlp(
+      port(4317)
       auth(alts())
     );
   };
@@ -75,6 +85,22 @@ destination {
 destination {
     loki(
       url("your-loki-server:12346")
+      auth(
+        tls(
+          ca-file("/path/to/ca.pem")
+          key-file("/path/to/key.pem")
+          cert-file("/path/to/cert.pem")
+        )
+      )
+    );
+  };
+```
+{{% /tab %}}
+{{% tab header="`syslog-ng-otlp()`" lang="syslog-ng-otlp" %}}
+```shell
+destination {
+    syslog-ng-otlp(
+      url("your-otel-server:12346")
       auth(
         tls(
           ca-file("/path/to/ca.pem")
