@@ -71,8 +71,8 @@ The arguments depend on the operating mode.
 
 ## See also
 
-[syslog-ng.conf.5]({{< ref "/app-man-syslog-ng/syslog-ng.conf.5.md" >}})
+[syslog-ng.conf.5](https://axoflow.com/docs/axosyslog-core/app-man-syslog-ng/syslog-ng.conf.5/)
 
-[secure-logging.7]({{< ref "/app-man-syslog-ng/secure-logging.7/_index.md" >}})
+[secure-logging.7](https://axoflow.com/docs/axosyslog-core/app-man-syslog-ng/secure-logging.7/)
 
 {{< include-headless "chunk/manpage-more-info.md" >}}

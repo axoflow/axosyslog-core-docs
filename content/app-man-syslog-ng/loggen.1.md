@@ -207,6 +207,6 @@ loggen 127.0.0.1 1061 --read-file -
 
 ## See also
 
-[syslog-ng.conf.5]({{< ref "/app-man-syslog-ng/syslog-ng.conf.5.md" >}})
+[syslog-ng.conf.5](https://axoflow.com/docs/axosyslog-core/app-man-syslog-ng/syslog-ng.conf.5/)
 
 {{< include-headless "chunk/manpage-more-info.md" >}}
