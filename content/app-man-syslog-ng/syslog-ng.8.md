@@ -152,6 +152,6 @@ The {{% param "product.abbrev" %}} application is a flexible and highly scalable
 
 ## See also
 
-{{% xref "/app-man-syslog-ng/syslog-ng.conf.5.md" %}}
+[syslog-ng.conf.5]({{< ref "/app-man-syslog-ng/syslog-ng.conf.5.md" >}})
 
 {{< include-headless "chunk/manpage-more-info.md" >}}

@@ -375,8 +375,8 @@ Health checks are also published as periodically updated metrics. You can config
 
 ## See also
 
-{{% xref "/app-man-syslog-ng/syslog-ng.conf.5.md" %}}
+[syslog-ng.conf.5]({{< ref "/app-man-syslog-ng/syslog-ng.conf.5.md" >}})
 
-{{% xref "/app-man-syslog-ng/syslog-ng.8/_index.md" %}}
+[syslog-ng.8]({{< ref "/app-man-syslog-ng/syslog-ng.8/_index.md" >}})
 
 {{< include-headless "chunk/manpage-more-info.md" >}}

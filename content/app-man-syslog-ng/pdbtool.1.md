@@ -337,10 +337,8 @@ pdbtool test --validate /home/me/mypatterndb.pdb
 
 ## See also
 
-[AxoSyslog documentation](https://axoflow.com/docs/axosyslog-core/)
+[syslog-ng.conf.5]({{< ref "/app-man-syslog-ng/syslog-ng.conf.5.md" >}})
 
-{{% xref "/app-man-syslog-ng/syslog-ng.conf.5.md" %}}
-
-{{% xref "/app-man-syslog-ng/syslog-ng.8/_index.md" %}}
+[syslog-ng.8]({{< ref "/app-man-syslog-ng/syslog-ng.8/_index.md" >}})
 
 {{< include-headless "chunk/manpage-more-info.md" >}}

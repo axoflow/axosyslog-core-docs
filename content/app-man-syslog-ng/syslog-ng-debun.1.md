@@ -184,6 +184,6 @@ Collect `pcap` and debug mode output following this scenario:
 
 ## See also
 
-{{% xref "/app-man-syslog-ng/syslog-ng.conf.5.md" %}}
+[syslog-ng.conf.5]({{< ref "/app-man-syslog-ng/syslog-ng.conf.5.md" >}})
 
 {{< include-headless "chunk/manpage-more-info.md" >}}

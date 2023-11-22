@@ -211,6 +211,6 @@ The sources, destinations, and filters available in {{% param "product.abbrev" %
 
 ## See also
 
-{{% xref "/app-man-syslog-ng/syslog-ng.8/_index.md" %}}
+[syslog-ng.8]({{< ref "/app-man-syslog-ng/syslog-ng.8/_index.md" >}})
 
 {{< include-headless "chunk/manpage-more-info.md" >}}
