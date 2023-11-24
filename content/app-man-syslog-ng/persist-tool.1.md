@@ -45,7 +45,7 @@ The `dump` command has the following options:
 
     Display a brief help message.
 
-### The add command
+## The add command
 
 `add &lt;options&gt; &lt;input_file&gt;`
 
