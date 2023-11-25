@@ -297,14 +297,13 @@ Available in {{% param "product.name" %}} version 4.2 and newer.
 
 When using STRUCTURED-DATA macros, consider the following:
 
-  - When referencing an element of the structured data, the macro must begin with the dot (.) character. For example, `${.SDATA.timeQuality.isSynced}`.
-
-  - The SDID and SDNAME parts of the macro names are case sensitive: `${.SDATA.timeQuality.isSynced}` is not the same as `${.SDATA.TIMEQUALITY.ISSYNCED}`.
+- When referencing an element of the structured data, the macro must begin with the dot (.) character. For example, `${.SDATA.timeQuality.isSynced}`.
+- The SDID and SDNAME parts of the macro names are case sensitive: `${.SDATA.timeQuality.isSynced}` is not the same as `${.SDATA.TIMEQUALITY.ISSYNCED}`.
 
 {{% /alert %}}
 
 
-## Example: Using SDATA macros
+### Example: Using SDATA macros
 
 For example, if a log message contains the following structured data: `[exampleSDID@0 iut="3" eventSource="Application" eventID="1011"][examplePriority@0 class="high"]` you can use macros like: `${.SDATA.exampleSDID@0.eventSource}` — this would return the `Application` string in this case.
 
@@ -317,29 +316,22 @@ For example, if a log message contains the following structured data: `[exampleS
 
 *Description:* The `${SEQNUM}` macro contains a sequence number for the log message. The value of the macro depends on the scenario, and can be one of the following:
 
-  - If {{% param "product.abbrev" %}} receives a message via the IETF-syslog protocol that includes a sequence ID, this ID is automatically available in the `${SEQNUM}` macro.
+- If {{% param "product.abbrev" %}} receives a message via the IETF-syslog protocol that includes a sequence ID, this ID is automatically available in the `${SEQNUM}` macro.
+- If the message is a Cisco IOS log message using the extended timestamp format, then {{% param "product.abbrev" %}} stores the sequence number from the message in this macro. If you forward this message the IETF-syslog protocol, {{% param "product.abbrev" %}} includes the sequence number received from the Cisco device in the `${.SDATA.meta.sequenceId}` part of the message.
 
-  - If the message is a Cisco IOS log message using the extended timestamp format, then {{% param "product.abbrev" %}} stores the sequence number from the message in this macro. If you forward this message the IETF-syslog protocol, {{% param "product.abbrev" %}} includes the sequence number received from the Cisco device in the `${.SDATA.meta.sequenceId}` part of the message.
-    
     {{% alert title="Note" color="info" %}}
 To enable sequence numbering of log messages on Cisco devices, use the following command on the device (available in IOS 10.0 and later): `service sequence-numbers`. For details, see the manual of your Cisco device.
     {{% /alert %}}
 
-  - For locally generated messages (that is, for messages that are received from a local source, and not from the network), {{% param "product.abbrev" %}} calculates a sequence number when sending the message to a destination (it is not calculated for relayed messages).
-    
-      - The sequence number is not global, but per-destination. Essentially, it counts the number of messages sent to the destination.
-    
-      - This sequence number increases by one for every message sent to the destination. It not lost when {{% param "product.abbrev" %}} is reloaded, but it is reset when {{% param "product.abbrev" %}} is restarted.
-    
-      - This sequence number is added to every message that uses the IETF-syslog protocol (`${.SDATA.meta.sequenceId}`), and can be added to BSD-syslog messages using the `${SEQNUM}` macro.
+- For locally generated messages (that is, for messages that are received from a local source, and not from the network), {{% param "product.abbrev" %}} calculates a sequence number when sending the message to a destination (it is not calculated for relayed messages).
+
+    - The sequence number is not global, but per-destination. Essentially, it counts the number of messages sent to the destination.
+    - This sequence number increases by one for every message sent to the destination. It not lost when {{% param "product.abbrev" %}} is reloaded, but it is reset when {{% param "product.abbrev" %}} is restarted.
+    - This sequence number is added to every message that uses the IETF-syslog protocol (`${.SDATA.meta.sequenceId}`), and can be added to BSD-syslog messages using the `${SEQNUM}` macro.
 
 {{% alert title="Note" color="info" %}}
-
 If you need a sequence number for every log message that {{% param "product.abbrev" %}} receives, use the [RCPTID]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) macro.
-
 {{% /alert %}}
-
-
 
 ## SOURCE {#macro-source}
 
