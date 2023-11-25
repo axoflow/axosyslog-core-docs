@@ -141,7 +141,11 @@ The {{% param "product.abbrev" %}} application uses the following procedure to d
 
 {{% include-headless "chunk/p-name-resolution.md" %}}
 
+## IP-PROTO {#macro-ip-proto}
 
+Available in {{% param "product.abbrev" %}} version 4.5 and later.
+
+The IP protocol version used to retrieve or receive the message. Contains either "4" to indicate IPv4 and "6" to indicate IPv6.
 
 ## ISODATE, C_ISODATE, R_ISODATE, S_ISODATE {#macro-isodate}
 
@@ -377,6 +381,37 @@ When sent as structured metadata, it is possible to reference to the list of tag
 
 {{% /alert %}}
 
+## TRANSPORT {#macro-transport}
+
+Available in {{% param "product.abbrev" %}} version 4.5 and later.
+
+{{% param "product.abbrev" %}} automatically populates this name-value pair with the "transport" mechanism used to retrieve or receive the message. The exact value depends on the source driver that received the message. Currently the following values are implemented:
+
+- BSD syslog drivers `tcp()`, `udp()` & `network()`
+
+    - `rfc3164+tls`
+    - `rfc3164+tcp`
+    - `rfc3164+udp`
+    - `rfc3164+proxied-tls`
+    - `rfc3164+<custom logproto like altp>`
+
+- UNIX domain drivers `unix-dgram()`, `unix-stream()`
+
+    - `unix-stream`
+    - `unix-dgram`
+
+- RFC5424-style syslog `syslog()`:
+
+    - `rfc5426`: syslog over udp
+    - `rfc5425`: syslog over tls
+    - `rfc6587`: syslog over tcp
+    - `rfc5424+<custom logproto like altp>`: syslog over a logproto plugin
+
+- Other drivers:
+
+    - `otlp`: `otel()` driver
+    - `mqtt`: `mqtt()` driver
+    - `hypr-api`: `hypr-audit-source()` driver
 
 {{% include-headless "chunk/macro-tz.md" %}}
 
