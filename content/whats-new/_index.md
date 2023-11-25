@@ -6,6 +6,22 @@ weight: 10
 
 This page is a changelog that collects the major changes and additions to this documentation. (If you want to know the details about why we have separate documentation for AxoSyslog, our syslog-ng distribution and how it relates to the syslog-ng documentation, read our [syslog-ng documentation and similarities with AxoSyslog Core](https://axoflow.com/axosyslog-core-documentation-syslog-ng/) blog post.)
 
+## 2023-08-18 to 2023-10-20
+
+<!-- Covered till commit 682e774cb35ab5cd2b16da8abeee4e4ae0d0ff4d -->
+
+- [syslog-ng-otlp source]({{< relref "/chapter-sources/source-syslog-ng-otlp/_index.md" >}}) and [syslog-ng-otlp destination]({{< relref "/chapter-destinations/destination-syslog-ng-otlp/_index.md" >}})
+- [Loki destination]({{< relref "/chapter-destinations/destination-loki/_index.md" >}})
+- [Amazon S3 destination]({{< relref "/chapter-destinations/destination-s3/_index.md" >}})
+- [OpenSearch destination]({{< relref "/chapter-destinations/destination-opensearch/_index.md" >}})
+- [stdout destination]({{< relref "/chapter-destinations/destination-stdout/_index.md" >}})
+- `http` destination options:
+    - [ignore-hostname-mismatch ssl-option]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#ssl-options" >}})
+    - [accept-encoding()]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#accept-encoding" >}})
+    - [accept-redirects()]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#accept-redirects" >}})
+    - [content-compression()]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#content-compression" >}})
+- [Dynamic labeling in the metrics-probe parser]({{< relref "/chapter-parsers/metrics-probe/_index.md#dynamic-labels" >}})
+
 ## 2023-07-07 to 2023-08-18
 
 <!-- Covered till commit 3dfacaf1cc0a15aeed2b007e62df0dbcd7730b1a 
