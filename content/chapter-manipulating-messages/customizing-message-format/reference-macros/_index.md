@@ -181,9 +181,9 @@ Available in 3.24 and later.
 
 {{% include-headless "chunk/para-flags-no-parse.md" %}}
 
-The ${MSG} macro is an alias of the ${MESSAGE} macro: using ${MSG} in {{% param "product.abbrev" %}} is equivalent to ${MESSAGE}.
+The `${MSG}` macro is an alias of the `${MESSAGE}` macro: using `${MSG}` in {{% param "product.abbrev" %}} is equivalent to ${MESSAGE}.
 
-Note that before AxoSyslog version 3.0, the ${MESSAGE} macro included the program name and the pid. In AxoSyslog 3.0, the `${MESSAGE}` macro became equivalent with the `${MSGONLY}` macro.
+Note that before AxoSyslog version 3.0, the `${MESSAGE}` macro included the program name and the pid. In AxoSyslog 3.0, the `${MESSAGE}` macro became equivalent with the `${MSGONLY}` macro.
 
 
 {{% include-headless "chunk/macro-min.md" %}}
