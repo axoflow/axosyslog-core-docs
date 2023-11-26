@@ -6,9 +6,9 @@ weight:  2100
 
 |           |                                        |
 | --------- | -------------------------------------- |
-| Synopsis: | rate-limit(template($HOST) rate(5000)) |
+| Synopsis: | `rate-limit(key($HOST) rate(5000))` |
 
-*Description:* Limits messages rate based on arbitrary keys in each message. The key will be resolved using the `template()` option. Each resolution will be allowed to have the number of messages each second, set by the `rate()` option. For example if `template($HOST)` and `rate(5000)` are set, and there are 2 hosts sending messages to {{% param "product.abbrev" %}}, a total of `10000` messages will be allowed by the `rate-limit()` filter, `5000` from the first and `5000` from the second host. If `template()` was not set instead, then `5000` messages would be allowed each second, regardless of their content.
+*Description:* Limits messages rate based on arbitrary keys in each message. The key will be resolved using the `key()` option. Each resolution will be allowed to have the number of messages each second, set by the `rate()` option. For example if `key($HOST)` and `rate(5000)` are set, and there are 2 hosts sending messages to {{% param "product.abbrev" %}}, a total of `10000` messages will be allowed by the `rate-limit()` filter, `5000` from the first and `5000` from the second host. If `key()` was not set instead, then `5000` messages would be allowed each second, regardless of their content.
 
 {{% alert title="Note" color="info" %}}
 
@@ -28,7 +28,7 @@ The following example depicts the scenario described in the description part of 
 ```shell
    filter f_rate_limit {
                     rate-limit(
-                    template("$HOST")
+                    key("$HOST")
                     rate(5000)
                     );
                 };

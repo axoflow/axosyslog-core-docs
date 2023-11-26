@@ -6,6 +6,14 @@ weight:  100
 
 The rate-limit() filter has the following options.
 
+## key()
+
+|          |              |
+| -------- | ------------ |
+| Type:    | template     |
+| Default: | empty string |
+
+*Description:* The resolved template, that will be used to create unique rate-limit token buckets. In {{% param "product.abbrev" %}} version 4.4 and earlier, the name of this option was `template()`.
 
 ## rate()
 
@@ -16,15 +24,3 @@ The rate-limit() filter has the following options.
 | Mandatory: | yes    |
 
 *Description:* The number of messages for each unique macro resolution, that will be let through (matched) by the filter each second.
-
-
-
-## template()
-
-|          |              |
-| -------- | ------------ |
-| Type:    | template     |
-| Default: | empty string |
-
-*Description:* The resolved template, that will be used to create unique rate-limit token buckets.
-
