@@ -15,8 +15,9 @@ The {{% param "product.abbrev" %}} application allows you to define message temp
     };
 ```
 
+Template objects have a single option called `template-escape()`, which is disabled by default (`template-escape(no)`). This behavior is useful when the messages are passed to an application that cannot handle escaped characters properly. Enabling template escaping (`template-escape(yes)`) causes {{% param "product.abbrev" %}} to escape the `'`, `"`, and backslash characters from the messages.
 
-Template objects have a single option called `template-escape()`, which is disabled by default (`template-escape(no)`). This behavior is useful when the messages are passed to an application that cannot handle escaped characters properly. Enabling template escaping (`template-escape(yes)`) causes AxoSyslog to escape the `'`, `"`, and backslash characters from the messages.
+{{< include-headless "chunk/template-escape-nested.md" >}}
 
 If you do not want to enable the `template-escape()` option (which is rarely needed), you can define the template without the enclosing braces.
 
@@ -43,7 +44,7 @@ Macros can be included by prefixing the macro name with a `$` sign, just like in
 
 Macro names are case-sensitive, that is, `"$message"` and `"$MESSAGE"` are not the same.
 
-To use a literal `$` character in a template, you have to escape it. In {{% param "product.abbrev" %}} versions 3.4 and earlier, use a backslash `(`\\$`)`. In version 3.5 and later, use `$$`.
+To use a literal `$` character in a template, you have to escape it. In {{% param "product.abbrev" %}} versions 3.4 and earlier, use a backslash `\$`. In version 3.5 and later, use `$$`.
 
 {{< include-headless "wnt/note-escape-at.md" >}}
 
