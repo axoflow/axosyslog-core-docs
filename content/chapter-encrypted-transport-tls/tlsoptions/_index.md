@@ -302,7 +302,7 @@ The following destination sends the hostname of its destination during the TLS h
 
 |                  |                                                                                                                    |
 | ---------------- | ------------------------------------------------------------------------------------------------------------------ |
-| Accepted values: | comma-separated list of the following options: no-sslv2, no-sslv3, no-tlsv1, no-tlsv11, no-tlsv12, no-tlsv13, none, ignore-hostname-mismatch |
+| Accepted values: | comma-separated list of the following options: `no-sslv2`, `no-sslv3`, `no-tlsv1`, `no-tlsv11`, `no-tlsv12`, `no-tlsv13`, `none`, `ignore-hostname-mismatch`, `ignore-validity-period` |
 | Default:         | no-sslv2                                                                                                           |
 
 Available in {{% param "product.abbrev" %}} 3.7 and newer.
@@ -316,6 +316,8 @@ Available in {{% param "product.abbrev" %}} 3.7 and newer.
 Using `ssl-options(none)` means that {{% param "product.abbrev" %}} does not specify any restrictions on the protocol used. However, in this case, the underlying OpenSSL library can restrict the available protocols, for example, certain OpenSSL versions automatically disable SSLv2.
 
 By specifying `ignore-hostname-mismatch`, you can ignore the subject name of a certificate during the validation process. This means that {{% param "product.abbrev" %}} checks only that the certificate itself is trusted by the current set of trust anchors (e.g. trusted CAs), and ignores the mismatch between the targeted hostname and the certificate subject. `ignore-hostname-mismatch` is available in {{% param "product.abbrev" %}} 4.4 and newer.
+
+By specifying `ignore-validity-period`, you can ignore the you can ignore the validity periods of certificates during the certificate validation process. `ignore-validity-period` is available in {{% param "product.abbrev" %}} 4.5 and newer.
 
 ### Example: Using ssl-options
 
