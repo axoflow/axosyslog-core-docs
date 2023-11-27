@@ -15,7 +15,7 @@ weight:  100
 
 *Description:* Specifies the name of the columns to separate messages to. These names will be automatically available as macros. The values of these macros do not include the delimiters.
 
-
+{{< include-headless "chunk/csv-parser-columnless.md" >}}
 
 ## delimiters() {#csv-parser-delimiter}
 

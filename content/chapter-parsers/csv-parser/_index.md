@@ -6,6 +6,7 @@ weight: 400
 
 {{< include-headless "chunk/topic-parser-csv-intro.md" >}}
 
+{{< include-headless "chunk/csv-parser-columnless.md" >}}
 
 ## Example: Segmenting hostnames separated with a dash {#example-csv-parser}
 
