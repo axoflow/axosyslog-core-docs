@@ -11,7 +11,8 @@ Starting with version 4.5.0, {{% param "product_name" %}} can send messages to [
 
 ## Prerequisites
 
-- An [OpenObserve account](https://openobserve.ai/) for {{% param "product_name" %}}.
+- An [OpenObserve account](https://openobserve.ai/) for {{% param "product_name" %}}, or
+- a [self-hosted OpenObserve deployment](https://openobserve.ai/docs/quickstart/#self-hosted-installation).
 - To configure {{% param "product_name" %}}, you'll need the username, password, the name of your organization, and the name of the OpenObserve stream where you want to send your data.
 
 Minimal configuration:
@@ -93,7 +94,7 @@ The following options are specific to the `openobserve-log()` destination. But s
 | Type:    | string |
 | Default: | `"--scope rfc5424 --exclude DATE --key ISODATE @timestamp=${ISODATE}"` |
 
-*Description:* A JSON object representing key-value pairs sent to OpenObserve, formatted as [{{% param "product_name" %}} value-pairs]({{< relref "/chapter-concepts/concepts-value-pairs/option-value-pairs/_index.md" >}}). By default, the `openobserve-log()` destination sends the RFC5424 fields as attributes. If you want to send different fields, override the default template.
+*Description:* A JSON object representing key-value pairs sent to OpenObserve, formatted as [{{% param "product_name" %}} value-pairs]({{< relref "/chapter-concepts/concepts-value-pairs/option-value-pairs/_index.md" >}}). By default, the `openobserve-log()` destination sends the RFC5424 fields as attributes. If you want to send different fields, override the default content of the `record()` field.
 
 ## stream()
 
@@ -102,7 +103,7 @@ The following options are specific to the `openobserve-log()` destination. But s
 | Type:    | string |
 | Default: | `"default"` |
 
-*Description:* The [OpenObserve stream](https://openobserve.ai/docs/user-guide/streams/) where {{% param "product_name" %}} sends the data, for example, `root@example.com`.
+*Description:* The [OpenObserve stream](https://openobserve.ai/docs/user-guide/streams/) where {{% param "product_name" %}} sends the data, for example, `your-example-stream`.
 
 ## user()
 
