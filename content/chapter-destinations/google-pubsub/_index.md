@@ -108,12 +108,3 @@ auth(
 
 *Description:* The name of the Google Pub/Sub topic where {{% param "product_name" %}} sends the data.
 
-## port()
-
-|          |                            |
-| -------- | -------------------------- |
-| Type:    | integer |
-| Default: | `5080` |
-
-*Description:* The port number of the server.
-
