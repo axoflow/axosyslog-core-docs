@@ -170,29 +170,56 @@ contact = "[contact us](https://axoflow.com/contact/)"
 ###############################################################################
 # Hugo - Top-level navigation (horizontal)
 ###############################################################################
+
 [menu]
   [[menu.main]]
-    name = "Company"
-    weight = -110
+    name = "OUR VISION"
+    weight = -150
     #pre = "<i class='fas fa-rss pr-2'></i>"
-    url = "https://axoflow.com/"
-  #[[menu.main]]
-    #name = "Project page"
-    #weight = -110
-    #pre = "<i class='fas fa-rss pr-2'></i>"
-    #url = "https://github.com/kube-logging/logging-operator"
+    url = "https://axoflow.com/#our-vision"
   [[menu.main]]
-    name = "Blog"
+    name = "PRODUCT"
+    weight = -130
+    #pre = "<i class='fas fa-rss pr-2'></i>"
+    url = "https://axoflow.com/axoflow-platform/"
+  [[menu.main]]
+    name = "DOCUMENTATION"
     weight = -120
+    #pre = "<i class='fas fa-book pr-2'></i>"
+    url = "/"
+    identifier = "documentation"
+
+    [[menu.main]]
+      name = "Axoflow Platform"
+      weight = -120
+      url = "https://axoflow.com/axoflow-platform/"
+      identifier = "documentation-axoflow"
+      parent = "documentation"
+    [[menu.main]]
+      name = "AxoSyslog"
+      weight = -120
+      url = "https://axoflow.com/docs/axosyslog-core/"
+      identifier = "documentation-axosyslog"
+      parent = "documentation"
+    [[menu.main]]
+      name = "Logging operator"
+      weight = -120
+      url = "https://kube-logging.dev/docs/"
+      identifier = "documentation-logging-operator"
+      parent = "documentation"
+
+  [[menu.main]]
+    name = "BLOG"
+    weight = -110
     #pre = "<i class='fas fa-blog pr-2'></i>"
     url = "https://axoflow.com/blog/"
   [[menu.main]]
-    name = "Documentation"
+    name = "ABOUT US"
     weight = -100
-    #pre = "<i class='fas fa-book pr-2'></i>"
-    url = "/"
+    #pre = "<i class='fas fa-blog pr-2'></i>"
+    url = "https://axoflow.com/about-us/"
   [[menu.main]]
-    name = "Contact"
+    name = "CONTACT"
     weight = 100
     #pre = "<i class='fas fa-book pr-2'></i>"
     url = "https://axoflow.com/contact/"
