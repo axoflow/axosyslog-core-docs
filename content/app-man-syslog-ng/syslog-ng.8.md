@@ -56,7 +56,9 @@ The {{% param "product.abbrev" %}} application is a flexible and highly scalable
     
     Change root to the specified directory. The configuration file is read after chrooting so, the configuration file must be available within the `chroot`. That way it is also possible to reload the {{% param "product.syslog-ng" %}} configuration after chrooting. However, note that the `--user` and `--group`options are resolved before chrooting.
 
-- `--check-startup`: Use this option to perform a complete configuration initialization with `syslog-ng`, then exit with exit code indicating the result. You can use this option to check if the configuration is semantically valid and that `syslog-ng` can actually start. (For example, in a Kubernetes environment you can run it as a dedicated configuration check container.)
+- `--check-startup`: Use this option to perform a complete configuration initialization with `syslog-ng`, then exit with exit code indicating the result. You can use this option to check if the configuration is semantically valid and that `syslog-ng` can actually start. (The `--syntax-only` option catches only syntactical errors.)
+
+    You can also use `syslog-ng --check-startup` in a Kubernetes environment, to run it as a dedicated configuration check container.
 
     Available only in {{% param "product.abbrev" %}} version 4.5 and later.
 
