@@ -64,7 +64,7 @@ The {{% param "product.abbrev" %}} application is a flexible and highly scalable
 
     Using this option initializes things like network listeners, so it will probably _not_ work if another `syslog-ng` instance running in the background (because in that case the network address is already in use).
 
-- `--control <file>` or `-c<file>`
+- `--control <file>` or `-c <file>`
     
     Set the location of the `syslog-ng` control socket. Default value: `/var/run/syslog-ng.ctl`
 
