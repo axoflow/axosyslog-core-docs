@@ -1,10 +1,11 @@
-# AxoSyslog Core documentation
+# AxoSyslog documentation
 
-Documentation for the AxoSyslog Core release, based on [this version of the syslog-ng Open Source Edition documentation](https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2).
+Documentation for the AxoSyslog release, originally based on [this version of the syslog-ng Open Source Edition documentation](https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2). We are continuously working on it to keep it up-to-date with the latest released version of the [`syslog-ng` project](https://github.com/syslog-ng/syslog-ng/).
 
 ## Licensing
 
 See [content/docs/_index.md](content/docs/_index.md).
+
 ## Using this repository
 
 The documentation is built using [Hugo](https://gohugo.io/) and the [Docsy theme](https://www.docsy.dev/docs/).

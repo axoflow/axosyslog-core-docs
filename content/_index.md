@@ -1,13 +1,13 @@
 ---
-title: AxoSyslog Core documentation
+title: AxoSyslog documentation
 type: docs
 cascade:
   type: docs
 ---
 
-AxoSyslog is a cloud-native syslog-ng distribution by [Axoflow](https://axoflow.com).
+{{% param "product.abbrev" %}} is a cloud-native syslog-ng distribution by [Axoflow](https://axoflow.com).
 
-This documentation is based on the [syslog-ng Open Source Edition documentation](https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2) for version 3.38 and is used in compliance with the terms of [The syslog-ng Open Source Edition Documentation License]({{< relref "/documentation-license/_index.md" >}}).
+This documentation is originally based on the [syslog-ng Open Source Edition documentation](https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2) for version 3.38 and is used in compliance with the terms of [The syslog-ng Open Source Edition Documentation License]({{< relref "/documentation-license/_index.md" >}}). We are continuously working on it to keep it up-to-date with the latest released version of the [`syslog-ng` project](https://github.com/syslog-ng/syslog-ng/).
 
 In compliance with the above license, `syslog-ng` is used only to refer to the binary of the application, or in filenames, pathnames, and similar technical terms. For all other references, we use the AxoSyslog name.
 
