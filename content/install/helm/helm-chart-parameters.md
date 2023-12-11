@@ -21,7 +21,7 @@ The following example uses the `config.raw` parameter to configure a custom dest
 ```shell
 config:
   raw: |
-    @version: 4.3
+    @version: {{% param "product.techversion" %}}
     @include "scl.conf"
 
     log {
@@ -128,7 +128,7 @@ config:
 |  openShift.enabled  | Whether to deploy on OpenShift |  false  |
 |  openShift.securityContextConstraints.create  | Whether to create SecurityContextConstraints on OpenShift |  true  |
 |  openShift.securityContextConstraints.annotations  | Annotations to apply to SecurityContextConstraints |  {}  |
-|  serviceAccount.create  | Whether to create a service account |  true  |
+|  serviceAccount.create  | Whether to create a service account |  false  |
 |  serviceAccount.annotations  | Annotations to apply to the service account |  {}  |
 |  namespace  | The Kubernetes namespace to deploy to |  ""  |
 |  podAnnotations  | Additional annotations to apply to the pod |  {}  |
@@ -139,6 +139,9 @@ config:
 |  tolerations  | Tolerations for pod assignment |  []  |
 |  affinity  | Pod affinity |  {}  |
 |  updateStrategy  | Update strategy for the DaemonSet |  RollingUpdate  |
+|  kubernetes.enabled  | Enable kubernetes log collection  |  true  |
+|  kubernetes.prefix  | Set JSON prefix for logs collected from the k8s cluster  |  ""  |
+|  kubernetes.keyDelimiter  | Set JSON key delimiter for logs collected from the k8s cluster  |  ""  |
 |  priorityClassName  | The name of the [PriorityClass](https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#priorityclass) the pod belongs to |  ""  |
 |  dnsConfig  | The [DNS configuration of the pod](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-dns-config) |  {}  |
 |  hostAliases  | Additional [entries to the pod's hosts file](https://kubernetes.io/docs/tasks/network/customize-hosts-file-for-pods/#adding-additional-entries-with-hostaliases) |  []  |
