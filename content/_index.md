@@ -27,3 +27,7 @@ We would like to express our gratitude to everyone involved with the project, in
 ## Feedback
 
 Any feedback is greatly appreciated, especially on what else this document should cover. General comments, errors found in the text, and any suggestions about how to improve the documentation are also welcome as [GitHub issues](https://github.com/axoflow/axosyslog-core-docs/issues), or on the [Axoflow Discord server](https://discord.gg/583Z4wjem2).
+
+## Support
+
+{{< include-headless "chunk/support.md" >}}
