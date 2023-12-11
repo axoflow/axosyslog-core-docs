@@ -274,7 +274,7 @@ You can find the exact source of this template function in the [{{% param "produ
 
 {{% alert title="Note" color="info" %}}
 
-To use the `format-cim()` template function, {{% param "product.abbrev" %}} must be compiled with JSON support. For details, see {{% xref "/chapter-install/syslog-ng-compile-options/_index.md" %}}. To see if your {{% param "product.abbrev" %}} binary was compiled with JSON support, execute the `syslog-ng --version` command.
+To use the `format-cim()` template function, {{% param "product.abbrev" %}} must be compiled with JSON support. To see if your {{% param "product.abbrev" %}} binary was compiled with JSON support, execute the `syslog-ng --version` command.
 
 {{% /alert %}}
 
