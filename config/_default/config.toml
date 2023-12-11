@@ -69,7 +69,7 @@ twitter = "AxoFlowIO"
   # The version number for the version of the docs represented in this doc set.
   # Used in the "version-banner" partial to display a version number for the 
   # current doc set.
-  version = "4.0.0"
+  version = "4.5.0"
   version_menu_canonicallinks = true
 
   # A link to latest version of the docs. Used in the "version-banner" partial to
@@ -158,7 +158,7 @@ twitter = "AxoFlowIO"
 name = "AxoSyslog"
 abbrev = "AxoSyslog"
 version = "4.5"
-techversion = "4.5"
+techversion = "4.5.0"
 configversion = "4.5"
 syslog-ng = "syslog-ng"
 selinux = "SELinux"
@@ -223,6 +223,7 @@ contact = "[contact us](https://axoflow.com/contact/)"
     weight = 100
     #pre = "<i class='fas fa-book pr-2'></i>"
     url = "https://axoflow.com/contact/"
+    identifier = "menu-contact"
 ###############################################################################
 # Misc customizations
 ###############################################################################

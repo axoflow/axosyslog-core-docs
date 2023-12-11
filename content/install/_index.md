@@ -1,5 +1,5 @@
 ---
-title: "Installing the syslog-ng binary"
+title: "Install AxoSyslog"
 weight:  1300
 aliases:
 - /chapter-install/syslog-ng-compile-options/
@@ -10,13 +10,15 @@ aliases:
 
 This chapter explains how to install {{% param "product.name" %}} on various platforms.
 
-## Cloud-ready `syslog-ng` images
+## Cloud-ready `syslog-ng` images {#images}
 
 {{< include-headless "cloud-ready-images.md" >}}
 
-- {{% xref "/chapter-install/docker/_index.md" %}}
-- {{% xref "/chapter-install/podman/_index.md" %}}
-- {{% xref "/chapter-install/helm/_index.md" %}}
+## Install AxoSyslog
+
+- {{% xref "/install/docker/_index.md" %}}
+- {{% xref "/install/podman/_index.md" %}}
+- {{% xref "/install/helm/_index.md" %}}
 
 ## Other installation methods
 
