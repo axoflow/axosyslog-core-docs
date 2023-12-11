@@ -3,6 +3,9 @@ title: AxoSyslog documentation
 type: docs
 cascade:
   type: docs
+aliases:
+- /ose-preface/feedback/
+- /ose-preface/acknowledgements/
 ---
 
 {{% param "product.abbrev" %}} is a cloud-native syslog-ng distribution by [Axoflow](https://axoflow.com).
@@ -20,3 +23,7 @@ This documentation is maintained by Axoflow, and continually updated for new rel
 ## Acknowledgements
 
 We would like to express our gratitude to everyone involved with the project, including the syslog-ng developers, advocates, and documentation maintainers who worked at BalaBit or are still working at One Identity, or who helped the project as external contributors, users, or as part of the community.
+
+## Feedback
+
+Any feedback is greatly appreciated, especially on what else this document should cover. General comments, errors found in the text, and any suggestions about how to improve the documentation are also welcome as [GitHub issues](https://github.com/axoflow/axosyslog-core-docs/issues), or on the [Axoflow Discord server](https://discord.gg/583Z4wjem2).
