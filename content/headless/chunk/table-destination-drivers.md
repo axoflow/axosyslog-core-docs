@@ -45,7 +45,7 @@ Destination drivers available in `syslog-ng`
 
 | [snmp()]({{< relref "/chapter-destinations/configuring-destinations-smtp/_index.md" >}}) | Sends sends SNMP traps using the Simple Network Management Protocol version 2c or version 3. |
 
-| [sql()]({{< relref "/chapter-destinations/configuring-destinations-sql/_index.md" >}}) | Sends messages into an SQL database. In addition to the standard `syslog-ng` packages, the `sql()` destination requires database-specific packages to be installed. Refer to the section appropriate for your platform in {{% xref "/chapter-install/_index.md" %}}.
+| [sql()]({{< relref "/chapter-destinations/configuring-destinations-sql/_index.md" >}}) | Sends messages into an SQL database. In addition to the standard `syslog-ng` packages, the `sql()` destination requires database-specific packages to be installed. Refer to the section appropriate for your platform in {{% xref "/install/_index.md" %}}.
 
 | [snmp()]({{< relref "/chapter-destinations/configuring-destinations-snmp/_index.md" >}}) | Sends messages to the specified remote host using the SNMP v2c or v3 protocol. |
 

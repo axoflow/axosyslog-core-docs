@@ -7,7 +7,7 @@ weight:  100
 To configure AxoSyslog on a relay host, complete the following steps:
 
 
-1.  Install the AxoSyslog application on the host. For details on installing AxoSyslog on specific operating systems, see {{% xref "/chapter-install/_index.md" %}}.
+1.  Install the AxoSyslog application on the host. For details on installing AxoSyslog on specific operating systems, see {{% xref "/install/_index.md" %}}.
 
 2.  Configure the network sources that collect the log messages sent by the clients.
 
