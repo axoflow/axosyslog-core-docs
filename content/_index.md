@@ -16,7 +16,7 @@ In compliance with the above license, `syslog-ng` is used only to refer to the b
 
 New files and modifications compared to the [syslog-ng Open Source Edition documentation](https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2) are under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks.
 
-The Axoflow and AxoSyslog trademarks and logos are trademarks of Axoflow Inc.
+The Axoflow and AxoSyslog trademarks and logos are trademarks of Axoflow Inc. All other trademarks are property of their respective owners.
 
 This documentation is maintained by Axoflow, and continually updated for new releases.
 
