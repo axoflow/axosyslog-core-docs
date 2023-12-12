@@ -9,3 +9,5 @@ command: docker
 {{< include-headless "cloud-ready-images.md" >}}
 
 {{< readfile "/headless/docker-install-image.md" >}}
+
+{{< readfile "/headless/docker-expose-port.md" >}}
