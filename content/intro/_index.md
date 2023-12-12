@@ -14,7 +14,7 @@ This chapter introduces the {{% param "product.name" %}} application in a non-te
 
 ## What {{% param "product.name" %}} is {#what-axosyslog-is}
 
-The {{% param "product.name" %}} application is a flexible and highly scalable system logging application that is ideal for creating centralized and trusted logging and observability solutions and telemetry pipelines.
+The {{% param "product.name" %}} application is a flexible and highly scalable system logging application that is ideal for creating centralized and trusted logging and observability solutions and telemetry pipelines, supporting on-premises, cloud-native, and hybrid environments.
 
 Among others, {{% param "product.abbrev" %}} allows you the following.
 
@@ -62,9 +62,9 @@ Storing your log messages in a database allows you to easily search and query th
 
 {{% param "product.abbrev" %}} not only supports legacy BSD syslog (RFC3164) and the enhanced RFC5424 protocols but also JavaScript Object Notation (JSON) and journald message formats.
 
-### Heterogeneous environments
+### Heterogeneous on-premises and cloud-native environments
 
-The {{% param "product.abbrev" %}} application is the ideal choice to collect logs in massively heterogeneous environments using several different operating systems and hardware platforms, including Linux, Unix, BSD, Sun Solaris, HP-UX, MacOS, AIX. You can also run it in containerized environments.
+The {{% param "product.abbrev" %}} application is the ideal choice to collect logs and observability data in massively heterogeneous environments that use several different operating systems and hardware platforms, including Linux, Unix, BSD, Sun Solaris, HP-UX, MacOS, AIX. You can also run it in containerized environments.
 
 ### IPv4 and IPv6 support
 
