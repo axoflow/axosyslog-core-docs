@@ -13,8 +13,8 @@ The following table lists the configurable parameters of the AxoSyslog collector
 | Parameter | Description | Default |
 | --------- | ----------- | ------- |
 |  config.raw  | A complete `syslog-ng` configuration. If this parameter is set, all other parameters in the *config* section are ignored. For details on how to create a configuration for `syslog-ng`, see the [AxoSyslog Core documentation](https://docs.axoflow.com/axosyslog-core/). |  ""  |
-|  config.version  | The version string specifies [the `syslog-ng` version the configuration corresponds to](https://docs.axoflow.com/axosyslog-core/chapter-configuration-file/configuration-syntax/). |  ""  |
-|  config.sources.kubernetes.enabled  | Collect pod logs using the [`kubernetes()`](https://docs.axoflow.com/axosyslog-core/chapter-sources/configuring-sources-kubernetes/) source. If disabled, the chart doesn't configure any source. For the list of available sources, see the [AxoSyslog Core Documentation](https://docs.axoflow.com/axosyslog-core/chapter-sources/) |  true  |
+|  config.version  | The version string specifies [the `syslog-ng` version the configuration corresponds to]({{< relref "/chapter-configuration-file/configuration-syntax/_index.md" >}}). |  ""  |
+|  config.sources.kubernetes.enabled  | Collect pod logs using the [`kubernetes()`]({{< relref "/chapter-sources/configuring-sources-kubernetes/_index.md" >}}) source. If disabled, the chart doesn't configure any source. For the list of available sources, see the ({{< relref "/chapter-sources/_index.md" >}}) |  true  |
 
 The following example uses the `config.raw` parameter to configure a custom destination:
 
