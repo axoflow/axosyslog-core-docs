@@ -1,6 +1,6 @@
 ---
 title: "Install AxoSyslog"
-weight:  1300
+weight: 500
 aliases:
 - /chapter-install/syslog-ng-compile-options/
 - /chapter-install/compiling-syslog-ng/

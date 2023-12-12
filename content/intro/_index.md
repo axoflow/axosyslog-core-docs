@@ -1,6 +1,6 @@
 ---
 title: "Introduction to AxoSyslog"
-weight:  900
+weight: 100
 aliases:
 - /chapter-intro/why-do-you-need-syslog-ng/
 - /chapter-intro/what-syslog-ng-is-not/
