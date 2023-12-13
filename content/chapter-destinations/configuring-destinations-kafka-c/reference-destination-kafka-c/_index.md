@@ -55,7 +55,7 @@ For the `kafka` destination, include the path to the directory where you copied 
 
 {{% alert title="Note" color="info" %}}
 
-Unlike in the Java implementation, the <span class="code">client-lib-dir()</span> option has no significant role in the C implementation of the `kafka()` destination. The programming language accepts this option for better compatibility.
+Unlike in the Java implementation, the `client-lib-dir()` option has no significant role in the C implementation of the `kafka()` destination. The programming language accepts this option for better compatibility.
 
 {{% /alert %}}
 

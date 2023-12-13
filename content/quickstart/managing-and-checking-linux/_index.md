@@ -55,9 +55,9 @@ To check the status of {{% param "product.abbrev" %}} service
 
     `systemctl --no-pager status syslog-ng`
 
-2.  Check the <span class="code">Active:</span> field, which shows the status of {{% param "product.abbrev" %}} service. The following statuses are possible:
+2.  Check the `Active:` field, which shows the status of {{% param "product.abbrev" %}} service. The following statuses are possible:
     
-    - `active (running)` - {{% param "product.abbrev" %}} service is up and running
+    - `active (running)` - `syslog-ng` service is up and running
 
         ```shell
             syslog-ng.service - System Logger Daemon
@@ -71,7 +71,7 @@ To check the status of {{% param "product.abbrev" %}} service
             6575 /opt/syslog-ng/libexec/syslog-ng -F --no-caps --enable-core
         ```
 
-    - `inactive (dead)` - syslog-ng service is stopped
+    - `inactive (dead)` - `syslog-ng` service is stopped
 
         ```shell
             syslog-ng.service - System Logger Daemon
@@ -87,29 +87,34 @@ To check the status of {{% param "product.abbrev" %}} service
 
 To check the process of {{% param "product.abbrev" %}}, execute one of the following commands.
 
-- `ps u `pidof syslog-ng``
-    
+- `ps u <pid of syslog-ng>`
+
     Expected output example:
 
-    <span class="code">USER PID %CPU %MEM VSZ RSS TTY STAT START TIME COMMAND</span>
-    
-    <span class="code">syslogng 6709 0.0 0.6 308680 13432 ? Ss 09:17 0:00 /opt/syslog-ng/libexec/syslog-ng -F --no-caps --enable-core</span>
+    ```shell
+    USER PID %CPU %MEM VSZ RSS TTY STAT START TIME COMMAND
+    syslogng 6709 0.0 0.6 308680 13432 ? Ss 09:17 0:00 /opt/syslog-ng/libexec/syslog-ng -F --no-caps --enable-core
+    ```
 
 - `ps axu | grep syslog-ng | grep -v grep`
-    
+
     Expected output example:
-    
-    <span class="code">syslogng 6709 0.0 0.6 308680 13432 ? Ss 09:17 0:00 /opt/syslog-ng/libexec/syslog-ng -F --no-caps --enable-core</span>
+
+    ```shell
+    syslogng 6709 0.0 0.6 308680 13432 ? Ss 09:17 0:00 /opt/syslog-ng/libexec/syslog-ng -F --no-caps --enable-core
+    ```
 
 ### Checking the internal logs of {{% param "product.abbrev" %}}
     
 The internal logs of {{% param "product.abbrev" %}} contains informal, warning and error messages.
 
-By default, {{% param "product.abbrev" %}} log messages (generated on the <span class="code">internal()</span> source) are written to `/var/log/messages`.
+By default, {{% param "product.abbrev" %}} log messages (generated on the `internal()` source) are written to `/var/log/messages`.
 
 Check the internal logs of {{% param "product.abbrev" %}} for any issue.
 
-### <span id="stats"></span> Message processing
+<span id="stats"></span>
+
+### Message processing
 
 The {{% param "product.abbrev" %}} application collects statistics about the number of processed messages on the different sources and destinations.
 
