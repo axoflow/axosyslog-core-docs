@@ -19,19 +19,16 @@ enableGitInfo = true
 [languages]
 [languages.en]
 title = "AxoSyslog - a syslog-ng distribution"
-description = "Documentation for AxoSyslog, a syslog-ng distribution"
 languageName ="English"
 # Weight used for sorting.
 weight = 1
+[languages.en.params]
+description = "Documentation for AxoSyslog, a syslog-ng distribution"
 
 [outputs]
     home = ["HTML", "print"]
     # Enable print this section menu item
     section = [ "HTML", "print" ]
-
-[social]
-# Used as twitter:site in page metadata
-twitter = "AxoFlowIO"
 
 [markup]
   [markup.goldmark]
@@ -126,6 +123,10 @@ twitter = "AxoFlowIO"
   sidebar_menu_foldable = true
   # Set to true to hide the sidebar search box (the top nav search box will still be displayed if search is enabled)
   sidebar_search_disable = false
+
+  [params.social]
+    # Used as twitter:site in page metadata
+    twitter = "AxoFlowIO"
 
   [params.links]
   # End user relevant links. These will show up on left side of footer and in the community page if you have one.
