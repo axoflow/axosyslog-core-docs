@@ -32,7 +32,7 @@ To install the `axosyslog-collector` charts, complete the following steps.
     helm repo update
     ```
 
-1. Install the chart. The following command installs `axosyslog-collector` into the `default` namespace. For the list of configurable parameters and their default values, see {{% xref "/install/helm/helm-chart-parameters.md" %}}.
+1. Install the chart. The following command installs `axosyslog-collector` into the `default` namespace. For the list of configurable parameters and their default values, see {{% xref "/install/helm/helm-chart-parameters.md" %}}. If you want to use disk-buffers, see also [How to use disk-buffers in containers and Kubernetes]({{< relref "#disk-buffer-container-kubernetes" >}}).
 
     ```bash
     helm install --generate-name axosyslog/axosyslog-collector
@@ -62,6 +62,8 @@ To install the `axosyslog-collector` charts, complete the following steps.
     NAME                                   READY   STATUS    RESTARTS   AGE
     axosyslog-collector-1683469360-tptfb   1/1     Running   0          28s
     ```
+
+{{< include-headless "disk-buffer-in-container.md" >}}
 
 ## Uninstall
 

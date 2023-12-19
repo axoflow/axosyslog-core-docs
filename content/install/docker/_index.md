@@ -10,4 +10,6 @@ command: docker
 
 {{< readfile "/headless/docker-install-image.md" >}}
 
+{{< include-headless "disk-buffer-in-container.md" >}}
+
 {{< readfile "/headless/docker-expose-port.md" >}}
