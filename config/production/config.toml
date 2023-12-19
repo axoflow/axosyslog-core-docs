@@ -10,3 +10,6 @@ id = "G-3P6PW57YTF"
 [params]
 
 url_latest_version = "https://axoflow.com/docs/axosyslog-core/"
+
+# Content group for Google Analytics. Optional.
+contentGroup = "axosyslog-docs"
