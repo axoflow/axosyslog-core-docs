@@ -4,7 +4,8 @@ weight: 600
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-The following tutorial shows you how to send Kubernetes logs to OpenSearch.
+The following tutorial shows you how to install {{% param "product.abbrev" %}} on Kubernetes, deploy OpenSearch to the same cluster, and send Kubernetes logs to OpenSearch.
+
 
 ## Prerequisites
 
@@ -22,9 +23,9 @@ You need:
 
 ## Generate logs
 
-Install `kube-logging/log-generator` to generate logs. Complete the following steps.
+If you don't already have an application that generates logs deployed to the Kubernetes cluster, install `kube-logging/log-generator` to generate sample logs. Complete the following steps.
 
-1. Add the kube-logging repository to Helm.
+1. Add the `kube-logging` repository to Helm.
 
     ```bash
     helm repo add kube-logging https://kube-logging.github.io/helm-charts
