@@ -18,4 +18,4 @@ source s_network {
 };
 ```
 
-<!-- FIXME add link to blogpost when published -->
+For a detailed introduction, see the [Scaling syslog to 1M EPS with eBPF](https://axoflow.com/scale-syslog-over-udp-with-ebpf/) blog post.
