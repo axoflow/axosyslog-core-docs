@@ -9,12 +9,14 @@ By default, the kernel chooses the receive socket for a specific UDP randomly ba
 
 ```shell
 source s_network {
-    udp(so-reuseport(1) persist-name("udp1")
+    network(
+        transport("udp")
+        so-reuseport(1) persist-name("udp1")
         ebpf(reuseport(sockets(4)))
     );
-    udp(so-reuseport(1) persist-name("udp2"));
-    udp(so-reuseport(1) persist-name("udp3"));
-    udp(so-reuseport(1) persist-name("udp4"));
+    network(transport("udp") so-reuseport(1) persist-name("udp2"));
+    network(transport("udp") so-reuseport(1) persist-name("udp3"));
+    network(transport("udp") so-reuseport(1) persist-name("udp4"));
 };
 ```
 

@@ -37,13 +37,16 @@ By default, the Cisco-specific fields are extracted into the following name-valu
 ## Declaration:
 
 ```shell
-   @version: {{% param "product.techversion" %}}
-    @include "scl.conf"
-    log {
-        source { udp(flags(no-parse)); };
-        parser { cisco-parser(); };
-        destination { ... };
-    };
+@version: {{% param "product.techversion" %}}
+@include "scl.conf"
+log {
+    source { network(
+                transport("udp")
+                flags(no-parse)
+                ); };
+    parser { cisco-parser(); };
+    destination { ... };
+};
 ```
 
 
