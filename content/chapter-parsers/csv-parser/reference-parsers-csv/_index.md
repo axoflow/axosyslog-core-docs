@@ -133,11 +133,13 @@ Using the `greedy` flag will assign the remainder of the message to the last col
     };
 ```
 
+{{% include-headless "chunk/option-parser-on-type-error.md" %}}
+
 ## quote-pairs() {#csv-parser-quote-pairs}
 
 |           |                                 |
 | --------- | ------------------------------- |
-| Synopsis: | quote-pairs('<quote_pairs>) |
+| Synopsis: | `quote-pairs(<quote_pairs>)` |
 
 *Description:* List quote-pairs between single quotes. Delimiter characters or strings enclosed between quote characters are ignored. Note that the beginning and ending quote character does not have to be identical, for example, `[}` can also be a quote-pair. For an example of using `quote-pairs()` to parse Apache log files, see [Example: Parsing Apache log files]({{< relref "/chapter-parsers/csv-parser/_index.md" >}}).
 
