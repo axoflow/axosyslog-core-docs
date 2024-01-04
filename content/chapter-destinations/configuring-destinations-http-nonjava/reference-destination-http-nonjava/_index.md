@@ -362,6 +362,9 @@ In case the server on the specified URL returns a redirect request, {{% param "p
 
 {{< include-headless "chunk/destination-load-balancing-url.md" >}}
 
+### Templates in the url()
+
+{{< include-headless "chunk/option-destination-http-url-templating.md" >}}
 
 {{% include-headless "chunk/option-destination-http-user-agent.md" %}}
 
@@ -377,6 +380,8 @@ In case the server on the specified URL returns a redirect request, {{% param "p
 
 
 {{% include-headless "chunk/option-destination-http-use-system-cert-store.md" %}}
+
+{{< include-headless "chunk/option-destination-http-worker-partition-key.md" >}}
 
 {{< include-headless "chunk/option-destination-threaded-workers.md" >}}
 

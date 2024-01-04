@@ -75,5 +75,6 @@ The following destination sends [log messages to an Elasticsearch server using t
 
 {{% include-headless "chunk/http-load-balance-workers.md" %}}
 
+## Templates in the url()
 
-
+{{< include-headless "chunk/option-destination-http-url-templating.md" >}}
