@@ -4,7 +4,7 @@ weight:  900
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The AxoSyslog application can encrypt incoming and outgoing syslog message flows using TLS if you use the `network()` or `syslog()` drivers.
+This page describes the TLS-related options of the `network()` and `syslog()` drivers. Where applicable, other drivers also support encrypted transport, see the documentation of the other drivers for details.
 
 {{% alert title="Note" color="info" %}}
 
@@ -337,6 +337,17 @@ The following destination explicitly disables SSL and TLSv1.0
         );
     };
 ```
+
+## ssl-version()
+
+|          |                                |
+| -------- | ------------------------------ |
+| Type:    | string                         |
+| Default: | None, uses the libcurl default |
+
+Available in {{% param "product_name" %}} version 4.5.0 and later.
+
+*Description:* Specifies the permitted SSL/TLS version. Possible values: `sslv2`, `sslv3`, `tlsv1`, `tlsv1_0`, `tlsv1_1`, `tlsv1_2`, `tlsv1_3`.
 
 ## trusted-dn() {#tls-options-trusted-dn}
 
