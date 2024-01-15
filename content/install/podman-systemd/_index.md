@@ -12,7 +12,7 @@ This page shows you how to run {{% param "product.abbrev" %}} as a systemd servi
 
 ## Prerequisites
 
-Podman version FIXME
+Podman version 4.6.1.
 
 ## Install {{% param "product.abbrev" %}} as a systemd service
 
@@ -45,46 +45,38 @@ Podman version FIXME
     ```
 
     {{< include-code "axosyslog.service" "systemd" >}}
-    <!-- FIXME
-    In the unit file: 
-    add a sensible default if needed instead of
-    User=1003
-    Group=1004 
-    and fix it also in 
-    ExecStartPre = +chown -R syslogng:syslogng $PERSIST_MOUNT $CONFIG_MOUNT $DISKBUF_MOUNT
-
-    
-    add a default mount for diskbuffer files instead of
-    Environment="DISKBUF_MOUNT=/opt/dskbuf"
-
-    - can we set the image to a latest image?
-    Environment="AXOSYSLOG_IMAGE=ghcr.io/axoflow/axosyslog-hibiki:0.1.1"
-
-    - should we delete the axolet refrences?
-     -->
 
 1. Edit the unit file as needed for your environment.
 
     - We recommend using the mount points suggested.
-    - Adjust the `CONFIG_MOUNT` option if you only want to manage one configuration file externally.
 
-1. (Optional) Create an `override.conf` file to set custom environment values. This can be useful if you don't want to use `/etc/containers/systemd/axosyslog.container` exclusively.
+1. (Optional) Create an `override.conf` file to set custom environment values. This can be useful if you don't want to modify `/etc/containers/systemd/axosyslog.container`. Run:
 
     ```shell
-    mkdir -p /etc/systemd/system/axosyslog.service.d
-    cat > /etc/systemd/system/axosyslog.service.d/override.conf <<"A"
-    A
+    systemctl edit axosyslog
     ```
 
-    Later you can edit this file by running `systemctl edit axosyslog`
+    Later you can edit this file by running the previous command again.
 
-1. Create the `/etc/syslog-ng/syslog-ng.conf` configuration file.
+1. Create the `/opt/axosyslog/etc/syslog-ng.conf` configuration file based on the following template.
 
-    For a start, you can use [this configuration file from the syslog-ng repository](https://github.com/syslog-ng/syslog-ng/blob/master/scl/syslog-ng.conf).
+    ```shell
+    sudo curl -o /opt/axosyslog/etc/syslog-ng.conf https://axoflow.com/docs/axosyslog-core/install/podman-systemd/syslog-ng.conf
+    ```
 
-    Using this configuration, {{% param "product_name" %}} collects the local system logs and logs received from the network into the `/var/log/messages` and `/var/log/messages-kv.log` files.
+    With the following sample configuration file {{% param "product_name" %}} collects the local system logs and logs received from the network into the `/var/log/messages` file.
 
-    {{< include-code "https://raw.githubusercontent.com/syslog-ng/syslog-ng/master/scl/syslog-ng.conf" "shell" >}}
+    ```shell
+    log { 
+        source { default-network-drivers(); };
+        destination { file("/logs/messages"); };
+    };
+    ```
+
+    You can customize the configuration file according to your needs. For a few pointers, see {{% xref "/quickstart/configure-servers/_index.md" %}} and the rest of this guide.
+
+
+    <!-- FIXME Add a unitfile mount point /logs that points /opt/axosyslog/var/log -->
 
 1. Run the following commands to reload the systemd configuration and launch the `axosyslog` service. Though the systemctl commands are run as root, the container will run as the specified user if set appropriately in the unit file.
 
@@ -101,6 +93,20 @@ Podman version FIXME
     ```
 
     <!-- FIXME add sample good output -->
+
+1. Send a test message to the service:
+
+    ```shell
+    echo '<5> localhost test: this is a test message' | nc localhost 514
+    ```
+
+    Check that the test message has arrived into the log file:
+
+    ```shell
+    less /opt/axosyslog/var/log/messages
+    ```
+
+    <!-- FIXME add sample output -->
 
 ## Customize the configuration
 
@@ -120,7 +126,7 @@ To customize the configuration, edit the `/etc/syslog-ng/syslog-ng.conf` file on
 - You can access `syslog-ng-ctl` from the host, for example by running:
 
     ```shell
-    {{< param "command" >}} exec AxoSyslog syslog-ng-ctl config
+    {{< param "command" >}} exec -ti AxoSyslog syslog-ng-ctl show-license-info
     ```
 
 - The traditional method of starting a service at boot (`systemctl enable`) is not supported for container services. To automatically start the {{% param "product.abbrev" %}} service, make sure that the following line is included in the unit file. (It is included in the sample template.)
