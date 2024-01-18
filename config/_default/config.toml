@@ -248,7 +248,7 @@ anchor = "smart"
     keepWhitespace = true
 
 [sitemap]
-  ChangeFreq = "daily"
+  ChangeFreq = "weekly"
   Priority = "1"
 
 [security]
