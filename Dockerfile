@@ -31,7 +31,7 @@ WORKDIR /app/
 RUN npm install autoprefixer postcss-cli
 
 RUN hugo \
-    --baseURL="https://docs.axoflow.com/axosyslog-core" \
+    --baseURL="https://www.axoflow.com/docs/axosyslog-core" \
     -e production \
     --enableGitInfo \
     --ignoreCache

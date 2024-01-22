@@ -12,7 +12,7 @@ The following table lists the configurable parameters of the AxoSyslog collector
 
 | Parameter | Description | Default |
 | --------- | ----------- | ------- |
-|  config.raw  | A complete `syslog-ng` configuration. If this parameter is set, all other parameters in the *config* section are ignored. For details on how to create a configuration for `syslog-ng`, see the [AxoSyslog Core documentation](https://docs.axoflow.com/axosyslog-core/). |  ""  |
+|  config.raw  | A complete `syslog-ng` configuration. If this parameter is set, all other parameters in the *config* section are ignored. For details on how to create a configuration for `syslog-ng`, see the [AxoSyslog Core documentation](https://axoflow.com/docs/axosyslog-core/). |  ""  |
 |  config.version  | The version string specifies [the `syslog-ng` version the configuration corresponds to]({{< relref "/chapter-configuration-file/configuration-syntax/_index.md" >}}). |  ""  |
 |  config.sources.kubernetes.enabled  | Collect pod logs using the [`kubernetes()`]({{< relref "/chapter-sources/configuring-sources-kubernetes/_index.md" >}}) source. If disabled, the chart doesn't configure any source. For the list of available sources, see the ({{< relref "/chapter-sources/_index.md" >}}) |  true  |
 

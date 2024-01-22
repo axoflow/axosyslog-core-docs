@@ -16,7 +16,7 @@ You must have [Helm 3.0 or newer](https://helm.sh) installed to use these charts
 
 The chart provides parameters that make it easy to:
 
-- collect logs using the [`kubernetes()`](https://docs.axoflow.com/axosyslog-core/chapter-sources/configuring-sources-kubernetes/) source, and
+- collect logs using the [`kubernetes()`](https://axoflow.com/docs/axosyslog-core/chapter-sources/configuring-sources-kubernetes/) source, and
 - forward the logs using the `network()` and `opensearch()` destinations.
 
 To use other sources and destinations, use the `config.raw` parameter. For the list of configurable parameters and their default values, see {{% xref "/install/helm/helm-chart-parameters.md" %}}.
