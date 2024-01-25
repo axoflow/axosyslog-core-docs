@@ -46,15 +46,11 @@ destination d_bigquery {
         )
 
         on-error("drop-property")
-
-        # or alternatively instead of schema():
-        # protobuf-schema("/tmp/test.proto"
-        #                 => "$MESSAGE", "$PROGRAM", "$HOST", "$PID")
-
-        # keep-alive(time(20000) timeout(10000) max-pings-without-data(0))
     );
 }
 ```
+
+By default, the messages are sent with one worker, one message per batch, and without compression.
 
 ## Options
 
@@ -118,6 +114,8 @@ message CustomRecord {
 }
 ```
 
+Alternatively, you can set the schema with the [`schema()`](#schema) option.
+
 ## schema()
 
 |          |                            |
@@ -136,6 +134,8 @@ schema(
     "pid" INTEGER => int("$PID")
 )
 ```
+
+Alternatively, you can set the schema with the [`protobuf-schema()`](#protobuf-schema) option.
 
 ## table()
 
