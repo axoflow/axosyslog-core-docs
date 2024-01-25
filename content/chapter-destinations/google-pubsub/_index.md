@@ -19,7 +19,7 @@ For details, see the [Google Pub/Sub tutorial](https://cloud.google.com/pubsub/d
 
 <!-- FIXME Do we need more details about how to set up the Google side? -->
 
-To configure {{% param "product_name" %}}, you'll need the username, password, the name of your organization, and the name of the OpenObserve stream where you want to send your data.
+To configure {{% param "product_name" %}}, you'll need the name of the project and the topic where you want to send your data.
 
 Minimal configuration:
 
