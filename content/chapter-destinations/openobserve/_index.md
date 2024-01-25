@@ -21,6 +21,8 @@ Minimal configuration:
 destination d_openobserve {
   openobserve-log(
     url("http://your-openobserve-endpoint")
+    organization("your-organization")
+    stream("your-example-stream")
     user("root@example.com")
     password("V2tsn88GhdNTKxaS")
   );
@@ -34,6 +36,7 @@ destination d_openobserve {
   openobserve-log(
     url("http://openobserve-endpoint")
     port(5080)
+    organization("your-organization")
     stream("your-example-stream")
     user("root@example.com")
     password("V2tsn88GhdNTKxaS")
