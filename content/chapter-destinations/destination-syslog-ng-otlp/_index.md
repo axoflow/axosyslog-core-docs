@@ -31,6 +31,8 @@ The `syslog-ng-otlp()` destination has the following options.
 
 {{% include-headless "chunk/option-destination-batch-timeout.md" %}}
 
+{{< include-headless "chunk/option-destination-grpc-compression.md" >}}
+
 {{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
 {{< include-headless "chunk/option-destination-hook.md" >}}

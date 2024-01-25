@@ -62,6 +62,8 @@ log non_otel_to_otel_tls {
 
 {{< include-headless "chunk/option-destination-threaded-batching.md" >}}
 
+{{< include-headless "chunk/option-destination-grpc-compression.md" >}}
+
 {{< include-headless "chunk/option-destination-threaded-workers.md" >}}
 
 <!-- FIXME xinclude other common options
