@@ -8,4 +8,9 @@ The filters and default macros of AxoSyslog work well on the headers and metainf
 
 The {{% param "product.abbrev" %}} application provides the following possibilities to parse the messages, or parts of the messages, as shown on the following list. There are several built-in parsers for application-specific logs.
 
-Note that by default, {{% param "product.abbrev" %}} parses every message as a syslog message. To disable message parsing, use the `flags(no-parse)` option of the source. To explicitly parse a message as a syslog message, use the `syslog` parser. For details, see {{% xref "/chapter-parsers/parser-syslog/_index.md" %}}.
+Note that by default, {{% param "product.abbrev" %}} parses every message as a syslog message. To disable parsing the message as a syslog message, use the `flags(no-parse)` option of the source. To explicitly parse a message as a syslog message, use the `syslog` parser. For details, see {{% xref "/chapter-parsers/parser-syslog/_index.md" %}}.
+
+<!-- FIXME if there is a description somewhere about how to define and refer to parser{}s, that should be also linked here
+
+Clarify the above no-parse note and the different parsers (no-parse and parsing the entire message, no no-parse and parsing the message within the syslog message, ...)
+ -->
