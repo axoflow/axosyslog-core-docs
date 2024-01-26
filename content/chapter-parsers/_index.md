@@ -6,44 +6,6 @@ weight:  3100
 
 The filters and default macros of AxoSyslog work well on the headers and metainformation of the log messages, but are rather limited when processing the content of the messages. Parsers can segment the content of the messages into name-value pairs, and these names can be used as user-defined macros. Subsequent filtering or other type of processing of the message can use these custom macros to refer to parts of the message. Parsers are global objects most often used together with filters and rewrite rules.
 
-The {{% param "product.abbrev" %}} application provides the following possibilities to parse the messages, or parts of the messages:
+The {{% param "product.abbrev" %}} application provides the following possibilities to parse the messages, or parts of the messages, as shown on the following list. There are several built-in parsers for application-specific logs.
 
-  - By default, {{% param "product.abbrev" %}} parses every message as a syslog message. To disable message parsing, use the `flags(no-parse)` option of the source. To explicitly parse a message as a syslog message, use the `syslog` parser. For details, see {{% xref "/chapter-parsers/parser-syslog/_index.md" %}}.
-
-  - To segment a message into columns using a CSV-parser, see {{% xref "/chapter-parsers/csv-parser/_index.md" %}}.
-
-  - To segment a message consisting of whitespace or comma-separated `key=value` pairs (for example, Postfix log messages), see {{% xref "/chapter-parsers/key-value-parser/_index.md" %}}.
-
-  - To parse JSON-formatted messages, see {{% xref "/chapter-parsers/json-parser/_index.md" %}}.
-
-  - To parse XML-formatted messages, see {{% xref "/chapter-parsers/xml-parser/_index.md" %}}.
-
-  - To identify and parse the messages using a pattern database, see {{% xref "/chapter-parsers/chapter-patterndb/_index.md" %}}.
-
-  - To parse a specially-formatted date or timestamp, see {{% xref "/chapter-parsers/date-parser/_index.md" %}}.
-
-  - To write a custom parser in Python or Hy, see {{% xref "/chapter-parsers/python-parser/_index.md" %}}.
-
-  - To parse the tags sent by another AxoSyslog host. For details, see {{% xref "/chapter-parsers/parser-tags/_index.md" %}}.
-
-The {{% param "product.abbrev" %}} application provides built-in parsers for the following application logs:
-
-  - Apache HTTP server access logs. For details, see {{% xref "/chapter-parsers/apache-access-log-parser/_index.md" %}}.
-
-  - Cisco devices. For details, see {{% xref "/chapter-parsers/cisco-parser/_index.md" %}}.
-
-  - Messages formatted using the enterprise-wide message model (EWMM) of {{% param "product.abbrev" %}}. For details, see {{% xref "/chapter-parsers/parser-ewmm/_index.md" %}}.
-
-  - Iptables logs. For details, see {{% xref "/chapter-parsers/parser-iptables/_index.md" %}}.
-
-  - Linux Audit (`auditd`) logs. For details, see {{% xref "/chapter-parsers/linux-audit-parser/_index.md" %}}.
-
-  - Netskope log messages. For details, see {{% xref "/chapter-parsers/parser-netskope/_index.md" %}}.
-
-  - [osquery](https://osquery.io) result logs. For details, see {{% xref "/chapter-sources/syslog-ng-source-osquery/_index.md" %}}.
-
-  - SNMP traps of the [Net-SNMP](http://www.net-snmp.org)'s `snmptrapd` application. For details, see {{% xref "/chapter-sources/syslog-ng-source-snmptrap/_index.md" %}}.
-
-  - sudo logs. For details, see {{% xref "/chapter-parsers/parser-sudo/_index.md" %}}.
-
-  - Websense Content Gateway (Raytheon|Websense, now Forcepoint) log messages. For details, see {{% xref "/chapter-parsers/parser-websense/_index.md" %}}.
+Note that by default, {{% param "product.abbrev" %}} parses every message as a syslog message. To disable message parsing, use the `flags(no-parse)` option of the source. To explicitly parse a message as a syslog message, use the `syslog` parser. For details, see {{% xref "/chapter-parsers/parser-syslog/_index.md" %}}.
