@@ -1,6 +1,6 @@
 ---
 title: "pacct: Collect process accounting logs on Linux"
-weight:  2700
+weight:  2500
 driver: "pacct()"
 short_description: "Collect process accounting logs on Linux"
 ---
