@@ -60,6 +60,8 @@ log non_otel_to_otel_tls {
 
 {{< include-headless "chunk/grpc-authentication.md" >}}
 
+{{% include-headless "chunk/option-destination-otlp-batch-bytes.md" %}}
+
 {{< include-headless "chunk/option-destination-threaded-batching.md" >}}
 
 {{< include-headless "chunk/option-destination-grpc-compression.md" >}}

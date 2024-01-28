@@ -20,6 +20,8 @@ The `syslog-ng-otlp()` destination has the following options.
 
 {{< include-headless "chunk/grpc-authentication.md" >}}
 
+{{% include-headless "chunk/option-destination-otlp-batch-bytes.md" %}}
+
 ## batch-lines()
 
 |          |        |
