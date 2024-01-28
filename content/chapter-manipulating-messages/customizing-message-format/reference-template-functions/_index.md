@@ -1223,8 +1223,20 @@ A template that converts the message to RFC3164 (BSD-syslog) format and truncate
     };
 ```
 
+## tag {#template-function-tag}
 
+Available in {{% param "product.abbrev" %}} version 4.6 and later.
 
+*Syntax:*
+
+```shell
+$(tag <name-of-the-tag> <value-if-set> <value-if-unset>)
+```
+
+*Description:*  Adds bit-like tags to the messages.
+
+- If you do not set the `value-if-set` and `value-if-unset` arguments, the `$(tag)` template function acts as a boolean and expands to `0` or `1`, depending on whether the message has the specified tag set.
+- If the `value-if-set` and `value-if-unset` arguments are set, `$(tag)` returns a string: the second argument (`<value-if-set>`) if the message has `<tag>`, and the third argument (`<value-if-unset>`) if the message doesn't have `<tag>`.
 
 ## template {#template-function-template}
 
