@@ -37,5 +37,7 @@ log otel_forward_mode_alts {
 
 The port number to receive incoming connections. Default value: 4317
 
+{{< include-headless "chunk/option-source-threaded-workers.md" >}}
+
 <!-- FIXME xinclude other common options
  threaded_source_driver_option -->

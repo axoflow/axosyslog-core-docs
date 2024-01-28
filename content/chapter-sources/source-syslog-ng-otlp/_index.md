@@ -95,3 +95,5 @@ The `syslog-ng-otlp()` source has the following options.
 {{< include-headless "chunk/option-source-use-dns.md" >}}
 
 {{< include-headless "chunk/option-source-use-fqdn.md" >}}
+
+{{< include-headless "chunk/option-source-threaded-workers.md" >}}
