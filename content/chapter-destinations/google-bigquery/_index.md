@@ -21,7 +21,7 @@ Starting with version 4.6.0, {{% param "product_name" %}} can send data to [Goog
 
 To configure {{% param "product_name" %}}, you'll need the name of the project, dataset, the name of the table to use, and the schema of the table.
 
-<!-- - An [IAM service account](https://cloud.google.com/iam/docs/service-account-overview) that {{% param "product_name" %}} uses for authentication. -->
+Authentication is done via [Application Default Credentials](https://cloud.google.com/docs/authentication/provide-credentials-adc).
 
 <!-- FIXME Do we need more details about how to set up the Google side? -->
 
@@ -55,11 +55,6 @@ By default, the messages are sent with one worker, one message per batch, and wi
 ## Options
 
 The `bigquery()` destination has the following options.
-
-<!-- FIXME add other inherited options -->
-
-<!-- FIXME update code examples in the included grpc authentication -->
-{{< include-headless "chunk/grpc-authentication.md" >}}
 
 {{% include-headless "chunk/option-destination-batch-bytes.md" %}}
 
