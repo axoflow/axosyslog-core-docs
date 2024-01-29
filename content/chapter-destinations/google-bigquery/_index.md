@@ -80,11 +80,23 @@ By default, the `batch-bytes()` option of the `bigquery()` destination is 10 MB.
 
 *Description:* The name of the dataset where {{% param "product_name" %}} sends the data.
 
+{{< include-headless "chunk/option-destination-diskbuffer.md" >}}
+
+{{% include-headless "chunk/option-destination-flags.md" %}}
+
+{{< include-headless "chunk/option-destination-frac-digits.md" >}}
+
+{{< include-headless "chunk/option-destination-hook.md" >}}
+
 {{< include-headless "chunk/option-destination-grpc-keep-alive.md" >}}
+
+{{% include-headless "chunk/option-destination-local-timezone.md" %}}
 
 {{% include-headless "chunk/option-destination-log-fifo-size.md" %}}
 
 {{< include-headless "chunk/option-destination-on-error.md" >}}
+
+{{% include-headless "chunk/option-persist-name.md" %}}
 
 ## project()
 
@@ -97,7 +109,12 @@ By default, the `batch-bytes()` option of the `bigquery()` destination is 10 MB.
 
 ## protobuf-schema()
 
-<!-- FIXME -->
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | See the description |
+| Default: | - |
+
+*Description:* Sets the schema of the BigQuery table from a protobuf schema file.
 
 ```shell
 protobuf-schema("/tmp/test.proto" => "$MESSAGE", "$PROGRAM", "$HOST", "$PID")
@@ -117,6 +134,8 @@ message CustomRecord {
 ```
 
 Alternatively, you can set the schema with the [`schema()`](#schema) option.
+
+{{% include-headless "chunk/option-destination-retries.md" %}}
 
 ## schema()
 
@@ -139,6 +158,8 @@ schema(
 
 Alternatively, you can set the schema with the [`protobuf-schema()`](#protobuf-schema) option.
 
+{{% include-headless "chunk/option-destination-send-timezone.md" %}}
+
 ## table()
 
 |          |                            |
@@ -147,5 +168,26 @@ Alternatively, you can set the schema with the [`protobuf-schema()`](#protobuf-s
 | Default: | - |
 
 *Description:* The name of the Google BigQuery table where {{% param "product_name" %}} sends the data.
+
+{{% include-headless "chunk/option-destination-template-escape.md" %}}
+
+{{% include-headless "chunk/option-destination-throttle.md" %}}
+
+{{% include-headless "chunk/option-source-time-reopen.md" %}}
+
+{{% include-headless "chunk/option-destination-timezone.md" %}}
+
+{{< include-headless "chunk/option-destination-ts-format.md" >}}
+
+## url()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | string |
+| Default: | N/A |
+
+*Description:* <!-- FIXME default URL? -->
+
+{{< include-headless "chunk/option-destination-http-worker-partition-key.md" >}}
 
 {{< include-headless "chunk/option-destination-threaded-workers.md" >}}
