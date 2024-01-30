@@ -179,9 +179,9 @@ Alternatively, you can set the schema with the [`protobuf-schema()`](#protobuf-s
 |          |                            |
 | -------- | -------------------------- |
 | Type:    | string |
-| Default: | N/A |
+| Default: | `bigquerystorage.googleapis.com` |
 
-*Description:* <!-- FIXME default URL? -->
+*Description:* The URL of the Google BigQuery where the logs are sent.
 
 {{< include-headless "chunk/option-destination-http-worker-partition-key.md" >}}
 
