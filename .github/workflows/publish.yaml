@@ -57,12 +57,9 @@ jobs:
       - name: Build
         run: hugo --environment production
 
-      - name: Debug sitemap
-        run: cat public/sitemap.xml | xargs echo
-
       - name: Deploy with rclone
         uses: AnimMouse/setup-rclone@v1
         with:
           rclone_config: ${{ secrets.RCLONE_CONFIG }}
           
-      - run: rclone copy --stats-log-level NOTICE --stats-one-line public/ axodocs:/axosyslog-core
+      - run: rclone copy --checksum --stats-log-level NOTICE --stats-one-line public/ axodocs:/axosyslog-core
