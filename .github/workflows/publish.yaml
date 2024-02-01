@@ -64,4 +64,4 @@ jobs:
         with:
           rclone_config: ${{ secrets.RCLONE_CONFIG }}
           
-      - run: rclone copy --stats --stats-one-line public/ axodocs:/axosyslog-core
+      - run: rclone copy --stats-log-level NOTICE --stats-one-line public/ axodocs:/axosyslog-core
