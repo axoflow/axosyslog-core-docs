@@ -66,5 +66,5 @@ jobs:
         # So we force it to upload it every time.
       - name: Deploy with rclone
         run: |
-          rclone copy --dry-run --stats-log-level NOTICE --stats-one-line public/ axodocs:/axosyslog-core
+          rclone copy --stats-log-level NOTICE --stats-one-line public/ axodocs:/axosyslog-core
           rclone copyto --ignore-times --stats-one-line public/sitemap.xml axodocs:/axosyslog-core/sitemap.xml
