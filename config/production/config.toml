@@ -1,7 +1,6 @@
 baseurl = "https://axoflow.com/docs/axosyslog-core/"
 buildDrafts = false
 googleAnalytics = "G-3P6PW57YTF"
-enableGitInfo = true
 
 [services]
 [services.googleAnalytics]
