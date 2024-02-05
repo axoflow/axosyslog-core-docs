@@ -33,4 +33,4 @@
     ```
 
 - `syslog-protocol`: The `syslog-protocol` flag instructs the driver to format the messages according to the new IETF syslog protocol standard (RFC5424), but without the frame header. If this flag is enabled, macros used for the message have effect only for the text of the message, the message header is formatted to the new standard. Note that this flag is not needed for the `syslog` driver, and that the `syslog` driver automatically adds the frame header to the messages.
-- `threaded`: The `threaded` flag enables multithreading for the current destination, even if the global `threaded()` option is set to `no`. For more information on multithreading, see {{% xref "/chapter-multithreading/configuring-multithreading/_index.md#example-enabling-multithreading" %}}.
+- `threaded`: The `threaded` flag enables multithreading for the current destination, even if the global `threaded()` option is set to `no`. Applies only to destinations that support multithreaded processing. For more information on multithreading, see {{% xref "/chapter-multithreading/configuring-multithreading/_index.md#example-enabling-multithreading" %}}.
