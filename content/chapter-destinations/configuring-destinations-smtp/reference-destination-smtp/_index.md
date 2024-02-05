@@ -6,17 +6,17 @@ weight:  100
 
 The `smtp()` sends email messages using SMTP, without needing external applications. The `smtp()` destination has the following options:
 
-{{% include-headless "chunk/smtp-option-body.md" %}}
-
-{{% include-headless "chunk/smtp-option-bcc.md" %}}
-
-{{% include-headless "chunk/smtp-option-cc.md" %}}
-
-{{< include-headless "chunk/option-destination-diskbuffer.md" >}}
-
 {{% include-headless "chunk/option-destination-batch-bytes.md" %}}
 
 {{% include-headless "chunk/option-destination-threaded-batching.md" %}}
+
+{{% include-headless "chunk/smtp-option-bcc.md" %}}
+
+{{% include-headless "chunk/smtp-option-body.md" %}}
+
+{{% include-headless "chunk/smtp-option-cc.md" %}}
+
+{{< include-headless "chunk/option-destination-flags.md" >}}
 
 {{% include-headless "chunk/smtp-option-from.md" %}}
 

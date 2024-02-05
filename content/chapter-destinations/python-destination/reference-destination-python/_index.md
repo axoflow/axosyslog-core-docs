@@ -60,6 +60,8 @@ For details, see {{% xref "/chapter-configuration-file/python-code-external-file
 
 {{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
+{{% include-headless "chunk/option-destination-flags.md" %}}
+
 {{< include-headless "chunk/option-destination-frac-digits.md" >}}
 
 {{% include-headless "chunk/option-python-loaders.md" %}}
