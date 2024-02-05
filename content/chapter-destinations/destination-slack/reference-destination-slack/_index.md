@@ -107,7 +107,7 @@ For details on how this option influences batch mode, see [http: Posting message
 |          |                                                                                |
 | -------- | ------------------------------------------------------------------------------ |
 | Type:    | string or template                                                             |
-| Default: | '${MSG} - host: ${HOST} | program: ${PROGRAM}(${PID}) | severity: ${PRIORITY}' |
+| Default: | `${MSG} - host: ${HOST} | program: ${PROGRAM}(${PID}) | severity: ${PRIORITY}` |
 
 *Description:* The plain-text summary of the Slack attachment. For details, see the [fallback option in the Slack documentation](https://api.slack.com/message-attachments).
 
