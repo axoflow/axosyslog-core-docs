@@ -6,6 +6,33 @@ weight: 10
 
 This page is a changelog that collects the major changes and additions to this documentation. (If you want to know the details about why we have separate documentation for AxoSyslog, our syslog-ng distribution and how it relates to the syslog-ng documentation, read our [syslog-ng documentation and similarities with AxoSyslog Core](https://axoflow.com/axosyslog-core-documentation-syslog-ng/) blog post.)
 
+## 2023-10-20 to version 4.5 release (2024-01-05)
+
+- [Google Pub/Sub destination]({{< relref "/chapter-destinations/google-pubsub/_index.md" >}})
+- [OpenObserve destination]({{< relref "/chapter-destinations/openobserve/_index.md" >}})
+- New `http()` destination options {{% xref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#templates-in-the-url" %}} and {{% xref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#worker-partition-key" %}}
+
+### Parsers
+
+- New {{% xref "/chapter-parsers/postgresql-csvlog-parser/_index.md" %}} parser
+- Columnless mode in [csv-parser]({{< relref "/chapter-parsers/csv-parser/_index.md" >}})
+
+### TLS options
+
+- {{% xref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#ssl-version" %}}
+- `ignore-validity-period` option in to {{% xref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#tls-options-ssl-options" %}}
+
+### Manual pages
+
+- `--check-startup` in {{% xref "/app-man-syslog-ng/syslog-ng.8.md" %}}
+- [secure-logging]({{< relref "/app-man-syslog-ng/secure-logging.7.md" >}}), [slogencrypt]({{< relref "/app-man-syslog-ng/slogencrypt.1.md" >}}), [slogkey]({{< relref "/app-man-syslog-ng/slogkey.1.md" >}}), and [slogverify]({{< relref "/app-man-syslog-ng/slogverify.1.md" >}}) manual pages.
+
+### Other changes
+
+- New quickstart section {{% xref "/quickstart/opensearch-helm/_index.md" %}}
+- Updates in {{% xref "/install/podman/_index.md" %}} and {{% xref "/install/docker/_index.md" %}}
+- `close_batch` and `set_transport` methods in the [python source]({{< relref "/chapter-sources/python-source/_index.md" >}})
+
 ## 2023-08-18 to 2023-10-20
 
 <!-- Covered till commit 682e774cb35ab5cd2b16da8abeee4e4ae0d0ff4d -->
