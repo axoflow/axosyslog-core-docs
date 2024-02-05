@@ -55,9 +55,16 @@ Essentially, the `no-header` flag signals {{% param "product.abbrev" %}} that th
 - *dont-store-legacy-msghdr*: By default, AxoSyslog stores the original incoming header of the log message. This is useful if the original format of a non-syslog-compliant message must be retained (AxoSyslog automatically corrects minor header errors, for example, adds a whitespace before `msg` in the following message: `Jan 22 10:06:11 host program:msg`). If you do not want to store the original header of the message, enable the `dont-store-legacy-msghdr` flag.
 
 - *sanitize-utf8*: When using the `sanitize-utf8` flag, {{% param "product.abbrev" %}} converts non-UTF-8 input to an escaped form, which is valid UTF-8.
+
+    Prior to version 4.6, this flag worked only when parsing RFC3164 messages. Starting with version 4.6, it works also for RFC5424 and raw messages.
+
 - *store-raw-message*: Save the original message as received from the client in the `${RAWMSG}` macro. You can forward this raw message in its original form to another AxoSyslog node using the [`syslog-ng()` destination]({{< relref "/chapter-destinations/destination-syslog-ng/_index.md" >}}), or to a SIEM system, ensuring that the SIEM can process it. Available only in 3.16 and later.
 - *syslog-protocol*: The `syslog-protocol` flag specifies that incoming messages are expected to be formatted according to the new IETF syslog protocol standard (RFC5424), but without the frame header. Note that this flag is not needed for the `syslog` driver, which handles only messages that have a frame header.
 
-- *validate-utf8*: The `validate-utf8` flag enables encoding-verification for messages formatted according to the new IETF syslog standard (for details, see {{% xref "/chapter-concepts/concepts-message-structure/concepts-message-ietfsyslog/_index.md" %}}). If the BOM character is missing, but the message is otherwise UTF-8 compliant, {{% param "product_name" %}} automatically adds the BOM character to the message.
+- *validate-utf8*: The `validate-utf8` flag enables encoding-verification for messages.
+
+    Prior to version 4.6, this flag worked only when parsing RFC3164 messages. Starting with version 4.6, it works also for RFC5424 and raw messages.
+
+    For RFC5424-formatted messages, if the BOM character is missing, but the message is otherwise UTF-8 compliant, {{% param "product_name" %}} automatically adds the BOM character to the message.
 
     {{% include-headless "chunk/para-bom-definition.md" %}}
