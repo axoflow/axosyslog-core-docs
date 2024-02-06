@@ -10,7 +10,7 @@ This page is a changelog that collects the major changes and additions to this d
 
 - [Google Pub/Sub destination]({{< relref "/chapter-destinations/google-pubsub/_index.md" >}})
 - [OpenObserve destination]({{< relref "/chapter-destinations/openobserve/_index.md" >}})
-- New `http()` destination options {{% xref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#templates-in-the-url" %}} and {{% xref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#worker-partition-key" %}}
+- New `http()` destination options {{% xref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#templates-in-the-url" %}} and [worker-partition-key()]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#worker-partition-key" >}})
 
 ### Parsers
 
