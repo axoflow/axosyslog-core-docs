@@ -48,24 +48,24 @@ Because some combination of drivers and options are invalid, you can use the fol
 
 If you use the same driver and options in the destination of your {{% param "product.abbrev" %}} client and the source of your {{% param "product.abbrev" %}} server, everything should work as expected. Unfortunately there are some other combinations, that seem to work, but result in losing parts of the messages. The following table show the combinations:
 
-| Source \\ Destination | syslog/tcp | syslog/udp | syslog/tls | network/tcp | network/udp | network/tls | network/tcp/flag | network/udp/flag | network/tls/flag |
+| Source \ Destination | syslog/tcp | syslog/udp | syslog/tls | network/tcp | network/udp | network/tls | network/tcp/flag | network/udp/flag | network/tls/flag |
 | --------------------- | ---------- | ---------- | ---------- | ----------- | ----------- | ----------- | ---------------- | ---------------- | ---------------- |
-| syslog/tcp            | ✔          | \-         | \-         | \!          | \-          | \-          | \!               | \-               | \-               |
-| syslog/udp            | \-         | ✔          | \-         | \-          | \!          | \-          | \-               | \!               | \-               |
-| syslog/tls            | \-         | \-         | ✔          | \-          | \-          | \!          | \-               | \-               | \!               |
-| network/tcp           | \-         | \-         | \-         | ✔           | \-          | \-          | ✔?               | \-               | \-               |
-| network/udp           | \-         | ✔?         | \-         | \-          | ✔           | \-          | \-               | ✔?               | \-               |
-| network/tls           | \-         | \-         | \-         | \-          | \-          | ✔           | \-               | \-               | ✔?               |
-| network/tcp/flag      | \!         | \-         | \-         | \!          | \-          | \-          | ✔                | \-               | \-               |
-| network/udp/flag      | \-         | \!         | \-         | \-          | \!          | \-          | \-               | ✔                | \-               |
-| network/tls/flag      | \-         | \-         | \!         | \-          | \-          | \!          | \-               | \-               | ✔                |
+| syslog/tcp            | ✔          | -         | -         | !          | -          | -          | !               | -               | -               |
+| syslog/udp            | -         | ✔          | -         | -          | !          | -          | -               | !               | -               |
+| syslog/tls            | -         | -         | ✔          | -          | -          | !          | -               | -               | !               |
+| network/tcp           | -         | -         | -         | ✔           | -          | -          | ✔?               | -               | -               |
+| network/udp           | -         | ✔?         | -         | -          | ✔           | -          | -               | ✔?               | -               |
+| network/tls           | -         | -         | -         | -          | -          | ✔           | -               | -               | ✔?               |
+| network/tcp/flag      | !         | -         | -         | !          | -          | -          | ✔                | -               | -               |
+| network/udp/flag      | -         | !         | -         | -          | !          | -          | -               | ✔                | -               |
+| network/tls/flag      | -         | -         | !         | -          | -          | !          | -               | -               | ✔                |
 
 Source-destination driver combinations
 
-  - \- This method does not work. The logs will not get to the server.
+  - `-` This method does not work. The logs will not get to the server.
 
-  - ✔ This method works.
+  - `✔` This method works.
 
-  - \! This method has some visible drawbacks. The logs go through, but some of the values are missing/misplaced/and so on.
+  - `!` This method has some visible drawbacks. The logs go through, but some of the values are missing/misplaced/and so on.
 
-  - ✔? This method seems to work, but it is not recommended because this can change in a future release.
+  - `✔?` This method seems to work, but it is not recommended because this can change in a future release.

@@ -12,9 +12,9 @@ The AxoSyslog application supports including external files in its configuration
 
 This imports the entire file into the configuration of {{% param "product.abbrev" %}}, at the location of the include statement. The `<filename>` can be one of the following:
 
-- A filename, optionally with full path. The filename (not the path) can include UNIX-style wildcard characters (`\*`, `?`). When using wildcard characters, {{% param "product.abbrev" %}} will include every matching file. For details on using wildcard characters, see [Types and options of regular expressions]({{< relref "/chapter-manipulating-messages/regular-expressions/reference-regexp-types/_index.md" >}}).
+- A filename, optionally with full path. The filename (not the path) can include UNIX-style wildcard characters (`*`, `?`). When using wildcard characters, {{% param "product.abbrev" %}} will include every matching file. For details on using wildcard characters, see [Types and options of regular expressions]({{< relref "/chapter-manipulating-messages/regular-expressions/reference-regexp-types/_index.md" >}}).
 
-- A directory. When including a directory, {{% param "product.abbrev" %}} will try to include every file from the directory, except files beginning with a \~ (tilde) or a . (dot) character. Including a directory is not recursive. The files are included in alphabetic order, first files beginning with uppercase characters, then files beginning with lowercase characters. For example, if the directory contains the `a.conf, B. conf, c.conf, D.conf` files, they will be included in the following order: `B.conf, D. conf, a.conf, c.conf`.
+- A directory. When including a directory, {{% param "product.abbrev" %}} will try to include every file from the directory, except files beginning with a `~` (tilde) or a `.` (dot) character. Including a directory is not recursive. The files are included in alphabetic order, first files beginning with uppercase characters, then files beginning with lowercase characters. For example, if the directory contains the `a.conf, B. conf, c.conf, D.conf` files, they will be included in the following order: `B.conf, D. conf, a.conf, c.conf`.
 
 When including configuration files, consider the following points:
 

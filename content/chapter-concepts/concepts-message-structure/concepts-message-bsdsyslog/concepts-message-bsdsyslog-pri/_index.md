@@ -41,9 +41,9 @@ The following example illustrates a sample syslog message with a sample `PRI` fi
 
 In this example, `<133>` represents the `PRI` field (Priority value). The syslog message's Facility value is `16`, and the Severity value is `5`.
 
-Substituting the numerical values into the `<PRI>` = ( `<facility>` \* `8`) + `<severity>` formula, the results match the Priority value in our example:
+Substituting the numerical values into the `<PRI>` = ( `<facility>` * `8`) + `<severity>` formula, the results match the Priority value in our example:
 
-`<133>` = ( `<16>` \* `8`) + `<5>`.
+`<133>` = ( `<16>` * `8`) + `<5>`.
 
 
 ## Facility and Severity values

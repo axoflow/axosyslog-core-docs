@@ -636,8 +636,8 @@ By default, timestamps include only seconds. To include fractions of a second (f
 
 |                  |          |
 | ---------------- | -------- |
-| Accepted values: | yes | no |
-| Default:         | no       |
+| Accepted values: | `yes | no` |
+| Default:         | `no`       |
 
 {{% include-headless "chunk/option-description-use-rcptid.md" %}}
 

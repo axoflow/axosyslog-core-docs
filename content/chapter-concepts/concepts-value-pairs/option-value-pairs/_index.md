@@ -62,7 +62,7 @@ The `value-pairs()` option has the following parameters. The parameters are eval
     )
 ```
 
-The name of the macro to remove can include wildcards `(\*, ?)`. Regular expressions are not supported.
+The name of the macro to remove can include wildcards `(*, ?)`. Regular expressions are not supported.
 
 ### `key()` {#key}
 
@@ -71,7 +71,7 @@ The name of the macro to remove can include wildcards `(\*, ?)`. Regular express
 | Type: | Space-separated list of macros to be included in the selection. |
 | Default:         | empty string   |
 
-*Description:* This option selects the specified macros. The selected macros will be included as `MACRONAME = MACROVALUE`, that is using `key("HOST")` will result in `HOST = $HOST`. You can use wildcards `(\*, ?)` to select multiple macros. For example:
+*Description:* This option selects the specified macros. The selected macros will be included as `MACRONAME = MACROVALUE`, that is using `key("HOST")` will result in `HOST = $HOST`. You can use wildcards `(*, ?)` to select multiple macros. For example:
 
 ```shell
    value-pairs(
@@ -208,7 +208,7 @@ The `rekey()` option can be used with the `format-json` template-function as wel
 - *selected-macros*: Include the macros of the `rfc3164` groups, and the most commonly used metadata about the log message: the `$TAGS`, `$SOURCEIP`, and `$SEQNUM` macros.
 - *sdata*: The metadata from the structured-data (SDATA) part of RFC5424-formatted messages, that is, every macro that starts with `.SDATA.`
 - *everything*: Include every hard and soft macros. This group is mainly useful for debugging, as it contains redundant information (for example, the date-related macros include the date-related information several times in various formats).
-- *none*: Reset previously added scopes, for example, to delete automatically-added name-value pairs. The following example deletes every value-pair from the scope, and adds only the ones starting with iptables: `$(format-welf --scope none .iptables.\*)`
+- *none*: Reset previously added scopes, for example, to delete automatically-added name-value pairs. The following example deletes every value-pair from the scope, and adds only the ones starting with iptables: `$(format-welf --scope none .iptables.*)`
 
 For example:
 

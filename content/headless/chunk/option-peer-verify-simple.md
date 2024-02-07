@@ -6,8 +6,8 @@
 
 |                  |          |
 | ---------------- | -------- |
-| Accepted values: | yes | no |
-| Default:         | yes      |
+| Accepted values: | `yes | no` |
+| Default:         | `yes`      |
 
 *Description:* Verification method of the peer. The following table summarizes the possible options and their results depending on the certificate of the peer.
 
