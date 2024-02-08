@@ -57,7 +57,7 @@ In case the parameter is omitted, {{% param "product.abbrev" %}} defaults to the
 
 Note that the time format parameter requires:
 
-  - riemann-c-client 1.10.0 or newer
+- riemann-c-client 1.10.0 or newer
     
     In older versions of riemann-c-client, the microseconds option is not available.
     
@@ -74,13 +74,13 @@ Note that the time format parameter requires:
     
     ```
 
-  - Riemann 2.13 or newer
+- Riemann 2.13 or newer
     
     Older versions of Riemann cannot handle microseconds. No error will be indicated, however, the time of the event will be set to the timestamp when the message arrived to Riemann.
 
 
 
-## Example: Example event-time() option
+### Example: Example event-time() option
 
 ```shell
    destination d_riemann {
@@ -101,6 +101,7 @@ Note that the time format parameter requires:
 
 If an error occurs while sending the messages to the server, {{% param "product.abbrev" %}} will try to resend every message from the batch. If it does not succeed (you can set the number of retry attempts in the `retries()` option), {{% param "product.abbrev" %}} drops every message in the batch.
 
+{{< include-headless "chunk/option-destination-flags.md" >}}
 
 {{< include-headless "chunk/option-destination-hook.md" >}}
 

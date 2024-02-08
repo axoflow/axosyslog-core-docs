@@ -37,6 +37,8 @@ The `syslog-ng-otlp()` destination has the following options.
 
 {{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
+{{% include-headless "chunk/option-destination-flags.md" %}}
+
 {{< include-headless "chunk/option-destination-hook.md" >}}
 
 {{% include-headless "chunk/option-destination-log-fifo-size.md" %}}

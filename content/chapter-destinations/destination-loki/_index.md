@@ -43,6 +43,8 @@ The `loki()` destination has the following options.
 
 {{% include-headless "chunk/option-destination-batch-timeout.md" %}}
 
+{{% include-headless "chunk/option-destination-flags.md" %}}
+
 {{< include-headless "chunk/option-destination-grpc-keep-alive.md" >}}
 
 ## labels()

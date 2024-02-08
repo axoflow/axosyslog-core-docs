@@ -42,6 +42,7 @@ Occasionally, the reason why {{% param "product.abbrev" %}} cannot post messages
 
 {{% /alert %}}
 
+{{% include-headless "chunk/option-destination-flags.md" %}}
 
 {{% include-headless "chunk/option-mqtt-http-proxy.md" %}}
 
