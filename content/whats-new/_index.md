@@ -6,6 +6,19 @@ weight: 10
 
 This page is a changelog that collects the major changes and additions to this documentation. (If you want to know the details about why we have separate documentation for AxoSyslog, our syslog-ng distribution and how it relates to the syslog-ng documentation, read our [syslog-ng documentation and similarities with AxoSyslog Core](https://axoflow.com/axosyslog-core-documentation-syslog-ng/) blog post.)
 
+## Version 4.6 release (2024-02-01)
+
+- [Google BigQuery destination]({{< relref "/chapter-destinations/google-bigquery/_index.md" >}})
+- {{% xref "/chapter-parsers/windows-eventlog-xml-parser/_index.md" %}}
+- {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md#template-function-tag" %}} template function
+- `batch-bytes()`, `compression()` and `workers()` options for the [syslog-ng-otlp()]({{< relref "/chapter-destinations/destination-syslog-ng-otlp/_index.md#compression" >}}) and [opentelemetry()]({{< relref "/chapter-destinations/opentelemetry/_index.md#compression" >}}) destinations
+
+### New sources
+
+- [New macOS sources]({{< relref "/chapter-sources/darwin/_index.md" >}})
+- {{% xref "/chapter-sources/qbittorrent/_index.md" %}}
+- {{% xref "/chapter-sources/pihole-ftl/_index.md" %}}
+
 ## 2023-10-20 to version 4.5 release (2024-01-05)
 
 - [Google Pub/Sub destination]({{< relref "/chapter-destinations/google-pubsub/_index.md" >}})
