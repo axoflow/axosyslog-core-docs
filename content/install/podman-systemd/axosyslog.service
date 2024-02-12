@@ -1,3 +1,4 @@
+
 [Unit]
 Description=AxoSyslog Container
 Wants=NetworkManager.service network-online.target
@@ -28,6 +29,7 @@ Image=${AXOSYSLOG_IMAGE}
 
 Volume=${PERSIST_MOUNT}:/opt/axosyslog/var/lib:z
 Volume=${CONFIG_MOUNT}:/opt/axosyslog/etc:z
+Volume=${LOG_MOUNT}:/opt/axosyslog/var/log:z
 
 Exec=-e
 LogDriver=journald
@@ -48,8 +50,12 @@ Environment="PERSIST_MOUNT=/var/lib/syslog-ng"
 Environment="CONFIG_MOUNT=/opt/axosyslog/etc"
 
 
+# Required local mount point for storing collected logs
+Environment="LOG_MOUNT=/var/logs"
+
+
 # Ensure local filesystem mount points are created and set with appropriate permissions
-ExecStartPre = +mkdir -p $PERSIST_MOUNT $CONFIG_MOUNT
+ExecStartPre = +mkdir -p $PERSIST_MOUNT $CONFIG_MOUNT $LOG_MOUNT
 
 
 ExecReload=podman kill --signal="SIGHUP" AxoSyslog
