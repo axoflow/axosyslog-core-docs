@@ -24,7 +24,7 @@ In addition to receiving messages on different ports and in different formats, t
 
 {{% alert title="Warning" color="warning" %}}
 
-If you do not configure the TLS keys to dislay to the clients, {{% param "product.abbrev" %}} cannot accept encrypted connections. The application starts and listens on TCP:6514, and can receive messages on other ports, but will display a warning messages about missing keys.
+If you do not configure the TLS keys to show to the clients, {{% param "product.abbrev" %}} cannot accept encrypted connections. The application starts and listens on TCP:6514, and can receive messages on other ports, but will display a warning messages about missing keys.
 
 {{% /alert %}}
 
