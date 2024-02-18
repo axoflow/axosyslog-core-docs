@@ -10,9 +10,7 @@ Available in {{% param "product.abbrev" %}} version 4.4 and later.
 
 {{< include-headless "chunk/syslog-ng-otlp-intro.md" >}}
 
-<!--  FIXME:  internal(<yesno>) option is globally undocumented
-      FIXME: worker-partition-key(<template-content>) Is that a renamed version of the partition-key() option from parallelize? https://axoflow.com/docs/axosyslog-core/chapter-nonsequential-processing/
- -->
+<!--  FIXME:  internal(<yesno>) option is globally undocumented -->
 
 ## Options
 
@@ -57,5 +55,8 @@ The `syslog-ng-otlp()` destination has the following options.
 | Default: | `localhost:9095` |
 
 *Description:* The URL of the {{% param "product.abbrev" %}} receiver.
+
+<a id="worker-partition-key"></a>
+{{< include-headless "chunk/option-destination-http-worker-partition-key.md" >}}
 
 {{< include-headless "chunk/option-destination-threaded-workers.md" >}}
