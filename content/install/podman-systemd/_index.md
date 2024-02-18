@@ -14,6 +14,8 @@ This page shows you how to run {{% param "product.abbrev" %}} as a systemd servi
 
 Podman version 4.6.1.
 
+<!-- FIXME tested on CentOS 9 -->
+
 ## Install {{% param "product.abbrev" %}} as a systemd service
 
 1. Make sure that there is no `axosyslog.service` unit file on the system. Run the following commands:
@@ -72,7 +74,8 @@ Podman version 4.6.1.
     You can customize the configuration file according to your needs. For a few pointers, see {{% xref "/quickstart/configure-servers/_index.md" %}} and the rest of this guide.
 
 
-    <!-- FIXME Add a unitfile mount point /logs that points /opt/axosyslog/var/log -->
+    <!-- FIXME Add a unitfile mount point /var/logs that points to /opt/axosyslog/var/log 
+    > Where do we set the /logs part? -->
 
 1. Run the following commands to reload the systemd configuration and launch the `axosyslog` service. Though the systemctl commands are run as root, the container will run as the specified user if set appropriately in the unit file.
 
@@ -120,6 +123,11 @@ Podman version 4.6.1.
     echo '<5> localhost test: this is a test message' | nc localhost 514
     ```
 
+    <!-- FIXME ncat connection refused, seems that the ports are not open in the container, syslog-ng is not listening on any port (netstat -antp) 
+    
+    There is a default /etc/syslog-ng/syslog-ng.conf file in the container, and syslog-ng is using that
+    -->
+
     Check that the test message has arrived into the log file:
 
     ```shell
@@ -133,7 +141,7 @@ Podman version 4.6.1.
 To customize the configuration, edit the `/etc/syslog-ng/syslog-ng.conf` file on the host, then reload the service.
 
 {{< include-headless "disk-buffer-in-container.md" >}}
-<!-- FIXME check and adapt the diskbuffer section -->
+<!-- FIXME check and adapt the diskbuffer section, note that the sample unit file uses the persist dir for storing diskbuffers-->
 
 ## Managing the {{% param "product.abbrev" %}} systemd service
 
