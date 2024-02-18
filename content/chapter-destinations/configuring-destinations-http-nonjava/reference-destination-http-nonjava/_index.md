@@ -360,6 +360,21 @@ To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% param 
 
 In case the server on the specified URL returns a redirect request, {{% param "product.abbrev" %}} automatically follows maximum 3 redirects. Only HTTP and HTTPS based redirections are supported.
 
+### Templates in the URL
+
+Starting with {{% param "product.abbrev" %}} version 4.5, you can use templates in the `url()` option of the `http()` driver, but note the following points.
+
+- **Templates and batching**: A template can only be resolved for a single message, because the template might have different resolutions on different messages. When batching is enabled and the destination uses multiple workers, it's important to only batch messages which generate identical URLs. In this case, set the `worker-partition-key()` option with a template that contains all the templates used in the `url()` option, otherwise messages will be mixed.
+- For security reasons, {{% param "product.abbrev" %}} automatically URL-encodes the templated content of the `url()` option. The following parts of the URL cannot be templated:
+
+    - scheme
+    - host
+    - port
+    - user
+    - password
+
+### Load balancing
+
 {{< include-headless "chunk/destination-load-balancing-url.md" >}}
 
 ### Templates in the url()
