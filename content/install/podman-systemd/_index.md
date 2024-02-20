@@ -141,9 +141,6 @@ The steps in this procedure were tested on CentOS 9, but should work on other si
 
 To customize the configuration, edit the `/opt/axosyslog/etc/syslog-ng.conf` file on the host, then reload the service.
 
-{{< include-headless "disk-buffer-in-container.md" >}}
-<!-- FIXME check and adapt the diskbuffer section, note that the sample unit file uses the persist dir for storing diskbuffers-->
-
 ## Managing the {{% param "product.abbrev" %}} systemd service
 
 - You can reload `syslog-ng` running in the container via systemctl. The following command reloads the `syslog-ng.conf` file, without stopping/starting `syslog-ng` itself.
