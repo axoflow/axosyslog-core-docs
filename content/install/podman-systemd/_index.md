@@ -51,7 +51,13 @@ The steps in this procedure were tested on CentOS 9, but should work on other si
 
 1. Edit the unit file as needed for your environment.
 
-    - We recommend using the mount points suggested.
+    We recommend using the default mount points:
+
+    | Purpose    | On the host | In the container |
+    | -------- | ------- | ------- |
+    | Disk-buffer and persist files  | `/var/lib/syslog-ng` | `/var/lib/syslog-ng` |
+    | `syslog-ng` configuration file | `/opt/axosyslog/etc` | `/etc/syslog-ng` |
+    | Output log files    | `/opt/axosyslog/var/log` | `/var/log` |
 
 1. (Optional) Create an `override.conf` file to set custom environment values. This can be useful if you don't want to modify `/etc/containers/systemd/axosyslog.container`. Run:
 
@@ -72,11 +78,6 @@ The steps in this procedure were tested on CentOS 9, but should work on other si
     {{< include-code "syslog-ng.conf" "shell" >}}
 
     You can customize the configuration file according to your needs. For a few pointers, see {{% xref "/quickstart/configure-servers/_index.md" %}} and the rest of this guide.
-
-
-    <!-- FIXME Add a unitfile mount point /var/logs that points to /opt/axosyslog/var/log 
-    > Where do we set the /var/log part? 
-    > Do we have to manually create  /opt/axosyslog/var/log/messages outside? -->
 
 1. Run the following commands to reload the systemd configuration and launch the `axosyslog` service. Though the systemctl commands are run as root, the container will run as the specified user if set appropriately in the unit file.
 
@@ -124,23 +125,21 @@ The steps in this procedure were tested on CentOS 9, but should work on other si
     echo '<5> localhost test: this is a test message' | nc localhost 514
     ```
 
-    <!-- FIXME ncat connection refused, seems that the ports are not open in the container, syslog-ng is not listening on any port (netstat -antp) 
-    
-    There is a default /etc/syslog-ng/syslog-ng.conf file in the container, and syslog-ng is using that
-    -->
-
     Check that the test message has arrived into the log file:
 
     ```shell
     less /opt/axosyslog/var/log/messages
     ```
 
-    <!-- FIXME add sample output -->
+    The output should be similar to:
+
+    ```shell
+    Feb 19 15:49:12 localhost test: this is a test message
+    ```
 
 ## Customize the configuration
 
-To customize the configuration, edit the `/etc/syslog-ng/syslog-ng.conf` file on the host, then reload the service.
-<!-- FIXME check external configfile path -->
+To customize the configuration, edit the `/opt/axosyslog/etc/syslog-ng.conf` file on the host, then reload the service.
 
 {{< include-headless "disk-buffer-in-container.md" >}}
 <!-- FIXME check and adapt the diskbuffer section, note that the sample unit file uses the persist dir for storing diskbuffers-->
@@ -157,6 +156,14 @@ To customize the configuration, edit the `/etc/syslog-ng/syslog-ng.conf` file on
 
     ```shell
     {{< param "command" >}} exec -ti AxoSyslog syslog-ng-ctl show-license-info
+    ```
+
+    If you use `syslog-ng-ctl` regularly, you can create the `/opt/axosyslog/bin/syslog-ng-ctl` file with the following content, make it executable, and add it to your path. That way running `syslog-ng-ctl <command>` will execute the command in the AxoSyslog container.
+
+    ```shell
+    #!/bin/bash  
+
+    podman exec -ti AxoSyslog syslog-ng-ctl "$@"  
     ```
 
 - The traditional method of starting a service at boot (`systemctl enable`) is not supported for container services. To automatically start the {{% param "product.abbrev" %}} service, make sure that the following line is included in the unit file. (It is included in the sample template.)
