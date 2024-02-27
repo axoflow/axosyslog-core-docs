@@ -1,7 +1,7 @@
 ---
 title: Install AxoSyslog with Helm
 linktitle: Helm
-weight: 300
+weight: 200
 ---
 
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
