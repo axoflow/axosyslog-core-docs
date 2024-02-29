@@ -14,7 +14,7 @@ This section describes getting the status information of the disk-buffer files u
 The basic command syntax for getting the status information of the disk-buffer files used in {{% param "product.abbrev" %}} looks like the following:
 
 ```shell
-   /opt/syslog-ng/bin/dqtooldqtoolinfo DISK-BUFFER_FILE
+   /opt/syslog-ng/bin/dqtool info DISK-BUFFER_FILE
 ```
 
 
@@ -29,14 +29,14 @@ The following example commands describe how you can get the status information o
   - Empty, normal disk-buffer file
     
     ```shell
-        /opt/syslog-ng/bin/dqtooldqtool info /opt/syslog-ng/var/syslog-ng-00000.qf/var/lib/syslog-ng/syslog-ng-00000.qfDisk-buffer state loaded; filename='/opt/syslog-ng/var/syslog-ng-00000.qf/var/lib/syslog-ng/syslog-ng-00000.qf', number_of_messages='0'
+        /opt/syslog-ng/bin/dqtool info /opt/syslog-ng/var/syslog-ng-00000.qf/var/lib/syslog-ng/syslog-ng-00000.qfDisk-buffer state loaded; filename='/opt/syslog-ng/var/syslog-ng-00000.qf/var/lib/syslog-ng/syslog-ng-00000.qf', number_of_messages='0'
     
     ```
 
   - Non-empty, reliable disk-buffer queue file
     
     ```shell
-        /opt/syslog-ng/bin/dqtooldqtool info /opt/syslog-ng/var/syslog-ng-00000.rqfReliable disk-buffer state loaded; filename='/opt/syslog-ng/var/syslog-ng-00000.rqf', number_of_messages='10'
+        /opt/syslog-ng/bin/dqtool info /opt/syslog-ng/var/syslog-ng-00000.rqfReliable disk-buffer state loaded; filename='/opt/syslog-ng/var/syslog-ng-00000.rqf', number_of_messages='10'
     
     ```
 
@@ -48,6 +48,6 @@ The following example commands describe how you can get the status information o
 You can use the following one-liner command to get the state of disk-buffer files in the default directory:
 
 ```shell
-   for qfile in /opt/syslog-ng/var/*.?(r)qf ; do /opt/syslog-ng/bin/dqtooldqtool info $qfile 2>&1 ; done
+   for qfile in /opt/syslog-ng/var/*.?(r)qf ; do /opt/syslog-ng/bin/dqtool info $qfile 2>&1 ; done
 ```
 

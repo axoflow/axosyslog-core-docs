@@ -132,7 +132,7 @@ Add the `dir()` option and set the disk-buffer file's destination directory to t
       - Checking the status of the disk-buffer file.
         
         ```shell
-            /opt/syslog-ng/bin/dqtooldqtool info /tmp/qdisk/syslog-ng-00000.rqf
+            /opt/syslog-ng/bin/dqtool info /tmp/qdisk/syslog-ng-00000.rqf
         ```
         
         An empty disk-buffer file will look similar to this:
