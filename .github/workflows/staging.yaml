@@ -52,6 +52,9 @@ jobs:
       - name: Build
         run: hugo --environment staging --baseURL ${{ steps.pages.outputs.base_url }}/
 
+      - name: Pagefind search index
+        run: npm_config_yes=true npx pagefind --bundle-dir pagefind --source ./public
+
       # Build hugo output with manpages environment, run scripts, copy output manpages to public so it gets uploaded
       - name: Build manpage environment
         run: hugo --environment manpage --baseURL ${{ steps.pages.outputs.base_url }}/ --destination manpages
