@@ -22,10 +22,24 @@ The `darwin-oslog()` source has the following options:
 
 ### filter-predicate()
 
-|          |                            |
-| -------- | -------------------------- |
-| Type:    | string |
-| Default: | `(eventType == 'logEvent' || eventType == 'lossEvent' || eventType == 'stateEvent' || eventType == 'userActionEvent') && (logType != 'debug')` |
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type:</td>
+<td>string</td>
+</tr>
+<tr>
+<td>Default:</td>
+<td><code>(eventType == 'logEvent' || eventType == 'lossEvent' || eventType == 'stateEvent' || eventType == 'userActionEvent') && (logType != 'debug')</code></td>
+</tr>
+</tbody>
+</table>
 
 *Description:* String for [native macOS log message filtering using predicates](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Predicates/Articles/pSyntax.html). For example, the following predicate selects AirDrop logs: `subsystem=="com.apple.sharing" and category=="AirDrop"`
 
