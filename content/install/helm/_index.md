@@ -14,16 +14,27 @@ You must have [Helm 3.0 or newer](https://helm.sh) installed to use these charts
 
 ## Limitations
 
-The chart provides parameters that make it easy to:
+The chart provides parameters that make it easy to deploy {{% param "product.abbrev" %}} for the following use cases:
 
-- collect logs using the [`kubernetes()`](https://axoflow.com/docs/axosyslog-core/chapter-sources/configuring-sources-kubernetes/) source, and
-- forward the logs using the `network()` and `opensearch()` destinations.
+- As a [collector]({{< relref "/install/helm/helm-chart-parameters.md#collector" >}}), to collect local logs using the [`kubernetes()`](https://axoflow.com/docs/axosyslog-core/chapter-sources/configuring-sources-kubernetes/) source, and forward them to another syslog server, to an `opensearch()` node, or to another {{% param "product.abbrev" %}} node.
+- As a [syslog server]({{< relref "/install/helm/helm-chart-parameters.md#syslog-server" >}}):
+    - to receive RFC3164 and RFC5424 formatted syslog messages from any sender, or `syslog-ng-otlp` messages from another {{% param "product.abbrev" %}} node, and then
+    - store them locally, or forward them to a remote destination.
 
-To use other sources and destinations, use the `config.raw` parameter. For the list of configurable parameters and their default values, see {{% xref "/install/helm/helm-chart-parameters.md" %}}.
+<!-- FIXME add new features
+
+Separate sections for the collector and syslog usecases, maybe with separate parameter tables?
+mark clearly which one is the server usecase
+
+-->
+
+For other use cases, for example, to use other sources and destinations, you can use the `config.raw` parameter of the collector or the server. For the list of configurable parameters and their default values, see {{% xref "/install/helm/helm-chart-parameters.md" %}}.
 
 ## Install
 
-To install the `axosyslog-collector` charts, complete the following steps.
+<!-- FIXME update repo
+Collapse steps into single command where possible -->
+To install the `axosyslog` charts, complete the following steps.
 
 1. Clone the chart repository.
 
@@ -32,22 +43,22 @@ To install the `axosyslog-collector` charts, complete the following steps.
     helm repo update
     ```
 
-1. Install the chart. The following command installs `axosyslog-collector` into the `default` namespace. For the list of configurable parameters and their default values, see {{% xref "/install/helm/helm-chart-parameters.md" %}}. If you want to use disk-buffers, see also [How to use disk-buffers in containers and Kubernetes]({{< relref "#disk-buffer-container-kubernetes" >}}).
+1. Install the chart. The following command installs `axosyslog` into the `default` namespace. For the list of configurable parameters and their default values, see {{% xref "/install/helm/helm-chart-parameters.md" %}}. If you want to use disk-buffers, see also [How to use disk-buffers in containers and Kubernetes]({{< relref "#disk-buffer-container-kubernetes" >}}).
 
     ```bash
-    helm install --generate-name axosyslog/axosyslog-collector
+    helm install --generate-name axosyslog/axosyslog
     ```
 
     ```bash
-    NAME: axosyslog-collector-1683469360
+    NAME: axosyslog-1683469360
     LAST DEPLOYED: Sun May  7 16:22:40 2023
     NAMESPACE: default
     STATUS: deployed
     REVISION: 1
     TEST SUITE: None
     NOTES:
-    1. Watch the axosyslog-collector-1683469360 container start.
-      $ kubectl get pods --namespace=default -l app=axosyslog-collector-1683469360 -w
+    1. Watch the axosyslog-1683469360 container start.
+      $ kubectl get pods --namespace=default -l app=axosyslog-1683469360 -w
     ```
 
 1. Check that the pod is running.
@@ -60,7 +71,7 @@ To install the `axosyslog-collector` charts, complete the following steps.
 
     ```bash
     NAME                                   READY   STATUS    RESTARTS   AGE
-    axosyslog-collector-1683469360-tptfb   1/1     Running   0          28s
+    axosyslog-1683469360-tptfb   1/1     Running   0          28s
     ```
 
 {{< include-headless "disk-buffer-in-container.md" >}}

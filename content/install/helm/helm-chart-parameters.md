@@ -8,7 +8,7 @@ weight: 100
 
 The following table lists the configurable parameters of the AxoSyslog collector chart and their default values. For details on installing the chart, see {{% xref "/install/helm/_index.md" %}}.
 
-## Collector parameters
+## Collector parameters {#collector}
 
 When you deploy {{% param "product.abbrev" %}} as a collector (which is a DaemonSet), it collects and forwards local logs to a destination. You can use the following parameters to configure the collector. The parameters for specific destinations are shown in subsequent sections.
 
@@ -137,7 +137,7 @@ Send logs over to another {{% param "product.abbrev" %}} node using the [`syslog
 |  collector.maxUnavailable  | The maximum number of unavailable pods during a rolling update |  1  |
 |  collector.hostNetworking  | Whether to enable host networking |  false  |
 
-## Syslog server parameters
+## Syslog server parameters {#syslog-server}
 
 When you deploy {{% param "product.abbrev" %}} as a server (which is a StatefulSet), it receives incoming data from the network and routes it to a local or remote destination. collects and forwards local logs to a destination. You can use the following parameters to configure the syslog server. The parameters for specific destinations are shown in subsequent sections.
 
