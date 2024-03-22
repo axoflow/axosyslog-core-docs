@@ -160,14 +160,13 @@ Example configuration:
 
 |                  |                                                                                                                  |
 | ---------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Accepted values: | `optional-trusted` | `optional-untrusted` | `required-trusted` | `required-untrusted | `yes` | `no`` |
+| Accepted values: | `optional-trusted` | `optional-untrusted` | `required-trusted` | `required-untrusted` | `yes` | `no` |
 | Default:         | `required-trusted`                                                                                             |
 
 *Description:* Verification method of the peer, the four possible values is a combination of two properties of validation:
 
-  - Whether the peer is required to provide a certificate (required or optional prefix).
-
-  - Whether the certificate provided needs to be valid or not.
+- Whether the peer is required to provide a certificate (required or optional prefix).
+- Whether the certificate provided needs to be valid or not.
 
 The following table summarizes the possible options and their results depending on the certificate of the peer.
 

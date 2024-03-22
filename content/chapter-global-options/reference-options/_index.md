@@ -551,7 +551,7 @@ Possible values:
 
 Deprecated legacy option. Use [`stats(freq())`](#global-option-stats-syslog-stats) instead.
 
-## stats-level() {#global-option-stats-level}
+## stats-level() {#global-option-stats-level-deprecated}
 
 Deprecated legacy option. Use [`stats(level())`](#global-option-stats-level) instead.
 
