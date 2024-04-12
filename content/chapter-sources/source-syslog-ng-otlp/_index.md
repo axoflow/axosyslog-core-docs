@@ -40,6 +40,8 @@ The `syslog-ng-otlp()` source has the following options.
 
 *Description:* Enable or disable the chained hostname format. For details, see the [chain-hostnames() global option]({{< relref "/chapter-global-options/reference-options/_index.md#global-options-chain-hostnames" >}}).
 
+{{< include-headless "chunk/option-grpc-channel-args.md" >}}
+
 {{< include-headless "chunk/option-source-concurrent-requests.md" >}}
 
 {{< include-headless "chunk/option-source-default-facility.md" >}}
