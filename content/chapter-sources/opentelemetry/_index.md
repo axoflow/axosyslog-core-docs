@@ -33,6 +33,8 @@ log otel_forward_mode_alts {
 
 {{< include-headless "chunk/grpc-authentication.md" >}}
 
+{{< include-headless "chunk/option-source-concurrent-requests.md" >}}
+
 ## `port()` {#port}
 
 The port number to receive incoming connections. Default value: 4317
