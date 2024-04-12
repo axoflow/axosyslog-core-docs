@@ -65,6 +65,8 @@ The following options are specific to the `s3()` destination.
 
 *Description:* The `ACCESS_KEY` of the service account used to access the S3 bucket. (Together with [`secret-key()`](#secret-key).)
 
+Starting with version 4.7, you can use the `AWS_...` environment variables or credentials files from the `~/.aws/` directory instead of this option. For details, see the [official documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html).
+
 ## bucket()
 
 |          |                            |
@@ -183,6 +185,8 @@ If you configure an invalid value, the default is used.
 | Default: | N/A |
 
 *Description:* The `SECRET_KEY` of the service account used to access the S3 bucket. (Together with [`access-key()`](#access-key).)
+
+Starting with version 4.7, you can use the `AWS_...` environment variables or credentials files from the `~/.aws/` directory instead of this option. For details, see the [official documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html).
 
 ## storage-class()
 
