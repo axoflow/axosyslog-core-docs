@@ -75,6 +75,27 @@ Default value:
 
 *Description:* Specifies a template defining the logformat to be used in the destination. Macros are described in {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" %}}. For details on template functions, see {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" %}}.
 
+## tenant-id()
+
+|          |                                                    |
+| -------- | -------------------------------------------------- |
+| Type:    | string             |
+| Default: | - |
+
+*Description:* Available in version 4.7 and newer. Sets the tenant ID for multi-tenant scenarios. For example:
+
+```shell
+loki(
+    url("localhost:9096")
+    labels(
+        "app" => "$PROGRAM",
+        "host" => "$HOST",
+    )
+
+    tenant-id("testTenant")
+);
+```
+
 ## timestamp()
 
 |          |                            |
