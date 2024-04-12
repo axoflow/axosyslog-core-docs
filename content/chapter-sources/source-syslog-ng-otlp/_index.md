@@ -67,6 +67,8 @@ The `syslog-ng-otlp()` source has the following options.
 
 {{< include-headless "chunk/option-source-keep-timestamp.md" >}}
 
+{{% include-headless "chunk/option-source-log-fetch-limit.md" %}}
+
 {{% include-headless "chunk/option-source-file-log-iw-size.md" %}}
 
 {{< include-headless "chunk/option-source-log-prefix.md" >}}
