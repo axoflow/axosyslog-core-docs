@@ -413,6 +413,17 @@ Available in {{% param "product.abbrev" %}} version 4.5 and later.
     - `mqtt`: `mqtt()` driver
     - `hypr-api`: `hypr-audit-source()` driver
 
+- Locally created logs (in version 4.7 and newer):
+    - `local+unix-stream`
+    - `local+unix-dgram`
+    - `local+file`
+    - `local+pipe`
+    - `local+program`
+    - `local+devkmsg`
+    - `local+journal`
+    - `local+afstreams`
+    - `local+openbsd`
+
 {{% include-headless "chunk/macro-tz.md" %}}
 
 {{% include-headless "chunk/macro-tzoffset.md" %}}
