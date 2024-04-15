@@ -176,11 +176,6 @@ contact = "[contact us](https://axoflow.com/contact/)"
 
 [menu]
   [[menu.main]]
-    name = "OUR VISION"
-    weight = -150
-    #pre = "<i class='fas fa-rss pr-2'></i>"
-    url = "https://axoflow.com/#our-vision"
-  [[menu.main]]
     name = "PRODUCT"
     weight = -130
     #pre = "<i class='fas fa-rss pr-2'></i>"
@@ -216,6 +211,11 @@ contact = "[contact us](https://axoflow.com/contact/)"
     weight = -110
     #pre = "<i class='fas fa-blog pr-2'></i>"
     url = "https://axoflow.com/blog/"
+  [[menu.main]]
+    name = "NEWS"
+    weight = -105
+    #pre = "<i class='fas fa-blog pr-2'></i>"
+    url = "https://axoflow.com/news/"
   [[menu.main]]
     name = "ABOUT US"
     weight = -100
