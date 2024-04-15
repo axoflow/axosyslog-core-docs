@@ -28,7 +28,7 @@ The rest of this chapter and its sections build on your familiarity with the MQT
     };
 ```
 
-Starting with {{% param "product.abbrev" %}} version 4.7, `mqtt()` source automatically sets the `${MQTT_TOPIC}` name-value pair for the received messages. This can be useful when the name of the topic contains MQTT (`$`, `+`, `#`) wildcards. For example:
+Starting with {{% param "product.abbrev" %}} version 4.7, `mqtt()` source automatically sets the `${MQTT_TOPIC}` name-value pair for the messages it receives. This is useful when the name of the topic contains MQTT wildcards (`$`, `+`, `#`). For example:
 
 ```shell
 log {
