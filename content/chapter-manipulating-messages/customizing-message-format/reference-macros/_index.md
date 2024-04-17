@@ -4,7 +4,7 @@ weight:  900
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The following macros are available in {{% param "product.abbrev" %}}.
+The following macros are available in {{% param "product.abbrev" %}} templates.
 
 {{% alert title="Warning" color="warning" %}}
 
@@ -235,7 +235,7 @@ The `${MSG}` macro is an alias of the `${MESSAGE}` macro, using `${MSG}` in {{% 
 
 
 
-## MSGONLY {#macro-msgonly}`
+## MSGONLY {#macro-msgonly}
 
 *Description:* Message contents without the program name or pid. Starting with {{% param "product.abbrev" %}} 3.0, the following macros are equivalent: `${MSGONLY}`, `${MSG}`, `${MESSAGE}`. For consistency, use the `${MESSAGE}` macro. For details, see [MESSAGE](#macro-message).
 
