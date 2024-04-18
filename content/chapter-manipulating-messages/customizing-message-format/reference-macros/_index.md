@@ -219,7 +219,7 @@ Note that before AxoSyslog version 3.0, the `${MESSAGE}` macro included the prog
 
 Available in {{% param "product.abbrev" %}} version 3.4 and later.
 
-## MQTT_TOPIC
+## MQTT_TOPIC {#macro-mqtt-topic}
 
 *Description:* The [`mqtt()` source]({{< relref "/chapter-sources/source-mqtt/_index.md" >}}) automatically sets the `${MQTT_TOPIC}` name-value pair for the messages it receives. This is useful when the name of the topic contains MQTT wildcards (`$`, `+`, `#`).
 

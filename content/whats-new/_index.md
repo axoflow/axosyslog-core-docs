@@ -6,12 +6,27 @@ weight: 10
 
 This page is a changelog that collects the major changes and additions to this documentation. (If you want to know the details about why we have separate documentation for AxoSyslog, our syslog-ng distribution and how it relates to the syslog-ng documentation, read our [syslog-ng documentation and similarities with AxoSyslog Core](https://axoflow.com/axosyslog-core-documentation-syslog-ng/) blog post.)
 
+## Version 4.7 release (2024-04-18)
+
+- {{% xref "/chapter-sources/arr/_index.md" %}} source
+- {{% xref "/chapter-sources/jellyfin/_index.md" %}} source
+- `channel-args()` option for gRPC-based drivers, like [`opentelemetry()`]({{< relref "/chapter-destinations/opentelemetry/_index.md#channel-args" >}})
+- `concurrent-requests()` option for the [`opentelemetry()` source]({{< relref "/chapter-sources/opentelemetry/_index.md#concurrent-requests" >}}) and the [`syslog-ng-otlp()` source]({{< relref "/chapter-sources/source-syslog-ng-otlp/_index.md#concurrent-requests" >}})
+- {{% xref "/chapter-destinations/destination-loki/_index.md#tenant-id" %}} option for the Loki destination
+- {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md#template-function-tags-head" %}} template function
+- {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-mqtt-topic" %}} macro
+- {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-transport" %}} macro updates
+
+For details, see the [release announcement blog post](https://axoflow.com/axosyslog-release-4-7/).
+
 ## Version 4.6 release (2024-02-01)
 
 - [Google BigQuery destination]({{< relref "/chapter-destinations/google-bigquery/_index.md" >}})
 - {{% xref "/chapter-parsers/windows-eventlog-xml-parser/_index.md" %}}
 - {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md#template-function-tag" %}} template function
 - `batch-bytes()`, `compression()` and `workers()` options for the [syslog-ng-otlp()]({{< relref "/chapter-destinations/destination-syslog-ng-otlp/_index.md#compression" >}}) and [opentelemetry()]({{< relref "/chapter-destinations/opentelemetry/_index.md#compression" >}}) destinations
+
+For details, see the [release announcement blog post](https://axoflow.com/axosyslog-release-4-6/).
 
 ### New sources
 
