@@ -64,6 +64,8 @@ By default, the `batch-bytes()` option of the `bigquery()` destination is 10 MB.
 
 {{% include-headless "chunk/option-destination-batch-timeout.md" %}}
 
+{{< include-headless "chunk/option-grpc-channel-args.md" >}}
+
 {{< include-headless "chunk/option-destination-grpc-compression.md" >}}
 
 ## dataset()

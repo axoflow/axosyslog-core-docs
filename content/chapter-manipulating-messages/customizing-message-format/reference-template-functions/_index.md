@@ -1238,6 +1238,25 @@ $(tag <name-of-the-tag> <value-if-set> <value-if-unset>)
 - If you do not set the `value-if-set` and `value-if-unset` arguments, the `$(tag)` template function acts as a boolean and expands to `0` or `1`, depending on whether the message has the specified tag set.
 - If the `value-if-set` and `value-if-unset` arguments are set, `$(tag)` returns a string: the second argument (`<value-if-set>`) if the message has `<tag>`, and the third argument (`<value-if-unset>`) if the message doesn't have `<tag>`.
 
+## tags-head {#template-function-tags-head}
+
+Available in {{% param "product.abbrev" %}} version 4.7 and later.
+
+*Syntax:*
+
+```shell
+$(tags-head <name-of-first-tag> <name-of-second-tag> ... )
+```
+
+*Description:* This template function accepts multiple tag names, and returns the first one that is set.
+
+Example config:
+
+```shell
+# resolves to "bar" if "bar" tag is set, but "foo" is not
+template("$(tags-head foo bar baz)")
+```
+
 ## template {#template-function-template}
 
 *Syntax:*
