@@ -39,7 +39,7 @@ To install the `axosyslog` charts, complete the following steps.
 1. Clone the chart repository.
 
     ```bash
-    helm repo add axosyslog https://axoflow.github.io/axosyslog-charts
+    helm repo add axosyslog https://axoflow.github.io/axosyslog
     helm repo update
     ```
 
