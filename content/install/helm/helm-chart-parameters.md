@@ -26,24 +26,25 @@ When you deploy {{% param "product.abbrev" %}} as a collector (which is a Daemon
 The following example uses the `collector.config.raw` parameter to configure a custom destination:
 
 ```shell
-config:
-  raw: |
-    @version: {{% param "product.techversion" %}}
-    @include "scl.conf"
+collector:
+  config:
+    raw: |
+      @version: {{% param "product.techversion" %}}
+      @include "scl.conf"
 
-    log {
-      source {
-        syslog(port(12345));
+      log {
+        source {
+          syslog(port(12345));
+        };
+
+        destination {
+          logscale(
+            token("your-secret-humio-ingest-token")
+          );
+        };
+
+        flags(flow-control);
       };
-
-      destination {
-        logscale(
-          token("your-secret-humio-ingest-token")
-        );
-      };
-
-      flags(flow-control);
-    };
 
 daemonset:
   hostNetworking: true
@@ -65,10 +66,12 @@ Send logs over the network, conforming to RFC3164 using the [`network()`]({{< re
 For example:
 
 ```yaml
-config:
-  destinations:
-    network:
-      - transport: tcp
+collector:
+  config:
+    destinations:
+      syslog:
+        enabled: true
+        transport: tcp
         address: localhost
         port: 12345
         template: "$(format-json .*)"
@@ -96,18 +99,19 @@ Send logs to OpenSearch over HTTP or HTTPS.
 For example:
 
 ```yaml
-config:
-  destinations:
-    opensearch:
-      - address: 10.104.232.94
-        index: "test-axoflow-index"
-        tls:
-          CAFile: "/path/to/CAFile.pem"
-          CADir: "/path/to/CADir/"
-          Cert: "/path/to/Cert.pem"
-          Key: "/path/to/Key.pem"
-          peerVerify: true
-          template: "$(format-json .*)"
+collector:
+  config:
+    destinations:
+      opensearch:
+        - address: 10.104.232.94
+          index: "test-axoflow-index"
+          tls:
+            CAFile: "/path/to/CAFile.pem"
+            CADir: "/path/to/CADir/"
+            Cert: "/path/to/Cert.pem"
+            Key: "/path/to/Key.pem"
+            peerVerify: true
+            template: "$(format-json .*)"
 ```
 
 ### syslogNgOtlp destination {#collector-syslogngotlp-destination}
@@ -241,7 +245,6 @@ Send logs to OpenSearch over HTTP or HTTPS.
 For example:
 
 ```yaml
-...
 syslog:
   enabled: true
   bufferStorage:
@@ -285,7 +288,6 @@ Send logs over the network, conforming to RFC3164 using the [`network()`]({{< re
 For example:
 
 ```yaml
-...
 syslog:
   enabled: true
   bufferStorage:
@@ -322,7 +324,6 @@ Send data using the [`syslog-ng-otlp()`]({{< relref "/chapter-destinations/desti
 For example:
 
 ```yaml
-...
 syslog:
   enabled: true
   bufferStorage:
