@@ -139,6 +139,11 @@ To install the `axosyslog` chart, complete the following steps.
         average rate = 928.58 msg/sec, count=9800, time=10.5538, (average) msg size=256, bandwidth=232.14 kB/sec
         ```
 
+    The generated log messages (like `2024-05-02T10:56:31.000000+00:00 localhost prg00000[1234]: seq: 0000000065, thread: 0000, runid: 1714647391, stamp: 2024-05-02T10:56:31 PADDPADDPADDPADD`) should show up in the configured destinations, for example, in the file destination:
+
+    ```shell
+    kubectl exec axosyslog-1714389625-syslog-0 -- less /var/log/syslog
+    ```
 {{< include-headless "disk-buffer-in-container.md" >}}
 
 ## Uninstall
