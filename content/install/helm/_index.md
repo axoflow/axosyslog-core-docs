@@ -106,7 +106,7 @@ To install the `axosyslog` chart, complete the following steps.
 
         > Tip: You can retrieve the non-default values of a deployment by running `helm get values <name-of-your-axosyslog-deployment>`
 
-1. For the collector, configure the destination where the logs are forwarded. For example, the following values file sends the logs in JSON format to the `localhost:514` address via TCP:
+1. For the collector use case, configure the destination where the logs are forwarded. For example, the following values file sends the logs in JSON format to the `localhost:514` address via TCP:
 
     ```yaml
     collector:
@@ -122,19 +122,22 @@ To install the `axosyslog` chart, complete the following steps.
 
     For details and other parameters, see {{% xref "/install/helm/helm-chart-parameters.md#collector" %}}.
 
+1. For the syslog server use case, you can send test messages from the pods, for example:
 
-<!-- FIXME: minimal usable steps for each usecase: 
-    - parametereknel a collectoros code snippetek outdatedek!!!!
-    - syslog-nal ellenorizze hogy megy-e a fogadas
-    
-    kubectl get svc
+    - From the syslog server pod:
 
-NAME                          TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)                                                                   AGE
-axosyslog-1713953907-syslog   NodePort    10.97.161.5   <none>        514:30514/UDP,514:30514/TCP,6514:30614/TCP,601:30601/TCP,4317:30317/TCP   25m
-    
-    - A values file if passed into helm install or helm upgrade with the -f flag (helm install -f myvals.yaml ./mychart)
-    - Individual parameters passed with --set (such as helm install --set foo=bar ./mychart)
-     -->
+        ```shell
+        kubectl exec axosyslog-1714389625-syslog-0 -- loggen -S 127.0.0.1 1514
+        ```
+
+        Expected output:
+
+        ```shell
+        count=9328, rate = 882.83 msg/sec
+        count=9786, rate = 884.20 msg/sec
+        count=9800, rate = 27.92 msg/sec
+        average rate = 928.58 msg/sec, count=9800, time=10.5538, (average) msg size=256, bandwidth=232.14 kB/sec
+        ```
 
 {{< include-headless "disk-buffer-in-container.md" >}}
 
