@@ -8,7 +8,7 @@ short_description: "Send log messages to Amazon Simple Storage Service (S3)"
 
 Available in {{% param "product.abbrev" %}} version 4.4 and later.
 
-The `s3()` destination sends log messages to the [Amazon Simple Storage Service (Amazon S3)](https://aws.amazon.com/s3/) object storage service. You can send log messages over TCP, or encrypted with TLS.
+The `s3()` destination sends log messages to the [Amazon Simple Storage Service (Amazon S3)](https://aws.amazon.com/s3/) object storage service. Messages are normally sent encrypted with TLS (HTTPS), but you can sepecify a custom unencrypted HTTP endpoint.
 
 ## Prerequisites
 
@@ -27,6 +27,7 @@ The `s3()` driver is actually a reusable configuration snippet. For details on u
 
 ```shell
 s3(
+    region("us-east-2")
     url("http://localhost:9000")
     bucket("syslog-ng")
     access-key("my-access-key")
@@ -74,7 +75,7 @@ Starting with version 4.7, you can use the `AWS_...` environment variables or cr
 | Type:    | string |
 | Default: |  |
 
-*Description:* The name of the S3 bucket, for example, `my-bucket`
+*Description:* The name of the S3 bucket, for example, `my-bucket`. Note that the bucket must already exist.
 
 ## canned-acl()
 
@@ -155,7 +156,7 @@ If you configure an invalid value, the default is used.
 | Type:    | template |
 | Default: | N/A |
 
-*Description:* The [object key](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html) (or key name), which uniquely identifies the object in an Amazon S3 bucket.
+*Description:* The [object key](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html) (or key name), which uniquely identifies the object in an Amazon S3 bucket. Note that a suffix may be appended to this object key depending on the [naming strategies](#creating-objects) used. Example: `my-logs/${HOSTNAME}/`.
 
 ## object-key-timestamp()
 
@@ -164,7 +165,7 @@ If you configure an invalid value, the default is used.
 | Type:    | template |
 | Default: |  |
 
-*Description:* The `object-key-timestamp()` option can be used to set a datetime-related template, which is appended to the end of the object, for example: `"${R_MONTH_ABBREV}${R_DAY}"`. When a log message arrives with a newer timestamp template resolution, the previous timestamped object gets finished and a new one is started with the new timestamp. If an older message arrives, it doesn`t reopen the old object, but starts a new object with the key having an index appended to the old object.
+*Description:* The `object-key-timestamp()` option can be used to set a datetime-related template, which is appended to the end of the object key, for example: `"${R_MONTH_ABBREV}${R_DAY}"`. When a log message arrives with a newer timestamp template resolution, the previous timestamped object gets finished and a new one is started with the new timestamp. If an older message arrives, it doesn`t reopen the old object, but starts a new object with the key having an index appended to the old object.
 
 {{< include-headless "chunk/option-persist-name.md" >}}
 
@@ -175,7 +176,7 @@ If you configure an invalid value, the default is used.
 | Type:    | string |
 | Default: |  |
 
-*Description:* The [regional endpoint](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) where the bucket is stored. For example, `us-east-1`
+*Description:* The [AWS region](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) to use when writing the bucket. This should normally be the same region where the bucket is created. This option implies an API endpoint [`url()`](#url). For providers other than AWS or custom API endpoints use the `url()` option.
 
 ## secret-key()
 
@@ -226,4 +227,4 @@ If you configure an invalid value, the default is used.
 | Type:    | string |
 | Default: | N/A |
 
-*Description:* The URL of the S3 bucket, for example, `https://my-bucket.s3.us-west-2.amazonaws.com`
+*Description:* The API endpoint URL for writing to the S3 bucket, for example `https://s3.us-west-2.amazonaws.com`, `http://minio.local:9000`, or `https://storage.googleapis.com`.
