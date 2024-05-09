@@ -8,7 +8,7 @@ short_description: "Send log messages to Amazon Simple Storage Service (S3)"
 
 Available in {{% param "product.abbrev" %}} version 4.4 and later.
 
-The `s3()` destination sends log messages to the [Amazon Simple Storage Service (Amazon S3)](https://aws.amazon.com/s3/) object storage service. Messages are normally sent encrypted with TLS (HTTPS), but you can sepecify a custom unencrypted HTTP endpoint.
+The `s3()` destination sends log messages to the [Amazon Simple Storage Service (Amazon S3)](https://aws.amazon.com/s3/) object storage service. Messages are normally sent encrypted with TLS (HTTPS), but you can specify a custom unencrypted HTTP endpoint.
 
 ## Prerequisites
 
@@ -176,7 +176,7 @@ If you configure an invalid value, the default is used.
 | Type:    | string |
 | Default: |  |
 
-*Description:* The [AWS region](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) to use when writing the bucket. This should normally be the same region where the bucket is created. This option implies an API endpoint [`url()`](#url). For providers other than AWS or custom API endpoints use the `url()` option.
+*Description:* The [AWS region](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) to use when writing the bucket. This should normally be the same region where the bucket is created. This option implies an API endpoint [`url()`](#url). For providers other than AWS, or for custom API endpoints, use the `url()` option.
 
 ## secret-key()
 
