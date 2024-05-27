@@ -19,7 +19,6 @@ The `s3()` destination sends log messages to the [Amazon Simple Storage Service 
     - `kms:GenerateDataKey`
     - `s3:ListBucket`
     - `s3:ListBucketMultipartUploads`
-    - `s3:GetBucketLocation`
     - `s3:AbortMultipartUpload`
     - `s3:ListMultipartUploadParts`
     - `s3:PutObject`
