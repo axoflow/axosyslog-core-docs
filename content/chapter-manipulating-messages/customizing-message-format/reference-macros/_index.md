@@ -277,7 +277,7 @@ For an example use case when using the macro is recommended, see {{% xref "/chap
 
 ## RAWMSG {#macro-rawmsg}
 
-*Description:* The original message as received from the client. Note that this macro is available only in 3.16 and later, and only if AxoSyslog received the message using the [`default-network-drivers-ng()` source]({{< relref "/chapter-sources/source-default-network-drivers/_index.md" >}}), or the source receiving the message has the `store-raw-message` flag set.
+*Description:* The original message as received from the client. Note that this macro is available only in 3.16 and later, and only if AxoSyslog received the message using the [`default-network-drivers()` source]({{< relref "/chapter-sources/source-default-network-drivers/_index.md" >}}), or the source receiving the message has the `store-raw-message` flag set.
 
 ## RAWMSG_SIZE {#macro-rawmsg-size}
 
