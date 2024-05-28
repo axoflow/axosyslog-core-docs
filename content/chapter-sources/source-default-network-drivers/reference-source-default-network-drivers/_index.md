@@ -12,8 +12,9 @@ The `systemd-journal()` driver has the following options.
 
 {{< include-headless "chunk/option-source-flags.md" >}}
 
-{{< include-headless "chunk/option-source-log-msg-size.md" >}}
+{{< include-headless "chunk/option-source-log-iw-size.md" >}}
 
+{{< include-headless "chunk/option-source-log-msg-size.md" >}}
 
 {{% include-headless "chunk/option-source-max-connections.md" %}}
 
