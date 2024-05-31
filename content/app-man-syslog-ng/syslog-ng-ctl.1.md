@@ -78,11 +78,11 @@ The {{% param "product.abbrev" %}} application stores various data, metrics, and
   |_[sources]-[sql]-[stats]->{received=501;dropped=0}
 ```
 
-You can query the nodes of this tree, and also use filters to select the information you need. A query is actually a path in the tree. You can also use the `?` and `\*` wildcards. For example:
+You can query the nodes of this tree, and also use filters to select the information you need. A query is actually a path in the tree. You can also use the `?` and `*` wildcards. For example:
 
-- Select every property: `\*`
+- Select every property: `*`
 
-- Select all `dropped` value from every `stats` node: `\*.stats.dropped`
+- Select all `dropped` value from every `stats` node: `*.stats.dropped`
 
 The nodes and properties available in the tree depend on your {{% param "product.abbrev" %}} configuration (that is, the sources, destinations, and other objects you have configured), and also on your `stats-level()` settings.
 
@@ -176,7 +176,7 @@ The `syslog-ng-ctl query get` command has the following options:
     
     Add up the result of each matching node and return only a single number.
     
-    For example, the `syslog-ng-ctl query get --sum "destination\*.dropped"` command displays the number of messages dropped by the {{% param "product.abbrev" %}} instance.
+    For example, the `syslog-ng-ctl query get --sum "destination*.dropped"` command displays the number of messages dropped by the {{% param "product.abbrev" %}} instance.
 
 - `--reset`
     
