@@ -22,5 +22,4 @@ This chapter explains how to install {{% param "product.name" %}} on various pla
 
 ## Other installation methods
 
-- You can install {{% param "product.abbrev" %}} on many platforms using the package manager and official repositories of the platform. For a list of third-party packages available for various Linux, UNIX, and other platforms, see [syslog-ng Open Source Edition installation packages](https://github.com/syslog-ng/syslog-ng/#installation-from-binaries).
-- For instructions on compiling syslog-ng Open Source Edition from the source code, see the [GitHub project page](https://github.com/syslog-ng/syslog-ng/#installation-from-source).
+{{< include-headless "chunk/rpm-deb-packages.md" >}}

@@ -1,0 +1,1 @@
+We're working on providing DEB and RPM packages for {{% param "product.abbrev" %}}. Check back here or [follow our blog](https://axoflow.com/blog/) for updates!
