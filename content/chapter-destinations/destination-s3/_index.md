@@ -30,7 +30,7 @@ The `s3()` destination sends log messages to the [Amazon Simple Storage Service 
     @include "scl.conf"
     ```
 
-The `s3()` driver is actually a reusable configuration snippet. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/syslog-ng/syslog-ng/blob/master/modules/python-modules/syslogng/modules/s3/s3_destination.py).
+The `s3()` driver is actually a reusable configuration snippet. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/modules/python-modules/syslogng/modules/s3/s3_destination.py).
 
 ## Declaration
 

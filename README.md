@@ -1,6 +1,6 @@
 # AxoSyslog documentation
 
-Documentation for the AxoSyslog release, originally based on [this version of the syslog-ng Open Source Edition documentation](https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2). We are continuously working on it to keep it up-to-date with the latest released version of the [`syslog-ng` project](https://github.com/syslog-ng/syslog-ng/).
+Documentation for the AxoSyslog release, originally based on [this version of the syslog-ng Open Source Edition documentation](https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2). We are continuously working on to keep it up-to-date with the latest released version of [AxoSyslog](https://github.com/axoflow/axosyslog/).
 
 ## Licensing
 

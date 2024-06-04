@@ -270,7 +270,7 @@ The following example shows how to use this template function to store log messa
     };
 ```
 
-You can find the exact source of this template function in the [{{% param "product.abbrev" %}} GitHub repository](https://github.com/syslog-ng/syslog-ng/blob/master/scl/cim/template.conf).
+You can find the exact source of this template function in the [{{% param "product.abbrev" %}} GitHub repository](https://github.com/axoflow/axosyslog/blob/master/scl/cim/template.conf).
 
 {{% alert title="Note" color="info" %}}
 

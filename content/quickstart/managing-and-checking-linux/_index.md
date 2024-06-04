@@ -172,6 +172,6 @@ The output will be updated in every 2 seconds. If the numbers are changing, {{% 
 {{% alert title="Note" color="info" %}}
 If you find error messages in the internal logs, messages are not processed by {{% param "product.abbrev" %}} or you encounter any issue, you have the following options:
 
-- [Open a GitHub issue](https://github.com/syslog-ng/syslog-ng/issues) including the results.
+- [Open a GitHub issue](https://github.com/axoflow/axosyslog/issues) including the results.
 - {{% param "product.contact" %}}
 {{% /alert %}}

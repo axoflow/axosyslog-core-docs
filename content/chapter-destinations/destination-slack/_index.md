@@ -33,7 +33,7 @@ To use this destination, the `scl.conf` file must be included in your {{% param 
    @include "scl.conf"
 ```
 
-The `slack()` driver is actually a reusable configuration snippet configured to send log messages using the `http()` driver. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/syslog-ng/syslog-ng/blob/master/scl/slack/slack.conf).
+The `slack()` driver is actually a reusable configuration snippet configured to send log messages using the `http()` driver. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/slack/slack.conf).
 
 
 

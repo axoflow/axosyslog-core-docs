@@ -31,7 +31,7 @@ log {
 
 ```
 
-The `postgresql-csvlog-parser()` driver is actually a reusable configuration snippet configured to parse log messages using the `csv-parser()`. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/syslog-ng/syslog-ng/blob/master/scl/pgsql/pgsql.conf).
+The `postgresql-csvlog-parser()` driver is actually a reusable configuration snippet configured to parse log messages using the `csv-parser()`. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/pgsql/pgsql.conf).
 
 {{% include-headless "chunk/option-parser-on-type-error.md" %}}
 

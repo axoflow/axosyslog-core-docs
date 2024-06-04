@@ -44,7 +44,7 @@ destination d_openobserve {
 };
 ```
 
-This driver is actually a reusable configuration snippet configured to send log messages using the `http()` driver using a template. You can find the source of this configuration snippet on [GitHub](https://github.com/syslog-ng/syslog-ng/blob/master/scl/openobserve/openobserve.conf).
+This driver is actually a reusable configuration snippet configured to send log messages using the `http()` driver using a template. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/openobserve/openobserve.conf).
 
 ## Options
 

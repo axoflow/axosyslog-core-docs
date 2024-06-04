@@ -27,4 +27,4 @@ For more details about Jellyfin logging, see:
 
 As the `jellyfin()` source is based on the [`wildcard-file()` source]({{< relref "/chapter-sources/configuring-sources-wildcard-file/_index.md" >}}), you can use the [`wildcard-file()` source options]({{< relref "/chapter-sources/configuring-sources-wildcard-file/reference-source-wildcard-file/_index.md" >}}).
 
-This driver is actually a reusable configuration snippet. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/syslog-ng/syslog-ng/blob/master/scl/jellyfin/jellyfin.conf).
+This driver is actually a reusable configuration snippet. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/jellyfin/jellyfin.conf).

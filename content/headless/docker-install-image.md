@@ -29,7 +29,7 @@ If you want to test a development version, you can use the nightly builds:
 
 ## Customize the configuration
 
-The {{% param "product_name" %}} container image stores the configuration file at `/etc/syslog-ng/syslog-ng.conf`. By default, {{% param "product_name" %}} collects the local system logs and logs received from the network into the `/var/log/messages` and `/var/log/messages-kv.log` files using [this configuration file from the syslog-ng repository](https://github.com/syslog-ng/syslog-ng/blob/master/scl/syslog-ng.conf).
+The {{% param "product_name" %}} container image stores the configuration file at `/etc/syslog-ng/syslog-ng.conf`. By default, {{% param "product_name" %}} collects the local system logs and logs received from the network into the `/var/log/messages` and `/var/log/messages-kv.log` files using [this configuration file from the syslog-ng repository](https://github.com/axoflow/axosyslog/blob/master/scl/syslog-ng.conf).
 
 To customize the configuration, create your own configuration file and override the file in the container image with it, for example:
 

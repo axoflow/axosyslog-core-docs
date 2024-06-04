@@ -63,4 +63,4 @@ To use this parser, the `scl.conf` file must be included in your {{% param "prod
    @include "scl.conf"
 ```
 
-The `apache-accesslog-parser()` is actually a reusable configuration snippet configured parse Apache access log messages. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/syslog-ng/syslog-ng/blob/master/scl/apache/apache.conf).
+The `apache-accesslog-parser()` is actually a reusable configuration snippet configured parse Apache access log messages. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/apache/apache.conf).
