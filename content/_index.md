@@ -8,7 +8,7 @@ aliases:
 - /ose-preface/acknowledgements/
 ---
 
-{{% param "product.abbrev" %}} is a cloud-native, syslog-ng compatible logging agent by [Axoflow](https://axoflow.com). If you want to try running `syslog-ng` in a container, or use it as a log collector in Kubernetes, try {{% param "product.abbrev" %}}! See {{% xref "/install/_index.md" %}} to get started.
+{{% param "product.abbrev" %}} is a cloud-native, syslog-ng&trade; compatible logging agent by [Axoflow](https://axoflow.com). If you want to try running `syslog-ng` in a container, or use it as a log collector in Kubernetes, try {{% param "product.abbrev" %}}! See {{% xref "/install/_index.md" %}} to get started.
 
 ## Feedback
 
@@ -22,7 +22,7 @@ Any feedback is greatly appreciated, especially on what else this document shoul
 
 This documentation is originally based on the [syslog-ng Open Source Edition documentation](https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2) for version 3.38 and is used in compliance with the terms of [The syslog-ng Open Source Edition Documentation License]({{< relref "/documentation-license/_index.md" >}}). We are continuously working on it to keep it up-to-date with the latest released version of the [`syslog-ng` project](https://github.com/syslog-ng/syslog-ng/) (currently {{% param "product.version" %}}).
 
-In compliance with the above license, `syslog-ng` is used only to refer to the binary of the application, or in filenames, pathnames, and similar technical terms. For all other references, we use the AxoSyslog name.
+In compliance with the above license, `syslog-ng` is used only to refer to the binary of the application, or in filenames, pathnames, and similar technical terms. For all other references, we use the AxoSyslog name. Syslog-ng is a trademark of One Identity.
 
 New files and modifications compared to the [syslog-ng Open Source Edition documentation](https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2) are under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks.
 

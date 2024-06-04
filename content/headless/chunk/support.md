@@ -4,7 +4,7 @@
 
 In case you need help with any of the AxoSyslog projects, or directly with `syslog-ng`, you have several ways to contact us:
 
-- Open a GitHub issue in the relevant repository.
+- Open a [GitHub issue in the AxoSyslog repository](https://github.com/axoflow/axosyslog/issues).
 - Chat with us in the [syslog-ng channel of the Axoflow Discord server](https://discord.gg/583Z4wjem2).
 - Fill the [Axoflow contact form](https://axoflow.com/contact/).
 

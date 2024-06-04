@@ -150,7 +150,7 @@ description = "Documentation for AxoSyslog, a syslog-ng distribution"
   # Developer relevant links. These will show up on right side of footer and in the community page if you have one.
   [[params.links.developer]]
     name = "GitHub"
-    url = "https://github.com/axoflow/axosyslog-docker"
+    url = "https://github.com/axoflow/axosyslog/"
     icon = "fab fa-github"
     desc = "Get involved in AxoSyslog development"
 ##########
