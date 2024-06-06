@@ -341,6 +341,10 @@ Use the `syslog-ng-ctl config` command to display the configuration that {{% par
 
 Starting with {{% param "product.name" %}} version 4.2, you can display the configuration identifier (if set) and the SHA256 has of the output of the `syslog-ng-ctl config --preprocessed` command by running `syslog-ng-ctl config --id`. For details, see {{% xref "/chapter-configuration-file/configuration-identifier/_index.md" %}}.
 
+### List referenced files
+
+You can use the `syslog-ng-ctl list-files` command to list files referenced in your configuration, for example, certificates or external configuration files. Available in {{< product >}} 3.23.1 and later.
+
 <span id="syslog-ng-ctl-reload"></span>
 
 ## Reloading the configuration
