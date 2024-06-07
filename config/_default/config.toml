@@ -18,12 +18,12 @@ enableGitInfo = true
 
 [languages]
 [languages.en]
-title = "AxoSyslog - a syslog-ng distribution"
+title = "AxoSyslog, the scalable security data processor"
 languageName ="English"
 # Weight used for sorting.
 weight = 1
 [languages.en.params]
-description = "Documentation for AxoSyslog, a syslog-ng distribution"
+description = "Documentation for AxoSyslog, the scalable security data processor"
 
 [outputs]
     home = ["HTML", "print"]
