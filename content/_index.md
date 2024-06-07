@@ -8,7 +8,9 @@ aliases:
 - /ose-preface/acknowledgements/
 ---
 
-{{% param "product.abbrev" %}} is a cloud-native, syslog-ng&trade; compatible logging agent by [Axoflow](https://axoflow.com). If you want to try running `syslog-ng` in a container, or use it as a log collector in Kubernetes, try {{% param "product.abbrev" %}}! See {{% xref "/install/_index.md" %}} to get started.
+{{< include-headless "axosyslog-intro.md" >}}
+
+If you want to try running `syslog-ng` in a container, or use it as a log collector in Kubernetes, try {{% param "product.abbrev" %}}! See {{% xref "/install/_index.md" %}} to get started.
 
 ## Feedback
 
