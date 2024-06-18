@@ -315,7 +315,7 @@ For example:
 
 |          |        |
 | -------- | ------ |
-| Type:    | yes|no |
+| Type:    | `yes|no` |
 | Default: | no     |
 
 *Description:* By default, when connecting to an Elasticsearch cluster, {{% param "product.abbrev" %}} checks the state of the cluster. If the primary shards of the cluster are not active, {{% param "product.abbrev" %}} will not send messages, but wait for them to become active. To disable this health check and send the messages to Elasticsearch anyway, use the `skip-cluster-health-check(yes)` option in your configuration.

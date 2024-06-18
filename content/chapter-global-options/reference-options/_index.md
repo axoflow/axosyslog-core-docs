@@ -395,7 +395,7 @@ Starting with version 3.16, the default value of this option is -1, so {{% param
 
 |                  |        |
 | ---------------- | ------ |
-| Accepted values: | yes|no |
+| Accepted values: | `yes|no` |
 | Default:         | yes    |
 
 *Description:* Enable {{% param "product.abbrev" %}} to collect UNIX credential information (that is, the PID, user ID, and group of the sender process) for messages received using UNIX domain sockets. Available only in {{% param "product.name" %}} 3.7 and later. Note that collecting UNIX credential information from sockets in high-traffic environments can be resource intensive, therefore `pass-unix-credentials()` can be disabled globally, or separately for each source.
@@ -574,7 +574,7 @@ Deprecated legacy option. Use [`stats(max-dynamics())`](#global-option-stats-max
 
 |                  |        |
 | ---------------- | ------ |
-| Accepted values: | yes|no |
+| Accepted values: | `yes|no` |
 | Default:         | yes    |
 
 *Description:* Enable {{% param "product.abbrev" %}} to run in multithreaded mode and use multiple CPUs. Available only in {{% param "product.name" %}} 3.3 and later. Note that setting `threaded(no)` does not mean that {{% param "product.abbrev" %}} will use only a single thread. For details, see {{% xref "/chapter-multithreading/_index.md" %}}.
@@ -606,7 +606,7 @@ Deprecated legacy option. Use [`stats(max-dynamics())`](#global-option-stats-max
 
 |                  |        |
 | ---------------- | ------ |
-| Accepted values: | yes|no |
+| Accepted values: | `yes|no` |
 | Default:         | no     |
 
 {{% include-headless "chunk/option-description-trim-large-messages.md" %}}
