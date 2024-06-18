@@ -480,7 +480,7 @@ options {
 
 |                  |                               |
 | ---------------- | ----------------------------- |
-| Accepted values: | `0` | `1` | `2` | `3` |
+| Accepted values: | `0 | 1 | 2 | 3` |
 | Default:         | `0`                         |
 
 *Description:* Specifies the detail of statistics {{% param "product.abbrev" %}} collects about the processed messages.
