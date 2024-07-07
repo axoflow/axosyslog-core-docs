@@ -160,9 +160,9 @@ description = "Documentation for AxoSyslog, the scalable security data processor
 [params.product]
 name = "AxoSyslog"
 abbrev = "AxoSyslog"
-version = "4.7"
-techversion = "4.7.0"
-configversion = "4.7"
+version = "4.8"
+techversion = "4.8.0"
+configversion = "4.8"
 syslog-ng = "syslog-ng"
 selinux = "SELinux"
 apparmor = "AppArmor"
