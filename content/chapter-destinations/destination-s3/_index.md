@@ -238,6 +238,8 @@ destination d_s3 {
   );
 ```
 
+For details on using KMS keys, see the [official S3 documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html).
+
 ## storage-class()
 
 |          |                            |
