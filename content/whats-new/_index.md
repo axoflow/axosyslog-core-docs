@@ -12,6 +12,7 @@ This page is a changelog that collects the major changes and additions to this d
 - You can send messages and metrics to [Elasticsearch data streams](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams.html) to store your log and metrics data as time series data using the [`elasticsearch-datastream()`]({{< relref "/chapter-destinations/elasticsearch-data-stream/_index.md" >}}) destination driver.
 - You can use the [`server-side-encryption()`]({{< relref "/chapter-destinations/destination-s3/_index.md#server-side-encryption" >}}) and [`kms-key()`]({{< relref "/chapter-destinations/destination-s3/_index.md#kms-key" >}}) options to configure encryption for [Amazon S3 destinations]({{< relref "/chapter-destinations/destination-s3/_index.md" >}}).
 - You can now set static gRPC headers in the [`bigquery()`]({{< relref "/chapter-destinations/google-bigquery/_index.md#headers" >}}), [`loki()`]({{< relref "/chapter-destinations/destination-loki/_index.md#headers" >}}), and the [`opentelemetry()`]({{< relref "/chapter-destinations/opentelemetry/_index.md#headers" >}}) destinations.
+- The `opentelemetry()` parser has a new [`set-hostname()`]({{< relref "/chapter-parsers/opentelemetry/_index.md#set-hostname" >}}) option.
 
 ## Version 4.7 release (2024-04-18)
 

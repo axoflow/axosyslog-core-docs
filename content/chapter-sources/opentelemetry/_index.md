@@ -37,6 +37,10 @@ log otel_forward_mode_alts {
 
 {{< include-headless "chunk/option-source-concurrent-requests.md" >}}
 
+## keep-hostname()
+
+The `opentelemetry()` source ignores this option and uses the address of the OTLP peer as the HOST.
+
 {{% include-headless "chunk/option-source-log-fetch-limit.md" %}}
 
 ## `port()` {#port}
