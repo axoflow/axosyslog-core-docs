@@ -39,5 +39,4 @@ The mapping of AnyValue type fields is limited.
 
 Available in {{< product >}} 4.8 and later.
 
-*Description:* If set to yes, the parser extracts the `host.name` attribute if available in the message. Otherwise, it leaves the [HOST](https://opentelemetry.io/docs/specs/semconv/attributes-registry/host/) field as-is.
-If you're receiving messages using the [`syslog-ng-otlp()` source]({{< relref "/chapter-sources/source-syslog-ng-otlp/_index.md" >}}), the `opentelemetry()` parser will return the original hostname regardless of the where the message originated (OTLP, syslog, and so on).
+*Description:* If set to yes, the parser extracts the `host.name` resource attribute if available in the message. Otherwise, it leaves the [HOST](https://opentelemetry.io/docs/specs/semconv/attributes-registry/host/) field as-is.
