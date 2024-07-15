@@ -14,14 +14,18 @@ The `s3()` destination sends log messages to the [Amazon Simple Storage Service 
 
 - An existing S3 bucket configured for programmatic access, and the related `ACCESS_KEY` and `SECRET_KEY` of a user that can access it. The user needs to have the following permissions:
 
-    - `kms:Decrypt`
-    - `kms:Encrypt`
-    - `kms:GenerateDataKey`
     - `s3:ListBucket`
     - `s3:ListBucketMultipartUploads`
     - `s3:AbortMultipartUpload`
     - `s3:ListMultipartUploadParts`
     - `s3:PutObject`
+
+    The following kms-related permissions are needed to use the `aws:kms` encryption. The AWS Role or User must have the following
+    permissions on the given key:
+
+    - `kms:Decrypt` (For details on why the `kms:Decrypt` is mandatory, check [this AWS Knowledge Center entry](https://repost.aws/knowledge-center/s3-large-file-encryption-kms-key).)
+    - `kms:Encrypt`
+    - `kms:GenerateDataKey`
 
 - If you are not using the venv (`/usr/bin/syslog-ng-update-virtualenv`) created by {{% param "product.abbrev" %}}, you must install the `boto3` and/or `botocore` Python dependencies.
 - To use the `s3()` driver, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
@@ -137,6 +141,21 @@ If you configure an invalid value, the default is used.
 
 {{< include-headless "chunk/option-destination-log-fifo-size.md" >}}
 
+## kms-key()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | string |
+| Default: | N/A |
+
+Available in {{< product >}} 4.8 and later.
+
+*Description:* The `kms-key()` used for [server-side encryption]({{< relref "/chapter-destinations/destination-s3/_index.md#server-side-encryption" >}}). The value of the `kms-key()` parameter must be one of the following:
+
+- The ID of a key.
+- An alias of a key. In that case, make sure to add the alias/prefix, for example: `kms-key("alias/log-archive")`
+- The ARN of a key.
+
 ## max-object-size()
 
 |          |                            |
@@ -197,6 +216,29 @@ If you configure an invalid value, the default is used.
 *Description:* The `SECRET_KEY` of the service account used to access the S3 bucket. (Together with [`access-key()`](#access-key).)
 
 Starting with version 4.7, you can use the `AWS_...` environment variables or credentials files from the `~/.aws/` directory instead of this option. For details, see the [official documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html).
+
+## server-side-encryption()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | string |
+| Default: | N/A |
+
+Available in {{< product >}} 4.8 and later.
+
+*Description:* You can use the `server-side-encryption()` and [`kms-key()`]({{< relref "/chapter-destinations/destination-s3/_index.md#kms-key" >}}) options to configure encryption. Currently only `server-side-encryption("aws:kms")` is supported.
+
+```shell
+destination d_s3 {
+  s3(
+    bucket("log-archive-bucket")
+    object-key("logs/syslog")
+    server-side-encryption("aws:kms")
+    kms-key("alias/log-archive")
+  );
+```
+
+For details on using KMS keys, see the [official S3 documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html).
 
 ## storage-class()
 

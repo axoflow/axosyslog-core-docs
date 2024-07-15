@@ -1,1 +1,2 @@
-We're working on providing DEB and RPM packages for {{% param "product.abbrev" %}}. Check back here or [follow our blog](https://axoflow.com/blog/) for updates!
+DEB packages are available for {{< product >}} 4.8 and later versions.
+We're working on providing RPM packages for {{% param "product.abbrev" %}} as well. Check back here or [follow our blog](https://axoflow.com/blog/) for updates!

@@ -16,6 +16,8 @@ This chapter explains how to install {{% param "product.name" %}} on various pla
 
 ## Install AxoSyslog
 
+- {{% xref "/install/podman-systemd/_index.md" %}}
+- {{% xref "/install/debian-ubuntu/_index.md" %}}
 - {{% xref "/install/docker/_index.md" %}}
 - {{% xref "/install/podman/_index.md" %}}
 - {{% xref "/install/helm/_index.md" %}}

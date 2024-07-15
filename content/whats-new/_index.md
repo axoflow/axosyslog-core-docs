@@ -6,6 +6,13 @@ weight: 10
 
 This page is a changelog that collects the major changes and additions to this documentation. (If you want to know the details about why we have separate documentation for AxoSyslog and how it relates to the `syslog-ng` documentation, read our [syslog-ng documentation and similarities with AxoSyslog Core](https://axoflow.com/axosyslog-core-documentation-syslog-ng/) blog post.)
 
+## Version 4.8 release (2024-07-12)
+
+- [APT repository for Debian and Ubuntu]({{< relref "/install/debian-ubuntu/_index.md" >}}) based systems.
+- You can send messages and metrics to [Elasticsearch data streams](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams.html) to store your log and metrics data as time series data using the [`elasticsearch-datastream()`]({{< relref "/chapter-destinations/elasticsearch-data-stream/_index.md" >}}) destination driver.
+- You can use the [`server-side-encryption()`]({{< relref "/chapter-destinations/destination-s3/_index.md#server-side-encryption" >}}) and [`kms-key()`]({{< relref "/chapter-destinations/destination-s3/_index.md#kms-key" >}}) options to configure encryption for [Amazon S3 destinations]({{< relref "/chapter-destinations/destination-s3/_index.md" >}}).
+- You can now set static gRPC headers in the [`bigquery()`]({{< relref "/chapter-destinations/google-bigquery/_index.md#headers" >}}), [`loki()`]({{< relref "/chapter-destinations/destination-loki/_index.md#headers" >}}), and the [`opentelemetry()`]({{< relref "/chapter-destinations/opentelemetry/_index.md#headers" >}}) destinations.
+
 ## Version 4.7 release (2024-04-18)
 
 - {{% xref "/chapter-sources/arr/_index.md" %}} source

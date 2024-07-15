@@ -9,11 +9,13 @@
 | Type:    | string list |
 | Default: | empty       |
 
-*Description:* Custom HTTP headers to include in the request, for example, `headers("HEADER1: header1", "HEADER2: header2")`. If not set, only the default headers are included, but no custom headers.
+Available in {{< product >}} 4.8 and later.
 
-The following headers are included by default:
+*Description:* Adds custom gRPC headers to each RPC call. Currently only static header names and values are supported.
 
-- X-Syslog-Host: `<host>`
-- X-Syslog-Program: `<program>`
-- X-Syslog-Facility: `<facility>`
-- X-Syslog-Level: `<loglevel/priority>`
+```shell
+headers(
+    "organization" => "Axoflow"
+    "stream-name" => "axo-stream"
+  )
+```
