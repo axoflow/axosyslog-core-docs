@@ -8,7 +8,10 @@ short_description: "Send messages to Grafana Loki"
 
 Available in {{% param "product.abbrev" %}} version 4.4 and later.
 
-The `loki()` destination sends your log data to [Grafana Loki](https://grafana.com/docs/loki/) via gRPC, using the same message format documented for the [Grafana Loki HTTP endpoint](https://grafana.com/docs/loki/latest/reference/api/#push-log-entries-to-loki).
+The `loki()` destination sends your log data to [Grafana Loki](https://grafana.com/docs/loki/). Note that:
+
+- {{% param "product.abbrev" %}} sends data using **gRPC**, HTTP transport is currently not supported.
+- The message format is the same as documented for the [Grafana Loki HTTP endpoint](https://grafana.com/docs/loki/latest/reference/api/#push-log-entries-to-loki).
 
 Sample configuration:
 
@@ -118,6 +121,6 @@ loki(
 | Type:    | string |
 | Default: | `localhost:9095` |
 
-*Description:* The URL of the Loki endpoint.
+*Description:* The URL of the Loki endpoint, including the gRPC listen port of your Loki deployment.
 
 {{< include-headless "chunk/option-destination-threaded-workers.md" >}}
