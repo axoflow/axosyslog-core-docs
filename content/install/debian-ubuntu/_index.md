@@ -1,7 +1,7 @@
 ---
 title: Install AxoSyslog on Debian/Ubuntu
 linktitle: Debian/Ubuntu
-weight: 300
+weight: 200
 ---
 
 You can install {{< product >}} 4.8 and newer on your Debian-based system from Axoflow's APT repository. {{< product >}} is a drop in replacement for the [`syslog-ng` Debian package](https://packages.debian.org/search?keywords=syslog-ng&searchon=names&suite=stable&section=all), all the {{< product >}} binaries and configuration files are stored at the same place on your system.
@@ -19,6 +19,12 @@ The following x86-64 distributions are supported:
 | Ubuntu 23.04    | ubuntu-lunar           |
 | Ubuntu 22.04    | ubuntu-jammy           |
 | Ubuntu 20.04    | ubuntu-focal           |
+
+{{< include-headless "chunk/package-to-install.md" >}}
+
+Usually, you install the base package `axosyslog`, and the packages of specific modules that you want to use. We also provide `debuginfo` packages for every module, but you only need these in certain troubleshooting scenarios.
+
+## Steps
 
 To install {{< product >}} from the APT repository, complete the following steps.
 

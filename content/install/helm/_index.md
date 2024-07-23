@@ -1,7 +1,7 @@
 ---
 title: Install AxoSyslog with Helm
 linktitle: Helm
-weight: 200
+weight: 300
 ---
 
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
@@ -144,6 +144,19 @@ To install the `axosyslog` chart, complete the following steps.
     ```shell
     kubectl exec axosyslog-1714389625-syslog-0 -- less /var/log/syslog
     ```
+
+<!-- FIXME: minimal usable steps for each usecase: 
+    - syslog-nal ellenorizze hogy megy-e a fogadas
+    - kivulrol/masik podbol nem sikerult  meg logot kuldeni bele
+
+    kubectl get svc
+
+NAME                          TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)                                                                   AGE
+axosyslog-1713953907-syslog   NodePort    10.97.161.5   <none>        514:30514/UDP,514:30514/TCP,6514:30614/TCP,601:30601/TCP,4317:30317/TCP   25m
+
+    - Individual parameters passed with --set (such as helm install --set foo=bar ./mychart)
+     -->
+
 {{< include-headless "disk-buffer-in-container.md" >}}
 
 ## Uninstall
