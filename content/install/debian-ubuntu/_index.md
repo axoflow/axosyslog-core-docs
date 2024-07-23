@@ -31,7 +31,7 @@ To install {{< product >}} from the APT repository, complete the following steps
     ```
 
     ```shell
-    echo "deb [signed-by=/usr/share/keyrings/axoflow-code-signing-pub.gpg] https://pkg.axoflow.io/apt stable ubuntu-noble | tee --append /etc/apt/sources.list.d/axoflow.list
+    echo "deb [signed-by=/usr/share/keyrings/axoflow-code-signing-pub.gpg] https://pkg.axoflow.io/apt stable ubuntu-noble" | tee --append /etc/apt/sources.list.d/axoflow.list
     ```
 
     ```shell
@@ -42,7 +42,7 @@ To install {{< product >}} from the APT repository, complete the following steps
 Nightly builds are also available:
 
 ```shell
-echo "deb [signed-by=/usr/share/keyrings/axoflow-code-signing-pub.gpg] https://pkg.axoflow.io/apt nightly ubuntu-noble | tee --append /etc/apt/sources.list.d/axoflow.list
+echo "deb [signed-by=/usr/share/keyrings/axoflow-code-signing-pub.gpg] https://pkg.axoflow.io/apt nightly ubuntu-noble" | tee --append /etc/apt/sources.list.d/axoflow.list
 ```
     {{% /alert %}}
 
