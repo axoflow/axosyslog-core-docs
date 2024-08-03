@@ -1,2 +1,1 @@
-DEB packages are available for {{< product >}} 4.8 and later versions.
-We're working on providing RPM packages for {{% param "product.abbrev" %}} as well. Check back here or [follow our blog](https://axoflow.com/blog/) for updates!
+[DEB packages]({{< relref "/install/debian-ubuntu/_index.md" >}}) and [RPM packages]({{< relref "/install/rhel-fedora-almalinux/_index.md" >}}) are available for {{< product >}} 4.8 and later versions.
