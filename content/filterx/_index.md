@@ -314,20 +314,20 @@ For details, see {{% xref "/filterx/operator-reference.md" %}}.
 Filterx has the following built-in functions.
 
 <!-- FIXME definitions/descriptions -->
-- "isset"
-- "unset"
-- "json"
-- "json_array"
-- "datetime"
-- "isodate"
-- "string"
+- [`datetime`]({{< relref "/filterx/function-reference.md#datetime" >}})
+- [`isodate`]({{< relref "/filterx/function-reference.md#isodate" >}})
+- [`isset`]({{< relref "/filterx/function-reference.md#isset" >}})
+- [`len`]({{< relref "/filterx/function-reference.md#len" >}}): Returns the length of an object.
+- [`json, json_object`]({{< relref "/filterx/function-reference.md#json" >}}): Convert a value into a JSON object.
+- [`json_array`]({{< relref "/filterx/function-reference.md#json-array" >}}): Convert a value into a JSON array.
+- [`string`]({{< relref "/filterx/function-reference.md#string" >}}): Convert a value into a string.
+- [`unset`]({{< relref "/filterx/function-reference.md#unset" >}})
+- [`vars`]({{< relref "/filterx/function-reference.md#vars" >}}): The variables defined in the filterx block.
 - "bytes"
 - "protobuf"
 - "bool"
 - "int"
 - "double"
-- "len"
-- "vars"
 - "lower"
 - "upper"
 - "regexp_search"
