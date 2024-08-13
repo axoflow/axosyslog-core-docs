@@ -317,19 +317,20 @@ Filterx has the following built-in functions.
 - [`datetime`]({{< relref "/filterx/function-reference.md#datetime" >}})
 - [`isodate`]({{< relref "/filterx/function-reference.md#isodate" >}})
 - [`isset`]({{< relref "/filterx/function-reference.md#isset" >}})
+- [`istype`]({{< relref "/filterx/function-reference.md#istype" >}}): Check the type of an object.
 - [`len`]({{< relref "/filterx/function-reference.md#len" >}}): Returns the length of an object.
+- [`lower`]({{< relref "/filterx/function-reference.md#lower" >}}): Converts a string into lowercase characters.
 - [`json, json_object`]({{< relref "/filterx/function-reference.md#json" >}}): Convert a value into a JSON object.
 - [`json_array`]({{< relref "/filterx/function-reference.md#json-array" >}}): Convert a value into a JSON array.
 - [`string`]({{< relref "/filterx/function-reference.md#string" >}}): Convert a value into a string.
 - [`unset`]({{< relref "/filterx/function-reference.md#unset" >}})
+- [`upper`]({{< relref "/filterx/function-reference.md#upper" >}}): Converts a string into uppercase characters.
 - [`vars`]({{< relref "/filterx/function-reference.md#vars" >}}): The variables defined in the filterx block.
 - "bytes"
 - "protobuf"
 - "bool"
 - "int"
 - "double"
-- "lower"
-- "upper"
 - "regexp_search"
 <!-- FIXME update list , I found these in the tests/files -->
 - strptime
@@ -337,7 +338,6 @@ Filterx has the following built-in functions.
 - otel_logrecord
 - regexp_subst
 - flatten
-- istype
 - unset_empties
 - format_csv
 - #define FILTERX_FUNC_CACHE_JSON_FILE_USAGE "Usage: `cache_json_file("/path/to/file.json")`" > is that public? > igen

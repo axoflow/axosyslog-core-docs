@@ -66,8 +66,24 @@ Usage: `isset(<name of a variable, macro, or name-value pair>)`
 
 ## istype
 
-Usage: `istype(object, type_str)`
+Returns true if the object (first argument) has the specified type (second argument). The type must be a quoted string.
+
+Usage: `istype(object, "type_str")`
+
+For example:
+
+```shell
+istype({"key": "value"}, "json_object"); # True
+istype(${PID}, "string");
+istype(my-local-json-object.mylist, "json_array")
+```
 <!-- FIXME include list of valid types -->
+
+<!-- FIXME what happens if the object doesn't exist? -->
+
+<!-- istype($olr.body, "otel_kvlist");
+istype(otel_kvl.js_arr, "otel_array");
+ -->
 
 ## json, json_object {#json}
 
@@ -100,6 +116,14 @@ Returns the number of items in an object. For example, the length of a string, o
 Usage: `len(object)`
 
 <!-- FIXME What does it return for different types? -->
+
+## lower
+
+Converts a string into lowercase characters.
+
+Usage: `lower(string)`
+
+<!-- FIXME Does it work for other types? For example, list? -->
 
 ## parse_csv
 
@@ -201,7 +225,15 @@ See also {{% xref "/filterx/_index.md#delete-values" %}}.
 
 Usage: `unset_empties(object, recursive=true)`
 
-Also unsets inner dicts' and lists' values is recursive is set.
+Also unsets inner dicts' and lists' values if the `recursive` option is set.
+
+## upper
+
+Converts a string into uppercase characters.
+
+Usage: `upper(string)`
+
+<!-- FIXME Does it work for other types? For example, list? -->
 
 ## vars
 
