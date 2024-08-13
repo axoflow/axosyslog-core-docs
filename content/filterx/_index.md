@@ -299,17 +299,8 @@ Filterx has the following operators.
 - [Plus (`+`) operator](#concatenate-strings) to concatenate strings.
 - [Ternary conditional operator]({{< relref "/filterx/operator-reference.md#ternary-conditional-operator" >}}): `?:`
 - [Null coalescing operator]({{< relref "/filterx/operator-reference.md#null-coalescing-operator" >}}): `??`
-- Regex match: `=~`
-- Regex doesn't match: `!~`
-<!-- You can use slash strings in regexes (and every other string within the filterx block), in 
-["leave the backslash alone mode"](https://www.gnu.org/software/gawk/manual/html_node/Escape-Sequences.html
-).
+- [Regular expression (regexp) match]({{< relref "/filterx/operator-reference.md#regexp" >}}): `=~` and `!~`.
 
-using regexes based on /chapter-routing-filters/filters/regular-expr/_index.md
-?? using wildcards/regexes in filters > how to glob/etc
-
-octal numbers in strings are interpreted like: \nnn  instead of \onnn (\o plus numbers)
--->
 <!--  +=  -->
 
 <!-- FIXME 
@@ -362,6 +353,12 @@ For details, see {{% xref "/filterx/operator-reference.md" %}}.
 
 Add a real-life looking example why that's good > (this plus a short intro can be a blog post as well)
  -->
+
+<!-- ### Handling OTEL
+
+FIXME
+
+-->
 
 <!-- 
 ## Updating filters to filterx

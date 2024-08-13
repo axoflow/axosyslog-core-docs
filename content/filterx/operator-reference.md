@@ -8,6 +8,15 @@ weight: 4800
 
 <!-- Operator reference, required arguments, options/flags, examples from tests, ... -->
 
+## Comparison operators
+
+Comparison operators allow you to compare values of macros, variables, and expressions as numbers (`==, <, <=, >=, >, !=`) and strings
+(`eq, lt, le, gt, ge, ne`). You can also check for type equality (`===`). For details and examples, see {{% xref "/filterx/filterx-comparing/_index.md" %}}.
+
+## Boolean operators
+
+The `not`, `or`, `and` operators allow you to combine comparisons and expressions. For details and examples, see {{% xref "/filterx/filterx-boolean/_index.md" %}}.
+
 ## Null coalescing operator
 
 The [null coalescing operator](https://en.wikipedia.org/wiki/Null_coalescing_operator) returns the result of the left operand if it exists and is not null, otherwise it returns the right-most operand.
@@ -23,6 +32,35 @@ For example, if a key of a JSON object doesn't exist for every message, you can 
 ```shell
 ${MESSAGE} = json.["BODY"] ?? "Empty message"
 ```
+
+## Regexp match {#regexp}
+
+To check if a value contains a string or a regular expression, use the `=~` operator. For example, the following statement is true if the `${MESSAGE}` contains the word `error`:
+
+```shell
+${MESSAGE} =~ "error";
+```
+
+Use the `!~` operator to check if a value doesn't contain an expression. For example, the following statement is true if the `${MESSAGE}` doesn't contain the word `error`:
+
+```shell
+${MESSAGE} !~ "error";
+```
+
+Note the following points:
+
+- Regular expressions are case sensitive.
+- You can use [regexp constants](https://www.gnu.org/software/gawk/manual/html_node/Regexp-Constants.html) (slash-enclosed regexps) within filterx blocks to simplify escaping special characters, for example, `/^beginning and end$/`.
+- Filterx regular expressions are interpreted in ["leave the backslash alone mode"](https://www.gnu.org/software/gawk/manual/html_node/Escape-Sequences.html), meaning that a backslash in a string before something that doesn't need to be escaped leave the backslash alone. For example, `string\more-string` is equivalent to `string\\more-string`.
+<!--  - For a list of escape sequences, see FIXME -->
+
+<!-- FIXME add some more complex regex examples -->
+
+<!-- 
+FIXME what is relevant/applicable from /chapter-manipulating-messages/regular-expressions/ ?
+
+Is there a workaround for wildcards/globbing? /chapter-routing-filters/filters/regular-expr/_index.md ?
+-->
 
 ## Ternary conditional operator
 
