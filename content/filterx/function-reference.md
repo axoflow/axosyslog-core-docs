@@ -211,7 +211,22 @@ Sometimes you have to explicitly cast values to strings, for example, when you w
 
 ## strptime
 
+Creates a `datetime` object from a string, similarly to the [`date-parser()`]({{< relref "/chapter-parsers/date-parser/_index.md" >}}) The first argument is the string containing the date. The second argument is a format string that specifies how to parse the date string. Optionally, you can specify additional format strings that are applied in order if the previous one doesn't match the date string.
+
 Usage: `strptime(time_str, format_str_1, ..., format_str_N)`
+
+For example:
+
+```shell
+${MESSSAGE} = strptime("2024-04-10T08:09:10Z", "%Y-%m-%dT%H:%M:%S%z");
+```
+<!-- 
+FIXME what happens if none of the format strings match?
+-->
+
+You can use the following elements in the format string:
+
+{{< include-headless "chunk/date-string-format.md" >}}
 
 ## unset
 
