@@ -316,6 +316,7 @@ Filterx has the following built-in functions.
 <!-- FIXME definitions/descriptions -->
 - [`cache_json_file`]({{< relref "/filterx/function-reference.md#cache_json_file" >}})
 - [`datetime`]({{< relref "/filterx/function-reference.md#datetime" >}})
+- [`flatten`]({{< relref "/filterx/function-reference.md#flatten" >}})
 - [`isodate`]({{< relref "/filterx/function-reference.md#isodate" >}})
 - [`isset`]({{< relref "/filterx/function-reference.md#isset" >}})
 - [`istype`]({{< relref "/filterx/function-reference.md#istype" >}}): Check the type of an object.
