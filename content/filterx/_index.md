@@ -314,6 +314,7 @@ For details, see {{% xref "/filterx/operator-reference.md" %}}.
 Filterx has the following built-in functions.
 
 <!-- FIXME definitions/descriptions -->
+- [`cache_json_file`]({{< relref "/filterx/function-reference.md#cache_json_file" >}})
 - [`datetime`]({{< relref "/filterx/function-reference.md#datetime" >}})
 - [`isodate`]({{< relref "/filterx/function-reference.md#isodate" >}})
 - [`isset`]({{< relref "/filterx/function-reference.md#isset" >}})

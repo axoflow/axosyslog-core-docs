@@ -6,9 +6,11 @@ weight: 4800
 
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-<!-- Function reference, required arguments, options/flags, examples from tests, ... 
-sok egyszeru pelda az adott functionnel, a tmp/axosyslog/tests/light/functional_tests/filterx/test_filterx.py temakorei sok mindent lefednek 
--->
+## cache_json_file
+
+Usage: `cache_json_file("/path/to/file.json")`
+
+<!-- FIXME why/when use this, how to load it back, performance? -->
 
 ## datetime
 
