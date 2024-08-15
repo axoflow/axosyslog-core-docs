@@ -326,7 +326,8 @@ Filterx has the following built-in functions.
 - [`json_array`]({{< relref "/filterx/function-reference.md#json-array" >}}): Convert a value into a JSON array.
 - [`string`]({{< relref "/filterx/function-reference.md#string" >}}): Convert a value into a string.
 - [`strptime`]({{< relref "/filterx/function-reference.md#strptime" >}}): Convert a value into datetime.
-- [`unset`]({{< relref "/filterx/function-reference.md#unset" >}})
+- [`unset`]({{< relref "/filterx/function-reference.md#unset" >}}): Delete a name-value pair, or a field from an object.
+- [`unset_empties`]({{< relref "/filterx/function-reference.md#unset-empties" >}}): Delete empty fields from an object.
 - [`upper`]({{< relref "/filterx/function-reference.md#upper" >}}): Converts a string into uppercase characters.
 - [`vars`]({{< relref "/filterx/function-reference.md#vars" >}}): The variables defined in the filterx block.
 - "bytes"

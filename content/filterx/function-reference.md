@@ -249,11 +249,36 @@ Deletes a variable, a name-value pair, or a key in a complex object (like JSON).
 
 See also {{% xref "/filterx/_index.md#delete-values" %}}.
 
-## unset_empties
+## unset_empties {#unset-empties}
+
+Deletes ([unsets](#unset)) the empty fields of an object, for example, a JSON object or list. Use the `recursive=true` parameter to delete empty values of inner dicts' and lists' values.
 
 Usage: `unset_empties(object, recursive=true)`
 
-Also unsets inner dicts' and lists' values if the `recursive` option is set.
+<!-- FIXME add a before/after example, for recursive and non-recursive cases 
+
+            dict = json({"foo": "", "bar": "-", "baz": "N/A", "almafa": null, "kortefa": {"a":{"s":{"d":{}}}}, "szilvafa": [[[]]]});
+            defaults_dict = dict;
+            explicit_dict = dict;
+            unset_empties(defaults_dict);
+            unset_empties(explicit_dict, recursive=true);
+
+            list = json_array(["", "-", "N/A", null, {"a":{"s":{"d":{}}}}, [[[]]]]);
+            defaults_list = list;
+            explicit_list = list;
+            unset_empties(defaults_list);
+            unset_empties(explicit_list, recursive=true);
+
+            $MSG = json_array([defaults_dict, explicit_dict, defaults_list, explicit_list]);
+    """,
+    )
+    syslog_ng.start(config)
+
+    assert file_true.get_stats()["processed"] == 1
+    assert "processed" not in file_false.get_stats()
+    assert file_true.read_log() == "[{},{},[],[]]\n"
+
+-->
 
 ## upper
 
