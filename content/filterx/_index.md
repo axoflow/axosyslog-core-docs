@@ -67,7 +67,7 @@ The following example does the same, but defines the filterx block inline.
 ```shell
 log {
     source(s1);
-    filterx demo_filterx {
+    filterx {
         ${HOST} == "example";
         ${MESSAGE} =~ "deny";
     };
@@ -86,7 +86,7 @@ A filterx block contains one or more filterx statements. The order of the statem
 Filterx statements can be one of the following:
 
 - A comparison, for example, `$HOST == "my-host";`. This statement is true only for messages where the `$HOST` field is `my-host`. Such simple comparison statements can be the equivalents of [traditional filter functions]({{< relref "/chapter-routing-filters/filters/reference-filters/_index.md" >}}).
-- A value assignment for a [name-value pair or a local variable](#variable-scope), for example, `$my-field = "bar";`. The left-side variable automatically gets the type of the right-hand expression.
+- A value assignment for a [name-value pair or a local variable](#variable-scope), for example, `$my-field = "bar";`. The left-side variable automatically gets the type of the right-hand expression. Assigning the false value to a variable (`$my-field = false;`) is a valid statement that doesn't automatically cause the filterx block to return as false.
 - A conditional statement ( `if (expr) { ... } else { ... };`) that allows you evaluate complex decision trees.
 - A declaration of a [pipeline variable](#variable-scope), for example, `declare my-pipeline-variable = "something";`.
 
@@ -340,10 +340,7 @@ Filterx has the following built-in functions.
 - parse_kv
 - otel_logrecord
 - regexp_subst
-- flatten
-- unset_empties
 - format_csv
-- #define FILTERX_FUNC_CACHE_JSON_FILE_USAGE "Usage: `cache_json_file("/path/to/file.json")`" > is that public? > igen
 - format_kv
 - parse_kv
 
