@@ -91,7 +91,7 @@ Filterx statements can be one of the following:
 - A declaration of a [pipeline variable](#variable-scope), for example, `declare my-pipeline-variable = "something";`.
 
 {{% alert title="Note" color="info" %}}
-- The `true;` and `false;` strings are also valid statements. They can be useful in complex conditional (if/elif/else) statements.
+- The `true;` and `false;` literals are also valid as statements. They can be useful in complex conditional (if/elif/else) statements.
 - A name-value pair or a variable in itself is also a statement. For example, `$HOST;`. If the name-value pair or variable is empty or doesn't exist, the statement is false.
 {{% /alert %}}
 
