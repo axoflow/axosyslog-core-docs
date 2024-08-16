@@ -36,12 +36,12 @@ filterx demo_filter { not ( $HOST == "example1" ); };
 However, to select the messages that weren't sent by host `example1` or `example2`, you have to use the `and` operator (that's how boolean logic works):
 
 ```shell
-filterx demo_filter { not ( $HOST == "example1" and ${HOST} = "example2" ); };
+filterx demo_filter { not $HOST == "example1" and not $HOST == "example2"; };
 ```
 
-Alternatively, you can use parentheses to avoid this confusion:
+Alternatively, you can use parentheses and the `or` operator to avoid this confusion:
 
-<!-- FIXME does this work like that? -->
+<!-- FIXME does this work like that? -- de morgan's law ! -->
 ```shell
 filterx demo_filter { not ( ($HOST == "example1") or ($HOST == "example2") ); };
 ```
