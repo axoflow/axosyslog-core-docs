@@ -215,7 +215,7 @@ unset(${MY-JSON}["key-to-delete"]);
 You can concatenate strings by adding them with the `+` operator. Note that if you want to have spaces between the added elements, you have to add them manually, like in Python, for example:
 
 ```shell
-${MESSAGE} = ${HOST} + " first part of the message " + " second part of the message" + "\n")
+${MESSAGE} = ${HOST} + " first part of the message," + " second part of the message" + "\n")
 ```
 
 ### Lists, dicts, and JSON {#json}
