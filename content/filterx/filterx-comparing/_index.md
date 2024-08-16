@@ -11,7 +11,7 @@ Use the following syntax to compare macro values or templates.
 
 ```shell
 filterx <filter-id>
-    {"<macro-or-variable-or-expression>" operator "<macro-or-variable-or-expression>"};
+    {"<macro-or-variable-or-expression>" operator "<macro-or-variable-or-expression>";};
 ```
 
 ## String and numerical comparison
