@@ -8,9 +8,35 @@ weight: 4800
 
 ## cache_json_file
 
+Load the contents of an external JSON file in an efficient manner. You can use this to lookup contextual information. (Basically, this is a filterx-specific implementation of the [`add-contextual-data() functionality`]({{< relref "/chapter-enrich-data/data-enrichment-add-contextual-data/_index.md" >}}).)
+
 Usage: `cache_json_file("/path/to/file.json")`
 
-<!-- FIXME why/when use this, how to load it back, performance? -->
+For example, if your `context-info-db.json` file contains the following:
+
+```shell
+{
+  "nginx": "web",
+  "httpd": "web",
+  "apache": "web",
+  "mysql": "db",
+  "postgresql": "db"
+}
+```
+
+Then the following filterx expression selects only "web" traffic:
+
+```shell
+filterx {
+  declare known_apps = cache_json_file("/context-info-db.json");
+  $app = known_apps[$PROGRAM] ?? "unknown";
+  $app == "web";  # drop everything that's not a web server log
+}
+```
+
+{{% alert title="Note" color="info" %}}
+{{< product >}} reloads the contents of the JSON file only when the {{< product >}} configuration is reloaded.
+{{% /alert %}}
 
 ## datetime
 
