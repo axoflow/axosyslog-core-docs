@@ -123,10 +123,15 @@ js.third_key = "third-value-not-available-in-$MESSAGE";
 Each filterx block can access data from the following elements.
 
 - Macros and name-value pairs of the message being processed (for example, `$PROGRAM`). The names of macros and name-value pairs begin with the `$` character. If you define a new variable in a filterx block and its name begins with the `$` character, it's automatically added to the name-value pairs of the message.
+    {{% alert title="Note" color="info" %}}
+Using braces around macro names is not mandatory, and the `"$MESSAGE"` and `"${MESSAGE}"` formats are equivalent. However, using the `"${MESSAGE}"` format is required if the name contains special characters, like the dot (`.`).
+
+Names are case-sensitive, so `"$message"` and `"$MESSAGE"` are not the same.
+    {{% /alert %}}
 - Local variables. These have a name that doesn't start with a `$` character, for example, `my-local-variable`. Local variables are available only in the filterx block they're defined. <!-- FIXME Are there other restrictions for the variable names? For example, cannot shadow type names? -->
 - Pipeline variables. These are simliar to local variables, but must be declared before first use, for example, `declare my-pipeline-variable=5;`
 
-    Pipeline variables are available in the current and all subsequent filterx block.
+    Pipeline variables are available in the current and all subsequent filterx block. They're global in the sense that you can access them from multiple filterx blocks, but note that they're still attached to the particular message that is processed, it's value isn't preserved between messages.
 
 {{% alert title="Note" color="info" %}}
 If you want to pass data between two filterx blocks of a log statement, use pipeline variables. That has better performance than name-value pairs.
