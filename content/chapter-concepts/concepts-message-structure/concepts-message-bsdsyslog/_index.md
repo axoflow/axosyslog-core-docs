@@ -6,24 +6,22 @@ weight:  100
 
 This section describes the format of a syslog message, according to the [legacy-syslog or BSD-syslog protocol](https://tools.ietf.org/search/rfc3164). A syslog message consists of the following parts:
 
-  - `[PRI]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-pri/_index.md" >}})`
-
-  - `[HEADER]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-header/_index.md" >}})`
-
-  - `[MSG]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-msg/_index.md" >}})`
+- [`PRI`]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-pri/_index.md" >}})
+- [`HEADER`]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-header/_index.md" >}})
+- [`MSG`]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-msg/_index.md" >}})
 
 The total message cannot be longer than 1024 bytes.
 
-The following is a sample syslog message:
+The following is a sample syslog message
 
 ```shell
-   <133>Feb 25 14:09:07 webserver syslogd: restart
+<133>Feb 25 14:09:07 webserver syslogd: restart
 ```
 
 The message corresponds to the following format:
 
 ```shell
-   <priority>timestamp hostname application: message
+<priority>timestamp hostname application: message
 ```
 
 The different parts of the message are explained in the following sections.
