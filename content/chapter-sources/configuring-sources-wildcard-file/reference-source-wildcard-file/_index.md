@@ -25,6 +25,8 @@ The `wildcard-file()` driver has the following options:
 
 {{% include-headless "chunk/synopsis-wildcard-file-source-example.md" %}}
 
+{{< include-headless "chunk/option-source-check-hostname.md" >}}
+
 {{% include-headless "chunk/option-source-default-facility.md" %}}
 
 {{% include-headless "chunk/option-source-default-priority.md" %}}

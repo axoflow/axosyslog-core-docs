@@ -14,6 +14,8 @@ The `syslog-parser()` has the following options:
 
 {{< include-headless "chunk/option-source-flags.md" >}}
 
+For the `syslog-parser()` you can also set the `check-hostname` flag, which is equivalent with the [`check-hostname()` global option]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-check-hostname" >}}), but only applies to this parser.
+
 ## sdata-prefix()
 
 |           |                              |
