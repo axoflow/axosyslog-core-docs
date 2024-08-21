@@ -211,7 +211,24 @@ pair_separator must be a string literal
 
 ## regexp_search
 
-<!--     $MSG = json();
+Searches a string and returns the matches of a regular expression.
+
+Usage: `regexp_search("<string-to-search>", <regular-expression>)`
+
+For example:
+
+```shell
+# ${MESSAGE} = "ERROR: Sample error message string"
+my-variable = regexp_search(${MESSAGE}, "ERROR");
+```
+
+You can also use unnamed match groups (`()`) and named match groups (`(?<first>ERROR)(?<second>message)`).
+
+Note that like the `awk` tool, {{< product >}} always returns the first argument as the 0. capturing group.
+<!-- FIXME example and how to unset $0 -->
+
+<!--     
+    $MSG = json();
     $MSG.unnamed = regexp_search("foobarbaz", /(foo)(bar)(baz)/);
     $MSG.named = regexp_search("foobarbaz", /(?<first>foo)(?<second>bar)(?<third>baz)/);
     $MSG.mixed = regexp_search("foobarbaz", /(?<first>foo)(bar)(?<third>baz)/);
@@ -223,6 +240,47 @@ pair_separator must be a string literal
         $MSG.no_match_unnamed_handling = true;
     }; -->
 
+<!-- FIXME link to slashtrings and similar -->
+<!-- 
+
+{
+  "msg": {
+    "0": "<13>1 2024-08-13T08:00:01+00:00 app-server-nginx nginx - - [meta sequenceId=\"31\"] 109.20.50.187 - - [13/Aug/2024:08:00:01 +0000] \"PUT /index.html HTTP/1.1\" 200 23061 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36\" \"-\"",
+    "appname": "nginx",
+    "fullyear": "2024",
+    "hostname": "app-server-nginx",
+    "hour": "08",
+    "mday": "13",
+    "minute": "00",
+    "month": "08",
+    "msg": "109.20.50.187 - - [13/Aug/2024:08:00:01 +0000] \"PUT /index.html HTTP/1.1\" 200 23061 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36\" \"-\"",
+    "msgid": "-",
+    "numoffset": "+00:00",
+    "priority": "13",
+    "procid": "-",
+    "secfrac": "",
+    "second": "01",
+    "structureddata": "[meta sequenceId=\"31\"]",
+    "timestamp": "2024-08-13T08:00:01+00:00",
+    "version": "1",
+    "nginx": {
+      "0": "109.20.50.187 - - [13/Aug/2024:08:00:01 +0000] \"PUT /index.html HTTP/1.1\" 200 23061 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36\" \"-\"",
+      "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36",
+      "code": "200",
+      "host": "-",
+      "http_x_forwarded_for": "\"-\"",
+      "method": "PUT",
+      "path": "/index.html",
+      "referer": "-",
+      "remote": "109.20.50.187",
+      "size": "23061",
+      "time": "13/Aug/2024:08:00:01 +0000",
+      "user": "-"
+    }
+  }
+}
+ -->
+
 ## regexp_subst
 
 <!-- 
@@ -232,6 +290,40 @@ pair_separator must be a string literal
 #define FILTERX_FUNC_REGEXP_SUBST_FLAG_UTF8_NAME "utf8"
 #define FILTERX_FUNC_REGEXP_SUBST_FLAG_IGNORECASE_NAME "ignorecase"
 #define FILTERX_FUNC_REGEXP_SUBST_FLAG_NEWLINE_NAME "newline"
+
+
+$MSG = json();
+$MSG.single = regexp_subst("foobarbaz","o","");
+$MSG.empty_string = regexp_subst("","a","!");
+$MSG.empty_pattern = regexp_subst("foobarbaz","","!");
+$MSG.zero_length_match = regexp_subst("foobarbaz","u*","!");
+$MSG.orgrp = regexp_subst("foobarbaz", "(fo|az)", "!");
+$MSG.single_global = regexp_subst("foobarbaz","o","", global=true);
+$MSG.empty_string_global = regexp_subst("","a","!", global=true);
+$MSG.empty_pattern_global = regexp_subst("foobarbaz","","!", global=true);
+$MSG.zero_length_match_global = regexp_subst("foobarbaz","u*","!", global=true);
+$MSG.orgrp_global = regexp_subst("foobarbaz", "(fo|az)", "!", global=true);
+$MSG.ignore_case_control = regexp_subst("FoObArBaz", "(o|a)", "!", global=true);
+$MSG.ignore_case = regexp_subst("FoObArBaz", "(o|a)", "!", ignorecase=true, global=true);
+    """,
+    )
+    syslog_ng.start(config)
+
+    assert file_true.get_stats()["processed"] == 1
+    assert "processed" not in file_false.get_stats()
+    exp = (
+        r"""{"single":"fobarbaz","""
+        r""""empty_string":"","""
+        r""""empty_pattern":"!foobarbaz!","""
+        r""""zero_length_match":"!foobarbaz!","""
+        r""""orgrp":"!obarbaz","""
+        r""""single_global":"fbarbaz","""
+        r""""empty_string_global":"","""
+        r""""empty_pattern_global":"!f!o!o!b!a!r!b!a!z!","""
+        r""""zero_length_match_global":"!f!o!o!b!a!r!b!a!z!","""
+        r""""orgrp_global":"!obarb!","""
+        r""""ignore_case_control":"F!ObArB!z","""
+        r""""ignore_case":"F!!b!rB!z"}""" + "\n"
  -->
 
 ## string
