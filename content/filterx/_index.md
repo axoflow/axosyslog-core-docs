@@ -129,7 +129,7 @@ Using braces around macro names is not mandatory, and the `"$MESSAGE"` and `"${M
 Names are case-sensitive, so `"$message"` and `"$MESSAGE"` are not the same.
     {{% /alert %}}
 - Local variables. These have a name that doesn't start with a `$` character, for example, `my-local-variable`. Local variables are available only in the filterx block they're defined. <!-- FIXME Are there other restrictions for the variable names? For example, cannot shadow type names? -->
-- Pipeline variables. These are simliar to local variables, but must be declared before first use, for example, `declare my-pipeline-variable=5;`
+- Pipeline variables. These are similar to local variables, but must be declared before first use, for example, `declare my-pipeline-variable=5;`
 
     Pipeline variables are available in the current and all subsequent filterx block. They're global in the sense that you can access them from multiple filterx blocks, but note that they're still attached to the particular message that is processed, it's value isn't preserved between messages.
 
