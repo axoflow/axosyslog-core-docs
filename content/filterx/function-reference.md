@@ -209,9 +209,9 @@ value_separator must be a string literal, and a single character
 pair_separator must be a string literal
 -->
 
-## regexp_search
+## regexp_search {#regexp-search}
 
-Searches a string and returns the matches of a regular expression.
+Searches a string and returns the matches of a regular expression as a list or a dictionary. If there are no matches, the list or dictionary is empty.
 
 Usage: `regexp_search("<string-to-search>", <regular-expression>)`
 
@@ -224,23 +224,37 @@ my-variable = regexp_search(${MESSAGE}, "ERROR");
 
 You can also use unnamed match groups (`()`) and named match groups (`(?<first>ERROR)(?<second>message)`).
 
-Note that like the `awk` tool, {{< product >}} always returns the first argument as the 0. capturing group.
-<!-- FIXME example and how to unset $0 -->
+{{< include-headless "chunk/filterx-regexp-notes.md" >}}
 
-<!--     
-    $MSG = json();
-    $MSG.unnamed = regexp_search("foobarbaz", /(foo)(bar)(baz)/);
-    $MSG.named = regexp_search("foobarbaz", /(?<first>foo)(?<second>bar)(?<third>baz)/);
-    $MSG.mixed = regexp_search("foobarbaz", /(?<first>foo)(bar)(?<third>baz)/);
-    $MSG.force_list = json_array(regexp_search("foobarbaz", /(?<first>foo)(bar)(?<third>baz)/));
-    $MSG.force_dict = json(regexp_search("foobarbaz", /(foo)(bar)(baz)/));
+### Unnamed match groups
 
-    $MSG.no_match_unnamed = regexp_search("foobarbaz", /(almafa)/);
-    if (len($MSG.no_match_unnamed) == 0) {
-        $MSG.no_match_unnamed_handling = true;
-    }; -->
+```shell
+$MY-LIST = json(); # Creates an empty JSON object
+$MY-LIST.unnamed = regexp_search("first-word second-part third", /(first-word)(second-part)(third)/);
+```
 
-<!-- FIXME link to slashtrings and similar -->
+`$MY-LIST.unnamed` is a list containing: `["first-word second-part third", "first-word", "second-part", "third"],`
+
+### Named match groups
+
+```shell
+$MY-LIST = json(); # Creates an empty JSON object
+$MY-LIST.named = regexp_search("first-word second-part third", /(?<one>first-word)(?<two>second-part)(?<three>third)/);
+```
+
+`$MY-LIST.named` is a dictionary with the names of the match groups as keys, and the corresponding matches as values: `{"0": "first-word second-part third", "one": "first-word", "two": "second-part", "three": "third"},`
+
+### Mixed match groups
+
+If you use mixed (some named, some unnamed) groups, the output is a dictionary, where {{< product >}} automatically assigns a key to the unnamed groups. For example:
+
+```shell
+$MY-LIST = json(); # Creates an empty JSON object
+$MY-LIST.mixed = regexp_search("first-word second-part third", /(?<one>first-word)(second-part)(?<three>third)/);
+```
+
+`$MY-LIST.mixed` is: `{"0": "first-word second-part third", "first": "first-word", "2": "second-part", "three": "third"},`
+
 <!-- 
 
 {
