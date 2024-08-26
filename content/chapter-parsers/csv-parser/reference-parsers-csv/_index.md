@@ -20,13 +20,13 @@ weight:  100
 
 <table>
 <colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
+<col/>
+<col/>
 </colgroup>
 <tbody>
 <tr class="odd">
 <td>Synopsis:</td>
-<td><p>delimiters(chars("&lt;delimiter_characters&gt;")) <em>or `delimiters("&lt;delimiter_characters&gt;")`</em></p>
+<td><p>delimiters(chars("&lt;delimiter_characters&gt;")) <em>or delimiters("&lt;delimiter_characters&gt;")</em></p>
 <p>delimiters(strings("&lt;delimiter_string1&gt;", "&lt;delimiter_string2&gt;", ...)")</p>
 <p>delimiters(chars("&lt;delimiter_characters&gt;"), strings("&lt;delimiter_string1&gt;"))</p></td>
 </tr>
@@ -48,11 +48,8 @@ Otherwise, {{% param "product.abbrev" %}} will use the string delimiters in addi
 If you use more than one delimiter, note the following points:
 
 - {{% param "product.abbrev" %}} will split the message at the nearest possible delimiter. The order of the delimiters in the configuration file does not matter.
-
 - You can use both string delimiters and character delimiters in a parser.
-
 - The string delimiters can include characters that are also used as character delimiters.
-
 - If a string delimiter and a character delimiter both match at the same position of the message, {{% param "product.abbrev" %}} uses the string delimiter.
 
 ## dialect() {#csv-parser-dialect}
@@ -64,15 +61,15 @@ If you use more than one delimiter, note the following points:
 *Description:* Specifies how to handle escaping in the parsed message. Default value: `escape-none`
 
 ```shell
-   parser p_demo_parser {
-        csv-parser(
-            prefix(".csv.")
-            delimiters(" ")
-            dialect(escape-backslash)
-            flags(strip-whitespace, greedy)
-            columns("column1", "column2", "column3")
-        );
-    };
+parser p_demo_parser {
+    csv-parser(
+        prefix(".csv.")
+        delimiters(" ")
+        dialect(escape-backslash)
+        flags(strip-whitespace, greedy)
+        columns("column1", "column2", "column3")
+    );
+};
 ```
 
 The following values are available.
@@ -94,7 +91,6 @@ Messages dropped as invalid can be processed by a `fallback` log path. For detai
     {{% /alert %}}
 
 - *greedy*: The `greedy` option assigns the remainder of the message to the last column, regardless of the delimiter characters set. You can use this option to process messages where the number of columns varies.
-
 - *strip-whitespace*: The `strip-whitespace` flag removes leading and trailing whitespaces from all columns.
 
 ### Example: Adding the end of the message to the last column {#example-parser-greedy}
@@ -104,7 +100,7 @@ If the `greedy` option is enabled, {{% param "product.name" %}} adds the not-yet
 For example, you receive the following comma-separated message: `example 1, example2, example3`, and you segment it with the following parser:
 
 ```shell
-    csv-parser(columns("COLUMN1", "COLUMN2", "COLUMN3") delimiters(","));
+csv-parser(columns("COLUMN1", "COLUMN2", "COLUMN3") delimiters(","));
 ```
 
 The `COLUMN1`, `COLUMN2`, and `COLUMN3` variables will contain the strings `example1`, `example2`, and `example3`, respectively. If the message looks like `example 1, example2, example3, some more information`, then any text appearing after the third comma (that is, `some more information`) is not parsed, and possibly lost if you use only the variables to reconstruct the message (for example, to send it to different columns of an SQL table).
@@ -112,7 +108,7 @@ The `COLUMN1`, `COLUMN2`, and `COLUMN3` variables will contain the strings `exam
 Using the `greedy` flag will assign the remainder of the message to the last column, so that the `COLUMN1`, `COLUMN2`, and `COLUMN3` variables will contain the strings `example1`, `example2`, and `example3, some more information`.
 
 ```shell
-    csv-parser(columns("COLUMN1", "COLUMN2", "COLUMN3") delimiters(",") flags(greedy));
+csv-parser(columns("COLUMN1", "COLUMN2", "COLUMN3") delimiters(",") flags(greedy));
 ```
 
 ## null() {#csv-parser-null}
@@ -128,9 +124,9 @@ Using the `greedy` flag will assign the remainder of the message to the last col
 {{% include-headless "chunk/no-default-prefix.md" %}}
 
 ```shell
-   parser {
-        csv-parser(prefix("myprefix."));
-    };
+parser {
+    csv-parser(prefix("myprefix."));
+};
 ```
 
 {{% include-headless "chunk/option-parser-on-type-error.md" %}}
