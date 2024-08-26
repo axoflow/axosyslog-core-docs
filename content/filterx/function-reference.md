@@ -349,7 +349,7 @@ Usage: `strptime(time_str, format_str_1, ..., format_str_N)`
 For example:
 
 ```shell
-${MESSSAGE} = strptime("2024-04-10T08:09:10Z", "%Y-%m-%dT%H:%M:%S%z");
+${MESSAGE} = strptime("2024-04-10T08:09:10Z", "%Y-%m-%dT%H:%M:%S%z");
 ```
 <!-- 
 FIXME what happens if none of the format strings match?
@@ -363,7 +363,7 @@ You can use the following elements in the format string:
 
 Deletes a variable, a name-value pair, or a key in a complex object (like JSON).
 
-<!-- FIXME What happens when trying to unset a hard macro? Error? -->
+{{< include-headless "chunk/filterx-unset-hard-macros.md" >}}
 
 See also {{% xref "/filterx/_index.md#delete-values" %}}.
 

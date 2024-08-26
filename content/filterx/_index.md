@@ -205,22 +205,24 @@ ${MESSAGE} = "$(format-json --subkeys values.)";
 To delete a value without deleting the object (for example, name-value pair), use the `null value`, for example:
 
 ```shell
-${MY-NV-PAIR} = null;
+${MY-NV-PAIR-KEY} = null;
 ```
 
 To delete the name-value pair (or a key from an object), use the `unset` function:
 
 ```shell
-unset(${MY-NV-PAIR});
+unset(${MY-NV-PAIR-KEY});
 unset(${MY-JSON}["key-to-delete"]);
 ```
+
+{{< include-headless "chunk/filterx-unset-hard-macros.md" >}}
 
 ### Concatenate strings
 
 You can concatenate strings by adding them with the `+` operator. Note that if you want to have spaces between the added elements, you have to add them manually, like in Python, for example:
 
 ```shell
-${MESSAGE} = ${HOST} + " first part of the message," + " second part of the message" + "\n")
+${MESSAGE} = ${HOST} + " first part of the message," + " second part of the message" + "\n";
 ```
 
 ### Lists, dicts, and JSON {#json}
