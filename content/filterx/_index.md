@@ -331,8 +331,8 @@ Filterx has the following built-in functions.
 - [`lower`]({{< relref "/filterx/function-reference.md#lower" >}}): Converts a string into lowercase characters.
 - [`json, json_object`]({{< relref "/filterx/function-reference.md#json" >}}): Convert a value into a JSON object.
 - [`json_array`]({{< relref "/filterx/function-reference.md#json-array" >}}): Convert a value into a JSON array.
-- [`regexp_search`]({{< relref "/filterx/function-reference.md#regexp-search" >}}) <!-- FIXME is regexp_match the same or something different? How does it relate to =~ ? -->
-
+- [`regexp_search`]({{< relref "/filterx/function-reference.md#regexp-search" >}}): Search a string using regular expressions. <!-- FIXME is regexp_match the same or something different? How does it relate to =~ ? -->
+- [`regexp_subst`]({{< relref "/filterx/function-reference.md#regexp-subst" >}}): Rewrite a string using regular expressions.
 - [`string`]({{< relref "/filterx/function-reference.md#string" >}}): Convert a value into a string.
 - [`strptime`]({{< relref "/filterx/function-reference.md#strptime" >}}): Convert a value into datetime.
 - [`unset`]({{< relref "/filterx/function-reference.md#unset" >}}): Delete a name-value pair, or a field from an object.

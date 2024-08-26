@@ -295,50 +295,47 @@ $MY-LIST.mixed = regexp_search("first-word second-part third", /(?<one>first-wor
 }
  -->
 
-## regexp_subst
+## regexp_subst {#regexp-subst}
 
-<!-- 
+Rewrites a string using regular expressions. This function implements the [`subst` rewrite rule functionality]({{< relref "/chapter-manipulating-messages/modifying-messages/rewrite-replace/_index.md" >}}).
 
-#define FILTERX_FUNC_REGEXP_SUBST_FLAG_JIT_NAME "jit"
-#define FILTERX_FUNC_REGEXP_SUBST_FLAG_GLOBAL_NAME "global"
-#define FILTERX_FUNC_REGEXP_SUBST_FLAG_UTF8_NAME "utf8"
-#define FILTERX_FUNC_REGEXP_SUBST_FLAG_IGNORECASE_NAME "ignorecase"
-#define FILTERX_FUNC_REGEXP_SUBST_FLAG_NEWLINE_NAME "newline"
+Usage: `regexp_subst(<input-string>, <pattern-to-find>, <replacement>, flags`
 
+The following example replaces the first `IP` in the text of the message with the `IP-Address` string.
 
-$MSG = json();
-$MSG.single = regexp_subst("foobarbaz","o","");
-$MSG.empty_string = regexp_subst("","a","!");
-$MSG.empty_pattern = regexp_subst("foobarbaz","","!");
-$MSG.zero_length_match = regexp_subst("foobarbaz","u*","!");
-$MSG.orgrp = regexp_subst("foobarbaz", "(fo|az)", "!");
-$MSG.single_global = regexp_subst("foobarbaz","o","", global=true);
-$MSG.empty_string_global = regexp_subst("","a","!", global=true);
-$MSG.empty_pattern_global = regexp_subst("foobarbaz","","!", global=true);
-$MSG.zero_length_match_global = regexp_subst("foobarbaz","u*","!", global=true);
-$MSG.orgrp_global = regexp_subst("foobarbaz", "(fo|az)", "!", global=true);
-$MSG.ignore_case_control = regexp_subst("FoObArBaz", "(o|a)", "!", global=true);
-$MSG.ignore_case = regexp_subst("FoObArBaz", "(o|a)", "!", ignorecase=true, global=true);
-    """,
-    )
-    syslog_ng.start(config)
+```shell
+regexp_subst(${MESSAGE}, "IP", "IP-Address");
+```
 
-    assert file_true.get_stats()["processed"] == 1
-    assert "processed" not in file_false.get_stats()
-    exp = (
-        r"""{"single":"fobarbaz","""
-        r""""empty_string":"","""
-        r""""empty_pattern":"!foobarbaz!","""
-        r""""zero_length_match":"!foobarbaz!","""
-        r""""orgrp":"!obarbaz","""
-        r""""single_global":"fbarbaz","""
-        r""""empty_string_global":"","""
-        r""""empty_pattern_global":"!f!o!o!b!a!r!b!a!z!","""
-        r""""zero_length_match_global":"!f!o!o!b!a!r!b!a!z!","""
-        r""""orgrp_global":"!obarb!","""
-        r""""ignore_case_control":"F!ObArB!z","""
-        r""""ignore_case":"F!!b!rB!z"}""" + "\n"
- -->
+To replace every occurrence, use the `global=true` flag:
+
+```shell
+regexp_subst(${MESSAGE}, "IP", "IP-Address", global=true);
+```
+
+{{< include-headless "chunk/filterx-regexp-notes.md" >}}
+
+For a case sensitive search, use the `ignorecase=true` flag.
+
+### Flags
+
+You can use the following flags with the `regexp_subst` function:
+
+- `global=true`:
+
+    Replace every occurrence of the search string.
+
+- `ignorecase=true`:
+
+    Do case insensitive search.
+
+- `jit=true`:
+
+    Enable [just-in-time compilation function for PCRE regular expressions](https://www.pcre.org/current/doc/html/pcre2jit.html).
+
+- `newline=true`: {{< include-headless "chunk/regex-flag-newline.md" >}}
+
+- `utf8=true`: {{< include-headless "chunk/regex-flag-utf8.md" >}}
 
 ## string
 
