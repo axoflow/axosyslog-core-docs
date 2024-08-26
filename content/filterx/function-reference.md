@@ -200,14 +200,13 @@ FILTERX_FUNC_PARSE_CSV_ARG_NAME_DIALECT " argument must be one of: [" \
 
 ## parse_kv
 
+Separate a string consisting of whitespace or comma-separated `key=value` pairs (for example, WELF-formatted messages).
+
 Usage: `parse_kv(msg, value_separator="=", pair_separator=", ", stray_words_key="stray_words")`
 
-key-value format (such as WELF) support
+The `value_separator` must be a single-character string. The `pair_separator` must be a string.
 
-<!--
-value_separator must be a string literal, and a single character
-pair_separator must be a string literal
--->
+For details, see {{% xref "/filterx/filterx-parsing/key-value-parser/_index.md" %}}.
 
 ## regexp_search {#regexp-search}
 
