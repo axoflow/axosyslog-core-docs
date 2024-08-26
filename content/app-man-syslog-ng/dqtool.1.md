@@ -71,6 +71,14 @@ Mar  3 10:52:05 tristram localprg[1234]: seq: 0000011631, runid: 1267609923, sta
 
 <span id="dqtool-relocate"></span>
 
+## The info command
+
+`info [DISK-BUFFER_FILE]`
+
+Shows status information about the specified disk-buffer file. For example:
+
+{{< include-headless "chunk/dqtool-info-example.md" >}}
+
 ## The relocate command
 
 `relocate [options] [files]`
