@@ -150,11 +150,9 @@ list = json_array(["first_element", "second_element", "third_element"]);
 
 ## len
 
-Returns the number of items in an object. For example, the length of a string, or the number of elements in a list.
+Returns the number of items in an object as an integer. For example, the length of a string, or the number of elements in a list.
 
 Usage: `len(object)`
-
-<!-- FIXME What does it return for different types? -->
 
 ## lower
 
