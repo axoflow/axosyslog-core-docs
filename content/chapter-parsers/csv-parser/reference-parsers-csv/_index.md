@@ -37,20 +37,13 @@ weight:  100
 
 ### String delimiters
 
-If you have to use a string as a delimiter, list your string delimiters in the `delimiters(strings("<delimiter_string1>, "<delimiter_string2>> ...)")` format.
+If you have to use a string as a delimiter, list your string delimiters in the `delimiters(strings("<delimiter_string1>", "<delimiter_string2>" ...))` format.
 
-By default, {{% param "product.abbrev" %}} uses space as a delimiter. If you want to use only the strings as delimiters, you have to disable the space delimiter, for example: `delimiters(chars(""), strings("<delimiter_string>))`
+By default, {{% param "product.abbrev" %}} uses space as a delimiter. If you want to use only the strings as delimiters, you have to disable the space delimiter, for example: `delimiters(chars(""), strings("<delimiter_string>"))`
 
 Otherwise, {{% param "product.abbrev" %}} will use the string delimiters in addition to the default character delimiter, so `delimiters(strings("=="))` actually equals `delimiters(chars(" "), strings("=="))`, and not `delimiters(chars(""), strings("=="))`
 
-### Multiple delimiters
-
-If you use more than one delimiter, note the following points:
-
-- {{% param "product.abbrev" %}} will split the message at the nearest possible delimiter. The order of the delimiters in the configuration file does not matter.
-- You can use both string delimiters and character delimiters in a parser.
-- The string delimiters can include characters that are also used as character delimiters.
-- If a string delimiter and a character delimiter both match at the same position of the message, {{% param "product.abbrev" %}} uses the string delimiter.
+{{< include-headless "chunk/csv-parser-multiple-delimiters.md" >}}
 
 ## dialect() {#csv-parser-dialect}
 
@@ -74,7 +67,7 @@ parser p_demo_parser {
 
 The following values are available.
 
-{{< include-headless "chunk/option-escaping.md" >}}
+{{< include-headless "chunk/option-csv-parser-dialect-escaping.md" >}}
 
 ## flags() {#csv-parser-flags}
 
