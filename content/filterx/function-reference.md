@@ -345,9 +345,11 @@ You can use the following elements in the format string:
 
 ## unset
 
-Deletes a variable, a name-value pair, or a key in a complex object (like JSON).
+Deletes a variable, a name-value pair, or a key in a complex object (like JSON), for example: `unset(${<name-value-pair-to-unset>});`
 
 {{< include-headless "chunk/filterx-unset-hard-macros.md" >}}
+
+You can also list multiple values to delete: `unset(${<first-name-value-pair-to-unset>}, ${<second-name-value-pair-to-unset>});`
 
 See also {{% xref "/filterx/_index.md#delete-values" %}}.
 
