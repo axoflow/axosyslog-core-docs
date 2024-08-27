@@ -67,22 +67,16 @@ ${MESSAGE} = flatten(sample-dict);
 The value of `${MESSAGE}` will be: `{"a.b.c": "1"}`
 
 ## format_csv
-<!-- 
-#define FILTERX_FUNC_FORMAT_CSV_USAGE "Usage: format_csv({list or dict}, [" \
-  FILTERX_FUNC_FORMAT_CSV_ARG_NAME_COLUMNS"={list}," \
-  FILTERX_FUNC_FORMAT_CSV_ARG_NAME_DELIMITER"={string literal}," \
-  FILTERX_FUNC_FORMAT_CSV_ARG_NAME_DEFAULT_VALUE"={string literal}])" 
-  #define FILTERX_FUNC_FORMAT_CSV_ARG_NAME_COLUMNS "columns"
-#define FILTERX_FUNC_FORMAT_CSV_ARG_NAME_DELIMITER "delimiter"
-#define FILTERX_FUNC_FORMAT_CSV_ARG_NAME_DEFAULT_VALUE "default_value"
 
-  input must be a dict or list
+Formats a dictionary or a list into a comma-separated string.
 
-  delimiter must be a string literal, and a single character
+Usage: `format_csv(<input-list-or-dict>, columns=<json-list>, delimiter=<delimiter-character>, default_value=<string>)`
 
-  default_value must be a string literal.
+Only the input is mandatory, other arguments are optional. Note that the delimiter must be a single character.
 
-  -->
+By default, the delimiter is the comma (`delimiter=","`), the `columns` and `default_value` are empty.
+
+If the `columns` option is set, {{< product >}} checks that the number of entries in the input data matches the number of columns. If there are fewer entries, it adds the `default_value` to the missing entries.
 
 ## format_kv
 
