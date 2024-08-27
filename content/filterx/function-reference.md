@@ -6,7 +6,7 @@ weight: 4800
 
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-## cache_json_file
+## cache_json_file {#cache-json-file}
 
 Load the contents of an external JSON file in an efficient manner. You can use this to lookup contextual information. (Basically, this is a filterx-specific implementation of the [`add-contextual-data() functionality`]({{< relref "/chapter-enrich-data/data-enrichment-add-contextual-data/_index.md" >}}).)
 
@@ -66,7 +66,7 @@ ${MESSAGE} = flatten(sample-dict);
 
 The value of `${MESSAGE}` will be: `{"a.b.c": "1"}`
 
-## format_csv
+## format_csv {#format-csv}
 
 Formats a dictionary or a list into a comma-separated string.
 
@@ -78,7 +78,7 @@ By default, the delimiter is the comma (`delimiter=","`), the `columns` and `def
 
 If the `columns` option is set, {{< product >}} checks that the number of entries in the input data matches the number of columns. If there are fewer entries, it adds the `default_value` to the missing entries.
 
-## format_kv
+## format_kv {#format-kv}
 
 Formats a dictionary into key=value pairs.
 
@@ -98,6 +98,11 @@ The `value_separator` option must be a single character, the `pair_separator` ca
 format_kv(<input-dictionary>, value_separator=":", pair_separator=";")
 ```
 
+## format_json {#format-json}
+
+<!-- FIXME mindig objectet ad vissza, vagy eldonti hogy list/stb?-->
+
+Usage: `format_json($data)`
 
 ## isodate
 
@@ -176,7 +181,7 @@ Usage: `parse_csv(msg_str [columns=json_array, delimiter=string, string_delimite
 
 For details, see {{% xref "/filterx/filterx-parsing/csv/_index.md" %}}.
 
-## parse_kv
+## parse_kv {#parse-kv}
 
 Separate a string consisting of whitespace or comma-separated `key=value` pairs (for example, WELF-formatted messages).
 
@@ -232,46 +237,6 @@ $MY-LIST.mixed = regexp_search("first-word second-part third", /(?<one>first-wor
 
 `$MY-LIST.mixed` is: `{"0": "first-word second-part third", "first": "first-word", "2": "second-part", "three": "third"},`
 
-<!-- 
-
-{
-  "msg": {
-    "0": "<13>1 2024-08-13T08:00:01+00:00 app-server-nginx nginx - - [meta sequenceId=\"31\"] 109.20.50.187 - - [13/Aug/2024:08:00:01 +0000] \"PUT /index.html HTTP/1.1\" 200 23061 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36\" \"-\"",
-    "appname": "nginx",
-    "fullyear": "2024",
-    "hostname": "app-server-nginx",
-    "hour": "08",
-    "mday": "13",
-    "minute": "00",
-    "month": "08",
-    "msg": "109.20.50.187 - - [13/Aug/2024:08:00:01 +0000] \"PUT /index.html HTTP/1.1\" 200 23061 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36\" \"-\"",
-    "msgid": "-",
-    "numoffset": "+00:00",
-    "priority": "13",
-    "procid": "-",
-    "secfrac": "",
-    "second": "01",
-    "structureddata": "[meta sequenceId=\"31\"]",
-    "timestamp": "2024-08-13T08:00:01+00:00",
-    "version": "1",
-    "nginx": {
-      "0": "109.20.50.187 - - [13/Aug/2024:08:00:01 +0000] \"PUT /index.html HTTP/1.1\" 200 23061 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36\" \"-\"",
-      "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36",
-      "code": "200",
-      "host": "-",
-      "http_x_forwarded_for": "\"-\"",
-      "method": "PUT",
-      "path": "/index.html",
-      "referer": "-",
-      "remote": "109.20.50.187",
-      "size": "23061",
-      "time": "13/Aug/2024:08:00:01 +0000",
-      "user": "-"
-    }
-  }
-}
- -->
-
 ## regexp_subst {#regexp-subst}
 
 Rewrites a string using regular expressions. This function implements the [`subst` rewrite rule functionality]({{< relref "/chapter-manipulating-messages/modifying-messages/rewrite-replace/_index.md" >}}).
@@ -292,9 +257,9 @@ regexp_subst(${MESSAGE}, "IP", "IP-Address", global=true);
 
 {{< include-headless "chunk/filterx-regexp-notes.md" >}}
 
-For a case sensitive search, use the `ignorecase=true` flag.
+For a case sensitive search, use the `ignorecase=true` option.
 
-### Flags
+### Options
 
 You can use the following flags with the `regexp_subst` function:
 

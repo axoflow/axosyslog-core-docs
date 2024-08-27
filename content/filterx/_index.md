@@ -321,7 +321,7 @@ For details, see {{% xref "/filterx/operator-reference.md" %}}.
 Filterx has the following built-in functions.
 
 <!-- FIXME definitions/descriptions -->
-- [`cache_json_file`]({{< relref "/filterx/function-reference.md#cache_json_file" >}}): Loads an external JSON file to lookup contextual information.
+- [`cache_json_file`]({{< relref "/filterx/function-reference.md#cache-json-file" >}}): Loads an external JSON file to lookup contextual information.
 - [`datetime`]({{< relref "/filterx/function-reference.md#datetime" >}})
 - [`flatten`]({{< relref "/filterx/function-reference.md#flatten" >}}): Flattens the nested elements of an object.
 - [`format_csv`]({{< relref "/filterx/function-reference.md#format-csv" >}}): Formats a dictionary or a list into a comma-separated string.
