@@ -86,12 +86,24 @@ The value of `${MESSAGE}` will be: `{"a.b.c": "1"}`
 
 ## format_kv
 
-Usage: `format_kv(kvs_dict, value_separator="=", pair_separator=", ")`
+Formats a dictionary into key=value pairs.
 
-<!-- kvs_dict must be a dict 
-value_separator must be a string literal, and a single character
-pair_separator must be a string literal
--->
+Usage: `format_kv(kvs_dict, value_separator="<separator-character>", pair_separator="<separator-string>")`
+
+By default, `format_kv` uses `=` to separate values, and `, ` to separate the pairs:
+
+```shell
+filterx {
+    ${MESSAGE} = format_kv(<input-dictionary>);
+};
+```
+
+The `value_separator` option must be a single character, the `pair_separator` can be a string. For example, to use the colon (:) as the value separator and the semicolon (;) as the pair separator, use:
+
+```shell
+format_kv(<input-dictionary>, value_separator=":", pair_separator=";")
+```
+
 
 ## isodate
 
