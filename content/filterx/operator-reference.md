@@ -33,6 +33,38 @@ For example, if a key of a JSON object doesn't exist for every message, you can 
 ${MESSAGE} = json.["BODY"] ?? "Empty message"
 ```
 
+## Plus equal operator
+
+The `+=` operator increases the value of a variable with the specified value. Exactly how the addition happens depends on the type of the variable.
+
+- For numeric types (`int` and `double`), the result is the sum of the values. For example:
+
+    ```shell
+    a = 3;
+    a += 4;
+    # a is 7
+
+    b = 3.3;
+    b += 4.1;
+    # b is 7.4
+    ```
+    <!-- FIXME is a=3; a+=3.5 valid? -->
+
+- For strings (including string values in an object), it concatenates the strings. For example:
+
+    ```shell
+    mystring = "axo";
+    mystring += "flow";
+    # mystring is axoflow
+    ```
+
+- For lists, it appends the new values to the list. For example:
+
+    ```shell
+    mylist = json_array(["one", "two"]);
+    mylist += ["let's", "go"];
+    # mylist is ["one", "two", "let's", "go"]
+    ```
 ## Regexp match {#regexp}
 
 To check if a value contains a string or a regular expression, use the `=~` operator. For example, the following statement is true if the `${MESSAGE}` contains the word `error`:

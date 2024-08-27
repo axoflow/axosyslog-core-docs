@@ -304,11 +304,10 @@ Filterx has the following operators.
 - [Dot operator (`.`)](#json) to access fields of an object, like JSON.
 - [Indexing operator `[]`](#json) to access fields of an object, like JSON.
 - [Plus (`+`) operator](#concatenate-strings) to concatenate strings.
+- [Plus equal (`+=`) operator]({{< relref "/filterx/operator-reference.md#plus-equal-operator" >}}) to concatenate strings.
 - [Ternary conditional operator]({{< relref "/filterx/operator-reference.md#ternary-conditional-operator" >}}): `?:`
 - [Null coalescing operator]({{< relref "/filterx/operator-reference.md#null-coalescing-operator" >}}): `??`
 - [Regular expression (regexp) match]({{< relref "/filterx/operator-reference.md#regexp" >}}): `=~` and `!~`.
-
-<!--  +=  -->
 
 <!-- FIXME 
 `$MSG = "$(format-json --subkeys values.)";` > needs the double-quote for template eval > should we document that Bazsi?
