@@ -47,6 +47,13 @@ Use the `!~` operator to check if a value doesn't contain an expression. For exa
 ${MESSAGE} !~ "error";
 ```
 
+{{% alert title="Note" color="info" %}}
+
+- If you want to process the matches of a search, use the {{% xref "/filterx/function-reference.md#regexp-search" %}} filterx function.
+- If you want to rewrite or modify the matches of a search, use the {{% xref "/filterx/function-reference.md#regexp-subst" %}} filterx function.
+
+{{% /alert %}}
+
 {{< include-headless "chunk/filterx-regexp-notes.md" >}}
 
 <!-- FIXME add some more complex regex examples -->
