@@ -74,8 +74,7 @@ my-parsed-values = parse_csv(${MESSAGE}, columns=["COLUMN1", "COLUMN2", "COLUMN3
 | Synopsis: | `strip_whitespace=true` |
 | Default value: | `false` |
 
-*Description:* Remove leading and trailing whitespaces from all columns.
-<!-- FIXME strip whitespaces vs strip-whitespace? -->
+*Description:* Remove leading and trailing whitespaces from all columns. The `strip_whitespaces` option is an alias for `strip_whitespace`.
 
 ## string_delimiters {#string-delimiters}
 

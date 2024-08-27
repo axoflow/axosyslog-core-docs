@@ -321,24 +321,26 @@ For details, see {{% xref "/filterx/operator-reference.md" %}}.
 Filterx has the following built-in functions.
 
 <!-- FIXME definitions/descriptions -->
-- [`cache_json_file`]({{< relref "/filterx/function-reference.md#cache_json_file" >}})
+- [`cache_json_file`]({{< relref "/filterx/function-reference.md#cache_json_file" >}}): Loads an external JSON file to lookup contextual information.
 - [`datetime`]({{< relref "/filterx/function-reference.md#datetime" >}})
-- [`flatten`]({{< relref "/filterx/function-reference.md#flatten" >}})
+- [`flatten`]({{< relref "/filterx/function-reference.md#flatten" >}}): Flattens the nested elements of an object.
+- [`format_csv`]({{< relref "/filterx/function-reference.md#format-csv" >}}): Formats a dictionary or a list into a comma-separated string.
+- [`format_kv`]({{< relref "/filterx/function-reference.md#format-kv" >}}): Formats a dictionary into key=value pairs.
 - [`isodate`]({{< relref "/filterx/function-reference.md#isodate" >}})
-- [`isset`]({{< relref "/filterx/function-reference.md#isset" >}})
-- [`istype`]({{< relref "/filterx/function-reference.md#istype" >}}): Check the type of an object.
+- [`isset`]({{< relref "/filterx/function-reference.md#isset" >}}): Checks that argument exists and its value is not empty or null.
+- [`istype`]({{< relref "/filterx/function-reference.md#istype" >}}): Checks the type of an object.
 - [`len`]({{< relref "/filterx/function-reference.md#len" >}}): Returns the length of an object.
 - [`lower`]({{< relref "/filterx/function-reference.md#lower" >}}): Converts a string into lowercase characters.
-- [`json, json_object`]({{< relref "/filterx/function-reference.md#json" >}}): Convert a value into a JSON object.
-- [`json_array`]({{< relref "/filterx/function-reference.md#json-array" >}}): Convert a value into a JSON array.
-- [`parse_kv`]({{< relref "/filterx/filterx-parsing/key-value-parser/_index.md" >}}): Separate a string consisting of whitespace or comma-separated `key=value` pairs.
-- [`parse_kv`]({{< relref "/filterx/filterx-parsing/csv/_index.md" >}}): Separate a string consisting of whitespace or comma-separated `key=value` pairs.
-- [`regexp_search`]({{< relref "/filterx/function-reference.md#regexp-search" >}}): Search a string using regular expressions. <!-- FIXME is regexp_match the same or something different? How does it relate to =~ ? -->
-- [`regexp_subst`]({{< relref "/filterx/function-reference.md#regexp-subst" >}}): Rewrite a string using regular expressions.
-- [`string`]({{< relref "/filterx/function-reference.md#string" >}}): Convert a value into a string.
-- [`strptime`]({{< relref "/filterx/function-reference.md#strptime" >}}): Convert a value into datetime.
-- [`unset`]({{< relref "/filterx/function-reference.md#unset" >}}): Delete a name-value pair, or a field from an object.
-- [`unset_empties`]({{< relref "/filterx/function-reference.md#unset-empties" >}}): Delete empty fields from an object.
+- [`json, json_object`]({{< relref "/filterx/function-reference.md#json" >}}): Converts a value into a JSON object.
+- [`json_array`]({{< relref "/filterx/function-reference.md#json-array" >}}): Converts a value into a JSON array.
+- [`parse_kv`]({{< relref "/filterx/filterx-parsing/key-value-parser/_index.md" >}}): Separates a string consisting of whitespace or comma-separated `key=value` pairs.
+- [`parse_kv`]({{< relref "/filterx/filterx-parsing/csv/_index.md" >}}): Separates a string consisting of whitespace or comma-separated `key=value` pairs.
+- [`regexp_search`]({{< relref "/filterx/function-reference.md#regexp-search" >}}): Searches a string using regular expressions.
+- [`regexp_subst`]({{< relref "/filterx/function-reference.md#regexp-subst" >}}): Rewrites a string using regular expressions.
+- [`string`]({{< relref "/filterx/function-reference.md#string" >}}): Converts a value into a string.
+- [`strptime`]({{< relref "/filterx/function-reference.md#strptime" >}}): Converts a value into datetime.
+- [`unset`]({{< relref "/filterx/function-reference.md#unset" >}}): Deletes a name-value pair, or a field from an object.
+- [`unset_empties`]({{< relref "/filterx/function-reference.md#unset-empties" >}}): Deletes empty fields from an object.
 - [`upper`]({{< relref "/filterx/function-reference.md#upper" >}}): Converts a string into uppercase characters.
 - [`vars`]({{< relref "/filterx/function-reference.md#vars" >}}): The variables defined in the filterx block.
 - "bytes"
@@ -348,10 +350,7 @@ Filterx has the following built-in functions.
 - "double"
 <!-- FIXME update list , I found these in the tests/files -->
 - otel_logrecord
-- format_csv
-- format_kv
-
-<!-- FIXME add links to the reference page for each function -->
+- parse_xml
 
 For details, see {{% xref "/filterx/function-reference.md" %}}.
 
@@ -366,6 +365,12 @@ Add a real-life looking example why that's good > (this plus a short intro can b
 FIXME
 
 -->
+
+<!-- FIXME
+
+Check the normal rewrite usecases and see which ones can we do in filterx: http://localhost:1313/chapter-manipulating-messages/modifying-messages/
+
+ -->
 
 <!-- 
 ## Updating filters to filterx
