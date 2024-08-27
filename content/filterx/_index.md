@@ -332,6 +332,7 @@ Filterx has the following built-in functions.
 - [`json, json_object`]({{< relref "/filterx/function-reference.md#json" >}}): Convert a value into a JSON object.
 - [`json_array`]({{< relref "/filterx/function-reference.md#json-array" >}}): Convert a value into a JSON array.
 - [`parse_kv`]({{< relref "/filterx/filterx-parsing/key-value-parser/_index.md" >}}): Separate a string consisting of whitespace or comma-separated `key=value` pairs.
+- [`parse_kv`]({{< relref "/filterx/filterx-parsing/csv/_index.md" >}}): Separate a string consisting of whitespace or comma-separated `key=value` pairs.
 - [`regexp_search`]({{< relref "/filterx/function-reference.md#regexp-search" >}}): Search a string using regular expressions. <!-- FIXME is regexp_match the same or something different? How does it relate to =~ ? -->
 - [`regexp_subst`]({{< relref "/filterx/function-reference.md#regexp-subst" >}}): Rewrite a string using regular expressions.
 - [`string`]({{< relref "/filterx/function-reference.md#string" >}}): Convert a value into a string.
@@ -346,15 +347,13 @@ Filterx has the following built-in functions.
 - "int"
 - "double"
 <!-- FIXME update list , I found these in the tests/files -->
-- parse_kv
 - otel_logrecord
 - format_csv
 - format_kv
-- parse_kv
 
 <!-- FIXME add links to the reference page for each function -->
 
-For details, see {{% xref "/filterx/operator-reference.md" %}}.
+For details, see {{% xref "/filterx/function-reference.md" %}}.
 
 <!-- 
 ## Use cases/examples

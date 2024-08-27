@@ -164,39 +164,13 @@ Usage: `lower(string)`
 
 <!-- FIXME Does it work for other types? For example, list? -->
 
-## parse_csv
+## parse_csv {#parse-csv}
 
-<!-- 
+Separate a comma-separated or similar string.
 
-#define FILTERX_FUNC_PARSE_CSV_ARG_NAME_COLUMNS "columns"
-#define FILTERX_FUNC_PARSE_CSV_ARG_NAME_DELIMITER "delimiter"
-#define FILTERX_FUNC_PARSE_CSV_ARG_NAME_STRING_DELIMITERS "string_delimiters"
-#define FILTERX_FUNC_PARSE_CSV_ARG_NAME_DIALECT "dialect"
-#define FILTERX_FUNC_PARSE_CSV_ARG_NAME_STRIP_WHITESPACE "strip_whitespace"
-#define FILTERX_FUNC_PARSE_CSV_ARG_NAME_STRIP_WHITESPACES "strip_whitespaces"
-#define FILTERX_FUNC_PARSE_CSV_ARG_NAME_GREEDY "greedy"
-#define FILTERX_FUNC_PARSE_CSV_USAGE "Usage: parse_csv(msg_str [" \
-    FILTERX_FUNC_PARSE_CSV_ARG_NAME_COLUMNS"=json_array, " \
-    FILTERX_FUNC_PARSE_CSV_ARG_NAME_DELIMITER"=string, " \
-    FILTERX_FUNC_PARSE_CSV_ARG_NAME_STRING_DELIMITERS"=json_array, " \
-    FILTERX_FUNC_PARSE_CSV_ARG_NAME_DIALECT"=string, " \
-    FILTERX_FUNC_PARSE_CSV_ARG_NAME_STRIP_WHITESPACE"=boolean, " \
-    FILTERX_FUNC_PARSE_CSV_ARG_NAME_GREEDY"=boolean])"
-#define FILTERX_FUNC_PARSE_ERR_EMPTY_DELIMITER "Either '" \
-    FILTERX_FUNC_PARSE_CSV_ARG_NAME_DELIMITER"' or '" \
-    FILTERX_FUNC_PARSE_CSV_ARG_NAME_STRING_DELIMITERS"' must be set, and '" \
-    FILTERX_FUNC_PARSE_CSV_ARG_NAME_DELIMITER"' cannot be empty if '" \
-    FILTERX_FUNC_PARSE_CSV_ARG_NAME_STRING_DELIMITERS"' is unset"
+Usage: `parse_csv(msg_str [columns=json_array, delimiter=string, string_delimiters=json_array, dialect=string, strip_whitespace=boolean, greedy=boolean])`
 
-    /Users/feketer/work/axosyslog-core-docs/tmp/axosyslog/modules/csvparser/tests/test_filterx_func_format_csv.c
-    for escaping examples
-
-FILTERX_FUNC_PARSE_CSV_ARG_NAME_DIALECT " argument must be one of: [" \
-                      "escape-none, " \
-                      "escape-backslash, " \
-                      "escape-backslash-with-sequences, " \
-                      "escape-double-char]";
-                       -->
+For details, see {{% xref "/filterx/filterx-parsing/csv/_index.md" %}}.
 
 ## parse_kv
 
