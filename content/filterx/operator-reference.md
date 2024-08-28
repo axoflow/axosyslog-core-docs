@@ -65,6 +65,26 @@ The `+=` operator increases the value of a variable with the specified value. Ex
     mylist += ["let's", "go"];
     # mylist is ["one", "two", "let's", "go"]
     ```
+
+- For a datetime, it increments the time. For example:
+
+    ```shell
+    
+    ```
+<!-- +=
+        FIXME what is the unit of the int / double?
+            d = strptime("2000-01-01T00:00:00Z", "%Y-%m-%dT%H:%M:%S%z");
+            d += 3600000000;
+            $MSG.var_datetime_integer = string(d);
+
+            e = strptime("2000-01-01T00:00:00Z", "%Y-%m-%dT%H:%M:%S%z");
+            e += 3600.000000;
+            $MSG.var_datetime_double = string(e);
+
+        r""""var_datetime_integer":"2000-01-01T01:00:00.000+00:00","""
+        r""""var_datetime_double":"2000-01-01T01:00:00.000+00:00","""
+ -->
+
 ## Regexp match {#regexp}
 
 To check if a value contains a string or a regular expression, use the `=~` operator. For example, the following statement is true if the `${MESSAGE}` contains the word `error`:

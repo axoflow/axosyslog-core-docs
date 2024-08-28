@@ -4,7 +4,9 @@ weight:  100
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-## columns {#columns}
+The `parse_csv` filterx function has the following options.
+
+## columns
 
 |           |                                                  |
 | --------- | ------------------------------------------------ |
@@ -16,7 +18,7 @@ weight:  100
 - If the `columns` option is set, `parse_csv` returns a dictionary with the column names (as keys) and the parsed values.
 - If the [`columns`]({{< relref "/filterx/filterx-parsing/csv/reference-parsers-csv/_index.md#columns" >}}) option isn't set, `parse_csv` returns a list.
 
-## delimiter {#delimiter}
+## delimiter
 
 |           |                                                  |
 | --------- | ------------------------------------------------ |
@@ -31,7 +33,7 @@ weight:  100
 
 {{< include-headless "chunk/csv-parser-multiple-delimiters.md" >}}
 
-## dialect {#dialect}
+## dialect
 
 |           |                                                 |
 | --------- | ----------------------------------------------- |

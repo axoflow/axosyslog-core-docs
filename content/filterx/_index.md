@@ -143,15 +143,16 @@ Variables can have the following types:
 
 - `boolean`
 - `bytes` (to represent binary data)
-- `datetime`
+- [`datetime`]({{< relref "/filterx/function-reference.md#datetime" >}})
 - `dict`
 - `double`
 - `int`
-- `json_object` and `json_array` for JSON or JSON-like objects. The `json` type is an alias for the `json_object` type. <!-- object: {}, array []-->
+- [`isodate`]({{< relref "/filterx/function-reference.md#isodate" >}})
+- [`json, json_object`]({{< relref "/filterx/function-reference.md#json" >}}) and [`json_array`]({{< relref "/filterx/function-reference.md#json-array" >}}) for JSON or JSON-like objects. The `json` type is an alias for the `json_object` type. <!-- object: {}, array []-->
 - `list`
+- `otel_logrecord`
 - `protobuf`
-- `string`
-<!-- - otel... types -->
+- [`string`]({{< relref "/filterx/function-reference.md#string" >}}): Converts a value into a string.
 
 ### Assign values
 
@@ -293,7 +294,9 @@ You can access the fields of complex data types by using indexes and the dot not
 <!--
 ### Type casting
 
- FIXME type casting -->
+ FIXME type casting
+
+  -->
 
 ## Operators
 
@@ -319,37 +322,24 @@ For details, see {{% xref "/filterx/operator-reference.md" %}}.
 
 Filterx has the following built-in functions.
 
-<!-- FIXME definitions/descriptions -->
 - [`cache_json_file`]({{< relref "/filterx/function-reference.md#cache-json-file" >}}): Loads an external JSON file to lookup contextual information.
-- [`datetime`]({{< relref "/filterx/function-reference.md#datetime" >}})
 - [`flatten`]({{< relref "/filterx/function-reference.md#flatten" >}}): Flattens the nested elements of an object.
 - [`format_csv`]({{< relref "/filterx/function-reference.md#format-csv" >}}): Formats a dictionary or a list into a comma-separated string.
 - [`format_kv`]({{< relref "/filterx/function-reference.md#format-kv" >}}): Formats a dictionary into key=value pairs.
-- [`isodate`]({{< relref "/filterx/function-reference.md#isodate" >}})
 - [`isset`]({{< relref "/filterx/function-reference.md#isset" >}}): Checks that argument exists and its value is not empty or null.
 - [`istype`]({{< relref "/filterx/function-reference.md#istype" >}}): Checks the type of an object.
 - [`len`]({{< relref "/filterx/function-reference.md#len" >}}): Returns the length of an object.
 - [`lower`]({{< relref "/filterx/function-reference.md#lower" >}}): Converts a string into lowercase characters.
-- [`json, json_object`]({{< relref "/filterx/function-reference.md#json" >}}): Converts a value into a JSON object.
-- [`json_array`]({{< relref "/filterx/function-reference.md#json-array" >}}): Converts a value into a JSON array.
+- [`parse_csv`]({{< relref "/filterx/filterx-parsing/csv/_index.md" >}}): Separates a string consisting of whitespace or comma-separated `key=value` pairs.
 - [`parse_kv`]({{< relref "/filterx/filterx-parsing/key-value-parser/_index.md" >}}): Separates a string consisting of whitespace or comma-separated `key=value` pairs.
-- [`parse_kv`]({{< relref "/filterx/filterx-parsing/csv/_index.md" >}}): Separates a string consisting of whitespace or comma-separated `key=value` pairs.
+- [`parse_xml`]({{< relref "/filterx/filterx-parsing/xml/_index.md" >}}): Parses an XML object into a JSON object.
 - [`regexp_search`]({{< relref "/filterx/function-reference.md#regexp-search" >}}): Searches a string using regular expressions.
 - [`regexp_subst`]({{< relref "/filterx/function-reference.md#regexp-subst" >}}): Rewrites a string using regular expressions.
-- [`string`]({{< relref "/filterx/function-reference.md#string" >}}): Converts a value into a string.
 - [`strptime`]({{< relref "/filterx/function-reference.md#strptime" >}}): Converts a value into datetime.
 - [`unset`]({{< relref "/filterx/function-reference.md#unset" >}}): Deletes a name-value pair, or a field from an object.
 - [`unset_empties`]({{< relref "/filterx/function-reference.md#unset-empties" >}}): Deletes empty fields from an object.
 - [`upper`]({{< relref "/filterx/function-reference.md#upper" >}}): Converts a string into uppercase characters.
 - [`vars`]({{< relref "/filterx/function-reference.md#vars" >}}): The variables defined in the filterx block.
-- "bytes"
-- "protobuf"
-- "bool"
-- "int"
-- "double"
-<!-- FIXME update list , I found these in the tests/files -->
-- otel_logrecord
-- parse_xml
 
 For details, see {{% xref "/filterx/function-reference.md" %}}.
 
