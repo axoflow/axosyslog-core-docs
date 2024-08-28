@@ -41,7 +41,6 @@ filterx demo_filter { not $HOST == "example1" and not $HOST == "example2"; };
 
 Alternatively, you can use parentheses and the `or` operator to avoid this confusion:
 
-<!-- FIXME does this work like that? -- de morgan's law ! -->
 ```shell
 filterx demo_filter { not ( ($HOST == "example1") or ($HOST == "example2") ); };
 ```
