@@ -355,7 +355,7 @@ Available in {{% param "product_name" %}} version 4.5.0 and later.
 | Accepted values: | list of accepted distinguished names |
 | Default:         | none                                 |
 
-*Description:* To accept connections only from hosts using certain certificates signed by the trusted CAs, list the distinguished names of the accepted certificates in this parameter. For example, using `trusted-dn("\*, O=Example Inc, ST=Some-State, C=\*")` will accept only certificates issued for the `Example Inc` organization in `Some-State` state.
+*Description:* To accept connections only from hosts using certain certificates signed by the trusted CAs, list the distinguished names of the accepted certificates in this parameter. For example, using `trusted-dn("*, O=Example Inc, ST=Some-State, C=*")` will accept only certificates issued for the `Example Inc` organization in `Some-State` state.
 
 ## trusted-keys() {#tls-options-trusted-keys}
 

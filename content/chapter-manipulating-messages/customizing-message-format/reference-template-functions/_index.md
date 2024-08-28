@@ -214,7 +214,7 @@ You can use the [value-pairs]({{< relref "/chapter-concepts/concepts-value-pairs
 
 - rename value-pairs, and so on.
 
-For details, see {{% xref "/chapter-concepts/concepts-value-pairs/_index.md" %}}. Note that the syntax of `format-\*` template functions is different from the syntax of `value-pairs()`: these template functions use a syntax similar to command lines.
+For details, see {{% xref "/chapter-concepts/concepts-value-pairs/_index.md" %}}. Note that the syntax of `format-*` template functions is different from the syntax of `value-pairs()`: these template functions use a syntax similar to command lines.
 
 Using the `format-cef-extension` template function has the following prerequisites:
 
@@ -697,7 +697,7 @@ The following configuration example shows how you can use the `implode` template
 | -------------------------------------------------------- | ----------------------------------------- |
 | `$(implode ' ' 'string1,string2,string3,string4,string5')` | `"string1 string2 string3 string4 string5"` |
 
-You can also use a <span>$(list-\*)</span> template function to further manipulate the list. The following example returns the first three elements of the list:
+You can also use a <span>$(list-*)</span> template function to further manipulate the list. The following example returns the first three elements of the list:
 
 | Configuration                                                           | Result                    |
 | ----------------------------------------------------------------------- | ------------------------- |
@@ -938,7 +938,7 @@ The returned values are `1`, `2`, and `3`.
 
 *Syntax:* `$(<operation> "<value1>" "<value2>")`
 
-*Description:* These template functions allow you to manipulate numbers, that is, to perform addition (+), substraction (-), multiplication (\*), division (/), and modulus (%). All of them require two numeric arguments. The result is `NaN` (Not-a-Number) if the parameters are not numbers, cannot be parsed, or if a division by zero would occur. For example, to add the value of two macros, use the following template function:
+*Description:* These template functions allow you to manipulate numbers, that is, to perform addition (+), substraction (-), multiplication (*), division (/), and modulus (%). All of them require two numeric arguments. The result is `NaN` (Not-a-Number) if the parameters are not numbers, cannot be parsed, or if a division by zero would occur. For example, to add the value of two macros, use the following template function:
 
 ```shell
    $(+ "${<MACRO1>}" "${<MACRO2>}");

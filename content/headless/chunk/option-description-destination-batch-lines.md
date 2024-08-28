@@ -9,4 +9,4 @@ If the `batch-timeout()` option is disabled, the {{% param "product.abbrev" %}} 
 
 Note that if the `batch-timeout()` option is enabled and the queue becomes empty, {{% param "product.abbrev" %}} flushes the messages only if `batch-timeout()` expires, or the batch reaches the limit set in `batch-lines()`.
 
-For optimal performance, make sure that the {{% param "product.abbrev" %}} source that feeds messages to this destination is configured properly: the value of the `log-iw-size()` option of the source must be higher than the `batch-lines()`\*`workers()` of the destination. Otherwise, the size of the batches cannot reach the `batch-lines()` limit.
+For optimal performance, make sure that the {{% param "product.abbrev" %}} source that feeds messages to this destination is configured properly: the value of the `log-iw-size()` option of the source must be higher than the `batch-lines()`*`workers()` of the destination. Otherwise, the size of the batches cannot reach the `batch-lines()` limit.

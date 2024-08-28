@@ -51,7 +51,7 @@ For more information about the default values of the `transaction.timeout.ms` Ka
 
 {{% include-headless "chunk/option-destination-java-class-path.md" %}}
 
-For the `kafka` destination, include the path to the directory where you copied the required libraries (see {{% xref "/chapter-destinations/configuring-destinations-kafka/destination-kafka-prerequisites/_index.md" %}}), for example, `client-lib-dir("/opt/syslog-ng/lib/syslog-ng/java-modules/KafkaDestination.jar:/usr/share/kafka/lib/\*.jar")`.
+For the `kafka` destination, include the path to the directory where you copied the required libraries (see {{% xref "/chapter-destinations/configuring-destinations-kafka/destination-kafka-prerequisites/_index.md" %}}), for example, `client-lib-dir("/opt/syslog-ng/lib/syslog-ng/java-modules/KafkaDestination.jar:/usr/share/kafka/lib/*.jar")`.
 
 {{% alert title="Note" color="info" %}}
 
