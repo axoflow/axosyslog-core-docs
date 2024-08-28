@@ -191,6 +191,14 @@ filterx {
 };
 ```
 
+When processing RFC5424-formatted (IETF-syslog) messages, you can modify the SDATA part of the message as well. The following example sets the sequenceId:
+
+```shell
+filterx {
+  ${.SDATA.meta.sequenceId} = 55555;
+};
+```
+
 {{% alert title="Note" color="info" %}}
 When assigning values to name-value pairs, you cannot modify [hard macros]({{< relref "/chapter-manipulating-messages/customizing-message-format/macros-hard-vs-soft/_index.md" >}}).
 {{% /alert %}}
@@ -215,6 +223,8 @@ To delete the name-value pair (or a key from an object), use the `unset` functio
 unset(${MY-NV-PAIR-KEY});
 unset(${MY-JSON}["key-to-delete"]);
 ```
+
+To unset every empty field of an object, use the [`unset-empties`]({{< relref "/filterx/function-reference.md#unset-empties" >}}) function:
 
 {{< include-headless "chunk/filterx-unset-hard-macros.md" >}}
 
@@ -343,10 +353,35 @@ Filterx has the following built-in functions.
 
 For details, see {{% xref "/filterx/function-reference.md" %}}.
 
-<!-- 
-## Use cases/examples
+## Use cases and examples
 
-Add a real-life looking example why that's good > (this plus a short intro can be a blog post as well)
+The following list shows you some common tasks that you can solve with filterx:
+
+- To set message fields (like macros or SDATA fields) or replace message parts: you can [assign values](#assign-values) to change parts of the message, or use the {{% xref "/filterx/function-reference.md" %}} function to rewrite existing values.
+
+    {{< include-headless "wnt/note-rewrite-hard-macros.md" >}}
+
+- To delete or unset message fields, see [Delete values](#delete-values).
+- To rename a message field, assign the value of the old field to the new, then unset the old field. For example:
+
+    ```shell
+    $my_new_field = $mike_old_field;
+    unset($mike_old_field);
+    ```
+
+- To use conditional rewrites, you can either:
+    - embed the filterx block in an [if-else block]({{< relref "/chapter-routing-filters/logpath/concepts-if-else-conditional-expressions/_index.md" >}}), or
+    - use [value comparison in the filterx block]({{< relref "/filterx/filterx-comparing/_index.md" >}}) to select the appropriate messages. For example, to rewrite only messages of the NGINX application, you can:
+
+        ```shell
+        ${PROGRAM} == "nginx";
+        # <your rewrite expression>
+        ```
+
+<!-- FIXME: Rewrite the timezone of a message -->
+
+<!-- 
+Add a longer real-life looking example why that's good > (this plus a short intro can be a blog post as well)
  -->
 
 <!-- ### Handling OTEL
@@ -354,12 +389,6 @@ Add a real-life looking example why that's good > (this plus a short intro can b
 FIXME
 
 -->
-
-<!-- FIXME
-
-Check the normal rewrite usecases and see which ones can we do in filterx: http://localhost:1313/chapter-manipulating-messages/modifying-messages/
-
- -->
 
 <!-- 
 ## Updating filters to filterx
