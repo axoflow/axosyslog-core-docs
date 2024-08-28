@@ -122,7 +122,7 @@ If `log-fetch-limit()` is 100, and your wildcard file source has 200 files, then
 
 |          |          |
 | -------- | -------- |
-| Type:    | `yes | no` |
+| Type:    | `yes` or `no` |
 | Default: | `no`       |
 
 *Description:* When enabled, {{% param "product.abbrev" %}} monitors every subdirectory of the path set in the [base-dir()](#source-wildcard-file-base-dir) option, and reads log messages from files with matching filenames. The `recursive` option can be used together with wildcards in the filename.

@@ -21,7 +21,7 @@ The tls() option can include the following settings:
 
 |                  |          |
 | ---------------- | -------- |
-| Accepted values: | `yes | no` |
+| Accepted values: | `yes` or `no` |
 | Default:         | `no`       |
 
 *Description:* Enable on-the-wire compression in TLS communication. Note that this option must be enabled both on the server and the client to have any effect. Enabling compression can significantly reduce the bandwidth required to transport the messages, but can slightly decrease the performance of {{% param "product.abbrev" %}}, reducing the number of transferred messages during a given period.
@@ -270,7 +270,7 @@ Example configuration:
 
 |                  |          |
 | ---------------- | -------- |
-| Accepted values: | `yes | no` |
+| Accepted values: | `yes` or `no` |
 | Default:         | `no`       |
 
 *Description:* When set to `yes` in a destination that uses TLS encryption, this option enables [Server Name Indication](https://tools.ietf.org/html/rfc6066#page-6) (also called Server Name Identification, SNI). The {{% param "product.abbrev" %}} sends the hostname or the IP address set in the destination to the server during the TLS handshake.
