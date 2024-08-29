@@ -384,18 +384,58 @@ The following list shows you some common tasks that you can solve with filterx:
 Add a longer real-life looking example why that's good > (this plus a short intro can be a blog post as well)
  -->
 
-<!-- ### Handling OTEL
+<!-- FIXME ### Handling OTEL -->
 
-FIXME
+## Update filters to filterx
 
--->
+This section shows you how to update your existing `filter` expressions to `filterx`.
+
+Filter functions: You can replace most filter functions with a simple value comparison with the appropriate macro, for example:
+
+- `facility(user)` with `${FACILITY} == "user"`
+- `host("example-host")` with `${HOST} == "example-host"`
+- `level(warning)` with `$LEVEL} == "warning"`
+    <!-- FIXME    level(err..emerg) workaround? -->
+- `message("example")` with `${MESSAGE} =~ "example"` (see the [equal tilde operator]({{< relref "/filterx/operator-reference.md#regexp" >}}) for details)
+- `program(nginx)` with `${PROGRAM} == "nginx"`
+- `source(my-source)` with `${SOURCE} == "my-source"`
+
+<!-- FIXME netmask() or netmask6()	Filter messages based on the IP address of the sending host.
+    Ideas for that? Tricky regexp matches against $SOURCEIP ?
+
+    inlist() (or how do you check if a json-array contains a value in an element?)
+    rate-limit()
+    tags()
+ -->
+
+Since all filterx statements must match a message to pass the filterx block, often you can change complex boolean filter expressions into multiple, more simple filterx statements. For example, consider the following filter statement:
+
+```shell
+filter demo_filter { host("example1") and program("nginx"); };
+```
+
+The following is the same filterx statement:
+
+```shell
+filterx demo_filterx { ${HOST} == "example1" and ${PROGRAM} == "nginx"; };
+```
+
+which is equivalent with:
+
+```shell
+filterx demo_filterx {
+    ${HOST} == "example1";
+    ${PROGRAM} == "nginx";
+};
+```
+
+```shell
+filter demo_filter { not host("example1") and not host("example2"); };
+```
 
 <!-- 
-## Updating filters to filterx
-
-FIXME examples for rewriting old filters in filterx 
-
-/chapter-routing-filters/filters/reference-filters/ check what is implemented and what isn't (pl rate-limit, source, netmask)
+FIXME examples for rewriting old filters in filterx
+    - many examples were adapted from the old filter/parser/rewrite examples
 
 What if I can't update a filter to filterx? Don't worry, while you can't use other blocks within a filterx block, you can use both in a log statement, for example, use a filterx block, then a parser if needed.
 
