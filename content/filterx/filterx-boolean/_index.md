@@ -8,8 +8,8 @@ weight:  300
 When a log statement includes multiple filter statements, {{< product >}} sends a message to the destination only if all filters are true for the message. In other words, the filters are connected with the logical `AND` operator. In the following example, no message arrives to the destination, because the filters are exclusive (the hostname of a client cannot be `example1` and `example2` at the same time):
 
 ```shell
-filterx demo_filter1 { $HOST = "example1"; };
-filterx demo_filter2 { $HOST = "example2"; };
+filterx demo_filter1 { $HOST == "example1"; };
+filterx demo_filter2 { $HOST == "example2"; };
 log {
     source(s1); source(s2);
     filterx(demo_filter1);
@@ -20,7 +20,7 @@ log {
 To select the messages that come from either host `example1` or `example2`, use a single filter expression:
 
 ```shell
-filterx demo_filter { $HOST == "example1" or $HOST = "example2"; };
+filterx demo_filter { $HOST == "example1" or $HOST == "example2"; };
 log {
     source(s1); source(s2);
     filterx(demo_filter);

@@ -85,7 +85,7 @@ The `+=` operator increases the value of a variable with the specified value. Ex
         r""""var_datetime_double":"2000-01-01T01:00:00.000+00:00","""
  -->
 
-## Regexp match {#regexp}
+## Regexp match (equal tilde) {#regexp}
 
 To check if a value contains a string or a regular expression, use the `=~` operator. For example, the following statement is true if the `${MESSAGE}` contains the word `error`:
 

@@ -242,6 +242,8 @@ $MY-LIST.mixed = regexp_search("first-word second-part third", /(?<one>first-wor
 
 Rewrites a string using regular expressions. This function implements the [`subst` rewrite rule functionality]({{< relref "/chapter-manipulating-messages/modifying-messages/rewrite-replace/_index.md" >}}).
 
+{{< include-headless "wnt/note-rewrite-hard-macros.md" >}}
+
 Usage: `regexp_subst(<input-string>, <pattern-to-find>, <replacement>, flags`
 
 The following example replaces the first `IP` in the text of the message with the `IP-Address` string.
