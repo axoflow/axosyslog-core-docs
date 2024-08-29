@@ -386,7 +386,15 @@ Add a longer real-life looking example why that's good > (this plus a short intr
 
 <!-- FIXME ### Handling OTEL -->
 
-## Update filters to filterx
+## Update filters and rewrites to filterx
+
+The following sections show you how you can change your existing filters and rewrite rules to filterx statements. Note that:
+
+- Many examples in the filterx documentation were adapted from the existin filter, parser, and rewrite examples to show how you can achieve the same functionality with fiterx.
+- Don't worry if you can't update something to filterx. While you can't use other blocks within a filterx block, you can use both in a log statement, for example, you can use a filterx block, then a parser if needed.
+- There is no push to use filterx. You can keep using the traditional blocks if they satisfy your requirements.
+
+### Update filters to filterx
 
 This section shows you how to update your existing `filter` expressions to `filterx`.
 
@@ -407,6 +415,12 @@ Filter functions: You can replace most filter functions with a simple value comp
     rate-limit()
     tags()
  -->
+
+The following filter functions have no equivalents in filterx yet:
+
+- The `[filter()` filter function]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-filter/_index.md" >}}). You can't call a filterx block from another filterx block, but you can [access name-value pairs and pass variables](#scoping) from multiple filterx blocks.
+
+You can [compare values]({{< relref "/filterx/filterx-comparing/_index.md" >}}) and use [boolean operators]({{< relref "/filterx/filterx-boolean/_index.md" >}}) similarly to filters.
 
 Since all filterx statements must match a message to pass the filterx block, often you can change complex boolean filter expressions into multiple, more simple filterx statements. For example, consider the following filter statement:
 
@@ -433,12 +447,51 @@ filterx demo_filterx {
 filter demo_filter { not host("example1") and not host("example2"); };
 ```
 
-<!-- 
-FIXME examples for rewriting old filters in filterx
-    - many examples were adapted from the old filter/parser/rewrite examples
+<!-- Update rewrite rules
 
-What if I can't update a filter to filterx? Don't worry, while you can't use other blocks within a filterx block, you can use both in a log statement, for example, use a filterx block, then a parser if needed.
 
-Also there is no push to use filterx, you can keep using the traditional blocks if they satisfy your requirements.
--->
+Replacing message parts (rewrite(subst)) > regexp_subst {#regexp-subst})
+
+Setting message fields to specific values > [assign values](#assign-values)
+
+set-severity(), set-facility() set-pri() rewrite functions > no equivalent
+
+Setting match variables with the set-matches() rewrite rule
+    > I don't even get what this does
+
+Unsetting message fields
+    > [delete values](#delete-values)
+
+Renaming message fields
+    > see use cases
+
+Creating custom SDATA fields
+    > see use cases / assign values
+
+Setting multiple message fields to specific values
+    > no equivalent
+
+map-value-pairs: Rename value-pairs to normalize logs
+    > Does the simple rename cover that, or no equivalent?
+
+Conditional rewrites
+    > see use cases
+
+Rewrite the timezone of a message
+    > ?
+
+Anonymizing credit card numbers
+    > no equivalent, but can be replicated using some regexp_subst expressions, see the scl for details tmp/axosyslog/scl/rewrite/cc-mask.conf
+
+add/delete tags: do we need here a round-trip here like this, or is it working without that?: 
+    temp-tags = json-array($TAGS);
+    temp-tags += "new-tag";
+    $TAGS = format_csv(temp-tags);
+
+    - How can you delete an element with a specific value from a list (not by index)
+        like this in python:
+            thislist = ["apple", "banana", "cherry"]
+            thislist.remove("banana")
+ -->
+
 <!-- FIXME group-by like contexts and similar don't work yet -->
