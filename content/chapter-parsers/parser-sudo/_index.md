@@ -25,8 +25,6 @@ The `sudo-parser()` is actually a reusable configuration snippet configured to p
 
 {{% include-headless "chunk/option-parser-prefix.md" %}}
 
-{{% include-headless "chunk/para-macro-prefix-parser.md" %}}
-
 By default, `sudo-parser()` uses the `.sudo.` prefix. To modify it, use the following format:
 
 ```shell
