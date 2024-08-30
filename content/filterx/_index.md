@@ -383,6 +383,57 @@ The following list shows you some common tasks that you can solve with filterx:
 <!-- 
 Add a longer real-life looking example why that's good > (this plus a short intro can be a blog post as well)
  -->
+### Create an iptables parser
+
+<!-- FIXME check the code, does it work like that? -->
+
+The following example shows you how to reimplement the {{% xref "/chapter-parsers/parser-iptables/_index.md" %}} in a filterx block. The following is a sample iptables log message (with line-breaks added for readability):
+
+```shell
+Dec 08 12:00:00 hostname.example kernel: custom-prefix:IN=eth0 OUT=
+MAC=11:22:33:44:55:66:aa:bb:cc:dd:ee:ff:08:00 SRC=192.0.2.2 DST=192.168.0.1 LEN=40 TOS=0x00
+PREC=0x00 TTL=232 ID=12345 PROTO=TCP SPT=54321 DPT=22 WINDOW=1023 RES=0x00 SYN URGP=0
+```
+
+This is a normal RFC3164-formatted log message which comes from the kernel (where iptables logging messages originate), and contains space-separated key-value pairs.
+
+1. First, create some filter statements to select only iptables messages:
+
+    ```shell
+    filterx iptables-parserx {
+        ${FACILITY} == "kern"; # Filter on the kernel facility
+        ${PROGRAM} == "kernel"; # Sender application is the kernel
+        ${MESSAGE} =~ "PROTO="; # The PROTO key appears in all iptables messages
+    }
+    ```
+
+1. To make the parsed data available under macros beginning with `${.iptables}`, like in the case of the original `iptables-parser()`, create the `${.iptables}` JSON object.
+
+    ```shell
+    filterx iptables-parserx {
+        ${FACILITY} == "kern"; # Filter on the kernel facility
+        ${PROGRAM} == "kernel"; # Sender application is the kernel
+        ${MESSAGE} =~ "PROTO="; # The PROTO key appears in all iptables messages
+
+        ${.iptables} = json(); # Create an empty JSON object
+    }
+    ```
+
+1. Add a key=value parser to parse the content of the messages into the `${.iptables}` JSON object. The key=value pairs are space-separated, while equal signs (=) separates the values from the keys. 
+
+    ```shell
+    filterx iptables-parserx {
+        ${FACILITY} == "kern"; # Filter on the kernel facility
+        ${PROGRAM} == "kernel"; # Sender application is the kernel
+        ${MESSAGE} =~ "PROTO="; # The PROTO key appears in all iptables messages
+
+        ${.iptables} = json(); # Create an empty JSON object
+
+        ${.iptables} = parse_kv(${MESSAGE}, value_separator="=", pair_separator=" ");
+    }
+    ```
+
+    <!-- FIXME show json from sample message -->
 
 <!-- FIXME ### Handling OTEL -->
 
