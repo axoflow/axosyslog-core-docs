@@ -91,8 +91,10 @@ Filterx statements can be one of the following:
 - A declaration of a [pipeline variable](#variable-scope), for example, `declare my-pipeline-variable = "something";`.
 
 {{% alert title="Note" color="info" %}}
+
 - The `true;` and `false;` literals are also valid as statements. They can be useful in complex conditional (if/elif/else) statements.
 - A name-value pair or a variable in itself is also a statement. For example, `$HOST;`. If the name-value pair or variable is empty or doesn't exist, the statement is false.
+
 {{% /alert %}}
 
 When you assign the value of a variable using another variable (for example, `$MESSAGE = "$HOST"`), {{< product >}} copies the current value of the `$HOST` variable. If a statement later changes the value of the `$HOST` field, the `$MESSAGE` field won't change. For example:
@@ -123,11 +125,13 @@ js.third_key = "third-value-not-available-in-$MESSAGE";
 Each filterx block can access data from the following elements.
 
 - Macros and name-value pairs of the message being processed (for example, `$PROGRAM`). The names of macros and name-value pairs begin with the `$` character. If you define a new variable in a filterx block and its name begins with the `$` character, it's automatically added to the name-value pairs of the message.
+
     {{% alert title="Note" color="info" %}}
 Using braces around macro names is not mandatory, and the `"$MESSAGE"` and `"${MESSAGE}"` formats are equivalent. However, using the `"${MESSAGE}"` format is required if the name contains special characters, like the dot (`.`).
 
 Names are case-sensitive, so `"$message"` and `"$MESSAGE"` are not the same.
     {{% /alert %}}
+
 - Local variables. These have a name that doesn't start with a `$` character, for example, `my-local-variable`. Local variables are available only in the filterx block they're defined.
 - Pipeline variables. These are similar to local variables, but must be declared before first use, for example, `declare my-pipeline-variable=5;`
 
@@ -311,6 +315,8 @@ You can access the fields of complex data types by using indexes and the dot not
 - dot notation: `js.key`
 - indexing: `js["key"]`
 - or mixed mode if needed: `js.list[1]`
+
+When referring to the field of a name-value pair (which begins with the `$` character), place the dot or the square bracket outside the curly bracket surrounding the name of the name-value pair, for example: `${MY-LIST}[2]` or `${MY-OBJECT}.mykey`. If the name of the key contains characters that are not permitted in filterx variable names, for example, a hyphen (`-`), use the bracketed syntax and enclose it in double quotes: `${MY-LIST}["my-key-name"]`.
 
 <!-- FIXME more examples for lists/dicts if needed -->
 

@@ -16,7 +16,7 @@ If the `columns` option is set, `parse_csv` returns a [dictionary]({{< relref "/
 The following example separates hostnames like `example-1` and `example-2` into two parts.
 
 ```shell
-filterx p_hostname_segmentation {
+block filterx() p_hostname_segmentation {
     cols = json_array(["NAME","ID"]);
     HOSTNAME = parse_csv(${HOST}, delimiter="-", columns=cols);
     # HOSTNAME is a json object containing parts of the hostname
@@ -50,13 +50,13 @@ Here is a sample message:
 To parse such logs, the delimiter character is set to a single whitespace (`delimiter=" "`). Whitespaces are stripped.
 
 ```shell
-filterx p_apache {
-    $APACHE = json();
+block filterx() p_apache {
+    ${APACHE} = json();
     cols = json_array("CLIENT_IP", "IDENT_NAME", "USER_NAME",
     "TIMESTAMP", "REQUEST_URL", "REQUEST_STATUS",
     "CONTENT_LENGTH", "REFERER", "USER_AGENT",
     "PROCESS_TIME", "SERVER_NAME");
-    $APACHE = parse_csv(${MESSAGE}, columns=cols, delimiter=(" "), strip_whitespaces=true, dialect="escape-double-char");
+    ${APACHE} = parse_csv(${MESSAGE}, columns=cols, delimiter=(" "), strip_whitespaces=true, dialect="escape-double-char");
 };
 ```
 
@@ -83,7 +83,7 @@ You can use multiple parsers to split a part of an already parsed message into f
 ```shell
 filterx p_apache_timestamp {
     cols = json_array("TIMESTAMP.DAY", "TIMESTAMP.MONTH", "TIMESTAMP.YEAR", "TIMESTAMP.HOUR", "TIMESTAMP.MIN", "TIMESTAMP.SEC", "TIMESTAMP.ZONE")
-    $APACHE.TIMESTAMP = parse_csv(${APACHE.TIMESTAMP}, columns=cols, delimiters=("/: "), dialect="escape-none");
+    ${APACHE.TIMESTAMP} = parse_csv(${APACHE.TIMESTAMP}, columns=cols, delimiters=("/: "), dialect="escape-none");
 };
 destination d_file {
     file("/var/log/messages-${APACHE.USER_NAME:-nouser}/${APACHE.TIMESTAMP.DAY}");

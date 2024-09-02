@@ -10,7 +10,7 @@ In {{% param "product.abbrev" %}} you can compare macro values, templates, and v
 Use the following syntax to compare macro values or templates.
 
 ```shell
-filterx <filter-id>
+block filterx() <filter-id>
     {"<macro-or-variable-or-expression>" operator "<macro-or-variable-or-expression>";};
 ```
 

@@ -29,8 +29,8 @@ Then the following filterx expression selects only "web" traffic:
 ```shell
 filterx {
   declare known_apps = cache_json_file("/context-info-db.json");
-  $app = known_apps[$PROGRAM] ?? "unknown";
-  $app == "web";  # drop everything that's not a web server log
+  ${app} = known_apps[${PROGRAM}] ?? "unknown";
+  ${app} == "web";  # drop everything that's not a web server log
 }
 ```
 
@@ -210,31 +210,31 @@ You can also use unnamed match groups (`()`) and named match groups (`(?<first>E
 ### Unnamed match groups
 
 ```shell
-$MY-LIST = json(); # Creates an empty JSON object
-$MY-LIST.unnamed = regexp_search("first-word second-part third", /(first-word)(second-part)(third)/);
+${MY-LIST} = json(); # Creates an empty JSON object
+${MY-LIST}.unnamed = regexp_search("first-word second-part third", /(first-word)(second-part)(third)/);
 ```
 
-`$MY-LIST.unnamed` is a list containing: `["first-word second-part third", "first-word", "second-part", "third"],`
+`${MY-LIST}.unnamed` is a list containing: `["first-word second-part third", "first-word", "second-part", "third"],`
 
 ### Named match groups
 
 ```shell
-$MY-LIST = json(); # Creates an empty JSON object
-$MY-LIST.named = regexp_search("first-word second-part third", /(?<one>first-word)(?<two>second-part)(?<three>third)/);
+${MY-LIST} = json(); # Creates an empty JSON object
+${MY-LIST}.named = regexp_search("first-word second-part third", /(?<one>first-word)(?<two>second-part)(?<three>third)/);
 ```
 
-`$MY-LIST.named` is a dictionary with the names of the match groups as keys, and the corresponding matches as values: `{"0": "first-word second-part third", "one": "first-word", "two": "second-part", "three": "third"},`
+`${MY-LIST}.named` is a dictionary with the names of the match groups as keys, and the corresponding matches as values: `{"0": "first-word second-part third", "one": "first-word", "two": "second-part", "three": "third"},`
 
 ### Mixed match groups
 
 If you use mixed (some named, some unnamed) groups, the output is a dictionary, where {{< product >}} automatically assigns a key to the unnamed groups. For example:
 
 ```shell
-$MY-LIST = json(); # Creates an empty JSON object
-$MY-LIST.mixed = regexp_search("first-word second-part third", /(?<one>first-word)(second-part)(?<three>third)/);
+${MY-LIST} = json(); # Creates an empty JSON object
+${MY-LIST}.mixed = regexp_search("first-word second-part third", /(?<one>first-word)(second-part)(?<three>third)/);
 ```
 
-`$MY-LIST.mixed` is: `{"0": "first-word second-part third", "first": "first-word", "2": "second-part", "three": "third"},`
+`${MY-LIST}.mixed` is: `{"0": "first-word second-part third", "first": "first-word", "2": "second-part", "three": "third"},`
 
 ## regexp_subst {#regexp-subst}
 
