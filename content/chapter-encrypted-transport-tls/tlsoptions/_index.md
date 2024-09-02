@@ -138,22 +138,22 @@ The order of operations within `openssl-conf-cmds()` is significant and the comm
 Example configuration:
 
 ```shell
-    tls(
-        ca-dir("/etc/ca.d")
-        key-file("/etc/cert.d/serverkey.pem")
-        cert-file("/etc/cert.d/servercert.pem")
-        peer-verify(yes)
+tls(
+    ca-dir("/etc/ca.d")
+    key-file("/etc/cert.d/serverkey.pem")
+    cert-file("/etc/cert.d/servercert.pem")
+    peer-verify(yes)
 
-        openssl-conf-cmds(
-            # For system wide available cipher suites use: /usr/bin/openssl ciphers -v
-            # For formatting rules see: https://www.openssl.org/docs/man1.1.1/man3/SSL_CONF_cmd.html
-            "CipherString" => "ECDHE-RSA-AES128-SHA",                                   # TLSv1.2 and bellow
-            "CipherSuites" => "TLS_CHACHA20_POLY1305_SHA256:TLS_AES_256_GCM_SHA384",    # TLSv1.3+ (OpenSSl 1.1.1+)
+    openssl-conf-cmds(
+        # For system wide available cipher suites use: /usr/bin/openssl ciphers -v
+        # For formatting rules see: https://www.openssl.org/docs/man1.1.1/man3/SSL_CONF_cmd.html
+        "CipherString" => "ECDHE-RSA-AES128-SHA",                                   # TLSv1.2 and bellow
+        "CipherSuites" => "TLS_CHACHA20_POLY1305_SHA256:TLS_AES_256_GCM_SHA384",    # TLSv1.3+ (OpenSSl 1.1.1+)
 
-            "Options" => "PrioritizeChaCha",
-            "Protocol" => "-ALL,TLSv1.3",
-        )
+        "Options" => "PrioritizeChaCha",
+        "Protocol" => "-ALL,TLSv1.3",
     )
+)
 ```
 
 ## peer-verify() {#tls-options-peer-verify}

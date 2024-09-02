@@ -6,7 +6,7 @@
 
 |          |             |
 | -------- | ----------- |
-| Type:    | string list |
+| Type:    | arrow list |
 | Default: | empty       |
 
 Available in {{< product >}} 4.8 and later.

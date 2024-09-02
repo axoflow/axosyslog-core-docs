@@ -166,14 +166,14 @@ Available in {{% param "product.abbrev" %}} version 3.30 and later.
 When used in configuration as seen in the example, the `filter` template function filters even numbers from an input list of `0`, `1`, `2` and `3`:
 
 ```shell
-   log {
-      source { example-msg-generator(num(1) values(INPUT => "0,1,2,3")); };
-      destination {
-         file("/dev/stdout"
-               template("$(filter ('$(% $_ 2)' eq '0') $INPUT)\n)")
-         );
-      };
+log {
+    source { example-msg-generator(num(1) values(INPUT => "0,1,2,3")); };
+    destination {
+        file("/dev/stdout"
+            template("$(filter ('$(% $_ 2)' eq '0') $INPUT)\n)")
+        );
     };
+};
 ```
 
 The returned values are `0` and `2`.
