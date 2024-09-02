@@ -49,7 +49,12 @@ For example:
 ```shell
 date = datetime("1701350398.123000+01:00")
 ```
-<!-- FIXME syntax for argument, timezone handling, etc. -->
+
+Usually, you use the [strptime](#strptime) filterx function to create datetime values. Alternatively, you can cast an integer, double, string, or isodate variable into datetime with the `datetime()` filterx function. Note that:
+
+- When casting from an integer, the integer is the number of seconds elapsed since the UNIX epoch (January 1, 1970 12:00:00 AM).
+- When casting from a double, the double is the number of milliseconds elapsed since the UNIX epoch (January 1, 1970 12:00:00 AM).
+- When casting from a string, the string (for example, `1701350398.123000+01:00`) is interpreted as: `<the number of seconds elapsed since the UNIX epoch>.<microseconds>+<timezone relative to UTC (GMT +00:00)>`
 
 ## flatten
 
@@ -80,7 +85,7 @@ If the `columns` option is set, {{< product >}} checks that the number of entrie
 
 ## format_kv {#format-kv}
 
-Formats a dictionary into key=value pairs.
+Formats a dictionary into a string containing key=value pairs.
 
 Usage: `format_kv(kvs_dict, value_separator="<separator-character>", pair_separator="<separator-string>")`
 
@@ -100,13 +105,13 @@ format_kv(<input-dictionary>, value_separator=":", pair_separator=";")
 
 ## format_json {#format-json}
 
-<!-- FIXME mindig objectet ad vissza, vagy eldonti hogy list/stb?-->
+Formats a JSON object or array into a string.
 
 Usage: `format_json($data)`
 
 ## isodate
 
-Format a date into `isodate` format: `%Y-%m-%dT%H:%M:%S%z`
+Parses a string as a date in ISODATE format: `%Y-%m-%dT%H:%M:%S%z`
 
 ## isset
 
@@ -116,7 +121,7 @@ Usage: `isset(<name of a variable, macro, or name-value pair>)`
 
 ## istype
 
-Returns true if the object (first argument) has the specified type (second argument). The type must be a quoted string.
+Returns true if the object (first argument) has the specified type (second argument). The type must be a quoted string. (See [List of type names]({{< relref "/filterx/_index.md#variable-types" >}}).)
 
 Usage: `istype(object, "type_str")`
 
@@ -127,13 +132,8 @@ istype({"key": "value"}, "json_object"); # True
 istype(${PID}, "string");
 istype(my-local-json-object.mylist, "json_array")
 ```
-<!-- FIXME include list of valid types -->
 
-<!-- FIXME what happens if the object doesn't exist? -->
-
-<!-- istype($olr.body, "otel_kvlist");
-istype(otel_kvl.js_arr, "otel_array");
- -->
+If the object doesn't exist, `istype()` returns with an error, causing the filterx statement to become false, and logs an error message to the `internal()` source of {{< product >}}.
 
 ## json, json_object {#json}
 
@@ -161,7 +161,7 @@ list = json_array(["first_element", "second_element", "third_element"]);
 
 ## len
 
-Returns the number of items in an object as an integer. For example, the length of a string, or the number of elements in a list.
+Returns the number of items in an object as an integer: the length (number of characters) of a string, the number of elements in a list, or the number of keys in an object.
 
 Usage: `len(object)`
 
@@ -170,8 +170,6 @@ Usage: `len(object)`
 Converts a string into lowercase characters.
 
 Usage: `lower(string)`
-
-<!-- FIXME Does it work for other types? For example, list? -->
 
 ## parse_csv {#parse-csv}
 
@@ -308,13 +306,18 @@ For example:
 ```shell
 ${MESSAGE} = strptime("2024-04-10T08:09:10Z", "%Y-%m-%dT%H:%M:%S%z");
 ```
-<!-- 
-FIXME what happens if none of the format strings match?
--->
+
+{{% alert title="Note" color="info" %}}
+
+If none of the format strings match, `strptime` returns the null value and logs an error message to the `internal()` source of {{< product >}}. If you want the filterx block to explicitly return false in such cases, use the [`isset`](#isset) filterx function on the result of `strptime`.
+
+{{% /alert %}}
 
 You can use the following elements in the format string:
 
 {{< include-headless "chunk/date-string-format.md" >}}
+
+The [`isodate`](#isodate) filterx function is a specialized version of `strptime` that accepts only a fixed format.
 
 ## unset
 
@@ -362,8 +365,6 @@ Usage: `unset_empties(object, recursive=true)`
 Converts a string into uppercase characters.
 
 Usage: `upper(string)`
-
-<!-- FIXME Does it work for other types? For example, list? -->
 
 ## vars
 

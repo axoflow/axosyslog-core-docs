@@ -29,7 +29,7 @@ The result of filterx statements is always a boolean value, either *true* or *fa
 You can define a filterx statement like this:
 
 ```shell
-filterx <identifier> {
+block filterx() <identifier> {
     <filterx-statement-1>;
     <filterx-statement-2>;
     ...
@@ -51,7 +51,7 @@ You can also define it inline. For details, see {{% xref "/chapter-configuration
 For example, the following filterx statement selects the messages that contain the word `deny` and come from the host `example`.
 
 ```shell
-filterx demo_filterx {
+block filterx() demo_filterx {
     ${HOST} == "example";
     ${MESSAGE} =~ "deny";
 };
@@ -128,7 +128,7 @@ Using braces around macro names is not mandatory, and the `"$MESSAGE"` and `"${M
 
 Names are case-sensitive, so `"$message"` and `"$MESSAGE"` are not the same.
     {{% /alert %}}
-- Local variables. These have a name that doesn't start with a `$` character, for example, `my-local-variable`. Local variables are available only in the filterx block they're defined. <!-- FIXME Are there other restrictions for the variable names? For example, cannot shadow type names? -->
+- Local variables. These have a name that doesn't start with a `$` character, for example, `my-local-variable`. Local variables are available only in the filterx block they're defined.
 - Pipeline variables. These are similar to local variables, but must be declared before first use, for example, `declare my-pipeline-variable=5;`
 
     Pipeline variables are available in the current and all subsequent filterx block. They're global in the sense that you can access them from multiple filterx blocks, but note that they're still attached to the particular message that is processed, it's value isn't preserved between messages.
@@ -137,9 +137,23 @@ Names are case-sensitive, so `"$message"` and `"$MESSAGE"` are not the same.
 If you want to pass data between two filterx blocks of a log statement, use pipeline variables. That has better performance than name-value pairs.
 {{% /alert %}}
 
+## Variable names
+
+Filterx variable names have more restrictions than generic name-value pair names. They:
+
+- can contain alphanumeric characters and the underscore character (`_`), but **cannot** contain hyphens,
+- cannot begin with numbers,
+- can begin with underscore.
+
+{{% alert title="Note" color="info" %}}
+
+Although you can re-use type names and function names as variable names, that's not recommended and should be avoided.
+
+{{% /alert %}}
+
 ## Variable types
 
-Variables can have the following types:
+Variables can have the following types. All of these types have a matching function that can be used to type cast something into the specific type.
 
 - `boolean`
 - `bytes` (to represent binary data)
@@ -147,14 +161,13 @@ Variables can have the following types:
 - `dict`
 - `double`
 - `int`
-- [`isodate`]({{< relref "/filterx/function-reference.md#isodate" >}})
-- [`json, json_object`]({{< relref "/filterx/function-reference.md#json" >}}) and [`json_array`]({{< relref "/filterx/function-reference.md#json-array" >}}) for JSON or JSON-like objects. The `json` type is an alias for the `json_object` type. <!-- object: {}, array []-->
+- [`json, json_object`]({{< relref "/filterx/function-reference.md#json" >}}) and [`json_array`]({{< relref "/filterx/function-reference.md#json-array" >}}) for JSON or JSON-like objects. The `json` type is an alias for the `json_object` type.
 - `list`
-- `otel_logrecord`
+- `otel_logrecord` <!-- FIXME list other otel types -->
 - `protobuf`
 - [`string`]({{< relref "/filterx/function-reference.md#string" >}}): Converts a value into a string.
 
-### Assign values
+## Assign values
 
 To assign value to a name-value pair or a variable, use the following syntax:
 
@@ -209,7 +222,7 @@ You can use the traditional [template functions]({{< relref "/chapter-manipulati
 ${MESSAGE} = "$(format-json --subkeys values.)";
 ```
 
-### Delete values
+## Delete values
 
 To delete a value without deleting the object (for example, name-value pair), use the `null value`, for example:
 
@@ -228,7 +241,7 @@ To unset every empty field of an object, use the [`unset-empties`]({{< relref "/
 
 {{< include-headless "chunk/filterx-unset-hard-macros.md" >}}
 
-### Concatenate strings
+## Concatenate strings
 
 You can concatenate strings by adding them with the `+` operator. Note that if you want to have spaces between the added elements, you have to add them manually, like in Python, for example:
 
@@ -336,6 +349,7 @@ Filterx has the following built-in functions.
 - [`flatten`]({{< relref "/filterx/function-reference.md#flatten" >}}): Flattens the nested elements of an object.
 - [`format_csv`]({{< relref "/filterx/function-reference.md#format-csv" >}}): Formats a dictionary or a list into a comma-separated string.
 - [`format_kv`]({{< relref "/filterx/function-reference.md#format-kv" >}}): Formats a dictionary into key=value pairs.
+- [`isodate`]({{< relref "/filterx/function-reference.md#isodate" >}})
 - [`isset`]({{< relref "/filterx/function-reference.md#isset" >}}): Checks that argument exists and its value is not empty or null.
 - [`istype`]({{< relref "/filterx/function-reference.md#istype" >}}): Checks the type of an object.
 - [`len`]({{< relref "/filterx/function-reference.md#len" >}}): Returns the length of an object.
@@ -378,14 +392,10 @@ The following list shows you some common tasks that you can solve with filterx:
         # <your rewrite expression>
         ```
 
-<!-- FIXME: Rewrite the timezone of a message -->
-
 <!-- 
 Add a longer real-life looking example why that's good > (this plus a short intro can be a blog post as well)
  -->
 ### Create an iptables parser
-
-<!-- FIXME check the code, does it work like that? -->
 
 The following example shows you how to reimplement the {{% xref "/chapter-parsers/parser-iptables/_index.md" %}} in a filterx block. The following is a sample iptables log message (with line-breaks added for readability):
 
@@ -400,7 +410,7 @@ This is a normal RFC3164-formatted log message which comes from the kernel (wher
 1. First, create some filter statements to select only iptables messages:
 
     ```shell
-    filterx iptables-parserx {
+    block filterx() parse_iptables {
         ${FACILITY} == "kern"; # Filter on the kernel facility
         ${PROGRAM} == "kernel"; # Sender application is the kernel
         ${MESSAGE} =~ "PROTO="; # The PROTO key appears in all iptables messages
@@ -410,7 +420,7 @@ This is a normal RFC3164-formatted log message which comes from the kernel (wher
 1. To make the parsed data available under macros beginning with `${.iptables}`, like in the case of the original `iptables-parser()`, create the `${.iptables}` JSON object.
 
     ```shell
-    filterx iptables-parserx {
+    block filterx() parse_iptables {
         ${FACILITY} == "kern"; # Filter on the kernel facility
         ${PROGRAM} == "kernel"; # Sender application is the kernel
         ${MESSAGE} =~ "PROTO="; # The PROTO key appears in all iptables messages
@@ -422,7 +432,7 @@ This is a normal RFC3164-formatted log message which comes from the kernel (wher
 1. Add a key=value parser to parse the content of the messages into the `${.iptables}` JSON object. The key=value pairs are space-separated, while equal signs (=) separates the values from the keys. 
 
     ```shell
-    filterx iptables-parserx {
+    block filterx() parse_iptables {
         ${FACILITY} == "kern"; # Filter on the kernel facility
         ${PROGRAM} == "kernel"; # Sender application is the kernel
         ${MESSAGE} =~ "PROTO="; # The PROTO key appears in all iptables messages
@@ -433,15 +443,25 @@ This is a normal RFC3164-formatted log message which comes from the kernel (wher
     }
     ```
 
-    <!-- FIXME show json from sample message -->
+    <!-- FIXME show json from sample message
+    -->
 
-<!-- FIXME ### Handling OTEL -->
+<!-- FIXME ### Handling OTEL
+
+Map opentelemetry input mapping to OTEL objects
+
+```shell
+declare log = otel_logrecord(${.otel_raw.log});
+declare resource = otel_resource(${.otel_raw.resource});
+declare scope = otel_scope(${.otel_raw.scope});
+```
+ -->
 
 ## Update filters and rewrites to filterx
 
 The following sections show you how you can change your existing filters and rewrite rules to filterx statements. Note that:
 
-- Many examples in the filterx documentation were adapted from the existin filter, parser, and rewrite examples to show how you can achieve the same functionality with fiterx.
+- Many examples in the filterx documentation were adapted from the existing filter, parser, and rewrite examples to show how you can achieve the same functionality with fiterx.
 - Don't worry if you can't update something to filterx. While you can't use other blocks within a filterx block, you can use both in a log statement, for example, you can use a filterx block, then a parser if needed.
 - There is no push to use filterx. You can keep using the traditional blocks if they satisfy your requirements.
 
@@ -453,23 +473,13 @@ Filter functions: You can replace most filter functions with a simple value comp
 
 - `facility(user)` with `${FACILITY} == "user"`
 - `host("example-host")` with `${HOST} == "example-host"`
-- `level(warning)` with `$LEVEL} == "warning"`
-    <!-- FIXME    level(err..emerg) workaround? -->
+- `level(warning)` with `${LEVEL} == "warning"`
+
+    If you want to check for a range of levels, use numerical comparison with the `${LEVEL_NUM}` macro instead. For a list of numerical level values, see {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-level-num" %}}.
+
 - `message("example")` with `${MESSAGE} =~ "example"` (see the [equal tilde operator]({{< relref "/filterx/operator-reference.md#regexp" >}}) for details)
 - `program(nginx)` with `${PROGRAM} == "nginx"`
 - `source(my-source)` with `${SOURCE} == "my-source"`
-
-<!-- FIXME netmask() or netmask6()	Filter messages based on the IP address of the sending host.
-    Ideas for that? Tricky regexp matches against $SOURCEIP ?
-
-    inlist() (or how do you check if a json-array contains a value in an element?)
-    rate-limit()
-    tags()
- -->
-
-The following filter functions have no equivalents in filterx yet:
-
-- The `[filter()` filter function]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-filter/_index.md" >}}). You can't call a filterx block from another filterx block, but you can [access name-value pairs and pass variables](#scoping) from multiple filterx blocks.
 
 You can [compare values]({{< relref "/filterx/filterx-comparing/_index.md" >}}) and use [boolean operators]({{< relref "/filterx/filterx-boolean/_index.md" >}}) similarly to filters.
 
@@ -497,6 +507,14 @@ filterx demo_filterx {
 ```shell
 filter demo_filter { not host("example1") and not host("example2"); };
 ```
+
+The following filter functions have no equivalents in filterx yet:
+
+- The `[filter()` filter function]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-filter/_index.md" >}}). You can't call a filterx block from another filterx block, but you can [access name-value pairs and pass variables](#scoping) from multiple filterx blocks.
+- [`netmask()`]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-netmask/_index.md" >}}) and [`netmask6()`]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-netmask6/_index.md" >}})
+- [`inlist()`]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-inlist/_index.md" >}})
+- [`rate-limit()`]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-rate-limit/_index.md" >}})
+- [`tags()`]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-tags/_index.md" >}})
 
 <!-- Update rewrite rules
 

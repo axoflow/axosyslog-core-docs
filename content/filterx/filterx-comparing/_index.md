@@ -3,7 +3,7 @@ title: "Comparing values in filterx"
 linkTitle: "Comparing values"
 weight:  500
 ---
-<!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
+<!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
 In {{% param "product.abbrev" %}} you can compare macro values, templates, and variables as numerical and string values. String comparison is alphabetical: it determines if a string is alphabetically greater than or equal to another string. For details on macros and templates, see {{% xref "/chapter-manipulating-messages/customizing-message-format/_index.md" %}}.
 
@@ -23,7 +23,7 @@ You can use mathematical symbols as operators (like `==, !=, >=`), and based on 
 - Literal numbers (numbers not enclosed in quotes) are numeric.
 - You can explicitly type-cast an argument into a number.
 - The `bytes`, `json`, and `protobuf` types are always compared as strings.
-<!-- FIXME how do we compare dicts / lists -->
+- Currently you can't compare dictionaries and lists.
 
 For example:
 

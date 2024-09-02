@@ -33,6 +33,14 @@ For example, if a key of a JSON object doesn't exist for every message, you can 
 ${MESSAGE} = json.["BODY"] ?? "Empty message"
 ```
 
+## Plus operator
+
+The plus operator (`+`) works adds two arguments, where applicable. (For example, you can't add two datetime values.)
+
+You can use it two add numbers (two integers, two double values). If you add a double to an integer, the result is a double.
+
+Adding two strings [concatenates the strings]({{< relref "/filterx/_index.md#concatenate-strings" >}}).
+
 ## Plus equal operator
 
 The `+=` operator increases the value of a variable with the specified value. Exactly how the addition happens depends on the type of the variable.
@@ -48,7 +56,14 @@ The `+=` operator increases the value of a variable with the specified value. Ex
     b += 4.1;
     # b is 7.4
     ```
-    <!-- FIXME is a=3; a+=3.5 valid? -->
+
+    Adding a double value to an integer changes the integer into a double:
+
+    ```shell
+    c = 3;
+    c += 4.1;
+    # c is 7.1 and becomes a double
+    ```
 
 - For strings (including string values in an object), it concatenates the strings. For example:
 
@@ -66,24 +81,23 @@ The `+=` operator increases the value of a variable with the specified value. Ex
     # mylist is ["one", "two", "let's", "go"]
     ```
 
-- For a datetime, it increments the time. For example:
+- For a datetime, it increments the time. Note that you can add only integer and double values to a datetime, and:
 
-    ```shell
-    
-    ```
-<!-- +=
-        FIXME what is the unit of the int / double?
-            d = strptime("2000-01-01T00:00:00Z", "%Y-%m-%dT%H:%M:%S%z");
-            d += 3600000000;
-            $MSG.var_datetime_integer = string(d);
+    - When adding an integer, it must be the number of microseconds you want to add. For example:
 
-            e = strptime("2000-01-01T00:00:00Z", "%Y-%m-%dT%H:%M:%S%z");
-            e += 3600.000000;
-            $MSG.var_datetime_double = string(e);
+        ```shell
+        d = strptime("2000-01-01T00:00:00Z", "%Y-%m-%dT%H:%M:%S%z");
+        d += 3600000000; # 1 hour in microseconds
+        # d is "2000-01-01T01:00:00.000+00:00"
+        ```
 
-        r""""var_datetime_integer":"2000-01-01T01:00:00.000+00:00","""
-        r""""var_datetime_double":"2000-01-01T01:00:00.000+00:00","""
- -->
+    - When adding a double, the integer part must be the number of seconds you want to add. For example:
+
+        ```shell
+        d = strptime("2000-01-01T00:00:00Z", "%Y-%m-%dT%H:%M:%S%z");
+        d += 3600.000; # 3600 seconds, 1 hour
+        # d is "2000-01-01T01:00:00.000+00:00"
+        ```
 
 ## Regexp match (equal tilde) {#regexp}
 

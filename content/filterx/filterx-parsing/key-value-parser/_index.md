@@ -10,12 +10,11 @@ The filterx `parse_kv` function can separate a string consisting of whitespace o
 
 {{% alert title="Warning" color="warning" %}}
 
-If the names of keys in the message is the same as the names of {{% param "product.abbrev" %}} soft macros, the value from the parsed message will overwrite the value of the macro. For example, the `PROGRAM=value1, MESSAGE=value2` content will overwrite the `${PROGRAM}` and `${MESSAGE}` macros. To avoid overwriting such macros, use the `prefix()` option.
-
 By default, the parser discards sections of the input string that are not `key=value` pairs, even if they appear between `key=value` pairs that can be parsed. To store such sections, see {{% xref "/filterx/filterx-parsing/key-value-parser/kv-parser-options/_index.md#stray-words-key" %}}.
 
 The names of the keys can contain only the following characters: numbers (0-9), letters (a-z,A-Z), underscore (_), dot (.), hyphen (-). Other special characters are not permitted.
-<!-- FIXME is this generally true for filterx as well?  -->
+<!-- This is more permissive than the names of filterx variables.  -->
+
 {{% /alert %}}
 
 ## Declaration
