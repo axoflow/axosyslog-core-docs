@@ -5,6 +5,8 @@ weight: 400
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
+{{< include-headless "chunk/filterx-experimental-banner.md" >}}
+
 The `parse_csv` filterx function can separate parts of log messages (for example, the contents of the `${MESSAGE}` macro) at delimiter characters or strings to named fields (columns).
 
 Usage: `parse_csv(<input-string>, columns=json_array, delimiter=string, string_delimiters=json_array, dialect=string, strip_whitespace=boolean, greedy=boolean)`

@@ -5,7 +5,7 @@ weight: 4800
 
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-Available in {{< product >}} 4.9 and later.
+{{< include-headless "chunk/filterx-experimental-banner.md" >}}
 
 {{% alert title="Note" color="info" %}}
 Filterx (developed by Axoflow) is a replacement for [`syslog-ng` `filter{}` statements]({{< relref "/chapter-routing-filters/filters/_index.md" >}}) and parsers. It has its own syntax, allowing you to filter, parse, manipulate, and rewrite variables and complex data structures, and also compare them with various operators.

@@ -6,6 +6,10 @@ weight: 4800
 
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
+{{< include-headless "chunk/filterx-experimental-banner.md" >}}
+
+This page describes the functions you can use in [filterx blocks]({{< relref "/filterx/_index.md" >}}).
+
 ## cache_json_file {#cache-json-file}
 
 Load the contents of an external JSON file in an efficient manner. You can use this to lookup contextual information. (Basically, this is a filterx-specific implementation of the [`add-contextual-data() functionality`]({{< relref "/chapter-enrich-data/data-enrichment-add-contextual-data/_index.md" >}}).)

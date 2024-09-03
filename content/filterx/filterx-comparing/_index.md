@@ -5,6 +5,8 @@ weight:  500
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
+{{< include-headless "chunk/filterx-experimental-banner.md" >}}
+
 In {{% param "product.abbrev" %}} you can compare macro values, templates, and variables as numerical and string values. String comparison is alphabetical: it determines if a string is alphabetically greater than or equal to another string. For details on macros and templates, see {{% xref "/chapter-manipulating-messages/customizing-message-format/_index.md" %}}.
 
 Use the following syntax to compare macro values or templates.

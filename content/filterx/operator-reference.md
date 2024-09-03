@@ -6,7 +6,9 @@ weight: 4800
 
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-<!-- Operator reference, required arguments, options/flags, examples from tests, ... -->
+{{< include-headless "chunk/filterx-experimental-banner.md" >}}
+
+This page describes the operators you can use in [filterx blocks]({{< relref "/filterx/_index.md" >}}).
 
 ## Comparison operators
 

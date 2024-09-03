@@ -5,6 +5,8 @@ weight:  300
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
+{{< include-headless "chunk/filterx-experimental-banner.md" >}}
+
 When a log statement includes multiple filter statements, {{< product >}} sends a message to the destination only if all filters are true for the message. In other words, the filters are connected with the logical `AND` operator. In the following example, no message arrives to the destination, because the filters are exclusive (the hostname of a client cannot be `example1` and `example2` at the same time):
 
 ```shell
