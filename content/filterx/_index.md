@@ -85,7 +85,7 @@ A filterx block contains one or more filterx statements. The order of the statem
 
 Filterx statements can be one of the following:
 
-- A comparison, for example, `$HOST == "my-host";`. This statement is true only for messages where the `$HOST` field is `my-host`. Such simple comparison statements can be the equivalents of [traditional filter functions]({{< relref "/chapter-routing-filters/filters/reference-filters/_index.md" >}}).
+- A comparison, for example, `${HOST} == "my-host";`. This statement is true only for messages where the `${HOST}` field is `my-host`. Such simple comparison statements can be the equivalents of [traditional filter functions]({{< relref "/chapter-routing-filters/filters/reference-filters/_index.md" >}}).
 - A value assignment for a [name-value pair or a local variable](#variable-scope), for example, `$my-field = "bar";`. The left-side variable automatically gets the type of the right-hand expression. Assigning the false value to a variable (`$my-field = false;`) is a valid statement that doesn't automatically cause the filterx block to return as false.
 - A conditional statement ( `if (expr) { ... } else { ... };`) that allows you evaluate complex decision trees.
 - A declaration of a [pipeline variable](#variable-scope), for example, `declare my-pipeline-variable = "something";`.
@@ -93,17 +93,17 @@ Filterx statements can be one of the following:
 {{% alert title="Note" color="info" %}}
 
 - The `true;` and `false;` literals are also valid as statements. They can be useful in complex conditional (if/elif/else) statements.
-- A name-value pair or a variable in itself is also a statement. For example, `$HOST;`. If the name-value pair or variable is empty or doesn't exist, the statement is false.
+- A name-value pair or a variable in itself is also a statement. For example, `${HOST};`. If the name-value pair or variable is empty or doesn't exist, the statement is false.
 
 {{% /alert %}}
 
-When you assign the value of a variable using another variable (for example, `$MESSAGE = "$HOST"`), {{< product >}} copies the current value of the `$HOST` variable. If a statement later changes the value of the `$HOST` field, the `$MESSAGE` field won't change. For example:
+When you assign the value of a variable using another variable (for example, `${MESSAGE} = "${HOST}"`), {{< product >}} copies the current value of the `${HOST}` variable. If a statement later changes the value of the `${HOST}` field, the `${MESSAGE}` field won't change. For example:
 
 ```shell
 filterx {
   ${HOST} = "first-hostname";
-  ${MESSAGE} = ${HOST}; # The value of $MESSAGE is first-hostname
-  ${HOST} = "second-hostname"; # The value of $MESSAGE is still first-hostname
+  ${MESSAGE} = ${HOST}; # The value of ${MESSAGE} is first-hostname
+  ${HOST} = "second-hostname"; # The value of ${MESSAGE} is still first-hostname
 };
 ```
 
@@ -117,7 +117,7 @@ js = json_object({
 
 ${MESSAGE} = js;
 
-js.third_key = "third-value-not-available-in-$MESSAGE";
+js.third_key = "third-value-not-available-in-MESSAGE";
 ```
 
 ## Data model and scope {#scoping}
@@ -127,7 +127,7 @@ Each filterx block can access data from the following elements.
 - Macros and name-value pairs of the message being processed (for example, `$PROGRAM`). The names of macros and name-value pairs begin with the `$` character. If you define a new variable in a filterx block and its name begins with the `$` character, it's automatically added to the name-value pairs of the message.
 
     {{% alert title="Note" color="info" %}}
-Using braces around macro names is not mandatory, and the `"$MESSAGE"` and `"${MESSAGE}"` formats are equivalent. However, using the `"${MESSAGE}"` format is required if the name contains special characters, like the dot (`.`).
+Using curly braces around macro names is not mandatory, and the `"$MESSAGE"` and `"${MESSAGE}"` formats are equivalent. However, using the `"${MESSAGE}"` format is required if the name contains special characters, like a hyphen (`-`) or a dot (`.`), so it's best to always use curly braces.
 
 Names are case-sensitive, so `"$message"` and `"$MESSAGE"` are not the same.
     {{% /alert %}}
