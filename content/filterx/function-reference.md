@@ -175,6 +175,26 @@ Converts a string into lowercase characters.
 
 Usage: `lower(string)`
 
+## otel_array {#otel-array}
+
+Creates a [dictionary]({{< relref "/filterx/_index.md#json" >}}) represented as an OpenTelemetry array.
+
+## otel_kvlist {#otel-kvlist}
+
+Creates a [dictionary]({{< relref "/filterx/_index.md#json" >}}) represented as an OpenTelemetry key-value list.
+
+## otel_logrecord {#otel-logrecord}
+
+Creates an [OpenTelemetry log record object](https://opentelemetry.io/docs/specs/otel/logs/data-model/).
+
+## otel_resource {#otel-resource}
+
+Creates an [OpenTelemetry resource object](https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/resource/v1/resource.proto).
+
+## otel_scope {#otel-scope}
+
+Creates an [OpenTelemetry scope object](https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/common/v1/common.proto).
+
 ## parse_csv {#parse-csv}
 
 Separate a comma-separated or similar string.
@@ -378,7 +398,7 @@ For example:
 
 ```shell
 filterx {
-  $logmsg_variable = "foo";
+  ${logmsg_variable} = "foo";
   local_variable = "bar";
   declare pipeline_level_variable = "baz";
   ${MESSAGE} = vars();

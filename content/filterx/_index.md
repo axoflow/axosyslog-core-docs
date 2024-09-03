@@ -26,6 +26,8 @@ The result of filterx statements is always a boolean value, either *true* or *fa
     - the `0` value,
     - statements that result in an error (for example, if a comparison cannot be evaluated because of type error, or a field of a variable referenced in the statement is doesn't exist or is unset).
 
+## Define a filterx block
+
 You can define a filterx statement like this:
 
 ```shell
@@ -167,7 +169,11 @@ Variables can have the following types. All of these types have a matching funct
 - `int`
 - [`json, json_object`]({{< relref "/filterx/function-reference.md#json" >}}) and [`json_array`]({{< relref "/filterx/function-reference.md#json-array" >}}) for JSON or JSON-like objects. The `json` type is an alias for the `json_object` type.
 - `list`
-- `otel_logrecord` <!-- FIXME list other otel types -->
+- `otel_array`
+- `otel_kvlist`
+- `otel_logrecord` <!-- FIXME links to otel types -->
+- `otel_resource`
+- `otel_scope`
 - `protobuf`
 - [`string`]({{< relref "/filterx/function-reference.md#string" >}}): Converts a value into a string.
 
@@ -253,12 +259,13 @@ You can concatenate strings by adding them with the `+` operator. Note that if y
 ${MESSAGE} = ${HOST} + " first part of the message," + " second part of the message" + "\n";
 ```
 
-### Lists, dicts, and JSON {#json}
+## Lists, dicts, and JSON {#json}
 
 The list and dict types are similar to the their [Python counterparts](https://www.geeksforgeeks.org/difference-between-list-and-dictionary-in-python/). However, for performance reasons, {{< product >}} doesn't have abstract list and dict types: when you create a list or a dictionary, you have to specify its type, which can be one of JSON or OTEL. For example:
 
 ```shell
 list = json_array(); # Create an empty JSON list
+#list = otel_array(); # Create an OTEL list
 list += "first_element"; # Append entries to the list
 list += "second_element";
 list += "third_element";
@@ -398,9 +405,6 @@ The following list shows you some common tasks that you can solve with filterx:
         # <your rewrite expression>
         ```
 
-<!-- 
-Add a longer real-life looking example why that's good > (this plus a short intro can be a blog post as well)
- -->
 ### Create an iptables parser
 
 The following example shows you how to reimplement the {{% xref "/chapter-parsers/parser-iptables/_index.md" %}} in a filterx block. The following is a sample iptables log message (with line-breaks added for readability):
@@ -451,17 +455,6 @@ This is a normal RFC3164-formatted log message which comes from the kernel (wher
 
     <!-- FIXME show json from sample message
     -->
-
-<!-- FIXME ### Handling OTEL
-
-Map opentelemetry input mapping to OTEL objects
-
-```shell
-declare log = otel_logrecord(${.otel_raw.log});
-declare resource = otel_resource(${.otel_raw.resource});
-declare scope = otel_scope(${.otel_raw.scope});
-```
- -->
 
 ## Update filters and rewrites to filterx
 
