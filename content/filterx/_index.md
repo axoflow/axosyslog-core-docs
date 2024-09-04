@@ -8,7 +8,7 @@ weight: 4800
 {{< include-headless "chunk/filterx-experimental-banner.md" >}}
 
 {{% alert title="Note" color="info" %}}
-Filterx (developed by Axoflow) is a replacement for [`syslog-ng` `filter{}` statements]({{< relref "/chapter-routing-filters/filters/_index.md" >}}) and parsers. It has its own syntax, allowing you to filter, parse, manipulate, and rewrite variables and complex data structures, and also compare them with various operators.
+Filterx (developed by Axoflow) is a replacement for [`syslog-ng` `filter{}` statements]({{< relref "/chapter-routing-filters/filters/_index.md" >}}), [parsers]({{< relref "/chapter-parsers/_index.md" >}}), and [rewrite rules]({{< relref "/chapter-manipulating-messages/modifying-messages/_index.md" >}}). It has its own syntax, allowing you to filter, parse, manipulate, and rewrite variables and complex data structures, and also compare them with various operators.
 
 Filterx is a consistent and comprehensive reimplementation of several core features with improved performance, proper typing support, and the ability to handle multi-level typed objects.
 {{% /alert %}}
@@ -439,7 +439,7 @@ This is a normal RFC3164-formatted log message which comes from the kernel (wher
     }
     ```
 
-1. Add a key=value parser to parse the content of the messages into the `${.iptables}` JSON object. The key=value pairs are space-separated, while equal signs (=) separates the values from the keys. 
+1. Add a key=value parser to parse the content of the messages into the `${.iptables}` JSON object. The key=value pairs are space-separated, while equal signs (=) separates the values from the keys.
 
     ```shell
     block filterx() parse_iptables {
