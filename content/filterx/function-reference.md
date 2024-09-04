@@ -185,15 +185,15 @@ Creates a [dictionary]({{< relref "/filterx/_index.md#json" >}}) represented as 
 
 ## otel_logrecord {#otel-logrecord}
 
-Creates an [OpenTelemetry log record object](https://opentelemetry.io/docs/specs/otel/logs/data-model/).
+Creates an [OpenTelemetry log record object]({{< relref "/filterx/filterx-otel/_index.md#otel-logrecord-reference" >}}).
 
 ## otel_resource {#otel-resource}
 
-Creates an [OpenTelemetry resource object](https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/resource/v1/resource.proto).
+Creates an [OpenTelemetry resource object]({{< relref "/filterx/filterx-otel/_index.md#otel-resource-reference" >}}).
 
 ## otel_scope {#otel-scope}
 
-Creates an [OpenTelemetry scope object](https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/common/v1/common.proto).
+Creates an [OpenTelemetry scope object]({{< relref "/filterx/filterx-otel/_index.md#otel-scope-reference" >}}).
 
 ## parse_csv {#parse-csv}
 

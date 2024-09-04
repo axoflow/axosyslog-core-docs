@@ -169,3 +169,118 @@ To convert incoming syslog messages to OpenTelemetry log messages and send them 
     };
     ```
     <!-- FIXME do we need the Update output part in this case? -->
+
+## otel_logrecord reference {#otel-logrecord-reference}
+
+OpenTelemetry log records can have the following fields. (Based on the [official OpenTelemetry proto file](https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/logs/v1/logs.proto).)
+
+### attributes
+
+|           |                                                  |
+| --------- | ------------------------------------------------ |
+| Type: | `otel_kvlist` |
+
+Attributes that describe the event. Attribute keys MUST be unique.
+
+### body
+
+The body of the log record. It can be a simple string, or any complex nested objects, such as lists and arrays.
+
+### flags
+
+<!-- FIXME how do we handle that, it this a bytes type?
+  // Flags, a bit field. 8 least significant bits are the trace flags as
+  // defined in W3C Trace Context specification. 24 most significant bits are reserved
+  // and must be set to 0. Readers must not assume that 24 most significant bits
+  // will be zero and must correctly mask the bits when reading 8-bit trace flag (use
+  // flags & LOG_RECORD_FLAGS_TRACE_FLAGS_MASK). [Optional].
+  fixed32 flags = 8;
+   -->
+
+### observed_time_unix_nano
+
+|           |                                                  |
+| --------- | ------------------------------------------------ |
+| Type: | `datetime` |
+
+The time when the event was observed by the collection system, in UNIX Epoch time in nanoseconds since 00:00:00 UTC on 1 January 1970.
+
+### severity_number
+
+|           |                                                  |
+| --------- | ------------------------------------------------ |
+| Type: | `int` |
+
+The severity of the message as a numerical value of the [severity](#severity_text).
+<!-- FIXME include or link to the string mapping -->
+
+### severity_text
+
+|           |                                                  |
+| --------- | ------------------------------------------------ |
+| Type: | `string` |
+
+The severity of the message as a string:
+
+```
+SEVERITY_NUMBER_UNSPECIFIED = 0;
+SEVERITY_NUMBER_TRACE  = 1;
+SEVERITY_NUMBER_TRACE2 = 2;
+SEVERITY_NUMBER_TRACE3 = 3;
+SEVERITY_NUMBER_TRACE4 = 4;
+SEVERITY_NUMBER_DEBUG  = 5;
+SEVERITY_NUMBER_DEBUG2 = 6;
+SEVERITY_NUMBER_DEBUG3 = 7;
+SEVERITY_NUMBER_DEBUG4 = 8;
+SEVERITY_NUMBER_INFO   = 9;
+SEVERITY_NUMBER_INFO2  = 10;
+SEVERITY_NUMBER_INFO3  = 11;
+SEVERITY_NUMBER_INFO4  = 12;
+SEVERITY_NUMBER_WARN   = 13;
+SEVERITY_NUMBER_WARN2  = 14;
+SEVERITY_NUMBER_WARN3  = 15;
+SEVERITY_NUMBER_WARN4  = 16;
+SEVERITY_NUMBER_ERROR  = 17;
+SEVERITY_NUMBER_ERROR2 = 18;
+SEVERITY_NUMBER_ERROR3 = 19;
+SEVERITY_NUMBER_ERROR4 = 20;
+SEVERITY_NUMBER_FATAL  = 21;
+SEVERITY_NUMBER_FATAL2 = 22;
+SEVERITY_NUMBER_FATAL3 = 23;
+SEVERITY_NUMBER_FATAL4 = 24;
+```
+
+### span_id
+
+|           |                                                  |
+| --------- | ------------------------------------------------ |
+| Type: | `bytes` |
+
+Unique identifier of a span within a trace, an 8-byte array.
+
+### time_unix_nano
+
+|           |                                                  |
+| --------- | ------------------------------------------------ |
+| Type: | `datetime` |
+
+The time when the event occurred, in UNIX Epoch time in nanoseconds since 00:00:00 UTC on 1 January 1970. If `0`, the timestamp is missing.
+
+### trace_id
+
+|           |                                                  |
+| --------- | ------------------------------------------------ |
+| Type: | `bytes` |
+
+Unique identifier of a trace, a 16-byte array.
+
+## otel_resource reference {#otel-resource-reference}
+
+The [resource](https://opentelemetry.io/docs/concepts/resources/) describes the entity that produced the log record. It contains a set of attributes (key-value pairs) that must have unique keys. For example, it can contain the hostname and the name of the cluster.
+<!-- https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/resource/v1/resource.proto -->
+
+## otel_scope reference {#otel-scope-reference}
+
+Describes the [instrumentation scope](https://opentelemetry.io/docs/concepts/instrumentation-scope/) that sent the message. It may contain simple key-value pairs (string or integers), but also arbitrary nested objects, such as lists and arrays. It usually contains a `name` and a `version` field.
+
+<!-- https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/common/v1/common.proto -->
