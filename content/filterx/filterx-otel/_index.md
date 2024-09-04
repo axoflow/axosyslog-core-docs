@@ -53,8 +53,8 @@ To modify messages received via the OpenTelemetry protocol (OTLP), such as the o
     - It checks if the [Timestamp field](https://opentelemetry.io/docs/specs/otel/logs/data-model/#field-timestamp) (which is optional) is set in the log object, and sets it to the date {{< product >}} received the message if it doesn't.
 
         ```shell
-        if not isset(log["Timestamp"]) {
-            log["Timestamp"] = ${R_UNIXTIME};
+        if log.observed_time_unix_nano == 0 {
+            log.observed_time_unix_nano = ${R_UNIXTIME};
         };
         ```
 
@@ -110,8 +110,8 @@ To modify messages received via the OpenTelemetry protocol (OTLP), such as the o
             if not isset(resource.attributes["host.name"]) {
                 resource.attributes["host.name"] = ${SOURCEIP};
             };
-            if not isset(log["Timestamp"]) {
-                log["Timestamp"] = ${R_UNIXTIME};
+            if log.observed_time_unix_nano == 0 {
+                log.observed_time_unix_nano = ${R_UNIXTIME};
             };
 
             # Update output
