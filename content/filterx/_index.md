@@ -367,7 +367,7 @@ Filterx has the following built-in functions.
 - [`lower`]({{< relref "/filterx/function-reference.md#lower" >}}): Converts a string into lowercase characters.
 - [`parse_csv`]({{< relref "/filterx/filterx-parsing/csv/_index.md" >}}): Separates a string consisting of whitespace or comma-separated `key=value` pairs.
 - [`parse_kv`]({{< relref "/filterx/filterx-parsing/key-value-parser/_index.md" >}}): Separates a string consisting of whitespace or comma-separated `key=value` pairs.
-- [`parse_xml`]({{< relref "/filterx/filterx-parsing/xml/_index.md" >}}): Parses an XML object into a JSON object.
+<!-- - [`parse_xml`](FIXME): Parses an XML object into a JSON object. -->
 - [`regexp_search`]({{< relref "/filterx/function-reference.md#regexp-search" >}}): Searches a string using regular expressions.
 - [`regexp_subst`]({{< relref "/filterx/function-reference.md#regexp-subst" >}}): Rewrites a string using regular expressions.
 - [`strptime`]({{< relref "/filterx/function-reference.md#strptime" >}}): Converts a value into datetime.
