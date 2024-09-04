@@ -226,11 +226,15 @@ filterx {
 When assigning values to name-value pairs, you cannot modify [hard macros]({{< relref "/chapter-manipulating-messages/customizing-message-format/macros-hard-vs-soft/_index.md" >}}).
 {{% /alert %}}
 
-You can use the traditional [template functions]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}) of {{< product >}} to access and format name-value pairs. Note that you must enclose the template function expression between double-quotes, for example:
+### Template functions
+
+You can use the traditional [template functions]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}) of {{< product >}} to access and format name-value pairs. For that you must enclose the template function expression between double-quotes, for example:
 
 ```shell
 ${MESSAGE} = "$(format-json --subkeys values.)";
 ```
+
+However, note that template functions cannot access the local and pipeline variables created in filterx blocks.
 
 ## Delete values
 
@@ -347,10 +351,6 @@ Filterx has the following operators.
 - [Ternary conditional operator]({{< relref "/filterx/operator-reference.md#ternary-conditional-operator" >}}): `?:`
 - [Null coalescing operator]({{< relref "/filterx/operator-reference.md#null-coalescing-operator" >}}): `??`
 - [Regular expression (regexp) match]({{< relref "/filterx/operator-reference.md#regexp" >}}): `=~` and `!~`.
-
-<!-- FIXME 
-`$MSG = "$(format-json --subkeys values.)";` > needs the double-quote for template eval > should we document that Bazsi?
--->
 
 For details, see {{% xref "/filterx/operator-reference.md" %}}.
 

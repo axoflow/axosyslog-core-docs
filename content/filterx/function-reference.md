@@ -307,7 +307,7 @@ You can use the following flags with the `regexp_subst` function:
 
 ## string
 
-Cast a value into a string.
+Cast a value into a string. Note currently {{< product >}} evaluates strings and executes [template functions]({{< relref "/filterx/_index.md#template-functions" >}}) and template expressions. In the future, template evaluation will be moved to a separate filterx function.
 
 Usage: `string(<string or expression to cast>)`
 
