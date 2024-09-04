@@ -73,8 +73,8 @@ To modify messages received via the OpenTelemetry protocol (OTLP), such as the o
             if not isset(resource.attributes["host.name"]) {
                 resource.attributes["host.name"] = ${SOURCEIP};
             };
-            if not isset(log["Timestamp"]) {
-                log["Timestamp"] = ${R_UNIXTIME};
+            if log.observed_time_unix_nano == 0 {
+                log.observed_time_unix_nano = ${R_UNIXTIME};
             };
         };
         destination {
