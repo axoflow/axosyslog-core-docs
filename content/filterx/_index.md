@@ -15,9 +15,7 @@ Filterx is a consistent and comprehensive reimplementation of several core featu
 
 Filterx helps you to route your logs: a message passes the filterx block in a log path only if the filterx block is true for the particular message. If a log statement includes a filterx block, the messages are sent to the destinations only if they pass all filterx blocks of the log path. For example, you can select only the messages originating from a particular host, or create complex filters using operators, functions, and logical expressions.
 
-Like simple filters, filterx blocks consist of a list of filter statements. If a message matches all filter statements, it passes the filter.
-
-The result of filterx statements is always a boolean value, either *true* or *false*:
+Filterx blocks consist of a list of filterx statements, the result of every statement is either *true* or *false*. If a message matches all filterx statements, it passes the filterx block to the next element of the log path, for example, the destination.
 
 - True values are: Complex values, non-empty strings, and non-zero numbers.
 - False values are:
