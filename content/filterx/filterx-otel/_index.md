@@ -13,9 +13,51 @@ weight:  500
 - change fields in the message (for examples, add missing information, or delete unnecessary data), or
 - convert incoming syslog messages to OpenTelemetry log messages.
 
-<!-- FIXME example for routing message based on something like resource podname -->
+## Route OTEL messages
 
-### Modify incoming OTEL messages
+To route OTEL messages (such as the ones received using the [`opentelemetry()` source]({{< relref "/chapter-sources/opentelemetry/_index.md" >}})) based on their content, configure the following:
+
+1. Map the OpenTelemetry input message to OTEL objects in filterx, so {{< product >}} handles their type properly. Add the following to your filterx block:
+
+    ```shell
+    log {
+        source {opentelemetry()};
+        filterx {
+            # Input mapping
+            declare log = otel_logrecord(${.otel_raw.log});
+            declare resource = otel_resource(${.otel_raw.resource});
+            declare scope = otel_scope(${.otel_raw.scope});
+        };
+        destination {
+            # your opentelemetry destination settings
+        };
+    };
+    ```
+
+1. Add filterx statements that select the messages you need. The following example selects messages sent by the `nginx` application, received from the host called `example-host`.
+
+    ```shell
+    log {
+        source {opentelemetry()};
+        filterx {
+            # Input mapping
+            declare log = otel_logrecord(${.otel_raw.log});
+            declare resource = otel_resource(${.otel_raw.resource});
+            declare scope = otel_scope(${.otel_raw.scope});
+
+            # Filterx statements that act as filters
+            resource.attributes["service.name"] == "nginx";
+            resource.attributes["host.name"] == "example-host";
+        };
+        destination {
+            # your opentelemetry destination settings
+        };
+    };
+    ```
+
+    For details on the common keys in log records, see the [`otel_logrecord reference`](#otel-logrecord-reference).
+
+## Modify incoming OTEL messages
 
 To modify messages received via the OpenTelemetry protocol (OTLP), such as the ones received using the [`opentelemetry()` source]({{< relref "/chapter-sources/opentelemetry/_index.md" >}}), you have to configure the following:
 
@@ -116,7 +158,7 @@ To modify messages received via the OpenTelemetry protocol (OTLP), such as the o
     };
     ```
 
-### syslog to OTEL
+## syslog to OTEL
 
 To convert incoming syslog messages to OpenTelemetry log messages and send them to an OpenTelemetry receiver, you have to perform the following high-level steps in your configuration file:
 
@@ -175,14 +217,11 @@ The body of the log record. It can be a simple string, or any complex nested obj
 
 ### flags
 
-<!-- FIXME how do we handle that, it this a bytes type?
-  // Flags, a bit field. 8 least significant bits are the trace flags as
-  // defined in W3C Trace Context specification. 24 most significant bits are reserved
-  // and must be set to 0. Readers must not assume that 24 most significant bits
-  // will be zero and must correctly mask the bits when reading 8-bit trace flag (use
-  // flags & LOG_RECORD_FLAGS_TRACE_FLAGS_MASK). [Optional].
-  fixed32 flags = 8;
-   -->
+|           |                                                  |
+| --------- | ------------------------------------------------ |
+| Type: | `int` |
+
+Flags as a bit field.
 
 ### observed_time_unix_nano
 
