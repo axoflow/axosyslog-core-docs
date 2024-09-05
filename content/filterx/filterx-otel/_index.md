@@ -1,5 +1,5 @@
 ---
-title: "Handling OpenTelemetry log records"
+title: "Handle OpenTelemetry log records"
 linkTitle: "OpenTelemetry logs"
 weight:  500
 ---
