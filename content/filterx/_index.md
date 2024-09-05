@@ -454,112 +454,29 @@ This is a normal RFC3164-formatted log message which comes from the kernel (wher
     ```
 
     <!-- FIXME show json from sample message
+    FIXME rebuild the message and add a destination?
     -->
 
-## Update filters and rewrites to filterx
 
-The following sections show you how you can change your existing filters and rewrite rules to filterx statements. Note that:
+- underscores vs hyphens in filterx? everywhere else we use mainly hyphens (parse_kv vs parse-kv) > only underscores work for now
+- make flags (like ignorecase) of regexp_subst available for regexp_search
+- Aliases for options that are the same but have different names in filterx reimplementations? 
+    - csv-parser: delimiters vs parse_csv: delimiter
+- inconsistency in parse_csv: string_delimiters vs delimiter
 
-- Many examples in the filterx documentation were adapted from the existing filter, parser, and rewrite examples to show how you can achieve the same functionality with fiterx.
-- Don't worry if you can't update something to filterx. While you can't use other blocks within a filterx block, you can use both in a log statement, for example, you can use a filterx block, then a parser if needed.
-- There is no push to use filterx. You can keep using the traditional blocks if they satisfy your requirements.
+Rewrite rules had some functions to change some hard macros:
+    Setting severity with the set-severity() rewrite function
+    Setting the facility field with the set-facility() rewrite function
+    Setting the priority of a message with the set-pri() rewrite function
 
-### Update filters to filterx
+- Rewrite the timezone of a message > most nem lehet
 
-This section shows you how to update your existing `filter` expressions to `filterx`.
-
-Filter functions: You can replace most filter functions with a simple value comparison with the appropriate macro, for example:
-
-- `facility(user)` with `${FACILITY} == "user"`
-- `host("example-host")` with `${HOST} == "example-host"`
-- `level(warning)` with `${LEVEL} == "warning"`
-
-    If you want to check for a range of levels, use numerical comparison with the `${LEVEL_NUM}` macro instead. For a list of numerical level values, see {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-level-num" %}}.
-
-- `message("example")` with `${MESSAGE} =~ "example"` (see the [equal tilde operator]({{< relref "/filterx/operator-reference.md#regexp" >}}) for details)
-- `program(nginx)` with `${PROGRAM} == "nginx"`
-- `source(my-source)` with `${SOURCE} == "my-source"`
-
-You can [compare values]({{< relref "/filterx/filterx-comparing/_index.md" >}}) and use [boolean operators]({{< relref "/filterx/filterx-boolean/_index.md" >}}) similarly to filters.
-
-Since all filterx statements must match a message to pass the filterx block, often you can change complex boolean filter expressions into multiple, more simple filterx statements. For example, consider the following filter statement:
-
-```shell
-filter demo_filter { host("example1") and program("nginx"); };
-```
-
-The following is the same filterx statement:
-
-```shell
-filterx demo_filterx { ${HOST} == "example1" and ${PROGRAM} == "nginx"; };
-```
-
-which is equivalent with:
-
-```shell
-filterx demo_filterx {
-    ${HOST} == "example1";
-    ${PROGRAM} == "nginx";
-};
-```
-
-```shell
-filter demo_filter { not host("example1") and not host("example2"); };
-```
-
-The following filter functions have no equivalents in filterx yet:
-
-- The `[filter()` filter function]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-filter/_index.md" >}}). You can't call a filterx block from another filterx block, but you can [access name-value pairs and pass variables](#scoping) from multiple filterx blocks.
-- [`netmask()`]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-netmask/_index.md" >}}) and [`netmask6()`]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-netmask6/_index.md" >}})
-- [`inlist()`]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-inlist/_index.md" >}})
-- [`rate-limit()`]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-rate-limit/_index.md" >}})
-- [`tags()`]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-tags/_index.md" >}})
-
-<!-- Update rewrite rules
+- netmask() or netmask6() filter function
+- inlist() filter function (or a generic way to check if a list/json-array contains a value in an element)
+- rate-limit()
+- tags() filtere function
+-->
 
 
-Replacing message parts (rewrite(subst)) > regexp_subst {#regexp-subst})
-
-Setting message fields to specific values > [assign values](#assign-values)
-
-set-severity(), set-facility() set-pri() rewrite functions > no equivalent
-
-Setting match variables with the set-matches() rewrite rule
-    > I don't even get what this does
-
-Unsetting message fields
-    > [delete values](#delete-values)
-
-Renaming message fields
-    > see use cases
-
-Creating custom SDATA fields
-    > see use cases / assign values
-
-Setting multiple message fields to specific values
-    > no equivalent
-
-map-value-pairs: Rename value-pairs to normalize logs
-    > Does the simple rename cover that, or no equivalent?
-
-Conditional rewrites
-    > see use cases
-
-Rewrite the timezone of a message
-    > ?
-
-Anonymizing credit card numbers
-    > no equivalent, but can be replicated using some regexp_subst expressions, see the scl for details tmp/axosyslog/scl/rewrite/cc-mask.conf
-
-add/delete tags: do we need here a round-trip here like this, or is it working without that?: 
-    temp-tags = json-array($TAGS);
-    temp-tags += "new-tag";
-    $TAGS = format_csv(temp-tags);
-
-    - How can you delete an element with a specific value from a list (not by index)
-        like this in python:
-            thislist = ["apple", "banana", "cherry"]
-            thislist.remove("banana")
+<!-- FIXME Destinatinokben hogyan hssznald amit filterx-ben osszeraktal
  -->
-
-<!-- FIXME group-by like contexts and similar don't work yet -->
