@@ -97,7 +97,7 @@ Filterx statements can be one of the following:
 
 {{% /alert %}}
 
-When you assign the value of a variable using another variable (for example, `${MESSAGE} = "${HOST}"`), {{< product >}} copies the current value of the `${HOST}` variable. If a statement later changes the value of the `${HOST}` field, the `${MESSAGE}` field won't change. For example:
+When you assign the value of a variable using another variable (for example, `${MESSAGE} = ${HOST};`), {{< product >}} copies the current value of the `${HOST}` variable. If a statement later changes the value of the `${HOST}` field, the `${MESSAGE}` field won't change. For example:
 
 ```shell
 filterx {
@@ -119,6 +119,8 @@ ${MESSAGE} = js;
 
 js.third_key = "third-value-not-available-in-MESSAGE";
 ```
+
+You can use [filterx operators](#operators) and [functions](#functions).
 
 ## Data model and scope {#scoping}
 
@@ -169,9 +171,9 @@ Variables can have the following types. All of these types have a matching funct
 - `list`
 - `otel_array`
 - `otel_kvlist`
-- `otel_logrecord` <!-- FIXME links to otel types -->
-- `otel_resource`
-- `otel_scope`
+- [`otel_logrecord`]({{< relref "/filterx/function-reference.md#otel-logrecord" >}})
+- [`otel_resource`]({{< relref "/filterx/function-reference.md#otel-resource" >}})
+- [`otel_scope`]({{< relref "/filterx/function-reference.md#otel-scope" >}})
 - `protobuf`
 - [`string`]({{< relref "/filterx/function-reference.md#string" >}}): Converts a value into a string.
 
@@ -360,14 +362,14 @@ Filterx has the following built-in functions.
 - [`flatten`]({{< relref "/filterx/function-reference.md#flatten" >}}): Flattens the nested elements of an object.
 - [`format_csv`]({{< relref "/filterx/function-reference.md#format-csv" >}}): Formats a dictionary or a list into a comma-separated string.
 - [`format_kv`]({{< relref "/filterx/function-reference.md#format-kv" >}}): Formats a dictionary into key=value pairs.
-- [`isodate`]({{< relref "/filterx/function-reference.md#isodate" >}})
+- [`isodate`]({{< relref "/filterx/function-reference.md#isodate" >}}): Parses a string as a date in ISODATE format.
 - [`isset`]({{< relref "/filterx/function-reference.md#isset" >}}): Checks that argument exists and its value is not empty or null.
 - [`istype`]({{< relref "/filterx/function-reference.md#istype" >}}): Checks the type of an object.
 - [`len`]({{< relref "/filterx/function-reference.md#len" >}}): Returns the length of an object.
 - [`lower`]({{< relref "/filterx/function-reference.md#lower" >}}): Converts a string into lowercase characters.
-- [`parse_csv`]({{< relref "/filterx/filterx-parsing/csv/_index.md" >}}): Separates a string consisting of whitespace or comma-separated `key=value` pairs.
+- [`parse_csv`]({{< relref "/filterx/filterx-parsing/csv/_index.md" >}}): Separates a comma-separated or similar string.
 - [`parse_kv`]({{< relref "/filterx/filterx-parsing/key-value-parser/_index.md" >}}): Separates a string consisting of whitespace or comma-separated `key=value` pairs.
-<!-- - [`parse_xml`](FIXME): Parses an XML object into a JSON object. -->
+    <!-- - [`parse_xml`](FIXME): Parses an XML object into a JSON object. -->
 - [`regexp_search`]({{< relref "/filterx/function-reference.md#regexp-search" >}}): Searches a string using regular expressions.
 - [`regexp_subst`]({{< relref "/filterx/function-reference.md#regexp-subst" >}}): Rewrites a string using regular expressions.
 - [`strptime`]({{< relref "/filterx/function-reference.md#strptime" >}}): Converts a value into datetime.
