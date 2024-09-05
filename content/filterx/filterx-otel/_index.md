@@ -83,17 +83,7 @@ To modify messages received via the OpenTelemetry protocol (OTLP), such as the o
     };
     ```
 
-<!-- FIXME 
-
-    logs.proto file-ban van leirva milyen fieldek vannak az otel uzenetben
-    mindre lehet hivatkozni, ertekuket bizgetni, stb
-        resource.proto > ebben nem sok van
-        common.proto (a scope-hoz tartozo proto) https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/common/v1/common.proto
-
-    anyvalue lehet sokminden (kb barmi)
-
-    keyvalue mezokben listakat es dicteket is lehet belepakolno
-    -->
+    For details on mapping values, see the [`otel_logrecord reference`](#otel-logrecord-reference).
 
 1. Update the message with the modified objects so your changes are included in the message sent to the destination:
 
@@ -130,19 +120,11 @@ To modify messages received via the OpenTelemetry protocol (OTLP), such as the o
 
 To convert incoming syslog messages to OpenTelemetry log messages and send them to an OpenTelemetry receiver, you have to perform the following high-level steps in your configuration file:
 
-- Receive the incoming syslog messages.
-- Initialize the data structures required for OpenTelemetry log messages in a [filterx block]({{< relref "/filterx/_index.md" >}}).
-- Map the key-value pairs and macros of the syslog message to appropriate OpenTelemetry log record fields. There is no universal mapping available, it depends on the source message and the receiver as well. For some samples, see the [Example Mappings](https://opentelemetry.io/docs/specs/otel/logs/data-model-appendix) in the OpenTelemetry documentation, or check the recommendations and requirements of your receiver.
+1. Receive the incoming syslog messages.
+1. Initialize the data structures required for OpenTelemetry log messages in a [filterx block]({{< relref "/filterx/_index.md" >}}).
+1. Map the key-value pairs and macros of the syslog message to appropriate OpenTelemetry log record fields. There is no universal mapping available, it depends on the source message and the receiver as well. For some samples, see the [Example Mappings](https://opentelemetry.io/docs/specs/otel/logs/data-model-appendix) in the OpenTelemetry documentation, or check the recommendations and requirements of your receiver. For details on the fields that are available in the {{< product >}} OTEL data structures, see the [`otel_logrecord reference`](#otel-logrecord-reference).
 
-    <!-- FIXME can we show a minimally viable syslog mapping for RFC3164?
-        For example, set somewhere the hostname, timestamp, programname, body
-     -->
-
-    <!-- 
-    common usecase:
-    log.body = parse_kv(${MESSAGE})
-    That way the receiver gets the data in a structured manner (can we show the difference on some receiver?)
-    -->
+    The following example includes a simple mapping for RFC3164-formatted syslog messages. Note that the body of the message is rendered as a string, not as structured data.
 
     ```shell
     log {
@@ -156,6 +138,11 @@ To convert incoming syslog messages to OpenTelemetry log messages and send them 
             declare scope = otel_scope();
 
             # Set the log resource fields and map syslog values
+            resource.attributes["host.name"] = ${HOSTNAME};
+            resource.attributes["service.name"] = ${PROGRAM};
+            log.observed_time_unix_nano = ${UNIXTIME};
+            log.body = ${MESSAGE};
+            log.severity_number = ${LEVEL_NUM};
 
             # Update output
             ${.otel_raw.log} = log;
