@@ -81,7 +81,7 @@ You can use filterx blocks together with other blocks in a log path, for example
 
 ## Filterx statements
 
-A filterx block contains one or more filterx statements. The order of the statements is important, as they are sequentially processed.  If any of the statements is false (or results in an error), {{< product >}} drops the message from that log path.
+A filterx block contains one or more filterx statements. The order of the statements is important, as they are sequentially processed. If any of the statements is false (or results in an error), {{< product >}} drops the message from that log path.
 
 Filterx statements can be one of the following:
 
@@ -138,6 +138,8 @@ Names are case-sensitive, so `"$message"` and `"$MESSAGE"` are not the same.
 - Pipeline variables. These are similar to local variables, but must be declared before first use, for example, `declare my-pipeline-variable=5;`
 
     Pipeline variables are available in the current and all subsequent filterx block. They're global in the sense that you can access them from multiple filterx blocks, but note that they're still attached to the particular message that is processed, it's value isn't preserved between messages.
+
+    If you don't need to pass the variable to another filterx block, use local variables, as pipeline variables have a slight performance overhead.
 
 {{% alert title="Note" color="info" %}}
 If you want to pass data between two filterx blocks of a log statement, use pipeline variables. That has better performance than name-value pairs.
