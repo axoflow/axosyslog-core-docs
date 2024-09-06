@@ -229,7 +229,6 @@ my-variable = regexp_search(${MESSAGE}, "ERROR");
 You can also use unnamed match groups (`()`) and named match groups (`(?<first>ERROR)(?<second>message)`).
 
 {{< include-headless "chunk/filterx-regexp-notes.md" >}}
-{{< include-headless "chunk/filterx-regexp-zero-match-group.md" >}}
 
 ### Unnamed match groups
 
@@ -281,7 +280,6 @@ regexp_subst(${MESSAGE}, "IP", "IP-Address", global=true);
 ```
 
 {{< include-headless "chunk/filterx-regexp-notes.md" >}}
-{{< include-headless "chunk/filterx-regexp-zero-match-group.md" >}}
 
 For a case sensitive search, use the `ignorecase=true` option.
 
