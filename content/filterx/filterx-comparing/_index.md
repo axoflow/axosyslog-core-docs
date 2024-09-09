@@ -110,6 +110,15 @@ mystring === "5"; # true
 To compare only the type, you can use the [`istype` function]({{< relref "/filterx/function-reference.md#istype" >}}).
 <!-- FIXME examples -->
 
+## Strict inequality operator
+
+Compares the values of operands and returns `true` if they are different. Also returns `true` if the value of the operands are the same, but their type is different. For example:
+
+```shell
+"example" !== "example"; # False, because they are the same and both are strings
+"1" !== 1; # True, because one is a string and the other an integer
+```
+
 ## Comparison operators
 
 The following numerical and string comparison operators are available.
@@ -123,3 +132,4 @@ The following numerical and string comparison operators are available.
 | >=                | ge              | Greater than or equal |
 | =<                | le              | Less than or equal    |
 | ===               |                 | Equals and has the same type |
+| !==               |                 | Not equal to or has different type |
