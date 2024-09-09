@@ -478,7 +478,3 @@ Rewrite rules had some functions to change some hard macros:
 - rate-limit()
 - tags() filtere function
 -->
-
-
-<!-- FIXME Destinatinokben hogyan hssznald amit filterx-ben osszeraktal
- -->

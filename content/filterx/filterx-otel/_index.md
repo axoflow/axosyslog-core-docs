@@ -61,8 +61,6 @@ To route OTEL messages (such as the ones received using the [`opentelemetry()` s
 
 To modify messages received via the OpenTelemetry protocol (OTLP), such as the ones received using the [`opentelemetry()` source]({{< relref "/chapter-sources/opentelemetry/_index.md" >}}), you have to configure the following:
 
-<!-- FIXME what's the difference when we receive messages via syslog-ng-otlp? -->
-
 1. Map the OpenTelemetry input message to OTEL objects in filterx, so {{< product >}} handles their type properly. Add the following to your filterx block:
 
     ```shell
