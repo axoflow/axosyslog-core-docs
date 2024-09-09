@@ -344,8 +344,8 @@ When referring to the field of a name-value pair (which begins with the `$` char
 
 Filterx has the following operators.
 
-- Comparison operators: `==, <, <=, >=, >, !=, eq, lt, le, gt, ge, ne`. For details, see {{% xref "/filterx/filterx-comparing/_index.md" %}}.
-- Boolean operators `not`, `or`, `and`. For details, see {{% xref "/filterx/filterx-boolean/_index.md" %}}.
+- [Comparison operators]({{< relref "/filterx/filterx-comparing/_index.md" >}}): `==, <, <=, >=, >, !=, eq, lt, le, gt, ge, ne`.
+- [Boolean operators]({{< relref "/filterx/filterx-boolean/_index.md" >}}): `not`, `or`, `and`.
 - [Dot operator (`.`)](#json) to access fields of an object, like JSON.
 - [Indexing operator `[]`](#json) to access fields of an object, like JSON.
 - [Plus (`+`) operator](#concatenate-strings) to concatenate strings.
