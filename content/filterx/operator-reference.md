@@ -13,7 +13,7 @@ This page describes the operators you can use in [filterx blocks]({{< relref "/f
 ## Comparison operators
 
 Comparison operators allow you to compare values of macros, variables, and expressions as numbers (`==, <, <=, >=, >, !=`) and strings
-(`eq, lt, le, gt, ge, ne`). You can also check for type equality (`===`). For details and examples, see {{% xref "/filterx/filterx-comparing/_index.md" %}}.
+(`eq, lt, le, gt, ge, ne`). You can also check for type equality (`===`) and strict inequality (`!==`). For details and examples, see {{% xref "/filterx/filterx-comparing/_index.md" %}}.
 
 ## Boolean operators
 
