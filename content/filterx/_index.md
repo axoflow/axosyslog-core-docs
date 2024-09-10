@@ -319,7 +319,17 @@ Naturally, you can assign values from other variables to an object, for example:
 js = json_array(["foo", "bar", "baz"]);
 ${MESSAGE} = json_object({
     "key": "value",
-    "list": list,
+    "list": list
+});
+```
+
+or
+
+```shell
+js = json_object({
+    "key": ${MY-NAME-VALUE-PAIR},
+    "key-from-expression": isset(${HOST}) ? ${HOST} : "default-hostname",
+    "list": list
 });
 ```
 
