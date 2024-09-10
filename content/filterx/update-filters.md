@@ -1,6 +1,6 @@
 ---
 title: "Update filters to filterx"
-weight:  1500
+weight:  1000
 ---
 
 The following sections show you how you can change your existing filters and rewrite rules to filterx statements. Note that:

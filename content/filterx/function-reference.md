@@ -1,7 +1,7 @@
 ---
 title: Filterx function reference
 linkTitle: Functions
-weight: 4800
+weight: 2500
 ---
 
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
