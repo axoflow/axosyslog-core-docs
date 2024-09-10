@@ -8,12 +8,12 @@ weight: 4800
 {{< include-headless "chunk/filterx-experimental-banner.md" >}}
 
 {{% alert title="Note" color="info" %}}
-Filterx (developed by Axoflow) is a replacement for [`syslog-ng` `filter{}` statements]({{< relref "/chapter-routing-filters/filters/_index.md" >}}), [parsers]({{< relref "/chapter-parsers/_index.md" >}}), and [rewrite rules]({{< relref "/chapter-manipulating-messages/modifying-messages/_index.md" >}}). It has its own syntax, allowing you to filter, parse, manipulate, and rewrite variables and complex data structures, and also compare them with various operators.
+Filterx (developed by Axoflow) is a replacement for [`syslog-ng` filters]({{< relref "/chapter-routing-filters/filters/_index.md" >}}), [parsers]({{< relref "/chapter-parsers/_index.md" >}}), and [rewrite rules]({{< relref "/chapter-manipulating-messages/modifying-messages/_index.md" >}}). It has its own syntax, allowing you to filter, parse, manipulate, and rewrite variables and complex data structures, and also compare them with various operators.
 
 Filterx is a consistent and comprehensive reimplementation of several core features with improved performance, proper typing support, and the ability to handle multi-level typed objects.
 {{% /alert %}}
 
-Filterx helps you to route your logs: a message passes the filterx block in a log path only if the filterx block is true for the particular message. If a log statement includes a filterx block, the messages are sent to the destinations only if they pass all filterx blocks of the log path. For example, you can select only the messages originating from a particular host, or create complex filters using operators, functions, and logical expressions.
+Filterx helps you to route, parse, and modify your logs: a message passes the filterx block in a log path only if the filterx block is true for the particular message. If a log statement includes a filterx block, the messages are sent to the destinations only if they pass all filterx blocks of the log path. For example, you can select only the messages originating from a particular host, or create complex filters using operators, functions, and logical expressions.
 
 Filterx blocks consist of a list of filterx statements, the result of every statement is either *true* or *false*. If a message matches all filterx statements, it passes the filterx block to the next element of the log path, for example, the destination.
 
@@ -22,6 +22,7 @@ Filterx blocks consist of a list of filterx statements, the result of every stat
     - empty strings,
     - the `false` value,
     - the `0` value,
+    - `null`,
     - statements that result in an error (for example, if a comparison cannot be evaluated because of type error, or a field of a variable referenced in the statement is doesn't exist or is unset).
 
 ## Define a filterx block
@@ -29,7 +30,7 @@ Filterx blocks consist of a list of filterx statements, the result of every stat
 You can define a filterx statement like this:
 
 ```shell
-block filterx() <identifier> {
+block filterx <identifier> {
     <filterx-statement-1>;
     <filterx-statement-2>;
     ...
@@ -51,7 +52,7 @@ You can also define it inline. For details, see {{% xref "/chapter-configuration
 For example, the following filterx statement selects the messages that contain the word `deny` and come from the host `example`.
 
 ```shell
-block filterx() demo_filterx {
+block filterx demo_filterx {
     ${HOST} == "example";
     ${MESSAGE} =~ "deny";
 };
@@ -86,9 +87,9 @@ A filterx block contains one or more filterx statements. The order of the statem
 Filterx statements can be one of the following:
 
 - A comparison, for example, `${HOST} == "my-host";`. This statement is true only for messages where the `${HOST}` field is `my-host`. Such simple comparison statements can be the equivalents of [traditional filter functions]({{< relref "/chapter-routing-filters/filters/reference-filters/_index.md" >}}).
-- A value assignment for a [name-value pair or a local variable](#variable-scope), for example, `$my-field = "bar";`. The left-side variable automatically gets the type of the right-hand expression. Assigning the false value to a variable (`$my-field = false;`) is a valid statement that doesn't automatically cause the filterx block to return as false.
+- A value assignment for a [name-value pair or a local variable](#variable-scope), for example, `${my-field} = "bar";`. The left-side variable automatically gets the type of the right-hand expression. Assigning the false value to a variable (`${my-field} = false;`) is a valid statement that doesn't automatically cause the filterx block to return as false.
 - A conditional statement ( `if (expr) { ... } elif (expr) {} else { ... };`) that allows you evaluate complex decision trees.
-- A declaration of a [pipeline variable](#variable-scope), for example, `declare my-pipeline-variable = "something";`.
+- A declaration of a [pipeline variable](#variable-scope), for example, `declare my_pipeline_variable = "something";`.
 
 {{% alert title="Note" color="info" %}}
 
@@ -129,13 +130,13 @@ Each filterx block can access data from the following elements.
 - Macros and name-value pairs of the message being processed (for example, `$PROGRAM`). The names of macros and name-value pairs begin with the `$` character. If you define a new variable in a filterx block and its name begins with the `$` character, it's automatically added to the name-value pairs of the message.
 
     {{% alert title="Note" color="info" %}}
-Using curly braces around macro names is not mandatory, and the `"$MESSAGE"` and `"${MESSAGE}"` formats are equivalent. However, using the `"${MESSAGE}"` format is required if the name contains special characters, like a hyphen (`-`) or a dot (`.`), so it's best to always use curly braces.
+Using curly braces around macro names is not mandatory, and the `"$MESSAGE"` and `"${MESSAGE}"` formats are equivalent. If the name contains only alphanumeric characters and the underscore, you don't need the curly braces. If it contains any other characters (like a hyphen (`-`) or a dot (`.`)), you need the curly braces, so it's best to always use curly braces.
 
 Names are case-sensitive, so `"$message"` and `"$MESSAGE"` are not the same.
     {{% /alert %}}
 
-- Local variables. These have a name that doesn't start with a `$` character, for example, `my-local-variable`. Local variables are available only in the filterx block they're defined.
-- Pipeline variables. These are similar to local variables, but must be declared before first use, for example, `declare my-pipeline-variable=5;`
+- Local variables. These have a name that doesn't start with a `$` character, for example, `my_local_variable`. Local variables are available only in the filterx block they're defined.
+- Pipeline variables. These are similar to local variables, but must be declared before first use, for example, `declare my_pipeline_variable=5;`
 
     Pipeline variables are available in the current and all subsequent filterx block. They're global in the sense that you can access them from multiple filterx blocks, but note that they're still attached to the particular message that is processed, it's value isn't preserved between messages.
 
@@ -354,12 +355,12 @@ When referring to the field of a name-value pair (which begins with the `$` char
 
 Filterx has the following operators.
 
-- [Comparison operators]({{< relref "/filterx/filterx-comparing/_index.md" >}}): `==, <, <=, >=, >, !=, eq, lt, le, gt, ge, ne`.
+- [Comparison operators]({{< relref "/filterx/filterx-comparing/_index.md" >}}): `==`, `<`, `<=`, `>=`, `>`, `!=`, `===`, `!==`, `eq`, `lt`, `le`, `gt`, `ge`, `ne`.
 - [Boolean operators]({{< relref "/filterx/filterx-boolean/_index.md" >}}): `not`, `or`, `and`.
 - [Dot operator (`.`)](#json) to access fields of an object, like JSON.
 - [Indexing operator `[]`](#json) to access fields of an object, like JSON.
 - [Plus (`+`) operator](#concatenate-strings) to concatenate strings.
-- [Plus equal (`+=`) operator]({{< relref "/filterx/operator-reference.md#plus-equal-operator" >}}) to concatenate strings.
+- [Plus equal (`+=`) operator]({{< relref "/filterx/operator-reference.md#plus-equal-operator" >}}) to add the right operand to the left.
 - [Ternary conditional operator]({{< relref "/filterx/operator-reference.md#ternary-conditional-operator" >}}): `?:`.
 - [Null coalescing operator]({{< relref "/filterx/operator-reference.md#null-coalescing-operator" >}}): `??`.
 - [Regular expression (regexp) match]({{< relref "/filterx/operator-reference.md#regexp" >}}): `=~` and `!~`.
@@ -373,6 +374,7 @@ Filterx has the following built-in functions.
 - [`cache_json_file`]({{< relref "/filterx/function-reference.md#cache-json-file" >}}): Loads an external JSON file to lookup contextual information.
 - [`flatten`]({{< relref "/filterx/function-reference.md#flatten" >}}): Flattens the nested elements of an object.
 - [`format_csv`]({{< relref "/filterx/function-reference.md#format-csv" >}}): Formats a dictionary or a list into a comma-separated string.
+- [`format_json`]({{< relref "/filterx/function-reference.md#format-json" >}}): Dumps a JSON object into a string.
 - [`format_kv`]({{< relref "/filterx/function-reference.md#format-kv" >}}): Formats a dictionary into key=value pairs.
 - [`isodate`]({{< relref "/filterx/function-reference.md#isodate" >}}): Parses a string as a date in ISODATE format.
 - [`isset`]({{< relref "/filterx/function-reference.md#isset" >}}): Checks that argument exists and its value is not empty or null.
@@ -432,7 +434,7 @@ This is a normal RFC3164-formatted log message which comes from the kernel (wher
 1. First, create some filter statements to select only iptables messages:
 
     ```shell
-    block filterx() parse_iptables {
+    block filterx parse_iptables {
         ${FACILITY} == "kern"; # Filter on the kernel facility
         ${PROGRAM} == "kernel"; # Sender application is the kernel
         ${MESSAGE} =~ "PROTO="; # The PROTO key appears in all iptables messages
@@ -442,7 +444,7 @@ This is a normal RFC3164-formatted log message which comes from the kernel (wher
 1. To make the parsed data available under macros beginning with `${.iptables}`, like in the case of the original `iptables-parser()`, create the `${.iptables}` JSON object.
 
     ```shell
-    block filterx() parse_iptables {
+    block filterx parse_iptables {
         ${FACILITY} == "kern"; # Filter on the kernel facility
         ${PROGRAM} == "kernel"; # Sender application is the kernel
         ${MESSAGE} =~ "PROTO="; # The PROTO key appears in all iptables messages
@@ -454,7 +456,7 @@ This is a normal RFC3164-formatted log message which comes from the kernel (wher
 1. Add a key=value parser to parse the content of the messages into the `${.iptables}` JSON object. The key=value pairs are space-separated, while equal signs (=) separates the values from the keys.
 
     ```shell
-    block filterx() parse_iptables {
+    block filterx parse_iptables {
         ${FACILITY} == "kern"; # Filter on the kernel facility
         ${PROGRAM} == "kernel"; # Sender application is the kernel
         ${MESSAGE} =~ "PROTO="; # The PROTO key appears in all iptables messages
