@@ -257,7 +257,7 @@ ${MY-LIST} = json(); # Creates an empty JSON object
 ${MY-LIST}.mixed = regexp_search("first-word second-part third", /(?<one>first-word)(second-part)(?<three>third)/);
 ```
 
-`${MY-LIST}.mixed` is: `{"0": "first-word second-part third", "first": "first-word", "2": "second-part", "three": "third"},`
+`${MY-LIST}.mixed` is: `{"0": "first-word second-part third", "first": "first-word", "2": "second-part", "three": "third"}`
 
 ## regexp_subst {#regexp-subst}
 
