@@ -57,7 +57,7 @@ To route OTEL messages (such as the ones received using the [`opentelemetry()` s
 
     For details on the common keys in log records, see the [`otel_logrecord reference`](#otel-logrecord-reference).
 
-## Modify incoming OTEL messages
+## Modify incoming OTEL {#modify-otel}
 
 To modify messages received via the OpenTelemetry protocol (OTLP), such as the ones received using the [`opentelemetry()` source]({{< relref "/chapter-sources/opentelemetry/_index.md" >}}), you have to configure the following:
 
