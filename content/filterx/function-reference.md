@@ -93,7 +93,7 @@ Formats a dictionary into a string containing key=value pairs.
 
 Usage: `format_kv(kvs_dict, value_separator="<separator-character>", pair_separator="<separator-string>")`
 
-By default, `format_kv` uses `=` to separate values, and `, ` to separate the pairs:
+By default, `format_kv` uses `=` to separate values, and `, ` (comma and space) to separate the pairs:
 
 ```shell
 filterx {
