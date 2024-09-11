@@ -18,7 +18,7 @@ If the `columns` option is set, `parse_csv` returns a [dictionary]({{< relref "/
 The following example separates hostnames like `example-1` and `example-2` into two parts.
 
 ```shell
-block filterx() p_hostname_segmentation {
+block filterx p_hostname_segmentation() {
     cols = json_array(["NAME","ID"]);
     HOSTNAME = parse_csv(${HOST}, delimiter="-", columns=cols);
     # HOSTNAME is a json object containing parts of the hostname
@@ -30,7 +30,7 @@ destination d_file {
 };
 log {
     source(s_local);
-    filterx(p_hostname_segmentation);
+    filterx(p_hostname_segmentation());
     destination(d_file);
 };
 ```
@@ -52,7 +52,7 @@ Here is a sample message:
 To parse such logs, the delimiter character is set to a single whitespace (`delimiter=" "`). Whitespaces are stripped.
 
 ```shell
-block filterx() p_apache {
+block filterx p_apache() {
     ${APACHE} = json();
     cols = json_array("CLIENT_IP", "IDENT_NAME", "USER_NAME",
     "TIMESTAMP", "REQUEST_URL", "REQUEST_STATUS",
@@ -67,7 +67,7 @@ The results can be used for example, to separate log messages into different fil
 ```shell
 log {
     source(s_local);
-    filterx(p_apache);
+    filterx(p_apache());
     destination(d_file);
 };
 destination d_file {
@@ -83,7 +83,7 @@ You can use multiple parsers to split a part of an already parsed message into f
 - If you use a separate filterx block, only global variables and name-value pairs (variables with names starting with the `$` character) are accessible from the block.
 
 ```shell
-filterx p_apache_timestamp {
+block filterx p_apache_timestamp() {
     cols = json_array("TIMESTAMP.DAY", "TIMESTAMP.MONTH", "TIMESTAMP.YEAR", "TIMESTAMP.HOUR", "TIMESTAMP.MIN", "TIMESTAMP.SEC", "TIMESTAMP.ZONE")
     ${APACHE.TIMESTAMP} = parse_csv(${APACHE.TIMESTAMP}, columns=cols, delimiters=("/: "), dialect="escape-none");
 };
@@ -92,8 +92,8 @@ destination d_file {
 };
 log {
     source(s_local);
-    filterx(p_apache);
-    filterx(p_apache_timestamp);
+    filterx(p_apache());
+    filterx(p_apache_timestamp());
     destination(d_file);
 };
 ```

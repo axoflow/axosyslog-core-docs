@@ -15,55 +15,30 @@ Filterx is a consistent and comprehensive reimplementation of several core featu
 
 Filterx helps you to route, parse, and modify your logs: a message passes the filterx block in a log path only if the filterx block is true for the particular message. If a log statement includes a filterx block, the messages are sent to the destinations only if they pass all filterx blocks of the log path. For example, you can select only the messages originating from a particular host, or create complex filters using operators, functions, and logical expressions.
 
-Filterx blocks consist of a list of filterx statements, the result of every statement is either *true* or *false*. If a message matches all filterx statements, it passes the filterx block to the next element of the log path, for example, the destination.
+Filterx blocks consist of a list of filterx statements, the result of every statement is either *truthy* or *falsy*. If a message matches all filterx statements, it passes the filterx block to the next element of the log path, for example, the destination.
 
-- True values are: Complex values, non-empty strings, and non-zero numbers.
-- False values are:
+- Truthy values are:
+    - Complex values (for example, a datetime object),
+    - non-empty lists and objects,
+    - non-empty strings,
+    - non-zero numbers,
+    - the `true` boolean object.
+- Falsy values are:
     - empty strings,
     - the `false` value,
     - the `0` value,
     - `null`,
-    - statements that result in an error (for example, if a comparison cannot be evaluated because of type error, or a field of a variable referenced in the statement is doesn't exist or is unset).
+
+Statements that result in an error (for example, if a comparison cannot be evaluated because of type error, or a field of a variable referenced in the statement is doesn't exist or is unset) are also treated as falsy.
+<!-- FIXME write more about error handling in a separate section -->
 
 ## Define a filterx block
 
 You can define a filterx statement like this:
 
-```shell
-block filterx <identifier> {
-    <filterx-statement-1>;
-    <filterx-statement-2>;
-    ...
-};
-```
-
-Then use it in a log path:
-
-```shell
-log {
-    source(s1);
-    filterx(<identifier>);
-    destination(d1);
-};
-```
-
-You can also define it inline. For details, see {{% xref "/chapter-configuration-file/inline-objects/_index.md" %}}.
+You can define filterx blocks inline in your log statements. (If you want to reuse filterx blocks, {{% xref "/filterx/reuse-filterx-block.md" %}}.)
 
 For example, the following filterx statement selects the messages that contain the word `deny` and come from the host `example`.
-
-```shell
-block filterx demo_filterx {
-    ${HOST} == "example";
-    ${MESSAGE} =~ "deny";
-};
-log {
-    source(s1);
-    filter(demo_filterx);
-    destination(d1);
-};
-```
-
-The following example does the same, but defines the filterx block inline.
 
 ```shell
 log {
@@ -434,7 +409,7 @@ This is a normal RFC3164-formatted log message which comes from the kernel (wher
 1. First, create some filter statements to select only iptables messages:
 
     ```shell
-    block filterx parse_iptables {
+    block filterx parse_iptables() {
         ${FACILITY} == "kern"; # Filter on the kernel facility
         ${PROGRAM} == "kernel"; # Sender application is the kernel
         ${MESSAGE} =~ "PROTO="; # The PROTO key appears in all iptables messages
@@ -444,7 +419,7 @@ This is a normal RFC3164-formatted log message which comes from the kernel (wher
 1. To make the parsed data available under macros beginning with `${.iptables}`, like in the case of the original `iptables-parser()`, create the `${.iptables}` JSON object.
 
     ```shell
-    block filterx parse_iptables {
+    block filterx parse_iptables() {
         ${FACILITY} == "kern"; # Filter on the kernel facility
         ${PROGRAM} == "kernel"; # Sender application is the kernel
         ${MESSAGE} =~ "PROTO="; # The PROTO key appears in all iptables messages
@@ -456,7 +431,7 @@ This is a normal RFC3164-formatted log message which comes from the kernel (wher
 1. Add a key=value parser to parse the content of the messages into the `${.iptables}` JSON object. The key=value pairs are space-separated, while equal signs (=) separates the values from the keys.
 
     ```shell
-    block filterx parse_iptables {
+    block filterx parse_iptables() {
         ${FACILITY} == "kern"; # Filter on the kernel facility
         ${PROGRAM} == "kernel"; # Sender application is the kernel
         ${MESSAGE} =~ "PROTO="; # The PROTO key appears in all iptables messages

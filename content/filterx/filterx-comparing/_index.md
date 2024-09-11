@@ -11,10 +11,9 @@ In {{% param "product.abbrev" %}} you can compare macro values, templates, and v
 
 Use the following syntax to compare macro values or templates.
 
-```shell
-block filterx() <filter-id>
-    {"<macro-or-variable-or-expression>" operator "<macro-or-variable-or-expression>";};
-```
+filterx {
+  "<macro-or-variable-or-expression>" operator "<macro-or-variable-or-expression>";
+};
 
 ## String and numerical comparison
 
@@ -133,3 +132,5 @@ The following numerical and string comparison operators are available.
 | =<                | le              | Less than or equal    |
 | ===               |                 | Equals and has the same type |
 | !==               |                 | Not equal to or has different type |
+
+<!-- FIXME add links to the relevant sections, maybe move this table to the top of the page? -->
