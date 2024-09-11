@@ -57,7 +57,7 @@ You can use filterx blocks together with other blocks in a log path, for example
 
 ## Filterx statements
 
-A filterx block contains one or more filterx statements. The order of the statements is important, as they are sequentially processed. If any of the statements is false (or results in an error), {{< product >}} drops the message from that log path.
+A filterx block contains one or more filterx statements. The order of the statements is important, as they are sequentially processed. If any of the statements is falsy (or results in an error), {{< product >}} drops the message from that log path.
 
 Filterx statements can be one of the following:
 
@@ -69,7 +69,7 @@ Filterx statements can be one of the following:
 {{% alert title="Note" color="info" %}}
 
 - The `true;` and `false;` literals are also valid as statements. They can be useful in complex conditional (if/elif/else) statements.
-- A name-value pair or a variable in itself is also a statement. For example, `${HOST};`. If the name-value pair or variable is empty or doesn't exist, the statement is false.
+- A name-value pair or a variable in itself is also a statement. For example, `${HOST};`. If the name-value pair or variable is empty or doesn't exist, the statement is falsy.
 
 {{% /alert %}}
 
@@ -118,7 +118,8 @@ Names are case-sensitive, so `"$message"` and `"$MESSAGE"` are not the same.
     If you don't need to pass the variable to another filterx block, use local variables, as pipeline variables have a slight performance overhead.
 
 {{% alert title="Note" color="info" %}}
-If you want to pass data between two filterx blocks of a log statement, use pipeline variables. That has better performance than name-value pairs.
+- If you want to pass data between two filterx blocks of a log statement, use pipeline variables. That has better performance than name-value pairs.
+- Local and pipeline variables aren't available in destination templates. For details, see [Filterx variables in destinations](#variables-in-destinations).
 {{% /alert %}}
 
 ## Variable names
@@ -147,13 +148,14 @@ Variables can have the following types. All of these types have a matching funct
 - `int`
 - [`json, json_object`]({{< relref "/filterx/function-reference.md#json" >}}) and [`json_array`]({{< relref "/filterx/function-reference.md#json-array" >}}) for JSON or JSON-like objects. The `json` type is an alias for the `json_object` type.
 - `list`
+- `null`
 - `otel_array`
 - `otel_kvlist`
 - [`otel_logrecord`]({{< relref "/filterx/function-reference.md#otel-logrecord" >}})
 - [`otel_resource`]({{< relref "/filterx/function-reference.md#otel-resource" >}})
 - [`otel_scope`]({{< relref "/filterx/function-reference.md#otel-scope" >}})
 - `protobuf`
-- [`string`]({{< relref "/filterx/function-reference.md#string" >}}): Converts a value into a string.
+- `string`
 
 ## Assign values
 
@@ -170,7 +172,8 @@ Usually you can omit the type, and {{< product >}} automatically assigns the typ
 - `mydouble = 2.5;`
 - `myboolean = true;`
 
-If needed, you can explicitly specify the type of the variable:
+If needed, you can explicitly specify the type of the variable, and {{< product >}} attempts to convert the value to the specified type:
+<!-- FIXME mention which conversions are not possible -->
 
 ```shell
 <variable-name> = <variable-type>(<value-of-the-variable>);
@@ -248,9 +251,9 @@ The list and dict types are similar to the their [Python counterparts](https://w
 ```shell
 list = json_array(); # Create an empty JSON list
 #list = otel_array(); # Create an OTEL list
-list += "first_element"; # Append entries to the list
-list += "second_element";
-list += "third_element";
+list += ["first_element"]; # Append entries to the list
+list += ["second_element"];
+list += ["third_element"];
 ${MESSAGE} = list;
 ```
 
