@@ -96,9 +96,9 @@ Note that:
 - The results of filter functions are boolean values, so they cannot be compared to other values.
 - You can use boolean operators to combine comparison expressions.
 
-## Compare the type
+## Compare the type (strict equality) {#strict-equality}
 
-To compare the values of operands and verify that they have the same type, use the `===` operator. The following example defines a string variable with the value "5" as string and uses it in different comparisons:
+To compare the values of operands and verify that they have the same type, use the `===` (strict equality) operator. The following example defines a string variable with the value "5" as string and uses it in different comparisons:
 
 ```shell
 mystring = "5"; # Type is string
