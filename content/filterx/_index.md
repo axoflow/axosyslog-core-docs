@@ -63,6 +63,7 @@ Filterx statements can be one of the following:
 
 - A comparison, for example, `${HOST} == "my-host";`. This statement is true only for messages where the `${HOST}` field is `my-host`. Such simple comparison statements can be the equivalents of [traditional filter functions]({{< relref "/chapter-routing-filters/filters/reference-filters/_index.md" >}}).
 - A value assignment for a [name-value pair or a local variable](#variable-scope), for example, `${my-field} = "bar";`. The left-side variable automatically gets the type of the right-hand expression. Assigning the false value to a variable (`${my-field} = false;`) is a valid statement that doesn't automatically cause the filterx block to return as false.
+- Existence of a variable of field. For example, the `${HOST};` expression is true only if the `${HOST}` macro exists and isn't empty.
 - A conditional statement ( `if (expr) { ... } elif (expr) {} else { ... };`) that allows you evaluate complex decision trees.
 - A declaration of a [pipeline variable](#variable-scope), for example, `declare my_pipeline_variable = "something";`.
 

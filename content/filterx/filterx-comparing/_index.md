@@ -38,7 +38,7 @@ For example:
 
 - `if (${.apache.request} == "/wp-admin/login.php")`
 
-    The left side is not type-cast, so it's a string, the right side is a string, so the comparison is string.
+    The left side is not type-cast, the right side is a string, so the comparison is string.
 
 > Note: You can use [string operators](#comparison-operators) if you want to, they are available for compatibility.
 
@@ -47,40 +47,26 @@ For example:
 The following expression selects log messages containing a PID (that is, `${PID}` macro is not empty):
 
 ```shell
-filterx f_pid {
+filterx {
     ${PID};
 };
 ```
 
 (It is equivalent to using the `isset()` function: `isset(${PID});`).
 
-The following expression selects log messages that do not contain a PID. Also, it uses a template as the left argument of the operator and compares the values as strings:
+The following expression selects log messages where the importance level is not `emerg`.
 
 ```shell
-filterx f_pid {"${HOST}${PID}" == ${HOST}; };
+filterx {${LEVEL} != "emerg"; };
 ```
 
-This is equivalent to concatenating the `${HOST}` and `${PID}` values into a single string using the `+` operator:
-
-```shell
-filterx f_pid { ${HOST} + string(${PID}) == ${HOST}; };
-```
-
-The following expression selects log messages that do not contain a PID. Also, it uses a template as the left argument of the operator and compares the values as strings:
-
-```shell
-filterx f_pid {"${HOST}${PID}" == ${HOST} };
-```
 
 The following example selects messages with priority level higher than 5.
 
-```shell
-filterx f_level {
+```shellfilterx {
     ${LEVEL_NUM} > 5;
 };
 ```
-
-<!-- FIXME more filterx-specific examples? -->
 
 Make sure to:
 
@@ -90,9 +76,7 @@ Make sure to:
 Note that:
 
 - You can use type casting anywhere where you can use templates to apply a type to the result of the template expansion.
-- Using comparator operators can be equivalent to using filter functions, but is somewhat slower. For example, using `"${HOST}" == "myhost"` is equivalent to using `host("myhost" type(string))`.
 - You can use any macro in the expression, including user-defined macros from parsers and classifications.
-- The results of filter functions are boolean values, so they cannot be compared to other values.
 - You can use boolean operators to combine comparison expressions.
 
 ## Compare the type (strict equality) {#strict-equality}
