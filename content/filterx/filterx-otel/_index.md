@@ -85,7 +85,7 @@ To modify messages received via the OpenTelemetry protocol (OTLP), such as the o
     - It checks if the hostname resource attribute exists, and adds the sender IP address if it doesn't.
 
         ```shell
-        if not isset(resource.attributes["host.name"]) {
+        if (not isset(resource.attributes["host.name"])) {
             resource.attributes["host.name"] = ${SOURCEIP};
         };
         ```
@@ -93,7 +93,7 @@ To modify messages received via the OpenTelemetry protocol (OTLP), such as the o
     - It checks if the [Timestamp field](https://opentelemetry.io/docs/specs/otel/logs/data-model/#field-timestamp) (which is optional) is set in the log object, and sets it to the date {{< product >}} received the message if it doesn't.
 
         ```shell
-        if log.observed_time_unix_nano == 0 {
+        if (log.observed_time_unix_nano == 0) {
             log.observed_time_unix_nano = ${R_UNIXTIME};
         };
         ```
@@ -110,10 +110,10 @@ To modify messages received via the OpenTelemetry protocol (OTLP), such as the o
             declare scope = otel_scope(${.otel_raw.scope});
 
             # Modifying the message
-            if not isset(resource.attributes["host.name"]) {
+            if (not isset(resource.attributes["host.name"])) {
                 resource.attributes["host.name"] = ${SOURCEIP};
             };
-            if log.observed_time_unix_nano == 0 {
+            if (log.observed_time_unix_nano == 0) {
                 log.observed_time_unix_nano = ${R_UNIXTIME};
             };
         };
@@ -137,10 +137,10 @@ To modify messages received via the OpenTelemetry protocol (OTLP), such as the o
             declare scope = otel_scope(${.otel_raw.scope});
 
             # Modifying the message
-            if not isset(resource.attributes["host.name"]) {
+            if (not isset(resource.attributes["host.name"])) {
                 resource.attributes["host.name"] = ${SOURCEIP};
             };
-            if log.observed_time_unix_nano == 0 {
+            if (log.observed_time_unix_nano == 0) {
                 log.observed_time_unix_nano = ${R_UNIXTIME};
             };
 
@@ -178,9 +178,9 @@ To convert incoming syslog messages to OpenTelemetry log messages and send them 
             declare scope = otel_scope();
 
             # Set the log resource fields and map syslog values
-            resource.attributes["host.name"] = ${HOSTNAME};
+            resource.attributes["host.name"] = ${HOST};
             resource.attributes["service.name"] = ${PROGRAM};
-            log.observed_time_unix_nano = ${UNIXTIME};
+            log.observed_time_unix_nano = ${R_UNIXTIME};
             log.body = ${MESSAGE};
             log.severity_number = ${LEVEL_NUM};
 
