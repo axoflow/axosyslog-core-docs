@@ -246,7 +246,19 @@ ${MESSAGE} = ${HOST} + " first part of the message," + " second part of the mess
 
 ## Lists, dicts, and JSON {#json}
 
-The list and dict types are similar to the their [Python counterparts](https://www.geeksforgeeks.org/difference-between-list-and-dictionary-in-python/). However, for performance reasons, {{< product >}} doesn't have abstract list and dict types: when you create a list or a dictionary, you have to specify its type, which can be one of JSON or OTEL. For example:
+The list and dict types are similar to the their [Python counterparts](https://www.geeksforgeeks.org/difference-between-list-and-dictionary-in-python/). Filterx uses JSON to represent generic dictionary and list types, but you can create other, specific dictionary and list types as well (currently for OTEL, for example, `otel_kvlist`, or `otel_array`). All supported dictionary and list types are compatible with each other, and you can convert them to each other, copy values between them (retaining the type), and so on.
+
+For example:
+
+```shell
+my_list = []; # Creates an empty list (which defaults to a JSON list)
+my_array = {}; # Creates an empty dictionary (which defaults to a JSON object)
+
+my_list2 = json_array(); # Creates an empty JSON list
+my_array2 = json_object(); # Creates an empty JSON object. json() is an alias for json_object()
+```
+
+You can add elements to lists and dictionaries like this:
 
 ```shell
 list = json_array(); # Create an empty JSON list
