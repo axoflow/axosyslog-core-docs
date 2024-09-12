@@ -462,6 +462,14 @@ This is a normal RFC3164-formatted log message which comes from the kernel (wher
     FIXME rebuild the message and add a destination?
     -->
 
+## Filterx variables in destinations {#variables-in-destinations}
+
+If you're modifying messages using filterx (for example, you extract a value from the message and add it to another field of the message), note the following points:
+
+- Macros and name-value pairs (variables with names beginning with the `$` character) are included in the outgoing message if the template of the destination includes them. For example, if you change the value of the `${MESSAGE}` macro, it's automatically sent to the destination if the destination template includes this macro.
+- Local and pipeline variables are not included in the message, you must assign their value to a macro or name-value pair that's included in the destination template.
+- When sending data to `opentelemetry()` destinations, if you're modifying messages received via the `opentelemetry()` source, then you must explicitly update the original (raw) data structures in your filterx block, otherwise the changes won't be included in the outgoing message. For details, see {{% xref "/filterx/filterx-otel/_index.md#modify-otel" %}}.
+
 
 - underscores vs hyphens in filterx? everywhere else we use mainly hyphens (parse_kv vs parse-kv) > only underscores work for now
 - make flags (like ignorecase) of regexp_subst available for regexp_search
