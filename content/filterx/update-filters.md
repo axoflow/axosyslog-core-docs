@@ -30,19 +30,19 @@ You can [compare values]({{< relref "/filterx/filterx-comparing/_index.md" >}}) 
 Since all filterx statements must match a message to pass the filterx block, often you can change complex boolean filter expressions into multiple, more simple filterx statements. For example, consider the following filter statement:
 
 ```shell
-filter demo_filter { host("example1") and program("nginx"); };
+filter { host("example1") and program("nginx"); };
 ```
 
 The following is the same filterx statement:
 
 ```shell
-filterx demo_filterx { ${HOST} == "example1" and ${PROGRAM} == "nginx"; };
+filterx { ${HOST} == "example1" and ${PROGRAM} == "nginx"; };
 ```
 
 which is equivalent with:
 
 ```shell
-filterx demo_filterx {
+filterx {
     ${HOST} == "example1";
     ${PROGRAM} == "nginx";
 };

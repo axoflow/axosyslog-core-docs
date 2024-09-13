@@ -35,7 +35,7 @@ Jun 20 12:05:12 mail.example.com <info> postfix/qmgr[35789]: EC2AC1947DA: from=<
 
 ```shell
 filterx {
-    parse_kv(${MESSAGE});
+    ${PARSED_MESSAGE} = parse_kv(${MESSAGE});
 };
 ```
 
@@ -47,6 +47,6 @@ Mar  7 12:39:25 myhost MysqlClient[20824]: SYSTEM_USER:'oscar', MYSQL_USER:'my_o
 
 ```shell
 filterx {
-    parse_kv(${MESSAGE}, value_separator=":", pair_separator=",");
+    ${PARSED_MESSAGE} = parse_kv(${MESSAGE}, value_separator=":", pair_separator=",");
 };
 ```

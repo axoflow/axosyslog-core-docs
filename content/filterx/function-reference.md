@@ -10,6 +10,11 @@ weight: 2500
 
 This page describes the functions you can use in [filterx blocks]({{< relref "/filterx/_index.md" >}}).
 
+Functions have arguments that can be either mandatory or optional.
+
+- Mandatory options are always positional, so you need to pass them in the correct order. You cannot set them in the `arg=value` format.
+- Optional arguments are always named, like `arg=value`. You can pass optional arguments in any order.
+
 ## cache_json_file {#cache-json-file}
 
 Load the contents of an external JSON file in an efficient manner. You can use this to lookup contextual information. (Basically, this is a filterx-specific implementation of the [`add-contextual-data() functionality`]({{< relref "/chapter-enrich-data/data-enrichment-add-contextual-data/_index.md" >}}).)
@@ -51,7 +56,7 @@ Usage: `datetime(<string or expression to cast as datetime>)`
 For example:
 
 ```shell
-date = datetime("1701350398.123000+01:00")
+date = datetime("1701350398.123000+01:00");
 ```
 
 Usually, you use the [strptime](#strptime) filterx function to create datetime values. Alternatively, you can cast an integer, double, string, or isodate variable into datetime with the `datetime()` filterx function. Note that:
@@ -109,7 +114,7 @@ format_kv(<input-dictionary>, value_separator=":", pair_separator=";")
 
 ## format_json {#format-json}
 
-Formats a JSON object or array into a string.
+Formats any value into a raw JSON string.
 
 Usage: `format_json($data)`
 
@@ -134,21 +139,21 @@ For example:
 ```shell
 istype({"key": "value"}, "json_object"); # True
 istype(${PID}, "string");
-istype(my-local-json-object.mylist, "json_array")
+istype(my-local-json-object.mylist, "json_array");
 ```
 
 If the object doesn't exist, `istype()` returns with an error, causing the filterx statement to become false, and logs an error message to the `internal()` source of {{< product >}}.
 
 ## json, json_object {#json}
 
-Cast a value into a JSON object.
+Cast a value into a JSON object. `json_object()` is an alias for `json()`.
 
 Usage: `json(<string or expression to cast as json>)`
 
 For example:
 
 ```shell
-js = json_object({"key": "value"})
+js = json({"key": "value"});
 ```
 
 ## json_array {#json-array}

@@ -10,7 +10,7 @@ The `parse_csv` filterx function has the following options.
 
 |           |                                                  |
 | --------- | ------------------------------------------------ |
-| Synopsis: | `columns=json_array(["1st","2nd","3rd"])` |
+| Synopsis: | `columns=["1st","2nd","3rd"]` |
 | Default value: | `[]` |
 
 *Description:* Specifies the names of the columns in a JSON array.

@@ -32,7 +32,7 @@ You can use it to define a default value, or to handle errors in your filterx st
 For example, if a key of a JSON object doesn't exist for every message, you can set it to a default value:
 
 ```shell
-${MESSAGE} = json.["BODY"] ?? "Empty message"
+${MESSAGE} = json["BODY"] ?? "Empty message"
 ```
 
 ## Plus operator
@@ -139,17 +139,17 @@ The [ternary conditional operator](https://en.wikipedia.org/wiki/Ternary_conditi
 Syntax:
 
 ```shell
-<expression>?<return-if-true>:<return-if-false>
+<expression> ? <return-if-true> : <return-if-false>
 ```
 
 For example, the following example checks the value of the `${LEVEL_NUM}` macro and returns `low` if it's lower than 5, `high` otherwise.
 
 ```shell
-(${LEVEL_NUM} < 5 )?"low":"high";
+(${LEVEL_NUM} < 5 ) ? "low" : "high";
 ```
 
 You can also use it to check if a value is set, and set it to a default value if it doesn't:
 
 ```shell
-${HOST} = isset(${HOST})?${HOST}:"default-hostname"
+${HOST} = isset(${HOST}) ? ${HOST} : "default-hostname"
 ```
