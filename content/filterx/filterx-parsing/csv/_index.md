@@ -65,6 +65,9 @@ block filterx p_apache() {
     "PROCESS_TIME", "SERVER_NAME"
     ];
     ${APACHE} = parse_csv(${MESSAGE}, columns=cols, delimiter=(" "), strip_whitespaces=true, dialect="escape-double-char");
+
+    # Set the important elements as name-value pairs so they can be referenced in the destination template
+    ${APACHE_USER_NAME} = ${APACHE.USER_NAME};
 };
 ```
 
@@ -77,7 +80,7 @@ log {
     destination(d_file);
 };
 destination d_file {
-    file("/var/log/messages-${APACHE.USER_NAME:-nouser}");
+    file("/var/log/messages-${APACHE_USER_NAME:-nouser}");
 };
 ```
 
@@ -92,9 +95,12 @@ You can use multiple parsers to split a part of an already parsed message into f
 block filterx p_apache_timestamp() {
     cols = ["TIMESTAMP.DAY", "TIMESTAMP.MONTH", "TIMESTAMP.YEAR", "TIMESTAMP.HOUR", "TIMESTAMP.MIN", "TIMESTAMP.SEC", "TIMESTAMP.ZONE"];
     ${APACHE.TIMESTAMP} = parse_csv(${APACHE.TIMESTAMP}, columns=cols, delimiters=("/: "), dialect="escape-none");
+    
+    # Set the important elements as name-value pairs so they can be referenced in the destination template
+    ${APACHE_TIMESTAMP_DAY} = ${APACHE.TIMESTAMP_DAY};
 };
 destination d_file {
-    file("/var/log/messages-${APACHE.USER_NAME:-nouser}/${APACHE.TIMESTAMP.DAY}");
+    file("/var/log/messages-${APACHE_USER_NAME:-nouser}/${APACHE_TIMESTAMP_DAY}");
 };
 log {
     source(s_local);

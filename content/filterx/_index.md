@@ -245,7 +245,7 @@ You can concatenate strings by adding them with the `+` operator. Note that if y
 ${MESSAGE} = ${HOST} + " first part of the message," + " second part of the message" + "\n";
 ```
 
-## Lists, dicts, and JSON {#json}
+## Complex types: lists, dicts, and JSON {#json}
 
 The list and dict types are similar to the their [Python counterparts](https://www.geeksforgeeks.org/difference-between-list-and-dictionary-in-python/). Filterx uses JSON to represent generic dictionary and list types, but you can create other, specific dictionary and list types as well (currently for OTEL, for example, `otel_kvlist`, or `otel_array`). All supported dictionary and list types are compatible with each other, and you can convert them to each other, copy values between them (retaining the type), and so on.
 
@@ -325,13 +325,17 @@ js = json_object({
 });
 ```
 
-You can access the fields of complex data types by using indexes and the dot notation, for example:
+Within the filterx block, you can access the fields of complex data types by using indexes and the dot notation, for example:
 
 - dot notation: `js.key`
 - indexing: `js["key"]`
 - or mixed mode if needed: `js.list[1]`
 
 When referring to the field of a name-value pair (which begins with the `$` character), place the dot or the square bracket outside the curly bracket surrounding the name of the name-value pair, for example: `${MY-LIST}[2]` or `${MY-OBJECT}.mykey`. If the name of the key contains characters that are not permitted in filterx variable names, for example, a hyphen (`-`), use the bracketed syntax and enclose it in double quotes: `${MY-LIST}["my-key-name"]`.
+
+<!-- FIXME Clarify when/what can be accessed from the destination templates
+    # Set the important elements as name-value pairs so they can be referenced in the destination template
+ -->
 
 <!-- FIXME more examples for lists/dicts if needed -->
 
@@ -469,6 +473,10 @@ If you're modifying messages using filterx (for example, you extract a value fro
 - Macros and name-value pairs (variables with names beginning with the `$` character) are included in the outgoing message if the template of the destination includes them. For example, if you change the value of the `${MESSAGE}` macro, it's automatically sent to the destination if the destination template includes this macro.
 - Local and pipeline variables are not included in the message, you must assign their value to a macro or name-value pair that's included in the destination template.
 - When sending data to `opentelemetry()` destinations, if you're modifying messages received via the `opentelemetry()` source, then you must explicitly update the original (raw) data structures in your filterx block, otherwise the changes won't be included in the outgoing message. For details, see {{% xref "/filterx/filterx-otel/_index.md#modify-otel" %}}.
+
+<!-- FIXME Clarify when/what can be accessed from the destination templates
+    # Set the important elements as name-value pairs so they can be referenced in the destination template
+ -->
 
 
 - underscores vs hyphens in filterx? everywhere else we use mainly hyphens (parse_kv vs parse-kv) > only underscores work for now
