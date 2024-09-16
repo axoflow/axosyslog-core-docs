@@ -61,8 +61,8 @@ date = datetime("1701350398.123000+01:00");
 
 Usually, you use the [strptime](#strptime) filterx function to create datetime values. Alternatively, you can cast an integer, double, string, or isodate variable into datetime with the `datetime()` filterx function. Note that:
 
-- When casting from an integer, the integer is the number of seconds elapsed since the UNIX epoch (January 1, 1970 12:00:00 AM).
-- When casting from a double, the double is the number of milliseconds elapsed since the UNIX epoch (January 1, 1970 12:00:00 AM).
+- When casting from an integer, the integer is the number of microseconds elapsed since the UNIX epoch (January 1, 1970 12:00:00 AM).
+- When casting from a double, the double is the number of seconds elapsed since the UNIX epoch (January 1, 1970 12:00:00 AM). (The part before the floating points is the seconds, the part after the floating point is the microseconds.)
 - When casting from a string, the string (for example, `1701350398.123000+01:00`) is interpreted as: `<the number of seconds elapsed since the UNIX epoch>.<microseconds>+<timezone relative to UTC (GMT +00:00)>`
 
 ## flatten
