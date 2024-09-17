@@ -21,7 +21,7 @@ The tls() option can include the following settings:
 
 |                  |          |
 | ---------------- | -------- |
-| Accepted values: | `yes | no` |
+| Accepted values: | `yes` or `no` |
 | Default:         | `no`       |
 
 *Description:* Enable on-the-wire compression in TLS communication. Note that this option must be enabled both on the server and the client to have any effect. Enabling compression can significantly reduce the bandwidth required to transport the messages, but can slightly decrease the performance of {{% param "product.abbrev" %}}, reducing the number of transferred messages during a given period.
@@ -138,22 +138,22 @@ The order of operations within `openssl-conf-cmds()` is significant and the comm
 Example configuration:
 
 ```shell
-    tls(
-        ca-dir("/etc/ca.d")
-        key-file("/etc/cert.d/serverkey.pem")
-        cert-file("/etc/cert.d/servercert.pem")
-        peer-verify(yes)
+tls(
+    ca-dir("/etc/ca.d")
+    key-file("/etc/cert.d/serverkey.pem")
+    cert-file("/etc/cert.d/servercert.pem")
+    peer-verify(yes)
 
-        openssl-conf-cmds(
-            # For system wide available cipher suites use: /usr/bin/openssl ciphers -v
-            # For formatting rules see: https://www.openssl.org/docs/man1.1.1/man3/SSL_CONF_cmd.html
-            "CipherString" => "ECDHE-RSA-AES128-SHA",                                   # TLSv1.2 and bellow
-            "CipherSuites" => "TLS_CHACHA20_POLY1305_SHA256:TLS_AES_256_GCM_SHA384",    # TLSv1.3+ (OpenSSl 1.1.1+)
+    openssl-conf-cmds(
+        # For system wide available cipher suites use: /usr/bin/openssl ciphers -v
+        # For formatting rules see: https://www.openssl.org/docs/man1.1.1/man3/SSL_CONF_cmd.html
+        "CipherString" => "ECDHE-RSA-AES128-SHA",                                   # TLSv1.2 and bellow
+        "CipherSuites" => "TLS_CHACHA20_POLY1305_SHA256:TLS_AES_256_GCM_SHA384",    # TLSv1.3+ (OpenSSl 1.1.1+)
 
-            "Options" => "PrioritizeChaCha",
-            "Protocol" => "-ALL,TLSv1.3",
-        )
+        "Options" => "PrioritizeChaCha",
+        "Protocol" => "-ALL,TLSv1.3",
     )
+)
 ```
 
 ## peer-verify() {#tls-options-peer-verify}
@@ -270,7 +270,7 @@ Example configuration:
 
 |                  |          |
 | ---------------- | -------- |
-| Accepted values: | `yes | no` |
+| Accepted values: | `yes` or `no` |
 | Default:         | `no`       |
 
 *Description:* When set to `yes` in a destination that uses TLS encryption, this option enables [Server Name Indication](https://tools.ietf.org/html/rfc6066#page-6) (also called Server Name Identification, SNI). The {{% param "product.abbrev" %}} sends the hostname or the IP address set in the destination to the server during the TLS handshake.
@@ -355,7 +355,7 @@ Available in {{% param "product_name" %}} version 4.5.0 and later.
 | Accepted values: | list of accepted distinguished names |
 | Default:         | none                                 |
 
-*Description:* To accept connections only from hosts using certain certificates signed by the trusted CAs, list the distinguished names of the accepted certificates in this parameter. For example, using `trusted-dn("\*, O=Example Inc, ST=Some-State, C=\*")` will accept only certificates issued for the `Example Inc` organization in `Some-State` state.
+*Description:* To accept connections only from hosts using certain certificates signed by the trusted CAs, list the distinguished names of the accepted certificates in this parameter. For example, using `trusted-dn("*, O=Example Inc, ST=Some-State, C=*")` will accept only certificates issued for the `Example Inc` organization in `Some-State` state.
 
 ## trusted-keys() {#tls-options-trusted-keys}
 

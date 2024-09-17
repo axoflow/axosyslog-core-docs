@@ -310,7 +310,7 @@ See {{% xref "/chapter-destinations/configuring-destinations-http-nonjava/plugin
     |------+-----------------------------------+------------|
 ```
 
-To customize the action to take for a particular response code, use the following format: `response-action(<response-code> => <action>`. To customize multiple response code-action pairs, separate them with a comma, for example:
+To customize the action to take for a particular response code, use the arrow operator in the following format: `response-action(<response-code> => <action>`. To customize multiple response code-action pairs, separate them with a comma, for example:
 
 ```shell
  http(

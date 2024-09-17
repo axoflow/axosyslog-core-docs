@@ -56,7 +56,7 @@ The `loki()` destination has the following options.
 
 |          |         |
 | -------- | ------- |
-| Type:    |  |
+| Type:    | arrow list |
 | Default: | See the description |
 
 The labels applied to the message as they are sent to the destination. Use the following format:

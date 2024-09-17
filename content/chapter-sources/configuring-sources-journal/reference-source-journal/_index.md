@@ -31,7 +31,7 @@ Available in {{% param "product.abbrev" %}} 4.1 and later.
 
 |          |                     |
 | -------- | ------------------- |
-| Type:    | string |
+| Type:    | arrow list |
 | Default: |                |
 
 Available in {{% param "product.abbrev" %}} 4.1 and later.

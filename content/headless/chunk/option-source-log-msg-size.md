@@ -11,5 +11,4 @@
 
 {{< include-headless "chunk/option-description-log-msg-size.md" >}}
 
-Uses the value of the [global option]({{< relref "/chapter-global-options/reference-options/_index.md" >}}) if not specified.
-
+Uses the value of the [global option]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-log-msg-size" >}}) if not specified.

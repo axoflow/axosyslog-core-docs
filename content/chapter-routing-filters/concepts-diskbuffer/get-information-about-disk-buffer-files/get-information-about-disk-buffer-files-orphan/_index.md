@@ -13,14 +13,11 @@ This section describes orphan disk-buffer files used in {{% param "product.name"
 
 {{< include-headless "chunk/orphan-d-buf-intro.md" >}}
 
-
-
 ## Discovering the new disk-buffer files (orphan disk-buffer files)
 
 To discover orphan disk-buffer files, get the list of disk-buffer files from the persist file, then compare the list with the contents of the disk-buffer files' saving directory.
 
 For more information about how you can get the list of disk-buffer files from the persist file, see {{% xref "/chapter-routing-filters/concepts-diskbuffer/get-information-about-disk-buffer-files/get-information-about-disk-buffer-files-getting-list/_index.md" %}}).
-
 
 
 ## Example: difference between the list of disk-buffer files from the persist file and the content of the disk-buffer files' saving directory

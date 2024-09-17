@@ -25,8 +25,6 @@ The `mariadb-audit` is a reusable configuration snippet configured to parse Mari
 
 {{% include-headless "chunk/option-parser-prefix.md" %}}
 
-{{% include-headless "chunk/para-macro-prefix-parser.md" %}}
-
 By default, `mariadb-audit` uses the `.mariadb.` prefix. To modify it, use the following format:
 
 ```shell

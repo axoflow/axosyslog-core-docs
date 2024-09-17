@@ -140,7 +140,7 @@ Alternatively, you can set the schema with the [`schema()`](#schema) option.
 
 |          |                            |
 | -------- | -------------------------- |
-| Type:    | See the description |
+| Type:    | arrow list |
 | Default: | - |
 
 *Description:* Sets the schema of the BigQuery table. On the left side of the arrow, set the name of the column and its type. On the right side, set any {{% param "product_name" %}} template or macro, which gets evaluated on each log that is routed to the `bigquery()` destination. The available column types are: `STRING`, `BYTES`, `INTEGER`, `FLOAT`, `BOOLEAN`, `TIMESTAMP`, `DATE`, `TIME`, `DATETIME`, `JSON`, `NUMERIC`, `BIGNUMERIC`, `GEOGRAPHY`, `RECORD`, `INTERVAL`. For example:

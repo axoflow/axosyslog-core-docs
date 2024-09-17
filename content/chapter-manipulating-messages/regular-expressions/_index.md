@@ -4,7 +4,7 @@ weight:  500
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-Filters and substitution rewrite rules can use regular expressions. In regular expressions, the characters `()[].\*?+^$|\\` are used as special symbols. Depending on how you want to use these characters and which quotation mark you use, these characters must be used differently, as summarized below.
+Filters and substitution rewrite rules can use regular expressions. In regular expressions, the characters `()[].*?+^$|\\` are used as special symbols. Depending on how you want to use these characters and which quotation mark you use, these characters must be used differently, as summarized below.
 
   - Strings between single quotes (`'string'`) are treated literally and are not interpreted at all, you do not have to escape special characters. For example, the output of `'\\x41'` is `\\x41` (characters as follows: backslash, `x`(letter), `4`(number), `1`(number)). This makes writing and reading regular expressions much more simple: it is recommended to use single quotes when writing regular expressions.
 
@@ -17,7 +17,7 @@ If you use single quotes, you do not need to escape the backslash, for example, 
   - Enclosing alphanumeric strings between double-quotes (`"string"`) is not necessary, you can just omit the double-quotes. for example, when writing filters, `match("sometext")` and `match(sometext)` will both match for the `sometext` string.
     
     {{% alert title="Note" color="info" %}}
-Only strings containing alphanumerical characters can be used without quotes or double quotes. If the string contains whitespace or any special characters (`()[].\*?+^$|\\` or `;:#`), you must use quotes or double quotes.
+Only strings containing alphanumerical characters can be used without quotes or double quotes. If the string contains whitespace or any special characters (`()[].*?+^$|\\` or `;:#`), you must use quotes or double quotes.
     
 When using the `;:#` characters, you must use quotes or double quotes, but escaping them is not required.
     {{% /alert %}}

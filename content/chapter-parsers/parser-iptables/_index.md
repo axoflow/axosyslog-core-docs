@@ -25,8 +25,6 @@ The `iptables-parser()` is actually a reusable configuration snippet configured 
 
 {{% include-headless "chunk/option-parser-prefix.md" %}}
 
-{{% include-headless "chunk/para-macro-prefix-parser.md" %}}
-
 By default, `iptables-parser()` uses the `.iptables.` prefix. To modify it, use the following format:
 
 ```shell

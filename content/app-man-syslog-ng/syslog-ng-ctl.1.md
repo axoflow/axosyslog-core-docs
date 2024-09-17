@@ -142,7 +142,7 @@ An example output:
   global.payload_reallocs.stats.processed
   global.msg_clones.stats.processed
   global.sdata_updates.stats.processed
-              tag..source.s_tcp.stats.processed
+  tag..source.s_tcp.stats.processed
 ```
 
 The `syslog-ng-ctl query list` command has the following options:

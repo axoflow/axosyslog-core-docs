@@ -6,7 +6,7 @@ weight:  700
 
 The `host()`, `match()`, and `program()` filter functions accept regular expressions as parameters. The exact type of the regular expression to use can be specified with the `type()` option. By default, {{% param "product.abbrev" %}} uses PCRE regular expressions.
 
-In regular expressions, the asterisk (`*`) character means 0, 1, or any number of the previous expression. For example, in the `f\*ilter` expression the asterisk means 0 or more f letters. This expression matches for the following strings: `ilter`, `filter`, `ffilter`, and so on. To achieve the wildcard functionality commonly represented by the asterisk character in other applications, use `.\`* in your expressions, for example, `f.\*ilter`.
+In regular expressions, the asterisk (`*`) character means 0, 1, or any number of the previous expression. For example, in the `f*ilter` expression the asterisk means 0 or more f letters. This expression matches for the following strings: `ilter`, `filter`, `ffilter`, and so on. To achieve the wildcard functionality commonly represented by the asterisk character in other applications, use `.\`* in your expressions, for example, `f.*ilter`.
 
 Alternatively, if you do not need regular expressions, only wildcards, use `type(glob)` in your filter:
 
