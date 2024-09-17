@@ -11,7 +11,7 @@ The `parse_csv` filterx function has the following options.
 |           |                                                  |
 | --------- | ------------------------------------------------ |
 | Synopsis: | `columns=["1st","2nd","3rd"]` |
-| Default value: | `[]` |
+| Default value: | N/A |
 
 *Description:* Specifies the names of the columns in a JSON array.
 
