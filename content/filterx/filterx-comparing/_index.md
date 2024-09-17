@@ -11,9 +11,11 @@ In {{% param "product.abbrev" %}} you can compare macro values, templates, and v
 
 Use the following syntax to compare macro values or templates.
 
+```shell
 filterx {
   "<macro-or-variable-or-expression>" operator "<macro-or-variable-or-expression>";
 };
+```
 
 ## String and numerical comparison
 
@@ -63,7 +65,8 @@ filterx {${LEVEL} != "emerg"; };
 
 The following example selects messages with priority level higher than 5.
 
-```shellfilterx {
+```shell
+filterx {
     ${LEVEL_NUM} > 5;
 };
 ```
