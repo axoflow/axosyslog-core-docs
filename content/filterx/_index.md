@@ -478,22 +478,3 @@ If you're modifying messages using filterx (for example, you extract a value fro
     # Set the important elements as name-value pairs so they can be referenced in the destination template
  -->
 
-
-- underscores vs hyphens in filterx? everywhere else we use mainly hyphens (parse_kv vs parse-kv) > only underscores work for now
-- make flags (like ignorecase) of regexp_subst available for regexp_search
-- Aliases for options that are the same but have different names in filterx reimplementations? 
-    - csv-parser: delimiters vs parse_csv: delimiter
-- inconsistency in parse_csv: string_delimiters vs delimiter
-
-Rewrite rules had some functions to change some hard macros:
-    Setting severity with the set-severity() rewrite function
-    Setting the facility field with the set-facility() rewrite function
-    Setting the priority of a message with the set-pri() rewrite function
-
-- Rewrite the timezone of a message > most nem lehet
-
-- netmask() or netmask6() filter function
-- inlist() filter function (or a generic way to check if a list/json-array contains a value in an element)
-- rate-limit()
-- tags() filtere function
--->
