@@ -6,6 +6,8 @@ weight:  100
 
 The `program` driver has the following options:
 
+{{< include-headless "chunk/option-source-check-hostname.md" >}}
+
 {{< include-headless "chunk/option-source-flags.md" >}}
 
 {{< include-headless "chunk/option-destination-hook.md" >}}

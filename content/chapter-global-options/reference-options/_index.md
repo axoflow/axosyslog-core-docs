@@ -121,9 +121,20 @@ For example, consider a client-relay-server scenario with the following hostname
 | Accepted values: | `yes`, `no` |
 | Default:         | `no`           |
 
-*Description:* Enable or disable checking whether the hostname contains valid characters.
+*Description:* When receiving messages, {{< product >}} can check whether the hostname contains valid characters.
 
+Valid characters are:
 
+- alphanumeric characters (A-Z, a-z, 0-9)
+- the dash (`-`) and underscore (`_`) characters
+- the dot (`.`) and the colon (`:`) characters
+- the `@` and slash (`/`)
+
+If the hostname contains invalid characters, {{< product >}} sets the `syslog.invalid_hostname` tag for the message, and doesn't parse the `${HOST}` field from the message.
+
+The `check-hostname()` global option applies to the following sources: [`file()`]({{< relref "/chapter-sources/configuring-sources-file/_index.md" >}}), [`network()`]({{< relref "/chapter-sources/configuring-sources-network/_index.md" >}}), [`pipe()`]({{< relref "/chapter-sources/source-pipe/_index.md" >}}), [`program()`]({{< relref "/chapter-sources/source-program/_index.md" >}}), [`stdin()`]({{< relref "/chapter-sources/configuring-sources-stdin/_index.md" >}}), [`syslog()`]({{< relref "/chapter-sources/source-syslog/_index.md" >}}), [`systemd-syslog()`]({{< relref "/chapter-sources/source-system/_index.md" >}}), [`unix-dgram()`]({{< relref "/chapter-sources/source-unixstream/_index.md" >}}), [`unix-stream()`]({{< relref "/chapter-sources/source-unixstream/_index.md" >}}), [`wildcard-file()`]({{< relref "/chapter-sources/configuring-sources-wildcard-file/_index.md" >}}). Instead of using the global option, you can also set the `check-hostname()` option for the specific source.
+
+For the [`python()`]({{< relref "/chapter-sources/python-source/_index.md" >}}) and [`python-fetcher()`]({{< relref "/chapter-sources/python-fetcher-source/_index.md" >}}) sources and the [`syslog-parser()`]({{< relref "/chapter-parsers/parser-syslog/_index.md" >}}) parser you can enable this option as a flag.
 
 ## create-dirs() {#global-option-create-dirs}
 

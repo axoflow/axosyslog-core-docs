@@ -6,6 +6,8 @@ weight:  300
 
 These two drivers behave similarly: they open an `AF_UNIX` socket and start listening on it for messages. The following options can be specified for these drivers:
 
+{{< include-headless "chunk/option-source-check-hostname.md" >}}
+
 {{% include-headless "chunk/option-destination-create-dirs.md" %}}
 
 {{% include-headless "chunk/option-source-encoding.md" %}}
