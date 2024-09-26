@@ -7,7 +7,7 @@ weight:  900
 
 {{< include-headless "chunk/filterx-experimental-banner.md" >}}
 
-{{< product >}} allows you to process, manipulate, and create OpenTelemetry log messages using filterx. For example, you can:
+{{< product >}} allows you to process, manipulate, and create OpenTelemetry log messages using FilterX. For example, you can:
 
 - route your OpenTelemetry messages to different destinations based on the content of the messages,
 - change fields in the message (for examples, add missing information, or delete unnecessary data), or
@@ -17,7 +17,7 @@ weight:  900
 
 To route OTEL messages (such as the ones received using the [`opentelemetry()` source]({{< relref "/chapter-sources/opentelemetry/_index.md" >}})) based on their content, configure the following:
 
-1. Map the OpenTelemetry input message to OTEL objects in filterx, so {{< product >}} handles their type properly. Add the following to your filterx block:
+1. Map the OpenTelemetry input message to OTEL objects in FilterX, so {{< product >}} handles their type properly. Add the following to your FilterX block:
 
     ```shell
     log {
@@ -34,7 +34,7 @@ To route OTEL messages (such as the ones received using the [`opentelemetry()` s
     };
     ```
 
-1. Add filterx statements that select the messages you need. The following example selects messages sent by the `nginx` application, received from the host called `example-host`.
+1. Add FilterX statements that select the messages you need. The following example selects messages sent by the `nginx` application, received from the host called `example-host`.
 
     ```shell
     log {
@@ -61,7 +61,7 @@ To route OTEL messages (such as the ones received using the [`opentelemetry()` s
 
 To modify messages received via the OpenTelemetry protocol (OTLP), such as the ones received using the [`opentelemetry()` source]({{< relref "/chapter-sources/opentelemetry/_index.md" >}}), you have to configure the following:
 
-1. Map the OpenTelemetry input message to OTEL objects in filterx, so {{< product >}} handles their type properly. Add the following to your filterx block:
+1. Map the OpenTelemetry input message to OTEL objects in FilterX, so {{< product >}} handles their type properly. Add the following to your FilterX block:
 
     ```shell
     log {
@@ -78,7 +78,7 @@ To modify messages received via the OpenTelemetry protocol (OTLP), such as the o
     };
     ```
 
-1. After the mapping, you can access the elements of the different data structures as [filterx dictionaries]({{< relref "/filterx/_index.md#json" >}}), for example, the body of the message (`log.body`), its attributes (`log.attributes`), or the attributes of the resource (`resource.attributes`).
+1. After the mapping, you can access the elements of the different data structures as [FilterX dictionaries]({{< relref "/filterx/_index.md#json" >}}), for example, the body of the message (`log.body`), its attributes (`log.attributes`), or the attributes of the resource (`resource.attributes`).
 
     The following example does two things:
 
@@ -161,7 +161,7 @@ To modify messages received via the OpenTelemetry protocol (OTLP), such as the o
 To convert incoming syslog messages to OpenTelemetry log messages and send them to an OpenTelemetry receiver, you have to perform the following high-level steps in your configuration file:
 
 1. Receive the incoming syslog messages.
-1. Initialize the data structures required for OpenTelemetry log messages in a [filterx block]({{< relref "/filterx/_index.md" >}}).
+1. Initialize the data structures required for OpenTelemetry log messages in a [FilterX block]({{< relref "/filterx/_index.md" >}}).
 1. Map the key-value pairs and macros of the syslog message to appropriate OpenTelemetry log record fields. There is no universal mapping available, it depends on the source message and the receiver as well. For some samples, see the [Example Mappings](https://opentelemetry.io/docs/specs/otel/logs/data-model-appendix) in the OpenTelemetry documentation, or check the recommendations and requirements of your receiver. For details on the fields that are available in the {{< product >}} OTEL data structures, see the [`otel_logrecord reference`](#otel-logrecord-reference).
 
     The following example includes a simple mapping for RFC3164-formatted syslog messages. Note that the body of the message is rendered as a string, not as structured data.

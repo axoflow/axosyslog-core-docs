@@ -1,5 +1,5 @@
 ---
-title: "Comparing values in filterx"
+title: "Comparing values in FilterX"
 linkTitle: "Comparing values"
 weight:  500
 ---

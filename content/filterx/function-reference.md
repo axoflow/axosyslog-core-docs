@@ -1,5 +1,5 @@
 ---
-title: Filterx function reference
+title: FilterX function reference
 linkTitle: Functions
 weight: 2500
 ---
@@ -8,7 +8,7 @@ weight: 2500
 
 {{< include-headless "chunk/filterx-experimental-banner.md" >}}
 
-This page describes the functions you can use in [filterx blocks]({{< relref "/filterx/_index.md" >}}).
+This page describes the functions you can use in [FilterX blocks]({{< relref "/filterx/_index.md" >}}).
 
 Functions have arguments that can be either mandatory or optional.
 
@@ -17,7 +17,7 @@ Functions have arguments that can be either mandatory or optional.
 
 ## cache_json_file {#cache-json-file}
 
-Load the contents of an external JSON file in an efficient manner. You can use this to lookup contextual information. (Basically, this is a filterx-specific implementation of the [`add-contextual-data() functionality`]({{< relref "/chapter-enrich-data/data-enrichment-add-contextual-data/_index.md" >}}).)
+Load the contents of an external JSON file in an efficient manner. You can use this to lookup contextual information. (Basically, this is a FilterX-specific implementation of the [`add-contextual-data() functionality`]({{< relref "/chapter-enrich-data/data-enrichment-add-contextual-data/_index.md" >}}).)
 
 Usage: `cache_json_file("/path/to/file.json")`
 
@@ -33,7 +33,7 @@ For example, if your `context-info-db.json` file contains the following:
 }
 ```
 
-Then the following filterx expression selects only "web" traffic:
+Then the following FilterX expression selects only "web" traffic:
 
 ```shell
 filterx {
@@ -59,7 +59,7 @@ For example:
 date = datetime("1701350398.123000+01:00");
 ```
 
-Usually, you use the [strptime](#strptime) filterx function to create datetime values. Alternatively, you can cast an integer, double, string, or isodate variable into datetime with the `datetime()` filterx function. Note that:
+Usually, you use the [strptime](#strptime) FilterX function to create datetime values. Alternatively, you can cast an integer, double, string, or isodate variable into datetime with the `datetime()` FilterX function. Note that:
 
 - When casting from an integer, the integer is the number of microseconds elapsed since the UNIX epoch (January 1, 1970 12:00:00 AM).
 - When casting from a double, the double is the number of seconds elapsed since the UNIX epoch (January 1, 1970 12:00:00 AM). (The part before the floating points is the seconds, the part after the floating point is the microseconds.)
@@ -142,7 +142,7 @@ istype(${PID}, "string");
 istype(my-local-json-object.mylist, "json_array");
 ```
 
-If the object doesn't exist, `istype()` returns with an error, causing the filterx statement to become false, and logs an error message to the `internal()` source of {{< product >}}.
+If the object doesn't exist, `istype()` returns with an error, causing the FilterX statement to become false, and logs an error message to the `internal()` source of {{< product >}}.
 
 ## json, json_object {#json}
 
@@ -310,7 +310,7 @@ You can use the following flags with the `regexp_subst` function:
 
 ## string
 
-Cast a value into a string. Note currently {{< product >}} evaluates strings and executes [template functions]({{< relref "/filterx/_index.md#template-functions" >}}) and template expressions. In the future, template evaluation will be moved to a separate filterx function.
+Cast a value into a string. Note currently {{< product >}} evaluates strings and executes [template functions]({{< relref "/filterx/_index.md#template-functions" >}}) and template expressions. In the future, template evaluation will be moved to a separate FilterX function.
 
 Usage: `string(<string or expression to cast>)`
 
@@ -336,7 +336,7 @@ ${MESSAGE} = strptime("2024-04-10T08:09:10Z", "%Y-%m-%dT%H:%M:%S%z");
 
 {{% alert title="Note" color="info" %}}
 
-If none of the format strings match, `strptime` returns the null value and logs an error message to the `internal()` source of {{< product >}}. If you want the filterx block to explicitly return false in such cases, use the [`isset`](#isset) filterx function on the result of `strptime`.
+If none of the format strings match, `strptime` returns the null value and logs an error message to the `internal()` source of {{< product >}}. If you want the FilterX block to explicitly return false in such cases, use the [`isset`](#isset) FilterX function on the result of `strptime`.
 
 {{% /alert %}}
 
@@ -344,7 +344,7 @@ You can use the following elements in the format string:
 
 {{< include-headless "chunk/date-string-format.md" >}}
 
-The [`isodate`](#isodate) filterx function is a specialized version of `strptime` that accepts only a fixed format.
+The [`isodate`](#isodate) FilterX function is a specialized version of `strptime` that accepts only a fixed format.
 
 ## unset
 
@@ -395,7 +395,7 @@ Usage: `upper(string)`
 
 ## vars
 
-Returns the variables (including pipeline variables and name-value pairs) defined in the filterx block as a JSON object.
+Returns the variables (including pipeline variables and name-value pairs) defined in the FilterX block as a JSON object.
 
 For example:
 

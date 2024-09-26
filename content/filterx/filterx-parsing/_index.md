@@ -1,5 +1,5 @@
 ---
-title: "Parsing data in filterx"
+title: "Parsing data in FilterX"
 linkTitle: "Parsers"
 weight: 800
 ---

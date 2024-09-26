@@ -4,7 +4,7 @@ weight:  100
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-The `parse_csv` filterx function has the following options.
+The `parse_csv` FilterX function has the following options.
 
 ## columns
 
@@ -86,7 +86,7 @@ my-parsed-values = parse_csv(${MESSAGE}, columns=["COLUMN1", "COLUMN2", "COLUMN3
 
 *Description:* If you have to use a string as a delimiter, list your string delimiters as a JSON array in the `string_delimiters=["<delimiter_string1>", "<delimiter_string2>", ...]` option.
 
-By default, the `parse_csv` filterx function uses the comma as a delimiter. If you want to use only strings as delimiters, you have to disable the space delimiter, for example: `delimiter="", string_delimiters=["<delimiter_string>"])`
+By default, the `parse_csv` FilterX function uses the comma as a delimiter. If you want to use only strings as delimiters, you have to disable the space delimiter, for example: `delimiter="", string_delimiters=["<delimiter_string>"])`
 
 Otherwise, {{% param "product.abbrev" %}} will use the string delimiters in addition to the default character delimiter, so `string_delimiters=["=="]` actually equals `delimiters=",", string_delimiters=["=="]`, and not `delimiters="", string_delimiters=["=="]`
 

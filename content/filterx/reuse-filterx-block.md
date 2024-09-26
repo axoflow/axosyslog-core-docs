@@ -1,11 +1,10 @@
 ---
-title: Reuse filterx blocks
+title: Reuse FilterX blocks
 weight: 3000
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-
-To use a filterx block in multiple log paths, you have to define it as a separate block:
+To use a FilterX block in multiple log paths, you have to define it as a separate block:
 
 ```shell
 block filterx <identifier>() {
@@ -25,7 +24,7 @@ log {
 };
 ```
 
-For example, the following filterx statement selects the messages that contain the word `deny` and come from the host `example`.
+For example, the following FilterX statement selects the messages that contain the word `deny` and come from the host `example`.
 
 ```shell
 block filterx demo_filterx() {

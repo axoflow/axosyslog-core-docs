@@ -7,7 +7,7 @@ weight: 400
 
 {{< include-headless "chunk/filterx-experimental-banner.md" >}}
 
-The `parse_csv` filterx function can separate parts of log messages (for example, the contents of the `${MESSAGE}` macro) at delimiter characters or strings to named fields (columns).
+The `parse_csv` FilterX function can separate parts of log messages (for example, the contents of the `${MESSAGE}` macro) at delimiter characters or strings to named fields (columns).
 
 Usage: `parse_csv(<input-string>, columns=json_array, delimiter=string, string_delimiters=json_array, dialect=string, strip_whitespace=boolean, greedy=boolean)`
 
@@ -86,10 +86,10 @@ destination d_file {
 
 ## Segment a part of a message {#example-parser-multiple}
 
-You can use multiple parsers to split a part of an already parsed message into further segments. The following example splits the timestamp of a parsed Apache log message into separate fields. Note that the [scoping of filterx variables]({{< relref "/filterx/_index.md#scoping" >}}) is important:
+You can use multiple parsers to split a part of an already parsed message into further segments. The following example splits the timestamp of a parsed Apache log message into separate fields. Note that the [scoping of FilterX variables]({{< relref "/filterx/_index.md#scoping" >}}) is important:
 
-- If you add the new parser to the filterx block used in the [previous example](#example-parser-apache), every variable is available.
-- If you use a separate filterx block, only global variables and name-value pairs (variables with names starting with the `$` character) are accessible from the block.
+- If you add the new parser to the FilterX block used in the [previous example](#example-parser-apache), every variable is available.
+- If you use a separate FilterX block, only global variables and name-value pairs (variables with names starting with the `$` character) are accessible from the block.
 
 ```shell
 block filterx p_apache_timestamp() {

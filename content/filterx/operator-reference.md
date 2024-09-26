@@ -1,5 +1,5 @@
 ---
-title: Filterx operator reference
+title: FilterX operator reference
 linkTitle: Operators
 weight: 2000
 ---
@@ -8,7 +8,7 @@ weight: 2000
 
 {{< include-headless "chunk/filterx-experimental-banner.md" >}}
 
-This page describes the operators you can use in [filterx blocks]({{< relref "/filterx/_index.md" >}}).
+This page describes the operators you can use in [FilterX blocks]({{< relref "/filterx/_index.md" >}}).
 
 ## Comparison operators
 
@@ -27,7 +27,7 @@ The [null coalescing operator](https://en.wikipedia.org/wiki/Null_coalescing_ope
 left-operand ?? right-operand
 ```
 
-You can use it to define a default value, or to handle errors in your filterx statements: if evaluating the left-side operand returns an error, the right-side operand is evaluated instead.
+You can use it to define a default value, or to handle errors in your FilterX statements: if evaluating the left-side operand returns an error, the right-side operand is evaluated instead.
 
 For example, if a key of a JSON object doesn't exist for every message, you can set it to a default value:
 
@@ -117,8 +117,8 @@ ${MESSAGE} !~ "error";
 
 {{% alert title="Note" color="info" %}}
 
-- If you want to process the matches of a search, use the {{% xref "/filterx/function-reference.md#regexp-search" %}} filterx function.
-- If you want to rewrite or modify the matches of a search, use the {{% xref "/filterx/function-reference.md#regexp-subst" %}} filterx function.
+- If you want to process the matches of a search, use the {{% xref "/filterx/function-reference.md#regexp-search" %}} FilterX function.
+- If you want to rewrite or modify the matches of a search, use the {{% xref "/filterx/function-reference.md#regexp-subst" %}} FilterX function.
 
 {{% /alert %}}
 

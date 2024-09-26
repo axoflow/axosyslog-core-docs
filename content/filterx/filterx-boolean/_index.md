@@ -1,5 +1,5 @@
 ---
-title: "Boolean operators in filterx"
+title: "Boolean operators in FilterX"
 linkTitle: "Boolean operators"
 weight:  300
 ---
@@ -61,6 +61,6 @@ filterx {
 
 {{% alert title="Note" color="info" %}}
 
-Filterx blocks are often used together with log path flags. For details, see {{% xref "/chapter-routing-filters/logpath/reference-logflags/_index.md" %}}.
+FilterX blocks are often used together with log path flags. For details, see {{% xref "/chapter-routing-filters/logpath/reference-logflags/_index.md" %}}.
 
 {{% /alert %}}

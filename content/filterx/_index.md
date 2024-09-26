@@ -1,5 +1,5 @@
 ---
-title: Filterx
+title: FilterX
 weight: 4800
 ---
 
@@ -8,14 +8,14 @@ weight: 4800
 {{< include-headless "chunk/filterx-experimental-banner.md" >}}
 
 {{% alert title="Note" color="info" %}}
-Filterx (developed by Axoflow) is a replacement for [`syslog-ng` filters]({{< relref "/chapter-routing-filters/filters/_index.md" >}}), [parsers]({{< relref "/chapter-parsers/_index.md" >}}), and [rewrite rules]({{< relref "/chapter-manipulating-messages/modifying-messages/_index.md" >}}). It has its own syntax, allowing you to filter, parse, manipulate, and rewrite variables and complex data structures, and also compare them with various operators.
+FilterX (developed by Axoflow) is a replacement for [`syslog-ng` filters]({{< relref "/chapter-routing-filters/filters/_index.md" >}}), [parsers]({{< relref "/chapter-parsers/_index.md" >}}), and [rewrite rules]({{< relref "/chapter-manipulating-messages/modifying-messages/_index.md" >}}). It has its own syntax, allowing you to filter, parse, manipulate, and rewrite variables and complex data structures, and also compare them with various operators.
 
-Filterx is a consistent and comprehensive reimplementation of several core features with improved performance, proper typing support, and the ability to handle multi-level typed objects.
+FilterX is a consistent and comprehensive reimplementation of several core features with improved performance, proper typing support, and the ability to handle multi-level typed objects.
 {{% /alert %}}
 
-Filterx helps you to route, parse, and modify your logs: a message passes the filterx block in a log path only if the filterx block is true for the particular message. If a log statement includes a filterx block, the messages are sent to the destinations only if they pass all filterx blocks of the log path. For example, you can select only the messages originating from a particular host, or create complex filters using operators, functions, and logical expressions.
+FilterX helps you to route, parse, and modify your logs: a message passes the FilterX block in a log path only if the FilterX block is true for the particular message. If a log statement includes a FilterX block, the messages are sent to the destinations only if they pass all FilterX blocks of the log path. For example, you can select only the messages originating from a particular host, or create complex filters using operators, functions, and logical expressions.
 
-Filterx blocks consist of a list of filterx statements, the result of every statement is either *truthy* or *falsy*. If a message matches all filterx statements, it passes the filterx block to the next element of the log path, for example, the destination.
+FilterX blocks consist of a list of FilterX statements, the result of every statement is either *truthy* or *falsy*. If a message matches all FilterX statements, it passes the FilterX block to the next element of the log path, for example, the destination.
 
 - Truthy values are:
     - Complex values (for example, a datetime object),
@@ -34,11 +34,9 @@ Statements that result in an error (for example, if a comparison cannot be evalu
 
 ## Define a filterx block
 
-You can define a filterx statement like this:
+You can define `filterx` blocks inline in your log statements. (If you want to reuse `filterx` blocks, {{% xref "/filterx/reuse-filterx-block.md" %}}.)
 
-You can define filterx blocks inline in your log statements. (If you want to reuse filterx blocks, {{% xref "/filterx/reuse-filterx-block.md" %}}.)
-
-For example, the following filterx statement selects the messages that contain the word `deny` and come from the host `example`.
+For example, the following FilterX statement selects the messages that contain the word `deny` and come from the host `example`.
 
 ```shell
 log {
@@ -51,18 +49,18 @@ log {
 };
 ```
 
-You can use filterx blocks together with other blocks in a log path, for example, use a parser before/after the filterx block if needed.
+You can use `filterx` blocks together with other blocks in a log path, for example, use a parser before/after the `filterx` block if needed.
 
 <!-- FIXME what is mutable/immutable writable/read-only > devs to write a draft  -->
 
-## Filterx statements
+## FilterX statements
 
-A filterx block contains one or more filterx statements. The order of the statements is important, as they are sequentially processed. If any of the statements is falsy (or results in an error), {{< product >}} drops the message from that log path.
+A FilterX block contains one or more FilterX statements. The order of the statements is important, as they are sequentially processed. If any of the statements is falsy (or results in an error), {{< product >}} drops the message from that log path.
 
-Filterx statements can be one of the following:
+FilterX statements can be one of the following:
 
 - A comparison, for example, `${HOST} == "my-host";`. This statement is true only for messages where the `${HOST}` field is `my-host`. Such simple comparison statements can be the equivalents of [traditional filter functions]({{< relref "/chapter-routing-filters/filters/reference-filters/_index.md" >}}).
-- A value assignment for a [name-value pair or a local variable](#variable-scope), for example, `${my-field} = "bar";`. The left-side variable automatically gets the type of the right-hand expression. Assigning the false value to a variable (`${my-field} = false;`) is a valid statement that doesn't automatically cause the filterx block to return as false.
+- A value assignment for a [name-value pair or a local variable](#variable-scope), for example, `${my-field} = "bar";`. The left-side variable automatically gets the type of the right-hand expression. Assigning the false value to a variable (`${my-field} = false;`) is a valid statement that doesn't automatically cause the FilterX block to return as false.
 - Existence of a variable of field. For example, the `${HOST};` expression is true only if the `${HOST}` macro exists and isn't empty.
 - A conditional statement ( `if (expr) { ... } elif (expr) {} else { ... };`) that allows you evaluate complex decision trees.
 - A declaration of a [pipeline variable](#variable-scope), for example, `declare my_pipeline_variable = "something";`.
@@ -97,13 +95,13 @@ ${MESSAGE} = js;
 js.third_key = "third-value-not-available-in-MESSAGE";
 ```
 
-You can use [filterx operators](#operators) and [functions](#functions).
+You can use [FilterX operators](#operators) and [functions](#functions).
 
 ## Data model and scope {#scoping}
 
-Each filterx block can access data from the following elements.
+Each FilterX block can access data from the following elements.
 
-- Macros and name-value pairs of the message being processed (for example, `$PROGRAM`). The names of macros and name-value pairs begin with the `$` character. If you define a new variable in a filterx block and its name begins with the `$` character, it's automatically added to the name-value pairs of the message.
+- Macros and name-value pairs of the message being processed (for example, `$PROGRAM`). The names of macros and name-value pairs begin with the `$` character. If you define a new variable in a FilterX block and its name begins with the `$` character, it's automatically added to the name-value pairs of the message.
 
     {{% alert title="Note" color="info" %}}
 Using curly braces around macro names is not mandatory, and the `"$MESSAGE"` and `"${MESSAGE}"` formats are equivalent. If the name contains only alphanumeric characters and the underscore, you don't need the curly braces. If it contains any other characters (like a hyphen (`-`) or a dot (`.`)), you need the curly braces, so it's best to always use curly braces.
@@ -111,21 +109,21 @@ Using curly braces around macro names is not mandatory, and the `"$MESSAGE"` and
 Names are case-sensitive, so `"$message"` and `"$MESSAGE"` are not the same.
     {{% /alert %}}
 
-- Local variables. These have a name that doesn't start with a `$` character, for example, `my_local_variable`. Local variables are available only in the filterx block they're defined.
+- Local variables. These have a name that doesn't start with a `$` character, for example, `my_local_variable`. Local variables are available only in the FilterX block they're defined.
 - Pipeline variables. These are similar to local variables, but must be declared before first use, for example, `declare my_pipeline_variable=5;`
 
-    Pipeline variables are available in the current and all subsequent filterx block. They're global in the sense that you can access them from multiple filterx blocks, but note that they're still attached to the particular message that is processed, it's value isn't preserved between messages.
+    Pipeline variables are available in the current and all subsequent FilterX block. They're global in the sense that you can access them from multiple FilterX blocks, but note that they're still attached to the particular message that is processed, it's value isn't preserved between messages.
 
-    If you don't need to pass the variable to another filterx block, use local variables, as pipeline variables have a slight performance overhead.
+    If you don't need to pass the variable to another FilterX block, use local variables, as pipeline variables have a slight performance overhead.
 
 {{% alert title="Note" color="info" %}}
-- If you want to pass data between two filterx blocks of a log statement, use pipeline variables. That has better performance than name-value pairs.
-- Local and pipeline variables aren't available in destination templates. For details, see [Filterx variables in destinations](#variables-in-destinations).
+- If you want to pass data between two FilterX blocks of a log statement, use pipeline variables. That has better performance than name-value pairs.
+- Local and pipeline variables aren't available in destination templates. For details, see [FilterX variables in destinations](#variables-in-destinations).
 {{% /alert %}}
 
 ## Variable names
 
-Filterx variable names have more restrictions than generic name-value pair names. They:
+FilterX variable names have more restrictions than generic name-value pair names. They:
 
 - can contain alphanumeric characters and the underscore character (`_`), but **cannot** contain hyphens,
 - cannot begin with numbers,
@@ -216,7 +214,7 @@ You can use the traditional [template functions]({{< relref "/chapter-manipulati
 ${MESSAGE} = "$(format-json --subkeys values.)";
 ```
 
-However, note that template functions cannot access the local and pipeline variables created in filterx blocks.
+However, note that template functions cannot access the local and pipeline variables created in FilterX blocks.
 
 ## Delete values
 
@@ -247,7 +245,7 @@ ${MESSAGE} = ${HOST} + " first part of the message," + " second part of the mess
 
 ## Complex types: lists, dicts, and JSON {#json}
 
-The list and dict types are similar to the their [Python counterparts](https://www.geeksforgeeks.org/difference-between-list-and-dictionary-in-python/). Filterx uses JSON to represent generic dictionary and list types, but you can create other, specific dictionary and list types as well (currently for OTEL, for example, `otel_kvlist`, or `otel_array`). All supported dictionary and list types are compatible with each other, and you can convert them to each other, copy values between them (retaining the type), and so on.
+The list and dict types are similar to the their [Python counterparts](https://www.geeksforgeeks.org/difference-between-list-and-dictionary-in-python/). FilterX uses JSON to represent generic dictionary and list types, but you can create other, specific dictionary and list types as well (currently for OTEL, for example, `otel_kvlist`, or `otel_array`). All supported dictionary and list types are compatible with each other, and you can convert them to each other, copy values between them (retaining the type), and so on.
 
 For example:
 
@@ -331,7 +329,7 @@ Within the filterx block, you can access the fields of complex data types by usi
 - indexing: `js["key"]`
 - or mixed mode if needed: `js.list[1]`
 
-When referring to the field of a name-value pair (which begins with the `$` character), place the dot or the square bracket outside the curly bracket surrounding the name of the name-value pair, for example: `${MY-LIST}[2]` or `${MY-OBJECT}.mykey`. If the name of the key contains characters that are not permitted in filterx variable names, for example, a hyphen (`-`), use the bracketed syntax and enclose it in double quotes: `${MY-LIST}["my-key-name"]`.
+When referring to the field of a name-value pair (which begins with the `$` character), place the dot or the square bracket outside the curly bracket surrounding the name of the name-value pair, for example: `${MY-LIST}[2]` or `${MY-OBJECT}.mykey`. If the name of the key contains characters that are not permitted in FilterX variable names, for example, a hyphen (`-`), use the bracketed syntax and enclose it in double quotes: `${MY-LIST}["my-key-name"]`.
 
 <!-- FIXME Clarify when/what can be accessed from the destination templates
     # Set the important elements as name-value pairs so they can be referenced in the destination template
@@ -385,13 +383,13 @@ Filterx has the following built-in functions.
 - [`unset`]({{< relref "/filterx/function-reference.md#unset" >}}): Deletes a name-value pair, or a field from an object.
 - [`unset_empties`]({{< relref "/filterx/function-reference.md#unset-empties" >}}): Deletes empty fields from an object.
 - [`upper`]({{< relref "/filterx/function-reference.md#upper" >}}): Converts a string into uppercase characters.
-- [`vars`]({{< relref "/filterx/function-reference.md#vars" >}}): The variables defined in the filterx block.
+- [`vars`]({{< relref "/filterx/function-reference.md#vars" >}}): The variables defined in the FilterX block.
 
 For details, see {{% xref "/filterx/function-reference.md" %}}.
 
 ## Use cases and examples
 
-The following list shows you some common tasks that you can solve with filterx:
+The following list shows you some common tasks that you can solve with FilterX:
 
 - To set message fields (like macros or SDATA fields) or replace message parts: you can [assign values](#assign-values) to change parts of the message, or use the {{% xref "/filterx/function-reference.md" %}} function to rewrite existing values.
 
@@ -406,8 +404,8 @@ The following list shows you some common tasks that you can solve with filterx:
     ```
 
 - To use conditional rewrites, you can either:
-    - embed the filterx block in an [if-else block]({{< relref "/chapter-routing-filters/logpath/concepts-if-else-conditional-expressions/_index.md" >}}), or
-    - use [value comparison in the filterx block]({{< relref "/filterx/filterx-comparing/_index.md" >}}) to select the appropriate messages. For example, to rewrite only messages of the NGINX application, you can:
+    - embed the FilterX block in an [if-else block]({{< relref "/chapter-routing-filters/logpath/concepts-if-else-conditional-expressions/_index.md" >}}), or
+    - use [value comparison in the FilterX block]({{< relref "/filterx/filterx-comparing/_index.md" >}}) to select the appropriate messages. For example, to rewrite only messages of the NGINX application, you can:
 
         ```shell
         ${PROGRAM} == "nginx";
@@ -416,7 +414,7 @@ The following list shows you some common tasks that you can solve with filterx:
 
 ### Create an iptables parser
 
-The following example shows you how to reimplement the {{% xref "/chapter-parsers/parser-iptables/_index.md" %}} in a filterx block. The following is a sample iptables log message (with line-breaks added for readability):
+The following example shows you how to reimplement the {{% xref "/chapter-parsers/parser-iptables/_index.md" %}} in a FilterX block. The following is a sample iptables log message (with line-breaks added for readability):
 
 ```shell
 Dec 08 12:00:00 hostname.example kernel: custom-prefix:IN=eth0 OUT=
@@ -463,18 +461,13 @@ This is a normal RFC3164-formatted log message which comes from the kernel (wher
     ```
 
     <!-- FIXME show json from sample message
-    FIXME rebuild the message and add a destination?
     -->
 
 ## Filterx variables in destinations {#variables-in-destinations}
 
-If you're modifying messages using filterx (for example, you extract a value from the message and add it to another field of the message), note the following points:
+If you're modifying messages using FilterX (for example, you extract a value from the message and add it to another field of the message), note the following points:
 
 - Macros and name-value pairs (variables with names beginning with the `$` character) are included in the outgoing message if the template of the destination includes them. For example, if you change the value of the `${MESSAGE}` macro, it's automatically sent to the destination if the destination template includes this macro.
 - Local and pipeline variables are not included in the message, you must assign their value to a macro or name-value pair that's included in the destination template.
-- When sending data to `opentelemetry()` destinations, if you're modifying messages received via the `opentelemetry()` source, then you must explicitly update the original (raw) data structures in your filterx block, otherwise the changes won't be included in the outgoing message. For details, see {{% xref "/filterx/filterx-otel/_index.md#modify-otel" %}}.
-
-<!-- FIXME Clarify when/what can be accessed from the destination templates
-    # Set the important elements as name-value pairs so they can be referenced in the destination template
- -->
+- When sending data to `opentelemetry()` destinations, if you're modifying messages received via the `opentelemetry()` source, then you must explicitly update the original (raw) data structures in your FilterX block, otherwise the changes won't be included in the outgoing message. For details, see {{% xref "/filterx/filterx-otel/_index.md#modify-otel" %}}.
 

@@ -1,15 +1,15 @@
 ---
-title: "Update filters to filterx"
+title: "Update filters to FilterX"
 weight:  1000
 ---
 
-The following sections show you how you can change your existing filters and rewrite rules to filterx statements. Note that:
+The following sections show you how you can change your existing filters and rewrite rules to FilterX statements. Note that:
 
-- Many examples in the filterx documentation were adapted from the existing filter, parser, and rewrite examples to show how you can achieve the same functionality with fiterx.
-- Don't worry if you can't update something to filterx. While you can't use other blocks within a filterx block, you can use both in a log statement, for example, you can use a filterx block, then a parser if needed.
-- There is no push to use filterx. You can keep using the traditional blocks if they satisfy your requirements.
+- Many examples in the FilterX documentation were adapted from the existing filter, parser, and rewrite examples to show how you can achieve the same functionality with FilterX.
+- Don't worry if you can't update something to FilterX. While you can't use other blocks within a FilterX block, you can use both in a log statement, for example, you can use a FilterX block, then a parser if needed.
+- There is no push to use FilterX. You can keep using the traditional blocks if they satisfy your requirements.
 
-## Update filters to filterx
+## Update filters to FilterX
 
 This section shows you how to update your existing `filter` expressions to `filterx`.
 
@@ -27,13 +27,13 @@ You can replace most [filter functions]({{< relref "/chapter-routing-filters/fil
 
 You can [compare values]({{< relref "/filterx/filterx-comparing/_index.md" >}}) and use [boolean operators]({{< relref "/filterx/filterx-boolean/_index.md" >}}) similarly to filters.
 
-Since all filterx statements must match a message to pass the filterx block, often you can change complex boolean filter expressions into multiple, more simple filterx statements. For example, consider the following filter statement:
+Since all FilterX statements must match a message to pass the FilterX block, often you can change complex boolean filter expressions into multiple, more simple FilterX statements. For example, consider the following filter statement:
 
 ```shell
 filter { host("example1") and program("nginx"); };
 ```
 
-The following is the same filterx statement:
+The following is the same FilterX statement:
 
 ```shell
 filterx { ${HOST} == "example1" and ${PROGRAM} == "nginx"; };
@@ -52,9 +52,9 @@ filterx {
 filter demo_filter { not host("example1") and not host("example2"); };
 ```
 
-The following filter functions have no equivalents in filterx yet:
+The following filter functions have no equivalents in FilterX yet:
 
-- The [`filter()` filter function]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-filter/_index.md" >}}). You can't call a filterx block from another filterx block, but you can [access name-value pairs and pass variables](#scoping) from multiple filterx blocks.
+- The [`filter()` filter function]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-filter/_index.md" >}}). You can't call a FilterX block from another FilterX block, but you can [access name-value pairs and pass variables](#scoping) from multiple FilterX blocks.
 - [`netmask()`]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-netmask/_index.md" >}}) and [`netmask6()`]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-netmask6/_index.md" >}})
 - [`inlist()`]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-inlist/_index.md" >}})
 - [`rate-limit()`]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-rate-limit/_index.md" >}})
@@ -64,11 +64,11 @@ The following filter functions have no equivalents in filterx yet:
 
 This section shows you how to update your existing `rewrite` expressions to `filterx`.
 
-You can replace most [rewrite rules]({{< relref "/chapter-manipulating-messages/modifying-messages/_index.md" >}}) with filterx functions and value assignments, for example:
+You can replace most [rewrite rules]({{< relref "/chapter-manipulating-messages/modifying-messages/_index.md" >}}) with FilterX functions and value assignments, for example:
 
-- `rewrite{subst()}` with the [`regexp_subst` filterx function]({{< relref "/filterx/function-reference.md#regexp-subst" >}})
+- `rewrite{subst()}` with the [`regexp_subst` FilterX function]({{< relref "/filterx/function-reference.md#regexp-subst" >}})
 - `rewrite{set()}` with [value assignments]({{< relref "/filterx/_index.md#assign-values" >}})
-- `rewrite{unset()}` with the [`unset` filterx function]({{< relref "/filterx/function-reference.md#unset" >}})
+- `rewrite{unset()}` with the [`unset` FilterX function]({{< relref "/filterx/function-reference.md#unset" >}})
 - `rewrite{rename()}` with the assigning a value to the new field then using [`unset`]({{< relref "/filterx/function-reference.md#unset" >}}) on the old field
 
 
