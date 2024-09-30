@@ -19,35 +19,37 @@ If the service starts successfully, no output will be displayed.
 
 The following message indicates that {{% param "product.abbrev" %}} can not start (see [Checking {{% param "product.abbrev" %}} status](#check-syslog-ng-status)):
 
-    Job for syslog-ng.service failed because the control process exited with error code. See `systemctl status syslog-ng.service` and `journalctl -xe` for details.
+```shell
+Job for syslog-ng.service failed because the control process exited with error code. See `systemctl status syslog-ng.service` and `journalctl -xe` for details.
+```
 
-## Stopping {{% param "product.abbrev" %}}
+## Stop {{% param "product.abbrev" %}}
 
 To stop {{% param "product.abbrev" %}}
 
-1.  Execute the following command as root.
-    
+1. Execute the following command as root.
+
     `systemctl stop syslog-ng`
 
-2.  Check the status of {{% param "product.abbrev" %}} service (see [Checking {{% param "product.abbrev" %}} status](#check-syslog-ng-status)).
+1. Check the status of {{% param "product.abbrev" %}} service (see [Checking {{% param "product.abbrev" %}} status](#check-syslog-ng-status)).
 
-## Restarting {{% param "product.abbrev" %}}
+## Restart {{% param "product.abbrev" %}}
 
 To restart {{% param "product.abbrev" %}}, execute the following command as root.
 
 `systemctl restart syslog-ng`
 
-## Reloading configuration file without restarting {{% param "product.abbrev" %}}
+## Reload configuration file without restarting {{% param "product.abbrev" %}}
 
 To reload the configuration file without restarting {{% param "product.abbrev" %}}, execute the following command as root.
 
 `systemctl reload syslog-ng`
 
-## Checking {{% param "product.abbrev" %}} status
+## Check {{% param "product.abbrev" %}} status
 
 To check the following status-related components, observe the suggestions below.
 
-### Checking the status of {{% param "product.abbrev" %}} service
+### Check the status of {{% param "product.abbrev" %}} service
 
 To check the status of {{% param "product.abbrev" %}} service
 
@@ -83,7 +85,7 @@ To check the status of {{% param "product.abbrev" %}} service
             Jun 25 09:14:31 as-syslog-srv systemd: Stopped System Logger Daemon.
         ```
 
-### Checking the process of {{% param "product.abbrev" %}}
+### Check the process of {{% param "product.abbrev" %}}
 
 To check the process of {{% param "product.abbrev" %}}, execute one of the following commands.
 
@@ -104,8 +106,8 @@ To check the process of {{% param "product.abbrev" %}}, execute one of the follo
     syslogng 6709 0.0 0.6 308680 13432 ? Ss 09:17 0:00 /opt/syslog-ng/libexec/syslog-ng -F --no-caps --enable-core
     ```
 
-### Checking the internal logs of {{% param "product.abbrev" %}}
-    
+### Check the internal logs of {{% param "product.abbrev" %}}
+
 The internal logs of {{% param "product.abbrev" %}} contains informal, warning and error messages.
 
 By default, {{% param "product.abbrev" %}} log messages (generated on the `internal()` source) are written to `/var/log/messages`.
