@@ -119,7 +119,7 @@ The steps in this procedure were tested on CentOS 9, but should work on other si
     Feb 12 09:04:50 <your-hostname> AxoSyslog[2821]: [2024-02-12T14:04:50.806054] syslog-ng starting up; version='4.6.0'
     ```
 
-1. Send a test message to the service:
+1. Send a test message to the service (requires `nc` to be installed):
 
     ```shell
     echo '<5> localhost test: this is a test message' | nc localhost 514
@@ -128,7 +128,7 @@ The steps in this procedure were tested on CentOS 9, but should work on other si
     Check that the test message has arrived into the log file:
 
     ```shell
-    less /opt/axosyslog/var/log/messages
+    cat /opt/axosyslog/var/log/messages
     ```
 
     The output should be similar to:
