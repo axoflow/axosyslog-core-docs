@@ -34,8 +34,8 @@ Example configuration:
 ```sh
 destination d_openobserve {
   openobserve-log(
-    url("http://openobserve-endpoint")
-    port(5080)
+    url("https://api.openobserve.ai")
+    port(443)
     organization("your-organization")
     stream("your-example-stream")
     user("root@example.com")
