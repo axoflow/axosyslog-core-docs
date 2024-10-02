@@ -30,29 +30,29 @@ To install {{< product >}} on RedHat Enterprise Linux 9 or AlmaLinux 9, complete
     - RHEL 9:
 
         ```shell
-        subscription-manager repos --enable codeready-builder-for-rhel-9-$(arch)-rpms
-        dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+        sudo subscription-manager repos --enable codeready-builder-for-rhel-9-$(arch)-rpms
+        sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
         ```
 
     - AlmaLinux 9:
 
         ```shell
-        dnf config-manager --set-enabled crb
-        dnf install epel-release
+        sudo dnf config-manager --set-enabled crb
+        sudo dnf install epel-release
         ```
 
 1. Download and extract the release tarball for your distribution, for example, on Almalinux 9:
 
     ```shell
-    wget https://github.com/axoflow/axosyslog/releases/download/axosyslog-4.8.0/rpm-almalinux-9.tar.gz
-    tar –xvzf rpm-almalinux-9.tar.gz
+    wget https://github.com/axoflow/axosyslog/releases/download/axosyslog-{{% param "product.techversion" %}}/rpm-almalinux-9.tar.gz
+    tar -xvzf rpm-almalinux-9.tar.gz
     cd rpm-almalinux-9/
     ```
 
 1. Install {{< product >}}:
 
     ```shell
-    yum install ./axosyslog-4.8.0.2*
+    yum install ./axosyslog-*
     ```
 
     Install other packages for the modules you want to use as needed. For example, to use the gRPC-based destinations (like [loki()](https://axoflow.com/docs/axosyslog-core/chapter-destinations/destination-loki/) or [opentelemetry()](https://axoflow.com/docs/axosyslog-core/chapter-destinations/opentelemetry/)), install the `axosyslog-grpc-*` package. For HTTP-based destinations like [elasticsearch-http()](https://axoflow.com/docs/axosyslog-core/chapter-destinations/configuring-destinations-elasticsearch-http/) or [sumologic-http()](https://axoflow.com/docs/axosyslog-core/chapter-destinations/destination-sumologic-intro/), you need the `axosyslog-http-*` package.
