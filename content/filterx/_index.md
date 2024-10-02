@@ -13,9 +13,9 @@ FilterX (developed by Axoflow) is a replacement for [`syslog-ng` filters]({{< re
 FilterX is a consistent and comprehensive reimplementation of several core features with improved performance, proper typing support, and the ability to handle multi-level typed objects.
 {{% /alert %}}
 
-FilterX helps you to route, parse, and modify your logs: a message passes the FilterX block in a log path only if the FilterX block is true for the particular message. If a log statement includes a FilterX block, the messages are sent to the destinations only if they pass all FilterX blocks of the log path. For example, you can select only the messages originating from a particular host, or create complex filters using operators, functions, and logical expressions.
+FilterX helps you to route, parse, and modify your logs: a message passes through the FilterX block in a log path only if all the FilterX statements evaluate to true for the particular message. If a log statement includes multiple FilterX blocks, the messages are sent to the destinations only if they pass all FilterX blocks of the log path. For example, you can select only the messages originating from a particular host, or create complex filters using operators, functions, and logical expressions.
 
-FilterX blocks consist of a list of FilterX statements, the result of every statement is either *truthy* or *falsy*. If a message matches all FilterX statements, it passes the FilterX block to the next element of the log path, for example, the destination.
+FilterX blocks consist of a list of FilterX statements, each statement evaluates either to *truthy* or *falsy*. If a message matches all FilterX statements, it passes through the FilterX block to the next element of the log path, for example, the destination.
 
 - Truthy values are:
     - Complex values (for example, a datetime object),
@@ -29,7 +29,7 @@ FilterX blocks consist of a list of FilterX statements, the result of every stat
     - the `0` value,
     - `null`,
 
-Statements that result in an error (for example, if a comparison cannot be evaluated because of type error, or a field of a variable referenced in the statement is doesn't exist or is unset) are also treated as falsy.
+Statements that result in an error (for example, if a comparison cannot be evaluated because of type error, or a field or a dictionary referenced in the statement doesn't exist or is unset) are also treated as falsy.
 <!-- FIXME write more about error handling in a separate section -->
 
 ## Define a filterx block
@@ -55,20 +55,20 @@ You can use `filterx` blocks together with other blocks in a log path, for examp
 
 ## FilterX statements
 
-A FilterX block contains one or more FilterX statements. The order of the statements is important, as they are sequentially processed. If any of the statements is falsy (or results in an error), {{< product >}} drops the message from that log path.
+A FilterX block contains one or more FilterX statements. The order of the statements is important, as they are processed sequentially. If any of the statements is falsy (or results in an error), {{< product >}} drops the message from that log path.
 
 FilterX statements can be one of the following:
 
-- A comparison, for example, `${HOST} == "my-host";`. This statement is true only for messages where the `${HOST}` field is `my-host`. Such simple comparison statements can be the equivalents of [traditional filter functions]({{< relref "/chapter-routing-filters/filters/reference-filters/_index.md" >}}).
+- A comparison, for example, `${HOST} == "my-host";`. This statement is true only for messages where the value of the `${HOST}` field is `my-host`. Such simple comparison statements can be the equivalents of [traditional filter functions]({{< relref "/chapter-routing-filters/filters/reference-filters/_index.md" >}}).
 - A value assignment for a [name-value pair or a local variable](#variable-scope), for example, `${my-field} = "bar";`. The left-side variable automatically gets the type of the right-hand expression. Assigning the false value to a variable (`${my-field} = false;`) is a valid statement that doesn't automatically cause the FilterX block to return as false.
 - Existence of a variable of field. For example, the `${HOST};` expression is true only if the `${HOST}` macro exists and isn't empty.
-- A conditional statement ( `if (expr) { ... } elif (expr) {} else { ... };`) that allows you evaluate complex decision trees.
+- A conditional statement ( `if (expr) { ... } elif (expr) {} else { ... };`) which allows you to evaluate complex decision trees.
 - A declaration of a [pipeline variable](#variable-scope), for example, `declare my_pipeline_variable = "something";`.
 
 {{% alert title="Note" color="info" %}}
 
 - The `true;` and `false;` literals are also valid as statements. They can be useful in complex conditional (if/elif/else) statements.
-- A name-value pair or a variable in itself is also a statement. For example, `${HOST};`. If the name-value pair or variable is empty or doesn't exist, the statement is falsy.
+- A name-value pair or a variable in itself is also a statement. For example, `${HOST};`. If the name-value pair or variable is empty or doesn't exist, the statement is considered falsy.
 
 {{% /alert %}}
 
@@ -104,7 +104,7 @@ Each FilterX block can access data from the following elements.
 - Macros and name-value pairs of the message being processed (for example, `$PROGRAM`). The names of macros and name-value pairs begin with the `$` character. If you define a new variable in a FilterX block and its name begins with the `$` character, it's automatically added to the name-value pairs of the message.
 
     {{% alert title="Note" color="info" %}}
-Using curly braces around macro names is not mandatory, and the `"$MESSAGE"` and `"${MESSAGE}"` formats are equivalent. If the name contains only alphanumeric characters and the underscore, you don't need the curly braces. If it contains any other characters (like a hyphen (`-`) or a dot (`.`)), you need the curly braces, so it's best to always use curly braces.
+Using curly braces around macro names is not mandatory, and the `"$MESSAGE"` and `"${MESSAGE}"` formats are equivalent. If the name contains only alphanumeric characters and the underscore character, you don't need the curly braces. If it contains any other characters (like a hyphen (`-`) or a dot (`.`)), you need to add the curly braces, therefore it's best to always use curly braces.
 
 Names are case-sensitive, so `"$message"` and `"$MESSAGE"` are not the same.
     {{% /alert %}}
@@ -112,7 +112,7 @@ Names are case-sensitive, so `"$message"` and `"$MESSAGE"` are not the same.
 - Local variables. These have a name that doesn't start with a `$` character, for example, `my_local_variable`. Local variables are available only in the FilterX block they're defined.
 - Pipeline variables. These are similar to local variables, but must be declared before first use, for example, `declare my_pipeline_variable=5;`
 
-    Pipeline variables are available in the current and all subsequent FilterX block. They're global in the sense that you can access them from multiple FilterX blocks, but note that they're still attached to the particular message that is processed, it's value isn't preserved between messages.
+    Pipeline variables are available in the current and all subsequent FilterX block. They're global in the sense that you can access them from multiple FilterX blocks, but note that they're still attached to the particular message that is processed, so the values of pipeline variables aren't preserved between messages.
 
     If you don't need to pass the variable to another FilterX block, use local variables, as pipeline variables have a slight performance overhead.
 
@@ -131,7 +131,7 @@ FilterX variable names have more restrictions than generic name-value pair names
 
 {{% alert title="Note" color="info" %}}
 
-Although you can re-use type names and function names as variable names, that's not recommended and should be avoided.
+Although you can re-use type names and function names as variable names, that's not considered good practice and should be avoided.
 
 {{% /alert %}}
 
@@ -164,14 +164,14 @@ To assign value to a name-value pair or a variable, use the following syntax:
 <variable-name> = <value-of-the-variable>;
 ```
 
-Usually you can omit the type, and {{< product >}} automatically assigns the type based on the syntax of the value, for example:
+In most cases you can omit the type, and {{< product >}} automatically assigns the type based on the syntax of the value, for example:
 
 - `mystring = "string-value";`
 - `myint = 3;`
 - `mydouble = 2.5;`
 - `myboolean = true;`
 
-If needed, you can explicitly specify the type of the variable, and {{< product >}} attempts to convert the value to the specified type:
+When needed, you can explicitly specify the type of the variable, and {{< product >}} attempts to convert the value to the specified type:
 <!-- FIXME mention which conversions are not possible -->
 
 ```shell
@@ -218,7 +218,7 @@ However, note that template functions cannot access the local and pipeline varia
 
 ## Delete values
 
-To delete a value without deleting the object (for example, name-value pair), use the `null value`, for example:
+To delete a value without deleting the object itself (for example, name-value pair), use the `null value`, for example:
 
 ```shell
 ${MY-NV-PAIR-KEY} = null;
@@ -245,7 +245,7 @@ ${MESSAGE} = ${HOST} + " first part of the message," + " second part of the mess
 
 ## Complex types: lists, dicts, and JSON {#json}
 
-The list and dict types are similar to the their [Python counterparts](https://www.geeksforgeeks.org/difference-between-list-and-dictionary-in-python/). FilterX uses JSON to represent generic dictionary and list types, but you can create other, specific dictionary and list types as well (currently for OTEL, for example, `otel_kvlist`, or `otel_array`). All supported dictionary and list types are compatible with each other, and you can convert them to each other, copy values between them (retaining the type), and so on.
+The list and dict types are similar to their [Python counterparts](https://www.geeksforgeeks.org/difference-between-list-and-dictionary-in-python/). FilterX uses JSON to represent generic dictionary and list types, but you can create other, specific dictionary and list types as well (currently for OTEL, for example, `otel_kvlist`, or `otel_array`). All supported dictionary and list types are compatible with each other, and you can convert them to and from each other, copy values between them (retaining the type), and so on.
 
 For example:
 
@@ -275,7 +275,7 @@ list = json_array(["first_element", "second_element", "third_element"]);
 ${MESSAGE} = list;
 ```
 
-Or refer to the elements using an index (starting with `0`):
+You can refer to the elements using an index (starting with `0`):
 
 ```shell
 list = json_array(); # Create an empty JSON list
@@ -285,7 +285,7 @@ list[2] = "third_element";
 ${MESSAGE} = list;
 ```
 
-In all three cases, the value `${MESSAGE}` is the same JSON array: `["first_element", "second_element", "third_element"]`.
+In all three cases, the value of `${MESSAGE}` is the same JSON array: `["first_element", "second_element", "third_element"]`.
 
 You can define JSON objects using the `json_object` type, for example:
 
@@ -323,13 +323,13 @@ js = json_object({
 });
 ```
 
-Within the filterx block, you can access the fields of complex data types by using indexes and the dot notation, for example:
+Within a FilterX block, you can access the fields of complex data types by using indexes and the dot notation, for example:
 
 - dot notation: `js.key`
 - indexing: `js["key"]`
 - or mixed mode if needed: `js.list[1]`
 
-When referring to the field of a name-value pair (which begins with the `$` character), place the dot or the square bracket outside the curly bracket surrounding the name of the name-value pair, for example: `${MY-LIST}[2]` or `${MY-OBJECT}.mykey`. If the name of the key contains characters that are not permitted in FilterX variable names, for example, a hyphen (`-`), use the bracketed syntax and enclose it in double quotes: `${MY-LIST}["my-key-name"]`.
+When referring to the field of a name-value pair (which begins with the `$` character), place the dot or the square bracket outside the curly bracket surrounding the name of the name-value pair, for example: `${MY-LIST}[2]` or `${MY-OBJECT}.mykey`. If the name of the key contains characters that are not permitted in FilterX variable names, for example, a hyphen (`-`), use the bracketed syntax and enclose the key in double quotes: `${MY-LIST}["my-key-name"]`.
 
 <!-- FIXME Clarify when/what can be accessed from the destination templates
     # Set the important elements as name-value pairs so they can be referenced in the destination template
@@ -379,11 +379,11 @@ Filterx has the following built-in functions.
     <!-- - [`parse_xml`](FIXME): Parses an XML object into a JSON object. -->
 - [`regexp_search`]({{< relref "/filterx/function-reference.md#regexp-search" >}}): Searches a string using regular expressions.
 - [`regexp_subst`]({{< relref "/filterx/function-reference.md#regexp-subst" >}}): Rewrites a string using regular expressions.
-- [`strptime`]({{< relref "/filterx/function-reference.md#strptime" >}}): Converts a value into datetime.
+- [`strptime`]({{< relref "/filterx/function-reference.md#strptime" >}}): Converts a string containing a date/time value, using a specified format string.
 - [`unset`]({{< relref "/filterx/function-reference.md#unset" >}}): Deletes a name-value pair, or a field from an object.
 - [`unset_empties`]({{< relref "/filterx/function-reference.md#unset-empties" >}}): Deletes empty fields from an object.
 - [`upper`]({{< relref "/filterx/function-reference.md#upper" >}}): Converts a string into uppercase characters.
-- [`vars`]({{< relref "/filterx/function-reference.md#vars" >}}): The variables defined in the FilterX block.
+- [`vars`]({{< relref "/filterx/function-reference.md#vars" >}}): Lists the variables defined in the FilterX block.
 
 For details, see {{% xref "/filterx/function-reference.md" %}}.
 
