@@ -45,7 +45,7 @@ To route OTEL messages (such as the ones received using the [`opentelemetry()` s
             declare resource = otel_resource(${.otel_raw.resource});
             declare scope = otel_scope(${.otel_raw.scope});
 
-            # Filterx statements that act as filters
+            # FilterX statements that act as filters
             resource.attributes["service.name"] == "nginx";
             resource.attributes["host.name"] == "example-host";
         };

@@ -346,7 +346,7 @@ When referring to the field of a name-value pair (which begins with the `$` char
 
 ## Operators
 
-Filterx has the following operators.
+FilterX has the following operators.
 
 - [Comparison operators]({{< relref "/filterx/filterx-comparing/_index.md" >}}): `==`, `<`, `<=`, `>=`, `>`, `!=`, `===`, `!==`, `eq`, `lt`, `le`, `gt`, `ge`, `ne`.
 - [Boolean operators]({{< relref "/filterx/filterx-boolean/_index.md" >}}): `not`, `or`, `and`.
@@ -362,7 +362,7 @@ For details, see {{% xref "/filterx/operator-reference.md" %}}.
 
 ## Functions
 
-Filterx has the following built-in functions.
+FilterX has the following built-in functions.
 
 - [`cache_json_file`]({{< relref "/filterx/function-reference.md#cache-json-file" >}}): Loads an external JSON file to lookup contextual information.
 - [`flatten`]({{< relref "/filterx/function-reference.md#flatten" >}}): Flattens the nested elements of an object.
@@ -463,7 +463,7 @@ This is a normal RFC3164-formatted log message which comes from the kernel (wher
     <!-- FIXME show json from sample message
     -->
 
-## Filterx variables in destinations {#variables-in-destinations}
+## FilterX variables in destinations {#variables-in-destinations}
 
 If you're modifying messages using FilterX (for example, you extract a value from the message and add it to another field of the message), note the following points:
 
@@ -471,3 +471,22 @@ If you're modifying messages using FilterX (for example, you extract a value fro
 - Local and pipeline variables are not included in the message, you must assign their value to a macro or name-value pair that's included in the destination template.
 - When sending data to `opentelemetry()` destinations, if you're modifying messages received via the `opentelemetry()` source, then you must explicitly update the original (raw) data structures in your FilterX block, otherwise the changes won't be included in the outgoing message. For details, see {{% xref "/filterx/filterx-otel/_index.md#modify-otel" %}}.
 
+<!-- 
+- underscores vs hyphens in filterx? everywhere else we use mainly hyphens (parse_kv vs parse-kv) > only underscores work for now
+- make flags (like ignorecase) of regexp_subst available for regexp_search
+- Aliases for options that are the same but have different names in filterx reimplementations? 
+    - csv-parser: delimiters vs parse_csv: delimiter
+- inconsistency in parse_csv: string_delimiters vs delimiter
+
+Rewrite rules had some functions to change some hard macros:
+    Setting severity with the set-severity() rewrite function
+    Setting the facility field with the set-facility() rewrite function
+    Setting the priority of a message with the set-pri() rewrite function
+
+- Rewrite the timezone of a message > most nem lehet
+
+- netmask() or netmask6() filter function
+- inlist() filter function (or a generic way to check if a list/json-array contains a value in an element)
+- rate-limit()
+- tags() filtere function
+-->
