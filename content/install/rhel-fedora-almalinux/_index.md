@@ -37,8 +37,8 @@ To install {{< product >}} on RedHat Enterprise Linux 9 or AlmaLinux 9, complete
     - AlmaLinux 9:
 
         ```shell
-        sudo dnf config-manager --set-enabled crb
         sudo dnf install epel-release
+        sudo dnf config-manager --set-enabled crb
         ```
 
 1. Download and extract the release tarball for your distribution, for example, on Almalinux 9:
@@ -52,7 +52,7 @@ To install {{< product >}} on RedHat Enterprise Linux 9 or AlmaLinux 9, complete
 1. Install {{< product >}}:
 
     ```shell
-    yum install ./axosyslog-*
+    sudo yum install ./axosyslog-*
     ```
 
     Install other packages for the modules you want to use as needed. For example, to use the gRPC-based destinations (like [loki()](https://axoflow.com/docs/axosyslog-core/chapter-destinations/destination-loki/) or [opentelemetry()](https://axoflow.com/docs/axosyslog-core/chapter-destinations/opentelemetry/)), install the `axosyslog-grpc-*` package. For HTTP-based destinations like [elasticsearch-http()](https://axoflow.com/docs/axosyslog-core/chapter-destinations/configuring-destinations-elasticsearch-http/) or [sumologic-http()](https://axoflow.com/docs/axosyslog-core/chapter-destinations/destination-sumologic-intro/), you need the `axosyslog-http-*` package.
@@ -60,14 +60,14 @@ To install {{< product >}} on RedHat Enterprise Linux 9 or AlmaLinux 9, complete
 1. Enable `syslog-ng`.
 
     ```shell
-    systemctl enable syslog-ng
-    systemctl start syslog-ng
+    sudo systemctl enable syslog-ng
+    sudo systemctl start syslog-ng
     ```
 
 1. (Optional) If you don't want to run other log collectors on the host, you can delete the existing one (which is rsyslog by default):
 
     ```shell
-    yum remove rsyslog.x86_64
+    sudo yum remove rsyslog.x86_64
     ```
 
 ## Install AxoSyslog on Fedora
@@ -75,15 +75,15 @@ To install {{< product >}} on RedHat Enterprise Linux 9 or AlmaLinux 9, complete
 1. Download the release tarball for your distribution, for example, on Fedora 40:
 
     ```shell
-    wget https://github.com/axoflow/axosyslog/releases/download/axosyslog-4.8.0/rpm-fedora-40.tar.gz
-    tar –xvzf rpm-fedora-40.tar.gz
+    wget https://github.com/axoflow/axosyslog/releases/download/axosyslog-{{% param "product.techversion" %}}/rpm-fedora-40.tar.gz
+    tar -xvzf rpm-fedora-40.tar.gz
     cd rpm-fedora-40/
     ```
 
 1. Install AxoSyslog:
 
     ```shell
-    yum install ./axosyslog-4.8.0.2*
+    sudo yum install ./axosyslog-{{% param "product.techversion" %}}.2*
     ```
 
     Install other packages for the modules you want to use as needed. For example, to use the gRPC-based destinations (like [loki()](https://axoflow.com/docs/axosyslog-core/chapter-destinations/destination-loki/) or [opentelemetry()](https://axoflow.com/docs/axosyslog-core/chapter-destinations/opentelemetry/)), install the `axosyslog-grpc-*` package. For HTTP-based destinations like [elasticsearch-http()](https://axoflow.com/docs/axosyslog-core/chapter-destinations/configuring-destinations-elasticsearch-http/) or [sumologic-http()](https://axoflow.com/docs/axosyslog-core/chapter-destinations/destination-sumologic-intro/), you need the `axosyslog-http-*` package.
@@ -91,14 +91,14 @@ To install {{< product >}} on RedHat Enterprise Linux 9 or AlmaLinux 9, complete
 1. Enable `syslog-ng`.
 
     ```shell
-    systemctl enable syslog-ng
-    systemctl start syslog-ng
+    sudo systemctl enable syslog-ng
+    sudo systemctl start syslog-ng
     ```
 
 1. (Optional) If you don't want to run other log collectors on the host, you can delete the existing one (which is rsyslog by default):
 
     ```shell
-    yum remove rsyslog.x86_64
+    sudo yum remove rsyslog.x86_64
     ```
 
 {{< include-headless "chunk/install-help.md" >}}
