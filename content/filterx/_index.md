@@ -374,8 +374,8 @@ FilterX has the following built-in functions.
 - [`istype`]({{< relref "/filterx/function-reference.md#istype" >}}): Checks the type of an object.
 - [`len`]({{< relref "/filterx/function-reference.md#len" >}}): Returns the length of an object.
 - [`lower`]({{< relref "/filterx/function-reference.md#lower" >}}): Converts a string into lowercase characters.
-- [`parse_csv`]({{< relref "/filterx/filterx-parsing/csv/_index.md" >}}): Separates a comma-separated or similar string.
-- [`parse_kv`]({{< relref "/filterx/filterx-parsing/key-value-parser/_index.md" >}}): Separates a string consisting of whitespace or comma-separated `key=value` pairs.
+- [`parse_csv`]({{< relref "/filterx/filterx-parsing/csv/_index.md" >}}): Parses a comma-separated or similar string.
+- [`parse_kv`]({{< relref "/filterx/filterx-parsing/key-value-parser/_index.md" >}}): Parses a string consisting of whitespace or comma-separated `key=value` pairs.
     <!-- - [`parse_xml`](FIXME): Parses an XML object into a JSON object. -->
 - [`regexp_search`]({{< relref "/filterx/function-reference.md#regexp-search" >}}): Searches a string using regular expressions.
 - [`regexp_subst`]({{< relref "/filterx/function-reference.md#regexp-subst" >}}): Rewrites a string using regular expressions.
@@ -391,12 +391,12 @@ For details, see {{% xref "/filterx/function-reference.md" %}}.
 
 The following list shows you some common tasks that you can solve with FilterX:
 
-- To set message fields (like macros or SDATA fields) or replace message parts: you can [assign values](#assign-values) to change parts of the message, or use the {{% xref "/filterx/function-reference.md" %}} function to rewrite existing values.
+- To set message fields (like macros or SDATA fields) or replace message parts: you can [assign values](#assign-values) to change parts of the message, or use one of the [FilterX functions]({{< relref "/filterx/function-reference.md" >}}) to rewrite existing values.
 
     {{< include-headless "wnt/note-rewrite-hard-macros.md" >}}
 
 - To delete or unset message fields, see [Delete values](#delete-values).
-- To rename a message field, assign the value of the old field to the new, then unset the old field. For example:
+- To rename a message field, assign the value of the old field to the new one, then unset the old field. For example:
 
     ```shell
     $my_new_field = $mike_old_field;
@@ -422,9 +422,9 @@ MAC=11:22:33:44:55:66:aa:bb:cc:dd:ee:ff:08:00 SRC=192.0.2.2 DST=192.168.0.1 LEN=
 PREC=0x00 TTL=232 ID=12345 PROTO=TCP SPT=54321 DPT=22 WINDOW=1023 RES=0x00 SYN URGP=0
 ```
 
-This is a normal RFC3164-formatted log message which comes from the kernel (where iptables logging messages originate), and contains space-separated key-value pairs.
+This is a normal RFC3164-formatted message logged by the kernel (where iptables logging messages originate from), and contains space-separated key-value pairs.
 
-1. First, create some filter statements to select only iptables messages:
+1. First, create some filter statements to select iptables messages only:
 
     ```shell
     block filterx parse_iptables() {
@@ -467,8 +467,8 @@ This is a normal RFC3164-formatted log message which comes from the kernel (wher
 
 If you're modifying messages using FilterX (for example, you extract a value from the message and add it to another field of the message), note the following points:
 
-- Macros and name-value pairs (variables with names beginning with the `$` character) are included in the outgoing message if the template of the destination includes them. For example, if you change the value of the `${MESSAGE}` macro, it's automatically sent to the destination if the destination template includes this macro.
-- Local and pipeline variables are not included in the message, you must assign their value to a macro or name-value pair that's included in the destination template.
+- Macros and name-value pairs (variables with names beginning with the `$` character) are included in the outgoing message in case the template of the destination includes them. For example, if you change the value of the `${MESSAGE}` macro, it's automatically sent to the destination if the destination template includes this macro.
+- Local and pipeline variables are not included in the message, you must assign their value to a macro or name-value pair that's included in the destination template to send them to the destination.
 - When sending data to `opentelemetry()` destinations, if you're modifying messages received via the `opentelemetry()` source, then you must explicitly update the original (raw) data structures in your FilterX block, otherwise the changes won't be included in the outgoing message. For details, see {{% xref "/filterx/filterx-otel/_index.md#modify-otel" %}}.
 
 <!-- 

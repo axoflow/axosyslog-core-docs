@@ -19,7 +19,7 @@ filterx {
 
 ## String and numerical comparison
 
-You can use mathematical symbols as operators (like `==, !=, >=`), and based on the type of the arguments {{% param "product.abbrev" %}} automatically determines how to compare them. The logic behind that is similar to JavaScript:
+You can use mathematical symbols as operators (like `==, !=, >=`), and based on the type of the arguments {{% param "product.abbrev" %}} automatically determines how to compare them. The logic behind this is similar to JavaScript:
 
 - If both sides of the comparisons are strings, then the comparison is string.
 - If one of the arguments is numeric, then the comparison is numeric.
@@ -42,11 +42,13 @@ For example:
 
     The left side is not type-cast, the right side is a string, so the comparison is string.
 
-> Note: You can use [string operators](#comparison-operators) if you want to, they are available for compatibility.
+{{% alert title="Note" color="info" %}}
+You can use [string operators](#comparison-operators) if you want to, they are still available for backwards compatibility.
+{{% /alert %}}
 
 ## Example: Compare macro values {#example-comparison}
 
-The following expression selects log messages containing a PID (that is, `${PID}` macro is not empty):
+The following expression selects log messages that contain a PID (that is, the `${PID}` macro is not empty):
 
 ```shell
 filterx {
@@ -56,7 +58,7 @@ filterx {
 
 (It is equivalent to using the `isset()` function: `isset(${PID});`).
 
-The following expression selects log messages where the importance level is not `emerg`.
+The following expression selects log messages where the priority level is not `emerg`.
 
 ```shell
 filterx {${LEVEL} != "emerg"; };
@@ -73,14 +75,14 @@ filterx {
 
 Make sure to:
 
-- Enclose strings and templates in double-quotes.
+- Enclose literal strings and templates in double-quotes. For macros and variables do not use quotes.
 - Use the `$` character before macros.
 
-Note that:
+Note that you can use:
 
-- You can use type casting anywhere where you can use templates to apply a type to the result of the template expansion.
-- You can use any macro in the expression, including user-defined macros from parsers and classifications.
-- You can use boolean operators to combine comparison expressions.
+- type casting anywhere where you can use templates to apply a type to the result of the template expansion.
+- any macro in the expression, including user-defined macros from parsers and classifications.
+- boolean operators to combine comparison expressions.
 
 ## Compare the type (strict equality) {#strict-equality}
 
@@ -93,7 +95,7 @@ mystring === "5"; # true
 };
 ```
 
-To compare only the type, you can use the [`istype` function]({{< relref "/filterx/function-reference.md#istype" >}}).
+To compare only the types of variables and macros, you can use the [`istype` function]({{< relref "/filterx/function-reference.md#istype" >}}).
 <!-- FIXME examples -->
 
 ## Strict inequality operator
