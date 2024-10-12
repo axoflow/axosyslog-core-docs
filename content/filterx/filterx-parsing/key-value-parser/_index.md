@@ -6,7 +6,7 @@ weight: 1100
 
 {{< include-headless "chunk/filterx-experimental-banner.md" >}}
 
-The `parse_kv` FilterX function can separate a string consisting of whitespace or comma-separated `key=value` pairs (for example, Postfix log messages). You can also specify other separator character instead of the equal sign, for example, colon (`:`) to parse MySQL log messages. The {{% param "product.abbrev" %}} application automatically trims any leading or trailing whitespace characters from the keys and values, and also parses values that contain unquoted whitespace.
+The `parse_kv` FilterX function can split a string consisting of whitespace or comma-separated `key=value` pairs (for example, Postfix log messages). You can also specify other value separator characters instead of the equal sign, for example, colon (`:`) to parse MySQL log messages. The {{% param "product.abbrev" %}} application automatically trims any leading or trailing whitespace characters from the keys and values, and also parses values that contain unquoted whitespace.
 
 {{< include-headless "wnt/n-kv-parser-repeated-keys.md" >}}
 
@@ -23,7 +23,7 @@ The names of the keys can contain only the following characters: numbers (0-9), 
 
 Usage: `parse_kv(<input-string>, value_separator="=", pair_separator=",", stray_words_key="stray_words")`
 
-The `value_separator` must be a single-character string. The `pair_separator` must be a string.
+The `value_separator` must be a single-character string. The `pair_separator` can be a regular string.
 
 ## Example
 
@@ -39,7 +39,7 @@ filterx {
 };
 ```
 
-You can set the separator character between the key and the value to parse for example, `key:value` pairs, like MySQL logs:
+You can set the value separator character (the character between the key and the value) to parse for example, `key:value` pairs, like MySQL logs:
 
 ```shell
 Mar  7 12:39:25 myhost MysqlClient[20824]: SYSTEM_USER:'oscar', MYSQL_USER:'my_oscar', CONNECTION_ID:23, DB_SERVER:'127.0.0.1', DB:'--', QUERY:'USE test;'

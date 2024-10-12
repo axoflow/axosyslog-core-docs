@@ -42,5 +42,5 @@ Specifies the character that separates the keys from the values. Default value: 
 For example, to parse `key:value` pairs, use:
 
 ```shell
-${MESSAGE} = parse_kv("key1:value1;key2:value2", value_separator=":");
+${MESSAGE} = parse_kv("key1:value1,key2:value2", value_separator=":");
 ```

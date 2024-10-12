@@ -7,11 +7,11 @@ weight: 400
 
 {{< include-headless "chunk/filterx-experimental-banner.md" >}}
 
-The `parse_csv` FilterX function can separate parts of log messages (for example, the contents of the `${MESSAGE}` macro) at delimiter characters or strings to named fields (columns).
+The `parse_csv` FilterX function can separate parts of log messages (that is, the contents of the `${MESSAGE}` macro) along delimiter characters or strings into lists, or key-value pairs within dictionaries, using the csv (comma-separated-values) parser.
 
 Usage: `parse_csv(<input-string>, columns=json_array, delimiter=string, string_delimiters=json_array, dialect=string, strip_whitespace=boolean, greedy=boolean)`
 
-Only the input string is mandatory.
+Only the input parameter is mandatory.
 
 If the `columns` option is set, `parse_csv` returns a [dictionary]({{< relref "/filterx/_index.md#json" >}}) with the column names (as keys) and the parsed values. If the [`columns`]({{< relref "/filterx/filterx-parsing/csv/reference-parsers-csv/_index.md#columns" >}}) option isn't set, `parse_csv` returns a list.
 
@@ -53,7 +53,7 @@ Here is a sample message:
 192.168.1.1 - - [31/Dec/2007:00:17:10 +0100] "GET /cgi-bin/example.cgi HTTP/1.1" 200 2708 "-" "curl/7.15.5 (i4 86-pc-linux-gnu) libcurl/7.15.5 OpenSSL/0.9.8c zlib/1.2.3 libidn/0.6.5" 2 example.mycompany
 ```
 
-To parse such logs, the delimiter character is set to a single whitespace (`delimiter=" "`). Whitespaces are stripped.
+To parse such logs, the delimiter character is set to a single whitespace (`delimiter=" "`). Excess leading and trailing whitespace characters are stripped.
 
 ```shell
 block filterx p_apache() {
@@ -71,7 +71,7 @@ block filterx p_apache() {
 };
 ```
 
-The results can be used for example, to separate log messages into different files based on the APACHE.USER_NAME field. If the field is empty, the `nouser` name is assigned.
+The results can be used for example, to separate log messages into different files based on the APACHE.USER_NAME field. in case the field is empty, the `nouser` string is assigned as default.
 
 ```shell
 log {
@@ -86,7 +86,7 @@ destination d_file {
 
 ## Segment a part of a message {#example-parser-multiple}
 
-You can use multiple parsers to split a part of an already parsed message into further segments. The following example splits the timestamp of a parsed Apache log message into separate fields. Note that the [scoping of FilterX variables]({{< relref "/filterx/_index.md#scoping" >}}) is important:
+You can use multiple parsers in a layered manner to split parts of an already parsed message into further segments. The following example splits the timestamp of a parsed Apache log message into separate fields. Note that the [scoping of FilterX variables]({{< relref "/filterx/_index.md#scoping" >}}) is important:
 
 - If you add the new parser to the FilterX block used in the [previous example](#example-parser-apache), every variable is available.
 - If you use a separate FilterX block, only global variables and name-value pairs (variables with names starting with the `$` character) are accessible from the block.
