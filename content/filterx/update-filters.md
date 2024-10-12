@@ -13,7 +13,7 @@ The following sections show you how you can change your existing filters and rew
 
 This section shows you how to update your existing `filter` expressions to `filterx`.
 
-You can replace most [filter functions]({{< relref "/chapter-routing-filters/filters/_index.md" >}}) with a simple value comparison with the appropriate macro, for example:
+You can replace most [filter functions]({{< relref "/chapter-routing-filters/filters/_index.md" >}}) with a simple value comparison of the appropriate macro, for example:
 
 - `facility(user)` with `${FACILITY} == "user"`
 - `host("example-host")` with `${HOST} == "example-host"`
@@ -27,7 +27,7 @@ You can replace most [filter functions]({{< relref "/chapter-routing-filters/fil
 
 You can [compare values]({{< relref "/filterx/filterx-comparing/_index.md" >}}) and use [boolean operators]({{< relref "/filterx/filterx-boolean/_index.md" >}}) similarly to filters.
 
-Since all FilterX statements must match a message to pass the FilterX block, often you can change complex boolean filter expressions into multiple, more simple FilterX statements. For example, consider the following filter statement:
+Since all FilterX statements must match a message to pass the FilterX block, you can often replace complex boolean filter expressions with multiple, simple FilterX statements. For example, consider the following filter statement:
 
 ```shell
 filter { host("example1") and program("nginx"); };
@@ -39,17 +39,13 @@ The following is the same FilterX statement:
 filterx { ${HOST} == "example1" and ${PROGRAM} == "nginx"; };
 ```
 
-which is equivalent with:
+which is equivalent to:
 
 ```shell
 filterx {
     ${HOST} == "example1";
     ${PROGRAM} == "nginx";
 };
-```
-
-```shell
-filter demo_filter { not host("example1") and not host("example2"); };
 ```
 
 The following filter functions have no equivalents in FilterX yet:
@@ -69,7 +65,7 @@ You can replace most [rewrite rules]({{< relref "/chapter-manipulating-messages/
 - `rewrite{subst()}` with the [`regexp_subst` FilterX function]({{< relref "/filterx/function-reference.md#regexp-subst" >}})
 - `rewrite{set()}` with [value assignments]({{< relref "/filterx/_index.md#assign-values" >}})
 - `rewrite{unset()}` with the [`unset` FilterX function]({{< relref "/filterx/function-reference.md#unset" >}})
-- `rewrite{rename()}` with the assigning a value to the new field then using [`unset`]({{< relref "/filterx/function-reference.md#unset" >}}) on the old field
+- `rewrite{rename()}` with assigning a value to the new field, then using the [`unset`]({{< relref "/filterx/function-reference.md#unset" >}}) function on the old field
 
 
 <!-- 

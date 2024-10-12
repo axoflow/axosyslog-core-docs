@@ -12,16 +12,16 @@ This page describes the operators you can use in [FilterX blocks]({{< relref "/f
 
 ## Comparison operators
 
-Comparison operators allow you to compare values of macros, variables, and expressions as numbers (`==, <, <=, >=, >, !=`) and strings
+Comparison operators allow you to compare values of macros, variables, and expressions as numbers (`==, <, <=, >=, >, !=`) or as strings
 (`eq, lt, le, gt, ge, ne`). You can also check for type equality (`===`) and strict inequality (`!==`). For details and examples, see {{% xref "/filterx/filterx-comparing/_index.md" %}}.
 
 ## Boolean operators
 
-The `not`, `or`, `and` operators allow you to combine comparisons and expressions. For details and examples, see {{% xref "/filterx/filterx-boolean/_index.md" %}}.
+The `not`, `or`, `and` operators allow you to combine any number of comparisons and expressions. For details and examples, see {{% xref "/filterx/filterx-boolean/_index.md" %}}.
 
 ## Null coalescing operator
 
-The [null coalescing operator](https://en.wikipedia.org/wiki/Null_coalescing_operator) returns the result of the left operand if it exists and is not null, otherwise it returns the right-most operand.
+The [null coalescing operator](https://en.wikipedia.org/wiki/Null_coalescing_operator) returns the result of the left operand if it exists and is not null, otherwise it returns the operand on the right.
 
 ```shell
 left-operand ?? right-operand
@@ -37,15 +37,15 @@ ${MESSAGE} = json["BODY"] ?? "Empty message"
 
 ## Plus operator
 
-The plus operator (`+`) works adds two arguments, where applicable. (For example, you can't add two datetime values.)
+The plus operator (`+`) adds two arguments, if possible. (For example, you can't add two datetime values.)
 
-You can use it two add numbers (two integers, two double values). If you add a double to an integer, the result is a double.
+You can use it to add two numbers (two integers, two double values). If you add a double to an integer, the result is a double.
 
 Adding two strings [concatenates the strings]({{< relref "/filterx/_index.md#concatenate-strings" >}}).
 
 ## Plus equal operator
 
-The `+=` operator increases the value of a variable with the specified value. Exactly how the addition happens depends on the type of the variable.
+The `+=` operator increases the value of a variable with the value on the right. Exactly how the addition happens depends on the type of the variable.
 
 - For numeric types (`int` and `double`), the result is the sum of the values. For example:
 
@@ -83,7 +83,7 @@ The `+=` operator increases the value of a variable with the specified value. Ex
     # mylist is ["one", "two", "let's", "go"]
     ```
 
-- For a datetime, it increments the time. Note that you can add only integer and double values to a datetime, and:
+- For datetime variables, it increments the time. Note that you can add only integer and double values to a datetime, and:
 
     - When adding an integer, it must be the number of microseconds you want to add. For example:
 
@@ -103,13 +103,13 @@ The `+=` operator increases the value of a variable with the specified value. Ex
 
 ## Regexp match (equal tilde) {#regexp}
 
-To check if a value contains a string or a regular expression, use the `=~` operator. For example, the following statement is true if the `${MESSAGE}` contains the word `error`:
+To check if a value contains a string or matches a regular expression, use the `=~` operator. For example, the following statement is true if the `${MESSAGE}` contains the word `error`:
 
 ```shell
 ${MESSAGE} =~ "error";
 ```
 
-Use the `!~` operator to check if a value doesn't contain an expression. For example, the following statement is true if the `${MESSAGE}` doesn't contain the word `error`:
+Use the `!~` operator to check if a literal string or variable doesn't contain an expression. For example, the following statement is true if the `${MESSAGE}` doesn't contain the word `error`:
 
 ```shell
 ${MESSAGE} !~ "error";
@@ -148,7 +148,7 @@ For example, the following example checks the value of the `${LEVEL_NUM}` macro 
 (${LEVEL_NUM} < 5 ) ? "low" : "high";
 ```
 
-You can also use it to check if a value is set, and set it to a default value if it doesn't:
+You can also use it to check if a value is set, and set it to a default value if it isn't, but for this use case we recommend using the [Null coalescing operator](#null-coalescing-operator):
 
 ```shell
 ${HOST} = isset(${HOST}) ? ${HOST} : "default-hostname"

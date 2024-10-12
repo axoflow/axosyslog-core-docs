@@ -10,12 +10,12 @@ weight:  900
 {{< product >}} allows you to process, manipulate, and create OpenTelemetry log messages using FilterX. For example, you can:
 
 - route your OpenTelemetry messages to different destinations based on the content of the messages,
-- change fields in the message (for examples, add missing information, or delete unnecessary data), or
+- change fields in the message (for example, add missing information, or delete unnecessary data), or
 - convert incoming syslog messages to OpenTelemetry log messages.
 
 ## Route OTEL messages
 
-To route OTEL messages (such as the ones received using the [`opentelemetry()` source]({{< relref "/chapter-sources/opentelemetry/_index.md" >}})) based on their content, configure the following:
+To route OTEL messages (such as the ones received through the [`opentelemetry()` source]({{< relref "/chapter-sources/opentelemetry/_index.md" >}})) based on their content, configure the following:
 
 1. Map the OpenTelemetry input message to OTEL objects in FilterX, so {{< product >}} handles their type properly. Add the following to your FilterX block:
 
@@ -82,7 +82,7 @@ To modify messages received via the OpenTelemetry protocol (OTLP), such as the o
 
     The following example does two things:
 
-    - It checks if the hostname resource attribute exists, and adds the sender IP address if it doesn't.
+    - It checks if the hostname resource attribute exists, and sets it to the sender IP address if it doesn't.
 
         ```shell
         if (not isset(resource.attributes["host.name"])) {
@@ -90,7 +90,7 @@ To modify messages received via the OpenTelemetry protocol (OTLP), such as the o
         };
         ```
 
-    - It checks if the [Timestamp field](https://opentelemetry.io/docs/specs/otel/logs/data-model/#field-timestamp) (which is optional) is set in the log object, and sets it to the date {{< product >}} received the message if it doesn't.
+    - It checks whether the [Timestamp field](https://opentelemetry.io/docs/specs/otel/logs/data-model/#field-timestamp) (which is optional) is set in the log object, and sets it to the date {{< product >}} received the message if it isn't.
 
         ```shell
         if (log.observed_time_unix_nano == 0) {
@@ -125,7 +125,7 @@ To modify messages received via the OpenTelemetry protocol (OTLP), such as the o
 
     For details on mapping values, see the [`otel_logrecord reference`](#otel-logrecord-reference).
 
-1. Update the message with the modified objects so your changes are included in the message sent to the destination:
+1. Update the message with the modified objects so that your changes are included in the message sent to the destination:
 
     ```shell
     log {
@@ -162,7 +162,7 @@ To convert incoming syslog messages to OpenTelemetry log messages and send them 
 
 1. Receive the incoming syslog messages.
 1. Initialize the data structures required for OpenTelemetry log messages in a [FilterX block]({{< relref "/filterx/_index.md" >}}).
-1. Map the key-value pairs and macros of the syslog message to appropriate OpenTelemetry log record fields. There is no universal mapping available, it depends on the source message and the receiver as well. For some samples, see the [Example Mappings](https://opentelemetry.io/docs/specs/otel/logs/data-model-appendix) in the OpenTelemetry documentation, or check the recommendations and requirements of your receiver. For details on the fields that are available in the {{< product >}} OTEL data structures, see the [`otel_logrecord reference`](#otel-logrecord-reference).
+1. Map the key-value pairs and macros of the syslog message to appropriate OpenTelemetry log record fields. There is no universal mapping scheme available, it depends on the source message and the receiver as well. For some examples, see the [Example Mappings](https://opentelemetry.io/docs/specs/otel/logs/data-model-appendix) page in the OpenTelemetry documentation, or check the recommendations and requirements of your receiver. For details on the fields that are available in the {{< product >}} OTEL data structures, see the [`otel_logrecord reference`](#otel-logrecord-reference).
 
     The following example includes a simple mapping for RFC3164-formatted syslog messages. Note that the body of the message is rendered as a string, not as structured data.
 
@@ -211,7 +211,7 @@ Attributes that describe the event. Attribute keys MUST be unique.
 
 ### body
 
-The body of the log record. It can be a simple string, or any complex nested objects, such as lists and arrays.
+The body of the log record. It can be a simple string, or any number of complex nested objects, such as lists and arrays.
 
 ### flags
 
@@ -227,7 +227,7 @@ Flags as a bit field.
 | --------- | ------------------------------------------------ |
 | Type: | `datetime` |
 
-The time when the event was observed by the collection system, in UNIX Epoch time in nanoseconds since 00:00:00 UTC on 1 January 1970.
+The time when the event was observed by the collection system, expressed as nanoseconds elapsed since the UNIX Epoch (January 1, 1970, 00:00:00 UTC).
 
 ### severity_number
 
@@ -314,7 +314,7 @@ Unique identifier of a span within a trace, an 8-byte array.
 | --------- | ------------------------------------------------ |
 | Type: | `datetime` |
 
-The time when the event occurred, in UNIX Epoch time in nanoseconds since 00:00:00 UTC on 1 January 1970. If `0`, the timestamp is missing.
+The time when the event occurred, expressed as nanoseconds elapsed since the UNIX Epoch (January 1, 1970, 00:00:00 UTC). If `0`, the timestamp is missing.
 
 ### trace_id
 
@@ -331,6 +331,6 @@ The [resource](https://opentelemetry.io/docs/concepts/resources/) describes the 
 
 ## otel_scope reference {#otel-scope-reference}
 
-Describes the [instrumentation scope](https://opentelemetry.io/docs/concepts/instrumentation-scope/) that sent the message. It may contain simple key-value pairs (string or integers), but also arbitrary nested objects, such as lists and arrays. It usually contains a `name` and a `version` field.
+Describes the [instrumentation scope](https://opentelemetry.io/docs/concepts/instrumentation-scope/) that sent the message. It may contain simple key-value pairs (strings or integers), but also arbitrary nested objects, such as lists and arrays. It usually contains a `name` and a `version` field.
 
 <!-- https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/common/v1/common.proto -->
