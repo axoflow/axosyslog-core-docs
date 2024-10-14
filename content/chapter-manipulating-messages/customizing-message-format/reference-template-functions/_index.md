@@ -301,7 +301,13 @@ For example: `$(format-date --time-zone PST8PDT %Y-%m-%dT%H:%M:%S 1667500613)` c
 
 {{% include-headless "chunk/example-ewmm-message-format.md" %}}
 
+{{% alert title="Note" color="info" %}}
+To use this template function, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 
+```shell
+@include "scl.conf"
+```
+{{% /alert %}}
 
 ## format-flat-json {#template-function-format-flat-json}
 
