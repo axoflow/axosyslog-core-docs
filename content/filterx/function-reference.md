@@ -17,7 +17,7 @@ Functions have arguments that can be either mandatory or optional.
 
 ## cache_json_file {#cache-json-file}
 
-Load the contents of an external JSON file in an efficient manner. You can use this to lookup contextual information. (Basically, this is a FilterX-specific implementation of the [`add-contextual-data() functionality`]({{< relref "/chapter-enrich-data/data-enrichment-add-contextual-data/_index.md" >}}).)
+Load the contents of an external JSON file in an efficient manner. You can use this function to lookup contextual information. (Basically, this is a FilterX-specific implementation of the [`add-contextual-data() functionality`]({{< relref "/chapter-enrich-data/data-enrichment-add-contextual-data/_index.md" >}}).)
 
 Usage: `cache_json_file("/path/to/file.json")`
 
@@ -61,8 +61,8 @@ date = datetime("1701350398.123000+01:00");
 
 Usually, you use the [strptime](#strptime) FilterX function to create datetime values. Alternatively, you can cast an integer, double, string, or isodate variable into datetime with the `datetime()` FilterX function. Note that:
 
-- When casting from an integer, the integer is the number of microseconds elapsed since the UNIX epoch (January 1, 1970 12:00:00 AM).
-- When casting from a double, the double is the number of seconds elapsed since the UNIX epoch (January 1, 1970 12:00:00 AM). (The part before the floating points is the seconds, the part after the floating point is the microseconds.)
+- When casting from an integer, the integer is the number of microseconds elapsed since the UNIX epoch (00:00:00 UTC on 1 January 1970).
+- When casting from a double, the double is the number of seconds elapsed since the UNIX epoch (00:00:00 UTC on 1 January 1970). (The part before the floating points is the seconds, the part after the floating point is the microseconds.)
 - When casting from a string, the string (for example, `1701350398.123000+01:00`) is interpreted as: `<the number of seconds elapsed since the UNIX epoch>.<microseconds>+<timezone relative to UTC (GMT +00:00)>`
 
 ## flatten
@@ -90,7 +90,7 @@ Only the input is mandatory, other arguments are optional. Note that the delimit
 
 By default, the delimiter is the comma (`delimiter=","`), the `columns` and `default_value` are empty.
 
-If the `columns` option is set, {{< product >}} checks that the number of entries in the input data matches the number of columns. If there are fewer entries, it adds the `default_value` to the missing entries.
+If the `columns` option is set, {{< product >}} checks that the number of fields or entries in the input data matches the number of columns. If there are fewer items, it adds the `default_value` to the missing entries.
 
 ## format_kv {#format-kv}
 
@@ -148,7 +148,7 @@ If the object doesn't exist, `istype()` returns with an error, causing the Filte
 
 Cast a value into a JSON object. `json_object()` is an alias for `json()`.
 
-Usage: `json(<string or expression to cast as json>)`
+Usage: `json(<string or expression to cast to json>)`
 
 For example:
 
@@ -160,7 +160,7 @@ js = json({"key": "value"});
 
 Cast a value into a JSON array.
 
-Usage: `json_array(<string or expression to cast as json array>)`
+Usage: `json_array(<string or expression to cast to json array>)`
 
 For example:
 
@@ -176,7 +176,7 @@ Usage: `len(object)`
 
 ## lower
 
-Converts a string into lowercase characters.
+Converts all characters of a string lowercase characters.
 
 Usage: `lower(string)`
 
@@ -202,7 +202,7 @@ Creates an [OpenTelemetry scope object]({{< relref "/filterx/filterx-otel/_index
 
 ## parse_csv {#parse-csv}
 
-Separate a comma-separated or similar string.
+Split a comma-separated or similar string.
 
 Usage: `parse_csv(msg_str [columns=json_array, delimiter=string, string_delimiters=json_array, dialect=string, strip_whitespace=boolean, greedy=boolean])`
 
@@ -210,11 +210,11 @@ For details, see {{% xref "/filterx/filterx-parsing/csv/_index.md" %}}.
 
 ## parse_kv {#parse-kv}
 
-Separate a string consisting of whitespace or comma-separated `key=value` pairs (for example, WELF-formatted messages).
+Split a string consisting of whitespace or comma-separated `key=value` pairs (for example, WELF-formatted messages).
 
 Usage: `parse_kv(msg, value_separator="=", pair_separator=", ", stray_words_key="stray_words")`
 
-The `value_separator` must be a single-character string. The `pair_separator` must be a string.
+The `value_separator` must be a single character. The `pair_separator` can consist of multiple characters.
 
 For details, see {{% xref "/filterx/filterx-parsing/key-value-parser/_index.md" %}}.
 
@@ -255,7 +255,7 @@ ${MY-LIST}.named = regexp_search("first-word second-part third", /(?<one>first-w
 
 ### Mixed match groups
 
-If you use mixed (some named, some unnamed) groups, the output is a dictionary, where {{< product >}} automatically assigns a key to the unnamed groups. For example:
+If you use mixed (some named, some unnamed) groups in your regular expression, the output is a dictionary, where {{< product >}} automatically assigns a key to the unnamed groups. For example:
 
 ```shell
 ${MY-LIST} = json(); # Creates an empty JSON object
@@ -286,19 +286,17 @@ regexp_subst(${MESSAGE}, "IP", "IP-Address", global=true);
 
 {{< include-headless "chunk/filterx-regexp-notes.md" >}}
 
-For a case sensitive search, use the `ignorecase=true` option.
-
 ### Options
 
 You can use the following flags with the `regexp_subst` function:
 
 - `global=true`:
 
-    Replace every occurrence of the search string.
+    Replace every match of the regular expression, not only the first one.
 
 - `ignorecase=true`:
 
-    Do case insensitive search.
+    Do case insensitive match.
 
 - `jit=true`:
 
@@ -310,7 +308,7 @@ You can use the following flags with the `regexp_subst` function:
 
 ## string
 
-Cast a value into a string. Note currently {{< product >}} evaluates strings and executes [template functions]({{< relref "/filterx/_index.md#template-functions" >}}) and template expressions. In the future, template evaluation will be moved to a separate FilterX function.
+Cast a value into a string. Note that currently {{< product >}} evaluates strings and executes [template functions]({{< relref "/filterx/_index.md#template-functions" >}}) and template expressions within the strings. In the future, template evaluation will be moved to a separate FilterX function.
 
 Usage: `string(<string or expression to cast>)`
 
@@ -340,11 +338,11 @@ If none of the format strings match, `strptime` returns the null value and logs 
 
 {{% /alert %}}
 
-You can use the following elements in the format string:
+You can use the following format codes in the format string:
 
 {{< include-headless "chunk/date-string-format.md" >}}
 
-The [`isodate`](#isodate) FilterX function is a specialized version of `strptime` that accepts only a fixed format.
+The [`isodate`](#isodate) FilterX function is a specialized variant of `strptime`, that accepts only a fixed format.
 
 ## unset
 
@@ -389,7 +387,7 @@ Usage: `unset_empties(object, recursive=true)`
 
 ## upper
 
-Converts a string into uppercase characters.
+Converts all characters of a string uppercase characters.
 
 Usage: `upper(string)`
 
