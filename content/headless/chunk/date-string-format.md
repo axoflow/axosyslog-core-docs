@@ -44,11 +44,10 @@
 
 {{% alert title="Warning" color="warning" %}}
 
-When using the %z and %Z format elements, consider that while %z strictly expects a specified timezone, and triggers a warning if the timezone is not specified, %Z does not trigger a warning if the timezone is not specified.
+When using the `%z` and `%Z` format codes, consider that while `%z` strictly expects a specified timezone, and triggers a warning if the timezone is missing, `%Z` does not trigger a warning if the timezone is not specified.
 
-For further information about the %z and %Z format elements, see the 'DESCRIPTION' section on the [srtptime(3) - NetBSD Manual Pages](https://man.netbsd.org/NetBSD-7.0/i386/strptime.3).
+For further information about the `%z` and `%Z` format codes, see the 'DESCRIPTION' section on the [srtptime(3) - NetBSD Manual Pages](https://man.netbsd.org/NetBSD-7.0/i386/strptime.3).
 
 {{% /alert %}}
-
 
 For example, for the date `01/Jan/2016:13:05:05 PST` use the following format string: `"%d/%b/%Y:%H:%M:%S %Z"`
