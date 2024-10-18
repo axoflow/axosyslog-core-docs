@@ -85,7 +85,7 @@ filterx {
 The same is true for complex objects, like JSON, for example:
 
 ```shell
-js = json_object({
+js = json({
     "key": "value",
     "second-key": "another-value"
 });
@@ -145,7 +145,7 @@ Variables can have the following types. All of these types have a matching funct
 - `dict`
 - `double`
 - `int`
-- [`json, json_object`]({{< relref "/filterx/function-reference.md#json" >}}) and [`json_array`]({{< relref "/filterx/function-reference.md#json-array" >}}) for JSON or JSON-like objects. The `json` type is an alias for the `json_object` type.
+- [`json`]({{< relref "/filterx/function-reference.md#json" >}}) and [`json_array`]({{< relref "/filterx/function-reference.md#json-array" >}}) for JSON or JSON-like objects.
 - `list`
 - `null`
 - `otel_array`
@@ -254,7 +254,7 @@ my_list = []; # Creates an empty list (which defaults to a JSON list)
 my_array = {}; # Creates an empty dictionary (which defaults to a JSON object)
 
 my_list2 = json_array(); # Creates an empty JSON list
-my_array2 = json_object(); # Creates an empty JSON object. json() is an alias for json_object()
+my_array2 = json(); # Creates an empty JSON object.
 ```
 
 You can add elements to lists and dictionaries like this:
@@ -287,7 +287,7 @@ ${MESSAGE} = list;
 
 In all three cases, the value of `${MESSAGE}` is the same JSON array: `["first_element", "second_element", "third_element"]`.
 
-You can define JSON objects using the `json_object` type, for example:
+You can define JSON objects using the `json` type, for example:
 
 ```shell
 js1 = json();
@@ -300,14 +300,14 @@ js1 += {
         }
     };
 
-js2 = json_object({"key": "value"})
+js2 = json({"key": "value"})
 ```
 
 Naturally, you can assign values from other variables to an object, for example:
 
 ```shell
 js = json_array(["foo", "bar", "baz"]);
-${MESSAGE} = json_object({
+${MESSAGE} = json({
     "key": "value",
     "list": list
 });
@@ -316,7 +316,7 @@ ${MESSAGE} = json_object({
 or
 
 ```shell
-js = json_object({
+js = json({
     "key": ${MY-NAME-VALUE-PAIR},
     "key-from-expression": isset(${HOST}) ? ${HOST} : "default-hostname",
     "list": list
@@ -471,10 +471,10 @@ If you're modifying messages using FilterX (for example, you extract a value fro
 - Local and pipeline variables are not included in the message, you must assign their value to a macro or name-value pair that's included in the destination template to send them to the destination.
 - When sending data to `opentelemetry()` destinations, if you're modifying messages received via the `opentelemetry()` source, then you must explicitly update the original (raw) data structures in your FilterX block, otherwise the changes won't be included in the outgoing message. For details, see {{% xref "/filterx/filterx-otel/_index.md#modify-otel" %}}.
 
-<!-- 
+<!--
 - underscores vs hyphens in filterx? everywhere else we use mainly hyphens (parse_kv vs parse-kv) > only underscores work for now
 - make flags (like ignorecase) of regexp_subst available for regexp_search
-- Aliases for options that are the same but have different names in filterx reimplementations? 
+- Aliases for options that are the same but have different names in filterx reimplementations?
     - csv-parser: delimiters vs parse_csv: delimiter
 - inconsistency in parse_csv: string_delimiters vs delimiter
 
