@@ -137,16 +137,15 @@ Usage: `istype(object, "type_str")`
 For example:
 
 ```shell
-istype({"key": "value"}, "json_object"); # True
 istype(${PID}, "string");
 istype(my-local-json-object.mylist, "json_array");
 ```
 
 If the object doesn't exist, `istype()` returns with an error, causing the FilterX statement to become false, and logs an error message to the `internal()` source of {{< product >}}.
 
-## json, json_object {#json}
+## json {#json}
 
-Cast a value into a JSON object. `json_object()` is an alias for `json()`.
+Cast a value into a JSON object.
 
 Usage: `json(<string or expression to cast to json>)`
 
