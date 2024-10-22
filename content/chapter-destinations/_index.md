@@ -20,6 +20,11 @@ To define a destination, add a destination statement to the `syslog-ng.conf` con
     };
 ```
 
+Note the following points:
+
+- Do not define the same drivers with the same parameters more than once, because it will cause problems. For example, do not open the same file in multiple destinations.
+- Do not use the same destination in different log paths, because it can cause problems with most destination types. Instead, use filters and log paths to avoid such situations.
+- {{< include-headless "chunk/para-initializing-sources-destinations.md" >}}
 
 ## Example: A simple destination statement
 
@@ -39,17 +44,4 @@ If name resolution is configured, you can use the hostname of the target server 
     };
 ```
 
-
-{{% alert title="Warning" color="warning" %}}
-
-  - Do not define the same drivers with the same parameters more than once, because it will cause problems. For example, do not open the same file in multiple destinations.
-
-  - Do not use the same destination in different log paths, because it can cause problems with most destination types. Instead, use filters and log paths to avoid such situations.
-
-  - {{< include-headless "chunk/para-initializing-sources-destinations.md" >}}
-
-{{% /alert %}}
-
-The following table lists the destination drivers available in {{% param "product.abbrev" %}}. If these destinations do not satisfy your needs, you can extend {{% param "product.abbrev" %}} and write your own destination, for example, in C, Java, or Python. For details, see {{% xref "/chapter-destinations/reference-destination-custom/_index.md" %}}.
-
-The following destination driver groups are available in {{% param "product.abbrev" %}}:
+The following destination drivers are available in {{% param "product.abbrev" %}}. If these destinations do not satisfy your needs, you can extend {{% param "product.abbrev" %}} and write your own destination, for example, in C, Java, or Python. For details, see {{% xref "/chapter-destinations/reference-destination-custom/_index.md" %}}.
