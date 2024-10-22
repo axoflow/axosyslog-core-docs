@@ -87,6 +87,12 @@ If `log-iw-size(1000)` and `max-connections(10)`, then each connection will have
 
 {{% include-headless "chunk/option-source-tags.md" %}}
 
+{{< include-headless "chunk/option-tcp-keepalive-intvl.md" >}}
+
+{{< include-headless "chunk/option-tcp-keepalive-probes.md" >}}
+
+{{< include-headless "chunk/option-tcp-keepalive-time.md" >}}
+
 {{% include-headless "chunk/option-source-time-zone.md" %}}
 
 
