@@ -137,6 +137,9 @@ Usage: `istype(object, "type_str")`
 For example:
 
 ```shell
+obj = json();
+istype(obj, "json_object"); # True
+
 istype(${PID}, "string");
 istype(my-local-json-object.mylist, "json_array");
 ```
