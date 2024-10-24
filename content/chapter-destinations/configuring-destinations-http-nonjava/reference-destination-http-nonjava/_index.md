@@ -74,8 +74,28 @@ For details on how this option influences HTTP batch mode, see [http: Posting me
 
 *Description:* The string {{% param "product.abbrev" %}} puts to the end of the body of the HTTP request, after the log message. Available in {{% param "product.abbrev" %}} version 3.18 and later.
 
-For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
+For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}}).
 
+## cloud-auth()
+
+Authenticate to cloud-based services, for example, GCP, using service accounts.
+
+### gcp()
+
+Authenticate to GCP service accounts. For example:
+
+```shell
+cloud-auth(
+  gcp(
+    user-managed-service-account(
+      name("your-user@your-project.iam.gserviceaccount.com")
+      metadata-url("your-metadata-server:8080")
+    )
+  )
+)
+```
+
+{{< include-headless "chunk/option-gcp-cloud-auth.md" >}}
 
 
 {{% include-headless "chunk/option-destination-tls-ca-dir.md" %}}
