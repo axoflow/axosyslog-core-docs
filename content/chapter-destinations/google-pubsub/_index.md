@@ -79,7 +79,7 @@ auth(
   )
 ```
 
-### service-account()
+{{< include-headless "chunk/option-gcp-cloud-auth.md" >}}
 
 ## data()
 
