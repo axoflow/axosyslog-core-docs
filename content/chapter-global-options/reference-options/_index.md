@@ -500,6 +500,15 @@ options {
 
 Note that level 2 and 3 increase the memory requirements and CPU load. For details on message statistics, see {{% xref "/chapter-log-statistics/_index.md" %}}.
 
+### lifetime() {#global-option-stats-lifetime}
+
+|                  |         |
+| ---------------- | ------- |
+| Accepted values: | number (seconds)  |
+| Default:         | `N/A` |
+
+*Description:* Dynamic counters in metrics are pruned after `lifetime` expires. Note that orphaned counters are not pruned (you can prune them by running `syslog-ng-ctl stats --remove-orphans`).
+
 ### max-dynamics() {#global-option-stats-max-dynamics}
 
 |                  |         |
