@@ -58,7 +58,7 @@ jobs:
         run: hugo --environment production
 
       - name: Pagefind search index
-        run: npm_config_yes=true npx pagefind --bundle-dir pagefind --source ./public
+        run: npm_config_yes=true npx pagefind --output-subdir pagefind --site ./public
 
       - name: Deploy with rclone
         uses: AnimMouse/setup-rclone@v1
