@@ -35,6 +35,8 @@ The `loki()` destination has the following options.
 
 {{< include-headless "chunk/grpc-authentication.md" >}}
 
+{{% include-headless "chunk/option-destination-batch-bytes.md" %}}
+
 ## batch-lines()
 
 |          |        |
@@ -47,6 +49,8 @@ The `loki()` destination has the following options.
 {{% include-headless "chunk/option-destination-batch-timeout.md" %}}
 
 {{< include-headless "chunk/option-grpc-channel-args.md" >}}
+
+{{< include-headless "chunk/option-destination-grpc-compression.md" >}}
 
 {{< include-headless "chunk/option-grpc-headers.md" >}}
 
