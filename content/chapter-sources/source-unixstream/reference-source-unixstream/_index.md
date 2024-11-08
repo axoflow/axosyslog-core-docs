@@ -29,6 +29,7 @@ These two drivers behave similarly: they open an `AF_UNIX` socket and start list
 
 {{% include-headless "chunk/option-source-host-override.md" %}}
 
+{{< include-headless "chunk/option-source-idle-timeout.md" >}}
 
 ## keep-alive()
 

@@ -16,6 +16,8 @@ The `pipe` driver has the following options:
 
 {{< include-headless "chunk/option-destination-hook.md" >}}
 
+{{< include-headless "chunk/option-source-idle-timeout.md" >}}
+
 {{< include-headless "chunk/option-source-keep-timestamp.md" >}}
 
 {{% include-headless "chunk/option-source-log-fetch-limit.md" %}}
