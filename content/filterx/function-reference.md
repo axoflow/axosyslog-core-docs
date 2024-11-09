@@ -358,34 +358,22 @@ See also {{% xref "/filterx/_index.md#delete-values" %}}.
 
 ## unset_empties {#unset-empties}
 
-Deletes ([unsets](#unset)) the empty fields of an object, for example, a JSON object or list. Use the `recursive=true` parameter to delete empty values of inner dicts' and lists' values.
+Deletes ([unsets](#unset)) the empty fields of an object, for example, a JSON object or list. By default, the object is processed recursively, so the empty values are deleted from inner dicts and lists as well. If you set the `replacement` option, you can also use this function to replace fields of the object to custom values.
 
-Usage: `unset_empties(object, recursive=true)`
+Usage: `unset_empties(object, options)`
 
-<!-- FIXME add a before/after example, for recursive and non-recursive cases 
+The `unset_empties()` function has the following options:
 
-            dict = json({"foo": "", "bar": "-", "baz": "N/A", "almafa": null, "kortefa": {"a":{"s":{"d":{}}}}, "szilvafa": [[[]]]});
-            defaults_dict = dict;
-            explicit_dict = dict;
-            unset_empties(defaults_dict);
-            unset_empties(explicit_dict, recursive=true);
+- `ignorecase`: Set to `false` to perform case-insensitive matching. Default value: `true`. Available in Available in {{< product >}} 4.9 and later.
+- `recursive`: Enables recursive processing of nested dictionaries. Default value: `true`
+- `replacement`: Replace the target elements with the value of `replacement` instead of removing them. Available in {{< product >}} 4.9 and later.
+- `targets`: A list of elements to remove or replace. Default value: `["", null, [], {}]`. Available in {{< product >}} 4.9 and later.
 
-            list = json_array(["", "-", "N/A", null, {"a":{"s":{"d":{}}}}, [[[]]]]);
-            defaults_list = list;
-            explicit_list = list;
-            unset_empties(defaults_list);
-            unset_empties(explicit_list, recursive=true);
+For example, to remove the fields with `-` and `N/A` values, you can use
 
-            $MSG = json_array([defaults_dict, explicit_dict, defaults_list, explicit_list]);
-    """,
-    )
-    syslog_ng.start(config)
-
-    assert file_true.get_stats()["processed"] == 1
-    assert "processed" not in file_false.get_stats()
-    assert file_true.read_log() == "[{},{},[],[]]\n"
-
--->
+```shell
+unset_empties(input_object, targets=["-", "N/A"], ignorecase=false);
+```
 
 ## upper
 
