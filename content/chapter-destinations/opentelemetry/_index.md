@@ -68,23 +68,46 @@ log non_otel_to_otel_tls {
 
 {{< include-headless "chunk/option-destination-grpc-compression.md" >}}
 
+{{< include-headless "chunk/option-destination-diskbuffer.md" >}}
+
 {{< include-headless "chunk/option-grpc-headers.md" >}}
 
 {{< include-headless "chunk/option-destination-frac-digits.md" >}}
 
+{{< include-headless "chunk/option-destination-hook.md" >}}
+
 {{% include-headless "chunk/option-destination-local-timezone.md" %}}
 
+{{% include-headless "chunk/option-destination-log-fifo-size.md" %}}
+
 {{< include-headless "chunk/option-destination-on-error.md" >}}
+
+{{% include-headless "chunk/option-persist-name.md" %}}
+
+{{% include-headless "chunk/option-destination-retries.md" %}}
 
 {{% include-headless "chunk/option-destination-send-timezone.md" %}}
 
 {{% include-headless "chunk/option-destination-template-escape.md" %}}
 
+{{% include-headless "chunk/option-destination-throttle.md" %}}
+
+{{% include-headless "chunk/option-source-time-reopen.md" %}}
+
 {{% include-headless "chunk/option-destination-timezone.md" %}}
 
 {{< include-headless "chunk/option-destination-ts-format.md" >}}
 
-{{< include-headless "chunk/option-destination-threaded-workers.md" >}}
+## url()
 
-<!-- FIXME xinclude other common options
- threaded_dest_driver_general_option-->
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | string |
+| Default: | `localhost:9095` |
+
+*Description:* The URL of the OpenTelemetry receiver.
+
+<a id="worker-partition-key"></a>
+{{< include-headless "chunk/option-destination-http-worker-partition-key.md" >}}
+
+{{< include-headless "chunk/option-destination-threaded-workers.md" >}}
