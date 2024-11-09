@@ -66,8 +66,8 @@ FilterX statements can be one of the following:
 - A declaration of a [pipeline variable](#variable-scope), for example, `declare my_pipeline_variable = "something";`.
 - A FilterX action. This can be one of the following:
 
-    - `drop;`: Intentionally drop the message. This means that the message was successfully processed, but discarded. Processing the dropped message stops at the `drop` statement, subsequent sections or other branches of the FilterX block won't process the message. For example, you can use this to discard unneeded messages, like debug logs.
-    - `done;`: Return truthy and don't execute the rest of the FilterX block, returns with true. This is an early return that you can use to avoid unnecessary processing, for example, when the message matches an early classification in the block.
+    - `drop;`: Intentionally drop the message. This means that the message was successfully processed, but discarded. Processing the dropped message stops at the `drop` statement, subsequent sections or other branches of the FilterX block won't process the message. For example, you can use this to discard unneeded messages, like debug logs. Available in {{< product >}} 4.9 and later.
+    - `done;`: Return truthy and don't execute the rest of the FilterX block, returns with true. This is an early return that you can use to avoid unnecessary processing, for example, when the message matches an early classification in the block. Available in {{< product >}} 4.9 and later.
 
 {{% alert title="Note" color="info" %}}
 
