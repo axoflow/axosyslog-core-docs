@@ -11,11 +11,20 @@
 
 Available in {{< product >}} 4.8 and later.
 
-*Description:* Adds custom gRPC headers to each RPC call. Currently only static header names and values are supported.
+*Description:* Adds custom gRPC headers to each RPC call. Version 4.8 supported only static header names and values. For example:
 
 ```shell
 headers(
     "organization" => "Axoflow"
     "stream-name" => "axo-stream"
+  )
+```
+
+Starting with version 4.9, you can use templates and macros in the header values.
+
+```shell
+headers(
+    "organization" => "Axoflow"
+    "stream-name" => "${HOST}"
   )
 ```
