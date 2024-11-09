@@ -69,7 +69,7 @@ Usually, you use the [strptime](#strptime) FilterX function to create datetime v
 
 Flattens the nested elements of an object using the specified separator, similarly to the [`format-flat-json()` template function]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md#template-function-format-flat-json" >}}). For example, you can use it to flatten nested JSON objects in the output if the receiving application cannot handle nested JSON objects.
 
-Usage: `flatten(dict, separator=".")`
+Usage: `flatten(dict_or_list, separator=".")`
 
 You can use multi-character separators, for example, `=>`. If you omit the separator, the default dot (`.`) separator is used.
 
