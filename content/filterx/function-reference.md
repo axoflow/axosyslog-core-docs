@@ -118,9 +118,21 @@ Formats any value into a raw JSON string.
 
 Usage: `format_json($data)`
 
+## get_sdata
+
+See {{% xref "/filterx/filterx-sdata/_index.md" %}}.
+
+## has_sdata
+
+See {{% xref "/filterx/filterx-sdata/_index.md" %}}.
+
 ## isodate
 
 Parses a string as a date in ISODATE format: `%Y-%m-%dT%H:%M:%S%z`
+
+## is_sdata_from_enterprise()
+
+See {{% xref "/filterx/filterx-sdata/_index.md" %}}.
 
 ## isset
 
