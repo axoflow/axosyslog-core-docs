@@ -37,17 +37,31 @@ The `syslog-ng-otlp()` destination has the following options.
 
 {{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
+{{< include-headless "chunk/option-destination-frac-digits.md" >}}
+
 {{< include-headless "chunk/option-destination-hook.md" >}}
 
+{{% include-headless "chunk/option-destination-local-timezone.md" %}}
+
 {{% include-headless "chunk/option-destination-log-fifo-size.md" %}}
+
+{{< include-headless "chunk/option-destination-on-error.md" >}}
 
 {{% include-headless "chunk/option-persist-name.md" %}}
 
 {{% include-headless "chunk/option-destination-retries.md" %}}
 
+{{% include-headless "chunk/option-destination-send-timezone.md" %}}
+
+{{% include-headless "chunk/option-destination-template-escape.md" %}}
+
 {{% include-headless "chunk/option-destination-throttle.md" %}}
 
 {{% include-headless "chunk/option-source-time-reopen.md" %}}
+
+{{% include-headless "chunk/option-destination-timezone.md" %}}
+
+{{< include-headless "chunk/option-destination-ts-format.md" >}}
 
 ## url()
 

@@ -70,6 +70,20 @@ log non_otel_to_otel_tls {
 
 {{< include-headless "chunk/option-grpc-headers.md" >}}
 
+{{< include-headless "chunk/option-destination-frac-digits.md" >}}
+
+{{% include-headless "chunk/option-destination-local-timezone.md" %}}
+
+{{< include-headless "chunk/option-destination-on-error.md" >}}
+
+{{% include-headless "chunk/option-destination-send-timezone.md" %}}
+
+{{% include-headless "chunk/option-destination-template-escape.md" %}}
+
+{{% include-headless "chunk/option-destination-timezone.md" %}}
+
+{{< include-headless "chunk/option-destination-ts-format.md" >}}
+
 {{< include-headless "chunk/option-destination-threaded-workers.md" >}}
 
 <!-- FIXME xinclude other common options
