@@ -65,6 +65,19 @@ Usually, you use the [strptime](#strptime) FilterX function to create datetime v
 - When casting from a double, the double is the number of seconds elapsed since the UNIX epoch (00:00:00 UTC on 1 January 1970). (The part before the floating points is the seconds, the part after the floating point is the microseconds.)
 - When casting from a string, the string (for example, `1701350398.123000+01:00`) is interpreted as: `<the number of seconds elapsed since the UNIX epoch>.<microseconds>+<timezone relative to UTC (GMT +00:00)>`
 
+## endswith
+
+Available in {{< product >}} 4.9 and later.
+
+Returns true if the input string ends with the specified substring. By default, matches are case sensitive. Usage:
+
+```shell
+endswith(input-string, substring);
+endswith(input-string, [substring_1, substring_2], ignorecase=true);
+```
+
+For details, see {{% xref "/filterx/filterx-string-search/_index.md" %}}.
+
 ## flatten
 
 Flattens the nested elements of an object using the specified separator, similarly to the [`format-flat-json()` template function]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md#template-function-format-flat-json" >}}). For example, you can use it to flatten nested JSON objects in the output if the receiving application cannot handle nested JSON objects.
@@ -125,6 +138,19 @@ See {{% xref "/filterx/filterx-sdata/_index.md" %}}.
 ## has_sdata
 
 See {{% xref "/filterx/filterx-sdata/_index.md" %}}.
+
+## includes
+
+Available in {{< product >}} 4.9 and later.
+
+Returns true if the input string contains the specified substring. By default, matches are case sensitive. Usage:
+
+```shell
+includes(input-string, substring);
+includes(input-string, [substring_1, substring_2], ignorecase=true);
+```
+
+For details, see {{% xref "/filterx/filterx-string-search/_index.md" %}}.
 
 ## isodate
 
@@ -319,6 +345,19 @@ You can use the following flags with the `regexp_subst` function:
 - `newline=true`: {{< include-headless "chunk/regex-flag-newline.md" >}}
 
 - `utf8=true`: {{< include-headless "chunk/regex-flag-utf8.md" >}}
+
+## startswith
+
+Available in {{< product >}} 4.9 and later.
+
+Returns true if the input string begins with the specified substring. By default, matches are case sensitive. Usage:
+
+```shell
+startswith(input-string, substring);
+startswith(input-string, [substring_1, substring_2], ignorecase=true);
+```
+
+For details, see {{% xref "/filterx/filterx-string-search/_index.md" %}}.
 
 ## string
 
