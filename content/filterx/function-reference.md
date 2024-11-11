@@ -258,6 +258,30 @@ The `value_separator` must be a single character. The `pair_separator` can consi
 
 For details, see {{% xref "/filterx/filterx-parsing/key-value-parser/_index.md" %}}.
 
+## parse_leef {#parse-leef}
+
+Parse a LEEF-formatted string.
+
+Usage: `parse_leef(msg)`
+
+For details, see {{% xref "/filterx/filterx-parsing/leef/_index.md" %}}.
+
+## parse_xml {#parse-xml}
+
+Parse an XML object into a JSON object.
+
+Usage: `parse_xml(msg)`
+
+For details, see {{< relref "/filterx/filterx-parsing/xml/_index.md" >}}
+
+## parse_windows_eventlog_xml {#parse-windows}
+
+Parses a Windows Event Log XML object into a JSON object.
+
+Usage: `parse_xml(msg)`
+
+For details, see {{< relref "/filterx/filterx-parsing/xml/_index.md" >}}
+
 ## regexp_search {#regexp-search}
 
 Searches a string and returns the matches of a regular expression as a list or a dictionary. If there are no matches, the list or dictionary is empty.
