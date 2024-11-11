@@ -11,9 +11,9 @@ The plus operator (`+`) adds two arguments, if possible. (For example, you can't
 - Adding two dicts updates the dict with the values of the second operand. For example:
 
     ```shell
-    x = {"element1", "element2", "element3"};
-    y = {"element3", "element4", "element5"};
-    ${MESSAGE} = x + y; # ${MESSAGE} value is {"element1", "element2", "element3", "element4", "element5"}
+    x = {"key1": "value1", "key2": "value1"};
+    y = {"key3": "value1", "key2": "value2"};
+    ${MESSAGE} = x + y; # ${MESSAGE} value is {"key1": "value1", "key3": "value1", "key2": "value2"};
     ```
 
     Available in {{< product >}} 4.9 and later.

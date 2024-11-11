@@ -8,7 +8,9 @@ The `parse_leef` FilterX function has the following options.
 
 ## pair_separator
 
-Specifies the character or string that separates the LEEF fields from each other. Default value: `|` .
+Specifies the character or string that separates the key-value pairs in the extensions. Default value: `\t` (tab).
+
+LEEF v2 can specify the separator per message. Omitting this option uses the LEEF v2 provided separator, setting this value overrides it during parsing.
 
 ## value_separator
 

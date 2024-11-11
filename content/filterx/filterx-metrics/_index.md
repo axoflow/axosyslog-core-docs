@@ -50,7 +50,7 @@ update_metric(
         "app": ${PROGRAM},
         "id": ${SOURCE}
     },
-    increment("${RAWMSG_SIZE}")
+    increment=${RAWMSG_SIZE}
 );
 ```
 
@@ -61,7 +61,7 @@ update_metric(
 | Type:    | dict |
 | Default: | `{}` |
 
-The labels used to create separate counters, based on the fields of the messages processed by `update_metrics`. Use the following format:
+The labels used to create separate counters, based on the fields of the messages processed by `update_metric`. Use the following format:
 
 ```shell
 labels(
@@ -82,4 +82,4 @@ labels(
 
 Sets the stats level of the generated metrics.
 
-> Note: Drivers configured with `internal(yes)` register their metrics on level 3. That way if you are creating an SCL, you can disable the built-in metrics of the driver, and create metrics manually using `update_metrics`.
+> Note: Drivers configured with `internal(yes)` register their metrics on level 3. That way if you are creating an SCL, you can disable the built-in metrics of the driver, and create metrics manually using `update_metric`.

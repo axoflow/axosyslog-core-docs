@@ -8,7 +8,7 @@ The `parse_cef` FilterX function has the following options.
 
 ## pair_separator
 
-Specifies the character or string that separates the CEF fields from each other. Default value: `|` .
+Specifies the character or string that separates the key-value pairs in the extensions. Default value: ` ` (space).
 
 ## value_separator
 
