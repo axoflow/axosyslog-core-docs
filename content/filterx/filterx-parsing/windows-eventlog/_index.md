@@ -8,10 +8,12 @@ weight: 1100
 
 Available in {{< product >}} 4.9 and later.
 
-The `parse_windows_eventlog_xml()` FilterX function parses Windows Event Logs XMLs. It's a specialized version of the [`parse_xml()` parser]({{< relref "/filterx/filterx-parsing/xml/_index.md" >}}) that:
+The `parse_windows_eventlog_xml()` FilterX function parses Windows Event Logs XMLs. It's a specialized version of the [`parse_xml()` parser]({{< relref "/filterx/filterx-parsing/xml/_index.md" >}}).
 
-- validates that the data matches the Windows Event Log schema, and
-- automatically handles named `Data` elements.
+The parser returns false in the following cases:
+
+- The input isn't valid XML.
+- The root element doesn't references the [Windows Event Log schema](https://learn.microsoft.com/en-us/windows/win32/wes/eventschema-schema) (`<Event xmlns='http://schemas.microsoft.com/win/2004/08/events/event'>`). Note that the parser doesn't validate the input data to the schema.
 
 For example, the following converts the input XML into a JSON object:
 
