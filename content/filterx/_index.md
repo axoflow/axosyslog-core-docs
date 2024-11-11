@@ -239,13 +239,9 @@ To unset every empty field of an object, use the [`unset-empties`]({{< relref "/
 
 {{< include-headless "chunk/filterx-unset-hard-macros.md" >}}
 
-## Concatenate strings
+## Add two values
 
-You can concatenate strings by adding them with the `+` operator. Note that if you want to have spaces between the added elements, you have to add them manually, like in Python, for example:
-
-```shell
-${MESSAGE} = ${HOST} + " first part of the message," + " second part of the message" + "\n";
-```
+{{< include-headless "chunk/filterx-plus-operator.md" >}}
 
 ## Complex types: lists, dicts, and JSON {#json}
 
@@ -335,11 +331,7 @@ Within a FilterX block, you can access the fields of complex data types by using
 
 When referring to the field of a name-value pair (which begins with the `$` character), place the dot or the square bracket outside the curly bracket surrounding the name of the name-value pair, for example: `${MY-LIST}[2]` or `${MY-OBJECT}.mykey`. If the name of the key contains characters that are not permitted in FilterX variable names, for example, a hyphen (`-`), use the bracketed syntax and enclose the key in double quotes: `${MY-LIST}["my-key-name"]`.
 
-<!-- FIXME Clarify when/what can be accessed from the destination templates
-    # Set the important elements as name-value pairs so they can be referenced in the destination template
- -->
-
-<!-- FIXME more examples for lists/dicts if needed -->
+You can add two lists or two dicts using the {{% xref "/filterx/operator-reference.md#plus-operator" %}}.
 
 <!--
 ### Type casting
@@ -356,7 +348,7 @@ FilterX has the following operators.
 - [Boolean operators]({{< relref "/filterx/filterx-boolean/_index.md" >}}): `not`, `or`, `and`.
 - [Dot operator (`.`)](#json) to access fields of an object, like JSON.
 - [Indexing operator `[]`](#json) to access fields of an object, like JSON.
-- [Plus (`+`) operator](#concatenate-strings) to concatenate strings.
+- [Plus (`+`) operator]({{< relref "/filterx/operator-reference.md#plus-operator" >}}) to add values and concatenate strings.
 - [Plus equal (`+=`) operator]({{< relref "/filterx/operator-reference.md#plus-equal-operator" >}}) to add the right operand to the left.
 - [Ternary conditional operator]({{< relref "/filterx/operator-reference.md#ternary-conditional-operator" >}}): `?:`.
 - [Null coalescing operator]({{< relref "/filterx/operator-reference.md#null-coalescing-operator" >}}): `??`.
