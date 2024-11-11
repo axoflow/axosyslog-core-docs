@@ -7,7 +7,7 @@
 |                  |                    |
 | ---------------- | ------------------ |
 | Accepted values: | number [seconds] |
-| Default:         |                  |
+| Default:         | `0` (disabled) |
 
 Available in {{< product >}} 4.9 and later.
 
