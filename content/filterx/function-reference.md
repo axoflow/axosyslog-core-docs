@@ -193,7 +193,13 @@ Usage: `json(<string or expression to cast to json>)`
 For example:
 
 ```shell
-js = json({"key": "value"});
+js_dict = json({"key": "value"});
+```
+
+Starting with version 4.9, you can use `{}` without the `json()` keyword as well. For example, the following creates an empty JSON object:
+
+```shell
+js_dict = {};
 ```
 
 ## json_array {#json-array}
@@ -205,7 +211,13 @@ Usage: `json_array(<string or expression to cast to json array>)`
 For example:
 
 ```shell
-list = json_array(["first_element", "second_element", "third_element"]);
+js_list = json_array(["first_element", "second_element", "third_element"]);
+```
+
+Starting with version 4.9, you can use `[]` without the `json_array()` keyword as well. For example, the following creates an empty JSON list:
+
+```shell
+js_dict = [];
 ```
 
 ## len
