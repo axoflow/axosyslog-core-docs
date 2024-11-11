@@ -23,7 +23,7 @@ ClickHouse Cloud doesn't support the gRPC interface currently.
     - the name of an existing database and a table where you want to send your data, and
     - the credentials (username and password) to access the database.
 
-Example configuration:
+Example configuration (sends data to the default `localhost:9100` URL):
 
 ```sh
 destination {
@@ -136,7 +136,7 @@ Alternatively, you can set the schema with the [`schema()`](#schema) option.
 |          |                            |
 | -------- | -------------------------- |
 | Type:    | arrow list |
-| Default: | - |
+| Default: |  |
 
 *Description:* Sets the schema of the database table. On the left side of the arrow, set the name of the column and its type. On the right side, set any {{% param "product_name" %}} template or macro, which gets evaluated on each log that is routed to the destination. For example:
 
@@ -149,9 +149,9 @@ schema(
 )
 ```
 
-<!-- FIXME The available column types are: -->
-
 Alternatively, you can set the schema with the [`protobuf-schema()`](#protobuf-schema) option.
+
+You can find the available column types in the [official ClickHouse documentation](https://clickhouse.com/docs/en/sql-reference/data-types).
 
 {{% include-headless "chunk/option-destination-send-timezone.md" %}}
 
