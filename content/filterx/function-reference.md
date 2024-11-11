@@ -426,6 +426,10 @@ For example, to remove the fields with `-` and `N/A` values, you can use
 unset_empties(input_object, targets=["-", "N/A"], ignorecase=false);
 ```
 
+## update_metric {#update-metric}
+
+Updates a labeled metric counter, similarly to the [`metrics-probe()` parser]({{< relref "/chapter-parsers/metrics-probe/_index.md" >}}). For details, see {{% xref "/filterx/filterx-metrics/_index.md" %}}.
+
 ## upper
 
 Converts all characters of a string uppercase characters.
