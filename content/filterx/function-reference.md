@@ -65,11 +65,24 @@ Usually, you use the [strptime](#strptime) FilterX function to create datetime v
 - When casting from a double, the double is the number of seconds elapsed since the UNIX epoch (00:00:00 UTC on 1 January 1970). (The part before the floating points is the seconds, the part after the floating point is the microseconds.)
 - When casting from a string, the string (for example, `1701350398.123000+01:00`) is interpreted as: `<the number of seconds elapsed since the UNIX epoch>.<microseconds>+<timezone relative to UTC (GMT +00:00)>`
 
+## endswith
+
+Available in {{< product >}} 4.9 and later.
+
+Returns true if the input string ends with the specified substring. By default, matches are case sensitive. Usage:
+
+```shell
+endswith(input-string, substring);
+endswith(input-string, [substring_1, substring_2], ignorecase=true);
+```
+
+For details, see {{% xref "/filterx/filterx-string-search/_index.md" %}}.
+
 ## flatten
 
 Flattens the nested elements of an object using the specified separator, similarly to the [`format-flat-json()` template function]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md#template-function-format-flat-json" >}}). For example, you can use it to flatten nested JSON objects in the output if the receiving application cannot handle nested JSON objects.
 
-Usage: `flatten(dict, separator=".")`
+Usage: `flatten(dict_or_list, separator=".")`
 
 You can use multi-character separators, for example, `=>`. If you omit the separator, the default dot (`.`) separator is used.
 
@@ -118,9 +131,34 @@ Formats any value into a raw JSON string.
 
 Usage: `format_json($data)`
 
+## get_sdata
+
+See {{% xref "/filterx/filterx-sdata/_index.md" %}}.
+
+## has_sdata
+
+See {{% xref "/filterx/filterx-sdata/_index.md" %}}.
+
+## includes
+
+Available in {{< product >}} 4.9 and later.
+
+Returns true if the input string contains the specified substring. By default, matches are case sensitive. Usage:
+
+```shell
+includes(input-string, substring);
+includes(input-string, [substring_1, substring_2], ignorecase=true);
+```
+
+For details, see {{% xref "/filterx/filterx-string-search/_index.md" %}}.
+
 ## isodate
 
 Parses a string as a date in ISODATE format: `%Y-%m-%dT%H:%M:%S%z`
+
+## is_sdata_from_enterprise()
+
+See {{% xref "/filterx/filterx-sdata/_index.md" %}}.
 
 ## isset
 
@@ -155,7 +193,13 @@ Usage: `json(<string or expression to cast to json>)`
 For example:
 
 ```shell
-js = json({"key": "value"});
+js_dict = json({"key": "value"});
+```
+
+Starting with version 4.9, you can use `{}` without the `json()` keyword as well. For example, the following creates an empty JSON object:
+
+```shell
+js_dict = {};
 ```
 
 ## json_array {#json-array}
@@ -167,7 +211,13 @@ Usage: `json_array(<string or expression to cast to json array>)`
 For example:
 
 ```shell
-list = json_array(["first_element", "second_element", "third_element"]);
+js_list = json_array(["first_element", "second_element", "third_element"]);
+```
+
+Starting with version 4.9, you can use `[]` without the `json_array()` keyword as well. For example, the following creates an empty JSON list:
+
+```shell
+js_dict = [];
 ```
 
 ## len
@@ -219,6 +269,30 @@ Usage: `parse_kv(msg, value_separator="=", pair_separator=", ", stray_words_key=
 The `value_separator` must be a single character. The `pair_separator` can consist of multiple characters.
 
 For details, see {{% xref "/filterx/filterx-parsing/key-value-parser/_index.md" %}}.
+
+## parse_leef {#parse-leef}
+
+Parse a LEEF-formatted string.
+
+Usage: `parse_leef(msg)`
+
+For details, see {{% xref "/filterx/filterx-parsing/leef/_index.md" %}}.
+
+## parse_xml {#parse-xml}
+
+Parse an XML object into a JSON object.
+
+Usage: `parse_xml(msg)`
+
+For details, see {{< relref "/filterx/filterx-parsing/xml/_index.md" >}}
+
+## parse_windows_eventlog_xml {#parse-windows}
+
+Parses a Windows Event Log XML object into a JSON object.
+
+Usage: `parse_xml(msg)`
+
+For details, see {{< relref "/filterx/filterx-parsing/xml/_index.md" >}}
 
 ## regexp_search {#regexp-search}
 
@@ -308,6 +382,19 @@ You can use the following flags with the `regexp_subst` function:
 
 - `utf8=true`: {{< include-headless "chunk/regex-flag-utf8.md" >}}
 
+## startswith
+
+Available in {{< product >}} 4.9 and later.
+
+Returns true if the input string begins with the specified substring. By default, matches are case sensitive. Usage:
+
+```shell
+startswith(input-string, substring);
+startswith(input-string, [substring_1, substring_2], ignorecase=true);
+```
+
+For details, see {{% xref "/filterx/filterx-string-search/_index.md" %}}.
+
 ## string
 
 Cast a value into a string. Note that currently {{< product >}} evaluates strings and executes [template functions]({{< relref "/filterx/_index.md#template-functions" >}}) and template expressions within the strings. In the future, template evaluation will be moved to a separate FilterX function.
@@ -358,34 +445,26 @@ See also {{% xref "/filterx/_index.md#delete-values" %}}.
 
 ## unset_empties {#unset-empties}
 
-Deletes ([unsets](#unset)) the empty fields of an object, for example, a JSON object or list. Use the `recursive=true` parameter to delete empty values of inner dicts' and lists' values.
+Deletes ([unsets](#unset)) the empty fields of an object, for example, a JSON object or list. By default, the object is processed recursively, so the empty values are deleted from inner dicts and lists as well. If you set the `replacement` option, you can also use this function to replace fields of the object to custom values.
 
-Usage: `unset_empties(object, recursive=true)`
+Usage: `unset_empties(object, options)`
 
-<!-- FIXME add a before/after example, for recursive and non-recursive cases 
+The `unset_empties()` function has the following options:
 
-            dict = json({"foo": "", "bar": "-", "baz": "N/A", "almafa": null, "kortefa": {"a":{"s":{"d":{}}}}, "szilvafa": [[[]]]});
-            defaults_dict = dict;
-            explicit_dict = dict;
-            unset_empties(defaults_dict);
-            unset_empties(explicit_dict, recursive=true);
+- `ignorecase`: Set to `false` to perform case-sensitive matching. Default value: `true`. Available in Available in {{< product >}} 4.9 and later.
+- `recursive`: Enables recursive processing of nested dictionaries. Default value: `true`
+- `replacement`: Replace the target elements with the value of `replacement` instead of removing them. Available in {{< product >}} 4.9 and later.
+- `targets`: A list of elements to remove or replace. Default value: `["", null, [], {}]`. Available in {{< product >}} 4.9 and later.
 
-            list = json_array(["", "-", "N/A", null, {"a":{"s":{"d":{}}}}, [[[]]]]);
-            defaults_list = list;
-            explicit_list = list;
-            unset_empties(defaults_list);
-            unset_empties(explicit_list, recursive=true);
+For example, to remove the fields with `-` and `N/A` values, you can use
 
-            $MSG = json_array([defaults_dict, explicit_dict, defaults_list, explicit_list]);
-    """,
-    )
-    syslog_ng.start(config)
+```shell
+unset_empties(input_object, targets=["-", "N/A"], ignorecase=false);
+```
 
-    assert file_true.get_stats()["processed"] == 1
-    assert "processed" not in file_false.get_stats()
-    assert file_true.read_log() == "[{},{},[],[]]\n"
+## update_metric {#update-metric}
 
--->
+Updates a labeled metric counter, similarly to the [`metrics-probe()` parser]({{< relref "/chapter-parsers/metrics-probe/_index.md" >}}). For details, see {{% xref "/filterx/filterx-metrics/_index.md" %}}.
 
 ## upper
 

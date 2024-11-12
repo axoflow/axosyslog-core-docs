@@ -37,11 +37,7 @@ ${MESSAGE} = json["BODY"] ?? "Empty message"
 
 ## Plus operator
 
-The plus operator (`+`) adds two arguments, if possible. (For example, you can't add two datetime values.)
-
-You can use it to add two numbers (two integers, two double values). If you add a double to an integer, the result is a double.
-
-Adding two strings [concatenates the strings]({{< relref "/filterx/_index.md#concatenate-strings" >}}).
+{{< include-headless "chunk/filterx-plus-operator.md" >}}
 
 ## Plus equal operator
 

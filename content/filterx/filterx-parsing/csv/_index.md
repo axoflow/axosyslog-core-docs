@@ -64,7 +64,7 @@ block filterx p_apache() {
     "CONTENT_LENGTH", "REFERER", "USER_AGENT",
     "PROCESS_TIME", "SERVER_NAME"
     ];
-    ${APACHE} = parse_csv(${MESSAGE}, columns=cols, delimiter=(" "), strip_whitespaces=true, dialect="escape-double-char");
+    ${APACHE} = parse_csv(${MESSAGE}, columns=cols, delimiter=(" "), strip_whitespace=true, dialect="escape-double-char");
 
     # Set the important elements as name-value pairs so they can be referenced in the destination template
     ${APACHE_USER_NAME} = ${APACHE.USER_NAME};
