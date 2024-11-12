@@ -6,7 +6,23 @@ weight: 10
 
 This page is a changelog that collects the major changes and additions to this documentation. (If you want to know the details about why we have separate documentation for AxoSyslog and how it relates to the `syslog-ng` documentation, read our [syslog-ng documentation and similarities with AxoSyslog Core](https://axoflow.com/axosyslog-core-documentation-syslog-ng/) blog post.)
 
-## Version 4.8 release (2024-07-12)
+## Version 4.9 (2024-11-11)
+
+- {{% xref "/chapter-destinations/clickhouse/_index.md" %}} destination.
+- Log tapping with the [`syslog-ng-ctl attach` command]({{< relref "/app-man-syslog-ng/syslog-ng-ctl.1.md#attach" >}}).
+- {{% xref "/filterx/_index.md" %}} data parsing and processing engine.
+- Updated lists of available options for the gRPC-based destinations ([`bigquery()`]({{< relref "/chapter-destinations/google-bigquery/_index.md" >}}), [`loki()`]({{< relref "/chapter-destinations/destination-loki/_index.md" >}}), [`opentelemetry()`]({{< relref "/chapter-destinations/opentelemetry/_index.md" >}}), [`syslog-ng-otlp()`]({{< relref "/chapter-destinations/destination-syslog-ng-otlp/_index.md" >}})). You can now also set dynamic header values for these destinations.
+- Added the `idle-timeout()` option to {{% xref "/chapter-sources/configuring-sources-file/reference-source-file/_index.md" %}}, {{% xref "/chapter-sources/configuring-sources-stdin/stdin()-source-options/_index.md" %}}, {{% xref "/chapter-sources/configuring-sources-systemd-syslog/reference-source-systemd-syslog/_index.md" %}}, {{% xref "/chapter-sources/configuring-sources-wildcard-file/reference-source-wildcard-file/_index.md" %}}, {{% xref "/chapter-sources/source-pipe/reference-source-pipe/_index.md" %}}, {{% xref "/chapter-sources/source-program/reference-source-program/_index.md" %}}, {{% xref "/chapter-sources/source-unixstream/reference-source-unixstream/_index.md" %}}.
+
+    These sources have a new `exit-on-eof` flag that makes {{< product >}} stop when EOF is received.
+
+### Other documentation updates
+
+- Cloud authentication option updates for the [`http()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#cloud-auth" >}}) and [`google-pubsub`]({{< relref "/chapter-destinations/google-pubsub/_index.md#auth" >}}) destinations.
+- [`syslog-ng-ctl list-files`]({{< relref "/app-man-syslog-ng/syslog-ng-ctl.1.md#list-referenced-files" >}}) command lists files referenced in your configuration, for example, certificates or external configuration files.
+- [`lifetime()` global option]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-stats-lifetime" >}}) to prune dynamic counters.
+
+## Version 4.8 (2024-07-12)
 
 - [APT repository for Debian and Ubuntu]({{< relref "/install/debian-ubuntu/_index.md" >}}) based systems.
 - You can send messages and metrics to [Elasticsearch data streams](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams.html) to store your log and metrics data as time series data using the [`elasticsearch-datastream()`]({{< relref "/chapter-destinations/elasticsearch-data-stream/_index.md" >}}) destination driver.
@@ -14,7 +30,7 @@ This page is a changelog that collects the major changes and additions to this d
 - You can now set static gRPC headers in the [`bigquery()`]({{< relref "/chapter-destinations/google-bigquery/_index.md#headers" >}}), [`loki()`]({{< relref "/chapter-destinations/destination-loki/_index.md#headers" >}}), and the [`opentelemetry()`]({{< relref "/chapter-destinations/opentelemetry/_index.md#headers" >}}) destinations.
 - The `opentelemetry()` parser has a new [`set-hostname()`]({{< relref "/chapter-parsers/opentelemetry/_index.md#set-hostname" >}}) option.
 
-## Version 4.7 release (2024-04-18)
+## Version 4.7 (2024-04-18)
 
 - {{% xref "/chapter-sources/arr/_index.md" %}} source
 - {{% xref "/chapter-sources/jellyfin/_index.md" %}} source
@@ -27,7 +43,7 @@ This page is a changelog that collects the major changes and additions to this d
 
 For details, see the [release announcement blog post](https://axoflow.com/axosyslog-release-4-7/).
 
-## Version 4.6 release (2024-02-01)
+## Version 4.6 (2024-02-01)
 
 - [Google BigQuery destination]({{< relref "/chapter-destinations/google-bigquery/_index.md" >}})
 - {{% xref "/chapter-parsers/windows-eventlog-xml-parser/_index.md" %}}
