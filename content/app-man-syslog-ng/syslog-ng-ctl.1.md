@@ -63,6 +63,7 @@ If you need to use a non-standard control socket to access `syslog-ng`, use the 
 syslog-ng-ctl log-level verbose
 ```
 
+To temporarily change the log levels and access the logs of `syslog-ng`, see also the [`attach` command]({{< relref "#attach" >}}).
 
 <span id="syslog-ng-ctl-query"></span>
 
@@ -370,6 +371,40 @@ You can use the `syslog-ng-ctl healthcheck` command to query the healthcheck sta
 You can run `syslog-ng-ctl healthcheck --timeout <seconds>` to use as a boolean healthy/unhealthy check.
 
 Health checks are also published as periodically updated metrics. You can configure the frequency of these checks with the `stats(healthcheck-freq())` option. The default is 5 minutes.
+
+## The attach command {#attach}
+
+Available in {{% param "product.abbrev" %}} 4.9 and later.
+
+Connect to the standard IO (stdin, stdout, stderr) and display the results. Note that there can only be one attached process at a time.
+
+`syslog-ng-ctl attach [attach-mode] [options]`
+
+The `syslog-ng-ctl attach` command has the following parameters:
+
+- Attach mode: `logs` or `stdio`.
+
+    - Use `logs` to access the internal log messages of `syslog-ng`. For example, the following command changes the log level to `trace` and accesses the internal logs of `syslog-ng`:
+
+        ```shell
+        syslog-ng-ctl attach logs --seconds 10 --log-level trace
+        ```
+
+    - Use `stdio` to display the output of the `syslog-ng` process. For example:
+
+        ```shell
+        syslog-ng-ctl attach stdio --seconds 10
+        ```
+
+- Change `log-level` to the specified value:
+
+    {{< include-headless "chunk/internal-log-levels.md" >}}
+
+- How long to attach to the process: `--seconds`. For example:
+
+    ```shell
+    syslog-ng-ctl attach stdio --seconds 10
+    ```
 
 ## Files
 

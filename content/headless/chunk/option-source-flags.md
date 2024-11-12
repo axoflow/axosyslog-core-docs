@@ -12,7 +12,9 @@
 *Description:* Specifies the log parsing options of the source.
 
 - *assume-utf8*: The `assume-utf8` flag assumes that the incoming messages are UTF-8 encoded, but does not verify the encoding. If you explicitly want to validate the UTF-8 encoding of the incoming message, use the `validate-utf8` flag.
+- *dont-store-legacy-msghdr*: By default, AxoSyslog stores the original incoming header of the log message. This is useful if the original format of a non-syslog-compliant message must be retained (AxoSyslog automatically corrects minor header errors, for example, adds a whitespace before `msg` in the following message: `Jan 22 10:06:11 host program:msg`). If you do not want to store the original header of the message, enable the `dont-store-legacy-msghdr` flag.
 - *empty-lines*: Use the `empty-lines` flag to keep the empty lines of the messages. By default, {{% param "product.abbrev" %}} removes empty lines automatically.
+- *exit-on-eof*: If this flag is set on a source, {{< product >}} stops when an EOF (end of file) is received. Available in version 4.9 and later.
 - *expect-hostname*: If the `expect-hostname` flag is enabled, {{% param "product.abbrev" %}} will assume that the log message contains a hostname and parse the message accordingly. This is the default behavior for TCP sources. Note that pipe sources use the `no-hostname` flag by default.
 - *guess-timezone*: Attempt to guess the timezone of the message if this information is not available in the message. Works when the incoming message stream is close to real time, and the timezone information is missing from the timestamp.
 - *kernel*: The `kernel` flag makes the source default to the `LOG_KERN | LOG_NOTICE` priority if not specified otherwise.
@@ -51,8 +53,6 @@ Essentially, the `no-header` flag signals {{% param "product.abbrev" %}} that th
 - *no-parse*: By default, {{% param "product.abbrev" %}} parses incoming messages as syslog messages. The `no-parse` flag completely disables syslog message parsing and processes the complete line as the message part of a syslog message. The {{% param "product.abbrev" %}} application will generate a new syslog header (timestamp, host, and so on) automatically and put the entire incoming message into the MESSAGE part of the syslog message (available using the `${MESSAGE}` macro). This flag is useful for parsing messages not complying to the syslog format.
 
     {{% include-headless "chunk/para-flags-no-parse.md" %}}
-
-- *dont-store-legacy-msghdr*: By default, AxoSyslog stores the original incoming header of the log message. This is useful if the original format of a non-syslog-compliant message must be retained (AxoSyslog automatically corrects minor header errors, for example, adds a whitespace before `msg` in the following message: `Jan 22 10:06:11 host program:msg`). If you do not want to store the original header of the message, enable the `dont-store-legacy-msghdr` flag.
 
 - *sanitize-utf8*: When using the `sanitize-utf8` flag, {{% param "product.abbrev" %}} converts non-UTF-8 input to an escaped form, which is valid UTF-8.
 

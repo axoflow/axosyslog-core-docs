@@ -24,6 +24,7 @@ The `syslog` source uses multiple threads only if the source uses the `tls` or `
 
 {{% include-headless "chunk/option-source-host-override.md" %}}
 
+{{< include-headless "chunk/option-source-idle-timeout.md" >}}
 
 ## interface()
 

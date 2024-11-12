@@ -127,33 +127,33 @@ If you want to avoid performance fluctuations:
 In the following case reliable disk-buffer() is used.
 
 ```shell
-   destination d_demo {
-        network(
-            "127.0.0.1"
-            port(3333)
-            disk-buffer(
-                flow-control-window-bytes(10000)
-                capacity-bytes(2000000)
-                reliable(yes)
-                dir("/tmp/disk-buffer")
-            )
-        );
-    };
+destination d_demo {
+    network(
+        "127.0.0.1"
+        port(3333)
+        disk-buffer(
+            flow-control-window-bytes(10000)
+            capacity-bytes(2000000)
+            reliable(yes)
+            dir("/tmp/disk-buffer")
+        )
+    );
+};
 ```
 
 In the following case normal disk-buffer() is used.
 
 ```shell
-   destination d_demo {
-        network(
-            "127.0.0.1"
-            port(3333)
-               disk-buffer(
-                flow-control-window-size(10000)
-                capacity-bytes(2000000)
-                reliable(no)
-                dir("/tmp/disk-buffer")
-            )
-        );
-    };
+destination d_demo {
+    network(
+        "127.0.0.1"
+        port(3333)
+            disk-buffer(
+            flow-control-window-size(10000)
+            capacity-bytes(2000000)
+            reliable(no)
+            dir("/tmp/disk-buffer")
+        )
+    );
+};
 ```

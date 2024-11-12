@@ -12,11 +12,13 @@ The `program` driver has the following options:
 
 {{< include-headless "chunk/option-destination-hook.md" >}}
 
+{{< include-headless "chunk/option-source-idle-timeout.md" >}}
+
+{{% include-headless "chunk/option-inherit-environment.md" %}}
+
 {{< include-headless "chunk/option-source-keep-timestamp.md" >}}
 
 {{% include-headless "chunk/option-source-log-fetch-limit.md" %}}
-
-{{% include-headless "chunk/option-inherit-environment.md" %}}
 
 {{% include-headless "chunk/option-source-log-iw-size.md" %}}
 

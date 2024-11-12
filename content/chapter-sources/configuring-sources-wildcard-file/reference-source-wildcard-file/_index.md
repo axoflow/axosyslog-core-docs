@@ -63,6 +63,8 @@ For example, `filename-pattern("*.log")` matches the `syslog.log` and `auth.log`
 
 {{< include-headless "chunk/option-destination-hook.md" >}}
 
+{{< include-headless "chunk/option-source-idle-timeout.md" >}}
+
 {{< include-headless "chunk/option-source-keep-timestamp.md" >}}
 
 {{% include-headless "chunk/option-source-log-fetch-limit.md" %}}
