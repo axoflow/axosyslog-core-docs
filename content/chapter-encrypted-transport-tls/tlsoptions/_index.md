@@ -372,9 +372,9 @@ To find the fingerprint of a certificate, you can use the following command: `op
 
 When using the `trusted-keys()` and `trusted-dn()` parameters, note the following:
 
-  - First, the `trusted-keys()` parameter is checked. If the fingerprint of the peer is listed, the certificate validation is performed.
-
-  - If the fingerprint of the peer is not listed in the `trusted-keys()` parameter, the `trusted-dn()` parameter is checked. If the DN of the peer is not listed in the `trusted-dn()` parameter, the authentication of the peer fails and the connection is closed.
+- First, the `trusted-keys()` parameter is checked. If the fingerprint of the peer is listed, the certificate validation is performed.
+- If the fingerprint of the peer is not listed in the `trusted-keys()` parameter, the `trusted-dn()` parameter is checked. If the DN of the peer is not listed in the `trusted-dn()` parameter, the authentication of the peer fails and the connection is closed.
 
 {{% /alert %}}
 
+Starting with version 4.8.1, if `trusted-keys()` is set, {{% param "product.abbrev" %}} automatically adds the key fingerprint of the peer to the `${.tls.x509_fp}` name-value pair.
