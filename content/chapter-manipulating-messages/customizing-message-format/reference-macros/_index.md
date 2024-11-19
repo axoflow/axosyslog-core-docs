@@ -232,6 +232,17 @@ The `${MSG}` macro is an alias of the `${MESSAGE}` macro, using `${MSG}` in {{% 
 
 {{% include-headless "chunk/macro-msghdr.md" %}}
 
+## MSGFORMAT {#macro-msgformat}
+
+Available in {{% param "product.abbrev" %}} version 4.8.1 and later.
+
+*Description:* Stores the original format of the incoming message. Possible values:
+
+- `linux:devkmsg`: Linux kernel message.
+- `linux:pacct`: [Linux process accounting log]({{< relref "/chapter-sources/source-pacct/_index.md" >}}) format.
+- `raw`: {{% param "product.abbrev" %}} didn't parse the message, for example, because the `no-parse` flag was set.
+- `syslog:rfc3164`: Syslog message formatted as RFC3164.
+- `syslog:rfc5424`: Syslog message formatted as RFC5424.
 
 ## MSGID {#macro-msgid}
 
