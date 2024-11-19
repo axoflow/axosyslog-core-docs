@@ -12,10 +12,7 @@
 *Description:* Specifies the log parsing options of the source.
 
 - *assume-utf8*: The `assume-utf8` flag assumes that the incoming messages are UTF-8 encoded, but does not verify the encoding. If you explicitly want to validate the UTF-8 encoding of the incoming message, use the `validate-utf8` flag.
-- *dont-store-legacy-msghdr*: By default, AxoSyslog stores the original incoming header of the log message. This is useful if the original format of a non-syslog-compliant message must be retained (AxoSyslog automatically corrects minor header errors, for example, adds a whitespace before `msg` in the following message: `Jan 22 10:06:11 host program:msg`). If you do not want to store the original header of the message, enable the `dont-store-legacy-msghdr` flag.
-
-    For Python sources, see `store-legacy-msghdr`.
-
+- *dont-store-legacy-msghdr*: By default, {{< product >}} stores the original incoming header of the log message. This is useful if the original format of a non-syslog-compliant message must be retained ({{< product >}} automatically corrects minor header errors, for example, adds a whitespace before `msg` in the following message: `Jan 22 10:06:11 host program:msg`). If you do not want to store the original header of the message, enable the `dont-store-legacy-msghdr` flag.
 - *empty-lines*: Use the `empty-lines` flag to keep the empty lines of the messages. By default, {{% param "product.abbrev" %}} removes empty lines automatically.
 - *exit-on-eof*: If this flag is set on a source, {{< product >}} stops when an EOF (end of file) is received. Available in version 4.9 and later.
 - *expect-hostname*: If the `expect-hostname` flag is enabled, {{% param "product.abbrev" %}} will assume that the log message contains a hostname and parse the message accordingly. This is the default behavior for TCP sources. Note that pipe sources use the `no-hostname` flag by default.
@@ -61,10 +58,7 @@ Essentially, the `no-header` flag signals {{% param "product.abbrev" %}} that th
 
     Prior to version 4.6, this flag worked only when parsing RFC3164 messages. Starting with version 4.6, it works also for RFC5424 and raw messages.
 
-- *store-legacy-msghdr*: Available only when using the Python sources ([`python()`]({{< relref "/chapter-sources/python-source/_index.md" >}}) and [`python-fetcher()`]({{< relref "/chapter-sources/python-fetcher-source/_index.md" >}})). If set, {{< product >}} stores the original incoming header of the log message.
-
-    For other sources, see `dont-store-legacy-msghdr`.
-
+- *store-legacy-msghdr*: By default, {{< product >}} stores the original incoming header of the log message, so this flag is active. To disable it, use the `dont-store-legacy-msghdr` flag.
 - *store-raw-message*: Save the original message as received from the client in the `${RAWMSG}` macro. You can forward this raw message in its original form to another AxoSyslog node using the [`syslog-ng()` destination]({{< relref "/chapter-destinations/destination-syslog-ng/_index.md" >}}), or to a SIEM system, ensuring that the SIEM can process it. Available only in 3.16 and later.
 - *syslog-protocol*: The `syslog-protocol` flag specifies that incoming messages are expected to be formatted according to the new IETF syslog protocol standard (RFC5424), but without the frame header. Note that this flag is not needed for the `syslog` driver, which handles only messages that have a frame header.
 
