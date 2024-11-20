@@ -49,6 +49,6 @@ The following example defines a `kafka` destination, using only the required par
 
   - For the list of options, see {{% xref "/chapter-destinations/configuring-destinations-kafka/reference-destination-kafka/_index.md" %}}.
 
-The `kafka()` driver is actually a reusable configuration snippet configured to receive log messages using the Java language-binding of {{% param "product.abbrev" %}}. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of the kafka configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/kafka/plugin.conf). For details on extending {{% param "product.abbrev" %}} in Java, see the [Getting started with syslog-ng development](https://syslog-ng.gitbooks.io/getting-started/content/chapters/chapter_5/section_2.html) guide.
+The `kafka()` driver is actually a reusable configuration snippet configured to receive log messages using the Java language-binding of {{% param "product.abbrev" %}}. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of the kafka configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/main/scl/kafka/kafka.conf).
 
 {{< include-headless "wnt/note-jvm-reload.md" >}}

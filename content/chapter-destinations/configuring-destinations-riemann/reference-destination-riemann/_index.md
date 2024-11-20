@@ -61,8 +61,6 @@ Note that the time format parameter requires:
     
     In older versions of riemann-c-client, the microseconds option is not available.
     
-    In case your distribution does not contain a recent enough version of riemann-c-client and you wish to use microseconds, install a new version from [](https://github.com/algernon/riemann-c-client).
-    
     If you installed the new version in a custom location (instead of the default one), make sure that you append the directory of the pkg-config file (`.pc` file) to the environment variable `export PKG_CONFIG_PATH=...`.
     
     After calling `configure`, you should see the following message in the case of successful installation:

@@ -87,7 +87,7 @@ The `darwin-oslog()` source has the following options:
 | Default: | `0` (no limit) |
 
 {{% alert title="Warning" color="warning" %}}
-This option is currently disabled because of an [OSLog API bug](https://openradar.appspot.com/radar?id=5597032077066240).
+This option is currently disabled because of an OSLog API bug.
 {{% /alert %}}
 
 {{% include-headless "chunk/option-description-source-log-fetch-limit.md" %}}
