@@ -16,6 +16,9 @@ This page is a changelog that collects the major changes and additions to this d
 
     These sources have a new `exit-on-eof` flag that makes {{< product >}} stop when EOF is received.
 
+- Added the {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-msgformat" %}} macro.
+- Added `.tls.x509_fp` to {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-tls-x509" %}}.
+
 ### Other documentation updates
 
 - Cloud authentication option updates for the [`http()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#cloud-auth" >}}) and [`google-pubsub`]({{< relref "/chapter-destinations/google-pubsub/_index.md#auth" >}}) destinations.
