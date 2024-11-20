@@ -78,7 +78,7 @@ The `collectd()` destination has the following options. The `plugin()` and `type
 | Type:    | path                       |
 | Default: | /var/run/collectd-unixsock |
 
-*Description:* The path to the socket of collectd. For details, see the [collectd-unixsock(5) manual page](https://collectd.org/documentation/manpages/collectd-unixsock.5.shtml).
+*Description:* The path to the socket of collectd. For details, see the [collectd-unixsock(5) manual page](https://www.collectd.org/documentation/manpages/collectd-unixsock.html).
 
 ```shell
    type("gauge"),
@@ -105,7 +105,7 @@ The `collectd()` destination has the following options. The `plugin()` and `type
 | Type:    | string or template |
 | Default: |                    |
 
-*Description:* Identifies the type and number of values passed to collectd. For details, see the [types.db manual page](https://collectd.org/documentation/manpages/types.db.5.shtml). For example:
+*Description:* Identifies the type and number of values passed to collectd. For details, see the [types.db manual page](https://www.collectd.org/documentation/manpages/types.db.html). For example:
 
 ```shell
    type("gauge"),

@@ -30,7 +30,7 @@ The following is a very simple configuration file for `syslog-ng`: it collects t
     };
 ```
 
-As a `syslog-ng` user described on a [mailing list](https://lists.gt.net/gentoo/user/209108):
+As a `syslog-ng` user described on a mailing list:
 
 > Alan McKinnon
 > 

@@ -63,7 +63,7 @@ This section describes server-style sources. For details on fetcher-style source
 
 Server-style Python sources must be inherited from the `syslogng.LogSource` class, and must implement at least the `run` and `request_exit` methods. Multiple inheritance is allowed, but only for pure Python super classes.
 
-You can implement your own event loop, or integrate the event loop of an external framework or library, for example, [KafkaConsumer](https://kafka-python.readthedocs.io/en/master/apidoc/KafkaConsumer.html), [Flask](http://flask.pocoo.org/), [Twisted engine](https://twistedmatrix.com/trac/), and so on.
+You can implement your own event loop, or integrate the event loop of an external framework or library, for example, [KafkaConsumer](https://kafka-python.readthedocs.io/en/master/apidoc/KafkaConsumer.html), [Flask](http://flask.pocoo.org/), [Twisted engine](https://twisted.org/), and so on.
 
 To post messages, call `LogSource::post_message()` method in the `run` method.
 

@@ -20,7 +20,7 @@ The `slack()` destination driver sends messages to a [Slack](https://slack.com/)
 ```
 
 
-The driver allows you to modify nearly every field of the HTTP request. For details, see the [Slack API documentation](https://api.slack.com/message-attachments).
+The driver allows you to modify nearly every field of the HTTP request. For details, see the [Slack API documentation](https://api.slack.com/docs).
 
 {{% include-headless "chunk/destination-http-proxy-settings.md" %}}
 
