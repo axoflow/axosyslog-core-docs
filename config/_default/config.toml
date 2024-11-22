@@ -126,6 +126,8 @@ description = "Documentation for AxoSyslog, the scalable security data processor
   # Set to true to hide the sidebar search box (the top nav search box will still be displayed if search is enabled)
   sidebar_search_disable = false
 
+  footer_left_logo_disable = true
+
   [params.social]
     # Used as twitter:site in page metadata
     twitter = "AxoFlowIO"
