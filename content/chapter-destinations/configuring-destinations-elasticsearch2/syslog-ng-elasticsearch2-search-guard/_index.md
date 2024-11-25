@@ -7,7 +7,7 @@ weight:  700
 
 ## Purpose:
 
-Version 3.9 and later supports the [Search Guard](https://floragunn.com/searchguard/) Elasticsearch plugin (version 2.4.1.16 and newer) to encrypt and authenticate your connections to from {{% param "product.abbrev" %}} to Elasticsearch 2 and newer. To configure {{% param "product.abbrev" %}} to send messages to an Elasticsearch 2.x cluster that uses Search Guard, complete the following steps.
+Version 3.9 and later supports the [Search Guard](https://search-guard.com/) Elasticsearch plugin (version 2.4.1.16 and newer) to encrypt and authenticate your connections to from {{% param "product.abbrev" %}} to Elasticsearch 2 and newer. To configure {{% param "product.abbrev" %}} to send messages to an Elasticsearch 2.x cluster that uses Search Guard, complete the following steps.
 
 To connect to an Elasticsearch 5.x or newer cluster, use HTTPS mode.
 
@@ -21,7 +21,7 @@ To connect to an Elasticsearch 5.x or newer cluster, use HTTPS mode.
     sudo /usr/share/elasticsearch/bin/plugin install -b com.floragunn/search-guard-ssl/<version-number-of-the-plugin>
     ```
 
-2.  Create a certificate for your {{% param "product.abbrev" %}} host, and add the certificate to the `SYSLOG_NG-NODE_NAME-keystore.jks` file. You can configure the location of this file in the Elasticsearch resources file under the `path.conf` parameter. For details, see the [Search Guard documentation](https://github.com/floragunncom/search-guard-ssl-docs/blob/master/certificates.md).
+2.  Create a certificate for your {{% param "product.abbrev" %}} host, and add the certificate to the `SYSLOG_NG-NODE_NAME-keystore.jks` file. You can configure the location of this file in the Elasticsearch resources file under the `path.conf` parameter. For details, see the [Search Guard documentation](https://docs.search-guard.com/latest/configuring-tls#using-keystore-and-truststore-files).
 
 3.  Configure an Elasticsearch destination in {{% param "product.abbrev" %}} that uses the `searchguard` client mode. For example:
     

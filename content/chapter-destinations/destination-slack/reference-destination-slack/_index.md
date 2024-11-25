@@ -14,7 +14,7 @@ The `slack` destination of {{% param "product.abbrev" %}} can directly post log 
 | Type:    | string or template                                                    |
 | Default: | 'host: ${HOST} | program: ${PROGRAM}(${PID}) | severity: ${PRIORITY}' |
 
-*Description:* The sender of the message as displayed in Slack. For details, see the [author_name option in the Slack documentation](https://api.slack.com/message-attachments).
+*Description:* The sender of the message as displayed in Slack. For details, see the [author_name option in the Slack documentation](https://api.slack.com/reference/surfaces/formatting#attachments).
 
 
 

@@ -9,5 +9,5 @@
 | Type:    | `yes` or `no` |
 | Default: | `no`       |
 
-*Description:* Use the certificate store of the system for verifying HTTPS certificates. For details, see the [curl documentation](https://curl.haxx.se/sslcerts.html).
+*Description:* Use the certificate store of the system for verifying HTTPS certificates. For details, see the [curl documentation](https://curl.se/docs/sslcerts.html).
 

@@ -116,6 +116,6 @@ The following example send messages to Elasticsearch over HTTP using its REST AP
 
   - For the list of options, see {{% xref "/chapter-destinations/configuring-destinations-elasticsearch2/reference-destination-elasticsearch2/_index.md" %}}.
 
-The `elasticsearch2()` driver is actually a reusable configuration snippet configured to receive log messages using the Java language-binding of {{% param "product.abbrev" %}}. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of the elasticsearch configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/elasticsearch/plugin.conf). For details on extending {{% param "product.abbrev" %}} in Java, see the [Getting started with syslog-ng development](https://syslog-ng.gitbooks.io/getting-started/content/chapters/chapter_5/section_2.html) guide.
+The `elasticsearch2()` driver is actually a reusable configuration snippet configured to receive log messages using the Java language-binding of {{% param "product.abbrev" %}}. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of the elasticsearch configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/main/scl/elasticsearch/elastic-http.conf).
 
 {{< include-headless "wnt/note-jvm-reload.md" >}}
