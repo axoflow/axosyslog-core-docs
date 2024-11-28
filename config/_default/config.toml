@@ -122,9 +122,10 @@ description = "Documentation for AxoSyslog, the scalable security data processor
   # Enable to show the side bar menu in its compact state.
   #sidebar_menu_compact = false
   # Enable to make the side bar menu foldable.
-  sidebar_menu_foldable = true
   # Set to true to hide the sidebar search box (the top nav search box will still be displayed if search is enabled)
-  sidebar_search_disable = false
+  sidebar_search_disable = true
+  # Set to true to hide the navbar search box
+  navbar_search_disable = true
 
   footer_left_logo_disable = true
 
