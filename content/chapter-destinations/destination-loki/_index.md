@@ -3,6 +3,8 @@ title: "loki: Grafana Loki"
 weight:  3050
 driver: "loki()"
 short_description: "Send messages to Grafana Loki"
+aliases:
+- /chapter-destinations/syslog-ng-with-loki/
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
