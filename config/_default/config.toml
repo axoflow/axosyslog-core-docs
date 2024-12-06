@@ -18,7 +18,7 @@ enableGitInfo = true
 
 [languages]
 [languages.en]
-title = "AxoSyslog, the scalable security data processor"
+title = "AxoSyslog scalable security data processor"
 languageName ="English"
 # Weight used for sorting.
 weight = 1
@@ -39,12 +39,17 @@ description = "Documentation for AxoSyslog, the scalable security data processor
     style = "tango"
     # Uncomment if you want your chosen highlight style used for code blocks without a specified language
     # guessSyntax = "true"
+    [markup.goldmark.renderHooks]
+      [markup.goldmark.renderHooks.image]
+        enableDefault = true
+      [markup.goldmark.renderHooks.link]
+        enableDefault = true
 
 [params]
 
   # email = ""
 
-  copyright = "Axoflow Inc"
+  copyright = "Axoflow Inc."
 
   relativeURLs = true
 
@@ -122,6 +127,7 @@ description = "Documentation for AxoSyslog, the scalable security data processor
   # Enable to show the side bar menu in its compact state.
   #sidebar_menu_compact = false
   # Enable to make the side bar menu foldable.
+  sidebar_menu_foldable = true
   # Set to true to hide the sidebar search box (the top nav search box will still be displayed if search is enabled)
   sidebar_search_disable = true
   # Set to true to hide the navbar search box
@@ -179,21 +185,42 @@ contact = "[contact us](https://axoflow.com/contact/)"
 
 [menu]
   [[menu.main]]
-    name = "PRODUCT"
+    name = "Product"
     weight = -130
-    #pre = "<i class='fas fa-rss pr-2'></i>"
-    url = "https://axoflow.com/axoflow-platform/"
-  [[menu.main]]
-    name = "DOCUMENTATION"
-    weight = -120
-    #pre = "<i class='fas fa-book pr-2'></i>"
     url = "/"
-    identifier = "documentation"
-
+    identifier = "product"
     [[menu.main]]
       name = "Axoflow Platform"
       weight = -120
       url = "https://axoflow.com/axoflow-platform/"
+      parent = "product"
+    [[menu.main]]
+      name = "AxoRouter"
+      weight = -100
+      url = "https://axoflow.com/axorouter/"
+      parent = "product"
+
+  [[menu.main]]
+    name = "Resources"
+    weight = -120
+    url = "/"
+    identifier = "resources"
+  [[menu.main]]
+    name = "Blog"
+    weight = -150
+    url = "https://axoflow.com/blog/"
+    parent = "resources"
+  [[menu.main]]
+    name = "Documentation"
+    weight = -120
+    #pre = "<i class='fas fa-book pr-2'></i>"
+    url = "/"
+    identifier = "documentation"
+    parent = "resources"
+    [[menu.main]]
+      name = "Axoflow Platform"
+      weight = -120
+      url = "https://axoflow.com/docs/axoflow/"
       identifier = "documentation-axoflow"
       parent = "documentation"
     [[menu.main]]
@@ -210,26 +237,39 @@ contact = "[contact us](https://axoflow.com/contact/)"
       parent = "documentation"
 
   [[menu.main]]
-    name = "BLOG"
-    weight = -110
-    #pre = "<i class='fas fa-blog pr-2'></i>"
-    url = "https://axoflow.com/blog/"
+    name = "About"
+    weight = -80
+    url = "/"
+    identifier = "about"
   [[menu.main]]
-    name = "NEWS"
+    name = "News"
     weight = -105
-    #pre = "<i class='fas fa-blog pr-2'></i>"
     url = "https://axoflow.com/news/"
+    parent = "about"
   [[menu.main]]
-    name = "ABOUT US"
+    name = "About us"
     weight = -100
     #pre = "<i class='fas fa-blog pr-2'></i>"
     url = "https://axoflow.com/about-us/"
+    parent = "about"
   [[menu.main]]
-    name = "CONTACT"
+    name = "Contact"
     weight = 100
-    #pre = "<i class='fas fa-book pr-2'></i>"
     url = "https://axoflow.com/contact/"
-    identifier = "menu-contact"
+    parent = "about"
+
+  [[menu.main]]
+    name = "Login"
+    weight = 100
+    url = "https://login.axoflow.io/"
+    identifier = "menu-login"
+
+  [[menu.main]]
+    name = "Request Sandbox"
+    weight = 150
+    url = "https://axoflow.com/contact/?subject=sandbox"
+    identifier = "menu-button"
+
 ###############################################################################
 # Misc customizations
 ###############################################################################
