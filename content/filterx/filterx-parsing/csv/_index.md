@@ -30,7 +30,7 @@ block filterx p_hostname_segmentation() {
     ${HOSTNAME_ID} = HOSTNAME.ID;
 };
 destination d_file {
-    file("/var/log/${HOSTNAME_NAME:-examplehost}/${HOSTNAME_ID}"/messages.log);
+    file("/var/log/${HOSTNAME_NAME:-examplehost}/${HOSTNAME_ID:-000}"/messages.log);
 };
 log {
     source(s_local);
