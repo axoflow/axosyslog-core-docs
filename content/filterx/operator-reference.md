@@ -105,6 +105,10 @@ To check if a value contains a string or matches a regular expression, use the `
 ${MESSAGE} =~ "error";
 ```
 
+{{% alert title="Note" color="info" %}}
+For simple string matches that don't require regular expressions, use the [`startswith`, `endswith`, and `includes` functions]({{< relref "/filterx/filterx-string-search/_index.md" >}}), as they provide better performance.
+{{% /alert %}}
+
 Use the `!~` operator to check if a literal string or variable doesn't contain an expression. For example, the following statement is true if the `${MESSAGE}` doesn't contain the word `error`:
 
 ```shell

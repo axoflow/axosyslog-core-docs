@@ -43,7 +43,7 @@ log {
     source(s1);
     filterx {
         ${HOST} == "example";
-        ${MESSAGE} =~ "deny";
+        includes(${MESSAGE}, "deny");
     };
     destination(d1);
 };
@@ -435,7 +435,7 @@ This is a normal RFC3164-formatted message logged by the kernel (where iptables 
     block filterx parse_iptables() {
         ${FACILITY} == "kern"; # Filter on the kernel facility
         ${PROGRAM} == "kernel"; # Sender application is the kernel
-        ${MESSAGE} =~ "PROTO="; # The PROTO key appears in all iptables messages
+        includes(${MESSAGE}, "PROTO="); # The PROTO key appears in all iptables messages
     }
     ```
 
@@ -445,7 +445,7 @@ This is a normal RFC3164-formatted message logged by the kernel (where iptables 
     block filterx parse_iptables() {
         ${FACILITY} == "kern"; # Filter on the kernel facility
         ${PROGRAM} == "kernel"; # Sender application is the kernel
-        ${MESSAGE} =~ "PROTO="; # The PROTO key appears in all iptables messages
+        includes(${MESSAGE}, "PROTO="); # The PROTO key appears in all iptables messages
 
         ${.iptables} = json(); # Create an empty JSON object
     }
@@ -457,7 +457,7 @@ This is a normal RFC3164-formatted message logged by the kernel (where iptables 
     block filterx parse_iptables() {
         ${FACILITY} == "kern"; # Filter on the kernel facility
         ${PROGRAM} == "kernel"; # Sender application is the kernel
-        ${MESSAGE} =~ "PROTO="; # The PROTO key appears in all iptables messages
+        includes(${MESSAGE}, "PROTO="); # The PROTO key appears in all iptables messages
 
         ${.iptables} = json(); # Create an empty JSON object
 

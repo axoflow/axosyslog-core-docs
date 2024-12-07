@@ -29,7 +29,7 @@ For example, the following FilterX statement selects the messages that contain t
 ```shell
 block filterx demo_filterx() {
     ${HOST} == "example";
-    ${MESSAGE} =~ "deny";
+    includes(${MESSAGE}, "deny");
 };
 log {
     source(s1);

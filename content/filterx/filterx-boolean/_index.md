@@ -55,7 +55,7 @@ The following filter statement selects the messages that contain the word `deny`
 ```shell
 filterx {
     ${HOST} == "example";
-    ${MESSAGE} =~ "deny";
+    includes(${MESSAGE}, "deny");
 };
 ```
 
