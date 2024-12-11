@@ -16,7 +16,7 @@ To use this repository, you need the following installed locally:
 
 - [npm](https://www.npmjs.com/)
 - [Go](https://go.dev/)
-- [Hugo (Extended version)](https://gohugo.io/), at least version 0.92.3, but not higher than 0.122 (https://github.com/gohugoio/hugo/releases/tag/v0.122.0, see the **Assets** section for binaries)
+- [Hugo (Extended version)](https://gohugo.io/), at least version 0.139.0
 
 1. Install the dependencies. Clone the repository and navigate to the directory:
 
@@ -36,6 +36,9 @@ To use this repository, you need the following installed locally:
     ```shell
     cd themes/docsy
     npm install
+    npm install -D autoprefixer
+    npm install -D postcss-cli
+    npm install -D postcss
     cd ../../
     ```
 
