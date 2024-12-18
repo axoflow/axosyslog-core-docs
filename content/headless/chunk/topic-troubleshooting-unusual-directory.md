@@ -6,5 +6,5 @@
 
 {{% include-headless "chunk/para-selinux.md" %}}
 
-When you choose to save logs of a central {{% param "product.abbrev" %}} server to a directory other than the `/var/log` directory, logs will not start appearing on the newly configured directory. For details on how to fix this issue, see sectionUsing a different storage directoryin the blog post titled [Using syslog-ng with SELinux in enforcing mode](https://syslog-ng.com/blog/using-syslog-ng-with-selinux-in-enforcing-mode/).
+When you choose to save logs of a central {{% param "product.abbrev" %}} server to a directory other than the `/var/log` directory, logs will not start appearing on the newly configured directory. For details on how to fix this issue, see section "Using a different storage directory" in the blog post titled [Using syslog-ng with SELinux in enforcing mode](https://syslog-ng.com/blog/using-syslog-ng-with-selinux-in-enforcing-mode/).
 
