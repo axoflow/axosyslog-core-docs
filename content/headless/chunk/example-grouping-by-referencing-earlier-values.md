@@ -11,6 +11,3 @@ The following action can be used to log the length of an SSH session (the time d
         value('value name="MESSAGE" An SSH session for ${SSH_USERNAME}@1 from ${SSH_CLIENT_ADDRESS}@2 closed. Session lasted from ${DATE}@2 to ${DATE}')
     )
 ```
-
-For another example, see [The grouping-by() parser in syslog-ng blog post](https://www.syslog-ng.com/community/b/blog/posts/the-grouping-by-parser-in-syslog-ng-3-8)
-

@@ -8,7 +8,7 @@ short_description: "Collect and parse osquery result logs"
 
 The [osquery](https://osquery.io) application allows you to ask questions about your machine using an SQL-like language. For example, you can query running processes, logged in users, installed packages and syslog messages as well. You can make queries on demand, and also schedule them to run regularly.
 
-The `osquery()` source of {{% param "product.abbrev" %}} allows you read the results of periodical osquery queries (from the `/var/log/osquery/osqueryd.results.log` file) and automatically parse the messages (if you want to use {{% param "product.abbrev" %}} to [send log messages to osquery, read this blogpost](https://syslog-ng.com/blog/endpoint-visibility-and-monitoring-using-osquery-and-syslog-ng/)). For example, you can:
+The `osquery()` source of {{% param "product.abbrev" %}} allows you read the results of periodical osquery queries (from the `/var/log/osquery/osqueryd.results.log` file) and automatically parse the messages. For example, you can:
 
   - Create filters from the fields of the messages.
 
