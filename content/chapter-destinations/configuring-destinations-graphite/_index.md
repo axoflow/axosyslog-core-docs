@@ -18,7 +18,7 @@ The `graphite()` destination can send metrics to a [Graphite](http://graphite.re
 
 ## Example: Using the graphite() driver {#example-destination-graphite}
 
-To use the <span>graphite()</span> destination, the only mandatory parameter is payload, which specifies the value pairs to send to <span>graphite</span>. In the following example any value pairs starting with <span>"monitor."</span> are forwarded to <span>graphite</span>.
+To use the `graphite()` destination, the only mandatory parameter is payload, which specifies the value pairs to send to Graphite. In the following example any value pairs starting with `"monitor."` are forwarded to Graphite.
 
 ```shell
    destination d_graphite { graphite(payload("--key monitor.*")); };
