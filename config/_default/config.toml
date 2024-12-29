@@ -58,6 +58,7 @@ description = "Documentation for AxoSyslog, the scalable security data processor
   product_name = "AxoSyslog"
 
   hubspotId = "39677057"
+  adblockanalyticsId = "EvSl2XwcKQ5P"
 
   ###############################################################################
   # Docsy-theme specific config customizations
