@@ -260,6 +260,24 @@ contact = "[contact us](https://axoflow.com/contact/)"
       url = "https://axoflow.com/webinar/?utm_source=docs&utm_medium=menu"
       identifier = "webinar-resilient-syslog"
       parent = "webinars"
+[[menu.main]]
+    name = "White Papers"
+    weight = 120
+    url = "/"
+    identifier = "white-papers"
+    parent = "resources"
+    [[menu.main]]
+      name = "Observability Pipeline and Metrics"
+      weight = 10
+      url = "https://axoflow.com/observability-pipeline-metrics-control-telemetry-data/?utm_source=docs&utm_medium=menu"
+      identifier = "white-paper-observability-pipeline-metrics"
+      parent = "white-papers"
+    [[menu.main]]
+      name = "Scalable Syslog Architectures"
+      weight = 50
+      url = "https://axoflow.com/white-paper-scalable-syslog-architecture-best-practices/?utm_source=docs&utm_medium=menu"
+      identifier = "white-paper-scalable-syslog"
+      parent = "white-papers"
 
   [[menu.main]]
     name = "About"
