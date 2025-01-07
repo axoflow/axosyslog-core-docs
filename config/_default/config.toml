@@ -236,6 +236,30 @@ contact = "[contact us](https://axoflow.com/contact/)"
       url = "https://kube-logging.dev/docs/"
       identifier = "documentation-logging-operator"
       parent = "documentation"
+[[menu.main]]
+    name = "Webinars"
+    weight = 120
+    url = "/"
+    identifier = "webinars"
+    parent = "resources"
+    [[menu.main]]
+      name = "Reduced and Actionable Security Data"
+      weight = 10
+      url = "https://axoflow.com/webinar-feed-siem-reduced-detection-ready-security-data/?utm_source=docs&utm_medium=menu"
+      identifier = "webinar-reduced-actionable-security-data"
+      parent = "webinars"
+    [[menu.main]]
+      name = "Parsing Sucks"
+      weight = 50
+      url = "https://axoflow.com/webinar-parsing-sucks-what-to-do/?utm_source=docs&utm_medium=menu"
+      identifier = "webinar-parsing-sucks"
+      parent = "webinars"
+    [[menu.main]]
+      name = "Resilient Syslog Architectures"
+      weight = 100
+      url = "https://axoflow.com/webinar/?utm_source=docs&utm_medium=menu"
+      identifier = "webinar-resilient-syslog"
+      parent = "webinars"
 
   [[menu.main]]
     name = "About"
