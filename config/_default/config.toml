@@ -50,6 +50,7 @@ description = "Documentation for AxoSyslog, the scalable security data processor
   # email = ""
 
   copyright = "Axoflow Inc."
+  copyright_from = 2023
 
   relativeURLs = true
 
