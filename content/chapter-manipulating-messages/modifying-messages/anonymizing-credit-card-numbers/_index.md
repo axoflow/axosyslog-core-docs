@@ -37,5 +37,5 @@ By default, these rewrite rules process the MESSAGE part of the log message.
 | --------- | ------------------------------------------------------- |
 | Synopsis: | credit-card-mask(value("<message-field-to-process>")) |
 
-*Description:* Process the specified message field (by default, `${MESSAGE}`), and replace the 7-12th character of any credit card numbers (Primary Account Number or PAN) with asterisks (`\`*). For example, {{% param "product.abbrev" %}} replaces the number `5542043004559005` with `554204\*\*\*\*\*\*9005`.
+*Description:* Process the specified message field (by default, `${MESSAGE}`), and replace the 7-12th character of any credit card numbers (Primary Account Number or PAN) with asterisks (`\`*). For example, {{% param "product.abbrev" %}} replaces the number `5542043004559005` with `554204******9005`.
 

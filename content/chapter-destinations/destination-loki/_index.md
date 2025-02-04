@@ -3,12 +3,17 @@ title: "loki: Grafana Loki"
 weight:  3050
 driver: "loki()"
 short_description: "Send messages to Grafana Loki"
+aliases:
+- /chapter-destinations/syslog-ng-with-loki/
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
 Available in {{% param "product.abbrev" %}} version 4.4 and later.
 
-The `loki()` destination sends your log data to [Grafana Loki](https://grafana.com/docs/loki/) via gRPC, using the same message format documented for the [Grafana Loki HTTP endpoint](https://grafana.com/docs/loki/latest/reference/api/#push-log-entries-to-loki).
+The `loki()` destination sends your log data to [Grafana Loki](https://grafana.com/docs/loki/). Note that:
+
+- {{% param "product.abbrev" %}} sends data using **gRPC**, HTTP transport is currently not supported.
+- The message format is the same as documented for the [Grafana Loki HTTP endpoint](https://grafana.com/docs/loki/latest/reference/api/#push-log-entries-to-loki).
 
 Sample configuration:
 
@@ -32,6 +37,8 @@ The `loki()` destination has the following options.
 
 {{< include-headless "chunk/grpc-authentication.md" >}}
 
+{{% include-headless "chunk/option-destination-batch-bytes.md" %}}
+
 ## batch-lines()
 
 |          |        |
@@ -43,42 +50,19 @@ The `loki()` destination has the following options.
 
 {{% include-headless "chunk/option-destination-batch-timeout.md" %}}
 
-## keep-alive()
+{{< include-headless "chunk/option-grpc-channel-args.md" >}}
 
-Configures how {{% param "product.abbrev" %}} sends [gRPC keepalive pings](https://grpc.io/docs/guides/keepalive/).
+{{< include-headless "chunk/option-destination-grpc-compression.md" >}}
 
-### max-pings-without-data()
+{{< include-headless "chunk/option-grpc-headers.md" >}}
 
-|          |                    |
-| -------- | ------------------ |
-| Type:    | integer |
-| Default: |                 |
-
-*Description:* The maximum number of gRPC pings that can be sent when there is no data/header frame to be sent. {{% param "product.abbrev" %}} won't send any pings after this limit. Set it to 0 disable this restriction and keep sending pings.
-
-### time()
-
-|          |                    |
-| -------- | ------------------ |
-| Type:    | number [milliseconds] |
-| Default: |                 |
-
-*Description:* The period (in milliseconds) after which {{% param "product.abbrev" %}} sends a gRPC keepalive ping.
-
-### timeout()
-
-|          |                    |
-| -------- | ------------------ |
-| Type:    | number [milliseconds] |
-| Default: | 10                 |
-
-*Description:* The time (in milliseconds) {{% param "product.abbrev" %}} waits for an acknowledgement.
+{{< include-headless "chunk/option-destination-grpc-keep-alive.md" >}}
 
 ## labels()
 
 |          |         |
 | -------- | ------- |
-| Type:    |  |
+| Type:    | arrow list |
 | Default: | See the description |
 
 The labels applied to the message as they are sent to the destination. Use the following format:
@@ -102,6 +86,27 @@ Default value:
 
 *Description:* Specifies a template defining the logformat to be used in the destination. Macros are described in {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" %}}. For details on template functions, see {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" %}}.
 
+## tenant-id()
+
+|          |                                                    |
+| -------- | -------------------------------------------------- |
+| Type:    | string             |
+| Default: | - |
+
+*Description:* Available in version 4.7 and newer. Sets the tenant ID for multi-tenant scenarios. For example:
+
+```shell
+loki(
+    url("localhost:9096")
+    labels(
+        "app" => "$PROGRAM",
+        "host" => "$HOST",
+    )
+
+    tenant-id("testTenant")
+);
+```
+
 ## timestamp()
 
 |          |                            |
@@ -122,6 +127,6 @@ Default value:
 | Type:    | string |
 | Default: | `localhost:9095` |
 
-*Description:* The URL of the Loki endpoint.
+*Description:* The URL of the Loki endpoint, including the gRPC listen port of your Loki deployment.
 
 {{< include-headless "chunk/option-destination-threaded-workers.md" >}}

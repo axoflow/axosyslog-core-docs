@@ -75,17 +75,4 @@ Required options: `address()`, `fallback-topic()`, and `topic()`.
 
 *Description:* Required option. Specifies the MQTT topic.
 
-{{% alert title="Note" color="info" %}}
-
-The current implementation of the `mqtt()` destination does not support using the following characters for topic names:
-
-  - `$`
-
-  - `+`
-
-  - `#`
-
-{{% /alert %}}
-
-
 {{% include-headless "chunk/option-mqtt-username.md" %}}

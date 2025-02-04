@@ -14,6 +14,13 @@ The `syslog-parser()` has the following options:
 
 {{< include-headless "chunk/option-source-flags.md" >}}
 
+For the `syslog-parser()` you can also set the following flags:
+
+- `check-hostname`: Equivalent with the [`check-hostname()` global option]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-check-hostname" >}}), but only applies to this parser.
+- `no-piggyback-errors`: Do not attribute the message to {{< product >}} in case of errors. Things already processed or extracted are retained, for example: `${MESSAGE}` retains its value (potentially the raw message), other macros like `${HOST}`, `${PROGRAM}`, or `${PID}` may or may not be extracted. The error is indicated by setting `${MSGFORMAT}` set to "syslog:error".
+
+    Available in {{< product >}} 4.8.1 and later.
+
 ## sdata-prefix()
 
 |           |                              |

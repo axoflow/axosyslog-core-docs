@@ -16,7 +16,7 @@ The {{% param "product.abbrev" %}} application can convert the syslog messages s
 
 To accomplish this, {{% param "product.abbrev" %}} has to use a special pattern database to parse the Cisco-specific syslog messages, because these messages do not comply with the standard syslog formats.
 
-For details on the Cisco-specific SNMP trap format, see [CISCO-SYSLOG-MIB](http://tools.cisco.com/ITDIT/MIBS/servlet/index) on the Cisco website.
+For details on the Cisco-specific SNMP trap format, see [CISCO-SYSLOG-MIB](https://github.com/cisco/cisco-mibs/blob/main/schema/CISCO-SYSLOG-MIB.schema).
 
 
 ## Parsing Cisco-specific message fields with patterndb

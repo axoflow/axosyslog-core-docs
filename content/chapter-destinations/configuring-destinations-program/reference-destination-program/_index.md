@@ -34,7 +34,7 @@ Note that in earlier versions of {{% param "product.abbrev" %}}, the default for
 
 {{% include-headless "chunk/option-destination-template.md" %}}
 
-Make sure to end your template with a newline character (`\\n`).
+Make sure to end your template with a newline character (`\n`).
 
 {{% include-headless "chunk/option-destination-template-escape.md" %}}
 

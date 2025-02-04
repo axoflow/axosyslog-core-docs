@@ -4,7 +4,7 @@ weight:  900
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The AxoSyslog application can encrypt incoming and outgoing syslog message flows using TLS if you use the `network()` or `syslog()` drivers.
+This page describes the TLS-related options of the `network()` and `syslog()` drivers. Where applicable, other drivers also support encrypted transport, see the documentation of the other drivers for details.
 
 {{% alert title="Note" color="info" %}}
 
@@ -21,8 +21,8 @@ The tls() option can include the following settings:
 
 |                  |          |
 | ---------------- | -------- |
-| Accepted values: | yes | no |
-| Default:         | no       |
+| Accepted values: | `yes` or `no` |
+| Default:         | `no`       |
 
 *Description:* Enable on-the-wire compression in TLS communication. Note that this option must be enabled both on the server and the client to have any effect. Enabling compression can significantly reduce the bandwidth required to transport the messages, but can slightly decrease the performance of {{% param "product.abbrev" %}}, reducing the number of transferred messages during a given period.
 
@@ -138,36 +138,35 @@ The order of operations within `openssl-conf-cmds()` is significant and the comm
 Example configuration:
 
 ```shell
-    tls(
-        ca-dir("/etc/ca.d")
-        key-file("/etc/cert.d/serverkey.pem")
-        cert-file("/etc/cert.d/servercert.pem")
-        peer-verify(yes)
+tls(
+    ca-dir("/etc/ca.d")
+    key-file("/etc/cert.d/serverkey.pem")
+    cert-file("/etc/cert.d/servercert.pem")
+    peer-verify(yes)
 
-        openssl-conf-cmds(
-            # For system wide available cipher suites use: /usr/bin/openssl ciphers -v
-            # For formatting rules see: https://www.openssl.org/docs/man1.1.1/man3/SSL_CONF_cmd.html
-            "CipherString" => "ECDHE-RSA-AES128-SHA",                                   # TLSv1.2 and bellow
-            "CipherSuites" => "TLS_CHACHA20_POLY1305_SHA256:TLS_AES_256_GCM_SHA384",    # TLSv1.3+ (OpenSSl 1.1.1+)
+    openssl-conf-cmds(
+        # For system wide available cipher suites use: /usr/bin/openssl ciphers -v
+        # For formatting rules see: https://www.openssl.org/docs/man1.1.1/man3/SSL_CONF_cmd.html
+        "CipherString" => "ECDHE-RSA-AES128-SHA",                                   # TLSv1.2 and bellow
+        "CipherSuites" => "TLS_CHACHA20_POLY1305_SHA256:TLS_AES_256_GCM_SHA384",    # TLSv1.3+ (OpenSSl 1.1.1+)
 
-            "Options" => "PrioritizeChaCha",
-            "Protocol" => "-ALL,TLSv1.3",
-        )
+        "Options" => "PrioritizeChaCha",
+        "Protocol" => "-ALL,TLSv1.3",
     )
+)
 ```
 
 ## peer-verify() {#tls-options-peer-verify}
 
 |                  |                                                                                                                  |
 | ---------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Accepted values: | `optional-trusted` | `optional-untrusted` | `required-trusted` | `required-untrusted | `yes` | `no`` |
+| Accepted values: | `optional-trusted` | `optional-untrusted` | `required-trusted` | `required-untrusted` | `yes` | `no` |
 | Default:         | `required-trusted`                                                                                             |
 
 *Description:* Verification method of the peer, the four possible values is a combination of two properties of validation:
 
-  - Whether the peer is required to provide a certificate (required or optional prefix).
-
-  - Whether the certificate provided needs to be valid or not.
+- Whether the peer is required to provide a certificate (required or optional prefix).
+- Whether the certificate provided needs to be valid or not.
 
 The following table summarizes the possible options and their results depending on the certificate of the peer.
 
@@ -271,8 +270,8 @@ Example configuration:
 
 |                  |          |
 | ---------------- | -------- |
-| Accepted values: | yes | no |
-| Default:         | no       |
+| Accepted values: | `yes` or `no` |
+| Default:         | `no`       |
 
 *Description:* When set to `yes` in a destination that uses TLS encryption, this option enables [Server Name Indication](https://tools.ietf.org/html/rfc6066#page-6) (also called Server Name Identification, SNI). The {{% param "product.abbrev" %}} sends the hostname or the IP address set in the destination to the server during the TLS handshake.
 
@@ -338,6 +337,17 @@ The following destination explicitly disables SSL and TLSv1.0
     };
 ```
 
+## ssl-version()
+
+|          |                                |
+| -------- | ------------------------------ |
+| Type:    | string                         |
+| Default: | None, uses the libcurl default |
+
+Available in {{% param "product_name" %}} version 4.5.0 and later.
+
+*Description:* Specifies the permitted SSL/TLS version. Possible values: `sslv2`, `sslv3`, `tlsv1`, `tlsv1_0`, `tlsv1_1`, `tlsv1_2`, `tlsv1_3`.
+
 ## trusted-dn() {#tls-options-trusted-dn}
 
 |                  |                                      |
@@ -345,7 +355,7 @@ The following destination explicitly disables SSL and TLSv1.0
 | Accepted values: | list of accepted distinguished names |
 | Default:         | none                                 |
 
-*Description:* To accept connections only from hosts using certain certificates signed by the trusted CAs, list the distinguished names of the accepted certificates in this parameter. For example, using `trusted-dn("\*, O=Example Inc, ST=Some-State, C=\*")` will accept only certificates issued for the `Example Inc` organization in `Some-State` state.
+*Description:* To accept connections only from hosts using certain certificates signed by the trusted CAs, list the distinguished names of the accepted certificates in this parameter. For example, using `trusted-dn("*, O=Example Inc, ST=Some-State, C=*")` will accept only certificates issued for the `Example Inc` organization in `Some-State` state.
 
 ## trusted-keys() {#tls-options-trusted-keys}
 
@@ -362,9 +372,9 @@ To find the fingerprint of a certificate, you can use the following command: `op
 
 When using the `trusted-keys()` and `trusted-dn()` parameters, note the following:
 
-  - First, the `trusted-keys()` parameter is checked. If the fingerprint of the peer is listed, the certificate validation is performed.
-
-  - If the fingerprint of the peer is not listed in the `trusted-keys()` parameter, the `trusted-dn()` parameter is checked. If the DN of the peer is not listed in the `trusted-dn()` parameter, the authentication of the peer fails and the connection is closed.
+- First, the `trusted-keys()` parameter is checked. If the fingerprint of the peer is listed, the certificate validation is performed.
+- If the fingerprint of the peer is not listed in the `trusted-keys()` parameter, the `trusted-dn()` parameter is checked. If the DN of the peer is not listed in the `trusted-dn()` parameter, the authentication of the peer fails and the connection is closed.
 
 {{% /alert %}}
 
+Starting with version 4.8.1, if `trusted-keys()` is set, {{% param "product.abbrev" %}} automatically adds the key fingerprint of the peer to the `${.tls.x509_fp}` name-value pair.

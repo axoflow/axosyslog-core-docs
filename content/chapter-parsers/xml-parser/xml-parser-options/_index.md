@@ -12,7 +12,7 @@ The XML parser has the following options.
 |            |                |
 | ---------- | -------------- |
 | Synopsis:  | drop-invalid() |
-| Format:    | yes|no         |
+| Format:    | `yes|no`         |
 | Default:   | no             |
 | Mandatory: | no             |
 
@@ -88,7 +88,7 @@ The `prefix()` option is optional and its default value is `".xml"`.
 |            |                     |
 | ---------- | ------------------- |
 | Synopsis:  | strip-whitespaces() |
-| Format:    | yes|no              |
+| Format:    | `yes|no`              |
 | Default:   | no                  |
 | Mandatory: | no                  |
 

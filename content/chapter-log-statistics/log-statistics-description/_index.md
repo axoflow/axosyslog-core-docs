@@ -18,17 +18,13 @@ The instance ID (destination) of the object, for example, the filename of a file
 
 The status of the object. One of the following:
 
-  - `a` - active. At the time of quering the statistics, the source or the destination was still alive (it continuously received statistical data).
+- `a` - active. At the time of querying the statistics, the source or the destination was still alive (it continuously received statistical data).
+- `d` - dynamic. Such objects may not be continuously available, for example, like statistics based on the sender's hostname. These counters only appear above a certain value of `stats-level()` global option:
 
-  - `d` - dynamic. Such objects may not be continuously available, for example, like statistics based on the sender's hostname. These counters only appear above a certain value of `stats-level()` global option:
-    
-      - `host`: source host, from `stats-level(2)`
-    
-      - `program`: program, from `stats-level(3)`
-    
-      - `sender`: sender host, from `stats-level(3)`
-    
-    
+    - `host`: source host, from `stats-level(2)`
+    - `program`: program, from `stats-level(3)`
+    - `sender`: sender host, from `stats-level(3)`
+
     ## Example: Dynamic counters
     
     The following example contains 6 different dynamic values: a sender, a host, and four different programs.
@@ -46,14 +42,13 @@ The status of the object. One of the following:
         src.program;;P-14737;d;stamp;1509121931
         src.host;;localhost;d;processed;4
         src.host;;localhost;d;stamp;1509121934
-    
     ```
     
     
     To avoid performance issues or even overloading {{% param "product.abbrev" %}}, you might want to limit the number of registered dynamic counters in the message statistics. To do this, configure the [stats-max-dynamics()]({{< relref "/chapter-global-options/reference-options/_index.md" >}}) global option.
 
-  - `o` - This object was once active, but stopped receiving messages. (For example, a dynamic object may disappear and become orphan.)
-    
+- `o` - This object was once active, but stopped receiving messages. (For example, a dynamic object may disappear and become orphan.)
+
     {{% alert title="Note" color="info" %}}
 The {{% param "product.abbrev" %}} application stores the statistics of the objects when {{% param "product.abbrev" %}} is reloaded. However, if the configuration of {{% param "product.abbrev" %}} was changed since the last reload, the statistics of orphaned objects are deleted.
     {{% /alert %}}
@@ -88,19 +83,7 @@ The type of the statistics:
 
 `batch_size_avg`: When batching is enabled, then this shows the current average batch size of the given source or destination.
 
-{{% alert title="Note" color="info" %}}
-
-In version 7.0.27, {{% param "product.abbrev" %}} only supports the `batch_size_avg` for the `http()` destination.
-
-{{% /alert %}}
-
 `batch_size_max`: When batching is enabled, the value of `batch_size_max` shows the current largest batch size of the given source or destination.
-
-{{% alert title="Note" color="info" %}}
-
-In version 7.0.27, {{% param "product.abbrev" %}} only supports the `batch_size_max` for the `http()` destination.
-
-{{% /alert %}}
 
 `discarded`: The number of messages discarded by the given parser. These are messages that the parser could not parsed, and are therefore not processed. For example:
 
@@ -163,7 +146,6 @@ Since the `not_matched` metric applies to filters, and filters are expected to d
 
 ```shell
    filter;demo_filter;;a;not_matched;0
-
 ```
 {{% /alert %}}
 

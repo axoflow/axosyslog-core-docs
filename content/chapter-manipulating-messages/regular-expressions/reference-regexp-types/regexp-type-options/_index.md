@@ -27,13 +27,13 @@ For more information about the `flags()` options of literal string searches, see
 
 ## Glob patterns without regular expression support (glob) {#reference-regexp-glob}
 
-*Description:* Matches the strings against a pattern containing `\*` and `?` wildcards, without regular expression and character range support. The advantage of glob patterns to regular expressions is that globs can be processed much faster.
+*Description:* Matches the strings against a pattern containing `*` and `?` wildcards, without regular expression and character range support. The advantage of glob patterns to regular expressions is that globs can be processed much faster.
 
-  - `\*`: matches an arbitrary string, including an empty string
+  - `*`: matches an arbitrary string, including an empty string
 
   - `?`: matches an arbitrary character
 
   - The wildcards can match the `/` character.
 
-  - You cannot use the `\*` and `?` literally in the pattern.
+  - You cannot use the `*` and `?` literally in the pattern.
 

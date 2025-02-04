@@ -10,17 +10,17 @@ aliases:
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-This chapter introduces the {{% param "product.name" %}} application in a non-technical manner, discussing how and why is it useful, and the benefits it offers to an existing IT infrastructure.
-
 ## What {{% param "product.name" %}} is {#what-axosyslog-is}
 
-The {{% param "product.name" %}} application is a flexible and highly scalable system logging application that is ideal for creating centralized and trusted logging and observability solutions and telemetry pipelines, supporting on-premises, cloud-native, and hybrid environments.
+{{< include-headless "axosyslog-intro.md" >}}
+
+The {{% param "product.name" %}} application is a flexible and highly scalable data processing and system logging application that is ideal for creating centralized and trusted logging and observability solutions and telemetry pipelines, supporting on-premises, cloud-native, and hybrid environments.
 
 Among others, {{% param "product.abbrev" %}} allows you the following.
 
 ### Secure and reliable data transfer
 
-The {{% param "product.abbrev" %}} application enables you to send log messages and other observability data from your hosts to remote servers using the latest protocol standards. You can collect and store your log data centrally on dedicated log servers. Transfer your log messages and observability data using reliable protocols to ensure that no messages are lost.
+The {{% param "product.abbrev" %}} application enables you to send log messages and other observability data from your hosts to remote servers using the latest protocol standards. You can collect and store your data centrally on dedicated solutions, like log servers or SIEMs. Transfer your log messages and observability data using traditional or modern, reliable protocols (like [OpenTelemetry]({{< relref "/chapter-destinations/opentelemetry/_index.md" >}})) to ensure that no messages are lost.
 
 ### Disk-based message buffering
 
@@ -32,31 +32,31 @@ Log messages may contain sensitive information that should not be accessed by th
 
 ### Flexible data extraction and processing
 
-Most log messages are inherently unstructured, which makes them difficult to process. To overcome this problem, {{% param "product.abbrev" %}} comes with a huge set of built-in parsers, which you can combine to build very complex things.
+Most log messages are inherently unstructured, which makes them difficult to process. To overcome this problem, {{% param "product.abbrev" %}} comes with a huge set of [built-in parsers]({{< relref "/chapter-parsers/_index.md" >}}), which you can combine to build very complex things.
 
 ### Filter and classify
 
-The {{% param "product.abbrev" %}} application can sort the incoming log messages based on their content and various parameters like the source host, application, and priority. You can create directories, files, and database tables dynamically using macros. Complex filtering using regular expressions and boolean operators offers almost unlimited flexibility to forward only the important log messages to the selected destinations.
+The {{% param "product.abbrev" %}} application can sort the incoming log messages based on their content and various parameters like the source host, application, and priority. You can create directories, files, and database tables dynamically using macros. [Complex filtering]({{< relref "/chapter-routing-filters/_index.md" >}}) using logical operators offers almost unlimited flexibility to forward only the important data to the selected destinations.
 
 ### Parse and rewrite
 
-The {{% param "product.abbrev" %}} application can segment log messages to named fields or columns, and also modify the values of these fields. You can process JSON messages, key-value pairs, and more.
+The {{% param "product.abbrev" %}} application can segment the incoming data to named fields or columns, and also modify the values of these fields. You can process [JSON messages, key-value pairs, and more]({{< relref "/chapter-parsers/_index.md" >}}).
 
-To get the most information out of your log data, {{% param "product.abbrev" %}} allows you to correlate multiple log messages and aggregate the extracted information into a single message. You can also use external information to enrich your log data.
+To get the most information out of your data, {{% param "product.abbrev" %}} allows you to [correlate multiple log messages]({{< relref "/chapter-correlating-log-messages/_index.md" >}}) and aggregate the extracted information into a single message. You can also [use external information to enrich your log data]({{< relref "/chapter-enrich-data/_index.md" >}}).
 
 ### Big data clusters
 
-The log data that your organization has to process, store, and review increases daily, so many organizations use big data solutions for their logs. To accommodate this huge amount of data, {{% param "product.abbrev" %}} natively supports storing log messages and observability data in destinations like HDFS files, Elasticsearch/OpenSearch, and cloud storage solutions like Google Pub/Sub and Amazon S3.
+The data that your organization has to process, store, and review increases daily, so many organizations use big data solutions for their logs. To accommodate this huge amount of data, {{% param "product.abbrev" %}} natively supports storing log messages and observability data in destinations like [Elasticsearch]({{< relref "/chapter-destinations/configuring-destinations-elasticsearch-http/_index.md" >}})/[OpenSearch]({{< relref "/chapter-destinations/destination-opensearch/_index.md" >}})/[OpenObserve]({{< relref "/chapter-destinations/openobserve/_index.md" >}}), and cloud storage solutions like [Google BigQuery]({{< relref "/chapter-destinations/google-bigquery/_index.md" >}}), [Google Pub/Sub]({{< relref "/chapter-destinations/google-pubsub/_index.md" >}}) and [Amazon S3]({{< relref "/chapter-destinations/destination-s3/_index.md" >}}).
 
 ### Message queue support
 
-Large organizations increasingly rely on queuing infrastructure to transfer their data. For that purpose, {{% param "product.abbrev" %}} supports Apache Kafka, the Advanced Message Queuing Protocol (AMQP), and the Simple Text Oriented Messaging Protocol (STOMP).
+Large organizations increasingly rely on queuing infrastructure to transfer their data. For that purpose, {{% param "product.abbrev" %}} supports [Apache Kafka]({{< relref "/chapter-destinations/configuring-destinations-kafka-c/_index.md" >}}), the [Advanced Message Queuing Protocol (AMQP)]({{< relref "/chapter-destinations/configuring-destinations-amqp/_index.md" >}}), [MQTT]({{< relref "/chapter-destinations/destination-mqtt-intro/_index.md" >}}) and the [Simple Text Oriented Messaging Protocol (STOMP)]({{< relref "/chapter-destinations/configuring-destinations-stomp/_index.md" >}}).
 
 ### SQL, NoSQL, and monitoring
 
-Storing your log messages in a database allows you to easily search and query the messages and interoperate with log analyzing applications. The {{% param "product.abbrev" %}} application supports the following databases: MongoDB, MSSQL, MySQL, Oracle, PostgreSQL, and SQLite.
+Storing your log messages in a database allows you to easily search and query the messages and interoperate with log analyzing applications. The {{% param "product.abbrev" %}} application supports the following databases: [MongoDB]({{< relref "/chapter-destinations/configuring-destinations-mongodb/_index.md" >}}), [MSSQL, MySQL, Oracle, PostgreSQL, and SQLite]({{< relref "/chapter-destinations/configuring-destinations-sql/_index.md" >}}).
 
-{{% param "product.abbrev" %}} also allows you to extract the information you need from your log data, and directly send it to your Graphite, Redis, or Riemann monitoring system.
+{{% param "product.abbrev" %}} also allows you to extract the information you need from your data, and directly send it to your [Graphite]({{< relref "/chapter-destinations/configuring-destinations-graphite/_index.md" >}}), [Redis]({{< relref "/chapter-destinations/configuring-destinations-redis/_index.md" >}}), or [Riemann]({{< relref "/chapter-destinations/configuring-destinations-riemann/_index.md" >}}) monitoring system.
 
 ### syslog protocol standards
 
@@ -64,7 +64,7 @@ Storing your log messages in a database allows you to easily search and query th
 
 ### Heterogeneous on-premises and cloud-native environments
 
-The {{% param "product.abbrev" %}} application is the ideal choice to collect logs and observability data in massively heterogeneous environments that use several different operating systems and hardware platforms, including Linux, Unix, BSD, Sun Solaris, HP-UX, MacOS, AIX. You can also run it in containerized environments.
+The {{% param "product.abbrev" %}} application is the ideal choice to collect logs and observability data in massively heterogeneous environments that use several different operating systems. You can also run it in containerized environments.
 
 ### IPv4 and IPv6 support
 

@@ -6,7 +6,7 @@
 
 |          |                                                                            |
 | -------- | -------------------------------------------------------------------------- |
-| Type:    | yes|no                                                                     |
+| Type:    | `yes|no`                                                                     |
 | Default: | Use the global `trim-large-messages()` option, which defaults to `no`. |
 
 {{% include-headless "chunk/option-description-trim-large-messages.md" %}}

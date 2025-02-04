@@ -2,7 +2,7 @@
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-{{% param "product.name" %}} provides [cloud-ready `syslog-ng` images](https://github.com/axoflow/axosyslog-docker/). These images differ from the [upstream syslog-ng images](https://hub.docker.com/r/balabit/syslog-ng/), because:
+{{% param "product.name" %}} provides [cloud-ready images](https://github.com/axoflow/axosyslog/). These images differ from the upstream `syslog-ng` images, because:
 
 - They're based on Alpine Linux, instead of Debian testing for reliability and smaller size (thus smaller attack surface).
 - They incorporate cloud-native features and settings, such as the Kubernetes source.

@@ -47,6 +47,8 @@ For details, see {{% xref "/chapter-configuration-file/python-code-external-file
 
 {{< include-headless "chunk/option-source-flags.md" >}}
 
+For the `python()` and `python-fetcher()` sources you can also set the `check-hostname` flag, which is equivalent with the [`check-hostname()` global option]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-check-hostname" >}}), but only applies to this source.
+
 The flags and the hostname-related options (for example, `use-dns`) set in the configuration file influence the behavior of the `LogMessage.parse()` method of the Python source. They have no effect if you set the message or the hostname directly, without using `LogMessage.parse()`.
 
 

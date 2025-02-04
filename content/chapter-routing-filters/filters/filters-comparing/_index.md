@@ -9,8 +9,8 @@ In {{% param "product.abbrev" %}} you can compare macro values and templates as 
 Use the following syntax to compare macro values or templates.
 
 ```shell
-    filter <filter-id>
-        {"<macro-or-template>" operator "<value-or-macro-or-template>"};
+filter <filter-id>
+    {"<macro-or-template>" operator "<value-or-macro-or-template>"};
 ```
 
 ## String and numerical comparison
@@ -43,19 +43,19 @@ For example:
 The following expression selects log messages containing a PID (that is, `${PID}` macro is not empty):
 
 ```shell
-    filter f_pid {"${PID}" != ""};
+filter f_pid {"${PID}" != ""};
 ```
 
 The following expression selects log messages that do not contain a PID. Also, it uses a template as the left argument of the operator and compares the values as strings:
 
 ```shell
-    filter f_pid {"${HOST}${PID}" == "${HOST}"};
+filter f_pid {"${HOST}${PID}" == "${HOST}"};
 ```
 
 The following example selects messages with priority level higher than 5.
 
 ```shell
-    filter f_level {"${LEVEL_NUM}" > 5};
+filter f_level {"${LEVEL_NUM}" > 5};
 ```
 
 Make sure to:

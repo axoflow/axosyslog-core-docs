@@ -1,0 +1,51 @@
+[Unit]
+Description=AxoSyslog Container
+Wants=NetworkManager.service network-online.target
+After=NetworkManager.service network-online.target
+
+[Install]
+WantedBy=multi-user.target default.target
+
+[Container]
+# Sets User and Group ID of container syslog-ng process; should match UID/GID of desired host user
+# User= and Group= values must be numeric; this is a hard requirement with strict input validation
+# Example: host passwd entry syslogng:x:1000:1000 => User=1000 Group=1000
+# Any symbolic representation, environment variable, or other non-numeric value will
+# be ignored and the container run as root (UID 0).
+# User=1000
+# Group=1000
+
+ContainerName=AxoSyslog
+
+AddCapability=CAP_NET_BIND_SERVICE CAP_CHOWN CAP_FOWNER CAP_DAC_OVERRIDE CAP_DAC_READ_SEARCH CAP_SYS_ADMIN
+
+Image=${AXOSYSLOG_IMAGE}
+
+Volume=${PERSIST_MOUNT}:/var/lib/syslog-ng:z
+Volume=${CONFIG_MOUNT}:/etc/syslog-ng:z
+Volume=${LOG_MOUNT}:/var/log:z
+
+Exec=-e
+LogDriver=journald
+Network=host
+SecurityLabelDisable=true
+
+[Service]
+# Set up environment for container above
+# Container image pulled from repository
+Environment="AXOSYSLOG_IMAGE=ghcr.io/axoflow/axosyslog:latest"
+
+Environment="PERSIST_MOUNT=/var/lib/syslog-ng"
+
+# Required local mount point for syslog-ng config file and associated subdirectories
+Environment="CONFIG_MOUNT=/opt/axosyslog/etc"
+
+# Required local mount point for storing collected logs
+Environment="LOG_MOUNT=/opt/axosyslog/var/log"
+
+# Ensure local filesystem mount points are created and set with appropriate permissions
+ExecStartPre = +mkdir -p $PERSIST_MOUNT $CONFIG_MOUNT $LOG_MOUNT
+
+ExecReload=podman kill --signal="SIGHUP" AxoSyslog
+
+Restart=on-failure

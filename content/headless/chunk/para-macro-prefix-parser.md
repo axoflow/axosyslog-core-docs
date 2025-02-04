@@ -1,4 +1,0 @@
----
----
-<!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
-Names starting with a dot (for example, `.example`) are reserved for use by {{% param "product.abbrev" %}}. If you use such a macro name as the name of a parsed value, it will attempt to replace the original value of the macro (note that only soft macros can be overwritten, see {{% xref "/chapter-manipulating-messages/customizing-message-format/macros-hard-vs-soft/_index.md" %}} for details). To avoid such problems, use a prefix when naming the parsed values, for example, `prefix(my-parsed-data.)`

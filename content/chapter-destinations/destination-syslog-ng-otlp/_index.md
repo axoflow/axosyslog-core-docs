@@ -10,15 +10,15 @@ Available in {{% param "product.abbrev" %}} version 4.4 and later.
 
 {{< include-headless "chunk/syslog-ng-otlp-intro.md" >}}
 
-<!--  FIXME:  internal(<yesno>) option is globally undocumented
-      FIXME: worker-partition-key(<template-content>) Is that a renamed version of the partition-key() option from parallelize? https://axoflow.com/docs/axosyslog-core/chapter-nonsequential-processing/
- -->
+<!--  FIXME:  internal(<yesno>) option is globally undocumented -->
 
 ## Options
 
 The `syslog-ng-otlp()` destination has the following options.
 
 {{< include-headless "chunk/grpc-authentication.md" >}}
+
+{{% include-headless "chunk/option-destination-otlp-batch-bytes.md" %}}
 
 ## batch-lines()
 
@@ -31,19 +31,37 @@ The `syslog-ng-otlp()` destination has the following options.
 
 {{% include-headless "chunk/option-destination-batch-timeout.md" %}}
 
+{{< include-headless "chunk/option-grpc-channel-args.md" >}}
+
+{{< include-headless "chunk/option-destination-grpc-compression.md" >}}
+
 {{< include-headless "chunk/option-destination-diskbuffer.md" >}}
+
+{{< include-headless "chunk/option-destination-frac-digits.md" >}}
 
 {{< include-headless "chunk/option-destination-hook.md" >}}
 
+{{% include-headless "chunk/option-destination-local-timezone.md" %}}
+
 {{% include-headless "chunk/option-destination-log-fifo-size.md" %}}
+
+{{< include-headless "chunk/option-destination-on-error.md" >}}
 
 {{% include-headless "chunk/option-persist-name.md" %}}
 
 {{% include-headless "chunk/option-destination-retries.md" %}}
 
+{{% include-headless "chunk/option-destination-send-timezone.md" %}}
+
+{{% include-headless "chunk/option-destination-template-escape.md" %}}
+
 {{% include-headless "chunk/option-destination-throttle.md" %}}
 
 {{% include-headless "chunk/option-source-time-reopen.md" %}}
+
+{{% include-headless "chunk/option-destination-timezone.md" %}}
+
+{{< include-headless "chunk/option-destination-ts-format.md" >}}
 
 ## url()
 
@@ -53,5 +71,8 @@ The `syslog-ng-otlp()` destination has the following options.
 | Default: | `localhost:9095` |
 
 *Description:* The URL of the {{% param "product.abbrev" %}} receiver.
+
+<a id="worker-partition-key"></a>
+{{< include-headless "chunk/option-destination-http-worker-partition-key.md" >}}
 
 {{< include-headless "chunk/option-destination-threaded-workers.md" >}}

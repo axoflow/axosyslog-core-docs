@@ -33,9 +33,21 @@ log otel_forward_mode_alts {
 
 {{< include-headless "chunk/grpc-authentication.md" >}}
 
+{{< include-headless "chunk/option-grpc-channel-args.md" >}}
+
+{{< include-headless "chunk/option-source-concurrent-requests.md" >}}
+
+## keep-hostname()
+
+The `opentelemetry()` source ignores this option and uses the address of the OTLP peer as the HOST.
+
+{{% include-headless "chunk/option-source-log-fetch-limit.md" %}}
+
 ## `port()` {#port}
 
 The port number to receive incoming connections. Default value: 4317
+
+{{< include-headless "chunk/option-source-threaded-workers.md" >}}
 
 <!-- FIXME xinclude other common options
  threaded_source_driver_option -->

@@ -297,5 +297,5 @@ If you don't already have an application that generates logs deployed to the Kub
 
 1. Now you can see your logs on the Discover view at `http://localhost:8080/app/discover`. Opening the detailed view for a log entry shows you the fields sent to OpenSearch.
 
-    ![OpenSearch Kubernetes log messages collected with the AxoSyslog syslog-ng distribution](opensearch-syslog-messages.webp)
-    ![Kubernetes metadata collected with the AxoSyslog syslog-ng distribution](opensearch-syslog-message-details.webp)
+    ![OpenSearch Kubernetes log messages collected with AxoSyslog](opensearch-syslog-messages.webp)
+    ![Kubernetes metadata collected with AxoSyslog](opensearch-syslog-message-details.webp)

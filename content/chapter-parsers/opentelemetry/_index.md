@@ -27,3 +27,16 @@ String, bool, int64, double, and bytes values are mapped to their respective {{%
 The mapping of AnyValue type fields is limited.
 
 `ArrayValue` and `KeyValueList` types are stored serialized with protobuf type. Note that `protobuf` and `bytes` types are only available, unless explicitly type cast. For example, `bytes(${.otel.log.span_id})`. When using template functions, use `--include-bytes`, for example, `$(format-json .otel.* --include-bytes`. In the case of `$(format-json)`, the content is base64-encoded into the bytes content.
+
+## Options
+
+## set-hostname()
+
+|           |                              |
+| --------- | ---------------------------- |
+| Synopsis: | `yes | no ` |
+| Default: | `yes` |
+
+Available in {{< product >}} 4.8 and later.
+
+*Description:* If set to yes, the parser extracts the `host.name` resource attribute if available in the message. Otherwise, it leaves the [HOST](https://opentelemetry.io/docs/specs/semconv/attributes-registry/host/) field as-is.

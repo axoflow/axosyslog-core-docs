@@ -110,6 +110,7 @@ If you use blocking operations within the `fetch()` method, use `request_exit()`
 
 Close the connection to the target service. Usually it is called right before `deinit()` when stopping or reloading {{% param "product.abbrev" %}}. It is also called when `fecth()` fails.
 
+{{< include-headless "chunk/python-method-close-batch.md" >}}
 
 {{< include-headless "chunk/python-method-deinit.md" >}}
 

@@ -1,0 +1,1 @@
+[DEB packages]({{< relref "/install/debian-ubuntu/_index.md" >}}) and [RPM packages]({{< relref "/install/rhel-fedora-almalinux/_index.md" >}}) are available for {{< product >}} 4.8 and later versions.

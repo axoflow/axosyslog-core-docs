@@ -6,7 +6,7 @@
 
 |          |        |
 | -------- | ------ |
-| Type:    | yes|no |
+| Type:    | `yes|no` |
 | Default: | yes    |
 
 *Description:* By default, {{% param "product.abbrev" %}} closes destination sockets if it receives any input from the socket (for example, a reply). If this option is set to no, {{% param "product.abbrev" %}} just ignores the input, but does not close the socket.

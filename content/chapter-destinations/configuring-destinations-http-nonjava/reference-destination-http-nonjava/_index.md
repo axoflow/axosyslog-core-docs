@@ -74,8 +74,28 @@ For details on how this option influences HTTP batch mode, see [http: Posting me
 
 *Description:* The string {{% param "product.abbrev" %}} puts to the end of the body of the HTTP request, after the log message. Available in {{% param "product.abbrev" %}} version 3.18 and later.
 
-For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
+For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}}).
 
+## cloud-auth()
+
+Authenticate to cloud-based services, for example, GCP, using service accounts.
+
+### gcp()
+
+Authenticate to GCP service accounts. For example:
+
+```shell
+cloud-auth(
+  gcp(
+    user-managed-service-account(
+      name("your-user@your-project.iam.gserviceaccount.com")
+      metadata-url("your-metadata-server:8080")
+    )
+  )
+)
+```
+
+{{< include-headless "chunk/option-gcp-cloud-auth.md" >}}
 
 
 {{% include-headless "chunk/option-destination-tls-ca-dir.md" %}}
@@ -310,7 +330,7 @@ See {{% xref "/chapter-destinations/configuring-destinations-http-nonjava/plugin
     |------+-----------------------------------+------------|
 ```
 
-To customize the action to take for a particular response code, use the following format: `response-action(<response-code> => <action>`. To customize multiple response code-action pairs, separate them with a comma, for example:
+To customize the action to take for a particular response code, use the arrow operator in the following format: `response-action(<response-code> => <action>`. To customize multiple response code-action pairs, separate them with a comma, for example:
 
 ```shell
  http(
@@ -360,8 +380,13 @@ To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% param 
 
 In case the server on the specified URL returns a redirect request, {{% param "product.abbrev" %}} automatically follows maximum 3 redirects. Only HTTP and HTTPS based redirections are supported.
 
+### Load balancing
+
 {{< include-headless "chunk/destination-load-balancing-url.md" >}}
 
+### Templates in the url()
+
+{{< include-headless "chunk/option-destination-http-url-templating.md" >}}
 
 {{% include-headless "chunk/option-destination-http-user-agent.md" %}}
 
@@ -377,6 +402,9 @@ In case the server on the specified URL returns a redirect request, {{% param "p
 
 
 {{% include-headless "chunk/option-destination-http-use-system-cert-store.md" %}}
+
+<a id="worker-partition-key"></a>
+{{< include-headless "chunk/option-destination-http-worker-partition-key.md" >}}
 
 {{< include-headless "chunk/option-destination-threaded-workers.md" >}}
 

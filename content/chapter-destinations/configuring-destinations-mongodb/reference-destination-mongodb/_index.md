@@ -17,7 +17,7 @@ The `mongodb()` destination has the following options:
 
 Available in {{% param "product_name" %}} version 4.3.0 and newer.
 
-*Description:* Enables [bulk insert](http://mongoc.org/libmongoc/current/bulk.html) mode. If disabled, each messages is inserted individually.
+*Description:* Enables [bulk insert](https://mongoc.org/libmongoc/current/mongoc_bulk_operation_insert.html) mode. If disabled, each messages is inserted individually.
 
 > Note: Bulk sending is only efficient if you use a constant [collection](#mongodb-option-collection) (without templates), or the used template does not lead to too many collections switching within a reasonable time range.
 
@@ -41,7 +41,7 @@ Available in {{% param "product_name" %}} version 4.3.0 and newer.
 
 Available in {{% param "product_name" %}} version 4.3.0 and newer.
 
-*Description:* Enables [unordered bulk operations](http://mongoc.org/libmongoc/current/bulk.html) mode.
+*Description:* Enables [unordered bulk operations](http://mongoc.org/libmongoc/1.23.3/bulk.html) mode.
 
 ## collection() {#mongodb-option-collection}
 
