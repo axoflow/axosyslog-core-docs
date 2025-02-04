@@ -5,7 +5,7 @@
 
 |          |          |
 | -------- | -------- |
-| Type:    | yes | no |
-| Default: | no       |
+| Type:    | `yes` or `no` |
+| Default: | `no`       |
 
 *Description:* This option instruments the MQTT broker to clean the session data when connecting. The session data contains information about which message was processed.

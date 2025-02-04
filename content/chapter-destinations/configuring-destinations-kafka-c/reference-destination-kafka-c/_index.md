@@ -49,13 +49,13 @@ For more information about the default values of the `transaction.timeout.ms` Ka
 
 
 
-{{% include-headless "chunk/option-destination-java-class-path.md" %}}
+{{< include-headless "chunk/option-destination-java-class-path.md" >}}
 
-For the `kafka` destination, include the path to the directory where you copied the required libraries (see {{% xref "/chapter-destinations/configuring-destinations-kafka/destination-kafka-prerequisites/_index.md" %}}), for example, `client-lib-dir("/opt/syslog-ng/lib/syslog-ng/java-modules/KafkaDestination.jar:/usr/share/kafka/lib/\*.jar")`.
+For the `kafka` destination, include the path to the directory where you copied the required libraries (see {{% xref "/chapter-destinations/configuring-destinations-kafka/destination-kafka-prerequisites/_index.md" %}}), for example, `client-lib-dir("/opt/syslog-ng/lib/syslog-ng/java-modules/KafkaDestination.jar:/usr/share/kafka/lib/*.jar")`.
 
 {{% alert title="Note" color="info" %}}
 
-Unlike in the Java implementation, the <span class="code">client-lib-dir()</span> option has no significant role in the C implementation of the `kafka()` destination. The programming language accepts this option for better compatibility.
+Unlike in the Java implementation, the `client-lib-dir()` option has no significant role in the C implementation of the `kafka()` destination. The programming language accepts this option for better compatibility.
 
 {{% /alert %}}
 
@@ -63,11 +63,11 @@ Unlike in the Java implementation, the <span class="code">client-lib-dir()</span
 
 ## config()
 
-*Description:* You can use this option to expand or override the options of the properties-file().
+*Description:* You can use this option to expand or override the options of the `properties-file()`.
 
 {{< include-headless "chunk/kafka-c-impl-required-options-note.md" >}}
 
-The {{% param "product.abbrev" %}}`kafka` destination supports all properties of the official Kafka producer. For details, see [the librdkafka documentation](https://github.com/edenhill/librdkafka/blob/master/CONFIGURATION.md).
+The {{% param "product.abbrev" %}} `kafka` destination supports all properties of the official Kafka producer. For details, see [the librdkafka documentation](https://github.com/edenhill/librdkafka/blob/master/CONFIGURATION.md).
 
 The syntax of the config() option is the following:
 

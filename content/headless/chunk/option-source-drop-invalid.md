@@ -7,7 +7,7 @@
 |          |           |
 | -------- | --------- |
 | Type:    | yes or no |
-| Values:  | yes|no    |
+| Values:  | `yes|no`  |
 | Default: | no        |
 
 *Description:* This option determines how the `syslog-parser()` affects messages when parsing fails.
@@ -16,10 +16,10 @@ If you set `drop-invalid()` to `yes`, `syslog-parser()` will drop the message if
 
 If you set `drop-invalid()` to `no`, the parsing error triggers `syslog-parser()` to rewrite and extend the original log message with the following additional information:
 
-  - It prepends the following message to the contents of the `$MESSAGE` field: `Error processing log message`.
-  - It sets the contents of the `$PROGRAM` field to `syslog-ng`.
-  - It sets the contents of the `facility` field to `syslog`.
-  - It sets the contents of the `severity` field to `error`.
+- It prepends the following message to the contents of the `$MESSAGE` field: `Error processing log message`.
+- It sets the contents of the `$PROGRAM` field to `syslog-ng`.
+- It sets the contents of the `facility` field to `syslog`.
+- It sets the contents of the `severity` field to `error`.
 
 
 {{% alert title="Note" color="info" %}}
@@ -28,10 +28,8 @@ With the `drop-invalid(no)` option `syslog-parser()` will work in the same way a
 
 {{% /alert %}}
 
-
-## Example: enabling the drop-invalid() option
+### Example: enabling the drop-invalid() option
 
 ```shell
    parser p_syslog {  syslog-parser(drop-invalid(yes)); };
 ```
-

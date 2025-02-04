@@ -13,10 +13,10 @@
 
 ```shell
    source {
-            udp(so-reuseport(1) port(2000) persist-name("udp1"));
-            udp(so-reuseport(1) port(2000) persist-name("udp2"));
-            udp(so-reuseport(1) port(2000) persist-name("udp3"));
-            udp(so-reuseport(1) port(2000) persist-name("udp4"));
+            network(transport("udp") so-reuseport(1) port(2000) persist-name("udp1"));
+            network(so-reuseport(1) port(2000) persist-name("udp2"));
+            network(so-reuseport(1) port(2000) persist-name("udp3"));
+            network(so-reuseport(1) port(2000) persist-name("udp4"));
     };
 ```
 

@@ -6,3 +6,9 @@ assets/scss/_styles_project.scss
 
 */
 @import "../../themes/docsy-axoflow/assets/scss/_styles_project.scss";
+
+// Disable unneeded meta urls in the right sidebar
+
+.td-page-meta--child {
+    display: none !important;
+}

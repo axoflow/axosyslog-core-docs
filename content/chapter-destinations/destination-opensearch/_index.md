@@ -65,4 +65,4 @@ The following example uses mutually-authenticated HTTPS connection, templated in
     };
 ```
 
-This driver is actually a reusable configuration snippet configured to send log messages using the `http()` driver using a template. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/syslog-ng/syslog-ng/tree/master/scl/opensearch).
+This driver is actually a reusable configuration snippet configured to send log messages using the `http()` driver using a template. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/tree/master/scl/opensearch).

@@ -12,6 +12,6 @@ Practically, the code stored under the `lib` directory of the source code packag
 
 {{% /alert %}}
 
-For details about the LGPL and GPL licenses, see [GNU Lesser General Public License](https://github.com/syslog-ng/syslog-ng/blob/master/LGPL.txt) and [GNU General Public License](https://github.com/syslog-ng/syslog-ng/blob/master/GPL.txt), respectively.
+For details about the LGPL and GPL licenses, see [GNU Lesser General Public License](https://github.com/axoflow/axosyslog/blob/master/LGPL.txt) and [GNU General Public License](https://github.com/axoflow/axosyslog/blob/master/GPL.txt), respectively.
 
 The Documentation is licensed separately. For details, see {{% xref "/documentation-license/_index.md" %}}.

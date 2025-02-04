@@ -121,9 +121,20 @@ For example, consider a client-relay-server scenario with the following hostname
 | Accepted values: | `yes`, `no` |
 | Default:         | `no`           |
 
-*Description:* Enable or disable checking whether the hostname contains valid characters.
+*Description:* When receiving messages, {{< product >}} can check whether the hostname contains valid characters.
 
+Valid characters are:
 
+- alphanumeric characters (A-Z, a-z, 0-9)
+- the dash (`-`) and underscore (`_`) characters
+- the dot (`.`) and the colon (`:`) characters
+- the `@` and slash (`/`)
+
+If the hostname contains invalid characters, {{< product >}} sets the `syslog.invalid_hostname` tag for the message, and doesn't parse the `${HOST}` field from the message.
+
+The `check-hostname()` global option applies to the following sources: [`file()`]({{< relref "/chapter-sources/configuring-sources-file/_index.md" >}}), [`network()`]({{< relref "/chapter-sources/configuring-sources-network/_index.md" >}}), [`pipe()`]({{< relref "/chapter-sources/source-pipe/_index.md" >}}), [`program()`]({{< relref "/chapter-sources/source-program/_index.md" >}}), [`stdin()`]({{< relref "/chapter-sources/configuring-sources-stdin/_index.md" >}}), [`syslog()`]({{< relref "/chapter-sources/source-syslog/_index.md" >}}), [`systemd-syslog()`]({{< relref "/chapter-sources/source-system/_index.md" >}}), [`unix-dgram()`]({{< relref "/chapter-sources/source-unixstream/_index.md" >}}), [`unix-stream()`]({{< relref "/chapter-sources/source-unixstream/_index.md" >}}), [`wildcard-file()`]({{< relref "/chapter-sources/configuring-sources-wildcard-file/_index.md" >}}). Instead of using the global option, you can also set the `check-hostname()` option for the specific source.
+
+For the [`python()`]({{< relref "/chapter-sources/python-source/_index.md" >}}) and [`python-fetcher()`]({{< relref "/chapter-sources/python-fetcher-source/_index.md" >}}) sources and the [`syslog-parser()`]({{< relref "/chapter-parsers/parser-syslog/_index.md" >}}) parser you can enable this option as a flag.
 
 ## create-dirs() {#global-option-create-dirs}
 
@@ -395,7 +406,7 @@ Starting with version 3.16, the default value of this option is -1, so {{% param
 
 |                  |        |
 | ---------------- | ------ |
-| Accepted values: | yes|no |
+| Accepted values: | `yes|no` |
 | Default:         | yes    |
 
 *Description:* Enable {{% param "product.abbrev" %}} to collect UNIX credential information (that is, the PID, user ID, and group of the sender process) for messages received using UNIX domain sockets. Available only in {{% param "product.name" %}} 3.7 and later. Note that collecting UNIX credential information from sockets in high-traffic environments can be resource intensive, therefore `pass-unix-credentials()` can be disabled globally, or separately for each source.
@@ -480,14 +491,23 @@ options {
 
 |                  |                               |
 | ---------------- | ----------------------------- |
-| Accepted values: | `0` | `1` | `2` | `3` |
-| Default:         | `0`                         |
+| Accepted values: | `0`, `1`, `2`, `3`            |
+| Default:         | `0`                           |
 
 *Description:* Specifies the detail of statistics {{% param "product.abbrev" %}} collects about the processed messages.
 
 {{% include-headless "chunk/option-stats-level-description.md" %}}
 
 Note that level 2 and 3 increase the memory requirements and CPU load. For details on message statistics, see {{% xref "/chapter-log-statistics/_index.md" %}}.
+
+### lifetime() {#global-option-stats-lifetime}
+
+|                  |         |
+| ---------------- | ------- |
+| Accepted values: | number (seconds)  |
+| Default:         | `N/A` |
+
+*Description:* Dynamic counters in metrics are pruned after `lifetime` expires. Note that orphaned counters are not pruned (you can prune them by running `syslog-ng-ctl stats --remove-orphans`).
 
 ### max-dynamics() {#global-option-stats-max-dynamics}
 
@@ -551,7 +571,7 @@ Possible values:
 
 Deprecated legacy option. Use [`stats(freq())`](#global-option-stats-syslog-stats) instead.
 
-## stats-level() {#global-option-stats-level}
+## stats-level() {#global-option-stats-level-deprecated}
 
 Deprecated legacy option. Use [`stats(level())`](#global-option-stats-level) instead.
 
@@ -574,7 +594,7 @@ Deprecated legacy option. Use [`stats(max-dynamics())`](#global-option-stats-max
 
 |                  |        |
 | ---------------- | ------ |
-| Accepted values: | yes|no |
+| Accepted values: | `yes|no` |
 | Default:         | yes    |
 
 *Description:* Enable {{% param "product.abbrev" %}} to run in multithreaded mode and use multiple CPUs. Available only in {{% param "product.name" %}} 3.3 and later. Note that setting `threaded(no)` does not mean that {{% param "product.abbrev" %}} will use only a single thread. For details, see {{% xref "/chapter-multithreading/_index.md" %}}.
@@ -606,7 +626,7 @@ Deprecated legacy option. Use [`stats(max-dynamics())`](#global-option-stats-max
 
 |                  |        |
 | ---------------- | ------ |
-| Accepted values: | yes|no |
+| Accepted values: | `yes|no` |
 | Default:         | no     |
 
 {{% include-headless "chunk/option-description-trim-large-messages.md" %}}
@@ -636,8 +656,8 @@ By default, timestamps include only seconds. To include fractions of a second (f
 
 |                  |          |
 | ---------------- | -------- |
-| Accepted values: | yes | no |
-| Default:         | no       |
+| Accepted values: | `yes` or `no` |
+| Default:         | `no`       |
 
 {{% include-headless "chunk/option-description-use-rcptid.md" %}}
 

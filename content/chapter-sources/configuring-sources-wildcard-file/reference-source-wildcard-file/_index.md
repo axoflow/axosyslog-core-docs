@@ -25,6 +25,8 @@ The `wildcard-file()` driver has the following options:
 
 {{% include-headless "chunk/synopsis-wildcard-file-source-example.md" %}}
 
+{{< include-headless "chunk/option-source-check-hostname.md" >}}
+
 {{% include-headless "chunk/option-source-default-facility.md" %}}
 
 {{% include-headless "chunk/option-source-default-priority.md" %}}
@@ -39,17 +41,12 @@ The `wildcard-file()` driver has the following options:
 | Type:    | filename without path |
 | Default: |                       |
 
-*Description:* The filename to read messages from, without the path. You can use the `\`* and `?` wildcard characters, without regular expression and character range support. You cannot use the `\*` and `?` literally in the pattern.
+*Description:* The filename to read messages from, without the path. You can use the `*` and `?` wildcard characters, without regular expression and character range support. You cannot use the `*` and `?` literally in the pattern.
 
-For example, `filename-pattern("\*.log")` matches the `syslog.log` and `auth.log` files, but does not match the `access_log` file. The `filename-pattern("\*log")` pattern matches all three.
+For example, `filename-pattern("*.log")` matches the `syslog.log` and `auth.log` files, but does not match the `access_log` file. The `filename-pattern("*log")` pattern matches all three.
 
-  - `\*`
-    
-    matches an arbitrary string, including an empty string
-
-  - `?`
-    
-    matches an arbitrary character
+- `*` matches an arbitrary string, including an empty string
+- `?` matches an arbitrary character
 
 {{% alert title="Warning" color="warning" %}}
 
@@ -66,6 +63,8 @@ For example, `filename-pattern("\*.log")` matches the `syslog.log` and `auth.log
 
 {{< include-headless "chunk/option-destination-hook.md" >}}
 
+{{< include-headless "chunk/option-source-idle-timeout.md" >}}
+
 {{< include-headless "chunk/option-source-keep-timestamp.md" >}}
 
 {{% include-headless "chunk/option-source-log-fetch-limit.md" %}}
@@ -73,7 +72,7 @@ For example, `filename-pattern("\*.log")` matches the `syslog.log` and `auth.log
 
 {{% include-headless "chunk/option-source-file-log-iw-size.md" %}}
 
-When using wildcards in the filenames, {{% param "product.abbrev" %}} attempts to read `log-fetch-limit()` number of messages from each file. For optimal performance, make sure that `log-iw-size()` is greater than `log-fetch-limit()\*max-files()`. Note that to avoid performance problems, if `log-iw-size()/max-files()` is smaller than 100, {{% param "product.abbrev" %}} automatically sets `log-iw-size()` to `max-files()\*100`.
+When using wildcards in the filenames, {{% param "product.abbrev" %}} attempts to read `log-fetch-limit()` number of messages from each file. For optimal performance, make sure that `log-iw-size()` is greater than `log-fetch-limit()*max-files()`. Note that to avoid performance problems, if `log-iw-size()/max-files()` is smaller than 100, {{% param "product.abbrev" %}} automatically sets `log-iw-size()` to `max-files()*100`.
 
 
 ### Example: Initial window size of file sources
@@ -104,8 +103,8 @@ If `log-fetch-limit()` is 100, and your wildcard file source has 200 files, then
 
 |          |                       |
 | -------- | --------------------- |
-| Type:    | auto | inotify | poll |
-| Default: | auto                  |
+| Type:    | `auto | inotify | poll` |
+| Default: | `auto`                  |
 
 *Description:* If the platform supports inotify, {{% param "product.abbrev" %}} uses it automatically to detect changes to the source files. If inotify is not available, {{% param "product.abbrev" %}} polls the files as set in the `follow-freq()` option. To force {{% param "product.abbrev" %}} poll the files even if inotify is available, set this option to `poll`.
 
@@ -127,8 +126,8 @@ If `log-fetch-limit()` is 100, and your wildcard file source has 200 files, then
 
 |          |          |
 | -------- | -------- |
-| Type:    | yes | no |
-| Default: | no       |
+| Type:    | `yes` or `no` |
+| Default: | `no`       |
 
 *Description:* When enabled, {{% param "product.abbrev" %}} monitors every subdirectory of the path set in the [base-dir()](#source-wildcard-file-base-dir) option, and reads log messages from files with matching filenames. The `recursive` option can be used together with wildcards in the filename.
 

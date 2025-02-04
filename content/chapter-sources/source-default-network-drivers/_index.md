@@ -11,22 +11,20 @@ The `default-network-drivers()` source is a special source that uses multiple so
 To use the `default-network-drivers()` source, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 
 ```shell
-   @include "scl.conf"
+@include "scl.conf"
 ```
 
 Also, make sure that your {{% param "product.selinux" %}}, {{% param "product.apparmor" %}}, and firewall settings permit {{% param "product.name" %}} to access the ports where you want to receive messages, and that no other application is using these ports. By default, the `default-network-drivers()` source accepts messages on the following ports:
 
-  - 514, both TCP and UDP, for RFC3164 (BSD-syslog) formatted traffic
-
-  - 601 TCP, for RFC5424 (IETF-syslog) formatted traffic
-
-  - 6514 TCP, for TLS-encrypted traffic
+- 514, both TCP and UDP, for RFC3164 (BSD-syslog) formatted traffic
+- 601 TCP, for RFC5424 (IETF-syslog) formatted traffic
+- 6514 TCP, for TLS-encrypted traffic
 
 In addition to receiving messages on different ports and in different formats, this source tries to parse the messages automatically. If successful, it sets the `${.app.name}` name-value pair to the name of the application that sent the log message. Currently it uses the following procedures.
 
 {{% alert title="Warning" color="warning" %}}
 
-If you do not configure the TLS keys to dislay to the clients, {{% param "product.abbrev" %}} cannot accept encrypted connections. The application starts and listens on TCP:6514, and can receive messages on other ports, but will display a warning messages about missing keys.
+If you do not configure the TLS keys to show to the clients, {{% param "product.abbrev" %}} cannot accept encrypted connections. The application starts and listens on TCP:6514, and can receive messages on other ports, but will display a warning messages about missing keys.
 
 {{% /alert %}}
 

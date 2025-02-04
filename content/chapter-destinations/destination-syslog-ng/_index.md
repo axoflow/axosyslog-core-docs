@@ -91,9 +91,9 @@ The `syslog-ng()` destination is a special version of the `network()` destinatio
 
 {{< include-headless "chunk/option-tcp-keepalive-intvl.md" >}}
 
-{{% include-headless "chunk/option-tcp-keepalive-probes.md" %}}
+{{< include-headless "chunk/option-tcp-keepalive-probes.md" >}}
 
-{{% include-headless "chunk/option-tcp-keepalive-time.md" %}}
+{{< include-headless "chunk/option-tcp-keepalive-time.md" >}}
 
 {{% include-headless "chunk/option-destination-template.md" %}}
 

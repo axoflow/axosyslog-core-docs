@@ -1,6 +1,6 @@
 ---
 title: "pipe: Collect messages from named pipes"
-weight:  2500
+weight:  2700
 driver: "pipe()"
 short_description: "Collect messages from named pipes"
 ---

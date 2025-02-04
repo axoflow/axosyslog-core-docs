@@ -71,18 +71,18 @@ Using this option under high message load may increase disk I/O during the debug
 
   - `-t <seconds>`
     
-    Run {{% param "product.abbrev" %}} in noninteractive debug mode for <span class="code"><seconds></span>, and automatically exit debug mode after the specified number of seconds.
+    Run {{% param "product.abbrev" %}} in non-interactive debug mode for `<seconds>`, and automatically exit debug mode after the specified number of seconds.
 
 - `-w <seconds>`
     
-    Wait <span class="code"><seconds></span> seconds before starting debug mode.
+    Wait `<seconds>` seconds before starting debug mode.
 
 
 
 ## System call tracing
 
 - `-s`
-    
+
     Enable syscall tracing (`strace -f` or `truss -f`). Note that using `-s` itself does not enable debug mode, only traces the system calls of an already running {{% param "product.abbrev" %}} process. To trace system calls in debug mode, use both the `-s` and `-d` options.
 
 
@@ -105,7 +105,7 @@ Capturing packets requires a packet capture tool on the host. The `syslog-debun`
 
 - `-t <seconds>`
     
-    Run {{% param "product.abbrev" %}} in noninteractive debug mode for `<seconds>`, and automatically exit debug mode after the specified number of seconds.
+    Run {{% param "product.abbrev" %}} in non-interactive debug mode for `<seconds>`, and automatically exit debug mode after the specified number of seconds.
 
 
 
@@ -123,7 +123,7 @@ Create a simple debug bundle, collecting information about your environment, for
 syslog-ng-debun -r -l
 ```
 
-Similar to `syslog-ng-debun -r`, but without privacy-sensitive information. For example, the following is NOT collected: `fstab`, df output, mount info, ip / network interface configuration, DNS resolv info, and process tree.
+Similar to `syslog-ng-debun -r`, but without privacy-sensitive information. For example, the following is NOT collected: `fstab`, df output, mount info, ip / network interface configuration, DNS resolve info, and process tree.
 
 ```shell
 syslog-ng-debun -r -d

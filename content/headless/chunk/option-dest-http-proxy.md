@@ -31,7 +31,7 @@
 {{< include-headless "chunk/destination-http-proxy-settings4.md" >}}
 
 
-## Example: the proxy() option in configuration
+### Example: the proxy() option in configuration
 
 The following example illustrates including the `proxy()` option in your configuration.
 

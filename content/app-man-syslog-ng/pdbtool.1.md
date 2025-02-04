@@ -53,13 +53,13 @@ Lists every name-value pair that can be set by the rules of the pattern database
     
     List the tags instead of the names of the name-value pairs.
 
-- `--pdb \<path-to-file\>` or `-p \<path-to-file\>`
+- `--pdb <path-to-file>` or `-p <path-to-file>`
     
     Name of the pattern database file to use.
 
-- `--program \<programname\>` or `-P \<programname\>`
+- `--program <programname>` or `-P <programname>`
     
-    List only the name-value pairs that can be set for the messages of the specified `$PROGRAM` application.
+    List only the name-value pairs that can be set for the messages of the specified `${PROGRAM}` application.
 
 
 
@@ -151,7 +151,7 @@ The `match` command has the following options:
     
     Print debugging information about the pattern matching. See also the `--debug-csv` option.
 
-- `--file=\<filename-with-path\>` or `-f`
+- `--file=<filename-with-path>` or `-f`
     
     Process the messages of the specified log file with the pattern database. This option allows to classify messages offline, and to apply the pattern database to already existing logfiles. To read the messages from the standard input (`stdin`), specify a hyphen (`-`) character instead of a filename.
 
@@ -171,7 +171,7 @@ The `match` command has the following options:
     
     Name of the program to use, as contained in the `${PROGRAM}` part of the syslog message.
 
-- `--template=\<template-expression\>` or `-T`
+- `--template=<template-expression>` or `-T`
     
     An AxoSyslog template expression that is used to format the output messages.
 
@@ -253,7 +253,7 @@ Automatically create a pattern database from a log file containing a large numbe
     
     Enable debug/diagnostic messages on stderr.
 
-- `--file=\<path\>` or `-f`
+- `--file=<path>` or `-f`
     
     The logfile containing the log messages to create patterns from. To receive the log messages from the standard input (`stdin`), use `-`.
 
@@ -269,11 +269,11 @@ Automatically create a pattern database from a log file containing a large numbe
     
     Do not parse the input file, treat every line as the message part of a log message.
 
-- `--samples=\<number-of-samples\>`
+- `--samples=<number-of-samples>`
     
     Include a generated name in the parsers, for example, `.dict.string1`, `.dict.string2`, and so on.
 
-- `--support=\<number\>` or `-S`
+- `--support=<number>` or `-S`
     
     A pattern is added to the output pattern database if at least the specified percentage of log messages from the input logfile match the pattern. For example, if the input logfile contains 1000 log messages and the `--support=3.0` option is used, a pattern is created only if the pattern matches at least 3 percent of the log messages (that is, 30 log messages). If patternize does not create enough patterns, try to decrease the support value.
     

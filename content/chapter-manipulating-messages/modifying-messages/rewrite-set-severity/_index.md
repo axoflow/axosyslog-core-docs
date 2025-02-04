@@ -35,12 +35,25 @@ The `set-severity()` rewrite function has a single, mandatory parameter that can
 
 ## Accepted values
 
-The `set-severity()` rewrite function accepts the following values:
+The `set-severity()` rewrite function accepts numeric values, named values, and aliases. Aliases are available in  {{% param "product.abbrev" %}} version 4.6 and later.
 
-  - numeric strings: `[0-7]`
-  - named values: `emerg`, `emergency`, `panic`, `alert`, `crit`, `critical`, `err`, `error`, `warning`, `warn`, `notice`, `info`, `informational`, `debug`
-
-
+| Numerical Code | Named Value | Alias                                 |
+| -------------- | ------------| ------------------------------------- |
+| 0 | `emerg` | `SYSLOG_SEVERITY_CODE(0)` |
+| 0 | `emergency` | `SYSLOG_SEVERITY_CODE(0)` |
+| 0 | `panic` | `SYSLOG_SEVERITY_CODE(0)` |
+| 1 | `alert` | `SYSLOG_SEVERITY_CODE(1)` |
+| 2 | `crit` | `SYSLOG_SEVERITY_CODE(2)` |
+| 2 | `critical` | `SYSLOG_SEVERITY_CODE(2)` |
+| 2 | `fatal` | `SYSLOG_SEVERITY_CODE(2)` |
+| 3 | `err` | `SYSLOG_SEVERITY_CODE(3)` |
+| 3 | `error` | `SYSLOG_SEVERITY_CODE(3)` |
+| 4 | `warning` | `SYSLOG_SEVERITY_CODE(4)` |
+| 4 | `warn` | `SYSLOG_SEVERITY_CODE(4)` |
+| 5 | `notice` | `SYSLOG_SEVERITY_CODE(5)` |
+| 6 | `info` | `SYSLOG_SEVERITY_CODE(6)` |
+| 6 | `log` | `SYSLOG_SEVERITY_CODE(6)` |
+| 7 | `debug` | `SYSLOG_SEVERITY_CODE(7)` |
 
 ## Example usage for the set-severity() rewrite function
 

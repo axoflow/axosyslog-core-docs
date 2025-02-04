@@ -8,8 +8,6 @@ short_description: "Collect messages using the RFC3164 protocol"
 
 The network() source driver can receive syslog messages conforming to RFC3164 from the network using the TCP, TLS, and UDP networking protocols.
 
-You can use the RLTP protocol as well. For details about the RLTP protocol, see <span></span>.
-
 {{% include-headless "chunk/topic-network-driver-protocols.md" %}}
 
 
