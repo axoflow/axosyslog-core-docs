@@ -41,7 +41,7 @@ The {{% param "product.abbrev" %}} application can automatically execute scripts
         done;
     ```
     
-    The script generates an output similar to this one, where `service\*` is the actual name of a subdirectory:
+    The script generates an output similar to this one, where `service*` is the actual name of a subdirectory:
     
     ```shell
         file("/var/log/apache2/service1/access.log" flags(no-parse) program-override("apache2"));

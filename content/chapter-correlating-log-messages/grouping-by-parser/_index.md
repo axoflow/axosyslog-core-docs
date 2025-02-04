@@ -74,6 +74,3 @@ These lines are connected by their second field: `msg=audit(1440927434.124:40347
         );
     };
 ```
-
-For another example, see [The grouping-by() parser blog post](https://www.syslog-ng.com/community/b/blog/posts/the-grouping-by-parser-in-syslog-ng-3-8)
-

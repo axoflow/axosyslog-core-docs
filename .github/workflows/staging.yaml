@@ -33,13 +33,13 @@ jobs:
       - name: Set up Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.110.0'
+          hugo-version: '0.122.0'
           extended: true
 
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 20
 
       - name: Install dependencies
         run: |
@@ -51,6 +51,9 @@ jobs:
 
       - name: Build
         run: hugo --environment staging --baseURL ${{ steps.pages.outputs.base_url }}/
+
+      - name: Pagefind search index
+        run: npm_config_yes=true npx pagefind --output-subdir pagefind --site ./public
 
       # Build hugo output with manpages environment, run scripts, copy output manpages to public so it gets uploaded
       - name: Build manpage environment

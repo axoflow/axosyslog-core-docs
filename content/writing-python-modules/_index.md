@@ -99,7 +99,7 @@ class MyDestination(LogDestination):
         return True
 ```
 
-The interface of the `LogDestination` class is documented in the `syslogng.dest` module, which is stored in the [`modules/python-modules/syslogng/dest.py`](https://github.com/syslog-ng/syslog-ng/blob/master/modules/python-modules/syslogng/dest.py) file of the source tree.
+The interface of the `LogDestination` class is documented in the `syslogng.dest` module, which is stored in the [`modules/python-modules/syslogng/dest.py`](https://github.com/axoflow/axosyslog/blob/master/modules/python-modules/syslogng/dest.py) file of the source tree.
 
 Once all required methods are implemented, you can use the [`python` destination]({{< relref "/chapter-destinations/python-destination/_index.md" >}}) in the {{% param "product.name" %}} configuration language.
 
@@ -109,7 +109,7 @@ destination whatever {
 };
 ```
 
-There's a more complete example destination in the `python_example()` destination plugin, that is located in the directory [`modules/python-modules/syslogng/modules/example/`](https://github.com/syslog-ng/syslog-ng/tree/master/modules/python-modules/syslogng/modules/example) directory within the source tree, or the same files installed under `${exec_prefix}/syslog-ng/python/syslogng/modules` in a production deployment.
+There's a more complete example destination in the `python_example()` destination plugin, that is located in the directory [`modules/python-modules/syslogng/modules/example/`](https://github.com/axoflow/axosyslog/tree/master/modules/python-modules/syslogng/modules/example) directory within the source tree, or the same files installed under `${exec_prefix}/syslog-ng/python/syslogng/modules` in a production deployment.
 
 ## Template function plugin
 
@@ -438,7 +438,7 @@ Add this wrapper to your Python module in an `scl` subdirectory as a file with a
 
 To add your Python-based modules to `syslog-ng`, complete the following steps.
 
-1. Create a Python package: add the `__init__.py` file and anything that the file references to the `modules/python-modules/<name-of-your-module>` directory of the [syslog-ng repository](https://github.com/syslog-ng/syslog-ng/).
+1. Create a Python package: add the `__init__.py` file and anything that the file references to the `modules/python-modules/<name-of-your-module>` directory of the [syslog-ng repository](https://github.com/axoflow/axosyslog/).
 1. Add your files to the source tarball by listing them in the EXTRA_DIST variable of the `modules/python-modules/Makefile.am` file.
 1. Run `make install` to install your module along the rest of the `syslog-ng` binaries.
 1. Open a pull request.

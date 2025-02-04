@@ -13,11 +13,7 @@
 
 The following headers are included by default:
 
-  - X-Syslog-Host: <host>
-
-  - X-Syslog-Program: <program>
-
-  - X-Syslog-Facility: <facility>
-
-  - X-Syslog-Level: <loglevel/priority>
-
+- X-Syslog-Host: `<host>`
+- X-Syslog-Program: `<program>`
+- X-Syslog-Facility: `<facility>`
+- X-Syslog-Level: `<loglevel/priority>`

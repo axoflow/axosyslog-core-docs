@@ -6,6 +6,8 @@ weight:  100
 
 The `pipe` driver has the following options:
 
+{{< include-headless "chunk/option-source-check-hostname.md" >}}
+
 {{% include-headless "chunk/option-destination-create-dirs.md" %}}
 
 {{< include-headless "chunk/option-source-flags.md" >}}
@@ -13,6 +15,8 @@ The `pipe` driver has the following options:
 {{% include-headless "chunk/option-source-follow-freq.md" %}}
 
 {{< include-headless "chunk/option-destination-hook.md" >}}
+
+{{< include-headless "chunk/option-source-idle-timeout.md" >}}
 
 {{< include-headless "chunk/option-source-keep-timestamp.md" >}}
 

@@ -24,22 +24,27 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          submodules: 'recursive'
+          submodules: 'true'
+          clean: true
+          show-progress: true
+          lfs: false
+          set-safe-directory: true
+          fetch-depth: 0
 
-      - name: Set up Pages
-        id: pages
-        uses: actions/configure-pages@v3
+      # - name: Set up Pages
+      #   id: pages
+      #   uses: actions/configure-pages@v3
 
       - name: Set up Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.110.0'
+          hugo-version: '0.122.0'
           extended: true
 
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 20
 
       - name: Install dependencies
         run: |
@@ -52,9 +57,17 @@ jobs:
       - name: Build
         run: hugo --environment production
 
+      - name: Pagefind search index
+        run: npm_config_yes=true npx pagefind --output-subdir pagefind --site ./public
+
       - name: Deploy with rclone
         uses: AnimMouse/setup-rclone@v1
         with:
           rclone_config: ${{ secrets.RCLONE_CONFIG }}
-          
-      - run: rclone copy --progress --stats-one-line public/ axodocs:/axosyslog-core
+        
+        # The sitemap.xml might not change as it doesn't consider the modification date alone, and in that case the sitemap.xml size will not change, and rclone will not upload it.
+        # So we force it to upload it every time.
+      - name: Deploy with rclone
+        run: |
+          rclone copy --stats-log-level NOTICE --stats-one-line public/ axodocs:/axosyslog-core
+          rclone copyto --ignore-times --stats-one-line public/sitemap.xml axodocs:/axosyslog-core/sitemap.xml

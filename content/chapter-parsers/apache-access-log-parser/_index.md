@@ -4,7 +4,7 @@ weight: 100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The Apache access log parser can parse the access log messages of the Apache HTTP Server. The {{% param "product.abbrev" %}} application can separate these log messages to name-value pairs. For details on using value-pairs in {{% param "product.abbrev" %}} see {{% xref "/chapter-concepts/concepts-value-pairs/_index.md" %}}. The `apache-accesslog-parser()` supports both the Common Log Format and the Combined Log Format of Apache (for details, see the [Apache HTTP Server documentation](https://httpd.apache.org/2.4/logs.html#accesslog)). The following is a sample log message:
+The Apache access log parser can parse the access log messages of the Apache HTTP Server. The {{% param "product.abbrev" %}} application can separate these log messages to name-value pairs. For details on using value-pairs in {{% param "product.abbrev" %}} see {{% xref "/chapter-concepts/concepts-value-pairs/_index.md" %}}. The `apache-accesslog-parser()` supports both the Common Log Format and the Combined Log Format of Apache (for details, see the [Apache HTTP Server documentation](https://httpd.apache.org/docs/2.4/logs.html#accesslog)). The following is a sample log message:
 
 ```shell
    127.0.0.1 - frank [10/Oct/2000:13:55:36 -0700] "GET /apache_pb.gif HTTP/1.0" 200 2326
@@ -63,4 +63,4 @@ To use this parser, the `scl.conf` file must be included in your {{% param "prod
    @include "scl.conf"
 ```
 
-The `apache-accesslog-parser()` is actually a reusable configuration snippet configured parse Apache access log messages. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/syslog-ng/syslog-ng/blob/master/scl/apache/apache.conf).
+The `apache-accesslog-parser()` is actually a reusable configuration snippet configured parse Apache access log messages. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/apache/apache.conf).

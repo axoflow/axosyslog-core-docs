@@ -6,28 +6,16 @@ weight: 1600
 
 The [PAN-OS](https://docs.paloaltonetworks.com/pan-os.html) (a short version of Palo Alto Networks Operating System) parser can parse log messages originating from [Palo Alto Networks](https://www.paloaltonetworks.com/) devices. Even though these messages completely comply to the RFC standards, their `MESSAGE` part is not a plain text. Instead, the `MESSAGE` part contains a data structure that requires additional parsing.
 
-The `panos-parser()` of {{% param "product.name" %}} solves this problem, and can separate PAN-OS log messages to name-value pairs.
-
-For details on using value-pairs in {{% param "product.abbrev" %}}, see {{% xref "/chapter-concepts/concepts-value-pairs/_index.md" %}}.
-
+The `panos-parser()` of {{% param "product.name" %}} solves this problem, and can separate PAN-OS log messages to name-value pairs. For details on using value-pairs in {{% param "product.abbrev" %}}, see {{% xref "/chapter-concepts/concepts-value-pairs/_index.md" %}}.
 
 ## Prerequisites
 
-  - Version 3.29 of {{% param "product.abbrev" %}} or later.
-    
-    {{% alert title="Note" color="info" %}}
-Most Linux distributions feature {{% param "product.abbrev" %}} versions earlier than version 3.29. For up-to-date binaries, visit [the syslog-ng third-party binaries page](https://github.com/syslog-ng/syslog-ng/#installation-from-binaries).
-    {{% /alert %}}
-
-  - PAN-OS log messages from Palo Alto Networks devices.
-
-
+- Version 3.29 of {{% param "product.abbrev" %}} or later.
+- PAN-OS log messages from Palo Alto Networks devices.
 
 ## Limitations
 
 The `panos-parser()` only works on {{% param "product.abbrev" %}} version 3.29 or later.
-
-
 
 ## Configuration
 
@@ -45,5 +33,4 @@ To use this parser, the `scl.conf` file must be included in your {{% param "prod
    @include "scl.conf"
 ```
 
-The `panos-parser()` is a reusable configuration snippet configured to parse Palo Alto Networks PAN-OS log messages. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/syslog-ng/syslog-ng/blob/master/scl/paloalto/panos.conf).
-
+The `panos-parser()` is a reusable configuration snippet configured to parse Palo Alto Networks PAN-OS log messages. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/paloalto/panos.conf).

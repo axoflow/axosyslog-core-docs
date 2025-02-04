@@ -12,12 +12,13 @@ The `systemd-journal()` driver has the following options.
 
 {{< include-headless "chunk/option-source-flags.md" >}}
 
-{{< include-headless "chunk/option-source-log-msg-size.md" >}}
+{{< include-headless "chunk/option-source-log-iw-size.md" >}}
 
+{{< include-headless "chunk/option-source-log-msg-size.md" >}}
 
 {{% include-headless "chunk/option-source-max-connections.md" %}}
 
-Note that the total number of connections the `default-network-drivers()` source can use is 3\*`max-connections()`, because this value applies to the `network(tcp)`, `syslog(tcp)`, and `syslog(tls)` connections individually.
+Note that the total number of connections the `default-network-drivers()` source can use is 3*`max-connections()`, because this value applies to the `network(tcp)`, `syslog(tcp)`, and `syslog(tls)` connections individually.
 
 
 

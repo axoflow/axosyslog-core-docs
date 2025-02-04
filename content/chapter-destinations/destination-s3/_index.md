@@ -8,25 +8,39 @@ short_description: "Send log messages to Amazon Simple Storage Service (S3)"
 
 Available in {{% param "product.abbrev" %}} version 4.4 and later.
 
-The `s3()` destination sends log messages to the [Amazon Simple Storage Service (Amazon S3)](https://aws.amazon.com/s3/) object storage service. You can send log messages over TCP, or encrypted with TLS.
+The `s3()` destination sends log messages to the [Amazon Simple Storage Service (Amazon S3)](https://aws.amazon.com/s3/) object storage service. Messages are normally sent encrypted with TLS (HTTPS), but you can specify a custom unencrypted HTTP endpoint.
 
 ## Prerequisites
 
-- An existing S3 bucket configured for programmatic access, and the related `ACCESS_KEY` and `SECRET_KEY` of a user that can access it.
+- An existing S3 bucket configured for programmatic access, and the related `ACCESS_KEY` and `SECRET_KEY` of a user that can access it. The user needs to have the following permissions:
+
+    - `s3:ListBucket`
+    - `s3:ListBucketMultipartUploads`
+    - `s3:AbortMultipartUpload`
+    - `s3:ListMultipartUploadParts`
+    - `s3:PutObject`
+
+    The following kms-related permissions are needed to use the `aws:kms` encryption. The AWS Role or User must have the following
+    permissions on the given key:
+
+    - `kms:Decrypt` (For details on why the `kms:Decrypt` is mandatory, check [this AWS Knowledge Center entry](https://repost.aws/knowledge-center/s3-large-file-encryption-kms-key).)
+    - `kms:Encrypt`
+    - `kms:GenerateDataKey`
+
 - If you are not using the venv (`/usr/bin/syslog-ng-update-virtualenv`) created by {{% param "product.abbrev" %}}, you must install the `boto3` and/or `botocore` Python dependencies.
+- To use the `s3()` driver, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 
-To use the `s3()` driver, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
+    ```shell
+    @include "scl.conf"
+    ```
 
-```shell
-   @include "scl.conf"
-```
-
-The `s3()` driver is actually a reusable configuration snippet. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/syslog-ng/syslog-ng/blob/master/modules/python-modules/syslogng/modules/s3/s3_destination.py).
+The `s3()` driver is actually a reusable configuration snippet. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/modules/python-modules/syslogng/modules/s3/s3_destination.py).
 
 ## Declaration
 
 ```shell
 s3(
+    region("us-east-2")
     url("http://localhost:9000")
     bucket("syslog-ng")
     access-key("my-access-key")
@@ -65,6 +79,8 @@ The following options are specific to the `s3()` destination.
 
 *Description:* The `ACCESS_KEY` of the service account used to access the S3 bucket. (Together with [`secret-key()`](#secret-key).)
 
+Starting with version 4.7, you can use the `AWS_...` environment variables or credentials files from the `~/.aws/` directory instead of this option. For details, see the [official documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html).
+
 ## bucket()
 
 |          |                            |
@@ -72,7 +88,7 @@ The following options are specific to the `s3()` destination.
 | Type:    | string |
 | Default: |  |
 
-*Description:* The name of the S3 bucket, for example, `my-bucket`
+*Description:* The name of the S3 bucket, for example, `my-bucket`. Note that the bucket must already exist.
 
 ## canned-acl()
 
@@ -125,6 +141,21 @@ If you configure an invalid value, the default is used.
 
 {{< include-headless "chunk/option-destination-log-fifo-size.md" >}}
 
+## kms-key()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | string |
+| Default: | N/A |
+
+Available in {{< product >}} 4.8 and later.
+
+*Description:* The `kms-key()` used for [server-side encryption]({{< relref "/chapter-destinations/destination-s3/_index.md#server-side-encryption" >}}). The value of the `kms-key()` parameter must be one of the following:
+
+- The ID of a key.
+- An alias of a key. In that case, make sure to add the alias/prefix, for example: `kms-key("alias/log-archive")`
+- The ARN of a key.
+
 ## max-object-size()
 
 |          |                            |
@@ -153,7 +184,7 @@ If you configure an invalid value, the default is used.
 | Type:    | template |
 | Default: | N/A |
 
-*Description:* The [object key](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html) (or key name), which uniquely identifies the object in an Amazon S3 bucket.
+*Description:* The [object key](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html) (or key name), which uniquely identifies the object in an Amazon S3 bucket. Note that a suffix may be appended to this object key depending on the [naming strategies](#creating-objects) used. Example: `my-logs/${HOSTNAME}/`.
 
 ## object-key-timestamp()
 
@@ -162,7 +193,7 @@ If you configure an invalid value, the default is used.
 | Type:    | template |
 | Default: |  |
 
-*Description:* The `object-key-timestamp()` option can be used to set a datetime-related template, which is appended to the end of the object, for example: `"${R_MONTH_ABBREV}${R_DAY}"`. When a log message arrives with a newer timestamp template resolution, the previous timestamped object gets finished and a new one is started with the new timestamp. If an older message arrives, it doesn`t reopen the old object, but starts a new object with the key having an index appended to the old object.
+*Description:* The `object-key-timestamp()` option can be used to set a datetime-related template, which is appended to the end of the object key, for example: `"${R_MONTH_ABBREV}${R_DAY}"`. When a log message arrives with a newer timestamp template resolution, the previous timestamped object gets finished and a new one is started with the new timestamp. If an older message arrives, it doesn`t reopen the old object, but starts a new object with the key having an index appended to the old object.
 
 {{< include-headless "chunk/option-persist-name.md" >}}
 
@@ -173,7 +204,7 @@ If you configure an invalid value, the default is used.
 | Type:    | string |
 | Default: |  |
 
-*Description:* The [regional endpoint](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) where the bucket is stored. For example, `us-east-1`
+*Description:* The [AWS region](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) to use when writing the bucket. This should normally be the same region where the bucket is created. This option implies an API endpoint [`url()`](#url). For providers other than AWS, or for custom API endpoints, use the `url()` option.
 
 ## secret-key()
 
@@ -183,6 +214,31 @@ If you configure an invalid value, the default is used.
 | Default: | N/A |
 
 *Description:* The `SECRET_KEY` of the service account used to access the S3 bucket. (Together with [`access-key()`](#access-key).)
+
+Starting with version 4.7, you can use the `AWS_...` environment variables or credentials files from the `~/.aws/` directory instead of this option. For details, see the [official documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html).
+
+## server-side-encryption()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | string |
+| Default: | N/A |
+
+Available in {{< product >}} 4.8 and later.
+
+*Description:* You can use the `server-side-encryption()` and [`kms-key()`]({{< relref "/chapter-destinations/destination-s3/_index.md#kms-key" >}}) options to configure encryption. Currently only `server-side-encryption("aws:kms")` is supported.
+
+```shell
+destination d_s3 {
+  s3(
+    bucket("log-archive-bucket")
+    object-key("logs/syslog")
+    server-side-encryption("aws:kms")
+    kms-key("alias/log-archive")
+  );
+```
+
+For details on using KMS keys, see the [official S3 documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html).
 
 ## storage-class()
 
@@ -222,4 +278,4 @@ If you configure an invalid value, the default is used.
 | Type:    | string |
 | Default: | N/A |
 
-*Description:* The URL of the S3 bucket, for example, `https://my-bucket.s3.us-west-2.amazonaws.com`
+*Description:* The API endpoint URL for writing to the S3 bucket, for example `https://s3.us-west-2.amazonaws.com`, `http://minio.local:9000`, or `https://storage.googleapis.com`.

@@ -17,7 +17,7 @@ The JSON parser has the following options.
 
 This feature also works when the top-level object is an array, because you can use an array index at the first indirection level, for example: `json-parser(extract-prefix("[5]"))`, which is equivalent to `msg[5]`.
 
-In addition to alphanumeric characters, the key of the JSON object can contain the following characters: `\!"#$%&'()\*+,-/:;<=>?@\\^_`{|}\~`
+In addition to alphanumeric characters, the key of the JSON object can contain the following characters: `\!"#$%&'()*+,-/:;<=>?@\\^_`{|}\~`
 
 It cannot contain the following characters: `.[]`
 

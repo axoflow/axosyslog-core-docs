@@ -4,7 +4,89 @@ weight: 10
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-This page is a changelog that collects the major changes and additions to this documentation. (If you want to know the details about why we have separate documentation for AxoSyslog, our syslog-ng distribution and how it relates to the syslog-ng documentation, read our [syslog-ng documentation and similarities with AxoSyslog Core](https://axoflow.com/axosyslog-core-documentation-syslog-ng/) blog post.)
+This page is a changelog that collects the major changes and additions to this documentation. (If you want to know the details about why we have separate documentation for AxoSyslog and how it relates to the `syslog-ng` documentation, read our [syslog-ng documentation and similarities with AxoSyslog Core](https://axoflow.com/axosyslog-core-documentation-syslog-ng/) blog post.)
+
+## Version 4.9 (2024-11-11)
+
+- {{% xref "/chapter-destinations/clickhouse/_index.md" %}} destination.
+- Log tapping with the [`syslog-ng-ctl attach` command]({{< relref "/app-man-syslog-ng/syslog-ng-ctl.1.md#attach" >}}).
+- {{% xref "/filterx/_index.md" %}} data parsing and processing engine.
+- Updated lists of available options for the gRPC-based destinations ([`bigquery()`]({{< relref "/chapter-destinations/google-bigquery/_index.md" >}}), [`loki()`]({{< relref "/chapter-destinations/destination-loki/_index.md" >}}), [`opentelemetry()`]({{< relref "/chapter-destinations/opentelemetry/_index.md" >}}), [`syslog-ng-otlp()`]({{< relref "/chapter-destinations/destination-syslog-ng-otlp/_index.md" >}})). You can now also set dynamic header values for these destinations.
+- Added the `idle-timeout()` option to {{% xref "/chapter-sources/configuring-sources-file/reference-source-file/_index.md" %}}, {{% xref "/chapter-sources/configuring-sources-stdin/stdin()-source-options/_index.md" %}}, {{% xref "/chapter-sources/configuring-sources-systemd-syslog/reference-source-systemd-syslog/_index.md" %}}, {{% xref "/chapter-sources/configuring-sources-wildcard-file/reference-source-wildcard-file/_index.md" %}}, {{% xref "/chapter-sources/source-pipe/reference-source-pipe/_index.md" %}}, {{% xref "/chapter-sources/source-program/reference-source-program/_index.md" %}}, {{% xref "/chapter-sources/source-unixstream/reference-source-unixstream/_index.md" %}}.
+
+    These sources have a new `exit-on-eof` flag that makes {{< product >}} stop when EOF is received.
+
+- Added the {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-msgformat" %}} macro.
+- Added `.tls.x509_fp` to {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-tls-x509" %}}.
+
+### Other documentation updates
+
+- Cloud authentication option updates for the [`http()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#cloud-auth" >}}) and [`google-pubsub`]({{< relref "/chapter-destinations/google-pubsub/_index.md#auth" >}}) destinations.
+- [`syslog-ng-ctl list-files`]({{< relref "/app-man-syslog-ng/syslog-ng-ctl.1.md#list-referenced-files" >}}) command lists files referenced in your configuration, for example, certificates or external configuration files.
+- [`lifetime()` global option]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-stats-lifetime" >}}) to prune dynamic counters.
+
+## Version 4.8 (2024-07-12)
+
+- [APT repository for Debian and Ubuntu]({{< relref "/install/debian-ubuntu/_index.md" >}}) based systems.
+- You can send messages and metrics to [Elasticsearch data streams](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams.html) to store your log and metrics data as time series data using the [`elasticsearch-datastream()`]({{< relref "/chapter-destinations/elasticsearch-data-stream/_index.md" >}}) destination driver.
+- You can use the [`server-side-encryption()`]({{< relref "/chapter-destinations/destination-s3/_index.md#server-side-encryption" >}}) and [`kms-key()`]({{< relref "/chapter-destinations/destination-s3/_index.md#kms-key" >}}) options to configure encryption for [Amazon S3 destinations]({{< relref "/chapter-destinations/destination-s3/_index.md" >}}).
+- You can now set static gRPC headers in the [`bigquery()`]({{< relref "/chapter-destinations/google-bigquery/_index.md#headers" >}}), [`loki()`]({{< relref "/chapter-destinations/destination-loki/_index.md#headers" >}}), and the [`opentelemetry()`]({{< relref "/chapter-destinations/opentelemetry/_index.md#headers" >}}) destinations.
+- The `opentelemetry()` parser has a new [`set-hostname()`]({{< relref "/chapter-parsers/opentelemetry/_index.md#set-hostname" >}}) option.
+
+## Version 4.7 (2024-04-18)
+
+- {{% xref "/chapter-sources/arr/_index.md" %}} source
+- {{% xref "/chapter-sources/jellyfin/_index.md" %}} source
+- `channel-args()` option for gRPC-based drivers, like [`opentelemetry()`]({{< relref "/chapter-destinations/opentelemetry/_index.md#channel-args" >}})
+- `concurrent-requests()` option for the [`opentelemetry()` source]({{< relref "/chapter-sources/opentelemetry/_index.md#concurrent-requests" >}}) and the [`syslog-ng-otlp()` source]({{< relref "/chapter-sources/source-syslog-ng-otlp/_index.md#concurrent-requests" >}})
+- {{% xref "/chapter-destinations/destination-loki/_index.md#tenant-id" %}} option for the Loki destination
+- {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md#template-function-tags-head" %}} template function
+- {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-mqtt-topic" %}} macro
+- {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-transport" %}} macro updates
+
+For details, see the [release announcement blog post](https://axoflow.com/axosyslog-release-4-7/).
+
+## Version 4.6 (2024-02-01)
+
+- [Google BigQuery destination]({{< relref "/chapter-destinations/google-bigquery/_index.md" >}})
+- {{% xref "/chapter-parsers/windows-eventlog-xml-parser/_index.md" %}}
+- {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md#template-function-tag" %}} template function
+- `batch-bytes()`, `compression()` and `workers()` options for the [syslog-ng-otlp()]({{< relref "/chapter-destinations/destination-syslog-ng-otlp/_index.md#compression" >}}) and [opentelemetry()]({{< relref "/chapter-destinations/opentelemetry/_index.md#compression" >}}) destinations
+
+For details, see the [release announcement blog post](https://axoflow.com/axosyslog-release-4-6/).
+
+### New sources
+
+- [New macOS sources]({{< relref "/chapter-sources/darwin/_index.md" >}})
+- {{% xref "/chapter-sources/qbittorrent/_index.md" %}}
+- {{% xref "/chapter-sources/pihole-ftl/_index.md" %}}
+
+## 2023-10-20 to version 4.5 release (2024-01-05)
+
+- [Google Pub/Sub destination]({{< relref "/chapter-destinations/google-pubsub/_index.md" >}})
+- [OpenObserve destination]({{< relref "/chapter-destinations/openobserve/_index.md" >}})
+- New `http()` destination options {{% xref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#templates-in-the-url" %}} and [worker-partition-key()]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#worker-partition-key" >}})
+
+### Parsers
+
+- New {{% xref "/chapter-parsers/postgresql-csvlog-parser/_index.md" %}} parser
+- Columnless mode in [csv-parser]({{< relref "/chapter-parsers/csv-parser/_index.md" >}})
+
+### TLS options
+
+- {{% xref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#ssl-version" %}}
+- `ignore-validity-period` option in to {{% xref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#tls-options-ssl-options" %}}
+
+### Manual pages
+
+- `--check-startup` in {{% xref "/app-man-syslog-ng/syslog-ng.8.md" %}}
+- [secure-logging]({{< relref "/app-man-syslog-ng/secure-logging.7.md" >}}), [slogencrypt]({{< relref "/app-man-syslog-ng/slogencrypt.1.md" >}}), [slogkey]({{< relref "/app-man-syslog-ng/slogkey.1.md" >}}), and [slogverify]({{< relref "/app-man-syslog-ng/slogverify.1.md" >}}) manual pages.
+
+### Other changes
+
+- New quickstart section {{% xref "/quickstart/opensearch-helm/_index.md" %}}
+- Updates in {{% xref "/install/podman/_index.md" %}} and {{% xref "/install/docker/_index.md" %}}
+- `close_batch` and `set_transport` methods in the [python source]({{< relref "/chapter-sources/python-source/_index.md" >}})
 
 ## 2023-08-18 to 2023-10-20
 

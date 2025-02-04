@@ -10,6 +10,6 @@ options(
   "host" => "localhost"
   "port" => "1883"
   "otheroption" => "value"
-)           
+)
 ```
 {{% /alert %}}

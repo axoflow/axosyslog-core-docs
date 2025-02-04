@@ -4,7 +4,7 @@ weight:  900
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The following macros are available in {{% param "product.abbrev" %}}.
+The following macros are available in {{% param "product.abbrev" %}} templates.
 
 {{% alert title="Warning" color="warning" %}}
 
@@ -219,7 +219,11 @@ Note that before AxoSyslog version 3.0, the `${MESSAGE}` macro included the prog
 
 Available in {{% param "product.abbrev" %}} version 3.4 and later.
 
+## MQTT_TOPIC {#macro-mqtt-topic}
 
+*Description:* The [`mqtt()` source]({{< relref "/chapter-sources/source-mqtt/_index.md" >}}) automatically sets the `${MQTT_TOPIC}` name-value pair for the messages it receives. This is useful when the name of the topic contains MQTT wildcards (`$`, `+`, `#`).
+
+Available in {{% param "product.abbrev" %}} version 4.7 and later.
 
 ## MSG {#macro-msg}
 
@@ -228,6 +232,17 @@ The `${MSG}` macro is an alias of the `${MESSAGE}` macro, using `${MSG}` in {{% 
 
 {{% include-headless "chunk/macro-msghdr.md" %}}
 
+## MSGFORMAT {#macro-msgformat}
+
+Available in {{% param "product.abbrev" %}} version 4.8.1 and later.
+
+*Description:* Stores the original format of the incoming message. Possible values:
+
+- `linux:devkmsg`: Linux kernel message.
+- `linux:pacct`: [Linux process accounting log]({{< relref "/chapter-sources/source-pacct/_index.md" >}}) format.
+- `raw`: {{% param "product.abbrev" %}} didn't parse the message, for example, because the `no-parse` flag was set.
+- `syslog:rfc3164`: Syslog message formatted as RFC3164.
+- `syslog:rfc5424`: Syslog message formatted as RFC5424.
 
 ## MSGID {#macro-msgid}
 
@@ -235,7 +250,7 @@ The `${MSG}` macro is an alias of the `${MESSAGE}` macro, using `${MSG}` in {{% 
 
 
 
-## MSGONLY {#macro-msgonly}`
+## MSGONLY {#macro-msgonly}
 
 *Description:* Message contents without the program name or pid. Starting with {{% param "product.abbrev" %}} 3.0, the following macros are equivalent: `${MSGONLY}`, `${MSG}`, `${MESSAGE}`. For consistency, use the `${MESSAGE}` macro. For details, see [MESSAGE](#macro-message).
 
@@ -273,7 +288,7 @@ For an example use case when using the macro is recommended, see {{% xref "/chap
 
 ## RAWMSG {#macro-rawmsg}
 
-*Description:* The original message as received from the client. Note that this macro is available only in 3.16 and later, and only if AxoSyslog received the message using the [`default-network-drivers-ng()` source]({{< relref "/chapter-sources/source-default-network-drivers/_index.md" >}}), or the source receiving the message has the `store-raw-message` flag set.
+*Description:* The original message as received from the client. Note that this macro is available only in 3.16 and later, and only if AxoSyslog received the message using the [`default-network-drivers()` source]({{< relref "/chapter-sources/source-default-network-drivers/_index.md" >}}), or the source receiving the message has the `store-raw-message` flag set.
 
 ## RAWMSG_SIZE {#macro-rawmsg-size}
 
@@ -413,6 +428,17 @@ Available in {{% param "product.abbrev" %}} version 4.5 and later.
     - `mqtt`: `mqtt()` driver
     - `hypr-api`: `hypr-audit-source()` driver
 
+- Locally created logs (in version 4.7 and newer):
+    - `local+unix-stream`
+    - `local+unix-dgram`
+    - `local+file`
+    - `local+pipe`
+    - `local+program`
+    - `local+devkmsg`
+    - `local+journal`
+    - `local+afstreams`
+    - `local+openbsd`
+
 {{% include-headless "chunk/macro-tz.md" %}}
 
 {{% include-headless "chunk/macro-tzoffset.md" %}}
@@ -424,13 +450,10 @@ Available in {{% param "product.abbrev" %}} version 4.5 and later.
 
 *Description:* When using a transport that uses TLS, these macros contain information about the peer's certificate. That way, you can use information from the client certificate in filenames, database values, or as other metadata. If you clients have their own certificates, then these values are unique per client, but unchangeable by the client. The following macros are available in {{% param "product.abbrev" %}} version 3.9 and later.
 
-  - `.tls.x509_cn`: The Common Name of the certificate.
-
-  - `.tls.x509_o`: The value of the Organization field.
-
-  - `.tls.x509_ou`: The value of the Organization Unit field.
-
-
+- `.tls.x509_cn`: The Common Name of the certificate.
+- `.tls.x509_o`: The value of the Organization field.
+- `.tls.x509_ou`: The value of the Organization Unit field.
+- `.tls.x509_fp`: The key fingerprint of the peer, if the [`trusted-keys()` option]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#tls-options-trusted-keys" >}}) is used. Available in version 4.8.1 and later.
 
 ## UNIQID {#macro-uniqid}
 

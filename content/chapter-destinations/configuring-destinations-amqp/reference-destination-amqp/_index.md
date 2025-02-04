@@ -75,7 +75,7 @@ The `amqp()` destination has the following options:
 
 |          |        |
 | -------- | ------ |
-| Type:    | yes|no |
+| Type:    | `yes|no` |
 | Default: | no     |
 
 *Description:* By default, {{% param "product.abbrev" %}} does not create non-existing exchanges. Use the `exchange-declare(yes)` option to automatically create exchanges.
@@ -175,7 +175,7 @@ Available in {{% param "product.abbrev" %}} version 3.21 and later.
 
 |          |        |
 | -------- | ------ |
-| Type:    | yes|no |
+| Type:    | `yes|no` |
 | Default: | yes    |
 
 *Description:* If this option is enabled, the AMQP server or broker will store the messages on its hard disk. That way, the messages will be retained if the AMQP server is restarted, if the message queue is set to be durable on the AMQP server.

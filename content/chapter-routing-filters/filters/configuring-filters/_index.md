@@ -9,16 +9,16 @@ Filters perform log routing: a message passes the filter if the filter expressio
 To define a filter, add a filter statement to the `syslog-ng.conf` configuration file using the following syntax:
 
 ```shell
-   filter <identifier> { <filter_type>("<filter_expression>"); };
+filter <identifier> { <filter_type>("<filter_expression>"); };
 ```
 
 Then use the filter in a log path, for example:
 
 ```shell
-   log {
-        source(s1);
-        filter(<identifier>);
-        destination(d1); };
+log {
+    source(s1);
+    filter(<identifier>);
+    destination(d1); };
 ```
 
 You can also define the filter inline. For details, see {{% xref "/chapter-configuration-file/inline-objects/_index.md" %}}.
@@ -29,22 +29,22 @@ You can also define the filter inline. For details, see {{% xref "/chapter-confi
 The following filter statement selects the messages that contain the word `deny` and come from the host `example`.
 
 ```shell
-   filter demo_filter { host("example") and match("deny" value("MESSAGE"))
-    };
-    log {
-        source(s1);
-        filter(demo_filter);
-        destination(d1);
-    };
+filter demo_filter {
+    host("example") and match("deny" value("MESSAGE"))
+};
+log {
+    source(s1);
+    filter(demo_filter);
+    destination(d1);
+};
 ```
 
 The following example does the same, but defines the filter inline.
 
 ```shell
-   log {
-        source(s1);
-        filter { host("example") and match("deny" value("MESSAGE")) };
-        destination(d1);
-    };
+log {
+    source(s1);
+    filter { host("example") and match("deny" value("MESSAGE")) };
+    destination(d1);
+};
 ```
-

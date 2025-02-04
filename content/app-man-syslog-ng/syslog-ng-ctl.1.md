@@ -63,6 +63,7 @@ If you need to use a non-standard control socket to access `syslog-ng`, use the 
 syslog-ng-ctl log-level verbose
 ```
 
+To temporarily change the log levels and access the logs of `syslog-ng`, see also the [`attach` command]({{< relref "#attach" >}}).
 
 <span id="syslog-ng-ctl-query"></span>
 
@@ -78,11 +79,11 @@ The {{% param "product.abbrev" %}} application stores various data, metrics, and
   |_[sources]-[sql]-[stats]->{received=501;dropped=0}
 ```
 
-You can query the nodes of this tree, and also use filters to select the information you need. A query is actually a path in the tree. You can also use the `?` and `\*` wildcards. For example:
+You can query the nodes of this tree, and also use filters to select the information you need. A query is actually a path in the tree. You can also use the `?` and `*` wildcards. For example:
 
-- Select every property: `\*`
+- Select every property: `*`
 
-- Select all `dropped` value from every `stats` node: `\*.stats.dropped`
+- Select all `dropped` value from every `stats` node: `*.stats.dropped`
 
 The nodes and properties available in the tree depend on your {{% param "product.abbrev" %}} configuration (that is, the sources, destinations, and other objects you have configured), and also on your `stats-level()` settings.
 
@@ -142,7 +143,7 @@ An example output:
   global.payload_reallocs.stats.processed
   global.msg_clones.stats.processed
   global.sdata_updates.stats.processed
-              tag..source.s_tcp.stats.processed
+  tag..source.s_tcp.stats.processed
 ```
 
 The `syslog-ng-ctl query list` command has the following options:
@@ -176,7 +177,7 @@ The `syslog-ng-ctl query get` command has the following options:
     
     Add up the result of each matching node and return only a single number.
     
-    For example, the `syslog-ng-ctl query get --sum "destination\*.dropped"` command displays the number of messages dropped by the {{% param "product.abbrev" %}} instance.
+    For example, the `syslog-ng-ctl query get --sum "destination*.dropped"` command displays the number of messages dropped by the {{% param "product.abbrev" %}} instance.
 
 - `--reset`
     
@@ -341,6 +342,10 @@ Use the `syslog-ng-ctl config` command to display the configuration that {{% par
 
 Starting with {{% param "product.name" %}} version 4.2, you can display the configuration identifier (if set) and the SHA256 has of the output of the `syslog-ng-ctl config --preprocessed` command by running `syslog-ng-ctl config --id`. For details, see {{% xref "/chapter-configuration-file/configuration-identifier/_index.md" %}}.
 
+### List referenced files
+
+You can use the `syslog-ng-ctl list-files` command to list files referenced in your configuration, for example, certificates or external configuration files. Available in {{< product >}} 3.23.1 and later.
+
 <span id="syslog-ng-ctl-reload"></span>
 
 ## Reloading the configuration
@@ -366,6 +371,40 @@ You can use the `syslog-ng-ctl healthcheck` command to query the healthcheck sta
 You can run `syslog-ng-ctl healthcheck --timeout <seconds>` to use as a boolean healthy/unhealthy check.
 
 Health checks are also published as periodically updated metrics. You can configure the frequency of these checks with the `stats(healthcheck-freq())` option. The default is 5 minutes.
+
+## The attach command {#attach}
+
+Available in {{% param "product.abbrev" %}} 4.9 and later.
+
+Connect to the standard IO (stdin, stdout, stderr) and display the results. Note that there can only be one attached process at a time.
+
+`syslog-ng-ctl attach [attach-mode] [options]`
+
+The `syslog-ng-ctl attach` command has the following parameters:
+
+- Attach mode: `logs` or `stdio`.
+
+    - Use `logs` to access the internal log messages of `syslog-ng`. For example, the following command changes the log level to `trace` and accesses the internal logs of `syslog-ng`:
+
+        ```shell
+        syslog-ng-ctl attach logs --seconds 10 --log-level trace
+        ```
+
+    - Use `stdio` to display the output of the `syslog-ng` process. For example:
+
+        ```shell
+        syslog-ng-ctl attach stdio --seconds 10
+        ```
+
+- Change `log-level` to the specified value:
+
+    {{< include-headless "chunk/internal-log-levels.md" >}}
+
+- How long to attach to the process: `--seconds`. For example:
+
+    ```shell
+    syslog-ng-ctl attach stdio --seconds 10
+    ```
 
 ## Files
 

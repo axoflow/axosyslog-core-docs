@@ -57,19 +57,19 @@ To execute an external program when the {{% param "product.abbrev" %}} configura
 *Description:* Defines an external program that is executed when the {{% param "product.abbrev" %}} configuration is stopped or torn down, for example, on shutdown or during a {{% param "product.abbrev" %}} reload.
 
 
-### Example: Using the hook-commands() with a network source
+### Example: Using hook-commands() with a network source
 
 In the following example, the `hook-commands()` is used with the `network()` driver and it opens an [iptables](https://en.wikipedia.org/wiki/Iptables "https://en.wikipedia.org/wiki/Iptables") port automatically as {{% param "product.abbrev" %}} is started/stopped.
 
 The assumption in this example is that the `LOGCHAIN` chain is part of a larger ruleset that routes traffic to it. Whenever the {{% param "product.abbrev" %}} created rule is there, packets can flow, otherwise the port is closed.
 
 ```shell
-   source {
-       network(transport(udp)
-        hook-commands(
-              startup("iptables -I LOGCHAIN 1 -p udp --dport 514 -j ACCEPT")
-              shutdown("iptables -D LOGCHAIN 1")
-            )
-         );
-    };
+source {
+    network(transport(udp)
+    hook-commands(
+          startup("iptables -I LOGCHAIN 1 -p udp --dport 514 -j ACCEPT")
+          shutdown("iptables -D LOGCHAIN 1")
+        )
+     );
+};
 ```

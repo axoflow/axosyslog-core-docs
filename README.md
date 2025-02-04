@@ -1,6 +1,6 @@
 # AxoSyslog documentation
 
-Documentation for the AxoSyslog release, originally based on [this version of the syslog-ng Open Source Edition documentation](https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2). We are continuously working on it to keep it up-to-date with the latest released version of the [`syslog-ng` project](https://github.com/syslog-ng/syslog-ng/).
+Documentation for the AxoSyslog release, originally based on [this version of the syslog-ng Open Source Edition documentation](https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2). We are continuously working on to keep it up-to-date with the latest released version of [AxoSyslog](https://github.com/axoflow/axosyslog/).
 
 ## Licensing
 
@@ -16,7 +16,7 @@ To use this repository, you need the following installed locally:
 
 - [npm](https://www.npmjs.com/)
 - [Go](https://go.dev/)
-- [Hugo (Extended version)](https://gohugo.io/), at least version 0.92.3
+- [Hugo (Extended version)](https://gohugo.io/), at least version 0.92.3, but not higher than 0.122 (https://github.com/gohugoio/hugo/releases/tag/v0.122.0, see the **Assets** section for binaries)
 
 1. Install the dependencies. Clone the repository and navigate to the directory:
 

@@ -18,12 +18,12 @@ enableGitInfo = true
 
 [languages]
 [languages.en]
-title = "AxoSyslog - a syslog-ng distribution"
+title = "AxoSyslog scalable security data processor"
 languageName ="English"
 # Weight used for sorting.
 weight = 1
 [languages.en.params]
-description = "Documentation for AxoSyslog, a syslog-ng distribution"
+description = "Documentation for AxoSyslog, the scalable security data processor"
 
 [outputs]
     home = ["HTML", "print"]
@@ -39,20 +39,27 @@ description = "Documentation for AxoSyslog, a syslog-ng distribution"
     style = "tango"
     # Uncomment if you want your chosen highlight style used for code blocks without a specified language
     # guessSyntax = "true"
+    [markup.goldmark.renderHooks]
+      [markup.goldmark.renderHooks.image]
+        enableDefault = true
+      [markup.goldmark.renderHooks.link]
+        enableDefault = true
 
 [params]
 
   # email = ""
 
-  copyright = "Axoflow Inc"
+  copyright = "Axoflow Inc."
+  copyright_from = 2023
 
   relativeURLs = true
 
   # Add project name to the header
-  project_name = "AxoSyslog 4"
+  project_name = "AxoSyslog"
   product_name = "AxoSyslog"
 
   hubspotId = "39677057"
+  adblockanalyticsId = "EvSl2XwcKQ5P"
 
   ###############################################################################
   # Docsy-theme specific config customizations
@@ -66,7 +73,7 @@ description = "Documentation for AxoSyslog, a syslog-ng distribution"
   # The version number for the version of the docs represented in this doc set.
   # Used in the "version-banner" partial to display a version number for the 
   # current doc set.
-  version = "4.5.0"
+  version = "4.9.0"
   version_menu_canonicallinks = true
 
   # A link to latest version of the docs. Used in the "version-banner" partial to
@@ -76,7 +83,7 @@ description = "Documentation for AxoSyslog, a syslog-ng distribution"
   # Repository configuration (URLs for in-page links to opening issues and suggesting changes)
   github_repo = "https://github.com/axoflow/axosyslog-core-docs"
   # An optional link to a related project repo. For example, the sibling repository where your product code lives.
-  github_project_repo = "https://github.com/syslog-ng/syslog-ng"
+  github_project_repo = "https://github.com/axoflow/axosyslog/"
 
   # Specify a value here if your content directory is not in your repo's root directory
   # github_subdir = ""
@@ -87,7 +94,9 @@ description = "Documentation for AxoSyslog, a syslog-ng distribution"
 
 
   # Enable Lunr.js offline search
-  offlineSearch = true
+  offlineSearch = false
+  # Enable pagefind for offline search
+  offlineSearchPagefind = true
 
   #####
   # Code highlighting
@@ -122,7 +131,11 @@ description = "Documentation for AxoSyslog, a syslog-ng distribution"
   # Enable to make the side bar menu foldable.
   sidebar_menu_foldable = true
   # Set to true to hide the sidebar search box (the top nav search box will still be displayed if search is enabled)
-  sidebar_search_disable = false
+  sidebar_search_disable = true
+  # Set to true to hide the navbar search box
+  navbar_search_disable = true
+
+  footer_left_logo_disable = true
 
   [params.social]
     # Used as twitter:site in page metadata
@@ -148,7 +161,7 @@ description = "Documentation for AxoSyslog, a syslog-ng distribution"
   # Developer relevant links. These will show up on right side of footer and in the community page if you have one.
   [[params.links.developer]]
     name = "GitHub"
-    url = "https://github.com/axoflow/axosyslog-docker"
+    url = "https://github.com/axoflow/axosyslog/"
     icon = "fab fa-github"
     desc = "Get involved in AxoSyslog development"
 ##########
@@ -158,9 +171,9 @@ description = "Documentation for AxoSyslog, a syslog-ng distribution"
 [params.product]
 name = "AxoSyslog"
 abbrev = "AxoSyslog"
-version = "4.5"
-techversion = "4.5.0"
-configversion = "4.5"
+version = "4.9"
+techversion = "4.9.0"
+configversion = "4.9"
 syslog-ng = "syslog-ng"
 selinux = "SELinux"
 apparmor = "AppArmor"
@@ -173,27 +186,60 @@ contact = "[contact us](https://axoflow.com/contact/)"
 ###############################################################################
 
 [menu]
-  [[menu.main]]
-    name = "OUR VISION"
-    weight = -150
-    #pre = "<i class='fas fa-rss pr-2'></i>"
-    url = "https://axoflow.com/#our-vision"
-  [[menu.main]]
-    name = "PRODUCT"
-    weight = -130
-    #pre = "<i class='fas fa-rss pr-2'></i>"
-    url = "https://axoflow.com/axoflow-platform/"
-  [[menu.main]]
-    name = "DOCUMENTATION"
-    weight = -120
-    #pre = "<i class='fas fa-book pr-2'></i>"
+[[menu.main]]
+    name = "Case Studies"
+    weight = -200
     url = "/"
-    identifier = "documentation"
-
+    identifier = "case-studies"
+    [[menu.main]]
+      name = "Large Government Organization"
+      weight = 100
+      url = "https://axoflow.com/case-studies/large-government-organization-data-quality-improvement/?utm_source=docs&utm_medium=menu"
+      identifier = "case-study-large-gov-org"
+      parent = "case-studies"
+    [[menu.main]]
+      name = "Global Industrial Concern"
+      weight = 100
+      url = "https://axoflow.com/case-studies/global-industrial-concern-security-data-reduction/?utm_source=docs&utm_medium=menu"
+      identifier = "case-study-global-industrial-concern"
+      parent = "case-studies"
+  [[menu.main]]
+    name = "Product"
+    weight = -130
+    url = "/"
+    identifier = "product"
     [[menu.main]]
       name = "Axoflow Platform"
       weight = -120
       url = "https://axoflow.com/axoflow-platform/"
+      parent = "product"
+    [[menu.main]]
+      name = "AxoRouter"
+      weight = -100
+      url = "https://axoflow.com/axorouter/"
+      parent = "product"
+
+  [[menu.main]]
+    name = "Resources"
+    weight = -120
+    url = "/"
+    identifier = "resources"
+  [[menu.main]]
+    name = "Blog"
+    weight = -150
+    url = "https://axoflow.com/blog/"
+    parent = "resources"
+  [[menu.main]]
+    name = "Documentation"
+    weight = -120
+    #pre = "<i class='fas fa-book pr-2'></i>"
+    url = "/"
+    identifier = "documentation"
+    parent = "resources"
+    [[menu.main]]
+      name = "Axoflow Platform"
+      weight = -120
+      url = "https://axoflow.com/docs/axoflow/"
       identifier = "documentation-axoflow"
       parent = "documentation"
     [[menu.main]]
@@ -208,23 +254,89 @@ contact = "[contact us](https://axoflow.com/contact/)"
       url = "https://kube-logging.dev/docs/"
       identifier = "documentation-logging-operator"
       parent = "documentation"
+[[menu.main]]
+    name = "Webinars"
+    weight = 120
+    url = "/"
+    identifier = "webinars"
+    parent = "resources"
+    [[menu.main]]
+      name = "Solve the Malformed Message Madness"
+      weight = 600
+      url = "https://axoflow.com/webinar-solve-malformed-messages-arriving-siem/?utm_source=docs&utm_medium=menu"
+      identifier = "webinar-solved-malformed-message-madness"
+      parent = "webinars"
+    [[menu.main]]
+      name = "Reduced and Actionable Security Data"
+      weight = 700
+      url = "https://axoflow.com/webinar-feed-siem-reduced-detection-ready-security-data/?utm_source=docs&utm_medium=menu"
+      identifier = "webinar-reduced-actionable-security-data"
+      parent = "webinars"
+    [[menu.main]]
+      name = "Parsing Sucks"
+      weight = 800
+      url = "https://axoflow.com/webinar-parsing-sucks-what-to-do/?utm_source=docs&utm_medium=menu"
+      identifier = "webinar-parsing-sucks"
+      parent = "webinars"
+    [[menu.main]]
+      name = "Resilient Syslog Architectures"
+      weight = 900
+      url = "https://axoflow.com/webinar/?utm_source=docs&utm_medium=menu"
+      identifier = "webinar-resilient-syslog"
+      parent = "webinars"
+[[menu.main]]
+    name = "White Papers"
+    weight = 120
+    url = "/"
+    identifier = "white-papers"
+    parent = "resources"
+    [[menu.main]]
+      name = "Observability Pipeline and Metrics"
+      weight = 10
+      url = "https://axoflow.com/observability-pipeline-metrics-control-telemetry-data/?utm_source=docs&utm_medium=menu"
+      identifier = "white-paper-observability-pipeline-metrics"
+      parent = "white-papers"
+    [[menu.main]]
+      name = "Scalable Syslog Architectures"
+      weight = 50
+      url = "https://axoflow.com/white-paper-scalable-syslog-architecture-best-practices/?utm_source=docs&utm_medium=menu"
+      identifier = "white-paper-scalable-syslog"
+      parent = "white-papers"
 
   [[menu.main]]
-    name = "BLOG"
-    weight = -110
-    #pre = "<i class='fas fa-blog pr-2'></i>"
-    url = "https://axoflow.com/blog/"
+    name = "About"
+    weight = -80
+    url = "/"
+    identifier = "about"
   [[menu.main]]
-    name = "ABOUT US"
+    name = "News"
+    weight = -105
+    url = "https://axoflow.com/news/"
+    parent = "about"
+  [[menu.main]]
+    name = "About us"
     weight = -100
     #pre = "<i class='fas fa-blog pr-2'></i>"
     url = "https://axoflow.com/about-us/"
+    parent = "about"
   [[menu.main]]
-    name = "CONTACT"
+    name = "Contact"
     weight = 100
-    #pre = "<i class='fas fa-book pr-2'></i>"
     url = "https://axoflow.com/contact/"
-    identifier = "menu-contact"
+    parent = "about"
+
+  [[menu.main]]
+    name = "Login"
+    weight = 100
+    url = "https://login.axoflow.io/"
+    identifier = "menu-login"
+
+  [[menu.main]]
+    name = "Request Sandbox"
+    weight = 150
+    url = "https://axoflow.com/contact/?subject=sandbox"
+    identifier = "menu-button"
+
 ###############################################################################
 # Misc customizations
 ###############################################################################
@@ -248,7 +360,7 @@ anchor = "smart"
     keepWhitespace = true
 
 [sitemap]
-  ChangeFreq = "daily"
+  ChangeFreq = "weekly"
   Priority = "1"
 
 [security]

@@ -18,7 +18,7 @@ weight:  4900
 
 {{% alert title="Note" color="info" %}}
 
-The `dqtool` application is distributed with the {{% param "product.abbrev" %}} system logging application, and is usually part of the {{% param "product.abbrev" %}} package. 
+The `dqtool` application is distributed with the {{% param "product.abbrev" %}} system logging application, and is usually part of the {{% param "product.abbrev" %}} package.
 
 {{% /alert %}}
 
@@ -71,13 +71,21 @@ Mar  3 10:52:05 tristram localprg[1234]: seq: 0000011631, runid: 1267609923, sta
 
 <span id="dqtool-relocate"></span>
 
+## The info command
+
+`info [DISK-BUFFER_FILE]`
+
+Shows status information about the specified disk-buffer file. For example:
+
+{{< include-headless "chunk/dqtool-info-example.md" >}}
+
 ## The relocate command
 
 `relocate [options] [files]`
 
 Use the `relocate` command to move or rename disk-buffer (also called disk-queue) files. Note that this option modifies the persist file. Stop {{% param "product.abbrev" %}} before using this command.
 
-The `cat` command has the following options:
+The `relocate` command has the following options:
 
 - `--all` or `-a`
 

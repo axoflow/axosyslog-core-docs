@@ -6,14 +6,9 @@ weight:  700
 
 The following sections describe how to select and filter log messages.
 
-  - {{% xref "/chapter-routing-filters/filters/configuring-filters/_index.md" %}} describes how to configure and use filters.
-
-  - {{% xref "/chapter-routing-filters/filters/filters-boolean/_index.md" %}} shows how to create complex filters using boolean operators.
-
-  - {{% xref "/chapter-routing-filters/filters/filters-comparing/_index.md" %}} explains how to evaluate macros in filters.
-
-  - {{% xref "/chapter-routing-filters/filters/regular-expr/_index.md" %}} provides tips on using regular expressions.
-
-  - {{% xref "/chapter-routing-filters/filters/tagging-messages/_index.md" %}} explains how to tag messages and how to filter on the tags.
-
-  - {{% xref "/chapter-routing-filters/filters/reference-filters/_index.md" %}} is a detailed description of the filter functions available in {{% param "product.abbrev" %}}.
+- {{% xref "/chapter-routing-filters/filters/configuring-filters/_index.md" %}} describes how to configure and use filters.
+- {{% xref "/chapter-routing-filters/filters/filters-boolean/_index.md" %}} shows how to create complex filters using boolean operators.
+- {{% xref "/chapter-routing-filters/filters/filters-comparing/_index.md" %}} explains how to evaluate macros in filters.
+- {{% xref "/chapter-routing-filters/filters/regular-expr/_index.md" %}} provides tips on using regular expressions.
+- {{% xref "/chapter-routing-filters/filters/tagging-messages/_index.md" %}} explains how to tag messages and how to filter on the tags.
+- {{% xref "/chapter-routing-filters/filters/reference-filters/_index.md" %}} is a detailed description of the filter functions available in {{% param "product.abbrev" %}}.

@@ -17,17 +17,12 @@ The `grouping-by` has the following options.
 
 Note that the `aggregate()` option has access to every message of the context, and has the following options:
 
-  - {{% include-headless "chunk/option-inherit-mode.md" %}}
-    
-    The default value of `inherit-mode()` is `context`.
-    
-    For details on the message context, see {{% xref "/chapter-correlating-log-messages/grouping-by-parser/_index.md" %}}.
+- {{< include-headless "chunk/option-inherit-mode.md" >}}
 
-  - *tags*: Adds the specified tag to the list of tags.
+    The default value of `inherit-mode()` is `context`. For details on the message context, see {{% xref "/chapter-correlating-log-messages/grouping-by-parser/_index.md" %}}.
 
-  - *value*: Adds a name-value pair to the generated message. You can include text, macros, template functions, and you can also reference every message of the context. For details on accessing other messages of the context, see {{% xref "/chapter-correlating-log-messages/grouping-by-parser/referencing-previous-messages-grouping-by/_index.md" %}}.
-
-
+- *tags*: Adds the specified tag to the list of tags.
+- *value*: Adds a name-value pair to the generated message. You can include text, macros, template functions, and you can also reference every message of the context. For details on accessing other messages of the context, see {{% xref "/chapter-correlating-log-messages/grouping-by-parser/referencing-previous-messages-grouping-by/_index.md" %}}.
 
 ## having() {#grouping-by-parser-having}
 
@@ -89,7 +84,7 @@ Messages that do not have a key will all belong to the same context.
 
 {{% /alert %}} {{% alert title="Note" color="info" %}}
 
-If the value of the key is static (for example, key("PROGRAM") instead of key("$PROGRAM")), all messages will belong to the same context.
+If the value of the key is static (for example, `key("PROGRAM")` instead of `key("$PROGRAM")`), all messages will belong to the same context.
 
 {{% /alert %}}
 
@@ -106,8 +101,8 @@ If the value of the key is static (for example, key("PROGRAM") instead of key("$
 
 {{% alert title="Note" color="info" %}}
 
-  - Sorting is done by {{% param "product.abbrev" %}} when the context is about to be closed by trigger() or timeout(), but before {{% param "product.abbrev" %}} evaluates the [having()](#grouping-by-parser-having) option.
-  - {{% param "product.abbrev" %}} can slow down if you specify several sort-key macro or template options, for example, `sort-key("${3}${4}")`.
+- Sorting is done by {{% param "product.abbrev" %}} when the context is about to be closed by trigger() or timeout(), but before {{% param "product.abbrev" %}} evaluates the [having()](#grouping-by-parser-having) option.
+- {{% param "product.abbrev" %}} can slow down if you specify several sort-key macro or template options, for example, `sort-key("${3}${4}")`.
 
 {{% /alert %}}
 

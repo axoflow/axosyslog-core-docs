@@ -10,7 +10,7 @@ The {{% param "product.abbrev" %}} application can lookup IPv4 addresses from an
 
 {{% alert title="Note" color="info" %}}
 
-To access longitude and latitude information, download the [GeoLiteCity](http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz) database, and unzip it (for example, to the `/usr/share/GeoIP/GeoLiteCity.dat` file). The default databases available on Linux and other platforms usually contain only the country codes.
+To access longitude and latitude information, download the [GeoLite2City](https://dev.maxmind.com/geoip/geolite2-free-geolocation-data/) database, and unzip it (for example, to the `/usr/share/GeoIP/GeoLiteCity.dat` file). The default databases available on Linux and other platforms usually contain only the country codes.
 
 {{% /alert %}}
 

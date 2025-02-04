@@ -4,13 +4,13 @@ weight:  100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-This section describes the `PRI` message part of a syslog message, according to the [legacy-syslog or BSD-syslog protocol](https://tools.ietf.org/search/rfc3164).
+This section describes the `PRI` message part of a syslog message, according to the [legacy-syslog or BSD-syslog protocol](https://datatracker.ietf.org/doc/rfc3164/).
 
 For further details about the `HEADER` and `MSG` parts of a syslog message, see the following sections:
 
-  - `[HEADER]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-header/_index.md" >}})`
+  - [`HEADER`]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-header/_index.md" >}})
 
-  - `[MSG]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-msg/_index.md" >}})`
+  - [`MSG`]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-msg/_index.md" >}})
 
 
 ## The PRI message part
@@ -41,9 +41,9 @@ The following example illustrates a sample syslog message with a sample `PRI` fi
 
 In this example, `<133>` represents the `PRI` field (Priority value). The syslog message's Facility value is `16`, and the Severity value is `5`.
 
-Substituting the numerical values into the `<PRI>` = ( `<facility>` \* `8`) + `<severity>` formula, the results match the Priority value in our example:
+Substituting the numerical values into the `<PRI>` = ( `<facility>` * `8`) + `<severity>` formula, the results match the Priority value in our example:
 
-`<133>` = ( `<16>` \* `8`) + `<5>`.
+`<133>` = ( `<16>` * `8`) + `<5>`.
 
 
 ## Facility and Severity values

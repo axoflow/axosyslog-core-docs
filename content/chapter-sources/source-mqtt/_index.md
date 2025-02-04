@@ -28,14 +28,21 @@ The rest of this chapter and its sections build on your familiarity with the MQT
     };
 ```
 
+Starting with {{% param "product.abbrev" %}} version 4.7, `mqtt()` source automatically sets the `${MQTT_TOPIC}` name-value pair for the messages it receives. This is useful when the name of the topic contains MQTT wildcards (`$`, `+`, `#`). For example:
 
+```shell
+log {
+    source { mqtt(topic("#")); };
+    destination { stdout(template("${MQTT_TOPIC} - ${MESSAGE}\n")); };
+};
+```
 
 ## Example: Using the mqtt() source in your configuration
 
 The following example illustrates an `mqtt()` source configured to fetch messages from the MQTT broker running on `localhost:4444` using the `test/test topic`, and send them to the `localhost:4445` address.
 
 ```shell
-   @version: 3.35
+    @version: current
     @include "scl.conf"
     source s_mqtt {
         mqtt(
