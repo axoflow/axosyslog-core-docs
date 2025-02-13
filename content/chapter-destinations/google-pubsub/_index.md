@@ -97,7 +97,7 @@ auth(
 | Type:    | string |
 | Default: | - |
 
-*Description:* The ID of the Google Cloud project where {{% param "product_name" %}} sends the data. The  Pub/Sub API must be enabled for the project.
+*Description:* The ID of the Google Cloud project where {{% param "product_name" %}} sends the data. The Pub/Sub API must be enabled for the project.
 
 ## topic()
 
