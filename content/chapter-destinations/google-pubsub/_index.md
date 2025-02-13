@@ -108,3 +108,11 @@ auth(
 
 *Description:* The name of the Google Pub/Sub topic where {{% param "product_name" %}} sends the data.
 
+## service_endpoint()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | string |
+| Default: | `https://pubsub.googleapis.com` |
+
+The service endpoint for the Pub/Sub API.
