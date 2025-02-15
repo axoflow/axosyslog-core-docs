@@ -6,7 +6,7 @@
 
 |          |       |
 | -------- | ----- |
-| Type:    | `assume-utf8`, `check-hostname`, `dont-store-legacy-msghdr`, `empty-lines`, `expect-hostname`, `kernel`, `no-hostname`, `no-multi-line`, `no-parse`, `sanitize-utf8`, `store-legacy-msghdr`, `store-raw-message`, `syslog-protocol`, `validate-utf8` |
+| Type:    | `assume-utf8`, `check-hostname`, `check-program`, `dont-store-legacy-msghdr`, `empty-lines`, `expect-hostname`, `kernel`, `no-hostname`, `no-multi-line`, `no-parse`, `sanitize-utf8`, `store-legacy-msghdr`, `store-raw-message`, `syslog-protocol`, `validate-utf8` |
 | Default: | empty set |
 
 *Description:* Specifies the log parsing options of the source. For example:
@@ -22,6 +22,17 @@ The `assume-utf8` flag assumes that the incoming messages are UTF-8 encoded, but
 ### check-hostname
 
 {{< include-headless "chunk/option-source-check-hostname-description.md" >}}
+
+### check-program
+
+Available in version 4.10 and later.
+
+If the `check-program` flag is enabled, {{% param "product.abbrev" %}} validates the `${PROGRAM}` field for RFC3164-formatted messages. Valid program names meet the following criteria:
+
+- Contain only these characters: `[a-zA-Z0-9-_/().]`
+- Include at least one alphabetical character.
+
+If the program name fails validation, it is considered to be part of the log message.
 
 ### dont-store-legacy-msghdr
 
