@@ -6,7 +6,7 @@
 
 |          |       |
 | -------- | ----- |
-| Type:    | `assume-utf8`, `dont-store-legacy-msghdr`, `empty-lines`, e`xpect-hostname`, `kernel`, `no-hostname`, `no-multi-line`, `no-parse`, `sanitize-utf8`, `store-legacy-msghdr`, `store-raw-message`, `syslog-protocol`, `validate-utf8` |
+| Type:    | `assume-utf8`, `check-hostname`, `dont-store-legacy-msghdr`, `empty-lines`, `expect-hostname`, `kernel`, `no-hostname`, `no-multi-line`, `no-parse`, `sanitize-utf8`, `store-legacy-msghdr`, `store-raw-message`, `syslog-protocol`, `validate-utf8` |
 | Default: | empty set |
 
 *Description:* Specifies the log parsing options of the source. For example:
@@ -18,6 +18,10 @@ source { network(flags(check-hostname, check-program)); };
 ### assume-utf8
 
 The `assume-utf8` flag assumes that the incoming messages are UTF-8 encoded, but does not verify the encoding. If you explicitly want to validate the UTF-8 encoding of the incoming message, use the `validate-utf8` flag.
+
+### check-hostname
+
+{{< include-headless "chunk/option-source-check-hostname-description.md" >}}
 
 ### dont-store-legacy-msghdr
 
