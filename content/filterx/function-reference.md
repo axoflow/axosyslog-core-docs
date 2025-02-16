@@ -382,6 +382,19 @@ You can use the following flags with the `regexp_subst` function:
 
 - `utf8=true`: {{< include-headless "chunk/regex-flag-utf8.md" >}}
 
+## set_fields
+
+Takes a dict and sets multiple fields in it with overrides or defaults (`overrides` and `defaults` are optional parameters).
+
+The `overrides` and `defaults` parameters are also dicts, where:
+
+- the key is the field's name
+- the value is either an expression, or a list of expressions.
+
+    If a list is provided, each expression will be evaluated, and the first successful, non-null one is set as the respective field's value. This is similar to chaining [null-coalescing (`??`) operators]({{< relref "/filterx/operator-reference.md#null-coalescing-operator" >}}), but has better performance.
+
+`overrides` are always processed for each field. The `defaults` for a field are only processed isn't set or is empty.
+
 ## startswith
 
 Available in {{< product >}} 4.9 and later.
