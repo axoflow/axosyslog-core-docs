@@ -464,7 +464,7 @@ Usage: `unset_empties(object, options)`
 
 The `unset_empties()` function has the following options:
 
-- `ignorecase`: Set to `false` to perform case-sensitive matching. Default value: `true`. Available in Available in {{< product >}} 4.9 and later.
+- `ignorecase`: Set to `true` to perform case-insensitive matching. Default value: `false`. Available in {{< product >}} 4.9 and later, default changed to `false` in version 4.10.
 - `recursive`: Enables recursive processing of nested dictionaries. Default value: `true`
 - `replacement`: Replace the target elements with the value of `replacement` instead of removing them. Available in {{< product >}} 4.9 and later.
 - `targets`: A list of elements to remove or replace. Default value: `["", null, [], {}]`. Available in {{< product >}} 4.9 and later.
