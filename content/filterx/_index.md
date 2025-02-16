@@ -375,6 +375,7 @@ FilterX has the following built-in functions.
 - [`is_sdata_from_enterprise`]({{< relref "/filterx/filterx-sdata/_index.md" >}}): Checks if the message contains the specified organization ID.
 - [`isset`]({{< relref "/filterx/function-reference.md#isset" >}}): Checks that argument exists and its value is not empty or null.
 - [`istype`]({{< relref "/filterx/function-reference.md#istype" >}}): Checks the type of an object.
+- [`keys`]({{< relref "/filterx/function-reference.md#keys" >}}): Returns the top-level keys of a dictionary.
 - [`len`]({{< relref "/filterx/function-reference.md#len" >}}): Returns the length of an object.
 - [`lower`]({{< relref "/filterx/function-reference.md#lower" >}}): Converts a string into lowercase characters.
 - [`parse_csv`]({{< relref "/filterx/filterx-parsing/csv/_index.md" >}}): Parses a comma-separated or similar string.

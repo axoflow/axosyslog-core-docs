@@ -222,6 +222,29 @@ Starting with version 4.9, you can use `[]` without the `json_array()` keyword a
 js_dict = [];
 ```
 
+## keys
+
+Returns the top-level keys of a dictionary. This provides a simple way to inspect or iterate over the immediate keys without traversing the structure. The `keys()` function:
+
+- Returns a list of dictionary keys as an array.
+- Includes only the top-level keys, ignoring nested structures.
+- The resulting array supports immediate indexing for quick key retrieval.
+- When called on an empty dictionary, `keys` returns an empty dictionary (`[]`).
+
+For example:
+
+```shell
+dict = {"level1-key1":{"level2-key1":{"level3-key1":"value1"}},"level1-key2":{"level2-key2":{"level3-key2":"value2"}}};
+# accessing the top level results ["level1-key1", "level1-key2"]
+a = keys(dict);
+
+# acccessing nested levels directly results ["level2-key1"]
+b = keys(dict["level1-key1"]);
+
+# directly index the result of keys() to access specific keys is possible (returns ["level1-key1"])
+c = keys(dict)[0];
+```
+
 ## len
 
 Returns the number of items in an object as an integer: the length (number of characters) of a string, the number of elements in a list, or the number of keys in an object.
