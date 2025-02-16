@@ -344,8 +344,10 @@ You can add two lists or two dicts using the {{% xref "/filterx/operator-referen
 
 FilterX has the following operators.
 
-- [Comparison operators]({{< relref "/filterx/filterx-comparing/_index.md" >}}): `==`, `<`, `<=`, `>=`, `>`, `!=`, `===`, `!==`, `eq`, `lt`, `le`, `gt`, `ge`, `ne`.
+- [Assign a value to a variable if it's not set (`=??`)]({{< relref "/filterx/operator-reference.md#assign-non-null" >}}).
 - [Boolean operators]({{< relref "/filterx/filterx-boolean/_index.md" >}}): `not`, `or`, `and`.
+- [Comparison operators]({{< relref "/filterx/filterx-comparing/_index.md" >}}): `==`, `<`, `<=`, `>=`, `>`, `!=`, `===`, `!==`, `eq`, `lt`, `le`, `gt`, `ge`, `ne`.
+- [Conditional operators]({{< relref "/filterx/filterx-conditional/_index.md" >}}).
 - [Dot operator (`.`)](#json) to access fields of an object, like JSON.
 - [Indexing operator `[]`](#json) to access fields of an object, like JSON.
 - [Plus (`+`) operator]({{< relref "/filterx/operator-reference.md#plus-operator" >}}) to add values and concatenate strings.
@@ -382,6 +384,7 @@ FilterX has the following built-in functions.
 - [`parse_windows_eventlog_xml`]({{< relref "/filterx/filterx-parsing/windows-eventlog/_index.md" >}}): Parses a Windows Event Log XML object into a JSON object.
 - [`regexp_search`]({{< relref "/filterx/function-reference.md#regexp-search" >}}): Searches a string using regular expressions.
 - [`regexp_subst`]({{< relref "/filterx/function-reference.md#regexp-subst" >}}): Rewrites a string using regular expressions.
+- [`set_fields`]({{< relref "/filterx/function-reference.md#set-fields" >}}): Set multiple fields of a dict with overrides or defaults.
 - [`startswith`]({{< relref "/filterx/filterx-string-search/_index.md" >}}): Checks if a string begins with the specified value.
 - [`strptime`]({{< relref "/filterx/function-reference.md#strptime" >}}): Converts a string containing a date/time value, using a specified format string.
 - [`unset`]({{< relref "/filterx/function-reference.md#unset" >}}): Deletes a name-value pair, or a field from an object.

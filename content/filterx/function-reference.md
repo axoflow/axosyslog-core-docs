@@ -384,7 +384,7 @@ You can use the following flags with the `regexp_subst` function:
 
 - `utf8=true`: {{< include-headless "chunk/regex-flag-utf8.md" >}}
 
-## set_fields
+## set_fields {#set-fields}
 
 Takes a dict and sets multiple fields in it with overrides or defaults (`overrides` and `defaults` are optional parameters).
 
