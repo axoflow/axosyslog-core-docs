@@ -166,6 +166,8 @@ Returns true if the argument exists and its value is not empty or null.
 
 Usage: `isset(<name of a variable, macro, or name-value pair>)`
 
+If you want to assign a value to a variable if it's not set, use the [`=??` operator]({{< relref "/filterx/operator-reference.md#assign-non-null" >}}).
+
 ## istype
 
 Returns true if the object (first argument) has the specified type (second argument). The type must be a quoted string. (See [List of type names]({{< relref "/filterx/_index.md#variable-types" >}}).)
