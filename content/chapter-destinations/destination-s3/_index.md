@@ -130,6 +130,15 @@ If you configure an invalid value, the default is used.
 
 *Description:* Only has effect if `compression()` is set to yes. You can set the level of the compression using the `compresslevel()` option (0-9).
 
+## content-type()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | string |
+| Default: | `"application/octet-stream"` |
+
+*Description:* The content-type of the HTTP request.
+
 ## flush-grace-period()
 
 |          |                            |
