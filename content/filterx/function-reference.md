@@ -235,13 +235,14 @@ For example:
 
 ```shell
 dict = {"level1-key1":{"level2-key1":{"level3-key1":"value1"}},"level1-key2":{"level2-key2":{"level3-key2":"value2"}}};
-# accessing the top level results ["level1-key1", "level1-key2"]
+
+# accessing the top level, returns: ["level1-key1", "level1-key2"]
 a = keys(dict);
 
-# acccessing nested levels directly results ["level2-key1"]
+# accessing nested levels directly, returns: ["level2-key1"]
 b = keys(dict["level1-key1"]);
 
-# directly index the result of keys() to access specific keys is possible (returns ["level1-key1"])
+# directly index the result of keys() to access specific keys is possible, returns: ["level1-key1"])
 c = keys(dict)[0];
 ```
 
