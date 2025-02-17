@@ -487,7 +487,43 @@ ${MESSAGE} = strftime("%Y-%m-%dT%H-%M-%S %z", my-date);
 
 You can use the following format codes in the format string:
 
-{{< include-headless "chunk/date-string-format.md" >}}
+`%a`: The locale's abbreviated weekday name.
+`%A`: The locale's full weekday name.
+`%b`: The locale's abbreviated month name.
+`%B`: The locale's full month name.
+`%c`: The locale's appropriate date and time representation.
+`%C`: The year divided by 100 and truncated to an integer, as a decimal number.
+`%d`: The day of the month as a decimal number [01,31].
+`%D`: Equivalent to `%m / %d / %y`.
+`%e`: The day of the month as a decimal number [1,31]; a single digit is preceded by a space.
+`%f`: Fraction of the second (with or without a leading dot). Width specifies precision, `%6f` means microseconds, `%3f` means milliseconds, `%9f` means nanoseconds. `%f` just means microseconds.
+`%F`: Equivalent to `%+4Y-%m-%d`.
+`%g`: The last 2 digits of the week-based year (see below) as a decimal number [00,99].
+`%G`: The week-based year (see below) as a decimal number (for example, 1977).
+`%h`: Equivalent to %b.
+`%H`: The hour (24-hour clock) as a decimal number [00,23].
+`%I`: The hour (12-hour clock) as a decimal number [01,12].
+`%j`: The day of the year as a decimal number [001,366].
+`%m`: The month as a decimal number [01,12].
+`%M`: The minute as a decimal number [00,59].
+`%n`: A `<newline>`.
+`%p`: The locale's equivalent of either a.m. or p.m.
+`%r`: The time in a.m. and p.m. notation.
+`%R`: The time in 24-hour notation ( %H : %M ).
+`%S`: The second as a decimal number [00,60].
+`%t`: A `<tab>`.
+`%T`: The time (`%H : %M : %S`).
+`%u`: The weekday as a decimal number [1,7], with 1 representing Monday.
+`%U`: The week number of the year as a decimal number [00,53]. The first Sunday of January is the first day of week 1; days in the new year before this are in week 0.
+`%V`: The week number of the year (Monday as the first day of the week) as a decimal number [01,53]. If the week containing 1 January has four or more days in the new year, then it is considered week 1. Otherwise, it is the last week of the previous year, and the next week is week 1. Both January 4th and the first Thursday of January are always in week 1.
+`%w`: The weekday as a decimal number [0,6], with 0 representing Sunday.
+`%W`: The week number of the year as a decimal number [00,53]. The first Monday of January is the first day of week 1; days in the new year before this are in week 0.
+`%x`: The locale's appropriate date representation.
+`%X`: The locale's appropriate time representation.
+`%y`: The last two digits of the year as a decimal number [00,99].
+`%Y`: The year as a decimal number (for example, 1997).
+`%z`: The offset from UTC in the ISO 8601:2000 standard format ( +hhmm or -hhmm ), or by no characters if no timezone is determinable
+`%Z`: Same as `%z` , but with the `:` separator (-hh:mm or +hh:mm)
 
 {{% alert title="Note" color="info" %}}
 `%Z` currently doesn't respect the datetime's timezone, use `%z` instead.
