@@ -27,7 +27,7 @@ This results in counters like:
 syslogng_my_counter_name{app="example-app", host="localhost", source="s_local_1"} 3
 ```
 
-## Options
+## update_metric options
 
 ### increment
 
@@ -81,3 +81,11 @@ Sets the stats level of the generated metrics.
 {{% alert title="Note" color="info" %}}
 Drivers configured with `internal(yes)` register their metrics on level 3. That way if you are creating an SCL, you can disable the built-in metrics of the driver, and create metrics manually using `update_metric`.
 {{% /alert %}}
+
+## metrics_labels {#metrics-labels}
+
+Available in {{< product >}} 4.10 and later.
+
+`metrics_labels` is a dict-like data type to store metric labels directly. You can use the `metrics_labels` function to [convert key-values to metric labels directly](https://github.com/axoflow/axosyslog/pull/365). This is useful when you have multiple `update_metric()` function calls, because it avoids re-rendering the labels, greatly improves performance.
+
+The stored labels are sorted alphabetically, but note that key collisions are not detected. You can use the `dedup_metrics_labels()` function to deduplicate labels. However, this takes CPU time, it's better to avoid inserting keys multiple times.

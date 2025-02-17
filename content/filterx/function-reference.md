@@ -65,6 +65,10 @@ Usually, you use the [strptime](#strptime) FilterX function to create datetime v
 - When casting from a double, the double is the number of seconds elapsed since the UNIX epoch (00:00:00 UTC on 1 January 1970). (The part before the floating points is the seconds, the part after the floating point is the microseconds.)
 - When casting from a string, the string (for example, `1701350398.123000+01:00`) is interpreted as: `<the number of seconds elapsed since the UNIX epoch>.<microseconds>+<timezone relative to UTC (GMT +00:00)>`
 
+## dedup_metrics_labels
+
+Deduplicate `metrics_labels` objects. For details, see {{% xref "/filterx/filterx-metrics/_index.md#metrics-labels" %}}.
+
 ## endswith
 
 Available in {{< product >}} 4.9 and later.
@@ -261,6 +265,10 @@ Loads variables from a dict. It's the inverse of [`vars()`](#vars). It loads and
 Converts all characters of a string lowercase characters.
 
 Usage: `lower(string)`
+
+## metrics_labels
+
+Convert key-values to metric labels directly. For details, see {{% xref "/filterx/filterx-metrics/_index.md#metrics-labels" %}}.
 
 ## otel_array {#otel-array}
 
