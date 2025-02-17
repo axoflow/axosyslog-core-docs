@@ -4,8 +4,6 @@ weight: 1000
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-{{< include-headless "chunk/filterx-experimental-banner.md" >}}
-
 Available in {{< product >}} 4.9 and later.
 
 You can use the `update_metric` function to count the processed messages, and create labeled metric counters based on the fields of the processed messages, similarly to the [`metrics-probe()` parser]({{< relref "/chapter-parsers/metrics-probe/_index.md" >}}).
