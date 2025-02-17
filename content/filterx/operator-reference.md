@@ -23,7 +23,7 @@ The `not`, `or`, `and` operators allow you to combine any number of comparisons 
 
 Available in {{< product >}} 4.10 and later.
 
-Assigns the right operand to the left operand if the left operand is not set. Note that evaluation errors of the right-hand operand will be suppressed.
+Assigns the right operand to the left operand if the right operand is not null. Note that evaluation errors of the right-hand operand will be suppressed.
 
 ```shell
 left-operand =?? right-operand
