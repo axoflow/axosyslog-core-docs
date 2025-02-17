@@ -469,6 +469,30 @@ myvariable = string(${LEVEL_NUM});
 
 Sometimes you have to explicitly cast values to strings, for example, when you want to concatenate them into a message using the `+` operator.
 
+## strftime
+
+Available in {{< product >}} 4.10 and later.
+
+Format datetime values using the specified format string.
+
+Usage: `strftime("format_string", <value-or-variable-to-format>);`
+
+For example:
+
+```shell
+mydate = strptime("2024-04-10T08:09:10Z", "%Y-%m-%dT%H:%M:%S%z");
+
+${MESSAGE} = strftime("%Y-%m-%dT%H-%M-%S %z", my-date);
+```
+
+You can use the following format codes in the format string:
+
+{{< include-headless "chunk/date-string-format.md" >}}
+
+{{% alert title="Note" color="info" %}}
+`%Z` currently doesn't respect the datetime's timezone, use `%z` instead.
+{{% /alert %}}
+
 ## strptime
 
 Creates a `datetime` object from a string, similarly to the [`date-parser()`]({{< relref "/chapter-parsers/date-parser/_index.md" >}}). The first argument is the string containing the date. The second argument is a format string that specifies how to parse the date string. Optionally, you can specify additional format strings that are applied in order if the previous one doesn't match the date string.

@@ -388,6 +388,7 @@ FilterX has the following built-in functions.
 - [`regexp_subst`]({{< relref "/filterx/function-reference.md#regexp-subst" >}}): Rewrites a string using regular expressions.
 - [`set_fields`]({{< relref "/filterx/function-reference.md#set-fields" >}}): Set multiple fields of a dict with overrides or defaults.
 - [`startswith`]({{< relref "/filterx/filterx-string-search/_index.md" >}}): Checks if a string begins with the specified value.
+- [`strftime`]({{< relref "/filterx/function-reference.md#strftime" >}}): Format datetime values.
 - [`strptime`]({{< relref "/filterx/function-reference.md#strptime" >}}): Converts a string containing a date/time value, using a specified format string.
 - [`unset`]({{< relref "/filterx/function-reference.md#unset" >}}): Deletes a name-value pair, or a field from an object.
 - [`unset_empties`]({{< relref "/filterx/function-reference.md#unset-empties" >}}): Deletes empty fields from an object.
