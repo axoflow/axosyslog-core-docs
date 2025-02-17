@@ -449,6 +449,38 @@ The `overrides` and `defaults` parameters are also dicts, where:
 
 `overrides` are always processed for each field. The `defaults` for a field are only processed isn't set or is empty.
 
+For example:
+
+```shell
+set_fields(
+  labels,
+  overrides={
+    "service.name": [service_name, "axosyslog"],
+    "service.pid": pid,
+  },
+  defaults={
+    "host.name": [host_name, "localhost"],
+  }
+);
+```
+
+The overrides are equivalent with:
+
+```shell
+labels["service.name"] =?? service_name ?? "axosyslog";
+labels["service.pid"] =?? pid;
+```
+
+While the defaults section is equivalent with:
+
+```shell
+if (not isset(labels["host.name"])) {
+  labels["host.name"] =?? host_name ?? "localhost";
+}
+```
+
+But using `set_fields` is more readable and has better performance.
+
 ## startswith
 
 Available in {{< product >}} 4.9 and later.
