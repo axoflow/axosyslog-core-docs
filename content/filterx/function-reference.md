@@ -594,7 +594,7 @@ Usage: `upper(string)`
 
 ## vars
 
-Returns the variables (including pipeline variables and name-value pairs) defined in the FilterX block as a JSON object.
+Returns the variables (including pipeline variables and name-value pairs) defined in the FilterX block as a JSON object. The names of name-value pairs begins with the `$` character. To exclude name-value pairs, set the `exclude_msg_values=true` flag.
 
 For example:
 
@@ -607,4 +607,4 @@ filterx {
 };
 ```
 
-The value of `${MESSAGE}` will be: `{"logmsg_variable":"foo","pipeline_level_variable":"baz"}`
+The value of `${MESSAGE}` will be: `{"$logmsg_variable":"foo","pipeline_level_variable":"baz"}`
