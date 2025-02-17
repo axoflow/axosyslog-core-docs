@@ -331,8 +331,8 @@ Searches a string and returns the matches of a regular expression as a list or a
 
 {{% alert title="Note" color="info" %}}
 
-- In version 4.9 and earlier, `regexp_search` returned a `dict` or `list` depending on whether named match groups were used in the expression. Starting with version 4.10, `dict` is returned by default. For details, see [`list_mode`](#flags).
-- Match group zero is now excluded by default unless it's the only match group. To always include the zero match group in the results, use the [`keep_zero=true`](#flags) flag.
+- In version 4.9 and earlier, `regexp_search` returned a `dict` or `list` depending on whether named match groups were used in the expression. Starting with version 4.10, `dict` is returned by default. For details, see [`list_mode`](#regexp-search-flags).
+- Match group zero is now excluded by default unless it's the only match group. To always include the zero match group in the results, use the [`keep_zero=true`](#regexp-search-flags) flag.
 
 {{% /alert %}}
 
@@ -349,7 +349,7 @@ You can also use unnamed match groups (`()`) and named match groups (`(?<first>E
 
 {{< include-headless "chunk/filterx-regexp-notes.md" >}}
 
-### Flags
+### Options {#regexp-search-flags}
 
 You can use the following optional flags in `regexp_search`:
 
