@@ -327,9 +327,16 @@ For details, see {{< relref "/filterx/filterx-parsing/xml/_index.md" >}}
 
 ## regexp_search {#regexp-search}
 
-Searches a string and returns the matches of a regular expression as a list or a dictionary. If there are no matches, the list or dictionary is empty.
+Searches a string and returns the matches of a regular expression as a list or a dictionary. If there are no matches, the result is empty.
 
-Usage: `regexp_search("<string-to-search>", <regular-expression>)`
+{{% alert title="Note" color="info" %}}
+
+- In version 4.9 and earlier, `regexp_search` returned a `dict` or `list` depending on whether named match groups were used in the expression. Starting with version 4.10, `dict` is returned by default. For details, see [`list_mode`](#flags).
+- Match group zero is now excluded by default unless it's the only match group. To always include the zero match group in the results, use the [`keep_zero=true`](#flags) flag.
+
+{{% /alert %}}
+
+Usage: `regexp_search("<string-to-search>", <regular-expression>, <optional-flags=flag_value>)`
 
 For example:
 
@@ -341,6 +348,15 @@ my-variable = regexp_search(${MESSAGE}, "ERROR");
 You can also use unnamed match groups (`()`) and named match groups (`(?<first>ERROR)(?<second>message)`).
 
 {{< include-headless "chunk/filterx-regexp-notes.md" >}}
+
+### Flags
+
+You can use the following optional flags in `regexp_search`:
+
+- `keep_zero`: Always return the zero match group. Available in version 4.10 and later. Default value: `false`
+- `list_mode`: Return results as a list. Available in version 4.10 and later. Default value: `false`
+
+     If the result is an existing `dict` or `list` object, the function respects the type of the object, even if `list_mode` is set to true.
 
 ### Unnamed match groups
 
