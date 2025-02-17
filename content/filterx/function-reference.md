@@ -254,8 +254,7 @@ Usage: `len(object)`
 
 ## load_vars {#load-vars}
 
-Loads variables from a dict. It's the inverse of [`vars()`](#vars). It loads and declares FilterX-level variables. If a key in the dict begins with the `$` character, it's loaded as an {{< product >}} macro.
-<!-- FIXME why is that good? -->
+Loads variables from a dict. It's the inverse of [`vars()`](#vars). It loads and declares FilterX-level variables. If a key in the dict begins with the `$` character, it's loaded as an {{< product >}} macro. This function can be used to transfer several variables between FilterX blocks, without having to declare them all as pipeline variables.
 
 ## lower
 
