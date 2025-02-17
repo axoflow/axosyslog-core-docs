@@ -8,13 +8,11 @@ weight: 1000
 
 Available in {{< product >}} 4.9 and later.
 
-Updates a labeled metric counter, similarly to the [`metrics-probe()` parser]({{< relref "/chapter-parsers/metrics-probe/_index.md" >}}). For details, see {{% xref "/filterx/filterx-metrics/_index.md" %}}.
-
-You can use `update_metric` to count the processed messages, and create labeled metric counters based on the fields of the processed messages.
+You can use the `update_metric` function to count the processed messages, and create labeled metric counters based on the fields of the processed messages, similarly to the [`metrics-probe()` parser]({{< relref "/chapter-parsers/metrics-probe/_index.md" >}}).
 
 You can configure the name of the counter to update and the labels to add. The name of the counter is an unnamed, mandatory option. Note that the name is automatically prefixed with the `syslogng_` string. For example:
 
-```json
+```shell
 update_metric(
     "my_counter_name",
     labels={
@@ -73,7 +71,7 @@ labels(
 )
 ```
 
-## level
+### level
 
 |          |         |
 | -------- | ------- |
@@ -82,4 +80,6 @@ labels(
 
 Sets the stats level of the generated metrics.
 
-> Note: Drivers configured with `internal(yes)` register their metrics on level 3. That way if you are creating an SCL, you can disable the built-in metrics of the driver, and create metrics manually using `update_metric`.
+{{% alert title="Note" color="info" %}}
+Drivers configured with `internal(yes)` register their metrics on level 3. That way if you are creating an SCL, you can disable the built-in metrics of the driver, and create metrics manually using `update_metric`.
+{{% /alert %}}
