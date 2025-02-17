@@ -416,6 +416,12 @@ regexp_subst(${MESSAGE}, "IP", "IP-Address", global=true);
 
 {{< include-headless "chunk/filterx-regexp-notes.md" >}}
 
+Starting with version 4.10 substitution match groups is enabled by default (use the `groups=false` flag to disable that if needed). You can reference match group indexes up to 999.
+
+```shell
+result = regex_subst("baz,foo,bar", /(\w+),(\w+),(\w+)/, "\\2 \\03 \\1")
+```
+
 ### Options
 
 You can use the following flags with the `regexp_subst` function:
@@ -423,6 +429,10 @@ You can use the following flags with the `regexp_subst` function:
 - `global=true`:
 
     Replace every match of the regular expression, not only the first one.
+
+- `groups=false`:
+
+    Disable substituting match groups. Available in version 4.10 and later.
 
 - `ignorecase=true`:
 
