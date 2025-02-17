@@ -3,6 +3,7 @@ title: AxoSyslog documentation
 type: docs
 cascade:
   type: docs
+  show_banner: true
 aliases:
 - /ose-preface/feedback/
 - /ose-preface/acknowledgements/
