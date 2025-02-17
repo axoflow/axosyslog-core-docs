@@ -252,6 +252,11 @@ Returns the number of items in an object as an integer: the length (number of ch
 
 Usage: `len(object)`
 
+## load_vars {#load-vars}
+
+Loads variables from a dict. It's the inverse of [`vars()`](#vars). It loads and declares FilterX-level variables. If a key in the dict begins with the `$` character, it's loaded as an {{< product >}} macro.
+<!-- FIXME why is that good? -->
+
 ## lower
 
 Converts all characters of a string lowercase characters.

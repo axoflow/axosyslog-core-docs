@@ -377,6 +377,7 @@ FilterX has the following built-in functions.
 - [`istype`]({{< relref "/filterx/function-reference.md#istype" >}}): Checks the type of an object.
 - [`keys`]({{< relref "/filterx/function-reference.md#keys" >}}): Returns the top-level keys of a dictionary.
 - [`len`]({{< relref "/filterx/function-reference.md#len" >}}): Returns the length of an object.
+- [`load_vars`]({{< relref "/filterx/function-reference.md#load-vars" >}}): Load variables from a dictionary.
 - [`lower`]({{< relref "/filterx/function-reference.md#lower" >}}): Converts a string into lowercase characters.
 - [`parse_csv`]({{< relref "/filterx/filterx-parsing/csv/_index.md" >}}): Parses a comma-separated or similar string.
 - [`parse_kv`]({{< relref "/filterx/filterx-parsing/key-value-parser/_index.md" >}}): Parses a string consisting of whitespace or comma-separated `key=value` pairs.
