@@ -51,7 +51,9 @@ The following options are specific to the `google-pubsub-grpc()` destination.
 | Type:    | string |
 | Default: | `"--scope rfc5424,all-nv-pairs --exclude MESSAGE"` |
 
-*Description:* A JSON object representing key-value pairs for the Pub/Sub Event, formatted as [{{% param "product_name" %}} value-pairs]({{< relref "/chapter-concepts/concepts-value-pairs/option-value-pairs/_index.md" >}}). By default, the `google-pubsub()` destination sends the RFC5424 fields as attributes. If you want to send different fields, override the default template. By default, the message part is sent in the `data()` option.
+*Description:* A JSON object representing key-value pairs for the Pub/Sub Event, formatted as [{{% param "product_name" %}} value-pairs]({{< relref "/chapter-concepts/concepts-value-pairs/option-value-pairs/_index.md" >}}). By default, the destination sends the RFC5424 fields as attributes. If you want to send different fields, override the default template. By default, the message part is sent in the [`data()`](#data) option.
+
+If you want to dynamically create the `data()` and `attributes()` part of the message, use the `protovar()` attribute.
 
 ## auth()
 
@@ -82,6 +84,10 @@ auth(
 
 {{% include-headless "chunk/option-destination-batch-timeout.md" %}}
 
+{{< include-headless "chunk/option-grpc-channel-args.md" >}}
+
+{{< include-headless "chunk/option-destination-grpc-compression.md" >}}
+
 ## data()
 
 |          |                            |
@@ -90,6 +96,24 @@ auth(
 | Default: | `"${MESSAGE}"` |
 
 *Description:* The template to use as the data part of the Google Pub/Sub message.
+
+{{< include-headless "chunk/option-destination-diskbuffer.md" >}}
+
+{{< include-headless "chunk/option-destination-frac-digits.md" >}}
+
+{{< include-headless "chunk/option-grpc-headers.md" >}}
+
+{{< include-headless "chunk/option-destination-hook.md" >}}
+
+{{< include-headless "chunk/option-destination-grpc-keep-alive.md" >}}
+
+{{% include-headless "chunk/option-destination-local-timezone.md" %}}
+
+{{% include-headless "chunk/option-destination-log-fifo-size.md" %}}
+
+{{< include-headless "chunk/option-destination-on-error.md" >}}
+
+{{% include-headless "chunk/option-persist-name.md" %}}
 
 ## project()
 
@@ -100,6 +124,36 @@ auth(
 
 *Description:* The ID of the Google Cloud project where {{% param "product_name" %}} sends the data. The Pub/Sub API must be enabled for the project.
 
+## proto-var()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | template |
+| Default: | - |
+
+*Description:* An alternative to using [`attributes()`](#attributes) and [`data()`](#data). The advantage of `protovar()` is that the number of attributes it sends to the destination can vary between the messages, it doesn't have to be constant. That's useful is you're dynamically building your messages using {{% xref "/filterx/_index.md" %}}.
+
+{{% include-headless "chunk/option-destination-retries.md" %}}
+
+{{% include-headless "chunk/option-destination-send-timezone.md" %}}
+
+## service_endpoint() {#service-endpoint}
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | string |
+| Default: | `pubsub.googleapis.com:443` |
+
+{{< include-headless "chunk/google-pubsub-service-endpoint-description.md" >}}
+
+{{% include-headless "chunk/option-destination-template-escape.md" %}}
+
+{{% include-headless "chunk/option-destination-throttle.md" %}}
+
+{{% include-headless "chunk/option-source-time-reopen.md" %}}
+
+{{% include-headless "chunk/option-destination-timezone.md" %}}
+
 ## topic()
 
 |          |                            |
@@ -109,11 +163,18 @@ auth(
 
 *Description:* The name of the Google Pub/Sub topic where {{% param "product_name" %}} sends the data.
 
-## service_endpoint()
+{{< include-headless "chunk/option-destination-ts-format.md" >}}
+
+## url()
 
 |          |                            |
 | -------- | -------------------------- |
 | Type:    | string |
-| Default: | `pubsub.googleapis.com:443` |
+| Default: | - |
 
-{{< include-headless "chunk/google-pubsub-service-endpoint-description.md" >}}
+*Description:* An alias for [`service_endpoint`](#service-endpoint).
+
+<a id="worker-partition-key"></a>
+{{< include-headless "chunk/option-destination-http-worker-partition-key.md" >}}
+
+{{< include-headless "chunk/option-destination-threaded-workers.md" >}}
