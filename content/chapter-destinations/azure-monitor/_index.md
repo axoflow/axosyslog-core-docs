@@ -12,7 +12,7 @@ Starting with version 4.10.0, {{% param "product_name" %}} can send data to [Azu
 ## Prerequisites
 
 - An Azure subscription.
-- A [Microsoft Entra application](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-portal#create-azure-ad-application). You'll need the Tenant ID, App ID, and App Secret to configure the {{< product >}} destination.
+- A [Microsoft Entra application](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-portal#create-azure-ad-application). You'll need the Tenant ID, App ID, and App Secret of the application to configure the {{< product >}} destination.
 - A [Data Collection Endpoint (DCE)](https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/data-collection-endpoint-overview?tabs=portal)
 - A [Data Collection Rule (DCR)](https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/data-collection-rule-create-edit?tabs=portal)
 - A [Log Analytics Workspace in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-analytics-workspace-overview).
