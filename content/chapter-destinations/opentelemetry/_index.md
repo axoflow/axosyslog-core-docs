@@ -70,11 +70,13 @@ log non_otel_to_otel_tls {
 
 {{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
-{{< include-headless "chunk/option-grpc-headers.md" >}}
-
 {{< include-headless "chunk/option-destination-frac-digits.md" >}}
 
+{{< include-headless "chunk/option-grpc-headers.md" >}}
+
 {{< include-headless "chunk/option-destination-hook.md" >}}
+
+{{< include-headless "chunk/option-destination-grpc-keep-alive.md" >}}
 
 {{% include-headless "chunk/option-destination-local-timezone.md" %}}
 

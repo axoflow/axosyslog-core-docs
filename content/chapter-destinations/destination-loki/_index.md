@@ -56,6 +56,8 @@ The `loki()` destination has the following options.
 
 {{< include-headless "chunk/option-grpc-headers.md" >}}
 
+{{< include-headless "chunk/option-destination-hook.md" >}}
+
 {{< include-headless "chunk/option-destination-grpc-keep-alive.md" >}}
 
 ## labels()
@@ -76,6 +78,18 @@ labels(
 Default value:
 
 <!-- FIXME -->
+
+{{% include-headless "chunk/option-destination-local-timezone.md" %}}
+
+{{% include-headless "chunk/option-destination-log-fifo-size.md" %}}
+
+{{< include-headless "chunk/option-destination-on-error.md" >}}
+
+{{% include-headless "chunk/option-persist-name.md" %}}
+
+{{% include-headless "chunk/option-destination-retries.md" %}}
+
+{{% include-headless "chunk/option-destination-send-timezone.md" %}}
 
 ## template()
 
@@ -107,6 +121,12 @@ loki(
 );
 ```
 
+{{% include-headless "chunk/option-destination-template-escape.md" %}}
+
+{{% include-headless "chunk/option-destination-throttle.md" %}}
+
+{{% include-headless "chunk/option-source-time-reopen.md" %}}
+
 ## timestamp()
 
 |          |                            |
@@ -120,6 +140,8 @@ loki(
 - `msg`: Use the original timestamp of the message.
 - `received`: Use the timestamp when {{% param "product.abbrev" %}} has received the message.
 
+{{% include-headless "chunk/option-destination-timezone.md" %}}
+
 ## url()
 
 |          |                            |
@@ -128,5 +150,8 @@ loki(
 | Default: | `localhost:9095` |
 
 *Description:* The URL of the Loki endpoint, including the gRPC listen port of your Loki deployment.
+
+<a id="worker-partition-key"></a>
+{{< include-headless "chunk/option-destination-http-worker-partition-key.md" >}}
 
 {{< include-headless "chunk/option-destination-threaded-workers.md" >}}
