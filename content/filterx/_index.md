@@ -62,7 +62,7 @@ FilterX statements can be one of the following:
 - A comparison, for example, `${HOST} == "my-host";`. This statement is true only for messages where the value of the `${HOST}` field is `my-host`. Such simple comparison statements can be the equivalents of [traditional filter functions]({{< relref "/chapter-routing-filters/filters/reference-filters/_index.md" >}}).
 - A value assignment for a [name-value pair or a local variable](#variable-scope), for example, `${my-field} = "bar";`. The left-side variable automatically gets the type of the right-hand expression. Assigning the false value to a variable (`${my-field} = false;`) is a valid statement that doesn't automatically cause the FilterX block to return as false.
 - Existence of a variable of field. For example, the `${HOST};` expression is true only if the `${HOST}` macro exists and isn't empty.
-- A conditional statement ( `if (expr) { ... } elif (expr) {} else { ... };`) which allows you to evaluate complex decision trees.
+- A conditional statement ( `if (expr) { ... } elif (expr) {} else { ... };`) which allows you to evaluate complex decision trees. Starting with version 4.10, you can also use switch-case expressions.
 - A declaration of a [pipeline variable](#variable-scope), for example, `declare my_pipeline_variable = "something";`.
 - A FilterX action. This can be one of the following:
 
@@ -151,6 +151,7 @@ Variables can have the following types. All of these types have a matching funct
 - `int`
 - [`json`]({{< relref "/filterx/function-reference.md#json" >}}) and [`json_array`]({{< relref "/filterx/function-reference.md#json-array" >}}) for JSON or JSON-like objects.
 - `list`
+- [`metrics_labels`]({{< relref "/filterx/filterx-metrics/_index.md#metrics-labels" >}})
 - `null`
 - `otel_array`
 - `otel_kvlist`
@@ -344,8 +345,10 @@ You can add two lists or two dicts using the {{% xref "/filterx/operator-referen
 
 FilterX has the following operators.
 
-- [Comparison operators]({{< relref "/filterx/filterx-comparing/_index.md" >}}): `==`, `<`, `<=`, `>=`, `>`, `!=`, `===`, `!==`, `eq`, `lt`, `le`, `gt`, `ge`, `ne`.
+- [Assign a value to a variable if the value is non-null (`=??`)]({{< relref "/filterx/operator-reference.md#assign-non-null" >}}).
 - [Boolean operators]({{< relref "/filterx/filterx-boolean/_index.md" >}}): `not`, `or`, `and`.
+- [Comparison operators]({{< relref "/filterx/filterx-comparing/_index.md" >}}): `==`, `<`, `<=`, `>=`, `>`, `!=`, `===`, `!==`, `eq`, `lt`, `le`, `gt`, `ge`, `ne`.
+- [Conditional operators]({{< relref "/filterx/filterx-conditional/_index.md" >}}).
 - [Dot operator (`.`)](#json) to access fields of an object, like JSON.
 - [Indexing operator `[]`](#json) to access fields of an object, like JSON.
 - [Plus (`+`) operator]({{< relref "/filterx/operator-reference.md#plus-operator" >}}) to add values and concatenate strings.
@@ -362,6 +365,7 @@ FilterX has the following built-in functions.
 
 - [`cache_json_file`]({{< relref "/filterx/function-reference.md#cache-json-file" >}}): Loads an external JSON file to lookup contextual information.
 - [`endswith`]({{< relref "/filterx/filterx-string-search/_index.md" >}}): Checks if a string ends with the specified value.
+- [`dedup_metrics_labels`]({{< relref "/filterx/filterx-metrics/_index.md#metrics-labels" >}}): Deduplicate `metrics_labels` objects.
 - [`flatten`]({{< relref "/filterx/function-reference.md#flatten" >}}): Flattens the nested elements of an object.
 - [`format_csv`]({{< relref "/filterx/function-reference.md#format-csv" >}}): Formats a dictionary or a list into a comma-separated string.
 - [`format_json`]({{< relref "/filterx/function-reference.md#format-json" >}}): Dumps a JSON object into a string.
@@ -373,7 +377,10 @@ FilterX has the following built-in functions.
 - [`is_sdata_from_enterprise`]({{< relref "/filterx/filterx-sdata/_index.md" >}}): Checks if the message contains the specified organization ID.
 - [`isset`]({{< relref "/filterx/function-reference.md#isset" >}}): Checks that argument exists and its value is not empty or null.
 - [`istype`]({{< relref "/filterx/function-reference.md#istype" >}}): Checks the type of an object.
+- [`keys`]({{< relref "/filterx/function-reference.md#keys" >}}): Returns the top-level keys of a dictionary.
 - [`len`]({{< relref "/filterx/function-reference.md#len" >}}): Returns the length of an object.
+- [`metrics_labels`]({{< relref "/filterx/filterx-metrics/_index.md#metrics-labels" >}}): Convert key-values to metric labels directly.
+- [`load_vars`]({{< relref "/filterx/function-reference.md#load-vars" >}}): Load variables from a dictionary.
 - [`lower`]({{< relref "/filterx/function-reference.md#lower" >}}): Converts a string into lowercase characters.
 - [`parse_csv`]({{< relref "/filterx/filterx-parsing/csv/_index.md" >}}): Parses a comma-separated or similar string.
 - [`parse_kv`]({{< relref "/filterx/filterx-parsing/key-value-parser/_index.md" >}}): Parses a string consisting of whitespace or comma-separated `key=value` pairs.
@@ -382,7 +389,9 @@ FilterX has the following built-in functions.
 - [`parse_windows_eventlog_xml`]({{< relref "/filterx/filterx-parsing/windows-eventlog/_index.md" >}}): Parses a Windows Event Log XML object into a JSON object.
 - [`regexp_search`]({{< relref "/filterx/function-reference.md#regexp-search" >}}): Searches a string using regular expressions.
 - [`regexp_subst`]({{< relref "/filterx/function-reference.md#regexp-subst" >}}): Rewrites a string using regular expressions.
+- [`set_fields`]({{< relref "/filterx/function-reference.md#set-fields" >}}): Set multiple fields of a dict with overrides or defaults.
 - [`startswith`]({{< relref "/filterx/filterx-string-search/_index.md" >}}): Checks if a string begins with the specified value.
+- [`strftime`]({{< relref "/filterx/function-reference.md#strftime" >}}): Format datetime values.
 - [`strptime`]({{< relref "/filterx/function-reference.md#strptime" >}}): Converts a string containing a date/time value, using a specified format string.
 - [`unset`]({{< relref "/filterx/function-reference.md#unset" >}}): Deletes a name-value pair, or a field from an object.
 - [`unset_empties`]({{< relref "/filterx/function-reference.md#unset-empties" >}}): Deletes empty fields from an object.
