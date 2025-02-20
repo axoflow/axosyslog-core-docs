@@ -38,10 +38,9 @@ For example:
 Using the `=??` operator is equivalent to the following expression, but using `=??` has better performance.
 
 ```code
-if (isset($PROGRAM)) {
+if (isset($PROGRAM) ?? false) {
     resource.attributes['service.name'] = $PROGRAM;
 };
-```
 
 ## Null coalescing operator
 
