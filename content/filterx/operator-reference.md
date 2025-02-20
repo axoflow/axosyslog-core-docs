@@ -19,6 +19,29 @@ Comparison operators allow you to compare values of macros, variables, and expre
 
 The `not`, `or`, `and` operators allow you to combine any number of comparisons and expressions. For details and examples, see {{% xref "/filterx/filterx-boolean/_index.md" %}}.
 
+## Assign if non-null (=??) operator {#assign-non-null}
+
+Available in {{< product >}} 4.10 and later.
+
+Assigns the right operand to the left operand if the right operand is not null. Note that evaluation errors of the right-hand operand will be suppressed.
+
+```shell
+left-operand =?? right-operand
+```
+
+For example:
+
+```shell
+`resource.attributes['service.name'] =?? $PROGRAM;`
+```
+
+Using the `=??` operator is equivalent to the following expression, but using `=??` has better performance.
+
+```code
+if (isset($PROGRAM) ?? false) {
+    resource.attributes['service.name'] = $PROGRAM;
+};
+
 ## Null coalescing operator
 
 The [null coalescing operator](https://en.wikipedia.org/wiki/Null_coalescing_operator) returns the result of the left operand if it exists and is not null, otherwise it returns the operand on the right.

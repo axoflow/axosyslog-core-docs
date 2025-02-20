@@ -65,6 +65,10 @@ Usually, you use the [strptime](#strptime) FilterX function to create datetime v
 - When casting from a double, the double is the number of seconds elapsed since the UNIX epoch (00:00:00 UTC on 1 January 1970). (The part before the floating points is the seconds, the part after the floating point is the microseconds.)
 - When casting from a string, the string (for example, `1701350398.123000+01:00`) is interpreted as: `<the number of seconds elapsed since the UNIX epoch>.<microseconds>+<timezone relative to UTC (GMT +00:00)>`
 
+## dedup_metrics_labels
+
+Deduplicate `metrics_labels` objects. For details, see {{% xref "/filterx/filterx-metrics/_index.md#metrics-labels" %}}.
+
 ## endswith
 
 Available in {{< product >}} 4.9 and later.
@@ -166,6 +170,8 @@ Returns true if the argument exists and its value is not empty or null.
 
 Usage: `isset(<name of a variable, macro, or name-value pair>)`
 
+If you want to assign a value to a variable if it's not set, use the [`=??` operator]({{< relref "/filterx/operator-reference.md#assign-non-null" >}}).
+
 ## istype
 
 Returns true if the object (first argument) has the specified type (second argument). The type must be a quoted string. (See [List of type names]({{< relref "/filterx/_index.md#variable-types" >}}).)
@@ -220,17 +226,49 @@ Starting with version 4.9, you can use `[]` without the `json_array()` keyword a
 js_dict = [];
 ```
 
+## keys
+
+Returns the top-level keys of a dictionary. This provides a simple way to inspect or iterate over the immediate keys without traversing the structure. The `keys()` function:
+
+- Returns a list of dictionary keys as an array.
+- Includes only the top-level keys, ignoring nested structures.
+- The resulting array supports immediate indexing for quick key retrieval.
+- When called on an empty dictionary, `keys` returns an empty dictionary (`[]`).
+
+For example:
+
+```shell
+dict = {"level1-key1":{"level2-key1":{"level3-key1":"value1"}},"level1-key2":{"level2-key2":{"level3-key2":"value2"}}};
+
+# accessing the top level, returns: ["level1-key1", "level1-key2"]
+a = keys(dict);
+
+# accessing nested levels directly, returns: ["level2-key1"]
+b = keys(dict["level1-key1"]);
+
+# directly index the result of keys() to access specific keys is possible, returns: ["level1-key1"])
+c = keys(dict)[0];
+```
+
 ## len
 
 Returns the number of items in an object as an integer: the length (number of characters) of a string, the number of elements in a list, or the number of keys in an object.
 
 Usage: `len(object)`
 
+## load_vars {#load-vars}
+
+Loads variables from a dict. It's the inverse of [`vars()`](#vars). It loads and declares FilterX-level variables. If a key in the dict begins with the `$` character, it's loaded as an {{< product >}} macro. This function can be used to transfer several variables between FilterX blocks on different log paths and messages.
+
 ## lower
 
 Converts all characters of a string lowercase characters.
 
 Usage: `lower(string)`
+
+## metrics_labels
+
+Convert key-values to metric labels directly. For details, see {{% xref "/filterx/filterx-metrics/_index.md#metrics-labels" %}}.
 
 ## otel_array {#otel-array}
 
@@ -296,9 +334,16 @@ For details, see {{< relref "/filterx/filterx-parsing/xml/_index.md" >}}
 
 ## regexp_search {#regexp-search}
 
-Searches a string and returns the matches of a regular expression as a list or a dictionary. If there are no matches, the list or dictionary is empty.
+Searches a string and returns the matches of a regular expression as a list or a dictionary. If there are no matches, the result is empty.
 
-Usage: `regexp_search("<string-to-search>", <regular-expression>)`
+{{% alert title="Note" color="info" %}}
+
+- In version 4.9 and earlier, `regexp_search` returned a `dict` or `list` depending on whether named match groups were used in the expression. Starting with version 4.10, `dict` is returned by default. For details, see [`list_mode`](#regexp-search-flags).
+- Match group zero is now excluded by default unless it's the only match group. To always include the zero match group in the results, use the [`keep_zero=true`](#regexp-search-flags) flag.
+
+{{% /alert %}}
+
+Usage: `regexp_search("<string-to-search>", <regular-expression>, <optional-flags=flag_value>)`
 
 For example:
 
@@ -310,6 +355,15 @@ my-variable = regexp_search(${MESSAGE}, "ERROR");
 You can also use unnamed match groups (`()`) and named match groups (`(?<first>ERROR)(?<second>message)`).
 
 {{< include-headless "chunk/filterx-regexp-notes.md" >}}
+
+### Options {#regexp-search-flags}
+
+You can use the following optional flags in `regexp_search`:
+
+- `keep_zero`: Always return the zero match group. Available in version 4.10 and later. Default value: `false`
+- `list_mode`: Return results as a list. Available in version 4.10 and later. Default value: `false`
+
+     If the result is an existing `dict` or `list` object, the function respects the type of the object, even if `list_mode` is set to true.
 
 ### Unnamed match groups
 
@@ -362,6 +416,12 @@ regexp_subst(${MESSAGE}, "IP", "IP-Address", global=true);
 
 {{< include-headless "chunk/filterx-regexp-notes.md" >}}
 
+Starting with version 4.10 substitution match groups is enabled by default (use the `groups=false` flag to disable that if needed). You can reference match group indexes up to 999.
+
+```shell
+result = regex_subst("baz,foo,bar", /(\w+),(\w+),(\w+)/, "\\2 \\03 \\1")
+```
+
 ### Options
 
 You can use the following flags with the `regexp_subst` function:
@@ -369,6 +429,10 @@ You can use the following flags with the `regexp_subst` function:
 - `global=true`:
 
     Replace every match of the regular expression, not only the first one.
+
+- `groups=false`:
+
+    Disable substituting match groups. Available in version 4.10 and later.
 
 - `ignorecase=true`:
 
@@ -381,6 +445,51 @@ You can use the following flags with the `regexp_subst` function:
 - `newline=true`: {{< include-headless "chunk/regex-flag-newline.md" >}}
 
 - `utf8=true`: {{< include-headless "chunk/regex-flag-utf8.md" >}}
+
+## set_fields {#set-fields}
+
+Takes a dict and sets multiple fields in it with overrides or defaults (`overrides` and `defaults` are optional parameters).
+
+The `overrides` and `defaults` parameters are also dicts, where:
+
+- the key is the field's name
+- the value is either an expression, or a list of expressions.
+
+    If a list is provided, each expression will be evaluated, and the first successful, non-null one is set as the respective field's value. This is similar to chaining [null-coalescing (`??`) operators]({{< relref "/filterx/operator-reference.md#null-coalescing-operator" >}}), but has better performance.
+
+`overrides` are always processed for each field. The `defaults` for a field are only processed isn't set or is empty.
+
+For example:
+
+```shell
+set_fields(
+  labels,
+  overrides={
+    "service.name": [service_name, "axosyslog"],
+    "service.pid": pid,
+  },
+  defaults={
+    "host.name": [host_name, "localhost"],
+  }
+);
+```
+
+The overrides are equivalent with:
+
+```shell
+labels["service.name"] =?? service_name ?? "axosyslog";
+labels["service.pid"] =?? pid;
+```
+
+While the defaults section is equivalent with:
+
+```shell
+if (not isset(labels["host.name"])) {
+  labels["host.name"] =?? host_name ?? "localhost";
+}
+```
+
+But using `set_fields` is more readable and has better performance.
 
 ## startswith
 
@@ -408,6 +517,66 @@ myvariable = string(${LEVEL_NUM});
 ```
 
 Sometimes you have to explicitly cast values to strings, for example, when you want to concatenate them into a message using the `+` operator.
+
+## strftime
+
+Available in {{< product >}} 4.10 and later.
+
+Format datetime values using the specified format string.
+
+Usage: `strftime("format_string", <value-or-variable-to-format>);`
+
+For example:
+
+```shell
+mydate = strptime("2024-04-10T08:09:10Z", "%Y-%m-%dT%H:%M:%S%z");
+
+${MESSAGE} = strftime("%Y-%m-%dT%H-%M-%S %z", my-date);
+```
+
+You can use the following format codes in the format string:
+
+`%a`: The locale's abbreviated weekday name.
+`%A`: The locale's full weekday name.
+`%b`: The locale's abbreviated month name.
+`%B`: The locale's full month name.
+`%c`: The locale's appropriate date and time representation.
+`%C`: The year divided by 100 and truncated to an integer, as a decimal number.
+`%d`: The day of the month as a decimal number [01,31].
+`%D`: Equivalent to `%m / %d / %y`.
+`%e`: The day of the month as a decimal number [1,31]; a single digit is preceded by a space.
+`%f`: Fraction of the second (with or without a leading dot). Width specifies precision, `%6f` means microseconds, `%3f` means milliseconds, `%9f` means nanoseconds. `%f` just means microseconds.
+`%F`: Equivalent to `%+4Y-%m-%d`.
+`%g`: The last 2 digits of the week-based year (see below) as a decimal number [00,99].
+`%G`: The week-based year (see below) as a decimal number (for example, 1977).
+`%h`: Equivalent to %b.
+`%H`: The hour (24-hour clock) as a decimal number [00,23].
+`%I`: The hour (12-hour clock) as a decimal number [01,12].
+`%j`: The day of the year as a decimal number [001,366].
+`%m`: The month as a decimal number [01,12].
+`%M`: The minute as a decimal number [00,59].
+`%n`: A `<newline>`.
+`%p`: The locale's equivalent of either a.m. or p.m.
+`%r`: The time in a.m. and p.m. notation.
+`%R`: The time in 24-hour notation ( %H : %M ).
+`%S`: The second as a decimal number [00,60].
+`%t`: A `<tab>`.
+`%T`: The time (`%H : %M : %S`).
+`%u`: The weekday as a decimal number [1,7], with 1 representing Monday.
+`%U`: The week number of the year as a decimal number [00,53]. The first Sunday of January is the first day of week 1; days in the new year before this are in week 0.
+`%V`: The week number of the year (Monday as the first day of the week) as a decimal number [01,53]. If the week containing 1 January has four or more days in the new year, then it is considered week 1. Otherwise, it is the last week of the previous year, and the next week is week 1. Both January 4th and the first Thursday of January are always in week 1.
+`%w`: The weekday as a decimal number [0,6], with 0 representing Sunday.
+`%W`: The week number of the year as a decimal number [00,53]. The first Monday of January is the first day of week 1; days in the new year before this are in week 0.
+`%x`: The locale's appropriate date representation.
+`%X`: The locale's appropriate time representation.
+`%y`: The last two digits of the year as a decimal number [00,99].
+`%Y`: The year as a decimal number (for example, 1997).
+`%z`: The offset from UTC in the ISO 8601:2000 standard format ( +hhmm or -hhmm ), or by no characters if no timezone is determinable
+`%Z`: Same as `%z` , but with the `:` separator (-hh:mm or +hh:mm)
+
+{{% alert title="Note" color="info" %}}
+`%Z` currently doesn't respect the datetime's timezone, use `%z` instead.
+{{% /alert %}}
 
 ## strptime
 
@@ -451,7 +620,7 @@ Usage: `unset_empties(object, options)`
 
 The `unset_empties()` function has the following options:
 
-- `ignorecase`: Set to `false` to perform case-sensitive matching. Default value: `true`. Available in Available in {{< product >}} 4.9 and later.
+- `ignorecase`: Set to `true` to perform case-insensitive matching. Default value: `false`. Available in {{< product >}} 4.9 and later, default changed to `false` in version 4.10.
 - `recursive`: Enables recursive processing of nested dictionaries. Default value: `true`
 - `replacement`: Replace the target elements with the value of `replacement` instead of removing them. Available in {{< product >}} 4.9 and later.
 - `targets`: A list of elements to remove or replace. Default value: `["", null, [], {}]`. Available in {{< product >}} 4.9 and later.
@@ -474,7 +643,7 @@ Usage: `upper(string)`
 
 ## vars
 
-Returns the variables (including pipeline variables and name-value pairs) defined in the FilterX block as a JSON object.
+Returns the variables (including pipeline variables and name-value pairs) defined in the FilterX block as a JSON object. The names of name-value pairs begins with the `$` character. To exclude name-value pairs, set the `exclude_msg_values=true` flag.
 
 For example:
 
@@ -487,4 +656,4 @@ filterx {
 };
 ```
 
-The value of `${MESSAGE}` will be: `{"logmsg_variable":"foo","pipeline_level_variable":"baz"}`
+The value of `${MESSAGE}` will be: `{"$logmsg_variable":"foo","pipeline_level_variable":"baz"}`

@@ -4,17 +4,13 @@ weight: 1000
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-{{< include-headless "chunk/filterx-experimental-banner.md" >}}
-
 Available in {{< product >}} 4.9 and later.
 
-Updates a labeled metric counter, similarly to the [`metrics-probe()` parser]({{< relref "/chapter-parsers/metrics-probe/_index.md" >}}). For details, see {{% xref "/filterx/filterx-metrics/_index.md" %}}.
-
-You can use `update_metric` to count the processed messages, and create labeled metric counters based on the fields of the processed messages.
+You can use the `update_metric` function to count the processed messages, and create labeled metric counters based on the fields of the processed messages, similarly to the [`metrics-probe()` parser]({{< relref "/chapter-parsers/metrics-probe/_index.md" >}}).
 
 You can configure the name of the counter to update and the labels to add. The name of the counter is an unnamed, mandatory option. Note that the name is automatically prefixed with the `syslogng_` string. For example:
 
-```json
+```shell
 update_metric(
     "my_counter_name",
     labels={
@@ -31,7 +27,7 @@ This results in counters like:
 syslogng_my_counter_name{app="example-app", host="localhost", source="s_local_1"} 3
 ```
 
-## Options
+## update_metric options
 
 ### increment
 
@@ -73,7 +69,7 @@ labels(
 )
 ```
 
-## level
+### level
 
 |          |         |
 | -------- | ------- |
@@ -82,4 +78,14 @@ labels(
 
 Sets the stats level of the generated metrics.
 
-> Note: Drivers configured with `internal(yes)` register their metrics on level 3. That way if you are creating an SCL, you can disable the built-in metrics of the driver, and create metrics manually using `update_metric`.
+{{% alert title="Note" color="info" %}}
+Drivers configured with `internal(yes)` register their metrics on level 3. That way if you are creating an SCL, you can disable the built-in metrics of the driver, and create metrics manually using `update_metric`.
+{{% /alert %}}
+
+## metrics_labels {#metrics-labels}
+
+Available in {{< product >}} 4.10 and later.
+
+`metrics_labels` is a dict-like data type to store metric labels directly. You can use the `metrics_labels` function to [convert key-values to metric labels directly](https://github.com/axoflow/axosyslog/pull/365). This is useful when you have multiple `update_metric()` function calls, because it avoids re-rendering the labels, greatly improves performance.
+
+The stored labels are sorted alphabetically, but note that key collisions are not detected. You can use the `dedup_metrics_labels()` function to deduplicate labels. However, this takes CPU time, it's better to avoid inserting keys multiple times.
