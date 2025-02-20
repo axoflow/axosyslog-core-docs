@@ -345,7 +345,7 @@ You can add two lists or two dicts using the {{% xref "/filterx/operator-referen
 
 FilterX has the following operators.
 
-- [Assign a value to a variable if it's not set (`=??`)]({{< relref "/filterx/operator-reference.md#assign-non-null" >}}).
+- [Assign a value to a variable if the value is non-null (`=??`)]({{< relref "/filterx/operator-reference.md#assign-non-null" >}}).
 - [Boolean operators]({{< relref "/filterx/filterx-boolean/_index.md" >}}): `not`, `or`, `and`.
 - [Comparison operators]({{< relref "/filterx/filterx-comparing/_index.md" >}}): `==`, `<`, `<=`, `>=`, `>`, `!=`, `===`, `!==`, `eq`, `lt`, `le`, `gt`, `ge`, `ne`.
 - [Conditional operators]({{< relref "/filterx/filterx-conditional/_index.md" >}}).
