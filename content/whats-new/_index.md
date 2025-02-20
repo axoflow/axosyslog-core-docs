@@ -6,6 +6,20 @@ weight: 10
 
 This page is a changelog that collects the major changes and additions to this documentation. (If you want to know the details about why we have separate documentation for AxoSyslog and how it relates to the `syslog-ng` documentation, read our [syslog-ng documentation and similarities with AxoSyslog Core](https://axoflow.com/axosyslog-core-documentation-syslog-ng/) blog post.)
 
+## Version 4.10 (2025-02-13)
+
+- New {{% xref "/chapter-destinations/google-pubsub-grpc/_index.md" %}} destination to send logs and data to Google Pub/Sub via gRPC.
+- New destination to send logs and data to [Azure Monitor](https://learn.microsoft.com/en-us/azure/azure-monitor/overview) and [Microsoft Sentinel](https://azure.microsoft.com/en-us/products/microsoft-sentinel). (Documentation for these destinations is work in progress.)
+- New [`$SOURCEPORT`]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-sourceport" >}}) macro which expands to the source port of the peer.
+- The `syslog()` source driver can now auto-detect RFC6587-style octet-count based framing.
+- Lots of {{% xref "/filterx/_index.md" %}} updates, including a new [`=??` operator]({{< relref "/filterx/operator-reference/_index.md#assign-non-null" >}}) and several functions:
+
+    - {{% xref "/filterx/function-reference/_index.md#keys" %}}
+    - {{% xref "/filterx/function-reference/_index.md#load-vars" %}}
+    - {{% xref "/filterx/function-reference/_index.md#metrics_labels" %}}
+    - {{% xref "/filterx/function-reference/_index.md#set-fields" %}}
+    - {{% xref "/filterx/function-reference/_index.md#strftime" %}}
+
 ## Version 4.9 (2024-11-11)
 
 - {{% xref "/chapter-destinations/clickhouse/_index.md" %}} destination.
