@@ -1,13 +1,13 @@
 ---
-title: Send data to Azure Monitor
-linktitle: "azure-monitor-custom: Send messages to Azure Monitor"
+title: Send data to Azure Monitor and Sentinel
+linktitle: "azure-monitor-custom: Azure Monitor and Sentinel"
 weight:  150
 driver: "azure-monitor-custom()"
-short_description: "Send messages to Azure Monitor"
+short_description: "Send messages to Azure Monitor and Sentinel"
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-Starting with version 4.10.0, {{% param "product_name" %}} can send data to [Azure Monitor](https://learn.microsoft.com/en-us/azure/azure-monitor/overview) using its [HTTP REST Logs ingestion API](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/logs-ingestion-api-overview#rest-api-call).
+Starting with version 4.10.0, {{% param "product_name" %}} can send data to [Azure Monitor](https://learn.microsoft.com/en-us/azure/azure-monitor/overview) using its [HTTP REST Logs ingestion API](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/logs-ingestion-api-overview#rest-api-call). Data sent to Azure Monitor's Log Analytics is also available from [Microsoft Sentinel](https://learn.microsoft.com/en-us/azure/sentinel/data-transformation).
 
 ## Prerequisites
 
