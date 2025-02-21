@@ -48,14 +48,13 @@ The following options are specific to the `azure-monitor-custom()` destination. 
 
 > Note: The `azure-monitor-custom()` destination automatically configures some of these `http()` destination options as required by the Azure Monitor Logs ingestion API.
 
-<!-- FIXME xinclude the http options instead of just linking them -->
+<!-- FIXME xinclude the http options -->
 
 ## auth()
 
 Options for OAUTH2 authentication for Azure.
 
 {{< include-headless "chunk/option-azure-cloud-auth.md" >}}
-<!-- FIXME options in the file -->
 
 ## dce-uri()
 
