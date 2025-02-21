@@ -13,7 +13,10 @@ Authenticate to a service account using Service Account Key-Based Authentication
 | Default:         |  |
 
 {{% alert title="Note" color="info" %}}
-When using the `google-pubsub()` destination, the `audience()` option is set to `https://pubsub.googleapis.com/google.pubsub.v1.Publisher`. Don't change it.
+
+- When using the `google-pubsub()` destination, the `audience()` option is set to `https://pubsub.googleapis.com/google.pubsub.v1.Publisher`. Don't change it.
+- When using the `google-pubsub()-grpc` destination, you don't need to set the `audience()` option because the underlying gRPC API recognizes it automatically.
+
 {{% /alert %}}
 
 ##### key()
