@@ -1,9 +1,9 @@
 ---
-title: Send data to Google Pub/Sub
-linktitle: "google-pubsub: Send messages to Google Pub/Sub"
+title: Google Pub/Sub HTTP TEST API
+linktitle: "google-pubsub: Google Pub/Sub HTTP"
 weight:  1250
 driver: "google-pubsub()"
-short_description: "Send messages to Google Pub/Sub"
+short_description: "Send messages to Google Pub/Sub via HTTP"
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
@@ -11,13 +11,9 @@ Starting with version 4.5.0, {{% param "product_name" %}} can send data to [Goog
 
 ## Prerequisites
 
-- A [Google Pub/Sub subscription](https://cloud.google.com/pubsub?hl=en).
-- An [IAM service account](https://cloud.google.com/iam/docs/service-account-overview) that {{% param "product_name" %}} uses for authentication.
-- A Google Cloud project that has the Pub/Sub API enabled.
+{{< include-headless "chunk/google-pubsub-prerequisites.md" >}}
 
-For details, see the [Google Pub/Sub tutorial](https://cloud.google.com/pubsub/docs/building-pubsub-messaging-system#before_you_begin).
-
-<!-- FIXME Do we need more details about how to set up the Google side? -->
+## Configuration
 
 To configure {{% param "product_name" %}}, you'll need the name of the project and the topic where you want to send your data.
 
@@ -97,7 +93,7 @@ auth(
 | Type:    | string |
 | Default: | - |
 
-*Description:* The ID of the Google Cloud project where {{% param "product_name" %}} sends the data. The  Pub/Sub API must be enabled for the project.
+*Description:* The ID of the Google Cloud project where {{% param "product_name" %}} sends the data. The Pub/Sub API must be enabled for the project.
 
 ## topic()
 
@@ -108,3 +104,11 @@ auth(
 
 *Description:* The name of the Google Pub/Sub topic where {{% param "product_name" %}} sends the data.
 
+## service_endpoint()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | string |
+| Default: | `https://pubsub.googleapis.com` |
+
+{{< include-headless "chunk/google-pubsub-service-endpoint-description.md" >}}

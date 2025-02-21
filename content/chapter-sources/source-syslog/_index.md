@@ -14,6 +14,8 @@ The `syslog()` driver can also receive BSD-syslog-formatted messages (described 
 
 In {{% param "product.abbrev" %}} versions 3.1 and earlier, the `syslog()` driver could handle only messages in the IETF-syslog (RFC 5424-26) format.
 
+Starting with version 4.10, {{% param "product.abbrev" %}} can automatically detect RFC6587-style octet-count based framing. For details, see the [transport option]({{< relref "/chapter-sources/source-syslog/reference-source-syslog-chapter/_index.md#transport" >}}).
+
 {{% /alert %}}
 
 For the list of available optional parameters, see {{% xref "/chapter-sources/source-syslog/reference-source-syslog-chapter/_index.md" %}}.

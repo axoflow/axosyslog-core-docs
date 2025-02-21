@@ -360,9 +360,13 @@ If you need a sequence number for every log message that {{% param "product.abbr
 
 ## SOURCEIP {#macro-sourceip}
 
-*Description:* IP address of the host that sent the message to `syslog-ng`. (That is, the IP address of the host in the `${FULLHOST_FROM}` macro.) Please note that when a message traverses several relays, this macro contains the IP of the last relay.
+*Description:* IP address of the host that sent the message to {{% param "product.abbrev" %}}. (That is, the IP address of the host in the `${FULLHOST_FROM}` macro.) Please note that when a message traverses several relays, this macro contains the IP of the last relay.
 
+## SOURCEPORT {#macro-sourceport}
 
+Available in {{% param "product.abbrev" %}} 4.10 and later.
+
+*Description:* The source port of the host that sent the message to {{% param "product.abbrev" %}}.
 
 ## STAMP, R_STAMP, S_STAMP {#macro-stamp}
 

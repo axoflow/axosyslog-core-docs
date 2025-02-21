@@ -9,4 +9,6 @@
 | Type:    | boolean (`yes` or `no`)                                                         |
 | Default: | Use the global `check-hostname()` option, which defaults to `no`. |
 
-Checks that the hostname contains valid characters. Uses the value of the [global option]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-check-hostname" >}}) if not specified.
+*Description:* {{< include-headless "chunk/option-source-check-hostname-description.md" >}}
+
+Uses the value of the [global option]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-check-hostname" >}}) if not specified.
