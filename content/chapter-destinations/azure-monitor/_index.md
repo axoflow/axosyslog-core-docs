@@ -1,8 +1,8 @@
 ---
 title: Send data to Azure Monitor and Sentinel
-linktitle: "azure-monitor-custom: Azure Monitor and Sentinel"
+linktitle: "azure-monitor-builtin, azure-monitor-custom: Azure Monitor and Sentinel"
 weight:  150
-driver: "azure-monitor-custom()"
+driver: "azure-monitor-builtin(), azure-monitor-custom()"
 short_description: "Send messages to Azure Monitor and Sentinel"
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
@@ -16,29 +16,43 @@ Starting with version 4.10.0, {{% param "product_name" %}} can send data to [Azu
 - A [Data Collection Endpoint (DCE)](https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/data-collection-endpoint-overview?tabs=portal)
 - A [Data Collection Rule (DCR)](https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/data-collection-rule-create-edit?tabs=portal)
 - A [Log Analytics Workspace in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-analytics-workspace-overview).
-- A [custom table](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/create-custom-table?tabs=azure-portal-1%2Cazure-portal-2%2Cazure-portal-3#create-a-custom-table) in the Log Analytics Workspace.
+- To send logs to a [custom table](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/create-custom-table?tabs=azure-portal-1%2Cazure-portal-2%2Cazure-portal-3#create-a-custom-table) with the `azure-monitor-custom()` destination, create the table in the Log Analytics Workspace.
 
 For details, see the [Tutorial: Send data to Azure Monitor Logs with Logs ingestion API](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-portal).
 
 ## Configuration
 
-To configure {{% param "product_name" %}}, you'll need the name of the project and the topic where you want to send your data.
+To configure {{% param "product_name" %}}, you'll need the name of the table and  and the topic where you want to send your data.
 
-Example configuration:
+- The `azure-monitor-builtin()` driver sends data to the built-in tables of Azure Monitor, for example, the [syslog table]( https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/syslog).
+    <!-- FIXME how can you configure what to send to the different columns?  -->
 
-```sh
-destination d_azure {
-  azure-monitor-custom(
-    table-name("my-table")
-    dcr-id("my-dcr-id")
-    dce-uri("https://dce-uri.ingest.monitor.azure.com")
+    ```sh
+    destination d_azure_builtin {
+      azure-monitor-builtin(
+        table_name("syslog")
+        dcr-id("my-dcr-id")
+        dce-uri("https://dce-uri.ingest.monitor.azure.com")
+        template("$MESSAGE")
+        auth(tenant-id("my-tenant-id") app-id("my-app-id") app-secret("my-app-secret"))
+      );
+    };
+    ```
 
-    auth(tenant-id("my-tenant-id") app-id("my-app-id") app-secret("my-app-secret"))
-  );
-};
-```
+- To send data into custom tables, use the `azure-monitor-custom()` driver. For example:
 
-{{< include-headless "chunk/destination-note-azure-monitor-table-name.md" >}}
+    ```sh
+    destination d_azure_custom {
+      azure-monitor-custom(
+        table-name("my-table")
+        dcr-id("my-dcr-id")
+        dce-uri("https://dce-uri.ingest.monitor.azure.com")
+        auth(tenant-id("my-tenant-id") app-id("my-app-id") app-secret("my-app-secret"))
+      );
+    };
+    ```
+
+    {{< include-headless "chunk/destination-note-azure-monitor-table-name.md" >}}
 
 This driver is actually a reusable configuration snippet configured to send log messages using the `http()` driver using a template. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/main/scl/azure/azure-monitor.conf).
 
