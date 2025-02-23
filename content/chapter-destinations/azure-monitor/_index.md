@@ -25,7 +25,7 @@ For details, see the [Tutorial: Send data to Azure Monitor Logs with Logs ingest
 To configure {{% param "product_name" %}}, you'll need the name of the table and  and the topic where you want to send your data.
 
 - The `azure-monitor-builtin()` driver sends data to the built-in tables of Azure Monitor, for example, the [syslog table]( https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/syslog).
-    <!-- FIXME how can you configure what to send to the different columns?  -->
+    <!-- FIXME how can you configure what to send to the different columns? What format should the template have? Do we have a template/mapping for any builtin table like syslog? -->
 
     ```sh
     destination d_azure_builtin {
