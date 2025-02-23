@@ -4,16 +4,15 @@ linktitle: RHEL/Fedora
 weight: 250
 ---
 
-You can install {{< product >}} 4.8 and newer on your RPM-based system using Axoflow's RPM packages. {{< product >}} is a drop in replacement for the `syslog-ng` RPM package, all the {{< product >}} binaries and configuration files are stored at the same place on your system.
+You can install {{< product >}} 4.8 and newer on your RPM-based system from Axoflow's RPM repository. {{< product >}} is a drop in replacement for the `syslog-ng` RPM package, all the {{< product >}} binaries and configuration files are stored at the same place on your system.
 
 The following x86-64 distributions are supported:
 
 - Red Hat Enterprise Linux (RHEL) 9 / AlmaLinux 9
 - Red Hat Enterprise Linux (RHEL) 8 / AlmaLinux 8
+- Fedora 41
 - Fedora 40
 - Fedora 39
-
-We are working on providing an RPM repository for the upcoming releases.
 
 (The packages for AlmaLinux probably work for Rocky Linux as well, but we haven't tested it.)
 
@@ -41,13 +40,30 @@ To install {{< product >}} on RedHat Enterprise Linux 9 or AlmaLinux 9, complete
         sudo dnf config-manager --set-enabled crb
         ```
 
-1. Download and extract the release tarball for your distribution, for example, on Almalinux 9:
+1. Add the {{< product >}} repository:
 
     ```shell
-    wget https://github.com/axoflow/axosyslog/releases/download/axosyslog-{{% param "product.techversion" %}}/rpm-almalinux-9.tar.gz
-    tar -xvzf rpm-almalinux-9.tar.gz
-    cd rpm-almalinux-9/
+    sudo tee /etc/yum.repos.d/axosyslog.repo <<< '[axosyslog]
+    name=AxoSyslog
+    baseurl=https://pkg.axoflow.io/rpm/stable/fedora-$releasever/$basearch
+    enabled=1
+    gpgcheck=1
+    repo_gpgcheck=1
+    gpgkey=https://pkg.axoflow.io/axoflow-code-signing-pub.asc' > /dev/null
     ```
+
+1. Update the packages list.
+
+    ```shell
+    sudo yum update -y
+    ```
+
+    <!-- FIXME 
+    AlmaLinux 9 - CRB                               2.3 MB/s | 2.9 MB     00:01    
+    AxoSyslog                                        21 kB/s |  27 kB     00:01    
+    Errors during downloading metadata for repository 'axosyslog':
+    - Status code: 404 for https://pkg.axoflow.io/rpm/stable/fedora-9/aarch64/repodata/repomd.xml (IP: 104.21.48.1)
+    Error: Failed to download metadata for repo 'axosyslog': Cannot download repomd.xml: Cannot download repodata/repomd.xml: All mirrors were tried -->
 
 1. Install {{< product >}}:
 
@@ -55,7 +71,7 @@ To install {{< product >}} on RedHat Enterprise Linux 9 or AlmaLinux 9, complete
     sudo yum install ./axosyslog-*
     ```
 
-    Install other packages for the modules you want to use as needed. For example, to use the gRPC-based destinations (like [loki()](https://axoflow.com/docs/axosyslog-core/chapter-destinations/destination-loki/) or [opentelemetry()](https://axoflow.com/docs/axosyslog-core/chapter-destinations/opentelemetry/)), install the `axosyslog-grpc-*` package. For HTTP-based destinations like [elasticsearch-http()](https://axoflow.com/docs/axosyslog-core/chapter-destinations/configuring-destinations-elasticsearch-http/) or [sumologic-http()](https://axoflow.com/docs/axosyslog-core/chapter-destinations/destination-sumologic-intro/), you need the `axosyslog-http-*` package.
+    Install other packages for the modules you want to use as needed. For example, to use the gRPC-based destinations (like [loki()]({{< relref "/chapter-destinations/destination-loki/_index.md" >}}) or [opentelemetry()]({{< relref "/chapter-destinations/opentelemetry/_index.md" >}})), install the `axosyslog-grpc-*` package. For HTTP-based destinations like [elasticsearch-http()]({{< relref "/chapter-destinations/configuring-destinations-elasticsearch-http/_index.md" >}}) or [sumologic-http()]({{< relref "/chapter-destinations/destination-sumologic-intro/_index.md" >}}), you need the `axosyslog-http-*` package.
 
 1. Enable `syslog-ng`.
 
@@ -70,7 +86,11 @@ To install {{< product >}} on RedHat Enterprise Linux 9 or AlmaLinux 9, complete
     sudo yum remove rsyslog.x86_64
     ```
 
+{{< include-headless "chunk/install-help.md" >}}
+
 ## Install AxoSyslog on Fedora
+
+<!-- FIXME check if we can merge this to the above procedure, or update to use the repo -->
 
 1. Download the release tarball for your distribution, for example, on Fedora 40:
 
