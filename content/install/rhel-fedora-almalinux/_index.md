@@ -40,6 +40,12 @@ To install {{< product >}} on RedHat Enterprise Linux 9 or AlmaLinux 9, complete
         sudo dnf config-manager --set-enabled crb
         ```
 
+    - Fedora:
+
+        ```shell
+        sudo dnf install epel-release
+        ```
+
 1. Add the {{< product >}} repository of your distribution:
 
     <!-- Codeblocks are un-indented on purpose -->
@@ -125,13 +131,21 @@ gpgkey=https://pkg.axoflow.io/axoflow-code-signing-pub.asc' > /dev/null
     Complete!
     ```
 
-1. Install {{< product >}}:
+1. Install {{< product >}}.
 
-    ```shell
-    sudo yum install ./axosyslog-*
-    ```
+    - To install {{< product >}} with every available module, run:
 
-    Install other packages for the modules you want to use as needed. For example, to use the gRPC-based destinations (like [loki()]({{< relref "/chapter-destinations/destination-loki/_index.md" >}}) or [opentelemetry()]({{< relref "/chapter-destinations/opentelemetry/_index.md" >}})), install the `axosyslog-grpc-*` package. For HTTP-based destinations like [elasticsearch-http()]({{< relref "/chapter-destinations/configuring-destinations-elasticsearch-http/_index.md" >}}) or [sumologic-http()]({{< relref "/chapter-destinations/destination-sumologic-intro/_index.md" >}}), you need the `axosyslog-http-*` package.
+        ```shell
+        sudo yum install axosyslog-*
+        ```
+
+    - To install only the base package, run:
+
+        ```shell
+        sudo yum install axosyslog
+        ```
+
+        Then install other packages for the modules you want to use as needed. For example, to use the gRPC-based destinations (like [loki()]({{< relref "/chapter-destinations/destination-loki/_index.md" >}}) or [opentelemetry()]({{< relref "/chapter-destinations/opentelemetry/_index.md" >}})), install the `axosyslog-grpc-*` package. For HTTP-based destinations like [elasticsearch-http()]({{< relref "/chapter-destinations/configuring-destinations-elasticsearch-http/_index.md" >}}) or [sumologic-http()]({{< relref "/chapter-destinations/destination-sumologic-intro/_index.md" >}}), you need the `axosyslog-http-*` package.
 
 1. Enable `syslog-ng`.
 
