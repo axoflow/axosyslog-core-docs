@@ -1,6 +1,8 @@
 ---
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
+
+<!-- headings are intentionally level 4, don't change it -->
 #### service-account()
 
 Authenticate to a service account using Service Account Key-Based Authentication. This method works both inside and outside GCP It uses a [service account key](https://cloud.google.com/iam/docs/keys-create-delete) generated and downloaded through the GCP IAM & Admin console. The long-term service account key is used to generate short-term tokens for authentication (also called [self-signed JWT](https://google.aip.dev/auth/4111)).

@@ -78,7 +78,25 @@ For details on how this option influences HTTP batch mode, see [http: Posting me
 
 ## cloud-auth()
 
-Authenticate to cloud-based services, for example, GCP, using service accounts.
+Authenticate to cloud-based services, for example, Azure and GCP, using service accounts.
+
+### azure()
+
+Azure authentication currently supports authenticating to Azure Monitor, for example:
+
+```shell
+cloud-auth(
+  azure(
+    monitor(
+      tenant-id("my-tenant-id")
+      app-id("my-app-id")
+      app-secret("my-app-secret")
+    )
+  )
+)
+```
+
+{{< include-headless "chunk/option-azure-cloud-auth.md" >}}
 
 ### gcp()
 
