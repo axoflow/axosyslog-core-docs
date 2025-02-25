@@ -24,7 +24,7 @@ For details, see the [Tutorial: Send data to Azure Monitor Logs with Logs ingest
 
 To configure {{% param "product_name" %}}, you'll need the name of the table and and the topic where you want to send your data.
 
-The body of the message (`${MESSAGE}`) must be in JSON format. The keys in the JSON array must have the same names as the columns of the table (you can use [`format-json`]({{< relref "content/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md#template-function-format-json" >}}) or ['FilterX`]({{< relref "/filterx/_index.md" >}})). If a field is empty, or Azure cannot parse it, it will be blank.
+The body of the message (`${MESSAGE}`) must be in JSON format. The keys in the JSON array must have the same names as the columns of the table (you can use [`format-json`]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md#template-function-format-json" >}}) or ['FilterX`]({{< relref "/filterx/_index.md" >}})). If a field is empty, or Azure cannot parse it, it will be blank.
 
 - The `azure-monitor-builtin()` driver sends data to the built-in tables of Azure Monitor, for example, the [syslog table](https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/syslog).
 
