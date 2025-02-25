@@ -1,5 +1,6 @@
 ---
 ---
+<!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 Note the following points:
 
 - Regular expressions are case sensitive by default. For case insensitive matches, add `(?i)` to the beginning of your pattern.

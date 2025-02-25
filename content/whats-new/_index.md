@@ -20,6 +20,8 @@ This page is a changelog that collects the major changes and additions to this d
     - {{% xref "/filterx/function-reference/_index.md#set-fields" %}}
     - {{% xref "/filterx/function-reference/_index.md#strftime" %}}
 
+- [Switch-case expressions in FilterX]({{< relref "/filterx/filterx-conditional/_index.md" >}}) to better organize the code instead of using multiple `if`, `elif`, `else` blocks. Using switch-case expressions also improves performance.
+
 ## Version 4.9 (2024-11-11)
 
 - {{% xref "/chapter-destinations/clickhouse/_index.md" %}} destination.

@@ -1,3 +1,6 @@
+---
+---
+<!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 The plus operator (`+`) adds two arguments, if possible. (For example, you can't add two datetime values.)
 
 - You can use it to add two numbers (two integers, two double values). If you add a double to an integer, the result is a double.
