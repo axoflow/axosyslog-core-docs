@@ -18,10 +18,11 @@ This chapter explains how to install {{% param "product.name" %}} on various pla
 
 - {{% xref "/install/podman-systemd/_index.md" %}}
 - {{% xref "/install/debian-ubuntu/_index.md" %}}
+- {{% xref "/install/rhel-fedora-almalinux/_index.md" %}}
 - {{% xref "/install/docker/_index.md" %}}
 - {{% xref "/install/podman/_index.md" %}}
 - {{% xref "/install/helm/_index.md" %}}
 
-## Other installation methods
+## Upgrade `syslog-ng` to AxoSyslog
 
-{{< include-headless "chunk/rpm-deb-packages.md" >}}
+If you’re already using `syslog-ng`, you can upgrade your existing `syslog-ng` deployments to {{< product >}} in a matter of minutes. For details, see {{% xref "/install/upgrade-syslog-ng/_index.md" %}}.
