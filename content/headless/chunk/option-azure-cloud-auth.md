@@ -22,6 +22,15 @@ To authenticate, you need to register a [Microsoft Entra application](https://le
 
 *Description:* The Client secret of the Microsoft Entra application.
 
+#### scope()
+
+|                  |                  |
+| ---------------- | ---------------- |
+| Type: | string |
+| Default:         | `https://monitor.azure.com//.default` |
+
+*Description:* Scope for the authentication token.
+
 #### tenant-id()
 
 |                  |                  |
