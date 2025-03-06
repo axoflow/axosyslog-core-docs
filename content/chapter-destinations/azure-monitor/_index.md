@@ -78,7 +78,7 @@ Options for OAUTH2 authentication for Azure.
 | Type:    | string |
 | Default: | - |
 
-*Description:* The URI of your Data Collection Endpoint (DCE).
+*Description:* The URI of your [Data Collection Endpoint (DCE)](https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/data-collection-endpoint-overview?tabs=portal).
 
 ## dcr-id()
 
@@ -87,7 +87,7 @@ Options for OAUTH2 authentication for Azure.
 | Type:    | string |
 | Default: | - |
 
-*Description:* The ID of the Azure Monitor Data Collection Rule (DCR) where {{% param "product_name" %}} sends the data.
+*Description:* The ID of the Azure Monitor [Data Collection Rule (DCR)](https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/data-collection-rule-create-edit?tabs=portal) where {{% param "product_name" %}} sends the data.
 
 ## table-name()
 
