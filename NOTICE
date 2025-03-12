@@ -1,0 +1,20 @@
+AxoSyslog documentation
+Copyright 2023-2025 Axoflow Inc
+
+NOTICE file corresponding to the section 4d of The Apache License. You can use, copy, modify, and/or distribute the AxoSyslog documentation in compliance with section 4d of The Apache License.
+
+The AxoSyslog documentation is originally based on the [syslog-ng Open Source Edition documentation](https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2) for version 3.38 and is used in compliance with the terms of The syslog-ng Open Source Edition Documentation License. We are continuously working on it to keep it up-to-date with the latest released version of [AxoSyslog](https://github.com/axoflow/axosyslog/).
+
+New files and modifications compared to the base [syslog-ng Open Source Edition documentation](https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2) are under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks.
+
+- All new source files include the following attribution:
+
+    `<!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->`
+
+- Modified files include the following attribution:
+
+    `<!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->`
+
+Syslog-ng is a trademark of One Identity.
+
+The Axoflow and AxoSyslog trademarks and logos are trademarks of Axoflow Inc. All other trademarks are property of their respective owners.
