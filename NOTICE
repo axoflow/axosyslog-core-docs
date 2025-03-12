@@ -1,7 +1,7 @@
 AxoSyslog documentation
 Copyright 2023-2025 Axoflow Inc
 
-NOTICE file corresponding to the section 4d of The Apache License. You can use, copy, modify, and/or distribute the AxoSyslog documentation in compliance with section 4d of The Apache License.
+NOTICE file corresponding to the section 4d of The Apache License. You can use, copy, modify, and/or distribute the AxoSyslog documentation in compliance with the terms described by the Apache License.
 
 The AxoSyslog documentation is originally based on the [syslog-ng Open Source Edition documentation](https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2) for version 3.38 and is used in compliance with the terms of The syslog-ng Open Source Edition Documentation License. We are continuously working on it to keep it up-to-date with the latest released version of [AxoSyslog](https://github.com/axoflow/axosyslog/).
 
