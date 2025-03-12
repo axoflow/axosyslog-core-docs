@@ -98,4 +98,7 @@ Options for OAUTH2 authentication for Azure.
 
 *Description:* A custom table in the Log Analytics Workspace where {{% param "product_name" %}} sends the data.
 
+<!-- FIXME case sensitive? -->
 {{< include-headless "chunk/destination-note-azure-monitor-table-name.md" >}}
+
+<!-- FIXME template -->
