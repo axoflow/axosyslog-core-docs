@@ -6,7 +6,7 @@ weight: 2500
 
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-{{< include-headless "chunk/filterx-experimental-banner.md" >}}
+
 
 This page describes the functions you can use in [FilterX blocks]({{< relref "/filterx/_index.md" >}}).
 
