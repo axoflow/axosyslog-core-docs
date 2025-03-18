@@ -5,7 +5,7 @@ weight:  900
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-{{< include-headless "chunk/filterx-experimental-banner.md" >}}
+
 
 {{< product >}} allows you to process, manipulate, and create OpenTelemetry log messages using FilterX. For example, you can:
 

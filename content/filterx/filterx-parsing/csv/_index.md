@@ -5,7 +5,7 @@ weight: 400
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-{{< include-headless "chunk/filterx-experimental-banner.md" >}}
+
 
 The `parse_csv` FilterX function can separate parts of log messages (that is, the contents of the `${MESSAGE}` macro) along delimiter characters or strings into lists, or key-value pairs within dictionaries, using the csv (comma-separated-values) parser.
 
