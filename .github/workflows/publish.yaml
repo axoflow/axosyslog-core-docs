@@ -71,6 +71,7 @@ jobs:
           DESTINATION_DIR: 'docs/axosyslog-core'
         run: |
           aws s3 sync $SOURCE_DIR s3://$AWS_S3_BUCKET/$DESTINATION_DIR --endpoint-url $AWS_S3_ENDPOINT --region $AWS_REGION --checksum-algorithm CRC32 --delete
+
       - name: Deploy with rclone
         uses: AnimMouse/setup-rclone@v1
         with:
