@@ -71,15 +71,3 @@ jobs:
           DESTINATION_DIR: 'docs/axosyslog-core'
         run: |
           aws s3 sync $SOURCE_DIR s3://$AWS_S3_BUCKET/$DESTINATION_DIR --endpoint-url $AWS_S3_ENDPOINT --region $AWS_REGION --checksum-algorithm CRC32 --delete
-
-      - name: Deploy with rclone
-        uses: AnimMouse/setup-rclone@v1
-        with:
-          rclone_config: ${{ secrets.RCLONE_CONFIG }}
-        
-        # The sitemap.xml might not change as it doesn't consider the modification date alone, and in that case the sitemap.xml size will not change, and rclone will not upload it.
-        # So we force it to upload it every time.
-      - name: Deploy with rclone
-        run: |
-          rclone copy --stats-log-level NOTICE --stats-one-line public/ axodocs:/axosyslog-core
-          rclone copyto --ignore-times --stats-one-line public/sitemap.xml axodocs:/axosyslog-core/sitemap.xml
