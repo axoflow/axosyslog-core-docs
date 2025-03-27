@@ -4,7 +4,7 @@ weight: 10
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-This page is a changelog that collects the major changes and additions to this documentation. (If you want to know the details about why we have separate documentation for AxoSyslog and how it relates to the `syslog-ng` documentation, read our [syslog-ng documentation and similarities with AxoSyslog Core](https://axoflow.com/axosyslog-core-documentation-syslog-ng/) blog post.)
+This page is a changelog that collects the major changes and additions to this documentation. (If you want to know the details about why we have separate documentation for AxoSyslog and how it relates to the `syslog-ng` documentation, read our [syslog-ng documentation and similarities with AxoSyslog Core](https://axoflow.com/blog/axosyslog-core-documentation-syslog-ng) blog post.)
 
 ## Version 4.10 (2025-02-13)
 
@@ -60,7 +60,7 @@ This page is a changelog that collects the major changes and additions to this d
 - {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-mqtt-topic" %}} macro
 - {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-transport" %}} macro updates
 
-For details, see the [release announcement blog post](https://axoflow.com/axosyslog-release-4-7/).
+For details, see the [release announcement blog post](https://axoflow.com/blog/axosyslog-release-4-7).
 
 ## Version 4.6 (2024-02-01)
 
@@ -69,7 +69,7 @@ For details, see the [release announcement blog post](https://axoflow.com/axosys
 - {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md#template-function-tag" %}} template function
 - `batch-bytes()`, `compression()` and `workers()` options for the [syslog-ng-otlp()]({{< relref "/chapter-destinations/destination-syslog-ng-otlp/_index.md#compression" >}}) and [opentelemetry()]({{< relref "/chapter-destinations/opentelemetry/_index.md#compression" >}}) destinations
 
-For details, see the [release announcement blog post](https://axoflow.com/axosyslog-release-4-6/).
+For details, see the [release announcement blog post](https://axoflow.com/blog/axosyslog-release-4-6).
 
 ### New sources
 

@@ -184,7 +184,7 @@ contact = "[contact us](https://axoflow.com/contact/)"
 ##############
 # Menu
 ##############
-# Set in menus.en.toml in the theme
+# Set in config.toml in the theme
 
 ###############################################################################
 # Misc customizations
