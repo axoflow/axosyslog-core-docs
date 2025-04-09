@@ -1,5 +1,5 @@
 ---
-title: "Setting match variables with the set-matches() rewrite rule"
+title: "Set match variables"
 weight:  1100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
@@ -18,34 +18,30 @@ To reset match variables to be empty, use the `unset-matches()` rewrite rule.
 
 {{% /alert %}}
 
-
 ## Declaration
 
 ```shell
-   rewrite <name_of_the_rule> {
-        set-matches("<list-expression or list-based template function>");
-    };
+rewrite <name_of_the_rule> {
+    set-matches("<list-expression or list-based template function>");
+};
 ```
 
-
-
-## Example usage for the set-matches() rewrite function
+## Example for the set-matches() rewrite function
 
 In the following two examples, `$1`, `$2`, and `$3` will be set to `foo`, `bar`, and `baz`, respectively.
 
-`Example using string:`
+Using strings:
 
 ```shell
-   rewrite {
-        set-matches("foo,bar,baz");
-    };
+rewrite {
+    set-matches("foo,bar,baz");
+};
 ```
 
-`Example using a list template function:`
+Using a list template function:
 
 ```shell
-   rewrite {
-        set-matches("$(explode ':' 'foo:bar:baz')");
-    };
+rewrite {
+    set-matches("$(explode ':' 'foo:bar:baz')");
+};
 ```
-

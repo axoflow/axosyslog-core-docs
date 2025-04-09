@@ -1,5 +1,5 @@
 ---
-title: "Setting message fields to specific values"
+title: "Set message fields to specific values"
 weight:  300
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
@@ -16,7 +16,7 @@ You can set the value of available macros, for example, HOST, MESSAGE, PROGRAM, 
 
 Use the following syntax:
 
-## Declaration:
+## Declaration
 
 ```shell
    rewrite <name_of_the_rule> {
@@ -24,7 +24,7 @@ Use the following syntax:
     };
 ```
 
-## Example: Setting message fields to a particular value {#example-rewrite-set}
+## Example: Set message fields to a particular value {#example-rewrite-set}
 
 The following example sets the HOST field of the message to `myhost`.
 
