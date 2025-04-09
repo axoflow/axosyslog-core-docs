@@ -35,18 +35,17 @@ set-facility( "parameter1" );
 
 ## Accepted values
 
-The `set-facility()` rewrite function accepts the following values:
+The `set-facility()` rewrite function accepts the following numeric strings and named values:
 
-- numeric strings: `[0-7]`
-- named values: `emerg`, `emergency`, `panic`, `alert`, `crit`, `critical`, `err`, `error`, `warning`, `warn`, `notice`, `info`, `informational`, `debug`
+{{< include-headless "chunk/table-facility-codes.md" >}}
 
 ## Example usage for the set-facility() rewrite function
 
-The following example can be used in production for the `set-facility()` rewrite function.
+The following two `set-facility()` examples are equivalent:
 
 ```shell
 rewrite {
-  set-facility("info");
-  set-facility("6");
-  set-facility("${.json.severity}");};
+  set-facility("security");
+  set-facility("13");
+  };
 ```
