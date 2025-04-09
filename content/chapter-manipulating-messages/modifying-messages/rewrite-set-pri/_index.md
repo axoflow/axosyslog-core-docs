@@ -1,5 +1,5 @@
 ---
-title: "Setting the priority of a message with the set-pri() rewrite function"
+title: "Set the priority of a message"
 weight:  900
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
@@ -14,75 +14,64 @@ If the specified parameter value is not a valid value, the function ignores it a
 
 {{% /alert %}}
 
-
 ## Declaration
 
 ```shell
-   rewrite <rule-name> {
-        set-pri("template-string");
-    };
+rewrite <rule-name> {
+   set-pri("template-string");
+};
 ```
-
-
 
 ## Parameters
 
 The `set-pri()` rewrite function expects a template string as its only parameter, for example:
 
-  - set-pri("42");
-
-  - set-pri("$.json.priority");
-
-
+- `set-pri("42");`
+- `set-pri("$.json.priority");`
 
 ## Accepted values
 
 The template string specified for the `set-pri()` rewrite function must expand to a natural number in the interval of 0–1023, inclusive. This means that if you, for example, extract the value from a syslog `<PRI>` header (such as `<42>`), then you need to remove the opening and closing brackets (`<` `>`) in the specified template string.
-
-
 
 ## Example: Temporarily raising the priority of an application
 
 In the following example, the `set-pri()` rewrite function is used to temporarily raise the priority of the application `myprogram`:
 
 ```shell
-   log {
-      source { system(); };
-      if (program("myprogram")){
-      rewrite { set-pri("92"); };
-      };
-      destination { file("/var/log/mail.log"); };
-      flags(flow-control);
-    }
+log {
+   source { system(); };
+   if (program("myprogram")){
+   rewrite { set-pri("92"); };
+   };
+   destination { file("/var/log/mail.log"); };
+   flags(flow-control);
+}
 ```
 
-
-
-## Example: Changing the priority of an application log message in JSON format
+## Example: Change the priority in JSON-formatted log
 
 In the following example, an application sends log messages in the following JSON format:
 
 ```shell
-   {
-    "time": "2003-10-11T22:14:15.003Z",
-    "host": "mymachine",
-    "priority": "165",
-    "message": "An application event log entry."
-    }
+{
+   "time": "2003-10-11T22:14:15.003Z",
+   "host": "mymachine",
+   "priority": "165",
+   "message": "An application event log entry."
+}
 ```
 
 You can parse these logs with the {{% xref "/chapter-parsers/json-parser/_index.md" %}} function:
 
 ```shell
-   {
-    parser p_json {
-    json-parser (prefix(".json."));
-    }
+{
+   parser p_json {
+   json-parser (prefix(".json."));
+}
 ```
 
 As the application message contains a valid priority field, you can use the `set-pri()` rewrite function to modify the priority of the message:
 
 ```shell
-   set-pri("$.json.priority");
+set-pri("$.json.priority");
 ```
-

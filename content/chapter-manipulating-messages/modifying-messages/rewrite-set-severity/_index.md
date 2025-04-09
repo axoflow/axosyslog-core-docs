@@ -1,5 +1,5 @@
 ---
-title: "Setting severity with the set-severity() rewrite function"
+title: "Set the severity field"
 weight:  500
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
@@ -12,26 +12,21 @@ If the parameter value is not a valid parameter value, the function ignores it a
 
 {{% /alert %}}
 
-
 ## Declaration
 
 ```shell
-   rewrite <name_of_the_rule> {
-        set-severity("severity string or number");
-    };
+rewrite <name_of_the_rule> {
+    set-severity("severity string or number");
+};
 ```
-
-
 
 ## Parameters
 
 The `set-severity()` rewrite function has a single, mandatory parameter that can be defined as follows:
 
 ```shell
-   `set-severity( "parameter1" );`
+set-severity( "parameter1" );
 ```
-
-
 
 ## Accepted values
 
@@ -57,29 +52,28 @@ The `set-severity()` rewrite function accepts numeric values, named values, and 
 
 ## Example usage for the set-severity() rewrite function
 
-The following examples can be used in production for the `set-severity()` rewrite function.
+The following examples use the `set-severity()` rewrite function.
 
-`Example using string:`
-
-```shell
-   rewrite {
-        set-severity("info");
-    };
-```
-
-`Example using numeric string:`
+Using a named value:
 
 ```shell
-   rewrite {
-        set-severity("6");
-    };
+rewrite {
+    set-severity("info");
+};
 ```
 
-`Example using template:`
+Using a numeric value:
 
 ```shell
-   rewrite {
-        set-severity("${.json.severity}");
-    };
+rewrite {
+    set-severity("6");
+};
 ```
 
+Using a template:
+
+```shell
+rewrite {
+    set-severity("${.json.severity}");
+};
+```

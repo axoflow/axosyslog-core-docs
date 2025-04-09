@@ -8,14 +8,14 @@ The `map-value-pairs()` parser allows you to map existing name-value pairs to a 
 
 Available in {{% param "product.abbrev" %}} version 3.10 and later.
 
-## Declaration:
+## Declaration
 
 ```shell
-   parser parser_name {
-        map-value-pairs(
-            <list-of-value-pairs-options>
-        );
-    };
+parser parser_name {
+    map-value-pairs(
+        <list-of-value-pairs-options>
+    );
+};
 ```
 
 ## Example: Map name-value pairs
@@ -23,10 +23,10 @@ Available in {{% param "product.abbrev" %}} version 3.10 and later.
 The following example creates a new name-value pair called `username`, adds the hashed value of the `.apache.username` to this new name-value pair, then adds the `webserver` prefix to the name of every name-value pair of the message that starts with `.apache`
 
 ```shell
-   parser p_remap_name_values {
-        map-value-pairs(
-            pair("username", "'($sha1 $.apache.username)")
-            key('.apache.*' rekey(add-prefix("webserver")))
-        );
-    };
+parser p_remap_name_values {
+    map-value-pairs(
+        pair("username", "'($sha1 $.apache.username)")
+        key('.apache.*' rekey(add-prefix("webserver")))
+    );
+};
 ```
