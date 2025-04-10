@@ -491,6 +491,31 @@ if (not isset(labels["host.name"])) {
 
 But using `set_fields` is more readable and has better performance.
 
+## set_pri {#set-pri}
+
+Available in {{< product >}} 4.11 and later.
+
+Sets the priority value of the message. For example:
+
+```shell
+set_pri(100);
+```
+
+The priority value can range from `0` to `191`.
+
+## set_timestamp {#set-timestamp}
+
+Available in {{< product >}} 4.11 and later.
+
+Sets the timestamps of the message using a `datetime` value, for example:
+
+```shell
+datetime = strptime("2000-01-01T00:00:00 +0200", "%Y-%m-%dT%H:%M:%S %z");
+set_timestamp(datetime, stamp="stamp");
+```
+
+The `stamp` argument determines the timestamp to be set: `stamp` or `recvd`. Default value: `stamp`
+
 ## startswith
 
 Available in {{< product >}} 4.9 and later.

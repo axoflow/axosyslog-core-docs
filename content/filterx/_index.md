@@ -390,6 +390,8 @@ FilterX has the following built-in functions.
 - [`regexp_search`]({{< relref "/filterx/function-reference.md#regexp-search" >}}): Searches a string using regular expressions.
 - [`regexp_subst`]({{< relref "/filterx/function-reference.md#regexp-subst" >}}): Rewrites a string using regular expressions.
 - [`set_fields`]({{< relref "/filterx/function-reference.md#set-fields" >}}): Set multiple fields of a dict with overrides or defaults.
+- [`set_pri`]({{< relref "/filterx/function-reference.md#set-pri" >}}): Set the priority value of the message.
+- [`set_timestamp`]({{< relref "/filterx/function-reference.md#set-timestamp" >}}): Set the timestamp of the message.
 - [`startswith`]({{< relref "/filterx/filterx-string-search/_index.md" >}}): Checks if a string begins with the specified value.
 - [`strftime`]({{< relref "/filterx/function-reference.md#strftime" >}}): Format datetime values.
 - [`strptime`]({{< relref "/filterx/function-reference.md#strptime" >}}): Converts a string containing a date/time value, using a specified format string.
