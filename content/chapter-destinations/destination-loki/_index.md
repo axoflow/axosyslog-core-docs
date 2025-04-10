@@ -87,6 +87,8 @@ Default value:
 
 {{% include-headless "chunk/option-persist-name.md" %}}
 
+{{< include-headless "chunk/option-destination-grpc-response-action.md" >}}
+
 {{% include-headless "chunk/option-destination-retries.md" %}}
 
 {{% include-headless "chunk/option-destination-send-timezone.md" %}}

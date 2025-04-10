@@ -133,6 +133,8 @@ auth(
 
 *Description:* An alternative to using [`attributes()`](#attributes) and [`data()`](#data). The advantage of `protovar()` is that the number of attributes it sends to the destination can vary between the messages, it doesn't have to be constant. That's useful is you're dynamically building your messages using {{% xref "/filterx/_index.md" %}}.
 
+{{< include-headless "chunk/option-destination-grpc-response-action.md" >}}
+
 {{% include-headless "chunk/option-destination-retries.md" %}}
 
 {{% include-headless "chunk/option-destination-send-timezone.md" %}}
