@@ -254,19 +254,26 @@ Available in {{% param "product.abbrev" %}} version 4.8.1 and later.
 
 *Description:* Message contents without the program name or pid. Starting with {{% param "product.abbrev" %}} 3.0, the following macros are equivalent: `${MSGONLY}`, `${MSG}`, `${MESSAGE}`. For consistency, use the `${MESSAGE}` macro. For details, see [MESSAGE](#macro-message).
 
+## PEERIP {#macro-peerip}
 
+Available in {{% param "product.abbrev" %}} 4.11 and later. This macro is available when using the [`network()`]({{< relref "/chapter-sources/configuring-sources-network/_index.md" >}}) or the [`syslog()`]({{< relref "/chapter-sources/source-syslog/_index.md" >}}) source.
+
+*Description:* IP address of the host that sent the message to {{% param "product.abbrev" %}}. In most cases, the `${PEERIP}` and `${PEERPORT}` values are identical to [`${SOURCEIP}`](#macro-sourceip) and [`${SOURCEPORT}`](#macro-sourceport). However, when dealing with proxied protocols, `${PEERIP}` and `${PEERPORT}` contain the proxy's address and port,
+while [`${SOURCEIP}`](#macro-sourceip) and [`${SOURCEPORT}`](#macro-sourceport) contain the original source of the message.
+
+## PEERPORT {#macro-peerport}
+
+Available in {{% param "product.abbrev" %}} 4.11 and later. This macro is available when using the [`network()`]({{< relref "/chapter-sources/configuring-sources-network/_index.md" >}}) or the [`syslog()`]({{< relref "/chapter-sources/source-syslog/_index.md" >}}) source.
+
+*Description:* The port of the host that sent the message to {{% param "product.abbrev" %}}. For details, see [`${PEERIP}`](#macro-peerip).
 
 ## PID {#macro-pid}
 
 *Description:* The PID of the program sending the message.
 
-
-
 ## PRI {#macro-pri}
 
 *Description:* The priority and facility encoded as a 2 or 3 digit decimal number as it is present in syslog messages.
-
-
 
 ## PRIORITY or LEVEL {#macro-priority}
 
