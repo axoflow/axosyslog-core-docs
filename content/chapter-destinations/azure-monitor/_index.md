@@ -1,13 +1,19 @@
 ---
 title: Send data to Azure Monitor and Sentinel
-linktitle: "azure-monitor-builtin, azure-monitor-custom: Azure Monitor and Sentinel"
+linktitle: "azure-monitor: Azure Monitor and Sentinel"
 weight:  150
-driver: "azure-monitor-builtin(), azure-monitor-custom()"
+driver: "azure-monitor()"
 short_description: "Send messages to Azure Monitor and Sentinel"
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
 Starting with version 4.10.0, {{% param "product_name" %}} can send data to [Azure Monitor](https://learn.microsoft.com/en-us/azure/azure-monitor/overview) using its [HTTP REST Logs ingestion API](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/logs-ingestion-api-overview#rest-api-call). Data sent to Azure Monitor's Log Analytics is also available from [Microsoft Sentinel](https://learn.microsoft.com/en-us/azure/sentinel/data-transformation).
+
+{{% alert title="Note" color="info" %}}
+Version 4.10 introduced the `azure-monitor-builtin()` and `azure-monitor-custom()` destinations. These were deprecated and unified as `azure-monitor()` in version 4.11.
+
+Also, the `table-name()` option of the driver has been renamed to `stream-name()`.
+{{% /alert %}}
 
 ## Prerequisites
 
@@ -16,7 +22,6 @@ Starting with version 4.10.0, {{% param "product_name" %}} can send data to [Azu
 - A [Data Collection Endpoint (DCE)](https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/data-collection-endpoint-overview?tabs=portal)
 - A [Data Collection Rule (DCR)](https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/data-collection-rule-create-edit?tabs=portal)
 - A [Log Analytics Workspace in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-analytics-workspace-overview).
-- To send logs to a [custom table](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/create-custom-table?tabs=azure-portal-1%2Cazure-portal-2%2Cazure-portal-3#create-a-custom-table) with the `azure-monitor-custom()` destination, create the table in the Log Analytics Workspace.
 
 For details, see the [Tutorial: Send data to Azure Monitor Logs with Logs ingestion API](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-portal).
 
@@ -26,12 +31,12 @@ To configure {{% param "product_name" %}}, you'll need the name of the table and
 
 The body of the message (`${MESSAGE}`) must be in JSON format. The keys in the JSON array must have the same names as the columns of the table (you can use [`format-json`]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md#template-function-format-json" >}}) or ['FilterX`]({{< relref "/filterx/_index.md" >}})). If a field is empty, or Azure cannot parse it, it will be blank.
 
-- The `azure-monitor-builtin()` driver sends data to the built-in tables of Azure Monitor, for example, the [syslog table](https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/syslog).
+- The `azure-monitor()` driver sends data to the built-in tables of Azure Monitor, for example, the [syslog table](https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/syslog).
 
     ```sh
     destination d_azure_builtin {
-      azure-monitor-builtin(
-        table_name("syslog")
+      azure-monitor(
+        stream-name("syslog")
         dcr-id("my-dcr-id")
         dce-uri("https://dce-uri.ingest.monitor.azure.com")
         template("$MESSAGE")
@@ -44,8 +49,8 @@ The body of the message (`${MESSAGE}`) must be in JSON format. The keys in the J
 
     ```sh
     destination d_azure_custom {
-      azure-monitor-custom(
-        table-name("my-table")
+      azure-monitor(
+        stream-name("my-table")
         dcr-id("my-dcr-id")
         dce-uri("https://dce-uri.ingest.monitor.azure.com")
         auth(tenant-id("my-tenant-id") app-id("my-app-id") app-secret("my-app-secret"))
@@ -59,9 +64,9 @@ This driver is actually a reusable configuration snippet configured to send log 
 
 ## Options
 
-The following options are specific to the `azure-monitor-custom()` destination. But since this destination is based on the `http()` destination, you can use the [options of the `http()` destination]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}) as well if needed.
+The following options are specific to the `azure-monitor()` destination. But since this destination is based on the `http()` destination, you can use the [options of the `http()` destination]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}) as well if needed.
 
-> Note: The `azure-monitor-custom()` destination automatically configures some of these `http()` destination options as required by the Azure Monitor Logs ingestion API.
+> Note: The `azure-monitor()` destination automatically configures some of these `http()` destination options as required by the Azure Monitor Logs ingestion API.
 
 <!-- FIXME xinclude the http options -->
 
@@ -90,6 +95,10 @@ Options for OAUTH2 authentication for Azure.
 *Description:* The ID of the Azure Monitor Data Collection Rule (DCR) where {{% param "product_name" %}} sends the data.
 
 ## table-name()
+
+This option was available in version 4.10, but has been deprecated in 4.11. Use [`stream-name()`](#stream-name) instead.
+
+## stream-name()
 
 |          |                            |
 | -------- | -------------------------- |

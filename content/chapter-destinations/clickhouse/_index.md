@@ -129,6 +129,8 @@ message CustomRecord {
 
 Alternatively, you can set the schema with the [`schema()`](#schema) option.
 
+{{< include-headless "chunk/option-destination-grpc-response-action.md" >}}
+
 {{% include-headless "chunk/option-destination-retries.md" %}}
 
 ## schema()
