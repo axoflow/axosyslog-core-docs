@@ -75,7 +75,7 @@ You can set multiple endpoints, for example, `paths(["/events","/events/(?P<HOST
 | Type:    | integer |
 | Default: |      |
 
-The port number where the webhook is listening on, for example, `8080`
+The port number where the webhook is listening on, for example, `8080`. Make sure to enable the port you've configured on the firewall of the {{< product >}} host.
 
 ## prefix()
 
