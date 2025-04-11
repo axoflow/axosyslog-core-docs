@@ -19,6 +19,8 @@ Functions have arguments that can be either mandatory or optional.
 
 Load the contents of an external JSON file in an efficient manner. You can use this function to lookup contextual information. (Basically, this is a FilterX-specific implementation of the [`add-contextual-data() functionality`]({{< relref "/chapter-enrich-data/data-enrichment-add-contextual-data/_index.md" >}}).)
 
+{{< product >}} automatically detects if the file is updated and reloads the file.
+
 Usage: `cache_json_file("/path/to/file.json")`
 
 For example, if your `context-info-db.json` file contains the following:
