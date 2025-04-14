@@ -12,7 +12,7 @@ Available in {{% param "product.abbrev" %}} version 4.4 and later.
 
 The `loki()` destination sends your log data to [Grafana Loki](https://grafana.com/docs/loki/). Note that:
 
-- {{% param "product.abbrev" %}} sends data using **gRPC**, HTTP transport is currently not supported.
+- {{% param "product.abbrev" %}} sends data using **gRPC**, HTTP transport is currently not supported. Since currently the Loki deployment in the free Grafana Cloud doesn't have gRPC enabled, you must use a self-deployed Grafana Loki instance.
 - The message format is the same as documented for the [Grafana Loki HTTP endpoint](https://grafana.com/docs/loki/latest/reference/api/#push-log-entries-to-loki).
 
 Sample configuration:
@@ -86,6 +86,8 @@ Default value:
 {{< include-headless "chunk/option-destination-on-error.md" >}}
 
 {{% include-headless "chunk/option-persist-name.md" %}}
+
+{{< include-headless "chunk/option-destination-grpc-response-action.md" >}}
 
 {{% include-headless "chunk/option-destination-retries.md" %}}
 

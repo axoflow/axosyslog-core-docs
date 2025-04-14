@@ -12,28 +12,21 @@ These macros are available when {{% param "product.abbrev" %}} successfully pars
 
 {{% include-headless "chunk/para-flags-no-parse.md" %}} {{% /alert %}}
 
-
 ## AMPM {#macro-ampm}
 
 *Description:* Typically used together with the [`${HOUR12}`]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) macro, `${AMPM}` returns the period of the day: AM for hours before mid day and PM for hours after mid day. In reference to a 24-hour clock format, AM is between 00:00-12:00 and PM is between 12:00-24:00. 12AM is midnight. Available in {{% param "product.abbrev" %}} 3.4 and later.
-
-
 
 ## BSDTAG {#macro-bsdtag}
 
 *Description:* Facility/priority information in the format used by the FreeBSD syslogd: a priority number followed by a letter that indicates the facility. The priority number can range from `0` to `7`. The facility letter can range from `A` to `Y`, where `A` corresponds to facility number zero (LOG_KERN), `B` corresponds to facility 1 (LOG_USER), and so on.
 
-
-
 ## Custom macros {#macro-custom}
 
 *Description:* CSV parsers and pattern databases can also define macros from the content of the messages, for example, a pattern database rule can extract the username from a login message and create a macro that references the username. For details on using custom macros created with CSV parsers and pattern databases, see {{% xref "/chapter-parsers/_index.md" %}} and {{% xref "/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-filters/_index.md" %}}, respectively.
 
-
 {{% include-headless "chunk/macro-date.md" %}}
 
 {{% include-headless "chunk/macro-day.md" %}}
-
 
 ## DESTIP
 
@@ -41,51 +34,37 @@ Description: When used, the output specifies the local IP address of the source 
 
 For an example use case when using the macro is recommended, see {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/use-case-3-macros/_index.md" %}}.
 
-
-
 ## DESTPORT
 
 Description: When used, the output specifies the local port of the source from which the message originates.
 
 For an example use case when using the macro is recommended, see {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/use-case-3-macros/_index.md" %}}.
 
-
-
 ## FACILITY {#macro-facility}
 
 *Description:* The name of the facility (for example, `kern`) that sent the message.
-
-
 
 ## FACILITY_NUM {#macro-facility-num}
 
 *Description:* The numerical code of the facility (for example, `0`) that sent the message.
 
-
-
 ## FILE_NAME {#macro-filename}
 
 *Description:* Name of the log file (including its path) from where {{% param "product.abbrev" %}} received the message (only available if {{% param "product.abbrev" %}} received the message from a [file]({{< relref "/chapter-sources/configuring-sources-file/_index.md" >}}) or a [wildcard-file]({{< relref "/chapter-sources/configuring-sources-wildcard-file/_index.md" >}}) source). If you need only the path or the filename, use the [dirname]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}) and [basename]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}) template functions.
 
-
 {{% include-headless "chunk/macro-fulldate.md" %}}
-
 
 ## FULLHOST {#macro-fullhost}
 
 *Description:* The name of the source host where the message originates from.
 
 - If the message traverses several hosts and the [`chain-hostnames()`]({{< relref "/chapter-global-options/reference-options/_index.md" >}}) option is on, the first host in the chain is used.
+- If the [`keep-hostname()`]({{< relref "/chapter-global-options/reference-options/_index.md" >}}) option is disabled (`keep-hostname(no)`), the value of the `${FULLHOST}` macro will be the DNS hostname of the host that sent the message to {{% param "product.abbrev" %}} (that is, the DNS hostname of the last hop). In this case the `${FULLHOST}` and `${FULLHOST_FROM}` macros will have the same value.
+- If the [`keep-hostname()`]({{< relref "/chapter-global-options/reference-options/_index.md" >}}) option is enabled (`keep-hostname(yes)`), the value of the `${FULLHOST}` macro will be the hostname retrieved from the log message. That way the name of the original sender host can be used, even if there are log relays between the sender and the server.
 
-- If the [`keep-hostname()`]({{< relref "/chapter-global-options/reference-options/_index.md" >}}) option is disabled (`keep-hostname(no)`), the value of the $FULLHOST macro will be the DNS hostname of the host that sent the message to {{% param "product.abbrev" %}} (that is, the DNS hostname of the last hop). In this case the $FULLHOST and $FULLHOST_FROM macros will have the same value.
-
-- If the [`keep-hostname()`]({{< relref "/chapter-global-options/reference-options/_index.md" >}}) option is enabled (`keep-hostname(yes)`), the value of the $FULLHOST macro will be the hostname retrieved from the log message. That way the name of the original sender host can be used, even if there are log relays between the sender and the server.
-    
     {{< include-headless "chunk/p-keep-hostname-macro.md" >}}
 
-{{% include-headless "chunk/p-name-resolution.md" %}}
-
-
+{{< include-headless "chunk/p-name-resolution.md" >}}
 
 ## FULLHOST_FROM {#macro-fullhost-from}
 
@@ -93,39 +72,29 @@ For an example use case when using the macro is recommended, see {{% xref "/chap
 
 The {{% param "product.abbrev" %}} application uses the following procedure to determine the value of the `$FULLHOST_FROM` macro:
 
-1.  The {{% param "product.abbrev" %}} application takes the IP address of the host sending the message.
+1. The {{% param "product.abbrev" %}} application takes the IP address of the host sending the message.
+2. If the `use-dns()` option is enabled, {{% param "product.abbrev" %}} attempts to resolve the IP address to a hostname. If it succeeds, the returned hostname will be the value of the `$FULLHOST_FROM` macro. This value will be the FQDN of the host if the `use-fqdn()` option is enabled, but only the hostname if `use-fqdn()` is disabled.
+3. If the `use-dns()` option is disabled, or the address resolution fails, the `${FULLHOST_FROM}` macro will return the IP address of the sender host.
 
-2.  If the `use-dns()` option is enabled, {{% param "product.abbrev" %}} attempts to resolve the IP address to a hostname. If it succeeds, the returned hostname will be the value of the `$FULLHOST_FROM` macro. This value will be the FQDN of the host if the `use-fqdn()` option is enabled, but only the hostname if `use-fqdn()` is disabled.
-
-3.  If the `use-dns()` option is disabled, or the address resolution fails, the `${FULLHOST_FROM}` macro will return the IP address of the sender host.
-
-{{% include-headless "chunk/p-name-resolution.md" %}}
-
+{{< include-headless "chunk/p-name-resolution.md" >}}
 
 {{% include-headless "chunk/macro-hour.md" %}}
-
 
 ## HOUR12, C_HOUR12, R_HOUR12, S_HOUR12 {#macro-hour12}
 
 *Description:* The hour of day the message was sent in 12-hour clock format. See also the [`${AMPM}`]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) macro. 12AM is midnight. Available in {{% param "product.abbrev" %}} 3.4 and later.
-
-
 
 ## HOST {#macro-host}
 
 *Description:* The name of the source host where the message originates from.
 
 - If the message traverses several hosts and the [`chain-hostnames()`]({{< relref "/chapter-global-options/reference-options/_index.md" >}}) option is on, the first host in the chain is used.
-
 - If the [`keep-hostname()`]({{< relref "/chapter-global-options/reference-options/_index.md" >}}) option is disabled (`keep-hostname(no)`), the value of the $HOST macro will be the DNS hostname of the host that sent the message to {{% param "product.abbrev" %}} (that is, the DNS hostname of the last hop). In this case the $HOST and $HOST_FROM macros will have the same value.
-
 - If the [`keep-hostname()`]({{< relref "/chapter-global-options/reference-options/_index.md" >}}) option is enabled (`keep-hostname(yes)`), the value of the $HOST macro will be the hostname retrieved from the log message. That way the name of the original sender host can be used, even if there are log relays between the sender and the server.
-    
+
     {{< include-headless "chunk/p-keep-hostname-macro.md" >}}
 
-{{% include-headless "chunk/p-name-resolution.md" %}}
-
-
+{{< include-headless "chunk/p-name-resolution.md" >}}
 
 ## HOST_FROM {#macro-host-from}
 
@@ -133,13 +102,11 @@ The {{% param "product.abbrev" %}} application uses the following procedure to d
 
 The {{% param "product.abbrev" %}} application uses the following procedure to determine the value of the `$HOST_FROM` macro:
 
-1.  The {{% param "product.abbrev" %}} application takes the IP address of the host sending the message.
+1. The {{% param "product.abbrev" %}} application takes the IP address of the host sending the message.
+2. If the `use-dns()` option is enabled, {{% param "product.abbrev" %}} attempts to resolve the IP address to a hostname. If it succeeds, the returned hostname will be the value of the `$HOST_FROM` macro. This value will be the FQDN of the host if the `use-fqdn()` option is enabled, but only the hostname if `use-fqdn()` is disabled.
+3. If the `use-dns()` option is disabled, or the address resolution fails, the `${HOST_FROM}` macro will return the IP address of the sender host.
 
-2.  If the `use-dns()` option is enabled, {{% param "product.abbrev" %}} attempts to resolve the IP address to a hostname. If it succeeds, the returned hostname will be the value of the `$HOST_FROM` macro. This value will be the FQDN of the host if the `use-fqdn()` option is enabled, but only the hostname if `use-fqdn()` is disabled.
-
-3.  If the `use-dns()` option is disabled, or the address resolution fails, the `${HOST_FROM}` macro will return the IP address of the sender host.
-
-{{% include-headless "chunk/p-name-resolution.md" %}}
+{{< include-headless "chunk/p-name-resolution.md" >}}
 
 ## IP-PROTO {#macro-ip-proto}
 
@@ -149,11 +116,9 @@ The IP protocol version used to retrieve or receive the message. Contains either
 
 ## ISODATE, C_ISODATE, R_ISODATE, S_ISODATE {#macro-isodate}
 
-*Description:* Date of the message in the ISO 8601 compatible standard timestamp format (yyyy-mm-ddThh:mm:ss+-ZONE), for example: `2006-06-13T15:58:00.123+01:00`. If possible, it is recommended to use `${ISODATE}` for timestamping. Note that AxoSyslog can produce fractions of a second (for example, milliseconds) in the timestamp by using the `frac-digits()` global or per-destination option.
+*Description:* Date of the message in the ISO 8601 compatible standard timestamp format (`yyyy-mm-ddThh:mm:ss+-ZONE`), for example: `2006-06-13T15:58:00.123+01:00`. If possible, it is recommended to use `${ISODATE}` for timestamping. Note that AxoSyslog can produce fractions of a second (for example, milliseconds) in the timestamp by using the `frac-digits()` global or per-destination option.
 
 {{< include-headless "wnt/n-frac-trunc.md" >}}
-
-
 
 ## ISOWEEK, C_ISOWEEK, R_ISOWEEK, S_ISOWEEK {#macro-isoweek}
 
@@ -161,23 +126,16 @@ The IP protocol version used to retrieve or receive the message. Contains either
 
 Available in 3.24 and later.
 
-
-
 ## LEVEL_NUM {#macro-level-num}
 
 *Description:* The priority (also called severity) of the message, represented as a numeric value, for example, `3`. For the textual representation of this value, use the `${LEVEL}` macro. See [PRIORITY or LEVEL](#macro-priority) for details.
-
-
 
 ## LOGHOST {#macro-loghost}
 
 *Description:* The hostname of the computer running {{% param "product.abbrev" %}}.
 
-  - In version 3.24 and later: the `${LOGHOST}` macro returns the fully-qualified domain name (FQDN) only if the `use-fqdn()` option is set to yes, and the hostname otherwise.
-
-  - In earlier versions: the `${LOGHOST}` macro returns the fully-qualified domain name (FQDN).
-
-
+- In version 3.24 and later: the `${LOGHOST}` macro returns the fully-qualified domain name (FQDN) only if the `use-fqdn()` option is set to yes, and the hostname otherwise.
+- In earlier versions: the `${LOGHOST}` macro returns the fully-qualified domain name (FQDN).
 
 ## MESSAGE {#macro-message}
 
@@ -189,29 +147,21 @@ The `${MSG}` macro is an alias of the `${MESSAGE}` macro: using `${MSG}` in {{% 
 
 Note that before AxoSyslog version 3.0, the `${MESSAGE}` macro included the program name and the pid. In AxoSyslog 3.0, the `${MESSAGE}` macro became equivalent with the `${MSGONLY}` macro.
 
-
 {{% include-headless "chunk/macro-min.md" %}}
 
 {{% include-headless "chunk/macro-month.md" %}}
-
 
 ## MONTH_ABBREV, C_MONTH_ABBREV, R_MONTH_ABBREV, S_MONTH_ABBREV {#macro-month-abbrev}
 
 *Description:* The English abbreviation of the month name (3 letters).
 
-
-
 ## MONTH_NAME, C_MONTH_NAME, R_MONTH_NAME, S_MONTH_NAME {#macro-month-name}
 
 *Description:* The English name of the month name.
 
-
-
 ## MONTH_WEEK, C_MONTH_WEEK, R_MONTH_WEEK, S_MONTH_WEEK {#macro-month-week}
 
 *Description:* The number of the week in the given month (0-5). The week with numerical value 1 is the first week containing a Monday. The days of month before the first Monday are considered week 0. For example, if a 31-day month begins on a Sunday, then the 1st of the month is week 0, and the end of the month (the 30th and 31st) is week 5.
-
-
 
 ## MSEC, C_MSEC, R_MSEC, S_MSEC {#macro-msec}
 
@@ -248,37 +198,38 @@ Available in {{% param "product.abbrev" %}} version 4.8.1 and later.
 
 *Description:* A string specifying the type of the message in IETF-syslog (RFC5424-formatted) messages. For example, a firewall might use the `${MSGID}` "TCPIN" for incoming TCP traffic and the `${MSGID}` "TCPOUT" for outgoing TCP traffic. By default, {{% param "product.abbrev" %}} does not specify this value, but uses a dash (-) character instead. If an incoming message includes the `${MSGID}` value, it is retained and relayed without modification.
 
-
-
 ## MSGONLY {#macro-msgonly}
 
 *Description:* Message contents without the program name or pid. Starting with {{% param "product.abbrev" %}} 3.0, the following macros are equivalent: `${MSGONLY}`, `${MSG}`, `${MESSAGE}`. For consistency, use the `${MESSAGE}` macro. For details, see [MESSAGE](#macro-message).
 
+## PEERIP {#macro-peerip}
 
+Available in {{% param "product.abbrev" %}} 4.11 and later. This macro is available when using the [`network()`]({{< relref "/chapter-sources/configuring-sources-network/_index.md" >}}) or the [`syslog()`]({{< relref "/chapter-sources/source-syslog/_index.md" >}}) source, or when using the {{% xref "/chapter-sources/webhook/_index.md" %}} with the `proxy_header()` option set.
+
+*Description:* IP address of the host that sent the message to {{% param "product.abbrev" %}}. In most cases, the `${PEERIP}` and `${PEERPORT}` values are identical to [`${SOURCEIP}`](#macro-sourceip) and [`${SOURCEPORT}`](#macro-sourceport). However, when dealing with proxied protocols, `${PEERIP}` and `${PEERPORT}` contain the proxy's address and port,
+while [`${SOURCEIP}`](#macro-sourceip) and [`${SOURCEPORT}`](#macro-sourceport) contain the original source of the message.
+
+## PEERPORT {#macro-peerport}
+
+Available in {{% param "product.abbrev" %}} 4.11 and later. This macro is available when using the [`network()`]({{< relref "/chapter-sources/configuring-sources-network/_index.md" >}}) or the [`syslog()`]({{< relref "/chapter-sources/source-syslog/_index.md" >}}) source.
+
+*Description:* The port of the host that sent the message to {{% param "product.abbrev" %}}. For details, see [`${PEERIP}`](#macro-peerip).
 
 ## PID {#macro-pid}
 
 *Description:* The PID of the program sending the message.
 
-
-
 ## PRI {#macro-pri}
 
 *Description:* The priority and facility encoded as a 2 or 3 digit decimal number as it is present in syslog messages.
-
-
 
 ## PRIORITY or LEVEL {#macro-priority}
 
 *Description:* The priority (also called severity) of the message, for example, `error`. For the textual representation of this value, use the `${LEVEL}` macro. See [PRIORITY or LEVEL](#macro-priority) for details.
 
-
-
 ## PROGRAM {#macro-program}
 
 *Description:* The name of the program sending the message. Note that the content of the `${PROGRAM}` variable may not be completely trusted as it is provided by the client program that constructed the message.
-
-
 
 ## PROTO
 
@@ -300,13 +251,9 @@ Available in {{% param "product.name" %}} version 4.2 and newer.
 
 {{% include-headless "chunk/option-description-use-rcptid.md" %}}
 
-
-
 ## RUNID {#macro-runid}
 
 *Description:* An ID that changes its value every time {{% param "product.abbrev" %}} is restarted, but not when reloaded.
-
-
 
 ## SDATA, .SDATA.SDID.SDNAME {#macro-sdata}
 
@@ -321,15 +268,12 @@ When using STRUCTURED-DATA macros, consider the following:
 
 {{% /alert %}}
 
-
 ### Example: Using SDATA macros
 
 For example, if a log message contains the following structured data: `[exampleSDID@0 iut="3" eventSource="Application" eventID="1011"][examplePriority@0 class="high"]` you can use macros like: `${.SDATA.exampleSDID@0.eventSource}` — this would return the `Application` string in this case.
 
 
-
 {{% include-headless "chunk/macro-sec.md" %}}
-
 
 ## SEQNUM {#macro-seqnum}
 
@@ -356,8 +300,6 @@ If you need a sequence number for every log message that {{% param "product.abbr
 
 *Description:* The identifier of the source statement in the {{% param "product.abbrev" %}} configuration file that received the message. For example, if {{% param "product.abbrev" %}} received the log message from the `source s_local { internal(); };` source statement, the value of the ${SOURCE} macro is `s_local`. This macro is mainly useful for debugging and troubleshooting purposes.
 
-
-
 ## SOURCEIP {#macro-sourceip}
 
 *Description:* IP address of the host that sent the message to {{% param "product.abbrev" %}}. (That is, the IP address of the host in the `${FULLHOST_FROM}` macro.) Please note that when a message traverses several relays, this macro contains the IP of the last relay.
@@ -372,21 +314,15 @@ Available in {{% param "product.abbrev" %}} 4.10 and later.
 
 *Description:* A timestamp formatted according to the [`ts-format()`]({{< relref "/chapter-global-options/reference-options/_index.md" >}}) global or per-destination option.
 
-
-
 ## SYSUPTIME {#macro-sysuptime}
 
 *Description:* The time elapsed since the {{% param "product.abbrev" %}} instance was started (that is, the uptime of the {{% param "product.abbrev" %}} process). The value of this macro is an integer containing the time in 1/100th of the second.
 
 Available in {{% param "product.abbrev" %}} version 3.4 and later.
 
-
-
 ## TAG {#macro-tag}
 
 *Description:* The priority and facility encoded as a 2 digit hexadecimal number.
-
-
 
 ## TAGS {#macro-tags}
 
@@ -449,7 +385,6 @@ Available in {{% param "product.abbrev" %}} version 4.5 and later.
 
 {{% include-headless "chunk/macro-unixtime.md" %}}
 
-
 ## .tls.x509 {#macro-tls-x509}
 
 *Description:* When using a transport that uses TLS, these macros contain information about the peer's certificate. That way, you can use information from the client certificate in filenames, database values, or as other metadata. If you clients have their own certificates, then these values are unique per client, but unchangeable by the client. The following macros are available in {{% param "product.abbrev" %}} version 3.9 and later.
@@ -465,39 +400,28 @@ Available in {{% param "product.abbrev" %}} version 4.5 and later.
 
 Available in {{% param "product.abbrev" %}} version 3.7 and later.
 
-
-
 ## USEC, C_USEC, R_USEC, S_USEC {#macro-usec}
 
 *Description:* The microsecond the message was sent.
 
 Available in {{% param "product.abbrev" %}} version 3.4 and later.
 
-
 {{% include-headless "chunk/macro-year.md" %}}
 
 {{% include-headless "chunk/macro-week.md" %}}
-
 
 ## WEEK_DAY_ABBREV, C_WEEK_DAY_ABBREV, R_WEEK_DAY_ABBREV, S_WEEK_DAY_ABBREV {#macro-week-day-abbrev}
 
 *Description:* The 3-letter English abbreviation of the name of the day the message was sent, for example, `Thu`.
 
-
-
 ## WEEK_DAY, C_WEEK_DAY, R_WEEK_DAY, S_WEEK_DAY {#macro-week-day}
 
 *Description:* The day of the week as a numerical value (1-7).
-
-
 
 ## WEEKDAY, C_WEEKDAY, R_WEEKDAY, S_WEEKDAY {#macro-weekday}
 
 *Description:* These macros are deprecated, use [${WEEK_DAY_ABBREV}, ${R_WEEK_DAY_ABBREV}, ${S_WEEK_DAY_ABBREV}]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) instead. The 3-letter name of the day of week the message was sent, for example, `Thu`.
 
-
-
 ## WEEK_DAY_NAME, C_WEEK_DAY_NAME, R_WEEK_DAY_NAME, S_WEEK_DAY_NAME {#macro-week-day-name}
 
 *Description:* The English name of the day.
-
