@@ -97,6 +97,7 @@ description = "Documentation for AxoSyslog, the scalable security data processor
   offlineSearch = false
   # Enable pagefind for offline search
   offlineSearchPagefind = true
+  offlineSearchPagefindHideImages = true
 
   #####
   # Code highlighting
