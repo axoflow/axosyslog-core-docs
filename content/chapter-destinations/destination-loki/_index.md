@@ -46,9 +46,9 @@ The `loki()` destination has the following options.
 | Type:    | number |
 | Default: | 0      |
 
-{{% include-headless "chunk/option-description-destination-batch-lines.md" %}}
+{{< include-headless "chunk/option-description-destination-batch-lines.md" >}}
 
-{{% include-headless "chunk/option-destination-batch-timeout.md" %}}
+{{< include-headless "chunk/option-destination-batch-timeout.md" >}}
 
 {{< include-headless "chunk/option-grpc-channel-args.md" >}}
 
@@ -65,19 +65,33 @@ The `loki()` destination has the following options.
 |          |         |
 | -------- | ------- |
 | Type:    | arrow list |
-| Default: | See the description |
+| Default: |  |
 
-The labels applied to the message as they are sent to the destination. Use the following format:
+The labels applied to the message as they are sent to the destination. They must match the `[a-zA-Z_:][a-zA-Z0-9_:]*` regular expression, so labels can contain:
+
+- ASCII letters,
+- numbers, (but cannot begin with numbers)
+- underscores (`_`), and
+- colons (`:`).
+
+Use the following format:
 
 ```shell
 labels(
-    "name-of-the-label-in-the-output" => "field-of-the-message"
+    "name_of_the_label_in_the_output" => "field-of-the-message",
 )
 ```
 
-Default value:
+For example:
 
-<!-- FIXME -->
+```shell
+    labels(
+        "app" => "$PROGRAM",
+        "host" => "$HOST",
+    )
+```
+
+For details on using labels, see the [Grafana Loki documentation](https://grafana.com/docs/loki/latest/get-started/labels/).
 
 {{% include-headless "chunk/option-destination-local-timezone.md" %}}
 
