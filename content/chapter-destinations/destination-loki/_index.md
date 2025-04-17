@@ -46,9 +46,9 @@ The `loki()` destination has the following options.
 | Type:    | number |
 | Default: | 0      |
 
-{{% include-headless "chunk/option-description-destination-batch-lines.md" %}}
+{{< include-headless "chunk/option-description-destination-batch-lines.md" >}}
 
-{{% include-headless "chunk/option-destination-batch-timeout.md" %}}
+{{< include-headless "chunk/option-destination-batch-timeout.md" >}}
 
 {{< include-headless "chunk/option-grpc-channel-args.md" >}}
 
