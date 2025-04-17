@@ -67,10 +67,10 @@ The `loki()` destination has the following options.
 | Type:    | arrow list |
 | Default: |  |
 
-The labels applied to the message as they are sent to the destination. Labels can contain:
+The labels applied to the message as they are sent to the destination. They must match the `[a-zA-Z_:][a-zA-Z0-9_:]*` regular expression, so labels can contain:
 
 - ASCII letters,
-- numbers,
+- numbers, (but cannot begin with numbers)
 - underscores (`_`), and
 - colons (`:`).
 
