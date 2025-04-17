@@ -65,19 +65,33 @@ The `loki()` destination has the following options.
 |          |         |
 | -------- | ------- |
 | Type:    | arrow list |
-| Default: | See the description |
+| Default: |  |
 
-The labels applied to the message as they are sent to the destination. Use the following format:
+The labels applied to the message as they are sent to the destination. Labels can contain:
+
+- ASCII letters,
+- numbers,
+- underscores (`_`), and
+- colons (`:`).
+
+Use the following format:
 
 ```shell
 labels(
-    "name-of-the-label-in-the-output" => "field-of-the-message"
+    "name_of_the_label_in_the_output" => "field-of-the-message",
 )
 ```
 
-Default value:
+For example:
 
-<!-- FIXME -->
+```shell
+    labels(
+        "app" => "$PROGRAM",
+        "host" => "$HOST",
+    )
+```
+
+For details on using labels, see the [Grafana Loki documentation](https://grafana.com/docs/loki/latest/get-started/labels/).
 
 {{% include-headless "chunk/option-destination-local-timezone.md" %}}
 
