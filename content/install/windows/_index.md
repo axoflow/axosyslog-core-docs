@@ -22,9 +22,9 @@ To forward Windows logs to {{% param "product.abbrev" %}}, complete the followin
 1. Run the installer on your Windows host. The installer installs:
 
     - the collector agent (by default) to `C:\Program Files\Axoflow\OpenTelemetry Collector\axoflow-otel-collector.exe`, and
-    - a default configuration file (`C:\Program Files\Axoflow\OpenTelemetry Collector\config.yaml`) that must be edited before use.
+    - a default configuration file (`C:\ProgramData\Axoflow\OpenTelemetry Collector\config.yaml`) that must be edited before use.
 
-1. Open the configuration file (`C:\Program Files\Axoflow\OpenTelemetry Collector\config.yaml`).
+1. Open the configuration file (`C:\ProgramData\Axoflow\OpenTelemetry Collector\config.yaml`).
 1. Set the IP address and port of the {{% param "product.abbrev" %}} host where you want to send data from this Windows host. Use the IP address and port of an [`opentelemetry()` source]({{< relref "/chapter-sources/opentelemetry/_index.md" >}}). For example:
 
     ```yaml
@@ -34,6 +34,8 @@ To forward Windows logs to {{% param "product.abbrev" %}}, complete the followin
         tls:
           insecure: true
     ```
+
+    Set the TLS settings to match the configuration of the [{{% param "product.abbrev" %}} `opentelemetry()` source]({{< relref "/chapter-sources/opentelemetry/_index.md" >}}).
 
 1. Configure receivers to collect logs of the Windows host, and the pipelines to forward them. For example, to collect event logs from the Application, System, and Security channels:
 
