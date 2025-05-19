@@ -26,3 +26,7 @@ This chapter explains how to install {{% param "product.name" %}} on various pla
 ## Upgrade `syslog-ng` to AxoSyslog
 
 If you’re already using `syslog-ng`, you can upgrade your existing `syslog-ng` deployments to {{< product >}} in a matter of minutes. For details, see {{% xref "/install/upgrade-syslog-ng/_index.md" %}}.
+
+## Forward Windows logs
+
+{{% param "product.companyabbrev" %}} provides a custom OpenTelemetry Collector distribution that you can use to collect logs on Windows hosts and forward them to {{% param "product.name" %}}. For details, see {{% xref "/install/windows/_index.md" %}}.
