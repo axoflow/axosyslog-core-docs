@@ -6,7 +6,7 @@ weight: 2000
 
 {{% param "product.companyabbrev" %}} provides a [custom OpenTelemetry Collector distribution](https://github.com/axoflow/axoflow-otel-collector-releases/blob/main/distributions/axoflow-otel-collector/) that you can use to collect logs on Windows hosts and forward them to {{% param "product.name" %}} using the OpenTelemetry Protocol (OTLP/gRPC).
 
-The distribution provides installers for AMD64 and Arm64 based Windows for:
+The distribution provides installers for AMD64 and ARM64 based Windows for:
 
 - Windows Server 2025
 - Windows Server 2022
