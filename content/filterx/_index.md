@@ -351,17 +351,21 @@ You can add two lists or two dicts using the {{% xref "/filterx/operator-referen
 
 FilterX has the following operators.
 
+- [Arithmetic operators]({{< relref "/filterx/operator-reference.md#arithmetic-operators" >}}).
 - [Assign a value to a variable if the value is non-null (`=??`)]({{< relref "/filterx/operator-reference.md#assign-non-null" >}}).
 - [Boolean operators]({{< relref "/filterx/filterx-boolean/_index.md" >}}): `not`, `or`, `and`.
 - [Comparison operators]({{< relref "/filterx/filterx-comparing/_index.md" >}}): `==`, `<`, `<=`, `>=`, `>`, `!=`, `===`, `!==`, `eq`, `lt`, `le`, `gt`, `ge`, `ne`.
 - [Conditional operators]({{< relref "/filterx/filterx-conditional/_index.md" >}}).
 - [Dot operator (`.`)](#json) to access fields of an object, like JSON.
 - [Indexing operator `[]`](#json) to access fields of an object, like JSON.
+- [List membership operator (`in`)]({{< relref "/filterx/operator-reference.md#list-membership-operator" >}}): checks if a value is present in a list.
 - [Plus (`+`) operator]({{< relref "/filterx/operator-reference.md#plus-operator" >}}) to add values and concatenate strings.
 - [Plus equal (`+=`) operator]({{< relref "/filterx/operator-reference.md#plus-equal-operator" >}}) to add the right operand to the left.
 - [Ternary conditional operator]({{< relref "/filterx/operator-reference.md#ternary-conditional-operator" >}}): `?:`.
 - [Null coalescing operator]({{< relref "/filterx/operator-reference.md#null-coalescing-operator" >}}): `??`.
 - [Regular expression (regexp) match]({{< relref "/filterx/operator-reference.md#regexp" >}}): `=~` and `!~`.
+
+<!-- FIXME update with the new operators -->
 
 For details, see {{% xref "/filterx/operator-reference.md" %}}.
 
@@ -399,6 +403,7 @@ FilterX has the following built-in functions.
 - [`set_pri`]({{< relref "/filterx/function-reference.md#set-pri" >}}): Set the priority value of the message.
 - [`set_timestamp`]({{< relref "/filterx/function-reference.md#set-timestamp" >}}): Set the timestamp of the message.
 - [`startswith`]({{< relref "/filterx/filterx-string-search/_index.md" >}}): Checks if a string begins with the specified value.
+- [`strcasecmp`]({{< relref "/filterx/function-reference.md#strcasecmp" >}}): Case insensitive string comparison.
 - [`strftime`]({{< relref "/filterx/function-reference.md#strftime" >}}): Format datetime values.
 - [`strptime`]({{< relref "/filterx/function-reference.md#strptime" >}}): Converts a string containing a date/time value, using a specified format string.
 - [`unset`]({{< relref "/filterx/function-reference.md#unset" >}}): Deletes a name-value pair, or a field from an object.
