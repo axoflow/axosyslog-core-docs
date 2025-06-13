@@ -139,6 +139,10 @@ For example, if a key of a JSON object doesn't exist for every message, you can 
 ${MESSAGE} = json["BODY"] ?? "Empty message"
 ```
 
+## List membership operator
+
+{{< include-headless "chunk/filterx-list-membership-operator.md" >}}
+
 ## Regexp match (equal tilde) {#regexp}
 
 To check if a value contains a string or matches a regular expression, use the `=~` operator. For example, the following statement is true if the `${MESSAGE}` contains the word `error`:

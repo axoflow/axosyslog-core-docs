@@ -336,6 +336,10 @@ When referring to the field of a name-value pair (which begins with the `$` char
 
 You can add two lists or two dicts using the {{% xref "/filterx/operator-reference.md#plus-operator" %}}.
 
+### List membership
+
+{{< include-headless "chunk/filterx-list-membership-operator.md" >}}
+
 <!--
 ### Type casting
 

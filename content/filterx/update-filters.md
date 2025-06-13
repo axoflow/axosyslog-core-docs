@@ -17,6 +17,7 @@ You can replace most [filter functions]({{< relref "/chapter-routing-filters/fil
 
 - `facility(user)` with `${FACILITY} == "user"`
 - `host("example-host")` with `${HOST} == "example-host"`
+- [`inlist()`]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-inlist/_index.md" >}}) with the [`in` list membership operator]({{< relref "/filterx/operator-reference.md#list-membership-operator" >}})
 - `level(warning)` with `${LEVEL} == "warning"`
 
     If you want to check for a range of levels, use numerical comparison with the `${LEVEL_NUM}` macro instead. For a list of numerical level values, see {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-level-num" %}}.
@@ -52,7 +53,6 @@ The following filter functions have no equivalents in FilterX yet:
 
 - The [`filter()` filter function]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-filter/_index.md" >}}). You can't call a FilterX block from another FilterX block, but you can [access name-value pairs and pass variables](#scoping) from multiple FilterX blocks.
 - [`netmask()`]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-netmask/_index.md" >}}) and [`netmask6()`]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-netmask6/_index.md" >}})
-- [`inlist()`]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-inlist/_index.md" >}})
 - [`rate-limit()`]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-rate-limit/_index.md" >}})
 - [`tags()`]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-tags/_index.md" >}})
 
