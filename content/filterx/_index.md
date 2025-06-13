@@ -244,6 +244,8 @@ To unset every empty field of an object, use the [`unset-empties`]({{< relref "/
 
 {{< include-headless "chunk/filterx-plus-operator.md" >}}
 
+For other arithmetic operators, see {{% xref "/filterx/operator-reference.md#arithmetic-operators" %}}.
+
 ## Complex types: lists, dicts, and JSON {#json}
 
 The list and dict types are similar to their [Python counterparts](https://www.geeksforgeeks.org/difference-between-list-and-dictionary-in-python/). FilterX uses JSON to represent generic dictionary and list types, but you can create other, specific dictionary and list types as well (currently for OTEL, for example, `otel_kvlist`, or `otel_array`). All supported dictionary and list types are compatible with each other, and you can convert them to and from each other, copy values between them (retaining the type), and so on.
