@@ -531,6 +531,18 @@ startswith(input-string, [substring_1, substring_2], ignorecase=true);
 
 For details, see {{% xref "/filterx/filterx-string-search/_index.md" %}}.
 
+## strcasecmp
+
+Available in {{< product >}} 4.12 and later.
+
+Usage: `strcasecmp(string1, string2)`
+
+Compare two strings without case sensitivity. Returns `true` if the two strings match. For example:
+
+```sh
+strcasecmp("HOST1", "host1"); # Returns true
+```
+
 ## string
 
 Cast a value into a string. Note that currently {{< product >}} evaluates strings and executes [template functions]({{< relref "/filterx/_index.md#template-functions" >}}) and template expressions within the strings. In the future, template evaluation will be moved to a separate FilterX function.
