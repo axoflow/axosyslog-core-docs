@@ -485,6 +485,8 @@ This is a normal RFC3164-formatted message logged by the kernel (where iptables 
     <!-- FIXME show json from sample message
     -->
 
+For other examples on parsing messages, see the [Parsing firewall logs with FilterX](https://axoflow.com/blog/parsing-firewall-logs-with-filterx) blog post.
+
 ## FilterX variables in destinations {#variables-in-destinations}
 
 If you're modifying messages using FilterX (for example, you extract a value from the message and add it to another field of the message), note the following points:
