@@ -569,7 +569,7 @@ Possible values:
 
 ## stats-freq()
 
-Deprecated legacy option. Use [`stats(freq())`](#global-option-stats-syslog-stats) instead.
+Deprecated legacy option. Use [`stats(freq())`](#global-option-stats-freq) instead.
 
 ## stats-level() {#global-option-stats-level-deprecated}
 
