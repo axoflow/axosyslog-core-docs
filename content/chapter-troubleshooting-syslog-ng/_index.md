@@ -16,6 +16,7 @@ This chapter provides tips and guidelines about troubleshooting problems related
 - If {{% param "product.abbrev" %}} is closing the connections for no apparent reason, be sure to check the log messages of `syslog-ng`. You may also want to run `syslog-ng` with the `--verbose` or `--debug` command-line options for more-detailed log messages. You can enable these messages without restarting `syslog-ng` using the `syslog-ng-ctl verbose --set=on` command. For details, see the {{% xref "/app-man-syslog-ng/syslog-ng.conf.5/_index.md" %}}.
 - Build up encrypted connections step-by-step. First create a working, unencrypted (for example, TCP) connection, then add TLS encryption, and finally, client authentication if needed.
 - If you use the same driver and options in the destination of your {{% param "product.abbrev" %}} client and the source of your {{% param "product.abbrev" %}} server, everything should work as expected. Unfortunately, there are some other combinations, that may seem to work, but result in losing parts of the messages. For details on the working combinations, see {{% xref "/chapter-concepts/concepts-things-to-consider/_index.md" %}}.
+- If you're using {{% xref "/filterx/_index.md" %}}, see [Troubleshooting FilterX]({{< relref "/filterx/filterx-troubleshooting/_index.md" >}}) for specific tips.
 
 ## Support
 
