@@ -13,6 +13,8 @@ This page is a changelog that collects the major changes and additions to this d
     - [List membership operator (`in`)]({{< relref "/filterx/operator-reference.md#list-membership-operator" >}}): checks if a value is present in a list.
     - [`strcasecmp`]({{< relref "/filterx/function-reference.md#strcasecmp" >}}) function for case insensitive string comparison.
 - Way to propagate the type information of the data fields in the [`clickhouse()` destination]({{< relref "/chapter-destinations/clickhouse/_index.md" >}}) using the ClickHouse format schema. For details, see {{% xref "/chapter-destinations/clickhouse/_index.md#server-side-schema" %}}.
+- `loggen` has a new `--perf` option to disable rate limiting.
+- Internal STATS messages are now [disabled by default]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-stats-freq" >}}).
 
 ## Version 4.11 (2025-04-09)
 
