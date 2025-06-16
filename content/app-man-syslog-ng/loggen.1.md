@@ -99,13 +99,17 @@ When `--interval` and `--number` are used together, `loggen` will send messages 
 
     Display statistics only when `loggen` is finished. If not set, the statistics are displayed every second.
 
+- `--perf`
+
+    Disables rate limiting to send as many messages as possible.
+
 - `--permanent` or `-T`
 
     Keep sending logs indefinitely, without time limit.
 
 - `--rate <message/second>` or `-r <message/second>`
 
-    The number of messages generated per second for every active connection. Default value: 1000.
+    The number of messages generated per second for every active connection. Default value: 1000. To disable rate limiting, use the `--perf` flag.
 
     If you want to change the message rate while loggen is running, send SIGUSR1 to double the message rate, or SIGUSR2 to halve it:
 
