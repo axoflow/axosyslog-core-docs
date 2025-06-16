@@ -121,6 +121,10 @@ When `--interval` and `--number` are used together, `loggen` will send messages 
 
     Specify `-` as the input file to read messages from the standard input (stdio). Note that when reading messages from the standard input, `loggen` can only use a single thread. The `-R -`parameters must be placed at end of command, like: `loggen 127.0.0.1 1061 --read-file -`
 
+- `--reconnect`
+
+    Try to reconnect when destination connections are lost.
+
 - `--sdata <data-to-send>` or `-p <data-to-send>`
 
     Send the argument of the `--sdata` option as the SDATA part of IETF-syslog (RFC5424 formatted) messages. Use it together with the `--syslog-proto` option. For example: `--sdata "[test name=\\"value\\"]`
