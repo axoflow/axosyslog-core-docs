@@ -475,9 +475,17 @@ options {
 |                  |        |
 | ---------------- | ------ |
 | Accepted values: | number |
-| Default:         | 600    |
+| Default:         | 0 (seconds) |
 
-*Description:* The period between two STATS messages in seconds. STATS are log messages sent by `syslog-ng`, containing statistics about dropped log messages. Set to `0` to disable the STATS messages.
+*Description:* The period between two STATS messages in seconds. STATS are log messages sent by `syslog-ng`, containing statistics about dropped log messages. `0` disables the STATS messages.
+
+{{% alert title="Note" color="info" %}}
+
+Starting with {{< product >}} version 4.12, the default value of this option is `0`, disabling STATS messages. We recommend accessing metrics using the [`syslog-ng-ctl query list`]({{< relref "/app-man-syslog-ng/syslog-ng-ctl.1.md#syslog-ng-ctl-query" >}}) command, for monitoring and observability.
+
+In earlier versions, the default was `600` (ten minutes).
+
+{{% /alert %}}
 
 ### level() {#global-option-stats-level}
 
