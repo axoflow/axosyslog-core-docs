@@ -95,10 +95,6 @@ When `--interval` and `--number` are used together, `loggen` will send messages 
 
     Do not use the framing of the IETF-syslog protocol style, even if the `--syslog-proto` option is set.
 
-- `--quiet` or `-Q`
-
-    Display statistics only when `loggen` is finished. If not set, the statistics are displayed every second.
-
 - `--perf`
 
     Disables rate limiting to send as many messages as possible.
@@ -106,6 +102,10 @@ When `--interval` and `--number` are used together, `loggen` will send messages 
 - `--permanent` or `-T`
 
     Keep sending logs indefinitely, without time limit.
+
+- `--quiet` or `-Q`
+
+    Display statistics only when `loggen` is finished. If not set, the statistics are displayed every second.
 
 - `--rate <message/second>` or `-r <message/second>`
 
