@@ -10,16 +10,16 @@ The following x86-64 distributions are supported:
 
 | Distribution    | sources.list component |
 |-----------------|------------------------|
-| Debian 12       | debian-bookworm        |
-| Debian 11       | debian-bullseye        |
-| Debian Unstable | debian-sid             |
-| Debian Testing  | debian-testing         |
-| Ubuntu 24.10    | ubuntu-oracular        |
-| Ubuntu 24.04    | ubuntu-noble           |
-| Ubuntu 23.10    | ubuntu-mantic          |
-| Ubuntu 23.04    | ubuntu-lunar           |
-| Ubuntu 22.04    | ubuntu-jammy           |
-| Ubuntu 20.04    | ubuntu-focal           |
+| Debian 12 (x86-64) | debian-bookworm     |
+| Debian 11 (x86-64) | debian-bullseye     |
+| Debian Unstable (x86-64) | debian-sid    |
+| Debian Testing (x86-64) | debian-testing |
+| Ubuntu 24.10 (x86-64) | ubuntu-oracular  |
+| Ubuntu 24.04 (x86-64) | ubuntu-noble     |
+| Ubuntu 23.10 (x86-64) | ubuntu-mantic    |
+| Ubuntu 23.04 (x86-64) | ubuntu-lunar     |
+| Ubuntu 22.04 (x86-64) | ubuntu-jammy     |
+| Ubuntu 20.04 (x86-64) | ubuntu-focal     |
 
 {{< include-headless "chunk/package-to-install.md" >}}
 
