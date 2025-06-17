@@ -26,6 +26,7 @@ if (4 % 3 == 1) { ... }
 Note that:
 
 - The `%` operator only accepts integer values.
+- If one operand is integer and the other is double, the result will be double.
 - The `+` operator can add strings and other types as well, for details, see the [Plus operator]({{< relref "#plus-operator" >}}).
 - To increase the value of a variable, see the [Plus equal operator]({{< relref "#plus-equal-operator" >}}).
 

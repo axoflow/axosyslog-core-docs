@@ -4,11 +4,11 @@
 
 Available in {{< product >}} 4.12 and later.
 
-You can check whether a value is in a list using the `in` and `not in` membership operators. For example:
+You can check whether a value is in a list using the `in` and `not in` membership operators. If you're checking the value of a variable that can have another type than the elements of a list, explicitly convert the value to the correct type (for example, string) before the comparison:
 
 ```sh
 my_array = json_array(['hostname_one', 'hostname_two', 'hostname_three']);
-if (${HOST} in my_array) {
+if (string(${HOST}) in my_array) {
     # ...
 }
 ```
