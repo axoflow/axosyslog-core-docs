@@ -164,7 +164,7 @@ You can find the available column types in the [official ClickHouse documentatio
 | Type:    | string |
 | Default: | - |
 
-By default, sending data to ClickHouse doesn't propagate the type information of the data fields. The `server-side-schema()` option provides a solution for that using the [ClickHouse format schema](https://clickhouse.com/docs/interfaces/formats#formatschema).
+By default, sending data to ClickHouse doesn't propagate the type information of the data fields. The `server-side-schema()` option provides a solution for that using the [ClickHouse format schema](https://clickhouse.com/docs/interfaces/formats#formatschema). Using a server-side schema is needed when you're using complex types, like [`DateTime` or `LowCardinality`](https://clickhouse.com/docs/sql-reference/data-types).
 
 1. Create a `.proto` file that matches the `schema()` of your {{< product >}} configuration. For details on formatting, see the [ClickHouse documentation](https://clickhouse.com/docs/interfaces/formats/Protobuf#example-usage). For example:
 
@@ -180,7 +180,7 @@ By default, sending data to ClickHouse doesn't propagate the type information of
     ```
 
 1. Copy the `.proto` file to your ClickHouse server, into the directory set in the `proto_schema_path` option of your ClickHouse configuration.
-1. Reference that schema in the `clickhouse()` destination of your {{< product >}} configuration, like this:
+1. Reference that schema in the `clickhouse()` destination of your {{< product >}} configuration. The parameter of `server-side-schema()` is `<name-of-the-proto-file>:<identifier-after-message-in-the-proto-file>`. So if in the previous step you named the proto file `my-proto-file.proto` with the sample content, the parameter will be `my-proto-file:MessageType`. For example:
 
     ```sh
     destination {
@@ -195,12 +195,10 @@ By default, sending data to ClickHouse doesn't propagate the type information of
           "timestamp" DateTime => "$R_UNIXTIME",
           "metric" Float32 => 3.14
         )
-        server-side-schema("my_proto_file_on_server:my_message_schema_name")
+        server-side-schema("<my_proto_file_on_server>:<my_message_schema_name>")
       );
     };
     ```
-
-  <!-- FIXME where does the name of the schema come from? Filename? -->
 
 ## table()
 
