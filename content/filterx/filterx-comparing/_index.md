@@ -43,7 +43,7 @@ For example:
 
 - `if (${.apache.request} == "/wp-admin/login.php")`
 
-    The left side is not type-cast, the right side is a string, so the comparison is string, and case sensitive. The case insensitive equivalent is: `if (strcasecmp(${.apache.request}, "/wp-admin/login.php"))`
+    The left side is not type-cast, the right side is a string, so the comparison is string, and case sensitive. The case insensitive equivalent is: `if (strcasecmp(${.apache.request}, "/wp-admin/login.php") == 0)`
 
 {{% alert title="Note" color="info" %}}
 You can use [string operators](#comparison-operators) if you want to, they are still available for backwards compatibility.

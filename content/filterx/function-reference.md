@@ -537,10 +537,16 @@ Available in {{< product >}} 4.12 and later.
 
 Usage: `strcasecmp(string1, string2)`
 
-Compare two strings without case sensitivity. Returns `true` if the two strings match. For example:
+Compare two strings without case sensitivity. Returns:
+
+- `0` if the two strings match,
+- a negative value if string1 &lt; string2,
+- a positive value if string1 &gt; string2.
+
+For example:
 
 ```sh
-strcasecmp("HOST1", "host1"); # Returns true
+strcasecmp("HOST1", "host1"); # Returns 0
 ```
 
 ## strftime
