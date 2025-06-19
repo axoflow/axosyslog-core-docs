@@ -6,21 +6,16 @@ weight:  300
 
 For details on how flow-control works, see {{% xref "/chapter-routing-filters/concepts-flow-control/_index.md" %}}. The summary of the main points is as follows:
 
-  - The AxoSyslog application normally reads a maximum of `log-fetch-limit()` number of messages from a source.
+- The AxoSyslog application normally reads a maximum of `log-fetch-limit()` number of messages from a source.
+- From TCP and unix-stream sources, AxoSyslog reads a maximum of `log-fetch-limit()` from every connection of the source. The number of connections to the source is set using the `max-connections()` parameter.
+- Every destination has an output buffer. The size of this buffer is set automatically for log paths that use flow-control, and can be set using the `log-fifo-size()` option for other log paths.
+- Flow-control uses a control window to determine if there is free space in the output buffer for new messages. Every source has its own control window, the `log-iw-size()` option sets the size of the static control window. Optionally, you can enable a dynamic control window for the source using the `dynamic-window-size()` option.
+- When a source accepts multiple connections, the size of the control window is divided by the value of the `max-connections()` parameter and this smaller control window is applied to each connection of the source.
 
-  - From TCP and unix-stream sources, AxoSyslog reads a maximum of `log-fetch-limit()` from every connection of the source. The number of connections to the source is set using the `max-connections()` parameter.
-
-  - Every destination has an output buffer. The size of this buffer is set automatically for log paths that use flow-control, and can be set using the `log-fifo-size()` option for other log paths.
-
-  - Flow-control uses a control window to determine if there is free space in the output buffer for new messages. Every source has its own control window, the `log-iw-size()` option sets the size of the static control window. Optionally, you can enable a dynamic control window for the source using the `dynamic-window-size()` option.
-
-  - When a source accepts multiple connections, the size of the control window is divided by the value of the `max-connections()` parameter and this smaller control window is applied to each connection of the source.
-    
     The dynamic control window is automatically distributed among the active connections of the source.
 
-  - If the control window is full, AxoSyslog stops reading messages from the source until some messages are successfully sent to the destination.
-
-  - If the output buffer becomes full, and neither disk-buffering nor flow-control is used, messages may be lost.
+- If the control window is full, AxoSyslog stops reading messages from the source until some messages are successfully sent to the destination.
+- If the output buffer becomes full, and neither disk-buffering nor flow-control is used, messages may be lost.
 
 {{% alert title="Warning" color="warning" %}}
 
