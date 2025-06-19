@@ -323,6 +323,35 @@ For example:
 
 *Description:* The number of messages that the output queue can store.
 
+## log-flow-control() {#global-option-log-flow-control}
+
+|                  |                  |
+| ---------------- | ---------------- |
+| Accepted values: | `yes`, `no` |
+| Default:         | `no`          |
+
+Available in {{< product >}} 4.12 and later.
+
+*Description:* Enables flow control for all log paths. When set to yes, flow control is globally enabled, but you can selectively disable it for individual log paths using the `no-flow-control` flag. For example:
+
+```sh
+options {
+  log-flow-control(yes);
+};
+
+log {
+  source { system(); };
+  destination { network("server" port(5555)); };
+  flags(no-flow-control);
+};
+
+log { ... };
+```
+
+{{< warning >}}
+Enabling global flow control can cause the `system()` source to block. As a result, if messages accumulate at the destination, applications that log through the system may become completely stalled, potentially halting their operation. We don't recommend enabling flow control in log paths that include the `system()` source.
+{{< /warning >}}
+
 ## log-level() {#global-options-log-level}
 
 |                  |                  |
@@ -475,9 +504,17 @@ options {
 |                  |        |
 | ---------------- | ------ |
 | Accepted values: | number |
-| Default:         | 600    |
+| Default:         | 0 (seconds) |
 
-*Description:* The period between two STATS messages in seconds. STATS are log messages sent by `syslog-ng`, containing statistics about dropped log messages. Set to `0` to disable the STATS messages.
+*Description:* The period between two STATS messages in seconds. STATS are log messages sent by `syslog-ng`, containing statistics about dropped log messages. `0` disables the STATS messages.
+
+{{% alert title="Note" color="info" %}}
+
+Starting with {{< product >}} version 4.12, the default value of this option is `0`, disabling STATS messages. We recommend accessing metrics using the [`syslog-ng-ctl stats`]({{< relref "/app-man-syslog-ng/syslog-ng-ctl.1.md#syslog-ng-ctl-stats" >}}) interface for monitoring and observability, for example, by using `syslog-ng-ctl stats prometheus`.
+
+In earlier versions, the default was `600` (ten minutes).
+
+{{% /alert %}}
 
 ### level() {#global-option-stats-level}
 
@@ -561,7 +598,7 @@ Possible values:
 
 ## stats-freq()
 
-Deprecated legacy option. Use [`stats(freq())`](#global-option-stats-syslog-stats) instead.
+Deprecated legacy option. Use [`stats(freq())`](#global-option-stats-freq) instead.
 
 ## stats-level() {#global-option-stats-level-deprecated}
 

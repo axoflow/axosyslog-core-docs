@@ -157,6 +157,49 @@ You can find the available column types in the [official ClickHouse documentatio
 
 {{% include-headless "chunk/option-destination-send-timezone.md" %}}
 
+## server-side-schema()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | string |
+| Default: | - |
+
+By default, sending data to ClickHouse doesn't propagate the type information of the data fields. The `server-side-schema()` option provides a solution for that using the [ClickHouse format schema](https://clickhouse.com/docs/interfaces/formats#formatschema). Using a server-side schema is needed when you're using complex types, like [`DateTime` or `LowCardinality`](https://clickhouse.com/docs/sql-reference/data-types).
+
+1. Create a `.proto` file that matches the `schema()` of your {{< product >}} configuration. For details on formatting, see the [ClickHouse documentation](https://clickhouse.com/docs/interfaces/formats/Protobuf#example-usage). For example:
+
+    ```json
+    syntax = "proto3";
+
+    message MessageType {
+      uint32 user_id = 3;
+      string message = 1;
+      string timestamp = 2;
+      float metric = 4;
+    };
+    ```
+
+1. Copy the `.proto` file to your ClickHouse server, into the directory set in the `proto_schema_path` option of your ClickHouse configuration.
+1. Reference that schema in the `clickhouse()` destination of your {{< product >}} configuration. The parameter of `server-side-schema()` is `<name-of-the-proto-file>:<identifier-after-message-in-the-proto-file>`. So if in the previous step you named the proto file `my-proto-file.proto` with the sample content, the parameter will be `my-proto-file:MessageType`. For example:
+
+    ```sh
+    destination {
+      clickhouse(
+        database("default")
+        table("demo_table")
+        user("your-username")
+        password("your-password")
+        schema(
+          "user_id" UInt32 => $R_MSEC,
+          "message" String => "$MSG",
+          "timestamp" DateTime => "$R_UNIXTIME",
+          "metric" Float32 => 3.14
+        )
+        server-side-schema("<my_proto_file_on_server>:<my_message_schema_name>")
+      );
+    };
+    ```
+
 ## table()
 
 |          |                            |

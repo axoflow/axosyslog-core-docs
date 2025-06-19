@@ -6,13 +6,13 @@ weight: 250
 
 You can install {{< product >}} 4.8 and newer on your RPM-based system from Axoflow's RPM repository. {{< product >}} is a drop in replacement for the `syslog-ng` RPM package, all the {{< product >}} binaries and configuration files are stored at the same place on your system.
 
-The following x86-64 distributions are supported:
+The following distributions are supported:
 
-- Red Hat Enterprise Linux (RHEL) 9 / AlmaLinux 9
-- Red Hat Enterprise Linux (RHEL) 8 / AlmaLinux 8
-- Fedora 41
-- Fedora 40
-- Fedora 39
+- Red Hat Enterprise Linux (RHEL) 9 x86-64 / AlmaLinux 9 x86-64
+- Red Hat Enterprise Linux (RHEL) 8 x86-64 / AlmaLinux 8 x86-64
+- Fedora 41 x86-64
+- Fedora 40 x86-64
+- Fedora 39 x86-64
 
 (The packages for AlmaLinux probably work for Rocky Linux as well, but we haven't tested it.)
 

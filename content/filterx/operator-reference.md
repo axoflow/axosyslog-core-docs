@@ -10,59 +10,31 @@ weight: 2000
 
 This page describes the operators you can use in [FilterX blocks]({{< relref "/filterx/_index.md" >}}).
 
-## Comparison operators
+## Arithmetic operators
 
-Comparison operators allow you to compare values of macros, variables, and expressions as numbers (`==, <, <=, >=, >, !=`) or as strings
-(`eq, lt, le, gt, ge, ne`). You can also check for type equality (`===`) and strict inequality (`!==`). For details and examples, see {{% xref "/filterx/filterx-comparing/_index.md" %}}.
+Available in {{< product >}} 4.12 and later.
 
-## Boolean operators
+The `+` (addition), `-` (substraction), `*` (multiplication), `/` (division), and `%` (modulo) operators allow you to perform arithmetic operations on numeric (integer or double) values. For example:
 
-The `not`, `or`, `and` operators allow you to combine any number of comparisons and expressions. For details and examples, see {{% xref "/filterx/filterx-boolean/_index.md" %}}.
-
-## Assign if non-null (=??) operator {#assign-non-null}
-
-Available in {{< product >}} 4.10 and later.
-
-Assigns the right operand to the left operand if the right operand is not null. Note that evaluation errors of the right-hand operand will be suppressed.
-
-```shell
-left-operand =?? right-operand
+```sh
+if (3 - 3 == 0) { ... }
+if (3.0 * 3 == 9.0) { ... }
+if (3.0 / 3.0 == 1.0) { ... }
+if (4 % 3 == 1) { ... }
 ```
 
-For example:
+Note that:
 
-```shell
-`resource.attributes['service.name'] =?? $PROGRAM;`
-```
+- The `%` operator only accepts integer values.
+- If one operand is integer and the other is double, the result will be double.
+- The `+` operator can add strings and other types as well, for details, see the [Plus operator]({{< relref "#plus-operator" >}}).
+- To increase the value of a variable, see the [Plus equal operator]({{< relref "#plus-equal-operator" >}}).
 
-Using the `=??` operator is equivalent to the following expression, but using `=??` has better performance.
-
-```code
-if (isset($PROGRAM) ?? false) {
-    resource.attributes['service.name'] = $PROGRAM;
-};
-
-## Null coalescing operator
-
-The [null coalescing operator](https://en.wikipedia.org/wiki/Null_coalescing_operator) returns the result of the left operand if it exists and is not null, otherwise it returns the operand on the right.
-
-```shell
-left-operand ?? right-operand
-```
-
-You can use it to define a default value, or to handle errors in your FilterX statements: if evaluating the left-side operand returns an error, the right-side operand is evaluated instead.
-
-For example, if a key of a JSON object doesn't exist for every message, you can set it to a default value:
-
-```shell
-${MESSAGE} = json["BODY"] ?? "Empty message"
-```
-
-## Plus operator
+### Plus operator
 
 {{< include-headless "chunk/filterx-plus-operator.md" >}}
 
-## Plus equal operator
+### Plus equal operator
 
 The `+=` operator increases the value of a variable with the value on the right. Exactly how the addition happens depends on the type of the variable.
 
@@ -119,6 +91,58 @@ The `+=` operator increases the value of a variable with the value on the right.
         d += 3600.000; # 3600 seconds, 1 hour
         # d is "2000-01-01T01:00:00.000+00:00"
         ```
+
+## Comparison operators
+
+Comparison operators allow you to compare values of macros, variables, and expressions as numbers (`==, <, <=, >=, >, !=`) or as strings
+(`eq, lt, le, gt, ge, ne`). You can also check for type equality (`===`) and strict inequality (`!==`). For details and examples, see {{% xref "/filterx/filterx-comparing/_index.md" %}}.
+
+## Boolean operators
+
+The `not`, `or`, `and` operators allow you to combine any number of comparisons and expressions. For details and examples, see {{% xref "/filterx/filterx-boolean/_index.md" %}}.
+
+## Assign if non-null (=??) operator {#assign-non-null}
+
+Available in {{< product >}} 4.10 and later.
+
+Assigns the right operand to the left operand if the right operand exists is not null. Note that evaluation errors of the right-hand operand will be suppressed.
+
+```shell
+left-operand =?? right-operand
+```
+
+For example:
+
+```shell
+`resource.attributes['service.name'] =?? $PROGRAM;`
+```
+
+Using the `=??` operator is equivalent to the following expression, but using `=??` has better performance.
+
+```code
+if (isset($PROGRAM) ?? false) {
+    resource.attributes['service.name'] = $PROGRAM;
+};
+
+## Null coalescing operator
+
+The [null coalescing operator](https://en.wikipedia.org/wiki/Null_coalescing_operator) returns the result of the left operand if it exists and is not null, otherwise it returns the operand on the right.
+
+```shell
+left-operand ?? right-operand
+```
+
+You can use it to define a default value, or to handle errors in your FilterX statements: if evaluating the left-side operand returns an error, the right-side operand is evaluated instead.
+
+For example, if a key of a JSON object doesn't exist for every message, you can set it to a default value:
+
+```shell
+${MESSAGE} = json["BODY"] ?? "Empty message"
+```
+
+## List membership operator
+
+{{< include-headless "chunk/filterx-list-membership-operator.md" >}}
 
 ## Regexp match (equal tilde) {#regexp}
 

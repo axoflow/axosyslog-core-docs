@@ -27,4 +27,10 @@ This flag means that the processing of log messages processed by the log stateme
 
 ### flow-control
 
-Enables flow-control to the log path, meaning that AxoSyslog will stop reading messages from the sources of this log statement if the destinations are not able to process the messages at the required speed. If disabled, AxoSyslog will drop messages if the destination queues are full. If enabled, AxoSyslog will only drop messages if the destination queues/window sizes are improperly sized. For details, see {{% xref "/chapter-routing-filters/concepts-flow-control/_index.md" %}}.
+Enables flow-control to the log path, meaning that AxoSyslog will stop reading messages from the sources of this log statement if the destinations are not able to process the messages at the required speed. If disabled, AxoSyslog will drop messages if the destination queues are full. If enabled, AxoSyslog will only drop messages if the destination queues/window sizes are improperly sized. For details, see {{% xref "/chapter-routing-filters/concepts-flow-control/_index.md" %}}. Starting with version 4.12, you can enable flow-control for every log path using the [`log-flow-control()` global option]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-log-flow-control" >}}).
+
+### no-flow-control
+
+Available in {{< product >}} 4.12 and later.
+
+Disables flow-control for a log path if the [`log-flow-control()` global option]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-log-flow-control" >}}) is enabled.

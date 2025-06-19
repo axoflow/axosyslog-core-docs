@@ -22,6 +22,9 @@ filterx {
 You can use mathematical symbols as operators (like `==, !=, >=`), and based on the type of the arguments {{% param "product.abbrev" %}} automatically determines how to compare them. The logic behind this is similar to JavaScript:
 
 - If both sides of the comparisons are strings, then the comparison is string.
+
+    Note: Comparing strings is case sensitive. For case insensitive comparison, use the [`strcasecmp()` function]({{< relref "/filterx/function-reference.md#strcasecmp" >}}).
+
 - If one of the arguments is numeric, then the comparison is numeric.
 - Literal numbers (numbers not enclosed in quotes) are numeric.
 - You can explicitly type-cast an argument into a number.
@@ -40,7 +43,7 @@ For example:
 
 - `if (${.apache.request} == "/wp-admin/login.php")`
 
-    The left side is not type-cast, the right side is a string, so the comparison is string.
+    The left side is not type-cast, the right side is a string, so the comparison is string, and case sensitive. The case insensitive equivalent is: `if (strcasecmp(${.apache.request}, "/wp-admin/login.php") == 0)`
 
 {{% alert title="Note" color="info" %}}
 You can use [string operators](#comparison-operators) if you want to, they are still available for backwards compatibility.

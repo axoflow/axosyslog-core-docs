@@ -244,6 +244,8 @@ To unset every empty field of an object, use the [`unset-empties`]({{< relref "/
 
 {{< include-headless "chunk/filterx-plus-operator.md" >}}
 
+For other arithmetic operators, see {{% xref "/filterx/operator-reference.md#arithmetic-operators" %}}.
+
 ## Complex types: lists, dicts, and JSON {#json}
 
 The list and dict types are similar to their [Python counterparts](https://www.geeksforgeeks.org/difference-between-list-and-dictionary-in-python/). FilterX uses JSON to represent generic dictionary and list types, but you can create other, specific dictionary and list types as well (currently for OTEL, for example, `otel_kvlist`, or `otel_array`). All supported dictionary and list types are compatible with each other, and you can convert them to and from each other, copy values between them (retaining the type), and so on.
@@ -334,6 +336,10 @@ When referring to the field of a name-value pair (which begins with the `$` char
 
 You can add two lists or two dicts using the {{% xref "/filterx/operator-reference.md#plus-operator" %}}.
 
+### List membership
+
+{{< include-headless "chunk/filterx-list-membership-operator.md" >}}
+
 <!--
 ### Type casting
 
@@ -345,17 +351,21 @@ You can add two lists or two dicts using the {{% xref "/filterx/operator-referen
 
 FilterX has the following operators.
 
+- [Arithmetic operators]({{< relref "/filterx/operator-reference.md#arithmetic-operators" >}}).
 - [Assign a value to a variable if the value is non-null (`=??`)]({{< relref "/filterx/operator-reference.md#assign-non-null" >}}).
 - [Boolean operators]({{< relref "/filterx/filterx-boolean/_index.md" >}}): `not`, `or`, `and`.
 - [Comparison operators]({{< relref "/filterx/filterx-comparing/_index.md" >}}): `==`, `<`, `<=`, `>=`, `>`, `!=`, `===`, `!==`, `eq`, `lt`, `le`, `gt`, `ge`, `ne`.
 - [Conditional operators]({{< relref "/filterx/filterx-conditional/_index.md" >}}).
 - [Dot operator (`.`)](#json) to access fields of an object, like JSON.
 - [Indexing operator `[]`](#json) to access fields of an object, like JSON.
+- [List membership operator (`in`)]({{< relref "/filterx/operator-reference.md#list-membership-operator" >}}): checks if a value is present in a list.
 - [Plus (`+`) operator]({{< relref "/filterx/operator-reference.md#plus-operator" >}}) to add values and concatenate strings.
 - [Plus equal (`+=`) operator]({{< relref "/filterx/operator-reference.md#plus-equal-operator" >}}) to add the right operand to the left.
 - [Ternary conditional operator]({{< relref "/filterx/operator-reference.md#ternary-conditional-operator" >}}): `?:`.
 - [Null coalescing operator]({{< relref "/filterx/operator-reference.md#null-coalescing-operator" >}}): `??`.
 - [Regular expression (regexp) match]({{< relref "/filterx/operator-reference.md#regexp" >}}): `=~` and `!~`.
+
+<!-- FIXME update with the new operators -->
 
 For details, see {{% xref "/filterx/operator-reference.md" %}}.
 
@@ -393,6 +403,7 @@ FilterX has the following built-in functions.
 - [`set_pri`]({{< relref "/filterx/function-reference.md#set-pri" >}}): Set the priority value of the message.
 - [`set_timestamp`]({{< relref "/filterx/function-reference.md#set-timestamp" >}}): Set the timestamp of the message.
 - [`startswith`]({{< relref "/filterx/filterx-string-search/_index.md" >}}): Checks if a string begins with the specified value.
+- [`strcasecmp`]({{< relref "/filterx/function-reference.md#strcasecmp" >}}): Case insensitive string comparison.
 - [`strftime`]({{< relref "/filterx/function-reference.md#strftime" >}}): Format datetime values.
 - [`strptime`]({{< relref "/filterx/function-reference.md#strptime" >}}): Converts a string containing a date/time value, using a specified format string.
 - [`unset`]({{< relref "/filterx/function-reference.md#unset" >}}): Deletes a name-value pair, or a field from an object.
@@ -478,6 +489,8 @@ This is a normal RFC3164-formatted message logged by the kernel (where iptables 
 
     <!-- FIXME show json from sample message
     -->
+
+For other examples on parsing messages, see the [Parsing firewall logs with FilterX](https://axoflow.com/blog/parsing-firewall-logs-with-filterx) blog post.
 
 ## FilterX variables in destinations {#variables-in-destinations}
 

@@ -531,19 +531,23 @@ startswith(input-string, [substring_1, substring_2], ignorecase=true);
 
 For details, see {{% xref "/filterx/filterx-string-search/_index.md" %}}.
 
-## string
+## strcasecmp
 
-Cast a value into a string. Note that currently {{< product >}} evaluates strings and executes [template functions]({{< relref "/filterx/_index.md#template-functions" >}}) and template expressions within the strings. In the future, template evaluation will be moved to a separate FilterX function.
+Available in {{< product >}} 4.12 and later.
 
-Usage: `string(<string or expression to cast>)`
+Usage: `strcasecmp(string1, string2)`
+
+Compare two strings without case sensitivity. Returns:
+
+- `0` if the two strings match,
+- a negative value if string1 &lt; string2,
+- a positive value if string1 &gt; string2.
 
 For example:
 
-```shell
-myvariable = string(${LEVEL_NUM});
+```sh
+strcasecmp("HOST1", "host1"); # Returns 0
 ```
-
-Sometimes you have to explicitly cast values to strings, for example, when you want to concatenate them into a message using the `+` operator.
 
 ## strftime
 
@@ -604,6 +608,20 @@ You can use the following format codes in the format string:
     {{% alert title="Note" color="info" %}}
     `%Z` currently doesn't respect the datetime's timezone, use `%z` instead.
     {{% /alert %}}
+
+## string
+
+Cast a value into a string. Note that currently {{< product >}} evaluates strings and executes [template functions]({{< relref "/filterx/_index.md#template-functions" >}}) and template expressions within the strings. In the future, template evaluation will be moved to a separate FilterX function.
+
+Usage: `string(<string or expression to cast>)`
+
+For example:
+
+```shell
+myvariable = string(${LEVEL_NUM});
+```
+
+Sometimes you have to explicitly cast values to strings, for example, when you want to concatenate them into a message using the `+` operator.
 
 ## strptime
 

@@ -6,6 +6,19 @@ weight: 10
 
 This page is a changelog that collects the major changes and additions to this documentation. (If you want to know the details about why we have separate documentation for AxoSyslog and how it relates to the `syslog-ng` documentation, read our [syslog-ng documentation and similarities with AxoSyslog Core](https://axoflow.com/blog/axosyslog-core-documentation-syslog-ng) blog post.)
 
+## Version 4.12 (2025-06-18)
+
+- Starting from this version, {{< product >}} is licensed under GPL-3.0-or-later. For details, see {{% xref "/chapter-concepts/concepts-licensing/_index.md" %}} and the [AxoSyslog License Update: Moving to GPL3](https://axoflow.com/blog/axosyslog-syslog-ng-fork-license-change-gpl3) blog post.
+- New FilterX features:
+    - [Arithmetic operators]({{< relref "/filterx/operator-reference.md#arithmetic-operators" >}}): `+` (addition), `-` (substraction), `*` (multiplication), `/` (division), and `%` (modulo)
+    - [List membership operator (`in`)]({{< relref "/filterx/operator-reference.md#list-membership-operator" >}}): checks if a value is present in a list.
+    - [`strcasecmp`]({{< relref "/filterx/function-reference.md#strcasecmp" >}}) function for case insensitive string comparison.
+    - To help [troubleshooting FilterX blocks]({{< relref "/filterx/filterx-troubleshooting/_index.md" >}}), {{< product >}} now includes specific functions that allow you to track failures in FilterX code.
+- Way to propagate the type information of the data fields in the [`clickhouse()` destination]({{< relref "/chapter-destinations/clickhouse/_index.md" >}}) using the ClickHouse format schema. For details, see {{% xref "/chapter-destinations/clickhouse/_index.md#server-side-schema" %}}.
+- You can enable flow-control for every log path using the [`log-flow-control()` global option]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-log-flow-control" >}}).
+- `loggen` has a new `--perf` option to disable rate limiting.
+- Internal STATS messages are now [disabled by default]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-stats-freq" >}}).
+
 ## Version 4.11 (2025-04-09)
 
 - Documentation for the {{% xref "/chapter-sources/webhook/_index.md" %}}.
