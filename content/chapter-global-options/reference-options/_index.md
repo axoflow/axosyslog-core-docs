@@ -481,7 +481,7 @@ options {
 
 {{% alert title="Note" color="info" %}}
 
-Starting with {{< product >}} version 4.12, the default value of this option is `0`, disabling STATS messages. We recommend accessing metrics using the [`syslog-ng-ctl query list`]({{< relref "/app-man-syslog-ng/syslog-ng-ctl.1.md#syslog-ng-ctl-query" >}}) command, for monitoring and observability.
+Starting with {{< product >}} version 4.12, the default value of this option is `0`, disabling STATS messages. We recommend accessing metrics using the [`syslog-ng-ctl stats`]({{< relref "/app-man-syslog-ng/syslog-ng-ctl.1.md#syslog-ng-ctl-stats" >}}) interface for monitoring and observability, for example, by using `syslog-ng-ctl stats prometheus`.
 
 In earlier versions, the default was `600` (ten minutes).
 
