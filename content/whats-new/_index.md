@@ -8,6 +8,7 @@ This page is a changelog that collects the major changes and additions to this d
 
 ## Version 4.12 (2025-06-18)
 
+- Starting from this version, {{< product >}} is licensed under GPL-3.0-or-later. For details, see {{% xref "/chapter-concepts/concepts-licensing/_index.md" %}} and the [AxoSyslog License Update: Moving to GPL3](https://axoflow.com/blog/axosyslog-syslog-ng-fork-license-change-gpl3) blog post.
 - New FilterX features:
     - [Arithmetic operators]({{< relref "/filterx/operator-reference.md#arithmetic-operators" >}}): `+` (addition), `-` (substraction), `*` (multiplication), `/` (division), and `%` (modulo)
     - [List membership operator (`in`)]({{< relref "/filterx/operator-reference.md#list-membership-operator" >}}): checks if a value is present in a list.
