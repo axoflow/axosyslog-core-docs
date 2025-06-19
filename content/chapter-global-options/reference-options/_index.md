@@ -323,6 +323,35 @@ For example:
 
 *Description:* The number of messages that the output queue can store.
 
+## log-flow-control() {#global-option-log-flow-control}
+
+|                  |                  |
+| ---------------- | ---------------- |
+| Accepted values: | `yes`, `no` |
+| Default:         | `no`          |
+
+Available in {{< product >}} 4.12 and later.
+
+*Description:* Enables flow control for all log paths. When set to yes, flow control is globally enabled, but you can selectively disable it for individual log paths using the `no-flow-control` flag. For example:
+
+```sh
+options {
+  log-flow-control(yes);
+};
+
+log {
+  source { system(); };
+  destination { network("server" port(5555)); };
+  flags(no-flow-control);
+};
+
+log { ... };
+```
+
+{{< warning >}}
+Enabling global flow control can cause the `system()` source to block. As a result, if messages accumulate at the destination, applications that log through the system may become completely stalled, potentially halting their operation. We don't recommend enabling flow control in log paths that include the `system()` source.
+{{< /warning >}}
+
 ## log-level() {#global-options-log-level}
 
 |                  |                  |

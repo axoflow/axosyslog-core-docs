@@ -16,6 +16,10 @@ For details on how flow-control works, see {{% xref "/chapter-routing-filters/co
 
 - If the control window is full, AxoSyslog stops reading messages from the source until some messages are successfully sent to the destination.
 - If the output buffer becomes full, and neither disk-buffering nor flow-control is used, messages may be lost.
+- You can explicitly enable flow control:
+
+    - using the `flags(flow-control)` option for a log path, or
+    - using the `log-flow-control()` global option for every log path. In this case, you can selectively disable flow control for individual log paths using the `no-flow-control` flag.
 
 {{% alert title="Warning" color="warning" %}}
 
