@@ -332,7 +332,7 @@ For example:
 
 Available in {{< product >}} 4.12 and later.
 
-*Description:* Enables flow control for all log paths. When set to yes, flow control is globally enabled, but you can selectively disable it for individual log paths using the `no-flow-control` flag. For example:
+*Description:* Enables flow control for all log paths. When set to yes, flow control is globally enabled, but you can selectively disable it for individual log paths using the [`no-flow-control`]({{< relref "/chapter-routing-filters/logpath/reference-logflags/_index.md#no-flow-control" >}}) flag. For example:
 
 ```sh
 options {
