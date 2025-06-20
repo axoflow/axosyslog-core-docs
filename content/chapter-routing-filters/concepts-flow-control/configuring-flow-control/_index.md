@@ -21,6 +21,8 @@ For details on how flow-control works, see {{% xref "/chapter-routing-filters/co
     - using the `flags(flow-control)` option for a log path, or
     - using the `log-flow-control()` global option for every log path. In this case, you can selectively disable flow control for individual log paths using the `no-flow-control` flag.
 
+    {{< include-headless "chunk/para-flow-control-embedded-paths.md" >}}
+
 {{% alert title="Warning" color="warning" %}}
 
 If you modify the `max-connections()` or the `log-fetch-limit()` parameter, do not forget to adjust the `log-iw-size()` and `dynamic-window-size()` parameters accordingly.

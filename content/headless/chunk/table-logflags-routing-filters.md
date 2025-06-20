@@ -34,3 +34,5 @@ Enables flow-control to the log path, meaning that AxoSyslog will stop reading m
 Available in {{< product >}} 4.12 and later.
 
 Disables flow-control for a log path if the [`log-flow-control()` global option]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-log-flow-control" >}}) is enabled.
+
+{{< include-headless "chunk/para-flow-control-embedded-paths.md" >}}
