@@ -27,6 +27,9 @@ Every destination has its own output buffer. The output buffer is needed because
 The AxoSyslog application uses flow-control in the following cases:
 
 - Hard flow-control: the `flow-control` flag is enabled for the particular log path, or the [`log-flow-control()` global option]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-log-flow-control" >}}) is set. You can selectively disable flow control for individual log paths using the `no-flow-control` flag.
+
+    {{< include-headless "chunk/para-flow-control-embedded-paths.md" >}}
+
 - Soft flow-control: the log path includes a file destination.
 
 {{% alert title="Note" color="info" %}}
