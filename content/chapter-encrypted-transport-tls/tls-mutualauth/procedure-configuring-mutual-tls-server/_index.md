@@ -69,3 +69,4 @@ Complete the following steps on the AxoSyslog server:
 Do not forget to update the certificate and key files when they expire.
     {{% /alert %}}
 
+> Note: identifiers of the certificate presented by the clients will be available under the `.tls.x509_*` macros. See {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-tls-x509" %}}.
