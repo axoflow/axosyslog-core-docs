@@ -50,7 +50,7 @@ destination d_bigquery {
 }
 ```
 
-By default, the messages are sent with one worker, one message per batch, and without compression. If you have a proto file, you can use the [`proto-var()`](#proto) option instead of `schema()` to create the message from a FilterX-formatted object.
+By default, the messages are sent with one worker, one message per batch, and without compression. If you have a [protobuf-formatted message]({{< relref "/filterx/function-reference.md#protobuf-message" >}}) proto file, you can specify it in the [`proto-var()`](#proto) option, instead of using the `schema()` option.
 
 ## Options
 
