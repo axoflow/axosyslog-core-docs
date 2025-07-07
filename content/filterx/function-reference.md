@@ -111,6 +111,12 @@ By default, the delimiter is the comma (`delimiter=","`), the `columns` and `def
 
 If the `columns` option is set, {{< product >}} checks that the number of fields or entries in the input data matches the number of columns. If there are fewer items, it adds the `default_value` to the missing entries.
 
+## format_json {#format-json}
+
+Formats any value into a raw JSON string.
+
+Usage: `format_json($data)`
+
 ## format_kv {#format-kv}
 
 Formats a dictionary into a string containing key=value pairs.
@@ -130,12 +136,6 @@ The `value_separator` option must be a single character, the `pair_separator` ca
 ```shell
 format_kv(<input-dictionary>, value_separator=":", pair_separator=";")
 ```
-
-## format_json {#format-json}
-
-Formats any value into a raw JSON string.
-
-Usage: `format_json($data)`
 
 ## get_sdata
 
