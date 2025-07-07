@@ -42,6 +42,8 @@ destination {
 };
 ```
 
+If you have a proto file, you can use the [`proto-var()`](#proto) option instead of `schema()` to create the message from a FilterX-formatted object.
+
 ## Options
 
 This destination has the following options:
@@ -127,7 +129,9 @@ message CustomRecord {
 }
 ```
 
-Alternatively, you can set the schema with the [`schema()`](#schema) option.
+Alternatively, you can set the schema with the [`schema()`](#schema) option, or use [proto-var()](#proto-var) to assign an already formatted object to the message.
+
+{{< include-headless "chunk/option-destination-proto-var.md" >}}
 
 {{< include-headless "chunk/option-destination-grpc-response-action.md" >}}
 
@@ -151,7 +155,7 @@ schema(
 )
 ```
 
-Alternatively, you can set the schema with the [`protobuf-schema()`](#protobuf-schema) option.
+Alternatively, you can set the schema with the [`protobuf-schema()`](#protobuf-schema) option, or use [proto-var()](#proto-var) to assign an already formatted object to the message.
 
 You can find the available column types in the [official ClickHouse documentation](https://clickhouse.com/docs/en/sql-reference/data-types).
 
