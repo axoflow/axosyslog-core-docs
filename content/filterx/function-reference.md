@@ -334,6 +334,39 @@ Usage: `parse_xml(msg)`
 
 For details, see {{< relref "/filterx/filterx-parsing/xml/_index.md" >}}
 
+## protobuf_message {#protobuf-message}
+
+Available in {{< product >}} 4.13 and later.
+
+Formats arbitrary data as protobuf using the specified schema.
+
+Usage: `protobuf_data = protobuf_message(my_dict, schema_file="my_schema_file.proto");`
+
+For example, if your proto file looks like this:
+
+```shell
+syntax = "proto2";
+​
+message CustomRecord {
+  optional string message = 1;
+  optional string app = 2;
+  optional string host = 3;
+  optional int64 pid = 4;
+}
+```
+
+You can create the following object in FilterX, then include the `protobuf_data` variable in the message::
+
+```shell
+filterx {
+  my_dict = {"message":$MESSAGE, "app":$PROGRAM, "host": $HOST, "pid": $PID};
+  protobuf_data = protobuf_message(my_dict, schema_file="my_schema_file.proto");
+  ${MESSAGE} = {
+    "protobuf_data": protobuf_data,
+  };
+};
+```
+
 ## regexp_search {#regexp-search}
 
 Searches a string and returns the matches of a regular expression as a list or a dictionary. If there are no matches, the result is empty.
