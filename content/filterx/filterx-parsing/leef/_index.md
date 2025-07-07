@@ -8,7 +8,7 @@ weight: 1100
 
 Available in {{< product >}} 4.9 and later.
 
-The `parse_leef` FilterX function parses messages formatted in the [Log Event Extended Format (LEEF)](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.ibm.com/docs/en/dsm%3Ftopic%3Doverview-leef-event-components&ved=2ahUKEwj87cLOjs-JAxUjgf0HHfxyM6AQFnoECBkQAQ&usg=AOvVaw1-YjjgdcnHjZLcJtzB3t6X).
+The `parse_leef` FilterX function parses messages formatted in the [Log Event Extended Format (LEEF)](https://www.ibm.com/docs/en/SS42VS_DSM/pdf/b_Leef_format_guide.pdf).
 
 Both LEEF versions (1.0 and 2.0) are supported.
 
