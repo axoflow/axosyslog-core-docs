@@ -101,6 +101,8 @@ The value of `${MESSAGE}` will be: `{"a.b.c": "1"}`
 
 ## format_cef {#format-cef}
 
+Available in {{< product >}} 4.13 and later.
+
 Formats a dictionary into the [Common Event Format (CEF)](https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-8.3/cef-implementation-standard/Content/CEF/Chapter%201%20What%20is%20CEF.htm).
 
 Usage: `${MESSAGE} = format_cef(my_dictionary);`
@@ -114,7 +116,7 @@ my_dictionary = {"version":"0","device_vendor":" KasperskyLab ","device_product"
 Becomes:
 
 ```shell
-"CEF:0| KasperskyLab |SecurityCenter|13.2.0.1511|KLPRCI_TaskState|Completed successfully|1|"
+CEF:0| KasperskyLab |SecurityCenter|13.2.0.1511|KLPRCI_TaskState|Completed successfully|1|
 ```
 
 <!-- FIXME how to handle extensions -->
