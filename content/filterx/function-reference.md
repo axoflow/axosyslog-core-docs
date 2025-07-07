@@ -312,6 +312,14 @@ Creates an [OpenTelemetry resource object]({{< relref "/filterx/filterx-otel/_in
 
 Creates an [OpenTelemetry scope object]({{< relref "/filterx/filterx-otel/_index.md#otel-scope-reference" >}}).
 
+## parse_cef {#parse-cef}
+
+Parse messages formatted in the [Common Event Format (CEF)](https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-8.3/cef-implementation-standard/Content/CEF/Chapter%201%20What%20is%20CEF.htm).
+
+Usage: `parse_cef(<input-string>, value_separator="=", pair_separator="|")`
+
+For details, see {{% xref "/filterx/filterx-parsing/cef/_index.md" %}}.
+
 ## parse_csv {#parse-csv}
 
 Split a comma-separated or similar string.
