@@ -42,7 +42,7 @@ destination {
 };
 ```
 
-If you have a [protobuf-formatted message]({{< relref "/filterx/function-reference.md#protobuf-message" >}}) proto file, you can specify it in the [`proto-var()`](#proto) option, instead of using the `schema()` option.
+If you have a [protobuf-formatted message]({{< relref "/filterx/function-reference.md#protobuf-message" >}}), you can specify it in the [`proto-var()`](#proto) option, instead of using the `schema()` option.
 
 ## Options
 
