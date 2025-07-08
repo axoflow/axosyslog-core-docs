@@ -5,9 +5,9 @@ aliases:
 - /chapter-quickstart/managing-and-checking-linux/
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
+{{< include-headless "banner-new-to-axosyslog.md" >}}
 
 This section describes how to start, stop and check the status of {{% param "product.name" %}} service on Linux.
-
 
 ## Starting {{% param "product.abbrev" %}}
 

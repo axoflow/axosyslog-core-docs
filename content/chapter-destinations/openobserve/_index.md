@@ -6,6 +6,7 @@ driver: "openobserve-log()"
 short_description: "Send messages to OpenObserve"
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
+{{< include-headless "banner-new-to-axosyslog.md" >}}
 
 Starting with version 4.5.0, {{% param "product_name" %}} can send messages to [OpenObserve](https://openobserve.ai/docs/api/ingestion/logs/json/) using its [Logs Ingestion - JSON API](https://openobserve.ai/docs/api/ingestion/logs/json/). This API accepts multiple records in batch in JSON format.
 

@@ -9,6 +9,8 @@ aliases:
 - /ose-preface/acknowledgements/
 ---
 
+{{< include-headless "banner-new-to-axosyslog.md" >}}
+
 {{< include-headless "axosyslog-intro.md" >}}
 
 If you want to try running `syslog-ng` in a container, or use it as a log collector in Kubernetes, try {{% param "product.abbrev" %}}! See {{% xref "/install/_index.md" %}} to get started.
