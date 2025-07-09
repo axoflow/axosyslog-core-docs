@@ -176,7 +176,7 @@ my_dictionary = {"version":"1.0","vendor":"Microsoft","product_name":"MSExchange
 Becomes:
 
 ```shell
-LEEF:1.0|Microsoft|MSExchange|4.0 SP1|15345|src=192.0.2.0 dst=172.50.123.1 sev=5cat=anomaly srcPort=81 dstPort=21 usrName=joe.black
+LEEF:1.0|Microsoft|MSExchange|4.0 SP1|15345|src=192.0.2.0	dst=172.50.123.1	sev=5cat=anomaly	srcPort=81	dstPort=21	usrName=joe.black
 ```
 
 ## get_sdata
