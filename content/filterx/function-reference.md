@@ -99,6 +99,28 @@ ${MESSAGE} = flatten(sample-dict);
 
 The value of `${MESSAGE}` will be: `{"a.b.c": "1"}`
 
+## format_cef {#format-cef}
+
+Available in {{< product >}} 4.13 and later.
+
+Formats a dictionary into the [Common Event Format (CEF)](https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-8.3/cef-implementation-standard/Content/CEF/Chapter%201%20What%20is%20CEF.htm).
+
+Usage: `${MESSAGE} = format_cef(my_dictionary);`
+
+For example:
+
+```json
+my_dictionary = {"version":"0","device_vendor":" KasperskyLab ","device_product":"SecurityCenter","device_version":"13.2.0.1511","device_event_class_id":"KLPRCI_TaskState","name":"Completed successfully","agent_severity":"1"};
+```
+
+Becomes:
+
+```shell
+CEF:0| KasperskyLab |SecurityCenter|13.2.0.1511|KLPRCI_TaskState|Completed successfully|1|
+```
+
+<!-- FIXME how to handle extensions -->
+
 ## format_csv {#format-csv}
 
 Formats a dictionary or a list into a comma-separated string.
@@ -110,6 +132,12 @@ Only the input is mandatory, other arguments are optional. Note that the delimit
 By default, the delimiter is the comma (`delimiter=","`), the `columns` and `default_value` are empty.
 
 If the `columns` option is set, {{< product >}} checks that the number of fields or entries in the input data matches the number of columns. If there are fewer items, it adds the `default_value` to the missing entries.
+
+## format_json {#format-json}
+
+Formats any value into a raw JSON string.
+
+Usage: `format_json($data)`
 
 ## format_kv {#format-kv}
 
@@ -131,11 +159,25 @@ The `value_separator` option must be a single character, the `pair_separator` ca
 format_kv(<input-dictionary>, value_separator=":", pair_separator=";")
 ```
 
-## format_json {#format-json}
+## format_leef {#format-leef}
 
-Formats any value into a raw JSON string.
+Available in {{< product >}} 4.13 and later.
 
-Usage: `format_json($data)`
+Formats a dictionary into the [Log Event Extended Format (LEEF)](https://www.ibm.com/docs/en/SS42VS_DSM/pdf/b_Leef_format_guide.pdf). Both LEEF versions (1.0 and 2.0) are supported.
+
+Usage: `${MESSAGE} = format_leef(my_dictionary);`
+
+For example:
+
+```json
+my_dictionary = {"version":"1.0","vendor":"Microsoft","product_name":"MSExchange","product_version":"4.0 SP1","event_id":"15345","src":"192.0.2.0","dst":"172.50.123.1","sev":"5cat=anomaly","srcPort":"81","dstPort":"21","usrName":"joe.black"};
+```
+
+Becomes:
+
+```shell
+LEEF:1.0|Microsoft|MSExchange|4.0 SP1|15345|src=192.0.2.0	dst=172.50.123.1	sev=5cat=anomaly	srcPort=81	dstPort=21	usrName=joe.black
+```
 
 ## get_sdata
 
@@ -291,6 +333,14 @@ Creates an [OpenTelemetry resource object]({{< relref "/filterx/filterx-otel/_in
 ## otel_scope {#otel-scope}
 
 Creates an [OpenTelemetry scope object]({{< relref "/filterx/filterx-otel/_index.md#otel-scope-reference" >}}).
+
+## parse_cef {#parse-cef}
+
+Parse messages formatted in the [Common Event Format (CEF)](https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-8.3/cef-implementation-standard/Content/CEF/Chapter%201%20What%20is%20CEF.htm).
+
+Usage: `parse_cef(<input-string>, value_separator="=", pair_separator="|")`
+
+For details, see {{% xref "/filterx/filterx-parsing/cef/_index.md" %}}.
 
 ## parse_csv {#parse-csv}
 

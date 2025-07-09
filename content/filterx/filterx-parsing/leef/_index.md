@@ -8,7 +8,7 @@ weight: 1100
 
 Available in {{< product >}} 4.9 and later.
 
-The `parse_leef` FilterX function parses messages formatted in the [Log Event Extended Format (LEEF)](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.ibm.com/docs/en/dsm%3Ftopic%3Doverview-leef-event-components&ved=2ahUKEwj87cLOjs-JAxUjgf0HHfxyM6AQFnoECBkQAQ&usg=AOvVaw1-YjjgdcnHjZLcJtzB3t6X).
+The `parse_leef` FilterX function parses messages formatted in the [Log Event Extended Format (LEEF)](https://www.ibm.com/docs/en/SS42VS_DSM/pdf/b_Leef_format_guide.pdf).
 
 Both LEEF versions (1.0 and 2.0) are supported.
 
@@ -25,7 +25,7 @@ The `value_separator` must be a single-character string. The `pair_separator` ca
 The following is a LEEF-formatted message including mandatory and custom (extension) fields:
 
 ```shell
-LEEF:1.0|Microsoft|MSExchange|4.0 SP1|15345|src=192.0.2.0 dst=172.50.123.1 sev=5cat=anomaly srcPort=81 dstPort=21 usrName=john.smith
+LEEF:1.0|Microsoft|MSExchange|4.0 SP1|15345|src=192.0.2.0	dst=172.50.123.1	sev=5cat=anomaly	srcPort=81	dstPort=21	usrName=john.smith
 ```
 
 The following FilterX expression parses it and converts it into JSON format:
