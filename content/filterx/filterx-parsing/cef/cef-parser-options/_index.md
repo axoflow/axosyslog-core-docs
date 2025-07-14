@@ -10,6 +10,8 @@ The `parse_cef` FilterX function has the following options.
 
 Specifies the character or string that separates the key-value pairs in the extensions. Default value: ` ` (space).
 
+{{< include-headless "chunk/filterx-separate-extension.md" >}}
+
 ## value_separator
 
 Specifies the character that separates the keys from the values in the extensions. Default value: `=`.

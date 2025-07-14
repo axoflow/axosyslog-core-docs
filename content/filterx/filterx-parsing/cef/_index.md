@@ -12,11 +12,13 @@ The `parse_cef` FilterX function parses messages formatted in the [Common Event 
 
 ## Declaration
 
-Usage: `parse_cef(<input-string>, value_separator="=", pair_separator="|")`
+Usage: `parse_cef(<input-string>, value_separator="=", pair_separator="|", separate_extensions=false)`
 
 The first argument is the input message. Optionally, you can set the `pair_separator` and `value_separator` arguments to override their default values.
 
 The `value_separator` must be a single-character string. The `pair_separator` can be a regular string.
+
+{{< include-headless "chunk/filterx-separate-extension-description.md" >}}
 
 ## Example
 
@@ -35,6 +37,23 @@ filterx {
 ```
 
 The content of the JSON object for this message will be:
+
+```json
+{
+"version":"0",
+"device_vendor":"KasperskyLab",
+"device_product":"SecurityCenter",
+"device_version":"13.2.0.1511",
+"device_event_class_id":"KLPRCI_TaskState",
+"name":"Completed successfully",
+"agent_severity":"1",
+"foo":"foo=bar",
+"bar":"bar=baz",
+"baz":"test"
+}
+```
+
+If you set `separate_extensions=true`, the extensions of the message will be grouped under the `extensions` key:
 
 ```json
 {

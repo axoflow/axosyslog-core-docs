@@ -12,6 +12,8 @@ Specifies the character or string that separates the key-value pairs in the exte
 
 LEEF v2 can specify the separator per message. Omitting this option uses the LEEF v2 provided separator, setting this value overrides it during parsing.
 
+{{< include-headless "chunk/filterx-separate-extension.md" >}}
+
 ## value_separator
 
 Specifies the character that separates the keys from the values in the extensions. Default value: `=`.

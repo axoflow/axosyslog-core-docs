@@ -12,6 +12,9 @@ This page is a changelog that collects the major changes and additions to this d
 ({{< relref "/chapter-destinations/google-bigquery/_index.md#proto-var" >}}) destinations.
 - You can now format dictionaries as XML and Windows Event Log XML using the [`format_xml`]({{< relref "/filterx/function-reference.md#format-xml" >}}) and [`format_windows_eventlog_xml`]({{< relref "/filterx/function-reference.md#format-windows-eventlog-xml" >}}) FilterX functions.
 - You can now format dictionaries as CEF and LEEF messages using the [`format_cef`]({{< relref "/filterx/function-reference.md#format-cef" >}}) and [`format_leef`]({{< relref "/filterx/function-reference.md#format-leef" >}}) FilterX functions.
+- Changes in {{% xref "/filterx/filterx-parsing/cef/_index.md" %}} and {{% xref "/filterx/filterx-parsing/leef/_index.md" %}}:
+
+    {{< include-headless "chunk/filterx-separate-extension.md" >}}
 
 ## Version 4.12 (2025-06-18)
 
