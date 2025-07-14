@@ -455,7 +455,7 @@ Creates an [OpenTelemetry scope object]({{< relref "/filterx/filterx-otel/_index
 
 Parse messages formatted in the [Common Event Format (CEF)](https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-8.3/cef-implementation-standard/Content/CEF/Chapter%201%20What%20is%20CEF.htm).
 
-Usage: `parse_cef(<input-string>, value_separator="=", pair_separator="|")`
+Usage: `parse_cef(<input-string>, value_separator="=", pair_separator="|", separate_extensions=false)`
 
 For details, see {{% xref "/filterx/filterx-parsing/cef/_index.md" %}}.
 
