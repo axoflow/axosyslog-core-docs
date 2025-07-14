@@ -6,6 +6,13 @@ weight: 10
 
 This page is a changelog that collects the major changes and additions to this documentation. (If you want to know the details about why we have separate documentation for AxoSyslog and how it relates to the `syslog-ng` documentation, read our [syslog-ng documentation and similarities with AxoSyslog Core](https://axoflow.com/blog/axosyslog-core-documentation-syslog-ng) blog post.)
 
+## Version 4.13 (2025-07-08)
+
+- You can format arbitrary data as protobuf using the specified schema (proto file) using the {{% xref "/filterx/function-reference.md#protobuf-message" %}} FilterX function. Also, you can send such pre-formatted data using the `proto-var()` option of the [ClickHouse]({{< relref "/chapter-destinations/clickhouse/_index.md#proto-var" >}}) and [Google BigQuery]()
+({{< relref "/chapter-destinations/google-bigquery/_index.md#proto-var" >}}) destinations.
+- You can now format dictionaries as XML and Windows Event Log XML using the [`format_xml`]({{< relref "/filterx/function-reference.md#format-xml" >}}) and [`format_windows_eventlog_xml`]({{< relref "/filterx/function-reference.md#format-windows-eventlog-xml" >}}) FilterX functions.
+- You can now format dictionaries as CEF and LEEF messages using the [`format_cef`]({{< relref "/filterx/function-reference.md#format-cef" >}}) and [`format_leef`]({{< relref "/filterx/function-reference.md#format-leef" >}}) FilterX functions.
+
 ## Version 4.12 (2025-06-18)
 
 - Starting from this version, {{< product >}} is licensed under GPL-3.0-or-later. For details, see {{% xref "/chapter-concepts/concepts-licensing/_index.md" %}} and the [AxoSyslog License Update: Moving to GPL3](https://axoflow.com/blog/axosyslog-syslog-ng-fork-license-change-gpl3) blog post.
