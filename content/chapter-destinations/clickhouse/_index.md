@@ -23,11 +23,12 @@ ClickHouse Cloud doesn't support the gRPC interface currently.
     - the name of an existing database and a table where you want to send your data, and
     - the credentials (username and password) to access the database.
 
-Example configuration (sends data to the default `localhost:9100` URL):
+Example configuration:
 
 ```sh
 destination {
   clickhouse(
+    url("localhost:9100")
     database("default")
     table("demo_table")
     user("your-username")
@@ -41,6 +42,8 @@ destination {
   );
 };
 ```
+
+If you have a [protobuf-formatted message]({{< relref "/filterx/function-reference.md#protobuf-message" >}}), you can specify it in the [`proto-var()`](#proto) option, instead of using the `schema()` option.
 
 ## Options
 
@@ -127,7 +130,9 @@ message CustomRecord {
 }
 ```
 
-Alternatively, you can set the schema with the [`schema()`](#schema) option.
+Alternatively, you can set the schema with the [`schema()`](#schema) option, or use [proto-var()](#proto-var) to assign an already formatted object to the message.
+
+{{< include-headless "chunk/option-destination-proto-var.md" >}}
 
 {{< include-headless "chunk/option-destination-grpc-response-action.md" >}}
 
@@ -151,7 +156,7 @@ schema(
 )
 ```
 
-Alternatively, you can set the schema with the [`protobuf-schema()`](#protobuf-schema) option.
+Alternatively, you can set the schema with the [`protobuf-schema()`](#protobuf-schema) option, or use [proto-var()](#proto-var) to assign an already formatted object to the message.
 
 You can find the available column types in the [official ClickHouse documentation](https://clickhouse.com/docs/en/sql-reference/data-types).
 
@@ -226,7 +231,7 @@ By default, sending data to ClickHouse doesn't propagate the type information of
 | Type:    | string |
 | Default: | `localhost:9100` |
 
-*Description:* The URL of the gRPC receiver.
+*Description:* The address of the gRPC receiver in a `host:port` format. If the port is omitted, it will default to `443`. Examples: `127.0.0.1:9100`, `[::1]:1234`, `example.com` (equivalent to `example.com:443`).
 
 ## user()
 

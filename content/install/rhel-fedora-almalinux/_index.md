@@ -10,6 +10,7 @@ The following distributions are supported:
 
 - Red Hat Enterprise Linux (RHEL) 9 x86-64 / AlmaLinux 9 x86-64
 - Red Hat Enterprise Linux (RHEL) 8 x86-64 / AlmaLinux 8 x86-64
+- Fedora 42 x86-64
 - Fedora 41 x86-64
 - Fedora 40 x86-64
 - Fedora 39 x86-64
