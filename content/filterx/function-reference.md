@@ -198,6 +198,13 @@ Note the following points:
     XML:  <a>100</a>
     ```
 
+1. Empty elements are represented as short-format XML tags:
+
+    ```yaml
+    JSON: {"a":""}
+    XML:  <a/>
+    ```
+
 ## format_windows_eventlog_xml {#format-windows-eventlog-xml}
 
 Available in {{< product >}} 4.13 and later.
