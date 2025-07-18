@@ -107,19 +107,7 @@ Formats a dictionary into the [Common Event Format (CEF)](https://www.microfocus
 
 Usage: `${MESSAGE} = format_cef(my_dictionary);`
 
-For example:
-
-```json
-my_dictionary = {"version":"0","device_vendor":" KasperskyLab ","device_product":"SecurityCenter","device_version":"13.2.0.1511","device_event_class_id":"KLPRCI_TaskState","name":"Completed successfully","agent_severity":"1"};
-```
-
-Becomes:
-
-```shell
-CEF:0| KasperskyLab |SecurityCenter|13.2.0.1511|KLPRCI_TaskState|Completed successfully|1|
-```
-
-<!-- FIXME how to handle extensions -->
+For details, see {{% xref "/filterx/filterx-format-data/format-cef.md" %}}.
 
 ## format_csv {#format-csv}
 
@@ -127,11 +115,7 @@ Formats a dictionary or a list into a comma-separated string.
 
 Usage: `format_csv(<input-list-or-dict>, columns=<json-list>, delimiter=<delimiter-character>, default_value=<string>)`
 
-Only the input is mandatory, other arguments are optional. Note that the delimiter must be a single character.
-
-By default, the delimiter is the comma (`delimiter=","`), the `columns` and `default_value` are empty.
-
-If the `columns` option is set, {{< product >}} checks that the number of fields or entries in the input data matches the number of columns. If there are fewer items, it adds the `default_value` to the missing entries.
+For details, see {{% xref "/filterx/filterx-format-data/format-csv.md" %}}.
 
 ## format_json {#format-json}
 
@@ -139,25 +123,15 @@ Formats any value into a raw JSON string.
 
 Usage: `format_json($data)`
 
+For details, see {{% xref "/filterx/filterx-format-data/format-json.md" %}}.
+
 ## format_kv {#format-kv}
 
 Formats a dictionary into a string containing key=value pairs.
 
 Usage: `format_kv(kvs_dict, value_separator="<separator-character>", pair_separator="<separator-string>")`
 
-By default, `format_kv` uses `=` to separate values, and `, ` (comma and space) to separate the pairs:
-
-```shell
-filterx {
-    ${MESSAGE} = format_kv(<input-dictionary>);
-};
-```
-
-The `value_separator` option must be a single character, the `pair_separator` can be a string. For example, to use the colon (:) as the value separator and the semicolon (;) as the pair separator, use:
-
-```shell
-format_kv(<input-dictionary>, value_separator=":", pair_separator=";")
-```
+For details, see {{% xref "/filterx/filterx-format-data/format-kv.md" %}}.
 
 ## format_leef {#format-leef}
 
@@ -167,17 +141,7 @@ Formats a dictionary into the [Log Event Extended Format (LEEF)](https://www.ibm
 
 Usage: `${MESSAGE} = format_leef(my_dictionary);`
 
-For example:
-
-```json
-my_dictionary = {"version":"1.0","vendor":"Microsoft","product_name":"MSExchange","product_version":"4.0 SP1","event_id":"15345","src":"192.0.2.0","dst":"172.50.123.1","sev":"5cat=anomaly","srcPort":"81","dstPort":"21","usrName":"joe.black"};
-```
-
-Becomes:
-
-```shell
-LEEF:1.0|Microsoft|MSExchange|4.0 SP1|15345|src=192.0.2.0	dst=172.50.123.1	sev=5cat=anomaly	srcPort=81	dstPort=21	usrName=joe.black
-```
+For details, see {{% xref "/filterx/filterx-format-data/format-leef.md" %}}.
 
 ## format_xml {#format-xml}
 
@@ -187,65 +151,7 @@ Formats a dictionary into XML.
 
 Usage: `format_xml({"key1":{"nestedkey":"value"}})`
 
-The output XML for the previous example will be: `<key><nestedkey>value</nestedkey></key>`
-
-Note the following points:
-
-1. Store attributions in `@attr` key-value pairs.
-
-    ```yaml
-    JSON: {"foo": {"@bar": "123", "@baz": "bad"}}
-    XML:  <foo bar="123" baz="bad"/>
-    ```
-
-1. If an XML element has both attributes and a value, store text value under the `#text` key.
-
-    ```yaml
-    JSON: {"foo": {"@bar": "123", "#text": "baz"}}
-    XML:  <foo bar="123">baz</foo>
-    ```
-
-1. An XML element can have both a value and inner elements. We use the `#text` key here, too.
-
-    ```yaml
-    JSON: {"foo": {"#text": "bar", "baz": "123"}}
-    XML:  <foo>bar<baz>123</baz></foo>
-    ```
-
-1. JSON lists become values of separate tags:
-
-    ```yaml
-    JSON: {"a":{"b":["c","d"]}}
-    XML:  <a><b>c</b><b>d</b></a>
-    ```
-
-    You can add attributions for specific elements of such lists:
-
-    ```yaml
-    JSON: {"a":{"b":["c",{"@attr":"attr_val","#text":"e"}]}}
-    XML:  <a><b>c</b><b attr='attr_val'>e</b></a>
-    ```
-
-1. A top-level JSON lists becomes a multi-root XML:
-
-    ```yaml
-    JSON: {"a":["b","c"]}
-    XML:  <a>b</a><a>c</a>
-    ```
-
-1. Numeric values become text:
-
-    ```yaml
-    JSON: {"a":100}
-    XML:  <a>100</a>
-    ```
-
-1. Empty elements are represented as short-format XML tags:
-
-    ```yaml
-    JSON: {"a":""}
-    XML:  <a/>
-    ```
+For details, see {{% xref "/filterx/filterx-format-data/format-xml.md" %}}.
 
 ## format_windows_eventlog_xml {#format-windows-eventlog-xml}
 
@@ -253,48 +159,9 @@ Available in {{< product >}} 4.13 and later.
 
 Formats a dictionary into Windows Event Logs XML. It's a specialized version of the [`format_xml()` function](#format-xml), all generic formatting tips apply to `format_windows_eventlog_xml()` as well.
 
-Example usage:
+Usage: `format_windows_eventlog_xml(input_dictionary)`
 
-```json
-$MESSAGE = format_windows_eventlog_xml({
-    "Event": {
-        "@xmlns": "http://schemas.microsoft.com/win/2004/08/events/event",
-        "System": {
-            "Provider": {"@Name": "EventCreate"},
-            "EventID": {"@Qualifiers": "0", "#text": "999"},
-            "Version": "0",
-            "Level": "2",
-            "Task": "0",
-            "Opcode": "0",
-            "Keywords": "0x80000000000000",
-            "TimeCreated": {"@SystemTime": "2024-01-12T09:30:12.1566754Z"},
-            "EventRecordID": "934",
-            "Correlation": "",
-            "Execution": {"@ProcessID": "0", "@ThreadID": "0"},
-            "Channel": "Application",
-            "Computer": "DESKTOP-2MBFIV7",
-            "Security": {"@UserID": "S-1-5-21-3714454296-2738353472-899133108-1001"},
-        },
-        "RenderingInfo": {
-            "@Culture": "en-US",
-            "Message": "foobar",
-            "Level": "Error",
-            "Task": "",
-            "Opcode": "Info",
-            "Channel": "",
-            "Provider": "",
-            "Keywords": {"Keyword": "Classic"},
-        },
-        "EventData":
-            {eventdata}
-    }});"""
-```
-
-This JSON becomes the following XML:
-
-```xml
-<Event xmlns='http://schemas.microsoft.com/win/2004/08/events/event'><System><Provider Name='EventCreate'/><EventID Qualifiers='0'>999</EventID><Version>0</Version><Level>2</Level><Task>0</Task><Opcode>0</Opcode><Keywords>0x80000000000000</Keywords><TimeCreated SystemTime='2024-01-12T09:30:12.1566754Z'/><EventRecordID>934</EventRecordID><Correlation/><Execution ProcessID='0' ThreadID='0'/><Channel>Application</Channel><Computer>DESKTOP-2MBFIV7</Computer><Security UserID='S-1-5-21-3714454296-2738353472-899133108-1001'/></System><RenderingInfo Culture='en-US'><Message>foobar</Message><Level>Error</Level><Task/><Opcode>Info</Opcode><Channel/><Provider/><Keywords><Keyword>Classic</Keyword></Keywords></RenderingInfo><EventData><Data>foo</Data><Data>bar</Data></EventData></Event>
-```
+For details, see {{% xref "/filterx/filterx-format-data/format-windows-eventlog-xml.md" %}}.
 
 ## get_sdata
 
