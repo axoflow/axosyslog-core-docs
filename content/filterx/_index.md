@@ -377,9 +377,13 @@ FilterX has the following built-in functions.
 - [`endswith`]({{< relref "/filterx/filterx-string-search/_index.md" >}}): Checks if a string ends with the specified value.
 - [`dedup_metrics_labels`]({{< relref "/filterx/filterx-metrics/_index.md#metrics-labels" >}}): Deduplicate `metrics_labels` objects.
 - [`flatten`]({{< relref "/filterx/function-reference.md#flatten" >}}): Flattens the nested elements of an object.
-- [`format_csv`]({{< relref "/filterx/function-reference.md#format-csv" >}}): Formats a dictionary or a list into a comma-separated string.
-- [`format_json`]({{< relref "/filterx/function-reference.md#format-json" >}}): Dumps a JSON object into a string.
-- [`format_kv`]({{< relref "/filterx/function-reference.md#format-kv" >}}): Formats a dictionary into key=value pairs.
+- [`format_cef`]({{< relref "/filterx/filterx-format-data/format-cef" >}}): Formats a dictionary into Common Event Format (CEF).
+- [`format_csv`]({{< relref "/filterx/filterx-format-data/format-csv.md" >}}): Formats a dictionary or a list into a comma-separated string.
+- [`format_json`]({{< relref "/filterx/filterx-format-data/format-json" >}}): Dumps a JSON object into a string.
+- [`format_kv`]({{< relref "/filterx/filterx-format-data/format-kv" >}}): Formats a dictionary into key=value pairs.
+- [`format_leef`]({{< relref "/filterx/filterx-format-data/format-leef" >}}): Formats a dictionary into Log Event Extended Format (LEEF).
+- [`format_windows_eventlog_xml`]({{< relref "/filterx/filterx-format-data/format-windows-eventlog-xml.md" >}}) Formats a dictionary into Windows Event Logs XML.
+- [`format_xml`]({{< relref "/filterx/filterx-format-data/format-xml" >}}): Formats a dictionary into XML.
 - [`get_sdata`]({{< relref "/filterx/filterx-sdata/_index.md" >}}): Returns the SDATA part of an RFC5424-formatted syslog message as a JSON object.
 - [`has_sdata`]({{< relref "/filterx/filterx-sdata/_index.md" >}}): Checks if a string ends with the specified value.
 - [`includes`]({{< relref "/filterx/filterx-string-search/_index.md" >}}): Checks if a string contains a specific substring.
