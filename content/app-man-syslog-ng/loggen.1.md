@@ -9,11 +9,15 @@ weight:  4900
 
 `loggen` — Generate syslog messages at a specified rate
 
+Note: If you don't have {{< product >}} installed and want to run `loggen` from a container, you can use:
+
+```shell
+docker run --rm -ti --entrypoint "" ghcr.io/axoflow/axosyslog /usr/bin/loggen [options] target [port]
+```
+
 ## Synopsis
 
-`loggen [options]`
-
-`target [port]`
+`loggen [options] target [port]`
 
 <span id="loggen-mandescription"></span>
 
@@ -46,6 +50,12 @@ When `loggen` finishes sending the messages, it displays the following statistic
 - `--csv` or `-C`
 
     Send the statistics of the sent messages to `stdout` as CSV. This can be used for plotting the message rate.
+
+- `--client-port`
+
+    Available in {{% param "product.abbrev" %}} 4.14 and later.
+
+    Use the specified outbound port to connect to the server. Usable only for a single connection (when `--active-connections` is 1 and `--idle-connections` is not set).
 
 - `--dgram` or `-D`
 

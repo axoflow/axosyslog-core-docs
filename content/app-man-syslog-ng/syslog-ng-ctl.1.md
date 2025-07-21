@@ -191,7 +191,11 @@ The `syslog-ng-ctl query get` command has the following options:
 
 `stats [options]`
 
-Use the `stats` command to display statistics about the processed messages either in legacy format, or in Prometheus-compatible format (by running `syslog-ng-ctl stats prometheus`). For details about the displayed statistics, see [The {{% param "product.abbrev" %}} documentation](https://axoflow.com/). The `stats` command has the following options:
+Use the `stats` command to display statistics about the processed messages either in legacy format, or in Prometheus-compatible format (by running `syslog-ng-ctl stats prometheus`). <!-- For details about the displayed statistics, see [The {{% param "product.abbrev" %}} documentation](https://axoflow.com/). -->
+
+Note that starting with version 4.14, {{< product >}} automatically shows orphan counters to avoid losing information. Information loss could happen, for example, when sending messages using short-lived (few seconds long) connections, while scraping metrics in minute intervals.
+
+The `stats` command has the following options:
 
 - `--control=<socket>` or `-c`
 
@@ -205,12 +209,12 @@ Use the `stats` command to display statistics about the processed messages eithe
 
     Safely removes all counters that are not referenced by any `syslog-ng stat` producer objects.
 
-    The flag can be used to prune dynamic and static counters manually. This is useful, for example, when a templated file destination produces a lot of stats:
+    The flag can be used to prune dynamic and static counters manually. This is useful, for example, when a templated file destination produces a lot of stats. We recommend using `syslog-ng-ctl stats --remove-orphans` during each configuration reload, but only after the values of those metrics have been scraped by all scrapers.
 
     ```shell
-        dst.file;#anon-destination0#0;/tmp/2021-08-16.log;o;processed;253592
-        dst.file;#anon-destination0#0;/tmp/2021-08-17.log;o;processed;156
-        dst.file;#anon-destination0#0;/tmp/2021-08-18.log;a;processed;961
+    dst.file;#anon-destination0#0;/tmp/2021-08-16.log;o;processed;253592
+    dst.file;#anon-destination0#0;/tmp/2021-08-17.log;o;processed;156
+    dst.file;#anon-destination0#0;/tmp/2021-08-18.log;a;processed;961
     ```
 
 - `--with-legacy-metrics`
