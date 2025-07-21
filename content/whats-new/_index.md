@@ -6,6 +6,11 @@ weight: 10
 
 This page is a changelog that collects the major changes and additions to this documentation. (If you want to know the details about why we have separate documentation for AxoSyslog and how it relates to the `syslog-ng` documentation, read our [syslog-ng documentation and similarities with AxoSyslog Core](https://axoflow.com/blog/axosyslog-core-documentation-syslog-ng) blog post.)
 
+## Version 4.14 (2025-07-18)
+
+- New [`client-port` option for `loggen`]({{< relref "/app-man-syslog-ng/loggen.1.md" >}}).
+- Starting with version 4.14, running [`syslog-ng-ctl stats`]({{< relref "/app-man-syslog-ng/syslog-ng-ctl.1.md#syslog-ng-ctl-stats" >}}) automatically shows orphan counters to avoid losing information. Information loss could happen, for example, when sending messages using short-lived (few seconds long) connections, while scraping metrics in minute intervals.
+
 ## Version 4.13 (2025-07-08)
 
 - You can format arbitrary data as protobuf using the specified schema (proto file) using the {{% xref "/filterx/function-reference.md#protobuf-message" %}} FilterX function. Also, you can send such pre-formatted data using the `proto-var()` option of the [ClickHouse]({{< relref "/chapter-destinations/clickhouse/_index.md#proto-var" >}}) and [Google BigQuery]()
