@@ -47,6 +47,12 @@ When `loggen` finishes sending the messages, it displays the following statistic
 
     Send the statistics of the sent messages to `stdout` as CSV. This can be used for plotting the message rate.
 
+- `--client-port`
+
+    Available in {{% param "product.abbrev" %}} 4.14 and later.
+
+    Use the specified outbound port to connect to the server. Usable only for a single connection (when `--active-connections` is 1 and `--idle-connections` is not set).
+
 - `--dgram` or `-D`
 
     Use datagram socket (`UDP` or `unix-dgram`) to send the messages to the target. Requires the `--inet` option as well.
