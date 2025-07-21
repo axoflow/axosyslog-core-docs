@@ -10,6 +10,7 @@ This page is a changelog that collects the major changes and additions to this d
 
 - New [`client-port` option for `loggen`]({{< relref "/app-man-syslog-ng/loggen.1.md" >}}).
 - Starting with version 4.14, running [`syslog-ng-ctl stats`]({{< relref "/app-man-syslog-ng/syslog-ng-ctl.1.md#syslog-ng-ctl-stats" >}}) automatically shows orphan counters to avoid losing information. Information loss could happen, for example, when sending messages using short-lived (few seconds long) connections, while scraping metrics in minute intervals.
+- The [`cisco-parser()`]({{< relref "/chapter-parsers/cisco-parser/_index.md" >}}) now handles the Cisco Nexus NXOS 9.3 syslog format.
 
 ## Version 4.13 (2025-07-08)
 
