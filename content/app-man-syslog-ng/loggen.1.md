@@ -13,7 +13,7 @@ weight:  4900
 
 `loggen [options]`
 
-`target [port]`
+`loggen [options] target [port]`
 
 <span id="loggen-mandescription"></span>
 
