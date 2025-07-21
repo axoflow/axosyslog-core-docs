@@ -9,9 +9,13 @@ weight:  4900
 
 `loggen` — Generate syslog messages at a specified rate
 
-## Synopsis
+Note: If you don't have {{< product >}} installed and want to run `loggen` from a container, you can use:
 
-`loggen [options]`
+```shell
+docker run --rm -ti --entrypoint "" ghcr.io/axoflow/axosyslog /usr/bin/loggen [options] target [port]
+```
+
+## Synopsis
 
 `loggen [options] target [port]`
 
