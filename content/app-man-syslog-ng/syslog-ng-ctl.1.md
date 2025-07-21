@@ -212,9 +212,9 @@ The `stats` command has the following options:
     The flag can be used to prune dynamic and static counters manually. This is useful, for example, when a templated file destination produces a lot of stats. We recommend using `syslog-ng-ctl stats --remove-orphans` during each configuration reload, but only after the values of those metrics have been scraped by all scrapers.
 
     ```shell
-        dst.file;#anon-destination0#0;/tmp/2021-08-16.log;o;processed;253592
-        dst.file;#anon-destination0#0;/tmp/2021-08-17.log;o;processed;156
-        dst.file;#anon-destination0#0;/tmp/2021-08-18.log;a;processed;961
+    dst.file;#anon-destination0#0;/tmp/2021-08-16.log;o;processed;253592
+    dst.file;#anon-destination0#0;/tmp/2021-08-17.log;o;processed;156
+    dst.file;#anon-destination0#0;/tmp/2021-08-18.log;a;processed;961
     ```
 
 - `--with-legacy-metrics`
