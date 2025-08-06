@@ -215,6 +215,15 @@ Available in {{< product >}} 4.8 and later.
 
 *Description:* The [AWS region](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) to use when writing the bucket. This should normally be the same region where the bucket is created. This option implies an API endpoint [`url()`](#url). For providers other than AWS, or for custom API endpoints, use the `url()` option.
 
+## role()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | string |
+| Default: |  |
+
+*Description:* Assume the specified role when accessing S3.
+
 ## secret-key()
 
 |          |                            |
