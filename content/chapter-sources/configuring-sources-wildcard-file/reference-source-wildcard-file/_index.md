@@ -33,6 +33,24 @@ The `wildcard-file()` driver has the following options:
 
 {{% include-headless "chunk/option-source-encoding.md" %}}
 
+## exclude-pattern() {#source-wildcard-file-file-pattern}
+
+|          |                       |
+| -------- | --------------------- |
+| Type:    | filename without path |
+| Default: |                       |
+
+Available in {{< product >}} version 4.15 and later.
+
+*Description:* Can be used together with `filename-pattern()` to exclude some matching files. For example:
+
+```shell
+wildcard-file(
+  base-dir("<pathname>")
+  file-pattern("*.log");
+  exclude-pattern("*.?.log");
+);
+```
 
 ## filename-pattern() {#source-wildcard-file-file-pattern}
 
