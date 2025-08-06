@@ -33,7 +33,7 @@ The `wildcard-file()` driver has the following options:
 
 {{% include-headless "chunk/option-source-encoding.md" %}}
 
-## exclude-pattern() {#source-wildcard-file-file-pattern}
+## exclude-pattern() {#source-wildcard-file-exclude-pattern}
 
 |          |                       |
 | -------- | --------------------- |
