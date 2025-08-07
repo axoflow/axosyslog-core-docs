@@ -18,6 +18,7 @@ Authenticate to a service account using Service Account Key-Based Authentication
 
 - When using the `google-pubsub()` destination, the `audience()` option is set to `https://pubsub.googleapis.com/google.pubsub.v1.Publisher`. Don't change it.
 - When using the `google-pubsub()-grpc` destination, you don't need to set the `audience()` option because the underlying gRPC API recognizes it automatically.
+- You cannot use `audience()` and `scope()` together.
 
 {{% /alert %}}
 
@@ -29,6 +30,33 @@ Authenticate to a service account using Service Account Key-Based Authentication
 | Default:         |  |
 
 Path to the service account key.
+
+##### scope()
+
+|                  |                  |
+| ---------------- | ---------------- |
+| Type: | string |
+| Default:         |  |
+
+Available in {{< product >}} version 4.15 and later.
+
+URL for a scope claim for authentication [instead of audience](https://google.aip.dev/auth/4111#scope-vs-audience). For example:
+
+```shell
+  ...
+  cloud-auth(
+    gcp(
+      service-account(
+        key("/path/to/secret.json")
+        scope("https://www.googleapis.com/auth/example-scope")
+      )
+    )
+  )
+```
+
+{{% alert title="Note" color="info" %}}
+You cannot use `audience()` and `scope()` together.
+{{% /alert %}}
 
 ##### token-validity-duration()
 

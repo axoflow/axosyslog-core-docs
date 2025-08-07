@@ -6,6 +6,18 @@ weight: 10
 
 This page is a changelog that collects the major changes and additions to this documentation. (If you want to know the details about why we have separate documentation for AxoSyslog and how it relates to the `syslog-ng` documentation, read our [syslog-ng documentation and similarities with AxoSyslog Core](https://axoflow.com/blog/axosyslog-core-documentation-syslog-ng) blog post.)
 
+## Version 4.15 (2025-08-01)
+
+- You can exclude files in the `wildcard-file()` source using the [`exclude-pattern()`]({{< relref "/chapter-sources/configuring-sources-wildcard-file/reference-source-wildcard-file/_index.md#source-wildcard-file-exclude-pattern" >}}) option.
+- You can use templates in the [`body-prefix()` option of the `http()` destination]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#https-options-body-prefix" >}}), and in destinations based on `http()`.
+- ADC authentication now can use `service-account-key()`.
+- `gcp(service-account())` authentication can now use `scope()` instead of `audience()`.
+- New FilterX features:
+
+    - {{< xref "/filterx/function-reference.md#str-replace" >}} function for string replacement.
+    - [String slicing operator (`..`)]({{< relref "/filterx/operator-reference.md#slicing" >}}).
+    - [Create dict element if non-null (`:??`)]({{< relref "/filterx/operator-reference.md#create-non-null" >}}) operator.
+
 ## Version 4.14 (2025-07-18)
 
 - New [`client-port` option for `loggen`]({{< relref "/app-man-syslog-ng/loggen.1.md" >}}).

@@ -34,3 +34,7 @@ includes($MESSAGE, '%ASA-') or includes($MESSAGE, 'john') or includes($MESSAGE, 
 For more complex searches, or if you need to match a regular expression, use the [`regexp_search` FilterX function]({{< relref "/filterx/filterx-string-search/_index.md#regexp-search" >}}).
 
 <!-- FIXME json object search example -->
+
+## String replace
+
+FilterX provides two functions to replace parts of a string: [`str_replace`]({{< relref "/filterx/function-reference.md#str-replace" >}}) for simple string search, and [`regexp_subst`]({{< relref "/filterx/function-reference.md#regexp-subst" >}}) for more complex replacements.

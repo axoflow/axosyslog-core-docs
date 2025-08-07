@@ -50,20 +50,21 @@ For details on how this option influences HTTP batch mode, see [http: Posting me
 
 *Description:* The body of the HTTP request, for example, `body("${ISODATE} ${MESSAGE}")`. You can use strings, macros, and template functions in the body. If not set, it will contain the message received from the source by default.
 
-
-
 ## body-prefix() {#https-options-body-prefix}
 
 |                  |        |
 | ---------------- | ------ |
-| Accepted values: | string |
+| Accepted values: | string or template |
 | Default:         | none   |
 
-*Description:* The string {{% param "product.abbrev" %}} puts at the beginning of the body of the HTTP request, before the log message. Available in {{% param "product.abbrev" %}} version 3.18 and later.
+Available in {{% param "product.abbrev" %}} version 3.18 and later.
+
+*Description:* The string {{% param "product.abbrev" %}} puts at the beginning of the body of the HTTP request, before the log message. Starting with version 4.15, `body-prefix()` can include templates and macros as well. When using a template, note that:
+
+- Literal dollar signs (`$`) used in `body-prefix()` must be escaped like `$$`.
+- When using batching with a template, make sure to set the `worker-partition-key()` parameter appropriately to group similar messages together.
 
 For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
-
-
 
 ## body-suffix() {#https-options-body-suffix}
 

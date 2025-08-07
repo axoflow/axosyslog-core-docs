@@ -13,6 +13,16 @@ The following authentication methods are available in the `auth()` block:
 
 [Application Default Credentials (ADC)](https://cloud.google.com/docs/authentication/application-default-credentials). This authentication method is only available for destinations.
 
+#### service-account-key()
+
+Available in {{< product >}} version 4.15 and later.
+
+Use the specified service account key for ADC authentication. File path must be the absolute path. For example:
+
+```shell
+auth(adc(service-account-key("absolute-path-to-key-file")))
+```
+
 ### alts() {#alts}
 
 [Application Layer Transport Security (ALTS)](https://grpc.io/docs/languages/cpp/alts/) is a simple to use authentication, only available within Google's infrastructure. It accepts the `target-service-account()` option, where you can list service accounts to match against when authenticating the server.
