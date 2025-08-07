@@ -114,7 +114,7 @@ left-operand =?? right-operand
 For example:
 
 ```shell
-`resource.attributes['service.name'] =?? $PROGRAM;`
+resource.attributes['service.name'] =?? $PROGRAM;
 ```
 
 Using the `=??` operator is equivalent to the following expression, but using `=??` has better performance.
@@ -123,6 +123,7 @@ Using the `=??` operator is equivalent to the following expression, but using `=
 if (isset($PROGRAM) ?? false) {
     resource.attributes['service.name'] = $PROGRAM;
 };
+```
 
 ## Null coalescing operator
 
