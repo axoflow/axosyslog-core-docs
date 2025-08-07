@@ -125,6 +125,22 @@ if (isset($PROGRAM) ?? false) {
 };
 ```
 
+## Create dict element if non-null (:??) operator {#create-non-null}
+
+Available in {{< product >}} 4.15 and later.
+
+Creates the dict element in the left operand with the value of the right operand if the right operand exists and is not null. Note that evaluation errors of the right-hand operand will be suppressed.
+
+For example, the following dict will have only one element, the `good-field`:
+
+```shell
+my_dict = {
+    "skipped-because-null":?? null,
+    "skipped-because-error":?? nonexistingvariable,
+    "good-field": "static-value"
+};
+```
+
 ## Null coalescing operator
 
 The [null coalescing operator](https://en.wikipedia.org/wiki/Null_coalescing_operator) returns the result of the left operand if it exists and is not null, otherwise it returns the operand on the right.

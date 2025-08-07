@@ -326,6 +326,8 @@ js = json({
 });
 ```
 
+To create a field only if the assigned value is non-null, see [Create dict element if non-null (`:??`)]({{< relref "/filterx/operator-reference.md#create-non-null" >}}).
+
 Within a FilterX block, you can access the fields of complex data types by using indexes and the dot notation, for example:
 
 - dot notation: `js.key`
@@ -353,6 +355,7 @@ FilterX has the following operators.
 
 - [Arithmetic operators]({{< relref "/filterx/operator-reference.md#arithmetic-operators" >}}).
 - [Assign a value to a variable if the value is non-null (`=??`)]({{< relref "/filterx/operator-reference.md#assign-non-null" >}}).
+- [Create dict element if non-null (`:??`)]({{< relref "/filterx/operator-reference.md#create-non-null" >}}).
 - [Boolean operators]({{< relref "/filterx/filterx-boolean/_index.md" >}}): `not`, `or`, `and`.
 - [Comparison operators]({{< relref "/filterx/filterx-comparing/_index.md" >}}): `==`, `<`, `<=`, `>=`, `>`, `!=`, `===`, `!==`, `eq`, `lt`, `le`, `gt`, `ge`, `ne`.
 - [Conditional operators]({{< relref "/filterx/filterx-conditional/_index.md" >}}).
