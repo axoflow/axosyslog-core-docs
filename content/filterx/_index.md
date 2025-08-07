@@ -364,6 +364,7 @@ FilterX has the following operators.
 - [Ternary conditional operator]({{< relref "/filterx/operator-reference.md#ternary-conditional-operator" >}}): `?:`.
 - [Null coalescing operator]({{< relref "/filterx/operator-reference.md#null-coalescing-operator" >}}): `??`.
 - [Regular expression (regexp) match]({{< relref "/filterx/operator-reference.md#regexp" >}}): `=~` and `!~`.
+- [String slicing]({{< relref "/filterx/operator-reference.md#slicing" >}}): `..`.
 
 <!-- FIXME update with the new operators -->
 

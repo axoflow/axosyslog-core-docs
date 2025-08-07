@@ -175,6 +175,27 @@ FIXME what is relevant/applicable from /chapter-manipulating-messages/regular-ex
 Is there a workaround for wildcards/globbing? /chapter-routing-filters/filters/regular-expr/_index.md ?
 -->
 
+## String slicing (..) {#slicing}
+
+Available in {{< product >}} 4.15 and later.
+
+You can slice strings at the specified index using the `..` operator to get a section of the string. Indexing starts at 0, and must be non-negative. You can omit the index to refer to the beginning or the end of the string. For example:
+
+```shell
+filterx {
+  str = "example";
+  idx = 3;
+  my_string = str[idx..5];
+  # Value of my_string is "mp";
+
+  my_string = str[..idx];
+  # Value of my_string is "exa";
+
+  my_string = str[idx..];
+  # Value of my_string is "mple";
+};
+```
+
 ## Ternary conditional operator
 
 The [ternary conditional operator](https://en.wikipedia.org/wiki/Ternary_conditional_operator) evaluates an expression and returns the first argument if the expression is true, and the second argument if it's false.
