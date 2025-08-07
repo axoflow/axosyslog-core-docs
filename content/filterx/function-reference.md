@@ -704,11 +704,11 @@ If you don't specify the max occurrence, every match is replaced, otherwise only
 filterx {
   my_input = "This is an input string";
   my_input = str_replace(my_input, "in", "out");
-  #  Value of my_input becomes: "This is an output stroutg"
+  # Value of my_input becomes: "This is an output stroutg"
 
   my_input = "This is an input string";
   my_input = str_replace(my_input, "in", "out", 1);
-  #  Value of my_input becomes: "This is an output string"
+  # Value of my_input becomes: "This is an output string"
 };
 ```
 
