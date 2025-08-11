@@ -9,5 +9,4 @@
 | Type:    | number |
 | Default: | 10     |
 
-*Description:* Specifies the maximum number of simultaneous connections.
-
+*Description:* Specifies the maximum number of simultaneous connections. Doesn't affect UDP-based traffic, which is always treated as a single connection.

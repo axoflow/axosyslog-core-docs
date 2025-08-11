@@ -46,6 +46,8 @@ When using flow-control, AxoSyslog automatically sets the size of the output buf
 
 If the source can handle multiple connections (for example, `network()` and `syslog()`), the size of the control window is divided by the value of the `max-connections()` parameter and this smaller control window is applied to each connection of the source.
 
+For UDP-based sources, the window size is not divided by `max-connections()`, because UDP-based traffic is treated as a single connection for the source. Also, flow control has no effect on UDP-based traffic, because there's no way to notify the peers that their messages cannot be processed. For UDP sources, we recommend configuring appropriately sized [disk buffers]({{< relref "/chapter-routing-filters/concepts-diskbuffer/_index.md" >}}).
+
 {{% /alert %}}
 
 
