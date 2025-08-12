@@ -672,10 +672,6 @@ You can use the following format codes in the format string:
 - `%z`: The offset from UTC in the ISO 8601:2000 standard format ( +hhmm or -hhmm ), or by no characters if no timezone is determinable
 - `%Z`: Same as `%z` , but with the `:` separator (-hh:mm or +hh:mm)
 
-    {{% alert title="Note" color="info" %}}
-    `%Z` currently doesn't respect the datetime's timezone, use `%z` instead.
-    {{% /alert %}}
-
 ## string
 
 Cast a value into a string. Note that currently {{< product >}} evaluates strings and executes [template functions]({{< relref "/filterx/_index.md#template-functions" >}}) and template expressions within the strings. In the future, template evaluation will be moved to a separate FilterX function.
