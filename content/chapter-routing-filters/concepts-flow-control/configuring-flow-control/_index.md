@@ -29,6 +29,7 @@ If you modify the `max-connections()` or the `log-fetch-limit()` parameter, do n
 
 {{% /alert %}}
 
+{{< include-headless "wnt/warning-log-iw-size-restart.md" >}}
 
 ## Example: Sizing parameters for flow-control
 
