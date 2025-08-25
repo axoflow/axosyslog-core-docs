@@ -10,6 +10,7 @@ This page is a changelog that collects the major changes and additions to this d
 
 - New [`${PROTO_NAME` macro]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#proto-name" >}}).
 - New FilterX functions [`str_strip`]({{< relref "/filterx/function-reference.md#str-strip" >}}), `str_lstrip`, `str_rstrip` to remove the leading and/or trailing whitespaces from a string.
+- The `batch-timeout()` option of the following destinations now defaults to `0`: [`google-pubsub()`]({{< relref "/chapter-destinations/google-pubsub/_index.md" >}}), ['logscale()']({{< relref "/chapter-destinations/crowdstrike-falcon/_index.md" >}}), [`openobserve()`]({{< relref "/chapter-destinations/openobserve/_index.md" >}}), [`splunk()`]({{< relref "/chapter-destinations/syslog-ng-with-splunk/_index.md" >}}).
 
 ### Breaking change
 
