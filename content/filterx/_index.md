@@ -415,6 +415,7 @@ FilterX has the following built-in functions.
 - [`strftime`]({{< relref "/filterx/function-reference.md#strftime" >}}): Format datetime values.
 - [`strptime`]({{< relref "/filterx/function-reference.md#strptime" >}}): Converts a string containing a date/time value, using a specified format string.
 - [`str_replace`]({{< relref "/filterx/function-reference.md#str-replace" >}}): Replace a literal string.
+- [`str_strip`]({{< relref "/filterx/function-reference.md#str-strip" >}}), `str_lstrip`, `str_rstrip`: Remove the leading and/or trailing whitespaces from a string.
 - [`unset`]({{< relref "/filterx/function-reference.md#unset" >}}): Deletes a name-value pair, or a field from an object.
 - [`unset_empties`]({{< relref "/filterx/function-reference.md#unset-empties" >}}): Deletes empty fields from an object.
 - [`update_metric`]({{< relref "/filterx/filterx-metrics/_index.md" >}}): Updates a labeled metric counter.
