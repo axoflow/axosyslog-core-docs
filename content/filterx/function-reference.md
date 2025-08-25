@@ -710,6 +710,12 @@ filterx {
 
 Note that the search is case sensitive, and supports UTF-8 characters.
 
+## str_strip, str_lstrip, str_rstrip {#str-strip}
+
+Available in {{< product >}} 4.16 and later.
+
+These functions remove the leading and/or trailing whitespaces from a string, including the `\n\r\t` characters.
+
 ## strptime
 
 Creates a `datetime` object from a string, similarly to the [`date-parser()`]({{< relref "/chapter-parsers/date-parser/_index.md" >}}). The first argument is the string containing the date. The second argument is a format string that specifies how to parse the date string. Optionally, you can specify additional format strings that are applied in order if the previous one doesn't match the date string.

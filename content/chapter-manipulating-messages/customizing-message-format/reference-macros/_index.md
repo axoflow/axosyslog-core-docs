@@ -233,9 +233,15 @@ Available in {{% param "product.abbrev" %}} 4.11 and later. This macro is availa
 
 ## PROTO
 
-Description: When used, the output specifies the protocol used on the source from which the message originates.
+*Description:* Returns the [Assigned Internet Protocol Number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) of the protocol used on the source from which the message originates: `6` for TCP-based sources, and `17` for UDP-based sources. See also the [`${PROTO_NAME` macro](#proto-name).
 
 For an example use case when using the macro is recommended, see {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/use-case-3-macros/_index.md" %}}.
+
+## PROTO_NAME {#proto-name}
+
+Available in {{% param "product.name" %}} version 4.16 and newer.
+
+*Description:* Returns the name of the protocol (`tcp` or `udp`) {{% param "product.name" %}} received the message on, if it was a TCP or UDP based protocol. This corresponds to the values `6` and `17` of the [`${PROTO}`](#proto) macro.
 
 ## RAWMSG {#macro-rawmsg}
 

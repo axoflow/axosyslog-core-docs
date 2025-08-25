@@ -6,6 +6,27 @@ weight: 10
 
 This page is a changelog that collects the major changes and additions to this documentation. (If you want to know the details about why we have separate documentation for AxoSyslog and how it relates to the `syslog-ng` documentation, read our [syslog-ng documentation and similarities with AxoSyslog Core](https://axoflow.com/blog/axosyslog-core-documentation-syslog-ng) blog post.)
 
+## Version 4.16 (2025-08-15)
+
+- New [`${PROTO_NAME` macro]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#proto-name" >}}).
+- New FilterX functions [`str_strip`]({{< relref "/filterx/function-reference.md#str-strip" >}}), `str_lstrip`, `str_rstrip` to remove the leading and/or trailing whitespaces from a string.
+- The `batch-timeout()` option of the following destinations now defaults to `0`: [`google-pubsub()`]({{< relref "/chapter-destinations/google-pubsub/_index.md" >}}), ['logscale()']({{< relref "/chapter-destinations/crowdstrike-falcon/_index.md" >}}), [`openobserve()`]({{< relref "/chapter-destinations/openobserve/_index.md" >}}), [`splunk()`]({{< relref "/chapter-destinations/syslog-ng-with-splunk/_index.md" >}}).
+
+### Breaking change
+
+The name of some fields changed in the [`parse_cef`]({{< relref "/filterx/filterx-parsing/cef/_index.md" >}}) and [`parse_leef`]({{< relref "/filterx/filterx-parsing/leef/_index.md" >}}) parsers to avoid name collisions with fields in the extensions:
+
+For CEF:
+
+- `version` -> `cef_version`
+- `name` -> `event_name`
+
+For LEEF:
+
+- `version` -> `leef_version`
+- `vendor` -> `vendor_name`
+- `delimiter` -> `leef_delimiter`
+
 ## Version 4.15 (2025-08-01)
 
 - You can exclude files in the `wildcard-file()` source using the [`exclude-pattern()`]({{< relref "/chapter-sources/configuring-sources-wildcard-file/reference-source-wildcard-file/_index.md#source-wildcard-file-exclude-pattern" >}}) option.
