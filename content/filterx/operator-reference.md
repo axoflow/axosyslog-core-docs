@@ -105,7 +105,7 @@ The `not`, `or`, `and` operators allow you to combine any number of comparisons 
 
 Available in {{< product >}} 4.10 and later.
 
-Assigns the right operand to the left operand if the right operand exists is not null. Note that evaluation errors of the right-hand operand will be suppressed.
+Assigns the right operand to the left operand if the right operand exists and is not null. Note that evaluation errors of the right-hand operand will be suppressed.
 
 ```shell
 left-operand =?? right-operand
@@ -114,7 +114,7 @@ left-operand =?? right-operand
 For example:
 
 ```shell
-`resource.attributes['service.name'] =?? $PROGRAM;`
+resource.attributes['service.name'] =?? $PROGRAM;
 ```
 
 Using the `=??` operator is equivalent to the following expression, but using `=??` has better performance.
@@ -123,6 +123,23 @@ Using the `=??` operator is equivalent to the following expression, but using `=
 if (isset($PROGRAM) ?? false) {
     resource.attributes['service.name'] = $PROGRAM;
 };
+```
+
+## Create dict element if non-null (:??) operator {#create-non-null}
+
+Available in {{< product >}} 4.15 and later.
+
+Creates the dict element in the left operand with the value of the right operand if the right operand exists and is not null. Note that evaluation errors of the right-hand operand will be suppressed.
+
+For example, the following dict will have only one element, the `good-field`:
+
+```shell
+my_dict = {
+    "skipped-because-null":?? null,
+    "skipped-because-error":?? nonexistingvariable,
+    "good-field": "static-value"
+};
+```
 
 ## Null coalescing operator
 
@@ -174,6 +191,27 @@ FIXME what is relevant/applicable from /chapter-manipulating-messages/regular-ex
 
 Is there a workaround for wildcards/globbing? /chapter-routing-filters/filters/regular-expr/_index.md ?
 -->
+
+## String slicing (..) {#slicing}
+
+Available in {{< product >}} 4.15 and later.
+
+You can slice strings at the specified index using the `..` operator to get a section of the string. Indexing starts at 0, and must be non-negative. You can omit the index to refer to the beginning or the end of the string. For example:
+
+```shell
+filterx {
+  str = "example";
+  idx = 3;
+  my_string = str[idx..5];
+  # Value of my_string is "mp";
+
+  my_string = str[..idx];
+  # Value of my_string is "exa";
+
+  my_string = str[idx..];
+  # Value of my_string is "mple";
+};
+```
 
 ## Ternary conditional operator
 

@@ -465,11 +465,11 @@ ${MY-LIST}.mixed = regexp_search("first-word second-part third", /(?<one>first-w
 
 ## regexp_subst {#regexp-subst}
 
-Rewrites a string using regular expressions. This function implements the [`subst` rewrite rule functionality]({{< relref "/chapter-manipulating-messages/modifying-messages/rewrite-replace/_index.md" >}}).
+Rewrites a string using regular expressions. This function implements the [`subst` rewrite rule functionality]({{< relref "/chapter-manipulating-messages/modifying-messages/rewrite-replace/_index.md" >}}). If you need only string replacement without regular expression support, use the [`str_replace`](#str-replace) function as it has better performance.
 
 {{< include-headless "wnt/note-rewrite-hard-macros.md" >}}
 
-Usage: `regexp_subst(<input-string>, <pattern-to-find>, <replacement>, flags`
+Usage: `regexp_subst(<input-string>, <pattern-to-find>, <replacement>, flags)`
 
 The following example replaces the first `IP` in the text of the message with the `IP-Address` string.
 
@@ -685,6 +685,30 @@ myvariable = string(${LEVEL_NUM});
 ```
 
 Sometimes you have to explicitly cast values to strings, for example, when you want to concatenate them into a message using the `+` operator.
+
+## str_replace {#str-replace}
+
+Available in {{< product >}} 4.15 and later.
+
+Replace a literal string with another one. If you need to use regular expressions, see [`regexp_subst`](#regexp-subst).
+
+Usage: `str_replace(<input-string>, <pattern-to-find>, <replacement>, <max-occurrence>`
+
+If you don't specify the max occurrence, every match is replaced, otherwise only the first `<max-occurrence>`. For example:
+
+```shell
+filterx {
+  my_input = "This is an input string";
+  my_input = str_replace(my_input, "in", "out");
+  # Value of my_input becomes: "This is an output stroutg"
+
+  my_input = "This is an input string";
+  my_input = str_replace(my_input, "in", "out", 1);
+  # Value of my_input becomes: "This is an output string"
+};
+```
+
+Note that the search is case sensitive, and supports UTF-8 characters.
 
 ## strptime
 

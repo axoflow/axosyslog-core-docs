@@ -326,6 +326,8 @@ js = json({
 });
 ```
 
+To create a field only if the assigned value is non-null, see [Create dict element if non-null (`:??`)]({{< relref "/filterx/operator-reference.md#create-non-null" >}}).
+
 Within a FilterX block, you can access the fields of complex data types by using indexes and the dot notation, for example:
 
 - dot notation: `js.key`
@@ -353,6 +355,7 @@ FilterX has the following operators.
 
 - [Arithmetic operators]({{< relref "/filterx/operator-reference.md#arithmetic-operators" >}}).
 - [Assign a value to a variable if the value is non-null (`=??`)]({{< relref "/filterx/operator-reference.md#assign-non-null" >}}).
+- [Create dict element if non-null (`:??`)]({{< relref "/filterx/operator-reference.md#create-non-null" >}}).
 - [Boolean operators]({{< relref "/filterx/filterx-boolean/_index.md" >}}): `not`, `or`, `and`.
 - [Comparison operators]({{< relref "/filterx/filterx-comparing/_index.md" >}}): `==`, `<`, `<=`, `>=`, `>`, `!=`, `===`, `!==`, `eq`, `lt`, `le`, `gt`, `ge`, `ne`.
 - [Conditional operators]({{< relref "/filterx/filterx-conditional/_index.md" >}}).
@@ -364,6 +367,7 @@ FilterX has the following operators.
 - [Ternary conditional operator]({{< relref "/filterx/operator-reference.md#ternary-conditional-operator" >}}): `?:`.
 - [Null coalescing operator]({{< relref "/filterx/operator-reference.md#null-coalescing-operator" >}}): `??`.
 - [Regular expression (regexp) match]({{< relref "/filterx/operator-reference.md#regexp" >}}): `=~` and `!~`.
+- [String slicing]({{< relref "/filterx/operator-reference.md#slicing" >}}): `..`.
 
 <!-- FIXME update with the new operators -->
 
@@ -410,6 +414,7 @@ FilterX has the following built-in functions.
 - [`strcasecmp`]({{< relref "/filterx/function-reference.md#strcasecmp" >}}): Case insensitive string comparison.
 - [`strftime`]({{< relref "/filterx/function-reference.md#strftime" >}}): Format datetime values.
 - [`strptime`]({{< relref "/filterx/function-reference.md#strptime" >}}): Converts a string containing a date/time value, using a specified format string.
+- [`str_replace`]({{< relref "/filterx/function-reference.md#str-replace" >}}): Replace a literal string.
 - [`unset`]({{< relref "/filterx/function-reference.md#unset" >}}): Deletes a name-value pair, or a field from an object.
 - [`unset_empties`]({{< relref "/filterx/function-reference.md#unset-empties" >}}): Deletes empty fields from an object.
 - [`update_metric`]({{< relref "/filterx/filterx-metrics/_index.md" >}}): Updates a labeled metric counter.
