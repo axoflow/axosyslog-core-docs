@@ -1,10 +1,10 @@
 ---
 title: "CEF"
 weight: 100
+aliases:
+- /filterx/filterx-parsing/cef/cef-parser-options/
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
-
-
 
 Available in {{< product >}} 4.9 and later.
 
@@ -89,3 +89,17 @@ If you set `separate_extensions=true`, the extensions of the message will be gro
     }
 }
 ```
+
+## Options of CEF parsers
+
+The `parse_cef` FilterX function has the following options.
+
+### pair_separator
+
+Specifies the character or string that separates the key-value pairs in the extensions. Default value: ` ` (space).
+
+{{< include-headless "chunk/filterx-separate-extension.md" >}}
+
+### value_separator
+
+Specifies the character that separates the keys from the values in the extensions. Default value: `=`.
