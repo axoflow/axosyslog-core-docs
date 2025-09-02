@@ -135,7 +135,8 @@ description = "Documentation for AxoSyslog, the scalable security data processor
   # Set to true to hide the navbar search box
   navbar_search_disable = true
 
-  footer_left_logo_disable = true
+  footer_left_logo_disable = false
+  footer_left_logo_file = "icons/axoflow-logo.svg"
 
   [params.social]
     # Used as twitter:site in page metadata
