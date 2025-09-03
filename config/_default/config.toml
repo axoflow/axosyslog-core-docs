@@ -72,7 +72,7 @@ description = "Documentation for AxoSyslog, the scalable security data processor
   # The version number for the version of the docs represented in this doc set.
   # Used in the "version-banner" partial to display a version number for the 
   # current doc set.
-  version = "4.15.0"
+  version = "4.16.0"
   version_menu_canonicallinks = true
 
   # A link to latest version of the docs. Used in the "version-banner" partial to
@@ -135,7 +135,8 @@ description = "Documentation for AxoSyslog, the scalable security data processor
   # Set to true to hide the navbar search box
   navbar_search_disable = true
 
-  footer_left_logo_disable = true
+  footer_left_logo_disable = false
+  footer_left_logo_file = "icons/axoflow-logo.svg"
 
   [params.social]
     # Used as twitter:site in page metadata
@@ -171,9 +172,9 @@ description = "Documentation for AxoSyslog, the scalable security data processor
 [params.product]
 name = "AxoSyslog"
 abbrev = "AxoSyslog"
-version = "4.14"
-techversion = "4.14.0"
-configversion = "4.14"
+version = "4.16"
+techversion = "4.16.0"
+configversion = "4.16"
 syslog-ng = "syslog-ng"
 selinux = "SELinux"
 apparmor = "AppArmor"
