@@ -34,7 +34,7 @@ log {
 };
 ```
 
-`parallelize()` uses round-robin to allocate messages to workers (called partitions in versions between 4.3-4.16) by default, but you can retain ordering for a subset of messages with the `partition-key()` option. The `partition-key()` option specifies a template: messages that expand the template to the same value are mapped to the same partition. For example, you can partition messages based on their sender host:
+`parallelize()` uses round-robin to allocate messages to workers (called partitions in versions between 4.3-4.16) by default, but you can retain ordering for a subset of messages with the `worker-partition-key()` option. The `worker-partition-key()` option specifies a template: messages that expand the template to the same value are mapped to the same partition. For example, you can partition messages based on their sender host:
 
 ```shell
 log {
@@ -44,7 +44,7 @@ log {
       log-iw-size(10M) max-connections(10) log-fetch-limit(100000)
     );
   };
-  parallelize(workers(4) partition-key("$HOST"));
+  parallelize(workers(4) worker-partition-key("$HOST"));
 
   # from this part on, messages are processed in parallel if their
   # $HOST value differs. Messages with the same $HOST will be mapped
