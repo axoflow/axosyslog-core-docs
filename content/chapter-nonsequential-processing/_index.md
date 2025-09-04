@@ -55,3 +55,5 @@ log {
   destination { ... };
 };
 ```
+
+Staring with {{< product >}} version 4.17, you can use the `batch-size()` option to specify how many consecutive messages should be processed by a single `parallelize()` worker. This ensures that this many messages preserve their order on the destination side, and also improves `parallelize()` performance. A value around 100 is recommended for `batch-size()`. Default value: `0` (batching is disabled).
