@@ -16,7 +16,25 @@ For example, to parse `key1=value1;key2=value2` pairs, use:
 ${MESSAGE} = parse_kv("key1=value1;key2=value2", pair_separator=";");
 ```
 
-## stray_words_key {#stray-words-key}
+## stray_words_append_to_value {#stray-words-append}
+
+Available in {{% param "product.abbrev" %}} 4.17 and later.
+
+If the `stray_words_append_to_value` flag is set, any stray words between the value pairs are appended to the preceding value. For example:
+
+```shell
+# input: a=b b=c d e f=g
+filterx {
+  ${MESSAGE} = parse_kv(${MESSAGE}, value_separator="=", pair_separator=" ", stray_words_append_to_value=true);
+};
+# The value of $MSG will be: {"a":"b","b":"c d e","f":"g"}
+```
+
+If you want to collect the stray words into a separate key, see [`stray_words_key`](#stray-words-key).
+
+{{< include-headless "wnt/note-parse-kv-stray-values.md" >}}
+
+## stray_words_key {#stray_words_key}
 
 Specifies the key where {{% param "product.abbrev" %}} stores any stray words that appear before or between the parsed key-value pairs. If multiple stray words appear in a message, then {{% param "product.abbrev" %}} stores them as a comma-separated list. Default value:`N/A`
 
@@ -34,6 +52,10 @@ ${PARSED_MESSAGE} = parse_kv(${MESSAGE}, stray_words_key="stray_words");
 ```
 
 The value of `${PARSED_MESSAGE}.stray_words` for this message will be: `["interzone-emtn_s1_vpn-enodeb_om", "inbound"]`
+
+If you want to append the stray words to the respective values instead of adding them to a separate value, see [`stray_words_append_to_value`](#stray-words-append).
+
+{{< include-headless "wnt/note-parse-kv-stray-values.md" >}}
 
 ## value_separator
 
