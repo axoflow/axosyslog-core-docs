@@ -34,7 +34,7 @@ If you want to collect the stray words into a separate key, see [`stray_words_ke
 
 {{< include-headless "wnt/note-parse-kv-stray-values.md" >}}
 
-## stray_words_key {#stray_words_key}
+## stray_words_key {#stray-words-key}
 
 Specifies the key where {{% param "product.abbrev" %}} stores any stray words that appear before or between the parsed key-value pairs. If multiple stray words appear in a message, then {{% param "product.abbrev" %}} stores them as a comma-separated list. Default value:`N/A`
 
