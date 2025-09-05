@@ -71,6 +71,37 @@ Usually, you use the [strptime](#strptime) FilterX function to create datetime v
 
 Deduplicate `metrics_labels` objects. For details, see {{% xref "/filterx/filterx-metrics/_index.md#metrics-labels" %}}.
 
+## dpath
+
+Available in {{< product >}} 4.17 and later.
+
+Assigns a value to a dictionary and creates any elements of the path that don't exist. For example:
+
+```shell
+js = json({
+"key1": "one",
+"key2": "two",
+"key3": "three"
+});
+
+dpath(js.key4.key41.key412) = "nested value"
+```
+
+The value of the dictionary will be:
+
+```shell
+js = json({
+"key1": "one",
+"key2": "two",
+"key3": "three",
+"key4": {
+    "key41": {
+        "key412": "nested value"
+        }
+    }
+});
+```
+
 ## endswith
 
 Available in {{< product >}} 4.9 and later.

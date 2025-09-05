@@ -6,6 +6,14 @@ weight: 10
 
 This page is a changelog that collects the major changes and additions to this documentation. (If you want to know the details about why we have separate documentation for AxoSyslog and how it relates to the `syslog-ng` documentation, read our [syslog-ng documentation and similarities with AxoSyslog Core](https://axoflow.com/blog/axosyslog-core-documentation-syslog-ng) blog post.)
 
+## Version 4.17 (2025-09-04)
+
+- The `parse_kv` FilterX function has an option ({{% xref "/filterx/filterx-parsing/key-value-parser/kv-parser-options/_index.md#stray-words-key" %}}) to append stray words to the preceding key.
+- You can now use negative indexes when [slicing FilterX strings]({{< relref "/filterx/operator-reference.md#slicing" >}}).
+- The [`dpath`]({{< relref "/filterx/function-reference.md#dpath" >}}) FilterX function assigns a value to a dictionary and creates any elements of the path that don't exist.
+- When using `parallelize()` during {{% xref "/chapter-nonsequential-processing/_index.md" %}}, you set the `batch-size()` option to specify how many consecutive messages should be processed by a single `parallelize()` worker.
+- For the `clickhouse()` destination, you can now use the [`json-var()` option]({{< relref "/chapter-destinations/clickhouse/_index.md#json-var" >}}) to send the message to the ClickHouse server in Protobuf/JSON mixed mode ([`JSONEachRow` format](https://clickhouse.com/docs/interfaces/formats/JSONEachRow)). In this mode, type validation is performed by the ClickHouse server itself, so no Protobuf schema is required for communication.
+
 ## Version 4.16 (2025-08-15)
 
 - New [`${PROTO_NAME` macro]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#proto-name" >}}).

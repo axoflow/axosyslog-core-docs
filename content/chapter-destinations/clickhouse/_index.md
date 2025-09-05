@@ -85,6 +85,28 @@ This destination has the following options:
 
 {{< include-headless "chunk/option-destination-hook.md" >}}
 
+## json-var()
+
+|          |              |
+| -------- | ------------ |
+| Type:    | string       |
+| Default: | empty string |
+
+Available in {{< product >}} 4.17 and later.
+
+*Description:* The `json-var()` option accepts either a JSON template or a variable containing a JSON string, and sends it to the ClickHouse server in Protobuf/JSON mixed mode ([`JSONEachRow` format](https://clickhouse.com/docs/interfaces/formats/JSONEachRow)). In this mode, type validation is performed by the ClickHouse server itself, so no Protobuf schema is required for communication. For example:
+
+```shell
+destination {
+  clickhouse (
+    ...
+    json-var(json("{\"ingest_time\":1755248921000000000, \"body\": \"test template\"}"))ß
+    };
+};
+```
+
+Using `json-var()` is mutually exclusive with the [`proto-var()`](#proto-var), [`server-side-schema()`](#server-side-schema), [`schema()`](#schema), and [`protobuf-schema()`](#protobuf-schema) options.
+
 {{< include-headless "chunk/option-destination-grpc-keep-alive.md" >}}
 
 {{% include-headless "chunk/option-destination-local-timezone.md" %}}
@@ -130,7 +152,7 @@ message CustomRecord {
 }
 ```
 
-Alternatively, you can set the schema with the [`schema()`](#schema) option, or use [proto-var()](#proto-var) to assign an already formatted object to the message.
+Alternatively, you can set the schema with the [`schema()`](#schema) option, use [proto-var()](#proto-var) to assign an already formatted object to the message, or use a JSON template with the [json-var()](#json-var) option.
 
 {{< include-headless "chunk/option-destination-proto-var.md" >}}
 
@@ -156,7 +178,7 @@ schema(
 )
 ```
 
-Alternatively, you can set the schema with the [`protobuf-schema()`](#protobuf-schema) option, or use [proto-var()](#proto-var) to assign an already formatted object to the message.
+Alternatively, you can set the schema with the [`protobuf-schema()`](#protobuf-schema) option, use [proto-var()](#proto-var) to assign an already formatted object to the message, or use a JSON template with the [json-var()](#json-var) option.
 
 You can find the available column types in the [official ClickHouse documentation](https://clickhouse.com/docs/en/sql-reference/data-types).
 

@@ -326,7 +326,40 @@ js = json({
 });
 ```
 
-To create a field only if the assigned value is non-null, see [Create dict element if non-null (`:??`)]({{< relref "/filterx/operator-reference.md#create-non-null" >}}).
+When working with dicts, note the following points:
+
+- To create a field only if the assigned value is non-null, see [Create dict element if non-null (`:??`)]({{< relref "/filterx/operator-reference.md#create-non-null" >}}).
+- To assign a value to a non-existing key where only this key doesn't exist, you can use a simple value assignment, for example:
+
+    ```shell
+    js = json({
+    "key1": "one",
+    "key2": "two"
+    });
+
+    js.key3 = "three"
+    ```
+
+    However, if you want to assign a value where multiple elements of the path don't exist, use the [`dpath`]({{< relref "/filterx/function-reference.md#dpath" >}}) FilterX function, for example:
+
+    ```shell
+    dpath(js.key4.key41.key412) = "nested value"
+    ```
+
+    The value of the dictionary will be:
+
+    ```shell
+    js = json({
+    "key1": "one",
+    "key2": "two",
+    "key3": "three",
+    "key4": {
+        "key41": {
+            "key412": "nested value"
+            }
+       }
+    });
+    ```
 
 Within a FilterX block, you can access the fields of complex data types by using indexes and the dot notation, for example:
 
@@ -378,8 +411,9 @@ For details, see {{% xref "/filterx/operator-reference.md" %}}.
 FilterX has the following built-in functions.
 
 - [`cache_json_file`]({{< relref "/filterx/function-reference.md#cache-json-file" >}}): Loads an external JSON file to lookup contextual information.
-- [`endswith`]({{< relref "/filterx/filterx-string-search/_index.md" >}}): Checks if a string ends with the specified value.
 - [`dedup_metrics_labels`]({{< relref "/filterx/filterx-metrics/_index.md#metrics-labels" >}}): Deduplicate `metrics_labels` objects.
+- [`dpath`]({{< relref "/filterx/function-reference.md#dpath" >}}): Creates a nested path in a dictionary.
+- [`endswith`]({{< relref "/filterx/filterx-string-search/_index.md" >}}): Checks if a string ends with the specified value.
 - [`flatten`]({{< relref "/filterx/function-reference.md#flatten" >}}): Flattens the nested elements of an object.
 - [`format_cef`]({{< relref "/filterx/filterx-format-data/format-cef" >}}): Formats a dictionary into Common Event Format (CEF).
 - [`format_csv`]({{< relref "/filterx/filterx-format-data/format-csv.md" >}}): Formats a dictionary or a list into a comma-separated string.

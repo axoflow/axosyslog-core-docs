@@ -196,7 +196,7 @@ Is there a workaround for wildcards/globbing? /chapter-routing-filters/filters/r
 
 Available in {{< product >}} 4.15 and later.
 
-You can slice strings at the specified index using the `..` operator to get a section of the string. Indexing starts at 0, and must be non-negative. You can omit the index to refer to the beginning or the end of the string. For example:
+You can slice strings at the specified index using the `..` operator to get a section of the string. Indexing starts at 0. You can omit the index to refer to the beginning or the end of the string. For example:
 
 ```shell
 filterx {
@@ -210,6 +210,17 @@ filterx {
 
   my_string = str[idx..];
   # Value of my_string is "mple";
+};
+```
+
+Staring with {{< product >}} version 4.17, you can use negative indexes to refer to characters from the end of the string, for example:
+
+```shell
+filterx {
+  str = "example";
+  str[..-2] == "examp";
+  str[-3..] == "ple";
+  str[2..-2] == "amp";
 };
 ```
 
