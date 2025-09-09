@@ -43,7 +43,7 @@ For LEEF:
 - `gcp(service-account())` authentication can now use `scope()` instead of `audience()`.
 - New FilterX features:
 
-    - {{< xref "/filterx/function-reference.md#str-replace" >}} function for string replacement.
+    - [`str_replace`]({{< relref "/filterx/function-reference.md#str-replace" >}}) function for string replacement.
     - [String slicing operator (`..`)]({{< relref "/filterx/operator-reference.md#slicing" >}}).
     - [Create dict element if non-null (`:??`)]({{< relref "/filterx/operator-reference.md#create-non-null" >}}) operator.
 
@@ -55,8 +55,7 @@ For LEEF:
 
 ## Version 4.13 (2025-07-08)
 
-- You can format arbitrary data as protobuf using the specified schema (proto file) using the {{% xref "/filterx/function-reference.md#protobuf-message" %}} FilterX function. Also, you can send such pre-formatted data using the `proto-var()` option of the [ClickHouse]({{< relref "/chapter-destinations/clickhouse/_index.md#proto-var" >}}) and [Google BigQuery]()
-({{< relref "/chapter-destinations/google-bigquery/_index.md#proto-var" >}}) destinations.
+- You can format arbitrary data as protobuf using the specified schema (proto file) using the {{% xref "/filterx/function-reference.md#protobuf-message" %}} FilterX function. Also, you can send such pre-formatted data using the `proto-var()` option of the [ClickHouse]({{< relref "/chapter-destinations/clickhouse/_index.md#proto-var" >}}) and [Google BigQuery]({{< relref "/chapter-destinations/google-bigquery/_index.md#proto-var" >}}) destinations.
 - You can now format dictionaries as XML and Windows Event Log XML using the [`format_xml`]({{< relref "/filterx/function-reference.md#format-xml" >}}) and [`format_windows_eventlog_xml`]({{< relref "/filterx/function-reference.md#format-windows-eventlog-xml" >}}) FilterX functions.
 - You can now format dictionaries as CEF and LEEF messages using the [`format_cef`]({{< relref "/filterx/function-reference.md#format-cef" >}}) and [`format_leef`]({{< relref "/filterx/function-reference.md#format-leef" >}}) FilterX functions.
 - Changes in {{% xref "/filterx/filterx-parsing/cef/_index.md" %}} and {{% xref "/filterx/filterx-parsing/leef/_index.md" %}}:
