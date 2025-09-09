@@ -45,10 +45,6 @@ filterx {
 }
 ```
 
-{{% alert title="Note" color="info" %}}
-{{< product >}} reloads the contents of the JSON file only when the {{< product >}} configuration is reloaded.
-{{% /alert %}}
-
 ## datetime
 
 Cast a value into a datetime variable.
