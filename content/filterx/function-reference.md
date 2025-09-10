@@ -553,7 +553,7 @@ The `overrides` and `defaults` parameters are also dicts, where:
 
     If a list is provided, each expression will be evaluated, and the first successful, non-null one is set as the respective field's value. This is similar to chaining [null-coalescing (`??`) operators]({{< relref "/filterx/operator-reference.md#null-coalescing-operator" >}}), but has better performance.
 
-`overrides` are always processed for each field. The `defaults` for a field are only processed isn't set or is empty.
+`overrides` are always processed for each field. The `defaults` option for a field is only processed if the field isn't set, or it's empty.
 
 For example:
 
