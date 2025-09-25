@@ -11,3 +11,4 @@
 
 *Description:* The size of the initial window, this value is used during flow control. Make sure that `log-iw-size()` is larger than the value of `log-fetch-limit()`.
 
+{{< include-headless "wnt/warning-log-iw-size-restart.md" >}}
