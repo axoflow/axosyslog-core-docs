@@ -69,6 +69,26 @@ Using the `greedy=true` flag will assign the remainder of the message to the las
 my-parsed-values = parse_csv(${MESSAGE}, columns=["COLUMN1", "COLUMN2", "COLUMN3"], delimiters=[","], greedy=true);
 ```
 
+## quote-pairs() {#quote-pairs}
+
+|           |                                 |
+| --------- | ------------------------------- |
+| Synopsis: | `quote-pairs=["<qoute-pair1>", "<qoute-pair2>"]` |
+
+Available in {{% param "product.abbrev" %}} 4.18 and later.
+
+*Description:* List of quote pairs that are ignored and removed from the beginning and end of the strings. Note that the beginning and ending quote character does not have to be identical, for example, `[}` can also be a quote-pair.
+
+In the following example, square brackets (`[]`) and single-quotes (`'`) are ignored:
+
+```shell
+filterx {
+  str = "value1,[value2],'value3'";
+  ${MESSAGE} = parse_csv(str, quote_pairs=["[]", "'"]);
+  # The value of ${MESSAGE} will be "value1,value2,value3"
+};
+```
+
 ## strip_whitespace {#strip-whitespace}
 
 |           |                                                                                           |

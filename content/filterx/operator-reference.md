@@ -29,6 +29,13 @@ Note that:
 - If one operand is integer and the other is double, the result will be double.
 - The `+` operator can add strings and other types as well, for details, see the [Plus operator]({{< relref "#plus-operator" >}}).
 - To increase the value of a variable, see the [Plus equal operator]({{< relref "#plus-equal-operator" >}}).
+- In version 4.18 and later, you can use the `+` and `-` operators as unary operators with a single operand to indicate a positive or a negative value. For example:
+
+    ```shell
+    a = 42;
+    b = -a;
+    # b is -42
+    ```
 
 ### Plus operator
 
@@ -221,6 +228,18 @@ filterx {
   str[..-2] == "examp";
   str[-3..] == "ple";
   str[2..-2] == "amp";
+};
+```
+
+Staring with {{< product >}} version 4.18, you can use the `-` operator with a variable to to refer to characters from the end of the string, for example:
+
+```shell
+filterx {
+  str = "example";
+  idx = 3;
+  str[..-idx] == "exam";
+  str[-idx..] == "ple";
+  str[idx..-idx] == "m";
 };
 ```
 
