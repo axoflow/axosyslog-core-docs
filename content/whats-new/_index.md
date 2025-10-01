@@ -4,7 +4,13 @@ weight: 10
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-This page is a changelog that collects the major changes and additions to this documentation. (If you want to know the details about why we have separate documentation for AxoSyslog and how it relates to the `syslog-ng` documentation, read our [syslog-ng documentation and similarities with AxoSyslog Core](https://axoflow.com/blog/axosyslog-core-documentation-syslog-ng) blog post.)
+{{< include-headless "banner-new-to-axosyslog.md" >}}
+
+## Version 4.18 (2025-09-30)
+
+- You can now use macros and templates in the [`headers()` option]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#headers" >}}) of the `http()` destination to set the headers dynamically.
+- The `parse_csv` FilterX parser now supports the [`quote-pairs`]({{< relref "/filterx/filterx-parsing/csv/reference-parsers-csv/_index.md#quote-pairs" >}}) option.
+- [`+` and `-` unary operators]({{< relref "/filterx/operator-reference.md#slicing" >}}) for FilterX.
 
 ## Version 4.17 (2025-09-04)
 

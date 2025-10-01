@@ -75,6 +75,8 @@ my-parsed-values = parse_csv(${MESSAGE}, columns=["COLUMN1", "COLUMN2", "COLUMN3
 | --------- | ------------------------------- |
 | Synopsis: | `quote-pairs=["<qoute-pair1>", "<qoute-pair2>"]` |
 
+Available in {{% param "product.abbrev" %}} 4.18 and later.
+
 *Description:* List of quote pairs that are ignored and removed from the beginning and end of the strings. Note that the beginning and ending quote character does not have to be identical, for example, `[}` can also be a quote-pair.
 
 In the following example, square brackets (`[]`) and single-quotes (`'`) are ignored:

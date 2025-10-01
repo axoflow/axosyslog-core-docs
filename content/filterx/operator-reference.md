@@ -221,6 +221,16 @@ filterx {
 ```
 
 Staring with {{< product >}} version 4.17, you can use negative indexes to refer to characters from the end of the string, for example:
+
+```shell
+filterx {
+  str = "example";
+  str[..-2] == "examp";
+  str[-3..] == "ple";
+  str[2..-2] == "amp";
+};
+```
+
 Staring with {{< product >}} version 4.18, you can use the `-` operator with a variable to to refer to characters from the end of the string, for example:
 
 ```shell
