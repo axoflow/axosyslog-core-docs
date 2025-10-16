@@ -12,16 +12,18 @@ The `opensearch()` destination can directly post log messages to [OpenSearch](ht
 
 HTTPS connection, as well as password- and certificate-based authentication is supported. The content of the events is sent in JSON format.
 
-
 ## Declaration:
 
 ```shell
-   d_opensearch {
-        opensearch(
-            index("<opensearch-index-to-store-messages>")
-            url("https://your-opensearch-endpoint:9200/_bulk")
-        );
-    };
+@include "scl.conf"
+# ...
+
+d_opensearch {
+    opensearch(
+        index("<opensearch-index-to-store-messages>")
+        url("https://your-opensearch-endpoint:9200/_bulk")
+    );
+};
 ```
 
 ## Example: Sending log data to OpenSearch {#example-destination-opensearch}
@@ -29,40 +31,46 @@ HTTPS connection, as well as password- and certificate-based authentication is s
 The following example defines an `opensearch()` destination, with only the required options.
 
 ```shell
-   destination opensearch {
-        opensearch(
-            index("<name-of-the-index>")
-            url("http://my-elastic-server:9200/_bulk")
-        );
-    };
-    
-    
-    log {
-        source(s_file);
-        destination(d_opensearch_http);
-        flags(flow-control);
-    };
+@include "scl.conf"
+# ...
+
+destination opensearch {
+    opensearch(
+        index("<name-of-the-index>")
+        url("http://my-elastic-server:9200/_bulk")
+    );
+};
+
+
+log {
+    source(s_file);
+    destination(d_opensearch_http);
+    flags(flow-control);
+};
 ```
 
 The following example uses mutually-authenticated HTTPS connection, templated index, and also sets some other options.
 
 ```shell
-   destination opensearch_https {
-        opensearch(
-            url("https://node01.example.com:9200/_bulk")
-            index("test-${YEAR}${MONTH}${DAY}")
-            time-zone("UTC")
-            workers(4)
-            batch-lines(16)
-            timeout(10)
-            tls(
-                ca-file("ca.pem")
-                cert-file("syslog_ng.crt.pem")
-                key-file("syslog_ng.key.pem")
-                peer-verify(yes)
-            )
-        );
-    };
+@include "scl.conf"
+# ...
+
+destination opensearch_https {
+    opensearch(
+        url("https://node01.example.com:9200/_bulk")
+        index("test-${YEAR}${MONTH}${DAY}")
+        time-zone("UTC")
+        workers(4)
+        batch-lines(16)
+        timeout(10)
+        tls(
+            ca-file("ca.pem")
+            cert-file("syslog_ng.crt.pem")
+            key-file("syslog_ng.key.pem")
+            peer-verify(yes)
+        )
+    );
+};
 ```
 
 This driver is actually a reusable configuration snippet configured to send log messages using the `http()` driver using a template. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/tree/master/scl/opensearch).

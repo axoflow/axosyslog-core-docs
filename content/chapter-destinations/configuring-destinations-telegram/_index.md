@@ -10,31 +10,33 @@ The `telegram()` destination sends log messages to [Telegram](https://core.teleg
 
 Note that this destination automatically uses the certificate store of the system (for details, see the [curl documentation](https://curl.se/docs/sslcerts.html)).
 
-
 ## Declaration:
 
 ```shell
-   telegram(parameters);
+@include "scl.conf"
+# ...
+
+telegram(parameters);
 ```
 
-
 {{% include-headless "chunk/destination-http-proxy-settings.md" %}}
-
 
 ## Example: Using the telegram() driver {#example-destination-mongodb}
 
 The following example creates a `telegram()` destination.
 
 ```shell
-   destination d_telegram {
-        telegram(
-            template("${MESSAGE}")
-            throttle(1)
-            parse-mode("markdown")
-            disable-web-page-preview("true")
-            bot-id("<bot id>")
-            chat-id("<chat id>")
-        );
-    };
-```
+@include "scl.conf"
+# ...
 
+destination d_telegram {
+    telegram(
+        template("${MESSAGE}")
+        throttle(1)
+        parse-mode("markdown")
+        disable-web-page-preview("true")
+        bot-id("<bot id>")
+        chat-id("<chat id>")
+    );
+};
+```
