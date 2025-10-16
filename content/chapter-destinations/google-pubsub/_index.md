@@ -4,6 +4,7 @@ linktitle: "google-pubsub: Google Pub/Sub HTTP"
 weight:  1250
 driver: "google-pubsub()"
 short_description: "Send messages to Google Pub/Sub via HTTP"
+type: http
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 

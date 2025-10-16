@@ -4,6 +4,7 @@ linktitle: "elasticsearch-datastream: Send messages to Elasticsearch data stream
 weight:  850
 driver: "elasticsearch-datastream()"
 short_description: "Send messages to Elasticsearch data streams"
+type: http
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 

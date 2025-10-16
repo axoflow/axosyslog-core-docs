@@ -4,6 +4,7 @@ linktitle: "openobserve-log: Send messages to OpenObserve"
 weight:  3620
 driver: "openobserve-log()"
 short_description: "Send messages to OpenObserve"
+type: http
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 {{< include-headless "banner-new-to-axosyslog.md" >}}

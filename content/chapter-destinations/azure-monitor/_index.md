@@ -4,6 +4,7 @@ linktitle: "azure-monitor: Azure Monitor and Sentinel"
 weight:  150
 driver: "azure-monitor()"
 short_description: "Send messages to Azure Monitor and Sentinel"
+type: http
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 

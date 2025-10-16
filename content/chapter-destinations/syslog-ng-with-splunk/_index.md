@@ -4,6 +4,7 @@ linktitle: Splunk HEC
 weight:  5700
 driver: "splunk-hec-event()"
 short_description: "Send messages to Splunk HEC"
+type: http
 ---
 
 Starting with version 4.2.0, {{% param "product_name" %}} can send messages to the Splunk HTTP Event Collector (HEC).
