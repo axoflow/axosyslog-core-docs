@@ -20,6 +20,9 @@ To configure {{% param "product_name" %}}, you'll need the name of the project a
 Minimal configuration:
 
 ```sh
+@include "scl.conf"
+# ...
+
 destination d_pubsub {
   google-pubsub(
     project("syslog-ng-project")

@@ -12,6 +12,9 @@ Starting with version 4.8.0, {{% param "product_name" %}} can send messages and 
 Minimal configuration:
 
 ```sh
+@include "scl.conf"
+# ...
+
 destination d_elastic_data_stream {
   elasticsearch-datastream(
     url("https://elastic-endpoint:9200/my-data-stream/_bulk")
@@ -22,7 +25,6 @@ destination d_elastic_data_stream {
 ```
 
 This driver is actually a reusable configuration snippet configured to send log messages using the `http()` driver using a template. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/elasticsearch/elastic-datastream.conf).
-
 
 ## Prerequisites
 

@@ -19,6 +19,9 @@ Starting with version 4.5.0, {{% param "product_name" %}} can send messages to [
 Minimal configuration:
 
 ```sh
+@include "scl.conf"
+# ...
+
 destination d_openobserve {
   openobserve-log(
     url("http://your-openobserve-endpoint")
@@ -33,6 +36,9 @@ destination d_openobserve {
 Example configuration:
 
 ```sh
+@include "scl.conf"
+# ...
+
 destination d_openobserve {
   openobserve-log(
     url("https://api.openobserve.ai")

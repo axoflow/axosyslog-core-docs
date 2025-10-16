@@ -20,6 +20,9 @@ The `logscale()` destination feeds LogScale via the [Ingest Structured Data API]
 Minimal configuration:
 
 ```sh
+@include "scl.conf"
+# ...
+
 destination d_logscale {
   logscale(
     token("your-logscale-ingest-token")
