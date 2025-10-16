@@ -41,7 +41,7 @@ If you want to use multiple `systemd-journal()` sources in your configuration, t
 To send all fields through the syslog protocol, enter the prefix in the following format: "`.SDATA.<name>`".
 
 ```shell
-   @version: {{% param "product.techversion" %}}
+   @version: {{% param "product.configversion" %}}
     
     source s_journald {
         systemd-journal(prefix(".SDATA.journald."));
@@ -60,7 +60,7 @@ To send all fields through the syslog protocol, enter the prefix in the followin
 ## Example: Filter for a specific field {#example-source-journal-filtering}
 
 ```shell
-   @version: {{% param "product.techversion" %}}
+   @version: {{% param "product.configversion" %}}
     
     source s_journald {
         systemd-journal(prefix(".SDATA.journald."));
@@ -82,7 +82,7 @@ To send all fields through the syslog protocol, enter the prefix in the followin
 ## Example: Send all fields in value-pairs {#example-source-journal-valuepairs}
 
 ```shell
-   @version: {{% param "product.techversion" %}}
+   @version: {{% param "product.configversion" %}}
     
     source s_local {
         systemd-journal(prefix("journald."));

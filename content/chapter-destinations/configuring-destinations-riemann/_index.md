@@ -28,7 +28,7 @@ For the list of available parameters, see {{% xref "/chapter-destinations/config
 The following destination sends the value of the SEQNUM macro (the number of messages sent to this destination) as a metric to the Riemann server.
 
 ```shell
-   @version: {{% param "product.techversion" %}}
+   @version: {{% param "product.configversion" %}}
     
     source s_network {
         network(port(12345));

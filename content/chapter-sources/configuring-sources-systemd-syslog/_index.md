@@ -26,7 +26,7 @@ On platforms running systemd, the `systemd-syslog()` driver reads the log messag
 ## Example: Using the systemd-syslog() driver
 
 ```shell
-   @version: {{% param "product.techversion" %}}
+   @version: {{% param "product.configversion" %}}
     
     source s_systemdd {
         systemd-syslog();

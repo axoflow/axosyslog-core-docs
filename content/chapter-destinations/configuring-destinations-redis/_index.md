@@ -41,7 +41,7 @@ The following destination counts the number of log messages received per host.
 The following example creates a statistic from Apache webserver logs about the browsers that the visitors use (per minute)
 
 ```shell
-   @version: {{% param "product.techversion" %}}
+   @version: {{% param "product.configversion" %}}
     
     source s_apache {
         file("/var/log/apache2/access.log");

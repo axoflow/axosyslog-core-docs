@@ -173,6 +173,8 @@ description = "Documentation for AxoSyslog, the scalable security data processor
 name = "AxoSyslog"
 abbrev = "AxoSyslog"
 version = "4.18"
+# techversion includes patch version number, needed for install/image commands
+# configversion is needed in the config file examples
 techversion = "4.18.0"
 configversion = "4.18"
 syslog-ng = "syslog-ng"

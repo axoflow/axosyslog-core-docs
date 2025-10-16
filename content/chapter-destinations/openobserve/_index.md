@@ -4,6 +4,7 @@ linktitle: "openobserve-log: Send messages to OpenObserve"
 weight:  3620
 driver: "openobserve-log()"
 short_description: "Send messages to OpenObserve"
+type: http
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 {{< include-headless "banner-new-to-axosyslog.md" >}}
@@ -19,6 +20,9 @@ Starting with version 4.5.0, {{% param "product_name" %}} can send messages to [
 Minimal configuration:
 
 ```sh
+@include "scl.conf"
+# ...
+
 destination d_openobserve {
   openobserve-log(
     url("http://your-openobserve-endpoint")
@@ -33,6 +37,9 @@ destination d_openobserve {
 Example configuration:
 
 ```sh
+@include "scl.conf"
+# ...
+
 destination d_openobserve {
   openobserve-log(
     url("https://api.openobserve.ai")

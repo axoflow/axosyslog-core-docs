@@ -24,7 +24,7 @@ By default, the Fortigate-specific fields are extracted into name-value pairs pr
 ## Declaration:
 
 ```shell
-   @version: {{% param "product.techversion" %}}
+   @version: {{% param "product.configversion" %}}
     @include "scl.conf"
     log {
         source { network(transport("udp") flags(no-parse)); };

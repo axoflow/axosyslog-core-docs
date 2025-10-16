@@ -46,7 +46,7 @@ Suppose you are running an application on your hosts that logs into the `/opt/va
 Include this file in your main `syslog-ng.conf` configuration file, reference the block, and use it in a logpath:
 
 ```shell
-   @version: {{% param "product.techversion" %}}
+   @version: {{% param "product.configversion" %}}
     @include "<correct/path>/myblocks.conf"
     source s_myappsource { myappsource(); };
     ...
