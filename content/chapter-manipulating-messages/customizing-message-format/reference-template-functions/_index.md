@@ -1055,7 +1055,7 @@ The following points apply to Python parsers.
 The following example creates a Python template function called `return_message` that returns the MESSAGE part of the log message.
 
 ```shell
-   @version: {{% param "product.techversion" %}}
+   @version: {{% param "product.configversion" %}}
     
     python {
     def return_message(log_message):
@@ -1070,7 +1070,7 @@ The following example creates a Python template function called `return_message`
 The following example creates a Python template function called `resolve_host` that receives an IP address as an argument, and attempts to resolve it into a hostname.
 
 ```shell
-   @version: {{% param "product.techversion" %}}
+   @version: {{% param "product.configversion" %}}
     
     python {
     import socket

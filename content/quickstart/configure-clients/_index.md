@@ -95,10 +95,10 @@ The default configuration of {{% param "product.abbrev" %}} has only one log sta
     
 ## Example: The default configuration file of {{% param "product.abbrev" %}} {#example-defaultconfig}
 
-The following is the default configuration file of {{% param "product.abbrev" %}}{{% param "product.techversion" %}}. It collects local log messages and the log messages of {{% param "product.abbrev" %}} and saves them in the `/var/log/messages` file.
+The following is the default configuration file of {{% param "product.abbrev" %}}. It collects local log messages and the log messages of {{% param "product.abbrev" %}} and saves them in the `/var/log/messages` file.
 
 ```shell
-    @version: {{% param "product.techversion" %}}
+    @version: {{% param "product.configversion" %}}
     @include "scl.conf"
     source s_local {
         system(); internal();
@@ -116,7 +116,7 @@ The following is the default configuration file of {{% param "product.abbrev" %}
 The following is a simple configuration file that collects local log messages and forwards them to a logserver using the IETF-syslog protocol.
 
 ```shell
-    @version: {{% param "product.techversion" %}}
+    @version: {{% param "product.configversion" %}}
     @include "scl.conf"
     source s_local {
         system(); internal();

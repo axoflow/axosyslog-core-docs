@@ -79,7 +79,7 @@ Starting with {{% param "product.abbrev" %}} version 3.2, the `syslog()` source 
     The following is a simple configuration file for {{% param "product.name" %}} that collects incoming log messages and stores them in a text file.
     
     ```shell
-        @version: {{% param "product.techversion" %}}
+        @version: {{% param "product.configversion" %}}
         @include "scl.conf"
         options {
             time-reap(30);

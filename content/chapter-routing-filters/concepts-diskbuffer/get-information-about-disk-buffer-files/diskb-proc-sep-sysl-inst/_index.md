@@ -47,7 +47,7 @@ Make sure that there is sufficient disk space in the directory. The minimum reco
 1. Create the configuration file `/tmp/qdisk/qdisk.conf` for the temporary instance with the following content.
 
     ```shell
-    @version:{{% param "product.techversion" %}}
+    @version:{{% param "product.configversion" %}}
     @include "scl.conf"
     
     options {

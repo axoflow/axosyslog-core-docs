@@ -22,7 +22,7 @@ The `stdin()` driver causes AxoSyslog to exit once it hits end-of-file (EOF).
 ## Example: Using the stdin() driver
 
 ```shell
-   @version: {{% param "product.techversion" %}}
+   @version: {{% param "product.configversion" %}}
     log { 
         source { stdin(); };
         destination { file("/dev/stdout"); };

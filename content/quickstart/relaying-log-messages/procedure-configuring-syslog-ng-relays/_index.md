@@ -37,7 +37,7 @@ It is recommended to use these options on your {{% param "product.abbrev" %}} se
 The following is a simple configuration file that collects local and incoming log messages and forwards them to a logserver using the IETF-syslog protocol.
 
 ```shell
-    @version: {{% param "product.techversion" %}}
+    @version: {{% param "product.configversion" %}}
     @include "scl.conf"
     options {
         time-reap(30);
