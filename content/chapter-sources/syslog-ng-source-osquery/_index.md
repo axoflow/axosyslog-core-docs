@@ -1,6 +1,6 @@
 ---
 title: "osquery: Collect and parse osquery result logs"
-weight:  2300
+weight:  2350
 driver: "osquery()"
 short_description: "Collect and parse osquery result logs"
 ---

@@ -1,7 +1,7 @@
 ---
 title: Receive logs, metrics, and traces from OpenTelemetry
 linktitle: OpenTelemetry
-weight: 2350
+weight: 2300
 driver: "opentelemetry()"
 short_description: "Receive logs, metrics, and traces from OpenTelemetry clients over the OpenTelemetry Protocol (OTLP/gRPC)"
 ---
