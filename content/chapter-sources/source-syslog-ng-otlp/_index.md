@@ -71,8 +71,6 @@ The `syslog-ng-otlp()` source ignores this option and uses the hostname from the
 
 {{< include-headless "chunk/option-source-keep-timestamp.md" >}}
 
-{{% include-headless "chunk/option-source-log-fetch-limit.md" %}}
-
 {{% include-headless "chunk/option-source-file-log-iw-size.md" %}}
 
 {{< include-headless "chunk/option-source-log-prefix.md" >}}
