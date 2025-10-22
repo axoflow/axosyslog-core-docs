@@ -9,5 +9,8 @@
 | Type:    | number |
 | Default: | 100    |
 
-*Description:* The size of the initial window, this value is used during flow-control. Its value cannot be lower than 100, unless the `dynamic-window-size()` option is enabled. For details on flow-control, see {{% xref "/chapter-routing-filters/concepts-flow-control/_index.md" %}}.
+*Description:* The number of messages a given source can accept before they are forwarded to the destination. This value is used during flow-control.
+If a `max-connections()` setting is in effect (for example in case of TCP sources), the `log-iw-size()` value means the total window size, and it's divided proportionally between the connections.
+Its value cannot be lower than 100, unless the `dynamic-window-size()` option is enabled, which increases the effective windows size dynamically.
+For details about the effects of this parameter, see {{% xref "/chapter-routing-filters/concepts-flow-control/_index.md" %}}.
 
