@@ -4,5 +4,5 @@
 
 ## FULLDATE, C_FULLDATE, R_FULLDATE, S_FULLDATE
 
-*Description:* A nonstandard format for the date of the message using the same format as `${DATE}`, but including the year as well, for example: `2006 Jun 13 15:58:00`.
+*Description:* A nonstandard format for the date of the message using the same format as `${DATE}`, but including the year as well, for example: `2006 Jun 13 15:58:00`. {{% include-headless "chunk/macro-date-ref.md" %}}
 

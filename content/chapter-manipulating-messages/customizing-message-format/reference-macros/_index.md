@@ -82,7 +82,7 @@ The {{% param "product.abbrev" %}} application uses the following procedure to d
 
 ## HOUR12, C_HOUR12, R_HOUR12, S_HOUR12 {#macro-hour12}
 
-*Description:* The hour of day the message was sent in 12-hour clock format. See also the [`${AMPM}`]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) macro. 12AM is midnight. Available in {{% param "product.abbrev" %}} 3.4 and later.
+*Description:* The hour of day the message was sent in 12-hour clock format. See also the [`${AMPM}`]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) macro. 12AM is midnight. Available in {{% param "product.abbrev" %}} 3.4 and later. {{% include-headless "chunk/macro-date-ref.md" %}}
 
 ## HOST {#macro-host}
 
@@ -116,13 +116,13 @@ The IP protocol version used to retrieve or receive the message. Contains either
 
 ## ISODATE, C_ISODATE, R_ISODATE, S_ISODATE {#macro-isodate}
 
-*Description:* Date of the message in the ISO 8601 compatible standard timestamp format (`yyyy-mm-ddThh:mm:ss+-ZONE`), for example: `2006-06-13T15:58:00.123+01:00`. If possible, it is recommended to use `${ISODATE}` for timestamping. Note that AxoSyslog can produce fractions of a second (for example, milliseconds) in the timestamp by using the `frac-digits()` global or per-destination option.
+*Description:* Date of the message in the ISO 8601 compatible standard timestamp format (`yyyy-mm-ddThh:mm:ss+-ZONE`), for example: `2006-06-13T15:58:00.123+01:00`. If possible, it is recommended to use `${ISODATE}` for timestamping. Note that AxoSyslog can produce fractions of a second (for example, milliseconds) in the timestamp by using the `frac-digits()` global or per-destination option. {{% include-headless "chunk/macro-date-ref.md" %}}
 
 {{< include-headless "wnt/n-frac-trunc.md" >}}
 
 ## ISOWEEK, C_ISOWEEK, R_ISOWEEK, S_ISOWEEK {#macro-isoweek}
 
-*Description:* The number of week according to the ISO 8601 standard. Note that the `${WEEK}` macro that has been available in returns a non-standard week number that can differ from the value returned by the `${ISOWEEK}` macro.
+*Description:* The number of week according to the ISO 8601 standard. Note that the `${WEEK}` macro that has been available in returns a non-standard week number that can differ from the value returned by the `${ISOWEEK}` macro. {{% include-headless "chunk/macro-date-ref.md" %}}
 
 Available in 3.24 and later.
 
@@ -153,19 +153,19 @@ Note that before AxoSyslog version 3.0, the `${MESSAGE}` macro included the prog
 
 ## MONTH_ABBREV, C_MONTH_ABBREV, R_MONTH_ABBREV, S_MONTH_ABBREV {#macro-month-abbrev}
 
-*Description:* The English abbreviation of the month name (3 letters).
+*Description:* The English abbreviation of the month name (3 letters). {{% include-headless "chunk/macro-date-ref.md" %}}
 
 ## MONTH_NAME, C_MONTH_NAME, R_MONTH_NAME, S_MONTH_NAME {#macro-month-name}
 
-*Description:* The English name of the month name.
+*Description:* The English name of the month name. {{% include-headless "chunk/macro-date-ref.md" %}}
 
 ## MONTH_WEEK, C_MONTH_WEEK, R_MONTH_WEEK, S_MONTH_WEEK {#macro-month-week}
 
-*Description:* The number of the week in the given month (0-5). The week with numerical value 1 is the first week containing a Monday. The days of month before the first Monday are considered week 0. For example, if a 31-day month begins on a Sunday, then the 1st of the month is week 0, and the end of the month (the 30th and 31st) is week 5.
+*Description:* The number of the week in the given month (0-5). The week with numerical value 1 is the first week containing a Monday. The days of month before the first Monday are considered week 0. For example, if a 31-day month begins on a Sunday, then the 1st of the month is week 0, and the end of the month (the 30th and 31st) is week 5. {{% include-headless "chunk/macro-date-ref.md" %}}
 
 ## MSEC, C_MSEC, R_MSEC, S_MSEC {#macro-msec}
 
-*Description:* The millisecond the message was sent.
+*Description:* The millisecond the message was sent. {{% include-headless "chunk/macro-date-ref.md" %}}
 
 Available in {{% param "product.abbrev" %}} version 3.4 and later.
 
@@ -318,7 +318,7 @@ Available in {{% param "product.abbrev" %}} 4.10 and later.
 
 ## STAMP, R_STAMP, S_STAMP {#macro-stamp}
 
-*Description:* A timestamp formatted according to the [`ts-format()`]({{< relref "/chapter-global-options/reference-options/_index.md" >}}) global or per-destination option.
+*Description:* A timestamp formatted according to the [`ts-format()`]({{< relref "/chapter-global-options/reference-options/_index.md" >}}) global or per-destination option. {{% include-headless "chunk/macro-date-ref.md" %}}
 
 ## SYSUPTIME {#macro-sysuptime}
 
@@ -408,7 +408,7 @@ Available in {{% param "product.abbrev" %}} version 3.7 and later.
 
 ## USEC, C_USEC, R_USEC, S_USEC {#macro-usec}
 
-*Description:* The microsecond the message was sent.
+*Description:* The microsecond the message was sent. {{% include-headless "chunk/macro-date-ref.md" %}}
 
 Available in {{% param "product.abbrev" %}} version 3.4 and later.
 
@@ -418,16 +418,16 @@ Available in {{% param "product.abbrev" %}} version 3.4 and later.
 
 ## WEEK_DAY_ABBREV, C_WEEK_DAY_ABBREV, R_WEEK_DAY_ABBREV, S_WEEK_DAY_ABBREV {#macro-week-day-abbrev}
 
-*Description:* The 3-letter English abbreviation of the name of the day the message was sent, for example, `Thu`.
+*Description:* The 3-letter English abbreviation of the name of the day the message was sent, for example, `Thu`. {{% include-headless "chunk/macro-date-ref.md" %}}
 
 ## WEEK_DAY, C_WEEK_DAY, R_WEEK_DAY, S_WEEK_DAY {#macro-week-day}
 
-*Description:* The day of the week as a numerical value (1-7).
+*Description:* The day of the week as a numerical value (1-7). {{% include-headless "chunk/macro-date-ref.md" %}}
 
 ## WEEKDAY, C_WEEKDAY, R_WEEKDAY, S_WEEKDAY {#macro-weekday}
 
-*Description:* These macros are deprecated, use [${WEEK_DAY_ABBREV}, ${R_WEEK_DAY_ABBREV}, ${S_WEEK_DAY_ABBREV}]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) instead. The 3-letter name of the day of week the message was sent, for example, `Thu`.
+*Description:* These macros are deprecated, use [${WEEK_DAY_ABBREV}, ${R_WEEK_DAY_ABBREV}, ${S_WEEK_DAY_ABBREV}]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) instead. The 3-letter name of the day of week the message was sent, for example, `Thu`. {{% include-headless "chunk/macro-date-ref.md" %}}
 
 ## WEEK_DAY_NAME, C_WEEK_DAY_NAME, R_WEEK_DAY_NAME, S_WEEK_DAY_NAME {#macro-week-day-name}
 
-*Description:* The English name of the day.
+*Description:* The English name of the day. {{% include-headless "chunk/macro-date-ref.md" %}}

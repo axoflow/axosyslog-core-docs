@@ -4,5 +4,5 @@
 
 ## UNIXTIME, C_UNIXTIME, R_UNIXTIME, S_UNIXTIME
 
-*Description:* Standard UNIX timestamp, represented as the number of seconds since `1970-01-01T00:00:00`.
+*Description:* Standard UNIX timestamp, represented as the number of seconds since `1970-01-01T00:00:00`. {{% include-headless "chunk/macro-date-ref.md" %}}
 

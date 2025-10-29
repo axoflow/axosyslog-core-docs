@@ -4,5 +4,5 @@
 
 ## TZ, C_TZ, R_TZ, S_TZ
 
-*Description:* An alias of the [${TZOFFSET}](#macro-tzoffset.htm) macro.
+*Description:* An alias of the [${TZOFFSET}](#macro-tzoffset.htm) macro. {{% include-headless "chunk/macro-date-ref.md" %}}
 
