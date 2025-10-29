@@ -72,7 +72,7 @@ description = "Documentation for AxoSyslog, the scalable security data processor
   # The version number for the version of the docs represented in this doc set.
   # Used in the "version-banner" partial to display a version number for the 
   # current doc set.
-  version = "4.17.0"
+  version = "4.19.0"
   version_menu_canonicallinks = true
 
   # A link to latest version of the docs. Used in the "version-banner" partial to
@@ -172,11 +172,11 @@ description = "Documentation for AxoSyslog, the scalable security data processor
 [params.product]
 name = "AxoSyslog"
 abbrev = "AxoSyslog"
-version = "4.18"
+version = "4.19"
 # techversion includes patch version number, needed for install/image commands
 # configversion is needed in the config file examples
-techversion = "4.18.0"
-configversion = "4.18"
+techversion = "4.19.1"
+configversion = "4.19"
 syslog-ng = "syslog-ng"
 selinux = "SELinux"
 apparmor = "AppArmor"
