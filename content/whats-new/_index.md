@@ -6,6 +6,10 @@ weight: 10
 
 {{< include-headless "banner-new-to-axosyslog.md" >}}
 
+## Version 4.19 (2025-10-15)
+
+- The [`dict_to_pairs`]({{< relref "/filterx/function-reference.md#dict-to-pairs" >}}) FilterX function can convert a dictionary to a list of pairs.
+
 ## Version 4.18 (2025-09-30)
 
 - You can now use macros and templates in the [`headers()` option]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#headers" >}}) of the `http()` destination to set the headers dynamically.
