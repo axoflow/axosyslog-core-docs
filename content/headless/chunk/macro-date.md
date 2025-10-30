@@ -4,4 +4,4 @@
 
 ## DATE, C_DATE, R_DATE, S_DATE
 
-*Description:* Date of the message using the BSD-syslog style timestamp format (month/day/hour/minute/second, each expressed in two digits). This is the original syslog time stamp without year information, for example: `Jun 13 15:58:00`. {{% include-headless "chunk/macro-date.md" %}}
+*Description:* Date of the message using the BSD-syslog style timestamp format (month/day/hour/minute/second, each expressed in two digits). This is the original syslog time stamp without year information, for example: `Jun 13 15:58:00`. {{% include-headless "chunk/macro-date-ref.md" %}}
