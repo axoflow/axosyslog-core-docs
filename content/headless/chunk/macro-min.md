@@ -4,5 +4,5 @@
 
 ## MIN, C_MIN, R_MIN, S_MIN
 
-*Description:* The minute the message was sent.
+*Description:* The minute the message was sent. {{% include-headless "chunk/macro-date-ref.md" %}}
 

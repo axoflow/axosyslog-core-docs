@@ -4,5 +4,5 @@
 
 ## SEC, C_SEC, R_SEC, S_SEC
 
-*Description:* The second the message was sent.
+*Description:* The second the message was sent. {{% include-headless "chunk/macro-date-ref.md" %}}
 

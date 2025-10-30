@@ -4,5 +4,5 @@
 
 ## YEAR, C_YEAR, R_YEAR, S_YEAR
 
-*Description:* The year the message was sent.
+*Description:* The year the message was sent. {{% include-headless "chunk/macro-date-ref.md" %}}
 

@@ -4,5 +4,5 @@
 
 ## HOUR, C_HOUR, R_HOUR, S_HOUR
 
-*Description:* The hour of day the message was sent.
+*Description:* The hour of day the message was sent. {{% include-headless "chunk/macro-date-ref.md" %}}
 

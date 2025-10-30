@@ -4,7 +4,7 @@
 
 ## WEEK, C_WEEK, R_WEEK, S_WEEK
 
-*Description:* The week number of the year, prefixed with a zero for the first nine weeks of the year. (The first Monday in the year marks the first week.)
+*Description:* The week number of the year, prefixed with a zero for the first nine weeks of the year. (The first Monday in the year marks the first week.) {{% include-headless "chunk/macro-date-ref.md" %}}
 
 See also [ISOWEEK, C_ISOWEEK, R_ISOWEEK, S_ISOWEEK]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}).
 

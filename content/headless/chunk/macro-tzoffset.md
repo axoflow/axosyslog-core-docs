@@ -4,5 +4,5 @@
 
 ## TZOFFSET, C_TZOFFSET, R_TZOFFSET, S_TZOFFSET
 
-*Description:* The time-zone as hour offset from GMT, for example: `-07:00`. In version 1.6.x this used to be `-0700` but as `${ISODATE}` requires the colon it was added to `${TZOFFSET}` as well.
+*Description:* The time-zone as hour offset from GMT, for example: `-07:00`. In version 1.6.x this used to be `-0700` but as `${ISODATE}` requires the colon it was added to `${TZOFFSET}` as well. {{% include-headless "chunk/macro-date-ref.md" %}}
 
