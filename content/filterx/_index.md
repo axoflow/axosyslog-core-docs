@@ -411,7 +411,8 @@ For details, see {{% xref "/filterx/operator-reference.md" %}}.
 FilterX has the following built-in functions.
 
 - [`cache_json_file`]({{< relref "/filterx/function-reference.md#cache-json-file" >}}): Loads an external JSON file to lookup contextual information.
-- [`dedup_metrics_labels`]({{< relref "/filterx/filterx-metrics/_index.md#metrics-labels" >}}): Deduplicate `metrics_labels` objects.
+- [`dedup_metrics_labels`]({{< relref "/filterx/filterx-metrics/_index.md#dedup-metrics-labels" >}}): Deduplicate `metrics_labels` objects.
+- [`dict_to_pairs`]({{< relref "/filterx/function-reference.md#dict-to-pairs" >}}): Convert dicts to list of pairs.
 - [`dpath`]({{< relref "/filterx/function-reference.md#dpath" >}}): Creates a nested path in a dictionary.
 - [`endswith`]({{< relref "/filterx/filterx-string-search/_index.md" >}}): Checks if a string ends with the specified value.
 - [`flatten`]({{< relref "/filterx/function-reference.md#flatten" >}}): Flattens the nested elements of an object.

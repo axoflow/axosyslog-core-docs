@@ -63,9 +63,31 @@ Usually, you use the [strptime](#strptime) FilterX function to create datetime v
 - When casting from a double, the double is the number of seconds elapsed since the UNIX epoch (00:00:00 UTC on 1 January 1970). (The part before the floating points is the seconds, the part after the floating point is the microseconds.)
 - When casting from a string, the string (for example, `1701350398.123000+01:00`) is interpreted as: `<the number of seconds elapsed since the UNIX epoch>.<microseconds>+<timezone relative to UTC (GMT +00:00)>`
 
-## dedup_metrics_labels
+## dedup_metrics_labels {#dedup-metrics-labels}
 
 Deduplicate `metrics_labels` objects. For details, see {{% xref "/filterx/filterx-metrics/_index.md#metrics-labels" %}}.
+
+## dict_to_pairs {#dict-to-pairs}
+
+Convert dicts to list of pairs.
+
+Usage: `dict_to_pairs(<input-dict>, <key-name>, <value-name>)`
+
+```shell
+my_dict = {
+    "key_1": "value_1",
+    "key_2": "value_2",
+    "key_3": ["value_3", "value_4"],
+};
+
+my_list = dict_to_pairs(my_dict, "key", "value");
+# The value of my_list will be:
+# [
+#   {"key":"key_1","value":"value_1"},
+#   {"key":"key_2","value":"value_2"},
+#   {"key":"key_3","value":["value_3","value_4"]}
+# ]
+```
 
 ## dpath
 
