@@ -1,12 +1,12 @@
 ---
-title: "syslog-ng-otlp(): Receive logs from another node using OpenTelemetry"
+title: "axosyslog-otlp(): Receive logs from another node using OpenTelemetry"
 weight: 3950
-driver: "syslog-ng-otlp()"
+driver: "axosyslog-otlp()"
 short_description: "Receive logs from another node using OpenTelemetry"
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-Available in {{% param "product.abbrev" %}} version 4.4 and later.
+Available in {{% param "product.abbrev" %}} version 4.12 and later. (From version 4.4 to 4.11, this driver was called `syslog-ng-otlp()`.)
 
 {{< include-headless "chunk/syslog-ng-otlp-intro.md" >}}
 
