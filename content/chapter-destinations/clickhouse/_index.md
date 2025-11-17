@@ -79,6 +79,51 @@ This destination has the following options:
 
 {{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
+## format()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | `JSONEachRow`, `JSONCompactEachRow`, or `Protobuf` |
+| Default: | see description |
+
+Available in {{< product >}} 4.20 and later.
+
+*Description:* Specifies the data format to use when sending data to Clickhouse.
+
+By default, `format()` is set to:
+
+- `Protobuf` if the [`proto-var()`](#proto-var) option is set, or
+- `JSONEachRow` if the [`json-var()`](#json-var) option is set.
+
+Starting with {{< product >}} 4.20, you can also use `format(JSONCompactEachRow)` (when `json-var()` is also set) to use a more compact, array-based JSON representation. For example:
+
+```shell
+destination {
+  clickhouse (
+    # ...
+    json-var(json("$my_filterx_json_variable"))
+    format("JSONCompactEachRow")
+    # ...
+  );
+};
+```
+
+In the `JSONEachRow` format each line is a JSON object, making it more readable. For example:
+
+```json
+{"id":1,"name":"foo","value":42}
+{"id":2,"name":"bar","value":17}
+```
+
+In the `JSONCompactEachRow` format each row is a compact array-based row:
+
+```json
+[1,"foo",42]
+[2,"bar",17]
+```
+
+Note that if the data's actual format doesn't match the selected format, ClickHouse returns a `CANNOT_PARSE_INPUT_ASSERTION_FAILED` error message.
+
 {{< include-headless "chunk/option-destination-frac-digits.md" >}}
 
 {{< include-headless "chunk/option-grpc-headers.md" >}}
