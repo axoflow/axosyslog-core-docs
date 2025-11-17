@@ -65,6 +65,8 @@ The `syslog-ng-otlp()` source has the following options.
 
 {{< include-headless "chunk/option-source-host-override.md" >}}
 
+{{< include-headless "chunk/option-source-otlp-keep-alive.md" >}}
+
 ## keep-hostname()
 
 The `syslog-ng-otlp()` source ignores this option and uses the hostname from the message as the `${HOST}`.
