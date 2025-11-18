@@ -62,11 +62,14 @@ All of these strategies can be used individually, or together.
 
 The name of the object can be further modified by the following options:
 
-- [`object-key-suffix()`](#object-key-suffix)
-- `compression()`
+- [`object-key-suffix()`](#object-key-suffix): A custom suffix that comes after the timestamp/index added by the object creation strategies.
+- [`compression()`](#compression): For compressed objects, `.gz` is appended to the very end of the object name.
 
-<!-- object-key()object-key-timestamp()maxo-object-size()object-key-suffix().gz(if compression is enabled) -->
+To summarize, the different options (if set) modify the name of the object in the following order:
 
+```
+object-key()object-key-timestamp()max-object-size()object-key-suffix().gz(if compression is enabled)
+```
 
 ## Upload options
 
