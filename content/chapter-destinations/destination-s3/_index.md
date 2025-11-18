@@ -60,6 +60,14 @@ s3(
 
 All of these strategies can be used individually, or together.
 
+The name of the object can be further modified by the following options:
+
+- [`object-key-suffix()`](#object-key-suffix)
+- `compression()`
+
+<!-- object-key()object-key-timestamp()maxo-object-size()object-key-suffix().gz(if compression is enabled) -->
+
+
 ## Upload options
 
 {{% param "product.abbrev" %}} uploads objects using the multipart upload API. {{% param "product.abbrev" %}} composes chunks locally. When a chunk reaches the size set in `chunk-size()` (by default 5 MiB), the chunk is uploaded. When an object is finished, the multipart upload is completed and S3 merges the chunks.
@@ -119,7 +127,9 @@ If you configure an invalid value, the default is used.
 | Type:    | boolean |
 | Default: | `no` |
 
-*Description:* Setting `compression(yes)` enables gzip compression, and implicitly adds a `.gz` suffix to the created object's key. You can set the level of the compression using the `compresslevel()` option (0-9).
+*Description:* Setting `compression(yes)` enables gzip compression, and implicitly adds a `.gz` suffix to the very end of the created object's key. You can set the level of the compression using the `compresslevel()` option (0-9).
+
+{{< include-headless "chunk/destination-s3-object-name.md" >}}
 
 ## compresslevel()
 
@@ -174,6 +184,8 @@ Available in {{< product >}} 4.8 and later.
 
 *Description:* The maximal size of the S3 object. If an object reaches this size, {{% param "product_name" %}} appends an index ("-1", "-2", ...) to the end of the object key and starts a new object after rotation.
 
+{{< include-headless "chunk/destination-s3-object-name.md" >}}
+
 ## max-pending-uploads()
 
 |          |                            |
@@ -193,7 +205,20 @@ Available in {{< product >}} 4.8 and later.
 | Type:    | template |
 | Default: | N/A |
 
-*Description:* The [object key](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html) (or key name), which uniquely identifies the object in an Amazon S3 bucket. Note that a suffix may be appended to this object key depending on the [naming strategies](#creating-objects) used. Example: `my-logs/${HOSTNAME}/`.
+*Description:* The [object key](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html) (or key name), which uniquely identifies the object in an Amazon S3 bucket. Note that a suffix may be appended to this object key depending on the [naming strategies](#creating-objects) and other options used. Example: `my-logs/${HOSTNAME}/`.
+
+## object-key-suffix()
+
+|          |           |
+| -------- | --------- |
+| Type:    | template |
+| Default: | empty string  |
+
+Available in {{< product >}} 4.20 and later.
+
+*Description:* A suffix added to the object key.
+
+{{< include-headless "chunk/destination-s3-object-name.md" >}}
 
 ## object-key-timestamp()
 
@@ -203,6 +228,8 @@ Available in {{< product >}} 4.8 and later.
 | Default: |  |
 
 *Description:* The `object-key-timestamp()` option can be used to set a datetime-related template, which is appended to the end of the object key, for example: `"${R_MONTH_ABBREV}${R_DAY}"`. When a log message arrives with a newer timestamp template resolution, the previous timestamped object gets finished and a new one is started with the new timestamp. If an older message arrives, it doesn`t reopen the old object, but starts a new object with the key having an index appended to the old object.
+
+{{< include-headless "chunk/destination-s3-object-name.md" >}}
 
 {{< include-headless "chunk/option-persist-name.md" >}}
 
