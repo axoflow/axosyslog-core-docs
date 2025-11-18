@@ -6,6 +6,15 @@ weight: 10
 
 {{< include-headless "banner-new-to-axosyslog.md" >}}
 
+## Version 4.20 (2025-11-20)
+
+- The `clickhouse()` destination now has a `format()` option, allowing you to send data in a [compact `JSONCompactEachRow`]({{< relref "/chapter-destinations/clickhouse/_index.md#format" >}}) format.
+- The [`opentelemetry()`]({{< relref "/chapter-sources/opentelemetry/_index.md#keep-alive" >}}) and [`axosyslog-otlp()`]({{< relref "/chapter-sources/source-syslog-ng-otlp/_index.md#keep-alive" >}}) (formerly called `syslog-ng-otlp()`) sources now support the `keep-alive()` option, and is enabled by default.
+- The [`s3()` destination]({{< relref "/chapter-destinations/destination-s3/_index.md" >}}) has two new options:
+
+    - You can now set a suffix for your S3 objects using the [`object-key-suffix()` option]({{< relref "/chapter-destinations/destination-s3/_index.md#object-key-suffix" >}}).
+    - You can change the default checksum settings for S3 compatible solutions that don't support checksums using the [`use-checksum()` option]({{< relref "/chapter-destinations/destination-s3/_index.md#use-checksum" >}}).
+
 ## Version 4.19 (2025-10-15)
 
 - The [`dict_to_pairs`]({{< relref "/filterx/function-reference.md#dict-to-pairs" >}}) FilterX function can convert a dictionary to a list of pairs.
