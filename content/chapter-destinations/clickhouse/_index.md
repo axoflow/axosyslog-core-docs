@@ -309,6 +309,8 @@ By default, sending data to ClickHouse doesn't propagate the type information of
 
 *Description:* The username used for authentication.
 
+{{< include-headless "chunk/option-destination-worker-partition-buckets.md" >}}
+
 <a id="worker-partition-key"></a>
 {{< include-headless "chunk/option-destination-http-worker-partition-key.md" >}}
 
