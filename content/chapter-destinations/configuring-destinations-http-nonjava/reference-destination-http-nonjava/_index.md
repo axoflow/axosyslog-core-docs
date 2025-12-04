@@ -146,26 +146,20 @@ cloud-auth(
 
 {{% include-headless "chunk/example-tls-block-http.md" %}}
 
-
-
 {{% include-headless "chunk/option-destination-tls-cipher-suite.md" %}}
+{{% include-headless "chunk/topic-tls-block-http.md" %}}
+{{% include-headless "chunk/example-tls-block-http.md" %}}
 
 ## content-compression()
 
 |          |                    |
 | -------- | ------------------ |
 | Type:    | `"identity"`, `"gzip"`, `"deflate"`, `"all"` |
-| Default: |                    |
+| Default: | `"identity"` |
 
 *Description:* Use `content-compression()` to compress the messages sent by {{% param "product.abbrev" %}}. To accept compressed responses from the server, see the [`accept-encoding()` option](#accept-encoding).
 
 {{< include-headless "chunk/option-destination-http-compression.md" >}}
-
-{{% include-headless "chunk/topic-tls-block-http.md" %}}
-
-{{% include-headless "chunk/example-tls-block-http.md" %}}
-
-
 
 ## delimiter() {#https-options-delimiter}
 
