@@ -155,7 +155,7 @@ cloud-auth(
 |          |                    |
 | -------- | ------------------ |
 | Type:    | `"identity"`, `"gzip"`, `"deflate"`, `"all"` |
-| Default: |                    |
+| Default: | `"identity"` |
 
 *Description:* Use `content-compression()` to compress the messages sent by {{% param "product.abbrev" %}}. To accept compressed responses from the server, see the [`accept-encoding()` option](#accept-encoding).
 
