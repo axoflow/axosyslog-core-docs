@@ -15,6 +15,9 @@ The `http` destination of {{% param "product.abbrev" %}} can directly post log m
 
 *Description:* Use `accept-encoding()` to request the server to compress the HTTP responses. ({{% param "product.abbrev" %}} doesn't currently use them, but they still contribute to network traffic.) To compress the messages sent by {{% param "product.abbrev" %}}, see the [`content-compression()` option](#content-compression).
 
+- If you want to accept multiple compression types, list them separated by commas inside the quotation mark.
+- To enable all available compression types, use `"all"`.
+
 {{< include-headless "chunk/option-destination-http-compression.md" >}}
 
 ## accept-redirects()
@@ -146,26 +149,20 @@ cloud-auth(
 
 {{% include-headless "chunk/example-tls-block-http.md" %}}
 
-
-
 {{% include-headless "chunk/option-destination-tls-cipher-suite.md" %}}
+{{% include-headless "chunk/topic-tls-block-http.md" %}}
+{{% include-headless "chunk/example-tls-block-http.md" %}}
 
 ## content-compression()
 
 |          |                    |
 | -------- | ------------------ |
-| Type:    | `"identity"`, `"gzip"`, `"deflate"`, `"all"` |
-| Default: |                    |
+| Type:    | `"identity"`, `"gzip"`, `"deflate"` |
+| Default: | `"identity"` |
 
-*Description:* Use `content-compression()` to compress the messages sent by {{% param "product.abbrev" %}}. To accept compressed responses from the server, see the [`accept-encoding()` option](#accept-encoding).
+*Description:* Use `content-compression()` to compress the messages sent by {{% param "product.abbrev" %}}. Use `"identity"` for no compression. To accept compressed responses from the server, see the [`accept-encoding()` option](#accept-encoding).
 
 {{< include-headless "chunk/option-destination-http-compression.md" >}}
-
-{{% include-headless "chunk/topic-tls-block-http.md" %}}
-
-{{% include-headless "chunk/example-tls-block-http.md" %}}
-
-
 
 ## delimiter() {#https-options-delimiter}
 
