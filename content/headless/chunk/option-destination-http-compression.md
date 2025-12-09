@@ -6,6 +6,6 @@ For example:
 
 ```shell
 destination d_http_compressed{
-  http(url("127.0.0.1:80"), content-compression("deflate"), accept-encoding("all"));
+  http(url("127.0.0.1:80") content-compression("deflate") accept-encoding("all"));
 };
 ```
