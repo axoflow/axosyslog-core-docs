@@ -193,6 +193,8 @@ Alternatively, you can set the schema with the [`protobuf-schema()`](#protobuf-s
 
 *Description:* The URL of the Google BigQuery where the logs are sent.
 
+{{< include-headless "chunk/option-destination-worker-partition-buckets.md" >}}
+
 {{< include-headless "chunk/option-destination-http-worker-partition-key.md" >}}
 
 {{< include-headless "chunk/option-destination-threaded-workers.md" >}}
