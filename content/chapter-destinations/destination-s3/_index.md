@@ -310,7 +310,7 @@ If you configure an invalid value, the default is used.
 
 *Description:* The number of {{% param "product_name" %}} worker threads that are used to upload data to S3 from this destination.
 
-## use-checksum()
+<!-- ## use-checksum()
 
 |          |           |
 | -------- | --------- |
@@ -319,7 +319,7 @@ If you configure an invalid value, the default is used.
 
 Available in {{< product >}} 4.20 and later.
 
-*Description:* Change the default checksum settings for S3 compatible solutions that don't support checksums.
+*Description:* Change the default checksum settings for S3 compatible solutions that don't support checksums. -->
 
 ## template()
 
