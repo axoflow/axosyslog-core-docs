@@ -192,6 +192,14 @@ Usage: `${MESSAGE} = format_leef(my_dictionary);`
 
 For details, see {{% xref "/filterx/filterx-format-data/format-leef.md" %}}.
 
+## format_syslog_5424 {#format_syslog_5424}
+
+Available in {{< product >}} 4.21 and later.
+
+Formats data as an [RFC5424 (IETF-syslog)]() syslog message.
+
+For details, see {{% xref "/filterx/filterx-format-data/format-rfc5424.md" %}}.
+
 ## format_xml {#format-xml}
 
 Available in {{< product >}} 4.13 and later.
