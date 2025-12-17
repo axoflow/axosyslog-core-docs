@@ -167,6 +167,8 @@ loki(
 
 *Description:* The URL of the Loki endpoint, including the gRPC listen port of your Loki deployment.
 
+{{< include-headless "chunk/option-destination-worker-partition-autoscaling.md" >}}
+
 {{< include-headless "chunk/option-destination-worker-partition-buckets.md" >}}
 
 <a id="worker-partition-key"></a>

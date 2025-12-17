@@ -72,6 +72,8 @@ The `syslog-ng-otlp()` destination has the following options.
 
 *Description:* The URL of the {{% param "product.abbrev" %}} receiver.
 
+{{< include-headless "chunk/option-destination-worker-partition-autoscaling.md" >}}
+
 {{< include-headless "chunk/option-destination-worker-partition-buckets.md" >}}
 
 <a id="worker-partition-key"></a>

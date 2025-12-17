@@ -111,6 +111,8 @@ log non_otel_to_otel_tls {
 
 *Description:* The URL of the OpenTelemetry receiver.
 
+{{< include-headless "chunk/option-destination-worker-partition-autoscaling.md" >}}
+
 {{< include-headless "chunk/option-destination-worker-partition-buckets.md" >}}
 
 <a id="worker-partition-key"></a>
