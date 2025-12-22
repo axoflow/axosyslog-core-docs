@@ -6,6 +6,12 @@ weight: 10
 
 {{< include-headless "banner-new-to-axosyslog.md" >}}
 
+## Version 4.21 (2025-12-15)
+
+- A new FilterX function `format_syslog_5424` that formats messages as an RFC5424 (IETF-syslog) syslog message.
+- Syslog sources can now set `transport(nul-terminated)` to receive messages that use NUL characters instead of newline characters to separate log records.
+- Destinations that support worker partitioning (the `worker-partition-key()` option) can now set `worker-partition-autoscaling(yes)` to allow each worker to maximize its batch size.
+
 ## Version 4.20 (2025-11-20)
 
 - The `clickhouse()` destination now has a `format()` option, allowing you to send data in a [compact `JSONCompactEachRow`]({{< relref "/chapter-destinations/clickhouse/_index.md#format" >}}) format.

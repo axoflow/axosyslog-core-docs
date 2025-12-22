@@ -421,6 +421,7 @@ FilterX has the following built-in functions.
 - [`format_json`]({{< relref "/filterx/filterx-format-data/format-json" >}}): Dumps a JSON object into a string.
 - [`format_kv`]({{< relref "/filterx/filterx-format-data/format-kv" >}}): Formats a dictionary into key=value pairs.
 - [`format_leef`]({{< relref "/filterx/filterx-format-data/format-leef" >}}): Formats a dictionary into Log Event Extended Format (LEEF).
+- [`format_syslog_5424`]({{< relref "/filterx/filterx-format-data/format-rfc5424" >}}): Formats data as an RFC5424 (IETF-syslog) syslog message.
 - [`format_windows_eventlog_xml`]({{< relref "/filterx/filterx-format-data/format-windows-eventlog-xml.md" >}}) Formats a dictionary into Windows Event Logs XML.
 - [`format_xml`]({{< relref "/filterx/filterx-format-data/format-xml" >}}): Formats a dictionary into XML.
 - [`get_sdata`]({{< relref "/filterx/filterx-sdata/_index.md" >}}): Returns the SDATA part of an RFC5424-formatted syslog message as a JSON object.

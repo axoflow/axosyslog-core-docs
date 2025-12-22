@@ -10,15 +10,13 @@ The following x86-64 distributions are supported:
 
 | Distribution    | sources.list component |
 |-----------------|------------------------|
+| Debian 13 (x86-64) | debian-trixie       |
 | Debian 12 (x86-64) | debian-bookworm     |
 | Debian 11 (x86-64) | debian-bullseye     |
 | Debian Unstable (x86-64) | debian-sid    |
 | Debian Testing (x86-64) | debian-testing |
 | Ubuntu 25.04 (x86-64) | ubuntu-plucky  |
-| Ubuntu 24.10 (x86-64) | ubuntu-oracular  |
 | Ubuntu 24.04 (x86-64) | ubuntu-noble     |
-| Ubuntu 23.10 (x86-64) | ubuntu-mantic    |
-| Ubuntu 23.04 (x86-64) | ubuntu-lunar     |
 | Ubuntu 22.04 (x86-64) | ubuntu-jammy     |
 | Ubuntu 20.04 (x86-64) | ubuntu-focal     |
 

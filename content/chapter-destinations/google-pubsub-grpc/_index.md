@@ -176,6 +176,8 @@ auth(
 
 *Description:* An alias for [`service_endpoint`](#service-endpoint).
 
+{{< include-headless "chunk/option-destination-worker-partition-autoscaling.md" >}}
+
 {{< include-headless "chunk/option-destination-worker-partition-buckets.md" >}}
 
 <a id="worker-partition-key"></a>
