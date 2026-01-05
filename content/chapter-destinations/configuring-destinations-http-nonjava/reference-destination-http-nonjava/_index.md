@@ -11,14 +11,14 @@ The `http` destination of {{% param "product.abbrev" %}} can directly post log m
 |          |                    |
 | -------- | ------------------ |
 | Type:    | `"identity"`, `"gzip"`, `"deflate"`, `"all"` |
-| Default: | `NULL` |
+| Default: | N/A (disabled) |
 
 *Description:* Use `accept-encoding()` to request the server to compress the HTTP responses. ({{% param "product.abbrev" %}} doesn't currently use them, but they still contribute to network traffic.) To compress the messages sent by {{% param "product.abbrev" %}}, see the [`content-compression()` option](#content-compression).
 
 - If you want to accept multiple compression types, list them separated by commas inside the quotation mark.
 - Use `"identity"` for no compression.
 - To enable all available compression types (including no compression), use `"all"`.
-- By default (`NULL`), {{% param "product.abbrev" %}} doesn't send the `Accept-Encoding:` header, and the received response isn't decompressed.
+- By default, {{% param "product.abbrev" %}} doesn't send the `Accept-Encoding:` header, and the received response isn't decompressed.
 
 {{< include-headless "chunk/option-destination-http-compression.md" >}}
 
