@@ -6,8 +6,16 @@ weight:  100
 
 The Regular expression parser has the following options.
 
-{{< include-headless "chunk/option-source-flags.md" >}}
+<!-- FIXME bad include, should point to somewhere under content/chapter-manipulating-messages/regular-expressions/reference-regexp-types/regexp-flags-options/_index.md
+the available flags depend on the type  -->
+## flags()
 
+|            |                                 |
+| ---------- | ------------------------------- |
+| Synopsis:  | flags("flag1" "flag2") |
+| Mandatory: | no                             |
+
+*Description:* The flags to apply for the parser. The available flags depend on the [`type()`](#type) of the regular expression. For details, see {{% xref "/chapter-manipulating-messages/regular-expressions/reference-regexp-types/_index.md" %}}.
 
 ## patterns()
 
@@ -17,7 +25,6 @@ The Regular expression parser has the following options.
 | Mandatory: | yes                             |
 
 *Description:* The regular expression patterns that you want to find a match. `regexp-parser()` supports multiple patterns, and stops the processing at the first successful match.
-
 
 {{% include-headless "chunk/option-parser-prefix.md" %}}
 
@@ -33,3 +40,12 @@ The Regular expression parser has the following options.
 ```
 
 {{% include-headless "chunk/option-parser-template.md" %}}
+
+## type()
+
+|            |                                 |
+| ---------- | ------------------------------- |
+| Synopsis:  | `pcre`, `string`, `glob` |
+| Mandatory: | no, defaults to `pcre`          |
+
+*Description:* Sets how the `patterns()` expressions are interpreted: as Perl Compatible Regular Expressions (`pcre`, used by default), literal string searches (`string`), or glob patterns without regular expression support (`glob`).
