@@ -34,3 +34,14 @@ Adding the `flags(ignore-case)` option to glob patterns does not disable case se
 {{% /alert %}}
 
 The regular expressions can use up to 255 regexp matches (`${1} ... ${255}`), but only from the last filter and only if the `flags("store-matches")` flag was set for the filter. For case-insensitive searches, use the `flags("ignore-case")` option.
+
+## Example: matching / non-matching patterns for the input string 'exam' {#example-regexp-pcre}
+
+For the input string `'exam'`,
+
+- the following patterns will match:
+    - `'ex'` (the pattern contains the initial characters of the input string in the exact same order)
+    - `'exam'` (the pattern is an exact match for the input string)
+- the following patterns will not match:
+    - `'example'` (the pattern is longer than the input string)
+    - `'hexameter'` (the pattern's initial characters do not match the input string's characters in the exact same order, and the pattern is longer than the input string)
