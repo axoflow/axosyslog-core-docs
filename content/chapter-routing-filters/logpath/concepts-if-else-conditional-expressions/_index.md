@@ -6,6 +6,8 @@ weight:  300
 
 You can use `if {}`, `elif {}`, and `else {}` blocks to configure conditional expressions.
 
+Note that `if {}` blocks imply the `flags(final)` option automatically, and are equivalent to `log { some condition; flags(final);}`.
+
 ## Conditional expressions' format
 
 Conditional expressions have two formats:
