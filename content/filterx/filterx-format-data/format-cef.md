@@ -21,3 +21,7 @@ CEF:0| KasperskyLab |SecurityCenter|13.2.0.1511|KLPRCI_TaskState|Completed succe
 ```
 
 <!-- FIXME how to handle extensions -->
+
+The following keys must be available in the dictionary, otherwise formatting fails with an error message like: `FILTERX ERROR;  ....|     format_cef(my_dictionary)', error='Failed to evaluate event formatter function:`.
+
+`cef_version`, `device_vendor`, `device_product`, `device_version`, `device_event_class_id`, `event_name`, `agent_severity`, `extensions`
