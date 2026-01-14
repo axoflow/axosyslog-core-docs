@@ -4,6 +4,7 @@ linktitle: "ClickHouse"
 weight:  200
 driver: "clickhouse()"
 short_description: "Send messages to a ClickHouse database"
+dest_type: grpc
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
