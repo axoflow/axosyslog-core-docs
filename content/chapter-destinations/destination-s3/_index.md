@@ -3,6 +3,7 @@ title: "s3: Amazon S3"
 weight:  4950
 driver: "s3()"
 short_description: "Send log messages to Amazon Simple Storage Service (S3)"
+dest_type: http
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
