@@ -6,13 +6,11 @@ weight:  100
 
 The Regular expression parser has the following options.
 
-<!-- FIXME bad include, should point to somewhere under content/chapter-manipulating-messages/regular-expressions/reference-regexp-types/regexp-flags-options/_index.md
-the available flags depend on the type  -->
 ## flags()
 
 |            |                                 |
 | ---------- | ------------------------------- |
-| Synopsis:  | flags("flag1" "flag2") |
+| Synopsis:  | flags("ignore-case" "unicode") |
 | Mandatory: | no                             |
 
 *Description:* The flags to apply for the parser. The available flags depend on the [`type()`](#type) of the regular expression. For details, see {{% xref "/chapter-manipulating-messages/regular-expressions/reference-regexp-types/_index.md" %}}.
