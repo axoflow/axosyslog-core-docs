@@ -1,7 +1,7 @@
 ---
 title: Receive logs, metrics, and traces from OpenTelemetry
 linktitle: OpenTelemetry
-weight: 2350
+weight: 2300
 driver: "opentelemetry()"
 short_description: "Receive logs, metrics, and traces from OpenTelemetry clients over the OpenTelemetry Protocol (OTLP/gRPC)"
 ---
@@ -37,11 +37,15 @@ log otel_forward_mode_alts {
 
 {{< include-headless "chunk/option-source-concurrent-requests.md" >}}
 
+{{< include-headless "chunk/option-source-otlp-keep-alive.md" >}}
+
 ## keep-hostname()
 
 The `opentelemetry()` source ignores this option and uses the address of the OTLP peer as the HOST.
 
-{{% include-headless "chunk/option-source-log-fetch-limit.md" %}}
+{{< include-headless "chunk/option-source-log-fetch-limit.md" >}}
+
+{{< include-headless "chunk/option-source-file-log-iw-size.md" >}}
 
 ## `port()` {#port}
 

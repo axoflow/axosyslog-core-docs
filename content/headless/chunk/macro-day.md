@@ -4,5 +4,4 @@
 
 ## DAY, C_DAY, R_DAY, S_DAY
 
-*Description:* The day the message was sent.
-
+*Description:* The day the message was sent. {{% include-headless "chunk/macro-date-ref.md" %}}

@@ -45,10 +45,6 @@ filterx {
 }
 ```
 
-{{% alert title="Note" color="info" %}}
-{{< product >}} reloads the contents of the JSON file only when the {{< product >}} configuration is reloaded.
-{{% /alert %}}
-
 ## datetime
 
 Cast a value into a datetime variable.
@@ -67,9 +63,62 @@ Usually, you use the [strptime](#strptime) FilterX function to create datetime v
 - When casting from a double, the double is the number of seconds elapsed since the UNIX epoch (00:00:00 UTC on 1 January 1970). (The part before the floating points is the seconds, the part after the floating point is the microseconds.)
 - When casting from a string, the string (for example, `1701350398.123000+01:00`) is interpreted as: `<the number of seconds elapsed since the UNIX epoch>.<microseconds>+<timezone relative to UTC (GMT +00:00)>`
 
-## dedup_metrics_labels
+## dedup_metrics_labels {#dedup-metrics-labels}
 
 Deduplicate `metrics_labels` objects. For details, see {{% xref "/filterx/filterx-metrics/_index.md#metrics-labels" %}}.
+
+## dict_to_pairs {#dict-to-pairs}
+
+Convert dicts to list of pairs.
+
+Usage: `dict_to_pairs(<input-dict>, <key-name>, <value-name>)`
+
+```shell
+my_dict = {
+    "key_1": "value_1",
+    "key_2": "value_2",
+    "key_3": ["value_3", "value_4"],
+};
+
+my_list = dict_to_pairs(my_dict, "key", "value");
+# The value of my_list will be:
+# [
+#   {"key":"key_1","value":"value_1"},
+#   {"key":"key_2","value":"value_2"},
+#   {"key":"key_3","value":["value_3","value_4"]}
+# ]
+```
+
+## dpath
+
+Available in {{< product >}} 4.17 and later.
+
+Assigns a value to a dictionary and creates any elements of the path that don't exist. For example:
+
+```shell
+js = json({
+"key1": "one",
+"key2": "two",
+"key3": "three"
+});
+
+dpath(js.key4.key41.key412) = "nested value"
+```
+
+The value of the dictionary will be:
+
+```shell
+js = json({
+"key1": "one",
+"key2": "two",
+"key3": "three",
+"key4": {
+    "key41": {
+        "key412": "nested value"
+        }
+    }
+});
+```
 
 ## endswith
 
@@ -142,6 +191,14 @@ Formats a dictionary into the [Log Event Extended Format (LEEF)](https://www.ibm
 Usage: `${MESSAGE} = format_leef(my_dictionary);`
 
 For details, see {{% xref "/filterx/filterx-format-data/format-leef.md" %}}.
+
+## format_syslog_5424 {#format_syslog_5424}
+
+Available in {{< product >}} 4.21 and later.
+
+Formats data as an [RFC5424 (IETF-syslog)]() syslog message.
+
+For details, see {{% xref "/filterx/filterx-format-data/format-rfc5424.md" %}}.
 
 ## format_xml {#format-xml}
 
@@ -465,11 +522,11 @@ ${MY-LIST}.mixed = regexp_search("first-word second-part third", /(?<one>first-w
 
 ## regexp_subst {#regexp-subst}
 
-Rewrites a string using regular expressions. This function implements the [`subst` rewrite rule functionality]({{< relref "/chapter-manipulating-messages/modifying-messages/rewrite-replace/_index.md" >}}).
+Rewrites a string using regular expressions. This function implements the [`subst` rewrite rule functionality]({{< relref "/chapter-manipulating-messages/modifying-messages/rewrite-replace/_index.md" >}}). If you need only string replacement without regular expression support, use the [`str_replace`](#str-replace) function as it has better performance.
 
 {{< include-headless "wnt/note-rewrite-hard-macros.md" >}}
 
-Usage: `regexp_subst(<input-string>, <pattern-to-find>, <replacement>, flags`
+Usage: `regexp_subst(<input-string>, <pattern-to-find>, <replacement>, flags)`
 
 The following example replaces the first `IP` in the text of the message with the `IP-Address` string.
 
@@ -526,7 +583,7 @@ The `overrides` and `defaults` parameters are also dicts, where:
 
     If a list is provided, each expression will be evaluated, and the first successful, non-null one is set as the respective field's value. This is similar to chaining [null-coalescing (`??`) operators]({{< relref "/filterx/operator-reference.md#null-coalescing-operator" >}}), but has better performance.
 
-`overrides` are always processed for each field. The `defaults` for a field are only processed isn't set or is empty.
+`overrides` are always processed for each field. The `defaults` option for a field is only processed if the field isn't set, or it's empty.
 
 For example:
 
@@ -672,10 +729,6 @@ You can use the following format codes in the format string:
 - `%z`: The offset from UTC in the ISO 8601:2000 standard format ( +hhmm or -hhmm ), or by no characters if no timezone is determinable
 - `%Z`: Same as `%z` , but with the `:` separator (-hh:mm or +hh:mm)
 
-    {{% alert title="Note" color="info" %}}
-    `%Z` currently doesn't respect the datetime's timezone, use `%z` instead.
-    {{% /alert %}}
-
 ## string
 
 Cast a value into a string. Note that currently {{< product >}} evaluates strings and executes [template functions]({{< relref "/filterx/_index.md#template-functions" >}}) and template expressions within the strings. In the future, template evaluation will be moved to a separate FilterX function.
@@ -689,6 +742,36 @@ myvariable = string(${LEVEL_NUM});
 ```
 
 Sometimes you have to explicitly cast values to strings, for example, when you want to concatenate them into a message using the `+` operator.
+
+## str_replace {#str-replace}
+
+Available in {{< product >}} 4.15 and later.
+
+Replace a literal string with another one. If you need to use regular expressions, see [`regexp_subst`](#regexp-subst).
+
+Usage: `str_replace(<input-string>, <pattern-to-find>, <replacement>, <max-occurrence>`
+
+If you don't specify the max occurrence, every match is replaced, otherwise only the first `<max-occurrence>`. For example:
+
+```shell
+filterx {
+  my_input = "This is an input string";
+  my_input = str_replace(my_input, "in", "out");
+  # Value of my_input becomes: "This is an output stroutg"
+
+  my_input = "This is an input string";
+  my_input = str_replace(my_input, "in", "out", 1);
+  # Value of my_input becomes: "This is an output string"
+};
+```
+
+Note that the search is case sensitive, and supports UTF-8 characters.
+
+## str_strip, str_lstrip, str_rstrip {#str-strip}
+
+Available in {{< product >}} 4.16 and later.
+
+These functions remove the leading and/or trailing whitespaces from a string, including the `\n\r\t` characters.
 
 ## strptime
 

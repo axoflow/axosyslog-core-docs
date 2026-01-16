@@ -4,5 +4,5 @@
 
 ## MONTH, C_MONTH, R_MONTH, S_MONTH
 
-*Description:* The month the message was sent as a decimal value, prefixed with a zero if smaller than 10.
+*Description:* The month the message was sent as a decimal value, prefixed with a zero if smaller than 10. {{% include-headless "chunk/macro-date-ref.md" %}}
 

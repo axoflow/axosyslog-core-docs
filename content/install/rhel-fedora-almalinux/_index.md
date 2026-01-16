@@ -12,8 +12,6 @@ The following distributions are supported:
 - Red Hat Enterprise Linux (RHEL) 8 x86-64 / AlmaLinux 8 x86-64
 - Fedora 42 x86-64
 - Fedora 41 x86-64
-- Fedora 40 x86-64
-- Fedora 39 x86-64
 
 (The packages for AlmaLinux probably work for Rocky Linux as well, but we haven't tested it.)
 

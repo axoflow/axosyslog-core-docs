@@ -9,6 +9,8 @@
 | Type:    | number |
 | Default: | 100    |
 
-*Description:* The size of the initial window, this value is used during flow-control. Its value cannot be lower than 100, unless the `dynamic-window-size()` option is enabled. For details on flow-control, see {{% xref "/chapter-routing-filters/concepts-flow-control/_index.md" %}}.
+*Description:* Specifies the source window size - the maximum number of in-flight messages permitted by the source before flow control is enforced. This only applies when `flow-control` is enabled.
 
 {{< include-headless "wnt/warning-log-iw-size-restart.md" >}}
+
+Note that when using `disk-buffer()`, the messages stored on disk are not included in the window size calculation. For details about the effects of this parameter, see {{% xref "/chapter-routing-filters/concepts-flow-control/_index.md" %}}.

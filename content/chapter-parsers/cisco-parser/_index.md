@@ -37,7 +37,7 @@ By default, the Cisco-specific fields are extracted into the following name-valu
 ## Declaration:
 
 ```shell
-@version: {{% param "product.techversion" %}}
+@version: {{% param "product.configversion" %}}
 @include "scl.conf"
 log {
     source { network(

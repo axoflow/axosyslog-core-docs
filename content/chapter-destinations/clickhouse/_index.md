@@ -4,6 +4,7 @@ linktitle: "ClickHouse"
 weight:  200
 driver: "clickhouse()"
 short_description: "Send messages to a ClickHouse database"
+dest_type: grpc
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
@@ -79,11 +80,78 @@ This destination has the following options:
 
 {{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
+## format()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | `JSONEachRow`, `JSONCompactEachRow`, or `Protobuf` |
+| Default: | see description |
+
+Available in {{< product >}} 4.20 and later.
+
+*Description:* Specifies the data format to use when sending data to Clickhouse.
+
+By default, `format()` is set to:
+
+- `Protobuf` if the [`proto-var()`](#proto-var) option is set, or
+- `JSONEachRow` if the [`json-var()`](#json-var) option is set.
+
+Starting with {{< product >}} 4.20, you can also use `format(JSONCompactEachRow)` (when `json-var()` is also set) to use a more compact, array-based JSON representation. For example:
+
+```shell
+destination {
+  clickhouse (
+    # ...
+    json-var(json("$my_filterx_json_variable"))
+    format("JSONCompactEachRow")
+    # ...
+  );
+};
+```
+
+In the `JSONEachRow` format each line is a JSON object, making it more readable. For example:
+
+```json
+{"id":1,"name":"foo","value":42}
+{"id":2,"name":"bar","value":17}
+```
+
+In the `JSONCompactEachRow` format each row is a compact array-based row:
+
+```json
+[1,"foo",42]
+[2,"bar",17]
+```
+
+Note that if the data's actual format doesn't match the selected format, ClickHouse returns a `CANNOT_PARSE_INPUT_ASSERTION_FAILED` error message.
+
 {{< include-headless "chunk/option-destination-frac-digits.md" >}}
 
 {{< include-headless "chunk/option-grpc-headers.md" >}}
 
 {{< include-headless "chunk/option-destination-hook.md" >}}
+
+## json-var()
+
+|          |              |
+| -------- | ------------ |
+| Type:    | string       |
+| Default: | empty string |
+
+Available in {{< product >}} 4.17 and later.
+
+*Description:* The `json-var()` option accepts either a JSON template or a variable containing a JSON string, and sends it to the ClickHouse server in Protobuf/JSON mixed mode ([`JSONEachRow` format](https://clickhouse.com/docs/interfaces/formats/JSONEachRow)). In this mode, type validation is performed by the ClickHouse server itself, so no Protobuf schema is required for communication. For example:
+
+```shell
+destination {
+  clickhouse (
+    ...
+    json-var(json("{\"ingest_time\":1755248921000000000, \"body\": \"test template\"}"))ß
+    };
+};
+```
+
+Using `json-var()` is mutually exclusive with the [`proto-var()`](#proto-var), [`server-side-schema()`](#server-side-schema), [`schema()`](#schema), and [`protobuf-schema()`](#protobuf-schema) options.
 
 {{< include-headless "chunk/option-destination-grpc-keep-alive.md" >}}
 
@@ -130,7 +198,7 @@ message CustomRecord {
 }
 ```
 
-Alternatively, you can set the schema with the [`schema()`](#schema) option, or use [proto-var()](#proto-var) to assign an already formatted object to the message.
+Alternatively, you can set the schema with the [`schema()`](#schema) option, use [proto-var()](#proto-var) to assign an already formatted object to the message, or use a JSON template with the [json-var()](#json-var) option.
 
 {{< include-headless "chunk/option-destination-proto-var.md" >}}
 
@@ -156,7 +224,7 @@ schema(
 )
 ```
 
-Alternatively, you can set the schema with the [`protobuf-schema()`](#protobuf-schema) option, or use [proto-var()](#proto-var) to assign an already formatted object to the message.
+Alternatively, you can set the schema with the [`protobuf-schema()`](#protobuf-schema) option, use [proto-var()](#proto-var) to assign an already formatted object to the message, or use a JSON template with the [json-var()](#json-var) option.
 
 You can find the available column types in the [official ClickHouse documentation](https://clickhouse.com/docs/en/sql-reference/data-types).
 
@@ -241,6 +309,10 @@ By default, sending data to ClickHouse doesn't propagate the type information of
 | Default: | empty string |
 
 *Description:* The username used for authentication.
+
+{{< include-headless "chunk/option-destination-worker-partition-autoscaling.md" >}}
+
+{{< include-headless "chunk/option-destination-worker-partition-buckets.md" >}}
 
 <a id="worker-partition-key"></a>
 {{< include-headless "chunk/option-destination-http-worker-partition-key.md" >}}

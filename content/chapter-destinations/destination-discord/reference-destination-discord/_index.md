@@ -20,13 +20,13 @@ The `discord()` destination of {{% param "product.abbrev" %}} can directly post 
 
 {{% include-headless "chunk/option-destination-batch-bytes.md" %}}
 
-For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
+For details on how this option influences HTTP batch mode, see [Batch mode and load balancing]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/http-batch-mode/_index.md" >}})
 
 
 
 {{% include-headless "chunk/option-destination-threaded-batching.md" %}}
 
-For details on how this option influences HTTP batch mode, see [http: Posting messages over HTTP without Java]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}})
+For details on how this option influences HTTP batch mode, see [Batch mode and load balancing]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/http-batch-mode/_index.md" >}})
 
 
 {{% include-headless "chunk/option-destination-tls-ca-dir.md" %}}

@@ -3,6 +3,7 @@ title: "telegram: Send messages to Telegram"
 weight:  7100
 driver: "telegram()"
 short_description: "Send messages to Telegram"
+dest_type: http
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
@@ -10,31 +11,33 @@ The `telegram()` destination sends log messages to [Telegram](https://core.teleg
 
 Note that this destination automatically uses the certificate store of the system (for details, see the [curl documentation](https://curl.se/docs/sslcerts.html)).
 
-
 ## Declaration:
 
 ```shell
-   telegram(parameters);
+@include "scl.conf"
+# ...
+
+telegram(parameters);
 ```
 
-
 {{% include-headless "chunk/destination-http-proxy-settings.md" %}}
-
 
 ## Example: Using the telegram() driver {#example-destination-mongodb}
 
 The following example creates a `telegram()` destination.
 
 ```shell
-   destination d_telegram {
-        telegram(
-            template("${MESSAGE}")
-            throttle(1)
-            parse-mode("markdown")
-            disable-web-page-preview("true")
-            bot-id("<bot id>")
-            chat-id("<chat id>")
-        );
-    };
-```
+@include "scl.conf"
+# ...
 
+destination d_telegram {
+    telegram(
+        template("${MESSAGE}")
+        throttle(1)
+        parse-mode("markdown")
+        disable-web-page-preview("true")
+        bot-id("<bot id>")
+        chat-id("<chat id>")
+    );
+};
+```

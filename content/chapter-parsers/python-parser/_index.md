@@ -90,7 +90,7 @@ The following sample code parses the messages of the `loggen` tool (for details,
 The {{% param "product.abbrev" %}} parser object references the LoggenParser class and passes a set of regular expressions to parse the loggen messages. The `init()` method of the LoggenParser class compiles these expressions into a pattern. The `parse` method uses these patterns to extract the fields of the message into name-value pairs. The destination template of the {{% param "product.abbrev" %}} log statement uses the extracted fields to format the output message.
 
 ```shell
-   @version: {{% param "product.techversion" %}}
+   @version: {{% param "product.configversion" %}}
     @include "scl.conf"
     parser my_python_parser{
         python(
@@ -134,7 +134,7 @@ The {{% param "product.abbrev" %}} parser object references the LoggenParser cla
 The following example uses regular expressions to process Windows log messages received in XML format. The parser extracts different fields from messages received from the Security and the Application eventlog containers. Using the following configuration file, {{% param "product.abbrev" %}} could process about 25000 real-life Windows log messages per second.
 
 ```shell
-   @version: {{% param "product.techversion" %}}
+   @version: {{% param "product.configversion" %}}
     options {
         keep-hostname(yes);
         keep-timestamp(no);

@@ -326,6 +326,41 @@ js = json({
 });
 ```
 
+When working with dicts, note the following points:
+
+- To create a field only if the assigned value is non-null, see [Create dict element if non-null (`:??`)]({{< relref "/filterx/operator-reference.md#create-non-null" >}}).
+- To assign a value to a non-existing key where only this key doesn't exist, you can use a simple value assignment, for example:
+
+    ```shell
+    js = json({
+    "key1": "one",
+    "key2": "two"
+    });
+
+    js.key3 = "three"
+    ```
+
+    However, if you want to assign a value where multiple elements of the path don't exist, use the [`dpath`]({{< relref "/filterx/function-reference.md#dpath" >}}) FilterX function, for example:
+
+    ```shell
+    dpath(js.key4.key41.key412) = "nested value"
+    ```
+
+    The value of the dictionary will be:
+
+    ```shell
+    js = json({
+    "key1": "one",
+    "key2": "two",
+    "key3": "three",
+    "key4": {
+        "key41": {
+            "key412": "nested value"
+            }
+       }
+    });
+    ```
+
 Within a FilterX block, you can access the fields of complex data types by using indexes and the dot notation, for example:
 
 - dot notation: `js.key`
@@ -353,6 +388,7 @@ FilterX has the following operators.
 
 - [Arithmetic operators]({{< relref "/filterx/operator-reference.md#arithmetic-operators" >}}).
 - [Assign a value to a variable if the value is non-null (`=??`)]({{< relref "/filterx/operator-reference.md#assign-non-null" >}}).
+- [Create dict element if non-null (`:??`)]({{< relref "/filterx/operator-reference.md#create-non-null" >}}).
 - [Boolean operators]({{< relref "/filterx/filterx-boolean/_index.md" >}}): `not`, `or`, `and`.
 - [Comparison operators]({{< relref "/filterx/filterx-comparing/_index.md" >}}): `==`, `<`, `<=`, `>=`, `>`, `!=`, `===`, `!==`, `eq`, `lt`, `le`, `gt`, `ge`, `ne`.
 - [Conditional operators]({{< relref "/filterx/filterx-conditional/_index.md" >}}).
@@ -364,6 +400,7 @@ FilterX has the following operators.
 - [Ternary conditional operator]({{< relref "/filterx/operator-reference.md#ternary-conditional-operator" >}}): `?:`.
 - [Null coalescing operator]({{< relref "/filterx/operator-reference.md#null-coalescing-operator" >}}): `??`.
 - [Regular expression (regexp) match]({{< relref "/filterx/operator-reference.md#regexp" >}}): `=~` and `!~`.
+- [String slicing]({{< relref "/filterx/operator-reference.md#slicing" >}}): `..`.
 
 <!-- FIXME update with the new operators -->
 
@@ -374,14 +411,17 @@ For details, see {{% xref "/filterx/operator-reference.md" %}}.
 FilterX has the following built-in functions.
 
 - [`cache_json_file`]({{< relref "/filterx/function-reference.md#cache-json-file" >}}): Loads an external JSON file to lookup contextual information.
+- [`dedup_metrics_labels`]({{< relref "/filterx/filterx-metrics/_index.md#dedup-metrics-labels" >}}): Deduplicate `metrics_labels` objects.
+- [`dict_to_pairs`]({{< relref "/filterx/function-reference.md#dict-to-pairs" >}}): Convert dicts to list of pairs.
+- [`dpath`]({{< relref "/filterx/function-reference.md#dpath" >}}): Creates a nested path in a dictionary.
 - [`endswith`]({{< relref "/filterx/filterx-string-search/_index.md" >}}): Checks if a string ends with the specified value.
-- [`dedup_metrics_labels`]({{< relref "/filterx/filterx-metrics/_index.md#metrics-labels" >}}): Deduplicate `metrics_labels` objects.
 - [`flatten`]({{< relref "/filterx/function-reference.md#flatten" >}}): Flattens the nested elements of an object.
 - [`format_cef`]({{< relref "/filterx/filterx-format-data/format-cef" >}}): Formats a dictionary into Common Event Format (CEF).
 - [`format_csv`]({{< relref "/filterx/filterx-format-data/format-csv.md" >}}): Formats a dictionary or a list into a comma-separated string.
 - [`format_json`]({{< relref "/filterx/filterx-format-data/format-json" >}}): Dumps a JSON object into a string.
 - [`format_kv`]({{< relref "/filterx/filterx-format-data/format-kv" >}}): Formats a dictionary into key=value pairs.
 - [`format_leef`]({{< relref "/filterx/filterx-format-data/format-leef" >}}): Formats a dictionary into Log Event Extended Format (LEEF).
+- [`format_syslog_5424`]({{< relref "/filterx/filterx-format-data/format-rfc5424" >}}): Formats data as an RFC5424 (IETF-syslog) syslog message.
 - [`format_windows_eventlog_xml`]({{< relref "/filterx/filterx-format-data/format-windows-eventlog-xml.md" >}}) Formats a dictionary into Windows Event Logs XML.
 - [`format_xml`]({{< relref "/filterx/filterx-format-data/format-xml" >}}): Formats a dictionary into XML.
 - [`get_sdata`]({{< relref "/filterx/filterx-sdata/_index.md" >}}): Returns the SDATA part of an RFC5424-formatted syslog message as a JSON object.
@@ -410,6 +450,8 @@ FilterX has the following built-in functions.
 - [`strcasecmp`]({{< relref "/filterx/function-reference.md#strcasecmp" >}}): Case insensitive string comparison.
 - [`strftime`]({{< relref "/filterx/function-reference.md#strftime" >}}): Format datetime values.
 - [`strptime`]({{< relref "/filterx/function-reference.md#strptime" >}}): Converts a string containing a date/time value, using a specified format string.
+- [`str_replace`]({{< relref "/filterx/function-reference.md#str-replace" >}}): Replace a literal string.
+- [`str_strip`]({{< relref "/filterx/function-reference.md#str-strip" >}}), `str_lstrip`, `str_rstrip`: Remove the leading and/or trailing whitespaces from a string.
 - [`unset`]({{< relref "/filterx/function-reference.md#unset" >}}): Deletes a name-value pair, or a field from an object.
 - [`unset_empties`]({{< relref "/filterx/function-reference.md#unset-empties" >}}): Deletes empty fields from an object.
 - [`update_metric`]({{< relref "/filterx/filterx-metrics/_index.md" >}}): Updates a labeled metric counter.

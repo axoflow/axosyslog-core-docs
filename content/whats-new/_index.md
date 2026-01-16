@@ -4,7 +4,75 @@ weight: 10
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-This page is a changelog that collects the major changes and additions to this documentation. (If you want to know the details about why we have separate documentation for AxoSyslog and how it relates to the `syslog-ng` documentation, read our [syslog-ng documentation and similarities with AxoSyslog Core](https://axoflow.com/blog/axosyslog-core-documentation-syslog-ng) blog post.)
+{{< include-headless "banner-new-to-axosyslog.md" >}}
+
+## Version 4.21 (2025-12-15)
+
+- A new FilterX function `format_syslog_5424` that formats messages as an RFC5424 (IETF-syslog) syslog message.
+- Syslog sources can now set `transport(nul-terminated)` to receive messages that use NUL characters instead of newline characters to separate log records.
+- Destinations that support worker partitioning (the `worker-partition-key()` option) can now set `worker-partition-autoscaling(yes)` to allow each worker to maximize its batch size.
+
+## Version 4.20 (2025-11-20)
+
+- The `clickhouse()` destination now has a `format()` option, allowing you to send data in a [compact `JSONCompactEachRow`]({{< relref "/chapter-destinations/clickhouse/_index.md#format" >}}) format.
+- The [`opentelemetry()`]({{< relref "/chapter-sources/opentelemetry/_index.md#keep-alive" >}}) and [`axosyslog-otlp()`]({{< relref "/chapter-sources/source-syslog-ng-otlp/_index.md#keep-alive" >}}) (formerly called `syslog-ng-otlp()`) sources now support the `keep-alive()` option, and is enabled by default.
+- The [`s3()` destination]({{< relref "/chapter-destinations/destination-s3/_index.md" >}}) has a new option:
+
+    - You can now set a suffix for your S3 objects using the [`object-key-suffix()` option]({{< relref "/chapter-destinations/destination-s3/_index.md#object-key-suffix" >}}).
+    <!-- - You can change the default checksum settings for S3 compatible solutions that don't support checksums using the [`use-checksum()` option]({{< relref "/chapter-destinations/destination-s3/_index.md#use-checksum" >}}). -->
+
+- The `http()` and other threaded destinations now have a [`worker-partition-buckets()` option]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#worker-partition-buckets" >}}) that determines the number of worker threads used for the `worker-partition-key()`.
+
+## Version 4.19 (2025-10-15)
+
+- The [`dict_to_pairs`]({{< relref "/filterx/function-reference.md#dict-to-pairs" >}}) FilterX function can convert a dictionary to a list of pairs.
+
+## Version 4.18 (2025-09-30)
+
+- You can now use macros and templates in the [`headers()` option]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#headers" >}}) of the `http()` destination to set the headers dynamically.
+- The `parse_csv` FilterX parser now supports the [`quote-pairs`]({{< relref "/filterx/filterx-parsing/csv/reference-parsers-csv/_index.md#quote-pairs" >}}) option.
+- [`+` and `-` unary operators]({{< relref "/filterx/operator-reference.md#slicing" >}}) for FilterX.
+
+## Version 4.17 (2025-09-04)
+
+- The `parse_kv` FilterX function has an option ({{% xref "/filterx/filterx-parsing/key-value-parser/kv-parser-options/_index.md#stray-words-key" %}}) to append stray words to the preceding key.
+- You can now use negative indexes when [slicing FilterX strings]({{< relref "/filterx/operator-reference.md#slicing" >}}).
+- The [`dpath`]({{< relref "/filterx/function-reference.md#dpath" >}}) FilterX function assigns a value to a dictionary and creates any elements of the path that don't exist.
+- When using `parallelize()` during {{% xref "/chapter-nonsequential-processing/_index.md" %}}, you set the `batch-size()` option to specify how many consecutive messages should be processed by a single `parallelize()` worker.
+- For the `clickhouse()` destination, you can now use the [`json-var()` option]({{< relref "/chapter-destinations/clickhouse/_index.md#json-var" >}}) to send the message to the ClickHouse server in Protobuf/JSON mixed mode ([`JSONEachRow` format](https://clickhouse.com/docs/interfaces/formats/JSONEachRow)). In this mode, type validation is performed by the ClickHouse server itself, so no Protobuf schema is required for communication.
+
+## Version 4.16 (2025-08-15)
+
+- New [`${PROTO_NAME` macro]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#proto-name" >}}).
+- New FilterX functions [`str_strip`]({{< relref "/filterx/function-reference.md#str-strip" >}}), `str_lstrip`, `str_rstrip` to remove the leading and/or trailing whitespaces from a string.
+- The `batch-timeout()` option of the following destinations now defaults to `0`: [`google-pubsub()`]({{< relref "/chapter-destinations/google-pubsub/_index.md" >}}), ['logscale()']({{< relref "/chapter-destinations/crowdstrike-falcon/_index.md" >}}), [`openobserve()`]({{< relref "/chapter-destinations/openobserve/_index.md" >}}), [`splunk()`]({{< relref "/chapter-destinations/syslog-ng-with-splunk/_index.md" >}}).
+
+### Breaking change
+
+The name of some fields changed in the [`parse_cef`]({{< relref "/filterx/filterx-parsing/cef/_index.md" >}}) and [`parse_leef`]({{< relref "/filterx/filterx-parsing/leef/_index.md" >}}) parsers to avoid name collisions with fields in the extensions:
+
+For CEF:
+
+- `version` -> `cef_version`
+- `name` -> `event_name`
+
+For LEEF:
+
+- `version` -> `leef_version`
+- `vendor` -> `vendor_name`
+- `delimiter` -> `leef_delimiter`
+
+## Version 4.15 (2025-08-01)
+
+- You can exclude files in the `wildcard-file()` source using the [`exclude-pattern()`]({{< relref "/chapter-sources/configuring-sources-wildcard-file/reference-source-wildcard-file/_index.md#source-wildcard-file-exclude-pattern" >}}) option.
+- You can use templates in the [`body-prefix()` option of the `http()` destination]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#https-options-body-prefix" >}}), and in destinations based on `http()`.
+- ADC authentication now can use `service-account-key()`.
+- `gcp(service-account())` authentication can now use `scope()` instead of `audience()`.
+- New FilterX features:
+
+    - [`str_replace`]({{< relref "/filterx/function-reference.md#str-replace" >}}) function for string replacement.
+    - [String slicing operator (`..`)]({{< relref "/filterx/operator-reference.md#slicing" >}}).
+    - [Create dict element if non-null (`:??`)]({{< relref "/filterx/operator-reference.md#create-non-null" >}}) operator.
 
 ## Version 4.14 (2025-07-18)
 
@@ -14,8 +82,7 @@ This page is a changelog that collects the major changes and additions to this d
 
 ## Version 4.13 (2025-07-08)
 
-- You can format arbitrary data as protobuf using the specified schema (proto file) using the {{% xref "/filterx/function-reference.md#protobuf-message" %}} FilterX function. Also, you can send such pre-formatted data using the `proto-var()` option of the [ClickHouse]({{< relref "/chapter-destinations/clickhouse/_index.md#proto-var" >}}) and [Google BigQuery]()
-({{< relref "/chapter-destinations/google-bigquery/_index.md#proto-var" >}}) destinations.
+- You can format arbitrary data as protobuf using the specified schema (proto file) using the {{% xref "/filterx/function-reference.md#protobuf-message" %}} FilterX function. Also, you can send such pre-formatted data using the `proto-var()` option of the [ClickHouse]({{< relref "/chapter-destinations/clickhouse/_index.md#proto-var" >}}) and [Google BigQuery]({{< relref "/chapter-destinations/google-bigquery/_index.md#proto-var" >}}) destinations.
 - You can now format dictionaries as XML and Windows Event Log XML using the [`format_xml`]({{< relref "/filterx/function-reference.md#format-xml" >}}) and [`format_windows_eventlog_xml`]({{< relref "/filterx/function-reference.md#format-windows-eventlog-xml" >}}) FilterX functions.
 - You can now format dictionaries as CEF and LEEF messages using the [`format_cef`]({{< relref "/filterx/function-reference.md#format-cef" >}}) and [`format_leef`]({{< relref "/filterx/function-reference.md#format-leef" >}}) FilterX functions.
 - Changes in {{% xref "/filterx/filterx-parsing/cef/_index.md" %}} and {{% xref "/filterx/filterx-parsing/leef/_index.md" %}}:

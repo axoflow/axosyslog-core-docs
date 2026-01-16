@@ -1,12 +1,12 @@
 ---
-title: "syslog-ng-otlp(): Forward logs to another node using OpenTelemetry"
+title: "axosyslog-otlp(): Forward logs to another node using OpenTelemetry"
 weight: 6750
-driver: "syslog-ng-otlp()"
+driver: "axosyslog-otlp()"
 short_description: "Forward logs to another node using OpenTelemetry"
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-Available in {{% param "product.abbrev" %}} version 4.4 and later.
+Available in {{% param "product.abbrev" %}} version 4.12 and later. (From version 4.4 to 4.11, this driver was called `syslog-ng-otlp()`.)
 
 {{< include-headless "chunk/syslog-ng-otlp-intro.md" >}}
 
@@ -71,6 +71,10 @@ The `syslog-ng-otlp()` destination has the following options.
 | Default: | `localhost:9095` |
 
 *Description:* The URL of the {{% param "product.abbrev" %}} receiver.
+
+{{< include-headless "chunk/option-destination-worker-partition-autoscaling.md" >}}
+
+{{< include-headless "chunk/option-destination-worker-partition-buckets.md" >}}
 
 <a id="worker-partition-key"></a>
 {{< include-headless "chunk/option-destination-http-worker-partition-key.md" >}}

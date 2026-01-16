@@ -4,6 +4,7 @@ linktitle: "azure-monitor: Azure Monitor and Sentinel"
 weight:  150
 driver: "azure-monitor()"
 short_description: "Send messages to Azure Monitor and Sentinel"
+dest_type: http
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
@@ -30,6 +31,9 @@ For details, see the [Tutorial: Send data to Azure Monitor Logs with Logs ingest
 The `azure-monitor()` driver sends data to the built-in tables of Azure Monitor. The body of the message (`${MESSAGE}`) must be in JSON format. The keys in the JSON array must have the same names as the columns of the table (you can use [`format-json`]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md#template-function-format-json" >}}) or ['FilterX`]({{< relref "/filterx/_index.md" >}})). If a field is empty, or Azure cannot parse it, it will be blank. The following example sends data to the [syslog table](https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/syslog).
 
 ```sh
+@include "scl.conf"
+# ...
+
 destination d_azure {
   azure-monitor(
     stream-name("syslog")

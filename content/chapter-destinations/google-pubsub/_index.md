@@ -4,6 +4,7 @@ linktitle: "google-pubsub: Google Pub/Sub HTTP"
 weight:  1250
 driver: "google-pubsub()"
 short_description: "Send messages to Google Pub/Sub via HTTP"
+dest_type: http
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
@@ -20,6 +21,9 @@ To configure {{% param "product_name" %}}, you'll need the name of the project a
 Minimal configuration:
 
 ```sh
+@include "scl.conf"
+# ...
+
 destination d_pubsub {
   google-pubsub(
     project("syslog-ng-project")

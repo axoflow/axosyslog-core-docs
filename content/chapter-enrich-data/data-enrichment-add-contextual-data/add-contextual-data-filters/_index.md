@@ -29,7 +29,7 @@ You can also add data to messages that do not have a matching selector entry in 
 You must store the filters you reference in a database in a separate file. This file is similar to a {{% param "product.abbrev" %}} configuration file, but must contain only a version string and filters (and optionally comments). You can use the `syslog-ng --syntax-only <filename> command to ensure that the file is valid. For example, the content of such a file can be:
 
 ```shell
-   @version: {{% param "product.techversion" %}}
+   @version: {{% param "product.configversion" %}}
     filter f_localhost { host("mymachine.example.com") };
     filter f_auth { facility(4) };
     filter f_kern { facility(0) };

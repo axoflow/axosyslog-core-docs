@@ -30,7 +30,7 @@ By default, the Check Point-specific fields are extracted into name-value pairs 
 ## Declaration:
 
 ```shell
-   @version: {{% param "product.techversion" %}}
+   @version: {{% param "product.configversion" %}}
     @include "scl.conf"
     log {
         source { network(flags(no-parse)); };

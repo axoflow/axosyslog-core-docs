@@ -1,5 +1,6 @@
 ---
 ---
+<!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 {{< include-headless "tagline.md" >}}
 {{< product >}} is a drop-in replacement for `syslog-ng`, created by the original creators of `syslog-ng`. (It started as a fork, branched after syslog-ng&trade; v4.7.1).
 

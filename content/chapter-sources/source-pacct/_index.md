@@ -28,7 +28,7 @@ The `pacct()` driver parses the fields of the accounting logs and transforms the
 To use the `pacct()` driver, use the following syntax.
 
 ```shell
-   @version: {{% param "product.techversion" %}}
+   @version: {{% param "product.configversion" %}}
     @include "scl.conf"
     source s_pacct { pacct(); };
     ...
