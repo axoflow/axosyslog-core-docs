@@ -11,6 +11,6 @@
 
 *Description:* Specifies the source window size - the maximum number of in-flight messages permitted by the source before flow control is enforced. This only applies when `flow-control` is enabled.
 
-If a `max-connections()` setting is in effect (for example in case of TCP sources), the `log-iw-size()` value means the total window size, and it's divided proportionally between the connections. Its value cannot be lower than 100, unless the `dynamic-window-size()` option is enabled, which increases the effective windows size dynamically.
+{{< include-headless "wnt/warning-log-iw-size-restart.md" >}}
 
 Note that when using `disk-buffer()`, the messages stored on disk are not included in the window size calculation. For details about the effects of this parameter, see {{% xref "/chapter-routing-filters/concepts-flow-control/_index.md" %}}.
