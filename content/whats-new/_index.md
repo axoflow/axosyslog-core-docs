@@ -6,11 +6,19 @@ weight: 10
 
 {{< include-headless "banner-new-to-axosyslog.md" >}}
 
+## Version 4.22 (2026-01-21)
+
+The FilterX [list membership operators]({{< relref "/filterx/operator-reference.md#list-membership-operator" >}}) now support searching the keys of dictionaries.
+
+For a list of bugfixes, see the [GitHub release page](https://github.com/axoflow/axosyslog/releases/tag/axosyslog-4.22.0).
+
 ## Version 4.21 (2025-12-15)
 
 - A new FilterX function `format_syslog_5424` that formats messages as an RFC5424 (IETF-syslog) syslog message.
 - Syslog sources can now set `transport(nul-terminated)` to receive messages that use NUL characters instead of newline characters to separate log records.
 - Destinations that support worker partitioning (the `worker-partition-key()` option) can now set `worker-partition-autoscaling(yes)` to allow each worker to maximize its batch size.
+
+For a list of bugfixes, see the [GitHub release page](https://github.com/axoflow/axosyslog/releases/tag/axosyslog-4.21.0).
 
 ## Version 4.20 (2025-11-20)
 
@@ -22,6 +30,8 @@ weight: 10
     <!-- - You can change the default checksum settings for S3 compatible solutions that don't support checksums using the [`use-checksum()` option]({{< relref "/chapter-destinations/destination-s3/_index.md#use-checksum" >}}). -->
 
 - The `http()` and other threaded destinations now have a [`worker-partition-buckets()` option]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#worker-partition-buckets" >}}) that determines the number of worker threads used for the `worker-partition-key()`.
+
+For a list of bugfixes, see the [GitHub release page](https://github.com/axoflow/axosyslog/releases/tag/axosyslog-4.20.0).
 
 ## Version 4.19 (2025-10-15)
 

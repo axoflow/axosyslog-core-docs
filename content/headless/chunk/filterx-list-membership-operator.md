@@ -13,4 +13,16 @@ if (${HOST} in my_array) {
 }
 ```
 
+Starting with {{< product >}} 4.22, you can also use the operators to check membership in `dict` keys. For example:
+
+```shell
+my_dict = {"key-1": "value", "key-2": "another value"};
+my_search_key = "key-1";
+if (my_search_key in my_dict) {
+    ${MSG} = "Found: " + my_dict[my_search_key];
+} else {
+    ${MSG} = "Not Found";
+};
+```
+
 The `in` operator can be used to replicate the functionality of the {{% xref "/chapter-routing-filters/filters/reference-filters/filter-inlist/_index.md" %}} filter function in FilterX. If you want to populate the list from a file, use the [cache_json_file()]({{< relref "/filterx/function-reference.md#cache-json-file" >}}) FilterX function.

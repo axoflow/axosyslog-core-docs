@@ -196,7 +196,7 @@ For details, see {{% xref "/filterx/filterx-format-data/format-leef.md" %}}.
 
 Available in {{< product >}} 4.21 and later.
 
-Formats data as an [RFC5424 (IETF-syslog)]() syslog message.
+Formats data as an [RFC5424 (IETF-syslog)]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-ietfsyslog/" >}}) syslog message.
 
 For details, see {{% xref "/filterx/filterx-format-data/format-rfc5424.md" %}}.
 
