@@ -3,9 +3,27 @@ title: Conditional statements
 weight: 525
 ---
 
-A conditional statement ( `if (expr) { ... } elif (expr) {} else { ... };`) allows you to evaluate complex decision trees. Starting with version 4.10, you can also use switch-case expressions.
+A conditional statement ( `if (expr) { ... } elif (expr) {} else { ... };`) allows you to evaluate complex decision trees. For example:
 
-Switch-case expressions allow you to better organize the code instead of using multiple `if`, `elif`, `else` blocks. Using switch-case expressions also improves performance.
+```shell
+if (${PRI} == "alert") {
+  event.severity = 1;
+} elif (${PRI} == "critical") {
+  event.severity = 2;
+} elif (${PRI} == "error") {
+  event.severity = 3;
+} elif (${PRI} == "warning") {
+  event.severity = 4;
+} elif (${PRI} == "notice") {
+  event.severity = 5;
+} elif (${PRI} == "information") {
+  event.severity = 6;
+} else {
+  event.severity = 7;
+};
+```
+
+Starting with version 4.10, you can also use switch-case expressions. Switch-case expressions allow you to better organize the code instead of using multiple `if`, `elif`, `else` blocks. Using switch-case expressions also improves performance.
 
 Usage:
 
