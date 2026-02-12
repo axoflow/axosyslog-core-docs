@@ -148,7 +148,7 @@ Variables can have the following types. All of these types have a matching funct
 - [`datetime`]({{< relref "/filterx/function-reference.md#datetime" >}})
 - `dict`
 - `double`
-- `int`
+- `integer`
 - [`json`]({{< relref "/filterx/function-reference.md#json" >}}) and [`json_array`]({{< relref "/filterx/function-reference.md#json-array" >}}) for JSON or JSON-like objects.
 - `list`
 - [`metrics_labels`]({{< relref "/filterx/filterx-metrics/_index.md#metrics-labels" >}})
