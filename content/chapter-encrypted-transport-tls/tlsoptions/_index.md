@@ -81,6 +81,19 @@ The following example curves work for all versions of OpenSSL that are equal to 
    ecdh-curve-list("prime256v1:secp384r1")
 ```
 
+## extended-key-usage-verify() {#tls-options-extended-key-usage-verify}
+
+|                  |                                 |
+| ---------------- | ------------------------------- |
+| Accepted values: | `yes`, `no` |
+| Default:         | `no` |
+
+Available in {{% param "product.abbrev" %}} 4.23 and later.
+
+*Description:* If enabled, {{% param "product.abbrev" %}} checks that the certificate of the peer contains the appropriate value in its Extended Key Usage (EKU) field: clients should have Client Auth EKU values (`X509_PURPOSE_SSL_CLIENT`), while server should have Web Server Auth (`X509_PURPOSE_SSL_SERVER`).
+
+If `extended-key-usage-verify()` is set to `yes` and the certificate of the peer doesn't have the appropriate Extended Key Usage value, {{% param "product.abbrev" %}} terminates the connection.
+
 {{% include-headless "chunk/option-destination-tls-key-file.md" %}}
 
 ## keylog-file()
