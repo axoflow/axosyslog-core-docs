@@ -165,6 +165,8 @@ cloud-auth(
 
 {{< include-headless "chunk/option-destination-http-compression.md" >}}
 
+Note that `content-compression()` keeps the original, plain-text content if the compressed payload would be larger than the compressed payload. If your destination server accepts only compressed payload, enable the [`force-content-compression(yes)`](#force-content-compression) option as well.
+
 ## delimiter() {#https-options-delimiter}
 
 |                  |                   |
@@ -181,6 +183,17 @@ For details on how this option influences HTTP batch mode, see [Batch mode and l
 {{% include-headless "chunk/option-destination-flush-lines.md" %}}
 
 {{% include-headless "chunk/option-destination-flush-timeout.md" %}}
+
+## force-content-compression()
+
+|                  |                                 |
+| ---------------- | ------------------------------- |
+| Accepted values: | `yes`, `no` |
+| Default:         | `no` |
+
+Available in {{% param "product.abbrev" %}} 4.23 and later.
+
+*Description:* If [`content-compression()`](#content-compression) is set to compress the messages, setting `force-content-compression(yes)` instructs {{% param "product.abbrev" %}} to always send the compressed payload, even when it's larger than the original, uncompressed content. Use `force-content-compression(yes)` if your destination server accepts only compressed payload.
 
 {{< include-headless "chunk/option-destination-frac-digits.md" >}}
 
