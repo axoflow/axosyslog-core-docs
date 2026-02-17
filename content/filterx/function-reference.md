@@ -355,6 +355,21 @@ Usage: `lower(string)`
 
 Convert key-values to metric labels directly. For details, see {{% xref "/filterx/filterx-metrics/_index.md#metrics-labels" %}}.
 
+## move
+
+Available in {{% param "product.abbrev" %}} 4.23 and later.
+
+Moves the specified variable/expression to its new location, instead of copying it. This is equivalent to using a value assignment and an [unset](#unset) function, but has better performance. The following example moves the JSON object `old` into the `new.nest` field:
+
+```shell
+  filterx {
+    old = {"key1":"value1", "key2":"value2"};
+    new = {"foo":"foovalue", "bar":"barvalue"};
+
+    new.nest = move(old);
+  };
+```
+
 ## otel_array {#otel-array}
 
 Creates a [dictionary]({{< relref "/filterx/_index.md#json" >}}) represented as an OpenTelemetry array.
