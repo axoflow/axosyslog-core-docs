@@ -418,6 +418,7 @@ FilterX has the following built-in functions.
 - [`flatten`]({{< relref "/filterx/function-reference.md#flatten" >}}): Flattens the nested elements of an object.
 - [`format_cef`]({{< relref "/filterx/filterx-format-data/format-cef" >}}): Formats a dictionary into Common Event Format (CEF).
 - [`format_csv`]({{< relref "/filterx/filterx-format-data/format-csv.md" >}}): Formats a dictionary or a list into a comma-separated string.
+- [`format_isodate`]({{< relref "/filterx/function-reference.md#format-isodate" >}}): Formats a date as ISODATE: `%Y-%m-%dT%H:%M:%S%z`
 - [`format_json`]({{< relref "/filterx/filterx-format-data/format-json" >}}): Dumps a JSON object into a string.
 - [`format_kv`]({{< relref "/filterx/filterx-format-data/format-kv" >}}): Formats a dictionary into key=value pairs.
 - [`format_leef`]({{< relref "/filterx/filterx-format-data/format-leef" >}}): Formats a dictionary into Log Event Extended Format (LEEF).

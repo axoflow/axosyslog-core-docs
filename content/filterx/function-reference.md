@@ -166,6 +166,18 @@ Usage: `format_csv(<input-list-or-dict>, columns=<json-list>, delimiter=<delimit
 
 For details, see {{% xref "/filterx/filterx-format-data/format-csv.md" %}}.
 
+## format_isodate {#format-isodate}
+
+Available in {{< product >}} 4.23 and later.
+
+Formats a date as ISODATE: `%Y-%m-%dT%H:%M:%S%z`. For example:
+
+```shell
+my_date = strptime("2000-01-02T03:04:05.678901-07:00", "%Y-%m-%dT%H:%M:%S.%f%Z");
+${MESSAGE} = format_isodate(my_date);
+# The value of ${MESSAGE} is 2000-01-02T03:04:05.678901-07:00
+```
+
 ## format_json {#format-json}
 
 Formats any value into a raw JSON string.
