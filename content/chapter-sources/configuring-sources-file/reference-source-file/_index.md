@@ -44,6 +44,14 @@ The `file()` driver has the following options:
 
 {{< include-headless "chunk/option-source-program-override.md" >}}
 
+{{% include-headless "chunk/option-source-read-old-records.md" %}}
+
 {{< include-headless "chunk/option-source-tags.md" >}}
 
 {{< include-headless "chunk/option-source-time-zone.md" >}}
+
+{{< include-headless "chunk/option-source-trim-large-messages.md" >}}
+
+{{< include-headless "chunk/option-source-use-fqdn.md" >}}
+
+{{< include-headless "chunk/option-source-use-syslogng-pid.md" >}}
