@@ -56,3 +56,40 @@ matches(
 {{% include-headless "chunk/option-source-time-zone.md" %}}
 
 {{< include-headless "chunk/option-source-use-fqdn.md" >}}
+
+<!-- 
+FIXME options to check
+
+systemd-journal(
+    chain-hostnames(<yesno>)
+
+    default-priority(<string>)
+    default-severity(<string>)
+    dns-cache(<yesno>)
+
+    keep-timestamp(<yesno>)
+    log-fetch-limit(<positive-integer>)
+    log-iw-size(<positive-integer>)
+    log-prefix(<string>)
+    long-hostnames(<yesno>)
+    match-boot(<yesno>)
+    matches(
+        <empty>
+        <string> => <string>
+    )
+
+    normalize-hostnames(<yesno>)
+    persist-name(<string>)
+
+    program-override(<string>)
+    read-old-records(<yesno>)
+    tags(<string-list>)
+    use-dns(
+        <yesno>
+        persist-only
+    )
+
+    use-syslogng-pid(<yesno>)
+)
+
+ -->
