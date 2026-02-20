@@ -55,3 +55,57 @@ The `file()` driver has the following options:
 {{< include-headless "chunk/option-source-use-fqdn.md" >}}
 
 {{< include-headless "chunk/option-source-use-syslogng-pid.md" >}}
+
+<!--
+FIXME options to check
+ file(
+    <string>
+    check-program(<yesno>)
+    default-level(<string>)
+    default-severity(<string>)
+    dir-group(
+        <empty>
+        <string-or-number>
+    )
+    dir-owner(
+        <empty>
+        <string-or-number>
+    )
+    dir-perm(
+        <empty>
+        <number>
+    )
+    dns-cache(<yesno>)
+
+    force-directory-polling(<yesno>) > only for wildcard sources
+
+    format(<string>)
+    group(
+        <empty>
+        <string-or-number>
+    )
+
+    host-override(<string>)
+    keep-hostname(<yesno>)
+
+    long-hostnames(<yesno>)
+
+    multi-line-timeout(<nonnegative-integer>)
+    normalize-hostnames(<yesno>)
+    owner(
+        <empty>
+        <string-or-number>
+    )
+
+    perm(
+        <empty>
+        <number>
+    )
+    persist-name(<string>)
+    recursive(<yesno>)
+    sdata-prefix(<string>)
+
+    use-dns(
+        <yesno>
+        persist-only
+ -->
