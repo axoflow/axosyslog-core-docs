@@ -51,6 +51,7 @@ For a list of bugfixes, see the [GitHub release page](https://github.com/axoflow
 ## Version 4.19 (2025-10-15)
 
 - The [`dict_to_pairs`]({{< relref "/filterx/function-reference.md#dict-to-pairs" >}}) FilterX function can convert a dictionary to a list of pairs.
+- The [`includes`]({{< relref "/filterx/filterx-string-search/_index.md" >}}) FilterX function can limit the length of the search string.
 
 ## Version 4.18 (2025-09-30)
 

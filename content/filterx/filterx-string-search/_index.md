@@ -31,6 +31,13 @@ includes($MESSAGE, ['%ASA-','john','CLI'])
 includes($MESSAGE, '%ASA-') or includes($MESSAGE, 'john') or includes($MESSAGE, 'CLI')
 ```
 
+Starting with {{< product >}} version 4.19, the `includes` function has a `limit` option to truncate the search to the first `<limit>` character of the string. The following example searches for the string `john` only in the first 40 characters of the `$MESSAGE`:
+
+```shell
+${MESSAGE} = "%ASA-5-111010: User ''john'', running ''CLI'' from IP 0.0.0.0, executed ''dir disk0:/dap.xml"
+includes($MESSAGE, 'john', limit=40)
+```
+
 For more complex searches, or if you need to match a regular expression, use the [`regexp_search` FilterX function]({{< relref "/filterx/filterx-string-search/_index.md#regexp-search" >}}).
 
 <!-- FIXME json object search example -->

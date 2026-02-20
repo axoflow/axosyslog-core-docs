@@ -248,7 +248,7 @@ Returns true if the input string contains the specified substring. By default, m
 
 ```shell
 includes(input-string, substring);
-includes(input-string, [substring_1, substring_2], ignorecase=true);
+includes(input-string, [substring_1, substring_2], ignorecase=true, limit=10);
 ```
 
 For details, see {{% xref "/filterx/filterx-string-search/_index.md" %}}.
