@@ -437,7 +437,7 @@ FilterX has the following built-in functions.
 - [`metrics_labels`]({{< relref "/filterx/filterx-metrics/_index.md#metrics-labels" >}}): Convert key-values to metric labels directly.
 - [`load_vars`]({{< relref "/filterx/function-reference.md#load-vars" >}}): Load variables from a dictionary.
 - [`lower`]({{< relref "/filterx/function-reference.md#lower" >}}): Converts a string into lowercase characters.
-- [`move`]({{< relref "/filterx/function-reference.md#move" >}}): Moves the specified variable/expression to its new location, instead of copying it.
+- [`move`]({{< relref "/filterx/function-reference.md#move" >}}): Moves the specified variable to its new location, instead of copying it.
 - [`parse_csv`]({{< relref "/filterx/filterx-parsing/csv/_index.md" >}}): Parses a comma-separated or similar string.
 - [`parse_kv`]({{< relref "/filterx/filterx-parsing/key-value-parser/_index.md" >}}): Parses a string consisting of whitespace or comma-separated `key=value` pairs.
 - [`parse_leef`]({{< relref "/filterx/filterx-parsing/leef/_index.md" >}}): Parses LEEF-formatted string.

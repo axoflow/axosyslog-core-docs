@@ -371,7 +371,7 @@ Convert key-values to metric labels directly. For details, see {{% xref "/filter
 
 Available in {{% param "product.abbrev" %}} 4.23 and later.
 
-Moves the specified variable/expression to its new location, instead of copying it. This is equivalent to using a value assignment and an [unset](#unset) function, but has better performance. The following example moves the JSON object `old` into the `new.nest` field:
+Moves the specified variable to its new location, instead of copying it. This is equivalent to using a value assignment and an [unset](#unset) function, but has better performance. The following example moves the JSON object `old` into the `new.nest` field:
 
 ```shell
   filterx {
