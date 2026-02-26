@@ -1,153 +1,184 @@
 #!/usr/bin/env python3
-#coding: utf-8
+# coding: utf-8
 
 import os
-from bs4 import BeautifulSoup, Doctype
+import argparse
 import subprocess
+from pathlib import Path
+from bs4 import BeautifulSoup
 
-def extract_content_from_hugohtml(input_file):
 
-    global errors
+def extract_content_from_hugohtml(input_file: Path):
+    """Extract <div class="td-content"> from a Hugo-generated HTML file."""
+    with input_file.open("r", encoding="utf8") as f:
+        soup = BeautifulSoup(f, "html.parser")
 
-    ## Open and parse file
-    inputhtml = open(input_file, 'r+', encoding="utf8")
-    htmlcontent = BeautifulSoup(inputhtml, "html.parser")
+    return soup.find("div", attrs={"class": "td-content"})
 
-    inputhtml.close()
 
-    ## Extract <div class="td-content">
-    return htmlcontent.find('div', attrs={"class":"td-content"})
+def create_sanitized_html_content(rawhtml, unix_name: str, section: str):
+    """Wrap extracted content in minimal XHTML template and enrich metadata."""
 
-def create_sanitized_html_content(rawhtml):
-
-    global unix_name, section
-
-    ## Create doctype
-    ## Create html
-    ## Add head and title
-    ## Add body
-    xhtml_template = '''<!DOCTYPE html>
+    xhtml_template = """<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <title></title>
 </head>
 <body>
 </body>
-</html>'''
-    sanitized_html_content = BeautifulSoup(xhtml_template, "lxml")
+</html>"""
 
-    ## Add the relevant content from the original html
-    sanitized_html_content.body.insert(1, rawhtml)
+    soup = BeautifulSoup(xhtml_template, "lxml")
 
-    ## Add title to head?
-    sanitized_html_content.head.title.insert(1, sanitized_html_content.body.h1)
+    # Insert extracted content
+    soup.body.insert(1, rawhtml)
 
-    ## Use absolute links when linking to other parts of the docs
-    for entry in sanitized_html_content.find_all('a'):
-        if entry['href'].startswith('/docs/'):
-            entry['href'] = 'https://axoflow.com' + entry['href']
+    # Set title from first h1 if available
+    if soup.body.h1:
+        soup.head.title.insert(1, soup.body.h1)
 
-    ## Add meta info to html that the conversion xslt can use
-    ## <xsl:if test="../xhtml:head/xhtml:meta[@name='unix_name']">
-    new_tag = sanitized_html_content.new_tag("meta", unix_name=unix_name)
-    sanitized_html_content.head.insert(2, new_tag)
-    
-    new_tag = sanitized_html_content.new_tag("meta", section=section)
-    sanitized_html_content.head.insert(2, new_tag)
+    # Convert relative documentation links to absolute
+    for entry in soup.find_all("a", href=True):
+        if entry["href"].startswith("/docs/"):
+            entry["href"] = "https://axoflow.com" + entry["href"]
 
-    ## <xsl:if test="../xhtml:head/xhtml:meta[@name='author']">
-    new_tag = sanitized_html_content.new_tag("meta", author="Axoflow")
-    sanitized_html_content.head.insert(2, new_tag)
+    # Add metadata for XSLT processing
+    soup.head.append(soup.new_tag("meta", unix_name=unix_name))
+    soup.head.append(soup.new_tag("meta", section=section))
+    soup.head.append(soup.new_tag("meta", author="Axoflow"))
 
-    return sanitized_html_content
+    return soup
 
 
-def convert_html_to_man(rawhtml, original_file, output_dir):
+def convert_html_to_man(
+    sanitized_html,
+    original_file: Path,
+    output_dir: Path,
+    xslt_file: Path,
+    unix_name: str,
+    section: str,
+):
+    """Convert XHTML to man page using xsltproc."""
 
-    global unix_name, section
+    output_dir.mkdir(parents=True, exist_ok=True)
 
-    # Create output dir
-    subprocess.run(["mkdir", '-p', output_dir])
+    base_filename = original_file.parent.name
+    temp_html_file = output_dir / f"{base_filename}.html"
 
-    # Create output filename
-    base_filename = os.path.split(os.path.dirname(original_file))[1]
-    output_html_file = os.path.join(output_dir, base_filename + '.html')
+    # Write temporary XHTML file
+    with temp_html_file.open("w", encoding="utf8") as f:
+        f.write(str(sanitized_html))
 
-    # print(output_html_file)
+    # Run xsltproc
+    result = subprocess.run(
+        ["xsltproc", str(xslt_file), str(temp_html_file)],
+        capture_output=True,
+        text=True,
+    )
 
-    # Write input html to file
-    htmlfile = open(output_html_file, 'w', encoding="utf8")
-    htmlfile.write(str(rawhtml))
-    htmlfile.truncate()
-    htmlfile.close()
+    if result.stderr:
+        print(f"Error converting {original_file}: {result.stderr}")
 
-    ## use xsltproc xhtml2man as subprocess
-    ## $ xsltproc xhtml2man.xslt input.xhtml > output.7
-    result = subprocess.run(["xsltproc", 'scripts/xhtml2man.xslt', output_html_file],
-                            capture_output = True,
-                            text = True)
-    # print(result.stdout)
-    if len(result.stderr) > 0:
-        print('Error converting', original_file, ' : ', result.stderr)
+    # Remove empty lines
+    output = os.linesep.join(
+        line for line in result.stdout.splitlines() if line.strip()
+    )
 
-    ## Remove empty lines
-    result.stdout = os.linesep.join([s for s in result.stdout.splitlines() if s])
+    # Fix man page header
+    lines = output.splitlines()
+    if lines:
+        lines[0] = f'.TH "{unix_name}" {section} "" "" {unix_name}'
+    output = "\n".join(lines)
 
-    ## Fix man page header (footer doesn't seem to work, so it's left empty)
-    ## .TH [name of program] [section number] [center footer] [left footer] [center header]
-    old_header = str(result.stdout.split("\n")[0])
-    result.stdout = result.stdout.replace(old_header, '.TH "' + unix_name + '"' + section + ' "" "" ' + unix_name)
+    # Write final manpage
+    man_file = output_dir / base_filename
+    with man_file.open("w", encoding="utf8") as f:
+        f.write(output)
+        print(f"Man page %s created", man_file)
 
-    ## FIXME skip linebreaks after bullets
+    # Remove temporary file
+    temp_html_file.unlink(missing_ok=True)
 
-    ## Write output to manpage file
-    manfile = open(os.path.join(output_dir, base_filename), 'w', encoding="utf8")
-    manfile.write(result.stdout)
-    manfile.truncate()
-    manfile.close()
-    
-    ## Delete html file
-    subprocess.run(["rm", output_html_file])
 
-global errors, unix_name, section
-errors = []
-unix_name = ""
-section = 0
+def process_manpages(input_dir: Path, output_dir: Path, xslt_file: Path):
+    """Walk through input directory and process all manpage HTML files."""
 
-# Process manpages files
-print("Processing manpages files")
+    for root, _, files in os.walk(input_dir):
+        for file in files:
+            full_path = Path(root) / file
 
-input_manpage_dir = "manpages/app-man-syslog-ng"
-output_manpage_dir = "manpages/syslog-ng-manpages"
+            base_filename = full_path.parent.name
 
-for root, dirs, files in os.walk(input_manpage_dir):
-    for file in files:
-        input_manpage_dir = os.path.join(os.getcwd(), root, file)
-        
-        # Create hugo path, cut .tmp and .htm, replace with .md
-        processing_html = os.path.join(os.getcwd(), root, file)
+            # Skip unwanted directories
+            if "_print" in str(full_path) or input_dir.name in base_filename:
+                continue
 
-        base_filename = os.path.split(os.path.dirname(processing_html))[1]
-        # Skip _print directory and the root index.html
-        if "_print" in processing_html or 'app-man-syslog-ng' in base_filename:
-            continue
+            print(f"Processing {full_path}")
 
-        print(processing_html)
+            # Extract unix_name and section
+            try:
+                unix_name, section = base_filename.rsplit(".", 1)
+            except ValueError:
+                print(f"Skipping invalid directory format: {base_filename}")
+                continue
 
-        ## Create file metadata
-        unix_name = base_filename.split(".")[0]
-        section = base_filename.split(".")[1]
+            raw_content = extract_content_from_hugohtml(full_path)
+            if not raw_content:
+                print(f"ERROR extracting content from {full_path}")
+                continue
 
-        hugo_content_for_man_page = extract_content_from_hugohtml(processing_html)
-        if len(hugo_content_for_man_page) < 1:
-            print("ERROR Couldn't properly extract content from ", processing_html)
-        html_content_for_man_page = create_sanitized_html_content(hugo_content_for_man_page)
-        if len(html_content_for_man_page) < 1:
-            print("ERROR Creating sanitized content failed ", processing_html)
-        # print(html_content_for_man_page)
-        convert_html_to_man(html_content_for_man_page, processing_html, output_manpage_dir)
+            sanitized_content = create_sanitized_html_content(
+                raw_content, unix_name, section
+            )
 
-print("Output files")
-subprocess.run(["ls", output_manpage_dir])
+            convert_html_to_man(
+                sanitized_content,
+                full_path,
+                output_dir,
+                xslt_file,
+                unix_name,
+                section,
+            )
 
-# print(len(errors))
+
+def main():
+    pwd = Path.cwd()
+
+    parser = argparse.ArgumentParser(
+        description="Convert Hugo HTML manpages to UNIX man format"
+    )
+
+    parser.add_argument(
+        "--input-dir",
+        type=Path,
+        default=pwd / "public" / "app-man-syslog-ng",
+        help="Input directory containing generated HTML manpages",
+    )
+
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=pwd / "tmp" / "manpages",
+        help="Output directory for generated manpages",
+    )
+
+    parser.add_argument(
+        "--xslt-file",
+        type=Path,
+        default=pwd / "scripts" / "xhtml2man.xslt",
+        help="Path to xhtml2man.xslt file",
+    )
+
+    args = parser.parse_args()
+
+    if not args.xslt_file.exists():
+        raise FileNotFoundError(f"XSLT file not found: {args.xslt_file}")
+
+    process_manpages(args.input_dir, args.output_dir, args.xslt_file)
+
+    print("\nGenerated manpages:")
+    subprocess.run(["ls", str(args.output_dir)])
+
+
+if __name__ == "__main__":
+    main()
