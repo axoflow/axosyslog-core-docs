@@ -37,6 +37,8 @@ log otel_forward_mode_alts {
 
 {{< include-headless "chunk/option-source-concurrent-requests.md" >}}
 
+{{% include-headless "chunk/option-grpc-source-ip.md" %}}
+
 {{< include-headless "chunk/option-source-otlp-keep-alive.md" >}}
 
 ## keep-hostname()
