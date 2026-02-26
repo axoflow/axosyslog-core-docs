@@ -6,7 +6,7 @@ import argparse
 import subprocess
 from pathlib import Path
 from bs4 import BeautifulSoup
-
+from lxml import etree
 
 def extract_content_from_hugohtml(input_file: Path):
     """Extract <div class="td-content"> from a Hugo-generated HTML file."""
@@ -58,30 +58,35 @@ def convert_html_to_man(
     unix_name: str,
     section: str,
 ):
-    """Convert XHTML to man page using xsltproc."""
+    """Convert XHTML to man page using pure Python lxml XSLT."""
 
     output_dir.mkdir(parents=True, exist_ok=True)
 
     base_filename = original_file.parent.name
-    temp_html_file = output_dir / f"{base_filename}.html"
+    man_file = output_dir / base_filename
 
-    # Write temporary XHTML file
-    with temp_html_file.open("w", encoding="utf8") as f:
-        f.write(str(sanitized_html))
+    try:
+        # Parse XSLT
+        xslt_tree = etree.parse(str(xslt_file))
+        transform = etree.XSLT(xslt_tree)
 
-    # Run xsltproc
-    result = subprocess.run(
-        ["xsltproc", str(xslt_file), str(temp_html_file)],
-        capture_output=True,
-        text=True,
-    )
+        # Parse sanitized XHTML
+        html_tree = etree.fromstring(
+            str(sanitized_html).encode("utf-8")
+        )
 
-    if result.stderr:
-        print(f"Error converting {original_file}: {result.stderr}")
+        # Apply transformation
+        result_tree = transform(html_tree)
+
+        output = str(result_tree)
+
+    except Exception as e:
+        print(f"Error converting {original_file}: {e}")
+        return
 
     # Remove empty lines
     output = os.linesep.join(
-        line for line in result.stdout.splitlines() if line.strip()
+        line for line in output.splitlines() if line.strip()
     )
 
     # Fix man page header
@@ -91,14 +96,8 @@ def convert_html_to_man(
     output = "\n".join(lines)
 
     # Write final manpage
-    man_file = output_dir / base_filename
     with man_file.open("w", encoding="utf8") as f:
         f.write(output)
-        print(f"Man page %s created", man_file)
-
-    # Remove temporary file
-    temp_html_file.unlink(missing_ok=True)
-
 
 def process_manpages(input_dir: Path, output_dir: Path, xslt_file: Path):
     """Walk through input directory and process all manpage HTML files."""
