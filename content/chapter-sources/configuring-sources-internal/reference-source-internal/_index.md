@@ -35,3 +35,4 @@ The `internal()` driver has the following options:
 
 *Description:* Add Fully Qualified Domain Name instead of short hostname. This option can be specified globally, and per-source as well. The local setting of the source overrides the global option if available.
 
+{{< include-headless "chunk/option-source-use-syslogng-pid.md" >}}

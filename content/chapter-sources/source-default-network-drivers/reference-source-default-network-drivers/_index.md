@@ -10,6 +10,8 @@ The `systemd-journal()` driver has the following options.
 
 {{< include-headless "chunk/option-destination-tls-ca-file.md" >}}
 
+{{< include-headless "chunk/option-source-format.md" >}}
+
 {{< include-headless "chunk/option-source-flags.md" >}}
 
 {{< include-headless "chunk/option-source-log-iw-size.md" >}}
@@ -20,7 +22,7 @@ The `systemd-journal()` driver has the following options.
 
 Note that the total number of connections the `default-network-drivers()` source can use is 3*`max-connections()`, because this value applies to the `network(tcp)`, `syslog(tcp)`, and `syslog(tls)` connections individually.
 
-
+{{< include-headless "chunk/option-source-normalize-hostnames.md" >}}
 
 ## rfc5424-tcp-port()
 
@@ -58,6 +60,8 @@ To receive messages using a TLS-encrypted connection, you must set the `tls(key-
 ```
 {{% /alert %}}
 
+{{< include-headless "chunk/option-source-sdata-prefix.md" >}}
+
 ## tcp-port()
 
 |          |        |
@@ -80,3 +84,4 @@ To receive messages using a TLS-encrypted connection, you must set the `tls(key-
 
 *Description:* The UDP port number where the `default-network-drivers()` source receives RFC3164-formatted (BSD-syslog) messages.
 
+{{< include-headless "chunk/option-source-use-syslogng-pid.md" >}}
