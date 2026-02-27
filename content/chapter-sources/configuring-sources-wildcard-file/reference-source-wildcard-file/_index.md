@@ -25,6 +25,8 @@ The `wildcard-file()` driver has the following options:
 
 {{% include-headless "chunk/synopsis-wildcard-file-source-example.md" %}}
 
+{{< include-headless "chunk/option-source-chain-hostnames.md" >}}
+
 {{< include-headless "chunk/option-source-check-hostname.md" >}}
 
 {{% include-headless "chunk/option-source-default-facility.md" %}}
@@ -78,6 +80,8 @@ For example, `filename-pattern("*.log")` matches the `syslog.log` and `auth.log`
 {{< include-headless "chunk/option-source-flags.md" >}}
 
 {{% include-headless "chunk/option-source-follow-freq.md" %}}
+
+{{< include-headless "chunk/option-source-format.md" >}}
 
 {{< include-headless "chunk/option-destination-hook.md" >}}
 
@@ -135,6 +139,8 @@ If `log-fetch-limit()` is 100, and your wildcard file source has 200 files, then
 
 {{% include-headless "chunk/option-source-multi-line-suffix.md" %}}
 
+{{< include-headless "chunk/option-source-normalize-hostnames.md" >}}
+
 {{% include-headless "chunk/option-source-pad-size.md" %}}
 
 {{% include-headless "chunk/option-source-program-override.md" %}}
@@ -157,7 +163,7 @@ If `log-fetch-limit()` is 100, and your wildcard file source has 200 files, then
 
 
 
-## Example: Monitoring multiple directories {#example-source-wildcard-file-recursive}
+### Example: Monitoring multiple directories {#example-source-wildcard-file-recursive}
 
 The following example reads files having the `.log` extension from the `/var/log/` directory and its subdirectories, including for example, the `/var/log/apt/history.log` file.
 
@@ -173,7 +179,10 @@ The following example reads files having the `.log` extension from the `/var/log
     };
 ```
 
+{{< include-headless "chunk/option-source-sdata-prefix.md" >}}
 
 {{% include-headless "chunk/option-source-tags.md" %}}
 
 {{% include-headless "chunk/option-source-time-zone.md" %}}
+
+{{< include-headless "chunk/option-source-use-syslogng-pid.md" >}}
