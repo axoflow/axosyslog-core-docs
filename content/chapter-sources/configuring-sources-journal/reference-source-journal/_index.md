@@ -71,7 +71,7 @@ systemd-journal(
     log-fetch-limit(<positive-integer>)
     log-iw-size(<positive-integer>)
     log-prefix(<string>)
-    long-hostnames(<yesno>)
+
     match-boot(<yesno>)
     matches(
         <empty>
