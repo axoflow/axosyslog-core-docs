@@ -4,11 +4,9 @@
 
 ## chain-hostnames()
 
-|           |                              |
-| --------- | ---------------------------- |
-| Type: | boolean |
-| Default: | `no` |
+|                  |                  |
+| ---------------- | ---------------- |
+| Accepted values: | `yes`, `no` |
+| Default:         | `no`           |
 
-<!-- FIXME cross-check with global option /Users/feketer/work/axosyslog-core-docs/content/chapter-global-options/reference-options/_index.md 
-
-{{< relref "/chapter-global-options/reference-options/_index.md#global-option-chain-hostnames" >}}-->
+*Description:* Enable or disable the chained hostname format. For details, see the [chain-hostnames() global option]({{< relref "/chapter-global-options/reference-options/_index.md#global-options-chain-hostnames" >}}).

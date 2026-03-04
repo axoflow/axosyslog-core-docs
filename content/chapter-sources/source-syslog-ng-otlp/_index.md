@@ -22,7 +22,6 @@ Available in {{% param "product.abbrev" %}} version 4.12 and later. (From versio
         teardown(<string>)
     )
     internal(<yesno>)
-    long-hostnames(<yesno>)
 
  -->
 
@@ -32,14 +31,7 @@ The `axosyslog-otlp()` source has the following options.
 
 {{< readfile "/headless/chunk/grpc-authentication.md" >}}
 
-## chain-hostnames()
-
-|                  |                  |
-| ---------------- | ---------------- |
-| Accepted values: | `yes`, `no` |
-| Default:         | `no`           |
-
-*Description:* Enable or disable the chained hostname format. For details, see the [chain-hostnames() global option]({{< relref "/chapter-global-options/reference-options/_index.md#global-options-chain-hostnames" >}}).
+{{< include-headless "chunk/option-source-chain-hostnames.md" >}}
 
 {{< include-headless "chunk/option-grpc-channel-args.md" >}}
 
@@ -63,6 +55,10 @@ The `axosyslog-otlp()` source has the following options.
 {{< include-headless "chunk/option-source-ebpf.md" >}}
 
 {{< include-headless "chunk/option-source-flags.md" >}}
+
+{{< include-headless "chunk/option-source-format.md" >}}
+
+{{< include-headless "chunk/option-destination-hook.md" >}}
 
 {{< include-headless "chunk/option-source-host-override.md" >}}
 
@@ -104,5 +100,7 @@ The `axosyslog-otlp()` source ignores this option and uses the hostname from the
 {{< include-headless "chunk/option-source-use-dns.md" >}}
 
 {{< include-headless "chunk/option-source-use-fqdn.md" >}}
+
+{{< include-headless "chunk/option-source-use-syslogng-pid.md" >}}
 
 {{< include-headless "chunk/option-source-threaded-workers.md" >}}
