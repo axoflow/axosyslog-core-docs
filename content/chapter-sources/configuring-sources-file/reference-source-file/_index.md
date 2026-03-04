@@ -98,8 +98,6 @@ FIXME options to check
     host-override(<string>)
     keep-hostname(<yesno>)
 
-    long-hostnames(<yesno>)
-
     multi-line-timeout(<nonnegative-integer>)
     normalize-hostnames(<yesno>)
     owner(
