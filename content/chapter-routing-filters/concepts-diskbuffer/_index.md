@@ -28,6 +28,9 @@ When you use disk-based buffering, and the `reliable()` option is set to `no`, {
 ![Disk buffering](/assets/images/disk-buffer-diagram-normal.svg)
 
 - *Output queue*: In-memory queue. If there is space left in it, {{% param "product.abbrev" %}} puts the message into this queue first. Messages stored here are processed faster, because {{% param "product.abbrev" %}} can skip writing to, and reading from the disk, as well as serializing or deserializing the message, saving I/O and processor time as a result. The contents of the in-memory output queue are persisted to the disk-buffer file during {{% param "product.abbrev" %}} reload, restart or stop, but they cannot be persisted if in the event of power failures, or if {{% param "product.abbrev" %}} crashes. By default, the output queue can hold 1000 messages (you can adjust this number using the `front-cache-size()` option).
+
+    {{< include-headless "chunk/option-front-cache-size-batch.md" >}}
+
 - *Disk-buffer file*: Disk queue. If there is no space left in the output queue, the message is stored in the disk-buffer file. Messages stored here are persisted on the disk, even in case of power failures or if {{% param "product.abbrev" %}} crashes. Using the disk-buffer file takes considerable amount of disk I/O and processor time. You can set the size of this queue with the `capacity-bytes()` option.
 - *Overflow queue*: In-memory queue. This queue is used to trigger flow-control if it's set. The contents of the in-memory overflow queue are persisted to the disk-buffer file in case of {{% param "product.abbrev" %}} reload, restart or stop, but they are not persisted in case of power failures or if {{% param "product.abbrev" %}} crashes. You can set the size of the overflow queue with the `flow-control-window-size()` option.
 
@@ -56,5 +59,8 @@ If the control window is full, the flow-control completely stops reading incomin
 ![Reliable disk buffering](disk-buffer-diagram-reliable.png)
 
 - *Output queue*: In-memory and disk queue. If there is space left in it, {{% param "product.abbrev" %}} puts the message into this queue first. In case of reliable disk-buffer, in addition to storing the message in memory, it is stored directly in the disk-buffer file as well for safety reasons (see the next point). Messages stored here are processed faster, because {{% param "product.abbrev" %}} can skip reading from the disk, and deserializing the message, saving I/O and processor time. By default, the output queue can hold 1000 messages (you can adjust it using the `front-cache-size()` option).
+
+    {{< include-headless "chunk/option-front-cache-size-batch.md" >}}
+
 - *Disk-buffer file*: Disk queue. If there is no space left in the output queue, the message is stored in the disk-buffer file. Messages stored here are persisted on the disk, and survive {{% param "product.abbrev" %}} crash or power failure. Using the disk-buffer file takes considerable amount of disk I/O and processor time. You can set the size of this queue with the `capacity-bytes()` option.
 - *Overflow queue*: In-memory and disk queue. This queue triggers flow-control if it's enabled. Similarly to the output queue, in case of reliable disk-buffer in addition to storing the message in memory, it's stored directly in the disk-buffer file as well for safety reasons. You can set the size of the overflow queue with the `flow-control-window-bytes()` option.
