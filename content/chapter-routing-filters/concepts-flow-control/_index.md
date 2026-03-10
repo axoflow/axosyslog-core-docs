@@ -127,11 +127,10 @@ Hazard of data loss! For destinations other than file, soft flow-control is not 
 
 The AxoSyslog application handles outgoing messages the following way:
 
-![Disk buffering](/assets/images/disk-buffer-diagram-normal.png)
-
   - *Output queue*: Messages from the output queue are sent to the target AxoSyslog server. The AxoSyslog application puts the outgoing messages directly into the output queue, unless the output queue is full. The output queue can hold 64 messages, this is a fixed value and cannot be modified.
 
   - *Disk buffer*: If the output queue is full and disk-buffering is enabled, AxoSyslog puts the outgoing messages into the disk buffer of the destination.
+![Disk buffering](/assets/images/disk-buffer-diagram-normal.svg)
 
   - *Overflow queue*: If the output queue is full and the disk buffer is disabled or full, AxoSyslog puts the outgoing messages into the overflow queue of the destination. (The overflow queue is identical to the output buffer used by other destinations.) The `log-fifo-size()` parameter specifies the number of messages stored in the overflow queue, unless flow-control is enabled. When dynamic flow-control is enabled, AxoSyslog sets the size of the overflow queue automatically. For details on sizing the `log-fifo-size()` parameter, see {{% xref "/chapter-routing-filters/concepts-flow-control/configuring-flow-control/_index.md" %}}.
 
