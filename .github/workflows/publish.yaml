@@ -59,8 +59,25 @@ jobs:
 
       - name: Pagefind search index
         run: npm_config_yes=true npx pagefind --output-subdir pagefind --site ./public
-      
-      - name: Deploy to Cloudflare R2
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # Install required packages for your script
+          pip install lxml beautifulsoup4
+
+      - name: Generate manpages
+        run: python3 scripts/create-man-from-html.py --output-dir public/manpages
+
+      - name: Package manpages into a single file
+        run: tar -czf ./public/manpages.tar.gz -C public/manpages .
+
+        - name: Deploy to Cloudflare R2
         env:
           AWS_S3_BUCKET: 'axosyslog-core-docs'
           AWS_ACCESS_KEY_ID: ${{ secrets.R2_PUBLIC_EDITOR_ACCESS_KEY_ID }}
