@@ -1,5 +1,3 @@
----
----
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
 <!-- Used in the opentelemetry(), loki(), and axosyslog-otlp drivers -->
@@ -27,39 +25,32 @@ auth(adc(service-account-key("absolute-path-to-key-file")))
 
 [Application Layer Transport Security (ALTS)](https://grpc.io/docs/languages/cpp/alts/) is a simple to use authentication, only available within Google's infrastructure. It accepts the `target-service-account()` option, where you can list service accounts to match against when authenticating the server.
 
-{{< tabpane text=true right=true >}}
-{{% tab header="Driver:" disabled=true /%}}
-{{% tab header="`opentelemetry()`" lang="opentelemetry" %}}
+{{< if "opentelemetry" >}}
 ```shell
-source {
-    opentelemetry(
-      port(4317)
-      auth(alts())
-    );
-  };
+  opentelemetry(
+    port(4317)
+    auth(alts())
+  );
 ```
-{{% /tab %}}
-{{% tab header="`loki()`" lang="loki" %}}
+{{< /if >}}
+{{< if "loki" >}}
 ```shell
-destination {
+destination d_loki {
     loki(
       port(12345)
       auth(alts())
     );
   };
 ```
-{{% /tab %}}
-{{% tab header="`axosyslog-otlp()`" lang="axosyslog-otlp" %}}
+{{< /if >}}
+{{< if "axosyslog-otlp" >}}
 ```shell
-source {
-    axosyslog-otlp(
-      port(4317)
-      auth(alts())
-    );
-  };
+  axosyslog-otlp(
+    port(4317)
+    auth(alts())
+  );
 ```
-{{% /tab %}}
-{{< /tabpane >}}
+{{< /if >}}
 
 ### insecure() {#insecure}
 
@@ -72,11 +63,9 @@ This is the default method, authentication is disabled (`auth(insecure())`).
 `tls()` accepts the `key-file()`, `cert-file()`, `ca-file()` and `peer-verify()` (possible values:
 `required-trusted`, `required-untrusted`, `optional-trusted` and `optional-untrusted`) options.
 
-{{< tabpane text=true right=true >}}
-{{% tab header="Driver:" disabled=true /%}}
-{{% tab header="`opentelemetry()`" lang="opentelemetry" %}}
+{{< if "opentelemetry" >}}
 ```shell
-destination {
+destination d_otlp {
     opentelemetry(
       url("your-otel-server:12346")
       auth(
@@ -89,10 +78,10 @@ destination {
     );
   };
 ```
-{{% /tab %}}
-{{% tab header="`loki()`" lang="loki" %}}
+{{< /if >}}
+{{< if "loki" >}}
 ```shell
-destination {
+destination d_loki {
     loki(
       url("your-loki-server:12346")
       auth(
@@ -105,10 +94,10 @@ destination {
     );
   };
 ```
-{{% /tab %}}
-{{% tab header="`axosyslog-otlp()`" lang="axosyslog-otlp" %}}
+{{< /if >}}
+{{< if "axosyslog-otlp" >}}
 ```shell
-destination {
+destination d_otlp {
     axosyslog-otlp(
       url("your-otel-server:12346")
       auth(
@@ -121,8 +110,39 @@ destination {
     );
   };
 ```
-{{% /tab %}}
-{{< /tabpane >}}
+{{< /if >}}
+{{< if "bigquery" >}}
+```shell
+destination d_bigquery {
+    bigquery(
+      ...
+      auth(
+        tls(
+          ca-file("/path/to/ca.pem")
+          key-file("/path/to/key.pem")
+          cert-file("/path/to/cert.pem")
+        )
+      )
+    );
+  };
+```
+{{< /if >}}
+{{< if "clickhouse" >}}
+```shell
+destination d_clickhouse {
+    clickhouse(
+      ...
+      auth(
+        tls(
+          ca-file("/path/to/ca.pem")
+          key-file("/path/to/key.pem")
+          cert-file("/path/to/cert.pem")
+        )
+      )
+    );
+  };
+```
+{{< /if >}}
 
 > Note:
 >
