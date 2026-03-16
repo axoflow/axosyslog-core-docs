@@ -27,7 +27,7 @@ Available in {{% param "product.abbrev" %}} version 4.12 and later. (From versio
 
 ## Options
 
-The `syslog-ng-otlp()` source has the following options.
+The `axosyslog-otlp()` source has the following options.
 
 {{< include-headless "chunk/grpc-authentication.md" >}}
 
@@ -69,7 +69,7 @@ The `syslog-ng-otlp()` source has the following options.
 
 ## keep-hostname()
 
-The `syslog-ng-otlp()` source ignores this option and uses the hostname from the message as the `${HOST}`.
+The `axosyslog-otlp()` source ignores this option and uses the hostname from the message as the `${HOST}`.
 
 {{< include-headless "chunk/option-source-keep-timestamp.md" >}}
 

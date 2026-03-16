@@ -49,10 +49,10 @@ destination {
   };
 ```
 {{% /tab %}}
-{{% tab header="`syslog-ng-otlp()`" lang="syslog-ng-otlp" %}}
+{{% tab header="`axosyslog-otlp()`" lang="axosyslog-otlp" %}}
 ```shell
 source {
-    syslog-ng-otlp(
+    axosyslog-otlp(
       port(4317)
       auth(alts())
     );
@@ -106,10 +106,10 @@ destination {
   };
 ```
 {{% /tab %}}
-{{% tab header="`syslog-ng-otlp()`" lang="syslog-ng-otlp" %}}
+{{% tab header="`axosyslog-otlp()`" lang="axosyslog-otlp" %}}
 ```shell
 destination {
-    syslog-ng-otlp(
+    axosyslog-otlp(
       url("your-otel-server:12346")
       auth(
         tls(
