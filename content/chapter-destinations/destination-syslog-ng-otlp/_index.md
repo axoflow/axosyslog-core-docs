@@ -14,7 +14,7 @@ Available in {{% param "product.abbrev" %}} version 4.12 and later. (From versio
 
 ## Options
 
-The `syslog-ng-otlp()` destination has the following options.
+The `axosyslog-otlp()` destination has the following options.
 
 {{< include-headless "chunk/grpc-authentication.md" >}}
 

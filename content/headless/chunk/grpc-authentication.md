@@ -2,7 +2,7 @@
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-<!-- Used in the opentelemetry(), loki(), and syslog-ng-otlp drivers -->
+<!-- Used in the opentelemetry(), loki(), and axosyslog-otlp drivers -->
 ## auth() {#auth}
 
 You can set authentication in the `auth()` option of the driver. By default, authentication is disabled (`auth(insecure())`).

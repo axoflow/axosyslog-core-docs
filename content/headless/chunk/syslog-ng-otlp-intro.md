@@ -13,12 +13,12 @@ To use it, configure an `axosyslog-otlp()` destination on the sender node, and a
 
 ```shell
 destination d_axosyslog_otlp {
-  syslog-ng-otlp(url("your-receiver-syslog-ng-instance:4317"));
+  axosyslog-otlp(url("your-receiver-axosyslog-instance:4317"));
 };
 ```
 
 ```shell
 source s_axosyslog_otlp {
-  syslog-ng-otlp(port(4317));
+  axosyslog-otlp(port(4317));
 };
 ```
