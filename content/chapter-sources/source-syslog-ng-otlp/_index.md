@@ -3,6 +3,7 @@ title: "axosyslog-otlp(): Receive logs from another node using OpenTelemetry"
 weight: 3950
 driver: "axosyslog-otlp()"
 short_description: "Receive logs from another node using OpenTelemetry"
+axosyslog-otlp: true
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
@@ -29,7 +30,7 @@ Available in {{% param "product.abbrev" %}} version 4.12 and later. (From versio
 
 The `axosyslog-otlp()` source has the following options.
 
-{{< include-headless "chunk/grpc-authentication.md" >}}
+{{< readfile "/headless/chunk/grpc-authentication.md" >}}
 
 ## chain-hostnames()
 
