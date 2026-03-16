@@ -88,9 +88,7 @@ The `axosyslog-otlp()` source ignores this option and uses the hostname from the
 |          |        |
 | -------- | ------ |
 | Type:    | integer |
-| Default: |        |
-
-<!-- FIXME what is the default port? -->
+| Default: | `4317` |
 
 *Description:* The port number to bind to.
 
