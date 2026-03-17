@@ -46,24 +46,23 @@ When using flow-control, AxoSyslog automatically sets the size of the output buf
 
 If the source can handle multiple connections (for example, `network()` and `syslog()`), the size of the control window is divided by the value of the `max-connections()` parameter and this smaller control window is applied to each connection of the source.
 
-For UDP-based sources, the window size is not divided by `max-connections()`, because UDP-based traffic is treated as a single connection for the source. Also, flow control has no effect on UDP-based traffic, because there's no way to notify the peers that their messages cannot be processed. When receiving logs from using UDP sources, configure appropriately sized [disk buffers]({{< relref "/chapter-routing-filters/concepts-diskbuffer/_index.md" >}}) in the related destinations.
+For UDP-based sources, the window size is not divided by `max-connections()`, because UDP-based traffic is treated as a single connection for the source. Also, flow control has no effect on UDP-based traffic, because there's no way to notify the peers that their messages cannot be processed. For UDP sources, we recommend configuring appropriately sized [disk buffers]({{< relref "/chapter-routing-filters/concepts-diskbuffer/_index.md" >}}).
 
 {{% /alert %}}
 
 
 ## Dynamic flow-control
 
-In addition to the static control window set using the `log-iw-size()` option, you can also allocate a dynamic window to the source. The {{% param "product.abbrev" %}} application increases the static window of the active connections with a dynamic part. The dynamic window (set using the `dynamic-window-size()` option) is distributed evenly among the active connections of the source. The {{% param "product.abbrev" %}} application periodically checks which connections of the source are active, and redistributes the dynamic window. If only one of the connections is active, it receives the entire dynamic window, while other connections receive only their share of the static window.
-
-<!-- FIXME figure: static window + dynamic window with multiple clients, show also inactive clients with only the static window -->
+In addition to the static control window set using the `log-iw-size()` option, you can also allocate a dynamic window to the source. The AxoSyslog application uses this window to dynamically increase the static window of the active connections. The dynamic window is distributed evenly among the active connections of the source. The AxoSyslog application periodically checks which connections of the source are active, and redistributes the dynamic window. If only one of the connections is active, it receives the entire dynamic window, while other connections receive only their share of the static window.
 
 {{< include-headless "wnt/warning-log-iw-size-restart.md" >}}
 
-Dynamic flow-control is useful when the source has lots of connections (so you have to set `max-connections()` to a high value), but the number of active connections is high (near `max-connections()`) only for short periods.
+Using dynamic flow-control on your AxoSyslog server is useful when the source has lots of connections, but only a small subset of the active clients send messages at high rate, and the memory of the AxoSyslog server is limited. In other cases, it is currently not recommended, because it can result in higher memory usage and fluctuating performance compared to using only the static window.
 
 When flow-control is used, every source has its own control window. As a worst-case situation, memory of the host must be greater than the total size of the messages of every control window, plus the size of the dynamic window, that is, the `log-iw-size()`+`dynamic-window-size()`. This applies to every source that sends logs to the particular destination. Thus if two sources having several connections and heavy traffic send logs to the same destination, the control window of both sources must fit into the memory of the host. Otherwise, some messages might not fit in the memory, and messages may be lost.
 
-If dynamic flow-control is disabled (which is the default behavior), the value of the `log-iw-size()` option cannot be lower than 100.
+If dynamic flow-control is disabled (which is the default behavior), the value of the `log-iw-size()` option cannot be lower than 100. If dynamic flow-control is enabled, you can decrease the value of the `log-iw-size()` option (to the minimum of 1).
+
 
 In case of soft flow-control there is no message lost if the destination can accept messages. It is possible to lose messages if it cannot accept messages (for example, the file destination is not writable, or the disk becomes full), and all buffers are full. Soft flow-control cannot be configured, it is automatically available for file destinations.
 
@@ -126,13 +125,13 @@ Hazard of data loss! For destinations other than file, soft flow-control is not 
 
 ## Handling outgoing messages
 
-The {{% param "product.abbrev" %}} application handles outgoing messages the following way:
+The AxoSyslog application handles outgoing messages the following way:
 
-<!-- FIXME replace with stuff from normal disk buffer -->
-![Disk buffering](/assets/images/disk-buffer-diagram-normal.svg)
+![Disk buffering](/images/disk-buffer-diagram-normal.svg)
 
-- *Output queue*: Messages from the output queue are sent to the target destination. The {{% param "product.abbrev" %}} application puts the outgoing messages directly into the output queue, unless the output queue is full.
-    <!-- FIXME can this be configured when disk-buffer is disabled? -->
+  - *Output queue*: Messages from the output queue are sent to the target AxoSyslog server. The AxoSyslog application puts the outgoing messages directly into the output queue, unless the output queue is full. The output queue can hold 64 messages, this is a fixed value and cannot be modified.
 
-- *Disk buffer*: If the output queue is full and disk-buffering is enabled, {{% param "product.abbrev" %}} puts the outgoing messages into the disk buffer of the destination.
-- *Overflow queue*: If the output queue is full and the disk buffer is disabled or full, {{% param "product.abbrev" %}} puts the outgoing messages into the overflow queue of the destination. (The overflow queue is identical to the output buffer used by other destinations.) The `log-fifo-size()` parameter specifies the number of messages stored in the overflow queue, unless flow-control is enabled. When dynamic flow-control is enabled, {{% param "product.abbrev" %}} sets the size of the overflow queue automatically. For details on sizing the `log-fifo-size()` parameter, see {{% xref "/chapter-routing-filters/concepts-flow-control/configuring-flow-control/_index.md" %}}.
+  - *Disk buffer*: If the output queue is full and disk-buffering is enabled, AxoSyslog puts the outgoing messages into the disk buffer of the destination.
+
+  - *Overflow queue*: If the output queue is full and the disk buffer is disabled or full, AxoSyslog puts the outgoing messages into the overflow queue of the destination. (The overflow queue is identical to the output buffer used by other destinations.) The `log-fifo-size()` parameter specifies the number of messages stored in the overflow queue, unless flow-control is enabled. When dynamic flow-control is enabled, AxoSyslog sets the size of the overflow queue automatically. For details on sizing the `log-fifo-size()` parameter, see {{% xref "/chapter-routing-filters/concepts-flow-control/configuring-flow-control/_index.md" %}}.
+
