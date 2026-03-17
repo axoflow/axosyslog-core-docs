@@ -5,6 +5,7 @@ weight:  200
 driver: "clickhouse()"
 short_description: "Send messages to a ClickHouse database"
 dest_type: grpc
+clickhouse: true
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
@@ -50,7 +51,7 @@ If you have a [protobuf-formatted message]({{< relref "/filterx/function-referen
 
 This destination has the following options:
 
-{{< include-headless "chunk/grpc-authentication.md" >}}
+{{< readfile "/headless/chunk/grpc-authentication.md" >}}
 
 {{% include-headless "chunk/option-destination-otlp-batch-bytes.md" %}}
 

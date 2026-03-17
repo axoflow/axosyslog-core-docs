@@ -3,6 +3,7 @@ title: "axosyslog-otlp(): Receive logs from another node using OpenTelemetry"
 weight: 3950
 driver: "axosyslog-otlp()"
 short_description: "Receive logs from another node using OpenTelemetry"
+axosyslog-otlp: true
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
@@ -27,9 +28,9 @@ Available in {{% param "product.abbrev" %}} version 4.12 and later. (From versio
 
 ## Options
 
-The `syslog-ng-otlp()` source has the following options.
+The `axosyslog-otlp()` source has the following options.
 
-{{< include-headless "chunk/grpc-authentication.md" >}}
+{{< readfile "/headless/chunk/grpc-authentication.md" >}}
 
 ## chain-hostnames()
 
@@ -69,7 +70,7 @@ The `syslog-ng-otlp()` source has the following options.
 
 ## keep-hostname()
 
-The `syslog-ng-otlp()` source ignores this option and uses the hostname from the message as the `${HOST}`.
+The `axosyslog-otlp()` source ignores this option and uses the hostname from the message as the `${HOST}`.
 
 {{< include-headless "chunk/option-source-keep-timestamp.md" >}}
 
@@ -88,9 +89,7 @@ The `syslog-ng-otlp()` source ignores this option and uses the hostname from the
 |          |        |
 | -------- | ------ |
 | Type:    | integer |
-| Default: |        |
-
-<!-- FIXME what is the default port? -->
+| Default: | `4317` |
 
 *Description:* The port number to bind to.
 

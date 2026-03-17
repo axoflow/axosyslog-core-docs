@@ -4,6 +4,7 @@ linktitle: OpenTelemetry
 weight: 3750
 driver: "opentelemetry()"
 short_description: "Send logs, metrics, and traces to OpenTelemetry"
+opentelemetry: true
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
@@ -58,7 +59,7 @@ log non_otel_to_otel_tls {
 };
 ```
 
-{{< include-headless "chunk/grpc-authentication.md" >}}
+{{< readfile "/headless/chunk/grpc-authentication.md" >}}
 
 {{% include-headless "chunk/option-destination-otlp-batch-bytes.md" %}}
 
