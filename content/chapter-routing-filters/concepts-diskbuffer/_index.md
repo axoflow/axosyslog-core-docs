@@ -25,7 +25,7 @@ The {{% param "product.abbrev" %}} application supports two types of disk buffer
 
 When you use disk-based buffering, and the `reliable()` option is set to `no`, {{% param "product.abbrev" %}} handles outgoing messages the following way:
 
-![Disk buffering](/assets/images/disk-buffer-diagram-normal.svg)
+![Disk buffering](/images/disk-buffer-diagram-normal.svg)
 
 - *Output queue*: In-memory queue. If there is space left in it, {{% param "product.abbrev" %}} puts the message into this queue first. Messages stored here are processed faster, because {{% param "product.abbrev" %}} can skip writing to, and reading from the disk, as well as serializing or deserializing the message, saving I/O and processor time as a result. The contents of the in-memory output queue are persisted to the disk-buffer file during {{% param "product.abbrev" %}} reload, restart or stop, but they cannot be persisted if in the event of power failures, or if {{% param "product.abbrev" %}} crashes. By default, the output queue can hold 1000 messages (you can adjust this number using the `front-cache-size()` option).
 
