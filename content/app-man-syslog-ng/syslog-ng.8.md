@@ -100,6 +100,10 @@ The {{% param "product.abbrev" %}} application is a flexible and highly scalable
 
     Set the internal log level of {{% param "product.abbrev" %}} to `default`, `verbose`, `debug`, or `trace`. Available in {{% param "product.abbrev" %}} 4.0 and later.
 
+- `--metrics-registry`
+
+    Shows the list of available metrics. For a list of supported metrics, see {{% xref "/chapter-log-statistics/metrics-reference/_index.md" %}}.
+
 - `--module-registry`
     
     Display the list and description of the available modules. Note that not all of these modules are loaded automatically, only the ones specified in the `--default-modules` option.
