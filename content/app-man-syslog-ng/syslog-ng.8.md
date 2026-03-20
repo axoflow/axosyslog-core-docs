@@ -104,6 +104,8 @@ The {{% param "product.abbrev" %}} application is a flexible and highly scalable
 
     Available in {{% param "product.abbrev" %}} 4.24 and later.
 
+    Available in {{% param "product.abbrev" %}} 4.24 and later.
+
     Shows the list of available metrics. For a list of supported metrics, see {{% xref "/chapter-log-statistics/metrics-reference/_index.md" %}}.
 
 - `--module-registry`
