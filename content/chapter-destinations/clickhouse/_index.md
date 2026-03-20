@@ -55,6 +55,8 @@ This destination has the following options:
 
 {{% include-headless "chunk/option-destination-otlp-batch-bytes.md" %}}
 
+{{% include-headless "chunk/option-destination-batch-idle-timeout.md" %}}
+
 ## batch-lines()
 
 |          |        |

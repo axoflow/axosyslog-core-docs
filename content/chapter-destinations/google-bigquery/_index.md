@@ -63,6 +63,8 @@ The `bigquery()` destination has the following options.
 
 By default, the `batch-bytes()` option of the `bigquery()` destination is 10 MB. This is an upper limit for the `bigquery()` destination. Note that due to a framework limitation, the batch might be at most 1 message larger than the set limit.
 
+{{% include-headless "chunk/option-destination-batch-idle-timeout.md" %}}
+
 {{% include-headless "chunk/option-description-destination-batch-lines.md" %}}
 
 {{% include-headless "chunk/option-destination-batch-timeout.md" %}}
