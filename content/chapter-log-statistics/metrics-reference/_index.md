@@ -14,7 +14,6 @@ title: Metrics reference
 - `event_processing_latency_seconds`: 
 - `events_allocated_bytes`: 
 - `filtered_events_total`: 
-- `fx_xxx_evals_total`: 
 - `input_event_bytes_total`: 
 - `input_events_total`: 
 - `input_window_available`: 
