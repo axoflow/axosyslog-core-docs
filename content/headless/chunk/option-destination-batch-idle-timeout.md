@@ -9,4 +9,6 @@
 | Type:    | time in milliseconds |
 | Default: | `0` (disabled)       |
 
+Available in {{% param "product.abbrev" %}} 4.24 and later.
+
 *Description:*  `batch-idle-timeout()` measures the elapsed time since the last message was added to the batch ([`batch-timeout()`](#batch-timeout) defines the maximum time used to collect a batch, starting from the first message). If either `batch-idle-timeout()` or `batch-timeout()` expires, {{% param "product.abbrev" %}} closes and sends the batch.
