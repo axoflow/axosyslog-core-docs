@@ -26,7 +26,7 @@ title: Metrics reference
 - `last_config_reload_timestamp_seconds`: 
 - `last_successful_config_reload_timestamp_seconds`: 
 - `mainloop_io_worker_roundtrip_latency_seconds`: 
-- `memory_queue_capacity`: Shows the capacity (maximum possible size) of each queue. Note that this metric publishes `log-fifo-size()`, which only limits non-flow-controlled messages. Messages coming from flow-controlled paths are not limited by `log-fifo-size()`, but by the `log-iw-size()` of their corresponding source. For metrics on `log-iw-size()`, see [`input_window_available`](#input_window_available) and [`input_window_capacity`](#input_window_capacity).
+- `memory_queue_capacity`: Shows the capacity (maximum possible size) of each queue. Note that this metric publishes `log-fifo-size()`, which only limits non-flow-controlled messages. Messages coming from flow-controlled paths aren't limited by `log-fifo-size()`, but by the `log-iw-size()` of their corresponding source. For metrics on `log-iw-size()`, see [`input_window_available`](#input_window_available) and [`input_window_capacity`](#input_window_capacity).
 - `memory_queue_events`: 
 - `memory_queue_memory_usage_bytes`: 
 - `memory_queue_processed_events_total`: The number of events processed since startup by each queue.
