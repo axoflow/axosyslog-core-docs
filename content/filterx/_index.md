@@ -416,6 +416,7 @@ FilterX has the following built-in functions.
 - [`dpath`]({{< relref "/filterx/function-reference.md#dpath" >}}): Creates a nested path in a dictionary.
 - [`endswith`]({{< relref "/filterx/filterx-string-search/_index.md" >}}): Checks if a string ends with the specified value.
 - [`flatten`]({{< relref "/filterx/function-reference.md#flatten" >}}): Flattens the nested elements of an object.
+- [fix_timezone]({{< relref "/filterx/filterx-timezone/_index.md#fix-timezone" >}}): Corrects the timezone of a message if it was parsed incorrectly for some reason, or if the client didn't include any timezone information in the message.
 - [`format_cef`]({{< relref "/filterx/filterx-format-data/format-cef" >}}): Formats a dictionary into Common Event Format (CEF).
 - [`format_csv`]({{< relref "/filterx/filterx-format-data/format-csv.md" >}}): Formats a dictionary or a list into a comma-separated string.
 - [`format_isodate`]({{< relref "/filterx/function-reference.md#format-isodate" >}}): Formats a date as ISODATE: `%Y-%m-%dT%H:%M:%S%z`
@@ -426,6 +427,8 @@ FilterX has the following built-in functions.
 - [`format_windows_eventlog_xml`]({{< relref "/filterx/filterx-format-data/format-windows-eventlog-xml.md" >}}) Formats a dictionary into Windows Event Logs XML.
 - [`format_xml`]({{< relref "/filterx/filterx-format-data/format-xml" >}}): Formats a dictionary into XML.
 - [`get_sdata`]({{< relref "/filterx/filterx-sdata/_index.md" >}}): Returns the SDATA part of an RFC5424-formatted syslog message as a JSON object.
+- [`get_timezone_source`]({{< relref "/filterx/filterx-timezone/_index.md#get-timezone-source" >}}): Shows where the timezone information of the message originates from.
+- [guess_timezone]({{< relref "/filterx/filterx-timezone/_index.md#guess-timezone" >}}): Attempts to set the timezone of the message automatically, using heuristics on the timestamps.
 - [`has_sdata`]({{< relref "/filterx/filterx-sdata/_index.md" >}}): Checks if a string ends with the specified value.
 - [`includes`]({{< relref "/filterx/filterx-string-search/_index.md" >}}): Checks if a string contains a specific substring.
 - [`isodate`]({{< relref "/filterx/function-reference.md#isodate" >}}): Parses a string as a date in ISODATE format.
@@ -448,6 +451,7 @@ FilterX has the following built-in functions.
 - [`set_fields`]({{< relref "/filterx/function-reference.md#set-fields" >}}): Set multiple fields of a dict with overrides or defaults.
 - [`set_pri`]({{< relref "/filterx/function-reference.md#set-pri" >}}): Set the priority value of the message.
 - [`set_timestamp`]({{< relref "/filterx/function-reference.md#set-timestamp" >}}): Set the timestamp of the message.
+- [set_timezone]({{< relref "/filterx/filterx-timezone/_index.md#set-timezone" >}}): Sets the timezone of the message to a specific value.
 - [`startswith`]({{< relref "/filterx/filterx-string-search/_index.md" >}}): Checks if a string begins with the specified value.
 - [`strcasecmp`]({{< relref "/filterx/function-reference.md#strcasecmp" >}}): Case insensitive string comparison.
 - [`strftime`]({{< relref "/filterx/function-reference.md#strftime" >}}): Format datetime values.

@@ -148,6 +148,10 @@ ${MESSAGE} = flatten(sample-dict);
 
 The value of `${MESSAGE}` will be: `{"a.b.c": "1"}`
 
+## fix_timezone
+
+See {{% xref "/filterx/filterx-timezone/_index.md#fix-timezone" %}}.
+
 ## format_cef {#format-cef}
 
 Available in {{< product >}} 4.13 and later.
@@ -235,6 +239,14 @@ For details, see {{% xref "/filterx/filterx-format-data/format-windows-eventlog-
 ## get_sdata
 
 See {{% xref "/filterx/filterx-sdata/_index.md" %}}.
+
+## get_timezone_source
+
+See {{% xref "/filterx/filterx-timezone/_index.md#get-timezone-source" %}}.
+
+## guess_timezone
+
+See {{% xref "/filterx/filterx-timezone/_index.md#guess-timezone" %}}.
 
 ## has_sdata
 
@@ -668,6 +680,10 @@ set_timestamp(datetime, stamp="stamp");
 ```
 
 The `stamp` argument determines the timestamp to be set: `stamp` or `recvd`. Default value: `stamp`
+
+## set_timezone {#set-timezone}
+
+See {{% xref "/filterx/filterx-timezone/_index.md#set-timezone" %}}.
 
 ## startswith
 
