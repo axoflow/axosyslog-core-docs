@@ -73,6 +73,8 @@ auth(
 
 {{% include-headless "chunk/option-destination-batch-bytes.md" %}}
 
+{{% include-headless "chunk/option-destination-batch-idle-timeout.md" %}}
+
 ## batch-lines()
 
 |          |        |
