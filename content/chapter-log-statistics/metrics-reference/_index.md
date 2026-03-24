@@ -37,7 +37,7 @@ Metrics that have the `_total` suffix reset to zero when {{< product >}} is rest
 - `memory_queue_events`: Number of messages waiting in each memory queue by destination.
 - `memory_queue_memory_usage_bytes`: Total bytes of data waiting in each memory queue.
 - `memory_queue_processed_events_total`: The number of events processed since startup by each queue.
-- `output_active_worker_partitions`: The number of active workers when `worker-partition-autoscaling()` is set to `yes`.
+- `output_active_worker_partitions`: The number of active partitions when `worker-partition-autoscaling()` is set to `yes`.
 - `output_batch_size_bytes`: Histogram-style metrics for the destination.
 - `output_batch_size_events`: Histogram-style metrics for the destination.
 - `output_batch_timedout_total`: For destinations that use batching, it shows the number of batches that were sent because of timeout (either `batch-timeout()` or `batch-idle-timeout()` expired).
