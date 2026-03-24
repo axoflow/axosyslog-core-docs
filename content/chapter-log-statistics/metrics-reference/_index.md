@@ -195,11 +195,11 @@ The following list shows the metrics available in {{< product >}}.
 
 ## route_egress_total
 
-*Description*: The number of messages sent by each [named log path]({{< relref "/chapter-routing-filters/logpath/_index.md#name-log-path" >}}).
+*Description*: The number of messages delivered by each [named log path]({{< relref "/chapter-routing-filters/logpath/_index.md#name-log-path" >}}).
 
 ## route_ingress_total
 
-*Description*: The number of messages received by each [named log path]({{< relref "/chapter-routing-filters/logpath/_index.md#name-log-path" >}}).
+*Description*: The number of messages entering each [named log path]({{< relref "/chapter-routing-filters/logpath/_index.md#name-log-path" >}}).
 
 ## scratch_buffers_bytes
 
