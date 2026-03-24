@@ -74,7 +74,7 @@ Metrics that have the `_total` suffix reset to zero when {{< product >}} is rest
 
 ## input_window_full_total
 
-*Description*: The total number of input window full events, for the entire configuration. These events cause {{< product >}} to throttle the source.
+*Description*: The total number of input window full events, for the entire configuration. These events cause {{< product >}} to throttle the source. Available on `stats(level(1))`.
 
 ## internal_events_queue_capacity
 
