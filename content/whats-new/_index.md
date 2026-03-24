@@ -6,8 +6,14 @@ weight: 10
 
 {{< include-headless "banner-new-to-axosyslog.md" >}}
 
-## Version 4.23 (2026-02-18)
+## Version 4.24 (2026-03-23)
 
+- You can query the list of supported metrics by running `syslog-ng --metrics-registry`. For a reference of available metrics, see {{% xref "/chapter-log-statistics/metrics-reference/_index.md" %}}.
+- The new `batch-idle-timeout()` option closes the batch if no new message is received since the last message within the `batch-idle-timeout()` period. The following destinations support `batch-idle-timeout()`: `amqp()`, `bigquery()`, `clickhouse()`, `discord()`, `elasticsearch()`, `mongodb()`, `google-pubsub()`, `http()`,`kafka-c()`, `opensearch()`,`opentelemetry()`, `redis()`, `riemann()`, `slack()`, `smtp()`, `stomp()`, `sql()`, `sumologic()`.
+- New FilterX functions to manipulate the timezone of the messages: {{% xref "/filterx/filterx-timezone/_index.md" %}}.
+- [`network-load-balancer()`]({{< relref "/chapter-examples/load-bal-multi-dest/load-bal-multi-dest-msec-h/_index.md" >}}) now supports the `failover()` option.
+
+## Version 4.23 (2026-02-18)
 
 - The [`opentelemetry()` source]({{< relref "/chapter-sources/opentelemetry/_index.md" >}}) now supports the [`ip()`]({{< relref "/chapter-sources/opentelemetry/_index.md#ip" >}}) option to specify the bind address.
 - New [FilterX]({{< relref "/filterx/_index.md" >}}) functions:
