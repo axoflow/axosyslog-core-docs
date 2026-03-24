@@ -5,7 +5,8 @@ title: Metrics reference
 The following list shows the metrics available in {{< product >}}.
 
 {{% alert title="Note" color="info" %}}
-Metrics that have the `_total` suffix reset to zero when {{< product >}} is restarted. Reloading {{< product >}} doesn't cause a reset.
+- Metrics that have the `_total` suffix reset to zero when {{< product >}} is restarted. Reloading {{< product >}} doesn't cause a reset.
+- Different metrics are available on different [`stats(level())`]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-stats-level" >}}).
 {{% /alert %}}
 
 ## classified_events_total
