@@ -66,7 +66,7 @@ You can replace most [rewrite rules]({{< relref "/chapter-manipulating-messages/
 - `rewrite{set()}` with [value assignments]({{< relref "/filterx/_index.md#assign-values" >}})
 - `rewrite{unset()}` with the [`unset` FilterX function]({{< relref "/filterx/function-reference.md#unset" >}})
 - `rewrite{rename()}` with assigning a value to the new field, then using the [`unset`]({{< relref "/filterx/function-reference.md#unset" >}}) function on the old field
-
+- [Timezone manipulation]({{< relref "/chapter-manipulating-messages/modifying-messages/rewrite-timezone/_index.md" >}}) with the similar [FilterX functions]({{< relref "/filterx/filterx-timezone/_index.md" >}}).
 
 <!-- 
 set-severity(), set-facility() set-pri() rewrite functions > no equivalent
@@ -82,9 +82,6 @@ map-value-pairs: Rename value-pairs to normalize logs
 
 Conditional rewrites
     > see use cases
-
-Rewrite the timezone of a message
-    > ?
 
 Anonymizing credit card numbers
     > no equivalent, but can be replicated using some regexp_subst expressions, see the scl for details tmp/axosyslog/scl/rewrite/cc-mask.conf

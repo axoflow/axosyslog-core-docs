@@ -11,7 +11,7 @@ The Python destination allows you to write your own destination in Python. The `
 
 This option does not have any effect unless the `flush()` method is implemented in the destination.
 
-
+{{% include-headless "chunk/option-destination-batch-idle-timeout.md" %}}
 
 ## batch-lines()
 

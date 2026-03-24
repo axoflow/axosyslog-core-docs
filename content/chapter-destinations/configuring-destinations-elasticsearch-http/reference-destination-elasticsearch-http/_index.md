@@ -13,7 +13,7 @@ This destination is available in {{% param "product.abbrev" %}} version 3.21 and
 
 For details on how this option influences batch mode, see {{% xref "/chapter-destinations/configuring-destinations-elasticsearch-http/elasticsearch-http-batch-mode/_index.md" %}}
 
-
+{{% include-headless "chunk/option-destination-batch-idle-timeout.md" %}}
 
 ## batch-lines()
 

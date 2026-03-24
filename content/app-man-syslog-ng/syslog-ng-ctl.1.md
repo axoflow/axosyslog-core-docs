@@ -191,7 +191,7 @@ The `syslog-ng-ctl query get` command has the following options:
 
 `stats [options]`
 
-Use the `stats` command to display statistics about the processed messages either in legacy format, or in Prometheus-compatible format (by running `syslog-ng-ctl stats prometheus`). <!-- For details about the displayed statistics, see [The {{% param "product.abbrev" %}} documentation](https://axoflow.com/). -->
+Use the `stats` command to display statistics about the processed messages either in legacy format, or in Prometheus-compatible format (by running `syslog-ng-ctl stats prometheus`). For details about the displayed metrics, see {{% xref "/chapter-log-statistics/metrics-reference/_index.md" %}}.
 
 Note that starting with version 4.14, {{< product >}} automatically shows orphan counters to avoid losing information. Information loss could happen, for example, when sending messages using short-lived (few seconds long) connections, while scraping metrics in minute intervals.
 
