@@ -1,5 +1,5 @@
 ---
-title: Load balancing with a round robin load balancing method based on the R_MSEC macro of syslog-ng OSE
+title: Load balancing with a round robin load balancing method based on the R_MSEC macro
 linktitle: Round robin
 weight: 100
 ---
