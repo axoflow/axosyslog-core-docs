@@ -207,7 +207,7 @@ The following list shows the metrics available in {{< product >}}.
 
 ## scratch_buffers_count
 
-*Description*: The number allocated to internal string buffers.
+*Description*: The number of allocated internal string buffers.
 
 ## socket_connections
 
