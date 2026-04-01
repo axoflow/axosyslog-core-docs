@@ -879,6 +879,22 @@ Converts all characters of a string uppercase characters.
 
 Usage: `upper(string)`
 
+## uuid
+
+Available in {{% param "product.name" %}} 4.25 and later.
+
+Generates a random UUID v4 string. Usage:
+
+```shell
+uuid()
+```
+
+For example:
+
+```shell
+${MESSAGE} = uuid();
+```
+
 ## vars
 
 Returns the variables (including pipeline variables and name-value pairs) defined in the FilterX block as a JSON object. The names of name-value pairs begins with the `$` character. To exclude name-value pairs, set the `exclude_msg_values=true` flag.
