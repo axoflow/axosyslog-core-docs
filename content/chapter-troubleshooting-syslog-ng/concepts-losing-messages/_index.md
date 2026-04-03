@@ -6,7 +6,7 @@ weight:  100
 
 During the course of a message from the sending application to the final destination of the message, there are a number of locations where a message may be lost, even though AxoSyslog does its best to avoid message loss. Usually losing messages can be avoided with careful planning and proper configuration of AxoSyslog and the hosts running `syslog-ng`. The following list shows the possible locations where messages may be lost, and provides methods to minimize the risk of losing messages:
 
-  - Between the application and the AxoSyslog client: Make sure to use an appropriate source to receive the logs from the application (for example, from `/dev/log`). For example, use `unix-stream` instead of `unix-dgram` whenever possible.
+  - Between the application and the AxoSyslog client: Make sure to use an appropriate source to receive the logs from the application (for example, from `/dev/log`).
 
   - When AxoSyslog is sending messages: If AxoSyslog cannot send messages to the destination and the output buffer gets full, AxoSyslog will drop messages.
     
