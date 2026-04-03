@@ -15,10 +15,9 @@ During the course of a message from the sending application to the final destina
 
 - On the network: When transferring messages using the UDP protocol, messages may be lost without any notice or feedback — such is the nature of the UDP protocol. Always use the TCP protocol to transfer messages over the network whenever possible.
 
-    For details on minimizing message loss when using UDP, see the <span></span> tutorial.
+    For details on minimizing message loss when using UDP, see our blog posts about [soslog over UDP](https://axoflow.com/tag/syslog-over-udp).
 
 - In the socket receive buffer: When transferring messages using the UDP protocol, the UDP datagram (that is, the message) that reaches the receiving host placed in a memory area called the `socket receive buffer`. If the host receives more messages than it can process, this area overflows, and the kernel drops messages without letting AxoSyslog know about it. Using TCP instead of UDP prevents this issue. If you must use the UDP protocol, increase the size of the receive buffer using the `so-rcvbuf()` option.
-
 - When AxoSyslog is receiving messages:
 
       - The receiving AxoSyslog (for example, the AxoSyslog server or relay) may drop messages if the fifo of the destination file gets full. The number of dropped messages is displayed per destination in the log message statistics of AxoSyslog (for details, see {{% xref "/chapter-log-statistics/_index.md" %}}).
