@@ -57,13 +57,9 @@ To temporarily change the log levels and access the logs of `syslog-ng`, see als
 
 ## Monitor {{% param "product.abbrev" %}} metrics {#metrics}
 
-{{% param "product.abbrev" %}} provides detailed metrics about its performance and status for observability and monitoring. We recommend using Prometheus to scrape these metrics, see {{% xref "/chapter-log-statistics/prometheus-exporter/_index.md" %}} for details. To display the current metrics locally in Prometheus-compatible format, run:
+{{< include-headless "chunk/metrics-intro.md" >}}
 
-```shell
-syslog-ng-ctl stats prometheus
-```
-
-Note that which metrics are shown depends on the current value of the [`stats(level())` global option]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-stats-level" >}}) (you can list the available metrics by running `syslog-ng --metrics-registry`.). For details on what the metrics mean, see {{% xref "/chapter-log-statistics/metrics-reference/_index.md" %}}. Example output on `stats(level(0))`:
+Example output on `stats(level(0))`:
 
 ```shell
 syslogng_last_config_file_modification_timestamp_seconds 1764166030

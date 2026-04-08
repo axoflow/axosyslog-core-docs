@@ -3,7 +3,9 @@ title: Metrics reference
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-The following list shows the metrics available in {{< product >}}. To export the metrics to Prometheus, see {{% xref "/chapter-log-statistics/prometheus-exporter/_index.md" %}}.
+The following list shows the metrics available in {{< product >}}.
+
+{{< include-headless "chunk/metrics-intro.md" >}}
 
 {{% alert title="Note" color="info" %}}
 - Metrics that have the `_total` suffix reset to zero when {{< product >}} is restarted. Reloading {{< product >}} doesn't cause a reset.

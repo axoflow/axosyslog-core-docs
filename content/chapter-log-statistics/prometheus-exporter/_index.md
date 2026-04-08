@@ -1,12 +1,9 @@
 ---
 title: "Collect metrics with Prometheus"
 weight: 200
-description: >
-  Export AxoSyslog and syslog-ng metrics to Prometheus using the axosyslog-metrics-exporter.
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
-
-This page shows you how to deploy the `axosyslog-metrics-exporter` to collect {{% param "product.name" %}} metrics and scrape them with Prometheus.
+Export AxoSyslog and syslog-ng metrics to Prometheus using the `axosyslog-metrics-exporter` and scrape them with Prometheus.
 
 ## Prerequisites
 
