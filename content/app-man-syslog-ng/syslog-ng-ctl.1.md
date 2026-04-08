@@ -187,7 +187,7 @@ The `syslog-ng-ctl query get` command has the following options:
 
 <span id="syslog-ng-ctl-stats"></span>
 
-## The stats command
+## The stats command {#syslog-ng-ctl-stats}
 
 `stats [options]`
 
