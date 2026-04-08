@@ -55,11 +55,55 @@ syslog-ng-ctl log-level verbose
 
 To temporarily change the log levels and access the logs of `syslog-ng`, see also the [`attach` command]({{< relref "#attach" >}}).
 
-<span id="syslog-ng-ctl-query"></span>
+## Monitor {{% param "product.abbrev" %}} metrics {#metrics}
 
-## syslog-ng-ctl query
+{{% param "product.abbrev" %}} provides detailed metrics about its performance and status for observability and monitoring. We recommend using Prometheus to scrape these metrics, see {{% xref "/chapter-log-statistics/prometheus-exporter/_index.md" %}} for details. To display the current metrics locally in Prometheus-compatible format, run:
 
-The {{% param "product.abbrev" %}} application stores various data, metrics, and statistics in a hash table. Every property has a name and a value. For example:
+```shell
+syslog-ng-ctl stats prometheus
+```
+
+Note that which metrics are shown depends on the current value of the [`stats(level())` global option]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-stats-level" >}}) (you can list the available metrics by running `syslog-ng --metrics-registry`.). For details on what the metrics mean, see {{% xref "/chapter-log-statistics/metrics-reference/_index.md" %}}. Example output on `stats(level(0))`:
+
+```shell
+syslogng_last_config_file_modification_timestamp_seconds 1764166030
+syslogng_last_successful_config_reload_timestamp_seconds 1775651576
+syslogng_memory_queue_events{address="192.168.0.111:514",driver="tcp",id="d_net#0",transport="tcp"} 0
+syslogng_memory_queue_processed_events_total{address="192.168.0.111:514",driver="tcp",id="d_net#0",transport="tcp"} 19
+syslogng_internal_events_total{result="dropped"} 0
+syslogng_internal_events_total{result="processed"} 2
+syslogng_internal_events_total{result="queued"} 0
+syslogng_output_unreachable{id="d_net#0",driver="tcp",transport="tcp",address="192.168.0.111:514"} 0
+syslogng_memory_queue_memory_usage_bytes{address="192.168.0.111:514",driver="tcp",id="d_net#0",transport="tcp"} 0
+syslogng_stats_level 0
+syslogng_output_events_total{address="192.168.0.111:514",driver="tcp",id="d_net#0",transport="tcp",result="dropped"} 0
+syslogng_output_events_total{address="192.168.0.111:514",driver="tcp",id="d_net#0",transport="tcp",result="queued"} 0
+syslogng_output_events_total{address="192.168.0.111:514",driver="tcp",id="d_net#0",transport="tcp",result="delivered"} 19
+syslogng_last_config_reload_timestamp_seconds 1775651576
+syslogng_memory_queue_capacity{address="192.168.0.111:514",driver="tcp",id="d_net#0",transport="tcp"} 1000
+syslogng_input_events_total{driver="journal",id="s_src#0"} 17
+syslogng_scratch_buffers_bytes 0
+syslogng_input_window_full_total{driver="journal",id="s_src#0"} 0
+syslogng_input_window_full_total{id="s_src#1"} 0
+syslogng_input_event_bytes_total{id="s_src#1"} 0
+syslogng_input_event_bytes_total{driver="journal",id="s_src#0"} 0
+syslogng_internal_events_queue_capacity 10000
+syslogng_input_events_total{id="s_src#1"} 2
+syslogng_scratch_buffers_count 14
+```
+
+## Access legacy statistics {#legacy-statistics}
+
+The `syslog-ng-ctl stats` and the `syslog-ng-ctl query` commands give you access to the legacy statistics of {{% param "product.abbrev" %}}. There are several newer metrics that aren't available in these statistics, so we recommend using [metrics](#metrics) instead.
+
+- [`syslog-ng-ctl query`](#syslog-ng-ctl-query) gives structured access to the selected legacy statistics.
+- [`syslog-ng-ctl stats`](#syslog-ng-ctl-stats) lists all the available legacy statistics in bulk.
+
+Exactly which statistics are available depends on your {{% param "product.abbrev" %}} configuration (that is, the sources, destinations, and other objects you have configured), and also on your [`stats(level())` global option]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-stats-level" >}}) settings.
+
+### Query legacy statistics {#syslog-ng-ctl-query}
+
+The {{% param "product.abbrev" %}} application stores various statistics in a hash table. Every property has a name and a value. For example:
 
 ```shell
 [syslog-ng]
@@ -76,9 +120,7 @@ You can query the nodes of this tree, and also use filters to select the informa
 
 The nodes and properties available in the tree depend on your {{% param "product.abbrev" %}} configuration (that is, the sources, destinations, and other objects you have configured), and also on your [`stats(level())` global option]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-stats-level" >}}) settings.
 
-<span id="syslog-ng-ctl-query-list"></span>
-
-### The list command
+#### List legacy statistics {#syslog-ng-ctl-query-list}
 
 `syslog-ng-ctl query list`
 
@@ -139,7 +181,7 @@ The `syslog-ng-ctl query list` command has the following options:
 
     Use `--reset` to set the selected counters to 0 after executing the query, except for the `queued` and the `memory_usage` counters. (The `queued` counters show the number of messages in the message queue of the destination driver, waiting to be sent to the destination. The `memory_usage` counters show the amount of memory used by the messages in the different queue types (in bytes). This includes every queue used by the object, including memory buffers (log-fifo) and disk-based buffers (both reliable and non-reliable))
 
-### Displaying statistics {#syslog-ng-ctl-query-sum}
+#### Get selected statistics {#syslog-ng-ctl-query-get}
 
 `syslog-ng-ctl query get [options]`
 
@@ -161,51 +203,14 @@ The `syslog-ng-ctl query get` command has the following options:
 - `--reset`
 
     Use `--reset` to set the selected counters to 0 after executing the query, except for the `queued` and the `memory_usage` counters. (The `queued` counters show the number of messages in the message queue of the destination driver, waiting to be sent to the destination. The `memory_usage` counters show the amount of memory used by the messages in the different queue types (in bytes). This includes every queue used by the object, including memory buffers (log-fifo) and disk-based buffers (both reliable and non-reliable))
-<span id="syslog-ng-ctl-stats"></span>
 
-## The stats command {#syslog-ng-ctl-stats}
+### The stats command {#syslog-ng-ctl-stats}
 
-`stats [options]`
+`syslog-ng-ctl stats [options]`
 
-Use the `stats` command to display the legacy statistics about the processed messages.
+Use the `stats` command to display the legacy statistics about the processed messages. Exactly which statistics are available depends on your {{% param "product.abbrev" %}} configuration (that is, the sources, destinations, and other objects you have configured), and also on your [`stats(level())` global option]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-stats-level" >}}) settings.
 
 Note that starting with version 4.14, {{< product >}} automatically shows orphan counters to avoid losing information. Information loss could happen, for example, when sending messages using short-lived (few seconds long) connections, while scraping metrics in minute intervals.
-
-The `stats` command has the following options:
-
-- `--control=<socket>` or `-c`
-
-    Specify the socket to use to access {{% param "product.abbrev" %}}. Only needed when using a non-standard socket.
-
-- `--reset=<socket>` or `-r`
-
-    Reset all statistics to zero, except for the `queued` and the `memory_usage` counters. (The `queued` counters show the number of messages in the message queue of the destination driver, waiting to be sent to the destination. The `memory_usage` counters show the amount of memory used by the messages in the different queue types (in bytes). This includes every queue used by the object, including memory buffers (log-fifo) and disk-based buffers (both reliable and non-reliable))
-
-- `--remove-orphans`
-
-    Safely removes all counters that are not referenced by any `syslog-ng stat` producer objects.
-
-    The flag can be used to prune dynamic and static counters manually. This is useful, for example, when a templated file destination produces a lot of stats. We recommend using `syslog-ng-ctl stats --remove-orphans` during each configuration reload, but only after the values of those metrics have been scraped by all scrapers.
-
-    ```shell
-    dst.file;#anon-destination0#0;/tmp/2021-08-16.log;o;processed;253592
-    dst.file;#anon-destination0#0;/tmp/2021-08-17.log;o;processed;156
-    dst.file;#anon-destination0#0;/tmp/2021-08-18.log;a;processed;961
-    ```
-
-- `--with-legacy-metrics`
-
-    Display legacy metrics in Prometheus-compatible format.
-
-    {{% alert title="Note" color="info" %}}
-The `stats-lifetime()` can be used to do the same automatically and periodically, but currently stats-lifetime() removes only dynamic counters that have a timestamp field set.
-    {{% /alert %}}
-
-### Example
-
-```shell
-syslog-ng-ctl stats
-```
 
 An example output:
 
@@ -238,6 +243,36 @@ destination;df_kern;;a;processed;70
 center;;queued;a;processed;0
 destination;df_facility_dot_err;;a;processed;0
 ```
+
+The `stats` command has the following options:
+
+- `--control=<socket>` or `-c`
+
+    Specify the socket to use to access {{% param "product.abbrev" %}}. Only needed when using a non-standard socket.
+
+- `--reset=<socket>` or `-r`
+
+    Reset all statistics to zero, except for the `queued` and the `memory_usage` counters. (The `queued` counters show the number of messages in the message queue of the destination driver, waiting to be sent to the destination. The `memory_usage` counters show the amount of memory used by the messages in the different queue types (in bytes). This includes every queue used by the object, including memory buffers (log-fifo) and disk-based buffers (both reliable and non-reliable))
+
+- `--remove-orphans`
+
+    Safely removes all counters that are not referenced by any `syslog-ng stat` producer objects.
+
+    The flag can be used to prune dynamic and static counters manually. This is useful, for example, when a templated file destination produces a lot of stats. We recommend using `syslog-ng-ctl stats --remove-orphans` during each configuration reload, but only after the values of those metrics have been scraped by all scrapers.
+
+    ```shell
+    dst.file;#anon-destination0#0;/tmp/2021-08-16.log;o;processed;253592
+    dst.file;#anon-destination0#0;/tmp/2021-08-17.log;o;processed;156
+    dst.file;#anon-destination0#0;/tmp/2021-08-18.log;a;processed;961
+    ```
+
+- `--with-legacy-metrics`
+
+    Display legacy metrics in Prometheus-compatible format.
+
+    {{% alert title="Note" color="info" %}}
+The [`stats(lifetime())` global option]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-stats-lifetime" >}}) can be used to do the same automatically and periodically, but `stats-lifetime()` removes only dynamic counters that have a timestamp field set.
+    {{% /alert %}}
 
 ## Handling password-protected private keys {#syslog-ng-ctl-credentials}
 
