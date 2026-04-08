@@ -5,9 +5,7 @@ weight: 300
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 {{< include-headless "banner-new-to-axosyslog.md" >}}
 
-<span id="syslog-ng-ctl.1"></span>
-
-## Name
+## Name {#syslog-ng-ctl.1}
 
 `syslog-ng-ctl` — Display message statistics and enable verbose, debug and trace modes
 
@@ -15,28 +13,20 @@ weight: 300
 
 `syslog-ng-ctl [command] [options]`
 
-<span id="syslog-ng-ctl-mandescription"></span>
-
 ## Description
 
 {{% alert title="Note" color="info" %}}
 
-The `syslog-ng-ctl` application is distributed with the {{% param "product.abbrev" %}} system logging application, and is usually part of the {{% param "product.abbrev" %}} package. 
+The `syslog-ng-ctl` application is distributed with the {{% param "product.abbrev" %}} system logging application, and is usually part of the {{% param "product.abbrev" %}} package.
 
 {{% /alert %}}
 
-
-
-The `syslog-ng-ctl` application is a utility that can be used to:
+The `syslog-ng-ctl` application is a utility that can:
 
 - enable/disable various {{% param "product.abbrev" %}} messages for troubleshooting
-
 - display statistics about the processed messages
-
 - handling password-protected private keys
-
 - display the currently running configuration of {{% param "product.abbrev" %}}
-
 - reload the configuration of {{% param "product.abbrev" %}}.
 
 <span id="syslog-ng-ctl"></span>
@@ -82,12 +72,9 @@ The {{% param "product.abbrev" %}} application stores various data, metrics, and
 You can query the nodes of this tree, and also use filters to select the information you need. A query is actually a path in the tree. You can also use the `?` and `*` wildcards. For example:
 
 - Select every property: `*`
-
 - Select all `dropped` value from every `stats` node: `*.stats.dropped`
 
-The nodes and properties available in the tree depend on your {{% param "product.abbrev" %}} configuration (that is, the sources, destinations, and other objects you have configured), and also on your `stats-level()` settings.
-
-
+The nodes and properties available in the tree depend on your {{% param "product.abbrev" %}} configuration (that is, the sources, destinations, and other objects you have configured), and also on your [`stats(level())` global option]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-stats-level" >}}) settings.
 
 <span id="syslog-ng-ctl-query-list"></span>
 
@@ -100,69 +87,63 @@ Use the `syslog-ng-ctl query list` command to display the list of metrics that {
 An example output:
 
 ```shell
-  center.received.stats.processed
-  center.queued.stats.processed
-  destination.java.d_elastic#0.java_dst(ElasticSearch,elasticsearch-syslog-ng-test,t7cde889529c034aea9ec_micek).stats.dropped
-  destination.java.d_elastic#0.java_dst(ElasticSearch,elasticsearch-syslog-ng-test,t7cde889529c034aea9ec_micek).stats.processed
-  destination.java.d_elastic#0.java_dst(ElasticSearch,elasticsearch-syslog-ng-test,t7cde889529c034aea9ec_micek).stats.queued
-  destination.d_elastic.stats.processed
-  source.s_tcp.stats.processed
-  source.severity.7.stats.processed
-  source.severity.0.stats.processed
-  source.severity.1.stats.processed
-  source.severity.2.stats.processed
-  source.severity.3.stats.processed
-  source.severity.4.stats.processed
-  source.severity.5.stats.processed
-  source.severity.6.stats.processed
-  source.facility.7.stats.processed
-  source.facility.16.stats.processed
-  source.facility.8.stats.processed
-  source.facility.17.stats.processed
-  source.facility.9.stats.processed
-  source.facility.18.stats.processed
-  source.facility.19.stats.processed
-  source.facility.20.stats.processed
-  source.facility.0.stats.processed
-  source.facility.21.stats.processed
-  source.facility.1.stats.processed
-  source.facility.10.stats.processed
-  source.facility.22.stats.processed
-  source.facility.2.stats.processed
-  source.facility.11.stats.processed
-  source.facility.23.stats.processed
-  source.facility.3.stats.processed
-  source.facility.12.stats.processed
-  source.facility.4.stats.processed
-  source.facility.13.stats.processed
-  source.facility.5.stats.processed
-  source.facility.14.stats.processed
-  source.facility.6.stats.processed
-  source.facility.15.stats.processed
-  source.facility.other.stats.processed
-  global.payload_reallocs.stats.processed
-  global.msg_clones.stats.processed
-  global.sdata_updates.stats.processed
-  tag..source.s_tcp.stats.processed
+center.received.stats.processed
+center.queued.stats.processed
+destination.java.d_elastic#0.java_dst(ElasticSearch,elasticsearch-syslog-ng-test,t7cde889529c034aea9ec_micek).stats.dropped
+destination.java.d_elastic#0.java_dst(ElasticSearch,elasticsearch-syslog-ng-test,t7cde889529c034aea9ec_micek).stats.processed
+destination.java.d_elastic#0.java_dst(ElasticSearch,elasticsearch-syslog-ng-test,t7cde889529c034aea9ec_micek).stats.queued
+destination.d_elastic.stats.processed
+source.s_tcp.stats.processed
+source.severity.7.stats.processed
+source.severity.0.stats.processed
+source.severity.1.stats.processed
+source.severity.2.stats.processed
+source.severity.3.stats.processed
+source.severity.4.stats.processed
+source.severity.5.stats.processed
+source.severity.6.stats.processed
+source.facility.7.stats.processed
+source.facility.16.stats.processed
+source.facility.8.stats.processed
+source.facility.17.stats.processed
+source.facility.9.stats.processed
+source.facility.18.stats.processed
+source.facility.19.stats.processed
+source.facility.20.stats.processed
+source.facility.0.stats.processed
+source.facility.21.stats.processed
+source.facility.1.stats.processed
+source.facility.10.stats.processed
+source.facility.22.stats.processed
+source.facility.2.stats.processed
+source.facility.11.stats.processed
+source.facility.23.stats.processed
+source.facility.3.stats.processed
+source.facility.12.stats.processed
+source.facility.4.stats.processed
+source.facility.13.stats.processed
+source.facility.5.stats.processed
+source.facility.14.stats.processed
+source.facility.6.stats.processed
+source.facility.15.stats.processed
+source.facility.other.stats.processed
+global.payload_reallocs.stats.processed
+global.msg_clones.stats.processed
+global.sdata_updates.stats.processed
+tag..source.s_tcp.stats.processed
 ```
 
 The `syslog-ng-ctl query list` command has the following options:
 
 - `--reset`
-    
+
     Use `--reset` to set the selected counters to 0 after executing the query, except for the `queued` and the `memory_usage` counters. (The `queued` counters show the number of messages in the message queue of the destination driver, waiting to be sent to the destination. The `memory_usage` counters show the amount of memory used by the messages in the different queue types (in bytes). This includes every queue used by the object, including memory buffers (log-fifo) and disk-based buffers (both reliable and non-reliable))
 
-
-
-<span id="syslog-ng-ctl-query-sum"></span>
-
-### Displaying metrics and statistics
+### Displaying statistics {#syslog-ng-ctl-query-sum}
 
 `syslog-ng-ctl query get [options]`
 
-The `syslog-ng-ctl query get <query>` command lists the nodes that match the query, and their values.
-
-For example, the `destination` query lists the configured destinations, and the metrics related to each destination. An example output:
+The `syslog-ng-ctl query get <query>` command lists the nodes that match the query, and their values. For example, the `destination` query lists the configured destinations, and the statistics related to each destination. An example output:
 
 ```shell
 destination.java.d_elastic#0.java_dst(ElasticSearch,elasticsearch-syslog-ng-test,t7cde889529c034aea9ec_micek).stats.dropped=0
@@ -174,24 +155,19 @@ destination.d_elastic.stats.processed=0
 The `syslog-ng-ctl query get` command has the following options:
 
 - `--sum`
-    
-    Add up the result of each matching node and return only a single number.
-    
-    For example, the `syslog-ng-ctl query get --sum "destination*.dropped"` command displays the number of messages dropped by the {{% param "product.abbrev" %}} instance.
+
+    Add up the result of each matching node and return only a single number. For example, the `syslog-ng-ctl query get --sum "destination*.dropped"` command displays the number of messages dropped by the {{% param "product.abbrev" %}} instance.
 
 - `--reset`
-    
+
     Use `--reset` to set the selected counters to 0 after executing the query, except for the `queued` and the `memory_usage` counters. (The `queued` counters show the number of messages in the message queue of the destination driver, waiting to be sent to the destination. The `memory_usage` counters show the amount of memory used by the messages in the different queue types (in bytes). This includes every queue used by the object, including memory buffers (log-fifo) and disk-based buffers (both reliable and non-reliable))
-
-
-
 <span id="syslog-ng-ctl-stats"></span>
 
 ## The stats command {#syslog-ng-ctl-stats}
 
 `stats [options]`
 
-Use the `stats` command to display statistics about the processed messages either in legacy format, or in Prometheus-compatible format (by running `syslog-ng-ctl stats prometheus`). For details about the displayed metrics, see {{% xref "/chapter-log-statistics/metrics-reference/_index.md" %}}.
+Use the `stats` command to display the legacy statistics about the processed messages.
 
 Note that starting with version 4.14, {{< product >}} automatically shows orphan counters to avoid losing information. Information loss could happen, for example, when sending messages using short-lived (few seconds long) connections, while scraping metrics in minute intervals.
 
@@ -263,17 +239,11 @@ center;;queued;a;processed;0
 destination;df_facility_dot_err;;a;processed;0
 ```
 
-<span id="syslog-ng-ctl-credentials"></span>
-
-## Handling password-protected private keys
+## Handling password-protected private keys {#syslog-ng-ctl-credentials}
 
 `syslog-ng-ctl credentials [options]`
 
-The `syslog-ng-ctl credentials status` command allows you to query the status of the private keys that {{% param "product.abbrev" %}} uses in the `network()` and `syslog()` drivers. You can also provide the passphrase for password-protected private keys using the `syslog-ng-ctl credentials add` command. For details on using password-protected keys, see [The syslog-ng Administrator Guide](https://www.syslog-ng.com).
-
-
-
-<span id="idm46098617680288"></span>
+The `syslog-ng-ctl credentials status` command allows you to query the status of the private keys that {{% param "product.abbrev" %}} uses in the `network()` and `syslog()` drivers. You can also provide the passphrase for password-protected private keys using the `syslog-ng-ctl credentials add` command.
 
 ### Displaying the status of private keys
 
@@ -296,12 +266,8 @@ Waiting for password; keyfile='private.key'
 ```
 
 - `--control=<socket>` or `-c`
-    
+
     Specify the socket to use to access {{% param "product.abbrev" %}}. Only needed when using a non-standard socket.
-
-
-
-<span id="idm46098617667936"></span>
 
 ### Opening password-protected private keys
 
@@ -326,22 +292,18 @@ echo "<passphrase-of-the-key>" | syslog-ng-ctl credentials add --id=<path-to-the
 ```
 
 - `--control=<socket>` or `-c`
-    
+
     Specify the socket to use to access {{% param "product.abbrev" %}}. Only needed when using a non-standard socket.
 
 - `--id=<path-to-the-key>` or `-i`
-    
+
     The path to the password-protected private key file. This is the same path that you use in the `key-file()` option of the {{% param "product.abbrev" %}} configuration file.
 
 - `--secret=<passphrase-of-the-key>` or `-s`
-    
+
     The password or passphrase of the private key.
 
-
-
-<span id="syslog-ng-ctl-config"></span>
-
-## Displaying the configuration
+## Displaying the configuration {#syslog-ng-ctl-config}
 
 `syslog-ng-ctl config [options]`
 
@@ -353,9 +315,7 @@ Starting with {{% param "product.name" %}} version 4.2, you can display the conf
 
 You can use the `syslog-ng-ctl list-files` command to list files referenced in your configuration, for example, certificates or external configuration files. Available in {{< product >}} 3.23.1 and later.
 
-<span id="syslog-ng-ctl-reload"></span>
-
-## Reloading the configuration
+## Reloading the configuration {#syslog-ng-ctl-reload}
 
 `syslog-ng-ctl reload [options]`
 
@@ -363,9 +323,7 @@ Use the `syslog-ng-ctl reload` command to reload the configuration file of {{% p
 
 The `syslog-ng-ctl reload` command returns 0 if the operation was successful, 1 otherwise.
 
-<span id="syslog-ng-ctl-healthcheck"></span>
-
-## The healthcheck command
+## The healthcheck command {#syslog-ng-ctl-healthcheck}
 
 Available in {{% param "product.abbrev" %}} 4.2 and later.
 
@@ -416,8 +374,6 @@ The `syslog-ng-ctl attach` command has the following parameters:
 ## Files
 
 `/opt/syslog-ng/sbin/syslog-ng-ctl`
-
-
 
 ## See also
 
