@@ -1,23 +1,31 @@
 ---
 title: "Log statistics from the internal() source"
-weight:  300
+weight: 2000
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-If the [`stats(freq())` global option]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-stats-freq" >}}) is higher than 0, {{% param "product.abbrev" %}} periodically sends a log statistics message. This message contains statistics about the received messages, and about any lost messages since the last such message. It includes a `processed` entry for every source and destination, listing the number of messages received or sent, and a `dropped` entry including the IP address of the server for every destination where AxoSyslog has lost messages. The `center(received)` entry shows the total number of messages received from every configured sources.
+{{% alert title="Note" color="info" %}}
+Instead of using the statistics messages of the `internal()` source, we recommend monitoring {{% param "product.abbrev" %}} using [metrics]({{< relref "/chapter-log-statistics/metrics-reference/_index.md" >}}), or if it's not possible in your environment, by [querying statistics]({{< relref "/chapter-log-statistics/log-statistics-description/_index.md" >}}).
+{{% /alert %}}
+
+If the [`stats(freq())` global option]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-stats-freq" >}}) is higher than 0, {{% param "product.abbrev" %}} periodically sends a log statistics message. This message contains statistics about the received messages, and about any lost messages since the last such message. It includes:
+
+- a `processed` entry for every source and destination, listing the number of messages received or sent, and
+- a `dropped` entry including the IP address of the server for every destination where {{% param "product.abbrev" %}} has lost messages.
+- The `center(received)` entry shows the total number of messages received from every configured sources.
 
 The following is a sample log statistics message for a configuration that has a single source (`s_local`) and a network and a local file destination (`d_network` and `d_local`, respectively). All incoming messages are sent to both destinations.
 
 ```shell
 Log statistics;
-    dropped='tcp(AF_INET(192.168.10.1:514))=6439',
-    processed='center(received)=234413',
-    processed='destination(d_tcp)=234413',
-    processed='destination(d_local)=234413',
-    processed='source(s_local)=234413'
+dropped='tcp(AF_INET(192.168.10.1:514))=6439',
+processed='center(received)=234413',
+processed='destination(d_tcp)=234413',
+processed='destination(d_local)=234413',
+processed='source(s_local)=234413'
 ```
 
-The statistics include a list of source groups and destinations, as well as the number of processed messages for each. You can control the verbosity of the statistics using the [`stats-level()` global option]({{< relref "/chapter-global-options/reference-options/_index.md" >}}). The following is an example output.
+The statistics include a list of source groups and destinations, as well as the number of processed messages for each. You can control the verbosity of the statistics using the [`stats(level())` global option]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-stats-level" >}}). The following is an example output.
 
 ```shell
 src.internal;s_all#0;;a;processed;6445
