@@ -523,11 +523,11 @@ In earlier versions, the default was `600` (ten minutes).
 | Accepted values: | `0`, `1`, `2`, `3`            |
 | Default:         | `0`                           |
 
-*Description:* Specifies the detail of statistics {{% param "product.abbrev" %}} collects about the processed messages.
+*Description:* Specifies the detail of metrics and statistics {{% param "product.abbrev" %}} collects about the processed messages.
 
 {{% include-headless "chunk/option-stats-level-description.md" %}}
 
-Note that level 2 and 3 increase the memory requirements and CPU load. For details on message statistics, see {{% xref "/chapter-log-statistics/_index.md" %}}.
+Note that level 2 and 3 increase the memory requirements and CPU load. For details, see {{% xref "/chapter-log-statistics/_index.md" %}}.
 
 ### lifetime() {#global-option-stats-lifetime}
 

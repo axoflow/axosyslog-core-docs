@@ -9,7 +9,9 @@ The {{% param "product.abbrev" %}} application collects various statistics and m
 ## Metrics and statistics
 
 - {{< include-headless "chunk/metrics-intro.md" >}}
-- Statistics are a legacy way to access the status of {{% param "product.abbrev" %}}. Metrics are newer and in active development. Many metrics aren't available as legacy statistics. You can access legacy statistics using the following methods.
+- {{< include-headless "chunk/statistics-intro.md" >}}
+
+    You can access legacy statistics using the following methods.
 
     - The [`syslog-ng-ctl query`]({{< relref "/app-man-syslog-ng/syslog-ng-ctl.1.md#syslog-ng-ctl-query" >}}) command gives structured access to the selected legacy statistics..
     - The [`syslog-ng-ctl stats`]({{< relref "/app-man-syslog-ng/syslog-ng-ctl.1.md#syslog-ng-ctl-stats" >}}) command lists all the available legacy statistics in bulk.
