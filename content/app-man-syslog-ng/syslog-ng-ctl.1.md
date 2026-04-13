@@ -267,7 +267,7 @@ The `stats` command has the following options:
     Display legacy metrics in Prometheus-compatible format.
 
     {{% alert title="Note" color="info" %}}
-The [`stats(lifetime())` global option]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-stats-lifetime" >}}) can be used to do the same automatically and periodically, but `stats-lifetime()` removes only dynamic counters that have a timestamp field set.
+The [`stats(lifetime())` global option]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-stats-lifetime" >}}) can be used to do the same automatically and periodically, but `stats(lifetime())` removes only dynamic counters that have a timestamp field set.
     {{% /alert %}}
 
 ## Handling password-protected private keys {#syslog-ng-ctl-credentials}

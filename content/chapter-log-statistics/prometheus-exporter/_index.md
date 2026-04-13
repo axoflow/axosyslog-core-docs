@@ -8,7 +8,7 @@ Export AxoSyslog and syslog-ng metrics to Prometheus using the `axosyslog-metric
 ## Prerequisites
 
 - A running {{% param "product.name" %}} instance
-- `stats-level(2)` or higher set in your configuration file
+- `stats(level(2))` or higher set in your configuration file
 - File-level access to the {{% param "product.name" %}} control socket
 
 {{% alert title="Note" color="info" %}}
