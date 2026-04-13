@@ -1,8 +1,12 @@
 ---
 title: Metrics reference
+weight: 300
 ---
+<!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
 The following list shows the metrics available in {{< product >}}.
+
+{{< include-headless "chunk/metrics-intro.md" >}}
 
 {{% alert title="Note" color="info" %}}
 - Metrics that have the `_total` suffix reset to zero when {{< product >}} is restarted. Reloading {{< product >}} doesn't cause a reset.

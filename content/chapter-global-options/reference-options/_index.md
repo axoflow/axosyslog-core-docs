@@ -523,11 +523,11 @@ In earlier versions, the default was `600` (ten minutes).
 | Accepted values: | `0`, `1`, `2`, `3`            |
 | Default:         | `0`                           |
 
-*Description:* Specifies the detail of statistics {{% param "product.abbrev" %}} collects about the processed messages.
+*Description:* Specifies the detail of metrics and statistics {{% param "product.abbrev" %}} collects about the processed messages.
 
 {{% include-headless "chunk/option-stats-level-description.md" %}}
 
-Note that level 2 and 3 increase the memory requirements and CPU load. For details on message statistics, see {{% xref "/chapter-log-statistics/_index.md" %}}.
+Note that level 2 and 3 increase the memory requirements and CPU load. For details, see {{% xref "/chapter-log-statistics/_index.md" %}}.
 
 ### lifetime() {#global-option-stats-lifetime}
 
@@ -565,18 +565,18 @@ In some cases, there might be even millions of dynamic counters
 
     **Example: Limiting dynamic counter clusters 1:**
 
-    If you set `stats-max-dynamics()` to `1`, and 2 programs send messages, only one of these programs will be tracked in the dynamic counters, but it will have more than one counters.
+    If you set `stats(max-dynamics())` to `1`, and 2 programs send messages, only one of these programs will be tracked in the dynamic counters, but it will have more than one counters.
 
     **Example: Limiting dynamic counter clusters 2:**
 
-    If you have 500 clients, and set `stats-max-dynamics()` to `1000`, you will have enough number of counters reserved for these clients, but at the same time, you limit the use of your resources and therefore protect your system from being overloaded.
+    If you have 500 clients, and set `stats(max-dynamics())` to `1000`, you will have enough number of counters reserved for these clients, but at the same time, you limit the use of your resources and therefore protect your system from being overloaded.
 
 - No dynamic counters:
 
-    To disable dynamic counters completely, set the value of this option to `0`. This is the recommended value if you do not use statistics, or if you are not interested in dynamic counters in particular (for example, the number of logs arriving from programs).
+    To disable dynamic counters completely, set the value of this option to `0`. This is the recommended value if you don't use statistics, or if you aren't interested in dynamic counters in particular (for example, the number of logs arriving from programs).
 
 {{% alert title="Note" color="info" %}}
-If you set a lower value to `stats-max-dynamics()` (or, any limiting value, if this option has not been configured before) and restart {{% param "product.abbrev" %}}, the changes will only be applied after `stats-freq()` time has passed. That is, the previously allocated dynamic clusters will only be removed after this time.
+If you set a lower value to `stats(max-dynamics())` (or, any limiting value, if this option hasn't been configured before) and restart {{% param "product.abbrev" %}}, the changes will only be applied after `stats(freq())` time has passed. That is, the previously allocated dynamic clusters will only be removed after this time.
 {{% /alert %}}
 
 ### syslog-stats() {#global-option-stats-syslog-stats}
@@ -594,7 +594,7 @@ Possible values:
 
 - `yes`: Enable syslog stats.
 - `no`: Disable syslog stats.
-- `auto`: Use the setting of the old [`stats-level()` option](#global-option-stats-level).
+- `auto`: Use the setting of the old [`stats(level())` option](#global-option-stats-level).
 
 ## stats-freq()
 
