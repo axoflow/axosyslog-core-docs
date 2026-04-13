@@ -127,7 +127,7 @@ Hazard of data loss! For destinations other than file, soft flow-control is not 
 
 The AxoSyslog application handles outgoing messages the following way:
 
-![Disk buffering](/chapter-routing-filters/concepts-diskbuffer/disk-buffer-diagram-normal.png)
+![Disk buffering](/images/disk-buffer-diagram-normal.svg)
 
   - *Output queue*: Messages from the output queue are sent to the target AxoSyslog server. The AxoSyslog application puts the outgoing messages directly into the output queue, unless the output queue is full. The output queue can hold 64 messages, this is a fixed value and cannot be modified.
 
