@@ -22,8 +22,8 @@ The [`axosyslog-metrics-exporter`](https://github.com/axoflow/axosyslog-metrics-
 Run the exporter as a container:
 
 ```shell
-sudo podman run -d -p 9577:9577 -v $(echo /var/*lib/syslog-ng/syslog-ng.ctl):/syslog-ng.ctl \
-ghcr.io/axoflow/axosyslog-metrics-exporter:latest --socket.path=/syslog-ng.ctl
+sudo podman run -d -p 9577:9577 -v $(echo /var/*/syslog-ng/syslog-ng.ctl):/syslog-ng.ctl \
+  ghcr.io/axoflow/axosyslog-metrics-exporter:latest --socket.path=/syslog-ng.ctl
 ```
 
 Once started, the metrics endpoint is available at `http://127.0.0.1:9577/metrics`.
