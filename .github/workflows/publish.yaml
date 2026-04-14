@@ -59,7 +59,12 @@ jobs:
 
       - name: Pagefind search index
         run: npm_config_yes=true npx pagefind --output-subdir pagefind --site ./public
-      
+
+      - name: Convert HTML to Markdown
+        run: |
+          pip install beautifulsoup4 html2text
+          python themes/docsy-axoflow/scripts/hugo_to_markdown.py --input public --output public
+
       - name: Deploy to Cloudflare R2
         env:
           AWS_S3_BUCKET: 'axosyslog-core-docs'
