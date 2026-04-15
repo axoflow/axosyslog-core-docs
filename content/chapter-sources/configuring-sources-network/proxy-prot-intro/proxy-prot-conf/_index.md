@@ -13,7 +13,7 @@ For more information about the working mechanism of the Proxy Protocol, see {{% 
 
 Unless you enable Proxy Protocol support for your `network()` source, {{% param "product.abbrev" %}} identifies every connection that is connected to the load balancers identically by default, regardless of the source IP or the source protocol.
 
-To enable Proxy Protocol for your `network()` source, set [the `transport()` parameter of your `network()` source]({{< relref "/chapter-sources/configuring-sources-network/reference-source-network/_index.md#transport" >}}) to `proxied-tcp` or `proxied-tls-passthrough`, depending on your preference and configuration.
+To enable Proxy Protocol for your `network()` source, set [the `transport()` parameter of your `network()` source]({{< relref "/chapter-sources/configuring-sources-network/reference-source-network/_index.md#transport" >}}) to `proxied-tcp`, `proxied-tls-passthrough`, or `proxied-udp`, depending on your preference and configuration.
 
 `proxied-tls` can be used in complex MITM (man in the middle) configurations, where the proxy header is sent encrypted within the same TLS session as the proxied messages.
 
@@ -67,3 +67,38 @@ With the `PROXY TCP4 192.168.1.1 10.10.0.1 1111 2222` input header, the output l
 Note that the [macros]({{< relref "/chapter-sources/configuring-sources-network/proxy-prot-intro/proxy-prot-w-mech/_index.md#proxy-prot-adds-macros" >}}) that {{% param "product.abbrev" %}} adds to the message appear in the output.
 
 
+## Enabling Proxy Protocol v2 support over UDP {#proxied-udp}
+
+Available in {{% param "product.abbrev" %}} version 4.25 and later.
+
+To receive UDP syslog messages from a load balancer that injects HAProxy Proxy Protocol v2 headers, set `transport("proxied-udp")` on your `network()` or `syslog()` source.
+
+{{% alert title="Note" color="info" %}}
+`proxied-udp` supports HAProxy Proxy Protocol **version 2** only. Proxy Protocol v1 is not supported over UDP.
+{{% /alert %}}
+
+Using the `network()` driver (BSD syslog/RFC3164 format):
+
+```shell
+source s_udp_pp {
+    network(
+        ip("0.0.0.0")
+        port(514)
+        transport("proxied-udp")
+    );
+};
+```
+
+Using the `syslog()` driver (IETF syslog/RFC5424 format):
+
+```shell
+source s_syslog_udp_pp {
+    syslog(
+        ip("0.0.0.0")
+        port(514)
+        transport("proxied-udp")
+    );
+};
+```
+
+After parsing, the original client address and port are available as `${SOURCEIP}`, `${SOURCEPORT}`, `${DESTIP}`, and `${DESTPORT}` macros, the same as for TCP-based proxied transports.
