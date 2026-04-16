@@ -8,40 +8,26 @@ The {{% param "product.abbrev" %}} interactive debugger lets you step through a 
 
 ## Start the debugger
 
-Pass the `-i` (or `--interactive`) flag when starting {{% param "product.abbrev" %}}. The process must run in the foreground, so don't use the `-d` (daemon) flag at the same time.
+Pass the `-i` (or `--interactive`) flag when starting {{% param "product.abbrev" %}}. The process must run in the foreground, so use it together with the `-F` (`--foreground`) flag.
 
 ```shell
-syslog-ng -i -f /etc/syslog-ng/syslog-ng.conf
+syslog-ng -i -F
 ```
 
-After startup, the debugger prints a banner and presents the prompt (in [_interrupt context_](#contexts)):
+After startup, the debugger presents the prompt (in [_interrupt context_](#contexts)):
 
 ```shell
 axosyslog interactive debugger
-Copyright (c) 2024-2026 Axoflow and contributors
-
-This program comes with ABSOLUTELY NO WARRANTY;
-This is free software, and you are welcome to redistribute it
-under certain conditions;
-See https://github.com/axoflow/axosyslog/blob/main/COPYING
-License GPL-3.0-or-later
-
-For help, type "help".
-(syslog-ng) 
+Waiting for breakpoint...
 ```
 
 <details><summary>Show sample session</summary>
 The following session demonstrates a typical debugging workflow. It starts {{% param "product.abbrev" %}}, waits for a message to arrive, steps to the first log path, inspects the message, and then traces its path through the rest of the pipeline.
 
 ```shell
-$ syslog-ng -i -f /etc/syslog-ng/syslog-ng.conf
+$ syslog-ng -i -F
 
 axosyslog interactive debugger
-Copyright (c) 2024-2026 Axoflow and contributors
-...
-For help, type "help".
-(syslog-ng) continue
-(continuing)
 ^C
   Stopping on Interrupt...
 (syslog-ng) step
@@ -56,10 +42,13 @@ Breakpoint hit /etc/syslog-ng/syslog-ng.conf:30:5
 2026-04-15T10:23:44+00:00 server01 sshd[1234]: Accepted publickey for alice
 (syslog-ng) print
 HOST=server01
+HOST_FROM=127.0.0.1
+MESSAGE=Accepted publickey for alice
 PROGRAM=sshd
 PID=1234
-MSG=Accepted publickey for alice
-TAGS=.source.s_local
+LEGACY_MSGHDR=sshd[1234]:
+MSGFORMAT=syslog:rfc3164
+TAGS=.source.s_net
 (syslog-ng) info pipe
 LogPipe 0x5645a3b1c200 at /etc/syslog-ng/syslog-ng.conf:30:5
 (syslog-ng) trace
@@ -72,14 +61,18 @@ LogPipe 0x5645a3b1c200 at /etc/syslog-ng/syslog-ng.conf:30:5
 (continuing)
 ```
 
-In this session:
+The following commands are available:
 
-1. `continue` lets the pipeline run until you interrupt it with Ctrl+C.
-1. `step` advances to the first log path and shows the message that arrived (`sshd` authentication success).
-1. `print` lists the parsed name-value pairs so you can verify field extraction.
-1. `info pipe` confirms the configuration-file location of the current log path.
-1. `trace` prints every log path the message passes through (a `log` block, a `filter`, and a `destination`) without pausing, then returns to interrupt context.
-1. `quit` exits the debugger.
+- `help` Display this help
+- `info` Display information about the current execution state
+- `list` Display source code at the current location
+- `continue` Continue until the next breakpoint
+- `display` Set the displayed message template
+- `trace` Display timing information as the message traverses the config
+- `print` Print the current log message
+- `drop` Drop the current message
+- `quit` Exit from {{% param "product.abbrev" %}}
+
 </details>
 
 ## Execution contexts {#contexts}
