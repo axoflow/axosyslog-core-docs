@@ -29,6 +29,24 @@ description = "Documentation for AxoSyslog, the scalable security data processor
     home = ["HTML", "print"]
     # Enable print this section menu item
     section = [ "HTML", "print" ]
+    page = ["HTML"]
+
+# output for llm bots
+[outputFormats.llms]
+  name        = "llms"
+  baseName    = "llms"
+  mediaType   = "text/plain"
+  isPlainText = true
+
+## For llms.txt/markdown output rendering with `hugo serve`
+[[server.headers]]
+  for = "**.md"
+  [server.headers.values]
+    Content-Type = "text/markdown; charset=utf-8"
+[[server.headers]]
+  for = "**.txt"
+  [server.headers.values]
+    Content-Type = "text/plain; charset=utf-8"
 
 [markup]
   [markup.goldmark]
