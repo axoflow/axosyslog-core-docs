@@ -96,6 +96,10 @@ The {{% param "product.abbrev" %}} application is a flexible and highly scalable
     
     Display a brief help message.
 
+- `--interactive` or `-i`
+
+    Start {{% param "product.abbrev" %}} in interactive debugger mode. Requires the `-f` (`--foreground`) flag. For details, see {{% xref "/chapter-troubleshooting-syslog-ng/interactive-debugger/_index.md" %}}.
+
 - `--log-level <level>`
 
     Set the internal log level of {{% param "product.abbrev" %}} to `default`, `verbose`, `debug`, or `trace`. Available in {{% param "product.abbrev" %}} 4.0 and later.
