@@ -13,8 +13,7 @@
 
 - `auto`: Available in version 4.10 and later. Automatically detects RFC6587-style octet-count based framing in TCP traffic. In future versions this functionality will be extended to cover and detect all TCP-based protocols.
 - `nul-terminated`: Available in version 4.21 and later. Uses NUL characters to separate log records instead of newline characters. For example, the following message body will be interpreted as a multi-line message: `line1\nline2\nline3\x00`
-- `proxied-tcp`, `proxied-tls`, `proxied-tls-passthrough`: Refers to the HAProxy Proxy Protocol. For details, see {{% xref "/chapter-sources/configuring-sources-network/proxy-prot-intro/_index.md" %}}.
-- `proxied-udp`: Available in version 4.25 and later. Receives UDP datagrams containing a HAProxy Proxy Protocol v2 header followed by the syslog message payload. Use this transport when a UDP load balancer injects Proxy Protocol v2 headers to preserve the original client IP address and port. For details, see {{% xref "/chapter-sources/configuring-sources-network/proxy-prot-intro/_index.md" %}}.
+- `proxied-tcp`, `proxied-tls`, `proxied-tls-passthrough`, `proxied-udp`: Refers to the HAProxy Proxy Protocol. `proxied-udp` is available in version 4.25 and later. For details, see {{% xref "/chapter-sources/configuring-sources-network/proxy-prot-intro/_index.md" %}}.
 - `text-with-nuls`: Allows embedded `NUL` characters in the message from a TCP source, that is, {{% param "product.abbrev" %}} will not delimiter the incoming messages on `NUL` characters, only on `newline` characters (contrary to `tcp` transport, which splits the incoming log on `newline` characters and `NUL` characters).
 
     {{% alert title="Note" color="info" %}}
