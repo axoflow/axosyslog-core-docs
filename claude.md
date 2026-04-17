@@ -4,7 +4,7 @@
 
 This is the **AxoSyslog Core documentation** site — a technical reference for
 AxoSyslog, a syslog-ng fork. Documentation is written in Markdown and built
-with [Hugo](https://gohugo.io/) (Extended version, ≤ 0.122) using the
+with [Hugo](https://gohugo.io/) (Extended version, ≤ 0.146) using the
 [Docsy](https://www.docsy.dev/) theme.
 
 - Published site: <https://axoflow.com/docs/axosyslog-core/>
@@ -23,7 +23,7 @@ themes/docsy-axoflow/        # Customizations and overrides for the Docsy theme,
 scripts/             # Helper / automation scripts
 ```
 
-All prose lives under `content/docs/`. Most pages are plain `.md` files;
+All prose lives under `content/`. Most pages are plain `.md` files;
 section landing pages are `_index.md`.
 
 ## Hugo / Docsy conventions
