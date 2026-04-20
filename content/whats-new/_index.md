@@ -6,6 +6,27 @@ weight: 10
 
 {{< include-headless "banner-new-to-axosyslog.md" >}}
 
+## Version 4.24 (2026-03-23)
+
+- You can query the list of supported metrics by running `syslog-ng --metrics-registry`. For a reference of available metrics, see {{% xref "/chapter-log-statistics/metrics-reference/_index.md" %}}.
+- The new `batch-idle-timeout()` option closes the batch if no new message is received since the last message within the `batch-idle-timeout()` period. The following destinations support `batch-idle-timeout()`: `amqp()`, `bigquery()`, `clickhouse()`, `discord()`, `elasticsearch()`, `mongodb()`, `google-pubsub()`, `http()`,`kafka-c()`, `opensearch()`,`opentelemetry()`, `redis()`, `riemann()`, `slack()`, `smtp()`, `stomp()`, `sql()`, `sumologic()`.
+- New FilterX functions to manipulate the timezone of the messages: {{% xref "/filterx/filterx-timezone/_index.md" %}}.
+- [`network-load-balancer()`]({{< relref "/chapter-examples/load-bal-multi-dest/load-bal-multi-dest-msec-h/_index.md" >}}) now supports the `failover()` option.
+
+## Version 4.23 (2026-02-18)
+
+- The [`opentelemetry()` source]({{< relref "/chapter-sources/opentelemetry/_index.md" >}}) now supports the [`ip()`]({{< relref "/chapter-sources/opentelemetry/_index.md#ip" >}}) option to specify the bind address.
+- New [FilterX]({{< relref "/filterx/_index.md" >}}) functions:
+
+    - [`format_isodate`]({{< relref "/filterx/function-reference.md#format-isodate" >}}) formats a date as ISODATE: `%Y-%m-%dT%H:%M:%S%z`
+    - [`move`]({{< relref "/filterx/function-reference.md#move" >}}) moves the specified variable to its new location, instead of copying it.
+
+- The [`http()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}}) destination option `content-compression()` sends the payload compressed only if the compressed content is smaller than the original plain-text content. This can cause problems if your destination server accepts only compressed payload. Setting [`force-content-compression(yes)`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#force-content-compression" >}}) instructs {{% param "product.abbrev" %}} to always send the compressed payload.
+- The `network()` and `syslog()` sources and destinations now support the [`extended-key-usage-verify()`]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#tls-options-extended-key-usage-verify" >}}) option to check that the certificate of the peer contains the appropriate value in its Extended Key Usage (EKU) field. (Clients should have Client Auth EKU values (`X509_PURPOSE_SSL_CLIENT`), while server should have Web Server Auth (`X509_PURPOSE_SSL_SERVER`).)
+- The amount of memory {{< product >}} uses to store queued messages has been significantly reduced, by up to 50%.
+
+For a list of bugfixes, see the [GitHub release page](https://github.com/axoflow/axosyslog/releases/tag/axosyslog-4.23.0).
+
 ## Version 4.22 (2026-01-21)
 
 The FilterX [list membership operators]({{< relref "/filterx/operator-reference.md#list-membership-operator" >}}) now support searching the keys of dictionaries.
@@ -36,6 +57,7 @@ For a list of bugfixes, see the [GitHub release page](https://github.com/axoflow
 ## Version 4.19 (2025-10-15)
 
 - The [`dict_to_pairs`]({{< relref "/filterx/function-reference.md#dict-to-pairs" >}}) FilterX function can convert a dictionary to a list of pairs.
+- The [`includes`]({{< relref "/filterx/filterx-string-search/_index.md" >}}) FilterX function can limit the length of the search string.
 
 ## Version 4.18 (2025-09-30)
 

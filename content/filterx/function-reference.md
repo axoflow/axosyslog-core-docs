@@ -148,6 +148,10 @@ ${MESSAGE} = flatten(sample-dict);
 
 The value of `${MESSAGE}` will be: `{"a.b.c": "1"}`
 
+## fix_timezone
+
+See {{% xref "/filterx/filterx-timezone/_index.md#fix-timezone" %}}.
+
 ## format_cef {#format-cef}
 
 Available in {{< product >}} 4.13 and later.
@@ -165,6 +169,18 @@ Formats a dictionary or a list into a comma-separated string.
 Usage: `format_csv(<input-list-or-dict>, columns=<json-list>, delimiter=<delimiter-character>, default_value=<string>)`
 
 For details, see {{% xref "/filterx/filterx-format-data/format-csv.md" %}}.
+
+## format_isodate {#format-isodate}
+
+Available in {{< product >}} 4.23 and later.
+
+Formats a date as ISODATE: `%Y-%m-%dT%H:%M:%S%z`. For example:
+
+```shell
+my_date = strptime("2000-01-02T03:04:05.678901-07:00", "%Y-%m-%dT%H:%M:%S.%f%Z");
+${MESSAGE} = format_isodate(my_date);
+# The value of ${MESSAGE} is 2000-01-02T03:04:05.678901-07:00
+```
 
 ## format_json {#format-json}
 
@@ -224,6 +240,14 @@ For details, see {{% xref "/filterx/filterx-format-data/format-windows-eventlog-
 
 See {{% xref "/filterx/filterx-sdata/_index.md" %}}.
 
+## get_timezone_source
+
+See {{% xref "/filterx/filterx-timezone/_index.md#get-timezone-source" %}}.
+
+## guess_timezone
+
+See {{% xref "/filterx/filterx-timezone/_index.md#guess-timezone" %}}.
+
 ## has_sdata
 
 See {{% xref "/filterx/filterx-sdata/_index.md" %}}.
@@ -236,7 +260,7 @@ Returns true if the input string contains the specified substring. By default, m
 
 ```shell
 includes(input-string, substring);
-includes(input-string, [substring_1, substring_2], ignorecase=true);
+includes(input-string, [substring_1, substring_2], ignorecase=true, limit=10);
 ```
 
 For details, see {{% xref "/filterx/filterx-string-search/_index.md" %}}.
@@ -354,6 +378,21 @@ Usage: `lower(string)`
 ## metrics_labels
 
 Convert key-values to metric labels directly. For details, see {{% xref "/filterx/filterx-metrics/_index.md#metrics-labels" %}}.
+
+## move
+
+Available in {{% param "product.abbrev" %}} 4.23 and later.
+
+Moves the specified variable to its new location, instead of copying it. This is equivalent to using a value assignment and an [unset](#unset) function, but has better performance. The following example moves the JSON object `old` into the `new.nest` field:
+
+```shell
+  filterx {
+    old = {"key1":"value1", "key2":"value2"};
+    new = {"foo":"foovalue", "bar":"barvalue"};
+
+    new.nest = move(old);
+  };
+```
 
 ## otel_array {#otel-array}
 
@@ -641,6 +680,10 @@ set_timestamp(datetime, stamp="stamp");
 ```
 
 The `stamp` argument determines the timestamp to be set: `stamp` or `recvd`. Default value: `stamp`
+
+## set_timezone {#set-timezone}
+
+See {{% xref "/filterx/filterx-timezone/_index.md#set-timezone" %}}.
 
 ## startswith
 

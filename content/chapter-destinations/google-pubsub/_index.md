@@ -1,5 +1,5 @@
 ---
-title: Google Pub/Sub HTTP TEST API
+title: Google Pub/Sub HTTP REST API
 linktitle: "google-pubsub: Google Pub/Sub HTTP"
 weight:  1250
 driver: "google-pubsub()"

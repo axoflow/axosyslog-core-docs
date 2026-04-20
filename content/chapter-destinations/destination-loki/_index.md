@@ -5,6 +5,7 @@ driver: "loki()"
 short_description: "Send messages to Grafana Loki"
 aliases:
 - /chapter-destinations/syslog-ng-with-loki/
+loki: true
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
@@ -35,7 +36,7 @@ loki(
 
 The `loki()` destination has the following options.
 
-{{< include-headless "chunk/grpc-authentication.md" >}}
+{{< readfile "/headless/chunk/grpc-authentication.md" >}}
 
 {{% include-headless "chunk/option-destination-batch-bytes.md" %}}
 

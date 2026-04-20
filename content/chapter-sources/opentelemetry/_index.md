@@ -4,6 +4,7 @@ linktitle: OpenTelemetry
 weight: 2300
 driver: "opentelemetry()"
 short_description: "Receive logs, metrics, and traces from OpenTelemetry clients over the OpenTelemetry Protocol (OTLP/gRPC)"
+opentelemetry: true
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
@@ -31,11 +32,13 @@ log otel_forward_mode_alts {
 };
 ```
 
-{{< include-headless "chunk/grpc-authentication.md" >}}
+{{< readfile "/headless/chunk/grpc-authentication.md" >}}
 
 {{< include-headless "chunk/option-grpc-channel-args.md" >}}
 
 {{< include-headless "chunk/option-source-concurrent-requests.md" >}}
+
+{{% include-headless "chunk/option-grpc-source-ip.md" %}}
 
 {{< include-headless "chunk/option-source-otlp-keep-alive.md" >}}
 

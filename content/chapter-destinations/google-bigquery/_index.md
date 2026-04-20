@@ -4,6 +4,7 @@ linktitle: "bigquery: Send messages to Google BigQuery"
 weight:  150
 driver: "bigquery()"
 short_description: "Send messages to Google BigQuery"
+bigquery: true
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
@@ -56,11 +57,13 @@ By default, the messages are sent with one worker, one message per batch, and wi
 
 The `bigquery()` destination has the following options.
 
-{{< include-headless "chunk/grpc-authentication.md" >}}
+{{< readfile "/headless/chunk/grpc-authentication.md" >}}
 
 {{% include-headless "chunk/option-destination-batch-bytes.md" %}}
 
 By default, the `batch-bytes()` option of the `bigquery()` destination is 10 MB. This is an upper limit for the `bigquery()` destination. Note that due to a framework limitation, the batch might be at most 1 message larger than the set limit.
+
+{{% include-headless "chunk/option-destination-batch-idle-timeout.md" %}}
 
 {{% include-headless "chunk/option-description-destination-batch-lines.md" %}}
 
