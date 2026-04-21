@@ -61,7 +61,7 @@ jobs:
         run: npm_config_yes=true npx pagefind --output-subdir pagefind --site ./public
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.x"
 
