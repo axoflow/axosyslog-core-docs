@@ -21,7 +21,14 @@ Load the contents of an external JSON file in an efficient manner. You can use t
 
 {{< product >}} automatically detects if the file is updated and reloads the file.
 
-Usage: `cache_json_file("/path/to/file.json")`
+Usage: `cache_json_file("/path/to/file.json", default_value=<fallback-value>)`
+
+Parameters:
+
+- `"/path/to/file.json"`: Path to the JSON file to load. (Mandatory)
+- `default_value`: (Optional) Available in {{< product >}} 4.25 and later.
+
+    A fallback value to return when the file doesn't exist or cannot be loaded (for example, due to a parse error). Without this argument, the function fails if the file is unavailable.
 
 For example, if your `context-info-db.json` file contains the following:
 
@@ -42,6 +49,15 @@ filterx {
   declare known_apps = cache_json_file("/context-info-db.json");
   ${app} = known_apps[${PROGRAM}] ?? "unknown";
   ${app} == "web";  # drop everything that's not a web server log
+}
+```
+
+To avoid failures when the file might not yet exist, provide a `default_value`:
+
+```shell
+filterx {
+  declare known_apps = cache_json_file("/context-info-db.json", default_value={"nginx": "web","postgresql": "db"});
+  ${app} = known_apps[${PROGRAM}] ?? "unknown";
 }
 ```
 
