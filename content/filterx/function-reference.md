@@ -28,7 +28,15 @@ Parameters:
 - `"/path/to/file.json"`: Path to the JSON file to load. (Mandatory)
 - `default_value`: (Optional) Available in {{< product >}} 4.25 and later.
 
-    A fallback value to return when the file doesn't exist or cannot be loaded (for example, due to a parse error). Without this argument, the function fails if the file is unavailable.
+    A fallback value to return when the file doesn't exist or fails to load (for example, due to a parse error).
+
+    {{< warning >}}Without the `default_value` argument, {{< product >}} fails to start if the file is unavailable.{{< /warning >}}
+
+    Note that the `default_value` is only used until {{< product >}} successfully loads at least one version of the JSON file. For example:
+
+    1. The file doesn't exist at startup: {{< product >}} uses `default_value`.
+    1. Later the file becomes available: {{< product >}} uses the content of file content.
+    1. The file is updated but invalid: {{< product >}} keeps using the old version of the file, not the `default_value`.
 
 For example, if your `context-info-db.json` file contains the following:
 
