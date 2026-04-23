@@ -431,6 +431,7 @@ FilterX has the following built-in functions.
 - [`format_xml`]({{< relref "/filterx/filterx-format-data/format-xml" >}}): Formats a dictionary into XML.
 - [`get_sdata`]({{< relref "/filterx/filterx-sdata/_index.md" >}}): Returns the SDATA part of an RFC5424-formatted syslog message as a JSON object.
 - [`get_timezone_source`]({{< relref "/filterx/filterx-timezone/_index.md#get-timezone-source" >}}): Shows where the timezone information of the message originates from.
+- [`glob_match`]({{< relref "/filterx/function-reference.md#glob-match" >}}): Matches a string against one or more glob patterns.
 - [guess_timezone]({{< relref "/filterx/filterx-timezone/_index.md#guess-timezone" >}}): Attempts to set the timezone of the message automatically, using heuristics on the timestamps.
 - [`has_sdata`]({{< relref "/filterx/filterx-sdata/_index.md" >}}): Checks if a string ends with the specified value.
 - [`hex_decode`]({{< relref "/filterx/function-reference.md#hex-decode" >}}): Decodes a hexadecimal string and returns the result as bytes.

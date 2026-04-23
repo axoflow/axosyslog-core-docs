@@ -289,6 +289,28 @@ See {{% xref "/filterx/filterx-sdata/_index.md" %}}.
 
 See {{% xref "/filterx/filterx-timezone/_index.md#get-timezone-source" %}}.
 
+## glob_match {#glob-match}
+
+Available in {{< product >}} 4.25 and later.
+
+Matches a filename (or any string) against one or more glob patterns and returns `true` if the filename matches any of the patterns, `false` otherwise. Note that `/` separators are matched literally (not by wildcards), and a leading `.` must be matched explicitly.
+
+Usage: `glob_match(filename, patterns)`
+
+- `filename`: The string to test.
+- `patterns`: A single pattern string, or a list of pattern strings. When a list is provided, the function returns `true` as soon as any pattern matches.
+
+Using a non-string `filename`, or a non-string element in the `patterns` list, causes a runtime error.
+
+For example:
+
+```shell
+glob_match("filename.log", "*.log");                 # Returns true
+glob_match("filename.log", ["*.log", "*.txt"]);      # Returns true
+glob_match("filename.cfg", ["*.log", "*.txt"]);      # Returns false
+glob_match("/var/log/syslog", ["/var/log/*"]);       # Returns true
+```
+
 ## guess_timezone
 
 See {{% xref "/filterx/filterx-timezone/_index.md#guess-timezone" %}}.
