@@ -13,6 +13,8 @@ weight: 10
 - New FilterX functions to manipulate the timezone of the messages: {{% xref "/filterx/filterx-timezone/_index.md" %}}.
 - [`network-load-balancer()`]({{< relref "/chapter-examples/load-bal-multi-dest/load-bal-multi-dest-msec-h/_index.md" >}}) now supports the `failover()` option.
 
+For a list of bugfixes, see the [GitHub release page](https://github.com/axoflow/axosyslog/releases/tag/axosyslog-4.24.0).
+
 ## Version 4.23 (2026-02-18)
 
 - The [`opentelemetry()` source]({{< relref "/chapter-sources/opentelemetry/_index.md" >}}) now supports the [`ip()`]({{< relref "/chapter-sources/opentelemetry/_index.md#ip" >}}) option to specify the bind address.
