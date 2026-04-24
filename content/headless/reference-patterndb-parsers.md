@@ -87,17 +87,17 @@ This parser parses everything until the next new-line character (more precisely,
    <pattern>Example-PC\Example: Security Microsoft Windows security auditing.: [Success Audit] A new process has been created.
     
         Subject:
-        Security ID: @LNSTRING:.winaudit.SubjectUserSid@
-        Account Name: @LNSTRING:.winaudit.SubjectUserName@
-        Account Domain: @LNSTRING:.winaudit.SubjectDomainName@
-        Logon ID: @LNSTRING:.winaudit.SubjectLogonId@
+        Security ID: @NLSTRING:.winaudit.SubjectUserSid@
+        Account Name: @NLSTRING:.winaudit.SubjectUserName@
+        Account Domain: @NLSTRING:.winaudit.SubjectDomainName@
+        Logon ID: @NLSTRING:.winaudit.SubjectLogonId@
     
         Process Information:
-        New Process ID: @LNSTRING:.winaudit.NewProcessId@
-        New Process Name: @LNSTRING:.winaudit.NewProcessName@
-        Token Elevation Type: @LNSTRING:.winaudit.TokenElevationType@
-        Creator Process ID: @LNSTRING:.winaudit.ProcessId@
-        Process Command Line: @LNSTRING:.winaudit.CommandLine@
+        New Process ID: @NLSTRING:.winaudit.NewProcessId@
+        New Process Name: @NLSTRING:.winaudit.NewProcessName@
+        Token Elevation Type: @NLSTRING:.winaudit.TokenElevationType@
+        Creator Process ID: @NLSTRING:.winaudit.ProcessId@
+        Process Command Line: @NLSTRING:.winaudit.CommandLine@
     
         Token Elevation Type indicates the type of token that was assigned to the new process in accordance with User Account Control policy.</pattern>
 ```
