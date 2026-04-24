@@ -128,6 +128,17 @@ The `check-hostname()` global option applies to the following sources: [`file()`
 
 For the [`python()`]({{< relref "/chapter-sources/python-source/_index.md" >}}) and [`python-fetcher()`]({{< relref "/chapter-sources/python-fetcher-source/_index.md" >}}) sources and the [`syslog-parser()`]({{< relref "/chapter-parsers/parser-syslog/_index.md" >}}) parser you can enable this option as a flag.
 
+## check-program() {#global-option-check-program}
+
+|                  |                  |
+| ---------------- | ---------------- |
+| Accepted values: | `yes`, `no` |
+| Default:         | `no`           |
+
+{{< include-headless "chunk/option-source-check-program-description.md" >}}
+
+You can also enable this behavior per source using the `check-program` source flag.
+
 ## create-dirs() {#global-option-create-dirs}
 
 |                  |                  |
@@ -194,6 +205,47 @@ This global option works only if the `use-fqdn()` global option is set to `yes`.
 Starting with version 3.16, the default value of this option is -1, so {{% param "product.abbrev" %}} does not change the ownership, unless explicitly configured to do so.
 
 
+
+## disk-buffer() {#global-option-disk-buffer}
+
+*Description:* Sets default values for the disk-buffer sub-options listed below. Each destination that uses `disk-buffer()` inherits these defaults unless the destination overrides them. Other `disk-buffer()` sub-options (for example, `capacity-bytes()`, `dir()`, `reliable()`) must be set on the destination itself — see {{% xref "/chapter-routing-filters/concepts-diskbuffer/_index.md" %}}.
+
+```shell
+options {
+    disk-buffer(
+        prealloc(no)
+        truncate-size-ratio(0.1)
+        stats(freq(60))
+    );
+};
+```
+
+### prealloc() {#global-option-disk-buffer-prealloc}
+
+| Type:        | yes/no    |
+|--------------|-----------|
+| Default:     | no        |
+
+Available in {{% param "product.abbrev" %}} 4.0 and later.
+
+*Description:* {{< include-headless "chunk/option-description-destination-diskbuffer-prealloc.md" >}}
+
+### stats(freq()) {#global-option-disk-buffer-stats-freq}
+
+|                  |        |
+| ---------------- | ------ |
+| Accepted values: | number (seconds) |
+| Default:         | 0 (disabled) |
+
+*Description:* The frequency (in seconds) at which {{% param "product.abbrev" %}} emits disk-buffer metrics to the internal statistics. `0` disables periodic reporting. Disk-buffer metrics remain available through [`syslog-ng-ctl stats`]({{< relref "/app-man-syslog-ng/syslog-ng-ctl.1.md" >}}) regardless of this setting.
+
+### truncate-size-ratio() {#global-option-disk-buffer-truncate-size-ratio}
+
+| Type:        | number (between 0 and 1) |
+|--------------|-----------|
+| Default:     | 1 (do not truncate) |
+
+*Description:* Limits the truncation of disk-buffer files. Truncation can slow down disk I/O operations but saves disk space. {{% param "product.abbrev" %}} only truncates a disk-buffer file if the possible disk gain is more than `truncate-size-ratio()` times `capacity-bytes()`. For details and trade-offs, see [`truncate-size-ratio()`]({{< relref "/chapter-routing-filters/concepts-diskbuffer/_index.md" >}}) on the destination-level disk-buffer page.
 
 ## dns-cache() {#global-option-dns-cache}
 
@@ -279,6 +331,10 @@ Starting with version 3.16, the default value of this option is -1, so {{% param
 {{% include-headless "chunk/option-description-destination-flush-lines.md" %}}
 
 
+{{% include-headless "chunk/option-destination-flush-timeout.md" %}}
+You can also set this option per destination.
+
+
 {{< include-headless "chunk/option-destination-frac-digits.md" >}}
 
 
@@ -312,6 +368,13 @@ For example:
 {{< include-headless "chunk/option-source-keep-hostname.md" >}}
 
 {{< include-headless "chunk/option-source-keep-timestamp.md" >}}
+
+
+{{% include-headless "chunk/option-destination-local-timezone.md" %}}
+You can also set this option per destination.
+
+
+{{% include-headless "chunk/option-source-log-fetch-limit.md" %}}
 
 
 ## log-fifo-size() {#global-option-log-fifo-size}
@@ -352,6 +415,9 @@ log { ... };
 Enabling global flow control can cause the `system()` source to block. As a result, if messages accumulate at the destination, applications that log through the system may become completely stalled, potentially halting their operation. We don't recommend enabling flow control in log paths that include the `system()` source.
 {{< /warning >}}
 
+{{% include-headless "chunk/option-source-log-iw-size.md" %}}
+You can also set this option per source.
+
 ## log-level() {#global-options-log-level}
 
 |                  |                  |
@@ -382,6 +448,12 @@ Available in {{% param "product.abbrev" %}} 4.0 and later.
 
 
 
+## long-hostnames() {#global-option-long-hostnames}
+
+Obsolete alias for [`chain-hostnames()`](#global-options-chain-hostnames).
+
+
+
 ## mark() (DEPRECATED)
 
 |                  |        |
@@ -395,6 +467,15 @@ Available in {{% param "product.abbrev" %}} 4.0 and later.
 {{% include-headless "chunk/option-destination-mark-freq.md" %}}
 
 {{< include-headless "chunk/option-destination-mark-mode.md" >}}
+
+## min-iw-size-per-reader() {#global-option-min-iw-size-per-reader}
+
+|                  |        |
+| ---------------- | ------ |
+| Accepted values: | number |
+| Default:         | 100    |
+
+*Description:* Sets the minimum initial window size allocated to each reader when multiple readers (for example, in a `wildcard-file()` source) share the same `log-iw-size()` budget. The effective per-reader window is `max(log-iw-size() / number-of-readers, min-iw-size-per-reader())`. For details on flow control, see {{% xref "/chapter-routing-filters/concepts-flow-control/_index.md" %}}.
 
 {{< include-headless "chunk/option-source-normalize-hostnames.md" >}}
 
@@ -516,6 +597,15 @@ In earlier versions, the default was `600` (ten minutes).
 
 {{% /alert %}}
 
+### healthcheck-freq() {#global-option-stats-healthcheck-freq}
+
+|                  |                       |
+| ---------------- | --------------------- |
+| Accepted values: | number (seconds)      |
+| Default:         | 300 (5 minutes)       |
+
+*Description:* Controls how frequently {{% param "product.abbrev" %}} publishes health-check results as metrics. Health checks verify that the internal processing pipeline responds in a timely manner. For the list of emitted metrics and how to inspect them, see [`syslog-ng-ctl`]({{< relref "/app-man-syslog-ng/syslog-ng-ctl.1.md" >}}).
+
 ### level() {#global-option-stats-level}
 
 |                  |                               |
@@ -604,9 +694,16 @@ Deprecated legacy option. Use [`stats(freq())`](#global-option-stats-freq) inste
 
 Deprecated legacy option. Use [`stats(level())`](#global-option-stats-level) instead.
 
+## stats-lifetime() {#global-option-stats-lifetime-deprecated}
+
+Deprecated legacy option. Use [`stats(lifetime())`](#global-option-stats-lifetime) instead.
+
 ## stats-max-dynamics() {#global-option-stats-max-dynamics}
 
 Deprecated legacy option. Use [`stats(max-dynamics())`](#global-option-stats-max-dynamics) instead.
+
+{{% include-headless "chunk/option-destination-suppress.md" %}}
+You can also set this option per destination.
 
 ## sync() or sync-freq() (DEPRECATED)
 
@@ -617,7 +714,8 @@ Deprecated legacy option. Use [`stats(max-dynamics())`](#global-option-stats-max
 
 *Description:* Obsolete aliases for `flush-lines()`
 
-
+{{% include-headless "chunk/option-destination-template-escape.md" %}}
+You can also set this option per destination.
 
 ## threaded() {#global-option-threaded}
 
