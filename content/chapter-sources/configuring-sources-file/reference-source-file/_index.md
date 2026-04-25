@@ -16,6 +16,10 @@ The `file()` driver has the following options:
 
 {{< include-headless "chunk/option-source-default-priority.md" >}}
 
+{{% include-headless "chunk/option-source-default-severity.md" %}}
+
+{{% include-headless "chunk/option-source-dns-cache.md" %}}
+
 {{< include-headless "chunk/option-source-encoding.md" >}}
 
 {{< include-headless "chunk/option-source-flags.md" >}}
@@ -28,6 +32,8 @@ The `file()` driver has the following options:
 
 {{< include-headless "chunk/option-source-idle-timeout.md" >}}
 
+{{% include-headless "chunk/option-source-internal.md" %}}
+
 {{< include-headless "chunk/option-source-keep-timestamp.md" >}}
 
 {{< include-headless "chunk/option-source-log-fetch-limit.md" >}}
@@ -37,6 +43,8 @@ The `file()` driver has the following options:
 {{< include-headless "chunk/option-source-log-msg-size.md" >}}
 
 {{< include-headless "chunk/option-source-log-prefix.md" >}}
+
+{{% include-headless "chunk/option-source-long-hostnames.md" %}}
 
 {{< include-headless "chunk/option-source-multi-line-garbage.md" >}}
 
