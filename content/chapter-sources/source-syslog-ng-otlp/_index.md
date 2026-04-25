@@ -11,19 +11,9 @@ Available in {{% param "product.abbrev" %}} version 4.12 and later. (From versio
 
 {{< include-headless "chunk/syslog-ng-otlp-intro.md" >}}
 
-<!-- 
-
-    FIXME default-severity(<string>) this is globally undocumented
-    FIXME format(<string>)
-    FIXME does it make sense to confogire it? hook-commands(
-        setup(<string>)
-        shutdown(<string>)
-        startup(<string>)
-        teardown(<string>)
-    )
-    internal(<yesno>)
-
- -->
+<!--
+    FIXME format(<string>) — option-source-format.md chunk is an empty FIXME stub.
+-->
 
 ## Options
 
@@ -43,14 +33,9 @@ The `axosyslog-otlp()` source has the following options.
 
 {{% include-headless "chunk/option-source-default-priority.md" %}}
 
-## dns-cache()
+{{% include-headless "chunk/option-source-default-severity.md" %}}
 
-|                  |                  |
-| ---------------- | ---------------- |
-| Accepted values: | `yes`, `no` |
-| Default:         | `no`           |
-
-*Description:* Enable or disable DNS cache usage.
+{{% include-headless "chunk/option-source-dns-cache.md" %}}
 
 {{< include-headless "chunk/option-source-ebpf.md" >}}
 
@@ -61,6 +46,8 @@ The `axosyslog-otlp()` source has the following options.
 {{< include-headless "chunk/option-destination-hook.md" >}}
 
 {{< include-headless "chunk/option-source-host-override.md" >}}
+
+{{% include-headless "chunk/option-source-internal.md" %}}
 
 {{< include-headless "chunk/option-source-otlp-keep-alive.md" >}}
 
@@ -75,6 +62,8 @@ The `axosyslog-otlp()` source ignores this option and uses the hostname from the
 {{< include-headless "chunk/option-source-file-log-iw-size.md" >}}
 
 {{< include-headless "chunk/option-source-log-prefix.md" >}}
+
+{{% include-headless "chunk/option-source-long-hostnames.md" %}}
 
 {{< include-headless "chunk/option-source-normalize-hostnames.md" >}}
 
@@ -91,11 +80,16 @@ The `axosyslog-otlp()` source ignores this option and uses the hostname from the
 
 {{% include-headless "chunk/option-source-program-override.md" %}}
 
+<!-- cfg-helper exposes read-old-records() and sdata-prefix() for axosyslog-otlp(),
+     but they have no useful effect on this source. Keep these markers so the
+     next docs-vs-cfg-helper diff doesn't flag them as missing.
+{{% include-headless "chunk/option-source-read-old-records.md" %}}
+{{< include-headless "chunk/option-source-sdata-prefix.md" >}}
+-->
+
 {{< include-headless "chunk/option-source-tags.md" >}}
 
 {{< include-headless "chunk/option-source-time-zone.md" >}}
-
-{{% include-headless "chunk/option-source-time-reopen.md" %}}
 
 {{< include-headless "chunk/option-source-use-dns.md" >}}
 
