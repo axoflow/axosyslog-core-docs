@@ -136,8 +136,8 @@ If `log-iw-size(1000)` and `max-connections(10)`, then each connection will have
      Both are old aliases for so-keepalive() (see afsocket-parser.c keyword table).
      Documented above as so-keepalive(); these markers exist so the next docs-vs-cfg-helper
      diff doesn't flag them.
-{{% include-headless "chunk/option-source-tcp-keep-alive.md" %}}
-{{% include-headless "chunk/option-source-tcp-keepalive.md" %}}
+{{/* include-headless "chunk/option-source-tcp-keep-alive.md" */}}
+{{/* include-headless "chunk/option-source-tcp-keepalive.md" */}}
 -->
 
 {{< include-headless "chunk/option-tcp-keepalive-intvl.md" >}}
