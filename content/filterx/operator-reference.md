@@ -168,6 +168,8 @@ ${MESSAGE} = json["BODY"] ?? "Empty message"
 
 {{< include-headless "chunk/filterx-list-membership-operator.md" >}}
 
+To check if an IP address is a member of a subnet, see {{% xref "/filterx/filterx-subnet/_index.md" %}}.
+
 ## Regexp match (equal tilde) {#regexp}
 
 To check if a value contains a string or matches a regular expression, use the `=~` operator. For example, the following statement is true if the `${MESSAGE}` contains the word `error`:
