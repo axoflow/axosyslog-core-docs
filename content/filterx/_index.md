@@ -149,6 +149,7 @@ Variables can have the following types. All of these types have a matching funct
 - `dict`
 - `double`
 - `integer`
+- [`ip`]({{< relref "/filterx/filterx-subnet/_index.md#ip" >}}) for individual IPv4 or IPv6 addresses.
 - [`json`]({{< relref "/filterx/function-reference.md#json" >}}) and [`json_array`]({{< relref "/filterx/function-reference.md#json-array" >}}) for JSON or JSON-like objects.
 - `list`
 - [`metrics_labels`]({{< relref "/filterx/filterx-metrics/_index.md#metrics-labels" >}})
@@ -160,6 +161,7 @@ Variables can have the following types. All of these types have a matching funct
 - [`otel_scope`]({{< relref "/filterx/function-reference.md#otel-scope" >}})
 - `protobuf`
 - `string`
+- [`subnet`]({{< relref "/filterx/filterx-subnet/_index.md#subnet" >}}) for IPv4 or IPv6 subnets in CIDR notation.
 
 ## Assign values
 
