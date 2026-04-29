@@ -6,15 +6,35 @@ weight:  100
 
 The `systemd-journal()` driver has the following options:
 
+{{% include-headless "chunk/option-source-chain-hostnames.md" %}}
+
 {{% include-headless "chunk/option-source-default-facility-journal.md" %}}
 
 {{% include-headless "chunk/option-source-default-level-journal.md" %}}
+
+{{% include-headless "chunk/option-source-default-priority.md" %}}
+
+{{% include-headless "chunk/option-source-default-severity.md" %}}
+
+{{% include-headless "chunk/option-source-dns-cache.md" %}}
 
 {{< include-headless "chunk/option-destination-hook.md" >}}
 
 {{% include-headless "chunk/option-source-host-override.md" %}}
 
+{{% include-headless "chunk/option-source-internal.md" %}}
+
 {{% include-headless "chunk/option-source-keep-hostname-journal.md" %}}
+
+{{< include-headless "chunk/option-source-keep-timestamp.md" >}}
+
+{{% include-headless "chunk/option-source-log-fetch-limit.md" %}}
+
+{{% include-headless "chunk/option-source-log-iw-size.md" %}}
+
+{{< include-headless "chunk/option-source-log-prefix.md" >}}
+
+{{% include-headless "chunk/option-source-long-hostnames.md" %}}
 
 ## match-boot()
 
@@ -46,50 +66,24 @@ matches(
 
 {{% include-headless "chunk/option-source-max-field-size-journal.md" %}}
 
-<span id="systemd-namespace"></span>
 {{< include-headless "chunk/systemd-journal-namespace.md" >}}
+
+{{% include-headless "chunk/option-source-normalize-hostnames.md" %}}
+
+{{% include-headless "chunk/option-persist-name.md" %}}
 
 {{% include-headless "chunk/option-source-prefix-journal.md" %}}
 
+{{% include-headless "chunk/option-source-program-override.md" %}}
+
 {{% include-headless "chunk/option-source-read-old-records.md" %}}
+
+{{% include-headless "chunk/option-source-tags.md" %}}
 
 {{% include-headless "chunk/option-source-time-zone.md" %}}
 
+{{% include-headless "chunk/option-source-use-dns.md" %}}
+
 {{< include-headless "chunk/option-source-use-fqdn.md" >}}
 
-<!-- 
-FIXME options to check
-
-systemd-journal(
-    chain-hostnames(<yesno>)
-
-    default-priority(<string>)
-    default-severity(<string>)
-    dns-cache(<yesno>)
-
-    keep-timestamp(<yesno>)
-    log-fetch-limit(<positive-integer>)
-    log-iw-size(<positive-integer>)
-    log-prefix(<string>)
-
-    match-boot(<yesno>)
-    matches(
-        <empty>
-        <string> => <string>
-    )
-
-    normalize-hostnames(<yesno>)
-    persist-name(<string>)
-
-    program-override(<string>)
-    read-old-records(<yesno>)
-    tags(<string-list>)
-    use-dns(
-        <yesno>
-        persist-only
-    )
-
-    use-syslogng-pid(<yesno>)
-)
-
- -->
+{{% include-headless "chunk/option-source-use-syslogng-pid.md" %}}
