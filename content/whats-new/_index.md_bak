@@ -6,6 +6,17 @@ weight: 10
 
 {{< include-headless "banner-new-to-axosyslog.md" >}}
 
+## Version 4.25
+
+- The [`cache_json_file`]({{< relref "/filterx/function-reference.md#cache-json-file-default-value" >}}) FilterX function now accepts an optional `default_value` parameter. When the referenced JSON file is missing or fails to load, {{< product >}} uses `default_value` instead of aborting with a configuration error.
+- New FilterX functions for common data transformations:
+
+    - Cryptographic digests: [`md5`]({{< relref "/filterx/function-reference.md#md5" >}}), [`sha1`]({{< relref "/filterx/function-reference.md#sha1" >}}), [`sha256`]({{< relref "/filterx/function-reference.md#sha256" >}}), and [`sha512`]({{< relref "/filterx/function-reference.md#sha512" >}}) return the hash of a string or bytes value as a lowercase hexadecimal string. The generic [`digest`]({{< relref "/filterx/function-reference.md#digest" >}}) function returns the raw hash as bytes and accepts an optional `alg=` parameter to select the algorithm.
+    - Encoding and decoding: [`base64_encode`]({{< relref "/filterx/function-reference.md#base64-encode" >}}) / [`base64_decode`]({{< relref "/filterx/function-reference.md#base64-decode" >}}), [`urlencode`]({{< relref "/filterx/function-reference.md#urlencode" >}}) / [`urldecode`]({{< relref "/filterx/function-reference.md#urldecode" >}}), and [`hex_encode`]({{< relref "/filterx/function-reference.md#hex-encode" >}}) / [`hex_decode`]({{< relref "/filterx/function-reference.md#hex-decode" >}}).
+    - UTF-8 handling: [`utf8_validate`]({{< relref "/filterx/function-reference.md#utf8-validate" >}}) checks whether a string is valid UTF-8, and [`utf8_sanitize`]({{< relref "/filterx/function-reference.md#utf8-sanitize" >}}) replaces invalid byte sequences with their `\xNN` escaped representation.
+
+- The [`glob_match`]({{< relref "/filterx/function-reference.md#glob-match" >}}) matches a string against one or more glob patterns.
+
 ## Version 4.24 (2026-03-23)
 
 - You can query the list of supported metrics by running `syslog-ng --metrics-registry`. For a reference of available metrics, see {{% xref "/chapter-log-statistics/metrics-reference/_index.md" %}}.
@@ -166,7 +177,7 @@ For LEEF:
 - Log tapping with the [`syslog-ng-ctl attach` command]({{< relref "/app-man-syslog-ng/syslog-ng-ctl.1.md#attach" >}}).
 - {{% xref "/filterx/_index.md" %}} data parsing and processing engine.
 - Updated lists of available options for the gRPC-based destinations ([`bigquery()`]({{< relref "/chapter-destinations/google-bigquery/_index.md" >}}), [`loki()`]({{< relref "/chapter-destinations/destination-loki/_index.md" >}}), [`opentelemetry()`]({{< relref "/chapter-destinations/opentelemetry/_index.md" >}}), [`syslog-ng-otlp()`]({{< relref "/chapter-destinations/destination-syslog-ng-otlp/_index.md" >}})). You can now also set dynamic header values for these destinations.
-- Added the `idle-timeout()` option to {{% xref "/chapter-sources/configuring-sources-file/reference-source-file/_index.md" %}}, {{% xref "/chapter-sources/configuring-sources-stdin/stdin-source-options/_index.md" %}}, {{% xref "/chapter-sources/configuring-sources-systemd-syslog/reference-source-systemd-syslog/_index.md" %}}, {{% xref "/chapter-sources/configuring-sources-wildcard-file/reference-source-wildcard-file/_index.md" %}}, {{% xref "/chapter-sources/source-pipe/reference-source-pipe/_index.md" %}}, {{% xref "/chapter-sources/source-program/reference-source-program/_index.md" %}}, {{% xref "/chapter-sources/source-unixstream/reference-source-unixstream/_index.md" %}}.
+- Added the `idle-timeout()` option to {{% xref "/chapter-sources/configuring-sources-file/reference-source-file/_index.md" %}}, {{% xref "/chapter-sources/configuring-sources-stdin/stdin()-source-options/_index.md" %}}, {{% xref "/chapter-sources/configuring-sources-systemd-syslog/reference-source-systemd-syslog/_index.md" %}}, {{% xref "/chapter-sources/configuring-sources-wildcard-file/reference-source-wildcard-file/_index.md" %}}, {{% xref "/chapter-sources/source-pipe/reference-source-pipe/_index.md" %}}, {{% xref "/chapter-sources/source-program/reference-source-program/_index.md" %}}, {{% xref "/chapter-sources/source-unixstream/reference-source-unixstream/_index.md" %}}.
 
     These sources have a new `exit-on-eof` flag that makes {{< product >}} stop when EOF is received.
 
