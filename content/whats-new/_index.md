@@ -6,6 +6,22 @@ weight: 10
 
 {{< include-headless "banner-new-to-axosyslog.md" >}}
 
+## Version 4.25 (2026-05-01)
+
+- The [`cache_json_file`]({{< relref "/filterx/function-reference.md#cache-json-file-default-value" >}}) FilterX function now accepts an optional `default_value` parameter. When the referenced JSON file is missing or fails to load, {{< product >}} uses `default_value` instead of aborting with a configuration error.
+- New FilterX functions for common data transformations:
+
+    - Cryptographic digests: [`md5`]({{< relref "/filterx/function-reference.md#md5" >}}), [`sha1`]({{< relref "/filterx/function-reference.md#sha1" >}}), [`sha256`]({{< relref "/filterx/function-reference.md#sha256" >}}), and [`sha512`]({{< relref "/filterx/function-reference.md#sha512" >}}) return the hash of a string or bytes value as a lowercase hexadecimal string. The generic [`digest`]({{< relref "/filterx/function-reference.md#digest" >}}) function returns the raw hash as bytes and accepts an optional `alg=` parameter to select the algorithm.
+    - Encoding and decoding: [`base64_encode`]({{< relref "/filterx/function-reference.md#base64-encode" >}}) / [`base64_decode`]({{< relref "/filterx/function-reference.md#base64-decode" >}}), [`urlencode`]({{< relref "/filterx/function-reference.md#urlencode" >}}) / [`urldecode`]({{< relref "/filterx/function-reference.md#urldecode" >}}), and [`hex_encode`]({{< relref "/filterx/function-reference.md#hex-encode" >}}) / [`hex_decode`]({{< relref "/filterx/function-reference.md#hex-decode" >}}).
+    - UTF-8 handling: [`utf8_validate`]({{< relref "/filterx/function-reference.md#utf8-validate" >}}) checks whether a string is valid UTF-8, and [`utf8_sanitize`]({{< relref "/filterx/function-reference.md#utf8-sanitize" >}}) replaces invalid byte sequences with their `\xNN` escaped representation.
+
+- The [`glob_match`]({{< relref "/filterx/function-reference.md#glob-match" >}}) FilterX function matches a string against one or more glob patterns.
+- FilterX has two new variable types to work with network addresses: `ip()` represents a single IPv4 or IPv6 address, while `subnet()` represents an IPv4 or IPv6 subnet in CIDR notation. You can use these types together with the [list membership operator (`in`)]({{< relref "/filterx/operator-reference.md#list-membership-operator" >}}) to check whether an address belongs to a subnet, which is useful for filtering messages based on the source or destination network of the traffic they describe. For details, see {{% xref "/filterx/filterx-subnet/_index.md" %}}.
+- The [`uuid`]({{< relref "/filterx/function-reference.md#uuid" >}}) FilterX function generates a random UUID v4 string.
+- UDP transport support for PROXY protocol v2 (`proxied-udp`) allows you to receive UDP datagrams containing a HAProxy Proxy Protocol v2 header followed by the syslog message payload. Use this transport when a UDP load balancer injects Proxy Protocol v2 headers to preserve the original client IP address and port. For details, see {{% xref "/chapter-sources/configuring-sources-network/proxy-prot-intro/_index.md" %}}.
+
+For a list of bugfixes, see the [GitHub release page](https://github.com/axoflow/axosyslog/releases/tag/axosyslog-4.25.0).
+
 ## Version 4.24 (2026-03-23)
 
 - You can query the list of supported metrics by running `syslog-ng --metrics-registry`. For a reference of available metrics, see {{% xref "/chapter-log-statistics/metrics-reference/_index.md" %}}.
