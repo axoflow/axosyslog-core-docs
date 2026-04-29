@@ -462,6 +462,7 @@ FilterX has the following built-in functions.
 - [`unset_empties`]({{< relref "/filterx/function-reference.md#unset-empties" >}}): Deletes empty fields from an object.
 - [`update_metric`]({{< relref "/filterx/filterx-metrics/_index.md" >}}): Updates a labeled metric counter.
 - [`upper`]({{< relref "/filterx/function-reference.md#upper" >}}): Converts a string into uppercase characters.
+- [`uuid`]({{< relref "/filterx/function-reference.md#uuid" >}}): Generates a random UUID v4 string.
 - [`vars`]({{< relref "/filterx/function-reference.md#vars" >}}): Lists the variables defined in the FilterX block.
 
 For details, see {{% xref "/filterx/function-reference.md" %}}.
