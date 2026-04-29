@@ -6,8 +6,85 @@ weight:  100
 
 The `systemd-syslog()` driver has the following options:
 
+{{% include-headless "chunk/option-source-chain-hostnames.md" %}}
+
 {{< include-headless "chunk/option-source-check-hostname.md" >}}
+
+{{% include-headless "chunk/option-source-check-program.md" %}}
+
+{{% include-headless "chunk/option-source-default-facility.md" %}}
+
+{{% include-headless "chunk/option-source-default-level-journal.md" %}}
+
+{{% include-headless "chunk/option-source-default-priority.md" %}}
+
+{{% include-headless "chunk/option-source-default-severity.md" %}}
+
+{{% include-headless "chunk/option-source-dns-cache.md" %}}
+
+{{% include-headless "chunk/option-source-encoding.md" %}}
+
+{{< include-headless "chunk/option-source-flags.md" >}}
+
+{{% include-headless "chunk/option-source-format.md" %}}
 
 {{< include-headless "chunk/option-destination-hook.md" >}}
 
+{{% include-headless "chunk/option-source-host-override.md" %}}
+
 {{< include-headless "chunk/option-source-idle-timeout.md" >}}
+
+{{% include-headless "chunk/option-source-internal.md" %}}
+
+{{< include-headless "chunk/option-source-keep-hostname.md" >}}
+
+{{< include-headless "chunk/option-source-keep-timestamp.md" >}}
+
+{{% include-headless "chunk/option-source-log-fetch-limit.md" %}}
+
+{{% include-headless "chunk/option-source-log-iw-size.md" %}}
+
+{{< include-headless "chunk/option-source-log-msg-size.md" >}}
+
+{{< include-headless "chunk/option-source-log-prefix.md" >}}
+
+{{% include-headless "chunk/option-source-long-hostnames.md" %}}
+
+{{% include-headless "chunk/option-source-normalize-hostnames.md" %}}
+
+{{% include-headless "chunk/option-persist-name.md" %}}
+
+{{% include-headless "chunk/option-source-program-override.md" %}}
+
+{{% include-headless "chunk/option-source-read-old-records.md" %}}
+
+{{% include-headless "chunk/option-source-sdata-prefix.md" %}}
+
+{{% include-headless "chunk/option-so-broadcast.md" %}}
+
+{{% include-headless "chunk/option-source-so-keepalive.md" %}}
+
+{{< include-headless "chunk/option-source-so-rcvbuf.md" >}}
+
+{{% include-headless "chunk/option-source-so-reuseport.md" %}}
+
+{{% include-headless "chunk/option-so-sndbuf.md" %}}
+
+{{% include-headless "chunk/option-source-tags.md" %}}
+
+{{% include-headless "chunk/option-source-time-zone.md" %}}
+
+{{% include-headless "chunk/option-source-trim-large-messages.md" %}}
+
+{{% include-headless "chunk/option-source-use-dns.md" %}}
+
+{{< include-headless "chunk/option-source-use-fqdn.md" >}}
+
+{{% include-headless "chunk/option-source-use-syslogng-pid.md" %}}
+
+<!-- cfg-helper exposes tcp-keep-alive() and tcp-keepalive() as top-level
+     yes/no options. Both are old aliases for so-keepalive() (see
+     afsocket-parser.c keyword table). Documented above as so-keepalive();
+     these markers exist so the next docs-vs-cfg-helper diff doesn't flag
+     them.
+-->
