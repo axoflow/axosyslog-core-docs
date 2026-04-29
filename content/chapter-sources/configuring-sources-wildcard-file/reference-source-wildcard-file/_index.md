@@ -29,9 +29,17 @@ The `wildcard-file()` driver has the following options:
 
 {{< include-headless "chunk/option-source-check-hostname.md" >}}
 
+{{% include-headless "chunk/option-source-check-program.md" %}}
+
 {{% include-headless "chunk/option-source-default-facility.md" %}}
 
+{{% include-headless "chunk/option-source-default-level-journal.md" %}}
+
 {{% include-headless "chunk/option-source-default-priority.md" %}}
+
+{{% include-headless "chunk/option-source-default-severity.md" %}}
+
+{{% include-headless "chunk/option-source-dns-cache.md" %}}
 
 {{% include-headless "chunk/option-source-encoding.md" %}}
 
@@ -85,7 +93,13 @@ For example, `filename-pattern("*.log")` matches the `syslog.log` and `auth.log`
 
 {{< include-headless "chunk/option-destination-hook.md" >}}
 
+{{% include-headless "chunk/option-source-host-override.md" %}}
+
 {{< include-headless "chunk/option-source-idle-timeout.md" >}}
+
+{{% include-headless "chunk/option-source-internal.md" %}}
+
+{{< include-headless "chunk/option-source-keep-hostname.md" >}}
 
 {{< include-headless "chunk/option-source-keep-timestamp.md" >}}
 
@@ -106,6 +120,8 @@ If `log-fetch-limit()` is 100, and your wildcard file source has 200 files, then
 {{< include-headless "chunk/option-source-log-msg-size.md" >}}
 
 {{< include-headless "chunk/option-source-log-prefix.md" >}}
+
+{{% include-headless "chunk/option-source-long-hostnames.md" %}}
 
 
 ## max-files() {#source-wildcard-file-max-files}
@@ -139,11 +155,17 @@ If `log-fetch-limit()` is 100, and your wildcard file source has 200 files, then
 
 {{% include-headless "chunk/option-source-multi-line-suffix.md" %}}
 
+{{% include-headless "chunk/option-source-multi-line-timeout.md" %}}
+
 {{< include-headless "chunk/option-source-normalize-hostnames.md" >}}
 
 {{% include-headless "chunk/option-source-pad-size.md" %}}
 
+{{% include-headless "chunk/option-persist-name.md" %}}
+
 {{% include-headless "chunk/option-source-program-override.md" %}}
+
+{{% include-headless "chunk/option-source-read-old-records.md" %}}
 
 
 ## recursive() {#source-wildcard-file-recursive}
@@ -161,22 +183,20 @@ If `log-fetch-limit()` is 100, and your wildcard file source has 200 files, then
 
 {{% /alert %}}
 
-
-
 ### Example: Monitoring multiple directories {#example-source-wildcard-file-recursive}
 
 The following example reads files having the `.log` extension from the `/var/log/` directory and its subdirectories, including for example, the `/var/log/apt/history.log` file.
 
 ```shell
-   source s_file_subdirectories {
-        wildcard-file(
-            base-dir("/var/log")
-            filename-pattern("*.log")
-            recursive(yes)
-            follow-freq(1)
-            log-fetch-limit(100)
-        );
-    };
+source s_file_subdirectories {
+    wildcard-file(
+        base-dir("/var/log")
+        filename-pattern("*.log")
+        recursive(yes)
+        follow-freq(1)
+        log-fetch-limit(100)
+    );
+};
 ```
 
 {{< include-headless "chunk/option-source-sdata-prefix.md" >}}
@@ -185,4 +205,18 @@ The following example reads files having the `.log` extension from the `/var/log
 
 {{% include-headless "chunk/option-source-time-zone.md" %}}
 
+{{% include-headless "chunk/option-source-trim-large-messages.md" %}}
+
+{{% include-headless "chunk/option-source-use-dns.md" %}}
+
+{{% include-headless "chunk/option-source-use-fqdn.md" %}}
+
 {{< include-headless "chunk/option-source-use-syslogng-pid.md" >}}
+
+<!-- cfg-helper exposes dir-group(), dir-owner(), dir-perm(), group(), owner(),
+     and perm() for the wildcard-file() source. They are inherited via the
+     shared file_perm_option grammar rule (modules/affile/affile-grammar.ym).
+     They describe how AxoSyslog creates output files; on a wildcard-file()
+     source they are accepted by the parser but have no documented effect.
+     Markers kept so the next docs-vs-cfg-helper diff doesn't flag them.
+-->
