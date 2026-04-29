@@ -108,6 +108,12 @@ unix-dgram(&quot;/var/run/log&quot;);
 {{< include-headless "wnt/note-solaris-msgid.md" >}}</td>
 </tr>
 <tr class="even">
+<td>OpenBSD</td>
+<td><code>
+openbsd();
+</code>
+</tr>
+<tr class="even">
 <td>Solaris 8</td>
 <td><code>
 sun-streams(&quot;/dev/log&quot;);
