@@ -37,8 +37,6 @@ The `axosyslog-otlp()` source has the following options.
 
 {{% include-headless "chunk/option-source-dns-cache.md" %}}
 
-{{< include-headless "chunk/option-source-ebpf.md" >}}
-
 {{< include-headless "chunk/option-source-flags.md" >}}
 
 {{< include-headless "chunk/option-source-format.md" >}}
@@ -48,6 +46,8 @@ The `axosyslog-otlp()` source has the following options.
 {{< include-headless "chunk/option-source-host-override.md" >}}
 
 {{% include-headless "chunk/option-source-internal.md" %}}
+
+{{% include-headless "chunk/option-grpc-source-ip.md" %}}
 
 {{< include-headless "chunk/option-source-otlp-keep-alive.md" >}}
 
