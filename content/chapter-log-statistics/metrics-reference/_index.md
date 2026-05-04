@@ -71,7 +71,7 @@ The following list shows the metrics available in {{< product >}}.
 
 ## input_transport_errors_total
 
-*Description*: Number of various transport errors that prevent {{< product >}} from ingesting messages, for example, TLS handshake errors or syslog framing errors. Labels include the source `id`, `peer_address`, and the `reason` for the error. The `reason=unknown` label occurs when plain TCP traffic is received on a TLS source.
+*Description*: Number of various transport errors that prevent {{< product >}} from ingesting messages, for example, TLS handshake errors or syslog framing errors. Labels include the source `id`, `peer_address`, and the `reason` for the error.
 
 ```shell
 syslogng_input_transport_errors_total{address="127.0.0.1:5513",driver="syslog",peer_address="127.0.0.1",reason="invalid-frame-header",transport="tcp"} 1
