@@ -23,6 +23,7 @@ You can replace most [filter functions]({{< relref "/chapter-routing-filters/fil
     If you want to check for a range of levels, use numerical comparison with the `${LEVEL_NUM}` macro instead. For a list of numerical level values, see {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-level-num" %}}.
 
 - `message("example")` with `${MESSAGE} =~ "example"` (see the [equal tilde operator]({{< relref "/filterx/operator-reference.md#regexp" >}}) for details)
+- [`netmask()`]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-netmask/_index.md" >}}) and [`netmask6()`]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-netmask6/_index.md" >}}) with `subnet` and a list membership check, for example, `netmask(192.168.5.0/255.255.255.0)` becomes `${SOURCEIP} in subnet("192.168.5.0/255.255.255.0");`. For details, see {{% xref "/filterx/filterx-subnet/_index.md" %}}.
 - `program(nginx)` with `${PROGRAM} == "nginx"`
 - `source(my-source)` with `${SOURCE} == "my-source"`
 
@@ -52,7 +53,6 @@ filterx {
 The following filter functions have no equivalents in FilterX yet:
 
 - The [`filter()` filter function]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-filter/_index.md" >}}). You can't call a FilterX block from another FilterX block, but you can [access name-value pairs and pass variables](#scoping) from multiple FilterX blocks.
-- [`netmask()`]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-netmask/_index.md" >}}) and [`netmask6()`]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-netmask6/_index.md" >}})
 - [`rate-limit()`]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-rate-limit/_index.md" >}})
 - [`tags()`]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-tags/_index.md" >}})
 
