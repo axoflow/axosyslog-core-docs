@@ -15,6 +15,35 @@ Functions have arguments that can be either mandatory or optional.
 - Mandatory options are always positional, so you need to pass them in the correct order. You cannot set them in the `arg=value` format.
 - Optional arguments are always named, like `arg=value`. You can pass optional arguments in any order.
 
+## base64_decode {#base64-decode}
+
+Available in {{< product >}} 4.25 and later.
+
+Decodes a Base64-encoded string and returns the result as a bytes value.
+
+Usage: `base64_decode(string)`
+
+For example:
+
+```shell
+base64_decode("Zm9vYmFy");  # Returns the bytes "foobar"
+base64_decode(base64_encode("szilvafa"));  # Round-trips back to the original value
+```
+
+## base64_encode {#base64-encode}
+
+Available in {{< product >}} 4.25 and later.
+
+Encodes a string or bytes value as a Base64 string.
+
+Usage: `base64_encode(string_or_bytes)`
+
+For example:
+
+```shell
+base64_encode("foobar");  # Returns "Zm9vYmFy"
+```
+
 ## cache_json_file {#cache-json-file}
 
 Load the contents of an external JSON file in an efficient manner. You can use this function to lookup contextual information. (Basically, this is a FilterX-specific implementation of the [`add-contextual-data() functionality`]({{< relref "/chapter-enrich-data/data-enrichment-add-contextual-data/_index.md" >}}).)
@@ -87,6 +116,22 @@ my_list = dict_to_pairs(my_dict, "key", "value");
 #   {"key":"key_2","value":"value_2"},
 #   {"key":"key_3","value":["value_3","value_4"]}
 # ]
+```
+
+## digest
+
+Available in {{< product >}} 4.25 and later.
+
+Computes a cryptographic hash of a string or bytes value and returns the raw hash as a bytes object. Use the optional `alg=` argument to select the hash algorithm. If `alg=` is not set, the default is `sha256`. The algorithm name is passed to OpenSSL, so any name accepted by `EVP_get_digestbyname` is supported (for example, `md5`, `sha1`, `sha256`, `sha512`). An unknown algorithm name causes a configuration error.
+
+To obtain the hash as a hexadecimal string instead of bytes, use the convenience functions [`md5`](#md5), [`sha1`](#sha1), [`sha256`](#sha256), or [`sha512`](#sha512).
+Usage: `digest(string_or_bytes, alg="sha256")`
+
+For example:
+
+```shell
+digest("foobar");                   # Raw SHA-256 hash as bytes
+digest("foobar", alg="md5");        # Raw MD5 hash as bytes
 ```
 
 ## dpath
@@ -244,6 +289,28 @@ See {{% xref "/filterx/filterx-sdata/_index.md" %}}.
 
 See {{% xref "/filterx/filterx-timezone/_index.md#get-timezone-source" %}}.
 
+## glob_match {#glob-match}
+
+Available in {{< product >}} 4.25 and later.
+
+Matches a filename (or any string) against one or more glob patterns and returns `true` if the filename matches any of the patterns, `false` otherwise. Note that `/` separators are matched literally (not by wildcards), and a leading `.` must be matched explicitly.
+
+Usage: `glob_match(filename, patterns)`
+
+- `filename`: The string to test.
+- `patterns`: A single pattern string, or a list of pattern strings. When a list is provided, the function returns `true` as soon as any pattern matches.
+
+Using a non-string `filename`, or a non-string element in the `patterns` list, causes a runtime error.
+
+For example:
+
+```shell
+glob_match("filename.log", "*.log");                 # Returns true
+glob_match("filename.log", ["*.log", "*.txt"]);      # Returns true
+glob_match("filename.cfg", ["*.log", "*.txt"]);      # Returns false
+glob_match("/var/log/syslog", ["/var/log/*"]);       # Returns true
+```
+
 ## guess_timezone
 
 See {{% xref "/filterx/filterx-timezone/_index.md#guess-timezone" %}}.
@@ -251,6 +318,34 @@ See {{% xref "/filterx/filterx-timezone/_index.md#guess-timezone" %}}.
 ## has_sdata
 
 See {{% xref "/filterx/filterx-sdata/_index.md" %}}.
+
+## hex_decode {#hex-decode}
+
+Available in {{< product >}} 4.25 and later.
+
+Decodes a lowercase or uppercase hexadecimal string and returns the result as bytes. The input length must be even, and each character must be a valid hexadecimal digit. Invalid characters or an odd-length input cause a runtime error.
+
+Usage: `hex_decode(string)`
+
+For example:
+
+```shell
+hex_decode("666f6f626172");          # Returns the bytes "foobar"
+```
+
+## hex_encode {#hex-encode}
+
+Available in {{< product >}} 4.25 and later.
+
+Encodes a string or bytes value as a lowercase hexadecimal string.
+
+Usage: `hex_encode(string_or_bytes)`
+
+For example:
+
+```shell
+hex_encode("foobar");  # Returns "666f6f626172"
+```
 
 ## includes
 
@@ -374,6 +469,20 @@ Loads variables from a dict. It's the inverse of [`vars()`](#vars). It loads and
 Converts all characters of a string lowercase characters.
 
 Usage: `lower(string)`
+
+## md5
+
+Available in {{< product >}} 4.25 and later.
+
+Computes the MD5 hash of a string or bytes value and returns the result as a lowercase hexadecimal string. To obtain the raw hash as bytes, use the [`digest`](#digest) function with `alg="md5"`.
+
+Usage: `md5(string_or_bytes)`
+
+For example:
+
+```shell
+md5("foobar");  # Returns "3858f62230ac3c915f300c664312c63f"
+```
 
 ## metrics_labels
 
@@ -685,6 +794,48 @@ The `stamp` argument determines the timestamp to be set: `stamp` or `recvd`. Def
 
 See {{% xref "/filterx/filterx-timezone/_index.md#set-timezone" %}}.
 
+## sha1
+
+Available in {{< product >}} 4.25 and later.
+
+Computes the SHA-1 hash of a string or bytes value and returns the result as a lowercase hexadecimal string. To obtain the raw hash as bytes, use the [`digest`](#digest) function with `alg="sha1"`.
+
+Usage: `sha1(string_or_bytes)`
+
+For example:
+
+```shell
+sha1("foobar");  # Returns "8843d7f92416211de9ebb963ff4ce28125932878"
+```
+
+## sha256
+
+Available in {{< product >}} 4.25 and later.
+
+Computes the SHA-256 hash of a string or bytes value and returns the result as a lowercase hexadecimal string. To obtain the raw hash as bytes, use the [`digest`](#digest) function (`sha256` is also the default algorithm used by `digest` when `alg=` is not set).
+
+Usage: `sha256(string_or_bytes)`
+
+For example:
+
+```shell
+sha256("foobar");  # Returns "c3ab8ff13720e8ad9047dd39466b3c8974e592c2fa383d4a3960714caef0c4f2"
+```
+
+## sha512
+
+Available in {{< product >}} 4.25 and later.
+
+Computes the SHA-512 hash of a string or bytes value and returns the result as a lowercase hexadecimal string. To obtain the raw hash as bytes, use the [`digest`](#digest) function with `alg="sha512"`.
+
+Usage: `sha512(string_or_bytes)`
+
+For example:
+
+```shell
+sha512("foobar");
+```
+
 ## startswith
 
 Available in {{< product >}} 4.9 and later.
@@ -878,6 +1029,66 @@ Updates a labeled metric counter, similarly to the [`metrics-probe()` parser]({{
 Converts all characters of a string uppercase characters.
 
 Usage: `upper(string)`
+
+## urldecode
+
+Available in {{< product >}} 4.25 and later.
+
+Decodes a percent-encoded URL string and returns the decoded value as a string. An invalid percent-encoding causes a runtime error.
+
+Usage: `urldecode(string)`
+
+For example:
+
+```shell
+urldecode("example%2Furl%3Fwith%3D1%26parameters%3D2");
+# Returns "example/url?with=1&parameters=2"
+```
+
+## urlencode
+
+Available in {{< product >}} 4.25 and later.
+
+Percent-encodes a string so that it's safe to include in a URL. Characters outside the unreserved set are replaced with their `%HH` escape.
+
+Usage: `urlencode(string)`
+
+For example:
+
+```shell
+urlencode("example/url?with=1&parameters=2");
+# Returns "example%2Furl%3Fwith%3D1%26parameters%3D2"
+```
+
+## utf8_sanitize {#utf8-sanitize}
+
+Available in {{< product >}} 4.25 and later.
+
+Returns a string where invalid UTF-8 byte sequences in the input are replaced with their `\xNN` escaped representation. If the input is already valid UTF-8, the original string is returned unchanged. The function is idempotent: calling it on an already sanitized value produces the same result.
+
+Usage: `utf8_sanitize(string)`
+
+For example:
+
+```shell
+utf8_sanitize("example");         # Returns "example"
+utf8_sanitize("\x80\x81\x82");    # Returns "\x80\x81\x82" (as literal characters)
+```
+
+## utf8_validate {#utf8-validate}
+
+Available in {{< product >}} 4.25 and later.
+
+Returns `true` if the input string contains only valid UTF-8 byte sequences, and `false` otherwise.
+
+Usage: `utf8_validate(string)`
+
+For example:
+
+```shell
+utf8_validate("example");       # Returns true
+utf8_validate("\x80\x81\x82");  # Returns false
+```
 
 ## uuid
 

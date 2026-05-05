@@ -25,14 +25,9 @@ The `assume-utf8` flag assumes that the incoming messages are UTF-8 encoded, but
 
 ### check-program
 
-Available in version 4.10 and later.
+{{< include-headless "chunk/option-source-check-program-description.md" >}}
 
-If the `check-program` flag is enabled, {{% param "product.abbrev" %}} validates the `${PROGRAM}` field for RFC3164-formatted messages. Valid program names meet the following criteria:
-
-- Contain only these characters: `[a-zA-Z0-9-_/().]`
-- Include at least one alphabetical character.
-
-If the program name fails validation, it is considered to be part of the log message.
+You can also enable this behavior globally using the [`check-program` global option]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-check-program" >}}).
 
 ### dont-store-legacy-msghdr
 

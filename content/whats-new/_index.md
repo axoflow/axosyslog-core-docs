@@ -6,12 +6,18 @@ weight: 10
 
 {{< include-headless "banner-new-to-axosyslog.md" >}}
 
+## Version 4.25
+
+- The `network()` and `syslog()` sources now support `transport("proxied-udp")` to receive UDP syslog messages from load balancers that use [HAProxy Proxy Protocol v2]({{< relref "/chapter-sources/configuring-sources-network/proxy-prot-intro/_index.md" >}}) to preserve original client IP addresses.
+
 ## Version 4.24 (2026-03-23)
 
 - You can query the list of supported metrics by running `syslog-ng --metrics-registry`. For a reference of available metrics, see {{% xref "/chapter-log-statistics/metrics-reference/_index.md" %}}.
 - The new `batch-idle-timeout()` option closes the batch if no new message is received since the last message within the `batch-idle-timeout()` period. The following destinations support `batch-idle-timeout()`: `amqp()`, `bigquery()`, `clickhouse()`, `discord()`, `elasticsearch()`, `mongodb()`, `google-pubsub()`, `http()`,`kafka-c()`, `opensearch()`,`opentelemetry()`, `redis()`, `riemann()`, `slack()`, `smtp()`, `stomp()`, `sql()`, `sumologic()`.
 - New FilterX functions to manipulate the timezone of the messages: {{% xref "/filterx/filterx-timezone/_index.md" %}}.
 - [`network-load-balancer()`]({{< relref "/chapter-examples/load-bal-multi-dest/load-bal-multi-dest-msec-h/_index.md" >}}) now supports the `failover()` option.
+
+For a list of bugfixes, see the [GitHub release page](https://github.com/axoflow/axosyslog/releases/tag/axosyslog-4.24.0).
 
 ## Version 4.23 (2026-02-18)
 

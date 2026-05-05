@@ -410,9 +410,12 @@ For details, see {{% xref "/filterx/operator-reference.md" %}}.
 
 FilterX has the following built-in functions.
 
+- [`base64_decode`]({{< relref "/filterx/function-reference.md#base64-decode" >}}): Decodes a Base64-encoded string and returns the result as bytes.
+- [`base64_encode`]({{< relref "/filterx/function-reference.md#base64-encode" >}}): Encodes a string or bytes value as a Base64 string.
 - [`cache_json_file`]({{< relref "/filterx/function-reference.md#cache-json-file" >}}): Loads an external JSON file to lookup contextual information.
 - [`dedup_metrics_labels`]({{< relref "/filterx/filterx-metrics/_index.md#dedup-metrics-labels" >}}): Deduplicate `metrics_labels` objects.
 - [`dict_to_pairs`]({{< relref "/filterx/function-reference.md#dict-to-pairs" >}}): Convert dicts to list of pairs.
+- [`digest`]({{< relref "/filterx/function-reference.md#digest" >}}): Computes a cryptographic hash of a string or bytes value and returns the raw hash as bytes.
 - [`dpath`]({{< relref "/filterx/function-reference.md#dpath" >}}): Creates a nested path in a dictionary.
 - [`endswith`]({{< relref "/filterx/filterx-string-search/_index.md" >}}): Checks if a string ends with the specified value.
 - [`flatten`]({{< relref "/filterx/function-reference.md#flatten" >}}): Flattens the nested elements of an object.
@@ -428,8 +431,11 @@ FilterX has the following built-in functions.
 - [`format_xml`]({{< relref "/filterx/filterx-format-data/format-xml" >}}): Formats a dictionary into XML.
 - [`get_sdata`]({{< relref "/filterx/filterx-sdata/_index.md" >}}): Returns the SDATA part of an RFC5424-formatted syslog message as a JSON object.
 - [`get_timezone_source`]({{< relref "/filterx/filterx-timezone/_index.md#get-timezone-source" >}}): Shows where the timezone information of the message originates from.
+- [`glob_match`]({{< relref "/filterx/function-reference.md#glob-match" >}}): Matches a string against one or more glob patterns.
 - [guess_timezone]({{< relref "/filterx/filterx-timezone/_index.md#guess-timezone" >}}): Attempts to set the timezone of the message automatically, using heuristics on the timestamps.
 - [`has_sdata`]({{< relref "/filterx/filterx-sdata/_index.md" >}}): Checks if a string ends with the specified value.
+- [`hex_decode`]({{< relref "/filterx/function-reference.md#hex-decode" >}}): Decodes a hexadecimal string and returns the result as bytes.
+- [`hex_encode`]({{< relref "/filterx/function-reference.md#hex-encode" >}}): Encodes a string or bytes value as a lowercase hexadecimal string.
 - [`includes`]({{< relref "/filterx/filterx-string-search/_index.md" >}}): Checks if a string contains a specific substring.
 - [`isodate`]({{< relref "/filterx/function-reference.md#isodate" >}}): Parses a string as a date in ISODATE format.
 - [`is_sdata_from_enterprise`]({{< relref "/filterx/filterx-sdata/_index.md" >}}): Checks if the message contains the specified organization ID.
@@ -440,6 +446,7 @@ FilterX has the following built-in functions.
 - [`metrics_labels`]({{< relref "/filterx/filterx-metrics/_index.md#metrics-labels" >}}): Convert key-values to metric labels directly.
 - [`load_vars`]({{< relref "/filterx/function-reference.md#load-vars" >}}): Load variables from a dictionary.
 - [`lower`]({{< relref "/filterx/function-reference.md#lower" >}}): Converts a string into lowercase characters.
+- [`md5`]({{< relref "/filterx/function-reference.md#md5" >}}): Computes the MD5 hash and returns the result as a lowercase hexadecimal string.
 - [`move`]({{< relref "/filterx/function-reference.md#move" >}}): Moves the specified variable to its new location, instead of copying it.
 - [`parse_csv`]({{< relref "/filterx/filterx-parsing/csv/_index.md" >}}): Parses a comma-separated or similar string.
 - [`parse_kv`]({{< relref "/filterx/filterx-parsing/key-value-parser/_index.md" >}}): Parses a string consisting of whitespace or comma-separated `key=value` pairs.
@@ -452,6 +459,9 @@ FilterX has the following built-in functions.
 - [`set_pri`]({{< relref "/filterx/function-reference.md#set-pri" >}}): Set the priority value of the message.
 - [`set_timestamp`]({{< relref "/filterx/function-reference.md#set-timestamp" >}}): Set the timestamp of the message.
 - [set_timezone]({{< relref "/filterx/filterx-timezone/_index.md#set-timezone" >}}): Sets the timezone of the message to a specific value.
+- [`sha1`]({{< relref "/filterx/function-reference.md#sha1" >}}): Computes the SHA-1 hash and returns the result as a lowercase hexadecimal string.
+- [`sha256`]({{< relref "/filterx/function-reference.md#sha256" >}}): Computes the SHA-256 hash and returns the result as a lowercase hexadecimal string.
+- [`sha512`]({{< relref "/filterx/function-reference.md#sha512" >}}): Computes the SHA-512 hash and returns the result as a lowercase hexadecimal string.
 - [`startswith`]({{< relref "/filterx/filterx-string-search/_index.md" >}}): Checks if a string begins with the specified value.
 - [`strcasecmp`]({{< relref "/filterx/function-reference.md#strcasecmp" >}}): Case insensitive string comparison.
 - [`strftime`]({{< relref "/filterx/function-reference.md#strftime" >}}): Format datetime values.
@@ -462,7 +472,14 @@ FilterX has the following built-in functions.
 - [`unset_empties`]({{< relref "/filterx/function-reference.md#unset-empties" >}}): Deletes empty fields from an object.
 - [`update_metric`]({{< relref "/filterx/filterx-metrics/_index.md" >}}): Updates a labeled metric counter.
 - [`upper`]({{< relref "/filterx/function-reference.md#upper" >}}): Converts a string into uppercase characters.
+<<<<<<< 4.25-filterx-uuid-20260401
 - [`uuid`]({{< relref "/filterx/function-reference.md#uuid" >}}): Generates a random UUID v4 string.
+=======
+- [`urldecode`]({{< relref "/filterx/function-reference.md#urldecode" >}}): Decodes a percent-encoded URL string.
+- [`urlencode`]({{< relref "/filterx/function-reference.md#urlencode" >}}): Percent-encodes a string so it's safe to include in a URL.
+- [`utf8_sanitize`]({{< relref "/filterx/function-reference.md#utf8-sanitize" >}}): Replaces invalid UTF-8 byte sequences with their `\xNN` escaped representation.
+- [`utf8_validate`]({{< relref "/filterx/function-reference.md#utf8-validate" >}}): Returns `true` if the input contains only valid UTF-8 byte sequences.
+>>>>>>> main
 - [`vars`]({{< relref "/filterx/function-reference.md#vars" >}}): Lists the variables defined in the FilterX block.
 
 For details, see {{% xref "/filterx/function-reference.md" %}}.

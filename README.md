@@ -51,3 +51,32 @@ To use this repository, you need the following installed locally:
 
     - `error: failed to transform resource: TOCSS: failed to transform "scss/main.scss" (text/x-scss): this feature is not available in your current Hugo version`: You have installed the regular version of Hugo, not the extended version.
     - `execute of template failed: template: docs/single.html:30:7: executing "docs/single.html" at <partial "scripts.html" .>: error calling partial`: You haven't run `npm install` in the `themes/docsy` directory.
+
+## Generating Markdown output for LLMs
+
+The site can be converted to Markdown files suitable for LLM consumption using the `hugo_to_markdown.py` script.
+
+### Prerequisites
+
+- Python 3.10+
+- Install the required Python packages:
+
+    ```bash
+    pip install beautifulsoup4 html2text
+    ```
+
+### Build and convert
+
+1. Build the site:
+
+    ```bash
+    hugo --minify
+    ```
+
+1. Run the conversion script (writes `.md` files alongside the HTML in `public/`):
+
+    ```bash
+    python3 themes/docsy-axoflow/scripts/hugo_to_markdown.py --input public --output public
+    ```
+
+The script mirrors the Hugo output directory structure, converting each `index.html` to an `index.md` file in the same directory. Internal links are converted to relative Markdown links.

@@ -114,66 +114,13 @@ By default, {{% param "product.abbrev" %}} log messages (generated on the `inter
 
 Check the internal logs of {{% param "product.abbrev" %}} for any issue.
 
-<span id="stats"></span>
-
-### Message processing
-
-The {{% param "product.abbrev" %}} application collects statistics about the number of processed messages on the different sources and destinations.
-
 {{% alert title="Note" color="info" %}}
-When using `syslog-ng-ctl stats`, consider that while the output is generally consistent, there is no explicit ordering behind the command. Consequently, {{% param "product.companyabbrev" %}} does not recommend creating parsers that depend on a fix output order.
-
-If needed, you can sort the output with an external application, for example, `| sort`.
-{{% /alert %}}
-
-#### Central statistics
-
-To check the central statistics, execute the following command to see the number of received and queued (sent) messages by {{% param "product.abbrev" %}}.
-
-`watch "/opt/syslog-ng/sbin/syslog-ng-ctl stats | grep ^center"`
-
-The output will be updated in every 2 seconds. If the numbers are changing, {{% param "product.abbrev" %}} is processing the messages. Output example:
-
-```shell
-    Every 2.0s: /opt/syslog-ng/sbin/syslog-ng-ctl stats | grep ^center       Tue Jun 25 10:33:25 2019
-    center;;queued;a;processed;112
-    center;;received;a;processed;28
-```
-
-#### Source statistics
-
-To check the source statistics, execute the following command to see the number of received messages on the configured sources.
-
-`watch "/opt/syslog-ng/sbin/syslog-ng-ctl stats | grep ^source"`
-
-The output will be updated in every 2 seconds. If the numbers are changing, {{% param "product.abbrev" %}} is receiving messages on the sources. Output example:
-
-```shell
-    Every 2.0s: /opt/syslog-ng/sbin/syslog-ng-ctl stats | grep ^source      Tue Jun 25 10:40:50 2019
-    source;s_null;;a;processed;0
-    source;s_net;;a;processed;0
-    source;s_local;;a;processed;90
-```
-
-#### Destination statistics
-
-To check the source statistics, execute the following command to see the number of received messages on the configured sources.
-
-`watch "/opt/syslog-ng/sbin/syslog-ng-ctl stats | grep ^source"`
-
-The output will be updated in every 2 seconds. If the numbers are changing, {{% param "product.abbrev" %}} is receiving messages on the sources. Output example:
-
-```shell
-    Every 2.0s: /opt/syslog-ng/sbin/syslog-ng-ctl stats | grep ^destination      Tue Jun 25 10:41:02 2019
-    destination;d_logserver2;;a;processed;90
-    destination;d_messages;;a;processed;180
-    destination;d_logserver;;a;processed;90
-    destination;d_null;;a;processed;0
-```
-
-{{% alert title="Note" color="info" %}}
-If you find error messages in the internal logs, messages are not processed by {{% param "product.abbrev" %}} or you encounter any issue, you have the following options:
+If you find error messages in the internal logs, messages aren't processed by {{% param "product.abbrev" %}}, or you encounter any issue, you have the following options:
 
 - [Open a GitHub issue](https://github.com/axoflow/axosyslog/issues) including the results.
 - {{% param "product.contact" %}}
 {{% /alert %}}
+
+### Monitor {{% param "product.abbrev" %}} {#stats}
+
+To monitor the performance and status of {{% param "product.abbrev" %}} for observability and monitoring, see {{% xref "/chapter-log-statistics/_index.md" %}}.

@@ -1,8 +1,12 @@
 ---
 title: Metrics reference
+weight: 300
 ---
+<!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
 The following list shows the metrics available in {{< product >}}.
+
+{{< include-headless "chunk/metrics-intro.md" >}}
 
 {{% alert title="Note" color="info" %}}
 - Metrics that have the `_total` suffix reset to zero when {{< product >}} is restarted. Reloading {{< product >}} doesn't cause a reset.
@@ -64,6 +68,15 @@ The following list shows the metrics available in {{< product >}}.
 ## input_events_total
 
 *Description*: Number of incoming log messages processed by each source.
+
+## input_transport_errors_total
+
+*Description*: Number of various transport errors that prevent {{< product >}} from ingesting messages, for example, TLS handshake errors or syslog framing errors. Labels include the source `id`, `peer_address`, and the `reason` for the error.
+
+```shell
+syslogng_input_transport_errors_total{address="127.0.0.1:5513",driver="syslog",peer_address="127.0.0.1",reason="invalid-frame-header",transport="tcp"} 1
+syslogng_input_transport_errors_total{address="127.0.0.1:5515",driver="syslog",id="s_tls_req#0",peer_address="127.0.0.1",reason="tls-handshake",tls_error="0A0000C7",tls_error_string="SSL routines::peer did not return a certificate",transport="tls"} 1
+```
 
 ## input_window_available
 
