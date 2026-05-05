@@ -472,9 +472,6 @@ FilterX has the following built-in functions.
 - [`unset_empties`]({{< relref "/filterx/function-reference.md#unset-empties" >}}): Deletes empty fields from an object.
 - [`update_metric`]({{< relref "/filterx/filterx-metrics/_index.md" >}}): Updates a labeled metric counter.
 - [`upper`]({{< relref "/filterx/function-reference.md#upper" >}}): Converts a string into uppercase characters.
-<<<<<<< 4.25-filterx-uuid-20260401
-- [`uuid`]({{< relref "/filterx/function-reference.md#uuid" >}}): Generates a random UUID v4 string.
-=======
 - [`urldecode`]({{< relref "/filterx/function-reference.md#urldecode" >}}): Decodes a percent-encoded URL string.
 - [`urlencode`]({{< relref "/filterx/function-reference.md#urlencode" >}}): Percent-encodes a string so it's safe to include in a URL.
 - [`utf8_sanitize`]({{< relref "/filterx/function-reference.md#utf8-sanitize" >}}): Replaces invalid UTF-8 byte sequences with their `\xNN` escaped representation.
