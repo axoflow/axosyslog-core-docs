@@ -6,7 +6,7 @@ weight: 10
 
 {{< include-headless "banner-new-to-axosyslog.md" >}}
 
-## Version 4.25 (2026-05-01)
+## Version 4.25 (2026-05-05)
 
 - The [`cache_json_file`]({{< relref "/filterx/function-reference.md#cache-json-file-default-value" >}}) FilterX function now accepts an optional `default_value` parameter. When the referenced JSON file is missing or fails to load, {{< product >}} uses `default_value` instead of aborting with a configuration error.
 - New FilterX functions for common data transformations:
@@ -18,7 +18,7 @@ weight: 10
 - The [`glob_match`]({{< relref "/filterx/function-reference.md#glob-match" >}}) FilterX function matches a string against one or more glob patterns.
 - FilterX has two new variable types to work with network addresses: `ip()` represents a single IPv4 or IPv6 address, while `subnet()` represents an IPv4 or IPv6 subnet in CIDR notation. You can use these types together with the [list membership operator (`in`)]({{< relref "/filterx/operator-reference.md#list-membership-operator" >}}) to check whether an address belongs to a subnet, which is useful for filtering messages based on the source or destination network of the traffic they describe. For details, see {{% xref "/filterx/filterx-subnet/_index.md" %}}.
 - The [`uuid`]({{< relref "/filterx/function-reference.md#uuid" >}}) FilterX function generates a random UUID v4 string.
-- UDP transport support for PROXY protocol v2 (`proxied-udp`) allows you to receive UDP datagrams containing a HAProxy Proxy Protocol v2 header followed by the syslog message payload. Use this transport when a UDP load balancer injects Proxy Protocol v2 headers to preserve the original client IP address and port. For details, see {{% xref "/chapter-sources/configuring-sources-network/proxy-prot-intro/_index.md" %}}.
+- The `network()` and `syslog()` sources now support `transport("proxied-udp")` to receive UDP syslog messages from load balancers that use [HAProxy Proxy Protocol v2]({{< relref "/chapter-sources/configuring-sources-network/proxy-prot-intro/_index.md" >}}) to preserve original client IP addresses.
 
 For a list of bugfixes, see the [GitHub release page](https://github.com/axoflow/axosyslog/releases/tag/axosyslog-4.25.0).
 

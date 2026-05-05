@@ -9,5 +9,4 @@
 | Type:    | number |
 | Default: | 0      |
 
-*Description:* The size of the dynamic control window used during flow-control. For details on flow-control, see {{% xref "/chapter-routing-filters/concepts-flow-control/_index.md" %}}.
-
+*Description:* The size of the dynamic control window used during flow-control. For details on flow-control, see {{% xref "/chapter-routing-filters/concepts-flow-control/_index.md#dynamic-flow-control" %}}.

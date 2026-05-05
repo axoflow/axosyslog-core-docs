@@ -51,7 +51,7 @@ For UDP-based sources, the window size is not divided by `max-connections()`, be
 {{% /alert %}}
 
 
-## Dynamic flow-control
+## Dynamic flow-control {#dynamic-flow-control}
 
 In addition to the static control window set using the `log-iw-size()` option, you can also allocate a dynamic window to the source. The AxoSyslog application uses this window to dynamically increase the static window of the active connections. The dynamic window is distributed evenly among the active connections of the source. The AxoSyslog application periodically checks which connections of the source are active, and redistributes the dynamic window. If only one of the connections is active, it receives the entire dynamic window, while other connections receive only their share of the static window.
 
