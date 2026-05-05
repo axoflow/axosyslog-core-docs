@@ -476,7 +476,7 @@ FilterX has the following built-in functions.
 - [`urlencode`]({{< relref "/filterx/function-reference.md#urlencode" >}}): Percent-encodes a string so it's safe to include in a URL.
 - [`utf8_sanitize`]({{< relref "/filterx/function-reference.md#utf8-sanitize" >}}): Replaces invalid UTF-8 byte sequences with their `\xNN` escaped representation.
 - [`utf8_validate`]({{< relref "/filterx/function-reference.md#utf8-validate" >}}): Returns `true` if the input contains only valid UTF-8 byte sequences.
->>>>>>> main
+- [`uuid`]({{< relref "/filterx/function-reference.md#uuid" >}}): Generates a random UUID v4 string.
 - [`vars`]({{< relref "/filterx/function-reference.md#vars" >}}): Lists the variables defined in the FilterX block.
 
 For details, see {{% xref "/filterx/function-reference.md" %}}.
