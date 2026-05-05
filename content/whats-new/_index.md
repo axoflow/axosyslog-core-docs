@@ -6,6 +6,10 @@ weight: 10
 
 {{< include-headless "banner-new-to-axosyslog.md" >}}
 
+## Version 4.25
+
+- The `network()` and `syslog()` sources now support `transport("proxied-udp")` to receive UDP syslog messages from load balancers that use [HAProxy Proxy Protocol v2]({{< relref "/chapter-sources/configuring-sources-network/proxy-prot-intro/_index.md" >}}) to preserve original client IP addresses.
+
 ## Version 4.24 (2026-03-23)
 
 - You can query the list of supported metrics by running `syslog-ng --metrics-registry`. For a reference of available metrics, see {{% xref "/chapter-log-statistics/metrics-reference/_index.md" %}}.
