@@ -1,10 +1,10 @@
 ---
-title: "systemd-syslog() source options"
+title: "stdin() source options"
 weight:  100
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The `systemd-syslog()` driver has the following options:
+The `stdin()` driver has the following options:
 
 {{% include-headless "chunk/option-source-chain-hostnames.md" %}}
 
@@ -26,6 +26,8 @@ The `systemd-syslog()` driver has the following options:
 
 {{< include-headless "chunk/option-source-flags.md" >}}
 
+{{% include-headless "chunk/option-source-follow-freq.md" %}}
+
 {{% include-headless "chunk/option-source-format.md" %}}
 
 {{< include-headless "chunk/option-destination-hook.md" >}}
@@ -42,7 +44,7 @@ The `systemd-syslog()` driver has the following options:
 
 {{% include-headless "chunk/option-source-log-fetch-limit.md" %}}
 
-{{% include-headless "chunk/option-source-log-iw-size.md" %}}
+{{% include-headless "chunk/option-source-file-log-iw-size.md" %}}
 
 {{< include-headless "chunk/option-source-log-msg-size.md" >}}
 
@@ -50,7 +52,19 @@ The `systemd-syslog()` driver has the following options:
 
 {{% include-headless "chunk/option-source-long-hostnames.md" %}}
 
+{{< include-headless "chunk/option-source-multi-line-garbage.md" >}}
+
+{{< include-headless "chunk/option-source-multi-line-mode.md" >}}
+
+{{< include-headless "chunk/option-source-multi-line-prefix.md" >}}
+
+{{% include-headless "chunk/option-source-multi-line-suffix.md" %}}
+
+{{% include-headless "chunk/option-source-multi-line-timeout.md" %}}
+
 {{% include-headless "chunk/option-source-normalize-hostnames.md" %}}
+
+{{% include-headless "chunk/option-source-pad-size.md" %}}
 
 {{% include-headless "chunk/option-persist-name.md" %}}
 
@@ -60,16 +74,6 @@ The `systemd-syslog()` driver has the following options:
 
 {{% include-headless "chunk/option-source-sdata-prefix.md" %}}
 
-{{% include-headless "chunk/option-so-broadcast.md" %}}
-
-{{% include-headless "chunk/option-source-so-keepalive.md" %}}
-
-{{< include-headless "chunk/option-source-so-rcvbuf.md" >}}
-
-{{% include-headless "chunk/option-source-so-reuseport.md" %}}
-
-{{% include-headless "chunk/option-so-sndbuf.md" %}}
-
 {{% include-headless "chunk/option-source-tags.md" %}}
 
 {{% include-headless "chunk/option-source-time-zone.md" %}}
@@ -78,13 +82,22 @@ The `systemd-syslog()` driver has the following options:
 
 {{% include-headless "chunk/option-source-use-dns.md" %}}
 
-{{< include-headless "chunk/option-source-use-fqdn.md" >}}
+{{% include-headless "chunk/option-source-use-fqdn.md" %}}
 
 {{% include-headless "chunk/option-source-use-syslogng-pid.md" %}}
 
-<!-- cfg-helper exposes tcp-keep-alive() and tcp-keepalive() as top-level
-     yes/no options. Both are old aliases for so-keepalive() (see
-     afsocket-parser.c keyword table). Documented above as so-keepalive();
-     these markers exist so the next docs-vs-cfg-helper diff doesn't flag
-     them.
+<!-- cfg-helper exposes the following stdin()-source options that the parser
+     accepts via shared affile/file_perm grammar rules but that have no
+     useful effect on the stdin() source. Markers kept so the next
+     docs-vs-cfg-helper diff doesn't flag them as missing.
+
+  - force-directory-polling(): obsolete (KWS_OBSOLETE in affile-parser.c).
+    Valid only on legacy wildcard-file sources. Use wildcard-file(monitor-method())
+    instead.
+  - recursive(): wildcard-file()-only (source_wildcard_option in
+    affile-grammar.ym). No effect on stdin().
+  - dir-group(), dir-owner(), dir-perm(), group(), owner(), perm():
+    inherited via the shared file_perm_option grammar rule. They describe
+    how AxoSyslog creates output files; on a stdin() source they are
+    accepted but have no documented effect.
 -->

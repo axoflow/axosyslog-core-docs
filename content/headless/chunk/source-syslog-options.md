@@ -2,9 +2,27 @@
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
+{{% include-headless "chunk/option-source-chain-hostnames.md" %}}
+
 {{< include-headless "chunk/option-source-check-hostname.md" >}}
 
+{{% include-headless "chunk/option-source-check-program.md" %}}
+
+{{% include-headless "chunk/option-source-default-facility.md" %}}
+
+{{% include-headless "chunk/option-source-default-level-journal.md" %}}
+
+{{% include-headless "chunk/option-source-default-priority.md" %}}
+
+{{% include-headless "chunk/option-source-default-severity.md" %}}
+
+{{% include-headless "chunk/option-source-dns-cache.md" %}}
+
+{{% include-headless "chunk/option-source-dynamic-window-realloc-ticks.md" %}}
+
 {{% include-headless "chunk/option-source-dynamic-window-size.md" %}}
+
+{{% include-headless "chunk/option-source-dynamic-window-stats-freq.md" %}}
 
 {{% include-headless "chunk/option-source-ebpf.md" %}}
 
@@ -14,17 +32,20 @@
 {{< include-headless "chunk/option-source-flags.md" >}}
 
 - *threaded*: The `threaded` flag enables multithreading for the source. For details on multithreading, see {{% xref "/chapter-multithreading/_index.md" %}}.
-    
+
     {{% alert title="Note" color="info" %}}
 The `syslog` source uses multiple threads only if the source uses the `tls` or `tcp` transport protocols.
     {{% /alert %}}
 
+{{< include-headless "chunk/option-source-format.md" >}}
 
 {{< include-headless "chunk/option-destination-hook.md" >}}
 
 {{% include-headless "chunk/option-source-host-override.md" %}}
 
 {{< include-headless "chunk/option-source-idle-timeout.md" >}}
+
+{{% include-headless "chunk/option-source-internal.md" %}}
 
 ## interface()
 
@@ -37,6 +58,8 @@ The `syslog` source uses multiple threads only if the source uses the `tls` or `
 
 
 {{% include-headless "chunk/option-source-ip.md" %}}
+
+{{% include-headless "chunk/option-source-ip-freebind.md" %}}
 
 {{% include-headless "chunk/option-source-ip-protocol.md" %}}
 
@@ -51,6 +74,10 @@ The `syslog` source uses multiple threads only if the source uses the `tls` or `
 {{< include-headless "chunk/option-source-keep-timestamp.md" >}}
 
 {{% include-headless "chunk/option-source-listen-backlog.md" %}}
+
+{{% include-headless "chunk/option-destination-localip.md" %}}
+
+{{% include-headless "chunk/option-destination-localport.md" %}}
 
 {{% include-headless "chunk/option-source-log-fetch-limit.md" %}}
 
@@ -68,13 +95,30 @@ If `log-iw-size(1000)` and `max-connections(10)`, then each connection will have
 
 {{< include-headless "chunk/option-source-log-msg-size.md" >}}
 
+{{% include-headless "chunk/option-source-log-prefix.md" %}}
+
+{{% include-headless "chunk/option-source-long-hostnames.md" %}}
+
 {{% include-headless "chunk/option-source-max-connections.md" %}}
 
+{{% include-headless "chunk/option-source-normalize-hostnames.md" %}}
+
 {{% include-headless "chunk/option-source-pad-size.md" %}}
+
+{{% include-headless "chunk/option-persist-name.md" %}}
 
 {{% include-headless "chunk/option-source-port.md" %}}
 
 {{% include-headless "chunk/option-source-program-override.md" %}}
+
+<!-- cfg-helper exposes tcp-keep-alive() and tcp-keepalive() as top-level yes/no options.
+     Both are old aliases for so-keepalive() (see afsocket-parser.c keyword table).
+     Documented above as so-keepalive(); these markers exist so the next docs-vs-cfg-helper
+     diff doesn't flag them.
+{{% include-headless "chunk/option-source-read-old-records.md" %}}
+-->
+
+{{% include-headless "chunk/option-source-sdata-prefix.md" %}}
 
 {{% include-headless "chunk/option-so-broadcast.md" %}}
 
@@ -87,6 +131,14 @@ If `log-iw-size(1000)` and `max-connections(10)`, then each connection will have
 {{% include-headless "chunk/option-so-sndbuf.md" %}}
 
 {{% include-headless "chunk/option-source-tags.md" %}}
+
+<!-- cfg-helper exposes tcp-keep-alive() and tcp-keepalive() as top-level yes/no options.
+     Both are old aliases for so-keepalive() (see afsocket-parser.c keyword table).
+     Documented above as so-keepalive(); these markers exist so the next docs-vs-cfg-helper
+     diff doesn't flag them.
+{{/* include-headless "chunk/option-source-tcp-keep-alive.md" */}}
+{{/* include-headless "chunk/option-source-tcp-keepalive.md" */}}
+-->
 
 {{< include-headless "chunk/option-tcp-keepalive-intvl.md" >}}
 
@@ -109,3 +161,5 @@ If `log-iw-size(1000)` and `max-connections(10)`, then each connection will have
 {{< include-headless "chunk/option-source-use-dns.md" >}}
 
 {{< include-headless "chunk/option-source-use-fqdn.md" >}}
+
+{{% include-headless "chunk/option-source-use-syslogng-pid.md" %}}

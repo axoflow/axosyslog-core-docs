@@ -34,9 +34,31 @@ log otel_forward_mode_alts {
 
 {{< readfile "/headless/chunk/grpc-authentication.md" >}}
 
+{{% include-headless "chunk/option-source-chain-hostnames.md" %}}
+
 {{< include-headless "chunk/option-grpc-channel-args.md" >}}
 
 {{< include-headless "chunk/option-source-concurrent-requests.md" >}}
+
+{{% include-headless "chunk/option-source-default-facility.md" %}}
+
+{{% include-headless "chunk/option-source-default-level-journal.md" %}}
+
+{{% include-headless "chunk/option-source-default-priority.md" %}}
+
+{{% include-headless "chunk/option-source-default-severity.md" %}}
+
+{{% include-headless "chunk/option-source-dns-cache.md" %}}
+
+{{% include-headless "chunk/option-source-flags.md" %}}
+
+{{% include-headless "chunk/option-source-format.md" %}}
+
+{{% include-headless "chunk/option-destination-hook.md" %}}
+
+{{% include-headless "chunk/option-source-host-override.md" %}}
+
+{{% include-headless "chunk/option-source-internal.md" %}}
 
 {{% include-headless "chunk/option-grpc-source-ip.md" %}}
 
@@ -46,15 +68,41 @@ log otel_forward_mode_alts {
 
 The `opentelemetry()` source ignores this option and uses the address of the OTLP peer as the HOST.
 
+{{% include-headless "chunk/option-source-keep-timestamp.md" %}}
+
 {{< include-headless "chunk/option-source-log-fetch-limit.md" >}}
 
 {{< include-headless "chunk/option-source-file-log-iw-size.md" >}}
+
+{{% include-headless "chunk/option-source-log-prefix.md" %}}
+
+{{% include-headless "chunk/option-source-long-hostnames.md" %}}
+
+{{% include-headless "chunk/option-source-normalize-hostnames.md" %}}
+
+{{% include-headless "chunk/option-persist-name.md" %}}
 
 ## `port()` {#port}
 
 The port number to receive incoming connections. Default value: 4317
 
-{{< include-headless "chunk/option-source-threaded-workers.md" >}}
+{{% include-headless "chunk/option-source-program-override.md" %}}
 
-<!-- FIXME xinclude other common options
- threaded_source_driver_option -->
+<!-- cfg-helper exposes read-old-records() and sdata-prefix() for opentelemetry(),
+     but they have no useful effect on this gRPC subscription source. Markers
+     kept so the next docs-vs-cfg-helper diff doesn't flag them.
+{{% include-headless "chunk/option-source-read-old-records.md" %}}
+{{% include-headless "chunk/option-source-sdata-prefix.md" %}}
+-->
+
+{{% include-headless "chunk/option-source-tags.md" %}}
+
+{{% include-headless "chunk/option-source-time-zone.md" %}}
+
+{{% include-headless "chunk/option-source-use-dns.md" %}}
+
+{{% include-headless "chunk/option-source-use-fqdn.md" %}}
+
+{{% include-headless "chunk/option-source-use-syslogng-pid.md" %}}
+
+{{< include-headless "chunk/option-source-threaded-workers.md" >}}

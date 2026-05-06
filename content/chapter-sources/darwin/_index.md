@@ -20,28 +20,17 @@ Note that the persistent OSLog store usually keeps about 7 days of logs on disk.
 
 The `darwin-oslog()` source has the following options:
 
-### filter-predicate()
+{{< include-headless "chunk/option-source-chain-hostnames.md" >}}
 
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Type:</td>
-<td>string</td>
-</tr>
-<tr>
-<td>Default:</td>
-<td><code>(eventType == 'logEvent' || eventType == 'lossEvent' || eventType == 'stateEvent' || eventType == 'userActionEvent') && (logType != 'debug')</code></td>
-</tr>
-</tbody>
-</table>
+{{< include-headless "chunk/option-source-default-facility.md" >}}
 
-*Description:* String for [native macOS log message filtering using predicates](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Predicates/Articles/pSyntax.html). For example, the following predicate selects AirDrop logs: `subsystem=="com.apple.sharing" and category=="AirDrop"`
+{{% include-headless "chunk/option-source-default-level-journal.md" %}}
+
+{{% include-headless "chunk/option-source-default-priority.md" %}}
+
+{{% include-headless "chunk/option-source-default-severity.md" %}}
+
+{{% include-headless "chunk/option-source-dns-cache.md" %}}
 
 ### do-not-use-bookmark()
 
@@ -70,6 +59,19 @@ The `darwin-oslog()` source has the following options:
 
 *Description:* Controls how many seconds {{% param "product_name" %}} waits before trying to check for new logs if there were no more logs to read the last time.
 
+### filter-predicate()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | string |
+| Default: | `(eventType == 'logEvent' || eventType == 'lossEvent' || eventType == 'stateEvent' || eventType == 'userActionEvent') && (logType != 'debug')` |
+
+*Description:* String for [native macOS log message filtering using predicates](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Predicates/Articles/pSyntax.html). For example, the following predicate selects AirDrop logs: `subsystem=="com.apple.sharing" and category=="AirDrop"`
+
+{{< include-headless "chunk/option-source-flags.md" >}}
+
+{{< include-headless "chunk/option-source-format.md" >}}
+
 ### go-reverse()
 
 |          |                            |
@@ -78,6 +80,16 @@ The `darwin-oslog()` source has the following options:
 | Default: | `no` |
 
 *Description:* Set it to `yes` to process the logs in a reverse order (from latest to oldest).
+
+{{< include-headless "chunk/option-destination-hook.md" >}}
+
+{{% include-headless "chunk/option-source-host-override.md" %}}
+
+{{% include-headless "chunk/option-source-internal.md" %}}
+
+{{< include-headless "chunk/option-source-keep-hostname.md" >}}
+
+{{< include-headless "chunk/option-source-keep-timestamp.md" >}}
 
 ### log-fetch-limit()
 
@@ -92,6 +104,12 @@ This option is currently disabled because of an OSLog API bug.
 
 {{% include-headless "chunk/option-description-source-log-fetch-limit.md" %}}
 
+{{% include-headless "chunk/option-source-log-iw-size.md" %}}
+
+{{< include-headless "chunk/option-source-log-prefix.md" >}}
+
+{{% include-headless "chunk/option-source-long-hostnames.md" %}}
+
 ### max-bookmark-distance()
 
 |          |        |
@@ -101,6 +119,12 @@ This option is currently disabled because of an OSLog API bug.
 
 *Description:* The maximum distance in seconds that a bookmark can point backwards. That is, if {{% param "product_name" %}} was stopped for 10 minutes and `max-bookmark-distance()` is set to `60`, then {{% param "product_name" %}} will start reading the logs from 60 seconds before the startup, losing 9 minutes of logs.
 
+{{< include-headless "chunk/option-source-normalize-hostnames.md" >}}
+
+{{% include-headless "chunk/option-persist-name.md" %}}
+
+{{% include-headless "chunk/option-source-program-override.md" %}}
+
 ### read-old-records()
 
 |          |                            |
@@ -109,6 +133,18 @@ This option is currently disabled because of an OSLog API bug.
 | Default: | `no` |
 
 *Description:* If set to `yes`, {{% param "product_name" %}} starts reading logs from the oldest available log when it's first started on a system, or if there are no bookmarks for some reason
+
+{{< include-headless "chunk/option-source-sdata-prefix.md" >}}
+
+{{< include-headless "chunk/option-source-tags.md" >}}
+
+{{< include-headless "chunk/option-source-time-zone.md" >}}
+
+{{< include-headless "chunk/option-source-use-dns.md" >}}
+
+{{< include-headless "chunk/option-source-use-fqdn.md" >}}
+
+{{< include-headless "chunk/option-source-use-syslogng-pid.md" >}}
 
 ## darwin-oslog-stream()
 
