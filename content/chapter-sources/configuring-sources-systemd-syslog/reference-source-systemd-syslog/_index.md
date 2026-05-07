@@ -56,7 +56,7 @@ The `systemd-syslog()` driver has the following options:
 
 {{% include-headless "chunk/option-source-program-override.md" %}}
 
-{{% include-headless "chunk/option-source-read-old-records.md" %}}
+<!-- has no useful effect on this source {{% include-headless "chunk/option-source-read-old-records.md" %}} -->
 
 {{% include-headless "chunk/option-source-sdata-prefix.md" %}}
 
