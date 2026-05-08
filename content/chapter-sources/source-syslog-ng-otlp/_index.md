@@ -41,7 +41,7 @@ The `axosyslog-otlp()` source has the following options.
 
 {{< include-headless "chunk/option-source-format.md" >}}
 
-{{< include-headless "chunk/option-destination-hook.md" >}}
+{{< include-headless "chunk/option-hook-commands.md" >}}
 
 {{< include-headless "chunk/option-source-host-override.md" >}}
 

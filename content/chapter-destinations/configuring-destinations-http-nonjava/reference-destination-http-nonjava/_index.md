@@ -199,7 +199,7 @@ Available in {{% param "product.abbrev" %}} 4.23 and later.
 
 {{% include-headless "chunk/options-http-headers.md" %}}
 
-{{< include-headless "chunk/option-destination-hook.md" >}}
+{{< include-headless "chunk/option-hook-commands.md" >}}
 
 {{% include-headless "chunk/option-destination-tls-key-file.md" %}}
 

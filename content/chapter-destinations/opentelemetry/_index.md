@@ -75,7 +75,7 @@ log non_otel_to_otel_tls {
 
 {{< include-headless "chunk/option-grpc-headers.md" >}}
 
-{{< include-headless "chunk/option-destination-hook.md" >}}
+{{< include-headless "chunk/option-hook-commands.md" >}}
 
 {{< include-headless "chunk/option-destination-grpc-keep-alive.md" >}}
 

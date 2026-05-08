@@ -91,7 +91,7 @@ For example, `filename-pattern("*.log")` matches the `syslog.log` and `auth.log`
 
 {{< include-headless "chunk/option-source-format.md" >}}
 
-{{< include-headless "chunk/option-destination-hook.md" >}}
+{{< include-headless "chunk/option-hook-commands.md" >}}
 
 {{% include-headless "chunk/option-source-host-override.md" %}}
 

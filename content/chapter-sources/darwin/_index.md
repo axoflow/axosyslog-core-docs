@@ -81,7 +81,7 @@ The `darwin-oslog()` source has the following options:
 
 *Description:* Set it to `yes` to process the logs in a reverse order (from latest to oldest).
 
-{{< include-headless "chunk/option-destination-hook.md" >}}
+{{< include-headless "chunk/option-hook-commands.md" >}}
 
 {{% include-headless "chunk/option-source-host-override.md" %}}
 

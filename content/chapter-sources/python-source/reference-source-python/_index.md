@@ -63,7 +63,7 @@ The flags and the hostname-related options (for example, `use-dns`) set in the c
 
 {{% include-headless "chunk/option-source-format.md" %}}
 
-{{< include-headless "chunk/option-destination-hook.md" >}}
+{{< include-headless "chunk/option-hook-commands.md" >}}
 
 {{% include-headless "chunk/option-source-host-override.md" %}}
 

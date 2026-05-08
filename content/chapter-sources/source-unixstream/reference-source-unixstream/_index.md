@@ -45,7 +45,7 @@ These two drivers behave similarly: they open an `AF_UNIX` socket and start list
 
 *Description:* Set the gid of the socket.
 
-{{< include-headless "chunk/option-destination-hook.md" >}}
+{{< include-headless "chunk/option-hook-commands.md" >}}
 
 {{% include-headless "chunk/option-source-host-override.md" %}}
 

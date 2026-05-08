@@ -12,7 +12,7 @@ The `sun-streams()` driver has the following options.
 
 {{% include-headless "chunk/option-source-follow-freq.md" %}}
 
-{{< include-headless "chunk/option-destination-hook.md" >}}
+{{< include-headless "chunk/option-hook-commands.md" >}}
 
 {{< include-headless "chunk/option-source-keep-timestamp.md" >}}
 
