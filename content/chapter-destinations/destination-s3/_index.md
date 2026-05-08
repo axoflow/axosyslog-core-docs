@@ -122,7 +122,7 @@ If you configure an invalid value, the default is used.
 | Type:    | string |
 | Default: | `5MiB` |
 
-*Description:* The size of log messages that  {{% param "product_name" %}} writes to the S3 object in a batch. If compression is enabled, the `chunk-size()` refers to the compressed size.
+*Description:* The size of log messages that {{% param "product_name" %}} writes to the S3 object in a batch. If compression is enabled, the `chunk-size()` refers to the compressed size.
 
 ## compression()
 
