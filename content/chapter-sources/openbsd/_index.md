@@ -4,6 +4,7 @@ linktitle: openbsd() for OpenBSD
 weight: 2200
 driver: "openbsd()"
 short_description: "Collect kernel log messages on OpenBSD systems"
+syslog_parsing: true
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
