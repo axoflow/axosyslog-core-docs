@@ -10,7 +10,7 @@ The `stdin()` driver has the following options:
 
 {{< include-headless "chunk/option-source-check-hostname.md" >}}
 
-{{% include-headless "chunk/option-source-check-program.md" %}}
+<!-- has effect only when parsing RFC3164 {{< include-headless "chunk/option-source-check-program.md" >}} -->
 
 {{% include-headless "chunk/option-source-default-facility.md" %}}
 

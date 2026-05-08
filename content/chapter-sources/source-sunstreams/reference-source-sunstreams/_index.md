@@ -7,6 +7,8 @@ syslog_parsing: true
 
 The `sun-streams()` driver has the following options.
 
+{{< include-headless "chunk/option-source-check-program.md" >}}
+
 {{% include-headless "chunk/option-source-door.md" %}}
 
 {{< include-headless "chunk/option-source-flags.md" >}}
