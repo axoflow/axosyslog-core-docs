@@ -97,9 +97,10 @@ Obsolete alias for [`loaders()`](#loaders). When set, behaves identically to `lo
 
 {{% include-headless "chunk/option-source-program-override.md" %}}
 
-<!-- has no useful effect on this source {{% include-headless "chunk/option-source-read-old-records.md" %}} -->
+<!-- has no useful effect on this source {{% include-headless "chunk/option-source-read-old-records.md" %}}
 
 {{% include-headless "chunk/option-source-sdata-prefix.md" %}}
+-->
 
 {{% include-headless "chunk/option-source-tags.md" %}}
 

@@ -134,7 +134,7 @@ This option is currently disabled because of an OSLog API bug.
 
 *Description:* If set to `yes`, {{% param "product_name" %}} starts reading logs from the oldest available log when it's first started on a system, or if there are no bookmarks for some reason
 
-{{< include-headless "chunk/option-source-sdata-prefix.md" >}}
+<!-- has no useful effect on this source {{< include-headless "chunk/option-source-sdata-prefix.md" >}} -->
 
 {{< include-headless "chunk/option-source-tags.md" >}}
 
