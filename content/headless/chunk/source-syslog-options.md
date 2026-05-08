@@ -97,7 +97,7 @@ If `log-iw-size(1000)` and `max-connections(10)`, then each connection will have
 
 {{% include-headless "chunk/option-source-log-prefix.md" %}}
 
-{{% include-headless "chunk/option-source-long-hostnames.md" %}}
+<!-- Obsolete alias, only left here to make cfg-helper comparisons easier {{% include-headless "chunk/option-source-long-hostnames.md" %}} -->
 
 {{% include-headless "chunk/option-source-max-connections.md" %}}
 

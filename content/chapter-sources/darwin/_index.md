@@ -108,7 +108,7 @@ This option is currently disabled because of an OSLog API bug.
 
 {{< include-headless "chunk/option-source-log-prefix.md" >}}
 
-{{% include-headless "chunk/option-source-long-hostnames.md" %}}
+<!-- Obsolete alias, only left here to make cfg-helper comparisons easier {{% include-headless "chunk/option-source-long-hostnames.md" %}} -->
 
 ### max-bookmark-distance()
 

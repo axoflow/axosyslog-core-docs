@@ -76,7 +76,7 @@ These two drivers behave similarly: they open an `AF_UNIX` socket and start list
 
 {{< include-headless "chunk/option-source-log-prefix.md" >}}
 
-{{% include-headless "chunk/option-source-long-hostnames.md" %}}
+<!-- Obsolete alias, only left here to make cfg-helper comparisons easier {{% include-headless "chunk/option-source-long-hostnames.md" %}} -->
 
 ## max-connections()
 

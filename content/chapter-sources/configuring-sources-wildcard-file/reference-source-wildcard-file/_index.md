@@ -121,8 +121,7 @@ If `log-fetch-limit()` is 100, and your wildcard file source has 200 files, then
 
 {{< include-headless "chunk/option-source-log-prefix.md" >}}
 
-{{% include-headless "chunk/option-source-long-hostnames.md" %}}
-
+<!-- Obsolete alias, only left here to make cfg-helper comparisons easier {{% include-headless "chunk/option-source-long-hostnames.md" %}} -->
 
 ## max-files() {#source-wildcard-file-max-files}
 
