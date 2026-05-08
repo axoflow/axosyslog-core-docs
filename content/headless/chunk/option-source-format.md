@@ -11,4 +11,6 @@ FIXME
 | Type:    | `` |
 | Default: | empty set |
 
-*Description:*  -->
+*Description:* 
+not really used, the only valid value seems to be `syslog`
+ -->
