@@ -78,7 +78,7 @@ The `file()` driver has the following options:
 
 {{< include-headless "chunk/option-source-time-zone.md" >}}
 
-{{< include-headless "chunk/option-source-trim-large-messages.md" >}}
+<!-- has no useful effect on this source {{< include-headless "chunk/option-source-trim-large-messages.md" >}} -->
 
 {{< include-headless "chunk/option-source-use-dns.md" >}}
 
