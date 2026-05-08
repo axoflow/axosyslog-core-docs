@@ -34,13 +34,14 @@ If you want to store the Python code in an external Python file, the `class()` o
 
 For details, see {{% xref "/chapter-configuration-file/python-code-external-file/_index.md" %}}
 
-{{% include-headless "chunk/option-source-default-facility.md" %}}
+<!-- has no useful effect on this source {{% include-headless "chunk/option-source-default-facility.md" %}}
 
 {{% include-headless "chunk/option-source-default-level-journal.md" %}}
 
 {{% include-headless "chunk/option-source-default-priority.md" %}}
 
 {{% include-headless "chunk/option-source-default-severity.md" %}}
+-->
 
 {{% include-headless "chunk/option-source-dns-cache.md" %}}
 

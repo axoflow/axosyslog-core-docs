@@ -46,7 +46,7 @@ log otel_forward_mode_alts {
 
 {{% include-headless "chunk/option-source-default-priority.md" %}}
 
-{{% include-headless "chunk/option-source-default-severity.md" %}}
+<!-- has no useful effect on this source  {{% include-headless "chunk/option-source-default-severity.md" %}} -->
 
 {{% include-headless "chunk/option-source-dns-cache.md" %}}
 

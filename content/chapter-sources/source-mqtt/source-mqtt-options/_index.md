@@ -20,13 +20,14 @@ Required options: `address()` and `topic()`.
 
 {{% include-headless "chunk/option-mqtt-client-id.md" %}}
 
-{{% include-headless "chunk/option-source-default-facility.md" %}}
+<!-- has no useful effect on this source {{% include-headless "chunk/option-source-default-facility.md" %}}
 
 {{% include-headless "chunk/option-source-default-level-journal.md" %}}
 
 {{% include-headless "chunk/option-source-default-priority.md" %}}
 
 {{% include-headless "chunk/option-source-default-severity.md" %}}
+-->
 
 {{% include-headless "chunk/option-source-dns-cache.md" %}}
 

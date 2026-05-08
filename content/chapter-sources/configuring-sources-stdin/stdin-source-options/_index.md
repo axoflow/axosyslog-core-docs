@@ -18,7 +18,7 @@ The `stdin()` driver has the following options:
 
 {{% include-headless "chunk/option-source-default-priority.md" %}}
 
-{{% include-headless "chunk/option-source-default-severity.md" %}}
+<!-- has no useful effect on this source {{% include-headless "chunk/option-source-default-severity.md" %}} -->
 
 {{% include-headless "chunk/option-source-dns-cache.md" %}}
 
