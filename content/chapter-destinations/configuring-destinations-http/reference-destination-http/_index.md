@@ -38,7 +38,7 @@ For the `http` destination, use this option as `class-name("org.syslog_ng.http.H
 For the `http` destination, include the path to the java modules of {{% param "product.abbrev" %}}, for example, `class-path("/syslog-ng/install_dir/lib/syslog-ng/java-modules/*.jar")`.
 
 
-{{< include-headless "chunk/option-destination-hook.md" >}}
+{{< include-headless "chunk/option-hook-commands.md" >}}
 
 {{% include-headless "chunk/option-destination-jvm-options.md" %}}
 

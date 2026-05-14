@@ -1,14 +1,17 @@
 ---
 title: "default-network-drivers() source options"
 weight:  100
+syslog_parsing: true
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The `systemd-journal()` driver has the following options.
+The `default-network-drivers()` driver has the following options.
 
 {{% include-headless "chunk/option-destination-tls-ca-dir.md" %}}
 
 {{< include-headless "chunk/option-destination-tls-ca-file.md" >}}
+
+{{< include-headless "chunk/option-source-format.md" >}}
 
 {{< include-headless "chunk/option-source-flags.md" >}}
 
@@ -20,7 +23,7 @@ The `systemd-journal()` driver has the following options.
 
 Note that the total number of connections the `default-network-drivers()` source can use is 3*`max-connections()`, because this value applies to the `network(tcp)`, `syslog(tcp)`, and `syslog(tls)` connections individually.
 
-
+{{< include-headless "chunk/option-source-normalize-hostnames.md" >}}
 
 ## rfc5424-tcp-port()
 
@@ -58,6 +61,8 @@ To receive messages using a TLS-encrypted connection, you must set the `tls(key-
 ```
 {{% /alert %}}
 
+{{< include-headless "chunk/option-source-sdata-prefix.md" >}}
+
 ## tcp-port()
 
 |          |        |
@@ -80,3 +85,4 @@ To receive messages using a TLS-encrypted connection, you must set the `tls(key-
 
 *Description:* The UDP port number where the `default-network-drivers()` source receives RFC3164-formatted (BSD-syslog) messages.
 
+{{< include-headless "chunk/option-source-use-syslogng-pid.md" >}}

@@ -1,0 +1,321 @@
+---
+title: What's new
+weight: 10
+---
+<!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
+
+{{< include-headless "banner-new-to-axosyslog.md" >}}
+
+## Version 4.25
+
+- The [`cache_json_file`]({{< relref "/filterx/function-reference.md#cache-json-file-default-value" >}}) FilterX function now accepts an optional `default_value` parameter. When the referenced JSON file is missing or fails to load, {{< product >}} uses `default_value` instead of aborting with a configuration error.
+- New FilterX functions for common data transformations:
+
+    - Cryptographic digests: [`md5`]({{< relref "/filterx/function-reference.md#md5" >}}), [`sha1`]({{< relref "/filterx/function-reference.md#sha1" >}}), [`sha256`]({{< relref "/filterx/function-reference.md#sha256" >}}), and [`sha512`]({{< relref "/filterx/function-reference.md#sha512" >}}) return the hash of a string or bytes value as a lowercase hexadecimal string. The generic [`digest`]({{< relref "/filterx/function-reference.md#digest" >}}) function returns the raw hash as bytes and accepts an optional `alg=` parameter to select the algorithm.
+    - Encoding and decoding: [`base64_encode`]({{< relref "/filterx/function-reference.md#base64-encode" >}}) / [`base64_decode`]({{< relref "/filterx/function-reference.md#base64-decode" >}}), [`urlencode`]({{< relref "/filterx/function-reference.md#urlencode" >}}) / [`urldecode`]({{< relref "/filterx/function-reference.md#urldecode" >}}), and [`hex_encode`]({{< relref "/filterx/function-reference.md#hex-encode" >}}) / [`hex_decode`]({{< relref "/filterx/function-reference.md#hex-decode" >}}).
+    - UTF-8 handling: [`utf8_validate`]({{< relref "/filterx/function-reference.md#utf8-validate" >}}) checks whether a string is valid UTF-8, and [`utf8_sanitize`]({{< relref "/filterx/function-reference.md#utf8-sanitize" >}}) replaces invalid byte sequences with their `\xNN` escaped representation.
+
+- The [`glob_match`]({{< relref "/filterx/function-reference.md#glob-match" >}}) matches a string against one or more glob patterns.
+
+## Version 4.24 (2026-03-23)
+
+- You can query the list of supported metrics by running `syslog-ng --metrics-registry`. For a reference of available metrics, see {{% xref "/chapter-log-statistics/metrics-reference/_index.md" %}}.
+- The new `batch-idle-timeout()` option closes the batch if no new message is received since the last message within the `batch-idle-timeout()` period. The following destinations support `batch-idle-timeout()`: `amqp()`, `bigquery()`, `clickhouse()`, `discord()`, `elasticsearch()`, `mongodb()`, `google-pubsub()`, `http()`,`kafka-c()`, `opensearch()`,`opentelemetry()`, `redis()`, `riemann()`, `slack()`, `smtp()`, `stomp()`, `sql()`, `sumologic()`.
+- New FilterX functions to manipulate the timezone of the messages: {{% xref "/filterx/filterx-timezone/_index.md" %}}.
+- [`network-load-balancer()`]({{< relref "/chapter-examples/load-bal-multi-dest/load-bal-multi-dest-msec-h/_index.md" >}}) now supports the `failover()` option.
+
+For a list of bugfixes, see the [GitHub release page](https://github.com/axoflow/axosyslog/releases/tag/axosyslog-4.24.0).
+
+## Version 4.23 (2026-02-18)
+
+- The [`opentelemetry()` source]({{< relref "/chapter-sources/opentelemetry/_index.md" >}}) now supports the [`ip()`]({{< relref "/chapter-sources/opentelemetry/_index.md#ip" >}}) option to specify the bind address.
+- New [FilterX]({{< relref "/filterx/_index.md" >}}) functions:
+
+    - [`format_isodate`]({{< relref "/filterx/function-reference.md#format-isodate" >}}) formats a date as ISODATE: `%Y-%m-%dT%H:%M:%S%z`
+    - [`move`]({{< relref "/filterx/function-reference.md#move" >}}) moves the specified variable to its new location, instead of copying it.
+
+- The [`http()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" >}}) destination option `content-compression()` sends the payload compressed only if the compressed content is smaller than the original plain-text content. This can cause problems if your destination server accepts only compressed payload. Setting [`force-content-compression(yes)`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#force-content-compression" >}}) instructs {{% param "product.abbrev" %}} to always send the compressed payload.
+- The `network()` and `syslog()` sources and destinations now support the [`extended-key-usage-verify()`]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#tls-options-extended-key-usage-verify" >}}) option to check that the certificate of the peer contains the appropriate value in its Extended Key Usage (EKU) field. (Clients should have Client Auth EKU values (`X509_PURPOSE_SSL_CLIENT`), while server should have Web Server Auth (`X509_PURPOSE_SSL_SERVER`).)
+- The amount of memory {{< product >}} uses to store queued messages has been significantly reduced, by up to 50%.
+
+For a list of bugfixes, see the [GitHub release page](https://github.com/axoflow/axosyslog/releases/tag/axosyslog-4.23.0).
+
+## Version 4.22 (2026-01-21)
+
+The FilterX [list membership operators]({{< relref "/filterx/operator-reference.md#list-membership-operator" >}}) now support searching the keys of dictionaries.
+
+For a list of bugfixes, see the [GitHub release page](https://github.com/axoflow/axosyslog/releases/tag/axosyslog-4.22.0).
+
+## Version 4.21 (2025-12-15)
+
+- A new FilterX function `format_syslog_5424` that formats messages as an RFC5424 (IETF-syslog) syslog message.
+- Syslog sources can now set `transport(nul-terminated)` to receive messages that use NUL characters instead of newline characters to separate log records.
+- Destinations that support worker partitioning (the `worker-partition-key()` option) can now set `worker-partition-autoscaling(yes)` to allow each worker to maximize its batch size.
+
+For a list of bugfixes, see the [GitHub release page](https://github.com/axoflow/axosyslog/releases/tag/axosyslog-4.21.0).
+
+## Version 4.20 (2025-11-20)
+
+- The `clickhouse()` destination now has a `format()` option, allowing you to send data in a [compact `JSONCompactEachRow`]({{< relref "/chapter-destinations/clickhouse/_index.md#format" >}}) format.
+- The [`opentelemetry()`]({{< relref "/chapter-sources/opentelemetry/_index.md#keep-alive" >}}) and [`axosyslog-otlp()`]({{< relref "/chapter-sources/source-syslog-ng-otlp/_index.md#keep-alive" >}}) (formerly called `syslog-ng-otlp()`) sources now support the `keep-alive()` option, and is enabled by default.
+- The [`s3()` destination]({{< relref "/chapter-destinations/destination-s3/_index.md" >}}) has a new option:
+
+    - You can now set a suffix for your S3 objects using the [`object-key-suffix()` option]({{< relref "/chapter-destinations/destination-s3/_index.md#object-key-suffix" >}}).
+    <!-- - You can change the default checksum settings for S3 compatible solutions that don't support checksums using the [`use-checksum()` option]({{< relref "/chapter-destinations/destination-s3/_index.md#use-checksum" >}}). -->
+
+- The `http()` and other threaded destinations now have a [`worker-partition-buckets()` option]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#worker-partition-buckets" >}}) that determines the number of worker threads used for the `worker-partition-key()`.
+
+For a list of bugfixes, see the [GitHub release page](https://github.com/axoflow/axosyslog/releases/tag/axosyslog-4.20.0).
+
+## Version 4.19 (2025-10-15)
+
+- The [`dict_to_pairs`]({{< relref "/filterx/function-reference.md#dict-to-pairs" >}}) FilterX function can convert a dictionary to a list of pairs.
+- The [`includes`]({{< relref "/filterx/filterx-string-search/_index.md" >}}) FilterX function can limit the length of the search string.
+
+## Version 4.18 (2025-09-30)
+
+- You can now use macros and templates in the [`headers()` option]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#headers" >}}) of the `http()` destination to set the headers dynamically.
+- The `parse_csv` FilterX parser now supports the [`quote-pairs`]({{< relref "/filterx/filterx-parsing/csv/reference-parsers-csv/_index.md#quote-pairs" >}}) option.
+- [`+` and `-` unary operators]({{< relref "/filterx/operator-reference.md#slicing" >}}) for FilterX.
+
+## Version 4.17 (2025-09-04)
+
+- The `parse_kv` FilterX function has an option ({{% xref "/filterx/filterx-parsing/key-value-parser/kv-parser-options/_index.md#stray-words-key" %}}) to append stray words to the preceding key.
+- You can now use negative indexes when [slicing FilterX strings]({{< relref "/filterx/operator-reference.md#slicing" >}}).
+- The [`dpath`]({{< relref "/filterx/function-reference.md#dpath" >}}) FilterX function assigns a value to a dictionary and creates any elements of the path that don't exist.
+- When using `parallelize()` during {{% xref "/chapter-nonsequential-processing/_index.md" %}}, you set the `batch-size()` option to specify how many consecutive messages should be processed by a single `parallelize()` worker.
+- For the `clickhouse()` destination, you can now use the [`json-var()` option]({{< relref "/chapter-destinations/clickhouse/_index.md#json-var" >}}) to send the message to the ClickHouse server in Protobuf/JSON mixed mode ([`JSONEachRow` format](https://clickhouse.com/docs/interfaces/formats/JSONEachRow)). In this mode, type validation is performed by the ClickHouse server itself, so no Protobuf schema is required for communication.
+
+## Version 4.16 (2025-08-15)
+
+- New [`${PROTO_NAME` macro]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#proto-name" >}}).
+- New FilterX functions [`str_strip`]({{< relref "/filterx/function-reference.md#str-strip" >}}), `str_lstrip`, `str_rstrip` to remove the leading and/or trailing whitespaces from a string.
+- The `batch-timeout()` option of the following destinations now defaults to `0`: [`google-pubsub()`]({{< relref "/chapter-destinations/google-pubsub/_index.md" >}}), ['logscale()']({{< relref "/chapter-destinations/crowdstrike-falcon/_index.md" >}}), [`openobserve()`]({{< relref "/chapter-destinations/openobserve/_index.md" >}}), [`splunk()`]({{< relref "/chapter-destinations/syslog-ng-with-splunk/_index.md" >}}).
+
+### Breaking change
+
+The name of some fields changed in the [`parse_cef`]({{< relref "/filterx/filterx-parsing/cef/_index.md" >}}) and [`parse_leef`]({{< relref "/filterx/filterx-parsing/leef/_index.md" >}}) parsers to avoid name collisions with fields in the extensions:
+
+For CEF:
+
+- `version` -> `cef_version`
+- `name` -> `event_name`
+
+For LEEF:
+
+- `version` -> `leef_version`
+- `vendor` -> `vendor_name`
+- `delimiter` -> `leef_delimiter`
+
+## Version 4.15 (2025-08-01)
+
+- You can exclude files in the `wildcard-file()` source using the [`exclude-pattern()`]({{< relref "/chapter-sources/configuring-sources-wildcard-file/reference-source-wildcard-file/_index.md#source-wildcard-file-exclude-pattern" >}}) option.
+- You can use templates in the [`body-prefix()` option of the `http()` destination]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#https-options-body-prefix" >}}), and in destinations based on `http()`.
+- ADC authentication now can use `service-account-key()`.
+- `gcp(service-account())` authentication can now use `scope()` instead of `audience()`.
+- New FilterX features:
+
+    - [`str_replace`]({{< relref "/filterx/function-reference.md#str-replace" >}}) function for string replacement.
+    - [String slicing operator (`..`)]({{< relref "/filterx/operator-reference.md#slicing" >}}).
+    - [Create dict element if non-null (`:??`)]({{< relref "/filterx/operator-reference.md#create-non-null" >}}) operator.
+
+## Version 4.14 (2025-07-18)
+
+- New [`client-port` option for `loggen`]({{< relref "/app-man-syslog-ng/loggen.1.md" >}}).
+- Starting with version 4.14, running [`syslog-ng-ctl stats`]({{< relref "/app-man-syslog-ng/syslog-ng-ctl.1.md#syslog-ng-ctl-stats" >}}) automatically shows orphan counters to avoid losing information. Information loss could happen, for example, when sending messages using short-lived (few seconds long) connections, while scraping metrics in minute intervals.
+- The [`cisco-parser()`]({{< relref "/chapter-parsers/cisco-parser/_index.md" >}}) now handles the Cisco Nexus NXOS 9.3 syslog format.
+
+## Version 4.13 (2025-07-08)
+
+- You can format arbitrary data as protobuf using the specified schema (proto file) using the {{% xref "/filterx/function-reference.md#protobuf-message" %}} FilterX function. Also, you can send such pre-formatted data using the `proto-var()` option of the [ClickHouse]({{< relref "/chapter-destinations/clickhouse/_index.md#proto-var" >}}) and [Google BigQuery]({{< relref "/chapter-destinations/google-bigquery/_index.md#proto-var" >}}) destinations.
+- You can now format dictionaries as XML and Windows Event Log XML using the [`format_xml`]({{< relref "/filterx/function-reference.md#format-xml" >}}) and [`format_windows_eventlog_xml`]({{< relref "/filterx/function-reference.md#format-windows-eventlog-xml" >}}) FilterX functions.
+- You can now format dictionaries as CEF and LEEF messages using the [`format_cef`]({{< relref "/filterx/function-reference.md#format-cef" >}}) and [`format_leef`]({{< relref "/filterx/function-reference.md#format-leef" >}}) FilterX functions.
+- Changes in {{% xref "/filterx/filterx-parsing/cef/_index.md" %}} and {{% xref "/filterx/filterx-parsing/leef/_index.md" %}}:
+
+    {{< include-headless "chunk/filterx-separate-extension.md" >}}
+
+## Version 4.12 (2025-06-18)
+
+- Starting from this version, {{< product >}} is licensed under GPL-3.0-or-later. For details, see {{% xref "/chapter-concepts/concepts-licensing/_index.md" %}} and the [AxoSyslog License Update: Moving to GPL3](https://axoflow.com/blog/axosyslog-syslog-ng-fork-license-change-gpl3) blog post.
+- New FilterX features:
+    - [Arithmetic operators]({{< relref "/filterx/operator-reference.md#arithmetic-operators" >}}): `+` (addition), `-` (substraction), `*` (multiplication), `/` (division), and `%` (modulo)
+    - [List membership operator (`in`)]({{< relref "/filterx/operator-reference.md#list-membership-operator" >}}): checks if a value is present in a list.
+    - [`strcasecmp`]({{< relref "/filterx/function-reference.md#strcasecmp" >}}) function for case insensitive string comparison.
+    - To help [troubleshooting FilterX blocks]({{< relref "/filterx/filterx-troubleshooting/_index.md" >}}), {{< product >}} now includes specific functions that allow you to track failures in FilterX code.
+- Way to propagate the type information of the data fields in the [`clickhouse()` destination]({{< relref "/chapter-destinations/clickhouse/_index.md" >}}) using the ClickHouse format schema. For details, see {{% xref "/chapter-destinations/clickhouse/_index.md#server-side-schema" %}}.
+- You can enable flow-control for every log path using the [`log-flow-control()` global option]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-log-flow-control" >}}).
+- `loggen` has a new `--perf` option to disable rate limiting.
+- Internal STATS messages are now [disabled by default]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-stats-freq" >}}).
+
+## Version 4.11 (2025-04-09)
+
+- Documentation for the {{% xref "/chapter-sources/webhook/_index.md" %}}.
+- New macros: {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-peerip" %}} and {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-peerport" %}}
+- New gRPC option `response-action()` for the [`bigquery()`]({{< relref "/chapter-destinations/google-bigquery/_index.md#response-action" >}}), [`clickhouse()`]({{< relref "/chapter-destinations/clickhouse/_index.md#response-action" >}}), [`google-pubsub-grpc()`]({{< relref "/chapter-destinations/google-pubsub-grpc/_index.md#response-action" >}}), [`loki()`]({{< relref "/chapter-destinations/destination-loki/_index.md#response-action" >}}), and the [`opentelemetry()`]({{< relref "/chapter-destinations/opentelemetry/_index.md#response-action" >}}) destinations.
+- New FilterX functions: {{% xref "/filterx/function-reference.md#set-pri" %}}, {{% xref "/filterx/function-reference.md#set-timestamp" %}}.
+- Updates the [Azure Monitor destination]({{< relref "/chapter-destinations/azure-monitor/_index.md" >}}).
+
+## Version 4.10 (2025-02-13)
+
+- New {{% xref "/chapter-destinations/google-pubsub-grpc/_index.md" %}} destination to send logs and data to Google Pub/Sub via gRPC.
+- New destination to send logs and data to [Azure Monitor](https://learn.microsoft.com/en-us/azure/azure-monitor/overview) and [Microsoft Sentinel](https://azure.microsoft.com/en-us/products/microsoft-sentinel). For details, see {{% xref "/chapter-destinations/azure-monitor/_index.md" %}}.
+- New [`$SOURCEPORT`]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-sourceport" >}}) macro which expands to the source port of the peer.
+- The `syslog()` source driver can now auto-detect RFC6587-style octet-count based framing.
+- Lots of {{% xref "/filterx/_index.md" %}} updates, including a new [`=??` operator]({{< relref "/filterx/operator-reference/_index.md#assign-non-null" >}}) and several functions:
+
+    - {{% xref "/filterx/function-reference/_index.md#keys" %}}
+    - {{% xref "/filterx/function-reference/_index.md#load-vars" %}}
+    - {{% xref "/filterx/function-reference/_index.md#metrics_labels" %}}
+    - {{% xref "/filterx/function-reference/_index.md#set-fields" %}}
+    - {{% xref "/filterx/function-reference/_index.md#strftime" %}}
+
+- [Switch-case expressions in FilterX]({{< relref "/filterx/filterx-conditional/_index.md" >}}) to better organize the code instead of using multiple `if`, `elif`, `else` blocks. Using switch-case expressions also improves performance.
+
+## Version 4.9 (2024-11-11)
+
+- {{% xref "/chapter-destinations/clickhouse/_index.md" %}} destination.
+- Log tapping with the [`syslog-ng-ctl attach` command]({{< relref "/app-man-syslog-ng/syslog-ng-ctl.1.md#attach" >}}).
+- {{% xref "/filterx/_index.md" %}} data parsing and processing engine.
+- Updated lists of available options for the gRPC-based destinations ([`bigquery()`]({{< relref "/chapter-destinations/google-bigquery/_index.md" >}}), [`loki()`]({{< relref "/chapter-destinations/destination-loki/_index.md" >}}), [`opentelemetry()`]({{< relref "/chapter-destinations/opentelemetry/_index.md" >}}), [`syslog-ng-otlp()`]({{< relref "/chapter-destinations/destination-syslog-ng-otlp/_index.md" >}})). You can now also set dynamic header values for these destinations.
+- Added the `idle-timeout()` option to {{% xref "/chapter-sources/configuring-sources-file/reference-source-file/_index.md" %}}, {{% xref "/chapter-sources/configuring-sources-stdin/stdin()-source-options/_index.md" %}}, {{% xref "/chapter-sources/configuring-sources-systemd-syslog/reference-source-systemd-syslog/_index.md" %}}, {{% xref "/chapter-sources/configuring-sources-wildcard-file/reference-source-wildcard-file/_index.md" %}}, {{% xref "/chapter-sources/source-pipe/reference-source-pipe/_index.md" %}}, {{% xref "/chapter-sources/source-program/reference-source-program/_index.md" %}}, {{% xref "/chapter-sources/source-unixstream/reference-source-unixstream/_index.md" %}}.
+
+    These sources have a new `exit-on-eof` flag that makes {{< product >}} stop when EOF is received.
+
+- Added the {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-msgformat" %}} macro.
+- Added `.tls.x509_fp` to {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-tls-x509" %}}.
+
+### Other documentation updates
+
+- Cloud authentication option updates for the [`http()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#cloud-auth" >}}) and [`google-pubsub`]({{< relref "/chapter-destinations/google-pubsub/_index.md#auth" >}}) destinations.
+- [`syslog-ng-ctl list-files`]({{< relref "/app-man-syslog-ng/syslog-ng-ctl.1.md#list-referenced-files" >}}) command lists files referenced in your configuration, for example, certificates or external configuration files.
+- [`lifetime()` global option]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-stats-lifetime" >}}) to prune dynamic counters.
+
+## Version 4.8 (2024-07-12)
+
+- [APT repository for Debian and Ubuntu]({{< relref "/install/debian-ubuntu/_index.md" >}}) based systems.
+- You can send messages and metrics to [Elasticsearch data streams](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams.html) to store your log and metrics data as time series data using the [`elasticsearch-datastream()`]({{< relref "/chapter-destinations/elasticsearch-data-stream/_index.md" >}}) destination driver.
+- You can use the [`server-side-encryption()`]({{< relref "/chapter-destinations/destination-s3/_index.md#server-side-encryption" >}}) and [`kms-key()`]({{< relref "/chapter-destinations/destination-s3/_index.md#kms-key" >}}) options to configure encryption for [Amazon S3 destinations]({{< relref "/chapter-destinations/destination-s3/_index.md" >}}).
+- You can now set static gRPC headers in the [`bigquery()`]({{< relref "/chapter-destinations/google-bigquery/_index.md#headers" >}}), [`loki()`]({{< relref "/chapter-destinations/destination-loki/_index.md#headers" >}}), and the [`opentelemetry()`]({{< relref "/chapter-destinations/opentelemetry/_index.md#headers" >}}) destinations.
+- The `opentelemetry()` parser has a new [`set-hostname()`]({{< relref "/chapter-parsers/opentelemetry/_index.md#set-hostname" >}}) option.
+
+## Version 4.7 (2024-04-18)
+
+- {{% xref "/chapter-sources/arr/_index.md" %}} source
+- {{% xref "/chapter-sources/jellyfin/_index.md" %}} source
+- `channel-args()` option for gRPC-based drivers, like [`opentelemetry()`]({{< relref "/chapter-destinations/opentelemetry/_index.md#channel-args" >}})
+- `concurrent-requests()` option for the [`opentelemetry()` source]({{< relref "/chapter-sources/opentelemetry/_index.md#concurrent-requests" >}}) and the [`syslog-ng-otlp()` source]({{< relref "/chapter-sources/source-syslog-ng-otlp/_index.md#concurrent-requests" >}})
+- {{% xref "/chapter-destinations/destination-loki/_index.md#tenant-id" %}} option for the Loki destination
+- {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md#template-function-tags-head" %}} template function
+- {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-mqtt-topic" %}} macro
+- {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-transport" %}} macro updates
+
+For details, see the [release announcement blog post](https://axoflow.com/blog/axosyslog-release-4-7).
+
+## Version 4.6 (2024-02-01)
+
+- [Google BigQuery destination]({{< relref "/chapter-destinations/google-bigquery/_index.md" >}})
+- {{% xref "/chapter-parsers/windows-eventlog-xml-parser/_index.md" %}}
+- {{% xref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md#template-function-tag" %}} template function
+- `batch-bytes()`, `compression()` and `workers()` options for the [syslog-ng-otlp()]({{< relref "/chapter-destinations/destination-syslog-ng-otlp/_index.md#compression" >}}) and [opentelemetry()]({{< relref "/chapter-destinations/opentelemetry/_index.md#compression" >}}) destinations
+
+For details, see the [release announcement blog post](https://axoflow.com/blog/axosyslog-release-4-6).
+
+### New sources
+
+- [New macOS sources]({{< relref "/chapter-sources/darwin/_index.md" >}})
+- {{% xref "/chapter-sources/qbittorrent/_index.md" %}}
+- {{% xref "/chapter-sources/pihole-ftl/_index.md" %}}
+
+## 2023-10-20 to version 4.5 release (2024-01-05)
+
+- [Google Pub/Sub destination]({{< relref "/chapter-destinations/google-pubsub/_index.md" >}})
+- [OpenObserve destination]({{< relref "/chapter-destinations/openobserve/_index.md" >}})
+- New `http()` destination options {{% xref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#templates-in-the-url" %}} and [worker-partition-key()]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#worker-partition-key" >}})
+
+### Parsers
+
+- New {{% xref "/chapter-parsers/postgresql-csvlog-parser/_index.md" %}} parser
+- Columnless mode in [csv-parser]({{< relref "/chapter-parsers/csv-parser/_index.md" >}})
+
+### TLS options
+
+- {{% xref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#ssl-version" %}}
+- `ignore-validity-period` option in to {{% xref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#tls-options-ssl-options" %}}
+
+### Manual pages
+
+- `--check-startup` in {{% xref "/app-man-syslog-ng/syslog-ng.8.md" %}}
+- [secure-logging]({{< relref "/app-man-syslog-ng/secure-logging.7.md" >}}), [slogencrypt]({{< relref "/app-man-syslog-ng/slogencrypt.1.md" >}}), [slogkey]({{< relref "/app-man-syslog-ng/slogkey.1.md" >}}), and [slogverify]({{< relref "/app-man-syslog-ng/slogverify.1.md" >}}) manual pages.
+
+### Other changes
+
+- New quickstart section {{% xref "/quickstart/opensearch-helm/_index.md" %}}
+- Updates in {{% xref "/install/podman/_index.md" %}} and {{% xref "/install/docker/_index.md" %}}
+- `close_batch` and `set_transport` methods in the [python source]({{< relref "/chapter-sources/python-source/_index.md" >}})
+
+## 2023-08-18 to 2023-10-20
+
+<!-- Covered till commit 682e774cb35ab5cd2b16da8abeee4e4ae0d0ff4d -->
+
+- [syslog-ng-otlp source]({{< relref "/chapter-sources/source-syslog-ng-otlp/_index.md" >}}) and [syslog-ng-otlp destination]({{< relref "/chapter-destinations/destination-syslog-ng-otlp/_index.md" >}})
+- [Loki destination]({{< relref "/chapter-destinations/destination-loki/_index.md" >}})
+- [Amazon S3 destination]({{< relref "/chapter-destinations/destination-s3/_index.md" >}})
+- [OpenSearch destination]({{< relref "/chapter-destinations/destination-opensearch/_index.md" >}})
+- [stdout destination]({{< relref "/chapter-destinations/destination-stdout/_index.md" >}})
+- `http` destination options:
+    - [ignore-hostname-mismatch ssl-option]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#ssl-options" >}})
+    - [accept-encoding()]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#accept-encoding" >}})
+    - [accept-redirects()]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#accept-redirects" >}})
+    - [content-compression()]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#content-compression" >}})
+- [Dynamic labeling in the metrics-probe parser]({{< relref "/chapter-parsers/metrics-probe/_index.md#dynamic-labels" >}})
+
+## 2023-07-07 to 2023-08-18
+
+<!-- Covered till commit 3dfacaf1cc0a15aeed2b007e62df0dbcd7730b1a 
+Date:   Fri Aug 18 13:43:08 2023 +0200 -->
+### OpenTelemetry
+
+- [OpenTelemetry source]({{< relref "/chapter-sources/opentelemetry/_index.md" >}})
+- [OpenTelemetry destination]({{< relref "/chapter-destinations/opentelemetry/_index.md" >}})
+- [OpenTelemetry parser]({{< relref "/chapter-parsers/opentelemetry/_index.md" >}})
+
+### New sources and related changes
+
+- [Hypr Audit Trail and Hypr App Audit Trail]({{< relref "/chapter-sources/hypr-audit-trail/_index.md" >}})
+- [OpenTelemetry]({{< relref "/chapter-sources/opentelemetry/_index.md" >}})
+- [`match-boot` and `matches` options of the `syslog-journal()` source]({{< relref "/chapter-sources/configuring-sources-journal/reference-source-journal/#match-boot" >}})
+
+### New destinations and related changes
+
+- [Falcon LogScale]({{< relref "/chapter-destinations/crowdstrike-falcon/_index.md" >}})
+- [OpenTelemetry]({{< relref "/chapter-destinations/opentelemetry/_index.md" >}})
+- [Splunk HEC]({{< relref "/chapter-destinations/syslog-ng-with-splunk/_index.md" >}})
+- [`dbdi-driver-dir()`]({{< relref "/chapter-destinations/configuring-destinations-sql/reference-destination-sql/#sql-option-dbdi-driver-dir" >}}) and [`quote-char()`]({{< relref "/chapter-destinations/configuring-destinations-sql/reference-destination-sql/#sql-option-quote-char" >}}) options of the `sql()` destination
+- [`bulk-mode()`, `bulk-bypass-validation()`, and `bulk-unordered()`]({{< relref "/chapter-destinations/configuring-destinations-mongodb/reference-destination-mongodb/#mongodb-option-bulk-mode" >}}) and [`write-concern()`]({{< relref "/chapter-destinations/configuring-destinations-mongodb/reference-destination-mongodb/#mongodb-option-write-concern" >}}) options of the `mongodb()` destination
+
+### New parsers and related changes
+
+- [group-lines]({{< relref "/chapter-parsers/parser-group-lines/_index.md" >}})
+- [Count the messages that pass through the log path (metrics-probe)]({{< relref "/chapter-parsers/metrics-probe/_index.md" >}})
+- [OpenTelemetry]({{< relref "/chapter-parsers/opentelemetry/_index.md" >}})
+- [RFC5424 structured data (SDATA) parser]({{< relref "/chapter-parsers/sdata-parser/_index.md" >}})
+- [`sdata-prefix` option for the `syslog-parser`]({{< relref "/chapter-parsers/parser-syslog/parser-syslog-options/#sdata-prefix" >}})
+- [`escape-backslash-with-sequences` option for the `csv-parser`]({{< relref "/chapter-parsers/csv-parser/reference-parsers-csv/#csv-parser-dialect" >}})
+
+### Other changes
+
+- [Typing support (Specifying data types in value-pairs)]({{< relref "/chapter-concepts/concepts-value-pairs/specifying-data-types/_index.md" >}})
+- [Nonsequential message processing for improved performance]({{< relref "/chapter-nonsequential-processing/_index.md" >}})
+- [An overview of writing Python modules for syslog-ng]({{< relref "/writing-python-modules/_index.md" >}})
+- [New syslog-ng-ctl commands]({{< relref "/app-man-syslog-ng/syslog-ng-ctl.1/_index.md" >}})
+- [Configuration identifier]({{< relref "/chapter-configuration-file/configuration-identifier/_index.md" >}})
+- [Named log paths]({{< relref "/chapter-routing-filters/logpath/_index.md" >}})
+- [format-date template function]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/#template-function-format-date" >}})
+- TLS improvements: [OCSP stapling verification]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/#tls-options-ocsp-stapling-verify" >}}) and [SSL_CONF_cmd]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/#tls-options-openssl-conf-cmds" >}}) support
+- [RAWMSG_SIZE macro]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/#macro-rawmsg-size" >}})
+- [`lower` and `upper` transformations for the rekey `value-pairs()` option]({{< relref "chapter-concepts/concepts-value-pairs/option-value-pairs/#rekey" >}})
+
+### New global options
+
+- [log-level]({{< relref "/chapter-global-options/reference-options/#global-options-log-level" >}})
+- [stats]({{< relref "/chapter-global-options/reference-options/#global-option-stats" >}})

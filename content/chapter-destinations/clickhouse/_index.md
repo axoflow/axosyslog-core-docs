@@ -132,7 +132,7 @@ Note that if the data's actual format doesn't match the selected format, ClickHo
 
 {{< include-headless "chunk/option-grpc-headers.md" >}}
 
-{{< include-headless "chunk/option-destination-hook.md" >}}
+{{< include-headless "chunk/option-hook-commands.md" >}}
 
 ## json-var()
 

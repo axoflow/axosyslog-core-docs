@@ -8,6 +8,8 @@ This driver sends messages to a named pipe like `/dev/xconsole`.
 
 The `pipe()` destination has the following options:
 
+{{< include-headless "chunk/option-source-check-program.md" >}}
+
 {{% include-headless "chunk/option-destination-create-dirs.md" %}}
 
 {{% include-headless "chunk/option-destination-flags.md" %}}
@@ -18,7 +20,7 @@ The `pipe()` destination has the following options:
 
 {{% include-headless "chunk/option-destination-group.md" %}}
 
-{{< include-headless "chunk/option-destination-hook.md" >}}
+{{< include-headless "chunk/option-hook-commands.md" >}}
 
 {{% include-headless "chunk/option-destination-log-fifo-size.md" %}}
 

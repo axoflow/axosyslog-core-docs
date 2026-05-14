@@ -96,7 +96,7 @@ The following example sets the `dont-create-tables` and `explicit-commits` flags
 
 {{< include-headless "chunk/option-destination-frac-digits.md" >}}
 
-{{< include-headless "chunk/option-destination-hook.md" >}}
+{{< include-headless "chunk/option-hook-commands.md" >}}
 
 {{< include-headless "chunk/option-sql-host.md" >}}
 

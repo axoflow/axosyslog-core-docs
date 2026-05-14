@@ -67,7 +67,7 @@ Hazard of data loss! The {{% param "product.abbrev" %}} application does not ver
 
 {{< include-headless "chunk/option-destination-frac-digits.md" >}}
 
-{{< include-headless "chunk/option-destination-hook.md" >}}
+{{< include-headless "chunk/option-hook-commands.md" >}}
 
 {{% include-headless "chunk/option-destination-local-timezone.md" %}}
 

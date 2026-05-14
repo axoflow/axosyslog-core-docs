@@ -1,22 +1,45 @@
 ---
 title: "pipe() source options"
 weight:  100
+syslog_parsing: true
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
 The `pipe` driver has the following options:
 
+{{% include-headless "chunk/option-source-chain-hostnames.md" %}}
+
 {{< include-headless "chunk/option-source-check-hostname.md" >}}
+
+{{% include-headless "chunk/option-source-check-program.md" %}}
 
 {{% include-headless "chunk/option-destination-create-dirs.md" %}}
 
+{{% include-headless "chunk/option-source-default-facility.md" %}}
+
+{{% include-headless "chunk/option-source-default-level-journal.md" %}}
+
+{{% include-headless "chunk/option-source-default-priority.md" %}}
+
+{{% include-headless "chunk/option-source-default-severity.md" %}}
+
+{{% include-headless "chunk/option-source-dns-cache.md" %}}
+
+{{% include-headless "chunk/option-source-encoding.md" %}}
+
 {{< include-headless "chunk/option-source-flags.md" >}}
 
-{{% include-headless "chunk/option-source-follow-freq.md" %}}
+{{% include-headless "chunk/option-source-format.md" %}}
 
-{{< include-headless "chunk/option-destination-hook.md" >}}
+{{< include-headless "chunk/option-hook-commands.md" >}}
+
+{{% include-headless "chunk/option-source-host-override.md" %}}
 
 {{< include-headless "chunk/option-source-idle-timeout.md" >}}
+
+{{% include-headless "chunk/option-source-internal.md" %}}
+
+{{< include-headless "chunk/option-source-keep-hostname.md" >}}
 
 {{< include-headless "chunk/option-source-keep-timestamp.md" >}}
 
@@ -28,6 +51,8 @@ The `pipe` driver has the following options:
 
 {{< include-headless "chunk/option-source-log-prefix.md" >}}
 
+<!-- Obsolete alias, only left here to make cfg-helper comparisons easier {{% include-headless "chunk/option-source-long-hostnames.md" %}} -->
+
 {{< include-headless "chunk/option-source-multi-line-garbage.md" >}}
 
 {{< include-headless "chunk/option-source-multi-line-mode.md" >}}
@@ -36,12 +61,37 @@ The `pipe` driver has the following options:
 
 {{% include-headless "chunk/option-source-multi-line-suffix.md" %}}
 
+{{% include-headless "chunk/option-source-normalize-hostnames.md" %}}
+
 {{% include-headless "chunk/option-source-optional.md" %}}
 
 {{% include-headless "chunk/option-source-pad-size.md" %}}
 
+{{% include-headless "chunk/option-persist-name.md" %}}
+
 {{% include-headless "chunk/option-source-program-override.md" %}}
+
+<!-- has no useful effect on this source {{% include-headless "chunk/option-source-read-old-records.md" %}} -->
+
+{{% include-headless "chunk/option-source-sdata-prefix.md" %}}
 
 {{% include-headless "chunk/option-source-tags.md" %}}
 
 {{% include-headless "chunk/option-source-time-zone.md" %}}
+
+{{% include-headless "chunk/option-source-trim-large-messages.md" %}}
+
+{{% include-headless "chunk/option-source-use-dns.md" %}}
+
+{{% include-headless "chunk/option-source-use-fqdn.md" %}}
+
+{{% include-headless "chunk/option-source-use-syslogng-pid.md" %}}
+
+<!-- cfg-helper exposes the following pipe()-source options that the parser
+     accepts via the shared file_perm_option grammar rule but that have no
+     documented effect on a source. Markers kept so the next docs-vs-cfg-helper
+     diff doesn't flag them as missing.
+
+  - dir-group(), dir-owner(), dir-perm(), group(), owner(), perm()
+-->
+

@@ -54,7 +54,7 @@ For details on how this option influences HTTP batch mode, see [Batch mode and l
 
 {{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
-{{< include-headless "chunk/option-destination-hook.md" >}}
+{{< include-headless "chunk/option-hook-commands.md" >}}
 
 {{% include-headless "chunk/option-destination-log-fifo-size.md" %}}
 
