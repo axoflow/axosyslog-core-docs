@@ -29,7 +29,7 @@ log {
 
 The `openbsd()` source supports a minimal set of options. It doesn't accept message-format or socket-tuning options because the kernel log device delivers locally framed messages with no hostname or transport metadata to negotiate.
 
-{{< include-headless "chunk/option-destination-hook.md" >}}
+{{< include-headless "chunk/option-hook-commands.md" >}}
 
 {{% include-headless "chunk/option-source-internal.md" %}}
 
