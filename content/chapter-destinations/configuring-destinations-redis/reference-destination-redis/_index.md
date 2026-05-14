@@ -41,7 +41,7 @@ Note the following points when using the `redis()` destination:
 
 {{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
-{{< include-headless "chunk/option-destination-hook.md" >}}
+{{< include-headless "chunk/option-hook-commands.md" >}}
 
 ## host() {#redis-option-host}
 

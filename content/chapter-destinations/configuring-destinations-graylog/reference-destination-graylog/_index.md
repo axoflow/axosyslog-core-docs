@@ -10,7 +10,7 @@ The `graylog2()` destination has the following options:
 
 {{< include-headless "chunk/option-destination-tls-ca-file.md" >}}
 
-{{< include-headless "chunk/option-destination-hook.md" >}}
+{{< include-headless "chunk/option-hook-commands.md" >}}
 
 {{% include-headless "chunk/option-tls.md" %}}
 

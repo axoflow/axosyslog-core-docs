@@ -100,7 +100,7 @@ Note that the time format parameter requires:
 If an error occurs while sending the messages to the server, {{% param "product.abbrev" %}} will try to resend every message from the batch. If it does not succeed (you can set the number of retry attempts in the `retries()` option), {{% param "product.abbrev" %}} drops every message in the batch.
 
 
-{{< include-headless "chunk/option-destination-hook.md" >}}
+{{< include-headless "chunk/option-hook-commands.md" >}}
 
 ## host() {#riemann-option-host}
 
