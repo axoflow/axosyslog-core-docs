@@ -1,6 +1,6 @@
 ---
 title: Jellyfin logs
-linktitle: "Jellifin logs"
+linktitle: "Jellyfin logs"
 weight: 1280
 driver: "jellyfin()"
 short_description: "Collect Jellyfin logs"
