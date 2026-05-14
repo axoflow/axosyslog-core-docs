@@ -383,7 +383,7 @@ Available in {{% param "product.abbrev" %}} version 4.5 and later.
     - `local+devkmsg`
     - `local+journal`
     - `local+afstreams`
-    - `local+openbsd`
+    - `local+openbsd` (logs from the [`openbsd()` driver]({{< relref "/chapter-sources/openbsd/_index.md" >}}))
 
 {{% include-headless "chunk/macro-tz.md" %}}
 
