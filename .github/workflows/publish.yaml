@@ -10,6 +10,7 @@ on:
 permissions:
   pages: write
   id-token: write
+  contents: read
 
 concurrency:
   group: "pages"
@@ -38,13 +39,13 @@ jobs:
       - name: Set up Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: '0.148.2'
+          hugo-version: '0.160.1'
           extended: true
 
       - name: Set up Node
         uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: lts/Krypton
 
       - name: Install dependencies
         run: |
@@ -52,7 +53,7 @@ jobs:
           npm install
 
       - name: Set up PostCSS
-        run: npm install --save-dev autoprefixer postcss-cli postcss
+        run: npm install --save-dev autoprefixer postcss-cli postcss @fullhuman/postcss-purgecss
 
       - name: Build
         run: hugo --environment production
@@ -81,6 +82,11 @@ jobs:
         run: |
           pip install beautifulsoup4 html2text
           python themes/docsy-axoflow/scripts/hugo_to_markdown.py --input public --output public
+
+      - name: install-aws-cli
+        uses: unfor19/install-aws-cli-action@v1
+        with:
+          arch: amd64
 
       - name: Deploy to Cloudflare R2
         env:
