@@ -59,9 +59,11 @@ description = "Documentation for AxoSyslog, the scalable security data processor
     # guessSyntax = "true"
     [markup.goldmark.renderHooks]
       [markup.goldmark.renderHooks.image]
-        enableDefault = true
+        #enableDefault = true
+        useEmbedded = "fallback"
       [markup.goldmark.renderHooks.link]
-        enableDefault = true
+        #enableDefault = true
+        useEmbedded = "fallback"
 
 [params]
 
