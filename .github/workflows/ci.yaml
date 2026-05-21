@@ -32,7 +32,6 @@ jobs:
           npm install
 
       - name: Set up PostCSS
-        run: npm install --save-dev autoprefixer postcss-cli postcss
-
+        run: npm install --save-dev autoprefixer postcss-cli postcss @fullhuman/postcss-purgecss
       - name: Build
         run: hugo
