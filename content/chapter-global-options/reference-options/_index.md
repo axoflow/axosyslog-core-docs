@@ -698,7 +698,7 @@ Deprecated legacy option. Use [`stats(level())`](#global-option-stats-level) ins
 
 Deprecated legacy option. Use [`stats(lifetime())`](#global-option-stats-lifetime) instead.
 
-## stats-max-dynamics() {#global-option-stats-max-dynamics}
+## stats-max-dynamics() {#global-option-stats-max-dynamics-deprecated}
 
 Deprecated legacy option. Use [`stats(max-dynamics())`](#global-option-stats-max-dynamics) instead.
 

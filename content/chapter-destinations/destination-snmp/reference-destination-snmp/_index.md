@@ -124,7 +124,7 @@ This option is a required parameter when using the SNMPv3 protocol.
 
 
 
-## snmp-obj()
+## snmp-obj() {#snmp-obj}
 
 |          |                                                                                 |
 | -------- | ------------------------------------------------------------------------------- |
@@ -164,7 +164,7 @@ The following are SNMP object definitions:
 | Type:    | <oid_of_the_object> "Objectid", <value_of_the_object>>
 | Default: | n/a                                                              |
 
-*Description:* The `trap-obj()` is a specialized version of the `snmp-obj()` option that is used to identify the SNMP trap object. The type of the trap object is always `Objectid`. The `<oid_of_the_object> and the `<value_of_the_object>>parameters are identical to the respective parameters of the `snmp-obj()` option. For details on these parameters, see [snmp-obj()](#snmp-destination-option-snmp-obj).
+*Description:* The `trap-obj()` is a specialized version of the `snmp-obj()` option that is used to identify the SNMP trap object. The type of the trap object is always `Objectid`. The `<oid_of_the_object> and the `<value_of_the_object>>parameters are identical to the respective parameters of the `snmp-obj()` option. For details on these parameters, see [snmp-obj()](#snmp-obj).
 
 {{% alert title="Note" color="info" %}}
 

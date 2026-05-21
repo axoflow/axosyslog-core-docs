@@ -60,10 +60,10 @@ A FilterX block contains one or more FilterX statements. The order of the statem
 FilterX statements can be one of the following:
 
 - A comparison, for example, `${HOST} == "my-host";`. This statement is true only for messages where the value of the `${HOST}` field is `my-host`. Such simple comparison statements can be the equivalents of [traditional filter functions]({{< relref "/chapter-routing-filters/filters/reference-filters/_index.md" >}}).
-- A value assignment for a [name-value pair or a local variable](#variable-scope), for example, `${my-field} = "bar";`. The left-side variable automatically gets the type of the right-hand expression. Assigning the false value to a variable (`${my-field} = false;`) is a valid statement that doesn't automatically cause the FilterX block to return as false.
+- A value assignment for a [name-value pair or a local variable](#scoping), for example, `${my-field} = "bar";`. The left-side variable automatically gets the type of the right-hand expression. Assigning the false value to a variable (`${my-field} = false;`) is a valid statement that doesn't automatically cause the FilterX block to return as false.
 - Existence of a variable of field. For example, the `${HOST};` expression is true only if the `${HOST}` macro exists and isn't empty.
 - A conditional statement ( `if (expr) { ... } elif (expr) {} else { ... };`) which allows you to evaluate complex decision trees. Starting with version 4.10, you can also use switch-case expressions.
-- A declaration of a [pipeline variable](#variable-scope), for example, `declare my_pipeline_variable = "something";`.
+- A declaration of a [pipeline variable](#scoping), for example, `declare my_pipeline_variable = "something";`.
 - A FilterX action. This can be one of the following:
 
     - `drop;`: Intentionally drop the message. This means that the message was successfully processed, but discarded. Processing the dropped message stops at the `drop` statement, subsequent sections or other branches of the FilterX block won't process the message. For example, you can use this to discard unneeded messages, like debug logs. Available in {{< product >}} 4.9 and later.
