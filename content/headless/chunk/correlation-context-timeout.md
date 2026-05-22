@@ -18,7 +18,7 @@ Note the following points about timeout values:
     
     ```
     
-    If the `context-timeout` is 10 seconds and {{% param "product.abbrev" %}} receives the messages within 1 second, the timeout event will occour immediately, because the difference of the two timestamp (60 seconds) is larger than the timeout value (10 seconds).
+    If the `context-timeout` is 10 seconds and {{% param "product.abbrev" %}} receives the messages within 1 second, the timeout event will occur immediately, because the difference of the two timestamp (60 seconds) is larger than the timeout value (10 seconds).
     
 
   - Avoid using unnecessarily long timeout values on high-traffic systems, as storing the contexts for many messages can require considerable memory. For example, if two related messages usually arrive within seconds, it is not needed to set the timeout to several hours.
