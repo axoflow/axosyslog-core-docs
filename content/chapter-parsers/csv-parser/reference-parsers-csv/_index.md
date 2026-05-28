@@ -18,20 +18,9 @@ weight:  100
 
 ## delimiters() {#csv-parser-delimiter}
 
-<table>
-<colgroup>
-<col/>
-<col/>
-</colgroup>
-<tbody>
-<tr class="odd">
-<td>Synopsis:</td>
-<td><p>delimiters(chars("&lt;delimiter_characters&gt;")) <em>or delimiters("&lt;delimiter_characters&gt;")</em></p>
-<p>delimiters(strings("&lt;delimiter_string1&gt;", "&lt;delimiter_string2&gt;", ...)")</p>
-<p>delimiters(chars("&lt;delimiter_characters&gt;"), strings("&lt;delimiter_string1&gt;"))</p></td>
-</tr>
-</tbody>
-</table>
+|           |                                                                                                          |
+| --------- | -------------------------------------------------------------------------------------------------------- |
+| Synopsis: | `delimiters(chars("<delimiter_characters>"))` *or* `delimiters("<delimiter_characters>")`<br>`delimiters(strings("<delimiter_string1>", "<delimiter_string2>", ...))`<br>`delimiters(chars("<delimiter_characters>"), strings("<delimiter_string1>"))` |
 
 *Description:* The delimiter is the character or string that separates the columns in the message. If you specify multiple characters using the `delimiters(chars("<delimiter_characters>))` option, every character will be treated as a delimiter. To separate the columns at the tabulator (tab character), specify `\\t`. For example, to separate the text at every hyphen (-) and colon (:) character, use `delimiters(chars("-:"))`, Note that the delimiters will not be included in the column values.
 
@@ -69,6 +58,15 @@ The following values are available.
 
 {{< include-headless "chunk/option-csv-parser-dialect-escaping.md" >}}
 
+## drop-invalid() {#csv-parser-drop-invalid}
+
+|                  |             |
+| ---------------- | ----------- |
+| Accepted values: | `yes`, `no` |
+| Default:         | `no`        |
+
+*Description:* {{< include-headless "chunk/option-csv-parser-drop-invalid-description.md" >}}
+
 ## flags() {#csv-parser-flags}
 
 |           |                                                                                           |
@@ -77,11 +75,7 @@ The following values are available.
 
 *Description:* Specifies various options for parsing the message. The following flags are available:
 
-- *drop-invalid*: When the `drop-invalid` option is set, the parser does not process messages that do not match the parser. For example, a message does not match the parser if it has less columns than specified in the parser, or it has more columns but the `greedy` flag is not enabled. Using the `drop-invalid` option practically turns the parser into a special filter, that matches messages that have the predefined number of columns (using the specified delimiters).
-
-    {{% alert title="Note" color="info" %}}
-Messages dropped as invalid can be processed by a `fallback` log path. For details on the `fallback` option, see {{% xref "/chapter-routing-filters/logpath/reference-logflags/_index.md" %}}.
-    {{% /alert %}}
+- *drop-invalid*: {{< include-headless "chunk/option-csv-parser-drop-invalid-description.md" >}}
 
 - *greedy*: The `greedy` option assigns the remainder of the message to the last column, regardless of the delimiter characters set. You can use this option to process messages where the number of columns varies.
 - *strip-whitespace*: The `strip-whitespace` flag removes leading and trailing whitespaces from all columns.
@@ -103,6 +97,10 @@ Using the `greedy` flag will assign the remainder of the message to the last col
 ```shell
 csv-parser(columns("COLUMN1", "COLUMN2", "COLUMN3") delimiters(",") flags(greedy));
 ```
+
+
+{{< include-headless "chunk/option-source-internal.md" >}}
+
 
 ## null() {#csv-parser-null}
 
@@ -131,6 +129,14 @@ parser {
 | Synopsis: | `quote-pairs(<quote_pairs>)` |
 
 *Description:* List quote-pairs between single quotes. Delimiter characters or strings enclosed between quote characters are ignored. Note that the beginning and ending quote character does not have to be identical, for example, `[}` can also be a quote-pair. For an example of using `quote-pairs()` to parse Apache log files, see [Example: Parsing Apache log files]({{< relref "/chapter-parsers/csv-parser/_index.md" >}}).
+
+## quotes() {#csv-parser-quotes}
+
+|           |                       |
+| --------- | --------------------- |
+| Synopsis: | `quotes(<characters>)` |
+
+*Description:* Specifies a set of single-character quote symbols where the opening and closing characters are identical. Each character in the string is treated as a quote, and delimiter characters or strings enclosed between matching quote characters are ignored. For example, `quotes('"\'')` treats both `"` and `'` as quote characters. To define asymmetric opening and closing quote characters (such as `[` and `]`), use [`quote-pairs()`](#csv-parser-quote-pairs) instead.
 
 {{% include-headless "chunk/option-parser-template.md" %}}
 
