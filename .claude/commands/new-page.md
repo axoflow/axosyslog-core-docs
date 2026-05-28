@@ -1,0 +1,1 @@
+../../themes/docsy-axoflow/.claude/commands/new-page.md
