@@ -64,6 +64,7 @@ if (isProd) {
         'is-active-link', 'is-active-li',
         'is-collapsed', 'is-position-fixed',
         'hidden',
+        // FontAwesome — DELIBERATELY no entries here.
       ],
 
       // ---- Pattern safelist: deep ----
@@ -81,13 +82,8 @@ if (isProd) {
       ],
 
       // ---- Pattern safelist: greedy ----
-      // We use ~8 FontAwesome icons but the references can hide behind
-      // shortcodes and CSS `::before { content: "\f…" }` rules. Greedy means
-      // "if ANY part of the selector matches, keep it" — protects FA's
-      // chained selectors (e.g., `.fas.fa-fw.fa-search`) wholesale.
-      // Total FA-related bytes kept this way is ~5 KB after PurgeCSS strips
-      // the 2 000 unused icon-class entries; the savings come from elsewhere.
-      greedy: [/^fa-/, /^fab$/, /^fas$/, /^far$/],
+      // Empty.
+      greedy: [],
     },
 
     // Don't drop @keyframes, @font-face, or CSS custom properties (--var).
