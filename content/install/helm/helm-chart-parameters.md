@@ -15,7 +15,7 @@ When you deploy {{% param "product.abbrev" %}} as a collector (which is a Daemon
 | Parameter | Description | Default |
 | --------- | ----------- | ------- |
 |  collector.enabled  | Deploy AxoSyslog as a collector to collect and forward local logs |  `true`  |
-|  collector.config.destinations  | The configurations of destinations that can be configured using chart values: [syslog](#collector-syslog-destination), [opensearch](#collector-opensearch-destination), and [syslogNgOtlp](#collector-syslog-ng-otlp-destination). For destinations and options not available as chart values, you can use the `collector.config.raw` option. |  `""`  |
+|  collector.config.destinations  | The configurations of destinations that can be configured using chart values: [syslog](#collector-syslog-destination), [opensearch](#collector-opensearch-destination), and [syslogNgOtlp](#collector-syslogngotlp-destination). For destinations and options not available as chart values, you can use the `collector.config.raw` option. |  `""`  |
 |  collector.config.raw  | A complete `syslog-ng` configuration. If this parameter is set, all other parameters in the `collector.config` section are ignored. You can use this to set parameters that are not available as chart values. For details on how to create a configuration for `syslog-ng`, see the [AxoSyslog Core documentation](https://axoflow.com/docs/axosyslog-core/). |  `""`  |
 |  collector.config.rewrites.set  |  A list of name-value pairs to set for the collected log messages. Uses the [`set` rewrite rule]({{< relref "/chapter-manipulating-messages/modifying-messages/rewrite-set/_index.md" >}}). |  `{}`  |
 |  collector.config.sources.kubernetes.enabled  | Collect pod logs using the [`kubernetes()`]({{< relref "/chapter-sources/configuring-sources-kubernetes/_index.md" >}}) source. If disabled, the chart doesn't configure any source. For the list of available sources, see the [Sources chapter]({{< relref "/chapter-sources/_index.md" >}}) |  `true`  |
@@ -358,8 +358,8 @@ syslog:
 |  openShift.enabled  | Set to `true` when deploying on OpenShift |  `false`  |
 |  openShift.securityContextConstraints.create  | Create SecurityContextConstraints on OpenShift |  `true`  |
 |  openShift.securityContextConstraints.annotations  | Annotations to apply to SecurityContextConstraints |  `{}`  |
-|  service.create  | Create a service so the [syslog server]({#syslog-server}) can receive incoming connections. |  `true`  |
-|  service.extraports  | Open additional ports for the [syslog server]({#syslog-server}) |  `[]`  |
+|  service.create  | Create a service so the [syslog server](#syslog-server) can receive incoming connections. |  `true`  |
+|  service.extraports  | Open additional ports for the [syslog server](#syslog-server) |  `[]`  |
 |  serviceAccount.create  | Whether to create a service account |  `true`  |
 |  serviceAccount.annotations  | Annotations to apply to the service account |  `{}`  |
 |  namespace  | The Kubernetes namespace to deploy to |  `""`  |

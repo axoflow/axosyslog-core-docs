@@ -904,11 +904,7 @@ Negative numbers select an element from the end of the list, for example, `-3:` 
 
 Available in {{% param "product.abbrev" %}} 3.5 and later.
 
-
-
-<span id="map-template-function"></span>
-
-## map
+## map {#template-map}
 
 *Syntax:* `$(map template list)`
 

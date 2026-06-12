@@ -38,7 +38,7 @@ destination d_pubsub_grpc {
 };
 ```
 
-You can change the default endpoint using [`service_endpoint()`](#service_endpoint).
+You can change the default endpoint using [`service_endpoint()`](#service-endpoint).
 
 ## Options
 

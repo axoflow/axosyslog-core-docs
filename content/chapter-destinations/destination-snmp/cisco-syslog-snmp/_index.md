@@ -19,7 +19,7 @@ To accomplish this, {{% param "product.abbrev" %}} has to use a special pattern 
 For details on the Cisco-specific SNMP trap format, see [CISCO-SYSLOG-MIB](https://github.com/cisco/cisco-mibs/blob/main/schema/CISCO-SYSLOG-MIB.schema).
 
 
-## Parsing Cisco-specific message fields with patterndb
+## Parsing Cisco-specific message fields with patterndb {#cisco-snmp-patterndb}
 
 The `${PROGRAM}` part of the syslog messages sent by Cisco devices contain not only the program name, but other important protocol information part as well. The `${PROGRAM}` of these messages contains the Facility, Severity, and the Mnemonic (the Cisco name) of the message. The following pattern database parses these values and makes them available as the `.cisco.Facility`, `.cisco.Severity`, and `.cisco.MsgName`, respectively. The actual log message is available as `.cisco.MsgText`.
 

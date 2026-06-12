@@ -18,12 +18,13 @@ enableGitInfo = true
 
 [languages]
 [languages.en]
-title = "AxoSyslog scalable security data processor"
+title = "AxoSyslog"
 languageName ="English"
 # Weight used for sorting.
 weight = 1
 [languages.en.params]
 description = "Documentation for AxoSyslog, the scalable security data processor"
+tagline = "Scalable security data processor"
 
 [outputs]
     home = ["HTML", "print"]
@@ -52,6 +53,9 @@ description = "Documentation for AxoSyslog, the scalable security data processor
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+    [markup.goldmark.parser.attribute]
+      title = true # default is true; applies to h1-h6 elements
+      block = true # default is false; applies to other block-level elements
   [markup.highlight]
     # See a complete list of available styles at https://xyproto.github.io/splash/docs/all.html
     style = "tango"
@@ -59,9 +63,9 @@ description = "Documentation for AxoSyslog, the scalable security data processor
     # guessSyntax = "true"
     [markup.goldmark.renderHooks]
       [markup.goldmark.renderHooks.image]
-        enableDefault = true
+        useEmbedded = "fallback"
       [markup.goldmark.renderHooks.link]
-        enableDefault = true
+        useEmbedded = "fallback"
 
 [params]
 
@@ -156,9 +160,7 @@ description = "Documentation for AxoSyslog, the scalable security data processor
   footer_left_logo_disable = false
   footer_left_logo_file = "icons/axoflow-logo.svg"
 
-  [params.social]
-    # Used as twitter:site in page metadata
-    twitter = "AxoFlowIO"
+  sidebar_search_below_title = true # Enables search box below the doc title in the left sidebar
 
   [params.links]
   # End user relevant links. These will show up on left side of footer and in the community page if you have one.

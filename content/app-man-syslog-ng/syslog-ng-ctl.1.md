@@ -274,9 +274,7 @@ The following log message also notifies you of PENDING passphrases:
 Waiting for password; keyfile='private.key'
 ```
 
-- `--control=<socket>` or `-c`
-
-    Specify the socket to use to access {{% param "product.abbrev" %}}. Only needed when using a non-standard socket.
+- {{< include-headless "chunk/varlistentry-manpage-control-socket.md" >}}
 
 ### Opening password-protected private keys
 
@@ -300,10 +298,7 @@ Or you can pipe the passphrase to the syslog-ng-ctl command, for example:
 echo "<passphrase-of-the-key>" | syslog-ng-ctl credentials add --id=<path-to-the-key>
 ```
 
-- `--control=<socket>` or `-c`
-
-    Specify the socket to use to access {{% param "product.abbrev" %}}. Only needed when using a non-standard socket.
-
+- {{< include-headless "chunk/varlistentry-manpage-control-socket.md" >}}
 - `--id=<path-to-the-key>` or `-i`
 
     The path to the password-protected private key file. This is the same path that you use in the `key-file()` option of the {{% param "product.abbrev" %}} configuration file.

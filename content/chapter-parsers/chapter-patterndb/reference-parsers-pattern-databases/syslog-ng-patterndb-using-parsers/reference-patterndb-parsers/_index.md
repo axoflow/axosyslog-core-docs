@@ -139,7 +139,7 @@ Parse a string between the quote characters specified as parameter. Note that th
 
 
 
-## @SET@
+## @SET@ {#patterndb-parser-set}
 
 Parse any combination of the specified characters until another character is found. For example, specifying a whitespace character parses any number of whitespaces, and can be used to process paddings (for example, log messages of the Squid application have whitespace padding after the username).
 
