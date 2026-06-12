@@ -61,6 +61,11 @@ if (isProd) {
         'click-to-copy', 'copy-to-clipboard-button',
         'drawio', 'drawiobtn', 'drawioframe',
         'code-toolbar', 'toolbar', 'toolbar-item',
+        // Tocbot builds the right-hand TOC list at runtime, so these never
+        // appear in the static HTML. `toc-link` carries the `display:block`
+        // rule (tocbot.css) that stops multi-line headings from overlapping —
+        // without it that fix gets purged and the bug returns.
+        'toc-link', 'toc-list', 'is-collapsible',
         'is-active-link', 'is-active-li',
         'is-collapsed', 'is-position-fixed',
         'hidden',
