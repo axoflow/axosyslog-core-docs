@@ -18,12 +18,13 @@ enableGitInfo = true
 
 [languages]
 [languages.en]
-title = "AxoSyslog scalable security data processor"
+title = "AxoSyslog"
 languageName ="English"
 # Weight used for sorting.
 weight = 1
 [languages.en.params]
 description = "Documentation for AxoSyslog, the scalable security data processor"
+tagline = "Scalable security data processor"
 
 [outputs]
     home = ["HTML", "print"]
