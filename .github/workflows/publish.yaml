@@ -61,6 +61,12 @@ jobs:
       - name: Pagefind search index
         run: npm_config_yes=true npx pagefind --output-subdir pagefind --site ./public
 
+      - name: Minify external CSS
+        # Minify external CSS files
+        run: |
+          npx --yes cssnano-cli public/pagefind/pagefind-component-ui.css \
+            public/pagefind/pagefind-component-ui.css
+
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
@@ -98,4 +104,28 @@ jobs:
           SOURCE_DIR: 'public'
           DESTINATION_DIR: 'docs/axosyslog-core'
         run: |
-          aws s3 sync $SOURCE_DIR s3://$AWS_S3_BUCKET/$DESTINATION_DIR --endpoint-url $AWS_S3_ENDPOINT --region $AWS_REGION --checksum-algorithm CRC32 --delete
+          # Three-pass sync to set Cache-Control per content type.
+          # Pass 1 — fingerprinted bundles only. Everything under scss/ is
+          # Hugo-fingerprinted (the content hash is in the filename), so a
+          # change produces a new filename. Safe to cache immutably for a year.
+          aws s3 sync "$SOURCE_DIR" "s3://$AWS_S3_BUCKET/$DESTINATION_DIR" \
+            --endpoint-url "$AWS_S3_ENDPOINT" --region "$AWS_REGION" --checksum-algorithm CRC32 \
+            --exclude "*" \
+            --include "scss/*" \
+            --include "js/*" --include "css/*" --include "webfonts/*" --include "fonts/*" \
+            --include "icons/*" --include "img/*" --include "favicons/*" \
+            --cache-control "public, max-age=31536000, immutable"
+
+          # Pass 2 — other static assets, 30 days.
+          aws s3 sync "$SOURCE_DIR" "s3://$AWS_S3_BUCKET/$DESTINATION_DIR" \
+            --endpoint-url "$AWS_S3_ENDPOINT" --region "$AWS_REGION" --checksum-algorithm CRC32 \
+            --exclude "*" \
+            --include "pagefind/*" \
+            --cache-control "public, max-age=2592000"
+
+          # Pass 3 — HTML and everything else: 4 days, must revalidate.
+          # --delete prunes files removed from the build.
+          aws s3 sync "$SOURCE_DIR" "s3://$AWS_S3_BUCKET/$DESTINATION_DIR" \
+            --endpoint-url "$AWS_S3_ENDPOINT" --region "$AWS_REGION" --checksum-algorithm CRC32 \
+            --delete \
+            --cache-control "public, max-age=345600, must-revalidate"
