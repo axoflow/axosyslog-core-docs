@@ -1,5 +1,5 @@
 ---
-title: "Configuring AxoSyslog on server hosts"
+title: "Configuring AxoSyslog as a logserver"
 weight:  300
 aliases:
 - /chapter-quickstart/configure-servers/
