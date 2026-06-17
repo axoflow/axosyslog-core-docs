@@ -8,6 +8,8 @@ aliases:
 
 This chapter provides a very brief introduction into configuring the {{% param "product.abbrev" %}} application. For details on the format of the configuration file and how to configure sources, destinations, and other features, refer to the subsequent chapters.
 
+{{% param "product.abbrev" %}} can transport log messages between nodes using several protocols. For transport between {{% param "product.abbrev" %}} nodes, you can use the legacy BSD-syslog and the IETF-syslog protocols, or the OpenTelemetry protocol with the `axosyslog-otlp()` drivers. The client and server pages below show how to configure both. For details about the `axosyslog-otlp()` drivers, see {{% xref "/chapter-destinations/destination-syslog-ng-otlp/_index.md" %}} and {{% xref "/chapter-sources/source-syslog-ng-otlp/_index.md" %}}.
+
 - To configure {{% param "product.abbrev" %}} as a client that sends log messages to a central logserver, see {{% xref "/quickstart/configure-clients/_index.md" %}}.
 - To configure {{% param "product.abbrev" %}} as a server that receives log messages from client hosts, see {{% xref "/quickstart/configure-servers/_index.md" %}}.
 - To configure {{% param "product.abbrev" %}} as a relay that receives log messages from client hosts and forwards them to a central logserver, see {{% xref "/quickstart/configure-servers/_index.md" %}}.

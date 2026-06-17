@@ -58,6 +58,18 @@ The default configuration file of {{% param "product.abbrev" %}} collects platfo
         };
     ```
 
+    When both nodes run {{% param "product.abbrev" %}}, you can use the OpenTelemetry protocol with the `axosyslog-otlp()` destination instead. It preserves the internal representation of the messages, and adds scalability (via the `workers()` option), application-layer acknowledgement, and improved load balancing:
+
+    ```shell
+        destination d_otlp {
+            axosyslog-otlp(url("10.1.2.3:4317"));
+        };
+    ```
+
+    {{% alert title="Note" color="info" %}}
+The `axosyslog-otlp()` driver is available in {{% param "product.abbrev" %}} version 4.12 and later, and requires the `axosyslog-grpc` (or `axosyslog-mod-grpc`) package. For all options, see {{% xref "/chapter-destinations/destination-syslog-ng-otlp/_index.md" %}}. To send logs to a third-party OpenTelemetry collector or backend instead of another {{% param "product.abbrev" %}} node, use the {{% xref "/chapter-destinations/opentelemetry/_index.md" %}} destination.
+    {{% /alert %}}
+
 4.  Create a log statement connecting the local sources to the AxoSyslog server or relay. For example:
     
     ```shell
@@ -127,4 +139,22 @@ The following is a simple configuration file that collects local log messages an
     log {
         source(s_local);destination(d_syslog_tcp);
     };
+```
+
+## Example: An OpenTelemetry client configuration {#example-otlpclientconfig}
+
+The following is a simple configuration file that collects local log messages and forwards them to another {{% param "product.abbrev" %}} node using the OpenTelemetry protocol.
+
+```shell
+@version: {{% param "product.configversion" %}}
+@include "scl.conf"
+source s_local {
+    system(); internal();
+};
+destination d_otlp {
+    axosyslog-otlp(url("192.168.1.1:4317"));
+};
+log {
+    source(s_local); destination(d_otlp);
+};
 ```

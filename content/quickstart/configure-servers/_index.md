@@ -36,7 +36,19 @@ To configure AxoSyslog on a server host, complete the following steps.
             syslog(ip(10.1.2.3) transport("tcp"));
         };
     ```
-    
+
+    If your clients are also {{% param "product.abbrev" %}} nodes, you can receive their messages over the OpenTelemetry protocol with the `axosyslog-otlp()` source. This preserves the internal representation of the messages, and adds scalability, application-layer acknowledgement, and improved load balancing:
+
+    ```shell
+    source s_otlp {
+        axosyslog-otlp(port(4317));
+    };
+    ```
+
+    {{% alert title="Note" color="info" %}}
+The `axosyslog-otlp()` driver is available in {{% param "product.abbrev" %}} version 4.12 and later, and requires the `axosyslog-grpc` (or `axosyslog-mod-grpc`) package. For all options, see {{% xref "/chapter-sources/source-syslog-ng-otlp/_index.md" %}}. To receive data from a third-party OpenTelemetry sender rather than another {{% param "product.abbrev" %}} node, use the {{% xref "/chapter-sources/opentelemetry/_index.md" %}} source.
+    {{% /alert %}}
+
     For other options, see {{% xref "/chapter-sources/source-syslog/_index.md" %}} and {{% xref "/chapter-sources/configuring-sources-tcpudp/_index.md" %}}.
     
     {{% alert title="Note" color="info" %}}
@@ -104,5 +116,24 @@ Starting with {{% param "product.abbrev" %}} version 3.2, the `syslog()` source 
             source(s_local); source(s_network); destination(d_logs);
         };
     ```
-    
 
+## Example: An OpenTelemetry server configuration {#example-otlpserverconfig}
+
+The following configuration receives log messages from {{% param "product.abbrev" %}} clients over the OpenTelemetry protocol and stores them in a text file.
+
+```shell
+@version: {{% param "product.configversion" %}}
+@include "scl.conf"
+source s_local {
+    system(); internal();
+};
+source s_otlp {
+    axosyslog-otlp(port(4317));
+};
+destination d_logs {
+    file("/var/log/syslog-ng/logs.txt");
+};
+log {
+    source(s_local); source(s_otlp); destination(d_logs);
+};
+```
