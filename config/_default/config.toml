@@ -27,7 +27,7 @@ description = "Documentation for AxoSyslog, the scalable security data processor
 tagline = "Scalable security data processor"
 
 [outputs]
-    home = ["HTML", "print"]
+    home = ["HTML", "print", "llms"]
     # Enable print this section menu item
     section = [ "HTML", "print" ]
     page = ["HTML"]
