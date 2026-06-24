@@ -22,6 +22,15 @@ usertty(username);
 destination d_usertty { usertty("root"); };
 ```
 
+## escaping()
+
+|                  |                    |
+| ---------------- | ------------------ |
+| Accepted values: | `yes` or `no`      |
+| Default:         | `no`               |
+
+Available in {{% param "product.abbrev" %}} 4.26 and later.
+
+*Description:* Turns on escaping for the `'`, `"`, and backslash characters from the messages. This behavior is useful when the messages are passed to an application that cannot handle escaped characters properly.
 
 {{% include-headless "chunk/option-source-time-reopen.md" %}}
-
