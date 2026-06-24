@@ -6,6 +6,15 @@ weight: 10
 
 {{< include-headless "banner-new-to-axosyslog.md" >}}
 
+## Version 4.26 (2026-06-25)
+
+- The `network()` and `syslog()` sources and destinations now support the [`trusted-fingerprints()`]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#tls-options-trusted-fingerprints" >}}) TLS option to accept connections only from hosts presenting a certificate with a listed fingerprint. Unlike the now-deprecated [`trusted-keys()`]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#tls-options-trusted-keys" >}}) option, which was limited to SHA-1, `trusted-fingerprints()` accepts fingerprints computed with any OpenSSL-supported digest algorithm, such as SHA-256 or SHA-512.
+- The FilterX [`switch`]({{< relref "/filterx/filterx-conditional/_index.md" >}}) statement now supports ranged case matching for integer targets, for example, `case 1..4:`.
+- The [`usertty()`]({{< relref "/chapter-destinations/destination-usertty/_index.md" >}}) destination now supports the [`escaping()`]({{< relref "/chapter-destinations/destination-usertty/_index.md#escaping" >}}) option, which turns on escaping for the `'`, `"`, and backslash characters. This is useful when the messages are passed to an application that cannot handle escaped characters properly.
+- {{< product >}} packages are now available for [RHEL 10 and AlmaLinux 10]({{< relref "/install/rhel-fedora-almalinux/_index.md" >}}), [Fedora 44]({{< relref "/install/rhel-fedora-almalinux/_index.md" >}}), and [Ubuntu 26.04]({{< relref "/install/debian-ubuntu/_index.md" >}}).
+
+For a list of bugfixes, see the [GitHub release page](https://github.com/axoflow/axosyslog/releases/tag/axosyslog-4.26.0).
+
 ## Version 4.25 (2026-05-05)
 
 - The [`cache_json_file`]({{< relref "/filterx/function-reference.md#cache-json-file-default-value" >}}) FilterX function now accepts an optional `default_value` parameter. When the referenced JSON file is missing or fails to load, {{< product >}} uses `default_value` instead of aborting with a configuration error.
