@@ -8,6 +8,7 @@ weight: 10
 
 ## Version 4.26 (2026-06-25)
 
+- The new [`arrow-flight()`]({{< relref "/chapter-destinations/arrow-flight/_index.md" >}}) destination sends structured, columnar data to an [Apache Arrow Flight](https://arrow.apache.org/docs/format/Flight.html) server over gRPC. You define the columns and their types with the `schema()` option and map each column to a {{< product >}} template.
 - The `network()` and `syslog()` sources and destinations now support the [`trusted-fingerprints()`]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#tls-options-trusted-fingerprints" >}}) TLS option to accept connections only from hosts presenting a certificate with a listed fingerprint. Unlike the now-deprecated [`trusted-keys()`]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#tls-options-trusted-keys" >}}) option, which was limited to SHA-1, `trusted-fingerprints()` accepts fingerprints computed with any OpenSSL-supported digest algorithm, such as SHA-256 or SHA-512.
 - The FilterX [`switch`]({{< relref "/filterx/filterx-conditional/_index.md" >}}) statement now supports ranged case matching for integer targets, for example, `case 1..4:`.
 - The [`usertty()`]({{< relref "/chapter-destinations/destination-usertty/_index.md" >}}) destination now supports the [`escaping()`]({{< relref "/chapter-destinations/destination-usertty/_index.md#escaping" >}}) option, which turns on escaping for the `'`, `"`, and backslash characters. This is useful when the messages are passed to an application that cannot handle escaped characters properly.
