@@ -398,7 +398,7 @@ Available in {{% param "product.abbrev" %}} version 4.5 and later.
 - `.tls.x509_cn`: The Common Name of the certificate.
 - `.tls.x509_o`: The value of the Organization field.
 - `.tls.x509_ou`: The value of the Organization Unit field.
-- `.tls.x509_fp`: The key fingerprint of the peer, if the [`trusted-keys()` option]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#tls-options-trusted-keys" >}}) is used. Available in version 4.8.1 and later.
+- `.tls.x509_fp`: The key fingerprint of the peer, if the [`trusted-keys()` option]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#tls-options-trusted-keys" >}}) or [`trusted-fingerprints()` option]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#tls-options-trusted-fingerprints" >}}) is used. Available in version 4.8.1 and later.
 
 ## UNIQID {#macro-uniqid}
 
