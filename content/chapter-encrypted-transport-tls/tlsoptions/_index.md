@@ -370,12 +370,61 @@ Available in {{% param "product_name" %}} version 4.5.0 and later.
 
 *Description:* To accept connections only from hosts using certain certificates signed by the trusted CAs, list the distinguished names of the accepted certificates in this parameter. For example, using `trusted-dn("*, O=Example Inc, ST=Some-State, C=*")` will accept only certificates issued for the `Example Inc` organization in `Some-State` state.
 
-## trusted-keys() {#tls-options-trusted-keys}
+## trusted-fingerprints() {#tls-options-trusted-fingerprints}
+
+|                  |                                     |
+| ---------------- | ----------------------------------- |
+| Accepted values: | list of accepted fingerprints       |
+| Default:         | none                                |
+
+Available in {{% param "product_name" %}} version 4.26.0 and later.
+
+*Description:* To accept connections only from hosts using certain certificates having specific fingerprints, list the fingerprints of the accepted certificates in this parameter. for example:
+
+```shell
+trusted-fingerprints("SHA1:0C:EF:34:4D:0B:74:AE:03:72:9A:4E:68:AF:90:59:A9:EF:35:1F:AA",
+ "SHA512:15:B3:C5:96:48:5B:F6:20:C3:86:47:78:99:E1:2B:F2:C4:A6:93:AE:E8:0A:B3:F7:78:39:66:B4:EF:4F:A5:47:2A:E0:4A:93:06:46:72:C0:15:6A:FC:59:10:25:37:60:E3:84:E9:EC:90:30:12:F5:27:EA:22:1F:55:9B:3B:97")
+```
+
+{{< warning >}}If the fingerprint of the peer is listed in `trusted-fingerprints()`, {{% param "product_name" %}} accepts the certificate even if it's not valid.{{< /warning >}}
+
+To create the `trusted-fingerprints` string of a certificate:
+
+1. Find the fingerprint of a certificate, for example, using the following command:
+
+    ```shell
+    openssl x509 -sha512 -in <certificate file in pem> -fingerprint -noout
+    ```
+
+    Sample output:
+
+    ```shell
+    sha512 Fingerprint=27:42:63:34:F5:56:63:2B:AD:8F:BD:AD:29:17:94:7E:CB:17:7F:40:A2:FB:36:C1:4C:BA:6C:A7:E1:1C:A5:EE:79:E5:01:17:F2:98:F7:25:C9:FC:01:50:64:AB:5B:6C:D4:44:60:1F:5A:9F:BC:0A:E6:0A:15:16:74:21:9E:A9
+    ```
+
+1. Replace the ` Fingerprint=` part with a colon (`:`), for example: `sha512:27:42:63:34:F5:56:63:2B:AD:8F:BD:AD:29:17:94:7E:CB:17:7F:40:A2:FB:36:C1:4C:BA:6C:A7:E1:1C:A5:EE:79:E5:01:17:F2:98:F7:25:C9:FC:01:50:64:AB:5B:6C:D4:44:60:1F:5A:9F:BC:0A:E6:0A:15:16:74:21:9E:A9`
+
+    The fingerprinting method is the word before the first colon. The name of the fingerprinting methods must match an OpenSSL-supported digest algorithm, which are (for OpenSSL 3.0.10): `blake2b512, blake2s256, md4, md5, rmd160, sha1, sha224, sha256, sha3-224, sha3-256, sha3-384, sha3-512, sha384, sha512, sha512-224, sha512-256, shake128, shake256, sm3`
+
+{{% alert title="Note" color="info" %}}
+
+When using the `trusted-fingerprints()` and `trusted-dn()` parameters, note the following:
+
+- First, the `trusted-fingerprints()` parameter is checked. If the fingerprint of the peer is listed, the certificate validation is skipped.
+- If the fingerprint of the peer is not listed in the `trusted-fingerprints()` parameter, the `trusted-dn()` parameter is checked. If the DN of the peer is not listed in the `trusted-dn()` parameter, the authentication of the peer fails and the connection is closed.
+
+{{% /alert %}}
+
+{{% param "product.abbrev" %}} automatically adds the fingerprint of the peer to the [`${.tls.x509_fp}`](/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-tls-x509) name-value pair.
+
+## trusted-keys() (DEPRECATED) {#tls-options-trusted-keys}
 
 |                  |                                     |
 | ---------------- | ----------------------------------- |
 | Accepted values: | list of accepted SHA-1 fingerprints |
 | Default:         | none                                |
+
+Deprecated in {{% param "product_name" %}} version 4.26.0. Use [`trusted-fingerprints()`](#tls-options-trusted-fingerprints) instead.
 
 *Description:* To accept connections only from hosts using certain certificates having specific SHA-1 fingerprints, list the fingerprints of the accepted certificates in this parameter. for example, `trusted-keys("SHA1:00:EF:ED:A4:CE:00:D1:14:A4:AB:43:00:EF:00:91:85:FF:89:28:8F", "SHA1:0C:42:00:3E:B2:60:36:64:00:E2:83:F0:80:46:AD:00:A8:9D:00:15")`.
 

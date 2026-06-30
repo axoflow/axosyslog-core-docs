@@ -15,7 +15,7 @@ The {{% param "product.abbrev" %}} application allows you to define message temp
     };
 ```
 
-Template objects have a single option called `template-escape()`, which is disabled by default (`template-escape(no)`). This behavior is useful when the messages are passed to an application that cannot handle escaped characters properly. Enabling template escaping (`template-escape(yes)`) causes {{% param "product.abbrev" %}} to escape the `'`, `"`, and backslash characters from the messages.
+Template objects have a single option called `template-escape()`, which is disabled by default (`template-escape(no)`). Enabling escaping causes {{% param "product.abbrev" %}} to escape the `'`, `"`, and backslash characters from the messages. This behavior is useful when the messages are passed to an application that cannot handle escaped characters properly.
 
 {{< include-headless "chunk/template-escape-nested.md" >}}
 

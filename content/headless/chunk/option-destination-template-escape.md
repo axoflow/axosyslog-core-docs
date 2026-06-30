@@ -9,6 +9,6 @@
 | Type:    | yes or no |
 | Default: | no        |
 
-*Description:* Turns on escaping for the `'`, `"`, and backspace characters in templated output files. This is useful for generating SQL statements and quoting string contents so that parts of the log message are not interpreted as commands to the SQL server.
+*Description:* Turns on escaping for the `'`, `"`, and backslash characters in templated output files. This is useful for generating SQL statements and quoting string contents so that parts of the log message are not interpreted as commands to the SQL server.
 
 {{< include-headless "chunk/template-escape-nested.md" >}}

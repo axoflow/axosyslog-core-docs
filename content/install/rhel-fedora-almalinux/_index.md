@@ -8,10 +8,10 @@ You can install {{< product >}} 4.8 and newer on your RPM-based system from Axof
 
 The following distributions are supported:
 
+- Red Hat Enterprise Linux (RHEL) 10 x86-64 / AlmaLinux 10 x86-64
 - Red Hat Enterprise Linux (RHEL) 9 x86-64 / AlmaLinux 9 x86-64
 - Red Hat Enterprise Linux (RHEL) 8 x86-64 / AlmaLinux 8 x86-64
-- Fedora 42 x86-64
-- Fedora 41 x86-64
+- Fedora 44 x86-64
 
 (The packages for AlmaLinux probably work for Rocky Linux as well, but we haven't tested it.)
 
@@ -25,14 +25,14 @@ To install {{< product >}} on RedHat Enterprise Linux 9 or AlmaLinux 9, complete
 
 1. Run the following commands to [enable the EPEL repositories](https://docs.fedoraproject.org/en-US/epel/#_el9) for your distribution. This is needed to install some dependencies of {{< product >}}. (For RHEL 8 and compatible distributions, use [these instructions](https://docs.fedoraproject.org/en-US/epel/#_el8).)
 
-    - RHEL 9:
+    - RHEL 9-10:
 
         ```shell
         sudo subscription-manager repos --enable codeready-builder-for-rhel-9-$(arch)-rpms
         sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
         ```
 
-    - AlmaLinux 9:
+    - AlmaLinux 9-10:
 
         ```shell
         sudo dnf install epel-release
