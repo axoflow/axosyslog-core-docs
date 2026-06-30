@@ -6,7 +6,7 @@ weight: 10
 
 {{< include-headless "banner-new-to-axosyslog.md" >}}
 
-## Version 4.26 (2026-06-25)
+## Version 4.26 (2026-06-30)
 
 - The `network()` and `syslog()` sources and destinations now support the [`trusted-fingerprints()`]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#tls-options-trusted-fingerprints" >}}) TLS option to accept connections only from hosts presenting a certificate with a listed fingerprint. Unlike the now-deprecated [`trusted-keys()`]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#tls-options-trusted-keys" >}}) option, which was limited to SHA-1, `trusted-fingerprints()` accepts fingerprints computed with any OpenSSL-supported digest algorithm, such as SHA-256 or SHA-512.
 - The FilterX [`switch`]({{< relref "/filterx/filterx-conditional/_index.md" >}}) statement now supports ranged case matching for integer targets, for example, `case 1..4:`.
