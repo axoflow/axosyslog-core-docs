@@ -5,6 +5,7 @@ weight: 2300
 driver: "opentelemetry()"
 short_description: "Receive logs, metrics, and traces from OpenTelemetry clients over the OpenTelemetry Protocol (OTLP/gRPC)"
 opentelemetry: true
+source_type: grpc
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
