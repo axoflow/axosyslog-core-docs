@@ -220,7 +220,7 @@ For more information, see [Discord: Rate Limits](https://discord.com/developers/
 
 |          |              |
 | -------- | ------------ |
-| Type:    | `true | false` |
+| Type:    | `true` or `false` |
 | Default: | false        |
 
 *Description:* Enables TTS (Text-To-Speech) mode. For more information, see the tts option in the [Discord documentation](https://discord.com/developers/%5Dresources/webhook#webhook-object-jsonform-params).

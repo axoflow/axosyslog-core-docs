@@ -141,7 +141,7 @@ If `log-fetch-limit()` is 100, and your wildcard file source has 200 files, then
 
 |          |                       |
 | -------- | --------------------- |
-| Type:    | `auto | inotify | poll` |
+| Type:    | `auto`, `inotify`, `poll` |
 | Default: | `auto`                  |
 
 *Description:* If the platform supports inotify, {{% param "product.abbrev" %}} uses it automatically to detect changes to the source files. If inotify is not available, {{% param "product.abbrev" %}} polls the files as set in the `follow-freq()` option. To force {{% param "product.abbrev" %}} poll the files even if inotify is available, set this option to `poll`.
