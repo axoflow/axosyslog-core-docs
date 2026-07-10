@@ -171,10 +171,10 @@ tls(
 
 ## peer-verify() {#tls-options-peer-verify}
 
-|                  |                                                                                                                  |
-| ---------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Accepted values: | `optional-trusted` | `optional-untrusted` | `required-trusted` | `required-untrusted` | `yes` | `no` |
-| Default:         | `required-trusted`                                                                                             |
+|                  |       |
+| ---------------- | ----- |
+| Accepted values: | `optional-trusted` , `optional-untrusted` , `required-trusted` , `required-untrusted` , `yes` , `no` |
+| Default:         | `required-trusted`   |
 
 *Description:* Verification method of the peer, the four possible values is a combination of two properties of validation:
 
