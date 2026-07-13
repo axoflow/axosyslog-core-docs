@@ -210,7 +210,7 @@ If an error occurs while sending the messages to the server, {{% param "product.
 
 |          |                 |
 | -------- | --------------- |
-| Type:    | tcp | tls | udp |
+| Type:    | `tcp`, `tls`, `udp` |
 | Default: | tcp             |
 
 *Description:* The type of the network connection to the Riemann server: TCP, TLS, or UDP. For TLS connections, set the `ca-file()` option to authenticate the Riemann server, and the `cert-file()` and `key-file()` options if the Riemann server requires authentication from its clients.

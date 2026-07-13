@@ -34,7 +34,7 @@ The mapping of AnyValue type fields is limited.
 
 |           |                              |
 | --------- | ---------------------------- |
-| Synopsis: | `yes | no ` |
+| Synopsis: | `yes` or `no` |
 | Default: | `yes` |
 
 Available in {{< product >}} 4.8 and later.

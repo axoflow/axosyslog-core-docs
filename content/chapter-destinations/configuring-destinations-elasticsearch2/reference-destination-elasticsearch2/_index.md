@@ -29,7 +29,7 @@ The following options are required: `index()`, `type()`. In node mode, either th
 
 |          |                                                                                                                                                                                                                                           |
 | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Type:    | http | https | transport | node | searchguard |
+| Type:    | `http`, `https`, `transport`, `node`, `searchguard` |
 | Default: | node                                                                                                                                                                                                                                      |
 
 *Description:* Specifies the client mode used to connect to the Elasticsearch server, for example, `client-mode("node")`.
@@ -102,7 +102,7 @@ Hazard of data loss! Using the `concurrent-requests()` option increases the numb
 
 |          |                           |
 | -------- | ------------------------- |
-| Type:    | none | basic | clientcert |
+| Type:    | `none`, `basic`, `clientcert` |
 | Default: | none                      |
 
 *Description:* Determines how {{% param "product.abbrev" %}} authenticates to the Elasticsearch server. Depending on the value of this option, you might have to set other options as well. Possible values:
@@ -315,7 +315,7 @@ For example:
 
 |          |        |
 | -------- | ------ |
-| Type:    | `yes|no` |
+| Type:    | `yes` or `no` |
 | Default: | no     |
 
 *Description:* By default, when connecting to an Elasticsearch cluster, {{% param "product.abbrev" %}} checks the state of the cluster. If the primary shards of the cluster are not active, {{% param "product.abbrev" %}} will not send messages, but wait for them to become active. To disable this health check and send the messages to Elasticsearch anyway, use the `skip-cluster-health-check(yes)` option in your configuration.

@@ -49,7 +49,7 @@ For the `http` destination, include the path to the java modules of {{% param "p
 
 |          |                                                    |
 | -------- | -------------------------------------------------- |
-| Type:    | DELETE | HEAD | GET | OPTIONS | POST | PUT | TRACE |
+| Type:    | `DELETE`, `HEAD`, `GET`, `OPTIONS`, `POST`, `PUT`, `TRACE` |
 | Default: | PUT                                                |
 
 *Description:* Specifies the HTTP method to use when sending the message to the server. Available in {{% param "product.abbrev" %}} version 3.7.2 and newer.

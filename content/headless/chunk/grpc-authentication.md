@@ -58,10 +58,9 @@ This is the default method, authentication is disabled (`auth(insecure())`).
 
 ### tls() {#tls}
 
-<!-- FIXME xinclude these from the other tls blocks -->
-
-`tls()` accepts the `key-file()`, `cert-file()`, `ca-file()` and `peer-verify()` (possible values:
-`required-trusted`, `required-untrusted`, `optional-trusted` and `optional-untrusted`) options.
+{{% alert title="Note" color="info" %}}
+gRPC-based drivers have a different `tls()` block implementation from the `network()` or `http()` drivers, but most features are the same.
+{{% /alert %}}
 
 {{< if "opentelemetry" >}}
 ```shell
@@ -144,7 +143,23 @@ destination d_clickhouse {
 ```
 {{< /if >}}
 
-> Note:
->
-> - `tls(peer-verify())` is not available for the `opentelemetry()` and `loki()` destination.
-> - The gRPC-based drivers (`opentelemetry()` and `loki()`) have a different `tls()` block implementation from the `network()` or `http()` drivers. Most features are the same.
+`tls()` accepts the following options.
+
+#### ca-file()
+
+{{< include-headless "chunk/option-destination-tls-ca-file-description.md" >}}
+
+#### cert-file()
+
+{{< include-headless "chunk/option-destination-tls-cert-file-description.md" >}}
+
+#### key-file()
+
+{{< include-headless "chunk/option-destination-tls-key-file-description.md" >}}
+
+{{< if source_type_grpc >}}
+#### peer-verify()
+
+{{< readfile "/headless/chunk/option-destination-tls-peer-verify-description.md" >}}
+
+{{< /if >}}

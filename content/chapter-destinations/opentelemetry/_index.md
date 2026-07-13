@@ -5,6 +5,7 @@ weight: 3750
 driver: "opentelemetry()"
 short_description: "Send logs, metrics, and traces to OpenTelemetry"
 opentelemetry: true
+dest_type: grpc
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
