@@ -40,48 +40,7 @@ The HEADER part of the message must be in plain ASCII format, the parameter valu
 
 ## The PRI message part
 
-The PRI part of the syslog message (known as Priority value) represents the Facility and Severity of the message. Facility represents the part of the system sending the message, while severity marks its importance. The Priority value is calculated by first multiplying the Facility number by 8 and then adding the numerical value of the Severity. The possible facility and severity values are presented below.
-
-{{% alert title="Note" color="info" %}}
-
-Facility codes may slightly vary between different platforms. The AxoSyslog application accepts facility codes as numerical values as well.
-
-{{% /alert %}}
-
-| Numerical Code | Facility                                 |
-| -------------- | ---------------------------------------- |
-| 0 | kernel messages |
-| 1 | user-level messages |
-| 2 | mail system |
-| 3 | system daemons |
-| 4 | security/authorization messages |
-| 5 | messages generated internally by syslogd |
-| 6 | line printer subsystem |
-| 7 | network news subsystem |
-| 8 | UUCP subsystem |
-| 9 | clock daemon |
-| 10 | security/authorization messages |
-| 11 | FTP daemon |
-| 12 | NTP subsystem |
-| 13 | log audit |
-| 14 | log alert |
-| 15 | clock daemon |
-| 16-23 | locally used facilities (local0-local7) |
-
-The following table lists the severity values.
-
-| Numerical Code | Severity                                 |
-| -------------- | ---------------------------------------- |
-| 0              | Emergency: system is unusable            |
-| 1              | Alert: action must be taken immediately  |
-| 2              | Critical: critical conditions            |
-| 3              | Error: error conditions                  |
-| 4              | Warning: warning conditions              |
-| 5              | Notice: normal but significant condition |
-| 6              | Informational: informational messages    |
-| 7              | Debug: debug-level messages              |
-
-syslog Message Severities
+The `PRI` is calculated and interpreted exactly as in BSD-syslog messages (`facility * 8 + severity`). For the formula and the facility and severity code tables, see {{% xref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-pri/_index.md" %}}.
 
 
 ## The HEADER message part

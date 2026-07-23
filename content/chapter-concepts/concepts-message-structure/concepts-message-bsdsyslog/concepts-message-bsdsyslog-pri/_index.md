@@ -59,7 +59,7 @@ Facility and severity are set by the sender and used inconsistently, and their n
 
 ## syslog Message Facilities {#facility-codes}
 
-The following table lists possible Facility values. The `Name` column shows the [`${FACILITY}`]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) macro value.
+The following table lists possible Facility values. The `Name` column shows the [`${FACILITY}`]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}#macro-facility) macro value.
 
 
 | Numerical Code (`${FACILITY_NUM}`) | Name (`${FACILITY}`) | Facility                                 |
@@ -96,3 +96,30 @@ The following table lists possible Severity values. The `Name` column shows the 
 | 5              | `notice`  | Notice: normal but significant condition |
 | 6              | `info`    | Informational: informational messages    |
 | 7              | `debug`   | Debug: debug-level messages              |
+
+{{% alert title="Note" color="info" %}}
+
+A message that arrives without a PRI — for example from a non-syslog source such as [OpenTelemetry]({{< relref "/chapter-sources/opentelemetry/_index.md" >}}), or from a file — defaults to facility `user` and severity `notice` (PRI `13`). Use the source's `default-facility()` and `default-priority()` options to change this, as described in {{% xref "/chapter-sources/section-sources-how-work/_index.md" %}}.
+
+{{% /alert %}}
+
+## Setting the facility and severity
+
+To override the facility and severity of a message, use the [`set-facility()`]({{< relref "/chapter-manipulating-messages/modifying-messages/rewrite-set-facility/_index.md" >}}) and [`set-severity()`]({{< relref "/chapter-manipulating-messages/modifying-messages/rewrite-set-severity/_index.md" >}}) rewrite rules:
+
+```shell
+rewrite r_pri {
+    set-facility("local0");
+    set-severity("err");
+};
+```
+
+With [FilterX]({{< relref "/filterx/_index.md" >}}), set the combined PRI value with `set_pri()` (`facility * 8 + severity`, so `local0` (16) and `err` (3) give `131`):
+
+```shell
+filterx {
+    set_pri(131);
+};
+```
+
+Both examples set the message to `local0.err`. Assigning the macros directly (such as `$SEVERITY` or `$PRIORITY`) does not work — they are read-only, macro-based values.

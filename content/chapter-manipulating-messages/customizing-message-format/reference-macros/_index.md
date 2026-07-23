@@ -42,11 +42,11 @@ For an example use case when using the macro is recommended, see {{% xref "/chap
 
 ## FACILITY {#macro-facility}
 
-*Description:* The name of the facility (for example, `kern`) that sent the message.
+*Description:* The name of the facility (for example, `kern`) that sent the message. For the list of facility codes, see [The PRI message part]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-pri/_index.md" >}}#facility-codes).
 
 ## FACILITY_NUM {#macro-facility-num}
 
-*Description:* The numerical code of the facility (for example, `0`) that sent the message.
+*Description:* The numerical code of the facility (for example, `0`) that sent the message. For the list of facility codes, see [The PRI message part]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-pri/_index.md" >}}#facility-codes).
 
 ## FILE_NAME {#macro-filename}
 
