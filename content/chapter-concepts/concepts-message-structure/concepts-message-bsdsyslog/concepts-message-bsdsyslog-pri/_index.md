@@ -114,7 +114,7 @@ rewrite r_pri {
 };
 ```
 
-With [FilterX]({{< relref "/filterx/_index.md" >}}), set the combined PRI value with `set_pri()` (`facility * 8 + severity`, so `local0` (16) and `err` (3) give `131`):
+With [FilterX]({{< relref "/filterx/_index.md" >}}), set the combined PRI value with [`set_pri()`]({{< relref "/filterx/function-reference.md" >}}#set-pri) (`facility * 8 + severity`, so `local0` (16) and `err` (3) give `131`):
 
 ```shell
 filterx {
