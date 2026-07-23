@@ -221,11 +221,11 @@ Available in {{% param "product.abbrev" %}} 4.11 and later. This macro is availa
 
 ## PRI {#macro-pri}
 
-*Description:* The priority and facility encoded as a 2 or 3 digit decimal number as it is present in syslog messages.
+*Description:* The combined facility and severity value (`facility * 8 + severity`), encoded as a 2 or 3 digit decimal number as it is present in the `<N>` header of syslog messages. This encodes both facility and severity, unlike `${LEVEL_NUM}`, which is the severity alone. For the facility and severity code tables and the priority formula, see [The PRI message part]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-pri/_index.md" >}}).
 
 ## PRIORITY or LEVEL {#macro-priority}
 
-*Description:* The priority (also called severity) of the message, for example, `error`. For the textual representation of this value, use the `${LEVEL}` macro. See [PRIORITY or LEVEL](#macro-priority) for details.
+*Description:* The priority (also called severity or level) of the message as a text label, for example, `err`, `warning`, `notice`, or `info`. The `${PRIORITY}`, `${LEVEL}`, and `${SEVERITY}` macros are aliases and return the same value. For the numeric representation, use the `${LEVEL_NUM}` macro. For what each severity means, see [syslog Message Severities]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-pri/_index.md" >}}#severity-codes).
 
 ## PROGRAM {#macro-program}
 

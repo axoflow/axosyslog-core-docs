@@ -53,46 +53,46 @@ The possible Facility values (between `0` and `23`) and Severity values (between
 
 {{% alert title="Note" color="info" %}}
 
-Facility codes may slightly vary between different platforms. The {{% param "product.name" %}} application accepts Facility codes as numerical values as well.
+Facility and severity are set by the sender and used inconsistently, and their names have varied across platforms over time, so a code's name or description is not a reliable indicator of the message. The descriptions follow RFC 5424, while the macro values are the traditional BSD names. {{% param "product.abbrev" %}} also accepts Facility codes as numerical values.
 
 {{% /alert %}}
 
 ## syslog Message Facilities {#facility-codes}
 
-The following table lists possible Facility values.
+The following table lists possible Facility values. The `Name` column shows the [`${FACILITY}`]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) macro value.
 
 
-| Numerical Code | Facility                                 |
-| -------------- | ---------------------------------------- |
-| 0              | kernel messages            |
-| 1              | user-level messages  |
-| 2              | mail system            |
-| 3              | system daemons                  |
-| 4              | security/authorization messages |
-| 5              | messages generated internally by syslogd |
-| 6              | line printer subsystem |
-| 7              | network news subsystem |
-| 8              | UUCP subsystem |
-| 9              | clock daemon |
-| 10             | security/authorization messages |
-| 11             | FTP daemon |
-| 12             | NTP subsystem |
-| 13             | log audit |
-| 14             | log alert |
-| 15             | clock daemon |
-| 16-23          | locally used facilities (local0-local7) |
+| Numerical Code (`${FACILITY_NUM}`) | Name (`${FACILITY}`) | Facility                                 |
+| ---------------------------------- | -------------------- | ---------------------------------------- |
+| 0              | `kern`            | kernel messages            |
+| 1              | `user`            | user-level messages  |
+| 2              | `mail`            | mail system            |
+| 3              | `daemon`          | system daemons                  |
+| 4              | `auth`            | security/authorization messages |
+| 5              | `syslog`          | messages generated internally by syslogd |
+| 6              | `lpr`             | line printer subsystem |
+| 7              | `news`            | network news subsystem |
+| 8              | `uucp`            | UUCP subsystem |
+| 9              | `cron`            | clock daemon |
+| 10             | `authpriv`        | security/authorization messages |
+| 11             | `ftp`             | FTP daemon |
+| 12             | `ntp`             | NTP subsystem |
+| 13             | `security`        | log audit |
+| 14             | `console`         | log alert |
+| 15             | `solaris-cron`    | clock daemon |
+| 16-23          | `local0`-`local7` | locally used facilities (local0-local7) |
 
 ## syslog Message Severities {#severity-codes}
 
-The following table lists possible Severity values.
+The following table lists possible Severity values. The `Name` column shows the [`${SEVERITY}`]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}#macro-priority) macro value (`${LEVEL}` and `${PRIORITY}` are aliases).
 
-| Numerical Code | Severity                                 |
-| -------------- | ---------------------------------------- |
-| 0              | Emergency: system is unusable            |
-| 1              | Alert: action must be taken immediately  |
-| 2              | Critical: critical conditions            |
-| 3              | Error: error conditions                  |
-| 4              | Warning: warning conditions              |
-| 5              | Notice: normal but significant condition |
-| 6              | Informational: informational messages    |
-| 7              | Debug: debug-level messages              |
+| Numerical Code (`${LEVEL_NUM}`) | Name (`${SEVERITY}`) | Severity                                 |
+| ------------------------------- | -------------------- | ---------------------------------------- |
+| 0              | `emerg`   | Emergency: system is unusable            |
+| 1              | `alert`   | Alert: action must be taken immediately  |
+| 2              | `crit`    | Critical: critical conditions            |
+| 3              | `err`     | Error: error conditions                  |
+| 4              | `warning` | Warning: warning conditions              |
+| 5              | `notice`  | Notice: normal but significant condition |
+| 6              | `info`    | Informational: informational messages    |
+| 7              | `debug`   | Debug: debug-level messages              |
