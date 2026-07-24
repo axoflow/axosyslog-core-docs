@@ -13,3 +13,25 @@ The following sections describe the structure of log messages. Currently there a
   - The Enterprise-wide message model or EWMM allows you to deliver structured messages between {{% param "product.abbrev" %}} nodes: see {{% xref "/chapter-concepts/concepts-message-structure/syslog-ng-message-format/_index.md" %}}
 
   - How messages are represented in {{% param "product.abbrev" %}}: see {{% xref "/chapter-concepts/concepts-message-representation/_index.md" %}}.
+
+## Example messages on the wire
+
+The same event in each format, to illustrate how the standards differ:
+
+BSD-syslog (RFC 3164) — the `<PRI>` is followed directly by a legacy `Mmm dd hh:mm:ss` timestamp, the host, and the message:
+
+```shell
+<34>Oct 11 22:14:15 mymachine su: 'su root' failed for lonvick on /dev/pts/8
+```
+
+IETF-syslog (RFC 5424) — the `<PRI>` is followed by a version digit and an ISO 8601 timestamp, then the structured header fields:
+
+```shell
+<34>1 2026-10-11T22:14:15+00:00 mymachine su - - - 'su root' failed for lonvick on /dev/pts/8
+```
+
+EWMM — an RFC 5424 frame with `@syslog-ng` as the program and the message carried as JSON:
+
+```shell
+<34>1 2026-10-11T22:14:15+00:00 mymachine @syslog-ng - - - {"PROGRAM":"su","MESSAGE":"'su root' failed for lonvick on /dev/pts/8","HOST":"mymachine","._TAGS":[".source.s_network"]}
+```

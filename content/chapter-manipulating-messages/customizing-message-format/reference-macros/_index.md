@@ -42,11 +42,11 @@ For an example use case when using the macro is recommended, see {{% xref "/chap
 
 ## FACILITY {#macro-facility}
 
-*Description:* The name of the facility (for example, `kern`) that sent the message.
+*Description:* The name of the facility (for example, `kern`) that sent the message. For the list of facility codes, see [The PRI message part]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-pri/_index.md#facility-codes" >}}).
 
 ## FACILITY_NUM {#macro-facility-num}
 
-*Description:* The numerical code of the facility (for example, `0`) that sent the message.
+*Description:* The numerical code of the facility (for example, `0`) that sent the message. For the list of facility codes, see [The PRI message part]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-pri/_index.md#facility-codes" >}}).
 
 ## FILE_NAME {#macro-filename}
 
@@ -221,11 +221,11 @@ Available in {{% param "product.abbrev" %}} 4.11 and later. This macro is availa
 
 ## PRI {#macro-pri}
 
-*Description:* The combined facility and severity value (`facility * 8 + severity`), encoded as a 2 or 3 digit decimal number as it is present in the `<N>` header of syslog messages. This encodes both facility and severity, unlike `${LEVEL_NUM}`, which is the severity alone. For the facility and severity code tables and the priority formula, see [The PRI message part]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-pri/_index.md" >}}).
+*Description:* The combined facility and severity value (`facility * 8 + severity`), encoded as a 2 or 3 digit decimal number as it is present in the `<N>` header of syslog messages. This encodes both facility and severity, unlike `${LEVEL_NUM}`, which is the severity alone. For the facility and severity code tables and the priority formula, see [The PRI message part]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-pri/_index.md" >}}).
 
 ## PRIORITY or LEVEL {#macro-priority}
 
-*Description:* The priority (also called severity or level) of the message as a text label, for example, `err`, `warning`, `notice`, or `info`. The `${PRIORITY}`, `${LEVEL}`, and `${SEVERITY}` macros are aliases and return the same value. For the numeric representation, use the `${LEVEL_NUM}` macro. For what each severity means, see [syslog Message Severities]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-pri/_index.md" >}}#severity-codes).
+*Description:* The priority (also called severity or level) of the message as a text label, for example, `err`, `warning`, `notice`, or `info`. The `${PRIORITY}`, `${LEVEL}`, and `${SEVERITY}` macros are aliases and return the same value. For the numeric representation, use the `${LEVEL_NUM}` macro. For what each severity means, see [syslog Message Severities]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-pri/_index.md#severity-codes" >}}).
 
 ## PROGRAM {#macro-program}
 

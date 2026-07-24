@@ -1,17 +1,13 @@
 ---
 title: "The PRI message part"
-weight:  100
+weight:  700
+aliases:
+- /chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-pri/
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 {{< include-headless "banner-new-to-axosyslog.md" >}}
 
-This section describes the `PRI` message part of a syslog message, according to the [legacy-syslog or BSD-syslog protocol](https://datatracker.ietf.org/doc/rfc3164/).
-
-For further details about the `HEADER` and `MSG` parts of a syslog message, see the following sections:
-
-  - [`HEADER`]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-header/_index.md" >}})
-
-  - [`MSG`]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-msg/_index.md" >}})
+This section describes the `PRI` (priority) part of a syslog message, which encodes the message's facility and severity. The `PRI` is used the same way by the [BSD-syslog](https://datatracker.ietf.org/doc/rfc3164/) and [IETF-syslog](https://tools.ietf.org/html/rfc5424) protocols.
 
 
 ## The PRI message part
@@ -59,7 +55,7 @@ Facility and severity are set by the sender and used inconsistently, and their n
 
 ## syslog Message Facilities {#facility-codes}
 
-The following table lists possible Facility values. The `Name` column shows the [`${FACILITY}`]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}) macro value.
+The following table lists possible Facility values. The `Name` column shows the [`${FACILITY}`]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-facility" >}}) macro value.
 
 
 | Numerical Code (`${FACILITY_NUM}`) | Name (`${FACILITY}`) | Facility                                 |
@@ -96,3 +92,30 @@ The following table lists possible Severity values. The `Name` column shows the 
 | 5              | `notice`  | Notice: normal but significant condition |
 | 6              | `info`    | Informational: informational messages    |
 | 7              | `debug`   | Debug: debug-level messages              |
+
+{{% alert title="Note" color="info" %}}
+
+A message that arrives without a PRI — from a non-syslog source such as [OpenTelemetry]({{< relref "/chapter-sources/opentelemetry/_index.md" >}}) or a file, or a syslog message that omits the `<PRI>` field — defaults to facility `user` and severity `notice` (PRI `13`). Use the source's [`default-facility()`]({{< relref "/chapter-sources/configuring-sources-network/reference-source-network/_index.md#default-facility" >}}) and [`default-priority()`]({{< relref "/chapter-sources/configuring-sources-network/reference-source-network/_index.md#default-priority" >}}) options to change this.
+
+{{% /alert %}}
+
+## Setting the facility and severity
+
+To override the facility and severity of a message, use the [`set-facility()`]({{< relref "/chapter-manipulating-messages/modifying-messages/rewrite-set-facility/_index.md" >}}) and [`set-severity()`]({{< relref "/chapter-manipulating-messages/modifying-messages/rewrite-set-severity/_index.md" >}}) rewrite rules:
+
+```shell
+rewrite r_pri {
+    set-facility("local0");
+    set-severity("err");
+};
+```
+
+With [FilterX]({{< relref "/filterx/_index.md" >}}), set the combined PRI value with [`set_pri()`]({{< relref "/filterx/function-reference.md#set-pri" >}}) (`facility * 8 + severity`, so `local0` (16) and `err` (3) give `131`):
+
+```shell
+filterx {
+    set_pri(131);
+};
+```
+
+Both examples set the message to `local0.err`. Assigning the macros directly (such as `$SEVERITY` or `$PRIORITY`) does not work — they are read-only, macro-based values.
