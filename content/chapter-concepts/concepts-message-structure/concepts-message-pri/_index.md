@@ -95,7 +95,7 @@ The following table lists possible Severity values. The `Name` column shows the 
 
 {{% alert title="Note" color="info" %}}
 
-A message that arrives without a PRI — from a non-syslog source such as [OpenTelemetry]({{< relref "/chapter-sources/opentelemetry/_index.md" >}}) or a file, or a syslog message that omits the `<PRI>` field — defaults to facility `user` and severity `notice` (PRI `13`). Use the source's `default-facility()` and `default-priority()` options to change this, as described in {{% xref "/chapter-sources/section-sources-how-work/_index.md" %}}.
+A message that arrives without a PRI — from a non-syslog source such as [OpenTelemetry]({{< relref "/chapter-sources/opentelemetry/_index.md" >}}) or a file, or a syslog message that omits the `<PRI>` field — defaults to facility `user` and severity `notice` (PRI `13`). Use the source's [`default-facility()`]({{< relref "/chapter-sources/configuring-sources-network/reference-source-network/_index.md" >}}#default-facility) and [`default-priority()`]({{< relref "/chapter-sources/configuring-sources-network/reference-source-network/_index.md" >}}#default-priority) options to change this.
 
 {{% /alert %}}
 
