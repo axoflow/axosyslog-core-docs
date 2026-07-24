@@ -4,8 +4,5 @@
 The following is a sample log message in EWMM format.
 
 ```shell
-   <13>1 2018-05-13T13:27:50.993+00:00 my-host @syslog-ng - - -
-    {"MESSAGE":"<34>Oct 11 22:14:15 mymachine su: 'su root' failed for username on
-    /dev/pts/8","HOST_FROM":"my-host","HOST":"my-host","FILE_NAME":"/tmp/in","._TAGS":".source.s_file"}
-
+<34>1 2026-10-11T22:14:15+00:00 my-host @syslog-ng - - - {"PROGRAM":"su","MESSAGE":"'su root' failed for lonvick on /dev/pts/8","HOST":"mymachine","HOST_FROM":"my-host","._TAGS":[".source.s_network"]}
 ```

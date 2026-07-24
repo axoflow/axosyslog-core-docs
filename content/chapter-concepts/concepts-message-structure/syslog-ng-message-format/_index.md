@@ -14,8 +14,8 @@ The message has the following parts:
 
 | Part | Example |
 | ---- | ------- |
-| `HEADER` | `<13>1 2018-05-13T13:27:50.993+00:00 my-host @syslog-ng - - -` |
-| `MESSAGE` | `{"MESSAGE":"…","HOST":"my-host", …, "._TAGS":".source.s_file"}` |
+| `HEADER` | `<34>1 2026-10-11T22:14:15+00:00 my-host @syslog-ng - - -` |
+| `MESSAGE` | `{"PROGRAM":"su","MESSAGE":"'su root' failed …","HOST":"mymachine", …, "._TAGS":[".source.s_network"]}` |
 
 The header complies with the [RFC5424 message format]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-ietfsyslog/_index.md" >}}), where the `PROGRAM` field is set to `@syslog-ng` and the `STRUCTURED-DATA` field is empty. The `MESSAGE` part is in JSON format and contains the actual message, as well as any name-value pairs that {{% param "product.abbrev" %}} has attached to or extracted from the message. The `${._TAGS}` field contains the identifier of the {{% param "product.abbrev" %}} source that originally received the message on the first {{% param "product.abbrev" %}} node.
 
