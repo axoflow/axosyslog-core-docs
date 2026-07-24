@@ -13,3 +13,27 @@ The following sections describe the structure of log messages. Currently there a
   - The Enterprise-wide message model or EWMM allows you to deliver structured messages between {{% param "product.abbrev" %}} nodes: see {{% xref "/chapter-concepts/concepts-message-structure/syslog-ng-message-format/_index.md" %}}
 
   - How messages are represented in {{% param "product.abbrev" %}}: see {{% xref "/chapter-concepts/concepts-message-representation/_index.md" %}}.
+
+## Example messages on the wire
+
+The same message as {{% param "product.abbrev" %}} emits it in each format. The BSD-syslog line is the input; the others are produced by reformatting it:
+
+BSD-syslog (RFC 3164):
+
+```shell
+<34>Oct 11 22:14:15 mymachine su: 'su root' failed for lonvick on /dev/pts/8
+```
+
+IETF-syslog (RFC 5424):
+
+```shell
+<34>1 2026-10-11T22:14:15+00:00 mymachine su - - - 'su root' failed for lonvick on /dev/pts/8
+```
+
+EWMM, where the parsed message and its name-value pairs are serialized as JSON inside an RFC 5424 frame whose program is `@syslog-ng`:
+
+```shell
+<34>1 2026-10-11T22:14:15+00:00 mymachine @syslog-ng - - - {"PROGRAM":"su","MESSAGE":"'su root' failed for lonvick on /dev/pts/8","HOST":"mymachine","._TAGS":[".source.s_network"]}
+```
+
+Because RFC 3164 timestamps carry no year or time zone, {{% param "product.abbrev" %}} supplies them when reformatting to RFC 5424.

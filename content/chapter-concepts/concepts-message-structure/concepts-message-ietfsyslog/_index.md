@@ -22,18 +22,17 @@ The message corresponds to the following format:
 <priority>VERSION ISOTIMESTAMP HOSTNAME APPLICATION PID MESSAGEID STRUCTURED-DATA MSG
 ```
 
-- Facility is 4, severity is 2, so PRI is 34.
-- The VERSION is 1.
-- The message was created on 11 October 2003 at 10:14:15pm UTC, 3 milliseconds into the next second.
-- The message originated from a host that identifies itself as "mymachine.example.com".
-- The APP-NAME is "su" and the PROCID is unknown.
-- The MSGID is "ID47".
-- The MSG is "'su root' failed for lonvick...", encoded in UTF-8.
-- In this example, the encoding is defined by the BOM:
-
-    {{% include-headless "chunk/para-bom-definition.md" %}}
-
-- There is no STRUCTURED-DATA present in the message, this is indicated by "-" in the STRUCTURED-DATA field.
+| Part | Example |
+| ---- | ------- |
+| [`PRI`]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-pri/_index.md" >}}) | `<34>` |
+| `VERSION` | `1` |
+| `TIMESTAMP` | `2003-10-11T22:14:15.003Z` |
+| `HOSTNAME` | `mymachine.example.com` |
+| `APP-NAME` | `su` |
+| `PROCID` | `-` |
+| `MSGID` | `ID47` |
+| `STRUCTURED-DATA` | `-` |
+| `MSG` | `'su root' failed for lonvick on /dev/pts/8` |
 
 The HEADER part of the message must be in plain ASCII format, the parameter values of the STRUCTURED-DATA part must be in UTF-8, while the MSG part should be in UTF-8. The different parts of the message are explained in the following sections.
 

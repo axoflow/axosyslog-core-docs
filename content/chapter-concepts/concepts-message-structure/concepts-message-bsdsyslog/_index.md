@@ -12,16 +12,16 @@ This section describes the format of a syslog message, according to the [legacy-
 
 | Part | Example |
 | ---- | ------- |
-| [`PRI`]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-pri/_index.md" >}}) | `<133>` |
-| [`HEADER`](#the-header-message-part) | `Feb 25 14:09:07 webserver` |
-| [`MSG`](#the-msg-message-part) | `syslogd: restart` |
+| [`PRI`]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-pri/_index.md" >}}) | `<34>` |
+| [`HEADER`](#the-header-message-part) | `Oct 11 22:14:15 mymachine` |
+| [`MSG`](#the-msg-message-part) | `su: 'su root' failed for lonvick on /dev/pts/8` |
 
 The total message cannot be longer than 1024 bytes.
 
 The following is a sample syslog message
 
 ```shell
-<133>Feb 25 14:09:07 webserver syslogd: restart
+<34>Oct 11 22:14:15 mymachine su: 'su root' failed for lonvick on /dev/pts/8
 ```
 
 The message corresponds to the following format:

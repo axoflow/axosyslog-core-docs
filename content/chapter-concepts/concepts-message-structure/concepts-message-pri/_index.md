@@ -1,6 +1,6 @@
 ---
 title: "The PRI message part"
-weight:  50
+weight:  700
 aliases:
 - /chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-pri/
 ---
