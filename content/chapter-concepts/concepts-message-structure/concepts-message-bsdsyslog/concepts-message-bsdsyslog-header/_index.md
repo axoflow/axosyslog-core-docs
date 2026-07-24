@@ -10,7 +10,7 @@ For further details about the `MSG` and `PRI` parts of a syslog message, see the
 
   - [MSG]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-msg/_index.md" >}})
 
-  - [PRI]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-pri/_index.md" >}})
+  - [PRI]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-pri/_index.md" >}})
 
 
 ## The HEADER message part

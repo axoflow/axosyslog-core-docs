@@ -40,7 +40,7 @@ The HEADER part of the message must be in plain ASCII format, the parameter valu
 
 ## The PRI message part
 
-The `PRI` is calculated and interpreted exactly as in BSD-syslog messages (`facility * 8 + severity`). For the formula and the facility and severity code tables, see {{% xref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-pri/_index.md" %}}.
+The `PRI` is calculated and interpreted exactly as in BSD-syslog messages (`facility * 8 + severity`). For the formula and the facility and severity code tables, see {{% xref "/chapter-concepts/concepts-message-structure/concepts-message-pri/_index.md" %}}.
 
 
 ## The HEADER message part

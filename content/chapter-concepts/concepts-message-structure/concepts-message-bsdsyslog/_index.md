@@ -7,7 +7,7 @@ weight:  100
 
 This section describes the format of a syslog message, according to the [legacy-syslog or BSD-syslog protocol](https://datatracker.ietf.org/doc/rfc3164/). A syslog message consists of the following parts:
 
-- [`PRI`]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-pri/_index.md" >}})
+- [`PRI`]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-pri/_index.md" >}})
 - [`HEADER`]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-header/_index.md" >}})
 - [`MSG`]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-msg/_index.md" >}})
 

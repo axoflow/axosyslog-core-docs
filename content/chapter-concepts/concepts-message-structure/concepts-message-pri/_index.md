@@ -1,17 +1,13 @@
 ---
 title: "The PRI message part"
-weight:  100
+weight:  50
+aliases:
+- /chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-pri/
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 {{< include-headless "banner-new-to-axosyslog.md" >}}
 
-This section describes the `PRI` message part of a syslog message, according to the [legacy-syslog or BSD-syslog protocol](https://datatracker.ietf.org/doc/rfc3164/).
-
-For further details about the `HEADER` and `MSG` parts of a syslog message, see the following sections:
-
-  - [`HEADER`]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-header/_index.md" >}})
-
-  - [`MSG`]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-msg/_index.md" >}})
+This section describes the `PRI` (priority) part of a syslog message, which encodes the message's facility and severity. The `PRI` is used the same way by the [BSD-syslog](https://datatracker.ietf.org/doc/rfc3164/) and [IETF-syslog](https://tools.ietf.org/html/rfc5424) protocols.
 
 
 ## The PRI message part
@@ -99,7 +95,7 @@ The following table lists possible Severity values. The `Name` column shows the 
 
 {{% alert title="Note" color="info" %}}
 
-A message that arrives without a PRI — for example from a non-syslog source such as [OpenTelemetry]({{< relref "/chapter-sources/opentelemetry/_index.md" >}}), or from a file — defaults to facility `user` and severity `notice` (PRI `13`). Use the source's `default-facility()` and `default-priority()` options to change this, as described in {{% xref "/chapter-sources/section-sources-how-work/_index.md" %}}.
+A message that arrives without a PRI — from a non-syslog source such as [OpenTelemetry]({{< relref "/chapter-sources/opentelemetry/_index.md" >}}) or a file, or an incomplete or non-compliant syslog message that omits the `<PRI>` field — defaults to facility `user` and severity `notice` (PRI `13`). Use the source's `default-facility()` and `default-priority()` options to change this, as described in {{% xref "/chapter-sources/section-sources-how-work/_index.md" %}}.
 
 {{% /alert %}}
 

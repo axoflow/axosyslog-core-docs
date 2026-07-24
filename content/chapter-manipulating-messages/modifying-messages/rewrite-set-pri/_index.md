@@ -4,7 +4,7 @@ weight:  900
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-You can set the `PRI` value of a [BSD]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-pri/_index.md" >}}) or [IETF]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-ietfsyslog/_index.md" >}}) syslog message with the `set-pri()` rewrite function by specifying a template string. This is useful, for example, if incoming messages do not have a `PRI` value specified by default, but a PRI value is required for filtering purposes.
+You can set the `PRI` value of a [BSD]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-pri/_index.md" >}}) or [IETF]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-ietfsyslog/_index.md" >}}) syslog message with the `set-pri()` rewrite function by specifying a template string. This is useful, for example, if incoming messages do not have a `PRI` value specified by default, but a PRI value is required for filtering purposes.
 
 When configured, the `set-pri()` function will only rewrite the `PRI` value of the message field.
 
