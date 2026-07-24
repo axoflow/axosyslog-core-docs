@@ -16,24 +16,22 @@ The following sections describe the structure of log messages. Currently there a
 
 ## Example messages on the wire
 
-The same message as {{% param "product.abbrev" %}} emits it in each format. The BSD-syslog line is the input; the others are produced by reformatting it:
+The same event in each format, to illustrate how the standards differ:
 
-BSD-syslog (RFC 3164):
+BSD-syslog (RFC 3164) — the `<PRI>` is followed directly by a legacy `Mmm dd hh:mm:ss` timestamp, the host, and the message:
 
 ```shell
 <34>Oct 11 22:14:15 mymachine su: 'su root' failed for lonvick on /dev/pts/8
 ```
 
-IETF-syslog (RFC 5424):
+IETF-syslog (RFC 5424) — the `<PRI>` is followed by a version digit and an ISO 8601 timestamp, then the structured header fields:
 
 ```shell
 <34>1 2026-10-11T22:14:15+00:00 mymachine su - - - 'su root' failed for lonvick on /dev/pts/8
 ```
 
-EWMM, where the parsed message and its name-value pairs are serialized as JSON inside an RFC 5424 frame whose program is `@syslog-ng`:
+EWMM — an RFC 5424 frame with `@syslog-ng` as the program and the message carried as JSON:
 
 ```shell
 <34>1 2026-10-11T22:14:15+00:00 mymachine @syslog-ng - - - {"PROGRAM":"su","MESSAGE":"'su root' failed for lonvick on /dev/pts/8","HOST":"mymachine","._TAGS":[".source.s_network"]}
 ```
-
-Because RFC 3164 timestamps carry no year or time zone, {{% param "product.abbrev" %}} supplies them when reformatting to RFC 5424.
