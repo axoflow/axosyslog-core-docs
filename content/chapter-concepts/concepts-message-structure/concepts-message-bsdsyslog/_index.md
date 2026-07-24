@@ -56,7 +56,7 @@ The `HEADER` message part contains a timestamp and the hostname (without the dom
 
 {{% alert title="Note" color="info" %}}
 
-The {{% param "product.name" %}} application supports other timestamp formats as well, like ISO, or the PIX extended format. For details, see the `ts-format()` option in {{% xref "/chapter-global-options/reference-options/_index.md" %}}.
+The {{% param "product.name" %}} application supports other timestamp formats as well, like ISO, or the PIX extended format. For details, see the {{% xref "/chapter-global-options/reference-options/_index.md#global-option-ts-format" %}} global option.
 
 {{% /alert %}}
 

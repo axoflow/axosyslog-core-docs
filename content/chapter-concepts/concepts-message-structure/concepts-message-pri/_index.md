@@ -55,7 +55,7 @@ Facility and severity are set by the sender and used inconsistently, and their n
 
 ## syslog Message Facilities {#facility-codes}
 
-The following table lists possible Facility values. The `Name` column shows the [`${FACILITY}`]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md" >}}#macro-facility) macro value.
+The following table lists possible Facility values. The `Name` column shows the [`${FACILITY}`]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-facility" >}}) macro value.
 
 
 | Numerical Code (`${FACILITY_NUM}`) | Name (`${FACILITY}`) | Facility                                 |
@@ -95,7 +95,7 @@ The following table lists possible Severity values. The `Name` column shows the 
 
 {{% alert title="Note" color="info" %}}
 
-A message that arrives without a PRI — from a non-syslog source such as [OpenTelemetry]({{< relref "/chapter-sources/opentelemetry/_index.md" >}}) or a file, or a syslog message that omits the `<PRI>` field — defaults to facility `user` and severity `notice` (PRI `13`). Use the source's [`default-facility()`]({{< relref "/chapter-sources/configuring-sources-network/reference-source-network/_index.md" >}}#default-facility) and [`default-priority()`]({{< relref "/chapter-sources/configuring-sources-network/reference-source-network/_index.md" >}}#default-priority) options to change this.
+A message that arrives without a PRI — from a non-syslog source such as [OpenTelemetry]({{< relref "/chapter-sources/opentelemetry/_index.md" >}}) or a file, or a syslog message that omits the `<PRI>` field — defaults to facility `user` and severity `notice` (PRI `13`). Use the source's [`default-facility()`]({{< relref "/chapter-sources/configuring-sources-network/reference-source-network/_index.md#default-facility" >}}) and [`default-priority()`]({{< relref "/chapter-sources/configuring-sources-network/reference-source-network/_index.md#default-priority" >}}) options to change this.
 
 {{% /alert %}}
 
@@ -110,7 +110,7 @@ rewrite r_pri {
 };
 ```
 
-With [FilterX]({{< relref "/filterx/_index.md" >}}), set the combined PRI value with [`set_pri()`]({{< relref "/filterx/function-reference.md" >}}#set-pri) (`facility * 8 + severity`, so `local0` (16) and `err` (3) give `131`):
+With [FilterX]({{< relref "/filterx/_index.md" >}}), set the combined PRI value with [`set_pri()`]({{< relref "/filterx/function-reference.md#set-pri" >}}) (`facility * 8 + severity`, so `local0` (16) and `err` (3) give `131`):
 
 ```shell
 filterx {

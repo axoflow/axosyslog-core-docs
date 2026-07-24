@@ -42,11 +42,11 @@ For an example use case when using the macro is recommended, see {{% xref "/chap
 
 ## FACILITY {#macro-facility}
 
-*Description:* The name of the facility (for example, `kern`) that sent the message. For the list of facility codes, see [The PRI message part]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-pri/_index.md" >}}#facility-codes).
+*Description:* The name of the facility (for example, `kern`) that sent the message. For the list of facility codes, see [The PRI message part]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-pri/_index.md#facility-codes" >}}).
 
 ## FACILITY_NUM {#macro-facility-num}
 
-*Description:* The numerical code of the facility (for example, `0`) that sent the message. For the list of facility codes, see [The PRI message part]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-pri/_index.md" >}}#facility-codes).
+*Description:* The numerical code of the facility (for example, `0`) that sent the message. For the list of facility codes, see [The PRI message part]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-pri/_index.md#facility-codes" >}}).
 
 ## FILE_NAME {#macro-filename}
 
@@ -225,7 +225,7 @@ Available in {{% param "product.abbrev" %}} 4.11 and later. This macro is availa
 
 ## PRIORITY or LEVEL {#macro-priority}
 
-*Description:* The priority (also called severity or level) of the message as a text label, for example, `err`, `warning`, `notice`, or `info`. The `${PRIORITY}`, `${LEVEL}`, and `${SEVERITY}` macros are aliases and return the same value. For the numeric representation, use the `${LEVEL_NUM}` macro. For what each severity means, see [syslog Message Severities]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-pri/_index.md" >}}#severity-codes).
+*Description:* The priority (also called severity or level) of the message as a text label, for example, `err`, `warning`, `notice`, or `info`. The `${PRIORITY}`, `${LEVEL}`, and `${SEVERITY}` macros are aliases and return the same value. For the numeric representation, use the `${LEVEL_NUM}` macro. For what each severity means, see [syslog Message Severities]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-pri/_index.md#severity-codes" >}}).
 
 ## PROGRAM {#macro-program}
 
