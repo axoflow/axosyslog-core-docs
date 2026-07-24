@@ -29,6 +29,12 @@ The different parts of the message are explained in the following sections.
 
 {{% alert title="Note" color="info" %}}
 
+RFC 3164 is lenient about what a message must contain: senders may omit the `PRI` (and sometimes the `HEADER`), and receivers still accept such messages. When a message has no `PRI`, {{% param "product.abbrev" %}} assigns a default facility and severity (`user.notice`, PRI `13`) — see [The PRI message part]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-pri/_index.md" >}}).
+
+{{% /alert %}}
+
+{{% alert title="Note" color="info" %}}
+
 The {{% param "product.name" %}} application supports longer messages as well. For details, see the `log-msg-size()` option in {{% xref "/chapter-global-options/reference-options/_index.md" %}}. However, it is not recommended to enable messages larger than the packet size when using UDP destinations.
 
 {{% /alert %}}

@@ -37,6 +37,12 @@ The message corresponds to the following format:
 
 The HEADER part of the message must be in plain ASCII format, the parameter values of the STRUCTURED-DATA part must be in UTF-8, while the MSG part should be in UTF-8. The different parts of the message are explained in the following sections.
 
+{{% alert title="Note" color="info" %}}
+
+In RFC 5424, the `PRI` and `VERSION` are mandatory. The remaining `HEADER` fields (`TIMESTAMP`, `HOSTNAME`, `APP-NAME`, `PROCID`, `MSGID`) and the `STRUCTURED-DATA` must be present, but can be the NILVALUE `-` when the sender has no value for them. The `MSG` part is optional.
+
+{{% /alert %}}
+
 
 ## The PRI message part
 
