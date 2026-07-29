@@ -28,6 +28,8 @@ rewrite r_rewrite_unset{
 };
 ```
 
+See also the equivalent FilterX function, [`unset()`]({{< relref "/filterx/function-reference.md#unset" >}}).
+
 ## Unset group
 
 To unset a group of fields, you can use the `groupunset()` rewrite rule.
@@ -47,3 +49,5 @@ rewrite r_rewrite_unset_SDATA{
     groupunset(values(".SDATA.*"));
 };
 ```
+
+See also the related FilterX function [`unset()`]({{< relref "/filterx/function-reference.md#unset" >}}), which takes an explicit list of fields instead of a name pattern, and [`unset_empties()`]({{< relref "/filterx/function-reference.md#unset-empties" >}}), which selects fields by value.

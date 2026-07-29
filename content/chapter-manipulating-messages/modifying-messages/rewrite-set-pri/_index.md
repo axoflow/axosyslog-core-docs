@@ -14,6 +14,8 @@ If the specified parameter value is not a valid value, the function ignores it a
 
 {{% /alert %}}
 
+See also the equivalent FilterX function, [`set_pri()`]({{< relref "/filterx/function-reference.md#set-pri" >}}), which takes an integer instead of a template string.
+
 ## Declaration
 
 ```shell

@@ -16,6 +16,8 @@ Starting with version 3.21, virtualhost and the port of the virtualhost (vhost) 
    foo.com:443 1.2.3.4 - - [15/Apr/2019:14:30:16 -0400] "GET /bar.html HTTP/2.0" 500 - "https://foo.com/referer.html" "Mozilla/5.0 ..."
 ```
 
+FilterX has no Apache parser, but you can parse these logs with `parse_csv()`. For a related example, see [Parse Apache log files]({{< relref "/filterx/filterx-parsing/csv/_index.md#example-parser-apache" >}}).
+
 The {{% param "product.abbrev" %}} application extracts every field into name-value pairs, and adds the `.apache.` prefix to the name of the field.
 
 

@@ -10,6 +10,8 @@ Available in {{% param "product.abbrev" %}} version 4.5 and later.
 
 The new `windows-eventlog-xml-parser()` can parse messages in the Windows XML Event Log (EVTX) format.
 
+See also the equivalent FilterX function, [`parse_windows_eventlog_xml()`]({{< relref "/filterx/function-reference.md#parse-windows" >}}).
+
 Example configuration:
 
 ```shell
