@@ -7,12 +7,13 @@ dest_type: http
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-Available in {{% param "product.abbrev" %}} version 4.4 and later.
-
 The `s3()` destination sends log messages to the [Amazon Simple Storage Service (Amazon S3)](https://aws.amazon.com/s3/) object storage service. Messages are normally sent encrypted with TLS (HTTPS), but you can specify a custom unencrypted HTTP endpoint.
 
 ## Prerequisites
 
+- {{% param "product.abbrev" %}} version 4.4 or later.
+- {{< include-headless "chunk/prereq-package-scl.md" >}}
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-python" "axosyslog-python" >}}
 - An existing S3 bucket configured for programmatic access, and the related `ACCESS_KEY` and `SECRET_KEY` of a user that can access it. The user needs to have the following permissions:
 
     - `s3:ListBucket`

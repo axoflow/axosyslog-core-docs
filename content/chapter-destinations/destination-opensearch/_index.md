@@ -7,11 +7,15 @@ dest_type: http
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-Available in {{% param "product.abbrev" %}} version 4.4 and later.
-
 The `opensearch()` destination can directly post log messages to [OpenSearch](https://opensearch.org/) using its HTTP endpoint.
 
 HTTPS connection, as well as password- and certificate-based authentication is supported. The content of the events is sent in JSON format.
+
+## Prerequisites
+
+- {{% param "product.abbrev" %}} version 4.4 or later.
+- {{< include-headless "chunk/prereq-package-scl.md" >}}
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-http" "axosyslog-http" >}}
 
 ## Declaration:
 
@@ -41,7 +45,6 @@ destination opensearch {
         url("http://my-elastic-server:9200/_bulk")
     );
 };
-
 
 log {
     source(s_file);

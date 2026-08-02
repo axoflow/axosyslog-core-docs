@@ -6,7 +6,7 @@ short_description: "Send messages to an MQTT broker"
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-From version 3.33, you can use the `mqtt()` destination to publish messages to MQTT brokers.
+{{% param "product.abbrev" %}} can use the `mqtt()` destination to publish messages to MQTT brokers.
 
 The <span>mqtt()</span> destination builds on the [MQTT protocol](https://www.hivemq.com/mqtt-protocol/), and uses its "[client](https://www.hivemq.com/blog/seven-best-mqtt-client-tools/)" and "[broker](https://www.hivemq.com/hivemq/mqtt-broker/)" entities.
 
@@ -16,6 +16,10 @@ The rest of this chapter and its sections build on your familiarity with the MQT
 
 {{% /alert %}}
 
+## Prerequisites
+
+- {{% param "product.abbrev" %}} version 3.33 or later.
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-mqtt" "axosyslog-mqtt" >}}
 
 ## Declaration:
 
@@ -28,8 +32,6 @@ The rest of this chapter and its sections build on your familiarity with the MQT
       ); 
     }
 ```
-
-
 
 ## Example: Using the mqtt() destination in your configuration {#example-destination-mqtt}
 

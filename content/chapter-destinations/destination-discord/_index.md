@@ -9,8 +9,6 @@ dest_type: http
 
 The `discord()` destination driver sends messages to [Discord](https://discord.com/) using [Discord Webhook](https://discord.com/developers/resources/webhook). For the list of available optional parameters, see Discord destination options.
 
-Available in {{% param "product.abbrev" %}} version 3.33 and later.
-
 ## Declaration:
 
 ```shell
@@ -34,7 +32,10 @@ The `discord()` driver is actually a reusable configuration snippet configured t
 
 ## Prerequisites
 
-To send messages to Discord, you must setup webhooks. For details, see: [Discord: Intro to Webhooks](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks).
+- {{% param "product.abbrev" %}} version 3.33 or later.
+- {{< include-headless "chunk/prereq-package-scl.md" >}}
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-http" "axosyslog-http" >}}
+- To send messages to Discord, you must setup webhooks. For details, see: [Discord: Intro to Webhooks](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks).
 
 ## Example: Using the discord() driver {#example-destination-collectd}
 

@@ -14,18 +14,16 @@ The `subject()`, `body()`, and `header()` fields may include macros which get ex
 
 The `smtp()` driver has the following required parameters: `host()`, `port()`, `from()`, `to()`, `subject()`, and `body()`. For the list of available optional parameters, see {{% xref "/chapter-destinations/configuring-destinations-smtp/reference-destination-smtp/_index.md" %}}.
 
-{{% alert title="Note" color="info" %}}
+## Prerequisites
 
-The `smtp()` destination driver is available only in {{% param "product.abbrev" %}} 3.4 and later.
-
-{{% /alert %}}
+- {{% param "product.abbrev" %}} version 3.4 or later.
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-smtp" "axosyslog-smtp" >}}
 
 ## Declaration:
 
 ```shell
    smtp(host() port() from() to() subject() body() options());
 ```
-
 
 ## Example: Using the smtp() driver {#example-destination-smtp}
 
@@ -62,8 +60,6 @@ The following example sets some optional parameters as well.
             );
     };
 ```
-
-
 
 <span id="example-destination-smtp-alerting"></span>
 

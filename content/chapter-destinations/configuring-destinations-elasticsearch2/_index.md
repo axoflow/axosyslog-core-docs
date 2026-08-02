@@ -12,8 +12,11 @@ Starting with version 3.7 of {{% param "product.abbrev" %}} can directly send lo
 
 Note the following limitations when using the {{% param "product.abbrev" %}} `elasticsearch2` destination:
 
-  - Since {{% param "product.abbrev" %}} uses Java libraries, the `elasticsearch2` destination has significant memory usage.
+- Since {{% param "product.abbrev" %}} uses Java libraries, the `elasticsearch2` destination has significant memory usage.
 
+## Prerequisites
+
+The Java implementation of this destination is no longer shipped with {{% param "product.name" %}}: the `elasticsearch2` Java module isn't part of the `axosyslog-mod-java` (Debian/Ubuntu) or `axosyslog-java` (RHEL and compatible distributions) package. Use the {{% xref "/chapter-destinations/configuring-destinations-elasticsearch-http/_index.md" %}} destination instead.
 
 ## Declaration:
 
@@ -26,8 +29,6 @@ Note the following limitations when using the {{% param "product.abbrev" %}} `el
         cluster("syslog-ng")
     );
 ```
-
-
 
 ## Example: Sending log data to Elasticsearch version 2.x and above {#example-destination-elasticsearch2}
 
@@ -76,8 +77,6 @@ The following example sends 10000 messages in a batch, in transport mode, and in
     };
 ```
 
-
-
 ## Example: Sending log data to Elasticsearch using the HTTP REST API {#example-destination-elasticsearch2-http}
 
 The following example send messages to Elasticsearch over HTTP using its REST API:
@@ -108,7 +107,6 @@ The following example send messages to Elasticsearch over HTTP using its REST AP
 ```
 
 {{% include-headless "chunk/example-elasticsearch-https-verifycert-clientcert.md" %}}
-
 
   - To install the software required for the `elasticsearch2` destination, see {{% xref "/chapter-destinations/configuring-destinations-elasticsearch2/destination-elasticsearch2-prerequisites/_index.md" %}}.
 

@@ -9,13 +9,19 @@ dest_type: http
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 {{< include-headless "banner-new-to-axosyslog.md" >}}
 
-Starting with version 4.5.0, {{% param "product_name" %}} can send messages to [OpenObserve](https://openobserve.ai/docs/api/ingestion/logs/json/) using its [Logs Ingestion - JSON API](https://openobserve.ai/docs/api/ingestion/logs/json/). This API accepts multiple records in batch in JSON format.
+{{% param "product_name" %}} can send messages to [OpenObserve](https://openobserve.ai/docs/api/ingestion/logs/json/) using its [Logs Ingestion - JSON API](https://openobserve.ai/docs/api/ingestion/logs/json/). This API accepts multiple records in batch in JSON format.
 
 ## Prerequisites
 
+- {{% param "product.name" %}} version 4.5.0 or later.
+- {{< include-headless "chunk/prereq-package-scl.md" >}}
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-http" "axosyslog-http" >}}
 - An [OpenObserve account](https://openobserve.ai/) for {{% param "product_name" %}}, or
 - a [self-hosted OpenObserve deployment](https://openobserve.ai/docs/quickstart/#self-hosted-installation).
-- To configure {{% param "product_name" %}}, you'll need the username, password, the name of your organization, and the name of the OpenObserve stream where you want to send your data.
+
+## Configuration
+
+To configure {{% param "product_name" %}}, you'll need the username, password, the name of your organization, and the name of the OpenObserve stream where you want to send your data.
 
 Minimal configuration:
 

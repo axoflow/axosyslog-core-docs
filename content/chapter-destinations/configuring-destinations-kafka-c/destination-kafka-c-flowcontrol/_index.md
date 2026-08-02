@@ -8,6 +8,6 @@ A {{% param "product.abbrev" %}} destination recognizes a message as sent when t
 
 If the Kafka client collects too many unsent messages, it will not accept any more messages from {{% param "product.abbrev" %}}. The {{% param "product.abbrev" %}} application detects this and stops sending messages to the Kafka client. Also, {{% param "product.abbrev" %}}'s flow control starts functioning in the direction of the sources (for example, {{% param "product.abbrev" %}} will not read from the sources in that specific logpath).
 
-You can specify a "high water mark" limit for the Kafka client in the `properties-file()`.
+You can specify a "high water mark" limit for the Kafka client with the `queue.buffering.max.messages` librdkafka property, which you can set in the [`config()`]({{< relref "/chapter-destinations/configuring-destinations-kafka-c/reference-destination-kafka-c/_index.md#config" >}}) option.
 
-For more information about how the C implementation of the `kafka()` destination works with {{% param "product.abbrev" %}}, click [here]({{< relref "/chapter-destinations/configuring-destinations-kafka-c/_index.md#how-it-works" >}}).
+For more information about how the `kafka-c()` destination works with {{% param "product.abbrev" %}}, click [here]({{< relref "/chapter-destinations/configuring-destinations-kafka-c/_index.md#how-it-works" >}}).

@@ -9,10 +9,12 @@ dest_type: grpc
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-Starting with version 4.6.0, {{% param "product_name" %}} can send data to [Google Cloud BigQuery](https://cloud.google.com/bigquery/?hl=en) via the [BigQuery Storage Write API](https://cloud.google.com/bigquery/docs/write-api) using a high-performance gRPC-based implementation.
+{{% param "product_name" %}} can send data to [Google Cloud BigQuery](https://cloud.google.com/bigquery/?hl=en) via the [BigQuery Storage Write API](https://cloud.google.com/bigquery/docs/write-api) using a high-performance gRPC-based implementation.
 
 ## Prerequisites
 
+- {{% param "product.abbrev" %}} version 4.6 or later.
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-grpc" "axosyslog-grpc" >}}
 - A Google BigQuery environment, for example, the [BigQuery Sandbox](https://cloud.google.com/bigquery/docs/sandbox).
 - A BigQuery table.
 - Using the Storage Write API requires one of the following OAuth scopes:
@@ -21,13 +23,17 @@ Starting with version 4.6.0, {{% param "product_name" %}} can send data to [Goog
     - `https://www.googleapis.com/auth/cloud-platform`
     - `https://www.googleapis.com/auth/bigquery.insertdata`
 
-To configure {{% param "product_name" %}}, you'll need the name of the project, dataset, the name of the table to use, and the schema of the table.
+## Authentication
 
 Authentication is done via [Application Default Credentials](https://cloud.google.com/docs/authentication/provide-credentials-adc).
 
 <!-- FIXME Do we need more details about how to set up the Google side? -->
 
 For authentication, the destination uses `GoogleDefaultCredentials`, which covers everything listed as [ADC](https://cloud.google.com/docs/authentication/provide-credentials-adc). In a production environment, use a service account and [Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity).
+
+## Configuration
+
+To configure {{% param "product_name" %}}, you'll need the name of the project, dataset, the name of the table to use, and the schema of the table.
 
 Example configuration:
 

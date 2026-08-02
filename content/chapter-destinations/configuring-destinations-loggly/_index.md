@@ -8,13 +8,15 @@ short_description: "Send logs to Loggly"
 
 The `loggly()` destination sends log messages to the [Loggly](https://www.loggly.com/) Logging-as-a-Service provider. You can send log messages over TCP, or encrypted with TLS.
 
+## Prerequisites
+
+{{< include-headless "chunk/prereq-package-scl.md" >}}
 
 ## Declaration:
 
 ```shell
    loggly(token());
 ```
-
 
 ## Example: Using the loggly() driver {#example-destination-loggly}
 
@@ -52,7 +54,6 @@ The following example parses the access logs of an Apache webserver from a file 
         };
     }
 ```
-
 
 To use the `loggly()` driver, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 

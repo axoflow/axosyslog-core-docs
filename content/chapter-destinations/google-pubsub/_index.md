@@ -12,6 +12,11 @@ Starting with version 4.5.0, {{% param "product_name" %}} can send data to [Goog
 
 ## Prerequisites
 
+- {{% param "product.name" %}} version 4.5.0 or later.
+- {{< include-headless "chunk/prereq-package-scl.md" >}}
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-http" "axosyslog-http" >}}
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-cloud-auth" "axosyslog-cloud-auth" >}}
+
 {{< include-headless "chunk/google-pubsub-prerequisites.md" >}}
 
 ## Configuration

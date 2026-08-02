@@ -8,9 +8,14 @@ dest_type: grpc
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-Starting with version 4.26.0, the `arrow-flight()` destination can send data to an [Apache Arrow Flight](https://arrow.apache.org/docs/format/Flight.html) server over gRPC. Use this destination to deliver structured, columnar data to systems that accept Arrow Flight streams.
+The `arrow-flight()` destination can send data to an [Apache Arrow Flight](https://arrow.apache.org/docs/format/Flight.html) server over gRPC. Use this destination to deliver structured, columnar data to systems that accept Arrow Flight streams.
 
 ## Prerequisites
+
+- {{% param "product.name" %}} version 4.26.0 or later.
+- The `arrow-flight()` destination is available in a separate module. Install the `axosyslog-mod-arrow-flight` package on [Debian/Ubuntu]({{< relref "/install/debian-ubuntu/_index.md" >}}). Currently the module isn't available for [RHEL and compatible distributions]({{< relref "/install/rhel-fedora-almalinux/_index.md" >}}), so it isn't available in the RPM packages.
+
+    If the module isn't installed, {{% param "product.name" %}} fails to start with an [`unexpected LL_IDENTIFIER` error]({{< relref "/chapter-troubleshooting-syslog-ng/unexpected-ll-identifier/_index.md" >}}).
 
 - An Apache Arrow Flight server that accepts the schema you configure.
 

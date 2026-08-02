@@ -8,10 +8,13 @@ dest_type: http
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-Starting with version 4.3.0, {{% param "product_name" %}} can send messages to [Falcon LogScale](https://library.humio.com/) using its [Ingest Structured Data API](https://library.humio.com/integrations/api-ingest.html#api-ingest-structured-data). That way you don’t have to parse the data on Falcon LogScale, because {{% param "product_name" %}} already sends it in a structured format that LogScale understands and can show in a structured manner as separate columns. For a tutorial on using this destination in Kubernetes, see the [From syslog-ng to LogScale: structured logs from any source](https://axoflow.com//blog/from-syslog-ng-to-logscale-structured-logs-from-any-source) blog post.
+{{% param "product_name" %}} can send messages to [Falcon LogScale](https://library.humio.com/) using its [Ingest Structured Data API](https://library.humio.com/integrations/api-ingest.html#api-ingest-structured-data). That way you don’t have to parse the data on Falcon LogScale, because {{% param "product_name" %}} already sends it in a structured format that LogScale understands and can show in a structured manner as separate columns. For a tutorial on using this destination in Kubernetes, see the [From syslog-ng to LogScale: structured logs from any source](https://axoflow.com//blog/from-syslog-ng-to-logscale-structured-logs-from-any-source) blog post.
 
 ## Prerequisites
 
+- {{% param "product.abbrev" %}} version 4.3 or later.
+- {{< include-headless "chunk/prereq-package-scl.md" >}}
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-http" "axosyslog-http" >}}
 - Create an [Ingest token](https://library.humio.com/falcon-logscale-self-hosted/ingesting-data-tokens.html) for {{% param "product_name" %}} to use in the `token()` option of the destination. This token is specific to a LogScale repository.
 
 ## Ingest Structured Data API

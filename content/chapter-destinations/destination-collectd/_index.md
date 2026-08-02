@@ -8,8 +8,10 @@ short_description: "Send metrics to collectd"
 
 The `collectd()` destination uses the [unixsock plugin of the collectd application](https://www.collectd.org/documentation/manpages/collectd-unixsock.html) to send log messages to the [collectd system statistics collection daemon](https://collectd.org). You must install and configure collectd separately before using this destination.
 
-Available in {{% param "product.abbrev" %}} version 3.20 and later.
+## Prerequisites
 
+- {{% param "product.abbrev" %}} version 3.20 or later.
+- {{< include-headless "chunk/prereq-package-scl.md" >}}
 
 ## Declaration:
 
@@ -29,8 +31,6 @@ Available in {{% param "product.abbrev" %}} version 3.20 and later.
     };
 ```
 
-
-
 ## Example: Using the collectd() driver {#example-destination-collectd}
 
 The following example uses the name of the application sending the log message as the plugin name, and the value of the ${SEQNUM} macro as the value of the metric sent to collectd.
@@ -47,7 +47,6 @@ The following example uses the name of the application sending the log message a
       );
     };
 ```
-
 
 To use the `collectd()` driver, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 

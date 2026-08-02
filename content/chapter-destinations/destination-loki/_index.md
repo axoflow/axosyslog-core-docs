@@ -10,8 +10,6 @@ dest_type: grpc
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-Available in {{% param "product.abbrev" %}} version 4.4 and later.
-
 The `loki()` destination sends your log data to [Grafana Loki](https://grafana.com/docs/loki/). Note that:
 
 - {{% param "product.abbrev" %}} sends data using **gRPC**, HTTP transport is currently not supported. Since currently the Loki deployment in the free Grafana Cloud doesn't have gRPC enabled, you must use a self-deployed Grafana Loki instance.
@@ -32,6 +30,11 @@ loki(
     batch-lines(1000)
 );
 ```
+
+## Prerequisites
+
+- {{% param "product.abbrev" %}} version 4.4 or later.
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-grpc" "axosyslog-grpc" >}}
 
 ## Options
 

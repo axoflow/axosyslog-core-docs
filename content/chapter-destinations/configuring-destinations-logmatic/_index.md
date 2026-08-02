@@ -8,13 +8,15 @@ short_description: "Send logs to Logmatic.io"
 
 The `logmatic()` destination sends log messages to the [Logmatic.io](https://logmatic.io/) Logging-as-a-Service provider. You can send log messages over TCP, or encrypted with TLS.
 
+## Prerequisites
+
+{{< include-headless "chunk/prereq-package-scl.md" >}}
 
 ## Declaration:
 
 ```shell
    logmatic(token());
 ```
-
 
 ## Example: Using the logmatic() driver {#example-destination-logmatic}
 
@@ -52,7 +54,6 @@ The following example parses the access logs of an Apache webserver from a file 
         };
     }
 ```
-
 
 To use the `logmatic()` driver, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 
