@@ -7,7 +7,14 @@ short_description: "Collect Pi-hole FTL logs"
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-Starting with version 4.6.0, {{% param "product_name" %}} can collect logs of the [Pi-hole](https://pi-hole.net/) FTL (Faster Than Light) application.
+{{% param "product_name" %}} can collect logs of the [Pi-hole](https://pi-hole.net/) FTL (Faster Than Light) application.
+
+## Prerequisites
+
+- {{% param "product.name" %}} version 4.6.0 or later.
+- {{< include-headless "chunk/prereq-package-scl.md" >}}
+
+## Configuration
 
 ```shell
 source s_pihole_ftl {

@@ -7,7 +7,15 @@ short_description: "Receive logs via a HTTP webhook"
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-Starting with version 4.8.0, {{% param "product_name" %}} can collect logs via a webhook using the `webhook()` and `webhook-json()` sources. The `webhook-json()` source automatically parses the payload using the [`json-parser()`]({{< relref "/chapter-parsers/json-parser/_index.md" >}}).
+{{% param "product_name" %}} can collect logs via a webhook using the `webhook()` and `webhook-json()` sources. The `webhook-json()` source automatically parses the payload using the [`json-parser()`]({{< relref "/chapter-parsers/json-parser/_index.md" >}}).
+
+## Prerequisites
+
+- {{% param "product_name" %}} version 4.8.0 and later.
+- {{< include-headless "chunk/prereq-package-scl.md" >}}
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-python" "axosyslog-python" >}}
+
+## Configuration
 
 Example minimal config:
 

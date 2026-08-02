@@ -7,7 +7,7 @@ syslog_parsing: true
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The `default-network-drivers()` source is a special source that uses multiple source drivers to receive and parse several different types of syslog messages from the network. Available in version 3.16 and later.
+The `default-network-drivers()` source is a special source that uses multiple source drivers to receive and parse several different types of syslog messages from the network.
 
 To use the `default-network-drivers()` source, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 
@@ -29,6 +29,10 @@ If you do not configure the TLS keys to show to the clients, {{% param "product.
 
 {{% /alert %}}
 
+## Prerequisites
+
+- {{% param "product.name" %}} version 3.16.0 or later.
+- {{< include-headless "chunk/prereq-package-scl.md" >}}
 
 ## Parsing RFC3164-formatted messages
 
@@ -44,12 +48,9 @@ For RFC3164-formatted messages (that is, messages received on the ports set in o
     
       - Otherwise, apply the application adapters if the message was sent from an application that already has a specific parser in {{% param "product.abbrev" %}} (for example, Splunk Common Information Model (CIM), [iptables]({{< relref "/chapter-parsers/parser-iptables/_index.md" >}}), or [sudo]({{< relref "/chapter-parsers/parser-sudo/_index.md" >}})).
 
-
-
 ## Parsing RFC5424-formatted messages
 
 For RFC5424-formatted messages (that is, messages received on the ports set in options `rfc5424-tls-port()` and `rfc5424-tcp-port()`, which default to port 601 and 6514), {{% param "product.abbrev" %}} parses the message according to RFC5424, then attempts apply the application adapters if the message was sent from an application that already has a specific parser in {{% param "product.abbrev" %}} (for example, Splunk Common Information Model (CIM), [iptables]({{< relref "/chapter-parsers/parser-iptables/_index.md" >}}), or [sudo]({{< relref "/chapter-parsers/parser-sudo/_index.md" >}})).
-
 
 ## Example: Using the default-network-drivers() driver {#example-source-default-network-drivers}
 
@@ -73,5 +74,4 @@ The following example can receive TLS-encrypted connections on the default port 
         );
     };
 ```
-
 

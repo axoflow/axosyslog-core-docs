@@ -7,7 +7,14 @@ short_description: "Collect Jellyfin logs"
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-Starting with version 4.7.0, you can use the `jellyfin()` source to read [Jellyfin](https://jellyfin.org/) logs from its log file output.
+You can use the `jellyfin()` source to read [Jellyfin](https://jellyfin.org/) logs from its log file output.
+
+## Prerequisites
+
+- {{% param "product.name" %}} version 4.7.0 or later.
+- {{< include-headless "chunk/prereq-package-scl.md" >}}
+
+## Configuration
 
 Example minimal configuration:
 

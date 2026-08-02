@@ -14,6 +14,9 @@ This section describes server-style sources. For details on fetcher-style source
 
 {{< include-headless "wnt/note-python-persist-name.md" >}}
 
+## Prerequisites
+
+{{< include-headless "chunk/prereq-package.md" "axosyslog-mod-python" "axosyslog-python" >}}
 
 ## Declaration:
 
@@ -57,8 +60,6 @@ This section describes server-style sources. For details on fetcher-style source
     };
 ```
 
-
-
 ## Methods of the python() source {#python-source-methods}
 
 Server-style Python sources must be inherited from the `syslogng.LogSource` class, and must implement at least the `run` and `request_exit` methods. Multiple inheritance is allowed, but only for pure Python super classes.
@@ -71,7 +72,6 @@ For the list of available optional parameters, see {{% xref "/chapter-sources/py
 
 {{< include-headless "chunk/python-method-init.md" >}}
 
-
 ## run(self) method (mandatory)
 
 Use the `run` method to implement an event loop, or start a server framework or library. Create `LogMessage` instances in this method, and pass them to the log paths by calling `LogSource::post_message()`.
@@ -79,8 +79,6 @@ Use the `run` method to implement an event loop, or start a server framework or 
 Currently, `run` stops permanently if an unhandled exception happens.
 
 For details on parsing and posting messages, see {{% xref "/chapter-sources/python-source/python-source-logmessage/_index.md" %}}.
-
-
 
 ## request_exit(self) method (mandatory)
 

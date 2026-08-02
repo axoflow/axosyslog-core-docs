@@ -12,6 +12,9 @@ This section describes fetcher-style sources. For details on server-style source
 
 {{< include-headless "chunk/python-blocks.md" >}}
 
+## Prerequisites
+
+{{< include-headless "chunk/prereq-package.md" "axosyslog-mod-python" "axosyslog-python" >}}
 
 ## Declaration:
 
@@ -59,8 +62,6 @@ This section describes fetcher-style sources. For details on server-style source
     };
 ```
 
-
-
 ## Methods of the python-fetcher() source {#python-source-methods}
 
 Fetcher-style Python sources must be inherited from the `syslogng.LogFetcher` class, and must implement at least the `fetch` method. Multiple inheritance is allowed, but only for pure Python super classes.
@@ -71,14 +72,11 @@ You can retrieve messages using the `fetch()` method.
 
 {{< include-headless "chunk/python-method-init.md" >}}
 
-
 ## open(self) method (optional)
 
 The `open(self)` method opens the resources required for the source, for example, it initiates a connection to the target service. It is called after `init()` when {{% param "product.abbrev" %}} is started or reloaded. If `fetch()` returns with an error, {{% param "product.abbrev" %}} calls the `close()` and `open()` methods before trying to fetch a new message.
 
 {{% include-headless "chunk/python-method-open-time-reopen.md" %}}
-
-
 
 ## fetch(self) method (mandatory)
 
@@ -98,13 +96,9 @@ The `fetch` method must return one of the following values:
 
   - `LogFetcher.FETCH_TRY_AGAIN`: The fetcher could not provide a message this time, but will make the source call the fetch method as soon as possible.
 
-
-
 ## request_exit(self) method (optional)
 
 If you use blocking operations within the `fetch()` method, use `request_exit()` to interrupt those operations (for example, to shut down a socket), otherwise {{% param "product.abbrev" %}} is not able to stop. Note that {{% param "product.abbrev" %}} calls the `request_exit` method from a thread different from the source thread.
-
-
 
 ## close(self) method (optional)
 
@@ -113,6 +107,5 @@ Close the connection to the target service. Usually it is called right before `d
 {{< include-headless "chunk/python-method-close-batch.md" >}}
 
 {{< include-headless "chunk/python-method-deinit.md" >}}
-
 
 For the list of available optional parameters, see {{% xref "/chapter-sources/python-source/reference-source-python/_index.md" %}}.

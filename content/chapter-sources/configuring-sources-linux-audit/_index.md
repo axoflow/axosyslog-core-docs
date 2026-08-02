@@ -14,14 +14,15 @@ Most recent Linux distributions enable Security-Enhanced Linux (SELinux) or AppA
 
 {{% /alert %}}
 
+## Prerequisites
+
+{{< include-headless "chunk/prereq-package-scl.md" >}}
 
 ## Declaration:
 
 ```shell
    linux-audit(options);
 ```
-
-
 
 ## Example: Using the linux-audit() driver {#example-source-file}
 

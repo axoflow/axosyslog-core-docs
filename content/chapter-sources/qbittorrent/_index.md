@@ -7,7 +7,14 @@ short_description: "Collect qBittorrent logs"
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-Starting with version 4.6.0, {{% param "product_name" %}} can collect logs of the [qBittorrent](https://www.qbittorrent.org/) application.
+{{% param "product_name" %}} can collect logs of the [qBittorrent](https://www.qbittorrent.org/) application.
+
+## Prerequisites
+
+- {{% param "product.name" %}} version 4.6.0 or later.
+{{< include-headless "chunk/prereq-package-scl.md" >}}
+
+## Configuration
 
 ```shell
 source s_qbittorrent {

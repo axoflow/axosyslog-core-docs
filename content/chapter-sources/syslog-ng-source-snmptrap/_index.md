@@ -8,9 +8,6 @@ short_description: "Read Net-SNMP traps"
 
 Using the `snmptrap()` source, you can read and parse the SNMP traps of the [Net-SNMP](http://www.net-snmp.org)'s `snmptrapd` application. {{% param "product.abbrev" %}} can read these traps from a log file, and extract their content into name-value pairs, making it easy to forward them as a structured log message (for example, in JSON format). The {{% param "product.abbrev" %}} application automatically adds the `.snmp.` prefix to the name of the fields the extracted from the message.
 
-The `snmptrap()` source is available in {{% param "product.abbrev" %}} version 3.10 and later.
-
-
 ## Limitations:
 
   - The `snmptrap()` source has only the options listed in {{% xref "/chapter-sources/syslog-ng-source-snmptrap/reference-source-snmptrap/_index.md" %}}. Other options commonly available in other source drivers are not supported.
@@ -23,37 +20,34 @@ The `snmptrap()` source is available in {{% param "product.abbrev" %}} version 3
     
     Note that this affects only name-value pairs (macros). The generated message always contains the original name of the key.
 
+## Prerequisites
 
+- {{% param "product.abbrev" %}} version 3.10 and later.
+- {{< include-headless "chunk/prereq-package-scl.md" >}}
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-snmp" "axosyslog-afsnmp" >}}
+- Configure `snmptrapd` to log into a file.
 
-## Prerequisites:
+    - If you use SMIv1 traps, include the following format string in the configuration file of `snmptrapd`:
 
-  - Configure `snmptrapd` to log into a file.
+         ```shell
+         format1 %.4y-%.2m-%.2l %.2h:%.2j:%.2k %B [%b]: %N\n\t%W Trap (%q) Uptime: %#T\n%v\n
+         ```
 
-  - If you use SMIv1 traps, include the following format string in the configuration file of `snmptrapd`:
-    
-    ```shell
-        format1 %.4y-%.2m-%.2l %.2h:%.2j:%.2k %B [%b]: %N\n\t%W Trap (%q) Uptime: %#T\n%v\n
-    
-    ```
+   - If you use SMIv2 traps, use the default format. The `snmptrap()` source of {{% param "product.abbrev" %}} expects this default format:
 
-  - If you use SMIv2 traps, use the default format. The `snmptrap()` source of {{% param "product.abbrev" %}} expects this default format:
-    
-    ```shell
-        format2 %.4y-%.2m-%.2l %.2h:%.2j:%.2k %B [%b]:\n%v\n
-    
-    ```
+         ```shell
+         format2 %.4y-%.2m-%.2l %.2h:%.2j:%.2k %B [%b]:\n%v\n    
+         ```
 
-  - Beacause of an `snmptrapd` bug, if you specify the filename in the configuration file with `logOption`, you must also specify another output as a command line argument (-Lf, -Ls). Otherwise, `snmptrapd` will not apply the the trap format.
+    - Because of an `snmptrapd` bug, if you specify the filename in the configuration file with `logOption`, you must also specify another output as a command line argument (-Lf, -Ls). Otherwise, `snmptrapd` will not apply the the trap format.
+
+## Configuration {#example-source-snmptrap}
 
 To use the `snmptrap()` driver, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 
 ```shell
    @include "scl.conf"
 ```
-
-
-
-## Example: Using the snmptrap() driver {#example-source-snmptrap}
 
 A sample `snmptrapd` configuration:
 

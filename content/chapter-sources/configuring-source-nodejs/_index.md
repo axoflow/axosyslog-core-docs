@@ -8,6 +8,12 @@ short_description: "Receive JSON messages from nodejs applications"
 
 Using the `nodejs()` driver, {{% param "product.abbrev" %}} can receive application logs directly from nodejs applications that use the widespread [Winston](https://github.com/winstonjs/winston) logging API. The {{% param "product.abbrev" %}} application automatically adds the `.nodejs.winston.` prefix to the name of the fields the extracted from the message.
 
+## Prerequisites
+
+{{< include-headless "chunk/prereq-package-scl.md" >}}
+
+## Configuration
+
 To use the `nodejs()` driver, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 
 ```shell
@@ -15,7 +21,6 @@ To use the `nodejs()` driver, the `scl.conf` file must be included in your {{% p
 ```
 
 The `nodejs()` driver is actually a reusable configuration snippet configured to receive log messages using the `network()` driver, and process its JSON contents. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of the nodejs configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/nodejs/plugin.conf).
-
 
 ## Example: Using the nodejs() driver {#example-source-nodejs}
 
@@ -37,7 +42,6 @@ The following example listens only on IP address `192.168.1.1`, port `9999`.
         )
     };
 ```
-
 
 {{% alert title="Note" color="info" %}}
 

@@ -16,11 +16,10 @@ The `osquery()` source of {{% param "product.abbrev" %}} allows you read the res
 
 The {{% param "product.abbrev" %}} application automatically adds the `.osquery.` prefix to the name of the fields the extracted from the message.
 
-The `osquery()` source is available in {{% param "product.abbrev" %}} version 3.10 and later.
+## Prerequisites
 
-
-## Prerequisites:
-
+- {{% param "product.abbrev" %}} version 3.10 and later.
+- {{< include-headless "chunk/prereq-package-scl.md" >}}
 - To use the `osquery()` driver, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 
     ```shell
@@ -29,9 +28,7 @@ The `osquery()` source is available in {{% param "product.abbrev" %}} version 3.
 
 - {{% param "product.abbrev" %}} must be compiled with JSON-support enabled.
 
-
 The `osquery()` driver is actually a reusable configuration snippet configured to read the osquery log file using the `file()` driver, and process its JSON contents. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/osquery/plugin.conf).
-
 
 ## Example: Using the osquery() driver with the default settings {#example-source-osquery}
 
