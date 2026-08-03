@@ -6,6 +6,8 @@ weight: 900
 
 The iptables parser can parse the log messages of the iptables command. Available in version 3.16 and later.
 
+FilterX has no iptables parser, but you can reimplement this one in a FilterX block. For details, see [Create an iptables parser]({{< relref "/filterx/_index.md#create-an-iptables-parser" >}}).
+
 
 ## Declaration:
 

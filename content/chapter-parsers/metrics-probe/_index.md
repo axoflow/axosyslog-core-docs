@@ -10,6 +10,8 @@ Available in {{% param "product_name" %}} version 4.1.1 and newer.
 
 You can configure the name of the keys and the labels. Note that the keys are automatically prefixed with the `syslogng_` string. You can use templates in the values of the labels.
 
+See also the equivalent FilterX function, [`update_metric()`]({{< relref "/filterx/function-reference.md#update-metric" >}}), which takes the counter name as its first argument instead of in a `key()` option.
+
 The minimal configuration creates counters with the key `syslogng_classified_events_total` and labels `app`, `host`, `program` and `source`. For example:
 
 ```shell

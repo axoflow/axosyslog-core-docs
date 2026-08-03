@@ -8,6 +8,8 @@ Available in {{% param "product.abbrev" %}} 4.1 and later.
 
 The `sdata-parser()` allows you to parse an RFC5424-style structured data string. You can use it to parse this relatively complex format separately, for example, to process malformatted messages. You can use the optional `prefix` option to add a specific string before the names of the parsed name-value pairs.
 
+See also the related [`get_sdata()`]({{< relref "/filterx/function-reference.md#get_sdata" >}}) FilterX function, which extracts the SDATA of the current message into a dict. Unlike `sdata-parser()`, it cannot parse an arbitrary string, and has no `prefix` option.
+
 ## Declaration
 
 ```shell

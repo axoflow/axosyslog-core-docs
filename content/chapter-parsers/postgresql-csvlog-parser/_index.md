@@ -33,6 +33,8 @@ log {
 
 The `postgresql-csvlog-parser()` driver is actually a reusable configuration snippet configured to parse log messages using the `csv-parser()`. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/pgsql/pgsql.conf).
 
+FilterX has no PostgreSQL parser. Since this driver builds on the CSV parser, the related [`parse_csv()`]({{< relref "/filterx/function-reference.md#parse-csv" >}}) function is the closest building block.
+
 {{% include-headless "chunk/option-parser-on-type-error.md" %}}
 
 {{% include-headless "chunk/option-parser-prefix.md" %}}

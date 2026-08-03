@@ -26,12 +26,18 @@ Use the `fix-time-zone()` operation to correct the timezone of a message if it w
 
 If you have lots of clients that do not send timezone information in the log messages, you can create a database file that stores the timezone of the clients, and feed this data to {{% param "product.abbrev" %}} using the `add-contextual-data()` feature. For details, see {{% xref "/chapter-enrich-data/data-enrichment-add-contextual-data/_index.md" %}}.
 
+See also the equivalent FilterX function, [`fix_timezone()`]({{< relref "/filterx/filterx-timezone/_index.md#fix-timezone" >}}).
+
 ## guess-time-zone() {#rewrite-timezone-guess}
 
 Use the `guess-time-zone()` operation attempts to set the timezone of the message automatically, using heuristics on the timestamps. Normally the {{% param "product.abbrev" %}} application performs this operation automatically when it parses the incoming message. Using this operation in a rewrite rule can be useful if you cannot parse the incoming message for some reason (and use the `flags(no-parse)` option in your source, but you want to set the timezone automatically later (for example, after you have preprocessed the message).
 
 Using this operation is identical to using the `flags(guess-timezone)` flag in the source.
 
+See also the equivalent FilterX function, [`guess_timezone()`]({{< relref "/filterx/filterx-timezone/_index.md#guess-timezone" >}}).
+
 ## set-time-zone() {#rewrite-timezone-set}
 
 Use the `set-time-zone()` operation to set the timezone of the message to a specific value, that is to convert an existing timezone to a different one. This operation is identical to setting the `time-zone()` option in a destination or as a global option, but can be applied selectively to the messages using conditions.
+
+See also the equivalent FilterX function, [`set_timezone()`]({{< relref "/filterx/filterx-timezone/_index.md#set-timezone" >}}).

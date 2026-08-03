@@ -10,6 +10,8 @@ The XML parser processes input in XML format, and adds the parsed data to the me
 
 To create an XML parser, define an `xml_parser` that has the `xml()` option. By default, the parser will process the `${MESSAGE}` part of the log message. To process other parts of a log message using the XML parser, use the `template()` option. You can also define the parser inline in the log path.
 
+See also the related FilterX function [`parse_xml()`]({{< relref "/filterx/function-reference.md#parse-xml" >}}). It is a separate implementation that parses XML into a dict, so the options and limitations of this parser do not apply to it.
+
 
 ## Declaration:
 

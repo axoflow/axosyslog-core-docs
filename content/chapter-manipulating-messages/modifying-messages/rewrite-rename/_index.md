@@ -8,6 +8,8 @@ If you want to change the name of a field of a message, you can use `rename()` r
 
 The `rename()` rewrite rule uses positional arguments and they are both required. It supports condition rewrite. For more information, see {{% xref "/chapter-manipulating-messages/modifying-messages/conditional-rewrite/_index.md" %}}.
 
+See also the related FilterX function [`move()`]({{< relref "/filterx/function-reference.md#move" >}}). Note that `rename()` does nothing if the source field is missing, while `move()` fails in that case.
+
 ## Declaration
 
 ```shell

@@ -8,6 +8,8 @@ weight: 400
 
 {{< include-headless "chunk/csv-parser-columnless.md" >}}
 
+See also the equivalent FilterX function, [`parse_csv()`]({{< relref "/filterx/function-reference.md#parse-csv" >}}). Note that it uses the `delimiter` option instead of `delimiters()`.
+
 ## Example: Segmenting hostnames separated with a dash {#example-csv-parser}
 
 The following example separates hostnames like `example-1` and `example-2` into two parts.
