@@ -6,6 +6,9 @@ weight: 1900
 
 The sudo parser can parse the log messages of the sudo command. Available in version 3.16 and later.
 
+## Prerequisites
+
+{{< include-headless "chunk/prereq-package-scl.md" >}}
 
 ## Declaration:
 
@@ -19,9 +22,7 @@ The sudo parser can parse the log messages of the sudo command. Available in ver
     };
 ```
 
-
 The `sudo-parser()` is actually a reusable configuration snippet configured to parse sudo messages. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/sudo/sudo.conf).
-
 
 {{% include-headless "chunk/option-parser-prefix.md" %}}
 

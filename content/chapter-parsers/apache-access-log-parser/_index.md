@@ -20,6 +20,9 @@ FilterX has no Apache parser, but you can parse these logs with `parse_csv()`. F
 
 The {{% param "product.abbrev" %}} application extracts every field into name-value pairs, and adds the `.apache.` prefix to the name of the field.
 
+## Prerequisites
+
+{{< include-headless "chunk/prereq-package-scl.md" >}}
 
 ## Declaration:
 
@@ -31,9 +34,7 @@ The {{% param "product.abbrev" %}} application extracts every field into name-va
     };
 ```
 
-
 The parser extracts the following fields from the messages: `vhost`, `port`, `clientip`, `ident`, `auth`, `timestamp`, `rawrequest`, `response`, `bytes`, `referrer`, and `agent`. The `rawrequest` field is further segmented into the `verb`, `request`, and `httpversion` fields. The {{% param "product.abbrev" %}} `apache-accesslog-parser()` parser uses the same naming convention as Logstash.
-
 
 ## Example: Using the apache-accesslog-parser parser
 
@@ -57,7 +58,6 @@ In the following example, the source is a log file created by an Apache web serv
         destination(d_json);
     };
 ```
-
 
 To use this parser, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 

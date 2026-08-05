@@ -4,8 +4,6 @@ weight: 1650
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-Available in {{% param "product_name" %}} version 4.5.0 and later.
-
 This parser processes messages in the [PostgreSQL csvlog](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-CSVLOG) format.
 The following sample message is a multi-line message with embedded NL characters. This is a single, multi-line log entry that starts with the timestamp.
 
@@ -17,6 +15,14 @@ buffer usage: 97 hits, 0 misses, 6 dirtied
 avg read rate: 0.000 MB/s, avg write rate: 114.609 MB/s
 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s",,,,,,,,,""
 ```
+
+## Prerequisites
+
+Available in {{% param "product_name" %}} version 4.5.0 and later.
+
+{{< include-headless "chunk/prereq-package-scl.md" >}}
+
+## Configuration
 
 The `postgresql-csvlog-parser()` extracts the information from this message into a set of name-value pairs. By default, the name-value pairs have the `.pgsql` prefix.
 

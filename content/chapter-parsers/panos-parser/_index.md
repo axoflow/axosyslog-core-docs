@@ -10,6 +10,8 @@ The `panos-parser()` of {{% param "product.name" %}} solves this problem, and ca
 
 ## Prerequisites
 
+{{< include-headless "chunk/prereq-package-scl.md" >}}
+
 - Version 3.29 of {{% param "product.abbrev" %}} or later.
 - PAN-OS log messages from Palo Alto Networks devices.
 

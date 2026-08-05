@@ -8,6 +8,9 @@ The iptables parser can parse the log messages of the iptables command. Availabl
 
 FilterX has no iptables parser, but you can reimplement this one in a FilterX block. For details, see [Create an iptables parser]({{< relref "/filterx/_index.md#create-an-iptables-parser" >}}).
 
+## Prerequisites
+
+{{< include-headless "chunk/prereq-package-scl.md" >}}
 
 ## Declaration:
 
@@ -21,9 +24,7 @@ FilterX has no iptables parser, but you can reimplement this one in a FilterX bl
     };
 ```
 
-
 The `iptables-parser()` is actually a reusable configuration snippet configured to parse iptables messages. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/iptables/iptables.conf).
-
 
 {{% include-headless "chunk/option-parser-prefix.md" %}}
 

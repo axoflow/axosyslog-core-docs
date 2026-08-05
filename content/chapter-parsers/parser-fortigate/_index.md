@@ -20,6 +20,9 @@ If you find a message that the `fortigate-parser()` cannot properly parse, {{% p
 
 By default, the Fortigate-specific fields are extracted into name-value pairs prefixed with `.fortigate.` For example, the devname in the previous message becomes `${.fortigate.devname}.` You can change the prefix using the prefix option of the parser.
 
+## Prerequisites
+
+{{< include-headless "chunk/prereq-package-scl.md" >}}
 
 ## Declaration:
 
@@ -33,11 +36,9 @@ By default, the Fortigate-specific fields are extracted into name-value pairs pr
     };
 ```
 
-
 Note that you have to disable message parsing in the source using the `flags(no-parse)` option for the parser to work.
 
 The `fortigate-parser()` is actually a reusable configuration snippet configured to parse Fortigate messages. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/websense/plugin.conf).
-
 
 {{% include-headless "chunk/option-parser-prefix.md" %}}
 

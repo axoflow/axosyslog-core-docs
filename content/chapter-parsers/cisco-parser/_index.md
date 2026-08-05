@@ -33,6 +33,9 @@ The {{% param "product.abbrev" %}} application normalizes the parsed log message
 
 By default, the Cisco-specific fields are extracted into the following name-value pairs:`${.cisco.facility}`, `${.cisco.severity}`, `${.cisco.mnemonic}`. You can change the prefix using the `prefix` option.
 
+## Prerequisites
+
+{{< include-headless "chunk/prereq-package-scl.md" >}}
 
 ## Declaration:
 
@@ -49,11 +52,9 @@ log {
 };
 ```
 
-
 Note that you have to disable message parsing in the source using the `flags(no-parse)` option for the parser to work.
 
 The `cisco-parser()` is actually a reusable configuration snippet configured to parse Cisco messages. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/cisco/plugin.conf).
-
 
 {{% include-headless "chunk/option-parser-prefix.md" %}}
 
