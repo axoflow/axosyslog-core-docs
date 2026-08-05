@@ -46,14 +46,23 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: lts/Krypton
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            themes/docsy/package-lock.json
 
-      - name: Install dependencies
-        run: |
-          cd themes/docsy
-          npm install
+      # Bootstrap and FontAwesome SCSS, which Docsy exposes through its Hugo
+      # mounts (themes/docsy/hugo.yaml). --omit=dev skips Docsy's own lint/test
+      # toolchain and its docsy.dev workspace; the site build uses neither.
+      - name: Install Docsy assets
+        run: npm ci --omit=dev
+        working-directory: themes/docsy
 
-      - name: Set up PostCSS
-        run: npm install --save-dev autoprefixer postcss-cli postcss @fullhuman/postcss-purgecss
+      # postcss-cli binary plus the autoprefixer/purgecss plugins. Must be at
+      # the project root: that is where Hugo Pipes looks for node_modules/.bin
+      # and where postcss.config.js resolves its require() calls from.
+      - name: Install PostCSS toolchain
+        run: npm ci
 
       - name: Build
         run: hugo --environment production
