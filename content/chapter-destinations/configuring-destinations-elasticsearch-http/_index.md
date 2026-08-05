@@ -13,6 +13,9 @@ HTTPS connection, as well as password- and certificate-based authentication is s
 ## Prerequisites
 
 - {{< include-headless "chunk/prereq-package-scl.md" >}}
+
+    {{< include-headless "chunk/scl-config-snippet.md" "elasticsearch-http()" "scl/elasticsearch/elastic-http.conf" >}}
+
 - {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-http" "axosyslog-http" >}}
 
 ## Declaration:
@@ -79,5 +82,3 @@ The following example uses mutually-authenticated HTTPS connection, templated in
         );
     };
 ```
-
-This driver is actually a reusable configuration snippet configured to send log messages using the `tcp()` driver using a template. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/tree/master/scl/elasticsearch).

@@ -17,6 +17,9 @@ Currently, using the `sumologic-http()` and `sumologic-syslog()` destinations wi
 
 - {{% param "product.abbrev" %}} version 3.27.1 or later.
 - {{< include-headless "chunk/prereq-package-scl.md" >}}
+
+    {{< include-headless "chunk/scl-config-snippet.md" "sumologic-http()" "scl/sumologic/sumologic.conf" >}}
+
 - {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-http" "axosyslog-http" >}}
 - A Sumo Logic account.
 
@@ -102,17 +105,3 @@ destination d_sumo_syslog {
     );
 };
 ```
-
-## Using the sumologic() driver
-
-To use the `sumologic()` driver, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
-
-```shell
-@include "scl.conf"
-```
-
-{{% alert title="Note" color="info" %}}
-
-The `sumologic()` driver is actually a reusable configuration snippet configured to send log messages using the `network()` and `http()` destination by using a template. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/sumologic/sumologic.conf).
-
-{{% /alert %}}

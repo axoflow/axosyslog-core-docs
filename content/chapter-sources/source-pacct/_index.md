@@ -14,6 +14,9 @@ The `pacct()` driver parses the fields of the accounting logs and transforms the
 
 - {{% param "product.name" %}} version 3.2.0 or later.
 - {{< include-headless "chunk/prereq-package-scl.md" >}}
+
+    {{< include-headless "chunk/scl-config-snippet.md" "pacct()" "scl/pacct/plugin.conf" >}}
+
 - The {{% param "product.abbrev" %}} application must be compiled with the `--enable-pacct` option. Execute the `syslog-ng -V` command to check if your binary supports process accounting.
 - The `pacctformat` plugin must be loaded. By default, {{% param "product.abbrev" %}} automatically loads the available modules.
 - Process accounting must be running on the host. You can enable it with the `accton` command.
@@ -29,5 +32,3 @@ To use the `pacct()` driver, use the following syntax.
     ...
     log { source(s_pacct); destination(...); };
 ```
-
-The `pacct()` driver is actually a reusable configuration snippet configured to handle Linux accounting logs. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of the pacct configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/pacct/plugin.conf).

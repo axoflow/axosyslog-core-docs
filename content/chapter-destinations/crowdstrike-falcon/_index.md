@@ -14,6 +14,9 @@ dest_type: http
 
 - {{% param "product.abbrev" %}} version 4.3 or later.
 - {{< include-headless "chunk/prereq-package-scl.md" >}}
+
+    {{< include-headless "chunk/scl-config-snippet.md" "logscale()" "scl/logscale/logscale.conf" >}}
+
 - {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-http" "axosyslog-http" >}}
 - Create an [Ingest token](https://library.humio.com/falcon-logscale-self-hosted/ingesting-data-tokens.html) for {{% param "product_name" %}} to use in the `token()` option of the destination. This token is specific to a LogScale repository.
 
@@ -33,8 +36,6 @@ destination d_logscale {
   );
 };
 ```
-
-This driver is actually a reusable configuration snippet configured to send log messages using the `http()` driver using a template. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/logscale/logscale.conf).
 
 ## Options
 

@@ -10,6 +10,18 @@ dest_type: http
 
 {{% param "product_name" %}} can send messages and metrics to [Elasticsearch data streams](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams.html) to store your log and metrics data as time series data.
 
+## Prerequisites
+
+- {{% param "product.abbrev" %}} version 4.8 or later.
+- {{< include-headless "chunk/prereq-package-scl.md" >}}
+
+    {{< include-headless "chunk/scl-config-snippet.md" "elasticsearch-datastream()" "scl/elasticsearch/elastic-datastream.conf" >}}
+
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-http" "axosyslog-http" >}}
+- Username and password for an account that can send data to Elasticsearch data streams.
+
+## Configuration
+
 Minimal configuration:
 
 ```sh
@@ -24,15 +36,6 @@ destination d_elastic_data_stream {
   );
 };
 ```
-
-This driver is actually a reusable configuration snippet configured to send log messages using the `http()` driver using a template. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/elasticsearch/elastic-datastream.conf).
-
-## Prerequisites
-
-- {{% param "product.abbrev" %}} version 4.8 or later.
-- {{< include-headless "chunk/prereq-package-scl.md" >}}
-- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-http" "axosyslog-http" >}}
-- Username and password for an account that can send data to Elasticsearch data streams.
 
 ## Options
 

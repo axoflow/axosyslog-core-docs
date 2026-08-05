@@ -15,6 +15,9 @@ dest_type: http
 
 - {{% param "product.name" %}} version 4.5.0 or later.
 - {{< include-headless "chunk/prereq-package-scl.md" >}}
+
+    {{< include-headless "chunk/scl-config-snippet.md" "openobserve-log()" "scl/openobserve/openobserve.conf" >}}
+
 - {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-http" "axosyslog-http" >}}
 - An [OpenObserve account](https://openobserve.ai/) for {{% param "product_name" %}}, or
 - a [self-hosted OpenObserve deployment](https://openobserve.ai/docs/quickstart/#self-hosted-installation).
@@ -57,8 +60,6 @@ destination d_openobserve {
   );
 };
 ```
-
-This driver is actually a reusable configuration snippet configured to send log messages using the `http()` driver using a template. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/openobserve/openobserve.conf).
 
 ## Options
 

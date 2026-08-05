@@ -8,12 +8,15 @@ dest_type: http
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-Starting with version 4.5.0, {{% param "product_name" %}} can send data to [Google Cloud Pub/Sub](https://cloud.google.com/pubsub?hl=en) using its [HTTP REST API](https://cloud.google.com/pubsub/docs/reference/rest).
+{{% param "product_name" %}} can send data to [Google Cloud Pub/Sub](https://cloud.google.com/pubsub?hl=en) using its [HTTP REST API](https://cloud.google.com/pubsub/docs/reference/rest).
 
 ## Prerequisites
 
 - {{% param "product.name" %}} version 4.5.0 or later.
 - {{< include-headless "chunk/prereq-package-scl.md" >}}
+
+    {{< include-headless "chunk/scl-config-snippet.md" "google-pubsub()" "scl/google/google-pubsub.conf" >}}
+
 - {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-http" "axosyslog-http" >}}
 - {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-cloud-auth" "axosyslog-cloud-auth" >}}
 
@@ -41,8 +44,6 @@ destination d_pubsub {
   );
 };
 ```
-
-This driver is actually a reusable configuration snippet configured to send log messages using the `http()` driver using a template. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/google/google-pubsub.conf).
 
 ## Options
 

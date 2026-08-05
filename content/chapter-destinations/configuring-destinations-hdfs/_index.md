@@ -18,6 +18,9 @@ Note the following limitations when using the {{% param "product.abbrev" %}} `hd
 
 - {{% param "product.abbrev" %}} version 3.7 or later.
 - {{< include-headless "chunk/prereq-package-scl.md" >}}
+
+    {{< include-headless "chunk/scl-config-snippet.md" "hdfs()" "scl/hdfs/plugin.conf" >}}
+
 - {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-hdfs" "axosyslog-java" >}}
 
 ## Declaration:
@@ -57,7 +60,5 @@ The following example defines an `hdfs` destination using only the required para
   - For details on using Kerberos authentication, see {{% xref "/chapter-destinations/configuring-destinations-hdfs/destination-hdfs-kerberos-authentication/_index.md" %}}.
 
   - For the list of options, see {{% xref "/chapter-destinations/configuring-destinations-hdfs/reference-destination-hdfs/_index.md" %}}.
-
-The `hdfs()` driver is actually a reusable configuration snippet configured to receive log messages using the Java language-binding of {{% param "product.abbrev" %}}. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of the hdfs configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/hdfs/plugin.conf).
 
 {{< include-headless "wnt/note-jvm-reload.md" >}}

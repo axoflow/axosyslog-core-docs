@@ -26,6 +26,8 @@ By default, the websense-specific fields are extracted into name-value pairs pre
 
 {{< include-headless "chunk/prereq-package-scl.md" >}}
 
+{{< include-headless "chunk/scl-config-snippet.md" "websense-parser()" "scl/websense/plugin.conf" >}}
+
 ## Declaration:
 
 ```shell
@@ -40,8 +42,6 @@ By default, the websense-specific fields are extracted into name-value pairs pre
 
 Note that you have to disable message parsing in the source using the `flags(no-parse)` option for the parser to work.
 
-The `websense-parser()` is actually a reusable configuration snippet configured to parse websense messages. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/websense/plugin.conf).
-
 {{% include-headless "chunk/option-parser-prefix.md" %}}
 
 By default, `websense-parser()` uses the `.websense.` prefix. To modify it, use the following format:
@@ -51,4 +51,3 @@ By default, `websense-parser()` uses the `.websense.` prefix. To modify it, use 
         websense-parser(prefix("myprefix."));
     };
 ```
-

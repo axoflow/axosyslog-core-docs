@@ -15,6 +15,9 @@ HTTPS connection, as well as password- and certificate-based authentication is s
 
 - {{% param "product.abbrev" %}} version 4.4 or later.
 - {{< include-headless "chunk/prereq-package-scl.md" >}}
+
+    {{< include-headless "chunk/scl-config-snippet.md" "opensearch()" "scl/opensearch/opensearch.conf" >}}
+
 - {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-http" "axosyslog-http" >}}
 
 ## Declaration:
@@ -76,5 +79,3 @@ destination opensearch_https {
     );
 };
 ```
-
-This driver is actually a reusable configuration snippet configured to send log messages using the `http()` driver using a template. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/tree/master/scl/opensearch).

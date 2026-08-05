@@ -23,6 +23,8 @@ Use the new `*arr()` sources to read various *arr logs:
 - {{% param "product.name" %}} version 4.7.0 or later.
 - {{< include-headless "chunk/prereq-package-scl.md" >}}
 
+    {{< include-headless "chunk/scl-config-snippet.md" "radarr()" "scl/arr/arr.conf" >}}
+
 ## Configuration
 
 Example minimal config:
@@ -38,5 +40,3 @@ source s_radarr {
 The logging module is stored in the `<prefix><module>` name-value pair, for example: `.radarr.module` => `ImportListSyncService`.
 
 You can modify the prefix with the `prefix()` option.
-
-This driver is actually a reusable configuration snippet. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/arr/arr.conf).

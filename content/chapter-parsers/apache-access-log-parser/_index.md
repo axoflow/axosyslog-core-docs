@@ -24,6 +24,8 @@ The {{% param "product.abbrev" %}} application extracts every field into name-va
 
 {{< include-headless "chunk/prereq-package-scl.md" >}}
 
+{{< include-headless "chunk/scl-config-snippet.md" "apache-accesslog-parser()" "scl/apache/apache.conf" >}}
+
 ## Declaration:
 
 ```shell
@@ -58,11 +60,3 @@ In the following example, the source is a log file created by an Apache web serv
         destination(d_json);
     };
 ```
-
-To use this parser, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
-
-```shell
-   @include "scl.conf"
-```
-
-The `apache-accesslog-parser()` is actually a reusable configuration snippet configured parse Apache access log messages. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/apache/apache.conf).

@@ -13,11 +13,9 @@ The `collectd()` destination uses the [unixsock plugin of the collectd applicati
 - {{% param "product.abbrev" %}} version 3.20 or later.
 - {{< include-headless "chunk/prereq-package-scl.md" >}}
 
-## Declaration:
+    {{< include-headless "chunk/scl-config-snippet.md" "collectd()" "scl/collectd/plugin.conf" >}}
 
-```shell
-   collectd();
-```
+## Declaration:
 
 ```shell
    destination d_collectd {
@@ -47,11 +45,3 @@ The following example uses the name of the application sending the log message a
       );
     };
 ```
-
-To use the `collectd()` driver, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
-
-```shell
-   @include "scl.conf"
-```
-
-The `collectd()` driver is actually a reusable configuration snippet configured to send log messages using the `unix-stream()` driver. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/collectd/plugin.conf).

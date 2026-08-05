@@ -13,6 +13,9 @@ The `s3()` destination sends log messages to the [Amazon Simple Storage Service 
 
 - {{% param "product.abbrev" %}} version 4.4 or later.
 - {{< include-headless "chunk/prereq-package-scl.md" >}}
+
+    {{< include-headless "chunk/scl-config-snippet.md" "s3()" "modules/python-modules/syslogng/modules/s3/scl/s3.conf" >}}
+
 - {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-python" "axosyslog-python" >}}
 - An existing S3 bucket configured for programmatic access, and the related `ACCESS_KEY` and `SECRET_KEY` of a user that can access it. The user needs to have the following permissions:
 
@@ -30,13 +33,6 @@ The `s3()` destination sends log messages to the [Amazon Simple Storage Service 
     - `kms:GenerateDataKey`
 
 - If you are not using the venv (`/usr/bin/syslog-ng-update-virtualenv`) created by {{% param "product.abbrev" %}}, you must install the `boto3` and/or `botocore` Python dependencies.
-- To use the `s3()` driver, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
-
-    ```shell
-    @include "scl.conf"
-    ```
-
-The `s3()` driver is actually a reusable configuration snippet. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/modules/python-modules/syslogng/modules/s3/s3_destination.py).
 
 ## Declaration
 

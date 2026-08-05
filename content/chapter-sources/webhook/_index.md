@@ -13,6 +13,9 @@ short_description: "Receive logs via a HTTP webhook"
 
 - {{% param "product_name" %}} version 4.8.0 and later.
 - {{< include-headless "chunk/prereq-package-scl.md" >}}
+
+    {{< include-headless "chunk/scl-config-snippet.md" "webhook()" "modules/python-modules/syslogng/modules/webhook/scl/webhook.conf" >}}
+
 - {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-python" "axosyslog-python" >}}
 
 ## Configuration
@@ -33,8 +36,6 @@ To test the source, you can use `curl` for example, on the host where {{< produc
 ```shell
 curl -X POST --data "{'MESSAGE':'message-value'}" http://127.0.0.1:8181/events
 ```
-
-This driver is actually a reusable configuration snippet based on a [custom Python source]({{< relref "/chapter-sources/python-source/_index.md" >}}). For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/main/modules/python-modules/syslogng/modules/webhook/scl/webhook.conf).
 
 ## Query parameters
 

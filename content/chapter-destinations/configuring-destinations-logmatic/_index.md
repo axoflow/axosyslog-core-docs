@@ -10,7 +10,9 @@ The `logmatic()` destination sends log messages to the [Logmatic.io](https://log
 
 ## Prerequisites
 
-{{< include-headless "chunk/prereq-package-scl.md" >}}
+- {{< include-headless "chunk/prereq-package-scl.md" >}}
+
+    {{< include-headless "chunk/scl-config-snippet.md" "logmatic()" "scl/logmatic/logmatic.conf" >}}
 
 ## Declaration:
 
@@ -54,12 +56,3 @@ The following example parses the access logs of an Apache webserver from a file 
         };
     }
 ```
-
-To use the `logmatic()` driver, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
-
-```shell
-   @include "scl.conf"
-```
-
-The `logmatic()` driver is actually a reusable configuration snippet configured to send log messages using the `tcp()` driver using a template. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/logmatic/logmatic.conf).
-

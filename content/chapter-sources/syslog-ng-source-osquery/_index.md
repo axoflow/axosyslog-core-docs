@@ -20,22 +20,16 @@ The {{% param "product.abbrev" %}} application automatically adds the `.osquery.
 
 - {{% param "product.abbrev" %}} version 3.10 and later.
 - {{< include-headless "chunk/prereq-package-scl.md" >}}
-- To use the `osquery()` driver, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
 
-    ```shell
-    @include "scl.conf"
-    ```
+    {{< include-headless "chunk/scl-config-snippet.md" "osquery()" "scl/osquery/plugin.conf" >}}
 
 - {{% param "product.abbrev" %}} must be compiled with JSON-support enabled.
-
-The `osquery()` driver is actually a reusable configuration snippet configured to read the osquery log file using the `file()` driver, and process its JSON contents. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/osquery/plugin.conf).
 
 ## Example: Using the osquery() driver with the default settings {#example-source-osquery}
 
 The following {{% param "product.abbrev" %}} configuration sample uses the default settings of the driver, reading osquery result logs from the `/var/log/osquery/osqueryd.results.log` file, and writes the log messages generated from the traps into a file.
 
 ```shell
-@version: 3.10
 @include "scl.conf"
 source s_osquery {
     osquery();
@@ -51,7 +45,6 @@ log {
 Filter for messages related to loading Linux kernel modules:
 
 ```shell
-@version: 3.10
 @include "scl.conf"
 source s_osquery {
     osquery();
@@ -80,7 +73,6 @@ The following {{% param "product.abbrev" %}} configuration sample reads osquery 
 ### {{% param "product.abbrev" %}} configuration
 
 ```shell
-@version: 3.10
 @include "scl.conf"
 source s_osquery {
     osquery(
