@@ -11,3 +11,11 @@ Specify the macro that contains the list of tags to parse in the `template()` op
 ```shell
    tags-parser(template("${<macro-or-field-with-tags>}"));
 ```
+
+## Options
+
+The `tags-parser()` parser has the following options.
+
+{{< include-headless "chunk/option-source-internal.md" >}}
+
+{{% include-headless "chunk/option-parser-template.md" %}}
