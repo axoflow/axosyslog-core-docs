@@ -33,7 +33,46 @@ Python parsers consist of two parts. The first is a {{% param "product.abbrev" %
     };
 ```
 
+## Options of the python() parser {#python-parser-options}
 
+The `python()` parser has the following options.
+
+## class()
+
+|          |        |
+| -------- | ------ |
+| Type:    | string |
+| Default: | N/A    |
+
+*Description:* The name of the Python class that implements the parser, for example:
+
+```shell
+   python(
+        class("MyPythonParser")
+    );
+```
+
+If you want to store the Python code in an external Python file, the `class()` option must include the name of the Python file containing the class, without the path and the `.py` extension, for example:
+
+```shell
+   python(
+        class("MyPythonfilename.MyPythonParser")
+    );
+```
+
+For details, see {{% xref "/chapter-configuration-file/python-code-external-file/_index.md" %}}
+
+## imports() (DEPRECATED)
+
+Obsolete alias for [`loaders()`](#loaders). When set, behaves identically to `loaders()`. Use `loaders()` instead.
+
+{{< include-headless "chunk/option-source-internal.md" >}}
+
+{{% include-headless "chunk/option-python-loaders.md" %}}
+
+{{< include-headless "chunk/option-python-options.md" >}}
+
+{{% include-headless "chunk/option-parser-template.md" %}}
 
 ## Methods of the python() parser {#python-parser-methods}
 
