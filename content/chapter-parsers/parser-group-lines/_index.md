@@ -20,6 +20,8 @@ The `group-lines()` parser correlates multi-line messages received as separate, 
 
 The parser has the following options.
 
+{{< include-headless "chunk/option-source-internal.md" >}}
+
 ## key()
 
 |          |                 |
@@ -48,6 +50,15 @@ The parser has the following options.
 
 {{< include-headless "chunk/option-parser-scope.md" >}}
 
+## sort-key()
+
+|          |          |
+| -------- | -------- |
+| Type:    | template |
+| Default: |          |
+
+*Description:* Sorts the lines of the correlation context before {{% param "product.abbrev" %}} assembles them into a single multi-line message. Use this option when the lines can arrive out of order. Note that specifying several macros or a complex template in `sort-key()` can slow down {{% param "product.abbrev" %}}.
+
 ## template()
 
 |          |                 |
@@ -56,3 +67,12 @@ The parser has the following options.
 | Default: |     |
 
 *Description:*  A template string that specifies what constitutes an line to `group-lines()`. In simple cases this is `${MSG}` or `${RAWMSG}`.
+
+## timeout()
+
+|          |                      |
+| -------- | -------------------- |
+| Type:    | number (seconds)     |
+| Default: |                      |
+
+*Description:* Specifies the maximum time to wait for the remaining lines of a multi-line message. If no new line is added to the correlation context during this period, {{% param "product.abbrev" %}} considers the multi-line message complete and forwards it. If a new line is added to the context, the timeout period restarts.
