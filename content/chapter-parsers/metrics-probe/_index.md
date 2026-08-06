@@ -70,6 +70,10 @@ Starting with {{% param "product_name" %}} 4.4, you can create [dynamic labels](
 
 ## Options
 
+The `metrics-probe()` parser has the following options. In addition to the options listed here, `metrics-probe()` accepts the [`value-pairs()` options]({{< relref "/chapter-concepts/concepts-value-pairs/option-value-pairs/_index.md" >}}) — such as `cast()`, `exclude()`, `include-bytes()`, `key()`, `pair()`, `rekey()`, and `scope()` — inside its `labels()` option. For details, see [Dynamic labels](#dynamic-labels).
+
+{{< include-headless "chunk/option-destination-frac-digits.md" >}}
+
 ## increment() {#metrics-probe-option-increment}
 
 |          |         |
@@ -94,6 +98,8 @@ metrics-probe(
     increment("${RAWMSG_SIZE}")
 );
 ```
+
+{{< include-headless "chunk/option-source-internal.md" >}}
 
 ## key() {#metrics-probe-option-key}
 
@@ -170,3 +176,56 @@ Available in {{% param "product_name" %}} version 4.2 and newer.
 Sets the stats level of the generated metrics.
 
 > Note: Drivers configured with `internal(yes)` register their metrics on level 3. That way if you are creating an SCL, you can disable the built-in metrics of the driver, and create metrics manually using `metrics-probe()`.
+
+## local-time-zone() {#metrics-probe-option-local-time-zone}
+
+|          |                                              |
+| -------- | -------------------------------------------- |
+| Type:    | name of the timezone, or the timezone offset |
+| Default: | The local timezone.                          |
+
+*Description:* Sets the timezone that {{% param "product.abbrev" %}} uses when it expands a timestamp macro in the `increment()` or `labels()` templates as a local time.
+
+{{% include-headless "chunk/para-timezone-format.md" %}}
+
+{{< include-headless "chunk/option-destination-on-error.md" >}}
+
+## send-time-zone() {#metrics-probe-option-send-time-zone}
+
+|          |                                              |
+| -------- | -------------------------------------------- |
+| Type:    | name of the timezone, or the timezone offset |
+| Default: | The local timezone.                          |
+
+*Description:* Sets the timezone that {{% param "product.abbrev" %}} uses when it expands a timestamp macro in the `increment()` or `labels()` templates. The `time-zone()` option is an alias of `send-time-zone()`.
+
+{{% include-headless "chunk/para-timezone-format.md" %}}
+
+{{% include-headless "chunk/option-parser-template.md" %}}
+
+## template-escape() {#metrics-probe-option-template-escape}
+
+|          |           |
+| -------- | --------- |
+| Type:    | `yes`, `no` |
+| Default: | `no`      |
+
+*Description:* Turns on escaping for the `'`, `"`, and backspace characters in the expanded value of the `increment()` and `labels()` templates.
+
+## time-zone() {#metrics-probe-option-time-zone}
+
+|          |                                              |
+| -------- | -------------------------------------------- |
+| Type:    | name of the timezone, or the timezone offset |
+| Default: | The local timezone.                          |
+
+*Description:* Alias of [`send-time-zone()`](#metrics-probe-option-send-time-zone).
+
+## ts-format() {#metrics-probe-option-ts-format}
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | `rfc3164`, `bsd`, `rfc3339`, `iso` |
+| Default: | `rfc3164`                  |
+
+*Description:* Overrides the global [`ts-format()`]({{< relref "/chapter-global-options/reference-options/_index.md" >}}) option for the timestamp macros expanded in the `increment()` and `labels()` templates.
