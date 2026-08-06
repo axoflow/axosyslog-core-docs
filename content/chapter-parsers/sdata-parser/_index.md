@@ -19,6 +19,8 @@ The `sdata-parser()` allows you to parse an RFC5424-style structured data string
     };
 ```
 
+{{< include-headless "chunk/option-source-internal.md" >}}
+
 {{% include-headless "chunk/option-parser-prefix.md" %}}
 
 {{% include-headless "chunk/option-parser-template.md" %}}

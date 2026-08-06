@@ -43,9 +43,11 @@ The following parser converts messages in the logstash eventlog v0 format to the
     };
 ```
 
+{{< include-headless "chunk/option-source-internal.md" >}}
+
 {{< include-headless "chunk/option-parser-key-delimiter.md" >}}
 
-## marker {#json-parser-marker}
+## marker() {#json-parser-marker}
 
 |           |          |
 | --------- | -------- |
