@@ -10,6 +10,10 @@ The `syslog-parser()` has the following options:
 
 {{% include-headless "chunk/option-source-default-priority.md" %}}
 
+{{% include-headless "chunk/option-source-default-severity.md" %}}
+
+The `default-level()` and `default-priority()` options are aliases of `default-severity()`: all three set the severity part of the message priority. If you set more than one of them, the last one takes effect.
+
 {{< include-headless "chunk/option-source-drop-invalid.md" >}}
 
 {{< include-headless "chunk/option-source-flags.md" >}}
@@ -21,6 +25,10 @@ For the `syslog-parser()` you can also set the following flags:
 
     Available in {{< product >}} 4.8.1 and later.
 
+{{< include-headless "chunk/option-source-internal.md" >}}
+
 {{< include-headless "chunk/option-source-sdata-prefix.md" >}}
 
 {{% include-headless "chunk/option-parser-template.md" %}}
+
+{{% include-headless "chunk/option-source-time-zone.md" %}}
