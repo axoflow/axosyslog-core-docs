@@ -39,3 +39,19 @@ Default value: `.snmp.` option.
 
 *Description:* The `snmptrap()` source automatically parses the traps into name-value pairs, so you can handle the content of the trap as a structured message. Consequently, you might not even need the `${MESSAGE}` part of the log message. If `set-message-macro()` is set to `no`, {{% param "product.abbrev" %}} leaves the `${MESSAGE}` part empty. If `set-message-macro()` is set to `yes`, {{% param "product.abbrev" %}} generates a regular log message from the trap.
 
+## Options of the snmptrapd-parser() parser {#snmptrapd-parser-options}
+
+The `snmptrap()` source reads the log file of `snmptrapd` and parses it with the `snmptrapd-parser()` parser. If you want to parse traps that arrive from somewhere else, you can also use `snmptrapd-parser()` directly in a parser statement:
+
+```shell
+   parser p_snmptrap {
+        snmptrapd-parser(prefix(".snmp."));
+    };
+```
+
+Used this way, the parser has the `prefix()` and `set-message-macro()` options described above, and also the following options.
+
+{{< include-headless "chunk/option-source-internal.md" >}}
+
+{{% include-headless "chunk/option-parser-template.md" %}}
+
