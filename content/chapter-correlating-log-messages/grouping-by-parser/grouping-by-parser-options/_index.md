@@ -66,7 +66,7 @@ To inject the generated messages where the parser is referenced, use the `inject
 
 You can configure the generated message in the `aggregate()` option (see [aggregate()](#grouping-by-parser-aggregate)). You can create an entire message, use macros and values extracted from the original message, and so on.
 
-
+{{< include-headless "chunk/option-source-internal.md" >}}
 
 ## key() {#grouping-by-parser-key}
 
@@ -87,6 +87,16 @@ Messages that do not have a key will all belong to the same context.
 If the value of the key is static (for example, `key("PROGRAM")` instead of `key("$PROGRAM")`), all messages will belong to the same context.
 
 {{% /alert %}}
+
+{{% include-headless "chunk/option-persist-name.md" %}}
+
+## prefix() {#grouping-by-parser-prefix}
+
+|           |                      |
+| --------- | -------------------- |
+| Synopsis: | `prefix("<prefix>")` |
+
+*Description:* Inserts a prefix before the name part of the name-value pairs that the `aggregate()` option adds to the generated message. For example, with `prefix(".grouping-by.")` the name-value pair set by `value("count" "...")` becomes `${.grouping-by.count}`.
 
 <span id="grouping-by-parser-scope"></span>
 {{< include-headless "chunk/option-parser-scope.md" >}}
