@@ -30,6 +30,10 @@ The mapping of AnyValue type fields is limited.
 
 ## Options
 
+The `opentelemetry()` parser has the following options.
+
+{{< include-headless "chunk/option-source-internal.md" >}}
+
 ## set-hostname()
 
 |           |                              |
@@ -40,3 +44,5 @@ The mapping of AnyValue type fields is limited.
 Available in {{< product >}} 4.8 and later.
 
 *Description:* If set to yes, the parser extracts the `host.name` resource attribute if available in the message. Otherwise, it leaves the [HOST](https://opentelemetry.io/docs/specs/semconv/attributes-registry/host/) field as-is.
+
+{{% include-headless "chunk/option-parser-template.md" %}}
