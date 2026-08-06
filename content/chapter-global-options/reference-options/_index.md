@@ -504,16 +504,16 @@ Starting with version 3.16, the default value of this option is -1, so {{% param
 
 
 
-## pass-unix-credentials() {#global-option-pass-unix-credentials}
+## pass-unix-credentials() (DEPRECATED) {#global-option-pass-unix-credentials}
 
 |                  |        |
 | ---------------- | ------ |
 | Accepted values: | `yes|no` |
 | Default:         | yes    |
 
+Deprecated since {{% param "product.name" %}} 3.35. Use the [`so-passcred()` source option]({{< relref "/chapter-sources/source-unixstream/reference-source-unixstream/_index.md#so-passcred" >}}) to control credential passing per source, or the [`ignore-aux-data` source flag]({{< relref "/chapter-sources/source-unixstream/reference-source-unixstream/_index.md#ignore-aux-data" >}}) to skip collecting the credentials altogether.
+
 *Description:* Enable {{% param "product.abbrev" %}} to collect UNIX credential information (that is, the PID, user ID, and group of the sender process) for messages received using UNIX domain sockets. Available only in {{% param "product.name" %}} 3.7 and later. Note that collecting UNIX credential information from sockets in high-traffic environments can be resource intensive, therefore `pass-unix-credentials()` can be disabled globally, or separately for each source.
-
-
 
 ## perm() {#global-option-perm}
 
@@ -779,18 +779,16 @@ By default, timestamps include only seconds. To include fractions of a second (f
 {{< include-headless "chunk/option-source-use-fqdn.md" >}}
 
 
-## use-rcptid() {#global-option-use-rcptid}
+## use-rcptid() (DEPRECATED) {#global-option-use-rcptid}
 
 |                  |          |
 | ---------------- | -------- |
 | Accepted values: | `yes` or `no` |
 | Default:         | `no`       |
 
+This option is deprecated, use the [`use-uniqid()`](#global-use-uniqid) option instead.
+
 {{% include-headless "chunk/option-description-use-rcptid.md" %}}
-
-This option is deprecated, use the `use-uniqid()` option instead.
-
-
 
 ## use-uniqid() {#global-use-uniqid}
 
