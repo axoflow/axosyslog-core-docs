@@ -6,8 +6,11 @@ weight:  100
 
 The `kv-parser` has the following options.
 
+{{% include-headless "chunk/option-parser-allow-pair-separator-in-value.md" %}}
+
 {{% include-headless "chunk/kv-parser-extract-stray-words-into.md" %}}
 
+{{< include-headless "chunk/option-source-internal.md" >}}
 
 {{% include-headless "chunk/option-parser-prefix.md" %}}
 
