@@ -14,7 +14,7 @@ To convert match variables into a {{% param "product.abbrev" %}} list, use the `
 
 {{% /alert %}} {{% alert title="Note" color="info" %}}
 
-To reset match variables to be empty, use the `unset-matches()` rewrite rule.
+To reset match variables to be empty, use the [`unset-matches()`](#unset-matches) rewrite rule.
 
 {{% /alert %}}
 
@@ -45,3 +45,32 @@ rewrite {
     set-matches("$(explode ':' 'foo:bar:baz')");
 };
 ```
+
+## unset-matches() {#unset-matches}
+
+The `unset-matches()` rewrite rule clears every match variable, that is, it resets `$1, $2, ... $255` to empty. Use it when you want to make sure that match variables left over from an earlier filter, parser, or rewrite rule do not leak into later parts of the log path.
+
+```shell
+rewrite <name_of_the_rule> {
+    unset-matches();
+};
+```
+
+### Example for the unset-matches() rewrite function
+
+The following log path sets three match variables, then clears them again, so `$1`, `$2`, and `$3` are empty when the message reaches the destination.
+
+```shell
+log {
+    source(s_local);
+    rewrite { set-matches("foo,bar,baz"); };
+    rewrite { unset-matches(); };
+    destination(d_local);
+};
+```
+
+## Options
+
+Both `set-matches()` and `unset-matches()` have the following option.
+
+{{% include-headless "chunk/option-rewrite-condition.md" %}}

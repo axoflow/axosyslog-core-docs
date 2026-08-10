@@ -4,7 +4,7 @@ weight:  700
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-It is possible to set the `facility` field with the `set-facility()` rewrite function. When set, the `set-facility()` rewrite function will only rewrite the `${PRIORITY}` field in the message to the first parameter value specified in the function.
+It is possible to set the `facility` field with the `set-facility()` rewrite function. When set, the `set-facility()` rewrite function will only rewrite the `${FACILITY}` field in the message to the first parameter value specified in the function.
 
 {{% alert title="Note" color="info" %}}
 
@@ -49,3 +49,9 @@ rewrite {
   set-facility("13");
   };
 ```
+
+## Options
+
+The `set-facility()` rewrite rule has the following option.
+
+{{% include-headless "chunk/option-rewrite-condition.md" %}}

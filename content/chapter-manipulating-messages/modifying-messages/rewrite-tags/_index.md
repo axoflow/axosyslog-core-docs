@@ -21,3 +21,9 @@ rewrite <name_of_the_rule> {
 ```
 
 Templates (macros, template functions) can be used when specifying tags, for example, `set-tag("dyn::$HOST");`.
+
+## Options
+
+The `set-tag()` and `clear-tag()` rewrite rules have the following option.
+
+{{% include-headless "chunk/option-rewrite-condition.md" %}}

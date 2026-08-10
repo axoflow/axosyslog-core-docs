@@ -44,14 +44,82 @@ The following example appends the "suffix" string to the MESSAGE field:
 
 For details on rewriting SDATA fields, see {{% xref "/chapter-manipulating-messages/modifying-messages/custom-sdata-fields/_index.md" %}}.
 
-You can also use the following options in rewrite rules that use the `set()` operator.
-
-```shell
-   rewrite <name_of_the_rule> {
-        set("<string to include>", value(<field name>), on-error("fallback-to-string");
-    };
-```
-
 {{% alert title="Note" color="info" %}}
 The `severity` and `facility` fields can only be set by the `set-severity()` rewrite functions. For more information, see {{% xref "/chapter-manipulating-messages/modifying-messages/rewrite-set-severity/_index.md" %}}.
 {{% /alert %}}
+
+## Options
+
+The `set()` rewrite rule has the following options. In addition to `condition()`, `internal()`, and `value()`, `set()` accepts the template options listed below, which control how {{% param "product.abbrev" %}} expands the template in its first argument.
+
+```shell
+   rewrite <name_of_the_rule> {
+        set("<string to include>", value(<field name>), on-error("fallback-to-string"));
+    };
+```
+
+{{% include-headless "chunk/option-rewrite-condition.md" %}}
+
+## frac-digits()
+
+|          |        |
+| -------- | ------ |
+| Type:    | number |
+| Default: | `0`    |
+
+*Description:* The number of digits that {{% param "product.abbrev" %}} stores when it expands a timestamp macro with fractions of a second. Overrides the global [`frac-digits()`]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-frac-digits" >}}) option for this rule.
+
+{{< include-headless "chunk/option-source-internal.md" >}}
+
+## local-time-zone()
+
+|          |                                              |
+| -------- | -------------------------------------------- |
+| Type:    | name of the timezone, or the timezone offset |
+| Default: | The local timezone.                          |
+
+*Description:* Sets the timezone that {{% param "product.abbrev" %}} uses when it expands a timestamp macro as a local time.
+
+{{% include-headless "chunk/para-timezone-format.md" %}}
+
+{{< include-headless "chunk/option-destination-on-error.md" >}}
+
+## send-time-zone()
+
+|          |                                              |
+| -------- | -------------------------------------------- |
+| Type:    | name of the timezone, or the timezone offset |
+| Default: | The local timezone.                          |
+
+*Description:* Sets the timezone that {{% param "product.abbrev" %}} uses when it expands a timestamp macro. The `time-zone()` option is an alias of `send-time-zone()`.
+
+{{% include-headless "chunk/para-timezone-format.md" %}}
+
+## template-escape()
+
+|          |             |
+| -------- | ----------- |
+| Type:    | `yes`, `no` |
+| Default: | `no`        |
+
+*Description:* Turns on escaping for the `'`, `"`, and backspace characters in the expanded value.
+
+## time-zone()
+
+|          |                                              |
+| -------- | -------------------------------------------- |
+| Type:    | name of the timezone, or the timezone offset |
+| Default: | The local timezone.                          |
+
+*Description:* Alias of [`send-time-zone()`](#send-time-zone).
+
+## ts-format()
+
+|          |                                    |
+| -------- | ---------------------------------- |
+| Type:    | `rfc3164`, `bsd`, `rfc3339`, `iso` |
+| Default: | `rfc3164`                          |
+
+*Description:* Overrides the global [`ts-format()`]({{< relref "/chapter-global-options/reference-options/_index.md" >}}) option for the timestamp macros that this rule expands.
+
+{{% include-headless "chunk/option-rewrite-value.md" %}}

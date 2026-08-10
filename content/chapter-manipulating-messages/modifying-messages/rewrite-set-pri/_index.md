@@ -75,3 +75,9 @@ As the application message contains a valid priority field, you can use the `set
 ```shell
 set-pri("$.json.priority");
 ```
+
+## Options
+
+The `set-pri()` rewrite rule has the following option.
+
+{{% include-headless "chunk/option-rewrite-condition.md" %}}

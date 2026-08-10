@@ -35,3 +35,18 @@ Using this operation is identical to using the `flags(guess-timezone)` flag in t
 ## set-time-zone() {#rewrite-timezone-set}
 
 Use the `set-time-zone()` operation to set the timezone of the message to a specific value, that is to convert an existing timezone to a different one. This operation is identical to setting the `time-zone()` option in a destination or as a global option, but can be applied selectively to the messages using conditions.
+
+## Options
+
+The `fix-time-zone()`, `guess-time-zone()`, and `set-time-zone()` rewrite rules have the following options.
+
+{{% include-headless "chunk/option-rewrite-condition.md" %}}
+
+## time-stamp()
+
+|          |                    |
+| -------- | ------------------ |
+| Type:    | `stamp`, `recvd`   |
+| Default: | `stamp`            |
+
+*Description:* Selects the timestamp that the rule modifies. With `time-stamp(stamp)`, the rule changes the date the message was sent, that is, the `S_` macros. With `time-stamp(recvd)`, it changes the date {{% param "product.abbrev" %}} received the message, that is, the `R_` macros.

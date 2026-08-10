@@ -25,3 +25,9 @@ rewrite r_rewrite_rename {
     rename(".app.name" ".container");
 };
 ```
+
+## Options
+
+The `rename()` rewrite rule has the following option.
+
+{{% include-headless "chunk/option-rewrite-condition.md" %}}
