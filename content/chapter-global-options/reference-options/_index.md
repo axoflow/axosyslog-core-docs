@@ -319,7 +319,40 @@ Available in {{% param "product.abbrev" %}} 4.0 and later.
     options { file-template(t_isostamp); };
 ```
 
+## filterx-jit() {#global-option-filterx-jit}
 
+|                  |             |
+| ---------------- | ----------- |
+| Accepted values: | `yes`, `no` |
+| Default:         | `no`        |
+
+Available in {{% param "product.abbrev" %}} version 4.26 and later.
+
+*Description:* Enables just-in-time (JIT) compilation of the [FilterX](/filterx/_index.md) blocks of the configuration. JIT compilation can improve the throughput of configurations that do heavy FilterX processing, at the cost of extra work when {{% param "product.abbrev" %}} starts or reloads. For details on FilterX, see {{% xref "/filterx/_index.md" %}}.
+
+```shell
+options { filterx-jit(yes); };
+```
+
+{{% alert title="Note" color="info" %}}
+
+This option requires a build of {{% param "product.abbrev" %}} that includes FilterX JIT support. If you set `filterx-jit(yes)` on a build that does not have it, {{% param "product.abbrev" %}} logs an error and does not start.
+
+{{% /alert %}}
+
+## filterx-jit-debug-info() {#global-option-filterx-jit-debug-info}
+
+|                  |                      |
+| ---------------- | -------------------- |
+| Accepted values: | `filterx`, `llvm-ir` |
+| Default:         | `filterx`            |
+
+Available in {{% param "product.abbrev" %}} version 4.26 and later.
+
+*Description:* Sets the kind of debug information that the FilterX JIT compiler generates. This option only has an effect if you also enable [`filterx-jit()`](#global-option-filterx-jit).
+
+- `filterx`: Generate debug information that maps the compiled code back to your FilterX source. This is the default.
+- `llvm-ir`: Generate debug information that maps the compiled code to the underlying LLVM intermediate representation. Use this when you are debugging the JIT compiler itself. This mode is not available on every platform: if the build does not support it, {{% param "product.abbrev" %}} logs an error and rejects the configuration.
 
 ## flush-lines() {#global-option-flush-lines}
 
