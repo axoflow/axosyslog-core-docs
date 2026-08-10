@@ -10,22 +10,27 @@ This driver writes messages to the terminal of a logged-in user.
 
 The `usertty()` driver has a single required argument, specifying a username who should receive a copy of matching messages. Use the asterisk `*` to specify every user currently logged in to the system.
 
-
-## Declaration:
+## Declaration
 
 ```shell
-   usertty(username);
+usertty(username);
 ```
-
-The `usertty()` does not have any further options nor does it support templates.
-
 
 ## Example: Using the usertty() driver
 
 ```shell
-   destination d_usertty { usertty("root"); };
+destination d_usertty { usertty("root"); };
 ```
 
+## escaping()
+
+|                  |                    |
+| ---------------- | ------------------ |
+| Accepted values: | `yes` or `no`      |
+| Default:         | `no`               |
+
+Available in {{% param "product.abbrev" %}} 4.26 and later.
+
+*Description:* Turns on escaping for the `'`, `"`, and backslash characters from the messages. This behavior is useful when the messages are passed to an application that cannot handle escaped characters properly.
 
 {{% include-headless "chunk/option-source-time-reopen.md" %}}
-

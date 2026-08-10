@@ -9,7 +9,7 @@
 | Type:    | number [seconds] |
 | Default: | 0                  |
 
-*Description:* Specifies the interval (number of seconds) between subsequential keepalive probes, regardless of the traffic exchanged in the connection. This option is equivalent to `/proc/sys/net/ipv4/tcp_keepalive_intvl`. The default value is `0`, which means using the kernel default.
+*Description:* Specifies the interval (number of seconds) between subsequent keepalive probes, regardless of the traffic exchanged in the connection. This option is equivalent to `/proc/sys/net/ipv4/tcp_keepalive_intvl`. The default value is `0`, which means using the kernel default.
 
 {{< include-headless "wnt/warning-tcp-keepalive.md" >}}
 

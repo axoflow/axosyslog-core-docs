@@ -12,9 +12,12 @@ The following section describes the structure of log messages using the Enterpri
 
 The message has the following parts:
 
-  - The header of the complies with the [RFC5424 message format]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-ietfsyslog/_index.md" >}}), where the PROGRAM field is set to `@syslog-ng`, and the SDATA field is empty.
+| Part | Example |
+| ---- | ------- |
+| `HEADER` | `<34>1 2026-10-11T22:14:15+00:00 my-host @syslog-ng - - -` |
+| `MESSAGE` | `{"PROGRAM":"su","MESSAGE":"'su root' failed …","HOST":"mymachine", …, "._TAGS":[".source.s_network"]}` |
 
-  - The MESSAGE part is in JSON format, and contains the actual message, as well as any name-value pairs that {{% param "product.abbrev" %}} has attached to or extracted from the message. The `${._TAGS}` field contains the identifier of the {{% param "product.abbrev" %}} source that has originally received the message on the first {{% param "product.abbrev" %}} node.
+The header complies with the [RFC5424 message format]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-ietfsyslog/_index.md" >}}), where the `PROGRAM` field is set to `@syslog-ng` and the `STRUCTURED-DATA` field is empty. The `MESSAGE` part is in JSON format and contains the actual message, as well as any name-value pairs that {{% param "product.abbrev" %}} has attached to or extracted from the message. The `${._TAGS}` field contains the identifier of the {{% param "product.abbrev" %}} source that originally received the message on the first {{% param "product.abbrev" %}} node.
 
 To send a message in EWMM format, you can use the [`syslog-ng()` destination driver]({{< relref "/chapter-destinations/destination-syslog-ng/_index.md" >}}), or the [`format-ewmm()` template function]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md#template-function-format-ewmm" >}}).
 

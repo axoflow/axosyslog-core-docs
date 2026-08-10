@@ -4,6 +4,7 @@ weight: 6750
 driver: "axosyslog-otlp()"
 short_description: "Forward logs to another node using OpenTelemetry"
 axosyslog-otlp: true
+dest_type: grpc
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 

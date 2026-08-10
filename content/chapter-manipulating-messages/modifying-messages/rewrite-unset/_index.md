@@ -28,6 +28,8 @@ rewrite r_rewrite_unset{
 };
 ```
 
+If you're using FilterX, see also the equivalent [`unset()`]({{< relref "/filterx/function-reference.md#unset" >}}) function.
+
 ## Unset group
 
 To unset a group of fields, you can use the `groupunset()` rewrite rule.

@@ -18,7 +18,7 @@ The chart provides parameters that make it easy to deploy {{% param "product.abb
 
 - As a [collector]({{< relref "/install/helm/helm-chart-parameters.md#collector" >}}), to collect local logs using the [`kubernetes()`](https://axoflow.com/docs/axosyslog-core/chapter-sources/configuring-sources-kubernetes/) source, and forward them to another syslog server, to an `opensearch()` node, or to another {{% param "product.abbrev" %}} node.
 - As a [syslog server]({{< relref "/install/helm/helm-chart-parameters.md#syslog-server" >}}):
-    - to receive RFC3164 and RFC5424 formatted syslog messages from any sender, or `syslog-ng-otlp` messages from another {{% param "product.abbrev" %}} node, and then
+    - to receive RFC3164 and RFC5424 formatted syslog messages from any sender, or `axosyslog-otlp` messages from another {{% param "product.abbrev" %}} node, and then
     - store them locally, or forward them to remote destinations.
 
 These two use cases are independent from each other and can be configured separately. For other use cases, for example, to use other sources and destinations, you can use the `config.raw` parameter of the collector or the server. For the list of configurable parameters and their default values, see {{% xref "/install/helm/helm-chart-parameters.md" %}}.

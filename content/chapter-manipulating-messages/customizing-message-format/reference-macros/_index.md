@@ -42,11 +42,11 @@ For an example use case when using the macro is recommended, see {{% xref "/chap
 
 ## FACILITY {#macro-facility}
 
-*Description:* The name of the facility (for example, `kern`) that sent the message.
+*Description:* The name of the facility (for example, `kern`) that sent the message. For the list of facility codes, see [The PRI message part]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-pri/_index.md#facility-codes" >}}).
 
 ## FACILITY_NUM {#macro-facility-num}
 
-*Description:* The numerical code of the facility (for example, `0`) that sent the message.
+*Description:* The numerical code of the facility (for example, `0`) that sent the message. For the list of facility codes, see [The PRI message part]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-pri/_index.md#facility-codes" >}}).
 
 ## FILE_NAME {#macro-filename}
 
@@ -221,11 +221,11 @@ Available in {{% param "product.abbrev" %}} 4.11 and later. This macro is availa
 
 ## PRI {#macro-pri}
 
-*Description:* The priority and facility encoded as a 2 or 3 digit decimal number as it is present in syslog messages.
+*Description:* The combined facility and severity value (`facility * 8 + severity`), encoded as a 2 or 3 digit decimal number as it is present in the `<N>` header of syslog messages. This encodes both facility and severity, unlike `${LEVEL_NUM}`, which is the severity alone. For the facility and severity code tables and the priority formula, see [The PRI message part]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-pri/_index.md" >}}).
 
 ## PRIORITY or LEVEL {#macro-priority}
 
-*Description:* The priority (also called severity) of the message, for example, `error`. For the textual representation of this value, use the `${LEVEL}` macro. See [PRIORITY or LEVEL](#macro-priority) for details.
+*Description:* The priority (also called severity or level) of the message as a text label, for example, `err`, `warning`, `notice`, or `info`. The `${PRIORITY}`, `${LEVEL}`, and `${SEVERITY}` macros are aliases and return the same value. For the numeric representation, use the `${LEVEL_NUM}` macro. For what each severity means, see [syslog Message Severities]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-pri/_index.md#severity-codes" >}}).
 
 ## PROGRAM {#macro-program}
 
@@ -398,7 +398,7 @@ Available in {{% param "product.abbrev" %}} version 4.5 and later.
 - `.tls.x509_cn`: The Common Name of the certificate.
 - `.tls.x509_o`: The value of the Organization field.
 - `.tls.x509_ou`: The value of the Organization Unit field.
-- `.tls.x509_fp`: The key fingerprint of the peer, if the [`trusted-keys()` option]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#tls-options-trusted-keys" >}}) is used. Available in version 4.8.1 and later.
+- `.tls.x509_fp`: The key fingerprint of the peer, if the [`trusted-keys()` option]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#tls-options-trusted-keys" >}}) or [`trusted-fingerprints()` option]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#tls-options-trusted-fingerprints" >}}) is used. Available in version 4.8.1 and later.
 
 ## UNIQID {#macro-uniqid}
 

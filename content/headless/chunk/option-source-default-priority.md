@@ -7,7 +7,7 @@
 |          |                 |
 | -------- | --------------- |
 | Type:    | priority string |
-| Default: |                 |
+| Default: | notice          |
 
-*Description:* This parameter assigns an emergency level to the messages received from the file source if the message does not specify one. For example, `default-priority(warning)`.
+*Description:* This parameter assigns a severity to the messages received from the source if the message does not specify one. For example, `default-priority(warning)`.
 

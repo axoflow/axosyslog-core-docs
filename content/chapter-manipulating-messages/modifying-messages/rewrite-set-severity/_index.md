@@ -12,6 +12,8 @@ If the parameter value is not a valid parameter value, the function ignores it a
 
 {{% /alert %}}
 
+FilterX has no `set_severity()` counterpart. See the related [`set_pri()`]({{< relref "/filterx/function-reference.md#set-pri" >}}) function, which sets the combined PRI value (`facility * 8 + severity`), so you cannot set the severity without also setting the facility. It also takes a number, not a severity name.
+
 ## Declaration
 
 ```shell

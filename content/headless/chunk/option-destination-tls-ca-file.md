@@ -4,19 +4,7 @@
 
 ## ca-file()
 
-|                  |           |
-| ---------------- | --------- |
-| Accepted values: | File name |
-| Default:         | empty     |
-
-*Description:* Optional. The name of a file that contains a set of trusted CA certificates in PEM format. The {{% param "product.abbrev" %}} application uses the CA certificates in this file to validate the certificate of the peer.
-
-Example format in configuration:
-
-```shell
-   ca-file("/etc/pki/tls/certs/ca-bundle.crt")
-```
-
+{{< include-headless "chunk/option-destination-tls-ca-file-description.md" >}}
 
 {{< alert title="Note" color="info" >}}
 The `ca-file()` option can be used together with the `ca-dir()` option, and it is relevant when `peer-verify()` is set to other than `no` or `optional-untrusted`.

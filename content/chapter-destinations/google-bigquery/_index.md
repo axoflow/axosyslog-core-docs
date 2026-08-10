@@ -5,6 +5,7 @@ weight:  150
 driver: "bigquery()"
 short_description: "Send messages to Google BigQuery"
 bigquery: true
+dest_type: grpc
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
@@ -51,7 +52,7 @@ destination d_bigquery {
 }
 ```
 
-By default, the messages are sent with one worker, one message per batch, and without compression. If you have a [protobuf-formatted message]({{< relref "/filterx/function-reference.md#protobuf-message" >}}), you can specify it in the [`proto-var()`](#proto) option, instead of using the `schema()` option.
+By default, the messages are sent with one worker, one message per batch, and without compression. If you have a [protobuf-formatted message]({{< relref "/filterx/function-reference.md#protobuf-message" >}}), you can specify it in the [`proto-var()`](#proto-var) option, instead of using the `schema()` option.
 
 ## Options
 

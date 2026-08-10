@@ -10,6 +10,14 @@ with [Hugo](https://gohugo.io/) (Extended version, ≤ 0.146) using the
 - Published site: <https://axoflow.com/docs/axosyslog-core/>
 - Source code for the product itself: <https://github.com/axoflow/axosyslog>
 
+## Response and comment style
+
+- Default to concise answers. Lead with the result; cut preamble, option
+  surveys, and recaps unless asked. Expand only when explicitly requested.
+- Code/template comments: match the surrounding file's density. Explain *why*,
+  not *what*; avoid multi-line rationale blocks unless the logic is genuinely
+  subtle.
+
 ## Repo layout
 
 ```
@@ -68,7 +76,11 @@ python3 themes/docsy-axoflow/scripts/hugo_to_markdown.py --input public --output
 
 The dev server starts on <http://localhost:1313> by default.
 
-Hugo version constraint: **≤ 0.146.0** (Extended build required).
+Hugo version constraint: **≥ 0.157.0** (Extended build required). Pinned in `mise.toml`.
+
+Layouts follow Hugo's new template system (0.146+): partials live in
+`layouts/_partials/`, shortcodes in `layouts/_shortcodes/`, render hooks in
+`layouts/_markup/`.
 
 ## Validation / CI checks
 

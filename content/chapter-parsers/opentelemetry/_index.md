@@ -20,6 +20,8 @@ The `opentelemetry()` parser parses the fields into name-value pairs starting wi
 
 For details on the parsed fields, you can check the [OpenTelemetry proto files](https://github.com/open-telemetry/opentelemetry-proto/tree/v0.20.0/opentelemetry/proto).
 
+See also the related {{% xref "/filterx/filterx-otel/_index.md" %}} functions. They map the message into typed OTEL objects instead of flattening it into `.otel.` name-value pairs.
+
 ## Mapping data types
 
 String, bool, int64, double, and bytes values are mapped to their respective {{% param "product_name" %}} name-value type, for example, `.otel.resource.attributes.string_key` becomes a string value. <!-- FIXME add a link to the value-pairs docs -->
@@ -38,7 +40,7 @@ The `opentelemetry()` parser has the following options.
 
 |           |                              |
 | --------- | ---------------------------- |
-| Synopsis: | `yes | no ` |
+| Synopsis: | `yes` or `no` |
 | Default: | `yes` |
 
 Available in {{< product >}} 4.8 and later.

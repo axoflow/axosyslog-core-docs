@@ -60,6 +60,22 @@ For example:
 };
 ```
 
+For integer targets, in version 4.26 and later you can use ranges, for example:
+
+```shell
+switch (${values.int}) {
+    case 1..4:
+        result = "within range";
+        break;
+    case 5:
+        result = "exact value";
+        break;
+    default:
+        result = "default";
+        break;
+};
+```
+
 Note that:
 
 - Cases with literal string targets are stored in a map, and the lookup is started with them.

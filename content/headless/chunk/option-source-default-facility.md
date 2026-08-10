@@ -7,7 +7,7 @@
 |          |                 |
 | -------- | --------------- |
 | Type:    | facility string |
-| Default: | kern            |
+| Default: | user            |
 
-*Description:* This parameter assigns a facility value to the messages received from the file source if the message does not specify one.
+*Description:* This parameter assigns a facility value to the messages received from the source if the message does not specify one. The default is `user` (`kern` for [kernel sources]({{< relref "/chapter-sources/configuring-sources-file/kernel-messages/_index.md" >}})).
 

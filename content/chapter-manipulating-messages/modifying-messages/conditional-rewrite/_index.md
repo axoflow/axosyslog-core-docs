@@ -12,6 +12,8 @@ Using conditions in rewrite rules can simplify your {{% param "product.abbrev" %
 
 {{% /alert %}}
 
+See also the equivalent FilterX construct, [conditional statements]({{< relref "/filterx/filterx-conditional/_index.md" >}}). Use an `if` statement to match the behavior of `condition()`: a bare comparison statement drops the messages that do not match it, while `condition()` passes them on unmodified.
+
 
 ## Using conditional rewrite {#procedure-conditional-rewrite}
 
@@ -32,7 +34,6 @@ The following procedure summarizes how conditional rewrite rules (rewrite rules 
     };
 ```
 
-To configure conditional rewrite
 
 1. The log path receives a message from the source (`s1`).
 2. The rewrite rule (`r_rewrite_set`) evaluates the condition. If the message matches the condition (the `PROGRAM` field of the message is `myapplication`), {{% param "product.abbrev" %}} rewrites the log message (sets the value of the `HOST` field to `myhost`), otherwise it is not modified.

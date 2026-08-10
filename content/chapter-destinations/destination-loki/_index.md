@@ -6,6 +6,7 @@ short_description: "Send messages to Grafana Loki"
 aliases:
 - /chapter-destinations/syslog-ng-with-loki/
 loki: true
+dest_type: grpc
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 

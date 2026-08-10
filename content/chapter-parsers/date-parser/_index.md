@@ -12,6 +12,8 @@ Note that parsing will fail if the format string does not match the entire templ
 
 {{% /alert %}}
 
+In FilterX, this takes two related functions: [`strptime()`]({{< relref "/filterx/function-reference.md#strptime" >}}) creates a `datetime` value from a string, then [`set_timestamp()`]({{< relref "/filterx/function-reference.md#set-timestamp" >}}) writes it to the message. Use its `stamp` argument for the equivalent of the `time-stamp(recvd)` option.
+
 
 ## Declaration
 

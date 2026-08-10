@@ -8,6 +8,8 @@ The `map-value-pairs()` parser allows you to map existing name-value pairs to a 
 
 Available in {{% param "product.abbrev" %}} version 3.10 and later.
 
+FilterX has no bulk equivalent. To rename fields one by one, see the related [`move()`]({{< relref "/filterx/function-reference.md#move" >}}) function.
+
 ## Declaration
 
 ```shell

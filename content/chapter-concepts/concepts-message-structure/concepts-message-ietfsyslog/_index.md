@@ -22,66 +22,30 @@ The message corresponds to the following format:
 <priority>VERSION ISOTIMESTAMP HOSTNAME APPLICATION PID MESSAGEID STRUCTURED-DATA MSG
 ```
 
-- Facility is 4, severity is 2, so PRI is 34.
-- The VERSION is 1.
-- The message was created on 11 October 2003 at 10:14:15pm UTC, 3 milliseconds into the next second.
-- The message originated from a host that identifies itself as "mymachine.example.com".
-- The APP-NAME is "su" and the PROCID is unknown.
-- The MSGID is "ID47".
-- The MSG is "'su root' failed for lonvick...", encoded in UTF-8.
-- In this example, the encoding is defined by the BOM:
-
-    {{% include-headless "chunk/para-bom-definition.md" %}}
-
-- There is no STRUCTURED-DATA present in the message, this is indicated by "-" in the STRUCTURED-DATA field.
+| Part | Example |
+| ---- | ------- |
+| [`PRI`]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-pri/_index.md" >}}) | `<34>` |
+| `VERSION` | `1` |
+| `TIMESTAMP` | `2003-10-11T22:14:15.003Z` |
+| `HOSTNAME` | `mymachine.example.com` |
+| `APP-NAME` | `su` |
+| `PROCID` | `-` |
+| `MSGID` | `ID47` |
+| `STRUCTURED-DATA` | `-` |
+| `MSG` | `'su root' failed for lonvick on /dev/pts/8` |
 
 The HEADER part of the message must be in plain ASCII format, the parameter values of the STRUCTURED-DATA part must be in UTF-8, while the MSG part should be in UTF-8. The different parts of the message are explained in the following sections.
+
+{{% alert title="Note" color="info" %}}
+
+In RFC 5424, the `PRI` and `VERSION` are mandatory. The remaining `HEADER` fields (`TIMESTAMP`, `HOSTNAME`, `APP-NAME`, `PROCID`, `MSGID`) and the `STRUCTURED-DATA` must be present, but can be the NILVALUE `-` when the sender has no value for them. The `MSG` part is optional.
+
+{{% /alert %}}
 
 
 ## The PRI message part
 
-The PRI part of the syslog message (known as Priority value) represents the Facility and Severity of the message. Facility represents the part of the system sending the message, while severity marks its importance. The Priority value is calculated by first multiplying the Facility number by 8 and then adding the numerical value of the Severity. The possible facility and severity values are presented below.
-
-{{% alert title="Note" color="info" %}}
-
-Facility codes may slightly vary between different platforms. The AxoSyslog application accepts facility codes as numerical values as well.
-
-{{% /alert %}}
-
-| Numerical Code | Facility                                 |
-| -------------- | ---------------------------------------- |
-| 0 | kernel messages |
-| 1 | user-level messages |
-| 2 | mail system |
-| 3 | system daemons |
-| 4 | security/authorization messages |
-| 5 | messages generated internally by syslogd |
-| 6 | line printer subsystem |
-| 7 | network news subsystem |
-| 8 | UUCP subsystem |
-| 9 | clock daemon |
-| 10 | security/authorization messages |
-| 11 | FTP daemon |
-| 12 | NTP subsystem |
-| 13 | log audit |
-| 14 | log alert |
-| 15 | clock daemon |
-| 16-23 | locally used facilities (local0-local7) |
-
-The following table lists the severity values.
-
-| Numerical Code | Severity                                 |
-| -------------- | ---------------------------------------- |
-| 0              | Emergency: system is unusable            |
-| 1              | Alert: action must be taken immediately  |
-| 2              | Critical: critical conditions            |
-| 3              | Error: error conditions                  |
-| 4              | Warning: warning conditions              |
-| 5              | Notice: normal but significant condition |
-| 6              | Informational: informational messages    |
-| 7              | Debug: debug-level messages              |
-
-syslog Message Severities
+The `PRI` is calculated and interpreted exactly as in BSD-syslog messages (`facility * 8 + severity`). For the formula and the facility and severity code tables, see {{% xref "/chapter-concepts/concepts-message-structure/concepts-message-pri/_index.md" %}}.
 
 
 ## The HEADER message part

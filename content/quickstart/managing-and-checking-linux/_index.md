@@ -45,7 +45,7 @@ To reload the configuration file without restarting {{% param "product.abbrev" %
 
 `systemctl reload syslog-ng`
 
-## Check {{% param "product.abbrev" %}} status
+## Check {{% param "product.abbrev" %}} status {#check-syslog-ng-status}
 
 To check the following status-related components, observe the suggestions below.
 

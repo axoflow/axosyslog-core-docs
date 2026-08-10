@@ -14,6 +14,8 @@ Substitution rules can operate on any soft macros, for example, MESSAGE, PROGRAM
 
 {{< include-headless "wnt/note-rewrite-hard-macros.md" >}}
 
+See also the equivalent FilterX function, [`regexp_subst()`]({{< relref "/filterx/function-reference.md#regexp-subst" >}}), or [`str_replace()`]({{< relref "/filterx/function-reference.md#str-replace" >}}) for literal strings.
+
 Substitution rules use the following syntax:
 
 ## Declaration

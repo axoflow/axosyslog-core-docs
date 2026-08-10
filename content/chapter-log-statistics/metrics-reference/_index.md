@@ -198,6 +198,38 @@ syslogng_input_transport_errors_total{address="127.0.0.1:5515",driver="syslog",i
 
 *Description*: The number of events each worker has received when using [`parallelize()`]({{< relref "/chapter-nonsequential-processing/_index.md" >}}). Can show if the workers receive the load unevenly.
 
+## parallelized_batch_size
+
+Available in {{% param "product.abbrev" %}} 4.26 and later at `stats-level(4)`
+
+*Description*: Prometheus-style histograms to that show how logscheduler batches messages. Useful only for low-level debugging and troubleshooting.
+
+```shell
+syslogng_parallelized_batch_size_sum{parallelize="/install/etc/callgrind-syslog-ng.conf:30:5"} 1000000
+syslogng_parallelized_batch_size_count{parallelize="/install/etc/callgrind-syslog-ng.conf:30:5"} 13962
+syslogng_parallelized_batch_size_bucket{parallelize="/install/etc/callgrind-syslog-ng.conf:30:5",le="1"} 4686
+syslogng_parallelized_batch_size_bucket{parallelize="/install/etc/callgrind-syslog-ng.conf:30:5",le="2"} 2857
+syslogng_parallelized_batch_size_bucket{parallelize="/install/etc/callgrind-syslog-ng.conf:30:5",le="4"} 2757
+syslogng_parallelized_batch_size_bucket{parallelize="/install/etc/callgrind-syslog-ng.conf:30:5",le="8"} 1401
+```
+
+## parallelized_input_batch_size
+
+Available in {{% param "product.abbrev" %}} 4.26 and later at `stats-level(4)`
+
+*Description*: Prometheus-style histograms to that show how logscheduler batches messages. Useful only for low-level debugging and troubleshooting.
+
+Example:
+
+```shell
+syslogng_parallelized_input_batch_size_sum{parallelize="/install/etc/callgrind-syslog-ng.conf:30:5"} 1000000
+syslogng_parallelized_input_batch_size_count{parallelize="/install/etc/callgrind-syslog-ng.conf:30:5"} 11979
+syslogng_parallelized_input_batch_size_bucket{parallelize="/install/etc/callgrind-syslog-ng.conf:30:5",le="1"} 4545
+syslogng_parallelized_input_batch_size_bucket{parallelize="/install/etc/callgrind-syslog-ng.conf:30:5",le="2"} 2784
+syslogng_parallelized_input_batch_size_bucket{parallelize="/install/etc/callgrind-syslog-ng.conf:30:5",le="4"} 2729
+syslogng_parallelized_input_batch_size_bucket{parallelize="/install/etc/callgrind-syslog-ng.conf:30:5",le="8"} 1429
+```
+
 ## parallelized_processed_events_total
 
 *Description*: The number of events processed using [`parallelize()`]({{< relref "/chapter-nonsequential-processing/_index.md" >}}).

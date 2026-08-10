@@ -16,6 +16,8 @@ By default, these operations modify the date-related macros of the message that 
    rewrite { fix-time-zone("EST5EDT" time-stamp(recvd)); };
 ```
 
+If you're using FilterX, see also the equivalent [`set_timezone()`]({{< relref "/filterx/filterx-timezone/_index.md#set-timezone" >}}) function.
+
 ## fix-time-zone() {#rewrite-timezone-fix}
 
 Use the `fix-time-zone()` operation to correct the timezone of a message if it was parsed incorrectly for some reason, or if the client did not include any timezone information in the message. You can specify the new timezone as the name of a timezone, or as a template string. For example, use the following rewrite rule to set the timezone to EST5EDT:
@@ -26,11 +28,15 @@ Use the `fix-time-zone()` operation to correct the timezone of a message if it w
 
 If you have lots of clients that do not send timezone information in the log messages, you can create a database file that stores the timezone of the clients, and feed this data to {{% param "product.abbrev" %}} using the `add-contextual-data()` feature. For details, see {{% xref "/chapter-enrich-data/data-enrichment-add-contextual-data/_index.md" %}}.
 
+See also the equivalent FilterX function, [`fix_timezone()`]({{< relref "/filterx/filterx-timezone/_index.md#fix-timezone" >}}).
+
 ## guess-time-zone() {#rewrite-timezone-guess}
 
 Use the `guess-time-zone()` operation attempts to set the timezone of the message automatically, using heuristics on the timestamps. Normally the {{% param "product.abbrev" %}} application performs this operation automatically when it parses the incoming message. Using this operation in a rewrite rule can be useful if you cannot parse the incoming message for some reason (and use the `flags(no-parse)` option in your source, but you want to set the timezone automatically later (for example, after you have preprocessed the message).
 
 Using this operation is identical to using the `flags(guess-timezone)` flag in the source.
+
+See also the equivalent FilterX function, [`guess_timezone()`]({{< relref "/filterx/filterx-timezone/_index.md#guess-timezone" >}}).
 
 ## set-time-zone() {#rewrite-timezone-set}
 

@@ -7,7 +7,7 @@
 |          |           |
 | -------- | --------- |
 | Type:    | yes or no |
-| Values:  | `yes|no`  |
+| Values:  | `yes` or `no`  |
 | Default: | no        |
 
 *Description:* This option determines how the `syslog-parser()` affects messages when parsing fails.

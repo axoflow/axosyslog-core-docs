@@ -12,6 +12,8 @@ The `groupset()` rewrite rule allows you to modify the value of multiple message
 - You can refer to the old value of the field using the `$_` macro. This is resolved to the value of the current field, and is available only in `groupset()` rules.
 - {{< include-headless "chunk/set-groupset-type-support.md" >}}
 
+See also the related FilterX function [`set_fields()`]({{< relref "/filterx/function-reference.md#set-fields" >}}), which sets multiple keys of a dict. It differs from `groupset()`: it selects keys explicitly instead of by glob expression, has no equivalent of the `$_` macro, and it can also create new keys.
+
 ## Declaration
 
 ```shell

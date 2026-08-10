@@ -4,6 +4,7 @@ weight: 3950
 driver: "axosyslog-otlp()"
 short_description: "Receive logs from another node using OpenTelemetry"
 axosyslog-otlp: true
+source_type_grpc: true
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 

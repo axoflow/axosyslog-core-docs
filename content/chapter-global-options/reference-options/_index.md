@@ -541,7 +541,7 @@ Starting with version 3.16, the default value of this option is -1, so {{% param
 
 |                  |        |
 | ---------------- | ------ |
-| Accepted values: | `yes|no` |
+| Accepted values: | `yes` or `no` |
 | Default:         | yes    |
 
 Deprecated since {{% param "product.name" %}} 3.35. Use the [`so-passcred()` source option]({{< relref "/chapter-sources/source-unixstream/reference-source-unixstream/_index.md#so-passcred" >}}) to control credential passing per source, or the [`ignore-aux-data` source flag]({{< relref "/chapter-sources/source-unixstream/reference-source-unixstream/_index.md#ignore-aux-data" >}}) to skip collecting the credentials altogether.
@@ -731,7 +731,7 @@ Deprecated legacy option. Use [`stats(level())`](#global-option-stats-level) ins
 
 Deprecated legacy option. Use [`stats(lifetime())`](#global-option-stats-lifetime) instead.
 
-## stats-max-dynamics() {#global-option-stats-max-dynamics}
+## stats-max-dynamics() {#global-option-stats-max-dynamics-deprecated}
 
 Deprecated legacy option. Use [`stats(max-dynamics())`](#global-option-stats-max-dynamics) instead.
 
@@ -754,7 +754,7 @@ You can also set this option per destination.
 
 |                  |        |
 | ---------------- | ------ |
-| Accepted values: | `yes|no` |
+| Accepted values: | `yes` or `no` |
 | Default:         | yes    |
 
 *Description:* Enable {{% param "product.abbrev" %}} to run in multithreaded mode and use multiple CPUs. Available only in {{% param "product.name" %}} 3.3 and later. Note that setting `threaded(no)` does not mean that {{% param "product.abbrev" %}} will use only a single thread. For details, see {{% xref "/chapter-multithreading/_index.md" %}}.
@@ -786,7 +786,7 @@ You can also set this option per destination.
 
 |                  |        |
 | ---------------- | ------ |
-| Accepted values: | `yes|no` |
+| Accepted values: | `yes` or `no` |
 | Default:         | no     |
 
 {{% include-headless "chunk/option-description-trim-large-messages.md" %}}
@@ -797,7 +797,7 @@ You can also set this option per destination.
 
 |                  |                                               |
 | ---------------- | --------------------------------------------- |
-| Accepted values: | `rfc3164` | `bsd` | `rfc3339` | `iso` |
+| Accepted values: | `rfc3164`, `bsd`, `rfc3339`, `iso` |
 | Default:         | `rfc3164`                                   |
 
 *Description:* Specifies the timestamp format used when AxoSyslog itself formats a timestamp and nothing else specifies a format (for example: `STAMP` macros, internal messages, messages without original timestamps). For details, see also {{% xref "/chapter-concepts/timezone-handling/example-timezones/_index.md" %}}.

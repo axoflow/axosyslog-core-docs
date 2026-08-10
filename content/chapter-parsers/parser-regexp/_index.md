@@ -14,6 +14,8 @@ The `regexp-parser()` can create additional name-value pairs only if "named capt
 
 For more information about regular expressions in {{% param "product.abbrev" %}}, see {{% xref "/chapter-manipulating-messages/regular-expressions/_index.md" %}}.
 
+See also the related FilterX function [`regexp_search()`]({{< relref "/filterx/function-reference.md#regexp-search" >}}), which returns the matches instead of creating name-value pairs, and takes a single pattern instead of a list.
+
 For example:
 
 

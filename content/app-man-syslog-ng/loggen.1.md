@@ -81,9 +81,7 @@ When `loggen` finishes sending the messages, it displays the following statistic
 
     The number of seconds `loggen` will run. Default value: 10
 
-    {{% alert title="Note" color="info" %}}
-When `--interval` and `--number` are used together, `loggen` will send messages until the period set in `--interval` expires or the amount of messages set in `--number` is reached, whichever happens first.
-    {{% /alert %}}
+    {{< include-headless "wnt/note-loggen.md" >}}
 
 - `--ipv6` or `-6`
 
@@ -97,9 +95,7 @@ When `--interval` and `--number` are used together, `loggen` will send messages 
 
     Number of messages to generate.
 
-    {{% alert title="Note" color="info" %}}
-When `--interval` and `--number` are used together, `loggen` will send messages until the period set in `--interval` expires or the amount of messages set in `--number` is reached, whichever happens first.
-    {{% /alert %}}
+    {{< include-headless "wnt/note-loggen.md" >}}
 
 - `--no-framing` or `-F`
 

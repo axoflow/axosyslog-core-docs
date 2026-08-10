@@ -31,7 +31,7 @@ The parser creates the `${.xml.tag.item}` name-value pair with the list value `f
 |            |                |
 | ---------- | -------------- |
 | Synopsis:  | drop-invalid() |
-| Format:    | `yes|no`         |
+| Format:    | `yes` or `no`         |
 | Default:   | no             |
 | Mandatory: | no             |
 
@@ -106,7 +106,7 @@ The `prefix()` option is optional and its default value is `".xml"`.
 |            |                     |
 | ---------- | ------------------- |
 | Synopsis:  | strip-whitespaces() |
-| Format:    | `yes|no`              |
+| Format:    | `yes` or `no`              |
 | Default:   | no                  |
 | Mandatory: | no                  |
 

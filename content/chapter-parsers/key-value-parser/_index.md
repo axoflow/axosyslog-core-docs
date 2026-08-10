@@ -8,6 +8,8 @@ The {{% param "product.abbrev" %}} application can separate a message consisting
 
 You can refer to the separated parts of the message using the key of the value as a macro. For example, if the message contains `KEY1=value1,KEY2=value2`, you can refer to the values as `${KEY1}` and `${KEY2}`.
 
+See also the equivalent FilterX function, [`parse_kv()`]({{< relref "/filterx/function-reference.md#parse-kv" >}}).
+
 {{< include-headless "wnt/n-kv-parser-repeated-keys.md" >}}
 
 {{% alert title="Warning" color="warning" %}}
