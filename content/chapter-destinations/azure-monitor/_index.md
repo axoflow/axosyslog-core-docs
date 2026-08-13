@@ -51,9 +51,9 @@ This driver is actually a reusable configuration snippet configured to send log 
 
 The following options are specific to the `azure-monitor()` destination. But since this destination is based on the `http()` destination, you can use the [options of the `http()` destination]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}) as well if needed.
 
-> Note: The `azure-monitor()` destination automatically configures some of these `http()` destination options as required by the Azure Monitor Logs ingestion API.
-
-<!-- FIXME xinclude the http options -->
+{{% alert title="Note" color="info" %}}
+The `azure-monitor()` destination automatically configures some of these `http()` destination options as required by the Azure Monitor Logs ingestion API. The following sections list these options with the defaults that the `azure-monitor()` destination sets. You can override any of them.
+{{% /alert %}}
 
 ## auth()
 
@@ -91,3 +91,48 @@ This option was available in version 4.10, but has been deprecated in 4.11. Use 
 | Default: | - |
 
 *Description:* The name of the table in the Log Analytics Workspace where {{% param "product_name" %}} sends the data, for example, [syslog](https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/syslog).
+
+## body-prefix()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | string |
+| Default: | `[` |
+
+*Description:* For details, see [`body-prefix()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#https-options-body-prefix) of the `http()` destination. The `azure-monitor()` destination sets it to `[` to send the batch as a JSON array, while the underlying `http()` destination leaves it empty.
+
+## body-suffix()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | string |
+| Default: | `]` |
+
+*Description:* For details, see [`body-suffix()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#https-options-body-suffix) of the `http()` destination. The `azure-monitor()` destination sets it to `]` to send the batch as a JSON array, while the underlying `http()` destination leaves it empty.
+
+## delimiter()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | string |
+| Default: | `,` |
+
+*Description:* For details, see [`delimiter()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#https-options-delimiter) of the `http()` destination. The `azure-monitor()` destination changes the default value of the underlying `http()` destination from a newline character to a comma, so that the messages of a batch form a valid JSON array.
+
+## headers()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | string list |
+| Default: | `Content-Type: application/json` |
+
+*Description:* For details, see [`headers()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#headers) of the `http()` destination. The `azure-monitor()` destination sets the `Content-Type: application/json` header as required by the Logs ingestion API, while the underlying `http()` destination sends no extra headers by default.
+
+## persist-name()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | string |
+| Default: | `azure-monitor,<dce-uri>,<dcr-id>,<stream-name>` |
+
+*Description:* For details, see [`persist-name()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#persist-name) of the `http()` destination. The `azure-monitor()` destination derives the persist name from the `dce-uri()`, `dcr-id()`, and `stream-name()` options, so that each destination has a distinct persist name.
