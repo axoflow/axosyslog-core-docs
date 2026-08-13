@@ -180,9 +180,42 @@ For details on how this option influences HTTP batch mode, see [Batch mode and l
 
 {{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
-{{% include-headless "chunk/option-destination-flush-lines.md" %}}
+## flags()
 
-{{% include-headless "chunk/option-destination-flush-timeout.md" %}}
+|          |                                                      |
+| -------- | ---------------------------------------------------- |
+| Type:    | `seqnum`, `no-seqnum`, `seqnum-all`, `no-seqnum-all` |
+| Default: | `seqnum`                                             |
+
+*Description:* Flags influence the behavior of the destination driver.
+
+- `seqnum`: Assign a sequence number to the messages sent to this destination, and make it available in the `$SEQNUM` macro. By default, only locally generated messages (for example, the messages of the `internal()` source) are numbered. This flag is enabled by default, you can disable it with `no-seqnum`.
+- `seqnum-all`: Assign a sequence number to every message, not only to the locally generated ones. Enabling `seqnum-all` automatically enables `seqnum` as well. You can disable it with `no-seqnum-all`.
+
+## flush-bytes() (DEPRECATED)
+
+*Description:* Deprecated alias of [`batch-bytes()`](#https-options-batch-bytes). Using it in the `http()` destination logs a deprecation warning, use `batch-bytes()` instead.
+
+## flush-lines() (DEPRECATED)
+
+*Description:* Deprecated alias of [`batch-lines()`](#batch-lines). Using it in the `http()` destination logs a deprecation warning, use `batch-lines()` instead.
+
+{{% alert title="Note" color="info" %}}
+In the `http()` destination, `flush-lines()` isn't the generic destination option of the same name: it sets `batch-lines()`, and therefore defaults to `1` rather than to the global setting.
+{{% /alert %}}
+
+## flush-on-worker-key-change()
+
+|          |               |
+| -------- | ------------- |
+| Type:    | `yes` or `no` |
+| Default: | `no`          |
+
+*Description:* If set to `yes`, {{% param "product.abbrev" %}} closes and sends the current batch whenever the value of the [`worker-partition-key()`](#worker-partition-key) template changes, instead of mixing messages that belong to different partitions into the same batch. This option has no effect unless you also set `worker-partition-key()`.
+
+## flush-timeout() (DEPRECATED)
+
+*Description:* Deprecated alias of [`batch-timeout()`](#batch-timeout). Using it in the `http()` destination logs a deprecation warning, use `batch-timeout()` instead.
 
 ## force-content-compression()
 
@@ -343,6 +376,20 @@ http(
 );
 ```
 
+## response-adapter()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | `openobserve` or `splunk`  |
+| Default: | N/A (disabled)             |
+
+*Description:* Process the HTTP responses of a specific backend, so that {{% param "product.abbrev" %}} can detect errors that the server reports in the response body instead of in the status code.
+
+- `openobserve`: OpenObserve returns `200 OK` even for requests that only partially succeeded. Setting `response-adapter(openobserve)` turns such a response into an actual error, so that {{% param "product.abbrev" %}} can retry it.
+- `splunk`: Processes the responses of Splunk HTTP Event Collector backends the same way.
+
+The [`openobserve()`]({{< relref "/chapter-destinations/openobserve/_index.md" >}}) and [`splunk-hec-event()`]({{< relref "/chapter-destinations/syslog-ng-with-splunk/_index.md" >}}) destinations set this option automatically.
+
 {{% include-headless "chunk/option-destination-retries.md" %}}
 
 To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% param "product.abbrev" %}} will attempt to resend messages until the number of attempts reaches `retries`. If the HTTP server returns 4xx codes, {{% param "product.abbrev" %}} will drop the messages.
@@ -362,8 +409,7 @@ To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% param 
 
 {{% include-headless "chunk/example-tls-block-http.md" %}}
 
-
-{{% include-headless "chunk/option-destination-template.md" %}}
+{{% include-headless "chunk/option-destination-template-escape.md" %}}
 
 {{% include-headless "chunk/option-destination-throttle.md" %}}
 
@@ -372,6 +418,16 @@ To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% param 
 {{% include-headless "chunk/option-destination-http-timeout.md" %}}
 
 {{% include-headless "chunk/option-destination-timezone.md" %}}
+
+## tls()
+
+*Description:* Collects the TLS settings of the connection into a single block, instead of setting them one by one as separate options. The `tls()` block accepts the following options: [`ca-dir()`](#ca-dir), [`ca-file()`](#https-options-ca-file), [`cert-file()`](#cert-file), [`cipher-suite()`](#cipher-suite), [`key-file()`](#key-file), [`ocsp-stapling-verify()`](#tls-options-ocsp-stapling-verify), [`peer-verify()`](#peer-verify), [`ssl-version()`](#https-options-ssl-version), and [`use-system-cert-store()`](#use-system-cert-store).
+
+{{% include-headless "chunk/topic-tls-block-http.md" %}}
+
+{{% include-headless "chunk/example-tls-block-http.md" %}}
+
+{{% include-headless "chunk/option-destination-ts-format.md" %}}
 
 ## url()
 
@@ -406,6 +462,15 @@ In case the server on the specified URL returns a redirect request, {{% param "p
 {{% include-headless "chunk/option-destination-http-use-system-cert-store.md" %}}
 
 {{< include-headless "chunk/option-destination-worker-partition-autoscaling.md" >}}
+
+<!-- ## worker-partition-autoscaling-wfo()
+
+|          |                    |
+| -------- | ------------------ |
+| Type:    | number (of workers) |
+| Default: | `1`                |
+
+*Description:* When [`worker-partition-autoscaling(yes)`](#worker-partition-autoscaling) distributes the workers between the partitions, `worker-partition-autoscaling-wfo()` (workers for others) sets how many workers to hold back for the low-traffic partitions. The remaining workers are shared out between the high-traffic partitions in proportion to their traffic. Increase it if you have many small partitions that would otherwise have to wait for a free worker. -->
 
 {{< include-headless "chunk/option-destination-worker-partition-buckets.md" >}}
 
