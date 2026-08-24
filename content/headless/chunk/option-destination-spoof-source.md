@@ -20,10 +20,3 @@ Anything above the size of the maximum transmission unit (MTU), which is 1500 by
 The maximum datagram in IP protocols (both IPv4 and IPv6) is 65535 bytes including the IP and UDP headers. The minimum size of the IPv4 header is 20 bytes, the IPv6 is 40 bytes, and the UDP is 8 bytes.
 
 {{% /alert %}}
-
-{{% alert title="Warning" color="warning" %}}
-
-To use spoofing on Microsoft Windows platforms, you must also set the `spoof-interface()` option as well.
-
-{{% /alert %}}
-
