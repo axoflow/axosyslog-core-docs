@@ -128,7 +128,7 @@ The following column types are available:
 
 {{% include-headless "chunk/option-destination-throttle.md" %}}
 
-## timeout() (DEPRECATED) {#timeout}
+## timeout() (DEPRECATED) {#timeout-deprecated}
 
 |          |                          |
 | -------- | ------------------------ |
