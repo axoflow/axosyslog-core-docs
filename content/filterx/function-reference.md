@@ -1114,11 +1114,11 @@ utf8_validate("example");       # Returns true
 utf8_validate("\x80\x81\x82");  # Returns false
 ```
 
-## uuid
+## uuid or uuid4
 
-Available in {{% param "product.name" %}} 4.25 and later.
+Available in {{% param "product.name" %}} 4.25 and later. The `uuid4` alias is available in version 4.27 and later.
 
-Generates a random UUID v4 string. Usage:
+Generates a random [RFC 9562 UUIDv4](https://datatracker.ietf.org/doc/rfc9562/) identifier. Usage:
 
 ```shell
 uuid()
@@ -1127,7 +1127,25 @@ uuid()
 For example:
 
 ```shell
-${MESSAGE} = uuid();
+${MESSAGE} = string(uuid());
+```
+
+## uuid7
+
+Available in {{% param "product.name" %}} 4.27 and later.
+
+Generates a random [RFC 9562 UUIDv7](https://datatracker.ietf.org/doc/rfc9562/) identifier, which embeds a millisecond-precision Unix timestamp, so they sort lexically by creation time.
+
+Usage:
+
+```shell
+uuid7()
+```
+
+For example:
+
+```shell
+${MESSAGE} = string(uuid7());
 ```
 
 ## vars
