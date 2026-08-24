@@ -162,6 +162,7 @@ Variables can have the following types. All of these types have a matching funct
 - `protobuf`
 - `string`
 - [`subnet`]({{< relref "/filterx/filterx-subnet/_index.md#subnet" >}}) for IPv4 or IPv6 subnets in CIDR notation.
+- [`tuple`](#tuples) is a read-only, list-like data type similar to a Python tuple. Available in {{% param "product.name" %}} 4.27 and later.
 
 ## Assign values
 
@@ -372,6 +373,23 @@ Within a FilterX block, you can access the fields of complex data types by using
 When referring to the field of a name-value pair (which begins with the `$` character), place the dot or the square bracket outside the curly bracket surrounding the name of the name-value pair, for example: `${MY-LIST}[2]` or `${MY-OBJECT}.mykey`. If the name of the key contains characters that are not permitted in FilterX variable names, for example, a hyphen (`-`), use the bracketed syntax and enclose the key in double quotes: `${MY-LIST}["my-key-name"]`.
 
 You can add two lists or two dicts using the {{% xref "/filterx/operator-reference.md#plus-operator" %}}.
+
+### Tuples
+
+Available in {{% param "product.name" %}} 4.27 and later.
+
+A `tuple` is a read-only, list-like data type similar to a Python tuple. You can initialize a tuple only once, then it remains read-only until the end of its lifecycle.
+
+Tuple examples:
+
+```shell
+t = (); # empty tuple
+t = ("foo",); # singleton
+t = (1,2,3); # a tuple of 3 elements
+
+d = {'foo':'foovalue','bar':'barvalue'};
+t = tuple([1,2,3,d]); # a tuple with the value (1,2,3,{"foo":"foovalue","bar":"barvalue"})
+```
 
 ### List membership
 
