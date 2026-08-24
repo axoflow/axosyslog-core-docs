@@ -6,6 +6,15 @@ weight: 10
 
 {{< include-headless "banner-new-to-axosyslog.md" >}}
 
+## Version 4.27 (2026-08-19)
+
+- FilterX has a new [`tuple`]({{< relref "/filterx/_index.md#tuples" >}}) variable type, a read-only, list-like data type similar to a Python tuple. You can initialize a tuple only once, after that it remains read-only until the end of its lifecycle.
+- The new [`uuid7`]({{< relref "/filterx/function-reference.md#uuid7" >}}) FilterX function generates a random [RFC 9562 UUIDv7](https://datatracker.ietf.org/doc/rfc9562/) identifier. Such identifiers embed a millisecond-precision Unix timestamp, so they sort lexically by creation time. In addition, the [`uuid`]({{< relref "/filterx/function-reference.md#uuid-or-uuid4" >}}) function is now also available under the `uuid4` alias.
+- The [`http()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#response-adapter" >}}), `splunk-hec-event()`, and [`openobserve()`]({{< relref "/chapter-destinations/openobserve/_index.md#response-adapter" >}}) destinations now support the `response-adapter()` option. Some servers put the error data in the HTTP response body instead of the status code, and this option lets {{< product >}} find these errors and retry the affected batch.
+- In the [`arrow-flight()`](/chapter-destinations/arrow-flight/_index.md) destination, the `timeout()` option is deprecated. Use the `keep-alive()` option instead.
+
+For a list of bugfixes, see the [GitHub release page](https://github.com/axoflow/axosyslog/releases/tag/axosyslog-4.27.0).
+
 ## Version 4.26 (2026-06-30)
 
 - The new [`arrow-flight()`]({{< relref "/chapter-destinations/arrow-flight/_index.md" >}}) destination sends structured, columnar data to an [Apache Arrow Flight](https://arrow.apache.org/docs/format/Flight.html) server over gRPC. You define the columns and their types with the `schema()` option and map each column to a {{< product >}} template.
