@@ -6,6 +6,35 @@ weight:  100
 
 The `sumologic-http()` destination supports all {{% xref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" %}}.
 
+You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/sumologic/sumologic.conf). Note that the `sumologic-http()` destination changes the default value of the following `http()` options.
+
+## batch-bytes()
+
+|          |        |
+| -------- | ------ |
+| Type:    | number |
+| Default: | `1MiB` |
+
+*Description:* For details, see [`batch-bytes()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#https-options-batch-bytes) of the `http()` destination. The `sumologic-http()` destination changes the default value of the underlying `http()` destination from none to `1MiB`.
+
+## batch-lines()
+
+|          |        |
+| -------- | ------ |
+| Type:    | number |
+| Default: | `1000` |
+
+*Description:* For details, see [`batch-lines()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#batch-lines) of the `http()` destination. The `sumologic-http()` destination changes the default value of the underlying `http()` destination from `1` to `1000`.
+
+## use-system-cert-store()
+
+|          |               |
+| -------- | ------------- |
+| Type:    | `yes` or `no` |
+| Default: | `yes`         |
+
+*Description:* For details, see [`use-system-cert-store()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#use-system-cert-store) of the `http()` destination. The `sumologic-http()` destination changes the default value of the underlying `http()` destination from `no` to `yes`.
+
 In addition, the `sumologic-http()` destination also has the following options.
 
 {{% include-headless "chunk/option-destination-batch-bytes.md" %}}

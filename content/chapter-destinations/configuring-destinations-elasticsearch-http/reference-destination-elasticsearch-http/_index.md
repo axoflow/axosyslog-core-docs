@@ -8,6 +8,7 @@ The `elasticsearch-http` destination of {{% param "product.abbrev" %}} can direc
 
 This destination is available in {{% param "product.abbrev" %}} version 3.21 and later.
 
+The `elasticsearch-http()` destination is a reusable configuration snippet based on the `http()` destination, so you can use the [options of the `http()` destination]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}) as well. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/elasticsearch/elastic-http.conf). Note that the `elasticsearch-http()` destination changes the default value of several `http()` options, as described in the following sections.
 
 {{% include-headless "chunk/option-destination-batch-bytes.md" %}}
 
@@ -20,9 +21,11 @@ For details on how this option influences batch mode, see {{% xref "/chapter-des
 |          |        |
 | -------- | ------ |
 | Type:    | number |
-| Default: | 25     |
+| Default: | 100    |
 
 {{% include-headless "chunk/option-description-destination-batch-lines.md" %}}
+
+The `elasticsearch-http()` destination changes the default value of the underlying `http()` destination from `1` to `100`.
 
 For details on how this option influences batch mode, see {{% xref "/chapter-destinations/configuring-destinations-elasticsearch-http/elasticsearch-http-batch-mode/_index.md" %}}
 
@@ -33,6 +36,15 @@ For details on how this option influences batch mode, see {{% xref "/chapter-des
 For details on how this option influences batch mode, see {{% xref "/chapter-destinations/configuring-destinations-elasticsearch-http/elasticsearch-http-batch-mode/_index.md" %}}
 
 
+
+## body-suffix() {#elasticsearch-http-options-body-suffix}
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | string |
+| Default: | a newline character |
+
+*Description:* For details, see [`body-suffix()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#https-options-body-suffix) of the `http()` destination. The `elasticsearch-http()` destination appends a newline character to the body as required by the Elasticsearch Bulk API, while the underlying `http()` destination leaves it empty.
 
 {{% include-headless "chunk/option-destination-tls-ca-dir.md" %}}
 
@@ -97,6 +109,15 @@ For details on how this option influences batch mode, see {{% xref "/chapter-des
 
 
 {{< include-headless "chunk/option-destination-diskbuffer.md" >}}
+
+## headers() {#elasticsearch-http-options-headers}
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | string list |
+| Default: | `Content-Type: application/x-ndjson` |
+
+*Description:* For details, see [`headers()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#headers) of the `http()` destination. The `elasticsearch-http()` destination sets the `Content-Type: application/x-ndjson` header as required by the Elasticsearch Bulk API, while the underlying `http()` destination sends no extra headers by default.
 
 {{< include-headless "chunk/option-hook-commands.md" >}}
 
@@ -198,7 +219,7 @@ To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% param 
 | Type:    | number [seconds] |
 | Default: | 10                 |
 
-*Description:* The value (in seconds) to wait for an operation to complete, and attempt to reconnect the server if exceeded.
+*Description:* The value (in seconds) to wait for an operation to complete, and attempt to reconnect the server if exceeded. The `elasticsearch-http()` destination changes the default value of the underlying `http()` destination from `0` (no timeout) to `10`.
 
 
 
@@ -242,5 +263,7 @@ In case the server on the specified URL returns a redirect request, {{% param "p
 | Default: | 4       |
 
 {{< include-headless "chunk/option-destination-description-workers.md" >}}
+
+The `elasticsearch-http()` destination changes the default value of the underlying `http()` destination from `1` to `4`.
 
 {{% include-headless "chunk/http-load-balance-workers.md" %}}

@@ -180,9 +180,25 @@ For details on how this option influences HTTP batch mode, see [Batch mode and l
 
 {{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
-{{% include-headless "chunk/option-destination-flush-lines.md" %}}
+{{% include-headless "chunk/option-destination-threaded-flags.md" %}}
 
-{{% include-headless "chunk/option-destination-flush-timeout.md" %}}
+## flush-bytes() (DEPRECATED)
+
+*Description:* Deprecated alias of [`batch-bytes()`](#https-options-batch-bytes). Using it in the `http()` destination logs a deprecation warning, use `batch-bytes()` instead.
+
+## flush-lines() (DEPRECATED)
+
+*Description:* Deprecated alias of [`batch-lines()`](#batch-lines). Using it in the `http()` destination logs a deprecation warning, use `batch-lines()` instead.
+
+{{% alert title="Note" color="info" %}}
+In the `http()` destination, `flush-lines()` isn't the generic destination option of the same name: it sets `batch-lines()`, and therefore defaults to `1` rather than to the global setting.
+{{% /alert %}}
+
+{{% include-headless "chunk/option-destination-flush-on-worker-key-change.md" %}}
+
+## flush-timeout() (DEPRECATED)
+
+*Description:* Deprecated alias of [`batch-timeout()`](#batch-timeout). Using it in the `http()` destination logs a deprecation warning, use `batch-timeout()` instead.
 
 ## force-content-compression()
 
@@ -343,6 +359,8 @@ http(
 );
 ```
 
+{{% include-headless "chunk/option-destination-http-response-adapter.md" %}}
+
 {{% include-headless "chunk/option-destination-retries.md" %}}
 
 To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% param "product.abbrev" %}} will attempt to resend messages until the number of attempts reaches `retries`. If the HTTP server returns 4xx codes, {{% param "product.abbrev" %}} will drop the messages.
@@ -362,8 +380,7 @@ To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% param 
 
 {{% include-headless "chunk/example-tls-block-http.md" %}}
 
-
-{{% include-headless "chunk/option-destination-template.md" %}}
+{{% include-headless "chunk/option-destination-template-escape.md" %}}
 
 {{% include-headless "chunk/option-destination-throttle.md" %}}
 
@@ -372,6 +389,16 @@ To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% param 
 {{% include-headless "chunk/option-destination-http-timeout.md" %}}
 
 {{% include-headless "chunk/option-destination-timezone.md" %}}
+
+## tls()
+
+*Description:* Collects the TLS settings of the connection into a single block, instead of setting them one by one as separate options. The `tls()` block accepts the following options: [`ca-dir()`](#ca-dir), [`ca-file()`](#https-options-ca-file), [`cert-file()`](#cert-file), [`cipher-suite()`](#cipher-suite), [`key-file()`](#key-file), [`ocsp-stapling-verify()`](#tls-options-ocsp-stapling-verify), [`peer-verify()`](#peer-verify), [`ssl-version()`](#https-options-ssl-version), and [`use-system-cert-store()`](#use-system-cert-store).
+
+{{% include-headless "chunk/topic-tls-block-http.md" %}}
+
+{{% include-headless "chunk/example-tls-block-http.md" %}}
+
+{{% include-headless "chunk/option-destination-ts-format.md" %}}
 
 ## url()
 
@@ -406,6 +433,15 @@ In case the server on the specified URL returns a redirect request, {{% param "p
 {{% include-headless "chunk/option-destination-http-use-system-cert-store.md" %}}
 
 {{< include-headless "chunk/option-destination-worker-partition-autoscaling.md" >}}
+
+<!-- ## worker-partition-autoscaling-wfo()
+
+|          |                    |
+| -------- | ------------------ |
+| Type:    | number (of workers) |
+| Default: | `1`                |
+
+*Description:* When [`worker-partition-autoscaling(yes)`](#worker-partition-autoscaling) distributes the workers between the partitions, `worker-partition-autoscaling-wfo()` (workers for others) sets how many workers to hold back for the low-traffic partitions. The remaining workers are shared out between the high-traffic partitions in proportion to their traffic. Increase it if you have many small partitions that would otherwise have to wait for a free worker. -->
 
 {{< include-headless "chunk/option-destination-worker-partition-buckets.md" >}}
 

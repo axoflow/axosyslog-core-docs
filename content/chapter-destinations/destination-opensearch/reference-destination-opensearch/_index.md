@@ -8,6 +8,8 @@ The `opensearch` destination of {{% param "product.abbrev" %}} can directly post
 
 This destination is available in {{% param "product.abbrev" %}} version 4.4 and later.
 
+The `opensearch()` destination is a reusable configuration snippet based on the `http()` destination, so you can use the [options of the `http()` destination]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}) as well. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/opensearch/opensearch.conf). Note that the `opensearch()` destination changes the default value of several `http()` options, as described in the following sections.
+
 {{% include-headless "chunk/option-destination-batch-bytes.md" %}}
 
 For details on how this option influences batch mode, see {{% xref "/chapter-destinations/destination-opensearch/batch-mode/_index.md" %}}.
@@ -19,9 +21,11 @@ For details on how this option influences batch mode, see {{% xref "/chapter-des
 |          |        |
 | -------- | ------ |
 | Type:    | number |
-| Default: | 25     |
+| Default: | 100    |
 
 {{% include-headless "chunk/option-description-destination-batch-lines.md" %}}
+
+The `opensearch()` destination changes the default value of the underlying `http()` destination from `1` to `100`.
 
 For details on how this option influences batch mode, see {{% xref "/chapter-destinations/destination-opensearch/batch-mode/_index.md" %}}.
 
@@ -51,6 +55,15 @@ For details on how this option influences batch mode, see {{% xref "/chapter-des
         );
     };
 ```
+
+## body-suffix() {#opensearch-options-body-suffix}
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | string |
+| Default: | a newline character |
+
+*Description:* For details, see [`body-suffix()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#https-options-body-suffix) of the `http()` destination. The `opensearch()` destination appends a newline character to the body as required by the OpenSearch Bulk API, while the underlying `http()` destination leaves it empty.
 
 ## ca-file() {#opensearch-options-ca-file}
 
@@ -115,6 +128,15 @@ For details on how this option influences batch mode, see {{% xref "/chapter-des
 For details on how this option influences batch mode, see {{% xref "/chapter-destinations/destination-opensearch/batch-mode/_index.md" %}}.
 
 {{< include-headless "chunk/option-destination-diskbuffer.md" >}}
+
+## headers() {#opensearch-options-headers}
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | string list |
+| Default: | `Content-Type: application/x-ndjson` |
+
+*Description:* For details, see [`headers()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#headers) of the `http()` destination. The `opensearch()` destination sets the `Content-Type: application/x-ndjson` header as required by the OpenSearch Bulk API, while the underlying `http()` destination sends no extra headers by default.
 
 {{< include-headless "chunk/option-hook-commands.md" >}}
 
@@ -193,7 +215,7 @@ To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% param 
 | Type:    | number [seconds] |
 | Default: | 10                 |
 
-*Description:* The value (in seconds) to wait for an operation to complete, and attempt to reconnect the server if exceeded.
+*Description:* The value (in seconds) to wait for an operation to complete, and attempt to reconnect the server if exceeded. The `opensearch()` destination changes the default value of the underlying `http()` destination from `0` (no timeout) to `10`.
 
 ## url()
 
@@ -231,5 +253,7 @@ In case the server on the specified URL returns a redirect request, {{% param "p
 | Default: | 4       |
 
 {{< include-headless "chunk/option-destination-description-workers.md" >}}
+
+The `opensearch()` destination changes the default value of the underlying `http()` destination from `1` to `4`.
 
 {{% include-headless "chunk/http-load-balance-workers.md" %}}

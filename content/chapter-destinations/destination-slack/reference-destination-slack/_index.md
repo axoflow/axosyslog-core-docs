@@ -6,6 +6,8 @@ weight:  100
 
 The `slack` destination of {{% param "product.abbrev" %}} can directly post log messages and notifications to Slack channels. The `slack` destination has the following options.
 
+The `slack()` destination is a reusable configuration snippet based on the `http()` destination, so you can use the [options of the `http()` destination]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}) as well. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/slack/slack.conf). Note that the `slack()` destination changes the default value of several `http()` options, as described in the following sections.
+
 
 ## author-name()
 
@@ -197,7 +199,16 @@ To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% param 
 {{% include-headless "chunk/option-destination-template.md" %}}
 
 
-{{% include-headless "chunk/option-destination-throttle.md" %}}
+## throttle()
+
+|          |        |
+| -------- | ------ |
+| Type:    | number |
+| Default: | 1      |
+
+{{% include-headless "chunk/option-throttle-description.md" %}}
+
+The `slack()` destination changes the default value of the underlying `http()` destination from `0` (unlimited) to `1`.
 
 {{% include-headless "chunk/option-description-destination-slack-throttle.md" %}}
 
@@ -239,8 +250,52 @@ To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% param 
 
 {{% include-headless "chunk/option-destination-http-user-agent.md" %}}
 
-{{% include-headless "chunk/option-destination-http-use-system-cert-store.md" %}}
+## use-system-cert-store()
+
+|          |               |
+| -------- | ------------- |
+| Type:    | `yes` or `no` |
+| Default: | `yes`         |
+
+*Description:* For details, see [`use-system-cert-store()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#use-system-cert-store) of the `http()` destination. The `slack()` destination changes the default value of the underlying `http()` destination from `no` to `yes`.
 
 {{< include-headless "chunk/option-destination-threaded-workers.md" >}}
 
 {{% include-headless "chunk/http-load-balance-workers.md" %}}
+
+## body-prefix()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | string |
+| Default: | `{"attachments":[` |
+
+*Description:* For details, see [`body-prefix()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#https-options-body-prefix) of the `http()` destination. The `slack()` destination sets it to `{"attachments":[` to send the batch in the format that the Slack webhook API expects, while the underlying `http()` destination leaves it empty.
+
+## body-suffix()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | string |
+| Default: | `]}` |
+
+*Description:* For details, see [`body-suffix()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#https-options-body-suffix) of the `http()` destination. The `slack()` destination sets it to `]}` to close the format that the Slack webhook API expects, while the underlying `http()` destination leaves it empty.
+
+## delimiter()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | string |
+| Default: | `,` |
+
+*Description:* For details, see [`delimiter()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#https-options-delimiter) of the `http()` destination. The `slack()` destination changes the default value of the underlying `http()` destination from a newline character to a comma, so that the attachments of a batch form a valid JSON array.
+
+## headers()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | string list |
+| Default: | `Content-type: application/json` |
+
+*Description:* For details, see [`headers()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#headers) of the `http()` destination. The `slack()` destination sets the `Content-type: application/json` header as required by the Slack webhook API, while the underlying `http()` destination sends no extra headers by default.
+

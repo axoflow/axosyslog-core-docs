@@ -58,18 +58,61 @@ This driver is actually a reusable configuration snippet configured to send log 
 
 The following options are specific to the `openobserve-log()` destination. But since this destination is based on the `http()` destination, you can use the [options of the `http()` destination]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}) as well if needed.
 
-> Note: The `openobserve-log()` destination automatically configures some of these `http()` destination options as required by the OpenObserve Ingest API.
+> Note: The `openobserve-log()` destination automatically configures some of these `http()` destination options as required by the OpenObserve Ingest API. The following sections list these options with the defaults that the `openobserve-log()` destination sets. You can override any of them.
 
-<!-- FIXME xinclude the http options instead of just linking them
-  body_prefix("[")
-  body_suffix("]")
-  delimiter(",")
-  workers(4)
-  batch_lines(100)
-  batch_timeout(1000)
-  timeout(10)
-  headers("Connection: keep-alive")
-   -->
+## batch-lines()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | number |
+| Default: | `100` |
+
+*Description:* For details, see [`batch-lines()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#batch-lines) of the `http()` destination. The `openobserve-log()` destination changes the default value of the underlying `http()` destination from `1` to `100`.
+
+## batch-timeout()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | time in milliseconds |
+| Default: | `0` |
+
+*Description:* For details, see [`batch-timeout()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#batch-timeout) of the `http()` destination. The `openobserve-log()` destination changes the default value of the underlying `http()` destination from `-1` (disabled) to `0`.
+
+## body-prefix()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | string |
+| Default: | `"["` |
+
+*Description:* For details, see [`body-prefix()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#https-options-body-prefix) of the `http()` destination. The `openobserve-log()` destination sets it to `[` to send the batch as a JSON array, while the underlying `http()` destination leaves it empty.
+
+## body-suffix()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | string |
+| Default: | `"]"` |
+
+*Description:* For details, see [`body-suffix()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#https-options-body-suffix) of the `http()` destination. The `openobserve-log()` destination sets it to `]` to send the batch as a JSON array, while the underlying `http()` destination leaves it empty.
+
+## delimiter()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | string |
+| Default: | `","` |
+
+*Description:* For details, see [`delimiter()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#https-options-delimiter) of the `http()` destination. The `openobserve-log()` destination changes the default value of the underlying `http()` destination from a newline character to a comma, so that the messages of a batch form a valid JSON array.
+
+## headers()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | string list |
+| Default: | `"Connection: keep-alive"` |
+
+*Description:* For details, see [`headers()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#headers) of the `http()` destination. The `openobserve-log()` destination sets the `Connection: keep-alive` header, while the underlying `http()` destination sends no extra headers by default.
 
 ## organization()
 
@@ -116,6 +159,15 @@ The following options are specific to the `openobserve-log()` destination. But s
 
 *Description:* The [OpenObserve stream](https://openobserve.ai/docs/user-guide/streams/) where {{% param "product_name" %}} sends the data, for example, `your-example-stream`.
 
+## timeout()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | time in seconds |
+| Default: | `10` |
+
+*Description:* For details, see [`timeout()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#http-options-timeout) of the `http()` destination. The `openobserve-log()` destination changes the default value of the underlying `http()` destination from `0` (no timeout) to `10`.
+
 ## user()
 
 |          |                            |
@@ -133,3 +185,12 @@ The following options are specific to the `openobserve-log()` destination. But s
 | Default: | - |
 
 *Description:* The base URL of the OpenObserve Ingest API. The actual URL is constructed from the base URL and some other options of the destination: `url():port()/api/organization()/stream()/_json`
+
+## workers()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | number |
+| Default: | `4` |
+
+*Description:* For details, see [`workers()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#workers) of the `http()` destination. The `openobserve-log()` destination changes the default value of the underlying `http()` destination from `1` to `4`.

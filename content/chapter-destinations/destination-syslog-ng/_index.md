@@ -29,7 +29,7 @@ Note in this driver you have to set the address of the destination server using 
 
 ## `syslog-ng()` destination options {#reference-destination-syslog-ng}
 
-The `syslog-ng()` destination is a special version of the `network()` destination driver: by default, it sends EWMM-formatted log messages to the TCP514 port of the server.
+The `syslog-ng()` destination is a special version of the `network()` destination driver: by default, it sends EWMM-formatted log messages to the TCP514 port of the server. In addition to the options listed here, you can use the [options of the `network()` destination]({{< relref "/chapter-destinations/configuring-destinations-network/reference-destination-network-chapter/_index.md" >}}) as well. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/ewmm/ewmm.conf).
 
 {{% include-headless "chunk/option-destination-tls-ca-dir.md" %}}
 
@@ -45,7 +45,14 @@ The `syslog-ng()` destination is a special version of the `network()` destinatio
 
 {{% include-headless "chunk/option-destination-flush-lines.md" %}}
 
-{{< include-headless "chunk/option-destination-frac-digits.md" >}}
+## frac-digits()
+
+|          |        |
+| -------- | ------ |
+| Type:    | number |
+| Default: | `3`    |
+
+*Description:* For details, see [`frac-digits()`]({{< relref "/chapter-destinations/configuring-destinations-network/reference-destination-network-chapter/_index.md" >}}#frac-digits) of the `network()` destination. The `syslog-ng()` destination changes the default value of the underlying `network()` destination from `0` to `3`, so that the EWMM-formatted messages carry millisecond-precision timestamps.
 
 {{% include-headless "chunk/option-source-ip-protocol.md" %}}
 
@@ -65,7 +72,14 @@ The `syslog-ng()` destination is a special version of the `network()` destinatio
 
 {{< include-headless "chunk/option-destination-mark-mode.md" >}}
 
-{{% include-headless "chunk/option-destination-syslog-port.md" %}}
+## port() or destport()
+
+|          |        |
+| -------- | ------ |
+| Type:    | number |
+| Default: | `514`  |
+
+*Description:* For details, see [`port()`]({{< relref "/chapter-destinations/configuring-destinations-network/reference-destination-network-chapter/_index.md" >}}#port-or-destport) of the `network()` destination. The `syslog-ng()` destination changes the default value of the underlying `network()` destination from `601` to `514`.
 
 
 
