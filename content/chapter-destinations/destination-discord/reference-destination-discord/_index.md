@@ -6,6 +6,8 @@ weight:  100
 
 The `discord()` destination of {{% param "product.abbrev" %}} can directly post log messages to web services using the HTTP protocol. The `discord()` destination has the following options.
 
+The `discord()` destination is a reusable configuration snippet based on the `http()` destination, so you can use the [options of the `http()` destination]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}) as well. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/discord/discord.conf). Note that the `discord()` destination changes the default value of several `http()` options, as described in the following sections.
+
 
 ## avatar-url()
 
@@ -210,7 +212,7 @@ Hazard of data loss! Make sure to include a fallback value, as if the template g
 
 {{% include-headless "chunk/option-throttle-description.md" %}}
 
-For more information, see [Discord: Rate Limits](https://discord.com/developers/topics/rate-limits#global-rate-limit).
+The `discord()` destination changes the default value of the underlying `http()` destination from `0` (unlimited) to `5`. For more information, see [Discord: Rate Limits](https://discord.com/developers/topics/rate-limits#global-rate-limit).
 
 
 {{% include-headless "chunk/option-destination-http-timeout.md" %}}
@@ -250,8 +252,25 @@ For more information, see [Discord: Rate Limits](https://discord.com/developers/
 *Description:* Overrides the default username of the webhook. For details, see the username option in the [Discord documentation](https://discord.com/developers/%5Dresources/webhook#webhook-object-jsonform-params).
 
 
-{{% include-headless "chunk/option-destination-http-use-system-cert-store.md" %}}
+## use-system-cert-store()
+
+|          |               |
+| -------- | ------------- |
+| Type:    | `yes` or `no` |
+| Default: | `yes`         |
+
+*Description:* For details, see [`use-system-cert-store()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#use-system-cert-store) of the `http()` destination. The `discord()` destination changes the default value of the underlying `http()` destination from `no` to `yes`.
 
 {{< include-headless "chunk/option-destination-threaded-workers.md" >}}
 
 {{% include-headless "chunk/http-load-balance-workers.md" %}}
+
+## headers()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | string list |
+| Default: | `Content-type: application/json` |
+
+*Description:* For details, see [`headers()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#headers) of the `http()` destination. The `discord()` destination sets the `Content-type: application/json` header as required by the Discord webhook API, while the underlying `http()` destination sends no extra headers by default.
+

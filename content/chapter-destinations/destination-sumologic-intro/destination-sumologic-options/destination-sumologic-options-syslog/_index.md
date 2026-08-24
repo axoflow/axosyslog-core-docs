@@ -6,6 +6,26 @@ weight:  300
 
 The `sumologic-syslog()` destination supports all {{% xref "/chapter-destinations/configuring-destinations-network/reference-destination-network-chapter/_index.md" %}}.
 
+You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/sumologic/sumologic.conf). Note that the `sumologic-syslog()` destination changes the default value of the following `network()` options.
+
+## port()
+
+|          |        |
+| -------- | ------ |
+| Type:    | number |
+| Default: | `6514` |
+
+*Description:* For details, see [`port()`]({{< relref "/chapter-destinations/configuring-destinations-network/reference-destination-network-chapter/_index.md" >}}#port-or-destport) of the `network()` destination. The `sumologic-syslog()` destination changes the default value of the underlying `network()` destination from `601` to `6514`, the port that the Sumo Logic cloud syslog source listens on.
+
+## transport()
+
+|          |                  |
+| -------- | ---------------- |
+| Type:    | udp, tcp, or tls |
+| Default: | `tls`            |
+
+*Description:* For details, see [`transport()`]({{< relref "/chapter-destinations/configuring-destinations-network/reference-destination-network-chapter/_index.md" >}}#transport) of the `network()` destination. The `sumologic-syslog()` destination changes the default value of the underlying `network()` destination from `tcp` to `tls`, because Sumo Logic accepts only encrypted connections.
+
 In addition, the `sumologic-syslog()` destination also has the following options.
 
 

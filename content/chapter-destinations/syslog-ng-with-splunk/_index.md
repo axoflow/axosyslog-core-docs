@@ -85,3 +85,63 @@ destination d_splunk_hec_raw {
 The options of the `splunk-hec-raw()` destination are similar to the `splunk-hec-event()` destination, but it has a mandatory option: `channel()`. The `channel()` option must be a [globally unique channel identifier (GUID)](https://docs.splunk.com/Documentation/Splunk/9.0.4/Data/FormateventsforHTTPEventCollector#Channel_identifier_header), this ID differentiates the data from different clients. Note that Splunk doesn't generate this ID, you must create it for yourself. When Splunk sees a new channel identifier, it creates a new channel.
 
 Use the `template()` option to set the content of the log message sent to Splunk (and not the `event()` option that is used in the `splunk-hec-event()` destination).
+
+## Options
+
+The `splunk-hec-event()` and `splunk-hec-raw()` destinations are reusable configuration snippets based on the `http()` destination. In addition to the Splunk-specific options listed above, you can use the [options of the `http()` destination]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}) as well. You can find the source of these configuration snippets on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/splunk/splunk.conf).
+
+> Note: Both destinations automatically configure some of these `http()` destination options as required by the Splunk HEC API. The following sections list these options with the defaults that the Splunk destinations set. You can override any of them.
+
+## batch-bytes()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | number |
+| Default: | `4096kB` |
+
+*Description:* For details, see [`batch-bytes()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#https-options-batch-bytes) of the `http()` destination. The `splunk-hec-event() and splunk-hec-raw()` destination changes the default value of the underlying `http()` destination from none to `4096kB`.
+
+## batch-lines()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | number |
+| Default: | `5000` |
+
+*Description:* For details, see [`batch-lines()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#batch-lines) of the `http()` destination. The `splunk-hec-event() and splunk-hec-raw()` destination changes the default value of the underlying `http()` destination from `1` to `5000`.
+
+## batch-timeout()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | time in milliseconds |
+| Default: | `0` |
+
+*Description:* For details, see [`batch-timeout()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#batch-timeout) of the `http()` destination. The `splunk-hec-event() and splunk-hec-raw()` destination changes the default value of the underlying `http()` destination from `-1` (disabled) to `0`.
+
+## timeout()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | time in seconds |
+| Default: | `10` |
+
+*Description:* For details, see [`timeout()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#http-options-timeout) of the `http()` destination. The `splunk-hec-event() and splunk-hec-raw()` destination changes the default value of the underlying `http()` destination from `0` (no timeout) to `10`.
+
+## use-system-cert-store()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | `yes` or `no` |
+| Default: | `yes` |
+
+*Description:* For details, see [`use-system-cert-store()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#use-system-cert-store) of the `http()` destination. The `splunk-hec-event() and splunk-hec-raw()` destination changes the default value of the underlying `http()` destination from `no` to `yes`.
+
+## workers()
+
+|          |                            |
+| -------- | -------------------------- |
+| Type:    | number |
+| Default: | `8` |
+
+*Description:* For details, see [`workers()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md" >}}#workers) of the `http()` destination. The `splunk-hec-event() and splunk-hec-raw()` destination changes the default value of the underlying `http()` destination from `1` to `8`.

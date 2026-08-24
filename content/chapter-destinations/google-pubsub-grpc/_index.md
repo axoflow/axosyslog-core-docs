@@ -39,7 +39,7 @@ destination d_pubsub_grpc {
 };
 ```
 
-You can change the default endpoint using [`service_endpoint()`](#service-endpoint).
+You can change the default endpoint using [`service-endpoint()`](#service-endpoint).
 
 ## Options
 
@@ -142,7 +142,7 @@ auth(
 
 {{% include-headless "chunk/option-destination-send-timezone.md" %}}
 
-## service_endpoint() {#service-endpoint}
+## service-endpoint() {#service-endpoint}
 
 |          |                            |
 | -------- | -------------------------- |
@@ -177,7 +177,7 @@ auth(
 | Type:    | string |
 | Default: | - |
 
-*Description:* An alias for [`service_endpoint`](#service-endpoint).
+*Description:* An alias for [`service-endpoint()`](#service-endpoint).
 
 {{< include-headless "chunk/option-destination-worker-partition-autoscaling.md" >}}
 

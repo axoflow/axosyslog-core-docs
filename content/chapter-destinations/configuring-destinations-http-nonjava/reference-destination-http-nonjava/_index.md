@@ -180,17 +180,7 @@ For details on how this option influences HTTP batch mode, see [Batch mode and l
 
 {{< include-headless "chunk/option-destination-diskbuffer.md" >}}
 
-## flags()
-
-|          |                                                      |
-| -------- | ---------------------------------------------------- |
-| Type:    | `seqnum`, `no-seqnum`, `seqnum-all`, `no-seqnum-all` |
-| Default: | `seqnum`                                             |
-
-*Description:* Flags influence the behavior of the destination driver.
-
-- `seqnum`: Assign a sequence number to the messages sent to this destination, and make it available in the `$SEQNUM` macro. By default, only locally generated messages (for example, the messages of the `internal()` source) are numbered. This flag is enabled by default, you can disable it with `no-seqnum`.
-- `seqnum-all`: Assign a sequence number to every message, not only to the locally generated ones. Enabling `seqnum-all` automatically enables `seqnum` as well. You can disable it with `no-seqnum-all`.
+{{% include-headless "chunk/option-destination-threaded-flags.md" %}}
 
 ## flush-bytes() (DEPRECATED)
 
@@ -204,14 +194,7 @@ For details on how this option influences HTTP batch mode, see [Batch mode and l
 In the `http()` destination, `flush-lines()` isn't the generic destination option of the same name: it sets `batch-lines()`, and therefore defaults to `1` rather than to the global setting.
 {{% /alert %}}
 
-## flush-on-worker-key-change()
-
-|          |               |
-| -------- | ------------- |
-| Type:    | `yes` or `no` |
-| Default: | `no`          |
-
-*Description:* If set to `yes`, {{% param "product.abbrev" %}} closes and sends the current batch whenever the value of the [`worker-partition-key()`](#worker-partition-key) template changes, instead of mixing messages that belong to different partitions into the same batch. This option has no effect unless you also set `worker-partition-key()`.
+{{% include-headless "chunk/option-destination-flush-on-worker-key-change.md" %}}
 
 ## flush-timeout() (DEPRECATED)
 
@@ -376,19 +359,7 @@ http(
 );
 ```
 
-## response-adapter()
-
-|          |                            |
-| -------- | -------------------------- |
-| Type:    | `openobserve` or `splunk`  |
-| Default: | N/A (disabled)             |
-
-*Description:* Process the HTTP responses of a specific backend, so that {{% param "product.abbrev" %}} can detect errors that the server reports in the response body instead of in the status code.
-
-- `openobserve`: OpenObserve returns `200 OK` even for requests that only partially succeeded. Setting `response-adapter(openobserve)` turns such a response into an actual error, so that {{% param "product.abbrev" %}} can retry it.
-- `splunk`: Processes the responses of Splunk HTTP Event Collector backends the same way.
-
-The [`openobserve()`]({{< relref "/chapter-destinations/openobserve/_index.md" >}}) and [`splunk-hec-event()`]({{< relref "/chapter-destinations/syslog-ng-with-splunk/_index.md" >}}) destinations set this option automatically.
+{{% include-headless "chunk/option-destination-http-response-adapter.md" %}}
 
 {{% include-headless "chunk/option-destination-retries.md" %}}
 
