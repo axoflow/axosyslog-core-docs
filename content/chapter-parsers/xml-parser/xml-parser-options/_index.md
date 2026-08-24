@@ -6,8 +6,27 @@ weight:  300
 
 The XML parser has the following options.
 
+## create-lists() {#xml-parser-create-lists}
 
-## drop-invalid {#xml-parser-drop-invalid}
+|                  |             |
+| ---------------- | ----------- |
+| Accepted values: | `yes`, `no` |
+| Default:         | `yes`       |
+| Mandatory:       | no          |
+
+Available in {{% param "product.abbrev" %}} version 3.20 and later.
+
+*Description:* If an XML element appears multiple times on the same level, the parser stores the repeated values as a list-typed name-value pair. If you set `create-lists(no)`, the parser concatenates the repeated values into a single string instead, which was the behavior before version 3.20.
+
+For example, from the following XML input:
+
+```shell
+   <tag><item>first</item><item>second</item></tag>
+```
+
+The parser creates the `${.xml.tag.item}` name-value pair with the list value `first,second`. With `create-lists(no)`, the value of `${.xml.tag.item}` is the string `firstsecond`.
+
+## drop-invalid() {#xml-parser-drop-invalid}
 
 |            |                |
 | ---------- | -------------- |
@@ -20,7 +39,7 @@ The XML parser has the following options.
 
 
 
-## exclude-tags {#xml-parser-exclude-tags}
+## exclude-tags() {#xml-parser-exclude-tags}
 
 <table>
 <colgroup>
@@ -74,8 +93,7 @@ The following output is generated:
    {"_xml":{"tag3":"Text3"}}
 ```
 
-
-
+{{< include-headless "chunk/option-source-internal.md" >}}
 
 {{% include-headless "chunk/option-parser-prefix.md" %}}
 
@@ -83,7 +101,7 @@ The `prefix()` option is optional and its default value is `".xml"`.
 
 
 
-## strip-whitespaces {#xml-parser-strip-whitespaces}
+## strip-whitespaces() {#xml-parser-strip-whitespaces}
 
 |            |                     |
 | ---------- | ------------------- |

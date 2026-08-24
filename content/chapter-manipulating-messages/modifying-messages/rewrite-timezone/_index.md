@@ -16,6 +16,8 @@ By default, these operations modify the date-related macros of the message that 
    rewrite { fix-time-zone("EST5EDT" time-stamp(recvd)); };
 ```
 
+If you're using FilterX, see also the equivalent [`set_timezone()`]({{< relref "/filterx/filterx-timezone/_index.md#set-timezone" >}}) function.
+
 ## fix-time-zone() {#rewrite-timezone-fix}
 
 Use the `fix-time-zone()` operation to correct the timezone of a message if it was parsed incorrectly for some reason, or if the client did not include any timezone information in the message. You can specify the new timezone as the name of a timezone, or as a template string. For example, use the following rewrite rule to set the timezone to EST5EDT:
@@ -40,4 +42,17 @@ See also the equivalent FilterX function, [`guess_timezone()`]({{< relref "/filt
 
 Use the `set-time-zone()` operation to set the timezone of the message to a specific value, that is to convert an existing timezone to a different one. This operation is identical to setting the `time-zone()` option in a destination or as a global option, but can be applied selectively to the messages using conditions.
 
-See also the equivalent FilterX function, [`set_timezone()`]({{< relref "/filterx/filterx-timezone/_index.md#set-timezone" >}}).
+## Options
+
+The `fix-time-zone()`, `guess-time-zone()`, and `set-time-zone()` rewrite rules have the following options.
+
+{{% include-headless "chunk/option-rewrite-condition.md" %}}
+
+## time-stamp()
+
+|          |                    |
+| -------- | ------------------ |
+| Type:    | `stamp`, `recvd`   |
+| Default: | `stamp`            |
+
+*Description:* Selects the timestamp that the rule modifies. With `time-stamp(stamp)`, the rule changes the date the message was sent, that is, the `S_` macros. With `time-stamp(recvd)`, it changes the date {{% param "product.abbrev" %}} received the message, that is, the `R_` macros.

@@ -36,7 +36,7 @@ The `date-parser()` parser has the following options.
    date-parser(flags(guess-timezone));
 ```
 
-
+{{< include-headless "chunk/option-source-internal.md" >}}
 
 ## time-stamp()
 

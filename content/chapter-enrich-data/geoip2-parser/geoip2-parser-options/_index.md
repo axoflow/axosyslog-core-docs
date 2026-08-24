@@ -24,3 +24,7 @@ For example, to insert the `.geoip2` prefix, use the `prefix(.geoip2)` option. T
 
 {{% include-headless "chunk/option-parser-geoip.md" %}}
 
+{{< include-headless "chunk/option-source-internal.md" >}}
+
+{{% include-headless "chunk/option-parser-template.md" %}}
+

@@ -67,3 +67,31 @@ rewrite r_rewrite_subst{
 ```
 
 {{% include-headless "chunk/example-rewrite-hash.md" %}}
+
+## Options
+
+The `subst()` rewrite rule has the following options.
+
+{{% include-headless "chunk/option-rewrite-condition.md" %}}
+
+## flags()
+
+|          |                   |
+| -------- | ----------------- |
+| Type:    | list of flags     |
+| Default: | empty set         |
+
+*Description:* The flags of the regular expression. The available flags depend on the [`type()`](#type) of the regular expression. For case-insensitive searches, use `flags(ignore-case)`. To replace every occurrence of the pattern, use `flags(global)`. Note that the `store-matches` flag is automatically enabled in rewrite rules. For details, see {{% xref "/chapter-manipulating-messages/regular-expressions/_index.md" %}}.
+
+{{< include-headless "chunk/option-source-internal.md" >}}
+
+## type()
+
+|          |                          |
+| -------- | ------------------------ |
+| Type:    | `pcre`, `string`, `glob` |
+| Default: | `pcre`                   |
+
+*Description:* Sets how {{% param "product.abbrev" %}} interprets the search pattern: as a Perl Compatible Regular Expression (`pcre`, used by default), a literal string search (`string`), or a glob pattern without regular expression support (`glob`). For details, see {{% xref "/chapter-manipulating-messages/regular-expressions/reference-regexp-types/_index.md" %}}.
+
+{{% include-headless "chunk/option-rewrite-value.md" %}}

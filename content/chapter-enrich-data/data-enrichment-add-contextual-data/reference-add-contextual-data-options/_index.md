@@ -7,7 +7,7 @@ weight:  500
 The `add-contextual-data()` has the following options.
 
 
-## Required options:
+## Required options
 
 The following options are required: `selector()`, `database()`.
 
@@ -17,7 +17,7 @@ The following options are required: `selector()`, `database()`.
 
 |          |                      |
 | -------- | -------------------- |
-| Type:    | <path-to-file>.csv |
+| Type:    | `<path-to-file>.csv` |
 | Default: |                      |
 
 *Description:* Specifies the path to the CSV file, for example, `/opt/syslog-ng/my-csv-database.csv`. The extension of the file must be `.csv`, and can include Windows-style (CRLF) or UNIX-style (LF) linebreaks. You can use absolute path, or relative to the `syslog-ng` binary.
@@ -77,13 +77,24 @@ In the {{% param "product.abbrev" %}} configuration file:
 
 *Description:* Specifies the string or macro that {{% param "product.abbrev" %}} evaluates for each message, and if its value matches the ID of an entry in the database, {{% param "product.abbrev" %}} adds the name-value pair of every matching database entry to the log message. You can use the following in the `selector()` option.
 
-  - Strings
+- Strings
+- A single macro (for example, `selector("${HOST}")`)
+- To use filters as selectors, see [`selector(filters())`](#add-contextual-data-option-selector-filters).
+- To use shell-style globbing (wildcards) in selectors, see [`selector(glob())`](#add-contextual-data-option-selector-glob).
+- Using templates as selectors is not supported.
 
-  - A single macro (for example, `selector("${HOST}")`)
+### selector(filters()) {#add-contextual-data-option-selector-filters}
 
-  - To use filters as selectors, see {{% xref "/chapter-enrich-data/data-enrichment-add-contextual-data/add-contextual-data-filters/_index.md" %}}.
+|           |                      |
+| --------- | -------------------- |
+| Synopsis: | selector(filters()) |
 
-  - To use shell-style globbing (wildcards) in selectors, see {{% xref "/chapter-enrich-data/data-enrichment-add-contextual-data/add-contextual-data-globs/_index.md" %}}.
+*Description:* Use filters as selectors to look up entries in the database. For details and examples, see {{% xref "/chapter-enrich-data/data-enrichment-add-contextual-data/add-contextual-data-filters/_index.md" %}}.
 
-  - Using templates as selectors is not supported.
+### selector(glob()) {#add-contextual-data-option-selector-glob}
 
+|           |                   |
+| --------- | ----------------- |
+| Synopsis: | selector(glob()) |
+
+*Description:* Use shell-style globbing (wildcards) in selectors to look up entries in the database. For details and examples, see {{% xref "/chapter-enrich-data/data-enrichment-add-contextual-data/add-contextual-data-globs/_index.md" %}}.

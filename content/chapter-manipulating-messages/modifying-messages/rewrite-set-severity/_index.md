@@ -79,3 +79,9 @@ rewrite {
     set-severity("${.json.severity}");
 };
 ```
+
+## Options
+
+The `set-severity()` rewrite rule has the following option.
+
+{{% include-headless "chunk/option-rewrite-condition.md" %}}

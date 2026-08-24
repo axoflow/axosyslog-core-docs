@@ -60,3 +60,18 @@ The following examples show how to change the values of multiple fields at the s
         groupset ("$(sha1 --length 6 $_)" values(".USER.*"))
     
     ```
+
+## Options
+
+The `groupset()` rewrite rule has the following options.
+
+{{% include-headless "chunk/option-rewrite-condition.md" %}}
+
+## values()
+
+|          |                              |
+| -------- | ---------------------------- |
+| Type:    | list of field names or globs |
+| Default: | N/A                          |
+
+*Description:* Specifies the fields to modify. You can list the fields explicitly as a space-separated list of double-quoted names, or select multiple fields with glob expressions, for example, `values(".USER.*")`. This option is mandatory. Note that `groupset()` only modifies existing fields, it doesn't create new ones.

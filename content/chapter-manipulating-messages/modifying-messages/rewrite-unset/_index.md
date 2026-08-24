@@ -28,7 +28,7 @@ rewrite r_rewrite_unset{
 };
 ```
 
-See also the equivalent FilterX function, [`unset()`]({{< relref "/filterx/function-reference.md#unset" >}}).
+If you're using FilterX, see also the equivalent [`unset()`]({{< relref "/filterx/function-reference.md#unset" >}}) function.
 
 ## Unset group
 
@@ -50,4 +50,23 @@ rewrite r_rewrite_unset_SDATA{
 };
 ```
 
-See also the related FilterX function [`unset()`]({{< relref "/filterx/function-reference.md#unset" >}}), which takes an explicit list of fields instead of a name pattern, and [`unset_empties()`]({{< relref "/filterx/function-reference.md#unset-empties" >}}), which selects fields by value.
+## Options
+
+The `unset()` rewrite rule has the following options.
+
+{{% include-headless "chunk/option-rewrite-condition.md" %}}
+
+{{< include-headless "chunk/option-source-internal.md" >}}
+
+{{% include-headless "chunk/option-rewrite-value.md" %}}
+
+The `groupunset()` rewrite rule has the `condition()` option described above, and the following option.
+
+## values()
+
+|          |                                  |
+| -------- | -------------------------------- |
+| Type:    | list of field names or globs     |
+| Default: | N/A                              |
+
+*Description:* Specifies the fields to unset. You can list the fields explicitly as a space-separated list of double-quoted names, or select multiple fields with glob expressions, for example, `values(".SDATA.*")`. This option is mandatory.

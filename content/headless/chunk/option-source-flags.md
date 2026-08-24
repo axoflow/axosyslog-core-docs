@@ -6,7 +6,7 @@
 
 |          |       |
 | -------- | ----- |
-| Type:    | `assume-utf8`, `check-hostname`, `check-program`, `dont-store-legacy-msghdr`, `empty-lines`, `expect-hostname`, `kernel`, `no-hostname`, `no-multi-line`, `no-parse`, `sanitize-utf8`, `store-legacy-msghdr`, `store-raw-message`, `syslog-protocol`, `validate-utf8` |
+| Type:    | `assume-utf8`, `check-hostname`, `check-program`, `dont-store-legacy-msghdr`, `empty-lines`, `exit-on-eof`, `expect-hostname`, `guess-timezone`, `ignore-aux-data`, `kernel`, `no-header`, `no-hostname`, `no-multi-line`, `no-parse`, `sanitize-utf8`, `store-legacy-msghdr`, `store-raw-message`, `syslog-protocol`, `validate-utf8` |
 | Default: | empty set |
 
 *Description:* Specifies the log parsing options of the source. For example:
@@ -48,6 +48,16 @@ If the `expect-hostname` flag is enabled, {{% param "product.abbrev" %}} will as
 ### guess-timezone
 
 Attempt to guess the timezone of the message if this information is not available in the message. Works when the incoming message stream is close to real time, and the timezone information is missing from the timestamp.
+
+### ignore-aux-data
+
+The `ignore-aux-data` flag stops {{% param "product.abbrev" %}} from collecting the auxiliary data that the transport layer can attach to each incoming message, and from setting the related name-value pairs. Auxiliary data includes:
+
+- The UNIX credentials of the sender process on UNIX domain sockets: `${.unix.pid}`, `${.unix.uid}`, `${.unix.gid}`, `${.unix.cmdline}`, `${.unix.exe}`, `${.audit.auid}`, and `${.audit.ses}`. For details, see {{% xref "/chapter-sources/source-unixstream/unixstream-unix-credentials/_index.md" %}}.
+- The fields of the peer certificate on TLS-encrypted transports: `${.tls.x509_cn}`, `${.tls.x509_o}`, `${.tls.x509_ou}`, and `${.tls.x509_fp}`.
+- The receive timestamp and the peer address that the transport layer provides for the message.
+
+Use this flag if you do not need this metadata and want to avoid the cost of collecting it. Gathering UNIX credentials is especially expensive, because {{% param "product.abbrev" %}} reads the `/proc` filesystem for every message.
 
 ### kernel
 

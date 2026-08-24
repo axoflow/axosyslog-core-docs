@@ -21,6 +21,8 @@ See also the related [`get_sdata()`]({{< relref "/filterx/function-reference.md#
     };
 ```
 
+{{< include-headless "chunk/option-source-internal.md" >}}
+
 {{% include-headless "chunk/option-parser-prefix.md" %}}
 
 {{% include-headless "chunk/option-parser-template.md" %}}

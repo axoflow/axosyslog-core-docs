@@ -33,3 +33,4 @@ By default, `mariadb-audit` uses the `.mariadb.` prefix. To modify it, use the f
     };
 ```
 
+{{% include-headless "chunk/option-parser-template.md" %}}
