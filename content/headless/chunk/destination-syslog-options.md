@@ -19,7 +19,7 @@
 
 
 {{% include-headless "chunk/option-destination-flush-lines.md" %}}
-
+UDP and other datagram transports write one message per packet.
 
 
 {{< include-headless "chunk/option-destination-frac-digits.md" >}}

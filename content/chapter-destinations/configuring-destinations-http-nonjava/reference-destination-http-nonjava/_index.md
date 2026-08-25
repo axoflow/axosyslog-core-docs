@@ -343,6 +343,8 @@ http(
 );
 ```
 
+{{% include-headless "chunk/option-destination-http-response-adapter.md" %}}
+
 {{% include-headless "chunk/option-destination-retries.md" %}}
 
 To handle HTTP error responses, if the HTTP server returns 5xx codes, {{% param "product.abbrev" %}} will attempt to resend messages until the number of attempts reaches `retries`. If the HTTP server returns 4xx codes, {{% param "product.abbrev" %}} will drop the messages.

@@ -162,6 +162,7 @@ Variables can have the following types. All of these types have a matching funct
 - `protobuf`
 - `string`
 - [`subnet`]({{< relref "/filterx/filterx-subnet/_index.md#subnet" >}}) for IPv4 or IPv6 subnets in CIDR notation.
+- [`tuple`](#tuples) is a read-only, list-like data type similar to a Python tuple. Available in {{% param "product.name" %}} 4.27 and later.
 
 ## Assign values
 
@@ -373,6 +374,23 @@ When referring to the field of a name-value pair (which begins with the `$` char
 
 You can add two lists or two dicts using the {{% xref "/filterx/operator-reference.md#plus-operator" %}}.
 
+### Tuples
+
+Available in {{% param "product.name" %}} 4.27 and later.
+
+A `tuple` is a read-only, list-like data type similar to a Python tuple. You can initialize a tuple only once, then it remains read-only until the end of its lifecycle.
+
+Tuple examples:
+
+```shell
+t = (); # empty tuple
+t = ("foo",); # singleton
+t = (1,2,3); # a tuple of 3 elements
+
+d = {'foo':'foovalue','bar':'barvalue'};
+t = tuple([1,2,3,d]); # a tuple with the value (1,2,3,{"foo":"foovalue","bar":"barvalue"})
+```
+
 ### List membership
 
 {{< include-headless "chunk/filterx-list-membership-operator.md" >}}
@@ -478,7 +496,8 @@ FilterX has the following built-in functions.
 - [`urlencode`]({{< relref "/filterx/function-reference.md#urlencode" >}}): Percent-encodes a string so it's safe to include in a URL.
 - [`utf8_sanitize`]({{< relref "/filterx/function-reference.md#utf8-sanitize" >}}): Replaces invalid UTF-8 byte sequences with their `\xNN` escaped representation.
 - [`utf8_validate`]({{< relref "/filterx/function-reference.md#utf8-validate" >}}): Returns `true` if the input contains only valid UTF-8 byte sequences.
-- [`uuid`]({{< relref "/filterx/function-reference.md#uuid" >}}): Generates a random UUID v4 string.
+- [`uuid` or `uuid4`]({{< relref "/filterx/function-reference.md#uuid" >}}): Generates a random UUID v4 string.
+- [`uuid7`]({{< relref "/filterx/function-reference.md#uuid7" >}}): Generates a random UUID v7 string.
 - [`vars`]({{< relref "/filterx/function-reference.md#vars" >}}): Lists the variables defined in the FilterX block.
 
 For details, see {{% xref "/filterx/function-reference.md" %}}.

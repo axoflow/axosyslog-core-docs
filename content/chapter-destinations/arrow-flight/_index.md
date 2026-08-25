@@ -69,6 +69,8 @@ Available in {{% param "product.abbrev" %}} version 4.26.0 and later.
 
 {{< include-headless "chunk/option-hook-commands.md" >}}
 
+{{< include-headless "chunk/option-destination-grpc-keep-alive.md" >}}
+
 {{% include-headless "chunk/option-destination-local-timezone.md" %}}
 
 {{% include-headless "chunk/option-destination-log-fifo-size.md" %}}
@@ -126,16 +128,16 @@ The following column types are available:
 
 {{% include-headless "chunk/option-destination-throttle.md" %}}
 
-## timeout()
+## timeout() (DEPRECATED) {#timeout-deprecated}
 
 |          |                          |
 | -------- | ------------------------ |
 | Type:    | number [seconds]         |
 | Default: | 0 (no timeout)           |
 
-Available in {{% param "product.abbrev" %}} version 4.26.0 and later.
+Available in {{% param "product.abbrev" %}} version 4.26.0, deprecated in 4.27.
 
-*Description:* Sets the timeout for the gRPC requests sent to the Flight server. Set it to `0` to disable the timeout.
+*Description:* Use [`keep-alive()`](#keep-alive) instead.
 
 ## url()
 

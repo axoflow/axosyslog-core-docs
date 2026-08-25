@@ -107,6 +107,8 @@ The following options are specific to the `openobserve-log()` destination. But s
 
 *Description:* A JSON object representing key-value pairs sent to OpenObserve, formatted as [{{% param "product_name" %}} value-pairs]({{< relref "/chapter-concepts/concepts-value-pairs/option-value-pairs/_index.md" >}}). By default, the `openobserve-log()` destination sends the RFC5424 fields as attributes. If you want to send different fields, override the default content of the `record()` field.
 
+{{% include-headless "chunk/option-destination-http-response-adapter.md" %}}
+
 ## stream()
 
 |          |                            |

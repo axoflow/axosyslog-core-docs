@@ -362,6 +362,7 @@ Available in {{% param "product.abbrev" %}} version 4.26 and later.
 | Default:         | 100    |
 
 {{% include-headless "chunk/option-description-destination-flush-lines.md" %}}
+UDP and other datagram transports write one message per packet.
 
 
 {{% include-headless "chunk/option-destination-flush-timeout.md" %}}
