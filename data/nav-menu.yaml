@@ -1,0 +1,427 @@
+# The marketing navigation bar: the six top-level items and the sandbox CTA.
+#
+# Read off the live marketing site's rendered DOM rather than transcribed, so the
+# wording, the order and the destinations are the ones a reader meets on
+# axoflow.com. Re-read it there when marketing changes the menu, rather than
+# inventing entries here.
+#
+# The `?utm_source=docs&utm_medium=menu` on every href is this file's own
+# addition; it is what the docs site has always tagged menu clicks with. Link
+# text is otherwise verbatim.
+#
+# One entry is not from the extraction and has to survive a refresh: the
+# `Overview` row in the Capabilities group — see the note at that group.
+#
+# `icon` and the three `glyphs` are the brand's own SVG markup, inlined by the
+# extraction — the live site inlines its icons too, so nothing here resolves to a
+# remote host. Rendered by layouts/_partials/navbar-menu.html.
+
+host: axoflow.com
+glyphs:
+  afterLink: <svg width="100%" height="100%" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M10.196 8.47133C10.1963 8.64641 10.162 8.81981 10.0951 8.98159C10.0281 9.14336 9.92989 9.29032 9.80599 9.414L6.27665 12.9427L5.33399 12L8.86265 8.47133L5.33399 4.94267L6.27665 4L9.80532 7.52867C9.92935 7.6523 10.0277 7.79922 10.0948 7.961C10.1618 8.12278 10.1962 8.29621 10.196 8.47133Z" fill="currentColor"></path> <path d="M6.48926 3.78809L10.0176 7.31641L10.125 7.43457C10.227 7.55845 10.3104 7.69696 10.3721 7.8457C10.4541 8.0437 10.4962 8.25638 10.4961 8.4707L10.4883 8.63086C10.4728 8.79058 10.4336 8.94785 10.3721 9.09668C10.2901 9.29461 10.1701 9.47457 10.0186 9.62598L6.27637 13.3672L4.91016 12L8.4375 8.4707L5.12207 5.15527L4.91016 4.94238L6.27637 3.57617L6.48926 3.78809ZM5.33399 4.94238L8.86231 8.47168L5.33399 12L6.27637 12.9424L9.80566 9.41406C9.92957 9.29038 10.0278 9.14322 10.0947 8.98145C10.1449 8.86024 10.1768 8.73261 10.1895 8.60254L10.1963 8.47168C10.1965 8.29656 10.1618 8.12271 10.0947 7.96094C10.0445 7.83974 9.97657 7.72695 9.89356 7.62598L9.80566 7.52832L6.27637 4L5.33399 4.94238Z" fill="currentColor"></path> </svg>
+  afterTitle: <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M15.293 13.7071C15.2935 13.9697 15.242 14.2298 15.1416 14.4724C15.0412 14.7151 14.8939 14.9355 14.708 15.1211L9.414 20.4141L8 19.0001L13.293 13.7071L8 8.41406L9.414 7.00006L14.707 12.2931C14.893 12.4785 15.0406 12.6989 15.1412 12.9416C15.2417 13.1842 15.2933 13.4444 15.293 13.7071Z" fill="currentColor"></path> </svg>
+  toggle: <svg width="100%" height="100%" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" clip-rule="evenodd" d="M2.55806 6.29544C2.46043 6.19781 2.46043 6.03952 2.55806 5.94189L3.44195 5.058C3.53958 4.96037 3.69787 4.96037 3.7955 5.058L8.00001 9.26251L12.2045 5.058C12.3021 4.96037 12.4604 4.96037 12.5581 5.058L13.4419 5.94189C13.5396 6.03952 13.5396 6.19781 13.4419 6.29544L8.17678 11.5606C8.07915 11.6582 7.92086 11.6582 7.82323 11.5606L2.55806 6.29544Z" fill="currentColor"></path> </svg>
+cta:
+  label: Request Sandbox
+  href: https://axoflow.com/request-sandbox?utm_source=docs&utm_medium=menu
+items:
+- kind: menu
+  label: Solutions
+  mega: true
+  groups:
+  - kind: links
+    links:
+    - label: Axoflow vs Cribl
+      href: https://axoflow.com/axoflow-platform-vs-cribl?utm_source=docs&utm_medium=menu
+    - label: Axoflow vs NXLog
+      href: https://axoflow.com/axoflow-platform-vs-nxlog?utm_source=docs&utm_medium=menu
+    - label: Axoflow vs SC4S
+      href: https://axoflow.com/axoflow-platform-vs-sc4s?utm_source=docs&utm_medium=menu
+    - label: Axoflow vs syslog-ng PE
+      href: https://axoflow.com/axoflow-platform-vs-syslog-ng-pe?utm_source=docs&utm_medium=menu
+    label: Comparisons
+    description: Explore side-by-side reviews of Axoflow vs. competing pipeline solutions to pick the right fit
+    icon: <svg width="100%" height="100%" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M36 4V36H4V4H36ZM6.66667 33.3333H33.3333V6.66667H6.66667V33.3333Z" fill="#141D62"></path> <path d="M26.0449 22.1134L29.8833 18.2751C30.3832 17.775 30.6641 17.0968 30.6641 16.3897C30.6641 15.6826 30.3832 15.0045 29.8833 14.5044L26.0449 10.666L24.1596 12.5513L26.6646 15.0564L19.9974 15.0564L19.9974 17.7231L26.6646 17.7231L24.1596 20.2281L26.0449 22.1134Z" fill="#FF6500"></path> <path d="M13.9551 18.6678L10.1167 22.5062C9.61678 23.0063 9.33594 23.6844 9.33594 24.3915C9.33594 25.0986 9.61678 25.7768 10.1167 26.2769L13.9551 30.1152L15.8404 28.2299L13.3354 25.7249L20.0026 25.7249L20.0026 23.0582L13.3354 23.0582L15.8404 20.5531L13.9551 18.6678Z" fill="#FF6500"></path> </svg>
+  - kind: links
+    links:
+    - label: Cost Reduction
+      href: https://axoflow.com/cost-reduction?utm_source=docs&utm_medium=menu
+    - label: SIEM Migration
+      href: https://axoflow.com/siem-migration?utm_source=docs&utm_medium=menu
+    - label: Data Governance
+      href: https://axoflow.com/security-data-governance?utm_source=docs&utm_medium=menu
+    - label: Pipeline Unification
+      href: https://axoflow.com/pipeline-unification?utm_source=docs&utm_medium=menu
+    - label: AI SOC Data Layer
+      href: https://axoflow.com/ai-soc-data-layer?utm_source=docs&utm_medium=menu
+    - label: Storage Solutions
+      href: https://axoflow.com/storage-solutions-security-data?utm_source=docs&utm_medium=menu
+    - label: Log Management
+      href: https://axoflow.com/log-management?utm_source=docs&utm_medium=menu
+    - label: Cut Your Anthropic Bill, Autonomously
+      href: https://axoflow.com/cut-ai-token-costs?utm_source=docs&utm_medium=menu
+    - label: For Managed Security Service Providers
+      href: https://axoflow.com/mssp-soc-automation?utm_source=docs&utm_medium=menu
+    label: Use Cases
+    description: See how Axoflow solves your security data challenges
+    icon: <svg width="100%" height="100%" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" clip-rule="evenodd" d="M14.0838 37V31.5456C14.0558 30.3173 13.7729 29.1082 13.2529 27.9949C12.733 26.8817 11.9875 25.8885 11.0635 25.0784C9.17721 23.3232 7.86714 21.0377 7.30598 18.5232C6.74483 16.0087 6.95894 13.3832 7.92008 10.9928C8.88122 8.60232 10.5443 6.55917 12.6901 5.1326C14.8358 3.70602 17.3636 2.96298 19.9402 3.00142C22.5168 3.03986 25.0213 3.85796 27.1236 5.34791C29.2258 6.83785 30.8272 8.9297 31.7165 11.3477C32.6059 13.7658 32.7416 16.3965 32.1057 18.8931C31.4697 21.3898 30.092 23.6352 28.1542 25.3334C27.2663 26.1522 26.563 27.1506 26.0911 28.2623C25.6192 29.374 25.3894 30.5734 25.4172 31.7807V37H14.0838ZM16.9172 34.1673H22.5838V31.7807C22.5838 31.7054 22.5895 31.6309 22.5952 31.5566C22.6009 31.4825 22.6065 31.4087 22.6065 31.3345H16.9058C16.9065 31.3664 16.9089 31.3985 16.9114 31.4307C16.9143 31.4689 16.9172 31.5072 16.9172 31.5456V34.1673ZM11.6463 10.0316C10.7222 11.3413 10.1295 12.8555 9.91885 14.4444C9.70604 16.0132 9.8743 17.6102 10.4094 19.1003C10.9445 20.5904 11.8307 21.9297 12.993 23.0049C14.6238 24.4909 15.8221 26.3903 16.461 28.5018H23.0372C23.5796 26.4565 24.7088 24.6146 26.2856 23.2032C27.4913 22.1468 28.4228 20.8139 29.0003 19.3187C29.5779 17.8235 29.7843 16.2107 29.6018 14.6183C29.4193 13.0259 28.8534 11.5015 27.9526 10.1757C27.0517 8.84984 25.8428 7.76213 24.4294 7.00574C23.016 6.24935 21.4403 5.84683 19.8372 5.83266C18.2341 5.8185 16.6515 6.19311 15.225 6.92441C13.7984 7.65571 12.5705 8.72189 11.6463 10.0316Z" fill="#141D62"></path> <path d="M21.1667 18.3283V28.5035H18.3333V18.3283C17.5075 18.0364 16.7921 17.4966 16.285 16.7826C15.7778 16.0687 15.5036 15.2155 15.5 14.3398H18.3333C18.3333 14.7155 18.4826 15.0757 18.7483 15.3414C19.0139 15.607 19.3743 15.7562 19.75 15.7562C20.1257 15.7562 20.4861 15.607 20.7517 15.3414C21.0174 15.0757 21.1667 14.7155 21.1667 14.3398H24C23.9964 15.2155 23.7222 16.0687 23.215 16.7826C22.7079 17.4966 21.9925 18.0364 21.1667 18.3283Z" fill="#FF6500"></path> </svg>
+  - kind: links
+    links:
+    - label: Case study - Storage modernization
+      href: https://axoflow.com/case-studies/case-study-non-profit-government-organization?utm_source=docs&utm_medium=menu
+    - label: Case Study – Migrating to Google SecOps
+      href: https://axoflow.com/case-studies/google-secops-migration-government-organization?utm_source=docs&utm_medium=menu
+    - label: Case Study – Cost & MTTR Reduction
+      href: https://axoflow.com/case-studies/observability-data-filtering-large-healthcare-company?utm_source=docs&utm_medium=menu
+    - label: Case Study – Data Reduction
+      href: https://axoflow.com/case-studies/global-industrial-concern-security-data-reduction?utm_source=docs&utm_medium=menu
+    - label: Case Study – Data Quality Improvement
+      href: https://axoflow.com/case-studies/large-government-organization-data-quality-improvement?utm_source=docs&utm_medium=menu
+    label: Case studies
+    description: See how leading enterprises cut log costs, boost data quality, and harden security with Axoflow
+    href: https://axoflow.com/case-studies?utm_source=docs&utm_medium=menu
+    icon: <svg width="100%" height="100%" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M9.32812 12.0023C9.32812 11.2659 9.9251 10.6689 10.6615 10.6689H18.6618C19.3982 10.6689 19.9952 11.2659 19.9952 12.0023C19.9952 12.7387 19.3982 13.3356 18.6618 13.3356H10.6615C9.9251 13.3356 9.32812 12.7387 9.32812 12.0023Z" fill="white"></path> <path d="M9.32812 17.3356C9.32812 16.5992 9.9251 16.0023 10.6615 16.0023H14.6617C15.3981 16.0023 15.9951 16.5992 15.9951 17.3356C15.9951 18.072 15.3981 18.6689 14.6617 18.6689H10.6615C9.9251 18.6689 9.32812 18.072 9.32812 17.3356Z" fill="white"></path> <path d="M9.32812 22.6689C9.32812 21.9326 9.9251 21.3356 10.6615 21.3356H13.3283C14.0647 21.3356 14.6617 21.9326 14.6617 22.6689C14.6617 23.4053 14.0647 24.0023 13.3283 24.0023H10.6615C9.9251 24.0023 9.32812 23.4053 9.32812 22.6689Z" fill="white"></path> <path d="M9.32812 28.0023C9.32812 27.2659 9.9251 26.6689 10.6615 26.6689H18.6618C19.3982 26.6689 19.9952 27.2659 19.9952 28.0023C19.9952 28.7387 19.3982 29.3356 18.6618 29.3356H10.6615C9.9251 29.3356 9.32812 28.7387 9.32812 28.0023Z" fill="white"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M19.7665 15.7727C21.8492 13.6902 25.2264 13.69 27.3092 15.7727C29.1331 17.5965 29.3589 20.4124 27.9887 22.4829L29.7787 24.2727C30.4886 24.0855 31.2762 24.2678 31.8329 24.8242L34.8502 27.8414C35.6474 28.6386 35.679 29.9082 34.9505 30.7463C34.9214 30.7846 34.8907 30.8226 34.8557 30.8577C34.8216 30.8917 34.7852 30.9222 34.748 30.9506C33.9101 31.6885 32.6334 31.6591 31.8329 30.8586L28.8156 27.8414C28.2561 27.2818 28.0737 26.4891 28.2659 25.7762L26.4815 23.9919C24.4105 25.3656 21.5918 25.1404 19.7665 23.3152C17.6836 21.2324 17.6837 17.8554 19.7665 15.7727ZM21.2746 17.2808C20.025 18.5304 20.0249 20.5574 21.2746 21.8071C22.5244 23.0567 24.5514 23.0567 25.801 21.8071C27.0505 20.5574 27.0498 18.5314 25.8001 17.2818C24.5504 16.0322 22.5243 16.0314 21.2746 17.2808Z" fill="#FF6500"></path> <path d="M24.0008 4C26.486 4 28.5743 5.69969 29.1664 8H26.3082C25.8469 7.20356 24.9874 6.66667 24.0008 6.66667H9.33355C7.95263 6.66667 6.81746 7.7163 6.6811 9.0612L6.66678 9.33333V30.6667C6.66678 32.1394 7.86073 33.3333 9.33355 33.3333H24.0008C24.9874 33.3333 25.8469 32.7964 26.3082 32H29.1664C28.5962 34.2151 26.6388 35.8736 24.2756 35.9935L24.0008 36H9.33355L9.0588 35.9935C6.33183 35.8551 4.14488 33.6683 4.00651 30.9414L4 30.6667V9.33333C4 6.38782 6.38791 4 9.33355 4H24.0008Z" fill="white"></path> </svg>
+- kind: menu
+  label: Products
+  mega: true
+  groups:
+  - kind: links
+    links:
+    - label: AxoLake
+      href: https://axoflow.com/axolake-petabyte-security-data-storage?utm_source=docs&utm_medium=menu
+      icon: <svg width="100%" height="100%" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" clip-rule="evenodd" d="M29 26.5994H19.0506C18.8888 26.1393 18.6284 25.7215 18.2882 25.3761C17.9479 25.0307 17.5364 24.7663 17.0834 24.602V21H14.9166V24.602C14.4636 24.7663 14.0521 25.0307 13.7118 25.3761C13.3716 25.7215 13.1112 26.1393 12.9494 26.5994H3V28.7992H12.9494C13.17 29.4421 13.5822 29.9994 14.1288 30.3938C14.6754 30.7882 15.3294 31 16 31C16.6706 31 17.3246 30.7882 17.8712 30.3938C18.4178 29.9994 18.83 29.4421 19.0506 28.7992H29V26.5994ZM15.3981 28.6138C15.5763 28.7347 15.7858 28.7992 16 28.7992C16.2873 28.7992 16.5629 28.6833 16.766 28.4771C16.9692 28.2708 17.0834 27.991 17.0834 27.6993C17.0834 27.4817 17.0198 27.2691 16.9008 27.0882C16.7817 26.9073 16.6125 26.7664 16.4146 26.6831C16.2166 26.5999 15.9988 26.5781 15.7886 26.6205C15.5785 26.6629 15.3855 26.7677 15.234 26.9215C15.0825 27.0753 14.9793 27.2713 14.9375 27.4847C14.8956 27.6981 14.9172 27.9192 14.9991 28.1202C15.0811 28.3212 15.22 28.493 15.3981 28.6138Z" fill="#141D62"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M5.715 14C5.25726 14.5467 5.00238 15.2596 5 16.0001V22H27V16.0001C26.9976 15.2596 26.7427 14.5467 26.285 14C25.3684 13 24.6228 13 24.25 13H7.74999C7.37722 13 6.63166 13 5.715 14ZM6.83333 20H25.1666V16.0001C25.1666 15.7348 25.0701 15.4804 24.8982 15.2929C24.7263 15.1054 24.4931 15 24.25 15H15.0833V17H13.25V15H11.4167V17H9.58332V15H7.74999C7.50688 15 7.27373 15.1054 7.10182 15.2929C6.9299 15.4804 6.83333 15.7348 6.83333 16.0001V20Z" fill="#141D62" stroke="#141D62" stroke-width="0.3"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M5.715 3C5.25726 3.54667 5.00238 4.2596 5 5.00001V11H27V5.00001C26.9976 4.2596 26.7427 3.54667 26.285 3C25.3684 2 24.6228 2 24.25 2H7.74999C7.37722 2 6.63166 2 5.715 3ZM6.83333 9.00002H25.1666V5.00001C25.1666 4.73479 25.0701 4.48044 24.8982 4.2929C24.7263 4.10536 24.4931 4 24.25 4H15.0833V6.00001H13.25V4H11.4167V6.00001H9.58332V4H7.74999C7.50688 4 7.27373 4.10536 7.10182 4.2929C6.9299 4.48044 6.83333 4.73479 6.83333 5.00001V9.00002Z" fill="#141D62" stroke="#141D62" stroke-width="0.3"></path> </svg>
+      description: Tiered cloud or on-prem data lake
+    - label: AxoRouter
+      href: https://axoflow.com/axorouter?utm_source=docs&utm_medium=menu
+      icon: <svg width="100%" height="100%" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M12.3126 13.9736L13.9531 12.3331L8.97248 7.3525L11.6328 4.69221L5.83188 4.69221C5.52418 4.69221 5.22909 4.81444 5.01151 5.03202C4.79394 5.24959 4.6717 5.54469 4.6717 5.85239L4.6717 11.6533L7.33199 8.99299L12.3126 13.9736Z" fill="#141D62"></path> <path d="M20.3358 27.3164L26.1367 27.3164C26.4444 27.3164 26.7395 27.1942 26.9571 26.9766C27.1746 26.759 27.2969 26.4639 27.2969 26.1562L27.2969 20.3554L24.6366 23.0156L19.656 18.035L18.0155 19.6755L22.9961 24.6561L20.3358 27.3164Z" fill="#141D62"></path> <path d="M26.1523 4.6883L20.3514 4.6883L23.0117 7.34859L18.0311 12.3292L19.6716 13.9697L24.6522 8.98908L27.3125 11.6494L27.3125 5.84848C27.3125 5.54078 27.1903 5.24569 26.9727 5.02811C26.7551 4.81054 26.46 4.6883 26.1523 4.6883Z" fill="#141D62"></path> <path d="M5.83969 27.3125L11.6406 27.3125L8.98029 24.6522L13.9609 19.6716L12.3204 18.0311L7.3398 23.0117L4.67952 20.3514L4.67952 26.1523C4.67952 26.46 4.80175 26.7551 5.01932 26.9727C5.2369 27.1903 5.53199 27.3125 5.83969 27.3125Z" fill="#141D62"></path> </svg>
+      description: Pre-processing and routing engine
+    - label: Axoflow + AI
+      href: https://axoflow.com/how-axoflow-really-uses-ai?utm_source=docs&utm_medium=menu
+      icon: <svg width="100%" height="100%" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M13.0156 28.9785C13.0156 29.6412 12.4781 30.1786 11.8154 30.1787C11.1527 30.1787 10.6152 29.6413 10.6152 28.9785L10.6152 3.02148C10.6152 2.35874 11.1527 1.82129 11.8154 1.82129C12.4781 1.82139 13.0156 2.35881 13.0156 3.02148L13.0156 28.9785Z" fill="#141D62"></path> <path d="M17.2031 28.9785C17.2031 29.6412 16.6656 30.1786 16.0029 30.1787C15.3402 30.1787 14.8027 29.6413 14.8027 28.9785L14.8027 3.02148C14.8027 2.35874 15.3402 1.82129 16.0029 1.82129C16.6656 1.82139 17.2031 2.35881 17.2031 3.02148L17.2031 28.9785Z" fill="#141D62"></path> <path d="M21.3828 28.9785C21.3828 29.6412 20.8453 30.1786 20.1826 30.1787C19.5199 30.1787 18.9824 29.6413 18.9824 28.9785L18.9824 3.02148C18.9824 2.35874 19.5199 1.82129 20.1826 1.82129C20.8453 1.82139 21.3828 2.35881 21.3828 3.02148L21.3828 28.9785Z" fill="#141D62"></path> <path d="M3.02246 13.0166C2.35979 13.0166 1.82237 12.4791 1.82227 11.8164C1.82227 11.1537 2.35972 10.6162 3.02246 10.6162L28.9795 10.6162C29.6422 10.6162 30.1797 11.1537 30.1797 11.8164C30.1796 12.4791 29.6422 13.0166 28.9795 13.0166L3.02246 13.0166Z" fill="#141D62"></path> <path d="M3.02246 17.2041C2.35979 17.2041 1.82237 16.6666 1.82227 16.0039C1.82227 15.3412 2.35972 14.8037 3.02246 14.8037L28.9795 14.8037C29.6422 14.8037 30.1797 15.3412 30.1797 16.0039C30.1796 16.6666 29.6422 17.2041 28.9795 17.2041L3.02246 17.2041Z" fill="#141D62"></path> <path d="M3.02246 21.3838C2.35979 21.3838 1.82237 20.8462 1.82227 20.1836C1.82227 19.5208 2.35972 18.9834 3.02246 18.9834L28.9795 18.9834C29.6422 18.9834 30.1797 19.5209 30.1797 20.1836C30.1796 20.8462 29.6422 21.3838 28.9795 21.3838L3.02246 21.3838Z" fill="#141D62"></path> <rect x="5.71094" y="5.71094" width="20.5781" height="20.5781" rx="2" fill="white" stroke="#141D62" stroke-width="2.4"></rect> <path fill-rule="evenodd" clip-rule="evenodd" d="M12.4233 11.3828L9.07031 20.6177H11.4471L12.1059 18.7047H15.5642L16.2246 20.6177H18.6014L15.2483 11.3828H12.4233ZM12.846 16.567H14.8256L13.835 13.6911L12.846 16.567Z" fill="#141D62"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5232 11.3828V20.6177H21.7676V11.3828H19.5232Z" fill="#141D62"></path> </svg>
+      description: AI to classify, normalize and assist
+    label: Axoflow Platform
+    description: Automated Security Data Layer = Pipeline + Storage + AI
+    href: https://axoflow.com/axoflow-platform?utm_source=docs&utm_medium=menu
+    icon: <svg width="100%" height="100%" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"> <g clip-path="url(#clip0_6315_6431)"> <path d="M36.6667 25V5H3.33333V25H0V30C0 31.3261 0.526784 32.5979 1.46447 33.5355C2.40215 34.4732 3.67392 35 5 35H35C36.3261 35 37.5979 34.4732 38.5355 33.5355C39.4732 32.5979 40 31.3261 40 30V25H36.6667ZM6.66667 8.33333H33.3333V25H24.8683L23.4567 26.6667H16.5417L15.1317 25H6.66667V8.33333ZM36.6667 30C36.6667 30.442 36.4911 30.866 36.1785 31.1785C35.866 31.4911 35.442 31.6667 35 31.6667H5C4.55797 31.6667 4.13405 31.4911 3.82149 31.1785C3.50893 30.866 3.33333 30.442 3.33333 30V28.3333H13.585L15 30H25L26.4117 28.3333H36.6667V30Z" fill="#141D62" stroke="white"></path> <path d="M14.2727 22H11V17H14.2727V22Z" fill="#FF6500"></path> <path d="M19.1818 22H15.9091V13.6667H19.1818V22Z" fill="#FF6500"></path> <path d="M24.0909 22H20.8182V15.3333H24.0909V22Z" fill="#FF6500"></path> <path d="M29 12V22H25.7273V12H29Z" fill="#FF6500"></path> </g> <defs> <clipPath id="clip0_6315_6431"> <rect width="40" height="40" fill="white"></rect> </clipPath> </defs> </svg>
+  - kind: links
+    links:
+    - label: Axoflow + Google Cloud
+      href: https://axoflow.com/integrations/google-secops-data-optimization?utm_source=docs&utm_medium=menu
+    - label: Axoflow + Splunk
+      href: https://axoflow.com/integrations/splunk-ingest-optimization-gdi?utm_source=docs&utm_medium=menu
+    - label: Axoflow + Microsoft Sentinel
+      href: https://axoflow.com/integrations/microsoft-sentinel-data-optimization?utm_source=docs&utm_medium=menu
+    - label: Axoflow + Dynatrace
+      href: https://axoflow.com/integrations/dynatrace-solutions?utm_source=docs&utm_medium=menu
+    - label: Other integrations
+      href: https://axoflow.com/docs/axoflow/destinations/?utm_source=docs&utm_medium=menu
+    label: Integrations
+    description: Feed your SIEMs, data lakes, and tools with reduced, curated security data with Axoflow
+    icon: <svg width="100%" height="100%" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M21.3333 12H20C19.2636 12 18.6667 12.597 18.6667 13.3333L18.6732 13.4609C18.7326 14.0848 19.2224 14.5825 19.8424 14.6549L20.0703 14.668L21.3333 14.7344V18.6667H23.1667C23.7928 17.5299 24.9525 16.7283 26.3138 16.6094L26.6667 16.5938C28.1786 16.5938 29.487 17.4329 30.1667 18.6667H36V36H4V8C4 5.79086 5.79086 4 8 4H21.3333V12ZM6.66667 33.3333H18.6667V31.7682C18.5695 31.7338 18.4738 31.6964 18.3802 31.6549C18.1934 31.5721 18.0142 31.4752 17.8438 31.3659C16.7351 30.6556 16 29.4147 16 28C16 27.9542 16.0037 27.9087 16.0052 27.8633L16.0065 27.7943C16.0071 27.7821 16.0084 27.77 16.0091 27.7578C16.0134 27.686 16.0206 27.615 16.0286 27.5443C16.0322 27.513 16.0348 27.4816 16.0391 27.4505C16.0483 27.3835 16.0604 27.3172 16.0729 27.2513C16.0804 27.2116 16.0877 27.172 16.0964 27.1328C16.1095 27.0737 16.1236 27.0151 16.1393 26.957C16.1509 26.9141 16.1641 26.8718 16.1771 26.8294C16.1945 26.7726 16.2119 26.7159 16.2318 26.6602C16.2432 26.6281 16.256 26.5967 16.2682 26.5651C16.2928 26.5014 16.3186 26.4384 16.3464 26.3763C16.3577 26.3509 16.3697 26.3259 16.3815 26.3008C16.4118 26.2365 16.443 26.173 16.4766 26.1107C16.49 26.0857 16.5042 26.0611 16.5182 26.0365C16.5522 25.9766 16.5868 25.9173 16.6237 25.8594C16.6425 25.8298 16.6627 25.8012 16.6823 25.7721C16.7163 25.7217 16.7502 25.6712 16.7865 25.6224C16.8084 25.5928 16.8314 25.5641 16.8542 25.5352C16.8956 25.4825 16.9378 25.4307 16.9818 25.3802C16.9941 25.3661 17.007 25.3525 17.0195 25.3385C17.1382 25.206 17.2645 25.0805 17.3997 24.9648C17.4077 24.958 17.4164 24.9521 17.4245 24.9453C17.789 24.6384 18.2082 24.394 18.6667 24.2318V21.3333H16.4349C16.1602 22.1098 15.6531 22.7761 14.9974 23.2487C14.7517 23.4259 14.4851 23.5758 14.2018 23.694C14.013 23.7728 13.8168 23.8375 13.6146 23.8867C13.4119 23.9361 13.2032 23.9699 12.9896 23.987C12.8831 23.9955 12.7754 24 12.6667 24C11.6866 24 10.7904 23.6477 10.0964 23.0625C9.63379 22.6728 9.26022 22.1802 9.01172 21.6198L8.89844 21.3333H6.66667V33.3333ZM26.5495 19.2656C25.9712 19.3163 25.4955 19.7378 25.3685 20.2956L25.1328 21.3333H21.3333V26.668H20C19.2634 26.6686 18.668 27.2648 18.668 28L18.6745 28.1367C18.7299 28.6812 19.1133 29.1282 19.6237 29.2786C19.6837 29.2963 19.7454 29.3086 19.8086 29.3177C19.8712 29.3268 19.9349 29.3333 20 29.3333H21.3333V33.3333H33.3333V21.3333H28.2005L27.9648 20.2956C27.8293 19.7006 27.2972 19.2604 26.6667 19.2604L26.5495 19.2656ZM8 6.66667C7.26362 6.66667 6.66667 7.26362 6.66667 8V18.6667H11.3333V19.9544L11.3438 20.1576C11.3619 20.3127 11.4071 20.4596 11.474 20.5938C11.4977 20.6413 11.5231 20.6877 11.5521 20.7318C11.7902 21.0942 12.201 21.3333 12.6667 21.3333L12.7943 21.3268C12.8149 21.3249 12.8351 21.3206 12.8555 21.3177C12.9908 21.2985 13.1192 21.2598 13.2383 21.2031C13.6424 21.0104 13.9342 20.6207 13.9883 20.1576L14 19.9518V18.6667H18.6667V17.1003C17.2293 16.5916 16.168 15.29 16.0182 13.7174L16 13.3333C16 11.5922 17.1138 10.1146 18.6667 9.5651V6.66667H8Z" fill="#141D62"></path> <path d="M18.6667 13.334C18.6667 14.0163 19.1806 14.5797 19.8424 14.6569L20.0703 14.6686L21.3333 14.735L21.3333 18.6673L23.1667 18.6673C23.7928 17.5306 24.9525 16.729 26.3138 16.61L26.6667 16.5944C28.1786 16.5944 29.487 17.4335 30.1667 18.6673L33.3333 18.6673L33.3333 8.00065L33.3268 7.86393C33.2584 7.19176 32.6902 6.66732 32 6.66732L21.3333 6.66732L21.3333 12.0007L20 12.0007C19.3098 12.0007 18.7416 12.5251 18.6732 13.1973L18.6667 13.334ZM16.0052 13.1283C16.0889 11.4771 17.1755 10.0949 18.6667 9.56706L18.6667 4.00065L32 4.00065C34.1401 4.00065 35.8877 5.68139 35.9948 7.79492L36 8.00065L36 21.334L28.2005 21.334L27.9648 20.2962C27.8293 19.7012 27.2972 19.2611 26.6667 19.2611L26.5495 19.2663C25.9712 19.3169 25.4955 19.7385 25.3685 20.2962L25.1328 21.334L18.6667 21.334L18.6667 17.1022C17.1135 16.5528 16 15.0758 16 13.334L16.0052 13.1283Z" fill="#FF6500"></path> </svg>
+  - kind: links
+    links:
+    # Not from the extraction: the live bar reaches https://axoflow.com/capabilities
+    # through the group's own heading, which is an anchor there and a <p> here, so
+    # the page had no way in from this menu. Added as an
+    # `Overview` row, which is how the Documentation, Webinars and White Papers
+    # groups below already point at their own landing pages. Keep it when the
+    # extraction is re-run.
+    - label: Overview
+      href: https://axoflow.com/capabilities?utm_source=docs&utm_medium=menu
+    - label: Collection
+      href: https://axoflow.com/capabilities/collection?utm_source=docs&utm_medium=menu
+    - label: Processing
+      href: https://axoflow.com/capabilities/processing?utm_source=docs&utm_medium=menu
+    - label: Routing
+      href: https://axoflow.com/capabilities/routing?utm_source=docs&utm_medium=menu
+    - label: Storage
+      href: https://axoflow.com/capabilities/security-data-storage?utm_source=docs&utm_medium=menu
+    - label: Management
+      href: https://axoflow.com/capabilities/security-data-pipeline-management?utm_source=docs&utm_medium=menu
+    label: Capabilities
+    description: See how Axoflow solves your security data challanges
+    icon: <svg width="100%" height="100%" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M23.3813 7.05408C24.0447 4.17081 26.3358 1.87654 29.2207 1.21154C31.6353 0.657365 34.1085 1.20362 36.0101 2.71413C37.9116 4.22622 39.0026 6.48566 39.0026 8.91293C39.0026 11.5476 37.69 13.997 35.4907 15.468C34.7228 15.9826 34.2478 16.9484 34.251 17.9902L34.2541 21.5813H27.9192V17.9839C27.9192 16.9437 27.4457 15.981 26.6826 15.4727C23.926 13.6297 22.6308 10.3269 23.3829 7.05725L23.3813 7.05408ZM28.4401 12.8365C29.3315 13.4318 30.0044 14.2757 30.4588 15.2463H31.7065C32.1609 14.2773 32.837 13.4318 33.7284 12.8365C35.0458 11.9545 35.8327 10.4884 35.8327 8.91293C35.8327 7.45625 35.1788 6.10091 34.0356 5.19207C33.1822 4.51281 32.1641 4.16131 31.0938 4.16131C30.7106 4.16131 30.3227 4.20564 29.93 4.29589C28.2469 4.68539 26.8551 6.07874 26.4656 7.76342C26.0033 9.7711 26.7617 11.7139 28.4401 12.8365Z" fill="#FF6500"></path> <path d="M34.3326 24.7462H37.7954C37.1224 26.4641 36.1867 28.0855 34.9754 29.5406C34.5083 30.1011 34.2518 30.8104 34.2518 31.5403V38.9963H13.6683V34.2463H10.1106C7.73713 34.2463 5.71362 32.4713 5.4017 30.1201L4.69078 24.7462H1V21.2438C1 21.2438 1.81384 19.3961 2.15268 18.6186C4.01786 14.342 5.78012 10.3013 7.68647 7.94532C9.81132 5.10638 12.7484 2.98786 16.1447 1.86686C18.42 1.11635 20.7918 0.875682 23.2017 1.09577C22.3166 1.98877 21.6041 3.04328 21.0641 4.19279C19.7278 4.24029 18.4105 4.45246 17.1359 4.87204C14.3587 5.7888 11.9552 7.52415 10.1834 9.88808C8.51139 11.9575 6.75388 15.9855 5.05495 19.8822C4.80795 20.449 4.56094 21.0142 4.31394 21.5763H7.4648L8.53831 29.7005C8.64281 30.4842 9.31731 31.0764 10.109 31.0764H16.8335V35.8264H31.0836V31.5372C31.0836 30.0694 31.6013 28.6381 32.5402 27.5107C33.2543 26.6525 33.8449 25.7199 34.3326 24.743V24.7462Z" fill="white"></path> </svg>
+- kind: menu
+  label: Resources
+  mega: false
+  groups:
+  - kind: links
+    links:
+    - label: Blog
+      href: https://axoflow.com/blog?utm_source=docs&utm_medium=menu
+  - kind: submenu
+    label: Documentation
+    links:
+    - label: Overview
+      href: https://axoflow.com/docs?utm_source=docs&utm_medium=menu
+    - label: Axoflow Platform
+      href: https://axoflow.com/docs/axoflow/?utm_source=docs&utm_medium=menu
+  - kind: submenu
+    label: Webinars
+    links:
+    - label: Overview
+      href: https://axoflow.com/webinars?utm_source=docs&utm_medium=menu
+    - label: Show me your Labels and I’ll tell you who you are!
+      href: https://axoflow.com/webinars/show-me-your-labels-and-ill-tell-you-who-you-are?utm_source=docs&utm_medium=menu
+    - label: Resilient Syslog Architectures
+      href: https://axoflow.com/webinars/resilient-syslog-architectures?utm_source=docs&utm_medium=menu
+    - label: Feed your SIEM Reduced and Actionable Security Data
+      href: https://axoflow.com/webinars/feed-your-siem-reduced-and-actionable-security-data?utm_source=docs&utm_medium=menu
+  - kind: submenu
+    label: White Papers
+    links:
+    - label: Overview
+      href: https://axoflow.com/white-papers?utm_source=docs&utm_medium=menu
+    - label: Optimize Splunk Performance
+      href: https://axoflow.com/white-papers/optimize-splunk-performance-before-gdi?utm_source=docs&utm_medium=menu
+    - label: Observability and the Telemetry Pipeline
+      href: https://axoflow.com/white-papers/observability-pipeline-metrics-control-telemetry-data-white-paper?utm_source=docs&utm_medium=menu
+    - label: Scalable Syslog Architectures
+      href: https://axoflow.com/white-papers/white-paper-scalable-syslog-architecture-best-practices?utm_source=docs&utm_medium=menu
+    - label: The Cost of a Correct Triage
+      href: https://axoflow.com/white-paper/the-cost-of-a-correct-triage?utm_source=docs&utm_medium=menu
+  - kind: links
+    links:
+    - label: Podcast
+      href: https://axoflow.com/data-strikes-back-podcast?utm_source=docs&utm_medium=menu
+    - label: Support & Professional Services
+      href: https://axoflow.com/support?utm_source=docs&utm_medium=menu
+- kind: menu
+  label: Open Source
+  mega: false
+  groups:
+  - kind: links
+    links:
+    - label: AxoSyslog
+      href: https://axoflow.com/axosyslog?utm_source=docs&utm_medium=menu
+    - label: AxoSyslog Documentation
+      href: https://axoflow.com/docs/axosyslog-core/?utm_source=docs&utm_medium=menu
+    - label: Logging Operator Documentation
+      href: https://kube-logging.dev/docs/?utm_source=docs&utm_medium=menu
+    - label: Syslogopedia
+      href: https://axoflow.com/syslogopedia?utm_source=docs&utm_medium=menu
+- kind: menu
+  label: About
+  mega: false
+  groups:
+  - kind: links
+    links:
+    - label: About Us
+      href: https://axoflow.com/about-us?utm_source=docs&utm_medium=menu
+    - label: News
+      href: https://axoflow.com/news?utm_source=docs&utm_medium=menu
+    - label: Contact
+      href: https://axoflow.com/contact?utm_source=docs&utm_medium=menu
+    - label: Our Partners
+      href: https://axoflow.com/partners?utm_source=docs&utm_medium=menu
+- kind: link
+  label: Login
+  href: https://login.axoflow.io/?utm_source=docs&utm_medium=menu
+
+# ---------------------------------------------------------------------------
+# THE PHONE MENU. A SECOND MENU, BECAUSE THE LIVE SITE HAS TWO.
+#
+# Everything above is axoflow.com's BAR, which is what this site draws at 800px
+# and up. Below 800 the live site draws
+# something else entirely: `.v3-navbar_mobile-contents`, a hand-built Webflow
+# block that is not generated from the bar and has diverged from it. Measured on
+# 2026-08-29, the two disagree on 31 of 55 rows — `Integrations` and
+# `Capabilities` are filed under `Solutions` rather than `Products`, the three
+# products are plain rows rather than a group, and five links are worded
+# differently. Rendering the bar at both widths, which this build used to do, is
+# therefore not parity with the marketing site on a phone; it is parity with its
+# desktop menu.
+#
+# So this block is the phone menu, and layouts/_partials/navbar-drawer.html
+# renders it into the offcanvas. Same schema as `items`, minus the decoration a
+# phone never sees: no `icon`, no `description`, no `mega`. A `submenu` group is
+# a row that opens; an unlabelled `links` group is a run of plain rows.
+#
+# READ OFF THE LIVE BLOCK, NOT TRANSCRIBED. Every destination was looked up in
+# `items` by host+path and the canonical, already-tagged href copied across, so
+# no UTM tag is retyped here. A phone row whose destination is not in the bar is
+# a mistake: check a new one against `items` before adding it.
+#
+# ONE ROW IS NOT LIVE'S: `Capabilities > Overview`. Without it the `/capabilities`
+# landing page has no way in from a phone at all — the group's five links are its
+# children, not itself — and it is on live's own bar.
+#
+# `About > Our Partners` was here too and was taken out on 2026-08-29 on
+# instruction: live's phone menu does not list it and the phone menu as it stands
+# is what was asked for. It is still on the bar, so it is a row this site reaches
+# at one width and not the other, and it is the only row for which that is
+# deliberate. Any other row that appears in one list and not the other is drift.
+#
+# `kind: nested` is live's second plain-row shape — 16px/300 at a 40px inset,
+# the same rows a group's links get, used at the TOP level under `Products` where
+# AxoLake, AxoRouter and Axoflow + AI are drawn as children of the `Axoflow
+# Platform` row above them with no group heading between. Read as one kind, all
+# four came out flat and the three products lost their indent; reported as that.
+
+mobile:
+  items:
+  - kind: menu
+    label: Solutions
+    groups:
+    - kind: submenu
+      label: Comparisons
+      links:
+      - label: Axoflow Platform vs Cribl
+        href: https://axoflow.com/axoflow-platform-vs-cribl?utm_source=docs&utm_medium=menu
+      - label: Axoflow Platform vs NXLog
+        href: https://axoflow.com/axoflow-platform-vs-nxlog?utm_source=docs&utm_medium=menu
+      - label: Axoflow Platform vs SC4S
+        href: https://axoflow.com/axoflow-platform-vs-sc4s?utm_source=docs&utm_medium=menu
+      - label: Axoflow Platform vs syslog-ng PE
+        href: https://axoflow.com/axoflow-platform-vs-syslog-ng-pe?utm_source=docs&utm_medium=menu
+    - kind: submenu
+      label: Integrations
+      links:
+      - label: Axoflow + Google Cloud
+        href: https://axoflow.com/integrations/google-secops-data-optimization?utm_source=docs&utm_medium=menu
+      - label: Axoflow + Splunk
+        href: https://axoflow.com/integrations/splunk-ingest-optimization-gdi?utm_source=docs&utm_medium=menu
+      - label: Axoflow + Microsoft Sentinel
+        href: https://axoflow.com/integrations/microsoft-sentinel-data-optimization?utm_source=docs&utm_medium=menu
+      - label: Axoflow + Dynatrace
+        href: https://axoflow.com/integrations/dynatrace-solutions?utm_source=docs&utm_medium=menu
+      - label: Other integrations
+        href: https://axoflow.com/docs/axoflow/destinations/?utm_source=docs&utm_medium=menu
+    - kind: submenu
+      label: Capabilities
+      links:
+      - label: Overview
+        href: https://axoflow.com/capabilities?utm_source=docs&utm_medium=menu
+      - label: Collection
+        href: https://axoflow.com/capabilities/collection?utm_source=docs&utm_medium=menu
+      - label: Processing
+        href: https://axoflow.com/capabilities/processing?utm_source=docs&utm_medium=menu
+      - label: Routing
+        href: https://axoflow.com/capabilities/routing?utm_source=docs&utm_medium=menu
+      - label: Storage
+        href: https://axoflow.com/capabilities/security-data-storage?utm_source=docs&utm_medium=menu
+      - label: Management
+        href: https://axoflow.com/capabilities/security-data-pipeline-management?utm_source=docs&utm_medium=menu
+    - kind: submenu
+      label: Use Cases
+      links:
+      - label: Cost Reduction
+        href: https://axoflow.com/cost-reduction?utm_source=docs&utm_medium=menu
+      - label: SIEM Migration
+        href: https://axoflow.com/siem-migration?utm_source=docs&utm_medium=menu
+      - label: Data Governance
+        href: https://axoflow.com/security-data-governance?utm_source=docs&utm_medium=menu
+      - label: Pipeline Unification
+        href: https://axoflow.com/pipeline-unification?utm_source=docs&utm_medium=menu
+      - label: AI SOC Data Layer
+        href: https://axoflow.com/ai-soc-data-layer?utm_source=docs&utm_medium=menu
+      - label: Storage Solutions
+        href: https://axoflow.com/storage-solutions-security-data?utm_source=docs&utm_medium=menu
+      - label: Log Management
+        href: https://axoflow.com/log-management?utm_source=docs&utm_medium=menu
+      - label: Cut Your Anthropic Bill, Autonomously
+        href: https://axoflow.com/cut-ai-token-costs?utm_source=docs&utm_medium=menu
+      - label: For Managed Security Service Providers
+        href: https://axoflow.com/mssp-soc-automation?utm_source=docs&utm_medium=menu
+    - kind: submenu
+      label: Case Studies
+      links:
+      - label: Overview
+        href: https://axoflow.com/case-studies?utm_source=docs&utm_medium=menu
+      - label: Case study – Storage modernization
+        href: https://axoflow.com/case-studies/case-study-non-profit-government-organization?utm_source=docs&utm_medium=menu
+      - label: Case Study – Migrating to Google SecOps
+        href: https://axoflow.com/case-studies/google-secops-migration-government-organization?utm_source=docs&utm_medium=menu
+      - label: Case Study – Cost & MTTR Reduction
+        href: https://axoflow.com/case-studies/observability-data-filtering-large-healthcare-company?utm_source=docs&utm_medium=menu
+      - label: Case Study – Data Reduction
+        href: https://axoflow.com/case-studies/global-industrial-concern-security-data-reduction?utm_source=docs&utm_medium=menu
+      - label: Case Study – Data Quality Improvement
+        href: https://axoflow.com/case-studies/large-government-organization-data-quality-improvement?utm_source=docs&utm_medium=menu
+  - kind: menu
+    label: Products
+    groups:
+    - kind: links
+      links:
+      - label: Axoflow Platform
+        href: https://axoflow.com/axoflow-platform?utm_source=docs&utm_medium=menu
+    - kind: nested
+      links:
+      - label: AxoLake
+        href: https://axoflow.com/axolake-petabyte-security-data-storage?utm_source=docs&utm_medium=menu
+      - label: AxoRouter
+        href: https://axoflow.com/axorouter?utm_source=docs&utm_medium=menu
+      - label: Axoflow + AI
+        href: https://axoflow.com/how-axoflow-really-uses-ai?utm_source=docs&utm_medium=menu
+  - kind: menu
+    label: Resources
+    groups:
+    - kind: links
+      links:
+      - label: Blog
+        href: https://axoflow.com/blog?utm_source=docs&utm_medium=menu
+    - kind: submenu
+      label: Documentation
+      links:
+      - label: Overview
+        href: https://axoflow.com/docs?utm_source=docs&utm_medium=menu
+      - label: Axoflow Platform
+        href: https://axoflow.com/docs/axoflow/?utm_source=docs&utm_medium=menu
+    - kind: submenu
+      label: Webinars
+      links:
+      - label: Overview
+        href: https://axoflow.com/webinars?utm_source=docs&utm_medium=menu
+      - label: Show me your Labels and I’ll tell you who you are!
+        href: https://axoflow.com/webinars/show-me-your-labels-and-ill-tell-you-who-you-are?utm_source=docs&utm_medium=menu
+      - label: Resilient Syslog Architectures
+        href: https://axoflow.com/webinars/resilient-syslog-architectures?utm_source=docs&utm_medium=menu
+      - label: Feed your SIEM Reduced and Actionable Security Data
+        href: https://axoflow.com/webinars/feed-your-siem-reduced-and-actionable-security-data?utm_source=docs&utm_medium=menu
+    - kind: submenu
+      label: White Papers
+      links:
+      - label: Overview
+        href: https://axoflow.com/white-papers?utm_source=docs&utm_medium=menu
+      - label: Optimize Splunk Performance
+        href: https://axoflow.com/white-papers/optimize-splunk-performance-before-gdi?utm_source=docs&utm_medium=menu
+      - label: Observability and the Telemetry Pipeline
+        href: https://axoflow.com/white-papers/observability-pipeline-metrics-control-telemetry-data-white-paper?utm_source=docs&utm_medium=menu
+      - label: Scalable Syslog Architectures
+        href: https://axoflow.com/white-papers/white-paper-scalable-syslog-architecture-best-practices?utm_source=docs&utm_medium=menu
+      - label: The Cost of a Correct Triage
+        href: https://axoflow.com/white-paper/the-cost-of-a-correct-triage?utm_source=docs&utm_medium=menu
+    - kind: links
+      links:
+      - label: Podcast
+        href: https://axoflow.com/data-strikes-back-podcast?utm_source=docs&utm_medium=menu
+      - label: Support & Professional Services
+        href: https://axoflow.com/support?utm_source=docs&utm_medium=menu
+  - kind: menu
+    label: Open source
+    groups:
+    - kind: links
+      links:
+      - label: AxoSyslog
+        href: https://axoflow.com/axosyslog?utm_source=docs&utm_medium=menu
+      - label: AxoSyslog Documentation
+        href: https://axoflow.com/docs/axosyslog-core/?utm_source=docs&utm_medium=menu
+      - label: Logging Operator Documentation
+        href: https://kube-logging.dev/docs/?utm_source=docs&utm_medium=menu
+      - label: Syslogopedia
+        href: https://axoflow.com/syslogopedia?utm_source=docs&utm_medium=menu
+  - kind: menu
+    label: About
+    groups:
+    - kind: links
+      links:
+      - label: About Us
+        href: https://axoflow.com/about-us?utm_source=docs&utm_medium=menu
+      - label: News
+        href: https://axoflow.com/news?utm_source=docs&utm_medium=menu
+      - label: Contact
+        href: https://axoflow.com/contact?utm_source=docs&utm_medium=menu
+  - kind: link
+    label: Login
+    href: https://login.axoflow.io/?utm_source=docs&utm_medium=menu
+

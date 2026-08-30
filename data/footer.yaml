@@ -1,0 +1,119 @@
+# The marketing footer, shared with axoflow.com.
+#
+# Read off the live marketing site's rendered DOM rather than transcribed, then
+# transformed twice: `?utm_source=docs&utm_medium=footer` is appended to every
+# outbound href, and the two badge images -- which the site serves as CDN URLs
+# with a Webflow hash in the filename -- are vendored under assets/img/footer/.
+# To refresh: read the live footer again and redo both transforms; do not edit
+# the values here by hand.
+#
+# Link text is verbatim from the live site with one exception: the marketing
+# footer spells it `Capablities`, and this file says `Capabilities`. The live docs
+# footer spells it correctly today, so carrying the typo across would have been a
+# regression on this site. Marketing's own copy still needs the fix; keep this
+# correction when the extraction is re-run.
+#
+# Rendered by layouts/_partials/footer.html and its three row partials.
+
+logo:
+  href: "https://axoflow.com/?utm_source=docs&utm_medium=footer"
+  # Both files are vendored from the live site. The single
+  # brand logo paints its wordmark in #0F1425, which is also the dark theme's
+  # background, so a dark variant is swapped in rather than filtered.
+  light: "img/footer/axoflow-logo.svg"
+  dark: "img/footer/axoflow-logo-dark.svg"
+
+tagline:
+  lead: "Stop babysitting security data,"
+  accent: "start putting it to work"
+
+copyright: "All rights reserved | Copyright 2026 Axoflow"
+
+privacy:
+  label: "Privacy Policy"
+  href: "https://axoflow.com/privacy-policy?utm_source=docs&utm_medium=footer"
+
+columns:
+  - title: "PRODUCTS"
+    links:
+      - label: "Axoflow platform"
+        href: "https://axoflow.com/axoflow-platform?utm_source=docs&utm_medium=footer"
+      - label: "AxoLake"
+        href: "https://axoflow.com/axolake-petabyte-security-data-storage?utm_source=docs&utm_medium=footer"
+      - label: "AxoRouter"
+        href: "https://axoflow.com/axorouter?utm_source=docs&utm_medium=footer"
+      - label: "Axoflow + AI"
+        href: "https://axoflow.com/how-axoflow-really-uses-ai?utm_source=docs&utm_medium=footer"
+      - label: "Integrations"
+        href: "https://axoflow.com/docs/axoflow/destinations/?utm_source=docs&utm_medium=footer"
+      - label: "Capabilities"
+        href: "https://axoflow.com/capabilities?utm_source=docs&utm_medium=footer"
+  - title: "SOLUTIONS"
+    links:
+      - label: "Comparisons"
+        href: "https://axoflow.com/comparisons?utm_source=docs&utm_medium=footer"
+      - label: "Use Cases"
+        href: "https://axoflow.com/use-cases?utm_source=docs&utm_medium=footer"
+      - label: "Case Studies"
+        href: "https://axoflow.com/case-studies?utm_source=docs&utm_medium=footer"
+  - title: "RESOURCES"
+    links:
+      - label: "Blog"
+        href: "https://axoflow.com/blog?utm_source=docs&utm_medium=footer"
+      - label: "Documentation"
+        href: "https://axoflow.com/docs?utm_source=docs&utm_medium=footer"
+      - label: "Webinars"
+        href: "https://axoflow.com/webinars?utm_source=docs&utm_medium=footer"
+      - label: "White papers"
+        href: "https://axoflow.com/white-papers?utm_source=docs&utm_medium=footer"
+      - label: "Podcast"
+        href: "https://axoflow.com/data-strikes-back-podcast?utm_source=docs&utm_medium=footer"
+      - label: "Support & Professional Services"
+        href: "https://axoflow.com/support?utm_source=docs&utm_medium=footer"
+  - title: "OPEN SOURCE"
+    links:
+      - label: "AxoSyslog"
+        href: "https://axoflow.com/axosyslog?utm_source=docs&utm_medium=footer"
+      - label: "AxoSyslog Documentation"
+        href: "https://axoflow.com/docs/axosyslog-core/?utm_source=docs&utm_medium=footer"
+      - label: "Logging Operator Documentation"
+        href: "https://kube-logging.dev/docs/?utm_source=docs&utm_medium=footer"
+      - label: "Syslogopedia"
+        href: "https://axoflow.com/syslogopedia?utm_source=docs&utm_medium=footer"
+  - title: "ABOUT"
+    links:
+      - label: "About us"
+        href: "https://axoflow.com/about-us?utm_source=docs&utm_medium=footer"
+      - label: "News"
+        href: "https://axoflow.com/news?utm_source=docs&utm_medium=footer"
+      - label: "Contact"
+        href: "https://axoflow.com/contact?utm_source=docs&utm_medium=footer"
+      - label: "Our partners"
+        href: "https://axoflow.com/partners?utm_source=docs&utm_medium=footer"
+
+badges:
+  - label: "SOC2 logo"
+    href: "https://axoflow.com/news/axoflow-achieves-soc-2-type-ii-compliance?utm_source=docs&utm_medium=footer"
+    file: "img/footer/soc2-logo.webp"
+  - label: "ISO 27001"
+    href: "https://axoflow.com/news/axoflow-is-iso27001-certified/?utm_source=docs&utm_medium=footer"
+    file: "img/footer/iso-27001.webp"
+
+# No UTM on these: they leave axoflow.com entirely, and the live footer
+# does not tag them either. Glyphs are inlined in footer/row-3.html.
+#
+# Order is the LIVE site's -- X / LinkedIn / GitHub / Discord, measured on
+# 2026-08-29. It used to be X / GitHub / LinkedIn / Discord, and the note here
+# said that was "the one place the documentation chrome has already made a
+# choice". That choice was reversed on instruction when the whole footer was
+# re-baselined onto axoflow.com; the two middle marks swap, and nothing else
+# about the strip does.
+social:
+  - label: "X"
+    href: "https://x.com/AxoFlowIO"
+  - label: "LinkedIn"
+    href: "https://www.linkedin.com/company/axoflow/"
+  - label: "GitHub"
+    href: "https://github.com/axoflow"
+  - label: "Discord"
+    href: "https://discord.gg/583Z4wjem2"

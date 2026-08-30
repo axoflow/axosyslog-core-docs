@@ -1,0 +1,12 @@
+# Marketing chrome shared with axoflow.com.
+#
+# Read off the live marketing site's rendered DOM rather than transcribed; this
+# file is the part of it the documentation renders. Read the live chrome again
+# when marketing changes the bar or the strip, rather than editing the values
+# here by hand.
+#
+# Rendered by layouts/_partials/announcement-strip.html.
+
+announcement:
+  href: "https://axoflow.com/news/axoflow-at-splunk-conf26"
+  label: "👋 Meet with us at Splunk .conf26 September 14–17 at booth P1 >>>"
