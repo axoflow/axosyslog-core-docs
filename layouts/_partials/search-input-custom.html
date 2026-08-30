@@ -1,0 +1,49 @@
+{{/*
+  Project override of themes/docsy-axoflow/layouts/_partials/search-input-custom.html
+  (reached through the submodule's search-input.html, which ends in
+  `partialCached "search-input-custom" .`).
+
+  The only difference is that the trigger is empty.
+
+  The submodule's version puts a `<span class="nav-link">` inside the element and
+  its comment states that the span "is slotted into the trigger's default slot".
+  There is no slot. `pagefind-modal-trigger` uses no shadow DOM at all — measured,
+  `element.shadowRoot` is null — and renders its own `<button class="pf-trigger-btn">`
+  straight into the light DOM. So the span is not a fallback that gets replaced;
+  it is a sibling of the component's button, and whether it survives depends
+  entirely on the order in which the browser parses the markup and upgrades the
+  element:
+
+    cold load  — pagefind-component-ui.js has not been fetched yet, so the element
+                 upgrades after the parser has already put the span inside it. The
+                 component writes its button over the existing children and the
+                 span is gone. One box, 40px.
+
+    warm load  — the script comes from cache and defines the element *before* this
+                 markup is parsed. `connectedCallback` runs on an element that is
+                 still empty, writes the button, and then the parser appends the
+                 span after it. Two boxes, 40px each, 80px in total.
+
+  That is the "two search boxes in the sidebar" bug, and it is why it only
+  appeared after clicking around for a while: the first page of a session is a
+  cold load and looks correct. Measured on the deployed build — the trigger's
+  `children` are `[button.pf-trigger-btn]` on the first page and
+  `[button.pf-trigger-btn, span.nav-link]` after one navigation.
+
+  With no child, no ordering can produce a duplicate. This is a stronger fix than
+  hiding the span with a `:defined` rule would be: `pagefind-component-ui.css`
+  ships after this project's stylesheet and prefixes its selectors with an
+  artificial `:is(*, #\#):is(*, #\#):is(*, #\#)` — three id's worth of weight — so
+  a hide of ours is a specificity contest that can be lost silently in production,
+  which is exactly how the `ul-*` and `pf-*` rules were lost before.
+
+  What is given up is the box the development server used to show: there the
+  search index does not exist, the element never upgrades, and the span was the
+  only thing visible. It was not a working search — there is nothing to search —
+  and a control that looks real and opens nothing is what kept this bug invisible.
+  The space it occupied is reserved in _styles_project.scss so the tree below does
+  not move while the component mounts.
+*/ -}}
+{{ if .Site.Params.offlineSearchPagefind -}}
+  <pagefind-modal-trigger placeholder="Search" aria-label="Search"></pagefind-modal-trigger>
+{{- end }}

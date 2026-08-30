@@ -1,0 +1,15 @@
+{{/*
+  The announcement strip axoflow.com carries above its bar. 28px at desktop,
+  brand navy, 12px Book.
+
+  Content comes from data/chrome.yaml, which was read off the live marketing
+  site's rendered DOM rather than transcribed, so the wording here is the
+  wording a reader sees there.
+*/ -}}
+{{ with site.Data.chrome.announcement -}}
+  {{ with .label -}}
+<div class="axo-announcement d-print-none">
+  <a href="{{ $.Site.Data.chrome.announcement.href }}" target="_blank" rel="noopener">{{ . }}</a>
+</div>
+  {{- end }}
+{{- end -}}

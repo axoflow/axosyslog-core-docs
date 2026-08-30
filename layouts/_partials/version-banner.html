@@ -1,0 +1,80 @@
+{{/*
+  Version banner. When data/versions.yaml is present, the "you're viewing an
+  archived version" banner is driven by that central list: it shows whenever the
+  version being built is not the one flagged `latest`, and links to the SAME page
+  at the site root (where the latest version lives). The latest version's base is
+  derived from this build's baseURL and the current version segment — no per-branch
+  archived_version flag and no URLs stored in the data file.
+
+  If the data file is absent, it falls back to Docsy's classic static behavior
+  driven by the params.archived_version / params.url_latest_version flags.
+
+  SHAPE. A band across the whole window, fixed directly under the bar, with a
+  clock icon and one line of type. Measured at 1440: 34px tall, #fff0e5 with a
+  1px #ef5900 rule along the bottom, 14px/16.8px
+  in #c73900, 8px of padding and a 10.5px gap between icon and sentence. Docsy
+  draws a card inside the article instead. The markup here is the band's; the
+  paint is in assets/scss/_axo-frame.scss, and because that rule is `fixed` the
+  element can stay where the theme renders it (inside <main>, from the submodule's
+  docs/baseof.html) and still paint as chrome.
+
+  The clock is a single path, kept verbatim rather than redrawn, so the glyph is
+  the same one wherever this band appears.
+*/ -}}
+{{ $versions := hugo.Data.versions -}}
+{{ if $versions -}}
+  {{- $curBase := (urls.Parse site.BaseURL).Path -}}
+  {{- if not (strings.HasSuffix $curBase "/") }}{{ $curBase = printf "%s/" $curBase }}{{ end -}}
+  {{- $rel := strings.TrimPrefix "/" (strings.TrimPrefix $curBase .Page.RelPermalink) -}}
+  {{- $segs := split (strings.Trim $curBase "/") "/" -}}
+  {{- $lastSeg := index $segs (sub (len $segs) 1) -}}
+  {{- $current := false -}}
+  {{- range $versions -}}
+    {{- if and (not .latest) (eq (printf "%v" .version) $lastSeg) }}{{ $current = . }}{{ end -}}
+  {{- end -}}
+  {{- $rootBase := $curBase -}}
+  {{- if $current }}{{ $rootBase = strings.TrimSuffix (printf "%v/" $current.version) $curBase }}{{ end -}}
+  {{- if $current -}}
+    <p class="version-banner">
+      <svg class="version-banner__icon" width="14" height="14" viewBox="0 0 24 24"
+           fill="currentColor" aria-hidden="true"><path d="M11.328 0.198L11.328 0.198L12.924 0.198Q13.260 0.240 13.848 0.303Q14.436 0.366 14.772 0.450L14.772 0.450Q17.124 1.038 19.098 2.424L19.098 2.424Q20.694 3.642 21.576 5.028L21.576 5.028Q23.298 7.296 23.676 10.278L23.676 10.278Q23.676 10.404 23.739 10.698Q23.802 10.992 23.802 11.202L23.802 11.202L23.802 12.924Q23.760 13.176 23.697 13.659Q23.634 14.142 23.550 14.352L23.550 14.352Q22.920 16.914 21.597 18.804Q20.274 20.694 18.048 22.122L18.048 22.122Q16.788 22.794 15.822 23.130L15.822 23.130Q14.604 23.592 13.428 23.676L13.428 23.676Q13.302 23.676 13.050 23.739Q12.798 23.802 12.672 23.802L12.672 23.802L10.950 23.802Q10.698 23.760 10.215 23.697Q9.732 23.634 9.522 23.550L9.522 23.550Q6.960 22.920 5.070 21.597Q3.180 20.274 1.752 18.048L1.752 18.048Q1.080 16.788 0.744 15.822L0.744 15.822Q0.282 14.604 0.198 13.428L0.198 13.428Q0.282 13.344 0.240 13.071Q0.198 12.798 0.198 12.672L0.198 12.672L0.198 11.076Q0.240 10.740 0.303 10.152Q0.366 9.564 0.450 9.228L0.450 9.228Q1.038 6.876 2.424 4.902L2.424 4.902Q3.642 3.138 5.952 1.752L5.952 1.752Q8.052 0.492 10.278 0.324L10.278 0.324Q10.488 0.324 10.824 0.261Q11.160 0.198 11.328 0.198ZM2.172 12.252L2.172 12.252Q2.214 14.898 3.579 17.124Q4.944 19.350 7.212 20.673Q9.480 21.996 12.168 21.975Q14.856 21.954 17.145 20.589Q19.434 19.224 20.736 16.872Q22.038 14.520 21.996 11.748L21.996 11.748Q21.912 9.144 20.526 6.918Q19.140 4.692 16.872 3.432L16.872 3.432Q14.478 2.088 11.748 2.172L11.748 2.172Q9.144 2.214 6.918 3.558Q4.692 4.902 3.432 7.170L3.432 7.170Q2.088 9.522 2.172 12.252ZM12.546 11.958L12.546 12Q12.672 11.874 12.987 11.685Q13.302 11.496 13.428 11.328L13.428 11.328Q15.822 9.774 16.872 8.976L16.872 8.976L16.998 8.892Q17.124 8.808 17.124 8.724L17.124 8.724Q17.292 8.514 17.565 8.577Q17.838 8.640 18.027 8.829Q18.216 9.018 18.174 9.291Q18.132 9.564 17.922 9.774L17.922 9.774L15.780 11.244Q14.352 12.210 13.722 12.798L13.722 12.798L12.252 13.848Q11.958 14.016 11.643 13.890Q11.328 13.764 11.328 13.428L11.328 13.428L11.328 4.902Q11.328 4.272 11.874 4.272L11.874 4.272Q12.084 4.146 12.315 4.314Q12.546 4.482 12.546 4.776L12.546 4.776L12.546 12L12.546 11.958Z"/></svg>
+      {{/*  "current", not "latest", in both places. The word is a label the
+            reader compares against two other controls: the sidebar switcher and
+            the search modal's version filter both read "0.86 (current)", from
+            `name` in data/versions.yaml. With "latest" here the same release was
+            called two different things in one screen, and the reader has no way
+            to know they mean the same version.  */}}
+      {{/*  SHORT, because this band is read on a phone.
+
+            The sentence used to be "You are viewing the documentation for
+            version 0.81 of Axoflow, which is no longer the current release. For
+            up-to-date documentation, see the current version." — 154 characters,
+            measured at 390 as four lines and 85px of band above the title, and
+            reported as too long there. Every fact in it survives: which version,
+            that it is not current, and the way to the page that is.
+
+            One sentence for both widths rather than a short phone copy and a
+            long desktop one — two strings saying the same thing drift apart, and
+            the long one was not carrying its length on the desktop either.  */}}
+      <span>Version {{ $current.name | default (printf "%v" $current.version) }}
+        of {{ site.Params.product_name }} is no longer current. See the
+        <a href="{{ $rootBase }}{{ $rel }}">current version</a>.</span>
+    </p>
+  {{- end -}}
+{{- else -}}
+  {{- if site.Params.archived_version -}}
+    {{- $latest_version := site.Params.url_latest_version -}}
+    {{- $current_version := site.Params.version -}}
+    <p class="version-banner">
+      <svg class="version-banner__icon" width="14" height="14" viewBox="0 0 24 24"
+           fill="currentColor" aria-hidden="true"><path d="M11.328 0.198L11.328 0.198L12.924 0.198Q13.260 0.240 13.848 0.303Q14.436 0.366 14.772 0.450L14.772 0.450Q17.124 1.038 19.098 2.424L19.098 2.424Q20.694 3.642 21.576 5.028L21.576 5.028Q23.298 7.296 23.676 10.278L23.676 10.278Q23.676 10.404 23.739 10.698Q23.802 10.992 23.802 11.202L23.802 11.202L23.802 12.924Q23.760 13.176 23.697 13.659Q23.634 14.142 23.550 14.352L23.550 14.352Q22.920 16.914 21.597 18.804Q20.274 20.694 18.048 22.122L18.048 22.122Q16.788 22.794 15.822 23.130L15.822 23.130Q14.604 23.592 13.428 23.676L13.428 23.676Q13.302 23.676 13.050 23.739Q12.798 23.802 12.672 23.802L12.672 23.802L10.950 23.802Q10.698 23.760 10.215 23.697Q9.732 23.634 9.522 23.550L9.522 23.550Q6.960 22.920 5.070 21.597Q3.180 20.274 1.752 18.048L1.752 18.048Q1.080 16.788 0.744 15.822L0.744 15.822Q0.282 14.604 0.198 13.428L0.198 13.428Q0.282 13.344 0.240 13.071Q0.198 12.798 0.198 12.672L0.198 12.672L0.198 11.076Q0.240 10.740 0.303 10.152Q0.366 9.564 0.450 9.228L0.450 9.228Q1.038 6.876 2.424 4.902L2.424 4.902Q3.642 3.138 5.952 1.752L5.952 1.752Q8.052 0.492 10.278 0.324L10.278 0.324Q10.488 0.324 10.824 0.261Q11.160 0.198 11.328 0.198ZM2.172 12.252L2.172 12.252Q2.214 14.898 3.579 17.124Q4.944 19.350 7.212 20.673Q9.480 21.996 12.168 21.975Q14.856 21.954 17.145 20.589Q19.434 19.224 20.736 16.872Q22.038 14.520 21.996 11.748L21.996 11.748Q21.912 9.144 20.526 6.918Q19.140 4.692 16.872 3.432L16.872 3.432Q14.478 2.088 11.748 2.172L11.748 2.172Q9.144 2.214 6.918 3.558Q4.692 4.902 3.432 7.170L3.432 7.170Q2.088 9.522 2.172 12.252ZM12.546 11.958L12.546 12Q12.672 11.874 12.987 11.685Q13.302 11.496 13.428 11.328L13.428 11.328Q15.822 9.774 16.872 8.976L16.872 8.976L16.998 8.892Q17.124 8.808 17.124 8.724L17.124 8.724Q17.292 8.514 17.565 8.577Q17.838 8.640 18.027 8.829Q18.216 9.018 18.174 9.291Q18.132 9.564 17.922 9.774L17.922 9.774L15.780 11.244Q14.352 12.210 13.722 12.798L13.722 12.798L12.252 13.848Q11.958 14.016 11.643 13.890Q11.328 13.764 11.328 13.428L11.328 13.428L11.328 4.902Q11.328 4.272 11.874 4.272L11.874 4.272Q12.084 4.146 12.315 4.314Q12.546 4.482 12.546 4.776L12.546 4.776L12.546 12L12.546 11.958Z"/></svg>
+      {{ with $current_version }}<span>Version {{ . | markdownify }} of the
+        documentation is no longer actively maintained. The site that you are
+        currently viewing is an archived snapshot.
+        {{ with $latest_version }}For up-to-date documentation, see the
+          <a href="{{ . | safeURL }}" target="_blank">latest version</a>.</span>
+        {{ end -}}
+      {{ end -}}
+    </p>
+  {{- end -}}
+{{- end -}}

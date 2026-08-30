@@ -1,0 +1,103 @@
+// The brand palette.
+//
+// Every colour is stated once, as a custom property on the root, and the whole
+// set is re-stated under the dark attribute; every rule downstream names a token
+// rather than a hex. That is what keeps a rule written for the light page right
+// on the dark one — which is what went wrong before this file existed, when the
+// sidebar's `color: #42555f` survived into dark mode and painted grey on navy.
+//
+// The attribute is the one Bootstrap uses, so `[data-bs-theme="dark"]` drives
+// both this palette and the theme's own. Token names follow the brand's own
+// naming rather than Bootstrap's.
+
+:root {
+    // surfaces
+    --axo-bg: #fff;
+    --axo-bg-nav: #fff;
+    --axo-bg-sidebar: #fff;
+    --axo-bg-inline-code: #f3f4f7;
+
+    // text
+    --axo-text: #0f1425;
+    --axo-text-rgb: 15, 20, 37;
+    --axo-text-muted: #42555f; // gray-2
+    --axo-text-faint: #657780; // gray-3
+    // THE BRAND ORANGE, NOT A DARKENED ONE.
+    //
+    // This was #cb3d00, picked because
+    // #ff6500 on white measures 2.95:1 and fails WCAG AA for normal text where
+    // #cb3d00 measures 4.99:1 and passes. Changed on instruction 2026-08-29:
+    // reported as "the colours look red, they should be orange", and measured,
+    // that is exactly what the page did. axoflow.com uses ONE warm value
+    // anywhere on the site — rgb(255, 101, 0), 32 elements on its home page and
+    // 14 links on its blog, and #cb3d00 appears nowhere on it at all — while the
+    // docs drew 13 of their 26 warm elements in the darkened value, including
+    // every footer column title beside a live footer label in the orange.
+    //
+    // THE COST IS REAL AND IS NOT HIDDEN HERE: body links, TOC rows, heading
+    // self-links and the sidebar's focus outline now sit at 2.95:1 on white,
+    // under the 4.5:1 AA asks for text. Brand parity was chosen over the ratio,
+    // deliberately and on request. #cb3d00 is one value away if that is revisited.
+    --axo-text-accent: #ff6500;
+    --axo-text-accent-rgb: 255, 101, 0;
+    // The archived-version band under the bar. LEFT DARKENED when the accent
+    // above went orange, and not by omission: this text sits on #fff0e5 rather
+    // than white, it is a documentation surface the marketing site has no
+    // equivalent of, and it is a warning — the one place where reading the words
+    // matters more than matching the brand.
+    --axo-text-notice: #c73900;
+    --axo-notice-bg: #fff0e5;
+    // The rule under that band. Kept with it for the same reason, so the notice
+    // reads as one object rather than an orange line over darkened text.
+    --axo-notice-rule: #ef5900;
+
+    // decoration: hairlines, control borders, the fill behind an active row
+    --axo-hairline: #e7e8ef; // gray-6
+    --axo-control-border: #d0d2e0; // gray-5
+    --axo-surface: #f3f4f7; // gray-7
+}
+
+[data-bs-theme="dark"] {
+    --axo-bg: #0f1425;
+    --axo-bg-nav: #171c2e;
+    --axo-bg-sidebar: #171c2e;
+    --axo-bg-inline-code: #1f2537;
+
+    --axo-text: #f0f2f7;
+    --axo-text-rgb: 240, 242, 247;
+    --axo-text-muted: #c8cad3;
+    --axo-text-faint: #b4b7c1;
+    --axo-text-accent: #ff6500;
+    --axo-text-accent-rgb: 255, 101, 0;
+    --axo-text-notice: #ffbb91;
+    --axo-notice-bg: #462313;
+    --axo-notice-rule: #ff6500;
+
+    --axo-hairline: #1f2537;
+    --axo-control-border: #1f2537;
+    --axo-surface: #0f1425;
+}
+
+// Bootstrap reads its own names, and Docsy's rules read Bootstrap's. Pointing
+// them at the tokens above is what makes the theme's own components — buttons,
+// tables, form controls, the dropdown menus — follow the same palette instead of
+// the two separate ones the site had.
+//
+// The `-rgb` triplets are not decoration: Bootstrap composes link and body
+// colour as `rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1))`, so a
+// hex alone leaves the old colour in place.
+:root,
+[data-bs-theme="dark"] {
+    --bs-body-bg: var(--axo-bg);
+    --bs-body-color: var(--axo-text);
+    --bs-body-color-rgb: var(--axo-text-rgb);
+    --bs-emphasis-color: var(--axo-text);
+    --bs-emphasis-color-rgb: var(--axo-text-rgb);
+    --bs-heading-color: var(--axo-text);
+    --bs-secondary-color: var(--axo-text-muted);
+    --bs-border-color: var(--axo-hairline);
+    --bs-link-color: var(--axo-text-accent);
+    --bs-link-color-rgb: var(--axo-text-accent-rgb);
+    --bs-link-hover-color: var(--axo-text-accent);
+    --bs-link-hover-color-rgb: var(--axo-text-accent-rgb);
+}

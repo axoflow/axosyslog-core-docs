@@ -1,0 +1,534 @@
+// The marketing footer.
+//
+// Imported from _styles_project.scss. Kept separate so each area stays readable
+// on its own.
+//
+// THE REFERENCE IS axoflow.com.
+//
+// It was an earlier documentation design — every number measured off that at
+// 1440 / 1280 / 1024 / 768 / 390 in both themes — and that is why this footer
+// did not look like the marketing site's. The two are not the same design.
+// Measured on 2026-08-29, `.v3-footer_component` against `.td-footer` at 1440
+// and 390, the old baseline was wrong on the column title (13px/500 against
+// 18px/700), the link weight and leading (400/24.5 against 500/26), every row's
+// padding, the row-2 gap, the logo and badge sizes, the legal row's order,
+// weight and colour, and the hairline's colour and width.
+//
+// Re-baselined on instruction. Every number below is now axoflow.com's own,
+// measured, and the ones that are NOT are marked where they sit. The markup is
+// layouts/_partials/footer.html and its three row partials; the classes are the
+// Docsy theme's own td-footer__* names, so nothing here depends on a class
+// purgecss cannot see in a template.
+//
+// The three rows, once:
+//   .td-footer__row-1  the five link columns
+//   .td-footer__row-2  logo + rule + tagline + badges
+//   .td-footer__row-3  copyright + social + privacy
+//
+// Colours are the Bootstrap body variables and the brand tokens. This footer used
+// to carry TWO light-mode oranges that were easy to conflate — the rule beside
+// the logo at #ef5900 and the column titles at #cb3d00.
+//
+// Both are the brand orange now, in both themes. Measured against the live footer
+// on 2026-08-29: `div.v3-footer_row-1_label` ("PRODUCTS") draws rgb(255, 101, 0)
+// there and `p.td-footer__column-title` drew rgb(203, 61, 0) here — the same row,
+// side by side, one orange and one red. That is what was reported. See the note
+// on --axo-text-accent in _axo-tokens.scss for what it costs.
+
+$axo-footer-accent-light: #ff6500; // the brand orange, both themes
+$axo-footer-accent-dark: #ff6500; // the brand orange, dark
+$axo-footer-rule-light: #ff6500; // was #ef5900
+// Live's rule, measured: `1px solid rgb(231, 232, 239)` on the top of row-1 AND
+// row-2, inside the 1280 container. This was #d0d2e0, and it was a full-bleed
+// band on the footer element.
+$axo-footer-hairline-light: #e7e8ef; // live, rgb(231, 232, 239)
+$axo-footer-hairline-dark: #1f2537; // the hairline, dark
+// `$axo-footer-muted-light` / `-dark` stood here — the grey the legal row was
+// set in. Live sets that row in the body colour at weight 500
+// and there is nothing muted left in this footer, so the two are gone rather than
+// kept as values nothing reads.
+
+// The live gutter, 20px below 768 and 40px above. The footer is the only block
+// here that spends it, because the 1280px cap on .container-fluid does not bind
+// until 1360.
+$axo-footer-gutter: 1.25rem;
+$axo-footer-gutter-wide: 2.5rem;
+
+.td-footer {
+    // The theme sets Poppins / 0.9rem / 500 on this element
+    // (themes/docsy-axoflow/assets/scss/_styles_project.scss:590). All three have
+    // to go, and the typeface most of all: every width in this file -- the 127px
+    // link, the 320px copyright line, the 331px tagline -- is set by the glyphs,
+    // so a footer laid out in Poppins measures wrong with the geometry correct.
+    font-family: inherit;
+    font-size: 0.875rem; // 14px
+    font-weight: 400;
+    line-height: 1.75; // 24.5px
+
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+    // NO BORDER AND NO VERTICAL PADDING HERE. Live puts neither on the footer
+    // element: the rule is a `border-top` on row-1 and row-2, inside the 1280
+    // container, and the vertical space is each row's own padding — 60/0 on
+    // row-1, 40/60 on row-2, 0/96 on row-3. A full-bleed rule across the whole
+    // viewport is the first thing that reads as "not the marketing footer",
+    // because it cuts the page edge to edge.
+    //
+    // The BAND still reaches the viewport edges, which is what the margin below
+    // is for; only the rule moved inside.
+    //
+    // `border-top: 0` is stated rather than merely not set: the theme submodule
+    // draws one here (themes/docsy-axoflow/assets/scss/_styles_project.scss:602,
+    // and again at 665), so dropping the declaration from this file left the rule
+    // exactly where it was and the footer carried TWO — the theme's across the
+    // whole viewport and row-1's inside the container.
+    border-top: 0;
+    padding: 0 $axo-footer-gutter;
+
+    // The footer has to reach the viewport edges — the rule and the border are
+    // the one thing a full-bleed band is for. It used to take back half a
+    // Bootstrap gutter here, because `.td-outer` is a `.container-fluid` and
+    // spent one on each side; _axo-frame.scss now zeroes that padding for the
+    // whole frame, so taking it back a second time would push this band 12px
+    // past each edge and give every page a horizontal scrollbar.
+
+    // Load-bearing wherever the contents column is `position: fixed`: a fixed
+    // column paints straight through the footer's right-hand columns unless the
+    // footer joins the positioned layer too. Docsy's two columns are `sticky`
+    // instead (measured: aside.td-sidebar-toc sticky/auto, .td-sidebar__inner
+    // sticky/z-index 10), and a sticky box cannot leave its containing block,
+    // which ends above this element -- so today this changes no pixel. It stays
+    // because a z-index 10 neighbour is one frame change away from mattering.
+    position: relative;
+    z-index: 1;
+
+    // .container-fluid is the 1280px inner box, capped and centred by the
+    // project stylesheet. Zeroing its own gutter is the other half of the
+    // margin-inline above: together they put the footer's contents on exactly
+    // the same 1280px grid as the bar rather than 12px inside it.
+    > .container-fluid {
+        padding-inline: 0;
+    }
+
+    @media (min-width: 48rem) {
+        padding-inline: $axo-footer-gutter-wide;
+    }
+}
+
+// ---- row-1: the link columns ------------------------------------------------
+// The track declaration is left as auto-fit rather than resolved to pixels: this
+// container and the live one are the same width at every breakpoint, so auto-fit
+// lands on the same count -- measured 5 tracks of 230px at 1440, 5 of 214 at 1280, 4 of
+// 212 at 1024, 3 of 208 at 768 and 1 of 350 at 390. auto-fit collapses the
+// trailing empty track and its gap, which is why five columns fill 1280 exactly.
+.td-footer__row-1 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    gap: 2rem; // live: 32px
+    // Live: `padding: 60px 0` and the hairline on top, both inside the container.
+    padding: 3.75rem 0;
+    border-top: 1px solid $axo-footer-hairline-light;
+}
+
+// Live's `.v3-footer_row-1_label`, measured at 1440 and 390 alike: 18px/700,
+// line-height 27px, `margin-bottom: 20px`, uppercase, no letter-spacing, in the
+// brand orange. It was 13px/500 with 0.06em of tracking, which is five pixels
+// and two weights smaller than the heading
+// the marketing footer draws, and the single loudest difference between the two.
+.td-footer__column-title {
+    margin: 0 0 1.25rem;
+    color: $axo-footer-accent-light;
+    font-size: 1.125rem; // live: 18px
+    font-weight: 700;
+    line-height: 1.5; // live: 27px on 18
+    letter-spacing: normal;
+    text-transform: uppercase;
+}
+
+.td-footer__list {
+    // The markup also carries Bootstrap's `.list-unstyled`, which is what the
+    // partial this replaces relied on; stated here too so the footer keeps its
+    // shape if that class is ever dropped from the template.
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    // Live: `gap: 12px`, rows of 14px/500 with a 26px line box. It was 8px and
+    // weight 400, so the column ran 5px tighter per row and read lighter than
+    // the marketing one beside it.
+    gap: 0.75rem;
+    font-weight: 500;
+    line-height: 1.857; // live: 26px on 14
+    // Live's list is `align-items: flex-start`, so a block row is as wide as its
+    // words — 128px for `Axoflow platform` — rather than the column's 230.
+    align-items: flex-start;
+
+    a {
+        // Live's rows are blocks, so the whole 230px width is the target rather
+        // than the width of the words.
+        display: block;
+        color: var(--bs-body-color);
+        text-decoration: none;
+        font-weight: inherit;
+        // The theme sets `line-height: 1.9` on these links, which would take the
+        // row to 26.6px against live's 26.
+        line-height: inherit;
+
+        &:hover,
+        &:focus-visible {
+            color: $axo-footer-accent-light;
+            text-decoration: underline;
+        }
+    }
+}
+
+// ---- row-2: logo, rule, tagline, badges -------------------------------------
+// Live: `gap: 40px`, `padding: 40px 0 60px`, its own hairline on top, and the
+// items packed from the start with the badges pushed right by `margin-left: auto`
+// rather than the row being `space-between` — which matters when the tagline is
+// narrower than the space between the logo and the badges.
+.td-footer__row-2 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2.5rem;
+    margin-top: 0;
+    padding: 2.5rem 0 3.75rem;
+    border-top: 1px solid $axo-footer-hairline-light;
+}
+
+// The anchor is a flex box so it is exactly as tall as the wordmark. As a plain
+// block with an inline <img> it measured 62 against live's 54 — the 8px is the
+// descender space under an inline image — and row-2 came out 8px tall with it.
+.td-footer__logo {
+    display: flex;
+}
+
+// Live: 214x54. It was 3rem tall, which is 191 wide at this artwork's ratio.
+//
+// `max-height: none` is load-bearing: the theme submodule caps this at 48px
+// (themes/docsy-axoflow/assets/scss/_styles_project.scss:635) and `max-height`
+// beats `height`, so setting the height alone changed nothing at all — measured,
+// the logo stayed 191x56 after the value here went to 3.375rem.
+.td-footer__site-logo {
+    height: 3.375rem;
+    max-height: none;
+    width: auto;
+    // Bootstrap's reboot sets `vertical-align: middle` on every img, and the
+    // difference against baseline moves the logo 6px up in its 56px line box.
+    vertical-align: baseline;
+}
+
+.td-footer__site-logo--dark {
+    display: none;
+}
+
+// Live: `border-right: .1875rem solid; height: 3.375rem` in the brand orange,
+// hidden below 768px. 3px x 54px measured on both sides.
+.td-footer__divider {
+    align-self: center;
+    width: 0.1875rem;
+    height: 3.375rem;
+    background-color: $axo-footer-rule-light;
+}
+
+// Live: 24px/500 with a 36px line box at 1440, 20px/500 and 30px below its own
+// breakpoint, second line in the accent. It was 20px at every width — right on a
+// phone and four pixels short on a desktop. The break is a flex column rather
+// than a <br>, so the two lines stay two lines without the markup deciding where
+// the text wraps.
+.td-footer__tagline {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.5;
+
+    span {
+        color: $axo-footer-accent-light;
+        // The theme carries a bare element rule, `.td-content li, span
+        // { line-height: 1.62rem }`, which reaches every <span> on the page.
+        // 1.62rem is 25.92px against the 28px this line wants, so the two-line
+        // tagline came out 53.92 rather than 56 and took the whole footer 2px
+        // short at every width -- and at 390, where it wraps to three lines, 26.
+        line-height: inherit;
+    }
+}
+
+// Live: `gap: 32px` and images 120px tall at 1440; 16px and 96px below, and the
+// strip is exactly as tall as the images — 120, not 128.
+//
+// The anchors around them are flex for the same reason the logo's is: inline
+// anchors holding inline images add 8px of descender under the strip. That 8px
+// used to be deliberate here; live has none.
+.td-footer__badges {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+
+    a {
+        display: flex;
+    }
+    // Pushed to the end of the row, as on live (`margin-left: auto`). Released
+    // below 50rem, where the row is a column and this would push the badges to
+    // the bottom of it instead.
+    margin-inline-start: auto;
+}
+
+// Same cap, same fix: the theme holds these to `max-height: 96px`.
+.td-footer__compliance-badge {
+    height: 7.5rem;
+    max-height: none;
+    width: auto;
+    // See the note in footer/row-2.html: the anchor is inline and this baseline
+    // is what makes the strip 104px rather than 96, and row-2 137px rather than 129.
+    vertical-align: baseline;
+}
+
+// ---- row-3: copyright, social, privacy --------------------------------------
+// Live's legal row, measured at 1440: `gap: 32px`, `padding: 0 0 96px`, packed
+// from the start — copyright, then `Privacy Policy` immediately beside it, then
+// the social marks pushed right — and set in the BODY colour at weight 500, not
+// in a muted grey. It was `space-between` at 16px in a lighter grey, which put
+// the marks in the middle of the row and the privacy link hard against the right
+// edge, and drew the whole line two shades lighter than the marketing footer's.
+.td-footer__row-3 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2rem;
+    margin-top: 0;
+    padding: 0 0 6rem;
+    color: var(--bs-body-color);
+    font-weight: 500;
+    line-height: 1.8; // live: 25.2px on 14
+}
+
+.td-footer__copyright-text {
+    margin: 0;
+    color: inherit;
+}
+
+.td-footer__privacy {
+    color: inherit;
+
+    &:hover {
+        color: inherit;
+    }
+}
+
+// The social strip lives here rather than in the bar, which is where the live
+// marketing site keeps it and the only place with room for it. Pushed to the end
+// of the legal row the way the badges are pushed to the end of row-2 — live's
+// `margin-left: auto`, released below 50rem where the row wraps.
+.td-footer__social {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-inline-start: auto;
+}
+
+.td-footer__social-link {
+    display: flex;
+    color: $axo-footer-accent-light;
+    // LIVE'S MARK IS A TILE, NOT A GLYPH.
+    //
+    // Measured: each `.v3-footer_row-3_social-link` is 32x32 and its SVG opens
+    // with `<rect width="32" height="32.185" fill="#FF6500">` and draws the mark
+    // over it in white. This drew a bare orange glyph on the page background,
+    // which is a different object at a glance.
+    //
+    // Built from a background colour and our own paths rather than by inlining
+    // live's four SVGs. Same painted result, and it avoids carrying four
+    // `clip-path="url(#clip0_6513_11671)"` ids and their `<defs>` into every page,
+    // plus the 33-unit viewBox and the 0.898/0.531 rect offset that Webflow's
+    // export leaves in three of them.
+    //
+    // 55% is live's own proportion: its X path spans 7.4..24.2 of a 32 box.
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    margin: 0;
+    background-color: $axo-footer-accent-light;
+    color: #fff;
+
+    &:hover {
+        color: #fff;
+    }
+
+    svg {
+        width: 55%;
+        height: 55%;
+        display: block;
+    }
+}
+
+// ---- below 50rem ------------------------------------------------------------
+// One column, flush left on the 20px gutter -- axoflow.com's own phone footer,
+// measured at 390: `.container-large` at x=20 w=350, every `v3-footer_row-1_column`
+// at x=20 with `text-align: start`, `v3-footer_row-2` a column with
+// `align-items: flex-start`, and `v3-footer_row-3` wrapping from the left.
+//
+// This block used to centre all three rows. That was a deliberate departure from
+// live -- the reasoning is kept here because it is the thing that was overruled,
+// not a thing that was wrong: the marketing site is the reference for this chrome, so the
+// footer follows it on a phone the way the site menu does.
+//
+// The logo comes back with the alignment. Live draws it on a phone (214x54 at
+// the head of row-2), and it was dropped here only because a centred wordmark
+// under a centred tagline read as a third logo in one scroll. Left-aligned at the
+// head of its own row it reads as the start of the meta block, which is its job.
+//
+// The rule beside it stays out. It is the vertical bar that separates the logo
+// from the tagline on a row, and row-2 is a column here -- live has no divider on
+// a phone either.
+@media (max-width: 50rem) {
+    .td-footer__row-1 {
+        text-align: start;
+        // The grid gap stays 32px. Live's `.v3-footer_row-1` reports `gap: 48px`
+        // at 390 and that number is a red herring — it is the gap between that
+        // block's own children and the block has exactly one, the columns grid,
+        // whose gap is 32 at both widths. Set to 48 here it put an extra 16px
+        // between every stacked column; measured, row-1 came out 1362 tall
+        // against live's 1298.
+    }
+
+    // Live drops to 20px/30px here, and the badges to 96px at a 16px gap.
+    .td-footer__tagline {
+        font-size: 1.25rem;
+    }
+
+    .td-footer__badges {
+        gap: 1rem;
+    }
+
+    // Live draws BOTH badges 80x96 on a phone, which is not either image's own
+    // ratio — 94x120 and 80x120 at 1440 are 0.783 and 0.667, and 80x96 is 0.833
+    // for both. So the narrower one is stretched on live. Matched rather than
+    // corrected: the ask was for the marketing footer as it is drawn.
+    .td-footer__compliance-badge {
+        width: 5rem;
+        height: 6rem;
+    }
+
+    // The lists are flex columns, so text-align does not reach the items.
+    .td-footer__list {
+        align-items: flex-start;
+    }
+
+    .td-footer__row-2 {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: start;
+    }
+
+    .td-footer__divider {
+        display: none;
+    }
+
+    .td-footer__badges {
+        margin-inline-start: 0;
+        justify-content: flex-start;
+    }
+
+    // Live's legal row reads "All rights reserved | Copyright 2026 Axoflow" on
+    // its own line, then "Privacy Policy" and the four social marks together on
+    // the next. Two `order` declarations used to produce that here, because the
+    // markup ran copyright / social / privacy — the order the row needed while
+    // the marks sat in the middle at full width. The markup is live's own order
+    // now (copyright / privacy / social, see footer/row-3.html), so the wrap does
+    // it and the swaps are gone.
+    .td-footer__row-3 {
+        justify-content: flex-start;
+        text-align: start;
+        // Live: `gap: 16px 32px` — the wrap puts the copyright on its own line and
+        // the privacy link beside the marks on the next.
+        gap: 1rem 2rem;
+    }
+
+    .td-footer__social {
+        margin-inline-start: 0;
+    }
+
+}
+
+// ---- dark ------------------------------------------------------------------
+// The theme's dark rules are `[data-bs-theme="dark"] .td-footer { … }` -- one
+// attribute more specific than anything above -- so each of these has to be
+// restated at that specificity, not merely later in the file. They are not all
+// cosmetic: the theme paints the column links orange in dark mode, where the
+// light theme uses plain body text.
+[data-bs-theme="dark"] {
+    .td-footer {
+        // The rule is on the rows now, not on this element — and the theme states
+        // its own dark colour on the footer, so that one is zeroed too.
+        border-top: 0;
+
+        &__row-1 {
+            border-top-color: $axo-footer-hairline-dark;
+        }
+
+        &__row-2 {
+            border-top-color: $axo-footer-hairline-dark;
+        }
+
+        &__column-title {
+            color: $axo-footer-accent-dark;
+        }
+
+        &__list a {
+            color: var(--bs-body-color);
+
+            &:hover,
+            &:focus-visible {
+                color: $axo-footer-accent-dark;
+            }
+        }
+
+        &__divider {
+            background-color: $axo-footer-accent-dark;
+        }
+
+        &__tagline span {
+            color: $axo-footer-accent-dark;
+        }
+
+        // Live has no dark mode to measure, and the legal row's light value is
+        // the body colour now rather than a muted grey — so dark follows it
+        // rather than keeping a grey the light side no longer has.
+        &__row-3 {
+            color: var(--bs-body-color);
+        }
+
+        &__copyright-text,
+        &__privacy {
+            color: inherit;
+        }
+
+        // The tile is a brand object, not a page one: orange fill and white mark
+        // in both themes, the same call the CTA in the bar makes.
+        &__social-link {
+            background-color: $axo-footer-accent-dark;
+            color: #fff;
+
+            &:hover {
+                color: #fff;
+            }
+        }
+
+        // The one light-only asset: swap the wordmark rather than filter it.
+        &__site-logo--light {
+            display: none;
+        }
+
+        &__site-logo--dark {
+            display: inline;
+        }
+    }
+}

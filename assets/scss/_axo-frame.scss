@@ -1,0 +1,1438 @@
+// The page frame: the grid, the left sidebar tree, the right-hand contents
+// column, and the chrome offsets — at every breakpoint and in both themes.
+//
+// Imported from _styles_project.scss.
+
+// =============================================================================
+// The grid below the widest case
+// -----------------------------------------------------------------------------
+// Three things kept the columns 12px right of where they belong and one width
+// short of it at every size under 1280, where the 1280px cap stops deciding
+// the answer:
+//
+//   * `.td-outer` is a `container-fluid`, so it carries half a gutter of padding
+//     on each side. The frame has to run edge to edge and let its own columns
+//     hold the margin, which is why the prose starts at 16 on a phone where
+//     Docsy's started at 28.
+//   * `main` keeps `col-12`'s `width: 100%`. `flex: 1 1 auto` resolves its basis
+//     from that width, so the contents column asked for the whole row.
+//   * `.row flex-xl-nowrap` only stops wrapping at `xl`. With the column above
+//     asking for 100%, the row wrapped everywhere below it — at 800 the contents
+//     column rendered 1289px down the page, under the navigation rather than
+//     beside it.
+// =============================================================================
+
+// The canvas behind everything, stated for the theme the reader CHOSE rather
+// than for the one the operating system prefers.
+//
+// The critical inline style in themes/docsy-axoflow/layouts/_partials/head.html
+// is the only thing that dresses the root element, and it keys off the OS:
+//
+//     html{background:Canvas;color:CanvasText}
+//     @media(prefers-color-scheme:dark){html{background:#0b0d12;color:#e6e6e6}}
+//
+// while the theme the page actually renders in comes from
+// `localStorage['td-color-theme']` two lines below it. For a reader whose OS
+// says light and whose stored choice says dark, neither branch describes the
+// page: the media query does not match, so `Canvas` is used, and `Canvas`
+// resolves against the UA's dark canvas because `data-bs-theme="dark"` brings
+// `color-scheme: dark` with it. Measured, in that cell: `rgb(18, 18, 18)`
+// against `rgb(11, 13, 18)` for the same reader on a dark OS.
+//
+// This is cosmetic and small, and the scope is stated so it is not read as
+// bigger than it is: `body` paints `--axo-bg` over its own box and that box is
+// the full document, so the root's colour is only ever seen where nothing else
+// paints — the rubber-band overscroll at the top and bottom of the page. It is
+// one declaration and it makes that edge the same colour for every reader.
+//
+// It is NOT a flash. That was the obvious next thought and it was tested:
+// holding the stylesheet back 900ms so Chrome would have to paint from the
+// inline style alone produced no flash at all — paint-holding kept the previous
+// page on screen for the whole delay and the new one arrived finished.
+:root[data-bs-theme="dark"] {
+    background-color: #0b0d12;
+}
+
+.td-outer {
+    padding-inline: 0;
+}
+
+@include media-breakpoint-up(md) {
+    .td-main > .row {
+        flex-wrap: nowrap;
+    }
+
+    .td-main > .row > main {
+        width: auto;
+    }
+}
+
+// =============================================================================
+// The tree's vertical rhythm
+// -----------------------------------------------------------------------------
+// Measured at 1440 on /deployment-scenarios/existing-infrastructure/, both
+// rendered, walking the same ~320 rows:
+//
+//                      row height (level 1 / below)   gap between rows   nav height
+//   this design        32 / 28                        0                  1312
+//   Docsy, untouched   36 / 36                        15–17              1624
+//
+// Two separate causes. Every row's `li` carries 8px of padding top and bottom,
+// which is the gap; and the anchor's line box is 3.5px taller than the 22.4px
+// line-height it declares, which is the row. Together they add 312px to a tree
+// that has to fit beside the page without scrolling on its own.
+// =============================================================================
+
+// `nav.foldable-nav` rather than `.td-sidebar-nav`, because the 8px comes from
+// the submodule's `nav.foldable-nav .td-sidebar-nav__section` and every row's
+// `li` carries both `__section-title` and `__section`. A shorter selector loses.
+nav.foldable-nav {
+    .td-sidebar-nav__section-title,
+    .td-sidebar-nav__section {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    // The 8px of inline padding is what sets the labels in from the edge of the
+    // column. Docsy zeroed the left side with a
+    // `ps-0` utility in the markup, which carries `!important` and cannot be
+    // outweighed — sidebar-tree.html no longer emits it.
+    .td-sidebar-link {
+        display: block;
+        padding: 4.8px 8px;
+        line-height: 22.4px;
+
+        // The label is a `span` inside the anchor with a line-height of its own,
+        // 25.92px. A line box takes the larger of the two, so without this the
+        // anchor's own 22.4 never decided the height of anything.
+        span {
+            line-height: inherit;
+        }
+    }
+
+    // Below level 1 the type is 14px and the row is 28: 19.6px of line and 4.2px
+    // of padding each side.
+    .ul-2 .td-sidebar-link,
+    .ul-3 .td-sidebar-link,
+    .ul-4 .td-sidebar-link,
+    .ul-5 .td-sidebar-link {
+        padding-block: 4.2px;
+        line-height: 19.6px;
+    }
+
+    // Docsy's own rules paint the tree with `$body-color`, a Sass variable, so
+    // the light value is compiled into the sheet and dark mode never reaches it:
+    // measured at 1440 with the attribute set, the rows stayed #0f1425 on a
+    // #0f1425 page. The token is a custom property and follows the theme.
+    .td-sidebar-link,
+    .td-sidebar-link__page,
+    .td-sidebar-link__section {
+        color: var(--axo-text);
+    }
+
+    // The rows inside a group sit flush; the groups themselves are separated by
+    // 8px. That is `margin-top` on every top-level `li` but the first, which is
+    // what keeps the separation out of the first row and off
+    // the bottom of the list.
+    .ul-1 > li + li {
+        margin-top: 8px;
+    }
+
+    // A group's own title is set 3.2px from its line rather than 4.8px, so a
+    // one-line group heading is 29px against a plain row's 32. Its corners are
+    // square: the rounding belongs on the pages, not on the heading above them.
+    .with-child > label > .td-sidebar-link {
+        padding-block: 3.2px;
+        border-radius: 0;
+    }
+
+    // Docsy wraps every row in a `<label>` for the fold checkbox and leaves it
+    // `inline-block`, which sits on the `li`'s text baseline and leaves the
+    // descender space under it: measured, a 27.97px row inside a 28.78px `li`.
+    // Under a group that is 0.81px per row of drift with nothing visible causing
+    // it — eight rows into an open group the tree ran 8px below where it should.
+    label {
+        display: block;
+    }
+
+    // Every row is a rounded rectangle, so the fill a row takes when it is the
+    // current page — or under the pointer — is rounded to match.
+    .td-sidebar-link {
+        border-radius: 4px;
+    }
+
+    // The tree is Book, like the prose. Same reason: axoflow.com sets its own
+    // running text at 300, and the tree carried Regular against a body that has
+    // moved down — a column of two hundred rows is where that reads heaviest.
+    .td-sidebar-link {
+        font-weight: 300;
+    }
+
+    // Docsy bolds the current page's anchor. This tree sets it at 500, the same
+    // medium the marketing menu uses, and states it on the row itself. It
+    // stays at 500: against rows that are now 300 it is the only thing marking
+    // where the reader is, and two steps is what makes it visible without
+    // shouting.
+    a:has(.td-sidebar-nav-active-item) {
+        font-weight: 500;
+    }
+
+    // Docsy adds 0.1em above an open group's list. `.with-child ul` is Docsy's
+    // own selector for it, and it has to be this one: the list under the hidden
+    // tree root carries it too, where the margin collapses out through the root
+    // and starts the whole tree 2px low. The 1.6px was the rest of the drift the
+    // `label` fix leaves behind.
+    .with-child ul {
+        margin-top: 0;
+    }
+
+    // The 1px rule down an open group's left edge USED TO BE CANCELLED HERE,
+    // under the claim that this design does not draw one. It does — on the
+    // nested `li` rather than on the `ul`, which is why a probe of the lists came
+    // back empty and the claim survived. The rule is now stated, with its
+    // geometry, in _styles_project.scss on
+    // `:is(.ul-2, .ul-3, .ul-4, .ul-5)`, which is also where the indent it
+    // divides is set — one owner for the two numbers that have to add up.
+    // Nothing is overridden here any more; the submodule's own `ul .foldable`
+    // border loses to that rule on specificity (0,3,0 against 0,2,2).
+}
+
+// An open group points down, not left.
+//
+// The marker is a background image on `.ul-1 .with-child > label::before`, and both
+// states draw the same 24x24 chevron pointing right. What is supposed to distinguish
+// them is rotation — and two separate stylesheets rotate the open one, a quarter turn
+// each:
+//
+//   themes/docsy          nav.foldable-nav … input:checked~label::before
+//                         { transform: rotate(90deg); transition: transform .5s }
+//   themes/docsy-axoflow  nav.foldable-nav … input:checked~label:before
+//                         { background-image: …; rotate: 90deg }
+//
+// `rotate` and `transform` are separate properties and both apply — the individual
+// transform properties are composed before `transform` — so the chevron turns 180
+// degrees in total and ends up pointing left. A closed group pointing right and an
+// open one pointing left reads as a direction rather than a state, which is what it
+// was reported as.
+//
+// Taking one of the two turns off leaves 90 degrees, and a right chevron turned a
+// quarter turn clockwise points down. The `rotate` one goes, because the `transform`
+// one carries the 0.5s transition that animates the fold.
+//
+// The selector has to match the submodule's exactly. A shorter
+// `.ul-1 .with-child > input:checked ~ label:before` was tried first and lost: it is
+// one element short of `nav.foldable-nav …` and never applied, and the marker went on
+// pointing left with a rule in the sheet that looked like it should have fixed it.
+// This file compiles after the submodule's, so at equal specificity source order
+// settles it.
+nav.foldable-nav .ul-1 .with-child > input:checked ~ label::before {
+    rotate: none;
+}
+
+// The left column stands on a surface of its own. In light it is the page's own
+// white and nothing shows; in dark it is #171c2e against a #0f1425 page, which
+// is what separates the tree from the article without a rule between them —
+// sampled off the rendered page at (200, 400), where the submodule leaves
+// `background-color: unset` and Docsy's column was the same colour as the text
+// beside it.
+//
+// Below md the column is not a column: it renders above the page, over the
+// contents, and there the drawer takes the page background instead. It
+// still needs one — without any, the tree would read through what it covers.
+.td-sidebar {
+    background-color: var(--axo-bg-sidebar);
+}
+
+@include media-breakpoint-down(md) {
+    .td-sidebar {
+        background-color: var(--axo-bg);
+    }
+}
+
+// Row 2 of the mobile arrangement: the strip at the top of the documentation
+// column. The documentation-menu icon hard left at the column's own inset, the
+// version selector hard right, one line.
+//
+// A strip is not the only shape available: the switcher and the search could sit
+// inside the drawer the bar's hamburger opens, with the 48px under the bar
+// holding an "On this page" pill instead. Docsy's is the other shape —
+// the controls stay on the page and a second toggle opens the tree — and that is
+// worth keeping, because Docsy's bar hamburger opens the bar's own menu and
+// would leave the tree unreachable. The reference for the strip's own shape is
+// Elastic's documentation, probed at 390: a 24x24 menu control at [16, 190] with
+// the version pill at [187, 196].
+//
+// So the contents differ and the rhythm does not: two controls side by side in
+// one 40px row, which with the 8px above it is the same 48px that band is meant
+// to occupy.
+//
+// THAT WAS ALREADY THE CLAIM HERE, AND IT WAS ONLY TRUE ABOVE 390. Measured on
+// the deployed build before this change:
+//
+//   width   .td-sidebar   version         search form       title y
+//   390     0..112        28..173.7 y=183 28..270.4 y=231   295
+//   600     0..64         28..245.6 y=165 253.6..496 y=165  229
+//   799     0..64         28..325.2 y=165 333.2..575.6 y=165 229
+//
+// At 390 the version box at 40% and the 242.4px search form did not fit on one
+// line, the form wrapped, the column was 112px tall instead of 64, and the
+// article title started 48px lower than at 600 — the exact 48 this comment used
+// to say had been recovered. Moving the search into the brand bar takes the
+// second item out of the row, so the wrap is now impossible rather than merely
+// absent above 390: at 390 the row holds a 40px icon and a 145.7px version box
+// in a 334px content box, 148.3px of slack. Measured after: 0..64 and title y
+// 247 at 390, i.e. the same 64px strip the other two widths always had.
+//
+// `.td-sidebar__inner > div:not(.axo-sidebar-version) { flex: 1 1 0 }` is gone
+// with the wrap it was there to control. It described a classless `<div>`
+// wrapper around Docsy's own search form that this project's override of
+// sidebar-tree.html has not emitted for some time — the column's children are
+// the toggle `<button>`, the version `<div>`, the search `<form>` and the tree
+// `<nav>`, and a `:not()` on `div` reached exactly one of them, the one the
+// selector excluded. It was already dead; it is not being replaced.
+// ROW 2 STAYS: the documentation-menu icon hard left, the version selector hard
+// right, one 64px line under the bar.
+//
+// It was removed for a round, on the report that the mobile chrome is too deep —
+// 46px of announcement strip, 113px of bar and 64px of this, so 223px before the
+// first word at 390 — with the icon moved into the brand bar beside the search
+// and the version switcher dropped entirely. Reverted on instruction: the icon
+// belongs beside the version, not beside the search, and the version selector is
+// not something a phone should be without. The depth is answered by the bar
+// shrinking and staying instead (_axo-navbar.scss), which is where the report
+// pointed anyway.
+//
+// A note for anyone who tries it again: `#td-section-nav` is a CHILD of
+// `.td-sidebar__inner`, so neither the inner nor the aside can simply be hidden
+// here — that takes the drawer with it. Only the two controls can go, and the
+// container then collapses on its own, because the search form is already
+// `d-none` at this width and the tree is `position: fixed`.
+@include media-breakpoint-down(md) {
+    .td-sidebar__inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        // 24, not the 8 the stacked pair needed: the row is 48px shorter than
+        // they were, and this is the 16 that puts the title back on its
+        // intended line at 390 and at 768 both.
+        padding-top: 1.5rem;
+    }
+
+    // The version selector ends on the column's right inset.
+    //
+    // `margin-inline-start: auto`, not `justify-content: space-between` on the
+    // row and not `order` on the items. An auto margin on a flex item consumes
+    // all the free space before any distribution happens, so the item ends hard
+    // right whatever else is in the row — the same technique, with the same
+    // justification, as the `margin-inline-start: auto` that pins the bar's menu
+    // block in the widened view (_axo-navbar.scss). `space-between` would have
+    // had to answer for the `<form>` and the `<nav>` in the same container, and
+    // `order` would have put the visual order and the tab order out of step for
+    // no gain: the icon is already first in the DOM.
+    //
+    // 40% is kept from the two-control row. The box is 145.7px at 390 and holds
+    // "0.86 (latest)" on one line; the width is the container's, and
+    // `.td-version-menu__title` is `width: 100%` of it, so this is the number
+    // that decides the pill's size and it has not been re-chosen.
+    .axo-sidebar-version {
+        flex: 0 0 40%;
+        margin-bottom: 0;
+        margin-inline-start: auto;
+    }
+
+    // The search control leaves the column at this width — it is the magnifier
+    // in the brand bar now (layouts/_partials/navbar.html).
+    //
+    // HIDDEN, NOT REMOVED, and this is the load-bearing part of the whole
+    // change. There is exactly one `pagefind-modal-trigger` in the document and
+    // it is inside this form. The bar's magnifier opens the search by calling
+    // `.click()` on `button.pf-trigger-btn` inside it, and
+    // `HTMLElement.click()` dispatches without hit-testing, so an element that
+    // is not rendered still opens the modal. Measured on the deployed build at
+    // 390 with the trigger at `display: none !important` — `offsetParent` null,
+    // zero client rects — `dialog.pf-modal` opened at 390x844 and
+    // `input.pf-input` took focus.
+    //
+    // The hiding is NOT here. It is `d-none d-md-flex` in the markup, and that
+    // is deliberate: the form used to carry a bare `d-flex`, which is
+    // `display: flex !important`, and no plain `display: none` from this sheet
+    // can beat an `!important` at any specificity or in any source order. This
+    // project has lost that exact fight twice, once destructively. Two Bootstrap
+    // utilities settle it between themselves instead — `.d-none` in the base
+    // block, `.d-md-flex` in the `min-width: 800px` block that Bootstrap emits
+    // after it — so there is no contest to lose.
+    //
+    // On the form and not on the trigger, for a second reason: the trigger is a
+    // third-party custom element whose own stylesheet prefixes its selectors
+    // with an artificial `:is(*, #\#):is(*, #\#):is(*, #\#)` — three id's worth
+    // of weight — so a `display` of ours on it is a contest that can be lost
+    // silently in production, which is how the `ul-*` and `pf-*` rules were lost
+    // before. No rule of theirs names the form.
+    //
+    // What is left here is the three declarations that shape the row when the
+    // form IS shown, kept so that showing it again at some width does not also
+    // restore Docsy's spacing and the desktop hairline.
+    .td-sidebar__search {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: 0;
+    }
+
+    // THE DRAWER CANNOT ESCAPE THE COLUMN WITHOUT THIS, AND NO z-index HELPS.
+    //
+    // themes/docsy-axoflow/assets/scss/_styles_project.scss names three chrome
+    // landmarks for the View Transitions API so they morph across a navigation
+    // instead of crossfading from blank:
+    //
+    //   header > .td-navbar { view-transition-name: site-navbar; }
+    //   aside.td-sidebar    { view-transition-name: site-sidebar; }
+    //   .td-footer          { view-transition-name: site-footer; }
+    //
+    // A `view-transition-name` other than `none` CREATES A STACKING CONTEXT on
+    // the element that carries it — permanently, not only while a transition is
+    // running. So every descendant of `aside.td-sidebar` is confined to that
+    // context, and the context itself sorts at level 0 among its siblings. The
+    // bar is `position: relative; z-index: 32`, which is a positive level and
+    // therefore paints above it. The drawer opened UNDER the brand bar, and its
+    // own header — the title and the close button — was covered by the logo.
+    //
+    // Measured, because none of that is visible in the markup: with the drawer
+    // at `z-index: 2000 !important`, `elementFromPoint` at the drawer's own
+    // header still returned the bar's logo path. Against the backdrop, at 1039
+    // and 1041, the drawer's z-index behaves normally — the two are in ONE
+    // context and the bar is outside it. A synthetic `position: fixed;
+    // z-index: 6000` div appended inside `.td-sidebar__inner` lost to a
+    // `z-index: 5000` one appended to `<body>`, which is the confinement stated
+    // as plainly as it can be. Setting the BAR to `z-index: auto` fixed it, and
+    // that is the shape of the answer this rule takes from the other end.
+    //
+    // The name is dropped below md rather than the bar being demoted, and rather
+    // than the whole View Transitions block being touched:
+    //
+    //   - the bar's `z-index: 32` is load-bearing for its own dropdown panels;
+    //     lowering it to fix a drawer would trade one stacking bug for another.
+    //   - below md this column is a 64px strip holding an icon and a version
+    //     box. There is nothing in it worth morphing across a navigation, so the
+    //     transition loses nothing measurable here. `.td-navbar` and
+    //     `.td-footer` keep their names at every width, so the two landmarks a
+    //     reader actually watches still pair up.
+    //   - at md and up the name is untouched and the transition is exactly what
+    //     it was.
+    //
+    // `.td-outer` is on the front of the selector only to make it (0,2,1)
+    // against the submodule's (0,1,1), so this does not depend on which sheet
+    // compiles last.
+    .td-outer aside.td-sidebar {
+        view-transition-name: none;
+    }
+
+    // The tree is a drawer at this width, not a row of the column.
+    //
+    // `flex: 1 0 100%` used to be here, to make the unfolding tree take a line
+    // of its own under the icon and the version box. It described an element
+    // that is `position: fixed` now and therefore not a flex item at all, so it
+    // is retired rather than left in place reading as load-bearing.
+    //
+    // WHAT THIS RULE HAS TO BEAT. `.offcanvas-md.offcanvas-start` states
+    // `position: fixed; top: 0; left: 0; width: var(--bs-offcanvas-width)` at
+    // (0,2,0), and themes/docsy/assets/scss/td/_nav.scss states
+    // `nav.foldable-nav#td-section-nav { position: relative }` at (1,1,1) — an
+    // id, so Bootstrap's `fixed` loses to it and the drawer would have stayed in
+    // the flow with a transform on it, sliding sideways inside the column. The
+    // selector here is (1,2,1) and beats both without an `!important`, and it
+    // names `.td-sidebar-nav` rather than `.foldable-nav` on purpose: the
+    // foldable class is behind `ui.sidebar_menu_foldable`, so keying on it would
+    // make the drawer's position depend on a menu-folding flag.
+    //
+    // THE GEOMETRY IS THE SITE MENU'S, MIRRORED — and the mirror is the point.
+    // `bottom`, not `height: 100%`, or moving the top edge pushes the same
+    // height down past the foot of the window. Both drawers now read
+    // `$axo-strip`, the live custom property assets/js/sidebar-height.js
+    // publishes off `.axo-announcement`; the site menu's rule used to freeze it
+    // at `$axo-strip-height` and the two disagreed by 18px at 390, which is
+    // fixed there.
+    //
+    // FULL-BLEED, AND IT STAYS THAT WAY. A narrower panel pinned to this edge
+    // was tried in the same round that reshaped the site menu — 90vw capped at
+    // 400px, so a strip of backdrop shows beside it and the slide has an edge to
+    // come out of. It was reverted on instruction: how this drawer works is
+    // settled and is not part of that report. The site menu keeps the same
+    // full-bleed geometry on the opposite edge, so the two remain one shape.
+    //
+    // `overflow-y: auto` on this element and nowhere inside it: the submodule's
+    // scripts.html restores the tree's scroll position by writing
+    // `#td-section-nav.scrollTop`, so this element has to be the box that
+    // scrolls. See the note in layouts/_partials/sidebar-tree.html.
+    nav.td-sidebar-nav#td-section-nav.offcanvas-md {
+        position: fixed;
+        inset-inline: 0;
+        top: $axo-strip;
+        bottom: 0;
+        width: auto;
+        height: auto;
+        // `--axo-bg-sidebar` from _axo-tokens.scss (#fff light, #171c2e dark) —
+        // the column's own surface, which is what this panel is.
+        //
+        // NOT `--axo-nav-surface`, which is what the site menu's rule in
+        // _axo-navbar.scss uses. That one is declared ON `.td-navbar` and is
+        // therefore not in scope here: a `var()` with no fallback that resolves
+        // to nothing makes the whole declaration invalid at computed-value time,
+        // so the panel came out fully transparent and the tree printed over the
+        // article. Measured, in a screenshot, on the first build after this
+        // change — every geometry check was green at the time, because a
+        // transparent panel is exactly the right size and in exactly the right
+        // place. The two tokens resolve to the same pair of colours; this is the
+        // one that is in scope, and it is the semantically right one besides.
+        background-color: var(--axo-bg-sidebar, #fff);
+        overflow-y: auto;
+        // Same treatment as the desktop pane in _styles_project.scss, applied
+        // here for consistency rather than because it was reported: a drawer
+        // that scrolls without drawing a bar. It matters less below md, where a
+        // touch reader expects to swipe and no scrollbar is painted at rest
+        // anyway, but the two boxes are the same tree and should not behave
+        // differently depending on the width it is being read at.
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+        }
+
+        // The column's 16px inset is stated on `.td-sidebar__inner`, and a fixed
+        // panel is no longer inside that box — so it has to carry the inset
+        // itself or the rows hang off the left edge of the window.
+        padding-inline: 1rem;
+    }
+
+    // Pressing a link inside the drawer takes the drawer out of the picture
+    // before the navigation commits.
+    //
+    // The site crossfades between documents (`@view-transition { navigation:
+    // auto }` in the submodule's sheet), which snapshots the outgoing page. With
+    // the column's `view-transition-name` dropped above, the drawer is in the
+    // ROOT snapshot rather than morphing as a landmark of its own — so for about
+    // a quarter of a second the tree's thirty rows and the incoming article's
+    // prose are both half transparent and printed over each other. Measured at
+    // 390 by screenshotting 120ms after the press without waiting for the load;
+    // those frames were kept as images, because the two layers are both light
+    // and a luminance test walks straight past it.
+    //
+    // `display: none` and not Bootstrap's `hide()` alone: that is animated over
+    // 300ms and the snapshot would catch the panel mid-slide.
+    // assets/js/axo-mobile-top.js adds the class on the click and calls `hide()`
+    // as well, so the component's own state and the scroll lock unwind properly
+    // if the navigation turns out not to happen.
+    //
+    // On `<html>` rather than on the panel, so one class reaches the backdrop
+    // too — it is a child of `<body>` and no selector rooted at the panel can
+    // see it.
+    :root.axo-drawer-navigating {
+        #td-section-nav,
+        .offcanvas-backdrop {
+            display: none !important;
+        }
+    }
+
+    // The head pins, so a reader who has scrolled the tree can still close the
+    // drawer without scrolling back. Sticky rather than a fixed row above the
+    // scroller, because the scroller has to stay the panel itself
+    // (`#td-section-nav.scrollTop`, above).
+    //
+    // A background of its own, or the rows show through it as they scroll under.
+    // `padding-inline: 0` because the panel above now states the 16px: with
+    // Bootstrap's own 1rem left on the header the close control would sit 32px
+    // in and the tree's first row 16px, two insets in one narrow strip.
+    //
+    // `flex-end` for the same reason the site menu's head needs it: the heading
+    // beside the button is `.visually-hidden` now, and Bootstrap's
+    // `space-between` puts a lone in-flow child at the START of the row. Here it
+    // would have parked the X against the left edge of a left-hand drawer, on
+    // top of the tree's own inset.
+    .axo-sidebar-drawer__header {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        background-color: var(--axo-bg-sidebar, #fff);
+        padding-inline: 0;
+        justify-content: flex-end;
+    }
+}
+
+// =============================================================================
+// The right-hand column
+// -----------------------------------------------------------------------------
+// Measured at 1440 on the same page, both rendered:
+//
+//                       title            first entry              list starts
+//   this design  18/21.6, 8px under   13/16.25, 4px 8px, 24 tall       187
+//   Docsy        18/31.5 + a rule     14/24.5, 8px 0,   81 tall        246
+//
+// Docsy's is set in the body's own measure, so three headings fill the column
+// where ten should; and the rule under the title is Docsy's alone. The 12px of
+// inline padding becomes 16 to put the title at 1145 rather than 1140.
+// =============================================================================
+
+aside.td-sidebar-toc {
+    padding-inline: 1rem;
+    // The 16px above the heading is stated on this column in _styles_project.scss,
+    // where Docsy's own `padding-top` has to be beaten with `!important` and one
+    // owner for the property is the only way to keep it predictable.
+
+    // The hairline that separates the column from the page. The submodule sets
+    // `border-left: unset` on it; this design draws one, in the same token as
+    // the sidebar's control borders, which is why it follows the theme without
+    // a second rule.
+    border-left: 1px solid var(--axo-control-border);
+
+    // Where the column comes to rest while the page moves under it.
+    //
+    // Docsy sticks it 4rem from the top of the window, which was right for a bar
+    // that no longer exists: measured at 1440 on a scrolled page, the heading sat
+    // at 80 with 113px of chrome over it — the column slid up behind the bar and
+    // took "On this page" and the first entries with it. The column holds at
+    // 113, which is the strip plus the scrolled bar, and at 141 before the bar
+    // shrinks.
+    //
+    // So: the live chrome, the same expression the left column and the archived-
+    // version band already follow, and it moves with the bar rather than jumping
+    // when the bar does.
+    //
+    // The column is as tall as what is in it. It used to be capped at what was
+    // left of the window — `height: calc(100dvh - #{$axo-chrome})` — which made
+    // the contents list a scroller inside it, and that was reported and is not
+    // wanted.
+    //
+    // The cap was only ever binding by a hair on an ordinary page: measured on
+    // /data-management/processing/ at 1440x900, the column had 759px and its
+    // contents came to 760 — the card at 325, the heading at 22 and the list at
+    // 413. One pixel of overflow bought a scrollbar down the whole column.
+    // Without the cap that page, and every page shaped like it, simply fits.
+    //
+    // THE CONSEQUENCE, STATED: on the few pages whose list is genuinely longer
+    // than the screen — /reference/message-schema/reference/ has 82 entries and
+    // 2834px of list — the column is now taller than the window, and a sticky
+    // box taller than the window pins its top and leaves its tail below the
+    // fold. Those readers reach the end of that list by using the list's own
+    // links or the page itself, not by scrolling the column. That is the trade
+    // this makes, deliberately.
+    // `align-self` is not optional and the reason is not obvious. The column is
+    // a flex item of `.td-main > .row`, so with the cap gone it stretched to the
+    // ROW's height instead of to its own contents — 12059px on
+    // /data-management/processing/. A sticky box that tall never comes to rest:
+    // it has no room to travel inside its own containing block, so the contents
+    // list simply scrolled off the top of the window with the article. Measured
+    // that way before this line was added. `flex-start` makes the height its
+    // own again, and sticky works.
+    align-self: flex-start;
+    top: $axo-chrome;
+    height: auto;
+    max-height: none;
+
+    // ...but never shorter than the window. The hairline above is drawn on this
+    // element, so a column that is only as tall as a short contents list draws a
+    // rule that stops in the middle of the screen — measured on
+    // /deployment-scenarios/router-edge/, which has no contents list at all and
+    // would have ended its divider under the call-to-action card at about 400px.
+    // The old fixed height always reached the foot of the window; this keeps
+    // that and lets the box grow past it when the list needs the room.
+    min-height: calc(100dvh - #{$axo-chrome});
+    transition: top 0.2s ease-out;
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
+}
+
+.td-toc-header {
+    margin-block: 0 0.5rem;
+    padding: 0;
+    border-bottom: 0;
+    line-height: 21.6px;
+    color: var(--axo-text);
+
+    span {
+        line-height: inherit;
+    }
+}
+
+// "On this page" with nothing under it.
+//
+// Some pages have no headings at all — /deployment-scenarios/router-edge/ is
+// one — and there the column showed the label over an empty box. Measured at
+// 1440x900: `.td-toc-header` 199x22 at (1145, 506) reading "On this page", and
+// `.td-toc` under it with zero links and empty innerHTML.
+//
+// It cannot be gated on the server. Hugo's `.TableOfContents` is the empty nav
+// on /reference/metrics-schema/ too — probed at 32 characters, against 924 on
+// /data-management/processing/ — while tocbot builds 68 rows there at runtime,
+// because that page's headings come out of a shortcode and never enter Hugo's
+// markdown AST. Gating the markup on `.TableOfContents`, which is what upstream
+// Docsy does, would take the contents column off that page and every page like
+// it. So whether a list exists is a runtime fact, and it has to be read at
+// runtime.
+//
+// `:has()` reads it continuously: the label is hidden while the container beside
+// it holds no anchor, and appears the instant tocbot inserts one. No state to
+// keep in sync, and no flash in either direction. The alternative considered was
+// a class set from axo-toc.js, and it is worse here for a measured reason —
+// `start()` polls for the list and gives up only after 120 animation frames,
+// about two seconds, so on a page that never gets a list the label would sit on
+// screen for that whole time before any JavaScript could take it away.
+//
+// The sibling combinator, not a `:has()` on the column: the label must follow
+// the emptiness of its own list and nothing else. `.td-toc-header` carries no
+// Bootstrap display utility of its own, so a plain `display: none` is enough —
+// the `!important` trap in this file is on `.td-sidebar-toc`, which is marked
+// `d-none d-xl-block`, and that is an ancestor, not this element.
+.td-toc-header:not(:has(+ .td-toc a)) {
+    display: none;
+}
+
+.td-toc {
+    margin-top: 0;
+    padding-top: 0;
+
+    .toc-list {
+        padding-left: 0;
+    }
+
+    .toc-list-item {
+        padding: 0;
+    }
+
+    // The muted grey, not the prose navy: this is the quietest text on the
+    // page, which is what lets the accent on the entry being read carry the
+    // whole signal. Docsy paints these with `$body-color`, and the same
+    // Sass-variable problem follows: in dark mode two of the three entries on
+    // this page were #0f1425 on a #0f1425 column, and the list looked like it
+    // had one item.
+    .toc-link {
+        color: var(--axo-text-faint);
+        display: block;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 13px;
+        line-height: 16.25px;
+    }
+
+    // A nested entry is indented by its own padding rather than by the list, so
+    // the row keeps the column's full width and the fill on the entry being read
+    // still spans it. 8px at the top level, 16 more per level below it.
+    .toc-list .toc-list > .toc-list-item > .toc-link {
+        padding-left: 24px;
+    }
+
+    .toc-list .toc-list .toc-list > .toc-list-item > .toc-link {
+        padding-left: 40px;
+    }
+
+    // The entry for the heading you are reading is marked by colour alone:
+    // #cb3d00 in light, #ff6500 in dark, weight 400, same box as every other
+    // row.
+    //
+    // tocbot.css marks its own the other way — `font-weight: 700 !important`, an
+    // 8px radius and 8px of padding under the text — and the rule above sets
+    // every entry to `--axo-text`, which beats tocbot's `color: currentColor`
+    // and left the active row the same colour as the inactive ones. Measured at
+    // 1440 in both themes: weight 700 against 400, 28px tall against 24, and
+    // #0f1425 where the accent belongs. The reader could see which
+    // entry was marked only because it was bolder and taller than its
+    // neighbours.
+    //
+    // `!important` twice, and only where tocbot used it first: `font-weight` and
+    // `padding-bottom` carry it there, so nothing weaker can reach them.
+    .toc-link.is-active-link {
+        color: var(--axo-text-accent);
+        font-weight: 400 !important;
+        border-radius: 4px;
+        padding-top: 4px;
+        padding-bottom: 4px !important;
+    }
+}
+
+// The prose has a ceiling of its own, under the one the columns give it. Between
+// 1024 and 1152 there is no table of contents yet and the contents column keeps
+// growing: at 1151 the prose is held at 816 while the column runs past it, where
+// Docsy's reached 888. Above xl the column is narrower
+// than either number and 768 is what is left.
+//
+// The prose sits at the left of the column, not in the middle of it: Docsy
+// centres a capped `.td-content`, which at 1151 put it at 283 rather than 248.
+.td-content {
+    max-width: 816px;
+    margin-inline: 0 auto;
+}
+
+@include media-breakpoint-up(xl) {
+    .td-content {
+        max-width: 768px;
+    }
+}
+
+// The contents column does not scroll, and nothing inside it does either.
+//
+// What used to be here was a flex column: the column clipped its overflow, the
+// card and the "On this page" heading were `flex: none`, and `.td-toc` took the
+// leftover height with `overflow-y: auto` so that only the list moved. It was
+// built to solve a real problem — on /data-management/processing/ at 1440x900
+// the column had 759px and held 885px, so the card and the heading used to
+// slide away with the list and a reader who scrolled to find a heading lost the
+// label that says what the list is.
+//
+// It is gone because the cap that created the overflow is gone: `aside
+// .td-sidebar-toc` is `height: auto` now, so the column is as tall as its
+// contents and there is nothing left to clip, to absorb or to scroll. Keeping
+// the machinery would mean a flex column whose only flexible item can never
+// need to flex — dead rules that read as if they were doing something.
+//
+// Three rules went with it, and each is only safe to drop because of that one
+// change:
+//
+//   * `overflow: hidden` on the column — nothing overflows it any more, and
+//     leaving it would clip a list the column has already made room for.
+//   * `flex: 1 1 auto; min-height: 0; overflow-y: auto` on `.td-toc` — the
+//     scroller itself, which is what was reported.
+//   * `.td-toc:not(:has(a)) { flex: none }` — that rule existed ONLY to stop an
+//     empty list from swallowing the column's spare height, which it could do
+//     because it was `flex: 1 1 auto`. A plain block with no content is zero
+//     tall on its own. Measured on /deployment-scenarios/router-edge/ before
+//     that rule was written: an empty `.td-toc` at 199x286 holding "Print this
+//     page" down at y=830. In a block column it is 199x0.
+
+// The version switcher's menu, which drops out of the control at the top of the
+// column and should look like it belongs to it: same 8px radius, same border,
+// same 14px. Docsy's is a square-cornered #ddd box with 20px of padding above
+// and below two items, on a hard-coded white that stayed white in dark mode.
+// The search modal's palette.
+//
+// Pagefind's component UI states its own colours as `--pf-*` on `:root` and
+// re-states them under `[data-pf-theme="dark"]`, an attribute it sets from the
+// system preference. This site has a switcher of its own, so on a light system
+// with the site set to dark the modal stayed white — and `--pf-mark`, the colour
+// of the searched word inside every excerpt, is `#1a1a1a` in the light set:
+// measured with the site dark, that is #1a1a1a on the modal's own #141923, and
+// the one word the reader is looking for was the one word they could not see.
+//
+// Pointing the whole set at the site's tokens is what makes the modal follow the
+// switcher rather than the system.
+//
+// `html:root` rather than `:root`: pagefind-component-ui.css is fetched at
+// runtime and lands *after* this bundle in the sheet order, so at the same
+// specificity its `:root` wins and a plain `:root` here changed nothing —
+// measured, `--pf-mark` stayed #1a1a1a with the block in place. One element
+// selector more is enough to clear both its `:root` and its
+// `[data-pf-theme="dark"]`, and the tokens flip themselves off
+// `html[data-bs-theme]`, so one block covers both themes.
+html:root {
+    --pf-text: var(--axo-text);
+    --pf-text-secondary: var(--axo-text-muted);
+    --pf-text-muted: var(--axo-text-faint);
+    --pf-background: var(--axo-bg);
+    --pf-border: var(--axo-control-border);
+    --pf-hover: var(--axo-surface);
+    --pf-mark: var(--axo-text-accent);
+    --pf-skeleton: var(--axo-surface);
+    --pf-skeleton-shine: var(--axo-hairline);
+}
+
+// The two menus the chrome opens — the version switcher in the sidebar and the
+// theme switcher in the bar — share one problem the submodule gives them.
+//
+// `.dropdown-item { color: #010a22 !important }` and
+// `.dropdown-menu.show { border-radius: 0 !important }`
+// (themes/docsy-axoflow/assets/scss/_styles_project.scss:341-356) apply to every
+// dropdown on the site. In light, #010a22 on white passes for the body colour and
+// nobody notices. In dark it is #010a22 on #0f1425: measured with the menu open,
+// the version switcher's two rows and the theme switcher's items were painted in
+// a colour four points off their own background and could not be read.
+//
+// `!important` is answered with `!important`, and only here — the navbar's own
+// menus are built from data/nav-menu.yaml and do not use these classes.
+.axo-sidebar-version,
+.td-light-dark-menu {
+    .dropdown-menu {
+        border-radius: 8px !important;
+    }
+
+    .dropdown-item {
+        color: var(--axo-text) !important;
+    }
+
+    .dropdown-item:hover,
+    .dropdown-item:focus {
+        color: var(--axo-text) !important;
+    }
+
+    .dropdown-item.active {
+        color: var(--axo-text-accent) !important;
+    }
+}
+
+// The theme switcher's menu is Docsy's own and never had the sidebar treatment
+// below: the submodule pads it 1.25rem top and bottom and insets every item by
+// 2rem, which on three one-word rows is a tall box with the words a third of the
+// way in. Same numbers as the version menu, for the same reason.
+.td-light-dark-menu .dropdown-menu {
+    padding-block: 0.25rem;
+    border: 1px solid var(--axo-control-border);
+    background-color: var(--axo-bg-nav);
+
+    .dropdown-item {
+        margin: 0;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+        line-height: 1.5;
+    }
+
+    .dropdown-item:hover,
+    .dropdown-item:focus,
+    .dropdown-item.active {
+        background-color: var(--axo-surface);
+    }
+}
+
+.axo-sidebar-version .dropdown-menu {
+    padding-block: 0.25rem;
+    // The template puts a newline between each `<li>` and its `<a>`, and the
+    // menu's own 28px line-height turns those into line boxes: two items in a
+    // 139px box, of which 49px was whitespace. Zeroed here and restored on the
+    // item, which is `display: block` and sets its own.
+    line-height: 0;
+    border: 1px solid var(--axo-control-border);
+    border-radius: 8px;
+    background-color: var(--axo-bg-sidebar);
+
+    .dropdown-item {
+        // The submodule gives each entry `margin: 16px 32px`, which is where the
+        // 16px between the two rows came from and why the labels sat a third of
+        // the way into a 199px menu.
+        margin: 0;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        color: var(--axo-text);
+    }
+
+    .dropdown-item:hover,
+    .dropdown-item:focus {
+        background-color: var(--axo-surface);
+        color: var(--axo-text);
+    }
+
+    .dropdown-item.active {
+        background-color: var(--axo-surface);
+        color: var(--axo-text-accent);
+    }
+}
+
+// A band across the window, under the bar, saying the version is archived. Only
+// the builds under /<version>/ render one.
+//
+// Docsy draws a card inside the article: measured on
+// /0.81/data-management/processing/ at 768, 16px type on a #fff7f2 fill with an
+// 8px orange left rule, 24px of padding, 32px of margin, an 8px radius and 132px
+// of height, which put the title 196px down the page. This states the same
+// sentence as chrome — 34px tall at 1440, fixed under the bar, #fff0e5 with a
+// 1px #ef5900 rule along the bottom, a clock icon and 14px/16.8px type.
+//
+// The link to the current page stays: a reader who is on an archived page and
+// has just been told so needs the way out more than the tidier band.
+//
+// `fixed` is what lets the element stay where the theme renders it. The submodule
+// calls the partial from inside `<main>` (docs/baseof.html:31) and that call
+// cannot be moved; out of flow, the DOM position stops mattering.
+//
+// The page owes the height back: sidebar-height.js publishes it as
+// `--axo-notice-height`, which _styles_project.scss folds into `$axo-chrome`, so
+// the content offset, the sticky sidebar and `scroll-padding-top` all follow it
+// without knowing it exists.
+.version-banner {
+    position: fixed;
+    inset-inline: 0;
+    top: $axo-strip;
+    // Below the bar, so its mega panel drops over the band rather than under it.
+    //
+    // The number is 31 because the bar computes to **32** — measured, not read off
+    // `$zindex-fixed`, which is 1030 and is not what ends up on `.td-navbar`. The
+    // panel is `position: static` inside the bar and paints in the bar's own
+    // stacking context, so beating the bar is beating the panel. Anything above 0
+    // still clears the page, which has no z-index at all.
+    z-index: 31;
+    display: flex;
+    align-items: center;
+    gap: 10.5px;
+    margin: 0;
+    // 20px each side below md, and above it the text lines up with the 1280 box
+    // the rest of the page is laid out in: measured 40px at 800–1360, 60 at 1400
+    // and 80 at 1440, which is that box's own margin once it stops growing.
+    padding: 8px 20px;
+    // `border: 0` first: docsy-axoflow styles this same class name as a card, and
+    // a lone `border-bottom` left its 8px orange left rule and 8px radius behind.
+    border: 0;
+    border-bottom: 1px solid var(--axo-notice-rule);
+    border-radius: 0;
+    background-color: var(--axo-notice-bg);
+    color: var(--axo-text-notice);
+    font-size: 14px;
+    line-height: 16.8px;
+
+    span {
+        line-height: inherit;
+    }
+
+    // In the flow below md, and now directly under the bar.
+    //
+    // The band used to be one row lower than this — the theme calls the partial
+    // from inside `<main>`, so it landed under the documentation-menu icon and
+    // the version selector, and a reader on a phone met the version switcher
+    // before the sentence saying which version they were on. layouts/docs/
+    // baseof.html renders it above `.td-outer` instead, which is the only place
+    // it can be in flow ahead of `aside.td-sidebar`. Reported.
+    //
+    // STILL IN FLOW, not `fixed` as it is above md. The bar below md is sticky
+    // now, so there IS an edge to hang from — but a fixed band would cover the
+    // strip under it and the page would owe the height back at a width where
+    // nothing collects it. It scrolls away with the strip, which is what the
+    // rest of the mobile chrome does.
+    //
+    // (The comment here used to say the bar was `position: relative` below md
+    // and that pinning the band put it *above* the bar. Both were true of the
+    // chrome as it was; the bar has been sticky at every width since.)
+    @include media-breakpoint-down(md) {
+        position: static;
+        width: auto;
+        // No margin under it: the band carries none, and any here is height the
+        // page should not spend — measured at 390 on
+        // /deployment-scenarios/existing-infrastructure/, a 1rem margin put the
+        // title 60px too low where the band itself accounts for 85. The title's
+        // own top margin is the gap.
+        border-top: 1px solid var(--axo-notice-rule);
+    }
+
+    @include media-breakpoint-up(md) {
+        // The live bar bottom: the band hangs off the bar, and the bar shrinks by
+        // 28px once the page moves. Pinned to the frozen height instead, the band
+        // would leave that much scrolling page showing between the two.
+        top: $axo-bar-bottom;
+        transition: top 0.2s ease-out;
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+        }
+
+        // `unquote` for the same reason the sticky offset needs it: Sass
+        // evaluates a bare max() itself and will not compare a px against a
+        // calc() it cannot resolve at compile time.
+        //
+        // This centres the band's text on the same 1280 box the content row is held
+        // in, so the icon starts exactly where the tree beneath it does. The widened
+        // view moves the tree to the page gutter and takes this with it — see the
+        // block at the end of this file.
+        padding-inline: unquote("max(40px, calc((100vw - #{$axo-grid}) / 2))");
+    }
+
+    a {
+        color: inherit;
+        text-decoration: underline;
+    }
+}
+
+.version-banner__icon {
+    flex: 0 0 auto;
+}
+
+// ...and off the paper. The banner is an instruction with a link, and it phrases
+// the version as "no longer the latest release" — a claim about today rather than
+// about the document. `.axo-print-version` names the version on the printed sheet
+// instead, so nothing leaves this unattributed.
+//
+// This has to sit here, next to the rules it cancels, rather than with the rest
+// of the print block in _styles_project.scss. It was stated there first and had
+// no effect: a media query adds no specificity, both rules are one class, and
+// this file is compiled after that one — so the `display: flex` above simply won
+// on source order and the band printed at 1440x34, fixed, on every page.
+@media print {
+    .version-banner {
+        display: none;
+    }
+}
+
+// Where a heading lands when you arrive at it by link — a contents entry, a
+// cross-reference, or a pasted `#fragment`.
+//
+// The submodule sets 120px, which was right for a bar that no longer exists:
+// measured under the current chrome, a deep link put the heading 21px behind the
+// bar and tocbot's own click handler put it 141px behind, at the very top of the
+// window. 52px of clear space under the bar is what this design leaves, so this
+// is the chrome plus that 52 — and it follows the strip's height, because
+// sidebar-height.js publishes that and the strip is not always there.
+//
+// axo-toc.js takes tocbot's click handler off the page, which is what lets this
+// decide the answer for a click as well as for a deep link.
+//
+// The number has to be what is *actually* fixed, not what the desktop page has:
+// below md the bar is `position: relative` and scrolls away with the page, so
+// only the strip is left up there. Measured at 390 with the desktop value, the
+// heading landed 211px down a window with nothing above it but 46px of strip.
+//
+// A build that keeps its bar fixed at every width and adds a sticky mobile
+// contents bar on top needs a bigger number for the same clearance — 165 at
+// 1440, 213 at 768, 231 at 390. The 52 is the constant; the furniture under it
+// is not.
+html {
+    scroll-padding-top: calc(#{$axo-strip} + 52px);
+}
+
+// A frozen number, not the live chrome: a scroll padding that followed the bar
+// would land the same heading at two different offsets depending on where the
+// reader was when they clicked.
+//
+// The number it is frozen at is the chrome the reader actually lands under —
+// the scrolled bar, because any link that moves the page leaves it scrolled. See
+// $axo-chrome-landed; with the resting height here instead, every click and
+// every deep link left 80px of clear space instead of 52.
+@include media-breakpoint-up(md) {
+    html {
+        scroll-padding-top: calc(#{$axo-chrome-landed} + 52px);
+    }
+}
+
+// =============================================================================
+// On paper
+// -----------------------------------------------------------------------------
+// The bar and the strip are fixed to the window, and the frame gives their height
+// back as padding on `.td-outer`. Neither is furniture a sheet of paper has, and
+// the padding is 141px of blank at the top of the first page — measured under
+// Chromium's print emulation at A4, the title started 137px down with a full
+// marketing bar above it.
+//
+// The strip and the footer carry Docsy's `d-print-none` in the markup already;
+// the bar does not, and the class belongs to the navbar's own template rather
+// than here, so it is closed from the stylesheet instead.
+// =============================================================================
+
+@media print {
+    // The band at the top of the sheet is kept, and only emptied of navigation.
+    //
+    // The band is the only thing identifying the printout, the navigation
+    // inside it is hidden anyway, and a page with no mark on it is harder to
+    // place than one with 113px of header. Measured on the sheet: 113px tall,
+    // white, a 1px #e7e8ef rule along the bottom, 32px/40px of padding, and the
+    // title 16px under it at 129.
+    //
+    // Before this the bar was hidden outright and the sheet began with the title
+    // at 88px, with nothing on it naming the site.
+    // A reader who scrolls to the middle of a page and prints it still carries
+    // `data-scrolled`, and every part of the bar's size is a custom property, so
+    // the sheet would come out with the *scrolled* bar on it — an 85px band with
+    // a 35px wordmark and the title 28px higher, depending on nothing but where
+    // the reader happened to be standing. The state is neutralised here rather
+    // than restating the sizes on `.td-navbar`, which would leave the wordmark
+    // and the container's own min-height reading the small values anyway.
+    :root[data-scrolled] {
+        --axo-bar-height: #{$axo-bar-height};
+        --axo-bar-pad-y: 2rem;
+        --axo-logo-height: 48px;
+    }
+
+    .td-navbar {
+        position: static;
+        // The block padding is the variable's, reset just above. Only the inline
+        // padding is stated: on screen it comes from the centred content box,
+        // which the sheet does not have.
+        padding-inline: 40px;
+        background-color: #fff;
+        border-bottom: 1px solid var(--axo-hairline);
+    }
+
+    // Everything in the bar except the wordmark. Stated as "not the brand" rather
+    // than as a list of the parts, so a control added to the bar later does not
+    // have to be remembered here — it will be gone from the sheet by default.
+    .td-navbar > .container-fluid > *:not(.navbar-brand) {
+        display: none;
+    }
+
+    // ...except the hamburger, which that rule cannot reach.
+    //
+    // A sheet of A4 is 794px wide with no margins and about 717px with the
+    // browser's default ones — both under this project's md, which is 800px. So
+    // paper is laid out in the narrow band, where the theme states
+    // `.td-navbar .navbar-toggler { display: inline-block !important }` under
+    // 991.98 and _axo-navbar.scss takes it back only from 800 up. Neither applies
+    // on paper, and an `!important` beats the rule above it whatever the width.
+    //
+    // Measured on the printed sheet before this: a 32x32 hamburger in the top
+    // right corner of page 1 — a control for a drawer that no sheet of paper has.
+    // Every geometry check here measures print at a 1440 viewport, which is the
+    // desktop band, so none of them could see it: the paper's own media context
+    // has to be established first.
+    .td-navbar .navbar-toggler {
+        display: none !important;
+    }
+
+    .td-navbar > .container-fluid {
+        max-width: none;
+        padding-inline: 0;
+    }
+
+    .td-outer {
+        padding-top: 0;
+    }
+
+    // Docsy's 88px above the title was sized against a bar this site does not
+    // have on screen; on paper the band is back and the gap is 16px.
+    .td-main main {
+        padding-top: 1rem;
+    }
+
+    // The sheet is the column's width. Both flanking columns are hidden on paper
+    // but their grid widths are not, and what was left of the row put the prose
+    // 16px in from the left and hard against the right edge — measured on
+    // /data-management/processing/, `main` came out 848px wide inside an 816px
+    // sheet and the prose ran to 832. Full width here is 816 with the column's
+    // own 16px each side, which is 784 of prose at x=16.
+    .td-main > .row > main {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    // The article's meta header prints as an empty 25px band with 24px of margin
+    // above it: everything in it — the edit link, the last-modified line — is
+    // screen furniture and already hidden, and what is left is 49px of white
+    // between the title and the version line that the sheet should not spend.
+    .article-meta {
+        display: none;
+    }
+}
+
+// =============================================================================
+// The widened reading view
+// =============================================================================
+// The default frame is the site's own 1280 box — the same one the bar and the
+// footer keep — so on a wide monitor the tree, the prose and the contents column
+// all sit in the middle third of the screen. This pushes the two side columns out
+// to the edges of the window and lets the article take everything between them.
+//
+// Both columns stay. They are moved, not hidden: the tree goes to the left gutter
+// and the contents column to the right one, and the prose fills the space that
+// opens up between them.
+//
+// The article is uncapped here. In the default frame it is held at 768px, which is
+// a readable measure inside an 817px column; widened, the column is 1065px at 1440
+// and 2017 at 2560, and a capped article would leave the middle empty — which is
+// the thing this exists to fix. At 2560 that is a 1969px line, which is long; the
+// `max-width` below is the one value to change if it wants a bound.
+//
+// It fills the browser window, not the screen: nothing calls `requestFullscreen`,
+// and the bar, the strip and the footer all stay.
+//
+// The attribute is put on <html> by a blocking script in
+// `layouts/_partials/hooks/head-end.html`, not from the deferred
+// `assets/js/axo-wide.js`, so the frame never paints at one width and then jumps.
+//
+// The control lives in the contents column beside "Print this page", which is where
+// this site keeps its page actions. It is offered only from the width at which it
+// would do something: below `$axo-grid + 2 * $axo-page-gutter` the row already
+// reaches its cap and widening would only add gutters, i.e. make the page narrower.
+// Computed from the two variables rather than written as 1360px so it cannot drift.
+html[data-axo-wide] {
+    @include media-breakpoint-up(md) {
+        // The prose is aimed at 70% of the window rather than at whatever the
+        // column leaves: uncapped it is a 1969px line at 2560, which is about 300
+        // characters and cannot be read. 70vw is 1008 at 1440 and 1792 at 2560.
+        //
+        // Below about 1970 the column is the narrower of the two and decides the
+        // answer on its own — room is `viewport - 591` once the gutters, the two
+        // side columns and the column's own padding are taken out, and that is
+        // under 70% of the window until then. So this is a cap that starts biting
+        // on a genuinely wide screen and stays out of the way on a laptop.
+        //
+        // `.td-content` is capped at 768 from `xl` up, one class against this
+        // rule's attribute plus class, so this wins on specificity rather than on
+        // source order.
+        .td-content {
+            max-width: 70vw;
+        }
+
+        // THE TREE GROWS WITH THE WINDOW. A DEPARTURE from the axoflow-docs copy of
+        // this file, made for this site's own navigation.
+        //
+        // Widened, both side columns kept their default widths and only moved out to
+        // the gutters, so all of the new room went to the article: measured, the
+        // tree's share of the row fell from 18.8% to 13.8% at 1920 and 10.2% at 2560
+        // while the article went 768 -> 1217 -> 1792.
+        //
+        // That matters here more than it does on AxoFlow, because these labels are
+        // long. Measured on /filterx/ at 231px: 21 of 41 visible rows wrap, 51%. The
+        // width that would fit them:
+        //
+        //     50% of rows on one line   column 218px
+        //     75%                              284px
+        //     90%                              443px
+        //    100%                              613px   <- a tail of sentence-length
+        //                                                 section labels
+        //
+        // The tail must not set the width: `template and rewrite: Format, modify,
+        // and manipulate...` wants 581px on its own and is a sentence, not a label.
+        //
+        // `clamp` rather than a share, so the growth is bounded at both ends:
+        //
+        //   231px   the floor — never narrower than the default frame, so widening
+        //           can only ever add to the tree
+        //   16.25vw the same share of the row the default frame gives it. The tree
+        //           is 231 of the 1280 box, 18.05%; the widened row is 100vw less
+        //           two $axo-wide-gutter, i.e. 90vw; 18.05% of 90vw is 16.25vw.
+        //   443px   the ceiling — the 90% mark above. Past it the next rows are the
+        //           sentence-length tail, so more width stops buying lines and only
+        //           costs the measure.
+        //
+        // The contents column is deliberately NOT widened with it. It holds headings
+        // and six fixed actions, none of which get better with room, and the article
+        // pays for every pixel either column takes.
+        // The selector has to carry `.td-main > .row >`. What pins the column is
+        // `.td-main > .row > .td-sidebar { flex: 0 0 231px; max-width: 231px }` in
+        // _styles_project.scss -- three classes -- and `html[data-axo-wide]
+        // .td-sidebar` is an attribute, a class and a type, which loses. Stated
+        // without it the rule compiled correctly and did nothing: measured, the
+        // computed width stayed `231px` and the flex basis `0 0 231px` at 1920.
+        .td-main > .row > .td-sidebar {
+            flex: 0 0 auto;
+            width: clamp(231px, 16.25vw, 443px);
+            max-width: none;
+        }
+
+        // The archived-version band follows the tree out to the gutter. Its default
+        // is `max(40px, calc((100vw - 80rem) / 2))`, which centres it on the 1280
+        // box; left alone here its icon would start at 320 at 1920 and 640 at 2560
+        // while the tree beneath it starts at 40 — a seam down the middle of the
+        // content region on every archived page.
+        .version-banner {
+            padding-inline: $axo-wide-gutter;
+        }
+    }
+}
+
+// The control: a plain icon at the article's top-right.
+//
+// It sits against the contents column rather than in the "On This Page" block, so
+// it is where the reader's eye already is when they decide the page is too narrow,
+// and it costs the page actions block nothing. It scrolls with the article — to put
+// it back you scroll back to the top of the page, which is where you were when you
+// asked for it.
+//
+// Offered only from 1600px up, and the arithmetic is worth writing down because the
+// old threshold is now wrong. Widened, the article gets `0.95 * viewport * 2 - ...`
+// — in plain terms the window less two 5% margins, less the two 231/232 columns,
+// less the column's own 2 x 24 — which is `0.9 * viewport - 511`. That only beats
+// the default 768 above about 1421, and only beats it by anything worth a control
+// above 1600, where it is 929. Below that the widening would make the page narrower
+// than it already is, so the control is absent rather than present and misleading.
+.axo-page-tools {
+    display: none;
+}
+
+@media (min-width: 100rem) { // 1600px
+    // The group is positioned against the contents column.
+    .td-main > .row > main {
+        position: relative;
+    }
+
+    .axo-page-tools {
+        position: absolute;
+        z-index: 3;
+        top: 1rem;
+        right: var(--axo-main-gutter, 1.5rem);
+        display: flex;
+    }
+
+    .axo-wide-toggle {
+        display: flex;
+        width: 32px;
+        height: 32px;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        background: none;
+        // The same faint-until-wanted ink as the print action in the column beside
+        // it, so the two read as the same kind of thing.
+        color: var(--axo-text-faint);
+    }
+
+    .axo-wide-toggle:hover,
+    .axo-wide-toggle:focus-visible {
+        border-color: var(--axo-control-border);
+        color: var(--axo-text-accent);
+    }
+}
+
+@media print {
+    .axo-page-tools {
+        display: none;
+    }
+}
+
+
+// =============================================================================
+// No cross-document view transition
+// -----------------------------------------------------------------------------
+// Reported as the page "vibrating" when a page is opened from the menu and is
+// not already in cache. Photographed, at 1440x900, four frames into the
+// navigation: TWO PAGES ON TOP OF EACH OTHER. The navbar's items doubled
+// ("Solutions" over "Solutions"), the tree doubled at two different scroll
+// positions, and the outgoing article's paragraphs showing through the incoming
+// one's heading. It lasts as long as the transition does — measured,
+// `viewTransition.ready` at 335ms and `finished` at 680ms, so 345ms of ghost.
+//
+// It is `@view-transition { navigation: auto }` in
+// themes/docsy-axoflow/assets/scss/_styles_project.scss doing exactly what it
+// says: holding the outgoing snapshot on screen and crossfading into the
+// incoming one. With the target page in cache the whole sequence is over before
+// it registers. Cold, it is a network round trip long and the reader watches it
+// happen.
+//
+// WHY IT WAS NOT FOUND EARLIER, stated because the earlier answer was wrong in
+// print: the earlier measurement was of a RELOAD, and a reload does not trigger
+// a cross-document transition — `pagereveal` reports `viewTransition === null`
+// there every time, which is a true measurement of the wrong event. And the
+// mean-luminance series cannot see this at all: across the ghost it reads 240.5
+// -> 242.6 -> 237.7 -> 233.0, a gentle slope with nothing in it. What found it
+// was comparing each frame against BOTH endpoints — the ghost frames are far
+// from the outgoing page AND far from the incoming one, which is the signature
+// of a blend and is invisible to any single number.
+//
+// THIS IS NOT NEW AND NOT THIS BRANCH'S. The stylesheet on axoflow.com carries
+// the same `@view-transition{navigation: auto}` today. What settles the question
+// is the ghost itself: on a cold navigation it is worse than no animation at all,
+// and it is the thing a reader reported.
+//
+// The submodule's own comment already names the cost: "With navigation: none,
+// browsers fall back to instant page swaps — no animation, but also no
+// crossfade flash."
+//
+// This file is imported last from _styles_project.scss, after the submodule's
+// block, and `@view-transition` is decided by cascade order rather than by
+// specificity — so the later of the two wins.
+@view-transition {
+    navigation: none;
+}
+
+// The names go with it, and NOT only for tidiness. A `view-transition-name`
+// other than `none` creates a stacking context on the element that carries it —
+// permanently, whether or not a transition ever runs. That is not a theory
+// here: it is what confined the mobile drawer below the brand bar earlier in
+// this work, and the note on `.td-outer aside.td-sidebar` above records how far
+// it had to be chased before it was believed. With transitions off, the three
+// names buy nothing at all and each one is a stacking context waiting to catch
+// the next piece of layout that needs to escape it.
+//
+// The md-down override on the sidebar is left where it is. It is now redundant
+// — this rule covers it — but it is the only place the stacking-context story
+// is written down, and it costs one declaration to keep it standing.
+header > .td-navbar,
+aside.td-sidebar,
+.td-footer {
+    view-transition-name: none;
+}

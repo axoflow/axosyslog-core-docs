@@ -1,0 +1,64 @@
+{{/*
+  Footer row-2: logo + rule + tagline + compliance badges.
+  Plain <div>s and one <a> per item -- this row is information, not navigation.
+
+  Region order on a row (>= 50rem): logo, the orange rule, the two-line tagline,
+  then the badges pushed to the far end. Below 50rem the row becomes a centred
+  column and the logo and the rule drop out; see _axo-footer.scss.
+
+  The rule between the logo and the tagline is decorative and has no text, so it
+  is a styled <span> rather than an <hr>: an <hr> is a thematic break in the
+  document outline, which this is not.
+
+  width/height on every <img> are the file's intrinsic dimensions, so the boxes
+  are reserved before the images decode. The rendered sizes are the stylesheet's
+  (3rem for the logo, 6rem for a badge); these attributes only set the ratio.
+  The badges are raster and Hugo reads their size; the logo is an SVG, where
+  .Width is not available, so its viewBox is written out below -- 477x120, which
+  is 191x48 at the 3rem the stylesheet renders it at.
+*/ -}}
+{{ $logoW := 477 -}}
+{{ $logoH := 120 -}}
+{{ $footer := site.Data.footer -}}
+<div class="td-footer__row td-footer__row-2">
+
+  {{ with $footer.logo -}}
+    <a class="td-footer__logo" href="{{ .href }}" target="_blank" rel="noopener">
+      {{ with resources.Get .light -}}
+        <img class="td-footer__site-logo td-footer__site-logo--light" alt="Axoflow"
+             src="{{ .RelPermalink }}" width="{{ $logoW }}" height="{{ $logoH }}">
+      {{ end -}}
+      {{/* The wordmark is painted in #0F1425, which is also the dark theme's page
+           background, so the dark file is swapped in rather than filtered. It is
+           the same wordmark, so it carries no accessible name of its own. */ -}}
+      {{ with resources.Get .dark -}}
+        <img class="td-footer__site-logo td-footer__site-logo--dark" alt="" aria-hidden="true"
+             src="{{ .RelPermalink }}" width="{{ $logoW }}" height="{{ $logoH }}">
+      {{ end -}}
+    </a>
+  {{ end -}}
+
+  {{ with $footer.tagline -}}
+    <span class="td-footer__divider" aria-hidden="true"></span>
+    <p class="td-footer__tagline">{{ .lead }}<span>{{ .accent }}</span></p>
+  {{ end -}}
+
+  {{/* The badge anchors used to be left unstyled and inline on purpose: the row
+       then measured 104px against 96px images, the 8px being the descender space
+       under an inline <img> in an inline <a>, and the row's height depended on
+       it. The live footer has no such gap -- its strip is exactly as tall as the
+       images, 120px at 1440 -- so _axo-footer.scss makes these flex now and the
+       8px is gone with the baseline it came from. */ -}}
+  <div class="td-footer__badges">
+    {{ range $footer.badges -}}
+      {{ $badge := . -}}
+      {{ with resources.Get $badge.file -}}
+        <a href="{{ $badge.href }}" target="_blank" rel="noopener"><img
+           class="td-footer__compliance-badge" alt="{{ $badge.label }}"
+           src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}"></a>
+      {{ end -}}
+    {{ end -}}
+  </div>
+
+</div>
+

@@ -1,0 +1,50 @@
+{{/*
+  Project override of themes/docsy-axoflow/layouts/_partials/hooks/body-top.html.
+
+  The theme's own content — the Google Tag Manager <noscript> frame — is carried
+  over verbatim below; the additions are the announcement strip, which has to be the
+  first thing in the body because it sits above the bar, and the widened-frame
+  bootstrap.
+
+  The bootstrap is HERE rather than in `hooks/head-end.html`, which would be its
+  natural home, and the reason is worth recording: the submodule ships its own
+  `hooks/head-end.html`, and a project file of the same name replaces it rather than
+  adding to it. That file carries the entire Pagefind Component UI bootstrap — the
+  stylesheet preload, the loader that imports `pagefind-component-ui.js`, and the
+  highlight module — plus the `docs-build-*` meta tags `deploy/playground-1/verify.sh`
+  reads and the `redirect` front-matter support. Overriding it took the search off
+  every page of both versions: the custom element was never defined, so the trigger
+  stayed empty and the box simply was not there.
+
+  The alternative was to copy the theme's 3.8KB head-end into this project and add to
+  it, which is what this file does for the ten lines of GTM below. At that size and
+  with a Pagefind bootstrap inside it, a copy would go stale silently on the next
+  submodule bump. A script at the top of <body> runs before any of the body is
+  parsed, so the frame is settled before the tree exists and nothing flashes. The
+  way to assert that is to watch the tree's own left edge rather than the
+  attribute.
+*/ -}}
+<script>
+  (function () {
+    try {
+      if (localStorage.getItem('axo-wide') === '1') {
+        document.documentElement.setAttribute('data-axo-wide', '');
+      }
+    } catch (e) {
+      // Storage can be unavailable (private browsing, a blocked third-party
+      // context). The page then simply renders at the site's width.
+    }
+  })();
+</script>
+{{ partial "announcement-strip.html" . -}}
+
+{{ if not site.Config.Privacy.GoogleAnalytics.Disable }}
+  {{- with site.Config.Services.GoogleAnalytics.ID }}
+    {{- if strings.HasPrefix (lower .) "gtm-" }}
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ . }}"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+    {{- end }}
+  {{- end }}
+{{- end -}}

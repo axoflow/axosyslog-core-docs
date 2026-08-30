@@ -1,0 +1,1318 @@
+// Prose detail: code, callouts, tables, cards, buttons.
+//
+// Imported from _styles_project.scss. Kept separate so each area stays readable
+// on its own.
+//
+// Every number below was read off a rendered page at 1440, not off a stylesheet
+// — so where a value here disagrees with what a rule elsewhere declares, this is
+// the one that was seen.
+
+// Colours come from the shared token layer wherever it has a name for them —
+// `--axo-text`, `--axo-text-accent`, `--axo-hairline`, `--axo-bg-inline-code` in
+// assets/scss/_axo-tokens.scss, which carries the light and the dark value of
+// each and is where the brand palette is recorded. A hex compiled through a Sass
+// variable would bake the light value into the sheet, which is exactly the bug
+// that layer exists to stop.
+//
+// The `--axo-content-*` indirection below is a fallback, not a second palette:
+// each one resolves to the shared token when it exists and to the literal only
+// when it does not, so this file is correct whether or not _axo-tokens.scss is in
+// the tree. Once it certainly is, the fallbacks can go and the rules can name the
+// shared tokens directly.
+//
+// Two families have no entry there and are declared outright: the code frame's
+// surfaces and the Night Owl token palette.
+//
+// The heading colour and the body colour are the same value in both themes
+// (#0f1425 light, #f0f2f7 dark), so headings, table headers and summaries all
+// take the text colour and no separate heading colour is needed.
+:root {
+    --axo-content-text: var(--axo-text, #0f1425);
+    --axo-content-accent: var(--axo-text-accent, #ff6500);
+    // A shade darker than the shared `--axo-hairline` (#e7e8ef): the line on a
+    // table, a `<details>`, a tab strip, an `<hr>` and under the title is #d0d2e0
+    // in all five places.
+    --axo-content-hairline: var(--axo-control-border, #d0d2e0);
+    --axo-content-inline-code: var(--axo-bg-inline-code, #f3f4f7);
+    // The per-page action row and an unselected tab, which is what the shared
+    // `--axo-text-faint` carries — #657780 here, #b4b7c1 dark.
+    --axo-content-faint: var(--axo-text-faint, #657780);
+
+    --axo-code-bg: #f3f4f7; // the code surface
+    --axo-code-bar-bg: #e7e8ef; // the terminal title bar
+    // the hairline at 75% opacity
+    --axo-code-border: rgba(208, 210, 224, 0.75);
+    --axo-code-fg: #403f53; // Night Owl Light's default foreground
+}
+
+@if $enable-dark-mode {
+    [data-bs-theme="dark"] {
+        --axo-content-text: var(--axo-text, #f0f2f7);
+        --axo-content-accent: var(--axo-text-accent, #ff6500);
+        --axo-content-hairline: var(--axo-control-border, #1f2537);
+        --axo-content-inline-code: var(--axo-bg-inline-code, #1f2537);
+        --axo-content-faint: var(--axo-text-faint, #b4b7c1);
+
+        // The frame inverts its two surfaces here: the bar is the darker of the
+        // two in dark and the lighter one in light.
+        --axo-code-bg: #171c2e;
+        --axo-code-bar-bg: #0f1425;
+        --axo-code-border: rgba(31, 37, 55, 0.75);
+        --axo-code-fg: #d6deeb;
+    }
+}
+
+// =============================================================================
+// Vertical rhythm
+// -----------------------------------------------------------------------------
+// Two opposite conventions are available. Bootstrap gives every block a
+// `margin-bottom` and no top; this design zeroes both and then puts a
+// `margin-top` on any block that FOLLOWS another (1rem). Between two paragraphs
+// the result is the same 16px, so the difference only shows where the sequence
+// starts or ends, and around headings — where Docsy states a flat 3rem and this
+// uses 1.5em of the heading's own size: 52.5px before an h2 (35px), 43.5 before
+// an h3, 30 before an h4. Measured on
+// /deployment-scenarios/existing-infrastructure/, the gap above every h2 was
+// 48px against the 53 it should be, and every list ran 27px shorter.
+//
+// So the whole model is replaced rather than patched, and the element list is
+// enumerated instead of applied through `*`: Docsy's Bootstrap components
+// (tabs, cards, the vendor grid) sit inside `.td-content` too and still need
+// their own margins.
+//
+// `.td-main .td-content` throughout, and `:is()` rather than `:where()`, because
+// the theme's own rules reach (0,2,1) — `.td-content > h2:not(:first-child)` —
+// and a single class plus a type selector loses to them. Within this block the
+// rules are ordered so the later one wins at equal weight.
+$axo-blocks: "p, ul, ol, dl, pre, table, blockquote, figure, hr, details, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .highlight, .alert, .warning-block, .section-index, .lead, .axo-code-block";
+$axo-headings: "h1, h2, h3, h4, h5, h6";
+// Bootstrap's heading classes ride along in every heading list purely to keep the
+// selector's weight at one class, so source order decides between these rules.
+$axo-heading-classes: "h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6";
+
+.td-main .td-content {
+    // The Docsy theme states its own values for all four of these at
+    // `[data-bs-theme="dark"] .td-content` and at `.td-content a` — #e6e6e6 body,
+    // pure white headings, and a link hard-coded to the light theme's #cb3d00,
+    // which is the baked-hex problem `_axo-tokens.scss` exists to fix. Pointing
+    // them at the tokens here is what makes the dark theme need no rule of its own.
+    color: var(--axo-content-text);
+
+    :is(h1, h2, h3, h4, h5, h6) {
+        color: var(--axo-content-text);
+    }
+
+    a {
+        color: var(--axo-content-accent);
+    }
+
+    // The line height is set once, on <body>, and everything inherits it.
+    // The Axoflow Docsy theme states 1.62rem on `.td-content p` and on
+    // `.td-content li, span` (themes/docsy-axoflow/.../_styles_project.scss:560)
+    // — 25.92px against the 28px the 1.75 in _variables_project.scss asks for,
+    // which is 2px of every line of prose on every page.
+    line-height: $line-height-base;
+
+    // The running prose is Book, not Regular. axoflow.com sets its body copy at
+    // 300 — measured there, a paragraph is 14px at 300 — and this documentation
+    // was at 400 the whole way down. The number alone understates it: the site
+    // used to be set in Poppins, and Stolzl at the same 400 carries noticeably
+    // more ink, so the change of family made the page heavier before any weight
+    // was touched. Reported by a reader as harder to read and more crowded.
+    //
+    // Headings are unaffected — Bootstrap states $headings-font-weight on the
+    // elements themselves — and emphasis is restated just below, because it must
+    // not follow this down.
+    font-weight: 300;
+
+    // ...and again on the elements themselves, because the theme states
+    // `.td-content p, .td-content li, .td-content td { font-weight: 400 }`. An
+    // inherited value never beats a rule that matches the element, whatever the
+    // specificity of the ancestor it came from — measured, the paragraph stayed
+    // at 400 with the declaration above already in the sheet. `.td-main` in front
+    // is what outranks it.
+    :is(p, li, td, dt, dd, figcaption) {
+        font-weight: 300;
+    }
+
+    // Reboot gives `b` and `strong` `font-weight: bolder`, which is relative:
+    // against a 400 parent it resolves to 700, but against 300 the CSS table
+    // resolves it to 400. Left alone, lowering the body weight would have quietly
+    // turned every emphasis in the documentation into plain text one step up.
+    // Stated outright, at 700.
+    :is(b, strong) {
+        font-weight: 700;
+    }
+
+    :is(p, li, span) {
+        line-height: inherit;
+    }
+
+    // Step 1: zero what Bootstrap set, so the rules below are the only source of
+    // vertical space.
+    :is(#{$axo-blocks}) {
+        margin-block: 0;
+    }
+
+    // Step 2: the 1rem block gap.
+    :is(#{$axo-blocks}) + :is(#{$axo-blocks}) {
+        margin-top: 1rem;
+    }
+
+    // Step 3: a heading after anything that is not a heading opens further.
+    // Two headings in a row keep the 1rem above.
+    :is(#{$axo-blocks}):not(#{$axo-headings}) + :is(#{$axo-heading-classes}) {
+        margin-top: 1.5em;
+    }
+
+    // Lists are tighter than the block rhythm: 0.25rem between items, and no
+    // margin on the item itself. `.td-content ul li` in the Docsy theme sets
+    // 0.25rem of BOTTOM margin, which lands in the same place but also below the
+    // last item, where there should be nothing.
+    :is(li, dt, dd) {
+        margin-block: 0;
+    }
+
+    :is(li + li, dt + dt, dt + dd, dd + dd) {
+        margin-top: 0.25rem;
+    }
+
+    // A list whose items carry block children — `ul > li > p`, which is what
+    // Goldmark emits for a loose list — separates the items by more than the
+    // 0.25rem above. That space goes on the last block of every item, including
+    // the items that hold only inline content, so one loose item does not make
+    // the list uneven.
+    :is(ol, ul):has(> li > :not(a, strong, em, del, span, input, code, br, ol, ul))
+        > li
+        > :last-child:not(a, strong, em, del, span, input, code, br) {
+        margin-bottom: 1.25rem;
+    }
+
+    // Browser default is 40px of `padding-inline-start`, which is what this
+    // leaves in place; Bootstrap's reboot cuts it to 2rem.
+    :is(ul, ol) {
+        padding-left: 40px;
+    }
+
+    // Definition lists — the style guide's form for option references. The
+    // definition is indented by 1rem instead of the browser's 40px, and the term
+    // is bold. No page renders one today; the rules are here so the first one does
+    // not arrive unstyled.
+    dt {
+        font-weight: 700;
+    }
+
+    dd {
+        margin-inline-start: 0;
+        padding-inline-start: 1rem;
+    }
+
+    // Figures are blocks, not inline images sitting on a text baseline. Docsy
+    // leaves them `inline`, which adds the descender gap under every screenshot
+    // and diagram and makes the paragraph that wraps them taller than the image.
+    :is(img, picture, video, canvas, svg, iframe) {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+// =============================================================================
+// The title and the line under it
+// -----------------------------------------------------------------------------
+// The page reads as a stack of panels, each with 24px of padding: the title is
+// in the first, the prose in the second, and the second draws a 1px hairline
+// across the top of the 816px content column. From the bottom of the h1 to the
+// top of the first paragraph is therefore 24 + 1 + 24, plus the 16px the
+// paragraph gets for following a sibling — 65px, measured. Docsy has one
+// container and no rule, and put the first paragraph 24px down.
+//
+// The rule hangs on `header.article-meta`, which Docsy renders between the two
+// (themes/docsy/layouts/_td-content.html:4) and which is empty on this site:
+// taxonomy terms are off and reading time is off, so it is a zero-height sibling
+// in exactly the right place. `p.axo-print-version` follows it, `display: none`
+// on screen, so the first visible block is the paragraph after that and picks up
+// its 16px from the block rhythm above.
+.td-main .td-content > header.article-meta {
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--axo-content-hairline);
+}
+
+// The rule spans the content column, not the prose column, so it bleeds back out
+// over main's gutter: 768 + 2×24 is the 816px the panel measures at 1440.
+// That gutter is 16px until the table of contents appears and 24 after, and
+// `.td-main main` publishes whichever it is as `--axo-main-gutter`, so the number
+// is stated once rather than tracked in two places.
+//
+// The width is stated as well as the margins: a capped `.td-content` holds a
+// block child to 768, and the negative margin alone moved the line left rather
+// than widening it.
+.td-main .td-content > header.article-meta {
+    box-sizing: border-box;
+    width: calc(100% + 2 * var(--axo-main-gutter, 1.5rem));
+    margin-inline: calc(-1 * var(--axo-main-gutter, 1.5rem));
+}
+
+// =============================================================================
+// The heading ramp
+// -----------------------------------------------------------------------------
+// Stated here rather than left to the Bootstrap variables, for two reasons that
+// only show up away from 1440.
+//
+// RFS. `$enable-rfs` is on, so Bootstrap compiles every heading above 1.25rem to a
+// `calc()` that shrinks continuously with the viewport. Measured on
+// /data-management/processing/: h1 is 42px at 1440, 37.05 at 900 and 33.75 at 700,
+// against the flat 42 down to 800 that is wanted. An explicit `font-size` on a
+// selector Bootstrap's own `h1` cannot outrank is what stops it.
+//
+// The two steps. The ramp is not one scale but two — h1 … h4 step one size up
+// at 50em — so the page is 42/35/29/24 at 800 and above and 35/29/24/20 below
+// it, with h5 at 18 and h6 at 16 throughout. 50em is 800px, which is exactly
+// `md` in _variables_project.scss, so the mixin draws the boundary in the right
+// place; a literal `768px` would not.
+//
+// h4 and h5 were also simply wrong at every width: `_variables_project.scss` sets
+// both to 1rem on the strength of a comment saying the scale flattens everything
+// below h3 to body size, and it does not — h4 is 24px and h5 is 18.
+//
+// Weight is 600 on every level. Stolzl has no 600, so h1's 700 painted the same
+// pixels; the number is what a stylesheet diff reads, and every other heading on
+// the page already reported 600.
+.td-main .td-content {
+    :is(h1, .h1) {
+        font-size: 2.625rem; // 42px
+    }
+
+    :is(h2, .h2) {
+        font-size: 2.1875rem; // 35px
+    }
+
+    :is(h3, .h3) {
+        font-size: 1.8125rem; // 29px
+    }
+
+    :is(h4, .h4) {
+        font-size: 1.5rem; // 24px
+    }
+
+    :is(h5, .h5) {
+        font-size: 1.125rem; // 18px
+    }
+
+    :is(h6, .h6) {
+        // h6 has no step of its own and inherits the body size. 16px,
+        // measured.
+        font-size: 1rem;
+    }
+
+    h1 {
+        font-weight: 500;
+    }
+}
+
+@include media-breakpoint-down(md) {
+    .td-main .td-content {
+        :is(h1, .h1) {
+            font-size: 2.1875rem;
+        }
+
+        :is(h2, .h2) {
+            font-size: 1.8125rem;
+        }
+
+        :is(h3, .h3) {
+            font-size: 1.5rem;
+        }
+
+        :is(h4, .h4) {
+            font-size: 1.25rem; // 20px
+        }
+    }
+}
+
+// =============================================================================
+// Callouts
+// -----------------------------------------------------------------------------
+// Three shortcodes reach the same two variants. `{{% alert color="info" %}}` is
+// a note, `color="warning"` is a caution, and every `{{< warning >}}` is a
+// caution as well — so this site paints two variants and no others.
+//
+// The callout is a tinted panel: 1rem of padding, a 4px accent rule down the
+// leading edge, a coloured 18px/600 title with a 24px icon beside it, and 8px
+// between the title and the body. Docsy's `.alert` is an untinted 8px rule with
+// the title set inline as a bold black run-in. Measured on
+// /deployment-scenarios/existing-infrastructure/: 232px tall as designed, 210 as
+// Docsy drew it.
+//
+// Each variant carries three colours — blue for a note, orange for a caution:
+// the low tint is the fill, the bare hue is the border, and the high one is the
+// title and the links.
+$axo-aside-icon-note: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 11a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0v-4a1 1 0 0 0-1-1Zm.38-3.92a1 1 0 0 0-.76 0 1 1 0 0 0-.33.21 1.15 1.15 0 0 0-.21.33 1 1 0 0 0 .21 1.09c.097.088.209.16.33.21A1 1 0 0 0 13 8a1.05 1.05 0 0 0-.29-.71 1 1 0 0 0-.33-.21ZM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18a8 8 0 1 1 0-16.001A8 8 0 0 1 12 20Z'/%3E%3C/svg%3E");
+$axo-aside-icon-caution: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 16a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm10.67 1.47-8.05-14a3 3 0 0 0-5.24 0l-8 14A3 3 0 0 0 3.94 22h16.12a3 3 0 0 0 2.61-4.53Zm-1.73 2a1 1 0 0 1-.88.51H3.94a1 1 0 0 1-.88-.51 1 1 0 0 1 0-1l8-14a1 1 0 0 1 1.78 0l8.05 14a1 1 0 0 1 .05 1.02v-.02ZM12 8a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0V9a1 1 0 0 0-1-1Z'/%3E%3C/svg%3E");
+
+.td-main .td-content {
+    :is(.alert, .warning-block) {
+        padding: 1rem;
+        border: 0;
+        border-inline-start: 4px solid var(--axo-aside-border);
+        border-radius: 0;
+        background-color: var(--axo-aside-bg);
+        color: var(--axo-content-text);
+        // Docsy sets `.alert { font-weight: 500 }`, which in Stolzl is Medium —
+        // the callout body came out visibly heavier than the prose around it,
+        // where it should be the same regular weight as everything else.
+        font-weight: 400;
+    }
+
+    .alert-info,
+    .alert-primary {
+        --axo-aside-border: #141d62;
+        --axo-aside-bg: #e7e8ef;
+        --axo-aside-accent: #141d62;
+        --axo-aside-icon: #{$axo-aside-icon-note};
+    }
+
+    .alert-warning,
+    .warning-block {
+        --axo-aside-border: #ef5900;
+        --axo-aside-bg: #fff0e5;
+        --axo-aside-accent: #c73900;
+        --axo-aside-icon: #{$axo-aside-icon-caution};
+    }
+
+    // The title line. Docsy's is a `<span>` in the flow, so it needs to be made
+    // block-level before the 8px below it means anything; `.warning-block` wraps
+    // its own in a paragraph, which already is.
+    .alert .alert-heading,
+    .warning-block > p:first-child {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        margin-bottom: 0.5rem;
+        padding: 0;
+        // `!important` only because the theme's own `.alert-heading` rule is
+        // `color: black !important` (docsy-axoflow/_styles_project.scss), which
+        // no amount of specificity reaches.
+        color: var(--axo-aside-accent) !important;
+        font-size: 1.125rem;
+        font-weight: 500;
+        line-height: 1.2;
+    }
+
+    // NO GLYPH BEFORE THE TITLE.
+    //
+    // There was one: `content: ""`, `1.333em` square, `background-color:
+    // currentColor` and an SVG as a `mask`. It is gone, and the
+    // measurement that removed it is worth keeping because the report that
+    // prompted it was about alignment and alignment turned out not to be the
+    // problem.
+    //
+    // Reported: "the `i` in a note's heading looks pushed down against the
+    // text." Measured at 4x device scale, comparing
+    // the INK of the glyph against the ink of the word rather than their boxes —
+    // `align-items: center` centres the boxes by construction, and a text box
+    // carries leading above and below its glyphs where a mask box does not, so
+    // the box model cannot answer the question at all. Six headings, both
+    // `alert-info` and `alert-warning`:
+    //
+    //   'Note'      glyph  8..87 c=47.5 | text 25..76 c=50.5 | -0.75 CSS px
+    //   'CAUTION:'  glyph 11..91 c=51.0 | text 24..76 c=50.0 | +0.25
+    //   'Note'      glyph 12..91 c=51.5 | text 25..76 c=50.5 | +0.25
+    //   'Note'      glyph  8..87 c=47.5 | text 25..76 c=50.5 | -0.75
+    //   'Note'      glyph  8..87 c=47.5 | text 21..72 c=46.5 | +0.25
+    //   'Note'      glyph 12..91 c=51.5 | text 25..76 c=50.5 | +0.25
+    //
+    // Every one within 0.75 CSS px, and where they differ the glyph is HIGHER,
+    // not lower. So there was no misalignment to correct, and correcting the
+    // optical centres would have moved the glyph DOWN — the opposite of the
+    // report.
+    //
+    // What the eye was reading is a size mismatch: 24px of circle beside a 13px
+    // cap height, overhanging the word 4.25px above the cap and 2.75px below the
+    // baseline, and a baseline is a far stronger horizontal reference than a cap
+    // line. Shrinking the glyph would have reduced the overhang without removing
+    // it, at the cost of a 20px mark that matches no proportion on the page.
+    // Removing it is the answer the reader offered and the only one
+    // that closes the whole class of complaint.
+    //
+    // `--axo-aside-icon` is left declared on `.alert-info` / `.alert-warning`
+    // above, and `$axo-aside-icon-note` / `$axo-aside-icon-caution` are left in
+    // _variables_project.scss: putting the mark back is this block, and nothing
+    // else has to be found again first.
+
+    // `{{< warning >}}` renders its title as `<strong>CAUTION:</strong>`; the
+    // weight and colour are the title's, not a bold run inside it.
+    .warning-block > p:first-child strong {
+        font-weight: inherit;
+    }
+
+    // The body. `{{% alert %}}` markdownifies its inner text, which for a
+    // single paragraph is inline content with no element of its own — so the
+    // 8px above comes off the title, where it works for both shapes. The
+    // paragraph rhythm would otherwise put 16px under `.warning-block`'s title.
+    .warning-block > p:first-child + * {
+        margin-top: 0;
+    }
+
+    :is(.alert, .warning-block) a {
+        color: var(--axo-aside-accent);
+    }
+
+    // Code inside an aside is tinted with 12% of the title colour so the chip
+    // stays legible on the panel fill instead of on the page background.
+    :is(.alert, .warning-block) :not(pre) > code {
+        background-color: color-mix(in srgb, var(--axo-aside-accent) 12%, transparent);
+    }
+
+    // Rules and cell borders inside an aside take 30% of the same colour.
+    :is(.alert, .warning-block) :is(th, td, hr, blockquote) {
+        border-color: color-mix(in srgb, var(--axo-aside-accent) 30%, transparent);
+    }
+}
+
+// =============================================================================
+// Code blocks
+// -----------------------------------------------------------------------------
+// The frame layouts/_markup/render-codeblock.html emits. Its numbers, stated
+// once here because they are spread across the rules below:
+//
+//   border width       1px             code padding block    0.75rem
+//   border radius      5px             code padding inline   1rem
+//   border colour      #d0d2e0 @75%    ui padding block      0.25rem
+//   code font size     14px            ui padding inline     1rem
+//   code line height   1.75            ui font size          0.9rem
+//   code foreground    #403f53         ui line height        1.65
+//   terminal fill      #f3f4f7         gutter border width   1.5px
+//   terminal title bar #e7e8ef
+//
+// The outer radius is `radius + border width` = 6px, which is why the measured
+// figure is 6px where the value above says 5.
+// The colours are `--axo-code-*`, declared with both themes' values at the top of
+// this file.
+$axo-code-radius: 6px;
+// Three circles on a 60x16 viewBox, painted 2.1rem wide and 0.56rem tall — the
+// window buttons on the terminal bar.
+$axo-code-dots: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 16' preserveAspectRatio='xMidYMid meet'%3E%3Ccircle cx='8' cy='8' r='8'/%3E%3Ccircle cx='30' cy='8' r='8'/%3E%3Ccircle cx='52' cy='8' r='8'/%3E%3C/svg%3E");
+
+.td-main .td-content .axo-code-block {
+    // The UI type — the terminal bar's, not the code's.
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.65;
+
+    .frame {
+        position: relative;
+        border-radius: $axo-code-radius;
+    }
+
+    // The copy control, built by assets/js/axo-code-copy.js because neither of
+    // the theme's two mechanisms reaches this build — see the note at the top of
+    // that file. The numbers: a 36x32 wrapper 9px in
+    // from the right, holding a 32x32 button with a 3.2px radius on the code
+    // surface, invisible until the frame is hovered or the button is focused.
+    .axo-copy {
+        position: absolute;
+        top: 9px;
+        right: 9px;
+        display: flex;
+        width: 36px;
+        height: 32px;
+        justify-content: flex-end;
+    }
+
+    // A terminal frame used to carry a 34px title bar and the button was pushed
+    // to 40.4px to clear it. The bar is gone (see below), so there is nothing
+    // left to clear and the
+    // button sits at the plain 9px like every other block's. Left as a rule
+    // rather than deleted so the intent is visible: if the bar comes back, this
+    // is the line that has to come back with it.
+    .frame.is-terminal .axo-copy {
+        top: 9px;
+    }
+
+    .axo-copy-live {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+    }
+
+    .axo-copy-btn {
+        display: flex;
+        width: 32px;
+        height: 32px;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        border: 0;
+        border-radius: 3.2px;
+        background-color: var(--axo-code-bg);
+        color: var(--axo-code-fg);
+        // Invisible at rest, as EC's is: the frame is quieter without it and the
+        // control is one pointer-move away. `opacity` rather than `display`, so
+        // it can be reached by keyboard — a `display: none` button is not
+        // focusable and the block would have no copy at all without a mouse.
+        opacity: 0;
+        transition: opacity 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+        }
+    }
+
+    .frame:hover .axo-copy-btn,
+    .axo-copy-btn:focus-visible,
+    .axo-copy-btn.is-copied {
+        opacity: 1;
+    }
+
+    .axo-copy-btn:hover {
+        color: var(--axo-content-accent);
+    }
+
+    .axo-copy-btn.is-copied {
+        color: var(--axo-content-accent);
+    }
+
+    // Chroma's own wrapper stays in the tree because click-to-copy.js binds to
+    // `.highlight > pre`; `display: contents` takes it out of the box model so
+    // the figure lays its caption and its `<pre>` out directly, as EC's does.
+    .highlight {
+        display: contents;
+    }
+
+    // THE TERMINAL BAR IS GONE. Four rules stood here and all four are removed
+    // together, because each existed only to serve the others:
+    //
+    //   .header               the 34px bar itself, with the top border and the
+    //                         rounded top corners
+    //   .header::after        its bottom hairline, drawn inside the box so it did
+    //                         not add to the measured 33.77px
+    //   .header::before       the three window dots, `$axo-code-dots` as a mask
+    //   .title:empty::before  a non-breaking space, whose entire job was to give
+    //                         the empty caption a line box so the bar would not
+    //                         collapse from 34px to 10px
+    //
+    // Measured before removing them, on the deployed build: every code block on
+    // /provisioning/axorouter/linux/ is a terminal block, every one carried the
+    // bar, and the bar's whole content was an empty `<span class="title">` and a
+    // 1x1 screen-reader label. 34px a block, 204px on that page, for three dots —
+    // and the copy control was never in it, it sits seven pixels inside the
+    // `<pre>` below.
+    //
+    // `$axo-code-dots` and `--axo-code-bar-bg` are left defined; putting the bar
+    // back is this block and the `<figcaption class="header">` in
+    // layouts/_markup/render-codeblock.html, and nothing else has to be found
+    // again first. `.frame.is-terminal` is still emitted and still keys the copy
+    // control's inset below.
+
+    pre {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        border: 1px solid var(--axo-code-border);
+        border-radius: $axo-code-radius;
+        background-color: var(--axo-content-inline-code);
+        overflow-x: auto;
+    }
+
+    // A terminal `<pre>` used to give up its top border and its top corners so it
+    // would join the bar above it into one card. With the bar gone it is the card,
+    // and taking its top edge away would leave every shell block open at the top —
+    // so the rule is removed rather than kept: `pre` above already states the full
+    // border and the full radius, and a shell block is now the same box as any
+    // other. The `<figcaption class="visually-hidden">` that replaced the bar has
+    // no box at all, so nothing sits between this and the top of the frame.
+
+
+    pre > code {
+        all: unset;
+        display: block;
+        flex: 1 0 100%;
+        padding: 0.75rem 0;
+        color: var(--axo-code-fg);
+        font-family: $font-family-monospace;
+        font-size: $font-size-base * 0.875; // 14px
+        font-weight: 400;
+        line-height: $line-height-base; // 24.5px
+    }
+
+    // Chroma's per-line wrappers, which stand in for EC's `.ec-line` / `.code`.
+    // The padding is on the inner span so that a line marker or a wide line still
+    // paints its background across the full scroll width, which is why EC puts it
+    // there too.
+    .line {
+        display: flex;
+    }
+
+    .cl {
+        flex: 1;
+        padding-inline: 1rem;
+    }
+
+    // EC widens only the first line, to keep the copy button off the code.
+    .line:first-child .cl {
+        padding-inline-end: 3rem;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Syntax colours
+// -----------------------------------------------------------------------------
+// Chroma's token classes painted in the Night Owl palette, light and dark.
+//
+// The two highlighters do not agree about what a token IS — Chroma is a Pygments
+// lexer, Shiki a TextMate grammar — so this is a palette match, not a tokenizer
+// match. The assignment is not guessed: a probe walked the same code block under
+// both highlighters character by character, paired each character's Chroma class
+// with the colour Shiki gave it, and took the colour that wins. Measured over
+// 14251 painted characters on ten pages, the table below agrees on 83% of them in
+// light and 74% in dark. The rest is where the two lexers genuinely disagree: a
+// double-quoted shell string is one `s2` token to Chroma, while Shiki paints the
+// quotes and the body differently.
+//
+// The default is the surprising one. Chroma leaves a shell command word unstyled
+// and Shiki paints it, so a terminal block's own `color` is not the page default —
+// it is the string colour, which is what 89% of those characters measure as.
+//
+// Custom properties rather than two copies of the table: `variables: false` in
+// postcss.config.js keeps PurgeCSS off them, and the dark theme then restates ten
+// values instead of forty selectors.
+.td-main .td-content .axo-code-block {
+    --axo-tok-fg: #403f53; // default, punctuation, operators
+    --axo-tok-str: #3b61b0; // strings, literals, builtins, and a shell command
+    --axo-tok-blue: #3b61b0; // double-quoted strings, function names
+    --axo-tok-red: #984e4d; // single-quoted string bodies
+    --axo-tok-green: #403f53; // shell variables
+    --axo-tok-comment: #5f636f;
+    --axo-tok-tag: #111111; // YAML keys, XML tags, attributes
+    --axo-tok-num: #aa0982;
+    --axo-tok-const: #a24848; // true/false/null
+    --axo-tok-kw: #403f53; // keywords, interpolation
+    --axo-tok-purple: #8844ae; // word operators
+
+    // `!important` on every one of these, because the Docsy theme paints all code
+    // with `code { color: #141D62 !important }` and a dark counterpart in
+    // #ff9866 (docsy-axoflow/_styles_project.scss:527 and :863). Nothing short of
+    // `!important` reaches past it, and the token spans inherit from it.
+    pre > code {
+        color: var(--axo-tok-fg) !important;
+    }
+
+    .frame.is-terminal pre > code {
+        color: var(--axo-tok-str) !important;
+    }
+
+    .cl {
+        :is(.s, .sa, .sb, .sc, .sd, .sh, .sr, .ss, .sx, .l, .nb, .bp) { color: var(--axo-tok-str); }
+        :is(.s2, .se, .nf, .fm, .nx) { color: var(--axo-tok-blue); }
+        :is(.s1, .dl) { color: var(--axo-tok-red); }
+        :is(.nv, .vc, .vg, .vi) { color: var(--axo-tok-green); }
+        :is(.c, .ch, .cm, .c1, .cs, .cp, .cpf) { color: var(--axo-tok-comment); }
+        :is(.nt, .na) { color: var(--axo-tok-tag); }
+        :is(.m, .mb, .mf, .mh, .mi, .mo, .il) { color: var(--axo-tok-num); }
+        :is(.kc, .no) { color: var(--axo-tok-const); }
+        :is(.k, .kd, .kn, .kp, .kr, .kt, .kv, .si) { color: var(--axo-tok-kw); }
+        :is(.ow, .nd) { color: var(--axo-tok-purple); }
+        :is(.o, .p, .pi, .nn, .nc, .ni, .ne, .nl, .py, .w, .err) { color: var(--axo-tok-fg); }
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Inline code
+// -----------------------------------------------------------------------------
+// A grey chip, not the peach one Docsy tints: #f3f4f7 at 13px, with a negative
+// block margin because the chip is taller than the line it sits in, and without
+// it the line box grows by 4px wherever a sentence contains one.
+//
+// `_styles_project.scss` already states this — and loses, because the theme's
+// `code { … !important }` outranks it. Same `!important` here, same reason as the
+// token colours above.
+.td-main .td-content :not(pre) > code {
+    margin-block: -0.125rem;
+    padding: 0.125rem 0.375rem;
+    border-radius: 0;
+    background-color: var(--axo-content-inline-code) !important;
+    color: var(--axo-content-text) !important;
+    font-size: $font-size-base * 0.8125; // 13px
+    // Code does not follow the prose down to Book. Roboto Mono is served in one
+    // weight, so a chip inheriting 300 from the paragraph around it asked for a
+    // face that does not exist — 53 of them on one page — and was substituted
+    // back to 400 anyway. Stating it keeps the request honest and stops the chip
+    // moving if the body weight is ever changed again.
+    font-weight: 400;
+}
+
+// =============================================================================
+// Tables
+// -----------------------------------------------------------------------------
+// The table is a rule-per-row, nothing else: no cell fill, no outer
+// border, no zebra, and the first and last columns flush with the prose so the
+// table reads as part of the text column rather than as a box inside it. Docsy
+// ships Bootstrap's `.table`-ish defaults — a white fill on every cell, 8px of
+// padding all round including the outside edges, and a 700-weight black header.
+.td-main .td-content {
+    table {
+        display: block;
+        overflow: auto;
+        border-spacing: 0;
+    }
+
+    // Every cell selector carries the `table` on purpose. Docsy's own cell rule is
+    // `.td-content table:not(.td-initial) > :not(caption) > * > *` — (0,2,2), one
+    // more type selector than the obvious `.td-content :is(th, td)` — and it sets
+    // padding, colour and background in one go, so a shorter selector loses all
+    // three at once and looks like nothing was applied.
+    table :is(th, td) {
+        padding: 0.5rem 1rem;
+        border: 0;
+        border-bottom: 1px solid var(--axo-content-hairline);
+        background-color: transparent;
+        color: var(--axo-content-text);
+        // Top-aligned by name, so the first line of a tall cell sits on the same
+        // baseline as its neighbours' first line.
+        vertical-align: baseline;
+    }
+
+    table :is(th, td):first-child {
+        padding-inline-start: 0;
+    }
+
+    table :is(th, td):last-child {
+        padding-inline-end: 0;
+    }
+
+    table th {
+        color: var(--axo-content-text);
+        font-weight: 500;
+    }
+
+    // `start` rather than `left`, and only where the Markdown table has not set an
+    // alignment of its own — a `:---:` column keeps it.
+    table th:not([align]) {
+        text-align: start;
+    }
+}
+
+// =============================================================================
+// Dark
+// -----------------------------------------------------------------------------
+// Almost nothing. Every colour above is a `--axo-*` custom property that already
+// carries both themes' values, so what is left here is the two palettes that are
+// genuinely per-theme sets rather than single tokens — the callout hues and the
+// Night Owl token colours — plus one `!important` the Docsy theme forces.
+//
+// Every pair below was measured above 8:1 in dark.
+@if $enable-dark-mode {
+    [data-bs-theme="dark"] .td-main .td-content {
+        .alert-info,
+        .alert-primary {
+            --axo-aside-border: #495fa4;
+            --axo-aside-bg: #222c4c;
+            --axo-aside-accent: #b9d4ff;
+        }
+
+        .alert-warning,
+        .warning-block {
+            --axo-aside-border: #ff6500;
+            --axo-aside-bg: #462313;
+            --axo-aside-accent: #ffbb91;
+        }
+
+        .axo-code-block {
+            --axo-tok-fg: #d6deeb;
+            --axo-tok-str: #ecc48d;
+            --axo-tok-blue: #82aaff;
+            --axo-tok-red: #ecc48d;
+            --axo-tok-green: #c5e478;
+            --axo-tok-comment: #919f9f;
+            --axo-tok-tag: #7fdbca;
+            --axo-tok-num: #f78c6c;
+            --axo-tok-const: #ff6a83;
+            --axo-tok-kw: #82aaff;
+            --axo-tok-purple: #c792ea;
+        }
+
+        // The theme's dark block states
+        // `.td-content pre { background-color: #141923 !important }`, and an
+        // `!important` is the only thing that reaches past it.
+        .axo-code-block pre {
+            background-color: var(--axo-code-bg) !important;
+        }
+    }
+}
+
+// =============================================================================
+// The rest of the prose
+// -----------------------------------------------------------------------------
+
+.td-main .td-content {
+    // Rules. A hairline is what is wanted; Bootstrap draws a 25%-opacity
+    // border-top in the text colour, and the Docsy theme repaints `.panel-line`
+    // — the one above every section index — brand orange.
+    hr {
+        border: 0;
+        border-bottom: 1px solid var(--axo-content-hairline);
+        opacity: 1;
+    }
+
+    blockquote {
+        border-inline-start: 1px solid var(--axo-content-hairline);
+        padding-inline-start: 1rem;
+    }
+
+    // The child-page index Docsy prints under a section landing page. The numbers
+    // are src/styles/content.css, which is the Hugo theme's own rule carried over.
+    .section-index {
+        margin-top: 2rem;
+    }
+
+    // ...and the same 2rem once the index has a block above it, which on every
+    // page it actually appears on it does.
+    //
+    // The rule above is one class inside two and loses to step 2 of the block
+    // rhythm, `:is(#{$axo-blocks}) + :is(#{$axo-blocks})`, which is one compound
+    // heavier and names `.section-index` in both halves. Measured on the
+    // documentation home page: 16px above the index where 32 is wanted.
+    // Stated at the rhythm's own weight and after it, so it wins on source order
+    // the way the rest of this block is ordered to.
+    :is(#{$axo-blocks}) + .section-index {
+        margin-top: 2rem;
+    }
+
+    // The Docsy theme insets every entry by 0.75rem, which both indents the list
+    // from the prose and adds 24px to each row. With no padding at all the
+    // entries line up with the paragraph above them.
+    .section-index .entry {
+        padding: 0;
+    }
+
+    .section-index hr + .entry {
+        margin-top: 1rem;
+    }
+
+    .section-index .entry + .entry {
+        margin-top: 0.75rem;
+    }
+
+    .section-index .section-index-entry {
+        font-size: 1.125rem; // 18px
+        font-weight: 500;
+        line-height: 1.2;
+    }
+
+    .section-index .section-index-entry a {
+        text-decoration: none;
+        // The weight belongs to the entry, not to the link inside it. The theme
+        // states `.section-index .section-index-entry a { font-weight: 700 }`,
+        // which reached past the 600 set on the span above and made every entry
+        // on every section landing page a step bolder than it should be.
+        // `inherit` rather than a repeated 600, so the two cannot drift apart.
+        font-weight: inherit;
+    }
+
+    .section-index p {
+        margin-top: 0.25rem;
+    }
+
+    // Docsy emits `<p></p>` for every child page without a description — 331 of
+    // 344 entries across the two versions. Omitting the element rather than
+    // shipping an empty paragraph is what makes the list tighter by the block
+    // rhythm's 16px per entry. Hiding the empty one produces the same list
+    // without touching the template.
+    .section-index p:empty {
+        display: none;
+    }
+
+    // The wrapper itself, when the page asked for no list at all.
+    //
+    // `no_list: true` stops the theme filling the block in but not emitting it,
+    // so what is left is an empty `<div class="section-index">` — no height, and
+    // the 2rem above it still applied, which put 32px of nothing between the last
+    // paragraph and the footer of the documentation home page.
+    //
+    // `:not(:has(*))` rather than `:empty`, which does not match: the template
+    // leaves a newline inside the element and that counts as a child node.
+    .section-index:not(:has(*)) {
+        display: none;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// The anchor beside a heading
+// -----------------------------------------------------------------------------
+// Hidden until the heading is hovered, with a chain-link glyph at the end of the
+// line. The Docsy theme sets that glyph as `content: url(<svg fill="black">)`,
+// and a data URI in `content` is its own document, so it cannot read the
+// heading's colour. That is why the theme carries a second white-filled copy for
+// dark mode (docsy-axoflow/_styles_project.scss:832) and why the icon came out
+// navy where it should be the accent.
+//
+// A mask solves both: one glyph, painted in `currentColor`, and sized 0.8275em
+// rather than a flat 24px — 29px beside an h2, 21 beside an h4. The `translateY`
+// centres it, `(line-height - icon) / 2`.
+.td-main .td-content .td-heading-self-link {
+    padding-left: 0.25em;
+    color: var(--axo-content-accent);
+}
+
+.td-main .td-content .td-heading-self-link::before {
+    content: "";
+    display: inline-block;
+    width: 0.8275em;
+    height: 0.8275em;
+    background-color: currentColor;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42'/%3E%3C/svg%3E") center / contain no-repeat;
+    vertical-align: top;
+    transform: translateY(calc((1.2em - 0.8275em) / 2));
+}
+
+// On a phone it is not there at all.
+//
+// Docsy reveals the link with `visibility` on hover of the heading, and below md
+// the theme leaves it visible permanently — there being no hover to wait for.
+// Measured at 390: `visibility: visible` and 28px of chain icon beside every h2.
+// Nothing on a touch screen can act on it, so it is the desktop rule that is
+// right for both.
+@include media-breakpoint-down(md) {
+    .td-main .td-content .td-heading-self-link {
+        visibility: hidden;
+    }
+}
+
+
+// -----------------------------------------------------------------------------
+// <details> / <summary>
+// -----------------------------------------------------------------------------
+// Raw HTML, written by hand in five pages under content/. The block gets a 2px
+// rule down its leading edge that turns accent on hover, a bold summary, and a
+// chevron in place of the disclosure triangle that rotates when the block opens.
+// Docsy leaves the browser's triangle and adds 8px of padding.
+$axo-summary-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M14.8 11.3 10.6 7a1 1 0 1 0-1.4 1.5l3.5 3.5-3.5 3.5a1 1 0 0 0 0 1.4 1 1 0 0 0 .7.3 1 1 0 0 0 .7-.3l4.2-4.2a1 1 0 0 0 0-1.4Z'/%3E%3C/svg%3E");
+
+.td-main .td-content {
+    details {
+        --axo-details-border: var(--axo-content-hairline);
+        --axo-details-border-hover: var(--axo-content-accent);
+
+        border-inline-start: 2px solid var(--axo-details-border);
+        // Docsy pads the block 8px all round and the summary 16px, which is what
+        // made the closed block 132px tall against the 84 it should be, and fills
+        // it with the same peach it tints inline code with. This is a rule and
+        // nothing else — no fill, no corner.
+        padding: 0 0 0 1rem;
+        border-radius: 0;
+        background: none;
+    }
+
+    details:not([open]):hover,
+    details:has(> summary:hover) {
+        border-color: var(--axo-details-border-hover);
+    }
+
+    summary {
+        display: block; // also the only way to hide the marker in some browsers
+        margin-inline-start: -0.5rem;
+        padding: 0 0 0 0.5rem;
+        color: var(--axo-content-text);
+        cursor: pointer;
+        font-weight: 500;
+    }
+
+    details[open] > summary {
+        margin-bottom: 1rem;
+    }
+
+    summary::marker,
+    summary::-webkit-details-marker {
+        display: none;
+    }
+
+    summary::before {
+        --axo-marker-size: 1.25rem;
+
+        content: "";
+        display: inline-block;
+        width: var(--axo-marker-size);
+        height: var(--axo-marker-size);
+        // The negative start margin pulls the chevron back over the summary's own
+        // 0.5rem of padding, so the glyph hangs in the gutter and the text keeps
+        // the block's 1rem indent.
+        margin-inline: calc(var(--axo-marker-size) / 4 * -1) 0.25rem;
+        background-color: currentColor;
+        mask: $axo-summary-chevron center / contain no-repeat;
+        vertical-align: middle;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        summary::before {
+            transition: transform 0.2s ease-in-out;
+        }
+    }
+
+    details[open] > summary::before {
+        transform: rotateZ(90deg);
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Tabs
+// -----------------------------------------------------------------------------
+// Two pages use `{{< tabpane >}}`. Docsy renders Bootstrap's `.nav-tabs` — boxed
+// tabs with rounded tops and a border, right-aligned because the shortcode is
+// called with `right=true`. These are flat: a 2px rule under the whole strip, a
+// second 2px shadow under the selected tab in the accent colour, and the strip
+// left-aligned at the start of the prose.
+//
+// The first `<li>` is Docsy's label pseudo-tab — `Package:`, a disabled button
+// with an empty panel. It has no place in a flat strip, so it is hidden here
+// rather than left as a tab that cannot be selected.
+.td-main .td-content {
+    .nav-tabs {
+        justify-content: flex-start !important; // `justify-content-end` from the shortcode
+        gap: 0;
+        margin-bottom: 0;
+        padding: 0;
+        border: 0;
+        border-bottom: 2px solid var(--axo-content-hairline);
+        list-style: none;
+    }
+
+    .nav-tabs .nav-item {
+        display: flex;
+        margin: 0;
+    }
+
+    .nav-tabs .nav-link {
+        --axo-tab-border: var(--axo-content-hairline);
+
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 0;
+        padding: 0.275rem 1.25rem;
+        border: 0;
+        border-radius: 0;
+        box-shadow: 0 2px 0 var(--axo-tab-border);
+        background: none;
+        color: var(--axo-content-faint);
+        line-height: 1.2;
+        text-decoration: none;
+        overflow-wrap: initial;
+    }
+
+    .nav-tabs .nav-link.active {
+        --axo-tab-border: var(--axo-content-accent);
+
+        color: var(--axo-content-text);
+        font-weight: 500;
+    }
+
+    .nav-tabs .nav-link.disabled {
+        display: none;
+    }
+
+    .tab-content {
+        margin-top: 1rem;
+    }
+
+    // Docsy pads the panel and boxes it to match the Bootstrap tab strip.
+    .tab-content .tab-pane {
+        padding: 0;
+        border: 0;
+    }
+}
+
+
+// -----------------------------------------------------------------------------
+// The per-page actions at the foot of the column
+// -----------------------------------------------------------------------------
+// Rendered by layouts/_partials/page-meta-lastmod.html, which is the last thing
+// Docsy puts inside `.td-content`. Measured at 1440: the footer opens 24px below
+// the prose, the row of actions another 48 below that, and the row itself is 14px
+// in the faint grey, with 24px between the two actions and 8px between an icon
+// and its label.
+.td-main .td-content .axo-page-footer {
+    margin-top: 1.5rem;
+    color: var(--axo-content-faint);
+    font-size: 0.875rem;
+    line-height: $line-height-base;
+}
+
+.td-main .td-content .axo-page-actions {
+    display: flex;
+    // A flex item, so it is only as wide as its two actions.
+    width: fit-content;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.td-main .td-content .axo-page-actions :is(a, button) {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.td-main .td-content .axo-action-icon {
+    // 1.2em of the 14px row, which is a 17px box.
+    width: 1.2em;
+    height: 1.2em;
+    flex: none;
+}
+
+// Neither action means anything on paper, and the sheet already carries the version
+// line print-version.html puts under the title.
+@media print {
+    .axo-page-footer {
+        display: none;
+    }
+}
+
+
+// Where a printed page is allowed to break.
+//
+// Measured before this existed, on real multi-page PDFs of four of the longest
+// articles (74 printed sheets in total): two headings printed as the last line of
+// a sheet with their section overleaf — `/reference/metrics-schema/` page 11 and
+// `/integrations/` page 21. With these rules the same run finds none. That
+// measurement renders the PDF, extracts the last line above the bottom margin of
+// every page, and asks whether it is one of the article's headings.
+//
+// `break-after: avoid` on the headings is the rule that earns its place. The other
+// two are the ordinary company it keeps, and neither was observed failing on this
+// site — they are stated because the failure they prevent is invisible until a
+// table or an admonition happens to straddle a boundary, and by then it is in
+// someone's printout.
+//
+// The cost is one sheet: `/integrations/` went from 42 pages to 43. A break that
+// is forced has to be paid for somewhere, and a heading pushed to the next sheet
+// is the cheapest possible place.
+//
+// Deliberately NOT `break-before: page` on h2. That would start every section on a
+// fresh sheet, which is a decision about the document rather than a fix for a
+// defect, and on a page like /reference/metrics-schema/ with 67 headings it would
+// turn 14 sheets into 67.
+//
+// The headings are matched only where they are drawn. `/integrations/` carries an
+// `h2.vendorname.vendor-heading` per vendor at `display: none` — structure for a
+// script, not type on a page. A rule aimed at those would do nothing, and the
+// first version of the harness reported one of them as stranded because it matched
+// heading *text* against a wrapped line of card copy that read the same.
+@media print {
+    .td-main .td-content :is(h1, h2, h3, h4, h5) {
+        break-after: avoid;
+    }
+
+    .td-main .td-content :is(table, figure, img, .highlight, .alert, .pageinfo) {
+        break-inside: avoid;
+    }
+
+    // A single line of a paragraph left behind at a page foot, or carried alone to
+    // the next one. Chromium honours both in paged media; engines that do not
+    // simply ignore them, so there is nothing to fall back to.
+    .td-main .td-content p {
+        orphans: 3;
+        widows: 3;
+    }
+}
+
+// Page breaks a writer places by hand, from the markdown, with nothing visible on
+// screen.
+//
+// No shortcode is invented for this — this repository's own rules forbid that, and
+// nothing needs one. `config/_default/config.toml` already enables Goldmark's block
+// attributes:
+//
+//     [markup.goldmark.parser.attribute]
+//       title = true   # h1..h6
+//       block = true   # every other block-level element
+//
+// so any block in any content file can carry one of these classes today:
+//
+//     {.axo-break-before}
+//     ## Reference
+//
+//     A paragraph that must not be split from what follows it.
+//     {.axo-break-avoid}
+//
+// Invisible on screen by construction rather than by a rule: these carry no visual
+// declaration at all, so there is nothing to hide and nothing that can leak into
+// the screen design if the print block is ever reordered.
+//
+// PurgeCSS reads `./content/**/*.{md,html}`, so a class used only in markdown
+// survives — the same list that keeps every other content-side class alive.
+// Confirm it against the built stylesheet on the first build that actually uses
+// one; five selectors have already been lost in this project to exactly this
+// class of assumption.
+//
+// Rejected: a raw `<div class="axo-break-before"></div>` in the markdown. It works,
+// because `unsafe = true` is set — but it puts an empty element in the document on
+// screen as well as on paper, and it reads as markup in a file meant to read as
+// prose.
+//
+// These are the escape hatch, not the mechanism. The rules above are what should be
+// doing the work; reach for one of these only where a specific page needs it.
+@media print {
+    .axo-break-before {
+        break-before: page;
+    }
+
+    .axo-break-after {
+        break-after: page;
+    }
+
+    .axo-break-avoid {
+        break-inside: avoid;
+    }
+}
+
+
+// =============================================================================
+// A heading inside a <summary> has to be able to break a line
+// -----------------------------------------------------------------------------
+// Docsy states, in one rule covering every heading level:
+//
+//     details > summary > :is(h2, .h2, h3, .h3, h4, .h4, .td-alert-heading,
+//                             h5, .section-index-entry, .h5, h6, .h6)
+//     { display: ruby }
+//
+// `ruby` is how it keeps the heading on the disclosure marker's line instead of
+// pushing it onto its own. It also does something the rule did not intend, and
+// the two engines disagree about it: Chromium breaks lines inside a ruby box,
+// Firefox does not.
+//
+// Measured on /reference/message-schema/reference/#meta.classified.google_secops
+// at 1440x900, the same `<h4 class="inline">` reading "Google SecOps metadata
+// identified during classification (object)" inside a 706px `<summary>`:
+//
+//   Chromium 141   h4 565 x 64   two lines, inside the box
+//   Firefox  153   h4 828 x 25   one line, 130px outside it
+//
+// And the overflow does not stop at the heading. Every ancestor up to
+// `.td-content` reported a `scrollWidth` 127–130px past its `clientWidth` in
+// Firefox and exactly 0 in Chromium, so on that engine the whole reference
+// column is wider than the page. It was reported from Linux + Firefox and is
+// invisible on macOS + Chrome, which is exactly this.
+//
+// `inline` keeps what the rule wanted — the heading stays on the marker's line,
+// because an inline box is what it was reaching for — and drops what it did not:
+// an inline box wraps at the available width in every engine. The selector is
+// Docsy's own, element for element, so this is a replacement rather than an
+// extra rule fighting it; anything Docsy adds to that list later will still be
+// `ruby` and will have to be added here too.
+details > summary > :is(h2, .h2, h3, .h3, h4, .h4, .td-alert-heading,
+                        h5, .section-index-entry, .h5, h6, .h6) {
+    display: inline;
+}

@@ -1,0 +1,37 @@
+{{/*
+  Footer row-1: the five categorised link columns.
+
+  Data is site.Data.footer.columns, not [[menus.footer]]: the menu is the Hugo
+  site's own edit of the marketing footer and had drifted from it (four labels
+  and one href differ, and the live site's `Capablities` typo had been corrected
+  away). data/footer.yaml is the source of truth, so this footer prints the same
+  strings the marketing one does -- which is also what makes the two the same
+  width, since every column track is sized by its longest label.
+
+  Three accessibility choices, carried over from the partial this replaces:
+
+    - Each column is its own <nav aria-label>, so assistive technology can
+      enumerate the five separately from the bar's nav and the sidebar's.
+    - Column titles are <p>, not headings. Five extra headings on every page
+      would dilute the document outline. This is the thing most likely to be
+      "fixed" by mistake in review.
+    - No Bootstrap row/col classes. The columns are a CSS grid in
+      _axo-footer.scss, whose auto-fit track count is what reproduces the
+      marketing footer's (5 / 4 / 3 / 1 at 1280 / 1024 / 768 / 390).
+
+  Every href here leaves the documentation for the marketing site, so they all
+  take target="_blank" -- unlike the bar, where staying on axoflow.com stays in
+  the tab.
+*/ -}}
+<div class="td-footer__row td-footer__row-1">
+  {{ range site.Data.footer.columns -}}
+    <nav class="td-footer__column" aria-label="{{ .title }}">
+      <p class="td-footer__column-title">{{ .title }}</p>
+      <ul class="td-footer__list list-unstyled">
+        {{ range .links -}}
+          <li><a href="{{ .href }}" target="_blank" rel="noopener">{{ .label }}</a></li>
+        {{ end -}}
+      </ul>
+    </nav>
+  {{ end -}}
+</div>

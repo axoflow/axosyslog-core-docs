@@ -1,0 +1,92 @@
+{{/*
+  The version a printed page documents, as text that only exists on paper.
+
+  Two shapes, chosen by `.mode`, because the same string is now needed twice and
+  deriving it twice is what this partial exists to prevent:
+
+    "line"  a <p class="axo-print-version"> for the brand row on page 1. This is
+            the original shape; see the block of the same name in
+            assets/scss/_styles_project.scss for where it lands.
+    "text"  the bare string, for the CSS `content:` of the `@top-right` page
+            margin box that repeats the same line on pages 2..n. A margin box can
+            only render generated content, so the string has to reach the
+            stylesheet — layouts/_partials/navbar.html emits it into a <style>.
+
+  Called from layouts/_partials/navbar.html, which renders the brand row and that
+  <style>. That one file covers both of the site's ways of printing, because both
+  render the bar: the browser's own print of a page, and Docsy's "Print entire
+  section" view, whose layout (themes/docsy-axoflow/layouts/docs/baseof.print.html)
+  calls the same partial.
+
+  It was two call sites before — layouts/_td-content-after-header.html and a copy
+  of Docsy's print/page-heading.html — because the line was under the article
+  title, and the "Print entire section" view does not render through
+  _td-content.html, so the extension point that carried it on a normal page was
+  never reached there. Both of those files are gone with the line; see the git
+  history if the old position ever has to be reconstructed.
+
+  On screen the version switcher in the bar and the archived-version banner above
+  the article already answer "which version is this", and `.axo-print-version` in
+  assets/scss/_styles_project.scss keeps this line out of their way. Neither of
+  them survives the paper: one is a control, the other an instruction with a link.
+
+  The version is derived exactly as layouts/_partials/version-banner.html derives
+  it — from data/versions.yaml and the last segment of this build's baseURL, since
+  archived versions are built under /<version>/ and the latest one at the root.
+  Nothing here reads the page; the context is the mode dict and nothing else.
+
+  The version id goes out, not the switcher's "0.86 (current)" label. The
+  "current" is true of the screen; a printout outlives the release it describes
+  and would be lying on the day 0.87 ships.
+*/ -}}
+{{ $mode := "line" -}}
+{{ if reflect.IsMap . }}{{ with .mode }}{{ $mode = . }}{{ end }}{{ end -}}
+{{ $versions := hugo.Data.versions -}}
+{{ if $versions -}}
+  {{- $curBase := (urls.Parse site.BaseURL).Path -}}
+  {{- if not (strings.HasSuffix $curBase "/") }}{{ $curBase = printf "%s/" $curBase }}{{ end -}}
+  {{- $segs := split (strings.Trim $curBase "/") "/" -}}
+  {{- $lastSeg := index $segs (sub (len $segs) 1) -}}
+  {{- $current := false -}}
+  {{- range $versions -}}
+    {{- if and (not .latest) (eq (printf "%v" .version) $lastSeg) }}{{ $current = . }}{{ end -}}
+  {{- end -}}
+  {{- if not $current -}}
+    {{- range $versions }}{{ if .latest }}{{ $current = . }}{{ end }}{{ end -}}
+  {{- end -}}
+  {{- with $current -}}
+    {{/*  "Axoflow - 0.86.x", and "Axoflow - 0.81.x" on the archived build.
+
+          Three wordings have been on this line, in this order:
+
+            "Axoflow documentation — version 0.86"  the original.
+            "version 0.86"                          the prefix dropped on request.
+            "Axoflow - 0.86.x"                      this one, on request.
+
+          The middle one was the whole nine words being repeated down the sheet;
+          this one is not that. It is the name and the release train, which is how
+          the product is spoken about — a sheet printed off the current docs
+          describes 0.86.x, not the one patch release that happened to be out on
+          the day. The `.x` is a literal suffix on the version id from
+          data/versions.yaml; that file carries the train ("0.86", "0.81") and
+          never a patch number, so there is nothing here to strip.
+
+          The separator is an ASCII hyphen with a space either side, as specified.
+          Not an en or em dash — the earlier wording used one and this is a
+          different string, not that string tidied up.
+
+          "Axoflow" is a literal, matching the copyright line in
+          layouts/_partials/navbar.html, which hardcodes the same word rather than
+          reading `site.Title`. The site title is "Axoflow Documentation"; the
+          wordmark on the sheet is not.
+
+          A DEPARTURE, stated as one rather than smuggled in as a tidy-up: the
+          wording matches neither of the two strings above.  */ -}}
+    {{- $text := printf "Axoflow - %v.x" .version -}}
+    {{- if eq $mode "text" -}}
+      {{- $text -}}
+    {{- else -}}
+      <p class="axo-print-version">{{ $text }}</p>
+    {{- end -}}
+  {{- end }}
+{{- end -}}

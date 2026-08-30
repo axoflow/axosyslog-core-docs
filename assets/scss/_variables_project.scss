@@ -1,2 +1,94 @@
-// Placeholder file for project-specific customizations
+// Project-level Bootstrap variables.
+//
+// Set BEFORE the theme's file, which is where these have to go: the values below
+// are ones the theme leaves to Bootstrap's own `!default`, so this file wins them
+// and the theme's own hard assignments ($warning, $link-color, $navbar-padding-y
+// and the rest) are untouched.
+//
+// Every value here was measured on the rendered page at 1440x900. The rules that
+// go with them are in _styles_project.scss.
+
+// The brand typeface. Stolzl is licensed to Axoflow and served from this origin;
+// the faces are declared in _styles_project.scss.
+//
+// POPPINS IS OUT OF THE STACK. It sat behind Stolzl as the fallback "so a failed
+// font request lands on what the site shipped before", and it was measured doing
+// nothing: across six page shapes in six states — light, dark, mobile, both
+// drawers, the search modal and print — Poppins painted ZERO glyphs, and a sweep
+// of all 590 text-bearing elements on the home page found none either. Stolzl
+// covers every character on every page (`document.fonts.check`, all four
+// weights).
+//
+// It was not free: the font engine fetched `poppins-300.woff2` on every page
+// because the family was in the stack, and the theme preloaded 400 and 700 on
+// top of that — 23KB per load, two of the three at preload priority, for a face
+// that never drew. The preloads are gone with the head override in
+// layouts/_partials/head.html.
+//
+// The fallback a failed Stolzl request now lands on is `system-ui`, which is on
+// the reader's machine and cannot fail to arrive.
+$font-family-sans-serif: "Stolzl", system-ui, -apple-system, "Segoe UI",
+  Roboto, "Helvetica Neue", Arial, sans-serif;
+
+// Body: the brand navy rather than Bootstrap's near-black, and the taller line
+// this design sets its prose in (28px on a 16px body).
+$body-color: #0f1425;
+$line-height-base: 1.75;
+
+// Headings: 42 / 35 / 29 / 16 / 16 / 16, all at 600 and 1.2. Docsy's own ramp is
+// 40 / 32 / 28 / 24 / 20 at 500, which drifts further apart the deeper it goes —
+// this scale flattens h4 and below to body size and separates them by weight
+// instead.
+//
+// 500, and the number is the one that ships rather than the one the design asks
+// for. Stolzl carries 300, 400, 500 and 700 here and no 600; CSS resolves a
+// missing weight upwards for anything above 500, so every heading on the page was
+// painted in Bold. Measured: 24 elements asked for 600 and 24 rendered at 700,
+// which is what a reader reported as "everything is normal or bold".
+//
+// 500 is loaded, and it is what axoflow.com sets on its own headings — measured
+// there, h2 is 44px at 500. Restoring 600 means shipping a stolzl-600.woff2
+// first, not editing this line.
+$headings-font-weight: 500;
+
+// Bootstrap's own semibold, which `.fw-semibold` spends with `!important` and
+// three shortcodes use. Same reason, same answer: at 600 it painted Bold.
+$font-weight-semibold: 500;
+$headings-line-height: 1.2;
+$h1-font-size: 2.625rem;
+$h2-font-size: 2.1875rem;
+$h3-font-size: 1.8125rem;
+$h4-font-size: 1rem;
+$h5-font-size: 1rem;
+$h6-font-size: 1rem;
+
+// In-page jumps land, they do not glide. Bootstrap turns on `scroll-behavior:
+// smooth`, and on this site that is not a nicety: the contents column marks the
+// entry you are reading from an IntersectionObserver (assets/js/axo-toc.js), so
+// an animated jump over ten headings races the marker down the whole list before
+// it settles. `scroll-behavior: auto` lands the jump instantly instead, and the
+// column stays still.
+$enable-smooth-scroll: false;
+
+// Where the layout changes shape.
+//
+// Docsy hangs the left column on Bootstrap's `md` (768) and the table of
+// contents on `xl` (1200), through `d-none d-md-block` / `d-none d-xl-block` in
+// the theme's baseof. This design changes at 800 and 1152 instead: the left
+// column is there at 800 and gone at 768, the right one is there at 1152 and
+// gone at 1024. Moving the two breakpoints is what carries that everywhere at
+// once; the alternative — restating every one of Docsy's `d-*` utilities against
+// a custom media query — is the same change spelled out a dozen times.
+//
+// The other four keep Bootstrap's values, so `col-sm-*` and `col-lg-*` in the
+// content are untouched.
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 800px,
+  lg: 992px,
+  xl: 1152px,
+  xxl: 1400px,
+);
+
 @import "../../themes/docsy-axoflow/assets/scss/_variables_project.scss";

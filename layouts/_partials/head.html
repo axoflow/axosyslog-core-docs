@@ -1,0 +1,146 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+{{/* Warm the connection to the jsDelivr CDN early. 
+     `dns-prefetch` is the fallback for browsers that
+     ignore preconnect. */ -}}
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+
+{{/* NO FONT PRELOADS HERE.
+
+     The submodule preloads `fonts/poppins-400.woff2` and `fonts/poppins-700.woff2`
+     at this point, and this file is a copy of it with those two lines removed —
+     the only difference between the two, and the reason this override exists.
+
+     Poppins is the theme's brand face; this site's is Stolzl, and Poppins was
+     measured painting zero glyphs across six page shapes and six states while
+     costing 23KB a load, two files of it at preload priority. It is also out of
+     the font stack now (assets/scss/_variables_project.scss).
+
+     Stolzl is deliberately NOT preloaded in its place. It is declared in the
+     compiled stylesheet, which is itself preloaded, so the face is requested as
+     soon as that sheet is parsed; a preload here would only duplicate the
+     request. If the first paint ever proves to want it earlier, the measurement
+     to make first is which weight the above-the-fold text actually uses — the
+     wordmark and h1 are 500, not 400.
+
+     KEEP IN SYNC: this is a fork of a submodule partial. When
+     themes/docsy-axoflow is bumped, diff this file against
+     `themes/docsy-axoflow/layouts/_partials/head.html` and carry over anything
+     that changed. */ -}}
+
+{{ $darkMode := partialCached "dark-mode-config.html" "dark-mode-global" -}}
+{{ if $darkMode.enable -}}
+{{/* Browser hints before CSS loads */ -}}
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#000000">
+
+{{/* Styles to set canvas colors and avoid transitions */ -}}
+<style>
+  html { background: Canvas; color: CanvasText; }
+  @media (prefers-color-scheme: dark) {
+    html { background: #0b0d12; color: #e6e6e6; }
+  }
+  html[data-theme-init] * { transition: none !important; }
+</style>
+
+{{/* Set theme attribute before CSS loads to prevent flash */ -}}
+<script>
+  (function() {
+    const themeKey = 'td-color-theme';
+    const storedTheme = localStorage.getItem(themeKey);
+    let theme = storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+    if (theme === 'auto') {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    document.documentElement.setAttribute('data-bs-theme', theme);
+  })();
+</script>
+{{ end -}}
+
+{{ range .AlternativeOutputFormats -}}
+<link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
+{{ end -}}
+
+<!-- Add alternate link for markdown output format if enabled -->
+{{- with .Site.Params.markdownAlternateLink }}
+<link
+  rel="alternate"
+  type="text/markdown"
+  href="{{ $.Page.Permalink | safeURL }}index.md"
+  title="{{ $.Title }}"
+/>
+{{- end }}
+
+{{ $outputFormat := partial "outputformat.html" . -}}
+{{ if and hugo.IsProduction (ne $outputFormat "print") (not .Page.Params.dontIndex) -}}
+<meta name="robots" content="index, follow">
+{{ else -}}
+<meta name="robots" content="noindex, nofollow">
+{{ end -}}
+
+{{ partialCached "favicons.html" . }}
+<title>
+  {{- if .IsHome -}}
+    {{ .Site.Title -}}
+  {{ else -}}
+    {{ with .Title }}{{ . }} | {{ end -}}
+    {{ .Site.Title -}}
+  {{ end -}}
+</title>
+<meta name="description" content="{{ partial "page-description.html" . }}">
+{{ partial "opengraph.html" . -}}
+{{ partial "schema.html" . -}}
+{{ partial "twitter_cards.html" . -}}
+{{ partialCached "head-css.html" . "head-css-cache-key" -}}
+<!-- jQuery loaded with `defer` only (no `async`) so it executes in document
+     order with the deferred main.js at the bottom of <body>. Using `async`
+     here introduced a race: if main.js ran before jQuery (e.g. on Firefox,
+     which schedules async execution later than Chrome), base.js's
+     `}(jQuery));` IIFE threw ReferenceError and the bundle halted before
+     dark-mode.js could attach its click handlers. -->
+<script
+  src='{{ "js/jquery-3.7.1.min.js" | relURL }}'
+  defer
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+{{ if .Site.Params.offlineSearch -}}
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+{{ end -}}
+
+{{ if .Site.Params.prism_syntax_highlighting -}}
+<link rel="preload" href="{{ "css/prism.css" | relURL }}" as="style">
+<link rel="stylesheet" href="{{ "css/prism.css" | relURL }}" media="print" onload="this.media='all';this.onload=null">
+<noscript><link rel="stylesheet" href="{{ "css/prism.css" | relURL }}"></noscript>
+{{ end -}}
+
+{{ template "algolia/head" . -}}
+
+{{ partial "hooks/head-end.html" . -}}
+
+{{/* To comply with GDPR, cookie consent scripts places in head-end must execute before Google Analytics is enabled */ -}}
+{{ if hugo.IsProduction -}}
+  {{ partial "google_analytics.html" . -}}
+{{ end -}}
+
+{{ define "algolia/head" -}}
+
+{{ if and .Site.Params.search (isset .Site.Params.search "algolia") -}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3.8.2"
+  integrity="sha512-l7pkV1dOURFyHCeH8I4fK9lCkQKuqhlsTCqRl3zktifDlB8oTUJ+mJPgYkK9kHpUut8j1iPquTv32t6hvTPv3g=="
+  crossorigin="anonymous" />
+{{ end -}}
+
+{{ if ne .Site.Params.algolia_docsearch nil -}}
+{{ warnf `Config 'params.algolia_docsearch' is deprecated: use 'params.search.algolia'
+      For details, see https://www.docsy.dev/docs/content/search/#algolia-docsearch.` -}}
+{{ end -}}
+
+{{ end -}}

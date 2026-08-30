@@ -1,0 +1,118 @@
+/* vendors.css */
+
+.vendor-container {
+  margin-top: 2rem;
+}
+
+.vendor-heading {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  margin-top: 3rem;
+  //border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 0.5rem;
+  display: none;
+}
+
+.product-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+  max-width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .product-card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.integration-card {
+  background: #fff;
+  border-radius: 8px;
+  border: 1px;
+  border-color: #ededed;
+  border-style: solid;
+  // box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  //transition: box-shadow 0.3s ease;
+}
+
+.integration-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.integration-header {
+  padding: 1rem;
+}
+
+.integration-type {
+  color: black;
+  border-radius: 24px;
+  background-color: #f5f5fe;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.integration-logo {
+  width: 128px;
+  // height: 128px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  object-fit: contain;
+}
+
+.integration-name {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.integration-body {
+  padding-left: 1.25rem;
+  padding-right: 1rem;
+  //background-color: #f9f9f9;
+  flex-grow: 1;
+}
+
+.productname {
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.integration-type-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.integration-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  padding-top: 0.5rem;
+  background-color: #fff;
+  // border-top: 1px solid #eee;
+}
+
+.integration-doc-link {
+  display: inline-block;
+  text-decoration: none;
+  text-decoration: unset !important;
+}
+
+.reference-link, .support-link {
+    text-decoration: unset !important;
+    display: inline-block;
+}
+
+.integration-doc-link:hover {
+  text-decoration: underline;
+}

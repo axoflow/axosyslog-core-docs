@@ -1,0 +1,69 @@
+{{- /*
+Code blocks, wrapped in a framed figure.
+
+A fenced block is drawn as a rounded 1px card on its own surface, and a shell block
+announces itself to a screen reader. Hugo's default is Chroma's bare
+`<div class="highlight"><pre>`, so the frame has nowhere to hang; this hook supplies
+the elements and `_axo-content.scss` styles them.
+
+Two things could not be reached from CSS, which is why this file exists at all:
+
+  - The frame itself. Chroma's output has no element to hang it on and there is no
+    way to invent one from a stylesheet.
+  - The token colours. `noClasses` is `true` in config/_default/config.toml, so
+    Chroma paints every token with an inline `style` attribute and nothing but
+    `!important` on 40 selectors could repaint them. `noClasses=false` here — a
+    per-call option, not a config change — makes Chroma emit its own class names
+    instead, and the stylesheet maps those onto the syntax palette.
+
+    PurgeCSS scans every HTML file under `./layouts/` with a `[\w-]+` extractor, so the Chroma
+    class names have to appear in a template or the token stylesheet is stripped in
+    CI. They appear nowhere else — Chroma writes them into generated page HTML,
+    which is not scanned — so this is the list that keeps them alive, and it must
+    stay in step with the one in _axo-content.scss:
+      chroma line cl hl lnt lntd lntable ln k kc kd kn kp kr kt kv
+      na nb nc nd ni ne nf nl nn nx no nt nv nv-Instance py
+      s sa sb sc dl sd s1 s2 se sh si sr ss ch cm c1 cs cp cpf c
+      m mb mf mh mi mo il o ow p pi w err g gd ge gh gi gp gs gu gl
+
+No `class="language-x"` on the `<code>`, and that omission is the point: with
+`prism_syntax_highlighting = true` the site loads Prism, which re-tokenises every
+`code[class*="language-"]` in the browser and throws Chroma's classes away. Two
+highlighters ran over the same block and the browser one won, folding whole
+categories it does not have — Chroma's `nt` for a YAML key, `nb` for a shell
+builtin — into `punctuation`. Dropping the class leaves Prism nothing to match, so
+the server-rendered classes survive to the stylesheet. `data-lang` stays because
+click-to-copy.js keys its console handling off it.
+
+NO TITLE BAR ON SHELL BLOCKS, and this is deliberate rather than an omission.
+
+A shell block used to get a 34px bar with three window dots. Measured on the
+deployed build, `/provisioning/axorouter/linux/`: all six code blocks on that page
+are terminal blocks, all six carried the bar, and its entire content was an EMPTY
+`<span class="title">` (5x24, no text) plus a 1x1 `.visually-hidden` reading
+"Terminal window". That is 34px per block and 204px on that one page, spent on
+three dots. The copy control is not in it either — `.axo-copy` sits at
+[1058, 6773] against a bar at [375, 6732, 728, 34] and a `<pre>` at
+[375, 6766, ...], i.e. seven pixels INSIDE the code area.
+
+A bar of that height earns it only when a fence carries a file name to put in it.
+No fence in content/ does, and the `.title:empty::before` rule in
+_axo-content.scss existed only to give the empty span a line box so the bar would
+not collapse — a rule whose whole job was to reserve space for nothing.
+
+What is KEPT is the announcement. `<figcaption class="visually-hidden">` still
+says "Terminal window", so a screen reader is still told the block is a shell —
+that was the only real content the bar ever had, and it was never visible anyway.
+`figure.frame.is-terminal` is kept too: `_axo-content.scss` keys the copy
+control's inset off it, and a future decision to draw a bar again has the hook.
+*/ -}}
+{{- $lang := .Type -}}
+{{- $terminal := in (slice "ansi" "bash" "bat" "batch" "cmd" "console" "nu" "nushell" "powershell" "ps" "ps1" "psd1" "psm1" "sh" "shell" "shellscript" "shellsession" "zsh") $lang -}}
+{{- $result := transform.HighlightCodeBlock . (merge .Options (dict "noClasses" false)) -}}
+{{- /**/ -}}
+<div class="axo-code-block"><figure class="frame{{ if $terminal }} is-terminal{{ end }}">
+{{- if $terminal -}}
+<figcaption class="visually-hidden">Terminal window</figcaption>
+{{- end -}}
+<div class="highlight"><pre class="chroma" tabindex="0"{{ with $lang }} data-language="{{ . }}"{{ end }}><code{{ with $lang }} data-lang="{{ . }}"{{ end }}>{{ $result.Inner }}</code></pre></div>
+</figure></div>

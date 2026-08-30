@@ -1,0 +1,58 @@
+{{/*
+  Project override of themes/docsy-axoflow/layouts/_partials/toc.html.
+
+  The label is one word in sentence case. Three other departures from the copy in
+  the submodule, all measured.
+
+  1. The container is empty. The submodule prints `{{ . }}` inside it. This
+     partial is called from docs/baseof.html as `{{ partial "toc.html" . }}`, so
+     `.` is the Page, not its table of contents — an older calling convention
+     passed `.TableOfContents` in and the copy was never updated when that
+     changed. A Page stringifies to its source file's path, so every published
+     page shipped the absolute path of the build machine's source file inside
+     `.td-toc`. Confirmed on this tree, on the preview cluster, and on the live
+     site, where it reads
+     /home/runner/work/axoflow-docs/axoflow-docs/content/data-management/processing/_index.md
+     It is invisible to a reader only because tocbot overwrites `.td-toc` a
+     moment after load. It is still in the served HTML of every page.
+
+  2. Empty rather than `{{ .TableOfContents }}`, which is what upstream Docsy
+     emits there. assets/js/axo-toc.js decides the list is ready with
+     `if (!toc.querySelector('a'))`, and `adopt()` then looks for the
+     `.toc-list` that tocbot builds. Hugo's own `<nav>` has anchors but no
+     `.toc-list`, so serving it would satisfy that guard with markup tocbot has
+     not touched: `adopt()` would call `tocbot.destroy()` before tocbot had
+     initialised, find no list to prepend the "Overview" row to, and end up
+     spying on anchors tocbot later replaces. Today the ordering of the
+     submodule's inline tocbot init hides that, but only on the
+     `readyState === 'loading'` path. An empty container keeps the guard
+     structurally honest: the first anchor to appear can only be tocbot's.
+
+  3. The `{{ if ne . ... }}` wrapper is gone. It compared the Page against the
+     string `<nav id="TableOfContents"></nav>`, which is never equal, so it was
+     true on every page in the tree and gated nothing at all — the same stale
+     calling convention as (1).
+
+  What is deliberately NOT done here is the gate upstream Docsy applies:
+  emitting the heading only when `.TableOfContents` is non-empty. Probed on this
+  tree by emitting `len (string .TableOfContents)` into the markup,
+  /data-management/processing/ is 924 characters but /reference/metrics-schema/
+  is 32 — the empty `<nav id="TableOfContents"></nav>` — while tocbot finds 68
+  headings there at runtime, because they are emitted by a shortcode and never
+  enter Hugo's markdown AST. The gate would take the contents column off that
+  page and every page like it. That is what the submodule's comment about
+  "headings that come from included files" was pointing at and it is still
+  true, so emptiness is detected at runtime instead, in _axo-frame.scss.
+
+  cSpell:ignore notoc tocbot
+*/ -}}
+{{ if not .Params.notoc -}}
+  <div class="td-toc-header">
+    <span>On this page</span>
+  </div>
+  {{/* Never conditional and never removed. Docsy's own partial carries a
+       comment saying ScrollSpy counts on this element existing even when it is
+       empty, and axo-toc.js's start() queries it too. Hiding an "On this page"
+       with nothing under it is the stylesheet's job, not this file's. */ -}}
+  <div class="td-toc"></div>
+{{ end -}}

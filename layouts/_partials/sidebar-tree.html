@@ -1,0 +1,496 @@
+{{/*  Project override of themes/docsy-axoflow/layouts/_partials/sidebar-tree.html.
+
+  Three changes against the submodule's copy, each marked where it happens; the
+  rest is the submodule's file and should be kept in step with it when it moves.
+
+  1. The version switcher and the search box are rendered at the top of the
+     navigation column instead of in the bar and inside the tree. In the bar the
+     switcher sat past "Request Sandbox" — measured on the live site at 1280 and
+     1366, past the right edge of the window altogether, because the bar's
+     content is 1555px wide.
+
+  2. The `ps-0` utility is dropped from both sidebar link classes. It carries
+     `!important`, so with it in the markup the 8px of inline padding this tree
+     sets its labels in by cannot be given back from the stylesheet — see
+     the note on `.td-sidebar-link` in assets/scss/_axo-frame.scss.
+
+  3. No "Overview" row is emitted for a group; the reasoning is at the point
+     where one would go.
+
+  What the tree *contains* is unchanged by all three: measured against the live
+  site over 220 pages on both versions, every row, its depth, its target and its
+  expansion state are identical.
+*/}}
+
+{{/*  Left-side ToC customizations:
+  - include version number after the doc title
+  */}}
+
+{{ $context := .context -}}
+{{ $sidebarRoot := .sidebarRoot -}}
+{{ $sidebarRootID := .sidebarRootID -}}
+{{ $cacheSidebar := .cacheSidebar -}}
+
+{{ with $context -}}
+
+{{/* When the sidebar is cached, "active" class is set client side. */ -}}
+{{ $shouldDelayActive := $cacheSidebar -}}
+
+<div id="td-sidebar-menu" class="td-sidebar__inner{{ if $shouldDelayActive }} d-none{{ end }}">
+  {{/* --- project change ------------------------------------------------------
+       The column opens with the version switcher and the search box, which is
+       where a reader looks for them.
+
+       The switcher was in the bar; measured on the live site, the bar's content
+       is 1555px wide, so at 1280 and at 1366 the switcher was past the right
+       edge of the window. The search box was rendered further down, inside the
+       tree and under the product title (`sidebar_search_below_title`).
+
+       There is one search control, and it is this one.
+
+       Its second copy used to survive below, and the note here claimed otherwise.
+       The theme renders a search form on BOTH sides of its
+       `sidebar_search_disable` branch: one plainly when search is enabled, and
+       one wrapped in `#content-mobile` when it is disabled — so setting that flag
+       does not remove a search box, it moves it. This project sets the flag and
+       added its own control on top, which put two `pagefind-modal-trigger`
+       elements in every page of both versions. `#content-mobile` is
+       `display: none` from lg up and `block` below it, and the control here was
+       `d-none d-lg-flex`, so a reader saw one at any given width — but both were
+       always in the document, both were upgraded by Pagefind, and a second
+       "Search" was reported appearing in the column.
+
+       So this control is `d-flex` at every width and the whole branch below is
+       gone. (The section-nav toggle the `#content-mobile` copy used to hold came
+       across with it and lived inside this form for part of a session; it is now
+       a row of its own, immediately below — the mobile arrangement gives it and
+       the version selector one strip and moves the search into the brand bar.)
+       `#content-mobile` and `#content-desktop` went with it: nothing else in the
+       theme's templates or scripts refers to them, and the only rules that name
+       them are the two `display` declarations in td/_sidebar-tree.scss that this
+       arrangement no longer needs.
+  --- */ -}}
+  {{/* --- project change ------------------------------------------------------
+       The documentation-menu icon, below md only, and the first child of the
+       column rather than a member of the search form.
+
+       WHAT IT IS NOW. Row 2 of the mobile arrangement is the strip at the top of
+       the documentation column: this icon hard left at the column's own inset,
+       the version selector hard right, one line. The reference is Elastic's
+       documentation at
+       https://www.elastic.co/docs/manage-data/data-store/index-basics, probed at
+       390: a 24x24 control at [16, 190] with their version pill at [187, 196]
+       reading "Current version (9.0+)". The glyph is Heroicons
+       `bars-3-bottom-left` — three rules, the third half width, left aligned.
+       Their stylesheet and their markup are not copied; the path is the icon's
+       own published outline and the box around it is ours.
+
+       WHY IT IS INLINE AND NOT `icon.html`. That partial emits
+       `fill="currentColor"` and one `<path>`, which is right for the FontAwesome
+       solid set in themes/docsy-axoflow/data/icons.yaml and wrong for a stroked
+       Heroicons outline — filled, this path renders as three hairline slivers.
+       Adding a stroke mode to the shared partial, or a stroked icon to a
+       project-level data/icons.yaml, are both changes to files this change does
+       not own. `aria-hidden` + `focusable="false"`, so the glyph cannot be
+       announced beside the button's own name.
+
+       WHY IT MOVED OUT OF THE FORM. The form's only other content is the search
+       trigger, and below md that trigger is no longer on screen: the search is
+       the magnifier in the brand bar now (layouts/_partials/navbar.html). A
+       control whose row-mate is hidden does not belong in that row. As a direct
+       child of `.td-sidebar__inner` it is a flex item of the mobile row itself,
+       which is what lets row 2 be built out of DOM order alone — see
+       _axo-frame.scss, where the version beside it takes
+       `margin-inline-start: auto` and nothing needs a `order` property.
+
+       WHAT WAS KEPT, AND WHY. This supersedes the "Docs" button added earlier in
+       the same session; everything that button got right is still here:
+
+       - it still drives `#td-section-nav` and nothing else, and it is still a
+         Bootstrap toggle rather than a script of ours — but it is now an
+         `offcanvas` toggle, not a `collapse` one. See the note on the `<nav>`
+         below for why, and for what that costs.
+       - `d-md-none` is still how it is gated, and still deliberately a Bootstrap
+         display utility: `display: none !important` at md and up is exactly the
+         wanted outcome, so it is the one place in this area where letting a
+         Bootstrap utility win is correct rather than a fight.
+       - `p-0` and `ms-3` are still absent from the markup. Both carry
+         `!important`, so with them here neither the padding nor the inset could
+         be set from the stylesheet at all. They are stated in _axo-navbar.scss.
+       - the width is still stated there too. Docsy's `.td-sidebar__toggle` sets
+         `width: 1.25rem` and it is not a min-width; leaving it unstated once
+         produced a 20x35.9 button whose label rendered outside it and whose
+         caret was squeezed to 0px and drew nothing, while 24 of 26 checks stayed
+         green.
+
+       WHAT CHANGED. The visible word is gone, and with it the caret and the
+       `.visually-hidden` suffix.
+
+       - The word went because row 2 is an icon row: the reference has an icon,
+         the space is 40px tall, and "Docs" beside a glyph in a 40px strip is a
+         third kind of thing next to the bar's two icon controls. The argument
+         that chose the word is not wrong, it is answered differently — the
+         reason the old button needed a word was that it drew `bars`, the very
+         glyph the bar's hamburger draws, 150px away. That collision is gone by
+         construction: the bar's control is FontAwesome `bars` (three full-width
+         rules) and this one is `bars-3-bottom-left` (the third rule half width),
+         they are 100px apart vertically rather than 150px apart horizontally,
+         and they now sit in two different rows with different backgrounds.
+       - `aria-label` is back, and this time it is necessary rather than
+         optional. WCAG 2.5.3 Label in Name is the rule that made an `aria-label`
+         wrong before: it applies when there IS a visible text label, and it
+         requires the accessible name to contain it. There is no visible text
+         now, so there is nothing for the name to contain and nothing to
+         contradict; an icon-only control with no accessible name is simply
+         unnamed. "Documentation menu" rather than "Docs navigation": it is read
+         aloud, not read on screen, so the abbreviation buys nothing, and "menu"
+         is what the reader is being offered. It does not collide with the bar's
+         "Toggle navigation" or with the magnifier's "Search".
+       - The caret went with the word. Elastic's control has none; more to the
+         point a caret is a second box beside a 40x40 target at the column's
+         inset, and it doubles the control's width to say what the tree opening
+         underneath it already says.
+
+       AND THE `aria-expanded` STATE WENT WITH THE COLLAPSE. It was here because
+       Bootstrap's collapse plugin flips it, so the state the assistive
+       technology read and the accent the reader saw were one fact. The offcanvas
+       plugin does not: grepped in themes/docsy/node_modules/bootstrap/js/src/
+       offcanvas.js, the only attributes it writes are `aria-modal` and `role` on
+       the panel — nothing on the trigger. A permanently-`false` `aria-expanded`
+       is worse than none, so it is gone, and the rule in _axo-navbar.scss that
+       painted the pressed glyph is gone with it. The bar's own hamburger, the
+       other offcanvas toggle on this site, ships without one too.
+
+       Nothing is lost on screen by that: the panel is full width with a backdrop
+       over it, so when it is open the trigger is not visible to be coloured.
+       The check that read that colour in both states now reads the panel
+       instead — transform, visibility and the
+       backdrop — because what it is really there to prove is that the toggle's
+       rule lands at all.
+  --- */ -}}
+  {{ if site.Params.ui.sidebar_search_below_title -}}
+  <button class="td-sidebar__toggle axo-sidebar-toggle d-md-none" type="button"
+    data-bs-toggle="offcanvas" data-bs-target="#td-section-nav"
+    aria-controls="td-section-nav"
+    aria-label="Documentation menu">
+    <svg class="axo-sidebar-toggle__icon" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+      stroke-linecap="round" stroke-linejoin="round"
+      aria-hidden="true" focusable="false">
+      <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"/>
+    </svg>
+  </button>
+  {{- end }}
+  {{ if hugo.Data.versions -}}
+  <div class="axo-sidebar-version dropdown">
+    {{ partial "navbar-version-selector.html" . }}
+  </div>
+  {{- end }}
+  {{ if site.Params.ui.sidebar_search_below_title -}}
+  {{/* --- project change ------------------------------------------------------
+       The form is now the search control and nothing else — the toggle that used
+       to share the row with it is above, and is a row of its own below md.
+
+       Below md the whole form is hidden: the search at that width is the
+       magnifier in the brand bar, and this element is what that magnifier
+       clicks. Hidden, not removed. The trigger has to stay in the document and
+       stay connected, because `HTMLElement.click()` on the button inside it is
+       what opens the modal — measured on the deployed build at 390 with the
+       trigger at `display: none !important`, `offsetParent` null and zero client
+       rects: `dialog.pf-modal` opened at 390x844 and `input.pf-input` took
+       focus. There is still exactly one `pagefind-modal-trigger` in the
+       document, at every width, on a cold load and on a warm one; nothing in
+       this change adds, clones or moves one.
+
+       `d-none d-md-flex`, where it used to be a bare `d-flex`. The width switch
+       has to be in the markup and not in our stylesheet: `d-flex` is
+       `display: flex !important`, and no plain `display: none` from
+       _axo-frame.scss could have beaten it at any specificity or in any source
+       order — a fight this project has already lost twice, once destructively.
+       Two Bootstrap utilities settle it between themselves, `.d-none` in the
+       base block and `.d-md-flex` in the `min-width: 800px` block Bootstrap
+       emits after it.
+
+       The `d-flex` that was here was justified as "one control, shown at every
+       width", against an earlier arrangement that had two search boxes and hid
+       one of them per width. That reasoning is intact: there is still exactly
+       one control, and it is not being hidden in favour of a second copy — it is
+       being hidden in favour of a button that clicks THIS one.
+
+       At md and up nothing about this form changes: the same one flex row with
+       the same one child. Measured before and after at 800, 1024 and 1280: the
+       form is 199x57 at x=16, y=209, and the tree opens at y=274, unchanged to
+       the pixel.
+  --- */ -}}
+  <form class="td-sidebar__search axo-sidebar-search d-none d-md-flex align-items-center">
+    {{ partial "search-input.html" . }}
+  </form>
+  {{- end }}
+  {{/* --- end project change --- */ -}}
+
+  {{/* --- project change ------------------------------------------------------
+       Below md the tree is a drawer that slides in from the left, not a block
+       that unfolds downwards in place. `collapse` is gone from the class list
+       and `offcanvas-md offcanvas-start` is in it.
+
+       WHY. The site menu in the brand bar is already a Bootstrap responsive
+       offcanvas — `.offcanvas-md.offcanvas-end`, layouts/_partials/navbar.html —
+       so below md this site had two navigation controls a thumb's width apart
+       that behaved as two different kinds of thing: one slid a panel over the
+       page from the right, the other pushed the page down. This is the second
+       one made the mirror image of the first. Same plugin, same breakpoint, same
+       backdrop, same Esc, opposite edge.
+
+       WHY THE CLASSES ARE ON THE `<nav>` AND NOT ON A WRAPPER, AND WHY THERE IS
+       NO `.offcanvas-body`. Bootstrap's md-and-up block for a responsive
+       offcanvas states exactly three things: two custom properties that nothing
+       here reads, `background-color: transparent !important` on the panel, and
+       `display: none` / `display: flex; padding: 0` on `.offcanvas-header` and
+       `.offcanvas-body`. Measured before the change, `#td-section-nav` computes
+       `background-color: rgba(0, 0, 0, 0)` at 1280 in both palettes — it is
+       already transparent, and the column's white/#171c2e is painted on
+       `.td-sidebar` above it. So with no `.offcanvas-body` in the tree, the only
+       md-and-up rule that reaches anything is the one that hides the header,
+       which is what should happen to it. Nothing above md moves. A wrapper with
+       a body would have brought `display: flex` on the list's container into the
+       desktop column for no reason and needed an override to undo.
+
+       `collapse` HAD to go, not merely may. `.collapse:not(.show)` is
+       `display: none` at (0,2,0) and `.offcanvas-md` is `display: flex` at
+       (0,1,0), so with both classes present the drawer would never be drawn.
+       Removing it is safe at md and up because themes/docsy/assets/scss/td/
+       _sidebar-tree.scss already states `display: block !important` on
+       `.td-sidebar-nav` there, which is what shows the tree on a desktop today
+       — the `collapse` class has never been what made it visible.
+
+       THE PANEL IS ITS OWN SCROLLER, deliberately. themes/docsy-axoflow/layouts/
+       _partials/scripts.html restores the tree's scroll position by writing
+       `document.querySelector("#td-section-nav").scrollTop`, and that file is in
+       a submodule this project must not edit. Put the scrollbar on an inner
+       element and that write lands on a box that does not scroll: no error, no
+       symptom, the menu just stops remembering where it was. `overflow-y: auto`
+       is therefore on this element (_axo-frame.scss) and the header below is
+       `position: sticky` so it can pin without taking the scroller away.
+
+       `tabindex="-1"`, because Bootstrap moves focus into the panel when it
+       opens and the element has to be able to receive it.
+  --- */ -}}
+  <nav class="td-sidebar-nav offcanvas-md offcanvas-start
+        {{- if .Site.Params.ui.sidebar_search_disable }} td-sidebar-nav--search-disabled{{ end -}}
+        {{- if .Site.Params.ui.sidebar_menu_foldable }} foldable-nav{{ end }}" {{/**/ -}}
+      id="td-section-nav" tabindex="-1" aria-labelledby="td-section-nav-label"
+      {{- if .Site.Params.ui.sidebar_root_enabled }} data-sidebar-root-id="{{ $sidebarRootID }}"{{ end -}}
+    >
+    {{/* --- project change ----------------------------------------------------
+         The drawer's own head: a name for it and a way out of it. Bootstrap
+         hides this whole block from md up, so it costs the desktop column
+         nothing.
+
+         A close button, and not only the backdrop and Esc. Both of those work,
+         and neither is visible; the site menu's drawer carries a `btn-close` in
+         the same position for the same reason, and these two panels should not
+         differ in how a reader gets out of them.
+
+         THE TITLE IS NOT DRAWN ANY MORE. It read "Documentation" at 16px/500
+         above tree rows that are 16px/300, so the largest, heaviest line in the
+         panel was its name — and it was reported as looking like the tree's
+         first entry. The site menu's drawer had the same fault with "Menu" and
+         layouts/_partials/navbar.html answers it the same way.
+
+         The word is kept rather than deleted: `aria-labelledby` on the `<nav>`
+         above points at this id, and `.visually-hidden` keeps the name in the
+         accessibility tree while taking the row off the screen.
+
+         What the title used to be for — telling a reader which of two drawers
+         opening from strips 100px apart they got — is the geometry's job now.
+         This panel is pinned to the left edge and the site menu's to the right,
+         both at 90vw with the backdrop beside them, so the edge answers it
+         before a word could be read.
+    --- */ -}}
+    <div class="offcanvas-header axo-sidebar-drawer__header">
+      <h2 class="offcanvas-title visually-hidden" id="td-section-nav-label">Documentation</h2>
+      <button type="button" class="btn-close"
+              data-bs-dismiss="offcanvas" data-bs-target="#td-section-nav"
+              aria-label="Close"></button>
+    </div>
+    {{/* --- end project change --- */ -}}
+    {{ if and .Site.Params.ui.sidebar_lang_menu (gt (len .Site.Home.Translations) 0) -}}
+    <div class="td-sidebar-nav__section nav-item dropdown d-block d-lg-none">
+      {{ partial "navbar-lang-selector.html" . }}
+    </div>
+    {{ end -}}
+    {{ $navRoot := cond (and (ne .Params.toc_root true) (eq .Site.Home.Type "docs")) .Site.Home .FirstSection -}}
+    {{/* Docsy 0.15's sidebar.html always passes a non-nil sidebarRoot (= .FirstSection),
+         which would override the navRoot above and force the sidebar to narrow to FirstSection
+         on every page. Only honor sidebarRoot when the sidebar-root feature is opted in. */ -}}
+    {{ if and $sidebarRoot .Site.Params.ui.sidebar_root_enabled -}}
+      {{ $navRoot = $sidebarRoot -}}
+    {{ end -}}
+    {{ $ulNr := 0 -}}
+    {{ $ulShow := .Site.Params.ui.ul_show | default 1 -}}
+    {{ $sidebarMenuTruncate := .Site.Params.ui.sidebar_menu_truncate | default 100 -}}
+    <ul class="td-sidebar-nav__section pe-md-3 ul-{{ $ulNr }}">
+      {{ template "section-tree-nav-section" (dict "page" . "section" $navRoot "shouldDelayActive" $shouldDelayActive "sidebarMenuTruncate" $sidebarMenuTruncate "ulNr" $ulNr "ulShow" (add $ulShow 1)) }}
+    </ul>
+  </nav>
+</div>
+{{/* --- project change ------------------------------------------------------
+     Brings the row you are on into view inside the pane above.
+
+     Loaded here, beside the element it acts on, for the same reason
+     axo-mobile-top.js is loaded beside the magnifier in navbar.html: the markup
+     and the handful of lines that make it behave belong together, so a change to
+     one cannot leave the other pointing at nothing.
+
+     `defer`, and that ordering is load-bearing rather than incidental. The
+     submodule's scripts.html writes `#td-section-nav.scrollTop` from
+     localStorage inline in the body; a deferred script runs after the document
+     is parsed, so this one runs second and its value is the one that stands. The
+     reasoning for replacing that replayed offset — and for leaving it alone
+     whenever the active row cannot be found — is in the file's own header.
+--- */ -}}
+{{ with resources.Get "js/axo-sidebar-scroll.js" -}}
+  {{ $js := . | js.Build (dict "minify" hugo.IsProduction) -}}
+  <script src="{{ $js.RelPermalink }}" defer></script>
+{{- end }}
+
+{{- end }}{{/* with $context */ -}}
+
+{{ define "section-tree-nav-section" -}}
+  {{ $s := .section -}}
+  {{ $p := .page -}}
+  {{ $shouldDelayActive := .shouldDelayActive -}}
+  {{ $sidebarMenuTruncate := .sidebarMenuTruncate -}}
+  {{ $treeRoot := cond (eq .ulNr 0) true false -}}
+  {{ $ulNr := .ulNr -}}
+  {{ $ulShow := .ulShow -}}
+  {{ $active := and (not $shouldDelayActive) (eq $s $p) -}}
+  {{ $activePath := and (not $shouldDelayActive) (or (eq $p $s) ($p.IsDescendant $s)) -}}
+  {{ $show := cond
+        (or
+          (lt $ulNr $ulShow)
+          $activePath
+          (and (not $shouldDelayActive) (eq $s.Parent $p.Parent))
+          (and (not $shouldDelayActive) (eq $s.Parent $p))
+          (not $p.Site.Params.ui.sidebar_menu_compact)
+          (and (not $shouldDelayActive) ($p.IsDescendant $s.Parent))
+        )
+        true false
+  -}}
+  {{ $mid := printf "m-%s" ($s.RelPermalink | anchorize) -}}
+  {{ $pages_tmp := where (union $s.Pages $s.Sections).ByWeight ".Params.toc_hide" "!=" true -}}
+  {{ $pages := $pages_tmp | first $sidebarMenuTruncate -}}
+  {{ $truncatedEntryCount := sub (len $pages_tmp) $sidebarMenuTruncate -}}
+
+  {{ if gt $truncatedEntryCount 0 -}}
+    {{ warnf "WARNING: %d sidebar entries have been truncated. To avoid this, increase `params.ui.sidebar_menu_truncate` to at least %d (from %d) in your config file. Section: %s"
+        $truncatedEntryCount (len $pages_tmp) $sidebarMenuTruncate  $s.Path -}}
+  {{ end -}}
+
+  {{ $withChild := gt (len $pages) 0 -}}
+  {{ $manualLink :=
+      cond
+        (isset $s.Params "manuallink")
+        $s.Params.manualLink
+        (cond
+          (isset $s.Params "manuallinkrelref")
+          (relref $s $s.Params.manualLinkRelref)
+          $s.RelPermalink
+        )
+  -}}
+  {{ $manualLinkTitle :=
+      cond
+        (isset $s.Params "manuallinktitle")
+        $s.Params.manualLinkTitle
+        $s.Title
+  -}}
+  {{ if and $treeRoot (eq $s.Params.sidebar_root_for "self") -}}
+    {{ with $s.Parent -}}
+      {{ $manualLink = .RelPermalink -}}
+    {{ end -}}
+  {{ end -}}
+  <li class="td-sidebar-nav__section-title td-sidebar-nav__section
+        {{- if $withChild }} with-child{{ else }} without-child{{ end -}}
+        {{ if $activePath }} active-path{{ end -}}
+        {{ if (not (or $show $p.Site.Params.ui.sidebar_menu_foldable )) }} collapse{{ end -}}
+      " {{/**/ -}}
+      id="{{ $mid }}-li" {{- /**/ -}}
+    >
+    {{ if (and $p.Site.Params.ui.sidebar_menu_foldable (ge $ulNr 1)) -}}
+    <input type="checkbox" id="{{ $mid }}-check"{{ if $activePath}} checked{{ end }}/>
+    <label for="{{ $mid }}-check">{{/**/ -}}
+      <a href="{{ $manualLink }}"
+        {{- if ne $s.LinkTitle $manualLinkTitle }} {{/**/ -}}
+          title="{{ $manualLinkTitle }}"
+        {{- end -}}
+        {{ with $s.Params.manualLinkTarget }} {{/**/ -}}
+          target="{{ . }}"
+          {{- if eq . "_blank" }} rel="noopener"{{ end -}}
+        {{ end }} {{/**/ -}}
+        class="align-left {{ if $active}} active{{ end }} td-sidebar-link
+          {{- if $s.IsPage }} td-sidebar-link__page
+          {{- else }} td-sidebar-link__section
+          {{- end }}
+          {{- if $treeRoot }} tree-root{{ end }}" {{/**/ -}}
+        id="{{ $mid }}" {{- /**/ -}}
+      >
+        {{- with $s.Params.Icon -}}
+          <i class="{{ . }}"></i>
+        {{- end -}}
+        <span class="{{ if $active }}td-sidebar-nav-active-item{{ end }}">
+          {{- $s.LinkTitle -}}
+        </span> {{- /**/ -}}
+        {{ if $treeRoot }}{{ with site.Params.version }}<span class="td-sidebar-nav-doc-version">v{{ . }}</span>{{ end }}{{ end }}
+      </a> {{- /**/ -}}
+    </label>
+    {{ else -}}
+      <a href="{{ $manualLink }}"
+        {{- if ne $s.LinkTitle $manualLinkTitle }} title="{{ $manualLinkTitle }}"{{ end -}}
+        {{ with $s.Params.manualLinkTarget }} {{/**/ -}}
+          target="{{ . }}"
+          {{- if eq . "_blank" }} rel="noopener"{{ end -}}
+        {{ end }} {{/**/ -}}
+        class="align-left
+          {{- if $active}} active{{ end }} {{/**/ -}}
+          td-sidebar-link
+          {{- if $s.IsPage }} td-sidebar-link__page{{ else }} td-sidebar-link__section{{ end }}
+          {{- if $treeRoot }} tree-root{{ end }}" {{/**/ -}}
+        id="{{ $mid }}" {{- /**/ -}}
+      >
+      {{- with $s.Params.Icon -}}
+        <i class="{{ . }}"></i>
+      {{- end -}}
+      <span class="
+        {{- if $active }}td-sidebar-nav-active-item{{ end -}}
+        {{- if and $treeRoot $s.Params.sidebar_root_for site.Params.ui.sidebar_root_enabled }} td-sidebar-root-up-icon{{ end -}}
+      ">
+        {{- $s.LinkTitle -}}
+      </span>
+    {{ if $treeRoot }}{{ with site.Params.version }}<span class="td-sidebar-nav-doc-version">v{{ . }}</span>{{ end }}{{ end }}</a>
+    {{/* project change: the below-title search form is rendered at the top of
+         the column instead — see the block at the head of this file. */}}</a>
+    {{- end -}}
+    {{ if $withChild -}}
+    {{ $ulNr := add $ulNr 1 }}
+    <ul class="ul-{{ $ulNr }}{{ if (gt $ulNr 1)}} foldable{{end}}">
+      {{/* No "Overview" row here, deliberately — do not add one back.
+
+           A tree earns that row when its group heading only toggles: if the
+           heading of a collapsed group carries no <a> at all, the section's own
+           landing page is unreachable from the heading and the extra row is the
+           only way in.
+
+           Docsy's heading is an <a> inside the <label> that drives the fold
+           checkbox, so one click does both jobs: measured on /architecture/,
+           clicking "Deployment scenarios" navigated to /deployment-scenarios/ and
+           left the group expanded. An "Overview" row on top of that is a second
+           row for a page the reader has already been given a way to reach. */ -}}
+      {{ range $pages -}}
+        {{ if (not (and (eq $s $p.Site.Home) (eq .Params.toc_root true))) -}}
+          {{ template "section-tree-nav-section" (dict "page" $p "section" . "shouldDelayActive" $shouldDelayActive "sidebarMenuTruncate" $sidebarMenuTruncate "ulNr" $ulNr "ulShow" $ulShow) }}
+        {{- end }}
+      {{- end }}
+    </ul>
+    {{- end }}
+  </li>
+{{- end -}}

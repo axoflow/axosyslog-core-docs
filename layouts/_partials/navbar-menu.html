@@ -1,0 +1,141 @@
+{{/*
+  The marketing menu, rendered from data/nav-menu.yaml.
+
+  Two calls per page, distinguished by `variant`:
+    bar     — the six items across the bar at >=1248px.
+    compact — one dropdown holding the whole outline, for the 992..1247 band
+              where the six items no longer fit beside the logo and the
+              controls.
+
+  NOT THE DRAWER. Below md the offcanvas draws a THIRD list, from
+  layouts/_partials/navbar-drawer.html, because axoflow.com's phone menu is a
+  separate hand-built block that disagrees with its bar on 31 of 55 rows — see
+  the `mobile:` header in data/nav-menu.yaml. This file used to serve both, with
+  a per-group button and a duplicate first row swapped in by width to fake the
+  phone shape out of the bar's data; none of that is here any more, because the
+  phone shape now has its own data and its own markup.
+
+  Ids and the ARIA that points at them are namespaced by variant: the same label
+  renders twice per page and `aria-controls` would otherwise resolve to whichever
+  copy comes first in the document.
+
+  Params: variant (string), menu (the data/nav-menu.yaml node).
+*/}}
+
+{{- $variant := .variant -}}
+{{- $menu := .menu -}}
+{{- $prefix := printf "axo-nav-%s" $variant -}}
+{{- /* Spelled out rather than interpolated. A production build runs purgecss over
+       these templates with a `[\w-]+` extractor, and `axo-nav--{{ $variant }}`
+       yields `axo-nav--` and `variant`, not the class the stylesheet keys on —
+       every rule scoped to the bar or to the compact panel would be stripped. */ -}}
+{{- $variantClass := cond (eq $variant "compact") "axo-nav--compact" "axo-nav--bar" -}}
+{{- /* The host the extraction was taken from, carried in the data file. Not the
+       site's own: `baseURL` is `//localhost:1321/` under the dev server, so every
+       marketing link would open in a new tab locally and not in CI. Measured on
+       axoflow.com, 106 of its 116 navigation links carry no target at all. */ -}}
+{{- $host := $menu.host -}}
+
+<ul class="navbar-nav axo-nav {{ $variantClass }}"
+    {{- if eq $variant "compact" }} id="{{ $prefix }}-list"{{ end }}>
+  {{- range $menu.items }}
+    {{- if eq .kind "link" }}
+      {{- $external := ne $host (urls.Parse .href).Host }}
+      <li class="nav-item">
+        <a class="nav-link axo-nav-link" href="{{ .href }}"
+           {{- if $external }} target="_blank" rel="noopener"{{ end }}>{{ .label }}</a>
+      </li>
+    {{- else }}
+      {{- $panelId := printf "%s-%s" $prefix (urlize .label) }}
+      {{- $mega := .mega }}
+      {{- $hasFlyout := false }}
+      {{- range .groups }}{{ if eq .kind "submenu" }}{{ $hasFlyout = true }}{{ end }}{{ end }}
+      <li class="nav-item axo-nav-item">
+        <button type="button" class="nav-link axo-nav-link axo-nav-toggle"
+                aria-expanded="false" aria-controls="{{ $panelId }}">
+          {{ .label }}
+          <span class="axo-nav-chevron">
+            {{- partial "navbar-svg.html" (dict "svg" $menu.glyphs.toggle "ns" $prefix) -}}
+          </span>
+        </button>
+        <div class="axo-nav-panel
+                    {{- if $mega }} axo-nav-panel--mega{{ end }}
+                    {{- if $hasFlyout }} axo-nav-panel--flyout{{ end }}"
+             id="{{ $panelId }}">
+          <div class="axo-nav-panel-inner">
+            {{- range $group := .groups }}
+              {{- if eq .kind "submenu" }}
+                {{- $subId := printf "%s-%s" $panelId (urlize .label) }}
+                <div class="axo-nav-group axo-nav-submenu">
+                  {{- /* A real button, not the invisible <a> live overlays on the
+                         row: the destination is already the flyout's first link
+                         (`Overview`), and a row that both navigates and expands
+                         has no keyboard story. */}}
+                  <button type="button" class="axo-nav-submenu-toggle"
+                          aria-expanded="false" aria-controls="{{ $subId }}">
+                    {{ .label }}
+                    <span class="axo-nav-subchevron">
+                      {{- partial "navbar-svg.html" (dict "svg" $menu.glyphs.toggle "ns" $prefix) -}}
+                    </span>
+                  </button>
+                  <ul class="axo-nav-links axo-nav-submenu-panel" id="{{ $subId }}">
+                    {{- range .links }}
+                      <li><a href="{{ .href }}"
+                        {{- if ne $host (urls.Parse .href).Host }} target="_blank" rel="noopener"{{ end }}>{{ .label }}</a></li>
+                    {{- end }}
+                  </ul>
+                </div>
+              {{- else }}
+                <div class="axo-nav-group">
+                  {{- with $group.icon }}
+                    <span class="axo-nav-icon axo-nav-icon--lg">
+                      {{- partial "navbar-svg.html" (dict "svg" . "ns" $prefix) -}}
+                    </span>
+                  {{- end }}
+                  {{- with $group.label }}
+                    {{- if $group.href }}
+                      <a class="axo-nav-group-title" href="{{ $group.href }}"
+                        {{- if ne $host (urls.Parse $group.href).Host }} target="_blank" rel="noopener"{{ end }}>{{ . }}
+                        <span class="axo-nav-after axo-nav-after--lg">
+                          {{- partial "navbar-svg.html" (dict "svg" $menu.glyphs.afterTitle "ns" $prefix) -}}
+                        </span>
+                      </a>
+                    {{- else }}
+                      <p class="axo-nav-group-title">{{ . }}</p>
+                    {{- end }}
+                  {{- end }}
+                  {{- with $group.description }}<p class="axo-nav-group-desc">{{ . }}</p>{{ end }}
+                  <ul class="axo-nav-links">
+                    {{- range .links }}
+                      {{- $card := ne (index . "icon") nil }}
+                      <li{{ if $card }} class="axo-nav-card"{{ end }}>
+                        {{- if $card }}
+                          <span class="axo-nav-icon axo-nav-icon--sm">
+                            {{- partial "navbar-svg.html" (dict "svg" (index . "icon") "ns" $prefix) -}}
+                          </span>
+                        {{- end }}
+                        {{- /* `display: contents` unless the link is a card, so the
+                               113 links that are just links keep their layout. */}}
+                        <div class="axo-nav-link-body">
+                          <a href="{{ .href }}"
+                            {{- if ne $host (urls.Parse .href).Host }} target="_blank" rel="noopener"{{ end }}>{{ .label }}
+                            {{- if $mega }}
+                              <span class="axo-nav-after{{ if $card }} axo-nav-after--lg{{ end }}">
+                                {{- partial "navbar-svg.html" (dict "svg" (cond $card $menu.glyphs.afterTitle $menu.glyphs.afterLink) "ns" $prefix) -}}
+                              </span>
+                            {{- end -}}
+                          </a>
+                          {{- with index . "description" }}<p class="axo-nav-link-desc">{{ . }}</p>{{ end }}
+                        </div>
+                      </li>
+                    {{- end }}
+                  </ul>
+                </div>
+              {{- end }}
+            {{- end }}
+          </div>
+        </div>
+      </li>
+    {{- end }}
+  {{- end }}
+</ul>

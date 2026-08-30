@@ -1,0 +1,380 @@
+{{/*
+  The brand bar. A project copy of themes/docsy-axoflow/layouts/_partials/navbar.html,
+  kept close to it structurally so the theme's own bar rules still land, with three
+  differences:
+
+  1. The menu is the marketing menu, rendered from data/nav-menu.yaml by
+     navbar-menu.html, not from `.Site.Menus.main`. axoflow.com renders
+     multi-column mega panels with group icons, blurbs and second-level flyouts;
+     Bootstrap's `.dropdown-menu` is a flat list and `menus.main` (in the theme
+     submodule's config) is a flat tree, so neither carries the shape. The data
+     file was read off the live axoflow.com DOM rather than transcribed.
+  2. `data-bs-theme="light"` is gone from the <nav>. It pinned the bar and its
+     panels to the light palette in both themes; this bar follows the theme.
+  3. The version selector is no longer here — layouts/_partials/sidebar-tree.html
+     renders it at the top of the navigation column instead. The theme's copy was
+     already hidden by a rule in _styles_project.scss; this stops rendering it.
+
+  Responsive pattern: Bootstrap 5.3's responsive offcanvas, switched from the
+  theme's `-lg` to `-md`. `.offcanvas-md` is self-switching — a slide-in drawer
+  below md, an inline flex container at md and up — so the panel needs no state
+  of its own at either width. It used to hold ONE render of the menu for both,
+  which is no longer true: axoflow.com's phone menu is a separate hand-built
+  block that disagrees with its bar on 31 of 55 rows, so the drawer has its own
+  list from navbar-drawer.html and the two are swapped by width.
+  md is 800px in _variables_project.scss, which is 50rem — where the marketing
+  header hands over to its mobile menu. At Bootstrap's stock 768 the two sides
+  disagreed in a 32px band. It is also the
+  breakpoint the frame keys the fixed bar on, so the bar stops being fixed and
+  the menu becomes a drawer at the same width.
+  Between md and 1248 the six items no longer fit beside the logo and the
+  controls, so a second, compact render takes over.
+*/}}
+
+{{ $cover := and
+    (.HasShortcode "blocks/cover")
+    (not .Site.Params.ui.navbar_translucent_over_cover_disable)
+-}}
+{{ $menu := index site.Data "nav-menu" -}}
+
+<nav class="navbar navbar-expand-md td-navbar
+            {{- if $cover }} td-navbar-cover{{ end }}">
+  <div class="container-fluid">
+
+    {{- /* Brand */ -}}
+    <a class="navbar-brand" href="{{ .Site.Home.RelPermalink }}"
+       aria-label="{{ .Site.Title }}">
+      <span class="navbar-brand__logo navbar-logo">
+        {{- if ne .Site.Params.ui.navbar_logo false -}}
+          {{ with resources.Get "icons/logo.svg" -}}
+            {{ ( . | minify).Content | safeHTML -}}
+          {{ end -}}
+        {{ end -}}
+      </span>
+      <span class="navbar-brand__name">{{ .Site.Title }}</span>
+    </a>
+
+    {{- /* The version the printout documents, on the brand row and nowhere else.
+
+           It used to sit under the article title, rendered from
+           layouts/_td-content-after-header.html and from a copy of Docsy's
+           print/page-heading.html. Both of those are gone: the bar is rendered by
+           every layout the site prints through — the normal page and
+           themes/docsy-axoflow/layouts/docs/baseof.print.html, which is what
+           serves Docsy's "Print entire section" view — so one call here covers
+           both surfaces, where two call sites were needed before.
+
+           A sibling of the brand link, not a span inside it. Inside, the version
+           would join the link's text, and the sheet would carry a run of prose
+           that is a hyperlink to the home page for no reason; the anchor also
+           carries `aria-label="{{ .Site.Title }}"`, so nesting it there would put
+           the version in the DOM under a name that does not mention it.
+
+           It is `display: none` on screen — see `.axo-print-version` in
+           _styles_project.scss — so it is not a flex item in the bar at any
+           width, and the bar's own layout is untouched by its presence. */ -}}
+    {{ partial "print-version.html" (dict "mode" "line") }}
+
+    {{- /* The search control, below md only.
+
+           Row 1 of the mobile arrangement is logo | magnifier | hamburger, and
+           this is the magnifier. It is NOT a second search control: the site has
+           exactly one `pagefind-modal-trigger`, it is still the one
+           layouts/_partials/sidebar-tree.html renders in the documentation
+           column, and this button does nothing but forward a click to the
+           `button.pf-trigger-btn` that the component writes into it.
+           assets/js/axo-mobile-top.js is the forwarding, and the reason it is a
+           forward rather than a move is argued there and in
+           layouts/_partials/search-input-custom.html — this project has already
+           shipped two triggers once, and the visible duplicate depended on
+           custom-element parse-versus-upgrade order, so cold and warm loads
+           behaved differently.
+
+           Measured on the deployed build at localhost:1399, 390px: with the
+           trigger forced to `display: none !important` (offsetParent null, zero
+           client rects) a `.click()` on its inner button still opened
+           `dialog.pf-modal` at 390x844 and left the focus on `input.pf-input`.
+           `HTMLElement.click()` dispatches without hit-testing, so the
+           component does not care that its own button is not on screen. That
+           measurement is what chose this route over moving the element between
+           containers on a `matchMedia` change, where the custom element's
+           behaviour on reconnect is unknown.
+
+           Gated on `offlineSearchPagefind`, the same condition
+           search-input-custom.html gates the trigger on, so this button cannot
+           outlive the thing it opens.
+
+           `data-axo-search-open` is the script's hook and `.axo-navbar-search`
+           is the stylesheet's. Two names on purpose: a restyle that renames the
+           class cannot silently unwire the button, which is the failure mode a
+           single shared name has here — the control would still be drawn and
+           would open nothing, and a control that looks real and opens nothing is
+           exactly what kept the duplicate-trigger bug invisible for a session.
+
+           `d-md-none` rather than a media query of ours. Bootstrap's display
+           utilities carry `!important`, so at md and up nothing in our sheet can
+           put this back on screen — which is the wanted outcome here, and the
+           same call the documentation-menu icon in the sidebar makes.
+
+           The glyph is the theme's own `magnifying-glass` at 1.5em, the size the
+           hamburger beside it is drawn at, so the two controls in the bar are one
+           set. It is deliberately not the Heroicons stroke shape that row 2's
+           icon copies: row 1's pair is the bar's, and its other half is FA
+           `bars`. */ -}}
+    {{- /* NO DOCUMENTATION-MENU CONTROL IN THIS ROW.
+
+           One was added here for a round — a second `d-md-none` toggle for
+           `#td-section-nav`, so that the 64px strip under the bar could be
+           removed and the mobile chrome lose 64 of its 223px. It was reverted on
+           instruction: the icon belongs beside the version selector in the
+           documentation column, not beside the search.
+
+           Row 1 below md is therefore the two controls it has always been, the
+           magnifier and the hamburger, and the tree's own toggle stays where
+           layouts/_partials/sidebar-tree.html puts it. If a third control is ever
+           wanted here, note that the magnifier carries the single
+           `margin-inline-start: auto` that holds the trailing group hard right —
+           whichever control comes FIRST in the DOM has to carry it, and two of
+           them split the row's slack instead of collecting it. */ -}}
+
+    {{- if .Site.Params.offlineSearchPagefind }}
+    <button class="axo-navbar-search d-md-none" type="button"
+            data-axo-search-open aria-label="Search">
+      {{ partial "icon.html" (dict "name" "magnifying-glass" "size" "1.5em") }}
+    </button>
+    {{- end }}
+
+    {{- /* Hamburger toggler — visible only below md (auto-hidden by Bootstrap
+           when navbar-expand-md matches). The inline SVG replaces Bootstrap's
+           default `.navbar-toggler-icon` so we don't depend on the (removed)
+           FontAwesome webfont. */ -}}
+    {{- /* This button is BOTH controls: it opens the drawer and it closes it.
+
+           Measured on axoflow.com at 390, which is the reference for the site
+           menu: the brand bar stays put with the menu open and the hamburger
+           becomes the X *in the same box* — `{x: 330, y: 78, w: 40, h: 48}`
+           closed and open alike, same DOM node. This build used to draw a
+           separate `.btn-close` inside the panel, 32px above and 12px right of
+           the hamburger, over a bar the panel had covered; reported as exactly
+           that.
+
+           So the panel's own close button is hidden below md
+           (_axo-navbar.scss) and the two glyphs live here, swapped by CSS on
+           `aria-expanded`. The attribute is written by assets/js/axo-navbar.js:
+           Bootstrap's offcanvas plugin, unlike its collapse plugin, does not
+           maintain it. */ -}}
+    <button class="navbar-toggler border-0" type="button"
+            data-bs-toggle="offcanvas" data-bs-target="#mainNavOffcanvas"
+            aria-controls="mainNavOffcanvas" aria-expanded="false"
+            aria-label="Toggle navigation">
+      {{- /* THREE LINES, NOT TWO GLYPHS. The bars and the X used to be two spans
+             swapped by `display` on `aria-expanded`, which is instant. Live's is
+             the same three lines throughout and they MOVE: measured on
+             axoflow.com at 390, `.v2-menu-icon` holds three 24x2 bars in
+             `rgb(15, 20, 37)` 6px apart, and pressing it writes
+             `translate3d(0, 8px, 0) rotateZ(-45deg)` on the top, `width: 0` on
+             the middle and `translate3d(0, -8px, 0) rotateZ(45deg)` on the
+             bottom. The X is the outer two meeting in the middle.
+
+             Plain spans rather than an SVG: the transform has to reach each bar
+             on its own, and the same three elements have to be both states —
+             that is what makes it a movement rather than a swap. `aria-hidden`
+             on the wrapper because the button already carries the label. */ -}}
+      <span class="axo-toggler-icon" aria-hidden="true">
+        <span class="axo-toggler-line"></span>
+        <span class="axo-toggler-line"></span>
+        <span class="axo-toggler-line"></span>
+      </span>
+    </button>
+
+    <div class="offcanvas-md offcanvas-end" tabindex="-1"
+         id="mainNavOffcanvas" aria-labelledby="mainNavOffcanvasLabel">
+      {{- /* The drawer has no title row.
+
+             It had one — "Menu", `h5 mb-0`, 16px/500 — and the rows under it are
+             14px, so the heading was the largest thing in the panel and read as
+             its first entry rather than as its name. Reported as exactly that.
+             The documentation drawer had the same fault with "Documentation",
+             and layouts/_partials/sidebar-tree.html answers it the same way.
+
+             The word is kept, not deleted: `aria-labelledby` on the panel points
+             at this id, and a drawer whose accessible name is gone is worse than
+             one whose name is only announced. `.visually-hidden` keeps it in the
+             accessibility tree and takes it off the screen.
+
+             The argument the heading used to carry — that two drawers opening
+             from strips 100px apart need a word so a reader can tell which one
+             they got — is answered better by the geometry now: this panel is
+             pinned to the right edge and the tree's is pinned to the left, both
+             at 90vw with the backdrop showing beside them, so the edge says it
+             before a word could be read. See the drawer block in
+             assets/scss/_axo-navbar.scss.
+
+             Measured on the marketing site at 390, its drawer has no title row
+             at all either — the brand bar stays put and the hamburger becomes
+             the close control in place. */ -}}
+      <div class="offcanvas-header">
+        <h2 class="offcanvas-title visually-hidden" id="mainNavOffcanvasLabel">Menu</h2>
+        <button type="button" class="btn-close"
+                data-bs-dismiss="offcanvas" data-bs-target="#mainNavOffcanvas"
+                aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+
+        {{- /* The whole menu behind one toggle, for the md..1247 band. Its own
+               render rather than a restyling of the one below it: the compact
+               panel shows every group expanded, which is the drawer's shape and
+               not the bar's. */ -}}
+        <div class="axo-nav-compact">
+          <button type="button" class="nav-link axo-nav-link axo-nav-toggle axo-nav-compact-toggle"
+                  aria-expanded="false" aria-controls="axo-nav-compact-list">
+            Axoflow
+            <span class="axo-nav-chevron">
+              {{- partial "navbar-svg.html" (dict "svg" $menu.glyphs.toggle "ns" "axo-nav-compact") -}}
+            </span>
+          </button>
+          {{ partial "navbar-menu.html" (dict "variant" "compact" "menu" $menu) }}
+        </div>
+
+        {{ partial "navbar-menu.html" (dict "variant" "bar" "menu" $menu) }}
+
+        {{- /* And the phone menu, below md. A third render because axoflow.com
+               has a second, hand-built menu there that disagrees with its bar on
+               31 of 55 rows — see the header of navbar-drawer.html and the
+               `mobile:` block of data/nav-menu.yaml. The `.axo-nav--bar` list
+               above is `display: none` at this width and this one is
+               `display: none` above it; one is always drawn and never both. */ -}}
+        {{ partial "navbar-drawer.html" (dict "menu" $menu) }}
+
+        {{- /* The bar's right-hand group. Inside the offcanvas body, so it is
+               inline beside the menu at md and up and drops into the drawer
+               below it, which is what the marketing header does with the same
+               group. */ -}}
+        <div class="axo-nav-controls">
+          {{ with $menu.cta }}
+            <a class="axo-nav-cta" href="{{ .href }}" target="_blank" rel="noopener">{{ .label }}</a>
+          {{ end }}
+
+          {{ if gt (len .Site.Home.Translations) 0 -}}
+            <div class="nav-item dropdown">{{ partial "navbar-lang-selector.html" . }}</div>
+          {{- end }}
+
+          {{ if .Site.Params.ui.showLightDarkModeMenu -}}
+            {{ partial "theme-toggler" . }}
+          {{- end }}
+        </div>
+      </div>
+    </div>
+  </div>
+  {{- /* THE THEME'S BANNER IS NOT DRAWN HERE, and this is the one line where this
+         file departs from the axoflow-docs copy it was ported from.
+
+         `themes/docsy-axoflow/layouts/_partials/banner.html` renders every page
+         under the theme's `content/announcements/` on any page whose front matter
+         sets `show_banner`. The ported design already carries an announcement of
+         its own -- `announcement-strip.html`, from data/chrome.yaml, the strip
+         axoflow.com runs across the top of the window -- so with both live the
+         same Splunk .conf2026 announcement was stated twice, and the theme's band
+         sits INSIDE the fixed bar: measured, it covered the brand mark and the
+         call to action, so the header was not readable at all.
+
+         Not a difference between the two sites so much as a difference between
+         two theme pins. axoflow-docs pins 83431023, where that announcement file
+         was deleted, so the call renders nothing and the collision is invisible
+         there; this repository pins 3c6323e1, three commits newer, where the file
+         is present. Bumping axoflow-docs' pin would surface exactly this.
+
+         Left as a removal rather than a stylesheet rule: hiding it with CSS keeps
+         the markup, keeps it in the printed page and in the reading order, and
+         says nothing about why. */ -}}
+</nav>
+
+{{- /* The three strings the running head and foot are made of.
+
+       They are here, in a <style>, because the running head and foot are `@page`
+       margin boxes and a margin box can render nothing but generated `content:`.
+       That is not a preference: measured on a real 19-page sheet, a
+       `position: fixed` band repeats on every page but is positioned against the
+       page *area*, so it prints on top of the prose on every page after the
+       first, and no negative offset, negative margin or translate moves it out.
+       The page margin is the only band on paper that repeats
+       and reserves its own room, and only a stylesheet can put anything in it.
+
+       Only the strings live here. Every number, colour and face is in the
+       `@page` block in assets/scss/_styles_project.scss. The running head on
+       page 1 is suppressed below — page 1 carries the real version line in flow
+       and would otherwise say the same thing twice.
+
+       This partial rather than a body-end hook because the bar, the version line
+       and the repeat of that version line are one decision, and because
+       navbar.html is rendered by both print layouts; the hooks partial is not
+       this change's file to take.
+
+       `now.Year`, not the 2026 in data/footer.yaml. That file states
+       `copyright: "All rights reserved | Copyright 2026 Axoflow"` with the year
+       written into the string, so the site's own footer will be wrong on 1 January
+       and this one will not. The wording is otherwise that string exactly, so the
+       sheet and the page agree; data/footer.yaml is not this change's file either.
+
+       The strings are quoted into CSS, so a quote or a backslash in the site
+       title would end the declaration early. Both are escaped. */ -}}
+{{- $version := partial "print-version.html" (dict "mode" "text") -}}
+{{- $copyright := printf "All rights reserved | Copyright %d %s" now.Year "Axoflow" -}}
+<style media="print">
+  @page {
+    {{/*  NO `@top-left`. It used to carry the wordmark — `product_name`,
+          "Axoflow" — so that pages 2..n were branded the way page 1 is by the
+          lockup in flow. That was not wanted: the logo on page 1 is the
+          branding, and repeating the name across every following page is a
+          watermark nobody asked for. Dropped on request.
+
+          The box itself is gone with the string, not emptied: a margin box with
+          no content does not render, and the top margin is `@page {
+          margin-top }` in assets/scss/_styles_project.scss, which is independent
+          of it — so pages 1 and 2 still begin their text at the same height.
+
+          `@top-right` stays, and it is text rather than an image on purpose:
+          `content: url(<data-uri>)` does render in a margin box — measured — but
+          an image is not in the PDF's text layer, and the running head is the
+          one thing on pages 2..n a harness can read back per page.  */ -}}
+    @top-right { content: "{{ $version | replaceRE `([\\\"])` `\\$1` | safeCSS }}"; }
+    @bottom-left { content: "{{ $copyright | replaceRE `([\\\"])` `\\$1` | safeCSS }}"; }
+  }
+  {{/*  Page 1 carries the real band in flow — the lockup and the version line —
+        so the running head is emptied there and the sheet does not say the same
+        thing twice. The margin stays, so page 1 and page 2 begin their text at the
+        same height.
+
+        This has to be HERE, after the three declarations above, and not in
+        _styles_project.scss with the rest of the `@page` styling. Chromium does
+        not give `@page :first` the higher specificity the spec gives it: with the
+        suppression in the stylesheet and the content in this later <style>, the
+        running head printed on page 1 as well — measured, page 1 came back with
+        ink at row 17 of an 843pt sheet, inside a top margin that should have been
+        empty. Same stylesheet, later in source order, is what actually wins.  */}}
+  @page :first {
+    @top-right { content: none; }
+  }
+</style>
+
+{{- /* Loaded from here rather than from a body-end hook, so the bar and the
+       script that opens it stay in one place. `defer`, because the panels are
+       closed by CSS until the script marks the toggles open. */ -}}
+{{ with resources.Get "js/axo-navbar.js" }}
+  {{ $js := . | js.Build (dict "minify" hugo.IsProduction) }}
+  <script src="{{ $js.RelPermalink }}" defer></script>
+{{ end }}
+
+{{- /* The bar's magnifier, wired to the one search trigger. Loaded from here for
+       the same reason as the file above: the button is rendered in this partial
+       and the eight lines that make it do anything belong beside it. Gated on the
+       same parameter as the button, so a build with search off ships neither.
+       `defer`, so the listener is attached after the document is parsed; the
+       handler is delegated off `document` anyway, so it also survives the button
+       not existing yet. */ -}}
+{{ if .Site.Params.offlineSearchPagefind }}
+  {{ with resources.Get "js/axo-mobile-top.js" }}
+    {{ $js := . | js.Build (dict "minify" hugo.IsProduction) }}
+    <script src="{{ $js.RelPermalink }}" defer></script>
+  {{ end }}
+{{ end }}

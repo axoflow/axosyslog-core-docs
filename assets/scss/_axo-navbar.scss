@@ -1,0 +1,2055 @@
+// The header: brand bar, primary menu and its dropdown panels.
+//
+// Imported from _styles_project.scss. Kept separate so each area stays readable
+// on its own.
+//
+// The markup is layouts/_partials/navbar.html + navbar-menu.html, which render
+// the marketing menu from data/nav-menu.yaml, read off the live axoflow.com
+// DOM. Docsy's own `menus.main` and Bootstrap's
+// `.dropdown-menu` are a flat tree and a flat list; the bar this copies has
+// two three-column mega panels with 40px group icons, blurbs and second-level
+// flyouts, so neither carried the shape.
+//
+// Everything below was measured at 1440 unless a width is named. The bar's own
+// numbers, once:
+//
+//   strip 0..28   bar 28..141 (113 = 32 + 48 + 32 + 1px rule)
+//   content box   60..108, and the six items are a 37px row centred in it,
+//                 65.5..102.5 — so a panel opening at the item's bottom edge
+//                 covers the bar's lower padding and reads as attached to it
+//   grid          80..1360 at 1440, 40..1240 at 1280: min(1280, 100vw - 80)
+//   menu block    408.72..1068.45, 659.73 wide, right-aligned
+//   controls      1100.45..1360 — 32px after the last item, flush to the grid
+
+// ---- the palette -----------------------------------------------------------
+// Custom properties, not Sass variables, and declared on the bar so they inherit
+// into every panel. A hex compiled through a Sass variable bakes one theme's
+// value into the sheet; these are restated once at the bottom of this file for
+// the dark theme and every rule below reads them through var().
+//
+// Two of them defer to the shared token layer (assets/scss/_axo-tokens.scss):
+// the bar's surface is that layer's --axo-bg-nav and its hairline is
+// --axo-hairline, both of which already carry a value per theme. The fallbacks
+// are the measured values and only apply where the layer is absent.
+//
+// The rest have no token: they are the marketing bar's own colours, measured off
+// axoflow.com rather than chosen, and they exist nowhere else on the page.
+.td-navbar {
+    --axo-nav-surface: var(--axo-bg-nav, #fff);
+    // The bar's SCROLLED fill. axoflow.com does not only shrink its bar when the
+    // page moves, it repaints it: measured at 390, `.v3-navbar_component` is
+    // `rgb(255, 255, 255)` at rest with `is-not-scrolled` on it and
+    // `rgb(243, 244, 247)` once that class is dropped, with `background-color
+    // 0.2s ease-out` in its own transition list. This build shrank and stayed
+    // white — its transition named `height` and `padding` and nothing else.
+    //
+    // Light only, deliberately: in dark the resting bar is already `#171c2e`
+    // against a `#0f1425` page, so the separation this creates on white is
+    // there without a second value, and the marketing site has no dark mode to
+    // measure a scrolled one from.
+    --axo-nav-surface-scrolled: #f3f4f7;
+    --axo-nav-rule: var(--axo-hairline, #e7e8ef);
+    // The bar's link colour. Not one of the properties axoflow.com declares — it
+    // is a computed style on the navbar rather than a token — so it is measured:
+    // rgb(3, 28, 44).
+    --axo-nav-link: #031c2c;
+    // The hover colour is the brand orange exactly as the live bar paints it.
+    // This used to be the bar's own exception — the rest of the page drew its
+    // accents in a darkened #cb3d00 and the note here said not to widen the
+    // orange to body links, the sidebar or callouts. That was widened on
+    // instruction on 2026-08-29 and the whole light palette is #ff6500 now; the
+    // ratios are recorded on --axo-text-accent in _axo-tokens.scss.
+    --axo-nav-hover: #ff6500;
+    // The drawer's section headings, below md. The same #ff6500, and a different
+    // job from the hover above — named separately so the note beside that one
+    // ("do not widen it") is not quietly widened by reuse. Its own contrast is
+    // recorded where it is used.
+    --axo-nav-section: #ff6500;
+    --axo-nav-title: #141d62; // mega group titles, and the dark column's fill
+    --axo-nav-panel-link: #0f1425; // both panel kinds paint their links this navy
+    --axo-nav-desc: #657780; // the 12px blurbs
+    --axo-nav-row-hover: #f3f4f7; // the small panels highlight the row, not the word
+    // Live: `rgba(0, 0, 0, 0.15) 0px 80px 80px 0px` on both panel kinds. None of
+    // the extracted --axo-shadow-* tokens is this; those were sampled off page
+    // content.
+    --axo-nav-shadow: rgba(0, 0, 0, 0.15) 0 80px 80px 0;
+}
+
+// The two colours that are the brand's rather than the page's, and therefore do
+// not switch with the theme: the blue the mega panel's third column is filled
+// with (everything printed on it goes white through --axo-nav-on-dark instead),
+// and the ink on the orange CTA, which sits on the same orange in both themes.
+.td-navbar {
+    --axo-nav-brand-blue: #141d62;
+    --axo-nav-on-brand: #0f1425;
+    // The CTA's own ink: white, as on the marketing bar, in both themes.
+    --axo-nav-cta-ink: #fff;
+    // The pressed state of the CTA, and the one warm value on the page that is
+    // NOT the brand orange. Live goes the other way here — measured, its
+    // `a.v2-button` fills rgb(255, 178, 128) on hover and keeps white text, which
+    // is 1.8:1 and would leave our label unreadable. So the button darkens
+    // instead: a fill rather than text, white on it clears AA, and it is a
+    // transient state on one control.
+    --axo-nav-cta-hover: #cb3d00;
+    --axo-nav-cta-hover-ink: #fff;
+}
+
+// The six items stop fitting beside the logo and the controls below this, and a
+// single compact dropdown takes over.
+//
+// Swept across widths, the list clipped at 1245 and was back at its full
+// 659.73 from 1247 up, which made 78rem the first whole rem that was safe.
+//
+// It went to 82rem for a while. The call-to-action had been copied from the
+// documentation site's bar at 240px, and that extra width had to come from
+// somewhere: re-swept then, the controls group overflowed the grid's gutter by
+// 54px at 1248, 22 at 1280 and 2 at 1300, so a 1280px laptop got the compact
+// dropdown. The button now follows the marketing site instead, at 178px, and the
+// sweep comes back clean at every width from 1248 up — so the threshold is 78rem
+// again and that laptop gets the full menu back. The sweep has to be run with
+// the threshold temporarily lowered: taken with the higher one it only ever
+// shows the compact bar below it and reports no overflow for the wrong reason.
+$axo-nav-full: 1248px; // 78rem
+
+// The bar's horizontal gutter, and the grid it caps the bar's contents to.
+// max(), not a fixed 12px: the live gutter is 80 at 1440 and 40 at 1280, i.e.
+// the grid is centred until the viewport is within 80px of it and then the
+// gutter holds at 40. `unquote`, because Sass tries to resolve a max() mixing
+// a percentage against a rem at compile time and cannot.
+$axo-nav-gutter: 2.5rem;
+$axo-nav-content: unquote("min(#{$axo-grid}, 100% - 2 * #{$axo-nav-gutter})");
+
+// =============================================================================
+// The bar
+// =============================================================================
+
+// 32px, not the 30.5 in _styles_project.scss: that number was sized against a
+// 32px logo. The live logo is 48 (477x120 viewBox at height 48 is exactly
+// 190.8x48), and 32 + 48 + 32 + the 1px rule is the same
+// 113 total, so the frame's $axo-bar-height does not move. Unconditional, not
+// md-up: below md nothing compensates for the bar's height because the bar is in
+// the flow there, and the live bar is 113 at 390 as well as at 1440.
+.td-navbar {
+    // An explicit height as well as the padding: 32 + 48 + 32 + the rule is the
+    // same 113 the padding alone gave,
+    // and in the scrolled state the height is what decides the number — 20 + 35
+    // + 20 + 1 is 76, and the live bar is 85. The two states have to land on
+    // measured heights, not on whatever the content happens to add up to.
+    height: var(--axo-bar-height, #{$axo-bar-height});
+    padding-block: var(--axo-bar-pad-y, 2rem);
+    border-bottom: 1px solid var(--axo-nav-rule);
+    background-color: var(--axo-nav-surface);
+    transition: height 0.2s ease-out, padding 0.2s ease-out,
+                background-color 0.2s ease-out;
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
+}
+
+// The scrolled fill, on `.td-navbar` rather than on `:root[data-scrolled]`: the
+// variable is declared on the bar itself, so a value set on the root would be
+// shadowed by the bar's own declaration and change nothing.
+:root[data-scrolled] .td-navbar {
+    background-color: var(--axo-nav-surface-scrolled);
+}
+
+@if $enable-dark-mode {
+    // Stated so the light-only value cannot leak: see the note beside
+    // `--axo-nav-surface-scrolled`.
+    :root[data-bs-theme="dark"][data-scrolled] .td-navbar {
+        background-color: var(--axo-nav-surface);
+    }
+}
+
+// The bar's two states.
+//
+// axoflow.com shrinks its bar once the page moves, and this build carries that
+// over the documentation. Measured on the live marketing bar at 1440:
+// `.v3-navbar-component` goes 141 -> 113px; here the same change is 113 -> 85,
+// with the padding 32 -> 20 and the logo 48 -> 35.22. The live *docs* bar does
+// neither — it is a flat 102px at every scroll position — so this is new here
+// rather than restored.
+//
+// Only three declarations, and all three are variables the rules above already
+// read: the state is recorded by assets/js/axo-navbar.js on `<html>` and every
+// consequence of it is CSS. `--axo-bar-height` is what the frame's `$axo-bar`
+// reads, which is how the band and the sticky column follow the bar down.
+//
+// The live bar also repaints white -> rgb(243, 244, 247) in this state. This one
+// does not: `--axo-nav-surface` is a themed token that has to hold up in dark
+// mode too, and the marketing site's scrolled grey is a tint of its own page.
+//
+// AT EVERY WIDTH, INCLUDING BELOW md. This was `media-breakpoint-up(md)` only,
+// on the reasoning that below md the bar is in the flow and scrolls away, so
+// there is nothing on screen left to shrink — and that shrinking it anyway took
+// 28px out of the document: measured at 390, a scroll to 120 settled at 111
+// because the page got shorter under the reader as the threshold was crossed.
+//
+// Reported, with axoflow.com named as the reference: on a phone the docs bar
+// works nothing like the site's, and the site's shrinks there too. Measured on
+// axoflow.com at 390 — `.v3-navbar-component` is `position: sticky` at the top
+// of the window, its inner bar goes 113px at rest to 89px scrolled, and the
+// chrome as a whole 159 -> 135. So the reference both keeps the bar on screen at
+// 390 and accepts the same reflow this comment used to refuse; it loses 24px of
+// document height on the threshold and does it anyway. The bar is `sticky` below
+// md now (see `.td-navbar` further down), which is what makes the shrink
+// something a reader on a phone can actually see.
+//
+// 85px scrolled, not the live 89: 113 -> 85 is this project's own pair, it is
+// what the bar carries at every width, and `--axo-bar-small` is published from
+// it for assets/js/axo-toc.js. A third number for the phone would have to be
+// answered for in both of those.
+:root[data-scrolled] {
+    --axo-bar-height: #{$axo-bar-height-scrolled};
+    --axo-bar-pad-y: 1.25rem;
+    --axo-logo-height: 2.1875rem;
+}
+
+// The scrolled height, stated as a custom property and never overridden, so
+// script can ask for it. assets/js/axo-toc.js needs it: the band it watches the
+// prose through is measured from the bar, and that measurement has to be a
+// constant — the observer's rootMargin cannot be changed once it is built — and
+// the constant has to be the scrolled height, because a reader who is reading has
+// scrolled. The band sits 32px under the scrolled bar; measured from the resting
+// one instead, it would sit 60px under.
+:root {
+    --axo-bar-small: #{$axo-bar-height-scrolled};
+}
+
+.td-navbar > .container-fluid {
+    max-width: $axo-nav-content;
+    // Bootstrap's own 12px would put the logo at x=92 against the live 80.
+    padding-inline: 0;
+    // The logo's height, so the row shrinks with it rather than holding the bar
+    // open at 48 in the scrolled state.
+    min-height: var(--axo-logo-height, 48px);
+    align-items: center;
+}
+
+// The gutter halves on a phone: the live logo is at x=40 at 768 and x=20 at 390.
+@include media-breakpoint-down(md) {
+    .td-navbar > .container-fluid {
+        max-width: unquote("min(#{$axo-grid}, 100% - 2.5rem)");
+    }
+
+    // The bar stays on screen at this width. It was `position: relative` and
+    // scrolled away with the page — measured at 390, at scrollY 600 the bar was
+    // at y=-554 and the reader had the announcement strip and nothing else.
+    // Reported against axoflow.com, where the same chrome is `position: sticky`
+    // and stays: a reader on a phone should not have to scroll back to the top of
+    // a long reference page to reach the menu.
+    //
+    // `sticky` and not `fixed`, which is what the bar is at md and up. Fixed
+    // takes the element out of the flow, and below md nothing is compensating
+    // for that — the article begins directly under the bar, so a fixed bar would
+    // print the first 113px of prose underneath itself. Sticky keeps the box in
+    // the flow, so nothing has to be padded, and pins it under the announcement
+    // strip once the page moves. The strip above it is `position: fixed` at 46px,
+    // which is why `top` is `$axo-strip` and not 0.
+    //
+    // ON THE `<header>`, NOT ON `.td-navbar`. Stated on the bar itself it does
+    // nothing, and it does nothing silently: a sticky element is confined to its
+    // containing block, the `<header>` here is 150px tall, so the bar unstuck
+    // itself the moment the header left the window. Measured at 390 with
+    // `position: sticky` on the bar and everything else in place — at scrollY
+    // 591 the bar reported `position: sticky` and `y: -545`. The header is a bare
+    // element with no class, emitted by layouts/docs/baseof.html, so `body >
+    // header` is what names it; the site has one header per page and it is this
+    // one. This is also how the reference does it: on axoflow.com the sticky
+    // element is the `.v3-navbar-component` WRAPPER, not the bar inside it.
+    //
+    // `$zindex-sticky` (1020) is Bootstrap's own, and it is below the offcanvas
+    // backdrop (1040) and panel (1045) on purpose: when either drawer is open the
+    // bar must not sit on top of it.
+    // `top: 0`, NOT `top: $axo-strip`. The announcement strip is `position:
+    // fixed` and the header already carries the 46px that reserves its room, so
+    // the header's own top edge is where the strip's top edge is. Offsetting the
+    // header by the strip's height stacks that reservation on top of itself:
+    // measured at 390 with `top: $axo-strip`, the bar sat at y=92 at rest
+    // instead of 46, with 46px of empty white between the strip and the logo.
+    body > header {
+        position: sticky;
+        top: 0;
+        z-index: $zindex-sticky;
+    }
+
+    // Docsy pins `.td-navbar` to `min-height: $td-navbar-min-height +
+    // $td-navbar__main-min-height-mobile` — 4rem + 2.5rem = 104px — and takes it
+    // back to 4rem only from md up (themes/docsy/assets/scss/td/_nav.scss:43,99).
+    // So below md the shrunk bar could not go under 104 whatever `height` said:
+    // measured at 390 scrolled, `--axo-bar-height` computed 85px, the content row
+    // 35px, and the bar 104px, because `min-height` was the winner.
+    //
+    // `0`, not a number: the height is already stated on `.td-navbar` from
+    // `--axo-bar-height`, and a second number here would be a second place for
+    // the two states to be written down.
+    .td-navbar {
+        min-height: 0;
+    }
+}
+
+// The hamburger belongs to the drawer, and the drawer now switches at md rather
+// than at Docsy's lg: the theme pins `.td-navbar .navbar-toggler` to
+// `display: inline-block` below 991.98 in its own stylesheet, which left the
+// hamburger sitting beside the compact dropdown through the whole 800..991 band.
+// `!important` because the rule it has to beat is one: the theme's block is
+// `.td-navbar .navbar-toggler { display: inline-block !important }` at the same
+// specificity. The rest of that block is about `.dropdown-menu` and
+// `.dropdown-submenu`, which this menu does not use, so this is the only line of
+// it that has to be taken back.
+@include media-breakpoint-up(md) {
+    .td-navbar .navbar-toggler {
+        display: none !important;
+    }
+}
+
+// =============================================================================
+// Row 1 of the mobile arrangement: logo, magnifier, hamburger
+// -----------------------------------------------------------------------------
+// The bar becomes a two-item right-hand group below md. The markup is the
+// `[data-axo-search-open]` button in layouts/_partials/navbar.html, immediately
+// before `.navbar-toggler`; the script that makes it do anything is
+// assets/js/axo-mobile-top.js.
+//
+// Measured on the deployed build at 390 before the change: the bar's own row is
+// `.td-navbar > .container-fluid` at 20..370 (350 wide), with the brand at
+// 20..210.8 and the hamburger at 338..370. So the row had 127.2px of free space
+// between them, and the magnifier and its gap need 40 of it. After: brand
+// 20..210.8, magnifier 298..330, hamburger 338..370 — so 87.2px of empty row
+// between the brand's right edge and the magnifier's left, which is the gap that
+// closes first as the logo or the glyphs grow. Well
+// clear at the tightest width the design has to hold, and the fit is asserted at
+// 390/600/799 rather than left to this note.
+//
+// NOTHING HERE TOUCHES THE DESKTOP BAR. The button carries `d-md-none`, so at md
+// and up it is `display: none !important` and therefore not a flex item of the
+// row at all. That matters more than it looks: `.container-fluid` is
+// `justify-content: space-between`, so a third in-flow item would have taken a
+// share of the free space and moved the menu block. A `display: none` item takes
+// none — which is also why `p.axo-print-version` has been sitting in that row
+// for as long as it has without being noticed. Measured before and after the
+// change at 800, 1024 and 1280: the brand is at [40, 60, 190.8, 48] in both, to
+// the pixel, which is what check 5b of the harness asserts. The offcanvas
+// itself was NOT measured and is not claimed here — the brand plus the
+// `display: none` argument is what carries this, and stating a number for the
+// menu block that nobody took would be worse than stating none.
+//
+// Below md the same `space-between` would have spread three items across the
+// row and put the magnifier in the middle. `margin-inline-start: auto` on it
+// consumes all the free space before `space-between` gets to distribute any, so
+// the pair ends hard right — the same technique, for the same reason, as the
+// `margin-inline-start: auto` on the offcanvas in the widened view above.
+.td-navbar .axo-navbar-search {
+    // Below md only. `d-md-none` supplies the `display: none !important` above
+    // the breakpoint; this is the value it has under it, and the two do not
+    // fight because Bootstrap's utility is the one that carries `!important`.
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    // The hamburger's own box, restated rather than shared: 24px of icon in
+    // 0.25rem of padding is 32x32, which is what the live control measures and
+    // what `.navbar-toggler` is pinned to a few lines down. Two controls of the
+    // same size in the same row is the whole point, so the number is here
+    // literally and a check compares the two boxes.
+    padding: 0.25rem;
+    // 8px between the two glyph boxes. The hamburger has no margin of its own
+    // and its right edge is already on the grid, so the gap is spent here.
+    //
+    // The `auto` start margin is back. It moved to a documentation-menu button
+    // added ahead of this one in the row for a round, because whichever of the
+    // trailing controls comes FIRST has to carry it; that button was reverted on
+    // instruction and this is first again. Exactly one auto margin in the row —
+    // two of them split the slack instead of collecting it.
+    margin-inline: auto 0.5rem;
+
+    // A <button> comes with a border, a background and a system font from the
+    // user agent. `.btn` is not used to strip them: it would bring Bootstrap's
+    // own padding and line-height back in, which is three more declarations to
+    // undo than the four below.
+    border: 0;
+    background: none;
+    color: var(--axo-nav-link);
+    // Stated, not inherited. The glyph is sized `1.5em` in the template, so the
+    // font size is what decides whether the box is 32 or something else — the
+    // same reason `.navbar-toggler` below states its own 1rem against
+    // Bootstrap's 1.25rem default. A <button> also inherits nothing from the
+    // page in some engines and falls back to the system UI font at 13.333px,
+    // which would have drawn a 20px glyph in a 28px box.
+    font-size: 1rem;
+    line-height: 0;
+    cursor: pointer;
+
+    &:hover,
+    &:focus-visible {
+        color: var(--axo-nav-hover);
+    }
+}
+
+// 32x32, the live control's box. Docsy's is 54x38 — the 1.5em icon plus
+// Bootstrap's .navbar-toggler padding — and its right edge is already on the
+// grid, so only the box around the icon has to give.
+.td-navbar .navbar-toggler {
+    // 1rem, not Bootstrap's --bs-navbar-toggler-font-size (1.25rem): the icon is
+    // sized 1.5em in the template, so the font size is what makes it 30px and the
+    // box 38. 24 + 2 x 4 is the live control's 32x32, and its right edge is
+    // already on the grid.
+    padding: 0.25rem;
+    font-size: 1rem;
+    line-height: 0;
+}
+
+// The logo is the bar's height minus its padding, not Docsy's 32px thumbnail.
+.td-navbar .navbar-brand {
+    padding-block: 0;
+    margin-right: 0;
+}
+
+// In the widened view, the logo lines up with the tree; the menu does not follow it.
+//
+// Only in that view. In the default frame the bar's row and the content row are the
+// same centred 1280 box, so the logo and the tree already line up with nothing done
+// — measured, both at 80 at 1440 and both at 320 at 1920. It is the widened view
+// that moves the tree out to the page gutter and leaves the logo behind.
+//
+// The bar's own row stays the centred 1280 box either way, so the menu and the call
+// to action do not move at all when the view is widened — that is the asymmetry this
+// is for. Only the logo leaves that box.
+//
+// Absolute against `nav.td-navbar`, which is already `position: fixed` and so is
+// the containing block — the same technique the version menu uses at line 406, and
+// chosen over a `calc(#{$axo-page-gutter} - (100vw - 100%) / 2)` margin on purpose:
+// `100vw` includes the scrollbar where the scrollbar takes width, so that form is
+// half a scrollbar out on any platform with classic scrollbars and correct on this
+// one, which is not a difference that can be measured from here.
+//
+// Out of flow, the logo stops holding the menu against the right edge, and the menu
+// has to be told to stay there. The row is `justify-content: space-between` and the
+// group that carries the menu is `flex: 0 1 auto` at a fixed 969px — it does not
+// grow — so the row's free space was being shared out *between* the items, and the
+// logo was one of the items. Measured with the logo absolute and nothing else done:
+// the group moved 311px left at 1440 and 1920 alike, from 391..1360 to 80..1049,
+// because the space the logo used to hold was now in front of it.
+//
+// `margin-inline-start: auto` on the group is what pins it: an auto margin on a flex
+// item consumes all the free space before `space-between` gets to distribute any,
+// so the group ends on the row's right edge whether the logo is in the flow or not.
+// Measured after: 391..1360 at 1440 and 631..1600 at 1920 — the same numbers as
+// before the change, to the pixel.
+html[data-axo-wide] {
+    @include media-breakpoint-up(md) {
+        .td-navbar .navbar-brand {
+            position: absolute;
+            top: 50%;
+            left: $axo-wide-gutter;
+            translate: 0 -50%;
+        }
+
+        .td-navbar > .container-fluid > .offcanvas-md {
+            margin-inline-start: auto;
+        }
+    }
+}
+
+.td-navbar .navbar-brand svg {
+    display: block;
+    // 48px at the top of the page, 35px once scrolled — the live 192x48.3 ->
+    // 140x35.22. An explicit height rather than a max-height, so the two states
+    // can animate into each other.
+    height: var(--axo-logo-height, 48px);
+    width: auto;
+    transition: height 0.2s ease-out;
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
+}
+
+// The row that carries the menu and the controls. `.offcanvas-lg` is inline at
+// 992 and up, and Bootstrap gives its body `flex-grow: 0` there — which would
+// leave the menu bunched against the logo instead of ending on the grid's right
+// edge, where the live bar puts it.
+@include media-breakpoint-up(md) {
+    .td-navbar .offcanvas-body {
+        display: flex;
+        flex: 1 1 auto;
+        align-items: center;
+    }
+}
+
+// =============================================================================
+// The menu across the bar
+// =============================================================================
+
+.td-navbar .axo-nav {
+    display: flex;
+    align-items: center;
+    // No gap. On the live bar `.v3-navbar_menu` computes `column-gap: normal`,
+    // i.e. zero, and the six item boxes are contiguous — each one's right edge
+    // is the next one's left edge: 490-606-720-845-987-1080-1150 at 1440. A seam
+    // between the pairs also makes the hover target discontinuous.
+    gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+// The list ends on the grid's right edge and the width the viewport gives or
+// takes is absorbed between the logo and the first item, which is what the live
+// `justify-content: flex-end` inside a `space-between` container does. Centring
+// floats the block in the leftover space and moves it on every resize.
+@include media-breakpoint-up(md) {
+    .td-navbar .axo-nav--bar {
+        flex: 1 1 auto;
+        justify-content: flex-end;
+    }
+}
+
+// Docsy pads every item 8px on the side (_styles_project.scss), which was its
+// way of spacing a menu whose items had no padding of their own. These do.
+.td-navbar .axo-nav > .nav-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-inline: 0;
+}
+
+// Two selectors, and both of them three classes deep on purpose. The compact
+// variant's toggle is a sibling of the list rather than an item in it, so
+// `.axo-nav .axo-nav-link` never reached it — but the bare `.td-navbar
+// .axo-nav-link` that replaced it loses to Bootstrap's own
+// `.navbar-expand-lg .navbar-nav .nav-link`, which sets
+// `padding-left: var(--bs-navbar-nav-link-padding-x)` at (0,3,0) from 992 up.
+// That is 8px, and it took 8px off every dropdown item and 16 off `Login`.
+.td-navbar .navbar-nav .axo-nav-link,
+.td-navbar .axo-nav-compact .axo-nav-link {
+    display: flex;
+    align-items: center;
+    // 8px, and the chevron beside it is 16x16: `.v3-navbar_mega-dropdown-toggle`
+    // computes `column-gap: 8px` and its `.v3-dropdown-chevron-sm` is 16 square.
+    gap: 0.5rem;
+    // 16px sides on the plain links (`.v3-navbar_link` is `padding: 8px 16px`);
+    // the dropdown toggles are 8px 12px, see .axo-nav-toggle below. Docsy's own
+    // 8px all round made every item 16px narrower than the live one.
+    padding: 0.5rem 1rem;
+    border: 0;
+    border-radius: 5px;
+    background: none;
+    color: var(--axo-nav-link);
+    font-size: 0.875rem;
+    font-weight: 400;
+    // 1.5, not Docsy's 1.75: the bar's links are 14px/21px on the live site,
+    // which makes each item 37px tall rather than 42.
+    line-height: 1.5;
+    text-align: start;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+// Live `.w-dropdown-toggle`: 8px 12px, against the plain link's 8px 16px. The
+// chevron lives inside that 12px, which is what makes the item boxes come out
+// at 115.28 (Solutions) and 93.02 (About) rather than 8px wider each.
+.td-navbar .navbar-nav .axo-nav-toggle,
+.td-navbar .axo-nav-compact .axo-nav-toggle {
+    padding-inline: 0.75rem;
+}
+
+// Every item gives hover feedback, including the plain `Login` link. The live
+// bar only highlights its dropdown toggles; that is a missing affordance rather
+// than a design intent, and this is a deliberate deviation.
+.td-navbar .navbar-nav .axo-nav-link:hover,
+.td-navbar .navbar-nav .axo-nav-link:focus-visible,
+.td-navbar .navbar-nav .axo-nav-toggle[aria-expanded="true"],
+.td-navbar .axo-nav-compact .axo-nav-link:hover,
+.td-navbar .axo-nav-compact .axo-nav-link:focus-visible,
+.td-navbar .axo-nav-compact .axo-nav-toggle[aria-expanded="true"] {
+    color: var(--axo-nav-hover);
+}
+
+// =============================================================================
+// The panels
+// -----------------------------------------------------------------------------
+// aria-expanded is the whole of the state — assets/js/axo-navbar.js writes
+// nothing else. That is what lets one render of the menu be both the bar and the
+// offcanvas drawer's outline: below 992 the rule at the bottom of this file
+// opens every panel regardless of what the attribute says.
+// =============================================================================
+
+.td-navbar .axo-nav-panel {
+    display: none;
+    // Docsy pins `.td-navbar .navbar-nav` to `white-space: nowrap` (its bar is a
+    // horizontal scroller), and the list this menu renders into carries that
+    // class. Inside a panel it is wrong twice over: the two 40px-padded mega
+    // columns were sized by the max-content width of their blurbs — 651 and 412
+    // against the 492/492 the grid asks for, and 1391px of column in a 1312px
+    // panel — and `Support & Professional Services` ran off the 272px dropdown
+    // instead of wrapping to the two lines the live panel sets it on.
+    white-space: normal;
+}
+
+.td-navbar .axo-nav-toggle[aria-expanded="true"] + .axo-nav-panel {
+    display: block;
+}
+
+@include media-breakpoint-up(md) {
+    // Not a floating card. Measured on the live bar, the small dropdowns
+    // (`.v3-navbar_dropdown-list`) are a 272px column with `padding: 32px 0`,
+    // `margin-left: -16px`, a white fill, no radius, no border and one shadow.
+    // The -16 is why the panel lines up with the label rather than with the
+    // toggle: the toggle's own 12px of padding plus 4 leaves the first character
+    // where the panel's 40px link padding puts the items under it.
+    .td-navbar .axo-nav--bar .axo-nav-panel {
+        position: absolute;
+        inset-block-start: 100%;
+        inset-inline-start: -1rem;
+        z-index: $zindex-fixed;
+        width: 17rem;
+        padding: 2rem 0;
+        background-color: var(--axo-nav-surface);
+        box-shadow: var(--axo-nav-shadow);
+        // A panel taller than the viewport is unreachable at the bottom.
+        max-height: calc(100vh - #{$axo-chrome-height});
+        overflow-y: auto;
+    }
+
+    // A scroll container clips an absolutely-positioned descendant, so the panel
+    // that owns the three flyouts cannot be one — the flyout opens beside the
+    // panel, outside its box. Nothing is lost: live's Resources panel is 307px.
+    .td-navbar .axo-nav--bar .axo-nav-panel--flyout {
+        max-height: none;
+        overflow: visible;
+    }
+}
+
+// =============================================================================
+// The two mega panels
+// =============================================================================
+
+@include media-breakpoint-up(md) {
+    // The mega panel spans the bar, not the item: the bar's content box grown
+    // 16px each side, which is `left: -16px; right: -16px` on the live panel
+    // against its container. Measured live: x=64 w=1312 at 1440 (grid 80..1360)
+    // and x=24 w=1232 at 1280 (grid 40..1240).
+    //
+    // Absolute against `nav.td-navbar`, which is already `position: fixed` and
+    // therefore the nearest positioned ancestor once the item gives up its own
+    // `position: relative` below. That is deliberately not `position: fixed`
+    // plus a JS-published gutter variable: percentages of the
+    // bar's padding box reproduce both widths with no script, and no 100vw means
+    // no half-a-scrollbar drift.
+    //
+    // 74.5px is the item's bottom edge measured from the bar's top: 32 of bar
+    // padding, 5.5 centring the 37px item in the 48px content box, 37 of item.
+    // The same edge `inset-block-start: 100%` gives the small panels.
+    .td-navbar .axo-nav-item:has(> .axo-nav-panel--mega) {
+        position: static;
+    }
+
+    .td-navbar .axo-nav--bar .axo-nav-panel--mega {
+        inset-block-start: 74.5px;
+        inset-inline: unquote("calc(max(#{$axo-nav-gutter}, (100% - #{$axo-grid}) / 2) - 1rem)");
+        width: auto;
+        padding: 0;
+    }
+
+    // Three columns because both mega panels carry exactly three groups, and the
+    // third is the dark one: live gives the last column of both a #141d62 fill
+    // that runs the panel's full height and bleeds to its right edge. It is 25%
+    // of the panel on the nose at two widths: 328/1312 at 1440, 308/1232 at 1280.
+    // The fill is placed on the last track explicitly, so a fourth group would
+    // wrap into the white area rather than take the dark column from the group
+    // that belongs there.
+    .td-navbar .axo-nav--bar .axo-nav-panel--mega .axo-nav-panel-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr 25%;
+    }
+
+    .td-navbar .axo-nav--bar .axo-nav-panel--mega .axo-nav-group {
+        padding: 2.5rem; // live's columns are inset 40px from the panel's edges
+        margin: 0;
+    }
+
+    // Live does not spend 40+40 between the two white columns: they share one
+    // 40px-padded box and are separated by 32 | 1px | 32, so their content runs
+    // 104..523.5 and 588.5..1008 at 1440. 32 on each side of the divider gives
+    // 104..524 and 588..1008 without inventing a wrapper the data does not have.
+    .td-navbar .axo-nav--bar .axo-nav-panel--mega .axo-nav-group:first-child:not(:last-child) {
+        padding-inline-end: 2rem;
+    }
+
+    .td-navbar .axo-nav--bar .axo-nav-panel--mega .axo-nav-group:nth-child(2):not(:last-child) {
+        padding-inline-start: 2rem;
+    }
+
+    .td-navbar .axo-nav--bar .axo-nav-panel--mega .axo-nav-group:last-child:not(:first-child) {
+        grid-column: 3;
+        background-color: var(--axo-nav-brand-blue);
+        // Everything in the dark column is white on the live site: the 22px
+        // title, the 12px blurb and the 14px links alike.
+        --axo-nav-on-dark: #fff;
+    }
+
+    // The 1px rule between the two white columns; live draws it as its own grid
+    // track. #e7e8ef sampled off the live panel.
+    .td-navbar .axo-nav--bar .axo-nav-panel--mega .axo-nav-group + .axo-nav-group:not(:last-child) {
+        position: relative;
+    }
+
+    .td-navbar .axo-nav--bar .axo-nav-panel--mega .axo-nav-group + .axo-nav-group:not(:last-child)::before {
+        content: "";
+        position: absolute;
+        inset-block: 2.5rem;
+        inset-inline-start: 0;
+        width: 1px;
+        background-color: var(--axo-nav-rule);
+    }
+}
+
+// =============================================================================
+// What is inside a panel
+// =============================================================================
+
+.td-navbar .axo-nav-group + .axo-nav-group {
+    margin-top: 1rem;
+}
+
+.td-navbar .axo-nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.td-navbar .axo-nav-links li {
+    margin: 0;
+}
+
+// `--axo-nav-on-dark` is set on the mega panel's navy column and nowhere else,
+// so every colour inside a panel reads through it: white in that column, the
+// measured navy everywhere else. One variable rather than a second copy of each
+// rule scoped to `:last-child`.
+.td-navbar .axo-nav-group a {
+    color: var(--axo-nav-on-dark, var(--axo-nav-panel-link));
+    font-size: 0.875rem;
+    text-decoration: none;
+}
+
+// `.axo-nav-panel` in the selector only to outrank the rule above: two of the
+// six mega titles are links, and at (0,2,1) against (0,2,0) the plain link
+// colour was winning — `Case studies` rendered navy on the navy column.
+.td-navbar .axo-nav-panel .axo-nav-group-title {
+    display: block;
+    margin: 0 0 0.35rem;
+    color: var(--axo-nav-on-dark, var(--axo-nav-title));
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+// Two of the six mega titles are links, and live puts a 24px chevron after them
+// inside an inline-flex with a 4px gap.
+.td-navbar .axo-nav-panel a.axo-nav-group-title {
+    display: inline-flex;
+    gap: 0.25rem;
+    align-items: center;
+}
+
+// Live: 12px/300, line-height 22.8px, rgb(101, 119, 128).
+.td-navbar .axo-nav-panel .axo-nav-group-desc {
+    margin: 0 0 0.6rem;
+    color: var(--axo-nav-on-dark, var(--axo-nav-desc));
+    font-size: 0.75rem;
+    line-height: 1.4;
+}
+
+.td-navbar .axo-nav-link-desc {
+    margin: 0;
+    color: var(--axo-nav-on-dark, var(--axo-nav-desc));
+    font-size: 0.75rem;
+    line-height: 1.9;
+}
+
+// `display: contents` unless the link is a card, so the 113 links that are just
+// links keep the layout they had.
+.td-navbar .axo-nav-link-body {
+    display: contents;
+}
+
+@include media-breakpoint-up(md) {
+    // ---- small dropdowns ----------------------------------------------------
+    // Live's panel is one run of 37px rows with nothing between them: the groups
+    // there are the extraction's way of keeping links and flyouts in the panel's
+    // order, not a visual grouping. Live's dropdown links are the full width of
+    // the 272px panel with `padding: 8px 40px`, so the hover target is the row
+    // and not the word; 14px/21px makes each row 37px, the bar's own rhythm.
+    .td-navbar .axo-nav--bar .axo-nav-panel:not(.axo-nav-panel--mega) {
+        .axo-nav-group + .axo-nav-group {
+            margin-top: 0;
+        }
+
+        .axo-nav-links {
+            gap: 0;
+        }
+
+        .axo-nav-group a {
+            display: block;
+            padding: 0.5rem 2.5rem;
+            line-height: 1.5;
+        }
+
+        .axo-nav-group-title,
+        .axo-nav-group-desc {
+            padding-inline: 2.5rem;
+        }
+
+        // Live highlights the row rather than the word: #f3f4f7, no underline,
+        // colour unchanged.
+        .axo-nav-group a:hover,
+        .axo-nav-group a:focus-visible {
+            background-color: var(--axo-nav-row-hover);
+            text-decoration: none;
+        }
+    }
+
+    // ---- mega columns -------------------------------------------------------
+    .td-navbar .axo-nav--bar .axo-nav-panel--mega {
+        .axo-nav-group-title {
+            margin-bottom: 0.25rem;
+            font-size: 1.375rem;
+            font-weight: 500;
+            line-height: 1.45;
+            // Live's `.v3-navbar_mega-link` is as wide as its text — 151.7px for
+            // `Comparisons` in a 419.5px column — and two of the six are links,
+            // so a column-wide box would give them a column-wide underline.
+            width: max-content;
+            max-width: 100%;
+        }
+
+        // The line height is repeated on the anchor because the 14px links'
+        // `.axo-nav-group a` rule below sets 1.5 and outranks `.axo-nav-group-
+        // title` at equal class count plus a type selector. Two of the six mega
+        // titles are links, and they were rendering 33px against the four plain
+        // ones' 31.89 — 1.11px, which is exactly what the Products panel was
+        // taller than live's.
+        .axo-nav-group a.axo-nav-group-title {
+            line-height: 1.45;
+        }
+
+        // 24px: live's blurb ends at 280.12 and its link list starts at 304.13.
+        .axo-nav-group-desc {
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+
+        // Live's mega links are 14px/500 on 37.2px centres. The line-height goes
+        // on the list as well as the link, because the anchor is inline and it is
+        // the list item's own strut that sets the row height — inherited prose
+        // leading put the rows on 44px centres, 7px per link too tall.
+        .axo-nav-links {
+            gap: 1rem;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
+        .axo-nav-group a {
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        // The bar's panels do not recolour on hover: a mega link goes to
+        // `text-decoration: underline` and keeps its navy.
+        .axo-nav-group a:hover,
+        .axo-nav-group a:focus-visible {
+            color: var(--axo-nav-on-dark, var(--axo-nav-panel-link));
+            text-decoration: underline;
+        }
+
+        // ---- the three Products cards ---------------------------------------
+        // Live gives the Axoflow Platform column a different row: a 32px icon,
+        // the 22px link beside it and a 12px blurb under that, 54.69px tall
+        // against the 21.2px of an ordinary mega link. It is the same link data
+        // with two extra fields, so the shape is data-driven — a link with an
+        // icon is a card — rather than a special case keyed on the column.
+        li.axo-nav-card {
+            display: flex;
+            gap: 0.75rem; // live's `_nested` row gap
+        }
+
+        li.axo-nav-card .axo-nav-link-body {
+            display: block;
+            min-width: 0;
+        }
+
+        li.axo-nav-card a {
+            display: inline-flex;
+            gap: 0.25rem;
+            align-items: center;
+            font-size: 1.375rem;
+            font-weight: 500;
+            line-height: 1.45;
+        }
+
+        // Live's card stack is `gap: 24px` against the ordinary list's 16px, so
+        // the extra 8 is spent here rather than on a second list rule.
+        li.axo-nav-card + li.axo-nav-card {
+            margin-block-start: 0.5rem;
+        }
+
+        // Live spends a further 16px inside the card column's wrapper, so its
+        // first card starts 40px below the blurb where an ordinary link list
+        // starts 24px below it. Padding, not margin: the blurb's own 24px bottom
+        // margin would collapse with it and swallow 16 of the 40.
+        ul:has(> li.axo-nav-card) {
+            padding-block-start: 1rem;
+        }
+    }
+}
+
+// =============================================================================
+// The three second-level flyouts, all under Resources
+// =============================================================================
+
+.td-navbar .axo-nav-submenu-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.5rem 2.5rem;
+    border: 0;
+    background: none;
+    color: var(--axo-nav-panel-link);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    text-align: start;
+    cursor: pointer;
+}
+
+// The same row highlight the links beside it get, and for the same reason: a
+// full-width row wants a full-width target.
+.td-navbar .axo-nav-submenu-toggle:hover,
+.td-navbar .axo-nav-submenu-toggle:focus-visible,
+.td-navbar .axo-nav-submenu-toggle[aria-expanded="true"] {
+    background-color: var(--axo-nav-row-hover);
+}
+
+@include media-breakpoint-up(md) {
+    .td-navbar .axo-nav--bar .axo-nav-submenu {
+        position: relative;
+    }
+
+    .td-navbar .axo-nav--bar .axo-nav-submenu-panel {
+        display: none;
+    }
+
+    // Opens beside the panel, not below it. Measured live at both widths: the
+    // flyout's left edge is the panel's left plus its full 272px (704.17 + 272
+    // at 1440), and its top is the toggle row's top minus the panel's own 32px
+    // of padding — which puts the flyout's first link level with the toggle that
+    // opened it. The -32 is that padding, not a magic number.
+    // 288px, not 272: live's nested list is 16px wider than the panel it hangs
+    // off. No shadow and no radius, both `none` on live — matched deliberately,
+    // even though it leaves the flyout with no edge of its own on a white page.
+    .td-navbar .axo-nav--bar .axo-nav-submenu-toggle[aria-expanded="true"] + .axo-nav-submenu-panel {
+        display: block;
+        position: absolute;
+        inset-block-start: -2rem;
+        inset-inline-start: 100%;
+        z-index: 1;
+        width: 18rem;
+        padding: 2rem 0;
+        background-color: var(--axo-nav-surface);
+    }
+}
+
+// =============================================================================
+// Icons and chevrons
+// -----------------------------------------------------------------------------
+// The artwork is the brand's own, inlined from data/nav-menu.yaml: six 40px
+// mega-group icons, three 32px icons on the Products cards, and three chevrons
+// the live bar repeats 41 times. Each SVG is `width/height: 100%`, so the size
+// lives on the span that wraps it.
+// =============================================================================
+
+.td-navbar .axo-nav-icon {
+    display: block;
+    flex: 0 0 auto;
+}
+
+// The icon class could go on the <svg> itself; it goes on a span wrapper
+// instead, so that the vendored markup travels through the data file untouched.
+// The wrapper has to behave like the replaced element it replaces:
+// an inline-block takes its baseline from its last line box, and an inline <svg>
+// inside it makes one — which put every `nav-after` chevron 1.79px below where
+// live sets it and every mega link row on a 37.8px pitch against live's 37.2,
+// 5.3px over nine links. A block-level child leaves no line box, so the span's
+// baseline falls back to its bottom margin edge, which is the <svg>'s own.
+.td-navbar :is(.axo-nav-icon, .axo-nav-chevron, .axo-nav-subchevron, .axo-nav-after) > svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+// Live paints every chevron the brand orange — on the toggles, after the mega
+// links and after the group titles alike — and does not recolour them with the
+// label they sit beside.
+.td-navbar .axo-nav-chevron,
+.td-navbar .axo-nav-subchevron {
+    display: block;
+    flex: 0 0 auto;
+    width: 1rem; // live's `.v3-dropdown-chevron-sm` is 16px square
+    height: 1rem;
+    color: var(--axo-nav-hover);
+    transition: transform 0.15s ease;
+}
+
+.td-navbar [aria-expanded="true"] > .axo-nav-chevron {
+    transform: rotate(180deg);
+}
+
+// The flyout chevron turns from down to right when it opens: live's
+// `matrix(0, -1, 1, 0, 0, 0)`, i.e. -90deg.
+.td-navbar [aria-expanded="true"] > .axo-nav-subchevron {
+    transform: rotate(-90deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .td-navbar .axo-nav-chevron,
+    .td-navbar .axo-nav-subchevron {
+        transition: none;
+    }
+}
+
+// The chevron live prints after a mega link (20px, from a 16 viewBox) and after
+// a mega group title or a Products card (24px). Inline, no margin, immediately
+// after the text. `vertical-align: sub` is live's, read off the chevron rather
+// than chosen: a 20px inline-block in a 21px line box lands the row on 21.2px
+// there, where `middle` gives 22.16 and `baseline` 25 — 0.96 and 3.8 per link
+// against a nine-link column.
+.td-navbar .axo-nav-after {
+    display: inline-block;
+    width: 1.25rem;
+    height: 1.25rem;
+    vertical-align: sub;
+    color: var(--axo-nav-hover);
+}
+
+.td-navbar .axo-nav-after--lg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+@include media-breakpoint-up(md) {
+    // 40px above each mega group title, with live's 16px `spacer-small` under it.
+    .td-navbar .axo-nav--bar .axo-nav-panel--mega .axo-nav-icon--lg {
+        width: 2.5rem;
+        height: 2.5rem;
+        margin-block-end: 1rem;
+    }
+
+    .td-navbar .axo-nav--bar .axo-nav-panel--mega .axo-nav-icon--sm {
+        width: 2rem;
+        height: 2rem;
+    }
+}
+
+// Outside the bar the panels are a list in a narrow column, not a 1312px poster:
+// the icons stay a marker at text size rather than 40px artwork.
+.td-navbar .axo-nav-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-block-end: 0.35rem;
+}
+
+// =============================================================================
+// The right-hand group: the sandbox CTA and the theme switcher
+// -----------------------------------------------------------------------------
+// Live at 1440: CTA 160.05x40.5 at x=1100.45, a 12px gap, the theme control
+// 87.5 wide, and the group's right edge on the grid at 1360. 32px after the last
+// menu item — live's own gap between `Login` and its button.
+// =============================================================================
+
+.td-navbar .axo-nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 0 0 auto;
+}
+
+@include media-breakpoint-up(md) {
+    .td-navbar .axo-nav-controls {
+        margin-inline-start: 2rem;
+    }
+}
+
+// The one element in the bar taken from the marketing site rather than from the
+// documentation site, on instruction. It is axoflow.com's button, and there are
+// two of those in the live estate: the marketing site draws 178.05x43.91 — a
+// 14px label at 500 over 25.9px of line, 8px of padding on 24 — and the
+// documentation site's
+// own bar still carries an older one at 236.33x46.5, 19px at 700 over 28.5px, on
+// 32px of padding. This followed the documentation bar first, because that is the
+// page it was measured against; it follows the marketing site now, which is the
+// one that was meant.
+//
+// The typeface exception is gone with it: the marketing button is already set in
+// Stolzl, where the documentation one is Poppins.
+//
+// White on #ff6500 measures about 2.9:1. That is the live button's own contrast
+// and it is what was asked for; the ink is still a property rather than a
+// literal, so the panels' theme-following colour cannot reach it — in dark that
+// had painted the CTA #c8cad3 on #ff6500.
+//
+// `line-height` is stated in px, not as a ratio. The live value is 25.9px against
+// a 14px label, which is 1.85 — a number that reads as a mistake in a stylesheet
+// and would be "corrected" by the next person to touch it. It is the height of
+// the box, and the box is what has to agree.
+.td-navbar .axo-nav-cta {
+    flex: none;
+    padding: 0.5rem 1.5rem;
+    border: 1px solid var(--axo-nav-hover);
+    border-radius: 8px;
+    background-color: var(--axo-nav-hover);
+    color: var(--axo-nav-cta-ink);
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 25.9px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.td-navbar .axo-nav-cta:hover,
+.td-navbar .axo-nav-cta:focus-visible {
+    background-color: var(--axo-nav-cta-hover);
+    color: var(--axo-nav-cta-hover-ink);
+}
+
+// The live control is a labelled select — an icon, the word `Auto` and a caret,
+// 87.5px wide. Docsy's is an icon and a caret with 24px of side padding, 110.22
+// wide, and it is the only free variable in the right-hand group: everything to
+// its left is pinned by the group's 12px gaps and its right edge on the grid, so
+// whatever this box measures displaces the CTA and the whole menu block by the
+// same amount. Pinned to the live width rather than padded to it by eye — the
+// two controls do not have the same contents and never will, and the geometry is
+// what has to agree. Measured after: the CTA lands on live's x=1100.45.
+.td-navbar .td-light-dark-menu {
+    width: 87.5px;
+}
+
+.td-navbar .td-light-dark-menu > .nav-link {
+    justify-content: center;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+}
+
+// =============================================================================
+// The compact band, 992..1247
+// -----------------------------------------------------------------------------
+// Between the width where the six items stop fitting and the width where the
+// offcanvas drawer takes over, the whole menu collapses into one dropdown.
+// Without it the marketing navigation would be unreachable in that band. The
+// lower edge is 992 rather than the md switch, because Bootstrap's offcanvas is
+// what decides it here and that is not ours to move.
+// =============================================================================
+
+// `static`, so the panel below hangs off `nav.td-navbar` — which is fixed, and
+// therefore the nearest positioned ancestor — rather than off this block. Off the
+// block it was right-aligned to the toggle, and at 850 a 640px panel ending at
+// the toggle's right edge started at x=-123, off the left of the window.
+.td-navbar .axo-nav-compact {
+    display: none;
+    position: static;
+}
+
+@include media-breakpoint-up(md) {
+  @media (max-width: #{$axo-nav-full - 0.02px}) {
+    .td-navbar .axo-nav-compact {
+        display: flex;
+        align-items: center;
+        // Not `flex: 1 1 auto`: the panel below hangs off this box, and a
+        // stretched one put its right edge where the controls start rather than
+        // where the toggle does. `margin-inline-start: auto` gives the same
+        // right-alignment without the width.
+        flex: 0 0 auto;
+        margin-inline-start: auto;
+    }
+
+    .td-navbar .axo-nav--bar {
+        display: none;
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+    // The outline itself is the floating panel. A sidebar-shaped surface rather
+    // than a copy of the bar's: no mega grid, no navy column, no flyouts — a
+    // full-height navy block inside a 40rem column would be a different design
+    // decision, not the same one.
+    .td-navbar .axo-nav--compact {
+        display: none;
+        position: absolute;
+        // The bar's bottom edge, past its 1px rule.
+        inset-block-start: calc(100% + 1px);
+        // Right-aligned to the grid, and capped to it, so the panel is on screen
+        // at every width in the band — the same gutter expression the mega panel
+        // uses. Left-aligned to its toggle and uncapped — the simpler rule —
+        // a 40rem panel starts at x=430 at 1024 and runs 46px off the right
+        // of the window.
+        inset-inline-end: unquote("max(#{$axo-nav-gutter}, (100% - #{$axo-grid}) / 2)");
+        z-index: $zindex-fixed;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+        width: max-content;
+        max-width: unquote("min(40rem, 100% - 2 * #{$axo-nav-gutter})");
+        max-height: calc(100vh - #{$axo-chrome-height} - 2rem);
+        overflow-y: auto;
+        padding: 1.25rem;
+        border: 1px solid var(--axo-nav-rule);
+        border-radius: 8px;
+        background-color: var(--axo-nav-surface);
+        box-shadow: 0 8px 24px rgba(15, 20, 37, 0.12);
+    }
+
+    .td-navbar .axo-nav-compact-toggle[aria-expanded="true"] + .axo-nav--compact {
+        display: flex;
+    }
+
+    // Inside it every panel is a section of a list, not a surface of its own,
+    // and nothing is collapsed: a menu inside an already-open menu is worse than
+    // a long scroll. The toggles become headings.
+    .td-navbar .axo-nav--compact {
+        .nav-item {
+            display: block;
+            padding: 0;
+        }
+
+        .axo-nav-panel {
+            display: block;
+        }
+
+        .axo-nav-toggle {
+            pointer-events: none;
+            font-weight: 500;
+        }
+
+        .axo-nav-toggle > .axo-nav-chevron,
+        .axo-nav-submenu-toggle > .axo-nav-subchevron,
+        .axo-nav-after {
+            display: none;
+        }
+
+        .axo-nav-submenu-toggle {
+            pointer-events: none;
+            padding: 0.5rem 1rem;
+            font-weight: 500;
+        }
+
+        .axo-nav-submenu-panel {
+            display: block;
+        }
+
+        // The icons and the blurbs stay, at text size rather than as 40px
+        // artwork: without them the six groups read as one undifferentiated
+        // list.
+        .axo-nav-group a:hover,
+        .axo-nav-group a:focus-visible {
+            color: var(--axo-nav-hover);
+            text-decoration: underline;
+        }
+    }
+}
+
+// =============================================================================
+// The drawer, below 992
+// -----------------------------------------------------------------------------
+// Bootstrap's offcanvas carries the bar's own render of the menu, and everything
+// in it is open — the same trade the compact panel above makes, for the same
+// reason.
+// =============================================================================
+
+@include media-breakpoint-down(md) {
+    .td-navbar .axo-nav-compact {
+        display: none;
+    }
+
+    // Bootstrap's `.offcanvas-end` is a 400px panel pinned to the top of the
+    // window, which covered the announcement strip. The top edge is what this
+    // rule fixes; `bottom`, not `height: 100%`, or moving the top edge pushes
+    // the same height down past the foot of the window.
+    //
+    // `$axo-strip`, the live custom property, and not the frozen
+    // `$axo-strip-height` it used to be. The strip is not 28px tall at every
+    // width: measured at 390 its sentence wraps to two lines and
+    // assets/js/sidebar-height.js publishes 46 into `--axo-strip-height`, so
+    // with the constant here this drawer opened at y=28 and covered the bottom
+    // 18px of the strip — the exact fault this rule exists to prevent,
+    // reappearing at the one width where it matters most. Found while giving the
+    // documentation tree the same geometry on the opposite edge
+    // (_axo-frame.scss): that rule read the live value, the two drawers' top
+    // edges disagreed by 18px at 390, and this is the half that was wrong.
+    //
+    // FULL-BLEED. A narrower panel — 90vw capped at 400px, leaving a strip of
+    // backdrop for the slide to come out of — was tried here and on the tree's
+    // mirror rule in _axo-frame.scss, and reverted on instruction: how the
+    // tree's drawer works is settled, and the two panels are meant to stay one
+    // shape.
+    //
+    // IT HANGS OFF THE BAR AND DROPS FROM THE TOP, which is a change from the
+    // `translateX(100%)` this panel used to enter with. Measured on axoflow.com
+    // at 390 — the named reference for the site menu, and the only one: the
+    // marketing bar stays on screen with the menu open, the panel's top edge is
+    // the bar's bottom edge (158.3 against a bar of 0..159.3), and mid-animation
+    // the panel is above that edge and travelling down. Nothing there slides in
+    // from a side.
+    //
+    // `$axo-bar-bottom`, not `$axo-strip`: the bar shrinks 113 -> 85 on scroll
+    // and the drawer's top edge has to come down with it, exactly like the
+    // sticky documentation column that hangs off the same edge
+    // (_axo-frame.scss). With `$axo-strip` the panel covered the bar, which is
+    // what put the close control in the wrong place to begin with.
+    //
+    // THE PANEL DOES NOT MOVE — ITS BODY DOES. The panel is pinned at its final
+    // box and clips; `.offcanvas-body` carries the surface and the transform, so
+    // the menu emerges from behind the bar's bottom edge instead of flying over
+    // the bar on its way in. That is what the live site's overlay does (its
+    // panel measured `y: -121` inside an overlay that starts at the bar's
+    // bottom), and it sidesteps a stacking-context argument entirely: this panel
+    // is rendered INSIDE `<header>`, which is `position: sticky; z-index: 1020`
+    // below md, so no z-index written here can lift it above the bar it lives
+    // in.
+    .td-navbar #mainNavOffcanvas {
+        inset-inline: 0;
+        top: $axo-bar-bottom;
+        bottom: 0;
+        width: auto;
+        height: auto;
+        background-color: transparent;
+        overflow: hidden;
+
+        // Bootstrap's `.offcanvas-end` carries a 1px left border — the seam
+        // between a right-hand panel and the backdrop beside it. This panel is
+        // full-bleed and comes from the top, so that border draws a hairline
+        // down the left edge of the screen and nothing else. Measured at 390
+        // before this line: the body sat at `x: 1, w: 389`.
+        border-width: 0;
+
+        // `transform: none` and not "leave it alone": Bootstrap's
+        // `.offcanvas-end` states `translateX(100%)` and this id selector is
+        // what outranks it.
+        transform: none;
+
+        // Bootstrap hides the panel on the transitionend of THIS element
+        // (`_queueCallback` waits on `this._element`). With no transition here
+        // the exit is cut off the moment it starts and the body jumps up. The
+        // duration matches the body's below; the property is one that never
+        // changes, so nothing is animated twice.
+        transition-property: opacity;
+        transition-duration: 0.3s;
+
+        .offcanvas-body {
+            background-color: var(--axo-nav-surface);
+            height: 100%;
+            overflow-y: auto;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        // `.showing` is on during the entry, `.show` once it has arrived, and
+        // `.hiding` rides along with `.show` on the way out — the same triple
+        // Bootstrap's own `.offcanvas.showing, .offcanvas.show:not(.hiding)`
+        // rule keys on.
+        &.showing .offcanvas-body,
+        &.show:not(.hiding) .offcanvas-body {
+            transform: none;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            transition-duration: 0s;
+
+            .offcanvas-body {
+                transition: none;
+            }
+        }
+    }
+
+    // The backdrop stops at the bar's bottom edge and carries no wash.
+    //
+    // Two reasons, both measured. The wash: axoflow.com puts a transparent
+    // overlay under its open menu (`rgba(0, 0, 0, 0)`), not a 50% black one, and
+    // this panel is opaque and full-bleed so the only thing a wash could darken
+    // is the bar above it. The edge: with Bootstrap's `top: 0` the backdrop
+    // covers the bar, and the hamburger — which is now the close control — is
+    // under it. A control that is drawn, correctly placed and unpressable is the
+    // exact failure check 4g exists for; here it would have been introduced by
+    // the fix itself.
+    //
+    // Scoped to the navbar's own backdrop. Bootstrap inserts it as a sibling of
+    // the panel (measured: `div.offcanvas-backdrop < div.container-fluid <
+    // nav.td-navbar`), so the documentation tree's drawer — settled, and not
+    // part of this — keeps Bootstrap's default backdrop untouched.
+    .td-navbar > .container-fluid > .offcanvas-backdrop {
+        top: $axo-bar-bottom;
+        background-color: transparent;
+    }
+}
+
+// ONE OF THE TWO LISTS IS DRAWN, NEVER BOTH.
+//
+// `.axo-nav--bar` is data/nav-menu.yaml's `items` — axoflow.com's bar — and
+// `.axo-nav--drawer` is its `mobile.items`, the separate phone menu that live
+// draws below its own breakpoint. They are different menus, not one menu at two
+// sizes, so neither can be restyled into the other and both are in the document.
+// The offcanvas holds them both; the width decides which one is on screen.
+@include media-breakpoint-down(md) {
+    .td-navbar .axo-nav--bar {
+        display: none;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .td-navbar .axo-nav--drawer {
+        display: none;
+    }
+}
+
+@include media-breakpoint-down(md) {
+
+    // The head has nothing left in it that is drawn.
+    //
+    // It used to hold the drawer's own X. That control has moved into the bar —
+    // it is the hamburger now, in the box the reader pressed to get here
+    // (layouts/_partials/navbar.html) — so the button here is off. The element
+    // stays in the markup rather than being deleted from the template because
+    // `.offcanvas-header` is also where `#mainNavOffcanvasLabel` lives, and that
+    // heading is this panel's accessible name via `aria-labelledby`; hiding the
+    // row would take the name with it. Zeroed instead of hidden, or the panel
+    // opens with 40-odd pixels of empty band above `Solutions`.
+    .td-navbar .offcanvas-header {
+        padding: 0;
+        min-height: 0;
+
+        .btn-close {
+            display: none;
+        }
+    }
+
+    // The two glyphs of the one control. `aria-expanded` is written by
+    // assets/js/axo-navbar.js on the drawer's own show/hide events.
+    //
+    // `color: inherit` because Bootstrap's `.navbar-toggler` takes
+    // `--bs-navbar-color`, which computes to `rgba(15, 20, 37, 0.65)` here while
+    // the magnifier 12px to its left is a solid `rgb(3, 28, 44)`. Two controls
+    // in one row at two inks was survivable while this one was a hamburger that
+    // vanished behind the panel; it is not, now that it is the X the reader
+    // looks for. The live site draws its X at full strength.
+    .td-navbar .navbar-toggler {
+        color: inherit;
+
+        // THE HAMBURGER MORPHS; IT DOES NOT SWAP.
+        //
+        // This was two spans — a bars glyph and an X — exchanged by `display` on
+        // `aria-expanded`, which happens in one frame. Live's control is the same
+        // three bars in both states and they travel between them. Measured on
+        // axoflow.com at 390: `.v2-menu-icon` is a 48-square flex column holding
+        // three lines of 24x2 in `rgb(15, 20, 37)`, 6px apart — an 8px pitch —
+        // and open it carries `translate3d(0, 8px, 0) rotateZ(-45deg)` on the
+        // top, `width: 0` on the middle and `translate3d(0, -8px, 0)
+        // rotateZ(45deg)` on the bottom.
+        //
+        // The 8px is exactly the pitch, so each outer bar lands on the middle
+        // one's line before it turns; that is why the X closes cleanly rather
+        // than crossing off centre. Written as `translateY`, which is the same
+        // movement in two dimensions.
+        //
+        // 0.2s ease-out is the bar's own timing (its height and padding already
+        // use it), not Webflow's — live runs this from an IX2 interaction with no
+        // duration in the stylesheet at all, so there is no number there to copy.
+        //
+        // `display: flex` on the box, not `inline`: two inline spans used to put
+        // the SVG on a text baseline and the button measured 32 x 34.6 shut
+        // against 32 x 32 open — 2.6px that broke both 1b2 (the two controls are
+        // one square) and 4j (the X is in the hamburger's box).
+        .axo-toggler-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+        }
+
+        .axo-toggler-line {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: currentColor;
+            transition: transform 0.2s ease-out, width 0.2s ease-out;
+        }
+
+        .axo-toggler-line + .axo-toggler-line {
+            margin-top: 6px;
+        }
+
+        &[aria-expanded="true"] {
+            .axo-toggler-line:first-child {
+                transform: translateY(8px) rotate(-45deg);
+            }
+
+            .axo-toggler-line:nth-child(2) {
+                width: 0;
+            }
+
+            .axo-toggler-line:last-child {
+                transform: translateY(-8px) rotate(45deg);
+            }
+        }
+    }
+
+    // A reader who has asked for less movement gets the swap they used to get:
+    // the bars are still the X, they simply arrive there without travelling.
+    @media (prefers-reduced-motion: reduce) {
+        .td-navbar .navbar-toggler .axo-toggler-line {
+            transition: none;
+        }
+    }
+
+    // No inset of its own: the rows run edge to edge and each states live's 20px
+    // itself, and the first section heading carries the 32px that starts the
+    // list. Live's `nav.v3-navbar_menu` is `padding: 0 0 32px` for the same
+    // reason — Bootstrap's 1rem on top of that put this drawer's first heading at
+    // y 175 against live's 158, which is the 16px that was reported as "the menu
+    // opens lower than the live site's".
+    .td-navbar .offcanvas-body {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0;
+    }
+
+    // THE WHOLE BODY SCROLLS, not the list inside it.
+    //
+    // The list used to be the scroller with the control row pinned under it. Live
+    // does not pin: `Login` and `Request Sandbox` are two buttons in a 32px block
+    // at the END of the scrolling list, and they are what a reader arrives at
+    // after the last section. Pinning also separated them — `Login` is the menu's
+    // last item and the CTA lives in the control row, so one scrolled and the
+    // other did not, and they could never sit together as the pair live draws.
+    .td-navbar .axo-nav--drawer {
+        flex: 0 0 auto;
+        min-height: 0;
+        overflow: visible;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        width: 100%;
+    }
+
+    .td-navbar .axo-nav--drawer > .nav-item {
+        display: block;
+    }
+
+    // THE DRAWER IS AXOFLOW.COM'S PHONE MENU: SECTIONS OPEN, GROUPS COLLAPSED.
+    //
+    // Measured on axoflow.com at 390 with the menu open — `nav.v3-navbar_menu`,
+    // 390x685 on white, `padding: 0 0 32px`, `overflow-y: auto`, 1915px of scroll:
+    //
+    //   .v3-navbar_mobile-menu-label     h 69  padding 32px 20px 12px  16px/700
+    //                                    uppercase, #ff6500, border-bottom 1px
+    //   .v3-navbar_mobile-menu-link      h 60  padding 18px 20px 20px  14px/500
+    //   .v3-navbar_dropdown-toggle_nested h 64 padding 18px 20px 20px  14px/500
+    //                                    + a 24px chevron 20px in from the right
+    //   .v3-navbar_dropdown-link_nested  h 63  padding 18px 40px 20px  16px/300
+    //
+    // Every one of them is the full 390 wide, x 0, separated by a 1px #e7e8ef
+    // rule. There is no top-level accordion: the five menus are headings and
+    // their contents follow.
+    //
+    // THIS IS NOT THE OLD DUMP, and the difference is the whole point. This
+    // drawer did once force every panel open, and it was reported as wrong for
+    // two stated reasons: 116 links in one scroll, and top-level rows set at the
+    // same 14px/500 as the group titles inside them, so `Case studies` read as a
+    // sibling of `Solutions`. Both are answered rather than reintroduced —
+    //
+    //   the hierarchy is unmistakable now because the sections are live's own
+    //   16px/700 uppercase orange headings against 14px/500 rows, and
+    //
+    //   the SECOND level is what collapses. Every labelled group is a row with a
+    //   chevron, closed at rest, which is exactly what live does one level down.
+    //   Opened one at a time, the drawer is a screen or two rather than a scroll
+    //   of everything.
+    //
+    // The sections are opened by `aria-expanded="true"` from
+    // assets/js/axo-navbar.js on the drawer's own `show.bs.offcanvas`, NOT by a
+    // rule here forcing `display`. The old shape did the latter and it left
+    // `aria-expanded="false"` on a plainly open panel — a lie to a screen reader,
+    // and paired with `pointer-events: none` so nothing could be collapsed at
+    // all. So this block must NOT state `display` on `.axo-nav-panel`, or it
+    // would win on source order and take the state away from the attribute again.
+    //
+    // The heading orange is live's #ff6500 and it measures 2.95:1 on white, which
+    // fails WCAG AA for 16px bold text. Parity was asked for and the marketing
+    // site ships this; the rows under it are the navy that passes comfortably,
+    // so nothing is unreadable, but the fact is recorded rather than buried.
+    .td-navbar .axo-nav--drawer .axo-nav-panel {
+        position: static;
+        width: auto;
+        max-width: none;
+        max-height: none;
+        overflow: visible;
+        padding: 0;
+        border: 0;
+        background: none;
+        box-shadow: none;
+    }
+
+    // The rows run edge to edge, so the drawer's own inset has to go and each row
+    // states live's 20px itself. The control row at the foot puts it back.
+    .td-navbar .offcanvas-body {
+        padding-inline: 0;
+    }
+
+    // ---- the section heading (live: .v3-navbar_mobile-menu-label) ------------
+    .td-navbar .axo-nav--drawer .axo-nav-toggle {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 2rem 1.25rem 0.75rem;
+        border-bottom: 1px solid var(--axo-nav-rule);
+        color: var(--axo-nav-section);
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1.5;
+        text-transform: uppercase;
+    }
+
+    // A heading is not a disclosure control here — the section is already open —
+    // so the marker goes. The row stays pressable, which is a superset of live:
+    // a reader who wants a section shut can shut it, and `aria-expanded` stays
+    // honest either way.
+    .td-navbar .axo-nav--drawer .axo-nav-toggle .axo-nav-chevron {
+        display: none;
+    }
+
+    .td-navbar .axo-nav--drawer .axo-nav-toggle:hover,
+    .td-navbar .axo-nav--drawer .axo-nav-toggle:focus-visible,
+    .td-navbar .axo-nav--drawer .axo-nav-toggle[aria-expanded="true"] {
+        color: var(--axo-nav-section);
+    }
+
+    // ---- `Login` is a button, not a row -------------------------------------
+    // The one top-level entry that is a link rather than a menu, and on live it
+    // is not a menu row at all: it is the first of two buttons in
+    // `.v3-navbar_menu-buttons`, a `padding: 32px` block at the end of the list.
+    // Measured there at 390 — 326x44 at x 32, `border-radius: 8px`, a 1px border
+    // and no fill, `rgb(20, 29, 98)`, 14px/500, `padding: 8px 24px`. The 326 is
+    // 390 less the block's two 32s, so the margin here states the 32 and the
+    // width follows.
+    //
+    // `#141d62` is `--axo-nav-brand-blue`, the same value, already in this file
+    // as the mega panel's fill — a brand colour rather than a page one, so it
+    // does not switch with the theme.
+    .td-navbar .axo-nav--drawer > .nav-item > .axo-nav-link:not(.axo-nav-toggle) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 44px;
+        margin: 2rem 2rem 0;
+        padding: 0.5rem 1.5rem;
+        border: 1px solid var(--axo-nav-brand-blue);
+        border-radius: 8px;
+        background: none;
+        color: var(--axo-nav-brand-blue);
+        font-size: 0.875rem;
+        font-weight: 500;
+        line-height: 1.5;
+        text-align: center;
+    }
+
+    // ---- a group row (live: .v3-navbar_dropdown-toggle_nested) ---------------
+    // One shape, because the drawer renders every collapsible group as a
+    // `submenu`. It used to render two — the bar's groups plus a
+    // `.axo-nav-group-toggle` button injected beside each group title, swapped by
+    // width — and that machinery is gone with the separate drawer markup: this
+    // list is data/nav-menu.yaml's `mobile.items`, which states the phone menu's
+    // own grouping directly.
+    .td-navbar .axo-nav--drawer .axo-nav-submenu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        width: 100%;
+        padding: 1.125rem 1.25rem 1.25rem;
+        border: 0;
+        border-bottom: 1px solid var(--axo-nav-rule);
+        border-radius: 0;
+        background: none;
+        color: var(--axo-nav-link);
+        font-size: 0.875rem;
+        font-weight: 500;
+        line-height: 1.5;
+        text-align: start;
+        cursor: pointer;
+    }
+
+    // Live's nested chevron is 24 square in the brand orange, 20px in from the
+    // right edge; the bar's is 16.
+    .td-navbar .axo-nav--drawer .axo-nav-subchevron {
+        display: inline-flex;
+        flex: none;
+        width: 24px;
+        height: 24px;
+        color: var(--axo-nav-section);
+        transition: transform 0.2s ease;
+    }
+
+    .td-navbar .axo-nav--drawer .axo-nav-submenu-toggle[aria-expanded="true"] .axo-nav-subchevron {
+        transform: rotate(180deg);
+    }
+
+    // The group's own panel. `.axo-nav-links` is a flex column everywhere else;
+    // here the rows are contiguous and the rule between them is the separator.
+    .td-navbar .axo-nav--drawer .axo-nav-submenu-panel {
+        display: none;
+    }
+
+    .td-navbar .axo-nav--drawer .axo-nav-submenu-toggle[aria-expanded="true"] + .axo-nav-submenu-panel {
+        display: block;
+    }
+
+    .td-navbar .axo-nav--drawer .axo-nav-links {
+        gap: 0;
+    }
+
+    // ---- the rows inside a group --------------------------------------------
+    // A labelled group's links are live's `dropdown-link_nested`: 16px/300,
+    // indented to 40. A group with no label has no row above them, so its links
+    // ARE the section's rows and take the plain 14px/500 shape — which is what
+    // live does under `Open source` and `About`.
+    .td-navbar .axo-nav--drawer .axo-nav-group a {
+        display: block;
+        padding: 1.125rem 1.25rem 1.25rem;
+        border-bottom: 1px solid var(--axo-nav-rule);
+        font-size: 0.875rem;
+        font-weight: 500;
+        line-height: 1.5;
+    }
+
+    // ...and the same shape without a heading above it. Live draws `AxoLake`,
+    // `AxoRouter` and `Axoflow + AI` this way under `Products`: children of the
+    // `Axoflow Platform` row, no group row between. Measured on axoflow.com at
+    // 390 — `.v3-navbar_dropdown-link_nested`, h 63, `padding: 18px 40px 20px`,
+    // 16px/300 — against the 60/20px/14px/500 the four of them had here.
+    .td-navbar .axo-nav--drawer .axo-nav-submenu-panel a,
+    .td-navbar .axo-nav--drawer .axo-nav-nested a {
+        padding-inline-start: 2.5rem;
+        font-size: 1rem;
+        font-weight: 300;
+    }
+
+    // NOTE ON THE DECORATION. Four rules used to hide `.axo-nav-after`,
+    // `.axo-nav-icon` and the two `-desc` paragraphs here, because the drawer was
+    // the bar's own markup and carried all of it. It is its own render now and
+    // emits none of them — 57 inline SVGs, 56KB of the bar's 73KB, that the
+    // reader was never shown. Adding any of them back to
+    // layouts/_partials/navbar-drawer.html would make it visible, not hidden.
+
+    .td-navbar .axo-nav--drawer .axo-nav-group + .axo-nav-group {
+        margin-top: 0;
+    }
+
+    // ---- the button block at the foot of the list ---------------------------
+    // Live's `.v3-navbar_menu-buttons`: `display: flex`, `padding: 32px`, two
+    // buttons of the same 326x44 stacked 24px apart — `Login` outlined, `Request
+    // Sandbox` filled. Both are the full width of the block; neither is set
+    // beside the other.
+    //
+    // `Login` is the menu's last list item and cannot move into this block from
+    // the stylesheet, so the 24px between them is this block's own padding-top
+    // against that button's zero bottom margin. The result is live's pair.
+    //
+    // This used to be `row-reverse` with the CTA at one end and the theme switch
+    // at the other, pinned under a rule at the foot of the drawer — measured, the
+    // CTA came out 178 wide against live's 326 and hard against the right edge,
+    // which is what was reported. The rule goes with it: live has no separator
+    // above these, only the 32px.
+    //
+    // The theme switch has no equivalent on live — the marketing site has no dark
+    // mode — so it keeps the block and sits centred under the CTA rather than
+    // beside it.
+    .td-navbar .axo-nav-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+        margin: 0;
+        padding: 1.5rem 2rem 2rem;
+        border-top: 0;
+    }
+
+    .td-navbar .axo-nav-controls .axo-nav-cta {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 44px;
+        padding: 0.5rem 1.5rem;
+    }
+
+    .td-navbar .axo-nav-controls .td-light-dark-menu {
+        align-self: center;
+    }
+}
+
+// =============================================================================
+// Dark theme
+// -----------------------------------------------------------------------------
+// The <nav> used to carry `data-bs-theme="light"`, which excluded the whole bar
+// from the dark cascade by inheritance (the theme submodule's stylesheet says so
+// in as many words). The bar is meant to follow the theme, so the attribute is
+// gone from layouts/_partials/navbar.html.
+//
+// Almost all of this is one restatement of the palette at the top of the file:
+// the rules above read every colour through var(), so nothing else has to be
+// repeated. What is left are the three things a colour cannot express — the two
+// baked fills inside the brand artwork, and the fact that a panel is a surface
+// in the bar and a section of a list in the drawer.
+//
+// The values are measured, not invented. Where the shared token layer names the
+// same thing it wins; --axo-text-muted and --axo-text-faint are deliberately NOT
+// used for the panel text, because their mapping onto the panel's own greys is
+// not verified here and these two were measured.
+// =============================================================================
+
+@if $enable-dark-mode {
+    [data-bs-theme="dark"] .td-navbar {
+        --axo-nav-surface: var(--axo-bg-nav, #171c2e);
+        --axo-nav-rule: var(--axo-hairline, #0f1425);
+        // The bar's navy is invisible on the dark surface, so the links fall
+        // back to the page's text colour.
+        --axo-nav-link: var(--axo-text, #f0f2f7);
+        --axo-nav-title: var(--axo-text, #f0f2f7);
+        --axo-nav-panel-link: #c8cad3;
+        --axo-nav-desc: #b4b7c1;
+        --axo-nav-row-hover: #232942;
+    }
+
+    [data-bs-theme="dark"] {
+        // Only the floating panels get a fill of their own. In the drawer a panel
+        // is a section of a list on the drawer's own surface, and an unscoped
+        // fill painted a lighter block behind every group there.
+        @include media-breakpoint-up(md) {
+            .td-navbar .axo-nav-panel,
+            .td-navbar .axo-nav-submenu-toggle[aria-expanded="true"] + .axo-nav-submenu-panel,
+            .td-navbar .axo-nav--compact {
+                background-color: var(--axo-nav-surface);
+            }
+        }
+
+        // A mega link keeps its colour on hover in the light theme; on the dark
+        // surface there is nothing to keep, so it brightens instead.
+        .td-navbar .axo-nav--bar .axo-nav-panel--mega .axo-nav-group a:hover {
+            color: var(--axo-nav-on-dark, var(--axo-nav-title));
+        }
+
+        // The wordmark is seven #0F1425 paths beside an orange mark — the navy
+        // the live logo is drawn in, and all but invisible on the dark bar, so
+        // it is painted white there. The mark itself is #FF6500 and white and is
+        // left alone.
+        .td-navbar .navbar-brand svg [fill="#0F1425"] {
+            fill: #fff;
+        }
+
+        // The vendored icons carry live's baked fills: #141D62 artwork with
+        // #FF6500 accents on the white columns, white artwork in the navy one.
+        // The navy is invisible on the dark surface, so there it is remapped to
+        // the surrounding text colour and the orange accent kept. An attribute
+        // selector, because the fill is on the path and the file is a brand
+        // artefact this stylesheet does not rewrite — see navbar-svg.html for why
+        // the two hex values are also spelled out in a template.
+        .td-navbar .axo-nav-icon {
+            color: var(--axo-nav-on-dark, var(--axo-nav-title));
+        }
+
+        .td-navbar .axo-nav-icon [fill="#141D62"] {
+            fill: currentColor;
+        }
+    }
+}
+
+// =============================================================================
+// Row 2 of the mobile arrangement: the documentation-menu icon
+// -----------------------------------------------------------------------------
+// This is not the brand bar, and it lives here for one reason: it is one of the
+// three mobile chrome controls, and the other two — the magnifier and the
+// hamburger — are a few hundred lines up. Keeping them in one file is what stops
+// them drifting back into looking like each other, which is the fault this
+// control was created to fix. The markup is the `.axo-sidebar-toggle` button in
+// layouts/_partials/sidebar-tree.html, where the glyph, the accessible name and
+// the dropped caret are argued.
+//
+// The row it sits in is laid out in _axo-frame.scss, with the rest of
+// `.td-sidebar__inner`'s mobile flex row. Only the control itself is here.
+//
+// THE THREE GLYPHS, so the next person can see at a glance that they differ:
+//
+//   bar hamburger   FA `bars`, viewBox 0 0 448 512, filled, three full rules
+//   bar magnifier   FA `magnifying-glass`, viewBox 0 0 512 512, filled
+//   this control    Heroicons `bars-3-bottom-left`, viewBox 0 0 24 24, stroked
+//                   1.5, third rule half width
+//
+// The first and the third are both "three horizontal rules", which is what was
+// reported as "two hamburger menus" when they were the SAME path 150px apart in
+// one row. They are now in different rows, ~100px apart vertically, drawn in
+// different weights, and the third one's bottom rule is half length. A check
+// compares the rendered path data so this cannot silently become one glyph
+// again.
+//
+// Measured on the deployed build at localhost:1399,
+// /concepts/processing-elements/, BEFORE the change:
+//
+//   width   column content box   version         search form
+//   390     28..362             28..173.7       28..270.4   (second line)
+//   600     28..604             28..245.6       253.6..496
+//   799     28..803             28..325.2       333.2..575.6
+//
+// At 390 the version box and the search form did not fit on one line and the
+// form wrapped — which is why `.td-sidebar` was 112px tall there and 64 at the
+// other two widths, and why the article title started 48px lower at 390 than at
+// 600. With the search gone from this row that wrap cannot happen: the row is a
+// 40px icon and a 40%-wide version box, 185.7px of content in a 334px box at the
+// tightest width. See the note on `.td-sidebar__inner` in _axo-frame.scss, which
+// carried a claim about that 48px that only becomes true with this change.
+//
+// Everything below applies only under md, which is 800 in this project and not
+// Bootstrap's stock 768. There is no media query for that: the button carries
+// `d-md-none`, whose `display: none !important` at md and up outweighs the
+// `display: inline-flex` here, so above the breakpoint these rules describe an
+// element that is not rendered. That is the one place where letting a Bootstrap
+// display utility win is the correct outcome rather than a fight, so no
+// `!important` of ours goes anywhere near it.
+.axo-sidebar-toggle {
+    // A centred glyph in a square box.
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    // Docsy sizes this button for a glyph and nothing else:
+    //
+    //   themes/docsy  .td-sidebar__toggle
+    //     { width: 1.25rem; margin-left: 1rem; margin-right: 0.5rem; padding: 2px }
+    //
+    // All four have to be answered, and the `width` is the one that has already
+    // cost a round: 20px, and it is not a min-width, so content does not widen
+    // it. The first version of this control set `padding` and `margin-left` but
+    // not `width`, and the result was a 20x35.9 button whose label rendered
+    // outside its own box and whose caret — a flex item with `overflow: hidden`
+    // in a box with 4px of room left — was shrunk to 0x12.3 and drew nothing,
+    // while 24 of 26 checks stayed green. There is no label and no caret now,
+    // but the trap is unchanged: a 24px glyph in a 20px box would be clipped the
+    // same way.
+    //
+    // 40x40, not the icon's own 24x24. Elastic's control is a bare 24x24 label,
+    // which is the minimum WCAG 2.5.8 allows and no more; the row it sits in
+    // here is 40px tall because the version selector beside it is 40px tall
+    // (`min-height: 40px` on `.td-version-menu__title` in _styles_project.scss),
+    // so a 40px target costs nothing in height and centres against its row-mate
+    // for free. The glyph inside stays 24.
+    //
+    // Docsy's rule and this one are both single-class, so specificity is a tie
+    // and source order decides; this sheet compiles after Docsy's, which is why
+    // no `!important` is needed for any of the four.
+    width: 40px;
+    height: 40px;
+    padding: 0;
+
+    // Docsy's `margin-left: 1rem; margin-right: 0.5rem` both go. They padded a
+    // glyph away from a search box that is no longer in this row. The button is
+    // the first thing in the row now and its left edge IS the column's inset —
+    // 28px at 390 — which is where Elastic puts theirs. `p-0` and `ms-3` are
+    // correspondingly absent from the markup: both are Bootstrap spacing
+    // utilities carrying `!important`, so with them there neither of these two
+    // declarations could have been made at all.
+    margin: 0;
+
+    // `.btn btn-link` are gone from the markup too, and the three rules that
+    // undid them are gone from here. Those classes contributed a link colour and
+    // an underline, both of which existed only to be neutralised; with no text
+    // in the button there is nothing to underline and nothing to recolour. What
+    // `.btn` did contribute is a focus ring and a pointer cursor, and both are
+    // restated below rather than lost.
+    border: 0;
+    background: none;
+    // The version selector beside it is `--axo-text-muted` (_styles_project.scss
+    // sets it on `.td-version-menu__title`), so the two controls in the row are
+    // one weight of ink.
+    color: var(--axo-text-muted, #42555f);
+    line-height: 0;
+    cursor: pointer;
+
+    // `.btn`'s focus ring, restated. Stated as an outline rather than a
+    // box-shadow so it follows the button's own box and cannot be clipped by the
+    // row; `--axo-text-accent` is the accent in both themes.
+    &:focus-visible {
+        outline: 2px solid var(--axo-text-accent, #ff6500);
+        outline-offset: 2px;
+    }
+}
+
+// NO OPEN STATE IN INK, and this is a removal rather than an omission.
+//
+// `.axo-sidebar-toggle[aria-expanded="true"] { color: var(--axo-text-accent) }`
+// was here. It was driven off `aria-expanded` because Bootstrap's COLLAPSE
+// plugin flips that attribute on the toggle itself, which made the state the
+// assistive technology reads and the state the reader sees one fact instead of
+// two that have to be kept in step.
+//
+// The tree is an offcanvas drawer now, not a collapse. Grepped in
+// themes/docsy/node_modules/bootstrap/js/src/offcanvas.js, the plugin writes
+// exactly two attributes and both are on the panel — `aria-modal` and `role`.
+// It never touches the trigger. So the attribute is gone from the markup (a
+// permanently-`false` `aria-expanded` is worse than none) and this rule with it:
+// left in place it would have been a selector that can no longer match, which
+// reads as live styling to the next person in the file.
+//
+// Nothing is lost on screen either. The drawer is full width with a backdrop
+// over the page, so while it is open the trigger is behind both and its ink
+// cannot be seen. The bar's own hamburger — the other offcanvas toggle on this
+// site — has never had a pressed state for the same reason.
+//
+// The check that guarded it is not deleted. It read
+// `getComputedStyle(button).color` in both
+// states to prove a rule keyed on the toggle's state actually lands; it now
+// reads the panel's own transform, visibility and backdrop instead, which is the
+// same question asked of the mechanism that replaced the attribute. A deleted
+// check is how this project has lost a fix before.
+//
+// If a caret is ever added back beside the glyph, turn it with `rotate` and not
+// with `transform`: _axo-frame.scss records what happened on the tree's own fold
+// marker when both were in play — the individual transform properties compose
+// with `transform`, the chevron turned 180 degrees instead of 90, and an open
+// group ended up pointing left.
+
+// The glyph is 24x24 in a 40x40 button, and `flex: none` so it can never be the
+// thing that gives. It has been squeezed to 0px once already, in the version of
+// this control that had a caret: an SVG is a flex item with `overflow: hidden`,
+// and in a box too small for its contents it shrinks to nothing and draws
+// nothing rather than overflowing visibly. That failure looked like a missing
+// icon and was a missing `width` on the button. The `width` above is the cause
+// removed; this is the symptom made impossible, and check 4a of the harness
+// asserts a non-zero box either way.
+//
+// `transition: color` and not the `rotate` the caret carried — there is nothing
+// to turn, and the one property that changes on open is the ink.
+.axo-sidebar-toggle .axo-sidebar-toggle__icon {
+    flex: none;
+    width: 24px;
+    height: 24px;
+    transition: color 0.15s ease;
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
+}

@@ -1,0 +1,289 @@
+{{/*
+  A VERBATIM COPY of themes/docsy-axoflow/layouts/docs/baseof.html as of
+  submodule commit 834310233ad25e8689c0b8c72361417c718a428f, with two lines
+  changed and one script added. Keep it in step when the submodule moves: this file shadows the
+  theme's, so anything added there — a hook, a column, an attribute — silently
+  does not reach this site until it is copied across. That failure mode is not
+  hypothetical here; an earlier partial override in this project shadowed a
+  submodule file and took search off every page without a build error.
+  `diff layouts/docs/baseof.html themes/docsy-axoflow/layouts/docs/baseof.html`
+  is the check, and it should show this comment and nothing else structural.
+
+  WHAT IS CHANGED, AND WHY. Archived builds (0.81 and anything after it) get the
+  same version filter the root build has, by reading the ROOT Pagefind index
+  instead of their own.
+
+    1. $showVersionFilter no longer requires this build to be the latest one.
+    2. <pagefind-config> takes the root bundle path on archived builds.
+    3. assets/js/axo-search-version.js is loaded where the filter is rendered,
+       so the modal opens with this build's own version already ticked.
+
+  The published layout is one unified index and one per-version index: CI runs
+  `npx pagefind --site ./public` over a tree that already has the archived builds
+  copied into public/<version>/, and then a second pass over public/0.81 alone.
+  Only the first covers every version, so it is the only index a version filter
+  can be built on. The archived builds already ship it — they just were not
+  pointed at it.
+
+  Why the URLs come out right. Pagefind stores result URLs relative to the
+  directory given to --site, so an archived page is filed in the root index as
+  `/0.81/x/`. pagefind.js turns that into a link with
+
+      getDefaultBaseUrl(basePath) = basePath.match(/^(.*\/)_?pagefind/)?.[1]
+
+  — the bundle path with `pagefind/` cut off. Pointing an archived build at
+  `/docs/axoflow/pagefind/` therefore also moves its baseUrl to
+  `/docs/axoflow/`, which is what makes `/0.81/x/` resolve to
+  `/docs/axoflow/0.81/x/` rather than to the site root. Measured before writing
+  this, from the root build's own modal: all 12
+  results with the filter set to 0.81 resolved under /docs/axoflow/0.81/, the
+  first answered HTTP 200, and the page it landed on carried
+  data-pagefind-filter="section:0.81". The check asserts the path string and
+  not the status code on purpose — the local server answers 200 to the broken
+  un-prefixed form too.
+
+  What this costs, stated rather than hidden: an archived sub-site is no longer
+  self-contained. Served on its own, or with the root index missing, its search
+  has nothing to read. The per-version index CI still builds at
+  public/0.81/pagefind/ becomes unreferenced by these pages.
+
+  WHAT THIS FILE ON ITS OWN DOES NOT DO. .github/workflows/publish-docs.yaml
+  builds each archived version from its own release ref and overlays exactly one
+  file from main — data/versions.yaml. Layouts are not overlaid, so this
+  override does not reach the published 0.81 sub-site until it is either
+  backported to release-0.81 or added to that overlay step. On main it is inert:
+  the root build is the latest one, takes neither branch, and renders byte for
+  byte what the theme rendered.
+
+  The reader's own version IS pre-selected, by the script added in (3). It is
+  not declarative: <pagefind-filter-dropdown> lists
+  ["filter","label","single-select","show-empty","wrap","sort","hide-clear"] in
+  observedAttributes and nothing for an initial value. What made a script
+  acceptable in the end is that the bundle exports window.PagefindComponents
+  with getInstanceManager(), and instance.triggerFilter() is the same call the
+  dropdown makes for a click — so nothing here reaches past the component. The
+  whole argument, and every alternative that was rejected, is in the header
+  comment of assets/js/axo-search-version.js.
+*/ -}}
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage"
+    {{- with .Site.Language.LanguageDirection }} dir="{{ . }}" {{- end -}}
+    {{ with .Site.Language.Lang }} lang="{{ . }}" {{- end }} {{/**/ -}}
+    class="no-js"
+    {{- $darkMode := partialCached "dark-mode-config.html" "dark-mode-global" -}}
+    {{- if $darkMode.enable }} data-theme-init{{ end }}>
+  <head>
+    {{ partial "head.html" . }}
+    {{- /*
+    The canvas, for the theme the reader CHOSE.
+
+    THE DEFECT. `head.html` in themes/docsy-axoflow states, before anything else
+    can paint:
+
+        html { background: Canvas; color: CanvasText; }
+        @media (prefers-color-scheme: dark) {
+          html { background: #0b0d12; color: #e6e6e6; }
+        }
+
+    That media query asks the OPERATING SYSTEM, and the theme this site renders
+    in comes from `localStorage['td-color-theme']`, which the script three lines
+    below it reads. For a reader whose browser is dark and who has chosen light,
+    the two disagree — and the inline block is what paints, because the main
+    stylesheet is a separate request and on a cold cache it is not there yet.
+
+    MEASURED, and reproduced from the report exactly:
+    a dark browser, `td-color-theme = 'light'`, `Network.clearBrowserCache` plus
+    `setCacheDisabled`, screencast of the first load —
+
+        frame 000     0ms   mean luminance  18.0     <- black
+        frame 001   690ms   mean luminance  43.1     <- still black
+        frame 002   757ms   mean luminance 245.2     <- the page they asked for
+
+    Three quarters of a second of black before a white page. The control in that
+    same file is what makes it a defect rather than an observation: a reader who
+    CHOSE dark stays at 28-29 from the first frame to the last, so the flash is
+    the wrong colour and not merely a dark one.
+
+    THE FIX. Key the canvas off `data-bs-theme` — the attribute head.html's own
+    script has already written by the time this is parsed — instead of off the
+    OS. `color-scheme` goes with it, so the browser's own furniture (the base
+    canvas, form controls, the scrollbar) follows the chosen theme too rather
+    than the system one.
+
+    WHY IT IS HERE and not in the block it corrects: that block lives in
+    themes/docsy-axoflow, a submodule, and a change there does not reach a CI
+    build until the submodule is committed and the pointer bumped. This file is
+    a project file that already owns <head>, and `html[data-bs-theme="…"]` is
+    (0,1,1) against the theme's (0,0,1), so it wins on specificity wherever it
+    lands. The theme's rules stay as the fallback for a reader with JavaScript
+    off, where no attribute is ever written and `Canvas` is the only answer
+    available.
+
+    Values are the tokens' own: `--axo-bg` and `--axo-text` from
+    assets/scss/_axo-tokens.scss for light, and the theme's existing pair for
+    dark. Literals rather than `var()` on purpose — the stylesheet that declares
+    those custom properties is exactly the thing that has not arrived yet.
+    */ -}}
+    <style>
+      html[data-bs-theme="light"] { color-scheme: light; background: #fff; color: #0f1425; }
+      html[data-bs-theme="dark"] { color-scheme: dark; background: #0b0d12; color: #e6e6e6; }
+    </style>
+  </head>
+  <body class="td-{{ .Kind }}{{ with .Page.Params.body_class }} {{ . }}{{ end }}" {{ with .Page.Params.body_attribute }} {{ . | safeHTMLAttr }}{{ end }}>
+    {{ partial "hooks/body-top.html" . -}}
+    <header>
+      {{ partial "navbar.html" . }}
+    </header>
+    {{- /* The archived-version band, RENDERED HERE AND NOT INSIDE <main>.
+
+           The theme calls it from inside `<main>` (themes/docsy/layouts/docs/
+           baseof.html:35), which below md put it one row too low: the reader met
+           the documentation-menu icon and the version selector first, and the
+           sentence telling them they are on an archived version came after. It
+           reads in the wrong order and it was reported as exactly that.
+
+           Above md nothing moves — the band is `position: fixed` there, so where
+           it is rendered has never mattered. Below md it is in flow, and this is
+           the only place it can be in flow ABOVE `aside.td-sidebar`, which is
+           where the strip lives. That also drops the negative margin it needed
+           to escape `main`'s gutter (assets/scss/_axo-frame.scss).  */ -}}
+    {{ partial "version-banner.html" . }}
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-md-3 col-xl-2 td-sidebar d-print-none mt-5">
+            {{ partial "sidebar.html" . }}
+          </aside>
+          <aside class="d-none d-xl-block col-2 col-xl-2 td-sidebar-toc d-print-none mt-5 pt-5">
+            {{ partial "hooks/custom-right-sidebar-elements-top.html" . }}
+            {{ partial "toc.html" . }}
+            {{ partial "page-meta-links.html" . }}
+            {{ partial "taxonomy_terms_clouds.html" . }}
+            {{ partial "hooks/custom-right-sidebar-elements-bottom.html" . }}
+            <!-- Adds a hook to add custom sidebar elements -->
+          </aside>
+          <main class="col-xs-10 col-md-9 col-xl-8 mt-3 mt-md-5" role="main"{{ if and .Site.Params.offlineSearchPagefind (not .Page.Params.dontIndex)}} data-pagefind-body{{ end }}>
+            {{- /* The version banner used to be called here; it is above
+                   `.td-outer` now. See the note beside `<header>`.  */ -}}
+            {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial "breadcrumb.html" . }}{{ end }}
+            {{ block "main" . }}{{ end }}
+          </main>
+        </div>
+      </div>
+      {{ partial "footer.html" . }}
+    </div>
+    {{ partial "scripts.html" . }}
+    {{ if .Site.Params.offlineSearchPagefind -}}
+      {{/* Pagefind 1.5+ Component UI: the modal is hidden until triggered by
+           <pagefind-modal-trigger> (in the sidebar) or the Cmd/Ctrl+K shortcut.
+           Mounted at the end of <body> so DOM is fully built when the web
+           component auto-connects. */ -}}
+      {{- /* Multi-version docs: when data/versions.yaml exists and this is the
+             latest (root) build with more than one version, include a version
+             selector in the search modal.
+             The index of the latest site is a unified index covering every version. 
+             Older versions and projects with no versions data file use the plain modal. The
+             latest build is detected from the baseURL, like navbar-version-selector. */ -}}
+      {{- $showVersionFilter := false -}}
+      {{- /* CHANGED (project override): the root bundle path for an archived
+             build, empty on the latest build. Empty is what keeps the latest
+             build on the theme's own expression below, so its output cannot
+             drift from the theme's by a string that merely ought to match. */ -}}
+      {{- $rootBundlePath := "" -}}
+      {{- with hugo.Data.versions -}}
+        {{- $curBase := (urls.Parse site.BaseURL).Path -}}
+        {{- if not (strings.HasSuffix $curBase "/") }}{{ $curBase = printf "%s/" $curBase }}{{ end -}}
+        {{- $segs := split (strings.Trim $curBase "/") "/" -}}
+        {{- $lastSeg := index $segs (sub (len $segs) 1) -}}
+        {{- $isLatest := true -}}
+        {{- range . }}{{ if and (not .latest) (eq (printf "%v" .version) $lastSeg) }}{{ $isLatest = false }}{{ end }}{{ end -}}
+        {{- /* CHANGED (project override): was `and $isLatest (gt (len .) 1)`.
+               Archived builds get the same filter, reading the unified root
+               index — see the header comment. */ -}}
+        {{- $showVersionFilter = gt (len .) 1 -}}
+        {{- if not $isLatest -}}
+          {{- /* Root base = this build's base with its own version segment
+                 stripped, exactly as navbar-version-selector.html derives it
+                 (strings.TrimSuffix, a real suffix strip, not a replace). */ -}}
+          {{- $rootBundlePath = printf "%spagefind/" (strings.TrimSuffix (printf "%s/" $lastSeg) $curBase) -}}
+        {{- end -}}
+      {{- end -}}
+      {{ if $showVersionFilter -}}
+      <pagefind-modal>
+        <pagefind-modal-header>
+          <pagefind-input></pagefind-input>
+        </pagefind-modal-header>
+        <pagefind-modal-body>
+          <pagefind-summary></pagefind-summary>
+          {{/* Newest version on top. We use count-desc: the latest version has the most
+               indexed pages (docs accrete), so it sorts first. */ -}}
+          {{/* CHANGED (project override): `show-empty`.
+               WHY. Without it, once a version is selected the OTHER version
+               disappears from the menu and there is no way back to it except
+               Clear. Measured on the deployed build: with nothing typed the menu
+               is 98px tall and lists both; type a query and it is 54px and lists
+               only the ticked one.
+               The cause is in the component, not in our markup —
+               `pagefind-filter-dropdown`'s `updateOptions()` reads
+                 let l = this.availableFilters?.[i] ?? 0,
+                     o = this.totalFilters[i] ?? 0,
+                     c = this.selectedValues.has(i);
+                 if (!(this.showEmpty || l > 0 || c)) return;
+               `availableFilters` is counted WITHIN the filters already applied, so
+               with `section: 0.86 (current)` selected the count for `0.81` is 0 and
+               the row is dropped. `show-empty` is the documented escape hatch:
+               `observedAttributes` lists it and `init()` reads it with
+               `hasAttribute`, so the option renders with a count of 0 instead of
+               vanishing.
+               This matters more here than it would anywhere else because
+               assets/js/axo-search-version.js pre-selects the reader's own version
+               on every page — so without this attribute EVERY reader starts in the
+               state where the other version is unreachable.
+               An option with a count of zero has to stay visible: it is the only
+               way back to the other version from a page that is filed under this
+               one. */ -}}
+          <pagefind-filter-dropdown filter="section" label="Version" sort="count-desc" show-empty></pagefind-filter-dropdown>
+          <pagefind-results></pagefind-results>
+        </pagefind-modal-body>
+        <pagefind-modal-footer>
+          <pagefind-keyboard-hints></pagefind-keyboard-hints>
+        </pagefind-modal-footer>
+      </pagefind-modal>
+      {{- else -}}
+      <pagefind-modal></pagefind-modal>
+      {{- end }}
+      {{/* CHANGED (project override): the attribute value branches, the element
+           does not. On the latest build `$rootBundlePath` is empty and the
+           theme's own `relURL` expression is the one that runs, so the rendered
+           byte string is the theme's. */ -}}
+      <pagefind-config
+        bundle-path="{{ with $rootBundlePath }}{{ . }}{{ else }}{{ "pagefind/" | relURL }}{{ end }}"
+        highlight-param="highlight"
+      ></pagefind-config>
+      {{ if $showVersionFilter -}}
+      {{/* ADDED (project override): tick the build's own version in the filter
+           when the modal opens. Why it needs a script at all, and why the
+           script is on the Component UI's public side rather than in its
+           internals, is the header comment of the file itself.
+
+           Emitted here rather than from layouts/_partials/hooks/body-end.html,
+           where the other project scripts live, for two reasons. It is only
+           meaningful where the version filter is actually rendered, and that
+           condition — $showVersionFilter — is computed here and nowhere else;
+           body-end.html loads its scripts on every page of every build,
+           including the ones with a bare <pagefind-modal>. And baseof.html is
+           already the file that owns the whole Pagefind mount, so the markup
+           and the script that depends on it move together.
+
+           js.Build + fingerprint + integrity, matching body-end.html exactly:
+           a second convention for the same job would be one more thing to keep
+           in step. */ -}}
+      {{ with resources.Get "js/axo-search-version.js" -}}
+        {{ $js := . | js.Build (dict "minify" true) | fingerprint -}}
+        <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"
+                crossorigin="anonymous" defer></script>
+      {{- end }}
+      {{- end }}
+    {{ end -}}
+  </body>
+</html>

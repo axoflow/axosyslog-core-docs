@@ -1,0 +1,106 @@
+{{/*
+  The phone menu, rendered from data/nav-menu.yaml's `mobile.items`.
+
+  A THIRD list, not a restyling of the other two. axoflow.com carries two
+  navigations in one document — the bar's mega menus and
+  `.v3-navbar_mobile-contents`, a hand-built Webflow block that is the only thing
+  a phone is shown — and measured on 2026-08-29 they disagree on 31 of 55 rows:
+  `Integrations` and `Capabilities` are filed under `Solutions` rather than
+  `Products`, the three products are plain rows rather than a group, and five
+  links are worded differently. None of that is reachable from the bar's data by
+  CSS: the rows live in different `<li>` subtrees, and `order` cannot move a node
+  between them. So the phone menu is its own data and its own markup.
+
+  WHAT IT COSTS. One more render of the menu in every page — measured, the bar's
+  is 73KB of which 56KB is 57 inline SVGs. This one emits none of them: no group
+  icons, no card icons, no `after` arrows, no descriptions. All four were already
+  `display: none` below md, so nothing a reader could see is lost, and the render
+  comes out near a fifth of the bar's. The five section chevrons go the same way —
+  a section here is a heading, not a disclosure control, and live draws no marker
+  on it either.
+
+  SHAPES. Three, because `mobile.items` states three:
+    submenu — a labelled group. A row with a chevron that opens, closed at rest,
+              which is live's `.v3-navbar_dropdown-toggle_nested`.
+    links   — an unlabelled run. Plain rows directly under the section heading,
+              which is live's `.v3-navbar_mobile-menu-link`: 14px/500 at 20px.
+    nested  — the same run one level in, live's `.v3-navbar_dropdown-link_nested`
+              at 16px/300 and a 40px inset, with no heading above it. Live uses
+              this at the TOP level under `Products`: `AxoLake`, `AxoRouter` and
+              `Axoflow + AI` are drawn as children of the `Axoflow Platform` row
+              above them. Rendered as one kind, all four came out flat and the
+              three products lost their indent, size and weight — reported.
+
+  The sections themselves are opened by `aria-expanded` from
+  assets/js/axo-navbar.js on `show.bs.offcanvas`, never by a rule forcing
+  `display` — see the note in the `media-breakpoint-down(md)` block of
+  assets/scss/_axo-navbar.scss for why that distinction is load-bearing.
+
+  Params: menu (the data/nav-menu.yaml node).
+*/}}
+
+{{- $menu := .menu -}}
+{{- /* Spelled out rather than interpolated, the same call navbar-menu.html
+       documents: purgecss extracts `[\w-]+` from these templates, so a class
+       built by interpolation is never seen and every rule scoped to it is
+       stripped from the production stylesheet. */ -}}
+{{- $prefix := "axo-nav-drawer" -}}
+{{- $host := $menu.host -}}
+
+<ul class="navbar-nav axo-nav axo-nav--drawer">
+  {{- range $menu.mobile.items }}
+    {{- if eq .kind "link" }}
+      {{- /* `Login`. Not a menu row on live either — it is the first of the two
+             buttons in the block at the foot of the list. */ -}}
+      <li class="nav-item">
+        <a class="nav-link axo-nav-link" href="{{ .href }}"
+           {{- if ne $host (urls.Parse .href).Host }} target="_blank" rel="noopener"{{ end }}>{{ .label }}</a>
+      </li>
+    {{- else }}
+      {{- $panelId := printf "%s-%s" $prefix (urlize .label) }}
+      <li class="nav-item axo-nav-item">
+        <button type="button" class="nav-link axo-nav-link axo-nav-toggle"
+                aria-expanded="false" aria-controls="{{ $panelId }}">{{ .label }}</button>
+        <div class="axo-nav-panel" id="{{ $panelId }}">
+          <div class="axo-nav-panel-inner">
+            {{- range $gi, $group := .groups }}
+              {{- if eq $group.kind "submenu" }}
+                {{- $subId := printf "%s-%s" $panelId (urlize $group.label) }}
+                <div class="axo-nav-group axo-nav-submenu">
+                  <button type="button" class="axo-nav-submenu-toggle"
+                          aria-expanded="false" aria-controls="{{ $subId }}">
+                    {{ $group.label }}
+                    <span class="axo-nav-subchevron">
+                      {{- partial "navbar-svg.html" (dict "svg" $menu.glyphs.toggle "ns" $prefix) -}}
+                    </span>
+                  </button>
+                  <ul class="axo-nav-links axo-nav-submenu-panel" id="{{ $subId }}">
+                    {{- range $group.links }}
+                      <li><a href="{{ .href }}"
+                        {{- if ne $host (urls.Parse .href).Host }} target="_blank" rel="noopener"{{ end }}>{{ .label }}</a></li>
+                    {{- end }}
+                  </ul>
+                </div>
+              {{- else }}
+                {{- /* `axo-nav-nested` spelled out, not interpolated from
+                       `$group.kind`: purgecss extracts `[\w-]+` from this
+                       template and would never see a class built at render
+                       time, so the rule that indents these rows would be
+                       stripped from the production stylesheet. */ -}}
+                <div class="axo-nav-group
+                            {{- if eq $group.kind "nested" }} axo-nav-nested{{ end }}">
+                  <ul class="axo-nav-links">
+                    {{- range $group.links }}
+                      <li><a href="{{ .href }}"
+                        {{- if ne $host (urls.Parse .href).Host }} target="_blank" rel="noopener"{{ end }}>{{ .label }}</a></li>
+                    {{- end }}
+                  </ul>
+                </div>
+              {{- end }}
+            {{- end }}
+          </div>
+        </div>
+      </li>
+    {{- end }}
+  {{- end }}
+</ul>

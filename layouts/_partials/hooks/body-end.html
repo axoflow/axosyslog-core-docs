@@ -1,0 +1,17 @@
+{{/*
+  Docsy's end-of-body hook (themes/docsy/layouts/_partials/scripts.html:82),
+  which the theme ships empty. Project scripts go here rather than into an
+  override of scripts.html, which lives in the docsy-axoflow submodule.
+*/ -}}
+{{/*
+  `js/axo-print-theme.js` is `defer` like the rest, and that is safe for what it
+  does: it only registers `beforeprint`/`afterprint` listeners, and a print
+  cannot be started before the document has finished parsing.
+*/ -}}
+{{ range slice "js/sidebar-height.js" "js/axo-toc.js" "js/axo-code-copy.js" "js/axo-wide.js" "js/axo-print-theme.js" -}}
+  {{ with resources.Get . -}}
+    {{ $js := . | js.Build (dict "minify" true) | fingerprint -}}
+    <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"
+            crossorigin="anonymous" defer></script>
+  {{- end }}
+{{ end -}}

@@ -1,0 +1,60 @@
+{{/*
+  Documentation version switcher. Rendered inside the
+  <li class="nav-item dropdown"> wrapper in the navbar, so it emits the toggle
+  <a> and the <ul class="dropdown-menu"> directly (matching navbar-dropdown.html).
+
+  Single source of truth: data/versions.yaml (overlaid from main on every
+  per-version build, so archived versions show the full, current list).
+
+  Each version's base is derived from THIS build's baseURL and the version id —
+  the data file stores neither URLs nor sub-dirs. The latest version lives at the
+  site root; every other version lives under /<version>/. The current version is
+  detected from the last path segment of the baseURL, and the root base is that
+  baseURL with the current version segment stripped (via strings.TrimSuffix, a
+  real suffix strip). Each entry links to the SAME page under its own base.
+*/ -}}
+{{ $versions := hugo.Data.versions -}}
+{{ if $versions -}}
+  {{- $curBase := (urls.Parse site.BaseURL).Path -}}
+  {{- if not (strings.HasSuffix $curBase "/") }}{{ $curBase = printf "%s/" $curBase }}{{ end -}}
+  {{- /* Current page's path within its own version (no leading slash). */ -}}
+  {{- $rel := strings.TrimPrefix "/" (strings.TrimPrefix $curBase .Page.RelPermalink) -}}
+  {{- /* Detect the current version from the last segment of the base path. */ -}}
+  {{- $segs := split (strings.Trim $curBase "/") "/" -}}
+  {{- $lastSeg := index $segs (sub (len $segs) 1) -}}
+  {{- $current := false -}}
+  {{- range $versions -}}
+    {{- if and (not .latest) (eq (printf "%v" .version) $lastSeg) }}{{ $current = . }}{{ end -}}
+  {{- end -}}
+  {{- /* Root base = where the latest version lives. */ -}}
+  {{- $rootBase := $curBase -}}
+  {{- if $current -}}
+    {{- $rootBase = strings.TrimSuffix (printf "%v/" $current.version) $curBase -}}
+  {{- else -}}
+    {{- range $versions }}{{ if .latest }}{{ $current = . }}{{ end }}{{ end -}}
+  {{- end -}}
+  {{- /* The toggle carries the full label ("0.86 (latest)"). It used to be the
+         bare id, because in the navbar the label widened the bar and pushed the
+         theme switcher off screen; the
+         switcher now opens the sidebar column instead, where there is room for
+         the word that says whether you are on the current release. */ -}}
+  {{- $title := "" -}}
+  {{- with $current }}{{ $title = .name | default (printf "%v" .version) }}{{ end -}}
+
+  <a class="nav-link dropdown-toggle td-version-menu__title" href="#" role="button"
+     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="td-version-menu__title-text">{{ $title }}</span>
+  </a>
+  <ul class="dropdown-menu">
+    {{- range $versions }}
+      {{- $vBase := $rootBase -}}
+      {{- if not .latest }}{{ $vBase = printf "%s%v/" $rootBase .version }}{{ end -}}
+      {{- $isActive := and $current (eq (printf "%v" .version) (printf "%v" $current.version)) -}}
+      <li>
+        <a class="dropdown-item{{ if $isActive }} active{{ end }}"
+           {{- if $isActive }} aria-current="page"{{ end }}
+           href="{{ $vBase }}{{ $rel }}">{{ .name | default (printf "%v" .version) }}</a>
+      </li>
+    {{- end }}
+  </ul>
+{{- end -}}

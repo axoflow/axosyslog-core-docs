@@ -1,0 +1,20 @@
+{{- /*
+  Inline one of the brand SVGs vendored into data/nav-menu.yaml.
+
+  Every id the markup carries — one of the twelve icons has a clip path — and
+  every url(#…) that references it is namespaced by the caller's `ns`, because
+  the menu renders twice per page and two copies of the same clip path would
+  clip each other.
+
+  Params: svg (markup), ns (namespace, the caller's variant).
+
+  The two hex values below are not dead text. _axo-navbar.scss reaches into the
+  inlined artwork with attribute selectors — `[fill="#141D62"]` on the group icons
+  and `[fill="#0F1425"]` on the wordmark, both remapped in the dark theme — and
+  purgecss keeps a rule only if it finds its tokens in a scanned file. The
+  artwork itself lives in data/nav-menu.yaml and assets/icons/logo.svg, and
+  neither is in the content globs of postcss.config.js, so this template is where
+  the two values are visible to the scan:  #141D62  #0F1425
+*/ -}}
+{{- $s := replaceRE `id="([^"]+)"` (printf `id="%s-$1"` .ns) .svg -}}
+{{- replaceRE `url\(#([^)]+)\)` (printf `url(#%s-$1)` .ns) $s | safeHTML -}}
