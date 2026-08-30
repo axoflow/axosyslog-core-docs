@@ -1,0 +1,26 @@
+# Project-level overrides of Docsy's English strings (themes/docsy/i18n/en.yaml).
+# Hugo merges this over the theme's file key by key, so only the keys stated here
+# change and everything else keeps the theme's wording.
+
+# "Create documentation issue" DOES NOT FIT ON ONE LINE, and it is the only page
+# action that does not.
+#
+# Measured on /filterx/ at 1440: the contents column is 232px, of which the actions
+# block gets 191 after the column's 16px padding either side and the block's own
+# 8px start margin. Inside it each action is a block anchor with `padding: 8px 16px`
+# holding a 20px icon, so a label has 139px. Every other action clears it --
+# "Create project issue" 129.7, "Print entire section" 121.9, "View page source"
+# 111.5, "Edit this page" 87.7 -- and this one wants 180.4. A 41px deficit.
+#
+# It cannot be recovered from the layout. Dropping the block's start margin and the
+# anchors' horizontal padding gets to about 179, still short, and only reaches 187
+# by also shaving the column's own padding -- 7px of margin on a number that moves
+# with the typeface. The column itself cannot grow: every pixel it takes comes off
+# the article.
+#
+# So the wording changes, and it is one word. "Create docs issue" measures 114.6,
+# fits with 24px to spare, and keeps the verb parallel with "View page source",
+# "Edit this page" and "Create project issue" beside it. The distinction the label
+# carries -- documentation issues here, product issues in the axoflow repository --
+# survives in "docs".
+post_create_issue: Create docs issue

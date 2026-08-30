@@ -131,8 +131,26 @@ tagline = "Scalable security data processor"
   #pygmentsOptions = "linenos=table"
   # See https://help.farbox.com/pygments.html
   pygmentsStyle = "coy"
-  # Enable syntax highlighting and copy buttons on code blocks with Prism
-  prism_syntax_highlighting = true
+  # PRISM IS OFF, and the ported design replaces what it did.
+  #
+  # Hugo's Chroma highlights at build time; Prism only ever styles what its
+  # JavaScript tokenises at runtime. Turning the flag off takes css/prism.css and
+  # js/prism.js off every page -- both were being preloaded -- and the copy button
+  # on code blocks is drawn by assets/js/axo-code-copy.js instead, loaded from
+  # layouts/_partials/hooks/body-end.html.
+  prism_syntax_highlighting = false
+
+  # ...which is why the theme's own copy button has to go off with it.
+  # themes/docsy/layouts/_partials/scripts.html ships one or the other:
+  #
+  #   {{ if .Site.Params.prism_syntax_highlighting }} prism.js
+  #   {{ else if not .Site.Params.disable_click2copy_chroma }} click-to-copy.js
+  #
+  # So turning Prism off wakes click-to-copy.js, which does find Chroma's blocks:
+  # two copy controls per block, and the theme's is drawn with `fas fa-copy`, a
+  # FontAwesome class this site has no font for once the design is ported. On a
+  # site with 32 code blocks on a single page that is not an edge case.
+  disable_click2copy_chroma = true
 
   # Use tocbot for table of contents
   [params.jstoc]
@@ -141,7 +159,18 @@ tagline = "Scalable security data processor"
   # User interface configuration
   [params.ui]
   #  Set to true to disable breadcrumb navigation.
-  breadcrumb_disable = false
+  #
+  # The ported design carries no breadcrumb: the sidebar shows the path the page
+  # sits on, and the trail repeated it above every title.
+  #
+  # THIS COSTS SOMETHING HERE THAT IT DOES NOT COST ON AXOFLOW. This repository's
+  # layouts/partials/hooks/breadcrumb-lead.html prepends two crumbs --
+  # "Documentation" linking to https://axoflow.com/docs, and the site title -- and
+  # they are the only link back to the documentation index from inside these pages.
+  # The hook is called from themes/docsy-axoflow's breadcrumb.html, so it stops
+  # being reached entirely. Named rather than absorbed: if that link has to
+  # survive, it belongs somewhere the design keeps, not in a disabled breadcrumb.
+  breadcrumb_disable = true
   # Set to true to disable the About link in the site footer
   footer_about_disable = false
   # Set to false if you don't want to display a logo (/assets/icons/logo.svg) in the top navbar
