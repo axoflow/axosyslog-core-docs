@@ -160,45 +160,39 @@ tagline = "Scalable security data processor"
   [params.ui]
   #  Set to true to disable breadcrumb navigation.
   #
-  # The ported design carries no breadcrumb: the sidebar shows the path the page
-  # sits on, and the trail repeated it above every title.
-  #
-  # THIS COSTS SOMETHING HERE THAT IT DOES NOT COST ON AXOFLOW. This repository's
-  # layouts/partials/hooks/breadcrumb-lead.html prepends two crumbs --
-  # "Documentation" linking to https://axoflow.com/docs, and the site title -- and
-  # they are the only link back to the documentation index from inside these pages.
-  # The hook is called from themes/docsy-axoflow's breadcrumb.html, so it stops
-  # being reached entirely. Named rather than absorbed: if that link has to
-  # survive, it belongs somewhere the design keeps, not in a disabled breadcrumb.
-  # NO BREADCRUMB ON THIS SITE, and the theme now defaults it ON, so this is a
-  # deliberate opt-out with a measured reason.
+  # THE BREADCRUMB IS ON HERE, and unlike axoflow-docs it does not fit. Recorded
+  # rather than left to be rediscovered, because the numbers decide what to do
+  # next and they are not obvious from looking at one page.
   #
   # The trail is built from each ancestor's `linkTitle`, and on this site those are
   # sentences doing double duty as descriptions:
   #
   #     destination: Forward, send, and store log messages
   #     tcp, tcp6, udp, udp6: OBSOLETE - Send messages to a remote log server
-  #       using the legacy BSD syslog protocol
-  #     db-parser: Process message content with a pattern database
+  #       using the legacy BSD-syslog protocol (tcp(), udp() drivers)
+  #     db-parser: Process message content with a pattern database (patterndb)
   #
-  # Measured on the deepest page at 1440: the trail wants 1860px in a 769px row.
-  # 215 of 490 pages with a trail exceed that row at 1440/1280 and 236 at 1152. The
-  # frame's guard keeps it to one line and clips rather than wrapping -- verified,
-  # no page overflows -- but what is left reads
+  # Measured in a browser over all 490 pages with a trail. The deepest one wants
+  # 1973px in a 769px row; 209 of 490 clip at least one ancestor crumb at 1440 and
+  # 239 at 1152. The frame's guard holds: 0 wrap onto a second line and 0 page
+  # overflows at either width, and the two lead crumbs are pinned so the mark and
+  # "AxoSyslog" are never the ones cut. What a cut trail reads as:
   #
-  #     Doc... > destination: For... > tcp, tcp6, udp, udp6: OBSOLETE - Send messa...
+  #     [mark] > AxoSyslog > destination: ... > tcp, tcp6, udp, udp6: OBSOLETE - Send ...
   #
-  # with even "Documentation" clipped, because the flex row shares the squeeze out
-  # across every item. A trail nobody can read is worse than no trail.
+  # `assets/js/axo-breadcrumb.js` in the theme puts the full label back on hover
+  # for exactly the crumbs the row cut, so nothing is unreachable -- but a pointer
+  # tooltip is not the same as being able to read the row.
   #
   # THE FIX IS CONTENT, NOT CSS: a short `linkTitle` in the front matter of those
   # section pages, keeping the long `title` for the page itself. The breadcrumb,
-  # the navigation column and the version selector all read `linkTitle`, so it
-  # would shorten all three. Turn this back on once those are in.
+  # the navigation column and the version selector all read `linkTitle`, so one
+  # change shortens all three. Until then this stays on by decision, with the cost
+  # above known.
   #
-  # On axoflow-docs the same trail fits with room to spare -- widest 637px of 769,
-  # nothing clipped -- which is why the theme's default is on.
-  breadcrumb_disable = true
+  # On axoflow-docs the same trail fits with room to spare -- widest 638px of 769,
+  # nothing clipped at either width.
+  breadcrumb_disable = false
   # Set to true to disable the About link in the site footer
   footer_about_disable = false
   # Set to false if you don't want to display a logo (/assets/icons/logo.svg) in the top navbar
