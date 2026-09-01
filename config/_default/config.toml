@@ -170,6 +170,34 @@ tagline = "Scalable security data processor"
   # The hook is called from themes/docsy-axoflow's breadcrumb.html, so it stops
   # being reached entirely. Named rather than absorbed: if that link has to
   # survive, it belongs somewhere the design keeps, not in a disabled breadcrumb.
+  # NO BREADCRUMB ON THIS SITE, and the theme now defaults it ON, so this is a
+  # deliberate opt-out with a measured reason.
+  #
+  # The trail is built from each ancestor's `linkTitle`, and on this site those are
+  # sentences doing double duty as descriptions:
+  #
+  #     destination: Forward, send, and store log messages
+  #     tcp, tcp6, udp, udp6: OBSOLETE - Send messages to a remote log server
+  #       using the legacy BSD syslog protocol
+  #     db-parser: Process message content with a pattern database
+  #
+  # Measured on the deepest page at 1440: the trail wants 1860px in a 769px row.
+  # 215 of 490 pages with a trail exceed that row at 1440/1280 and 236 at 1152. The
+  # frame's guard keeps it to one line and clips rather than wrapping -- verified,
+  # no page overflows -- but what is left reads
+  #
+  #     Doc... > destination: For... > tcp, tcp6, udp, udp6: OBSOLETE - Send messa...
+  #
+  # with even "Documentation" clipped, because the flex row shares the squeeze out
+  # across every item. A trail nobody can read is worse than no trail.
+  #
+  # THE FIX IS CONTENT, NOT CSS: a short `linkTitle` in the front matter of those
+  # section pages, keeping the long `title` for the page itself. The breadcrumb,
+  # the navigation column and the version selector all read `linkTitle`, so it
+  # would shorten all three. Turn this back on once those are in.
+  #
+  # On axoflow-docs the same trail fits with room to spare -- widest 637px of 769,
+  # nothing clipped -- which is why the theme's default is on.
   breadcrumb_disable = true
   # Set to true to disable the About link in the site footer
   footer_about_disable = false
