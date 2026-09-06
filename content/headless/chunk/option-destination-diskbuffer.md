@@ -76,6 +76,8 @@ In {{% param "product.abbrev" %}} version 4.2 and earlier, this option was calle
 
 Options `reliable()` and `capacity-bytes()` are required options.
 
+{{< include-headless "chunk/option-front-cache-size-batch.md" >}}
+
 In {{% param "product.abbrev" %}} version 4.2 and earlier, this option was called `qout-size()`.
 
 ### prealloc() {#diskbuf-prealloc}
