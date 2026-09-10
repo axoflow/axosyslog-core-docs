@@ -242,3 +242,21 @@ anchor = "smart"
 [privacy]
   [privacy.googleAnalytics]
     respectDoNotTrack = true
+
+###############################################################################
+# Cascade
+###############################################################################
+# Stamp every doc page with a Pagefind section filter for this version, so search
+# results can be scoped per version. Read by docsy-axoflow's docs/baseof.html via
+# .Page.Params.body_attribute, which puts it on <body>.
+#
+# THIS IS THE ARCHIVED 4.26 BRANCH, so the value is the bare version id: no
+# " (current)" — that suffix belongs to whichever version main's copy of this
+# block claims, and two options claiming to be the release you are on is the one
+# failure this file has to avoid. CI overlays data/versions.yaml from main onto
+# this build but NOT this file, so the value here is what the unified index gets
+# for every 4.26 page.
+[[cascade]]
+  body_attribute = 'data-pagefind-filter="section:4.26"'
+  [cascade.target]
+    path = '/**'
