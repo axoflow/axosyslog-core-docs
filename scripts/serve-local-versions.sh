@@ -100,6 +100,13 @@ resolve_ref() {
   fi
 }
 
+# Both temp paths below are created from an explicit template under this dir, so
+# TMPDIR is honored. A bare `mktemp` would not honor it: macOS's mktemp only reads
+# TMPDIR when it is given a template or -t, and otherwise writes straight to the
+# per-user /var/folders directory — which a restricted environment may refuse.
+TMPROOT="${TMPDIR:-/tmp}"
+TMPROOT="${TMPROOT%/}"
+
 worktree=""; tmp_parent=""; verlist=""
 cleanup() {
   [ -n "$worktree" ] && [ -d "$worktree" ] && git worktree remove --force "$worktree" 2>/dev/null || true
@@ -137,7 +144,7 @@ hugo --environment development --baseURL "${BASE}/" --destination public
 # 2. Every other version — from its git ref, into public/<version>/.
 # Read from a temp file (not process substitution) so the loop also works when
 # the script is run with `sh` on macOS, where `< <(...)` is unavailable.
-verlist="$(mktemp)"
+verlist="$(mktemp "${TMPROOT}/axo-versions.XXXXXX")"
 parse_versions > "$verlist"
 while IFS='|' read -r version ref latest; do
   [ -z "$version" ] && continue
@@ -154,7 +161,7 @@ while IFS='|' read -r version ref latest; do
   fi
 
   echo "==> Building ${version} from ref '${ref}' ($(git rev-parse --short=12 "$commit")) at ${BASE}/${version}/"
-  tmp_parent="$(mktemp -d)"
+  tmp_parent="$(mktemp -d "${TMPROOT}/axo-worktree.XXXXXX")"
   worktree="${tmp_parent}/src"
   git worktree add --quiet --detach "$worktree" "$commit"
   (
@@ -166,6 +173,11 @@ while IFS='|' read -r version ref latest; do
     rm -rf themes
     ln -s "${REPO}/themes" themes
     # Mirror production: show the current version list in the archived switcher.
+    # mkdir first — a ref old enough to predate the version switcher has no data/
+    # directory at all, and `set -e` turned that cp into a hard failure with no
+    # explanation. CI's equivalent step is a `git show > data/versions.yaml`
+    # redirect, which fails the same way for the same reason.
+    mkdir -p "$(dirname "$VERSIONS_FILE")"
     cp "${REPO}/${VERSIONS_FILE}" "$VERSIONS_FILE"
     HUGO_PARAMS_BUILDREF="$ref" \
     HUGO_PARAMS_BUILDCOMMIT="$commit" \

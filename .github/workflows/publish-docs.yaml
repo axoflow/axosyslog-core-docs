@@ -79,10 +79,17 @@ jobs:
       # Centralize the version list: archived versions are built with main's
       # data/versions.yaml so their switcher shows the full, current list and can
       # link forward to versions released after this ref was frozen.
+      #
+      # `mkdir -p data` is not decoration: a ref old enough to predate the version
+      # switcher — release-4.26 among them — has no data/ directory, and the
+      # redirect below cannot create one. Without it the step dies with
+      # "data/versions.yaml: No such file or directory" and the version never
+      # publishes.
       - name: Overlay version list from main
         if: ${{ !inputs.is_latest }}
         run: |
           git fetch --depth=1 origin main
+          mkdir -p data
           git show FETCH_HEAD:data/versions.yaml > data/versions.yaml
           echo "Overlaid data/versions.yaml from main:"
           cat data/versions.yaml
