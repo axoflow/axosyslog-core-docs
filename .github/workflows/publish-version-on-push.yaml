@@ -1,0 +1,72 @@
+name: Publish archived version on push
+
+# Auto-republishes an archived version when its release branch gets a new commit.
+# The pushed branch is mapped to a version id via data/versions.yaml (from main):
+# it publishes only if some non-latest entry's `ref` equals the branch name. So a
+# version pinned to a tag is never touched by a push — only versions whose `ref`
+# is this branch. The latest version (main) is handled by publish.yaml; this
+# workflow never touches the site root.
+#
+# IMPORTANT: for `push` events GitHub runs the workflow definition from the pushed
+# branch, not from main — and that goes for the reusable `./.github/workflows/
+# publish-docs.yaml` it calls as well. Both files must therefore exist on every
+# release-* branch that a version tracks, or pushes to that branch silently
+# publish nothing. When a release branch predates them, rebuild it manually
+# instead: Actions → "Publish versions" → version = <id>.
+
+on:
+  push:
+    branches:
+      - 'release-*'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-archived-${{ github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  resolve:
+    name: Map branch to version
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.map.outputs.version }}
+    steps:
+      - name: Checkout main (source of truth for versions.yaml)
+        uses: actions/checkout@v7
+        with:
+          ref: main
+
+      - name: Map branch -> version
+        id: map
+        env:
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          pip install --quiet pyyaml
+          python3 - >> "$GITHUB_OUTPUT" <<'PY'
+          import os, yaml
+          branch = os.environ["BRANCH"]
+          data = yaml.safe_load(open("data/versions.yaml")) or []
+          ver = ""
+          for v in data:
+              if v.get("latest"):
+                  continue
+              if str(v.get("ref") or "").strip() == branch:
+                  ver = str(v.get("version") or "").strip()
+                  break
+          print("version=" + ver)
+          PY
+
+  publish:
+    name: Publish ${{ needs.resolve.outputs.version }}
+    needs: resolve
+    if: ${{ needs.resolve.outputs.version != '' }}
+    uses: ./.github/workflows/publish-docs.yaml
+    with:
+      ref: ${{ github.ref_name }}
+      version: ${{ needs.resolve.outputs.version }}
+      is_latest: false
+    secrets:
+      R2_PUBLIC_EDITOR_ACCESS_KEY_ID: ${{ secrets.R2_PUBLIC_EDITOR_ACCESS_KEY_ID }}
+      R2_PUBLIC_EDITOR_ACCESS_KEY_SECRET: ${{ secrets.R2_PUBLIC_EDITOR_ACCESS_KEY_SECRET }}

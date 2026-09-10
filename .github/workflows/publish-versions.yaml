@@ -1,0 +1,73 @@
+name: Publish versions
+
+# Rebuilds and deploys the archived documentation versions listed in
+# data/versions.yaml, each into its own sub-directory under docs/axosyslog-core/.
+#
+# Run this:
+#   - after adding/removing an entry in data/versions.yaml (so every archived
+#     sub-site picks up the new central version list in its switcher), or
+#   - to republish a single archived version after fixing its branch/tag.
+#
+# The latest version is published separately by publish.yaml (on push to main).
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Single version to rebuild (for example, 4.26). Leave blank to rebuild all archived versions."
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  matrix:
+    name: Build version matrix
+    runs-on: ubuntu-latest
+    outputs:
+      versions: ${{ steps.set.outputs.versions }}
+    steps:
+      - name: Checkout (main)
+        uses: actions/checkout@v7
+
+      - name: Read data/versions.yaml
+        id: set
+        env:
+          ONLY: ${{ github.event.inputs.version }}
+        run: |
+          pip install --quiet pyyaml
+          python3 - >> "$GITHUB_OUTPUT" <<'PY'
+          import json, os, yaml
+          only = os.environ.get("ONLY", "").strip()
+          data = yaml.safe_load(open("data/versions.yaml")) or []
+          out = []
+          for v in data:
+              if v.get("latest"):
+                  continue
+              ver = str(v.get("version") or "").strip()
+              ref = str(v.get("ref") or "").strip()
+              if not ver or not ref:
+                  continue
+              if only and ver != only:
+                  continue
+              out.append({"version": ver, "ref": ref})
+          print("versions=" + json.dumps(out))
+          PY
+
+  publish:
+    name: Publish ${{ matrix.version.version }}
+    needs: matrix
+    if: ${{ needs.matrix.outputs.versions != '[]' && needs.matrix.outputs.versions != '' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        version: ${{ fromJson(needs.matrix.outputs.versions) }}
+    uses: ./.github/workflows/publish-docs.yaml
+    with:
+      ref: ${{ matrix.version.ref }}
+      version: ${{ matrix.version.version }}
+      is_latest: false
+    secrets:
+      R2_PUBLIC_EDITOR_ACCESS_KEY_ID: ${{ secrets.R2_PUBLIC_EDITOR_ACCESS_KEY_ID }}
+      R2_PUBLIC_EDITOR_ACCESS_KEY_SECRET: ${{ secrets.R2_PUBLIC_EDITOR_ACCESS_KEY_SECRET }}

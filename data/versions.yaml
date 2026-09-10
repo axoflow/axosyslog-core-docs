@@ -1,0 +1,46 @@
+# Documentation version switcher — single source of truth.
+#
+# Read by:
+#   - themes/docsy-axoflow's _partials/navbar-version-selector.html  (the dropdown)
+#   - themes/docsy-axoflow's _partials/version-banner.html           (the "no longer current" banner)
+#   - themes/docsy-axoflow's _partials/print-version.html            (the version line on paper)
+#   - .github/workflows/publish-docs.yaml     (deploy target + --delete guard)
+#   - .github/workflows/publish-versions.yaml (matrix of versions to rebuild)
+#   - scripts/serve-local-versions.sh         (local preview of the whole tree)
+#
+# The switcher and the banner appear as soon as this file exists — both partials
+# are gated on `hugo.Data.versions` and need no param to turn them on.
+#
+# The per-version publish jobs overlay THIS file (from the main branch) onto the
+# checked-out release ref before building, so every published version — including
+# archived ones — renders the current, complete version list and can link to the
+# same page under any other version's URL prefix. Add a version here, then run the
+# "Publish versions" workflow to rebuild the older sub-sites with the new list.
+# Editing an existing entry's `ref` does NOT republish anything on its own either —
+# the live sub-site keeps serving the old ref until that workflow is rerun. Check
+# what a published page was built from in its <meta name="docs-build-ref"> tag.
+#
+# Order = dropdown order (newest first).
+# Fields:
+#   version : version id. Doubles as the URL sub-path and R2 sub-dir for the
+#             version (for example, "4.26" → /docs/axosyslog-core/4.26/). The base
+#             host/path is taken from the Hugo baseURL, so it is never repeated here.
+#             The release train, never a patch number: the docs describe 4.26.x.
+#   name    : optional dropdown/banner label. Defaults to the version id.
+#             The word for the current release is "current", not "latest" — the
+#             search modal's version filter says the same thing, and the two
+#             controls disagreeing about what to call the same release is worse
+#             than either word. That filter cannot read this file (its values are
+#             baked into the Pagefind index from the body_attribute cascade in
+#             config/_default/config.toml), so the agreement is kept by hand and
+#             both places have to move together on a release.
+#   ref     : git tag or branch the version is built from. Omit for the latest.
+#   latest  : true for the current release. Published at the site root (no version
+#             segment), so it keeps the existing URLs and their SEO.
+
+- version: "4.27"
+  name: "4.27 (current)"
+  latest: true
+
+- version: "4.26"
+  ref: "release-4.26"
