@@ -20,6 +20,10 @@ For example, the following csv-file contains three lines identified with the IP 
 192.168.3.1,host-role,mailserver
 ```
 
+## Prerequisites
+
+{{< include-headless "chunk/prereq-package-deb-only.md" "axosyslog-mod-add-contextual-data" >}}
+
 ## The database file: {#add-contextual-data-csv-database-file}
 
 The database file must comply with the [RFC4180 CSV format](https://tools.ietf.org/html/rfc4180), with the following exceptions and limitations:
@@ -47,11 +51,9 @@ parser p_add_context_data {
 };
 ```
 
-
 You can also add data to messages that do not have a matching selector entry in the database using the `default-selector()` option.
 
 If you modify the database file, you have to reload {{% param "product.abbrev" %}} for the changes to take effect. If reloading {{% param "product.abbrev" %}} or the database file fails for some reason, {{% param "product.abbrev" %}} will keep using the last working database file.
-
 
 ## Example: Adding metadata from a CSV file
 

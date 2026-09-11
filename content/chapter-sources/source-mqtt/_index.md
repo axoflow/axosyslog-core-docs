@@ -6,7 +6,7 @@ short_description: "Fetch messages from MQTT brokers"
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-From {{% param "product.abbrev" %}} version 3.35, you can use the `mqtt()` source to fetch messages from MQTT brokers.
+You can use the `mqtt()` source to fetch messages from MQTT brokers.
 
 The `mqtt()` source builds on the [MQTT protocol](https://www.hivemq.com/mqtt/mqtt-protocol/), and uses its [client](https://www.hivemq.com/blog/seven-best-mqtt-client-tools/) and [broker](https://www.hivemq.com/hivemq/mqtt-broker/) entities.
 
@@ -16,6 +16,10 @@ The rest of this chapter and its sections build on your familiarity with the MQT
 
 {{% /alert %}}
 
+## Prerequisites
+
+- {{% param "product.name" %}} version 3.35.0 or later.
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-mqtt" "axosyslog-mqtt" >}}
 
 ## Declaration:
 

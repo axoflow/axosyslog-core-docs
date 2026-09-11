@@ -287,6 +287,8 @@ For details, see {{% xref "/filterx/filterx-format-data/format-rfc5424.md" %}}.
 
 ## format_xml {#format-xml}
 
+{{< include-headless "chunk/prereq-package-deb-only.md" "axosyslog-mod-xml-parser" >}}
+
 Available in {{< product >}} 4.13 and later.
 
 Formats a dictionary into XML.
@@ -296,6 +298,8 @@ Usage: `format_xml({"key1":{"nestedkey":"value"}})`
 For details, see {{% xref "/filterx/filterx-format-data/format-xml.md" %}}.
 
 ## format_windows_eventlog_xml {#format-windows-eventlog-xml}
+
+{{< include-headless "chunk/prereq-package-deb-only.md" "axosyslog-mod-xml-parser" >}}
 
 Available in {{< product >}} 4.13 and later.
 
@@ -529,21 +533,31 @@ Moves the specified variable to its new location, instead of copying it. This is
 
 ## otel_array {#otel-array}
 
+{{< include-headless "chunk/prereq-package.md" "axosyslog-mod-grpc" "axosyslog-grpc" >}}
+
 Creates a [dictionary]({{< relref "/filterx/_index.md#json" >}}) represented as an OpenTelemetry array.
 
 ## otel_kvlist {#otel-kvlist}
+
+{{< include-headless "chunk/prereq-package.md" "axosyslog-mod-grpc" "axosyslog-grpc" >}}
 
 Creates a [dictionary]({{< relref "/filterx/_index.md#json" >}}) represented as an OpenTelemetry key-value list.
 
 ## otel_logrecord {#otel-logrecord}
 
+{{< include-headless "chunk/prereq-package.md" "axosyslog-mod-grpc" "axosyslog-grpc" >}}
+
 Creates an [OpenTelemetry log record object]({{< relref "/filterx/filterx-otel/_index.md#otel-logrecord-reference" >}}).
 
 ## otel_resource {#otel-resource}
 
+{{< include-headless "chunk/prereq-package.md" "axosyslog-mod-grpc" "axosyslog-grpc" >}}
+
 Creates an [OpenTelemetry resource object]({{< relref "/filterx/filterx-otel/_index.md#otel-resource-reference" >}}).
 
 ## otel_scope {#otel-scope}
+
+{{< include-headless "chunk/prereq-package.md" "axosyslog-mod-grpc" "axosyslog-grpc" >}}
 
 Creates an [OpenTelemetry scope object]({{< relref "/filterx/filterx-otel/_index.md#otel-scope-reference" >}}).
 
@@ -583,6 +597,8 @@ For details, see {{% xref "/filterx/filterx-parsing/leef/_index.md" %}}.
 
 ## parse_xml {#parse-xml}
 
+{{< include-headless "chunk/prereq-package-deb-only.md" "axosyslog-mod-xml-parser" >}}
+
 Parse an XML object into a JSON object.
 
 Usage: `parse_xml(msg)`
@@ -591,6 +607,8 @@ For details, see {{< relref "/filterx/filterx-parsing/xml/_index.md" >}}
 
 ## parse_windows_eventlog_xml {#parse-windows}
 
+{{< include-headless "chunk/prereq-package-deb-only.md" "axosyslog-mod-xml-parser" >}}
+
 Parses a Windows Event Log XML object into a JSON object.
 
 Usage: `parse_xml(msg)`
@@ -598,6 +616,8 @@ Usage: `parse_xml(msg)`
 For details, see {{< relref "/filterx/filterx-parsing/xml/_index.md" >}}
 
 ## protobuf_message {#protobuf-message}
+
+{{< include-headless "chunk/prereq-package.md" "axosyslog-mod-grpc" "axosyslog-grpc" >}}
 
 Available in {{< product >}} 4.13 and later.
 

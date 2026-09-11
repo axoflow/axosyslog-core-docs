@@ -9,12 +9,18 @@ type:
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-From version 3.27.1, the {{% param "product.name" %}} application can send log messages to [Sumo Logic](https://www.sumologic.com/), a cloud-based log management and security analytics service, by using the `sumologic-http()` and `sumologic-syslog()` destinations.
+{{% param "product.name" %}} can send log messages to [Sumo Logic](https://www.sumologic.com/), a cloud-based log management and security analytics service, by using the `sumologic-http()` and `sumologic-syslog()` destinations.
 
 ## Prerequisites
 
 Currently, using the `sumologic-http()` and `sumologic-syslog()` destinations with {{% param "product.abbrev" %}} has the following prerequisites:
 
+- {{% param "product.abbrev" %}} version 3.27.1 or later.
+- {{< include-headless "chunk/prereq-package-scl.md" >}}
+
+    {{< include-headless "chunk/scl-config-snippet.md" "sumologic-http()" "scl/sumologic/sumologic.conf" >}}
+
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-http" "axosyslog-http" >}}
 - A Sumo Logic account.
 
     If you do not yet have a Sumo Logic account, visit [the official Sumo Logic website](https://www.sumologic.com/), and click `Start free trial` to create an account.
@@ -99,17 +105,3 @@ destination d_sumo_syslog {
     );
 };
 ```
-
-## Using the sumologic() driver
-
-To use the `sumologic()` driver, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
-
-```shell
-@include "scl.conf"
-```
-
-{{% alert title="Note" color="info" %}}
-
-The `sumologic()` driver is actually a reusable configuration snippet configured to send log messages using the `network()` and `http()` destination by using a template. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/sumologic/sumologic.conf).
-
-{{% /alert %}}

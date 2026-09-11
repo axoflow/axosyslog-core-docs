@@ -13,6 +13,7 @@ Starting with version 4.9.0, {{% param "product_name" %}} can send data to [Clic
 
 ## Prerequisites
 
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-grpc" "axosyslog-grpc" >}}
 - A [self-hosted ClickHouse installation](https://clickhouse.com/docs/en/install).
 
     {{% alert title="Warning" color="warning" %}}

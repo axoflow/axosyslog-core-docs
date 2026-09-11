@@ -8,6 +8,8 @@ weight: 1100
 
 Available in {{< product >}} 4.9 and later.
 
+{{< include-headless "chunk/prereq-package-deb-only.md" "axosyslog-mod-xml-parser" >}}
+
 The `parse_windows_eventlog_xml()` FilterX function parses Windows Event Logs XMLs. It's a specialized version of the [`parse_xml()` parser]({{< relref "/filterx/filterx-parsing/xml/_index.md" >}}).
 
 The parser returns false in the following cases:

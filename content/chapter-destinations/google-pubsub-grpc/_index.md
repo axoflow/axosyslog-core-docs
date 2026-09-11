@@ -12,7 +12,8 @@ Starting with version 4.10.0, {{% param "product_name" %}} can send data to [Goo
 
 ## Prerequisites
 
-{{< include-headless "chunk/google-pubsub-prerequisites.md" >}}
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-grpc" "axosyslog-grpc" >}}
+- {{< include-headless "chunk/google-pubsub-prerequisites.md" >}}
 
 ## Configuration
 

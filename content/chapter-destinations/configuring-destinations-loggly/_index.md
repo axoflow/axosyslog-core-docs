@@ -8,13 +8,17 @@ short_description: "Send logs to Loggly"
 
 The `loggly()` destination sends log messages to the [Loggly](https://www.loggly.com/) Logging-as-a-Service provider. You can send log messages over TCP, or encrypted with TLS.
 
+## Prerequisites
+
+- {{< include-headless "chunk/prereq-package-scl.md" >}}
+
+    {{< include-headless "chunk/scl-config-snippet.md" "loggly()" "scl/loggly/loggly.conf" >}}
 
 ## Declaration:
 
 ```shell
    loggly(token());
 ```
-
 
 ## Example: Using the loggly() driver {#example-destination-loggly}
 
@@ -52,13 +56,3 @@ The following example parses the access logs of an Apache webserver from a file 
         };
     }
 ```
-
-
-To use the `loggly()` driver, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
-
-```shell
-   @include "scl.conf"
-```
-
-The `loggly()` driver is actually a reusable configuration snippet configured to send log messages using the `tcp()` driver using a template. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/loggly/loggly.conf).
-

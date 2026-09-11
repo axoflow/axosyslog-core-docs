@@ -2,6 +2,7 @@
 title: Install AxoSyslog on RHEL/Fedora/AlmaLinux
 linktitle: RHEL/Fedora
 weight: 250
+rpm: true
 ---
 
 You can install {{< product >}} 4.8 and newer on your RPM-based system from Axoflow's RPM repository. {{< product >}} is a drop in replacement for the `syslog-ng` RPM package, all the {{< product >}} binaries and configuration files are stored at the same place on your system.
@@ -15,7 +16,7 @@ The following distributions are supported:
 
 (The packages for AlmaLinux probably work for Rocky Linux as well, but we haven't tested it.)
 
-{{< include-headless "chunk/package-to-install.md" >}}
+{{< readfile "/headless/chunk/package-to-install.md" >}}
 
 Usually, you install the base package `axosyslog-<version-number>.<distro>.x86_64.rpm`, and the packages of specific modules that you want to use. We also provide `debuginfo` packages for every module, but you only need these in certain troubleshooting scenarios.
 

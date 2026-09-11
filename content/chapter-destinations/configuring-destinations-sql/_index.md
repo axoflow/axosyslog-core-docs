@@ -8,6 +8,10 @@ short_description: "Store messages in an SQL database"
 
 The `sql()` driver sends messages into an SQL database. Currently the Microsoft SQL (MSSQL), MySQL, Oracle, PostgreSQL, and SQLite databases are supported. Starting with {{% param "product.abbrev" %}} 4.0, type information is automatically added to the stored columns if available. For details, see {{% xref "/chapter-concepts/concepts-value-pairs/specifying-data-types/_index.md" %}}.
 
+## Prerequisites
+
+{{< include-headless "chunk/prereq-package.md" "axosyslog-mod-sql" "axosyslog-sql" >}}
+
 ## Declaration:
 
 ```shell
@@ -24,7 +28,6 @@ Currently the {{% param "product.abbrev" %}} application has default schemas for
 
 {{% /alert %}}
 
-
 {{% alert title="Note" color="info" %}}
 
 The `sql()` destination requires database-specific packages to be installed. These packages are automatically installed by the binary `syslog-ng` installer.
@@ -40,7 +43,6 @@ When using macros in table names, note that some databases limit the maximum all
 {{% /alert %}}
 
 Inserting the records into the database is performed by a separate thread. The AxoSyslog application automatically performs the escaping required to insert the messages into the database.
-
 
 ## Example: Using the sql() driver {#example-destination-sql}
 

@@ -12,6 +12,9 @@ The Python destination allows you to write your own destination in Python. You c
 
 {{< include-headless "wnt/note-python-persist-name.md" >}}
 
+## Prerequisites
+
+{{< include-headless "chunk/prereq-package.md" "axosyslog-mod-python" "axosyslog-python" >}}
 
 ## Declaration:
 
@@ -72,14 +75,11 @@ From version 3.27, {{% param "product.abbrev" %}} supports the arrow syntax in d
 
 {{< include-headless "chunk/python-method-init.md" >}}
 
-
 <span id="python-destination-method-is-opened"></span>
 
 ## is_opened(self) method (optional)
 
 Checks if the connection to the target is able to receive messages, and should return True if it is. For details, see [Error handling in the python() destination](#python-destination-error-handling).
-
-
 
 <span id="python-destination-method-open"></span>
 
@@ -88,8 +88,6 @@ Checks if the connection to the target is able to receive messages, and should r
 The `open(self)` method opens the resources required for the destination, for example, it initiates a connection to the target service. It is called after `init()` when {{% param "product.abbrev" %}} is started or reloaded. If `send()` returns with an error, {{% param "product.abbrev" %}} calls `close()` and `open()` before trying to send again.
 
 {{% include-headless "chunk/python-method-open-time-reopen.md" %}}
-
-
 
 <span id="python-destination-method-send"></span>
 
@@ -115,8 +113,6 @@ The method can return True, False, or one of the following constants:
 
   - `self.RETRY`: The message is put back to the queue, and sending the message is attempted (up to the number of the `retries()` option). If sending the message has failed `retries()` times, `self.NOT_CONNECTED` is returned.
 
-
-
 <span id="python-destination-method-flush"></span>
 
 ## flush(self) method (optional)
@@ -135,18 +131,13 @@ The method can return True, False, or one of the following constants:
 
   - `self.RETRY`: The message is put back to the queue, and sending the message is attempted (up to the number of the `retries()` option). If sending the message has failed `retries()` times, `self.NOT_CONNECTED` is returned.
 
-
-
 <span id="python-destination-method-close"></span>
 
 ## close(self) method (optional)
 
 Close the connection to the target service. Usually it is called right before `deinit()` when stopping or reloading {{% param "product.abbrev" %}}. It is also called when `send()` fails.
 
-
 {{< include-headless "chunk/python-method-deinit.md" >}}
-
-
 
 ## Error handling in the python() destination {#python-destination-error-handling}
 
@@ -163,8 +154,6 @@ The Python destination handles errors as follows.
       - Otherwise, {{% param "product.abbrev" %}} calls the `send` method again.
 
 4.  If the `send` method has returned with an error `retries()` times and the `is_opened` method has not returned any errors, {{% param "product.abbrev" %}} drops the message and attempts to process the next message.
-
-
 
 ## Example: Write logs into a file {#python-destination-example}
 
@@ -248,6 +237,5 @@ The following is a simple destination that uses the `flush()` method to print th
             self.bulk = list()
             return self.SUCCESS
 ```
-
 
 For the list of available optional parameters, see {{% xref "/chapter-destinations/python-destination/reference-destination-python/_index.md" %}}.

@@ -12,6 +12,9 @@ Version 3.7 of {{% param "product.abbrev" %}} can directly post log messages to 
 
   - This destination requires Java. For an `http` destination that does not use Java, see {{% xref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" %}}.
 
+## Prerequisites
+
+The Java HTTP module is no longer shipped with {{% param "product.name" %}}: it isn't part of the `axosyslog-mod-java` (Debian/Ubuntu) or `axosyslog-java` (RHEL and compatible distributions) package. Use the {{% xref "/chapter-destinations/configuring-destinations-http-nonjava/_index.md" %}} destination instead, which is available in the `axosyslog-mod-http`/`axosyslog-http` package.
 
 ## Declaration:
 
@@ -24,8 +27,6 @@ Version 3.7 of {{% param "product.abbrev" %}} can directly post log messages to 
     
     );
 ```
-
-
 
 ## Example: Sending log data to a web service {#example-destination-http}
 
@@ -44,6 +45,5 @@ The following example defines an `http` destination.
     log
         { source(s_file); destination(d_http); flags(flow-control); };
 ```
-
 
 {{< include-headless "wnt/note-jvm-reload.md" >}}
