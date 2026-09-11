@@ -131,8 +131,26 @@ tagline = "Scalable security data processor"
   #pygmentsOptions = "linenos=table"
   # See https://help.farbox.com/pygments.html
   pygmentsStyle = "coy"
-  # Enable syntax highlighting and copy buttons on code blocks with Prism
-  prism_syntax_highlighting = true
+  # PRISM IS OFF, and the ported design replaces what it did.
+  #
+  # Hugo's Chroma highlights at build time; Prism only ever styles what its
+  # JavaScript tokenises at runtime. Turning the flag off takes css/prism.css and
+  # js/prism.js off every page -- both were being preloaded -- and the copy button
+  # on code blocks is drawn by assets/js/axo-code-copy.js instead, loaded from
+  # layouts/_partials/hooks/body-end.html.
+  prism_syntax_highlighting = false
+
+  # ...which is why the theme's own copy button has to go off with it.
+  # themes/docsy/layouts/_partials/scripts.html ships one or the other:
+  #
+  #   {{ if .Site.Params.prism_syntax_highlighting }} prism.js
+  #   {{ else if not .Site.Params.disable_click2copy_chroma }} click-to-copy.js
+  #
+  # So turning Prism off wakes click-to-copy.js, which does find Chroma's blocks:
+  # two copy controls per block, and the theme's is drawn with `fas fa-copy`, a
+  # FontAwesome class this site has no font for once the design is ported. On a
+  # site with 32 code blocks on a single page that is not an edge case.
+  disable_click2copy_chroma = true
 
   # Use tocbot for table of contents
   [params.jstoc]
@@ -141,6 +159,42 @@ tagline = "Scalable security data processor"
   # User interface configuration
   [params.ui]
   #  Set to true to disable breadcrumb navigation.
+  #
+  # THE BREADCRUMB IS ON HERE, and unlike axoflow-docs it does not fit. Recorded
+  # rather than left to be rediscovered, because the numbers decide what to do
+  # next and they are not obvious from looking at one page.
+  #
+  # The trail is built from each ancestor's `linkTitle`, and on this site those are
+  # sentences doing double duty as descriptions:
+  #
+  #     destination: Forward, send, and store log messages
+  #     tcp, tcp6, udp, udp6: OBSOLETE - Send messages to a remote log server
+  #       using the legacy BSD-syslog protocol (tcp(), udp() drivers)
+  #     db-parser: Process message content with a pattern database (patterndb)
+  #
+  # Measured in a browser over all 490 pages with a trail. The deepest one wants
+  # 1973px in a 769px row; 209 of 490 clip at least one ancestor crumb at 1440 and
+  # 239 at 1152. The frame's guard holds: 0 wrap onto a second line and 0 page
+  # overflows at either width, and the two lead crumbs are pinned so the mark and
+  # "AxoSyslog" are never the ones cut. What a cut trail reads as:
+  #
+  #     [mark] > AxoSyslog > destination: ... > tcp, tcp6, udp, udp6: OBSOLETE - Send ...
+  #
+  # `assets/js/axo-breadcrumb.js` in the theme puts the full label back on hover
+  # for exactly the crumbs the row cut, so nothing is unreachable -- but a pointer
+  # tooltip is not the same as being able to read the row.
+  #
+  # THE FIX IS CONTENT, NOT CSS: a short `linkTitle` in the front matter of those
+  # section pages, keeping the long `title` for the page itself. The breadcrumb,
+  # the navigation column and the version selector all read `linkTitle`, so one
+  # change shortens all three. Until then this stays on by decision, with the cost
+  # above known.
+  #
+  # The page counts above were measured on the 4.27 docs; this is the 4.26 branch,
+  # where the trail is the same shape over slightly fewer pages.
+  #
+  # On axoflow-docs the same trail fits with room to spare -- widest 638px of 769,
+  # nothing clipped at either width.
   breadcrumb_disable = false
   # Set to true to disable the About link in the site footer
   footer_about_disable = false

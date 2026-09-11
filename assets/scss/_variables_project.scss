@@ -1,2 +1,27 @@
-// Placeholder file for project-specific customizations
+// This site's own Bootstrap variables, on top of the documentation chrome's.
+//
+// Everything that used to be in this file was moved into
+// themes/docsy-axoflow/assets/scss/_variables_project.scss, which the two
+// documentation sites now share. One value is left, because it is measured
+// against THIS site's own navigation labels rather than against the design.
+
+// HOW WIDE THE DOCUMENTATION TREE MAY GROW when the window is widened. The
+// shared default is 314px, which is AxoFlow's widest label; these labels run
+// longer. Measured on /filterx/ at the default 231px column, 21 of 41 visible
+// rows wrap (51%), and the widths that would fit them are
+//
+//     50% of rows on one line   column 218px
+//     75%                              284px
+//     90%                              443px
+//    100%                              613px   <- a tail of sentence-length
+//                                                 section labels
+//
+// 443 is the 90% mark, not the 100%: the tail must not set the width. `template
+// and rewrite: Format, modify, and manipulate...` wants 581px on its own and is
+// a sentence, not a label, so past 443 more width stops buying lines and only
+// costs the measure.
+//
+// Assigned BEFORE the import below, which declares it `!default`.
+$axo-tree-max: 443px;
+
 @import "../../themes/docsy-axoflow/assets/scss/_variables_project.scss";
