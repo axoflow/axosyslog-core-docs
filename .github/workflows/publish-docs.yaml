@@ -1,0 +1,299 @@
+name: Publish docs (reusable)
+
+# Single reusable build+deploy pipeline for one documentation version.
+# Called by:
+#   - publish.yaml                 → the latest version, built from main, deployed to the site root
+#   - publish-versions.yaml        → each archived version, built from its tag/branch into a sub-dir
+#   - publish-version-on-push.yaml → one archived version, on a push to its release branch
+#
+# The build and the three-pass R2 sync live here once and are parameterized by inputs.
+# The base URL and R2 sub-dir are derived from the production baseURL and the version
+# id, so callers only pass the version + ref (never repeated URLs or sub-dirs).
+#
+# Every version gets the same steps, manpages included: the manpage script reads
+# `public/app-man-syslog-ng` from whatever build it is handed, so each sub-site
+# publishes its own manpages and manpages.tar.gz.
+
+on:
+  workflow_call:
+    inputs:
+      ref:
+        description: "Git ref (branch or tag) to build. Empty = default branch."
+        type: string
+        default: ''
+      version:
+        description: "Version id (also the URL sub-path / R2 sub-dir). Ignored when is_latest."
+        type: string
+        default: ''
+      is_latest:
+        description: "True for the latest version (deployed to the site root)."
+        type: boolean
+        default: false
+    secrets:
+      R2_PUBLIC_EDITOR_ACCESS_KEY_ID:
+        required: true
+      R2_PUBLIC_EDITOR_ACCESS_KEY_SECRET:
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build & deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.ref }}
+          submodules: 'true'
+          clean: true
+          show-progress: true
+          lfs: false
+          set-safe-directory: true
+          fetch-depth: 0
+
+      # Stamp every page with the ref/commit it came from (theme renders these as
+      # <meta name="docs-build-*">), so a published sub-site can be checked against
+      # the ref it is supposed to track. Resolved from the checkout, not from
+      # GITHUB_REF_NAME: for archived versions that is the ref which triggered the
+      # run (main), not the release branch/tag actually built.
+      - name: Stamp build provenance
+        env:
+          REF: ${{ inputs.ref }}
+          VERSION: ${{ inputs.is_latest && 'latest' || inputs.version }}
+        run: |
+          [ -n "$REF" ] || REF="$(git rev-parse --abbrev-ref HEAD)"
+          # Theme revisions come from the checked-out submodules, so they record the
+          # theme actually rendered rather than the gitlink this ref pins.
+          {
+            echo "HUGO_PARAMS_BUILDREF=$REF"
+            echo "HUGO_PARAMS_BUILDCOMMIT=$(git rev-parse HEAD)"
+            echo "HUGO_PARAMS_BUILDVERSION=$VERSION"
+            echo "HUGO_PARAMS_BUILDDOCSYCOMMIT=$(git -C themes/docsy rev-parse HEAD || true)"
+            echo "HUGO_PARAMS_BUILDDOCSYAXOFLOWCOMMIT=$(git -C themes/docsy-axoflow rev-parse HEAD || true)"
+          } | tee -a "$GITHUB_ENV"
+
+      # Centralize the version list: archived versions are built with main's
+      # data/versions.yaml so their switcher shows the full, current list and can
+      # link forward to versions released after this ref was frozen.
+      #
+      # `mkdir -p data` is not decoration: a ref old enough to predate the version
+      # switcher — release-4.26 among them — has no data/ directory, and the
+      # redirect below cannot create one. Without it the step dies with
+      # "data/versions.yaml: No such file or directory" and the version never
+      # publishes.
+      - name: Overlay version list from main
+        if: ${{ !inputs.is_latest }}
+        run: |
+          git fetch --depth=1 origin main
+          mkdir -p data
+          git show FETCH_HEAD:data/versions.yaml > data/versions.yaml
+          echo "Overlaid data/versions.yaml from main:"
+          cat data/versions.yaml
+
+      # Derive the build target from the production baseURL + version id.
+      # latest  → root        (https://axoflow.com/docs/axosyslog-core/      → docs/axosyslog-core)
+      # version → /<version>/ (https://axoflow.com/docs/axosyslog-core/4.26/ → docs/axosyslog-core/4.26)
+      - name: Resolve build target
+        id: target
+        run: |
+          root=$(grep -E '^[[:space:]]*baseurl[[:space:]]*=' config/production/config.toml | head -1 | sed -E 's/.*=[[:space:]]*"([^"]+)".*/\1/')
+          root="${root%/}/"
+          if [ "${{ inputs.is_latest }}" = "true" ]; then
+            baseurl="$root"
+          else
+            baseurl="${root}${{ inputs.version }}/"
+          fi
+          # Destination under the R2 bucket = the baseURL path, no scheme/host, no slashes.
+          strip_host='s#^[a-z]+://[^/]+/##; s#/$##'
+          dest=$(printf '%s' "$baseurl" | sed -E "$strip_host")
+          root_dest=$(printf '%s' "$root" | sed -E "$strip_host")
+          echo "baseurl=$baseurl" >> "$GITHUB_OUTPUT"
+          echo "dest=$dest" >> "$GITHUB_OUTPUT"
+          echo "root_dest=$root_dest" >> "$GITHUB_OUTPUT"
+          echo "baseurl=$baseurl  dest=$dest  root_dest=$root_dest"
+
+      # Keep archived versions out of search engines so they don't compete with
+      # the latest docs (duplicate content). `params.dontIndexSite` is the
+      # site-wide robots opt-out the theme's <head> turns into <meta name="robots"
+      # content="noindex, nofollow"> on every page. Set for this job only — the
+      # latest build never runs this step, so the live docs stay indexable.
+      #
+      # AN ENV VAR, AND ITS OWN PARAM. Both halves of that are load-bearing; the
+      # obvious-looking alternatives each broke something:
+      #
+      #   * Appending to config/production/config.toml is not available: that file
+      #     already opens a `[params]` table, and a second one is invalid TOML —
+      #     Hugo fails the build with "table params already exists". HUGO_PARAMS_*
+      #     needs no file surgery and is the same mechanism the provenance step
+      #     above already uses.
+      #   * It must not be an injected `[[cascade]]`. Hugo REPLACES root-level
+      #     slices when merging an environment config over config/_default, so
+      #     such a block does not add to config/_default's cascade — it wipes it
+      #     out, taking the `body_attribute` Pagefind section stamp with it.
+      #     Archived pages then carry no section value and the search modal's
+      #     Version filter has no option for them.
+      #   * It must not reuse the per-page `dontIndex` flag. The theme's
+      #     docs/baseof.html also gates `data-pagefind-body` on that one, and
+      #     Pagefind indexes ONLY marked pages once any page in the tree is
+      #     marked — so setting it site-wide drops every archived page out of the
+      #     latest build's unified index. This param drives robots and nothing else.
+      - name: Mark archived build as noindex
+        if: ${{ !inputs.is_latest }}
+        run: echo "HUGO_PARAMS_DONTINDEXSITE=true" | tee -a "$GITHUB_ENV"
+
+      - name: Set up Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.160.1'
+          extended: true
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: lts/Krypton
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      # Bootstrap and FontAwesome SCSS, exposed through Docsy's Hugo mounts
+      # (themes/docsy/hugo.yaml). npm ci is impossible here — Docsy gitignores
+      # its own lockfile — but it pins both runtime deps exactly, so install is
+      # still deterministic. --omit=dev skips Docsy's lint/test toolchain and
+      # its docsy.dev workspace; the site build uses neither.
+      - name: Install Docsy assets
+        run: npm install --omit=dev
+        working-directory: themes/docsy
+
+      # postcss-cli binary plus the autoprefixer/purgecss plugins. Must be at
+      # the project root: that is where Hugo Pipes looks for node_modules/.bin
+      # and where postcss.config.js resolves its require() calls from.
+      - name: Install PostCSS toolchain
+        run: npm ci
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.x"
+
+      - name: install-aws-cli
+        uses: unfor19/install-aws-cli-action@v1
+        with:
+          arch: amd64
+
+      - name: Build
+        run: hugo --environment production --baseURL "${{ steps.target.outputs.baseurl }}"
+
+      # Cross-version search: the latest site's Pagefind index must cover every
+      # version, but versions deploy separately. Pull each archived version's
+      # already-deployed HTML from R2 into public/<version>/ so the unified index
+      # (next step) includes them. These sub-dirs are NOT re-deployed — the delete
+      # guard excludes them from the sync, so each version keeps its own deploy.
+      - name: Assemble archived versions for the unified search index
+        if: ${{ inputs.is_latest }}
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_PUBLIC_EDITOR_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_PUBLIC_EDITOR_ACCESS_KEY_SECRET }}
+          AWS_S3_ENDPOINT: 'https://dc6bedf14f451ab276dc7caf3307af2a.r2.cloudflarestorage.com/'
+          AWS_REGION: 'auto'
+          AWS_S3_BUCKET: 'axosyslog-core-docs'
+          ROOT_DEST: ${{ steps.target.outputs.root_dest }}
+        run: |
+          pip install --quiet pyyaml
+          dirs=$(python3 -c "import yaml;print(' '.join(str(v['version']).strip() for v in (yaml.safe_load(open('data/versions.yaml')) or []) if not v.get('latest') and str(v.get('version') or '').strip()))")
+          for dir in $dirs; do
+            echo "Pulling $ROOT_DEST/$dir HTML for the unified index"
+            aws s3 sync "s3://$AWS_S3_BUCKET/$ROOT_DEST/$dir" "public/$dir" \
+              --endpoint-url "$AWS_S3_ENDPOINT" --region "$AWS_REGION" \
+              --exclude "pagefind/*"
+          done
+
+      - name: Pagefind search index
+        run: npm_config_yes=true npx pagefind --output-subdir pagefind --site ./public
+
+      - name: Minify external CSS
+        # Minify external CSS files
+        run: |
+          npx --yes cssnano-cli public/pagefind/pagefind-component-ui.css \
+            public/pagefind/pagefind-component-ui.css
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # Install required packages for your script
+          pip install lxml beautifulsoup4
+
+      - name: Generate manpages
+        run: python3 scripts/create-man-from-html.py --output-dir public/manpages
+
+      - name: Package manpages into a single file
+        run: tar -czf ./public/manpages.tar.gz -C public/manpages .
+
+      - name: Convert HTML to Markdown
+        run: |
+          pip install beautifulsoup4 html2text
+          python themes/docsy-axoflow/scripts/hugo_to_markdown.py --input public --output public
+
+      # On the root (latest) deploy, Pass 3 below uses --delete to prune removed
+      # pages. Without a guard that would also delete every version sub-directory,
+      # since they are not part of main's build. Build an --exclude per non-latest
+      # version (its id is its sub-dir) so the archived sub-sites are never pruned —
+      # and, on the same pass, so the copies pulled in for the unified index are not
+      # uploaded back over the sub-site that produced them.
+      - name: Compute version-subdir delete guard
+        id: guard
+        if: ${{ inputs.is_latest }}
+        run: |
+          pip install --quiet pyyaml
+          python3 - >> "$GITHUB_OUTPUT" <<'PY'
+          import yaml
+          data = yaml.safe_load(open("data/versions.yaml")) or []
+          dirs = [str(v["version"]).strip() for v in data
+                  if not v.get("latest") and str(v.get("version") or "").strip()]
+          print("excludes=" + " ".join(f"--exclude {d}/*" for d in dirs))
+          PY
+          echo "Protected version subdirs computed."
+
+      - name: Deploy to Cloudflare R2
+        env:
+          AWS_S3_BUCKET: 'axosyslog-core-docs'
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_PUBLIC_EDITOR_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_PUBLIC_EDITOR_ACCESS_KEY_SECRET }}
+          AWS_S3_ENDPOINT: 'https://dc6bedf14f451ab276dc7caf3307af2a.r2.cloudflarestorage.com/'
+          AWS_REGION: 'auto'
+          SOURCE_DIR: 'public'
+          DESTINATION_DIR: ${{ steps.target.outputs.dest }}
+          # Empty for archived versions (their --delete is already scoped to their
+          # own sub-dir prefix); on the root deploy it protects the version dirs.
+          DELETE_EXCLUDES: ${{ steps.guard.outputs.excludes }}
+        run: |
+          # Three-pass sync to set Cache-Control per content type.
+          # Pass 1 — fingerprinted bundles only. Everything under scss/ is
+          # Hugo-fingerprinted (the content hash is in the filename), so a
+          # change produces a new filename. Safe to cache immutably for a year.
+          aws s3 sync "$SOURCE_DIR" "s3://$AWS_S3_BUCKET/$DESTINATION_DIR" \
+            --endpoint-url "$AWS_S3_ENDPOINT" --region "$AWS_REGION" --checksum-algorithm CRC32 \
+            --exclude "*" \
+            --include "scss/*" \
+            --include "js/*" --include "css/*" --include "webfonts/*" --include "fonts/*" \
+            --include "icons/*" --include "img/*" --include "favicons/*" \
+            --cache-control "public, max-age=31536000, immutable"
+
+          # Pass 2 — other static assets, 30 days.
+          aws s3 sync "$SOURCE_DIR" "s3://$AWS_S3_BUCKET/$DESTINATION_DIR" \
+            --endpoint-url "$AWS_S3_ENDPOINT" --region "$AWS_REGION" --checksum-algorithm CRC32 \
+            --exclude "*" \
+            --include "pagefind/*" \
+            --cache-control "public, max-age=2592000"
+
+          # Pass 3 — HTML and everything else: 4 days, must revalidate.
+          # --delete prunes files removed from the build. $DELETE_EXCLUDES keeps
+          # the version sub-directories intact on the root (latest) deploy; for an
+          # archived version it is empty and --delete is scoped to that version's
+          # own sub-dir prefix, so it never touches the root or other versions.
+          aws s3 sync "$SOURCE_DIR" "s3://$AWS_S3_BUCKET/$DESTINATION_DIR" \
+            --endpoint-url "$AWS_S3_ENDPOINT" --region "$AWS_REGION" --checksum-algorithm CRC32 \
+            --delete $DELETE_EXCLUDES \
+            --cache-control "public, max-age=345600, must-revalidate"

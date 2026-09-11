@@ -1,5 +1,13 @@
 name: Publish
 
+# Publishes the latest documentation (main) to the site root,
+# https://axoflow.com/docs/axosyslog-core/.
+#
+# All build + deploy logic lives in the reusable publish-docs.yaml workflow, so
+# every version is built by the same steps. Archived versions are published by
+# publish-versions.yaml (on demand) and publish-version-on-push.yaml (on a push
+# to a release branch).
+
 on:
   push:
     branches:
@@ -8,133 +16,19 @@ on:
   workflow_dispatch:
 
 permissions:
-  pages: write
-  id-token: write
   contents: read
 
 concurrency:
-  group: "pages"
+  group: "publish-latest"
   cancel-in-progress: true
 
 jobs:
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v7
-        with:
-          submodules: 'true'
-          clean: true
-          show-progress: true
-          lfs: false
-          set-safe-directory: true
-          fetch-depth: 0
-
-      - name: Set up Pages
-        id: pages
-        uses: actions/configure-pages@v6
-
-      - name: Set up Hugo
-        uses: peaceiris/actions-hugo@v3
-        with:
-          hugo-version: '0.160.1'
-          extended: true
-
-      - name: Set up Node
-        uses: actions/setup-node@v7
-        with:
-          node-version: lts/Krypton
-          cache: npm
-          cache-dependency-path: package-lock.json
-
-      # Bootstrap and FontAwesome SCSS, exposed through Docsy's Hugo mounts
-      # (themes/docsy/hugo.yaml). npm ci is impossible here — Docsy gitignores
-      # its own lockfile — but it pins both runtime deps exactly, so install is
-      # still deterministic. --omit=dev skips Docsy's lint/test toolchain and
-      # its docsy.dev workspace; the site build uses neither.
-      - name: Install Docsy assets
-        run: npm install --omit=dev
-        working-directory: themes/docsy
-
-      # postcss-cli binary plus the autoprefixer/purgecss plugins. Must be at
-      # the project root: that is where Hugo Pipes looks for node_modules/.bin
-      # and where postcss.config.js resolves its require() calls from.
-      - name: Install PostCSS toolchain
-        run: npm ci
-
-      - name: Build
-        run: hugo --environment production
-
-      - name: Pagefind search index
-        run: npm_config_yes=true npx pagefind --output-subdir pagefind --site ./public
-
-      - name: Minify external CSS
-        # Minify external CSS files
-        run: |
-          npx --yes cssnano-cli public/pagefind/pagefind-component-ui.css \
-            public/pagefind/pagefind-component-ui.css
-
-      - name: Set up Python
-        uses: actions/setup-python@v7
-        with:
-          python-version: "3.x"
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          # Install required packages for your script
-          pip install lxml beautifulsoup4
-
-      - name: Generate manpages
-        run: python3 scripts/create-man-from-html.py --output-dir public/manpages
-
-      - name: Package manpages into a single file
-        run: tar -czf ./public/manpages.tar.gz -C public/manpages .
-
-      - name: Convert HTML to Markdown
-        run: |
-          pip install beautifulsoup4 html2text
-          python themes/docsy-axoflow/scripts/hugo_to_markdown.py --input public --output public
-
-      - name: install-aws-cli
-        uses: unfor19/install-aws-cli-action@v1
-        with:
-          arch: amd64
-
-      - name: Deploy to Cloudflare R2
-        env:
-          AWS_S3_BUCKET: 'axosyslog-core-docs'
-          AWS_ACCESS_KEY_ID: ${{ secrets.R2_PUBLIC_EDITOR_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_PUBLIC_EDITOR_ACCESS_KEY_SECRET }}
-          AWS_S3_ENDPOINT: 'https://dc6bedf14f451ab276dc7caf3307af2a.r2.cloudflarestorage.com/'
-          AWS_REGION: 'auto'
-          SOURCE_DIR: 'public'
-          DESTINATION_DIR: 'docs/axosyslog-core'
-        run: |
-          # Three-pass sync to set Cache-Control per content type.
-          # Pass 1 — fingerprinted bundles only. Everything under scss/ is
-          # Hugo-fingerprinted (the content hash is in the filename), so a
-          # change produces a new filename. Safe to cache immutably for a year.
-          aws s3 sync "$SOURCE_DIR" "s3://$AWS_S3_BUCKET/$DESTINATION_DIR" \
-            --endpoint-url "$AWS_S3_ENDPOINT" --region "$AWS_REGION" --checksum-algorithm CRC32 \
-            --exclude "*" \
-            --include "scss/*" \
-            --include "js/*" --include "css/*" --include "webfonts/*" --include "fonts/*" \
-            --include "icons/*" --include "img/*" --include "favicons/*" \
-            --cache-control "public, max-age=31536000, immutable"
-
-          # Pass 2 — other static assets, 30 days.
-          aws s3 sync "$SOURCE_DIR" "s3://$AWS_S3_BUCKET/$DESTINATION_DIR" \
-            --endpoint-url "$AWS_S3_ENDPOINT" --region "$AWS_REGION" --checksum-algorithm CRC32 \
-            --exclude "*" \
-            --include "pagefind/*" \
-            --cache-control "public, max-age=2592000"
-
-          # Pass 3 — HTML and everything else: 4 days, must revalidate.
-          # --delete prunes files removed from the build.
-          aws s3 sync "$SOURCE_DIR" "s3://$AWS_S3_BUCKET/$DESTINATION_DIR" \
-            --endpoint-url "$AWS_S3_ENDPOINT" --region "$AWS_REGION" --checksum-algorithm CRC32 \
-            --delete \
-            --cache-control "public, max-age=345600, must-revalidate"
+  publish-latest:
+    name: Publish latest
+    uses: ./.github/workflows/publish-docs.yaml
+    with:
+      ref: main
+      is_latest: true
+    secrets:
+      R2_PUBLIC_EDITOR_ACCESS_KEY_ID: ${{ secrets.R2_PUBLIC_EDITOR_ACCESS_KEY_ID }}
+      R2_PUBLIC_EDITOR_ACCESS_KEY_SECRET: ${{ secrets.R2_PUBLIC_EDITOR_ACCESS_KEY_SECRET }}

@@ -1,14 +1,171 @@
 /*
+  This site's own rules, on top of the documentation chrome.
 
-Nothing defined here. The Hugo project that uses this theme can override Bootstrap by adding a file to:
-
-assets/scss/_styles_project.scss
-
+  Everything that used to be in this file and is not below was moved into
+  themes/docsy-axoflow/assets/scss/_styles_project.scss, which the two
+  documentation sites now share. Only what depends on THIS site is left.
 */
+
 @import "../../themes/docsy-axoflow/assets/scss/_styles_project.scss";
 
-// Disable unneeded meta urls in the right sidebar
+// THE BRAND NAME IS DRAWN, not hidden. AxoFlow hides it because its
+// assets/icons/logo.svg IS the wordmark -- an #FF6500 rect and seven #0F1425
+// paths spelling "Axoflow" -- so rendering `.Site.Title` beside it would set the
+// name twice. This site's assets/icons/logo.svg is a single orange path, the
+// mark alone, so the name has to be text or the header says nothing.
+//
+// Nothing else is needed for the header to read "AxoSyslog": navbar.html renders
+// `resources.Get "icons/logo.svg"` and `.Site.Title`, both resolved per site, and
+// this repository already carries its own mark and its own title.
+// `.td-navbar` in the selector is load-bearing. The theme states
+// `.td-navbar .navbar-brand__name { font-size: 0.9rem; color: #0F1425; }`
+// (themes/docsy-axoflow/assets/scss/_styles_project.scss:39), which is imported at
+// the top of this file. A bare `.navbar-brand__name` loses to it on specificity:
+// measured, the name rendered at 14.4px with the size below stated and ignored.
+.td-navbar .navbar-brand__name {
+    // EVERY NUMBER HERE IS AXOFLOW'S ARTWORK, MEASURED.
+    //
+    // Its assets/icons/logo.svg is a 477x120 viewBox drawn 48px tall in the bar, so
+    // one unit is 0.4px. Read off the rendered paths at that scale:
+    //
+    //   the mark          an #FF6500 square, x 0..48
+    //   the wordmark      seven #0F1425 paths, x 63.0..190.7, y 9.7..36.4
+    //   the gap between   15px
+    //   the cap 'A'       23.5px tall; the 'fl' ascender reaches 26.3
+    //
+    // Stolzl's cap height is 0.70 of its font-size (measured through a canvas metric
+    // against this site's own compiled face, not assumed), so a 23.5px cap wants
+    // 33.57px. 2.1rem is 33.6px, a cap of 23.52.
+    //
+    // The name is longer than the word it stands in for -- "AxoSyslog" sets 181px
+    // wide against "Axoflow" at 128 -- so the brand block is wider here than there.
+    // Matched on size rather than on width: the two headers should set their name at
+    // the same optical size, and squeezing this one to 128px would set AxoSyslog in
+    // smaller type than Axoflow for no reason a reader could see.
+    font-size: 2.1rem;
+    // 400, NOT 500. The wordmark is artwork, so its weight had to be measured: the
+    // same string set both ways at the same cap height, and the ink compared.
+    // Rendered at a cap of 262.8px (the logo at 10x the bar's 48), "Axoflow" from
+    // the artwork covers 0.3593 of its glyph box with a median stem of 71px, against
+    // Stolzl's
+    //
+    //     300   ink 0.2529  -29.6%   stem  54
+    //     400   ink 0.3270   -9.0%   stem  87
+    //     500   ink 0.3932   +9.4%   stem 117
+    //     700   ink 0.4453  +23.9%   stem 157
+    //
+    // The same string on both sides is what isolates the weight -- "AxoSyslog" and
+    // "Axoflow" have different letter mixes and their coverages are not comparable.
+    // Ink puts the artwork between 400 and 500 and stem puts it below 400, so 400 is
+    // the closest of the four this site ships and 500 was the heavier of the two
+    // neighbours. Set at 500 the name read as bolder than the wordmark it stands in
+    // for, which is what this is.
+    font-weight: 400;
+    line-height: 1;
+    margin-inline-start: 15px;
+    color: #0F1425; // the navy the wordmark's own letterforms are drawn in
+    white-space: nowrap;
+
+    // A SMALLER NAME ON NARROWER WINDOWS, and the threshold is swept rather than
+    // guessed -- the same way $axo-nav-full's 1248 was arrived at for AxoFlow's own
+    // bar. This word is longer, so its threshold is not that one.
+    //
+    // Clearance between the brand's right edge and the menu's left, measured at both
+    // sites in one pass. Constant above 1360 because the row caps at 1280 and centres:
+    //
+    //     width   axoflow   axosyslog (2.1rem)
+    //      1360     119.9      58.8
+    //      1340      99.9      38.8
+    //      1320      79.9      18.8
+    //      1300      59.9       0     <- touching, and stays 0 down to 1248
+    //      1248       7.9       0        (axoflow's own margin is thin here too)
+    //
+    // So the full size holds to 1340 and runs out below it. At 1.625rem the name sets
+    // ~140px instead of 181, which puts 41px back: 59.8 at 1320 and 41 at 1248.
+    @media (max-width: 1339.98px) {
+        font-size: 1.625rem;
+    }
+}
+
+.td-navbar .navbar-brand {
+    display: flex;
+    align-items: center;
+    // Docsy states `gap: 8px` on this element and it lands on top of the margin
+    // above: measured, the name started 23px off the mark against the artwork's 15.
+    // Zeroed here so the one number that sets the distance is the one written down.
+    gap: 0;
+}
+
+// THE LOGO BOX IS CROPPED TO THE ARTWORK.
+//
+// This site's assets/icons/logo.svg has a 329.1x155.5 viewBox and its ink stops at
+// 179.6 -- 149.5 units, 46.1px at the drawn height, of empty canvas on the right.
+// The layout reserved all of it: measured, the logo box was 101.5px wide for a mark
+// 55.4px wide, and the name started at x197.5 with a 46px hole in front of it while
+// AxoFlow's wordmark sits 15px off its mark.
+//
+// Cropped here rather than by correcting the viewBox in the file: that artwork is a
+// brand asset this repository holds, and a stylesheet fixing its own layout is a
+// smaller claim than a stylesheet editing the logo. Nothing is lost -- the ink
+// starts at the viewBox origin, so only trailing emptiness is clipped.
+// `display: block`, NOT flex. As a flex container this box makes the SVG a flex
+// item, and a flex item shrinks to the width it is given rather than overflowing
+// it -- so the 55.4px did not crop the artwork, it resized it. With the viewBox's
+// own `xMidYMid meet` that scales to fit both axes: measured, the mark rendered
+// 30.2px wide instead of 55.4, a third smaller than intended and centred in the
+// leftover space. A block box lets the SVG keep its natural 101.5px and clips it.
+.td-navbar .navbar-brand__logo {
+    display: block;
+    width: 55.4px; // the ink, at the 48px the bar draws the logo
+    height: 48px;
+    overflow: hidden;
+}
+
+// The name has to be painted on the dark bar, exactly as AxoFlow's wordmark is.
+//
+// `--axo-nav-title` is the navy the bar's own labels are set in, which is what the
+// name should be on the light bar and is all but invisible on the dark one.
+// _axo-navbar.scss:1867 already handles the equivalent for AxoFlow -- its wordmark
+// is seven `#0F1425` paths and the rule repaints them white inside the dark block.
+// This is the same call for a name that is text rather than artwork; measured
+// before it, the brand read as a dark smudge on the navy bar.
+//
+// The mark beside it needs nothing: this site's logo.svg is a single `#FF6500`
+// path, which carries on both surfaces.
+@if $enable-dark-mode {
+    [data-bs-theme="dark"] {
+        .td-navbar .navbar-brand__name {
+            color: #fff;
+        }
+    }
+}
+
+// ONLY the child link, which is this repository's own long-standing rule and the
+// single line its _styles_project.scss carried before the design was ported.
+//
+// AxoFlow hides the whole set here with the reason "these docs are not open
+// source". AxoSyslog is open source and its right-hand column has always offered
+// "View page source", "Edit this page" and "Create documentation issue" --
+// measured on the published build before this change. Carrying AxoFlow's rule
+// across would have taken three working links off every page as a side effect of
+// a design port, which is a content decision wearing a stylesheet's clothes.
 
 .td-page-meta--child {
     display: none !important;
 }
+
+// The four area files, one per region of the page.
+//
+// Imported HERE rather than from the shared file, and deliberately: they have to
+// land AFTER this site's own rules above, which is where they landed when the
+// whole design was a project file. Moving these four lines into
+// themes/docsy-axoflow would reorder the cascade for every selector the shared
+// rules and the two sites' rules have in common, and a reorder compiles clean
+// and ships wrong.
+//
+// The files themselves live in themes/docsy-axoflow/assets/scss/ and Hugo's
+// asset union resolves them from there.
+@import "axo-navbar";
+@import "axo-footer";
+@import "axo-content";
+@import "axo-frame";

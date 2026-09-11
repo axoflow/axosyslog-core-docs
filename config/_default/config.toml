@@ -86,20 +86,33 @@ tagline = "Scalable security data processor"
   # Docsy-theme specific config customizations
   ###############################################################################
 
-  # Flag used in the "version-banner" partial to decide whether to display a 
-  # banner on every page indicating that this is an archived version of the docs.
-  # Set this flag to "true" if you want to display the banner.
+  # DEAD ONCE data/versions.yaml EXISTS, both of them, and kept only as the
+  # fallback path. The theme's version-banner.html reads this pair exclusively in
+  # its `else` branch — the one taken when the data file is absent. With the file
+  # present, which version this build is and where the current one lives are both
+  # derived from data/versions.yaml plus the baseURL, and an archived build needs
+  # no per-branch flag flipped in its own config.
   archived_version = false
 
   # The version number for the version of the docs represented in this doc set.
-  # Used in the "version-banner" partial to display a version number for the 
-  # current doc set.
-  version = "4.26.0"
+  #
+  # Still live, in two places that are NOT the banner: the sidebar renders it next
+  # to the section root as "v4.27.0" (docsy-axoflow's sidebar-tree.html), and the
+  # fallback banner above would print it. The switcher above the tree shows
+  # "4.27 (current)" from data/versions.yaml, so the sidebar now carries the
+  # version twice; drop this param if the duplicate is unwanted.
+  version = "4.27.0"
   version_menu_canonicallinks = true
 
   # A link to latest version of the docs. Used in the "version-banner" partial to
-  # point people to the main doc site.
-  # url_latest_version = "/"
+  # point people to the main doc site. config/production and config/staging each
+  # override it with their own absolute URL; this is the value the development
+  # environment gets, and it used to come from the docsy-axoflow theme's config,
+  # which no longer carries site-specific params.
+  #
+  # Also only the fallback path: the data-driven banner links to the same page at
+  # the site root, derived from the baseURL, rather than to a URL written down here.
+  url_latest_version = "/"
 
   # Repository configuration (URLs for in-page links to opening issues and suggesting changes)
   github_repo = "https://github.com/axoflow/axosyslog-core-docs"
@@ -131,8 +144,26 @@ tagline = "Scalable security data processor"
   #pygmentsOptions = "linenos=table"
   # See https://help.farbox.com/pygments.html
   pygmentsStyle = "coy"
-  # Enable syntax highlighting and copy buttons on code blocks with Prism
-  prism_syntax_highlighting = true
+  # PRISM IS OFF, and the ported design replaces what it did.
+  #
+  # Hugo's Chroma highlights at build time; Prism only ever styles what its
+  # JavaScript tokenises at runtime. Turning the flag off takes css/prism.css and
+  # js/prism.js off every page -- both were being preloaded -- and the copy button
+  # on code blocks is drawn by assets/js/axo-code-copy.js instead, loaded from
+  # layouts/_partials/hooks/body-end.html.
+  prism_syntax_highlighting = false
+
+  # ...which is why the theme's own copy button has to go off with it.
+  # themes/docsy/layouts/_partials/scripts.html ships one or the other:
+  #
+  #   {{ if .Site.Params.prism_syntax_highlighting }} prism.js
+  #   {{ else if not .Site.Params.disable_click2copy_chroma }} click-to-copy.js
+  #
+  # So turning Prism off wakes click-to-copy.js, which does find Chroma's blocks:
+  # two copy controls per block, and the theme's is drawn with `fas fa-copy`, a
+  # FontAwesome class this site has no font for once the design is ported. On a
+  # site with 32 code blocks on a single page that is not an edge case.
+  disable_click2copy_chroma = true
 
   # Use tocbot for table of contents
   [params.jstoc]
@@ -141,6 +172,39 @@ tagline = "Scalable security data processor"
   # User interface configuration
   [params.ui]
   #  Set to true to disable breadcrumb navigation.
+  #
+  # THE BREADCRUMB IS ON HERE, and unlike axoflow-docs it does not fit. Recorded
+  # rather than left to be rediscovered, because the numbers decide what to do
+  # next and they are not obvious from looking at one page.
+  #
+  # The trail is built from each ancestor's `linkTitle`, and on this site those are
+  # sentences doing double duty as descriptions:
+  #
+  #     destination: Forward, send, and store log messages
+  #     tcp, tcp6, udp, udp6: OBSOLETE - Send messages to a remote log server
+  #       using the legacy BSD-syslog protocol (tcp(), udp() drivers)
+  #     db-parser: Process message content with a pattern database (patterndb)
+  #
+  # Measured in a browser over all 490 pages with a trail. The deepest one wants
+  # 1973px in a 769px row; 209 of 490 clip at least one ancestor crumb at 1440 and
+  # 239 at 1152. The frame's guard holds: 0 wrap onto a second line and 0 page
+  # overflows at either width, and the two lead crumbs are pinned so the mark and
+  # "AxoSyslog" are never the ones cut. What a cut trail reads as:
+  #
+  #     [mark] > AxoSyslog > destination: ... > tcp, tcp6, udp, udp6: OBSOLETE - Send ...
+  #
+  # `assets/js/axo-breadcrumb.js` in the theme puts the full label back on hover
+  # for exactly the crumbs the row cut, so nothing is unreachable -- but a pointer
+  # tooltip is not the same as being able to read the row.
+  #
+  # THE FIX IS CONTENT, NOT CSS: a short `linkTitle` in the front matter of those
+  # section pages, keeping the long `title` for the page itself. The breadcrumb,
+  # the navigation column and the version selector all read `linkTitle`, so one
+  # change shortens all three. Until then this stays on by decision, with the cost
+  # above known.
+  #
+  # On axoflow-docs the same trail fits with room to spare -- widest 638px of 769,
+  # nothing clipped at either width.
   breadcrumb_disable = false
   # Set to true to disable the About link in the site footer
   footer_about_disable = false
@@ -192,11 +256,11 @@ tagline = "Scalable security data processor"
 [params.product]
 name = "AxoSyslog"
 abbrev = "AxoSyslog"
-version = "4.26"
+version = "4.27"
 # techversion includes patch version number, needed for install/image commands
 # configversion is needed in the config file examples
-techversion = "4.26.0"
-configversion = "4.26"
+techversion = "4.27.0"
+configversion = "4.27"
 syslog-ng = "syslog-ng"
 selinux = "SELinux"
 apparmor = "AppArmor"
@@ -242,3 +306,34 @@ anchor = "smart"
 [privacy]
   [privacy.googleAnalytics]
     respectDoNotTrack = true
+
+###############################################################################
+# Cascade
+###############################################################################
+# Stamp every doc page with a Pagefind section filter for the current version,
+# so search results can be scoped per version. Read by docsy-axoflow's
+# docs/baseof.html via .Page.Params.body_attribute, which puts it on <body>.
+[[cascade]]
+  # The version id here has to move with `params.version` and with the `latest`
+  # entry of data/versions.yaml on every release: a Hugo config file takes no
+  # template functions, so it cannot derive it.
+  #
+  # The " (current)" is part of the indexed value on purpose. Pagefind's filter
+  # dropdown draws the value itself as the option label — there is no separate
+  # display name — so the only way the reader sees which of "4.27" and "4.26" is
+  # the release they are on is for the value to say it. It therefore has to match
+  # the `name` of the `latest` entry in data/versions.yaml character for
+  # character, or the switcher and the search filter name the same release
+  # differently.
+  #
+  # THIS ADDS A STEP TO THE RELEASE, beyond bumping the number. CI overlays
+  # data/versions.yaml from main onto archived builds but NOT this file — an
+  # archived version is built from its own release ref, so release-4.27 keeps
+  # whatever is written here. Left alone, the day 4.28 ships the unified index
+  # holds "4.28 (current)" AND "4.27 (current)", two options both claiming to be
+  # the release you are on. So on release: add " (current)" to the new version
+  # here on main, and strip it from the outgoing version on its release branch
+  # before that branch is republished.
+  body_attribute = 'data-pagefind-filter="section:4.27 (current)"'
+  [cascade.target]
+    path = '/**'
