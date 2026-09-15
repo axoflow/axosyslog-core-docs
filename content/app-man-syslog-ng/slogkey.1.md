@@ -24,13 +24,13 @@ The arguments depend on the operating mode.
 
 - Master key generation
 
-    Call sequence: `slogkey --master-ḱey &lt;filename&gt;`
+    Call sequence: `slogkey --master-key &lt;filename&gt;`
 
     `&lt;filename&gt;`: The name of the file to which the master key will be written.
 
 - Host key derivation
 
-    Call sequence: `slogkey --derive-key &lt;master key file&gt; &lt;host MAC address&gt; &lt;host serial number&gt; &lt;host key file&gt;`
+    Call sequence: `slogkey --derive-host-key &lt;master key file&gt; &lt;host MAC address&gt; &lt;host serial number&gt; &lt;host key file&gt;`
 
     - `&lt;master key file&gt;`: The master key from which the host key will be derived.
     - `&lt;host MAC address&gt;`: The MAC address of the host on which the key will be used. Instead of the MAC address, any other string that uniquely identifies a host can be supplied, e.g. the company inventory number.
@@ -49,9 +49,9 @@ The arguments depend on the operating mode.
 
 - `--master-key` or `-m`
 
-    Generates a mew master key. `&lt;filename&gt;` is the name of the file storing the newly generated master key.
+    Generates a new master key. `&lt;filename&gt;` is the name of the file storing the newly generated master key.
 
-- `--derive-key` or `-d`
+- `--derive-host-key` or `-d`
 
     Derive a host key using a previously generated master key.
 
