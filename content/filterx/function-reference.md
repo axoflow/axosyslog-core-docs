@@ -263,7 +263,9 @@ For details, see {{% xref "/filterx/filterx-format-data/format-json.md" %}}.
 
 Formats a dictionary into a string containing key=value pairs.
 
-Usage: `format_kv(kvs_dict, value_separator="<separator-character>", pair_separator="<separator-string>")`
+Usage: `format_kv(kvs_dict, value_separator="<separator-character>", pair_separator="<separator-string>", quote_char="<quote-character>", always_quote=<boolean>)`
+
+The `quote_char` and `always_quote` options are available in {{< product >}} 4.28 and later.
 
 For details, see {{% xref "/filterx/filterx-format-data/format-kv.md" %}}.
 
