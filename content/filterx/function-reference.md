@@ -1048,7 +1048,11 @@ unset_empties(input_object, targets=["-", "N/A"], ignorecase=false);
 
 ## update_metric {#update-metric}
 
-Updates a labeled metric counter, similarly to the [`metrics-probe()` parser]({{< relref "/chapter-parsers/metrics-probe/_index.md" >}}). For details, see {{% xref "/filterx/filterx-metrics/_index.md" %}}.
+Updates a labeled metric counter, similarly to the [`metrics-probe()` parser]({{< relref "/chapter-parsers/metrics-probe/_index.md" >}}).
+
+Usage: `update_metric("key", labels={"key": "value"}, increment=1|set=20, level=0)`
+
+The `set` option is available in {{< product >}} 4.28 and later. For details, see {{% xref "/filterx/filterx-metrics/_index.md" %}}.
 
 ## upper
 
