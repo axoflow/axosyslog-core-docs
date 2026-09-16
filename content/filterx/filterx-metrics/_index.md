@@ -6,7 +6,7 @@ weight: 1000
 
 Available in {{< product >}} 4.9 and later.
 
-You can use the `update_metric` function to count the processed messages, and create labeled metric counters based on the fields of the processed messages, similarly to the [`metrics-probe()` parser]({{< relref "/chapter-parsers/metrics-probe/_index.md" >}}).
+You can use the `update_metric` function to count the processed messages, and create labeled metric counters based on the fields of the processed messages, similarly to the [`metrics-probe()` parser]({{< relref "/chapter-parsers/metrics-probe/_index.md" >}}). By default, `update_metric` increments the counter, but in {{< product >}} 4.28 and later you can use the [`set`](#set) option to assign an absolute value to it instead.
 
 You can configure the name of the counter to update and the labels to add. The name of the counter is an unnamed, mandatory option. Note that the name is automatically prefixed with the `syslogng_` string. For example:
 
@@ -50,6 +50,8 @@ update_metric(
 );
 ```
 
+The `increment` and [`set`](#set) options are mutually exclusive, setting both is a configuration error.
+
 ### labels
 
 |          |         |
@@ -81,6 +83,35 @@ Sets the stats level of the generated metrics.
 {{% alert title="Note" color="info" %}}
 Drivers configured with `internal(yes)` register their metrics on level 3. That way if you are creating an SCL, you can disable the built-in metrics of the driver, and create metrics manually using `update_metric`.
 {{% /alert %}}
+
+### set
+
+|          |         |
+| -------- | ------- |
+| Type:    | non-negative integer or variable |
+| Default: | N/A |
+
+Available in {{< product >}} 4.28 and later.
+
+An integer, or an expression that resolves to an integer, that {{< product >}} assigns to the counter instead of incrementing it. Use this option to maintain gauge-like metrics, that is, metrics that can go up and down. The following example sets the counter called `syslogng_demo_gauge` to the value reported in the message:
+
+```shell
+update_metric(
+    "demo_gauge",
+    labels={
+        "host": ${HOST}
+    },
+    set=int(${MESSAGE})
+);
+```
+
+The `set` and [`increment`](#increment) options are mutually exclusive, setting both is a configuration error.
+
+Only non-negative values are supported. If the value is negative, {{< product >}} leaves the counter unchanged and logs an error, for example:
+
+```shell
+FilterX: update_metric() eval error, skipping; err_idx='[1/1]', expr='n/a', error='Failed to evaluate update_metric(): Metric value must be non-negative, got: -100'
+```
 
 ## metrics_labels {#metrics-labels}
 

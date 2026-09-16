@@ -28,7 +28,7 @@ Wildcard characters are not supported in file/directory names.
 
 Use the `dump` command to print the current content of the persist file in JSON format to the console.
 
-`dump &lt;options;gt; &lt;persist_file&gt;`
+`dump &lt;options&gt; &lt;persist_file&gt;`
 
 Example: `persist-tool dump /opt/syslog-ng/var/syslog-ng.persist`
 
@@ -59,7 +59,11 @@ To use the `add` command: use `persist-tool dump` to print the content of the cu
 
 - `--output-dir=&lt;directory&gt;` or `-o`
 
-    Required parameter. The directory where the persist file is located at. The name of the persist file stored in this directory must be `syslog-ng.persist`.
+    Required parameter. The directory where the persist file is located at. Unless you also set the `--persist-name` option, the name of the persist file stored in this directory must be `syslog-ng.persist`.
+
+- `--persist-name=&lt;persist_name&gt;` or `-p`
+
+    The name of the persist file to modify. If you do not set this option, `persist-tool` uses the default `syslog-ng.persist` filename.
 
 Example: `/opt/syslog-ng/bin/persist-tool add dump_persist -o .`
 
@@ -78,6 +82,28 @@ wrong
 FAILED (error: Invalid entry syntax)
 affile_sd_curpos(/var/aaa.txt)        OK
 ```
+
+## The generate command
+
+`generate &lt;options&gt;`
+
+Use the `generate` command to create an empty persist file. The generated file is always named `syslog-ng.persist`.
+
+The `generate` command has the following options:
+
+- `--force` or `-f`
+
+    Overwrite the persist file if it already exists.
+
+    {{< warning >}}
+Use this option with care: `persist-tool` does not ask for confirmation, and the contents of the overwritten persist file cannot be recovered.
+    {{< /warning >}}
+
+- `--output-dir=&lt;directory&gt;` or `-o`
+
+    The directory to generate the persist file into.
+
+Example: `/opt/syslog-ng/bin/persist-tool generate -o /opt/syslog-ng/var`
 
 ## Files
 

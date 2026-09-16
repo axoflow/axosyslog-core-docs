@@ -13,6 +13,10 @@ weight:  900
 - change fields in the message (for example, add missing information, or delete unnecessary data), or
 - convert incoming syslog messages to OpenTelemetry log messages.
 
+The examples on this page map the incoming data to OTEL objects using the `${.otel_raw.*}` name-value pairs. This is what the [`opentelemetry()` source]({{< relref "/chapter-sources/opentelemetry/_index.md" >}}) creates by default, that is, in [`mode(logmessage)`]({{< relref "/chapter-sources/opentelemetry/_index.md#mode" >}}).
+
+In {{< product >}} 4.28 and later, you can set [`mode(filterx-dict)`]({{< relref "/chapter-sources/opentelemetry/_index.md#mode" >}}) in the source instead. In this case, the source directly creates the declared `log`, `resource`, and `scope` FilterX variables as plain dictionaries, so you can omit the input mapping step. Note that these variables are dictionaries, not OTEL objects, so the functions and the typed field handling described in this chapter don't apply to them.
+
 ## Route OTEL messages
 
 To route OTEL messages (such as the ones received through the [`opentelemetry()` source]({{< relref "/chapter-sources/opentelemetry/_index.md" >}})) based on their content, configure the following:

@@ -79,6 +79,29 @@ The `opentelemetry()` source ignores this option and uses the address of the OTL
 
 <!-- Obsolete alias, only left here to make cfg-helper comparisons easier {{% include-headless "chunk/option-source-long-hostnames.md" %}} -->
 
+## `mode()` {#mode}
+
+|          |         |
+| -------- | ------- |
+| Type:    | `logmessage` or `filterx-dict` |
+| Default: | `logmessage` |
+
+Available in {{< product >}} 4.28 and later.
+
+*Description:* Determines how {{% param "product.abbrev" %}} makes the contents of incoming OpenTelemetry log records available for processing.
+
+- `logmessage`: {{% param "product.abbrev" %}} stores the record in the `${.otel_raw.log}`, `${.otel_raw.resource}`, and `${.otel_raw.scope}` name-value pairs. To work with them in FilterX, map them to OTEL objects first, as described in {{% xref "/filterx/filterx-otel/_index.md" %}}.
+- `filterx-dict`: {{% param "product.abbrev" %}} converts the record directly into three declared FilterX variables called `log`, `resource`, and `scope`, each holding a plain [FilterX dictionary]({{< relref "/filterx/_index.md#json" >}}). Use them in your FilterX block without any input mapping.
+
+    Because this skips serializing and deserializing the `${.otel_raw.*}` name-value pairs, `mode(filterx-dict)` is significantly faster than `mode(logmessage)` when you process the records in FilterX.
+
+Note the following points about `mode(filterx-dict)`:
+
+- The `log`, `resource`, and `scope` variables are plain dictionaries, not the `otel_logrecord`, `otel_resource`, and `otel_scope` objects that the [OTEL FilterX functions]({{< relref "/filterx/filterx-otel/_index.md" >}}) create.
+- The mode affects only log records. Metrics and traces are always stored as name-value pairs.
+- Messages sent by a {{% param "product.abbrev" %}} `syslog-ng-otlp()` destination are recognized and parsed the same way in both modes.
+- The `${.otel_raw.*}` name-value pairs are not set, so configurations that depend on them — for example, forwarding the received data unchanged to an `opentelemetry()` destination — require `mode(logmessage)`.
+
 {{% include-headless "chunk/option-source-normalize-hostnames.md" %}}
 
 {{% include-headless "chunk/option-persist-name.md" %}}
