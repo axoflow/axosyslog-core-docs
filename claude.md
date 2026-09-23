@@ -71,6 +71,7 @@ hugo server --disableFastRender
 hugo --minify
 
 # Convert html files to markdown for llms (requires full build)
+pip install -r themes/docsy-axoflow/scripts/requirements-markdown.txt
 python3 themes/docsy-axoflow/scripts/hugo_to_markdown.py --input public --output public
 ```
 

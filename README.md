@@ -109,7 +109,7 @@ The site can be converted to Markdown files suitable for LLM consumption using t
 - Install the required Python packages:
 
     ```bash
-    pip install beautifulsoup4 html2text
+    pip install -r themes/docsy-axoflow/scripts/requirements-markdown.txt
     ```
 
 ### Build and convert
@@ -126,4 +126,6 @@ The site can be converted to Markdown files suitable for LLM consumption using t
     python3 themes/docsy-axoflow/scripts/hugo_to_markdown.py --input public --output public
     ```
 
-The script mirrors the Hugo output directory structure, converting each `index.html` to an `index.md` file in the same directory. Internal links are converted to relative Markdown links.
+The script mirrors the Hugo output directory structure, converting each `index.html` to an `index.md` file in the same directory. Each file starts with a YAML header (title, URL, description, last modified date). Links are absolute, and internal links point to the Markdown copy of the target page. Taxonomy pages and alias redirects are skipped.
+
+Hugo also writes `llms.txt` to the site root: an index of every page, linking the Markdown copies. The script then writes `llms-full.txt` files from those copies: one at the site root with every page, and one per top-level section (for example, `chapter-destinations/llms-full.txt`).
