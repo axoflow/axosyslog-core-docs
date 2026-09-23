@@ -77,7 +77,7 @@ These two drivers behave similarly: they open an `AF_UNIX` socket and start list
 
 {{< include-headless "chunk/option-source-log-prefix.md" >}}
 
-<!-- Obsolete alias, only left here to make cfg-helper comparisons easier {{% include-headless "chunk/option-source-long-hostnames.md" %}} -->
+<!-- Obsolete alias, only left here to make cfg-helper comparisons easier: chunk/option-source-long-hostnames.md -->
 
 ## max-connections()
 
@@ -120,7 +120,7 @@ Obsolete. Use the [`pass-unix-credentials()` global option]({{< relref "/chapter
 
 {{% include-headless "chunk/option-source-program-override.md" %}}
 
-<!-- has no useful effect on this source {{% include-headless "chunk/option-source-read-old-records.md" %}} -->
+<!-- has no useful effect on this source: chunk/option-source-read-old-records.md -->
 
 {{% include-headless "chunk/option-source-sdata-prefix.md" %}}
 

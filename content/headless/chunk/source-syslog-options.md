@@ -97,7 +97,7 @@ If `log-iw-size(1000)` and `max-connections(10)`, then each connection will have
 
 {{% include-headless "chunk/option-source-log-prefix.md" %}}
 
-<!-- Obsolete alias, only left here to make cfg-helper comparisons easier {{% include-headless "chunk/option-source-long-hostnames.md" %}} -->
+<!-- Obsolete alias, only left here to make cfg-helper comparisons easier: chunk/option-source-long-hostnames.md -->
 
 {{% include-headless "chunk/option-source-max-connections.md" %}}
 
@@ -115,7 +115,7 @@ If `log-iw-size(1000)` and `max-connections(10)`, then each connection will have
      Both are old aliases for so-keepalive() (see afsocket-parser.c keyword table).
      Documented above as so-keepalive(); these markers exist so the next docs-vs-cfg-helper
      diff doesn't flag them.
-{{% include-headless "chunk/option-source-read-old-records.md" %}}
+chunk/option-source-read-old-records.md
 -->
 
 {{% include-headless "chunk/option-source-sdata-prefix.md" %}}

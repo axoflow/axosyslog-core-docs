@@ -64,7 +64,7 @@ The `axosyslog-otlp()` source ignores this option and uses the hostname from the
 
 {{< include-headless "chunk/option-source-log-prefix.md" >}}
 
-<!-- Obsolete alias, only left here to make cfg-helper comparisons easier {{% include-headless "chunk/option-source-long-hostnames.md" %}} -->
+<!-- Obsolete alias, only left here to make cfg-helper comparisons easier: chunk/option-source-long-hostnames.md -->
 
 {{< include-headless "chunk/option-source-normalize-hostnames.md" >}}
 
@@ -84,8 +84,8 @@ The `axosyslog-otlp()` source ignores this option and uses the hostname from the
 <!-- cfg-helper exposes read-old-records() and sdata-prefix() for axosyslog-otlp(),
      but they have no useful effect on this source. Keep these markers so the
      next docs-vs-cfg-helper diff doesn't flag them as missing.
-{{% include-headless "chunk/option-source-read-old-records.md" %}}
-{{< include-headless "chunk/option-source-sdata-prefix.md" >}}
+chunk/option-source-read-old-records.md
+chunk/option-source-sdata-prefix.md
 -->
 
 {{< include-headless "chunk/option-source-tags.md" >}}

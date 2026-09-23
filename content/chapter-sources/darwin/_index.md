@@ -28,7 +28,7 @@ The `darwin-oslog()` source has the following options:
 
 {{% include-headless "chunk/option-source-default-priority.md" %}}
 
-<!-- has no useful effect on this source {{% include-headless "chunk/option-source-default-severity.md" %}} -->
+<!-- has no useful effect on this source: chunk/option-source-default-severity.md -->
 
 {{% include-headless "chunk/option-source-dns-cache.md" %}}
 
@@ -108,7 +108,7 @@ This option is currently disabled because of an OSLog API bug.
 
 {{< include-headless "chunk/option-source-log-prefix.md" >}}
 
-<!-- Obsolete alias, only left here to make cfg-helper comparisons easier {{% include-headless "chunk/option-source-long-hostnames.md" %}} -->
+<!-- Obsolete alias, only left here to make cfg-helper comparisons easier: chunk/option-source-long-hostnames.md -->
 
 ### max-bookmark-distance()
 
@@ -134,7 +134,7 @@ This option is currently disabled because of an OSLog API bug.
 
 *Description:* If set to `yes`, {{% param "product_name" %}} starts reading logs from the oldest available log when it's first started on a system, or if there are no bookmarks for some reason
 
-<!-- has no useful effect on this source {{< include-headless "chunk/option-source-sdata-prefix.md" >}} -->
+<!-- has no useful effect on this source: chunk/option-source-sdata-prefix.md -->
 
 {{< include-headless "chunk/option-source-tags.md" >}}
 

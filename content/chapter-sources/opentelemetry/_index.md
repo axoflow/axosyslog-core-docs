@@ -47,7 +47,7 @@ log otel_forward_mode_alts {
 
 {{% include-headless "chunk/option-source-default-priority.md" %}}
 
-<!-- has no useful effect on this source  {{% include-headless "chunk/option-source-default-severity.md" %}} -->
+<!-- has no useful effect on this source: chunk/option-source-default-severity.md -->
 
 {{% include-headless "chunk/option-source-dns-cache.md" %}}
 
@@ -77,7 +77,7 @@ The `opentelemetry()` source ignores this option and uses the address of the OTL
 
 {{% include-headless "chunk/option-source-log-prefix.md" %}}
 
-<!-- Obsolete alias, only left here to make cfg-helper comparisons easier {{% include-headless "chunk/option-source-long-hostnames.md" %}} -->
+<!-- Obsolete alias, only left here to make cfg-helper comparisons easier: chunk/option-source-long-hostnames.md -->
 
 {{% include-headless "chunk/option-source-normalize-hostnames.md" %}}
 
@@ -92,8 +92,8 @@ The port number to receive incoming connections. Default value: 4317
 <!-- cfg-helper exposes read-old-records() and sdata-prefix() for opentelemetry(),
      but they have no useful effect on this gRPC subscription source. Markers
      kept so the next docs-vs-cfg-helper diff doesn't flag them.
-{{% include-headless "chunk/option-source-read-old-records.md" %}}
-{{% include-headless "chunk/option-source-sdata-prefix.md" %}}
+chunk/option-source-read-old-records.md
+chunk/option-source-sdata-prefix.md
 -->
 
 {{% include-headless "chunk/option-source-tags.md" %}}
