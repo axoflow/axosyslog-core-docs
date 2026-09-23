@@ -56,7 +56,7 @@ s3(
 {{% param "product.abbrev" %}} can create a new object based on the following strategies:
 
 - Based on object size: The [`max-object-size()`](#max-object-size) option configures {{% param "product.abbrev" %}} to finish an object if it reaches a certain size. {{% param "product.abbrev" %}} appends an index ("-1", "-2", ...) to the end of the object key, then starts a new object.
-- Based on timestamp: The [`object-key-timestamp()`](#object-key-timestamp) option can be used to set a datetime-related template, which is appended to the end of the object, for example: `"${R_MONTH_ABBREV}${R_DAY}"`. When a log message arrives with a newer timestamp template resolution, the previous timestamped object gets finished and a new one is started with the new timestamp. If an older message arrives, it doesn`t reopen the old object, but starts a new object with the key having an index appended to the old object.
+- Based on timestamp: The [`object-key-timestamp()`](#object-key-timestamp) option can be used to set a datetime-related template, which is appended to the end of the object, for example: `"${R_MONTH_ABBREV}${R_DAY}"`. When a log message arrives with a newer timestamp template resolution, the previous timestamped object gets finished and a new one is started with the new timestamp. If an older message arrives, it doesn't reopen the old object, but starts a new object with the key having an index appended to the old object.
 - Based on timeout: The [`flush-grace-period()`](#flush-grace-period) option sets the number of minutes to wait for new messages to arrive after the last one. If the timeout expires, {{% param "product.abbrev" %}} closes the object, and opens a new object (with an appended index) when a new message arrives.
 
 All of these strategies can be used individually, or together.
@@ -231,7 +231,7 @@ Available in {{< product >}} 4.20 and later.
 | Type:    | template |
 | Default: |  |
 
-*Description:* The `object-key-timestamp()` option can be used to set a datetime-related template, which is appended to the end of the object key, for example: `"${R_MONTH_ABBREV}${R_DAY}"`. When a log message arrives with a newer timestamp template resolution, the previous timestamped object gets finished and a new one is started with the new timestamp. If an older message arrives, it doesn`t reopen the old object, but starts a new object with the key having an index appended to the old object.
+*Description:* The `object-key-timestamp()` option can be used to set a datetime-related template, which is appended to the end of the object key, for example: `"${R_MONTH_ABBREV}${R_DAY}"`. When a log message arrives with a newer timestamp template resolution, the previous timestamped object gets finished and a new one is started with the new timestamp. If an older message arrives, it doesn't reopen the old object, but starts a new object with the key having an index appended to the old object.
 
 {{< include-headless "chunk/destination-s3-object-name.md" >}}
 
