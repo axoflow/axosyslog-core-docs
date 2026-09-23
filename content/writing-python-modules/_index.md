@@ -1,5 +1,6 @@
 ---
 title: Writing Python modules
+description: "Write AxoSyslog destinations, parsers, template functions, and sources in Python, and add the code to DEB and RPM packages."
 weight: 4300
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->

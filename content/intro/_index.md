@@ -1,5 +1,6 @@
 ---
 title: "Introduction to AxoSyslog"
+description: "What AxoSyslog is and is not, what you can use it for, who uses it, and which platforms it supports."
 weight: 100
 aliases:
 - /chapter-intro/why-do-you-need-syslog-ng/

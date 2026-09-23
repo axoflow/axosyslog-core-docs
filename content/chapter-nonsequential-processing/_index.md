@@ -1,5 +1,6 @@
 ---
 title: Nonsequential message processing
+description: "Process messages from a single connection on multiple threads with parallelize(), and keep message ordering where you need it with partition keys."
 weight: 3950
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
