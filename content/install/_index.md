@@ -1,5 +1,6 @@
 ---
 title: "Install AxoSyslog"
+description: "Install AxoSyslog on Debian, Ubuntu, RHEL, Fedora, or AlmaLinux, run it with Docker, Podman, or Helm, or upgrade from syslog-ng."
 weight: 500
 aliases:
 - /chapter-install/syslog-ng-compile-options/

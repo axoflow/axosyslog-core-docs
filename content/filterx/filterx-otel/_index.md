@@ -237,7 +237,7 @@ The time when the event was observed by the collection system, expressed as nano
 
 The severity of the message as a numerical value of the [severity](#severity_text).
 
-```
+```protobuf
 SEVERITY_NUMBER_UNSPECIFIED = 0;
 SEVERITY_NUMBER_TRACE  = 1;
 SEVERITY_NUMBER_TRACE2 = 2;
@@ -273,7 +273,7 @@ SEVERITY_NUMBER_FATAL4 = 24;
 
 The severity of the message as a string, one of:
 
-```
+```text
 "SEVERITY_NUMBER_TRACE"
 "SEVERITY_NUMBER_TRACE2"
 "SEVERITY_NUMBER_TRACE3"

@@ -48,7 +48,7 @@ The `systemd-syslog()` driver has the following options:
 
 {{< include-headless "chunk/option-source-log-prefix.md" >}}
 
-<!-- Obsolete alias, only left here to make cfg-helper comparisons easier {{% include-headless "chunk/option-source-long-hostnames.md" %}} -->
+<!-- Obsolete alias, only left here to make cfg-helper comparisons easier: chunk/option-source-long-hostnames.md -->
 
 {{% include-headless "chunk/option-source-normalize-hostnames.md" %}}
 
@@ -56,7 +56,7 @@ The `systemd-syslog()` driver has the following options:
 
 {{% include-headless "chunk/option-source-program-override.md" %}}
 
-<!-- has no useful effect on this source {{% include-headless "chunk/option-source-read-old-records.md" %}} -->
+<!-- has no useful effect on this source: chunk/option-source-read-old-records.md -->
 
 {{% include-headless "chunk/option-source-sdata-prefix.md" %}}
 
@@ -74,7 +74,7 @@ The `systemd-syslog()` driver has the following options:
 
 {{% include-headless "chunk/option-source-time-zone.md" %}}
 
-<!-- has no useful effect on this source {{< include-headless "chunk/option-source-trim-large-messages.md" >}} -->
+<!-- has no useful effect on this source: chunk/option-source-trim-large-messages.md -->
 
 {{% include-headless "chunk/option-source-use-dns.md" %}}
 

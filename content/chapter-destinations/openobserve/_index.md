@@ -1,5 +1,6 @@
 ---
 title: Send messages to OpenObserve
+description: "Send log messages to OpenObserve with the openobserve-log() destination."
 linktitle: "openobserve-log: Send messages to OpenObserve"
 weight:  3620
 driver: "openobserve-log()"

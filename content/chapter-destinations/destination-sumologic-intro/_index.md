@@ -3,7 +3,7 @@ title: "Sumo Logic destinations: sumologic-http() and sumologic-syslog()"
 weight:  6300
 driver: "sumologic-http(), sumologic-syslog()"
 short_description: "Send messages to Sumo Logic"
-type:
+dest_type:
 - http
 - syslog
 ---

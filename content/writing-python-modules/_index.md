@@ -1,5 +1,6 @@
 ---
 title: Writing Python modules
+description: "Write AxoSyslog destinations, parsers, template functions, and sources in Python, and add the code to DEB and RPM packages."
 weight: 4300
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
@@ -459,7 +460,7 @@ To add your module to the `syslog-ng` DEB package, complete the following steps.
 1. Create a new file in `packaging/debian/` called `syslog-ng-mod-<yourmodule>.install`.
 1. Populate this file with wildcard patterns that capture the files of your package after installation. For example:
 
-    ```
+    ```text
     usr/lib/syslog-ng/python/syslogng/modules/<yourmodule>/*
     ```
 

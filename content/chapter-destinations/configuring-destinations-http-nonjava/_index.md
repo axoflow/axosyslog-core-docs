@@ -1,5 +1,6 @@
 ---
 title: "http: Post messages over HTTP without Java"
+description: "Send log messages to web services over HTTP or HTTPS with the http() destination."
 weight:  2100
 driver: "http()"
 short_description: "Post messages over HTTP without Java"

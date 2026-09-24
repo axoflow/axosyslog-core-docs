@@ -46,8 +46,8 @@ A parsed syslog message has the following parts:
 
     {{% alert title="Note" color="info" %}}
 It is also possible to set the value of built-in soft macros using parsers, for example, to set the `${HOST}` macro from the message using a column of a CSV-parser.
-    
-    The data extracted from the log messages using named pattern parsers in the pattern database are also soft macros.
+
+The data extracted from the log messages using named pattern parsers in the pattern database are also soft macros.
     {{% /alert %}} {{% alert title="Note" color="info" %}}
 For the list of hard and soft macros, see {{% xref "/chapter-manipulating-messages/customizing-message-format/macros-hard-vs-soft/_index.md" %}}.
     {{% /alert %}}

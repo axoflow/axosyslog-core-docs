@@ -1,5 +1,6 @@
 ---
 title: "BSD-syslog or legacy-syslog messages"
+description: "The structure of BSD-syslog (RFC 3164) messages: the PRI, HEADER, and MSG parts."
 weight:  100
 aliases:
 - /chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-header/

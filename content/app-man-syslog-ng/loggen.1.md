@@ -119,7 +119,9 @@ When `loggen` finishes sending the messages, it displays the following statistic
 
     If you want to change the message rate while loggen is running, send SIGUSR1 to double the message rate, or SIGUSR2 to halve it:
 
-    `kill -USR1 <loggen-pid>``kill -USR2 <loggen-pid>`
+    `kill -USR1 <loggen-pid>`
+
+    `kill -USR2 <loggen-pid>`
 
 - `--read-file <filename>` or `-R <filename>`
 

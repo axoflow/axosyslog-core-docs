@@ -11,7 +11,9 @@ The following template functions are available in {{% param "product.abbrev" %}}
 
 *Syntax:*
 
-    $(base64-encode argument)
+```shell
+$(base64-encode argument)
+```
 
 *Description:* You can use the `base64-encode` template function to [base64-encode](https://tools.ietf.org/html/rfc4648) strings and macros. The template function can receive multiple parameters (maximum 64). In this case, {{% param "product.abbrev" %}} joins the parameters into a single string and encodes this string. For example, `$(base64-encode string1 string2)` is equivalent to `$(base64-encode string1string2)`.
 
@@ -23,7 +25,9 @@ Available in {{% param "product.abbrev" %}} version 3.18 and later.
 
 *Syntax:*
 
-    $(basename argument)
+```shell
+$(basename argument)
+```
 
 *Description:* Returns the filename from an argument (for example, a macro: `$(basename ${FILE_NAME})`) that contains a filename with a path. For example, `$(basename "/var/log/messages.log")` returns `messages.log`. To [extract the path, use the dirname template function]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}).
 
@@ -35,7 +39,9 @@ Available in {{% param "product.abbrev" %}} version 3.10 and later.
 
 *Syntax:*
 
-    $(ceil argument)
+```shell
+$(ceil argument)
+```
 
 *Description:* Rounds a floating-point number upwards to the nearest integer. For example, `$(ceil 1.5)` is 2, `$(ceil -1.5)` is -1. See also the `floor` and `round` template functions.
 
@@ -45,7 +51,9 @@ Available in {{% param "product.abbrev" %}} version 3.10 and later.
 
 *Syntax:*
 
-    $(context-lookup [option] condition value-to-select)
+```shell
+$(context-lookup [option] condition value-to-select)
+```
 
 *Description:* The `context-lookup` template function can search a message context when correlating messages (for example, when you use a [pattern database]({{< relref "/chapter-parsers/chapter-patterndb/configuring-pattern-databases/patterndb-correlation/_index.md" >}}) or the [grouping-by parser]({{< relref "/chapter-correlating-log-messages/grouping-by-parser/_index.md" >}})). The `context-lookup` template function requires a condition (a filter or a string), and returns a specific macro or template of the matching messages (for example, the ${MESSAGE}) as a list. It works similarly to the [`$(grep)`]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}) template function, but it escapes its output properly, so that the returned value is a list that can be processed with other template functions that work on lists, for example, `$(list-slice)`.
 
@@ -71,7 +79,9 @@ Available in {{% param "product.abbrev" %}} version 3.10 and later.
 
 *Syntax:*
 
-    $(context-values $name-value1 $name-value2 ...)
+```shell
+$(context-values $name-value1 $name-value2 ...)
+```
 
 *Description:* The `context-values` template function returns a list of every occurrence of the specified name-value pairs from the entire context. For example, if the context contains multiple messages, the `$(context-values ${HOST})` template function will return a comma-separated list of the `${HOST}` values that appear in the context.
 
@@ -83,7 +93,9 @@ Available in {{% param "product.abbrev" %}} version 3.10 and later.
 
 *Syntax:*
 
-    $(dirname argument)
+```shell
+$(dirname argument)
+```
 
 *Description:* Returns the path (without the filename) from an argument (for example, a macro: `$(basename ${FILE_NAME}`) that contains a filename with a path. For example, `$(dirname "/var/log/messages.log")` returns `/var/log` path. To [extract the filename, use the basename template function]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}).
 
@@ -95,7 +107,9 @@ Available in {{% param "product.abbrev" %}} version 3.10 and later.
 
 *Syntax:*
 
-    $(echo argument)
+```shell
+$(echo argument)
+```
 
 *Description:* Returns the value of its argument. Using `$(echo ${HOST})` is equivalent to `${HOST}`.
 
@@ -105,7 +119,9 @@ Available in {{% param "product.abbrev" %}} version 3.10 and later.
 
 *Syntax:*
 
-    $(env <environment-variable>)
+```shell
+$(env <environment-variable>)
+```
 
 *Description:* Returns the value of the specified environment variable. Available in {{% param "product.abbrev" %}} 3.5 and later.
 
@@ -115,7 +131,9 @@ Available in {{% param "product.abbrev" %}} version 3.10 and later.
 
 *Syntax:*
 
-    $(explode <separator> <string1> <string2> ...)
+```shell
+$(explode <separator> <string1> <string2> ...)
+```
 
 *Description:* Turns a string separated by a specific character into a list. You can also use the [implode](#template-function-implode) template function, which turns a list into a string combining the pieces together with a separator. Available in {{% param "product.abbrev" %}} 3.21 and later.
 
@@ -468,10 +486,10 @@ To retrieve additional GeoIP information, see {{% xref "/chapter-enrich-data/geo
 
 *Syntax:*
 
-    ```bash
-    $(geoip2 --database <path-to-geoip2-database-file>
-        [ --field "registered_country.names.ru" ] ${HOST})
-    ```
+```shell
+$(geoip2 --database <path-to-geoip2-database-file>
+    [ --field "registered_country.names.ru" ] ${HOST})
+```
 
 *Description:* This template function extracts specific fields from the mmdb database using the `--field` parameter. If you omit this parameter, it returns the 2-letter country code of any IPv4/IPv6 address or host.
 
@@ -988,7 +1006,7 @@ When you are correlating messages and a name-value pair contains numerical value
  $(padding <macro> <width> <prepended-character-or-string>)
 ```
 
-*Description:* This template function returns the value of its first parameter (a string or macro), prepended with a string. This string is `<width> long, and repeats the character or string set in the third parameter. If you use a single character, it is added `<width>>times. If you use a string, it is repeated until its length reaches `<width>`>The default padding character is ' ' (space). For example:
+*Description:* This template function returns the value of its first parameter (a string or macro), prepended with a string. This string is `<width>` long, and repeats the character or string set in the third parameter. If you use a single character, it is added `<width>` times. If you use a string, it is repeated until its length reaches `<width>`. The default padding character is ' ' (space). For example:
 
 
 ### Example: Using the padding template function
@@ -1269,7 +1287,7 @@ $(template $<dynamic-template-name>)
 $(template $<dynamic-template-name> '<optional-fallback-template>')
 ```
 
-*Description:* This template function looks up the <template-name>in the configuration and uses that to format its result. The referenced template can be static or dynamic. For static templates, {{% param "product.abbrev" %}} resolves the template when it starts, or when the configuration is reloaded. For dynamic templates, the results are resolved runtime (for dynamic templates, the template name contains at least one '$' character). For example, the name of the template to be invoked can be extracted from the message, or from a name-value pair set using the [`add-contextual-data()`]({{< relref "/chapter-enrich-data/data-enrichment-add-contextual-data/_index.md" >}}) feature.
+*Description:* This template function looks up the `<template-name>` in the configuration and uses that to format its result. The referenced template can be static or dynamic. For static templates, {{% param "product.abbrev" %}} resolves the template when it starts, or when the configuration is reloaded. For dynamic templates, the results are resolved runtime (for dynamic templates, the template name contains at least one '$' character). For example, the name of the template to be invoked can be extracted from the message, or from a name-value pair set using the [`add-contextual-data()`]({{< relref "/chapter-enrich-data/data-enrichment-add-contextual-data/_index.md" >}}) feature.
 
 For dynamic templates, you can set an optional second template. This second template will be the results of the template function if resolving the dynamic template fails for some reason. For example:
 

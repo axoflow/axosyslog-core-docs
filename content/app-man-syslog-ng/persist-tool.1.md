@@ -34,7 +34,7 @@ Example: `persist-tool dump /opt/syslog-ng/var/syslog-ng.persist`
 
 The output looks like:
 
-```
+```text
 run_id = { "value": "00 00 00 00 0C 00 00 00 " }
 host_id = { "value": "00 00 00 00 5F 49 2F 01 " }
 ```
@@ -65,14 +65,14 @@ Example: `/opt/syslog-ng/bin/persist-tool add dump_persist -o .`
 
 The valid output looks like:
 
-```
+```text
 log_reader_curpos(Application)      OK
 affile_sd_curpos(/var/aaa.txt)        OK
 ```
 
 The invalid output looks like:
 
-```
+```text
 log_reader_curpos(Application)      OK
 wrong
 FAILED (error: Invalid entry syntax)
