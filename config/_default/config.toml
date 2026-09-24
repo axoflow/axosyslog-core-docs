@@ -39,6 +39,21 @@ tagline = "Scalable security data processor"
   mediaType   = "text/plain"
   isPlainText = true
 
+# Declared but not enabled, so the PDF edition is off. docsy-axoflow ships
+# layouts/docs/{baseof,list}.pdf.html; without a `pdf` output format Hugo does
+# not read `.pdf.` in those names as a format, and renders the HTML section
+# pages with the PDF layout instead. No page kind lists `pdf` under [outputs],
+# so nothing is built for it. To turn the PDF edition on, add it to
+# outputs.home in a config/pdf/ environment (see the theme's CLAUDE.md).
+[outputFormats.pdf]
+  name           = "pdf"
+  mediaType      = "text/html"
+  baseName       = "index"
+  path           = "_pdf"
+  isHTML         = true
+  notAlternative = true
+  permalinkable  = false
+
 ## For llms.txt/markdown output rendering with `hugo serve`
 [[server.headers]]
   for = "**.md"
