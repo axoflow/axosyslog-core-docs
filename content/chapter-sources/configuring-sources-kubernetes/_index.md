@@ -8,8 +8,6 @@ short_description: "Collect and parse messages in the Kubernetes CRI (Container 
 
 The `kubernetes()` source collects container logs managed by the Kubelet. It reads plain-text and JSON-formatted container logs (as described in the [Container Runtime Interface (CRI) design proposal](https://github.com/kubernetes/design-proposals-archive/blob/main/node/kubelet-cri-logging.md)), for example, from the `/var/log/containers` or `/var/log/pods` files, and enriches them with various metadata retrieved from the Kubernetes API.
 
-The `kubernetes()` source is available in {{% param "product.abbrev" %}} version 3.37 and later.
-
 By default, it reads the `/var/log/containers` folder and extracts:
 
 - the log content, and
@@ -29,6 +27,12 @@ The Kubernetes-related metadata is available in name-value pairs with the `.k8s.
 | `.k8s.docker_id` | python kubernetes.client.CoreV1Api.|
 | `.k8s.labels.*` | python kubernetes.client.CoreV1Api.|
 | `.k8s.annotations.*` | python kubernetes.client.CoreV1Api.|
+
+## Prerequisites
+
+- {{% param "product.name" %}} version 3.37 or later.
+- {{< include-headless "chunk/prereq-package-scl.md" >}}
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-python" "axosyslog-python" >}}
 
 ## Declaration
 

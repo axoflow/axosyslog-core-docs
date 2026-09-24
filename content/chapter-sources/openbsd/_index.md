@@ -12,6 +12,10 @@ The `openbsd()` source driver collects kernel log messages on OpenBSD systems. T
 
 On OpenBSD platforms the [`system()` source]({{< relref "/chapter-sources/source-system/_index.md" >}}) automatically uses `openbsd()` to read kernel messages, so usually you don't need to configure it directly. Use `openbsd()` explicitly only if you want to bypass `system()` and route OpenBSD kernel messages through a custom log path.
 
+## Prerequisites
+
+{{< include-headless "chunk/prereq-platform-only.md" "OpenBSD" >}}
+
 ## Example: Reading OpenBSD kernel logs
 
 ```shell

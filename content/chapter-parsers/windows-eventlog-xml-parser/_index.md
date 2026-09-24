@@ -6,9 +6,15 @@ short_description: "Parse messages in the Windows XML Event Log (EVTX) format"
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
+The `windows-eventlog-xml-parser()` can parse messages in the Windows XML Event Log (EVTX) format.
+
+## Prerequisites
+
 Available in {{% param "product.abbrev" %}} version 4.5 and later.
 
-The new `windows-eventlog-xml-parser()` can parse messages in the Windows XML Event Log (EVTX) format.
+{{< include-headless "chunk/prereq-package-deb-only.md" "axosyslog-mod-xml-parser" >}}
+
+## Configuration
 
 See also the equivalent FilterX function, [`parse_windows_eventlog_xml()`]({{< relref "/filterx/function-reference.md#parse-windows" >}}).
 

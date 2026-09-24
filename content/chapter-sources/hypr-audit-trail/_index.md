@@ -7,10 +7,16 @@ short_description: "Fetch events from the Hypr REST API"
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-Starting with version 4.2.0, {{% param "product_name" %}} can fetch events from the [Hypr REST API](https://apidocs.hypr.com/) using the `hypr-audit-trail()` and `hypr-app-audit-trail()` source drivers.
+{{% param "product_name" %}} can fetch events from the [Hypr REST API](https://apidocs.hypr.com/) using the `hypr-audit-trail()` and `hypr-app-audit-trail()` source drivers.
 
 - `hypr-audit-trail()`: is a source driver that pulls messages from the Hypr API, associated to any RP Application ID.
 - `hypr-app-audit-trail()`: is a source driver that pulls messages from the Hypr API, but only those associated to a specific RP Application ID.
+
+## Prerequisites
+
+- {{% param "product.name" %}} version 4.2.0 or later.
+- {{< include-headless "chunk/prereq-package-scl.md" >}}
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-python" "axosyslog-python" >}}
 
 ## Hypr Audit Trail
 

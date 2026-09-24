@@ -8,11 +8,14 @@ dest_type: grpc
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-Available in {{% param "product.abbrev" %}} version 4.12 and later. (From version 4.4 to 4.11, this driver was called `syslog-ng-otlp()`.)
-
 {{< include-headless "chunk/syslog-ng-otlp-intro.md" >}}
 
 <!--  FIXME:  internal(<yesno>) option is globally undocumented -->
+
+## Prerequisites
+
+- {{% param "product.abbrev" %}} version 4.12 or later. (From version 4.4 to 4.11, this driver was called `syslog-ng-otlp()`.)
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-grpc" "axosyslog-grpc" >}}
 
 ## Options
 

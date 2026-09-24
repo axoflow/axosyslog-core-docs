@@ -9,7 +9,12 @@ source_type_grpc: true
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-Starting with version 4.3.0, {{% param "product_name" %}} can receive logs, metrics, and traces from [OpenTelemetry](https://opentelemetry.io/) clients over the [OpenTelemetry Protocol (OTLP/gRPC)](https://opentelemetry.io/docs/specs/otlp/).
+{{% param "product_name" %}} can receive logs, metrics, and traces from [OpenTelemetry](https://opentelemetry.io/) clients over the [OpenTelemetry Protocol (OTLP/gRPC)](https://opentelemetry.io/docs/specs/otlp/).
+
+## Prerequisites
+
+- {{% param "product.name" %}} version 4.3.0 or later.
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-grpc" "axosyslog-grpc" >}}
 
 ## Example: Receiving OpenTelemetry data
 

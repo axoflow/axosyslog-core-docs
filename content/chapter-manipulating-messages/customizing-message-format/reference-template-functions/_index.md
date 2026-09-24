@@ -365,6 +365,8 @@ For details on formatting log messages into JSON format, see [`format-json`](#te
 
 *Syntax:* `$(format-gelf)`
 
+{{< include-headless "chunk/prereq-package-scl.md" >}}
+
 *Description:* Available in {{% param "product.abbrev" %}} 3.13 and later.
 
 You can use the Graylog Extended Log Format (GELF) template together with the `graylog2()` destination to send syslog messages to [Graylog](http://docs.graylog.org). GELF is the native data format of Graylog.
@@ -491,6 +493,8 @@ $(geoip2 --database <path-to-geoip2-database-file>
     [ --field "registered_country.names.ru" ] ${HOST})
 ```
 
+{{< include-headless "chunk/prereq-package.md" "axosyslog-mod-geoip2" "axosyslog-geoip" >}}
+
 *Description:* This template function extracts specific fields from the mmdb database using the `--field` parameter. If you omit this parameter, it returns the 2-letter country code of any IPv4/IPv6 address or host.
 
 
@@ -510,6 +514,8 @@ To retrieve additional GeoIP information, see {{% xref "/chapter-enrich-data/geo
 ## getent {#template-function-getent}
 
 *Syntax:* `$(getent)`
+
+{{< include-headless "chunk/prereq-package-deb-only.md" "axosyslog-mod-getent" >}}
 
 *Description:* Available in {{% param "product.abbrev" %}} 3.13 and later.
 
@@ -586,6 +592,8 @@ The following databases are supported:
 ## graphite-output {#template-function-graphite}
 
 *Syntax:* `$(graphite-output parameters)`
+
+{{< include-headless "chunk/prereq-package-deb-only.md" "axosyslog-mod-graphite" >}}
 
 *Description:* Available in {{% param "product.abbrev" %}} 3.6 and later. This template function converts value-pairs from the incoming message to the Graphite plain text protocol format.
 
@@ -1036,6 +1044,8 @@ Output: `foofoofoofmymessage`
  $(python <name-of-the-python-method-to-use> <arguments-of-the-method>)
 ```
 
+{{< include-headless "chunk/prereq-package.md" "axosyslog-mod-python" "axosyslog-python" >}}
+
 *Description:* This template function enables you to write a custom template function in Python. You can define a Python block in your {{% param "product.abbrev" %}} configuration file, define one or more Python functions in it, and use the methods as template functions. If you use a Python block, {{% param "product.abbrev" %}} embeds a Python interpreter to process the messages.
 
 {{< include-headless "chunk/python-blocks.md" >}}
@@ -1180,6 +1190,8 @@ This is equivalent to `file("/var/log/$HOST/$PROGRAM/messages");`, but any slash
 ## stardate {#template-function-stardate}
 
 *Syntax:* `$(stardate [option] "<date-in-unixtime>")`
+
+{{< include-headless "chunk/prereq-package-deb-only.md" "axosyslog-mod-stardate" >}}
 
 *Description:* Converts a date in UNIXTIME (for example, ${UNIXTIME}) into [stardate](https://en.wikipedia.org/wiki/Stardate), displaying the year and the progress of the year in a number of digits (`YYYY.NNN`). You can set the number of digits using the `--digits` option, for example:
 

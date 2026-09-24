@@ -13,6 +13,10 @@ weight:  900
 - change fields in the message (for example, add missing information, or delete unnecessary data), or
 - convert incoming syslog messages to OpenTelemetry log messages.
 
+## Prerequisites
+
+{{< include-headless "chunk/prereq-package.md" "axosyslog-mod-grpc" "axosyslog-grpc" >}}
+
 ## Route OTEL messages
 
 To route OTEL messages (such as the ones received through the [`opentelemetry()` source]({{< relref "/chapter-sources/opentelemetry/_index.md" >}})) based on their content, configure the following:
