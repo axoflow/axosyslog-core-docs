@@ -460,7 +460,7 @@ To add your module to the `syslog-ng` DEB package, complete the following steps.
 1. Create a new file in `packaging/debian/` called `syslog-ng-mod-<yourmodule>.install`.
 1. Populate this file with wildcard patterns that capture the files of your package after installation. For example:
 
-    ```
+    ```text
     usr/lib/syslog-ng/python/syslogng/modules/<yourmodule>/*
     ```
 

@@ -28,7 +28,7 @@ In order to ease log verification and analysis, a sequence number is added to ea
 
 Here is an example of three short original log messages that will be sent to a destination with secure logging enabled:
 
-```
+```text
 This is a log message
 And here comes another log message
 This is a log message with a longer text that is processed without any problems
@@ -46,7 +46,7 @@ Counting starts at zero. This is why the counter is set to three after processin
 
 The output of the secure logging template for the three example messages is shown below. One clearly sees the sequence number that was prepended to each message. The colon indicates the end of the sequence number and the start of the original message. As three message were processed, the sequence counter of the key will be three.
 
-```
+```text
 AAAAAAAAAAA=:k3/dYpLsgO2tUJKSauo6dycIBzW6OTC3pyA9TP+7AnqFgEojBzgC2rcK4OPfRtr8yg==
 AQAAAAAAAAA=:smw0ATISVgN+BYEu5d7OLBE7aQhHpK9Ro4MndmNgSVrqhcmRCBCj6DUnD6ku0Z29CKJ0N6LAJUgByX4Ev+g=
 AgAAAAAAAAA=:5UVybnKL1EAbgC4CLfd8HpgurjREf4LEN61/yWHSD2hbXjRD4QmQdtbwguT1chzdItKSQASps9QRIvR5Jd4AHzHfqxI4aRgdUBcNbAq26nwUCg5vPWygjmbtQaxZgCJYkry8slxCigmbTVs=
@@ -54,7 +54,7 @@ AgAAAAAAAAA=:5UVybnKL1EAbgC4CLfd8HpgurjREf4LEN61/yWHSD2hbXjRD4QmQdtbwguT1chzdItK
 
 The output of a successful verification run is shown below.
 
-```
+```text
 0000000000000000: This is a log message
 0000000000000001: And here comes another log message
 0000000000000002: This is a log message with a longer text that is processed without any problems

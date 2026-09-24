@@ -68,7 +68,7 @@ The name of the object can be further modified by the following options:
 
 To summarize, the different options (if set) modify the name of the object in the following order:
 
-```
+```text
 object-key()object-key-timestamp()max-object-size()object-key-suffix().gz(if compression is enabled)
 ```
 
