@@ -116,7 +116,7 @@ tagline = "Scalable security data processor"
   # fallback banner above would print it. The switcher above the tree shows
   # "4.27 (current)" from data/versions.yaml, so the sidebar now carries the
   # version twice; drop this param if the duplicate is unwanted.
-  version = "4.27.0"
+  version = "4.28.0"
   version_menu_canonicallinks = true
 
   # A link to latest version of the docs. Used in the "version-banner" partial to
@@ -271,11 +271,11 @@ tagline = "Scalable security data processor"
 [params.product]
 name = "AxoSyslog"
 abbrev = "AxoSyslog"
-version = "4.27"
+version = "4.28"
 # techversion includes patch version number, needed for install/image commands
 # configversion is needed in the config file examples
-techversion = "4.27.0"
-configversion = "4.27"
+techversion = "4.28.0"
+configversion = "4.28"
 syslog-ng = "syslog-ng"
 selinux = "SELinux"
 apparmor = "AppArmor"
@@ -349,6 +349,6 @@ anchor = "smart"
   # the release you are on. So on release: add " (current)" to the new version
   # here on main, and strip it from the outgoing version on its release branch
   # before that branch is republished.
-  body_attribute = 'data-pagefind-filter="section:4.27 (current)"'
+  body_attribute = 'data-pagefind-filter="section:4.28 (current)"'
   [cascade.target]
     path = '/**'

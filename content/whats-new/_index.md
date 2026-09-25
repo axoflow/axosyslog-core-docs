@@ -7,6 +7,18 @@ weight: 10
 
 {{< include-headless "banner-new-to-axosyslog.md" >}}
 
+## Version 4.28
+
+- The new [`elasticsearch-bulk()` source]({{< relref "/chapter-sources/elasticsearch-bulk/_index.md" >}}) implements the Elasticsearch Bulk API, so Elastic Agent, Beats, and other clients can send their events to {{< product >}} by pointing their Elasticsearch output at it.
+- The new [`splunk-hec()` source]({{< relref "/chapter-sources/splunk-hec/_index.md" >}}) receives messages from Splunk HTTP Event Collector (HEC) clients, so you can point your existing HEC clients at {{< product >}} and process or route the events before forwarding them.
+- The new [`ehttp()` source]({{< relref "/chapter-sources/ehttp/_index.md" >}}) receives log messages over HTTP and HTTPS. Unlike the Python-based [`webhook()` source]({{< relref "/chapter-sources/webhook/_index.md" >}}), it is implemented natively in {{< product >}}, and it is intended to replace `webhook()` in the long run. Note that `ehttp()` is experimental: it will be renamed to `http()` once its options are considered stable, and its options can change until then.
+- The [`opentelemetry()` source]({{< relref "/chapter-sources/opentelemetry/_index.md#mode" >}}) now supports the `mode()` option. With `mode(filterx-dict)`, the source converts incoming log records directly into the declared `log`, `resource`, and `scope` FilterX variables as plain dictionaries, instead of creating the `${.otel_raw.*}` name-value pairs. This removes an extra serialization step, so processing OpenTelemetry logs in FilterX becomes significantly faster. The default remains `mode(logmessage)`, which keeps the previous behavior.
+
+    The `opentelemetry()` source now also sets the `.tls.x509_cn`, `.tls.x509_o` and `.tls.x509_ou` name-value pairs from the client certificate, the same way the `network()` and `syslog()` sources do it.
+
+- The [`format_kv`]({{< relref "/filterx/filterx-format-data/format-kv.md" >}}) FilterX function now supports the `quote_char` and `always_quote` options to control how values are quoted.
+- The [`update_metric`]({{< relref "/filterx/filterx-metrics/_index.md#set" >}}) FilterX function now supports the `set` option, which assigns an absolute value to the counter instead of incrementing it. This makes `update_metric` usable for gauge-like metrics.
+
 ## Version 4.27 (2026-08-19)
 
 - FilterX has a new [`tuple`]({{< relref "/filterx/_index.md#tuples" >}}) variable type, a read-only, list-like data type similar to a Python tuple. You can initialize a tuple only once, after that it remains read-only until the end of its lifecycle.

@@ -32,7 +32,7 @@ The `syslog-ng-ctl` application is a utility that can:
 
 <span id="syslog-ng-ctl"></span>
 
-## Enabling troubleshooting messages
+## Enabling troubleshooting messages {#log-level}
 
 `syslog-ng-ctl log-level <level>`
 
@@ -55,6 +55,31 @@ syslog-ng-ctl log-level verbose
 ```
 
 To temporarily change the log levels and access the logs of `syslog-ng`, see also the [`attach` command]({{< relref "#attach" >}}).
+
+### Enable a single message level {#verbose-debug-trace}
+
+`syslog-ng-ctl verbose [options]`
+
+`syslog-ng-ctl debug [options]`
+
+`syslog-ng-ctl trace [options]`
+
+The `verbose`, `debug`, and `trace` commands enable or query a single message level individually. Use the [`log-level`](#log-level) command instead when possible, because it sets the log level of {{% param "product.abbrev" %}} as a whole.
+
+Use the command without any options to query the current state of the given message level.
+
+These commands have the following options:
+
+- {{< include-headless "chunk/varlistentry-manpage-control-socket.md" >}}
+- `--set=<on|off|0|1>` or `-s`
+
+    Enable or disable the messages of the given level.
+
+For example, the following command enables debug messages:
+
+```shell
+syslog-ng-ctl debug --set=on
+```
 
 ## Monitor {{% param "product.abbrev" %}} metrics {#metrics}
 
@@ -316,9 +341,30 @@ Use the `syslog-ng-ctl config` command to display the configuration that {{% par
 
 Starting with {{% param "product.name" %}} version 4.2, you can display the configuration identifier (if set) and the SHA256 has of the output of the `syslog-ng-ctl config --preprocessed` command by running `syslog-ng-ctl config --id`. For details, see {{% xref "/chapter-configuration-file/configuration-identifier/_index.md" %}}.
 
+The `config` command has the following options:
+
+- {{< include-headless "chunk/varlistentry-manpage-control-socket.md" >}}
+- `--id` or `-i`
+
+    Display the configuration identifier.
+
+- `--preprocessed` or `-p`
+
+    Resolve the included files and display the entire configuration.
+
+- `--verify` or `-v`
+
+    Verify the configuration that {{% param "product.abbrev" %}} is currently running.
+
 ### List referenced files
 
 You can use the `syslog-ng-ctl list-files` command to list files referenced in your configuration, for example, certificates or external configuration files. Available in {{< product >}} 3.23.1 and later.
+
+### Export the configuration graph
+
+`syslog-ng-ctl export-config-graph`
+
+Use the `syslog-ng-ctl export-config-graph` command to export the graph of the configuration that {{% param "product.abbrev" %}} is currently running.
 
 ## Reloading the configuration {#syslog-ng-ctl-reload}
 
@@ -327,6 +373,44 @@ You can use the `syslog-ng-ctl list-files` command to list files referenced in y
 Use the `syslog-ng-ctl reload` command to reload the configuration file of {{% param "product.abbrev" %}} without having to restart the {{% param "product.abbrev" %}} application. The `syslog-ng-ctl reload` works like a SIGHUP.
 
 The `syslog-ng-ctl reload` command returns 0 if the operation was successful, 1 otherwise.
+
+## Reopening destination files {#syslog-ng-ctl-reopen}
+
+`syslog-ng-ctl reopen`
+
+Use the `syslog-ng-ctl reopen` command to make {{% param "product.abbrev" %}} close and reopen its destination files. This is useful after an external log rotation tool has renamed or removed the files that {{% param "product.abbrev" %}} writes.
+
+## Stopping {{% param "product.abbrev" %}} {#syslog-ng-ctl-stop}
+
+`syslog-ng-ctl stop [options]`
+
+Use the `syslog-ng-ctl stop` command to stop the {{% param "product.abbrev" %}} process.
+
+The `stop` command has the following options:
+
+- {{< include-headless "chunk/varlistentry-manpage-control-socket.md" >}}
+- `--force` or `-f`
+
+    Available in {{< product >}} 4.28 and later.
+
+    Terminate {{% param "product.abbrev" %}} without waiting for the worker threads to finish.
+
+    {{< warning >}}
+Stopping {{% param "product.abbrev" %}} this way can result in message loss, because the worker threads do not get the chance to flush the messages they are processing.
+    {{< /warning >}}
+
+## Displaying license information {#syslog-ng-ctl-license}
+
+`syslog-ng-ctl show-license-info [options]`
+
+Use the `syslog-ng-ctl show-license-info` command to display information about the license of the running {{% param "product.abbrev" %}} instance.
+
+The `show-license-info` command has the following options:
+
+- {{< include-headless "chunk/varlistentry-manpage-control-socket.md" >}}
+- `--json` or `-J`
+
+    Display the license information in JSON format.
 
 ## The healthcheck command {#syslog-ng-ctl-healthcheck}
 
@@ -352,12 +436,18 @@ Connect to the standard IO (stdin, stdout, stderr) and display the results. Note
 
 The `syslog-ng-ctl attach` command has the following parameters:
 
-- Attach mode: `logs` or `stdio`.
+- Attach mode: `logs`, `debugger`, or `stdio`. If you do not set the attach mode, `syslog-ng-ctl` uses `stdio`.
 
     - Use `logs` to access the internal log messages of `syslog-ng`. For example, the following command changes the log level to `trace` and accesses the internal logs of `syslog-ng`:
 
         ```shell
         syslog-ng-ctl attach logs --seconds 10 --log-level trace
+        ```
+
+    - Use `debugger` to attach to the interactive debugger of `syslog-ng`. For example:
+
+        ```shell
+        syslog-ng-ctl attach debugger
         ```
 
     - Use `stdio` to display the output of the `syslog-ng` process. For example:

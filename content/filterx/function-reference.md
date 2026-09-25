@@ -263,7 +263,9 @@ For details, see {{% xref "/filterx/filterx-format-data/format-json.md" %}}.
 
 Formats a dictionary into a string containing key=value pairs.
 
-Usage: `format_kv(kvs_dict, value_separator="<separator-character>", pair_separator="<separator-string>")`
+Usage: `format_kv(kvs_dict, value_separator="<separator-character>", pair_separator="<separator-string>", quote_char="<quote-character>", always_quote=<boolean>)`
+
+The `quote_char` and `always_quote` options are available in {{< product >}} 4.28 and later.
 
 For details, see {{% xref "/filterx/filterx-format-data/format-kv.md" %}}.
 
@@ -1046,7 +1048,11 @@ unset_empties(input_object, targets=["-", "N/A"], ignorecase=false);
 
 ## update_metric {#update-metric}
 
-Updates a labeled metric counter, similarly to the [`metrics-probe()` parser]({{< relref "/chapter-parsers/metrics-probe/_index.md" >}}). For details, see {{% xref "/filterx/filterx-metrics/_index.md" %}}.
+Updates a labeled metric counter, similarly to the [`metrics-probe()` parser]({{< relref "/chapter-parsers/metrics-probe/_index.md" >}}).
+
+Usage: `update_metric("key", labels={"key": "value"}, increment=1|set=20, level=0)`
+
+The `set` option is available in {{< product >}} 4.28 and later. For details, see {{% xref "/filterx/filterx-metrics/_index.md" %}}.
 
 ## upper
 

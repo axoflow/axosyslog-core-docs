@@ -47,21 +47,21 @@ When `loggen` finishes sending the messages, it displays the following statistic
 
     The `loggen` utility waits until every connection is established before starting to send messages. See also the `--idle-connections` option.
 
-- `--csv` or `-C`
-
-    Send the statistics of the sent messages to `stdout` as CSV. This can be used for plotting the message rate.
-
 - `--client-port`
 
     Available in {{% param "product.abbrev" %}} 4.14 and later.
 
     Use the specified outbound port to connect to the server. Usable only for a single connection (when `--active-connections` is 1 and `--idle-connections` is not set).
 
+- `--debug`
+
+    Enable debug messages of `loggen`.
+
 - `--dgram` or `-D`
 
     Use datagram socket (`UDP` or `unix-dgram`) to send the messages to the target. Requires the `--inet` option as well.
 
-- `dont-parse` or `-d`
+- `--dont-parse` or `-d`
 
     Do not parse the lines read from the input files, send them as received.
 
@@ -69,7 +69,7 @@ When `loggen` finishes sending the messages, it displays the following statistic
 
     Display a brief help message.
 
-- `--idle-connection <number-of-connections>`
+- `--idle-connections <number-of-connections>`
 
     Number of idle connections `loggen` will establish to the destination. Note that `loggen` will not send any messages on idle connections, but the connection is kept open using keep-alive messages. This option is usable only when using TCP or TLS connections to the destination. See also the `--active-connections` option. Default value: 0
 
@@ -109,6 +109,32 @@ When `loggen` finishes sending the messages, it displays the following statistic
 
     Keep sending logs indefinitely, without time limit.
 
+- `--proxied [<version>]` or `-H [<version>]`
+
+    Prepend a PROXY protocol header to the generated messages. The optional argument selects the version of the PROXY protocol: `1` or `2`. Default value: `1`
+
+    Use the `--proxy-src-ip`, `--proxy-dst-ip`, `--proxy-src-port`, and `--proxy-dst-port` options to set the addresses in the header.
+
+- `--proxied-tls-passthrough`
+
+    Send the PROXY protocol header before the encrypted payload. Use it together with the `--proxied` and `--use-ssl` options.
+
+- `--proxy-dst-ip <ip-address>`
+
+    The destination IP address to set in the PROXY protocol header.
+
+- `--proxy-dst-port <port>`
+
+    The destination port to set in the PROXY protocol header.
+
+- `--proxy-src-ip <ip-address>`
+
+    The source IP address to set in the PROXY protocol header.
+
+- `--proxy-src-port <port>`
+
+    The source port to set in the PROXY protocol header.
+
 - `--quiet` or `-Q`
 
     Display statistics only when `loggen` is finished. If not set, the statistics are displayed every second.
@@ -122,6 +148,10 @@ When `loggen` finishes sending the messages, it displays the following statistic
     `kill -USR1 <loggen-pid>`
 
     `kill -USR2 <loggen-pid>`
+
+- `--rate-burst-start`
+
+    Start sending messages at the full rate set in the `--rate` option, instead of ramping the rate up gradually. Useful for testing rate limiting.
 
 - `--read-file <filename>` or `-R <filename>`
 
@@ -160,10 +190,6 @@ When `loggen` finishes sending the messages, it displays the following statistic
 - `--use-ssl` or `-U`
 
     Use an SSL-encrypted channel to send the messages to the target. Note that it is not possible to check the certificate of the target, or to perform mutual authentication.
-
-- `--version` or `-V`
-
-    Display version number of `syslog-ng`.
 
 ## Examples
 
