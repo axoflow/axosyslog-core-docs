@@ -12,7 +12,7 @@ Available in {{< product >}} 4.28 and later.
 The `elasticsearch-bulk()` source implements the [Elasticsearch Bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk). Elastic Agent, Beats, and other clients of the Bulk API can send their events to {{< product >}} by pointing their Elasticsearch output at this source, so you can process and route the events before forwarding them to Elasticsearch or to another destination.
 
 {{% alert title="Note" color="info" %}}
-This source is built on the [`ehttp()` source]({{< relref "/chapter-sources/ehttp/_index.md" >}}), which is experimental. For details on such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}.
+This driver is a reusable configuration snippet. For details on such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}.
 {{% /alert %}}
 
 ## Example: Receiving events from Beats

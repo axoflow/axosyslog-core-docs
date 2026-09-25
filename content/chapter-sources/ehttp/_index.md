@@ -9,7 +9,7 @@ short_description: "Receive logs over HTTP or HTTPS"
 
 Available in {{< product >}} 4.28 and later.
 
-The `ehttp()` source receives log messages over HTTP or HTTPS. Clients send the messages in the body of an HTTP request, and {{< product >}} answers every accepted request with a `200 OK` response.
+The `ehttp()` source receives log messages over HTTP or HTTPS. Clients send the messages in the body of an HTTP request, and {{< product >}} answers every accepted request.
 
 Unlike the [`webhook()` source]({{< relref "/chapter-sources/webhook/_index.md" >}}), which is a Python-based configuration snippet, `ehttp()` is implemented natively in {{< product >}}. It is intended to replace `webhook()` in the long run.
 

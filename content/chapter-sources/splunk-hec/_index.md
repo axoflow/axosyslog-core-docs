@@ -14,7 +14,7 @@ The `splunk-hec()` source receives messages from clients that send data to the [
 To send messages to Splunk, use the [`splunk-hec-event()` destination]({{< relref "/chapter-destinations/syslog-ng-with-splunk/_index.md" >}}) instead.
 
 {{% alert title="Note" color="info" %}}
-This driver is a reusable configuration snippet based on the [`ehttp()` source]({{< relref "/chapter-sources/ehttp/_index.md" >}}), which is experimental. For details on such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}.
+This driver is a reusable configuration snippet. For details on such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}.
 {{% /alert %}}
 
 ## Prerequisites
