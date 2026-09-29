@@ -40,7 +40,7 @@ For a list of bugfixes, see the [GitHub release page](https://github.com/axoflow
 
 ## Version 4.25 (2026-05-05)
 
-- The [`cache_json_file`]({{< relref "/filterx/function-reference.md#cache-json-file-default-value" >}}) FilterX function now accepts an optional `default_value` parameter. When the referenced JSON file is missing or fails to load, {{< product >}} uses `default_value` instead of aborting with a configuration error.
+- The [`cache_json_file`]({{< relref "/filterx/function-reference.md#cache-json-file" >}}) FilterX function now accepts an optional `default_value` parameter. When the referenced JSON file is missing or fails to load, {{< product >}} uses `default_value` instead of aborting with a configuration error.
 - New FilterX functions for common data transformations:
 
     - Cryptographic digests: [`md5`]({{< relref "/filterx/function-reference.md#md5" >}}), [`sha1`]({{< relref "/filterx/function-reference.md#sha1" >}}), [`sha256`]({{< relref "/filterx/function-reference.md#sha256" >}}), and [`sha512`]({{< relref "/filterx/function-reference.md#sha512" >}}) return the hash of a string or bytes value as a lowercase hexadecimal string. The generic [`digest`]({{< relref "/filterx/function-reference.md#digest" >}}) function returns the raw hash as bytes and accepts an optional `alg=` parameter to select the algorithm.
