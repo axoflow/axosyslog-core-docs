@@ -7,8 +7,6 @@ short_description: "Receive messages sent to the Splunk HTTP Event Collector (HE
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-Available in {{< product >}} 4.28 and later.
-
 The `splunk-hec()` source receives messages from clients that send data to the [Splunk HTTP Event Collector (HEC)](https://docs.splunk.com/Documentation/Splunk/latest/Data/UsetheHTTPEventCollector), for example, from [Splunk Connect for Syslog (SC4S)](https://splunk.github.io/splunk-connect-for-syslog/main/destinations/). This way you can point your existing HEC clients at {{< product >}} without reconfiguring them, and process or route the messages before forwarding them to Splunk or to another destination.
 
 To send messages to Splunk, use the [`splunk-hec-event()` destination]({{< relref "/chapter-destinations/syslog-ng-with-splunk/_index.md" >}}) instead.
@@ -19,8 +17,12 @@ This driver is a reusable configuration snippet. For details on such configurati
 
 ## Prerequisites
 
-- Include the {{< product >}} configuration library in your configuration file: `@include "scl.conf"`
-- Install the `http` and `json` modules: the `axosyslog-mod-http` and `axosyslog-mod-json` packages on Debian and derivatives, or the `axosyslog-http` and `axosyslog-json` packages on RHEL and derivatives.
+- {{% param "product.name" %}} version 4.28 or later.
+- {{< include-headless "chunk/prereq-package-scl.md" >}}
+
+    {{< include-headless "chunk/scl-config-snippet.md" "splunk-hec()" "scl/splunk/splunk-src.conf" >}}
+
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-http" "axosyslog-http" >}}
 
 ## Example: Receiving HEC events
 
