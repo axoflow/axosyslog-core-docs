@@ -3,6 +3,8 @@ title: "pacct: Collect process accounting logs on Linux"
 weight:  2500
 driver: "pacct()"
 short_description: "Collect process accounting logs on Linux"
+aliases:
+- /chapter-sources/source-pacct/reference-source-pacct/
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
@@ -10,29 +12,43 @@ Starting with version 3.2, {{% param "product.abbrev" %}} can collect process ac
 
 To use the `pacct()` driver, the following conditions must be met:
 
-  - The {{% param "product.abbrev" %}} application must be compiled with the `--enable-pacct` option. Execute the `syslog-ng -V` command to check if your binary supports process accounting.
+- The {{% param "product.abbrev" %}} application must be compiled with the `--enable-pacct` option. Execute the `syslog-ng -V` command to check if your binary supports process accounting.
+- The `pacctformat` plugin must be loaded. By default, {{% param "product.abbrev" %}} automatically loads the available modules.
+- The `scl.conf` file must be included in your AxoSyslog configuration:
 
-  - The `pacctformat` plugin must be loaded. By default, {{% param "product.abbrev" %}} automatically loads the available modules.
-
-  - The `scl.conf` file must be included in your AxoSyslog configuration:
-    
     ```shell
         @include "scl.conf"
-    
     ```
 
-  - Process accounting must be running on the host. You can enable it with the `accton` command.
+- Process accounting must be running on the host. You can enable it with the `accton` command.
 
 The `pacct()` driver parses the fields of the accounting logs and transforms them into name-value pairs. The fields are defined in the manual page of the accounting log file (`man acct`), {{% param "product.abbrev" %}} prepends every field with the `.pacct.` prefix. For example, the `ac_uid` field that contains the id of the user who started the process will be available under the `$.pacct.ac_uid` name. These can be used as macros in templates, in filters to select specific messages, and so on.
 
 To use the `pacct()` driver, use the following syntax.
 
 ```shell
-   @version: {{% param "product.configversion" %}}
-    @include "scl.conf"
-    source s_pacct { pacct(); };
-    ...
-    log { source(s_pacct); destination(...); };
+@version: {{% param "product.configversion" %}}
+@include "scl.conf"
+source s_pacct { pacct(); };
+...
+log { source(s_pacct); destination(...); };
 ```
 
 The `pacct()` driver is actually a reusable configuration snippet configured to handle Linux accounting logs. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of the pacct configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/pacct/plugin.conf).
+
+## pacct() source options
+
+The `pacct()` driver has the following options:
+
+## file()
+
+|          |                        |
+| -------- | ---------------------- |
+| Type:    | filename with path     |
+| Default: | /var/log/account/pacct |
+
+*Description:* The file where the process accounting logs are stored — {{% param "product.abbrev" %}} reads accounting messages from this file.
+
+{{% include-headless "chunk/option-source-follow-freq.md" %}}
+
+{{< include-headless "chunk/option-hook-commands.md" >}}

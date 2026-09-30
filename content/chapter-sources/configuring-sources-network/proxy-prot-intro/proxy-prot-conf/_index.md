@@ -42,7 +42,7 @@ The following code sample illustrates how you can use the Proxy Protocol in your
     };
     
     destination d_file {
-      file("/var/log/proxy-proto.log" template("$(format-json --scope nv-pairs)\n"));
+      file("/var/log/proxy-proto.log" template("${SOURCEIP} ${SOURCEPORT} ${DESTIP} ${DESTPORT} ${IP_PROTO}\n"));
     };
     
     log {
@@ -61,7 +61,7 @@ The following example illustrates how the parsed macros will appear in the outpu
 With the `PROXY TCP4 192.168.1.1 10.10.0.1 1111 2222` input header, the output looks like this:
 
 ```shell
-   {"SOURCE":"s_tcp_pp","PROXIED_SRCPORT":"1111","PROXIED_SRCIP":"192.168.1.1","PROXIED_IP_VERSION":"4","PROXIED_DSTPORT":"2222","PROXIED_DSTIP":"10.10.0.1","PROGRAM":"TestMsg","MESSAGE":"","LEGACY_MSGHDR":"TestMsg","HOST_FROM":"localhost","HOST":"localhost"}
+   192.168.1.1 1111 10.10.0.1 2222 4
 ```
 
 Note that the [macros]({{< relref "/chapter-sources/configuring-sources-network/proxy-prot-intro/proxy-prot-w-mech/_index.md#proxy-prot-adds-macros" >}}) that {{% param "product.abbrev" %}} adds to the message appear in the output.

@@ -108,11 +108,11 @@ The {{% param "product.abbrev" %}} application uses the following procedure to d
 
 {{< include-headless "chunk/p-name-resolution.md" >}}
 
-## IP-PROTO {#macro-ip-proto}
+## IP_PROTO {#macro-ip-proto}
 
 Available in {{% param "product.abbrev" %}} version 4.5 and later.
 
-The IP protocol version used to retrieve or receive the message. Contains either "4" to indicate IPv4 and "6" to indicate IPv6.
+The IP protocol version used to retrieve or receive the message. Contains either "4" to indicate IPv4 and "6" to indicate IPv6. IPv4 addresses mapped to IPv6 count as IPv4. If the message has no source IP address (for example, it comes from a local source), the value is "0".
 
 ## ISODATE, C_ISODATE, R_ISODATE, S_ISODATE {#macro-isodate}
 
@@ -204,7 +204,7 @@ Available in {{% param "product.abbrev" %}} version 4.8.1 and later.
 
 ## PEERIP {#macro-peerip}
 
-Available in {{% param "product.abbrev" %}} 4.11 and later. This macro is available when using the [`network()`]({{< relref "/chapter-sources/configuring-sources-network/_index.md" >}}) or the [`syslog()`]({{< relref "/chapter-sources/source-syslog/_index.md" >}}) source, or when using the {{% xref "/chapter-sources/webhook/_index.md" %}} with the `proxy_header()` option set.
+Available in {{% param "product.abbrev" %}} 4.11 and later. This macro is available when using the [`network()`]({{< relref "/chapter-sources/configuring-sources-network/_index.md" >}}) or the [`syslog()`]({{< relref "/chapter-sources/source-syslog/_index.md" >}}) source, or when using the {{% xref "/chapter-sources/webhook/_index.md" %}} with the `proxy-header()` option set.
 
 *Description:* IP address of the host that sent the message to {{% param "product.abbrev" %}}. In most cases, the `${PEERIP}` and `${PEERPORT}` values are identical to [`${SOURCEIP}`](#macro-sourceip) and [`${SOURCEPORT}`](#macro-sourceport). However, when dealing with proxied protocols, `${PEERIP}` and `${PEERPORT}` contain the proxy's address and port,
 while [`${SOURCEIP}`](#macro-sourceip) and [`${SOURCEPORT}`](#macro-sourceport) contain the original source of the message.

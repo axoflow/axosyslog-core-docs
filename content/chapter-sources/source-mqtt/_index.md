@@ -3,6 +3,9 @@ title: "mqtt: receiving messages from an MQTT broker"
 weight:  1500
 driver: "mqtt()"
 short_description: "Fetch messages from MQTT brokers"
+aliases:
+- /chapter-sources/source-mqtt/source-mqtt-prer/
+- /chapter-sources/source-mqtt/source-mqtt-lim/
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
@@ -16,16 +19,31 @@ The rest of this chapter and its sections build on your familiarity with the MQT
 
 {{% /alert %}}
 
+## Prerequisites
 
-## Declaration:
+Using the current implementation of the `mqtt()` source has the following prerequisites:
+
+{{< include-headless "chunk/source-mqtt-prer-list.md" >}}
+
+## Limitations
+
+Using the `mqtt()` source of {{% param "product.abbrev" %}} has the following limitations:
+
+- You cannot use the `mqtt()` source without installing the `eclipse-paho-mqtt-c` library.
+
+    {{< include-headless "chunk/eclipse-paho-mqtt-c.md" >}}
+
+- The current implementation of the `mqtt()` source supports versions 3.1 and 3.1.1 of the MQTT protocol.
+
+## Declaration
 
 ```shell
-   source s_mqtt{
-        mqtt(
-            address("tcp://<hostname>:<port-number>")
-            topic("<topic-name>")
-        );
-    };
+source s_mqtt{
+    mqtt(
+        address("tcp://<hostname>:<port-number>")
+        topic("<topic-name>")
+    );
+};
 ```
 
 Starting with {{% param "product.abbrev" %}} version 4.7, `mqtt()` source automatically sets the `${MQTT_TOPIC}` name-value pair for the messages it receives. This is useful when the name of the topic contains MQTT wildcards (`$`, `+`, `#`). For example:
@@ -37,28 +55,29 @@ log {
 };
 ```
 
+For the list of available optional parameters, see {{% xref "/chapter-sources/source-mqtt/source-mqtt-options/_index.md" %}}.
+
 ## Example: Using the mqtt() source in your configuration
 
 The following example illustrates an `mqtt()` source configured to fetch messages from the MQTT broker running on `localhost:4444` using the `test/test topic`, and send them to the `localhost:4445` address.
 
 ```shell
-    @version: current
-    @include "scl.conf"
-    source s_mqtt {
-        mqtt(
-            address("tcp://localhost:4444")
-            topic("test/test")
-        );
-    };
-    destination d_network {
-        network(
-            "localhost"
-            port(4445)
-        );
-    };
-    log {
-        source(s_mqtt);
-        destination(d_network);;
-    };
+@version: current
+@include "scl.conf"
+source s_mqtt {
+    mqtt(
+        address("tcp://localhost:4444")
+        topic("test/test")
+    );
+};
+destination d_network {
+    network(
+        "localhost"
+        port(4445)
+    );
+};
+log {
+    source(s_mqtt);
+    destination(d_network);;
+};
 ```
-

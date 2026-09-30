@@ -1,6 +1,6 @@
 ---
 title: "axosyslog-otlp(): Receive logs from another node using OpenTelemetry"
-weight: 3950
+weight: 120
 driver: "axosyslog-otlp()"
 short_description: "Receive logs from another node using OpenTelemetry"
 axosyslog-otlp: true

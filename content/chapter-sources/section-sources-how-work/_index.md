@@ -83,6 +83,6 @@ The following source statement collects the following log messages:
 
 ## Sources list
 
-The following table lists the source drivers available in `syslog-ng`.
+The following table lists the source drivers available in {{% param "product.abbrev" %}}.
 
-{{% include-headless "chunk/table-source-drivers.md" %}}
+{{< list-drivers "chapter-sources" >}}
