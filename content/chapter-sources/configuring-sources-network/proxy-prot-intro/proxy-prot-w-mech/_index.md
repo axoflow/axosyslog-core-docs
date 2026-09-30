@@ -14,10 +14,11 @@ When using the Proxy Protocol during load balancing, {{% param "product.abbrev" 
 
 | Data | Macro in version 4.9 and earlier | Version 4.10 and later |
 | -------- | ------ | ------ |
-| Source IP of the proxy | `PROXY_SRCIP` | `SOURCEIP` |
-| Source port of the proxy | `PROXY_SRCPORT` | `SOURCEPORT` |
-| Destination IP of the proxy | `PROXY_DSTIP` | `DESTIP` |
-| Destination port of the proxy | `PROXY_DSTPORT` | `DESTPORT` |
+| Source IP of the proxy | `PROXIED_SRCIP` | `SOURCEIP` |
+| Source port of the proxy | `PROXIED_SRCPORT` | `SOURCEPORT` |
+| Destination IP of the proxy | `PROXIED_DSTIP` | `DESTIP` |
+| Destination port of the proxy | `PROXIED_DSTPORT` | `DESTPORT` |
+| IP version of the connection | `PROXIED_IP_VERSION` | `IP_PROTO` |
 
 {{% alert title="Note" color="info" %}}
 
