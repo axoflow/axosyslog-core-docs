@@ -18,9 +18,7 @@ During the course of a message from the sending application to the final destina
     For details on minimizing message loss when using UDP, see our blog posts about [soslog over UDP](https://axoflow.com/tag/syslog-over-udp).
 
 - In the socket receive buffer: When transferring messages using the UDP protocol, the UDP datagram (that is, the message) that reaches the receiving host placed in a memory area called the `socket receive buffer`. If the host receives more messages than it can process, this area overflows, and the kernel drops messages without letting AxoSyslog know about it. Using TCP instead of UDP prevents this issue. If you must use the UDP protocol, increase the size of the receive buffer using the `so-rcvbuf()` option.
-- When AxoSyslog is receiving messages:
-
-      - The receiving AxoSyslog (for example, the AxoSyslog server or relay) may drop messages if the fifo of the destination file gets full. The number of dropped messages is displayed per destination in the log message statistics of AxoSyslog (for details, see {{% xref "/chapter-log-statistics/_index.md" %}}).
+- When AxoSyslog is receiving messages: The receiving AxoSyslog (for example, the AxoSyslog server or relay) may drop messages if the fifo of the destination file gets full. The number of dropped messages is displayed per destination in the log message statistics of AxoSyslog (for details, see {{% xref "/chapter-log-statistics/_index.md" %}}).
 
 - When the destination cannot handle large load: When AxoSyslog is sending messages at a high rate into an SQL database, a file, or another destination, it is possible that the destination cannot handle the load, and processes the messages slowly. As a result, the buffers of AxoSyslog fill up, AxoSyslog cannot process the incoming messages, and starts to loose messages. For details, see the previous entry. Use the `throttle` parameter to avoid this problem.
 

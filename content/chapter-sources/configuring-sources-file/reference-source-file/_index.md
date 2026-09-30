@@ -51,7 +51,7 @@ The `file()` driver has the following options:
 
 {{< include-headless "chunk/option-source-log-prefix.md" >}}
 
-<!-- Obsolete alias, only left here to make cfg-helper comparisons easier {{% include-headless "chunk/option-source-long-hostnames.md" %}} -->
+<!-- Obsolete alias, only left here to make cfg-helper comparisons easier: chunk/option-source-long-hostnames.md -->
 
 {{< include-headless "chunk/option-source-multi-line-garbage.md" >}}
 
@@ -79,7 +79,7 @@ The `file()` driver has the following options:
 
 {{< include-headless "chunk/option-source-time-zone.md" >}}
 
-<!-- has no useful effect on this source {{< include-headless "chunk/option-source-trim-large-messages.md" >}} -->
+<!-- has no useful effect on this source: chunk/option-source-trim-large-messages.md -->
 
 {{< include-headless "chunk/option-source-use-dns.md" >}}
 

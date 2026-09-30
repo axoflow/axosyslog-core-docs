@@ -1,5 +1,6 @@
 ---
 title: Nonsequential message processing
+description: "Process messages from a single connection on multiple threads with parallelize(), and keep message ordering where you need it with partition keys."
 weight: 3950
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
@@ -59,6 +60,6 @@ log {
 Staring with {{< product >}} version 4.17, you can use the `batch-size()` option to specify how many consecutive messages should be processed by a single `parallelize()` worker. This ensures that this many messages preserve their order on the destination side, and also improves `parallelize()` performance. Default value: `100` in version 4.26 and later (was disabled (`0`) in versions 4.17-4.25).
 
 <!-- FIXME mention/explain
-{{< include-headless "chunk/option-destination-worker-partition-autoscaling.md" >}}
-{{< include-headless "chunk/option-destination-worker-partition-buckets.md" >}}
+chunk/option-destination-worker-partition-autoscaling.md
+chunk/option-destination-worker-partition-buckets.md
  -->

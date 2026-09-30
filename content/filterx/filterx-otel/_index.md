@@ -13,6 +13,10 @@ weight:  900
 - change fields in the message (for example, add missing information, or delete unnecessary data), or
 - convert incoming syslog messages to OpenTelemetry log messages.
 
+The examples on this page map the incoming data to OTEL objects using the `${.otel_raw.*}` name-value pairs. This is what the [`opentelemetry()` source]({{< relref "/chapter-sources/opentelemetry/_index.md" >}}) creates by default, that is, in [`mode(logmessage)`]({{< relref "/chapter-sources/opentelemetry/_index.md#mode" >}}).
+
+In {{< product >}} 4.28 and later, you can set [`mode(filterx-dict)`]({{< relref "/chapter-sources/opentelemetry/_index.md#mode" >}}) in the source instead. In this case, the source directly creates the declared `log`, `resource`, and `scope` FilterX variables as plain dictionaries, so you can omit the input mapping step. Note that these variables are dictionaries, not OTEL objects, so the functions and the typed field handling described in this chapter don't apply to them.
+
 ## Prerequisites
 
 {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-grpc" "axosyslog-grpc" >}}
@@ -241,7 +245,7 @@ The time when the event was observed by the collection system, expressed as nano
 
 The severity of the message as a numerical value of the [severity](#severity_text).
 
-```
+```protobuf
 SEVERITY_NUMBER_UNSPECIFIED = 0;
 SEVERITY_NUMBER_TRACE  = 1;
 SEVERITY_NUMBER_TRACE2 = 2;
@@ -277,7 +281,7 @@ SEVERITY_NUMBER_FATAL4 = 24;
 
 The severity of the message as a string, one of:
 
-```
+```text
 "SEVERITY_NUMBER_TRACE"
 "SEVERITY_NUMBER_TRACE2"
 "SEVERITY_NUMBER_TRACE3"

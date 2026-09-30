@@ -39,6 +39,29 @@ The `pdbtool` application is a utility that can be used to:
 
 - [dump the RADIX tree](#pdbtool-dump) built from the pattern database (or a part of it) to explore how the pattern matching works.
 
+## Global options
+
+The following options are available for every `pdbtool` command.
+
+- `--debug` or `-d`
+
+    Enable debug/diagnostic messages on `stderr`. Note that in the `patternize` command, the `-d` short form sets the `--delimiters` option instead.
+
+- `--module <module>`
+
+    Load the specified module.
+
+- `--module-path <path>`
+
+    The colon-separated list of directories to search for modules.
+
+- `--trace` or `-t`
+
+    Enable trace messages on `stderr`.
+
+- `--verbose` or `-v`
+
+    Enable verbose messages on `stderr`.
 
 
 <span id="pdbtool-dictionary"></span>
@@ -49,7 +72,7 @@ The `pdbtool` application is a utility that can be used to:
 
 Lists every name-value pair that can be set by the rules of the pattern database.
 
-- `--dump-tag` or `-T`
+- `--dump-tags` or `-T`
     
     List the tags instead of the names of the name-value pairs.
 
@@ -249,9 +272,13 @@ Currently it is not possible to convert a file without merging, so if you only w
 
 Automatically create a pattern database from a log file containing a large number of log messages. The resulting pattern database is printed to the standard output (`stdout`). The `pdbtool patternize` command uses a data clustering technique to find similar log messages and replacing the differing parts with `@ESTRING:: @` parsers. For details on pattern databases and message parsers, see the [AxoSyslog documentation](https://axoflow.com/docs/axosyslog-core/). The `patternize` command is available only in version 3.2 and later.
 
-- `--debug` or `-d`
+- `--debug`
     
-    Enable debug/diagnostic messages on stderr.
+    Enable debug/diagnostic messages on stderr. Note that unlike in the other commands, the `-d` short form is not available here, because it sets the `--delimiters` option.
+
+- `--delimiters=<delimiters>` or `-d`
+    
+    The set of characters used to tokenize the log messages. Default value: `` :&~?![]=,;()'" ``
 
 - `--file=<path>` or `-f`
     
@@ -263,7 +290,7 @@ Automatically create a pattern database from a log file containing a large numbe
 
 - `--named-parsers` or `-n`
     
-    The number of example log messages to include in the pattern database for every pattern. Default value: `1`
+    Include a generated name in the parsers, for example, `.dict.string1`, `.dict.string2`, and so on. Default value: `no`
 
 - `--no-parse` or `-p`
     
@@ -271,7 +298,7 @@ Automatically create a pattern database from a log file containing a large numbe
 
 - `--samples=<number-of-samples>`
     
-    Include a generated name in the parsers, for example, `.dict.string1`, `.dict.string2`, and so on.
+    The number of example log messages to include in the pattern database for every pattern. Default value: `1`
 
 - `--support=<number>` or `-S`
     

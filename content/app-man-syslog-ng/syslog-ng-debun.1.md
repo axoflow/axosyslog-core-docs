@@ -53,6 +53,13 @@ The `syslog-debun` tool collects and saves information about your {{% param "pro
     
     Set the working directory, where the debug bundle will be saved. Default value: `/tmp`. The name of the created file is `syslog.debun.${host}.${date}.${3-random-characters-or-pid}.tgz`
 
+- `-K`
+
+    Include the private keys stored in the `/etc/syslog-ng` or `/opt/syslog-ng/etc` directory in the debug bundle.
+
+    {{< warning >}}
+The debug bundle is meant to be shared with support. Use this option only when the private keys are required to investigate your problem, and share the resulting bundle over a secure channel.
+    {{< /warning >}}
 
 
 ## Debug mode options
@@ -102,6 +109,10 @@ Capturing packets requires a packet capture tool on the host. The `syslog-debun`
 - `-P <options>`
     
     Capture incoming packets using the specified filter.
+
+- `-T <options>`
+
+    Run `tcpdump` with the specified parameters instead of the default ones.
 
 - `-t <seconds>`
     
@@ -178,7 +189,7 @@ Collect `pcap` and debug mode output following this scenario:
 
 ## Files
 
-`/opt/syslog-ng/bin/loggen`
+`/opt/syslog-ng/bin/syslog-ng-debun`
 
 
 

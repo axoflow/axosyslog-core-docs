@@ -122,7 +122,7 @@ If `log-fetch-limit()` is 100, and your wildcard file source has 200 files, then
 
 {{< include-headless "chunk/option-source-log-prefix.md" >}}
 
-<!-- Obsolete alias, only left here to make cfg-helper comparisons easier {{% include-headless "chunk/option-source-long-hostnames.md" %}} -->
+<!-- Obsolete alias, only left here to make cfg-helper comparisons easier: chunk/option-source-long-hostnames.md -->
 
 ## max-files() {#source-wildcard-file-max-files}
 
@@ -205,7 +205,7 @@ source s_file_subdirectories {
 
 {{% include-headless "chunk/option-source-time-zone.md" %}}
 
-<!-- has no useful effect on this source {{< include-headless "chunk/option-source-trim-large-messages.md" >}} -->
+<!-- has no useful effect on this source: chunk/option-source-trim-large-messages.md -->
 
 {{% include-headless "chunk/option-source-use-dns.md" %}}
 

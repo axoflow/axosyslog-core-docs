@@ -68,13 +68,13 @@ The {{% param "product.abbrev" %}} application is a flexible and highly scalable
     
     Set the location of the `syslog-ng` control socket. Default value: `/var/run/syslog-ng.ctl`
 
+- `--config-id`
+    
+    Parse the configuration file, print the configuration identifier, then exit. For details, see {{% xref "/chapter-configuration-file/configuration-identifier/_index.md" %}}.
+
 - `--debug` or `-d`
     
     Start `syslog-ng` in debug mode.
-
-- `--default-modules`
-    
-    A comma-separated list of the modules that are loaded automatically. Modules not loaded automatically can be loaded by including the `@module <modulename>` statement in the {{% param "product.abbrev" %}} configuration file. Available only in {{% param "product.abbrev" %}} version 4.1 and later.
 
 - `--enable-core`
     
@@ -96,7 +96,11 @@ The {{% param "product.abbrev" %}} application is a flexible and highly scalable
     
     Display a brief help message.
 
-- `--log-level <level>`
+- `--interactive` or `-i`
+    
+    Enable interactive mode.
+
+- `--log-level <level>` or `-L <level>`
 
     Set the internal log level of {{% param "product.abbrev" %}} to `default`, `verbose`, `debug`, or `trace`. Available in {{% param "product.abbrev" %}} 4.0 and later.
 
@@ -106,15 +110,27 @@ The {{% param "product.abbrev" %}} application is a flexible and highly scalable
 
     Shows the list of available metrics. For a list of supported metrics, see {{% xref "/chapter-log-statistics/metrics-reference/_index.md" %}}.
 
+- `--module-path <path>`
+
+    The colon-separated list of directories to search for modules.
+
 - `--module-registry`
     
-    Display the list and description of the available modules. Note that not all of these modules are loaded automatically, only the ones specified in the `--default-modules` option.
+    Display the list and description of the available modules. Note that not all of these modules are loaded automatically.
 
 - `--no-caps`
     
     Run {{% param "product.abbrev" %}} as root, without capability-support. This is the default behavior. On Linux, it is possible to run {{% param "product.abbrev" %}} as non-root with capability-support if {{% param "product.abbrev" %}} was compiled with the `--enable-linux-caps` option enabled. (Run `syslog-ng --version` to display the list of enabled build parameters.)
     
     To run {{% param "product.abbrev" %}} with specific capabilities, use the `--caps` option.
+
+- `--no-module-discovery`
+
+    Disable automatic module discovery. When you use this option, the configuration file must load every module explicitly with the `@module <modulename>` statement.
+
+- `--perf-profiling`
+
+    Enable Linux `perf` based profiling.
 
 - `--persist-file <persist-file>` or `-R <persist-file>`
     
@@ -132,6 +148,10 @@ The {{% param "product.abbrev" %}} application is a flexible and highly scalable
     
     Sets how to run {{% param "product.abbrev" %}}: in the `foreground` (mainly used for debugging), in the `background` as a daemon, or in `safe-background` mode. By default, `syslog-ng` runs in `safe-background` mode. This mode creates a supervisor process called `supervising syslog-ng`, that restarts {{% param "product.abbrev" %}} if it crashes.
 
+- `--startup-debug` or `-r`
+
+    Enable debug logging during startup.
+
 - `--stderr` or `-e`
 
     Log internal messages of {{% param "product.abbrev" %}} to `stderr`. Mainly used for debugging purposes in conjunction with the `--foreground` option. If not specified, `syslog-ng` logs such messages to its internal source.
@@ -139,6 +159,10 @@ The {{% param "product.abbrev" %}} application is a flexible and highly scalable
 - `--syntax-only` or `-s`
     
     Verify that the configuration file is syntactically correct and exit.
+
+- `--trace` or `-t`
+
+    Enable trace messages. Trace messages are needed mostly for finding software errors.
 
 - `--user <user>` or `-u <user>`
     
@@ -150,7 +174,7 @@ The {{% param "product.abbrev" %}} application is a flexible and highly scalable
 
 - `--version` or `-V`
     
-    Display version number and compilation information, and also the list and short description of the available modules. For detailed description of the available modules, see the `--module-registry` option. Note that not all of these modules are loaded automatically, only the ones specified in the `--default-modules`option.
+    Display version number and compilation information, and also the list and short description of the available modules. For detailed description of the available modules, see the `--module-registry` option. Note that not all of these modules are loaded automatically.
 
 - `--worker-threads`
     

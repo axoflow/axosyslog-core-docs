@@ -20,13 +20,13 @@ Required options: `address()` and `topic()`.
 
 {{% include-headless "chunk/option-mqtt-client-id.md" %}}
 
-<!-- has no useful effect on this source {{% include-headless "chunk/option-source-default-facility.md" %}}
+<!-- has no useful effect on this source: chunk/option-source-default-facility.md
 
-{{% include-headless "chunk/option-source-default-level-journal.md" %}}
+chunk/option-source-default-level-journal.md
 
-{{% include-headless "chunk/option-source-default-priority.md" %}}
+chunk/option-source-default-priority.md
 
-{{% include-headless "chunk/option-source-default-severity.md" %}}
+chunk/option-source-default-severity.md
 -->
 
 {{% include-headless "chunk/option-source-dns-cache.md" %}}
@@ -58,7 +58,7 @@ Required options: `address()` and `topic()`.
 
 {{% include-headless "chunk/option-source-log-prefix.md" %}}
 
-<!-- Obsolete alias, only left here to make cfg-helper comparisons easier {{% include-headless "chunk/option-source-long-hostnames.md" %}} -->
+<!-- Obsolete alias, only left here to make cfg-helper comparisons easier: chunk/option-source-long-hostnames.md -->
 
 {{% include-headless "chunk/option-source-normalize-hostnames.md" %}}
 
@@ -72,8 +72,8 @@ Required options: `address()` and `topic()`.
      they have no mqtt-specific effect (live MQTT subscription has no historical
      replay, and MQTT messages don't carry RFC 5424 structured data).
      Keep these markers so the next docs-vs-cfg-helper diff doesn't flag them.
-{{% include-headless "chunk/option-source-read-old-records.md" %}}
-{{% include-headless "chunk/option-source-sdata-prefix.md" %}}
+chunk/option-source-read-old-records.md
+chunk/option-source-sdata-prefix.md
 -->
 
 ## qos() {#option-mqtt-qos}

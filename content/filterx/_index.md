@@ -1,5 +1,6 @@
 ---
 title: FilterX
+description: "Filter, parse, and rewrite messages in filterx blocks: syntax, variables, types, operators, functions, and migration from legacy filters."
 weight: 4800
 ---
 

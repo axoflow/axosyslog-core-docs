@@ -76,6 +76,7 @@ axosyslog-cfg-helper -c options | sed -E 's/\x1b\[[0-9;]*m//g'
 When auditing for undocumented options, remember:
 
 - Some options are documented via `include-headless` chunks — their `## name()` heading lives in the chunk, not in the main `_index.md`. Grepping the main file alone will miss them.
+- Options that cfg-helper lists but that have no useful effect on a driver are left out on purpose, marked by an HTML comment naming the chunk, for example `<!-- has no useful effect on this source: chunk/option-source-read-old-records.md -->`. Count these as documented. Never put an `include-headless` shortcode inside an HTML comment: Hugo still runs it, the chunk's own copyright comment closes the outer comment early, and the option renders on the page with a stray `-->`.
 - Compound deprecation headings (for example, `## sync() or sync-freq() (DEPRECATED)`) document multiple options in one section.
 - Legacy aliases (for example, `long-hostnames` for `chain-hostnames`) and deprecated sub-option aliases (`stats-freq`, `stats-level`, `stats-lifetime`, `stats-max-dynamics`) still count as "documented" when cross-referenced.
 - Sub-options are printed indented under their parent (for example, `chars()` and `strings()` under the csv-parser `delimiters()` option, or the `rekey()` value-pairs options under `metrics-probe()`'s `labels()`). Documenting them in the parent option's prose or synopsis is enough — they do not need their own headings.

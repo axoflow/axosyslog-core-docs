@@ -6,7 +6,7 @@ name: Publish docs (reusable)
 #   - publish-versions.yaml        → each archived version, built from its tag/branch into a sub-dir
 #   - publish-version-on-push.yaml → one archived version, on a push to its release branch
 #
-# The build and the three-pass R2 sync live here once and are parameterized by inputs.
+# The build and the multi-pass R2 sync live here once and are parameterized by inputs.
 # The base URL and R2 sub-dir are derived from the production baseURL and the version
 # id, so callers only pass the version + ref (never repeated URLs or sub-dirs).
 #
@@ -186,6 +186,13 @@ jobs:
       - name: Build
         run: hugo --environment production --baseURL "${{ steps.target.outputs.baseurl }}"
 
+      # Runs before the archived versions are pulled into public/, so only this
+      # build gets converted. Each version converts its own pages when it deploys.
+      - name: Convert HTML to Markdown
+        run: |
+          pip install -r themes/docsy-axoflow/scripts/requirements-markdown.txt
+          python themes/docsy-axoflow/scripts/hugo_to_markdown.py --input public --output public
+
       # Cross-version search: the latest site's Pagefind index must cover every
       # version, but versions deploy separately. Pull each archived version's
       # already-deployed HTML from R2 into public/<version>/ so the unified index
@@ -231,11 +238,6 @@ jobs:
       - name: Package manpages into a single file
         run: tar -czf ./public/manpages.tar.gz -C public/manpages .
 
-      - name: Convert HTML to Markdown
-        run: |
-          pip install beautifulsoup4 html2text
-          python themes/docsy-axoflow/scripts/hugo_to_markdown.py --input public --output public
-
       # On the root (latest) deploy, Pass 3 below uses --delete to prune removed
       # pages. Without a guard that would also delete every version sub-directory,
       # since they are not part of main's build. Build an --exclude per non-latest
@@ -269,7 +271,7 @@ jobs:
           # own sub-dir prefix); on the root deploy it protects the version dirs.
           DELETE_EXCLUDES: ${{ steps.guard.outputs.excludes }}
         run: |
-          # Three-pass sync to set Cache-Control per content type.
+          # Multi-pass sync to set Cache-Control (and Content-Type) per file type.
           # Pass 1 — fingerprinted bundles only. Everything under scss/ is
           # Hugo-fingerprinted (the content hash is in the filename), so a
           # change produces a new filename. Safe to cache immutably for a year.
@@ -287,6 +289,20 @@ jobs:
             --exclude "*" \
             --include "pagefind/*" \
             --cache-control "public, max-age=2592000"
+
+          # Pass 2b — the Markdown copies and llms*.txt, with the charset stated:
+          # the CLI guesses the type without one, and the text is full of ’ and –.
+          # Same caching as HTML. Pass 3 then skips them as already up to date.
+          aws s3 sync "$SOURCE_DIR" "s3://$AWS_S3_BUCKET/$DESTINATION_DIR" \
+            --endpoint-url "$AWS_S3_ENDPOINT" --region "$AWS_REGION" --checksum-algorithm CRC32 \
+            --exclude "*" --include "*.md" $DELETE_EXCLUDES \
+            --content-type "text/markdown; charset=utf-8" \
+            --cache-control "public, max-age=345600, must-revalidate"
+          aws s3 sync "$SOURCE_DIR" "s3://$AWS_S3_BUCKET/$DESTINATION_DIR" \
+            --endpoint-url "$AWS_S3_ENDPOINT" --region "$AWS_REGION" --checksum-algorithm CRC32 \
+            --exclude "*" --include "llms.txt" --include "*/llms-full.txt" --include "llms-full.txt" $DELETE_EXCLUDES \
+            --content-type "text/plain; charset=utf-8" \
+            --cache-control "public, max-age=345600, must-revalidate"
 
           # Pass 3 — HTML and everything else: 4 days, must revalidate.
           # --delete prunes files removed from the build. $DELETE_EXCLUDES keeps

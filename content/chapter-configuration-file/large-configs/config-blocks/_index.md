@@ -127,7 +127,7 @@ Configuration blocks can receive arguments as well. The parameters the block can
 
 If an argument does not have a default value, use an empty double quote bracket pair `("")` after the name of the argument. To refer the value of the argument in the block, use the name of the argument between backticks, for example:
 
-```
+```shell
 `argument1`
 ```
 

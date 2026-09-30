@@ -1,5 +1,6 @@
 ---
 title: Getting support
+description: "Ways to get help with AxoSyslog and syslog-ng: GitHub issues, the Axoflow Discord server, and Axoflow professional services."
 weight: 4800
 ---
 

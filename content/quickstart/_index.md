@@ -1,5 +1,6 @@
 ---
 title: "Quick-start guide"
+description: "Configure AxoSyslog as a client, server, or relay, manage the service on Linux, and send Kubernetes logs to OpenSearch."
 weight: 200
 aliases:
 - /chapter-quickstart/

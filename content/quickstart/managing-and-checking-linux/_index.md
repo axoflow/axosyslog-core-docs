@@ -1,5 +1,6 @@
 ---
 title: "Managing and checking the syslog-ng service on Linux"
+description: "Start, stop, reload, and check the status of the AxoSyslog service on Linux."
 weight:  700
 aliases:
 - /chapter-quickstart/managing-and-checking-linux/

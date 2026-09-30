@@ -1,10 +1,23 @@
 ---
 title: What's new
+description: "New features and changes in each AxoSyslog release."
 weight: 10
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
 {{< include-headless "banner-new-to-axosyslog.md" >}}
+
+## Version 4.28
+
+- The new [`elasticsearch-bulk()` source]({{< relref "/chapter-sources/elasticsearch-bulk/_index.md" >}}) implements the Elasticsearch Bulk API, so Elastic Agent, Beats, and other clients can send their events to {{< product >}} by pointing their Elasticsearch output at it.
+- The new [`splunk-hec()` source]({{< relref "/chapter-sources/splunk-hec/_index.md" >}}) receives messages from Splunk HTTP Event Collector (HEC) clients, so you can point your existing HEC clients at {{< product >}} and process or route the events before forwarding them.
+- The new [`ehttp()` source]({{< relref "/chapter-sources/ehttp/_index.md" >}}) receives log messages over HTTP and HTTPS. Unlike the Python-based [`webhook()` source]({{< relref "/chapter-sources/webhook/_index.md" >}}), it is implemented natively in {{< product >}}, and it is intended to replace `webhook()` in the long run. Note that `ehttp()` is experimental: it will be renamed to `http()` once its options are considered stable, and its options can change until then.
+- The [`opentelemetry()` source]({{< relref "/chapter-sources/opentelemetry/_index.md#mode" >}}) now supports the `mode()` option. With `mode(filterx-dict)`, the source converts incoming log records directly into the declared `log`, `resource`, and `scope` FilterX variables as plain dictionaries, instead of creating the `${.otel_raw.*}` name-value pairs. This removes an extra serialization step, so processing OpenTelemetry logs in FilterX becomes significantly faster. The default remains `mode(logmessage)`, which keeps the previous behavior.
+
+    The `opentelemetry()` source now also sets the `.tls.x509_cn`, `.tls.x509_o` and `.tls.x509_ou` name-value pairs from the client certificate, the same way the `network()` and `syslog()` sources do it.
+
+- The [`format_kv`]({{< relref "/filterx/filterx-format-data/format-kv.md" >}}) FilterX function now supports the `quote_char` and `always_quote` options to control how values are quoted.
+- The [`update_metric`]({{< relref "/filterx/filterx-metrics/_index.md#set" >}}) FilterX function now supports the `set` option, which assigns an absolute value to the counter instead of incrementing it. This makes `update_metric` usable for gauge-like metrics.
 
 ## Version 4.27 (2026-08-19)
 
@@ -27,7 +40,7 @@ For a list of bugfixes, see the [GitHub release page](https://github.com/axoflow
 
 ## Version 4.25 (2026-05-05)
 
-- The [`cache_json_file`]({{< relref "/filterx/function-reference.md#cache-json-file-default-value" >}}) FilterX function now accepts an optional `default_value` parameter. When the referenced JSON file is missing or fails to load, {{< product >}} uses `default_value` instead of aborting with a configuration error.
+- The [`cache_json_file`]({{< relref "/filterx/function-reference.md#cache-json-file" >}}) FilterX function now accepts an optional `default_value` parameter. When the referenced JSON file is missing or fails to load, {{< product >}} uses `default_value` instead of aborting with a configuration error.
 - New FilterX functions for common data transformations:
 
     - Cryptographic digests: [`md5`]({{< relref "/filterx/function-reference.md#md5" >}}), [`sha1`]({{< relref "/filterx/function-reference.md#sha1" >}}), [`sha256`]({{< relref "/filterx/function-reference.md#sha256" >}}), and [`sha512`]({{< relref "/filterx/function-reference.md#sha512" >}}) return the hash of a string or bytes value as a lowercase hexadecimal string. The generic [`digest`]({{< relref "/filterx/function-reference.md#digest" >}}) function returns the raw hash as bytes and accepts an optional `alg=` parameter to select the algorithm.

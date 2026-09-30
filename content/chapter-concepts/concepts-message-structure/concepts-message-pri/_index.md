@@ -1,5 +1,6 @@
 ---
 title: "The PRI message part"
+description: "How the PRI part of a syslog message encodes the facility and severity of the message."
 weight:  700
 aliases:
 - /chapter-concepts/concepts-message-structure/concepts-message-bsdsyslog/concepts-message-bsdsyslog-pri/

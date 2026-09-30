@@ -119,6 +119,64 @@ Relocate every queue file:
 bin/dqtool relocate --new_path /tmp/dq --persist var/syslog-ng.persist --all
 ```
 
+## The assign command
+
+`assign [options] [file]`
+
+Use the `assign` command to assign an existing disk-buffer file to a destination, by adding it to the {{% param "product.abbrev" %}} persist file under a specific persist name. This is useful when the persist file has no entry for the disk-buffer file, and you want to attach the file to a destination manually. Note that this command modifies the persist file. Stop {{% param "product.abbrev" %}} before using it.
+
+If the disk-buffer file is specified by filename only, `dqtool` appends it to the current working directory. You must know the persist name that your destination uses.
+
+The `assign` command has the following options:
+
+- `--example` or `-e`
+
+    Print usage examples and exit.
+
+- `--persist=<persist-file>` or `-p`
+
+    The path to the {{% param "product.abbrev" %}} persist file to update.
+
+- `--persist_name=<persist-name>` or `-n`
+
+    The persist name to assign the disk-buffer file to. If the persist file already contains an entry with this name, `dqtool` overwrites it and prints the previous value.
+
+### Example: The assign command
+
+```shell
+bin/dqtool assign -p var/syslog-ng.persist \
+                  -n "afsocket_dd_qfile(stream,localhost:15554)" \
+                  /tmp/syslog-ng-dq/syslog-ng-00000.rqf
+```
+
+## The truncate command
+
+`truncate [options] [files]`
+
+Use the `truncate` command to reclaim the unused space of abandoned disk-buffer files.
+
+{{< warning >}}
+Truncating a disk-buffer file that {{% param "product.abbrev" %}} is actively using can result in data loss. Stop {{% param "product.abbrev" %}}, or make sure that the files are no longer in use, before you run this command.
+{{< /warning >}}
+
+The `truncate` command has the following options:
+
+- `--force` or `-f`
+
+    Perform the truncation. Without this option, `dqtool` only prints a warning and exits without modifying any file.
+
+### Example: The truncate command
+
+```shell
+bin/dqtool truncate --force /tmp/syslog-ng-00000.rqf
+```
+
+The output looks like:
+
+```shell
+Disk-buffer /tmp/syslog-ng-00000.rqf has been truncated, reclaimed space: 1.453125 GiB
+```
+
 <span id="idm45327922098864"></span>
 
 ## Files
