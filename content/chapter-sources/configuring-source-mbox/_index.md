@@ -3,6 +3,8 @@ title: "mbox: Convert local email messages to log messages"
 weight:  1390
 driver: "mbox()"
 short_description: Convert local email messages to log messages
+aliases:
+- /chapter-sources/configuring-source-mbox/reference-source-mbox/
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
@@ -24,3 +26,9 @@ source root-mbox {
     mbox("/var/spool/mail/root");
 };
 ```
+
+## mbox() source options
+
+The `mbox()` driver has the following options.
+
+{{< include-headless "chunk/option-hook-commands.md" >}}

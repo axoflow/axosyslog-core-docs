@@ -84,3 +84,9 @@ A TCP source listening for messages using the IETF-syslog message format. Note t
 
 
 For details on the options of the `network()` source, see {{% xref "/chapter-sources/configuring-sources-network/reference-source-network/_index.md" %}}.
+
+## See also
+
+- {{% xref "/quickstart/configure-servers/_index.md" %}}
+- {{% xref "/chapter-encrypted-transport-tls/tls-serverauth/procedure-configuring-tls-server/_index.md" %}}
+- {{% xref "/chapter-encrypted-transport-tls/tls-mutualauth/procedure-configuring-mutual-tls-server/_index.md" %}}

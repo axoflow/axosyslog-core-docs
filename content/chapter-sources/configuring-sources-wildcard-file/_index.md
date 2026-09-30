@@ -1,6 +1,6 @@
 ---
 title: "wildcard-file: Collect messages from multiple text files"
-weight:  900
+weight: 6100
 driver: "wildcard-file()"
 short_description: "Collect messages from multiple text files"
 syslog_parsing: true

@@ -3,6 +3,8 @@ title: "system: Collect the system-specific log messages of a platform"
 weight:  4100
 driver: "system()"
 short_description: "Collect the system-specific log messages of a platform"
+aliases:
+- /chapter-sources/source-system/reference-source-system/
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
@@ -14,7 +16,7 @@ Starting with version 3.2, {{% param "product.abbrev" %}} can automatically coll
 
 {{% /alert %}}
 
-The `system()` driver is also used in the default configuration file of {{% param "product.abbrev" %}}. For details on the default configuration file, see [Example: The default configuration file of [%=General.OSE%]]({{< relref "/quickstart/configure-clients/_index.md" >}}). Starting with {{% param "product.abbrev" %}} version 3.6, you can use the `system-expand` command-line utility (which is a shell script, located in the `modules/system-source/` directory) to display the configuration that the `system()` source will use.
+The `system()` driver is also used in the default configuration file of {{% param "product.abbrev" %}}. For details on the default configuration file, see [Example: The default configuration file of {{% param "product.abbrev" %}}]({{< relref "/quickstart/configure-clients/_index.md" >}}). Starting with {{% param "product.abbrev" %}} version 3.6, you can use the `system-expand` command-line utility (which is a shell script, located in the `modules/system-source/` directory) to display the configuration that the `system()` source will use.
 
 {{% alert title="Warning" color="warning" %}}
 
@@ -136,3 +138,9 @@ sun-streams(&quot;/dev/log&quot; door(&quot;/var/run/syslog_door&quot;));
 </tr>
 </tbody>
 </table>
+
+## `system()` source options
+
+The `system()` driver has the following options:
+
+{{< include-headless "chunk/option-hook-commands.md" >}}

@@ -11,23 +11,21 @@ The program driver starts an external application and reads messages from the st
 
 The program driver has a single required parameter, specifying the name of the application to start.
 
-
-## Declaration:
+## Declaration
 
 ```shell
-   program(filename);
+program(filename);
 ```
 
-
+For the list of available optional parameters, see {{% xref "/chapter-sources/source-program/reference-source-program/_index.md" %}}.
 
 ## Example: Using the program() driver {#example-source-program}
 
 ```shell
-   source s_program {
-        program("/etc/init.d/mydaemon");
-    };
+source s_program {
+    program("/etc/init.d/mydaemon");
+};
 ```
-
 
 {{% alert title="Note" color="info" %}}
 

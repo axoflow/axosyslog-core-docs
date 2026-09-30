@@ -3,13 +3,13 @@ title: Arr logs
 linktitle: "*arr() logs"
 weight: 100
 driver: "lidarr(), prowlarr(), radarr(), readarr(), sonarr(), whisparr()"
-short_description: "Collect Pi-hole FTL logs"
+short_description: "Collect logs of *arr media management applications"
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-{{% param "product_name" %}} can collect logs of the [Lidarr, Prowlarr, Radarr, Readarr, and Sonarr](https://github.com/Servarr/Wiki) (often referred to as "*Arr" or "*Arrs") applications.
+{{% param "product_name" %}} can collect logs of the [Lidarr, Prowlarr, Radarr, Readarr, Sonarr, and Whisparr](https://github.com/Servarr/Wiki) (often referred to as "*Arr" or "*Arrs") applications.
 
-Use the new `*arr()` sources to read various *arr logs:
+Use the `*arr()` sources to read various *arr logs:
 
 - `lidarr()`
 - `prowlarr()`
