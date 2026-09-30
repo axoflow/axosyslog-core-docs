@@ -108,11 +108,11 @@ The {{% param "product.abbrev" %}} application uses the following procedure to d
 
 {{< include-headless "chunk/p-name-resolution.md" >}}
 
-## IP-PROTO {#macro-ip-proto}
+## IP_PROTO {#macro-ip-proto}
 
 Available in {{% param "product.abbrev" %}} version 4.5 and later.
 
-The IP protocol version used to retrieve or receive the message. Contains either "4" to indicate IPv4 and "6" to indicate IPv6.
+The IP protocol version used to retrieve or receive the message. Contains either "4" to indicate IPv4 and "6" to indicate IPv6. IPv4 addresses mapped to IPv6 count as IPv4. If the message has no source IP address (for example, it comes from a local source), the value is "0".
 
 ## ISODATE, C_ISODATE, R_ISODATE, S_ISODATE {#macro-isodate}
 
