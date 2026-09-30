@@ -7,13 +7,12 @@ short_description: "Receive messages from clients of the Elasticsearch Bulk API"
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-Available in {{< product >}} 4.28 and later.
-
 The `elasticsearch-bulk()` source implements the [Elasticsearch Bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk). Elastic Agent, Beats, and other clients of the Bulk API can send their events to {{< product >}} by pointing their Elasticsearch output at this source, so you can process and route the events before forwarding them to Elasticsearch or to another destination.
 
-{{% alert title="Note" color="info" %}}
-This driver is a reusable configuration snippet. For details on such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}.
-{{% /alert %}}
+## Prerequisites
+
+- {{% param "product.name" %}} version 4.28 or later.
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-http" "axosyslog-http" >}}
 
 ## Example: Receiving events from Beats
 

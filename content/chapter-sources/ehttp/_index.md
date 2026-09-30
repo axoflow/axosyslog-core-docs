@@ -7,8 +7,6 @@ short_description: "Receive logs over HTTP or HTTPS"
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-Available in {{< product >}} 4.28 and later.
-
 The `ehttp()` source receives log messages over HTTP or HTTPS. Clients send the messages in the body of an HTTP request, and {{< product >}} answers every accepted request.
 
 Unlike the [`webhook()` source]({{< relref "/chapter-sources/webhook/_index.md" >}}), which is a Python-based configuration snippet, `ehttp()` is implemented natively in {{< product >}}. It is intended to replace `webhook()` in the long run.
@@ -16,6 +14,11 @@ Unlike the [`webhook()` source]({{< relref "/chapter-sources/webhook/_index.md" 
 {{< alert title="Warning" color="warning" >}}
 The `ehttp()` source is experimental. Its name and its options can change in later releases: the driver will be renamed to `http()` once its options are considered stable. Review your configuration when you upgrade {{< product >}}, and do not rely on this source in production yet.
 {{< /alert >}}
+
+## Prerequisites
+
+- {{% param "product.name" %}} version 4.28 or later.
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-http" "axosyslog-http" >}}
 
 ## Example: Receiving logs over HTTP
 
