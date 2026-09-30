@@ -12,6 +12,9 @@ To create an XML parser, define an `xml_parser` that has the `xml()` option. By 
 
 See also the related FilterX function [`parse_xml()`]({{< relref "/filterx/function-reference.md#parse-xml" >}}). It is a separate implementation that parses XML into a dict, so the options and limitations of this parser do not apply to it.
 
+## Prerequisites
+
+{{< include-headless "chunk/prereq-package-deb-only.md" "axosyslog-mod-xml-parser" >}}
 
 ## Declaration:
 
@@ -26,8 +29,6 @@ See also the related FilterX function [`parse_xml()`]({{< relref "/filterx/funct
         );
     };
 ```
-
-
 
 ## Example: Using an XML parser
 
@@ -65,7 +66,6 @@ You can also define the parser inline in the log path.
         destination(d_file);
     };
 ```
-
 
 The XML parser inserts an "`.xml`" prefix by default before the extracted name-value pairs. Since `format-json` replaces a dot with an underscore at the beginning of keys, the "`.xml`" prefix becomes "`_xml`". Attributes get an `_` prefix. For example, from the XML input:
 
@@ -107,7 +107,6 @@ The following output is generated:
 ```
 
 However, note that users can choose to strip whitespaces using the [`strip-whitespaces()`]({{< relref "/chapter-parsers/xml-parser/xml-parser-options/_index.md" >}}) option.
-
 
 ## Configuration hints
 

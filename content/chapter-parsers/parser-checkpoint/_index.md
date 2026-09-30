@@ -26,6 +26,11 @@ If you find a message that the `checkpoint-parser()` cannot properly parse, {{% 
 
 By default, the Check Point-specific fields are extracted into name-value pairs prefixed with `.checkpoint`. For example, the `action` in the previous message becomes `${.checkpoint.action}`. You can change the prefix using the `prefix` option of the parser.
 
+## Prerequisites
+
+{{< include-headless "chunk/prereq-package-scl.md" >}}
+
+{{< include-headless "chunk/scl-config-snippet.md" "checkpoint-parser()" "scl/checkpoint/plugin.conf" >}}
 
 ## Declaration:
 
@@ -39,11 +44,7 @@ By default, the Check Point-specific fields are extracted into name-value pairs 
     };
 ```
 
-
 Note that the parser expects that the entire incorrectly formatted syslog message (starting with its `<PRI>` value) is in `$MSG`, which you can achieve by using `flags(no-parse)` on the input driver.
-
-The `checkpoint-parser()` is actually a reusable configuration snippet configured to parse Check Point messages. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/checkpoint/plugin.conf).
-
 
 {{% include-headless "chunk/option-parser-prefix.md" %}}
 
@@ -54,4 +55,3 @@ By default, `checkpoint-parser()` uses the `.checkpoint.` prefix. To modify it, 
         checkpoint-parser(prefix("myprefix."));
     };
 ```
-

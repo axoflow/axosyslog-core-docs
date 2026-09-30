@@ -4,6 +4,8 @@ title: XML
 
 Available in {{< product >}} 4.13 and later.
 
+{{< include-headless "chunk/prereq-package-deb-only.md" "axosyslog-mod-xml-parser" >}}
+
 Formats a dictionary into XML. To format data as Windows Event Log XML, see {{% xref "/filterx/filterx-format-data/format-windows-eventlog-xml.md" %}}.
 
 Usage: `format_xml({"key1":{"nestedkey":"value"}})`

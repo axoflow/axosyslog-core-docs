@@ -4,8 +4,6 @@ weight: 1650
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-Available in {{% param "product_name" %}} version 4.5.0 and later.
-
 This parser processes messages in the [PostgreSQL csvlog](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-CSVLOG) format.
 The following sample message is a multi-line message with embedded NL characters. This is a single, multi-line log entry that starts with the timestamp.
 
@@ -18,6 +16,15 @@ avg read rate: 0.000 MB/s, avg write rate: 114.609 MB/s
 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s",,,,,,,,,""
 ```
 
+## Prerequisites
+
+- {{% param "product.name" %}} version 4.5.0 or later.
+- {{< include-headless "chunk/prereq-package-scl.md" >}}
+
+    {{< include-headless "chunk/scl-config-snippet.md" "postgresql-csvlog-parser()" "scl/pgsql/pgsql.conf" >}}
+
+## Configuration
+
 The `postgresql-csvlog-parser()` extracts the information from this message into a set of name-value pairs. By default, the name-value pairs have the `.pgsql` prefix.
 
 ```sh
@@ -29,8 +36,6 @@ log {
     destination { ... };
 };
 ```
-
-The `postgresql-csvlog-parser()` driver is actually a reusable configuration snippet configured to parse log messages using the `csv-parser()`. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/pgsql/pgsql.conf).
 
 FilterX has no PostgreSQL parser. Since this driver builds on the CSV parser, the related [`parse_csv()`]({{< relref "/filterx/function-reference.md#parse-csv" >}}) function is the closest building block.
 

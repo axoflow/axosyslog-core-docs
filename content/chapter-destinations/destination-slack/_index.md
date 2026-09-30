@@ -7,7 +7,17 @@ dest_type: http
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-The `slack()` destination driver sends messages to a [Slack](https://slack.com/) channel using the Slack Web API. For the list of available optional parameters, see {{% xref "/chapter-destinations/destination-slack/reference-destination-slack/_index.md" %}}. This destination is available in version 3.19 and later.
+The `slack()` destination driver sends messages to a [Slack](https://slack.com/) channel using the Slack Web API. For the list of available optional parameters, see {{% xref "/chapter-destinations/destination-slack/reference-destination-slack/_index.md" %}}.
+
+## Prerequisites
+
+- {{% param "product.abbrev" %}} version 3.19 or later.
+- {{< include-headless "chunk/prereq-package-scl.md" >}}
+
+    {{< include-headless "chunk/scl-config-snippet.md" "slack()" "scl/slack/slack.conf" >}}
+
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-http" "axosyslog-http" >}}
+- Create a Slack app and a Webhook that {{% param "product.abbrev" %}} can use. For details, see the [Slack documentation](https://api.slack.com/incoming-webhooks).
 
 ## Declaration:
 
@@ -27,18 +37,6 @@ The driver allows you to modify nearly every field of the HTTP request. For deta
 {{% include-headless "chunk/destination-http-proxy-settings.md" %}}
 
 {{% include-headless "chunk/option-description-destination-slack-throttle.md" %}}
-
-To use this destination, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
-
-```shell
-   @include "scl.conf"
-```
-
-The `slack()` driver is actually a reusable configuration snippet configured to send log messages using the `http()` driver. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/slack/slack.conf).
-
-## Prerequisites {#slack-destination-prerequisites}
-
-To send messages and notifications from {{% param "product.abbrev" %}} to Slack, you must create a Slack app and a Webhook that {{% param "product.abbrev" %}} can use. For details, see the [Slack documentation](https://api.slack.com/incoming-webhooks).
 
 ## Example: Using the slack() driver {#example-destination-slack}
 

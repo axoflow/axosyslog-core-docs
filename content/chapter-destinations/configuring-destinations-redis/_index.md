@@ -10,6 +10,9 @@ The `redis()` driver sends messages as name-value pairs to a [Redis](https://red
 
 For the list of available parameters, see {{% xref "/chapter-destinations/configuring-destinations-redis/reference-destination-redis/_index.md" %}}.
 
+## Prerequisites
+
+{{< include-headless "chunk/prereq-package.md" "axosyslog-mod-redis" "axosyslog-redis" >}}
 
 ## Declaration:
 
@@ -21,8 +24,6 @@ For the list of available parameters, see {{% xref "/chapter-destinations/config
         command("<redis-command>", "<first-command-parameter>", "<second-command-parameter>", "<third-command-parameter>")
     );
 ```
-
-
 
 ## Example: Using the redis() driver {#example-using-redis}
 

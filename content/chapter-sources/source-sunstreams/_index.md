@@ -19,14 +19,15 @@ The `sun-streams()` driver has a single required argument specifying the `STREAM
 
 {{< include-headless "wnt/note-solaris-msgid.md" >}}
 
+## Prerequisites
+
+{{< include-headless "chunk/prereq-platform-only.md" "Solaris" >}}
 
 ## Declaration:
 
 ```shell
    sun-streams(<name_of_the_streams_device> door(<filename_of_the_door>));
 ```
-
-
 
 ## Example: Using the sun-streams() driver {#example-source-sunstreams}
 

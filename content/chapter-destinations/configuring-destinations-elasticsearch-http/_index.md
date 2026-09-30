@@ -10,6 +10,13 @@ Version 3.21 of {{% param "product.abbrev" %}} can directly post log messages to
 
 HTTPS connection, as well as password- and certificate-based authentication is supported. The content of the events is sent in JSON format.
 
+## Prerequisites
+
+- {{< include-headless "chunk/prereq-package-scl.md" >}}
+
+    {{< include-headless "chunk/scl-config-snippet.md" "elasticsearch-http()" "scl/elasticsearch/elastic-http.conf" >}}
+
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-http" "axosyslog-http" >}}
 
 ## Declaration:
 
@@ -23,7 +30,6 @@ HTTPS connection, as well as password- and certificate-based authentication is s
     };
 ```
 
-
 {{% include-headless "chunk/destination-elastic-http-type.md" %}}
 
 {{% include-headless "chunk/destination-http-proxy-settings.md" %}}
@@ -33,7 +39,6 @@ HTTPS connection, as well as password- and certificate-based authentication is s
 {{% include-headless "chunk/destination-http-proxy-settings3.md" %}}
 
 {{< include-headless "chunk/destination-http-proxy-settings4.md" >}}
-
 
 ## Example: Sending log data to Elasticsearch {#example-destination-elasticsearch-http}
 
@@ -77,6 +82,3 @@ The following example uses mutually-authenticated HTTPS connection, templated in
         );
     };
 ```
-
-
-This driver is actually a reusable configuration snippet configured to send log messages using the `tcp()` driver using a template. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/tree/master/scl/elasticsearch).

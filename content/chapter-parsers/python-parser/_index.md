@@ -8,6 +8,10 @@ The Python log parser (available in {{% param "product.abbrev" %}} version 3.10 
 
 {{< include-headless "chunk/python-blocks.md" >}}
 
+## Prerequisites
+
+{{< include-headless "chunk/prereq-package.md" "axosyslog-mod-python" "axosyslog-python" >}}
+
 ## Declaration:
 
 Python parsers consist of two parts. The first is a {{% param "product.abbrev" %}} parser object that you use in your {{% param "product.abbrev" %}} configuration, for example, in the log path. This parser references a Python class, which is the second part of the Python parsers. The Python class processes the log messages it receives, and can do virtually anything that you can code in Python.
@@ -76,7 +80,6 @@ Obsolete alias for [`loaders()`](#loaders). When set, behaves identically to `lo
 
 ## Methods of the python() parser {#python-parser-methods}
 
-
 ## The init (self, options) method (optional)
 
 The {{% param "product.abbrev" %}} application initializes Python objects only when it is started or reloaded. That means it keeps the state of internal variables while {{% param "product.abbrev" %}} is running. The `init` method is executed as part of the initialization. You can perform any initialization steps that are necessary for your parser to work. For example, if you want to perform a lookup from a file or a database, you can open the file or connect to the database here, or you can initialize a counter that you will increase in the `parse()` method.
@@ -100,8 +103,6 @@ The return value of the `init()` method must be `True`. If it returns `False`, o
             return True
 ```
 
-
-
 ## The parse(self, log_message) method
 
 The `parse()` method processes the log messages it receives, and can do virtually anything that you can code in Python. This method is required, otherwise {{% param "product.abbrev" %}} will not start.
@@ -109,8 +110,6 @@ The `parse()` method processes the log messages it receives, and can do virtuall
 The return value of the `parse()` method must be `True`. If it returns `False`, or raises an exception, {{% param "product.abbrev" %}} will drop the message.
 
 {{% include-headless "chunk/python-blocks-nvpairs.md" %}}
-
-
 
 ## The deinit(self) method (optional)
 
@@ -165,8 +164,6 @@ The {{% param "product.abbrev" %}} parser object references the LoggenParser cla
             return False
     };
 ```
-
-
 
 ## Example: Parse Windows eventlogs in Python - performance {#python-parser-example-windows-logs}
 

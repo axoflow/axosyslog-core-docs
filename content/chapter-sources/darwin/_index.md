@@ -7,10 +7,15 @@ short_description: "Collect native macOS system logs"
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-Starting with version 4.6.0, {{% param "product_name" %}} can collect logs on macOS using its native OSLog framework using the `darwin-oslog()` and `darwin-oslog-stream()` source drivers.
+{{% param "product_name" %}} can collect logs on macOS using its native OSLog framework using the `darwin-oslog()` and `darwin-oslog-stream()` source drivers.
 
 - [`darwin-oslog()`](#darwin-oslog): This source builds on the native OSLog framework, and replaces the earlier file-source based solution.
 - [`darwin-oslog-stream()`](#darwin-oslog-stream): Provides a live log stream feed.
+
+## Prerequisites
+
+- {{% param "product.name" %}} version 4.6.0 or later.
+- {{< include-headless "chunk/prereq-platform-only.md" "macOS" >}}
 
 ## `darwin-oslog()`
 

@@ -22,6 +22,10 @@ For details on the parsed fields, you can check the [OpenTelemetry proto files](
 
 See also the related {{% xref "/filterx/filterx-otel/_index.md" %}} functions. They map the message into typed OTEL objects instead of flattening it into `.otel.` name-value pairs.
 
+## Prerequisites
+
+{{< include-headless "chunk/prereq-package.md" "axosyslog-mod-grpc" "axosyslog-grpc" >}}
+
 ## Mapping data types
 
 String, bool, int64, double, and bytes values are mapped to their respective {{% param "product_name" %}} name-value type, for example, `.otel.resource.attributes.string_key` becomes a string value. <!-- FIXME add a link to the value-pairs docs -->

@@ -11,6 +11,11 @@ The `telegram()` destination sends log messages to [Telegram](https://core.teleg
 
 Note that this destination automatically uses the certificate store of the system (for details, see the [curl documentation](https://curl.se/docs/sslcerts.html)).
 
+## Prerequisites
+
+- {{< include-headless "chunk/prereq-package-scl.md" >}}
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-http" "axosyslog-http" >}}
+
 ## Declaration:
 
 ```shell

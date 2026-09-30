@@ -17,6 +17,10 @@ The examples on this page map the incoming data to OTEL objects using the `${.ot
 
 In {{< product >}} 4.28 and later, you can set [`mode(filterx-dict)`]({{< relref "/chapter-sources/opentelemetry/_index.md#mode" >}}) in the source instead. In this case, the source directly creates the declared `log`, `resource`, and `scope` FilterX variables as plain dictionaries, so you can omit the input mapping step. Note that these variables are dictionaries, not OTEL objects, so the functions and the typed field handling described in this chapter don't apply to them.
 
+## Prerequisites
+
+{{< include-headless "chunk/prereq-package.md" "axosyslog-mod-grpc" "axosyslog-grpc" >}}
+
 ## Route OTEL messages
 
 To route OTEL messages (such as the ones received through the [`opentelemetry()` source]({{< relref "/chapter-sources/opentelemetry/_index.md" >}})) based on their content, configure the following:

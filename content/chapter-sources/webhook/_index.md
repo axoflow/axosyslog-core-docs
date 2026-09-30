@@ -7,7 +7,18 @@ short_description: "Receive logs via a HTTP webhook"
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-Starting with version 4.8.0, {{% param "product_name" %}} can collect logs via a webhook using the `webhook()` and `webhook-json()` sources. The `webhook-json()` source automatically parses the payload using the [`json-parser()`]({{< relref "/chapter-parsers/json-parser/_index.md" >}}).
+{{% param "product_name" %}} can collect logs via a webhook using the `webhook()` and `webhook-json()` sources. The `webhook-json()` source automatically parses the payload using the [`json-parser()`]({{< relref "/chapter-parsers/json-parser/_index.md" >}}).
+
+## Prerequisites
+
+- {{% param "product_name" %}} version 4.8.0 and later.
+- {{< include-headless "chunk/prereq-package-scl.md" >}}
+
+    {{< include-headless "chunk/scl-config-snippet.md" "webhook()" "modules/python-modules/syslogng/modules/webhook/scl/webhook.conf" >}}
+
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-python" "axosyslog-python" >}}
+
+## Configuration
 
 Example minimal config:
 
@@ -25,8 +36,6 @@ To test the source, you can use `curl` for example, on the host where {{< produc
 ```shell
 curl -X POST --data "{'MESSAGE':'message-value'}" http://127.0.0.1:8181/events
 ```
-
-This driver is actually a reusable configuration snippet based on a [custom Python source]({{< relref "/chapter-sources/python-source/_index.md" >}}). For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/main/modules/python-modules/syslogng/modules/webhook/scl/webhook.conf).
 
 ## Query parameters
 

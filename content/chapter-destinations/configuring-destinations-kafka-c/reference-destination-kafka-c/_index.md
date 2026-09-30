@@ -9,13 +9,7 @@ The C implementation of the `kafka()` destination of {{% param "product.abbrev" 
 
 ## Required options:
 
-The following options are required: `bootstrap-servers()`, `topic()`. Note that to use the C implementation of the `kafka()` destination, you must add the following lines to the beginning of your {{% param "product.abbrev" %}} configuration:
-
-```shell
-   @define kafka-implementation kafka-c
-```
-
-{{< include-headless "chunk/kafka-c-impl-required-options-note.md" >}}
+The following options are required: `bootstrap-servers()`, `topic()`.
 
 
 {{% include-headless "chunk/option-destination-threaded-batching.md" %}}
@@ -49,23 +43,18 @@ For more information about the default values of the `transaction.timeout.ms` Ka
 
 
 
-{{< include-headless "chunk/option-destination-java-class-path.md" >}}
-
-For the `kafka` destination, include the path to the directory where you copied the required libraries (see {{% xref "/chapter-destinations/configuring-destinations-kafka/destination-kafka-prerequisites/_index.md" %}}), for example, `client-lib-dir("/opt/syslog-ng/lib/syslog-ng/java-modules/KafkaDestination.jar:/usr/share/kafka/lib/*.jar")`.
-
-{{% alert title="Note" color="info" %}}
-
-Unlike in the Java implementation, the `client-lib-dir()` option has no significant role in the C implementation of the `kafka()` destination. The programming language accepts this option for better compatibility.
-
-{{% /alert %}}
-
-
-
 ## config()
 
-*Description:* You can use this option to expand or override the options of the `properties-file()`.
+*Description:* Sets the properties of the underlying librdkafka client. For example:
 
-{{< include-headless "chunk/kafka-c-impl-required-options-note.md" >}}
+```shell
+   config(
+      "acks" => "all"
+      "compression.type" => "snappy"
+   )
+```
+
+The `bootstrap-servers()` option is translated to the `bootstrap.servers` property.
 
 The {{% param "product.abbrev" %}} `kafka` destination supports all properties of the official Kafka producer. For details, see [the librdkafka documentation](https://github.com/edenhill/librdkafka/blob/master/CONFIGURATION.md).
 
@@ -84,8 +73,17 @@ The syntax of the config() option is the following:
 
 {{< include-headless "chunk/option-destination-frac-digits.md" >}}
 
+## fallback-topic() {#kafka-option-fallback-topic}
 
-## flush-timeout-on-reload() {#kafka-option-kafka-bootstrap-servers}
+|          |        |
+| -------- | ------ |
+| Type:    | string |
+| Default: | N/A    |
+
+*Description:* The topic to publish the message to if the name resolved from the [`topic()`](#kafka-option-kafka-topic) template isn't a valid Kafka topic name. Set this option whenever you use a template in `topic()`.
+
+
+## flush-timeout-on-reload() {#kafka-option-flush-timeout-on-reload}
 
 |          |                 |
 | -------- | --------------- |
@@ -96,7 +94,7 @@ The syntax of the config() option is the following:
 
 
 
-## flush-timeout-on-shutdown() {#kafka-option-kafka-bootstrap-servers}
+## flush-timeout-on-shutdown() {#kafka-option-flush-timeout-on-shutdown}
 
 |          |                 |
 | -------- | --------------- |
@@ -124,6 +122,21 @@ The syntax of the config() option is the following:
 
 {{% include-headless "chunk/option-destination-local-timezone.md" %}}
 
+## message() {#kafka-option-message}
+
+|          |                               |
+| -------- | ----------------------------- |
+| Type:    | template or template function |
+| Default: | `$ISODATE $HOST $MSGHDR$MSG`  |
+
+*Description:* The message as published to Apache Kafka. You can use templates and template functions (for example, `format-json()`) to format the message, for example, `message("$(format-json --scope rfc5424 --exclude DATE --key ISODATE)")`.
+
+For details on formatting messages in JSON format, see [format-json]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md#template-function-format-json" >}}).
+
+{{% alert title="Note" color="info" %}}
+In the Java implementation of the `kafka()` destination, this option was called `template()`. The C implementation doesn't accept `template()`.
+{{% /alert %}}
+
 {{< include-headless "chunk/option-destination-on-error.md" >}}
 
 {{% include-headless "chunk/option-persist-name.md" %}}
@@ -140,30 +153,6 @@ The syntax of the config() option is the following:
 
 
 
-## properties-file() {#kafka-option-properties-file}
-
-|          |                        |
-| -------- | ---------------------- |
-| Type:    | string (absolute path) |
-| Default: | N/A                    |
-
-*Description:* The absolute path and filename of the Kafka properties file to load. For example, `properties-file("/opt/syslog-ng/etc/kafka_dest.properties")`. The {{% param "product.abbrev" %}} application reads this file and passes the properties to the Kafka Producer.
-
-The {{% param "product.abbrev" %}}`kafka` destination supports all properties of the official Kafka producer. For details, see [the librdkafka documentation](https://github.com/edenhill/librdkafka/blob/master/CONFIGURATION.md).
-
-The `bootstrap-servers` option is translated to the `bootstrap.servers` property.
-
-For example, the following properties file defines the acknowledgment method and compression:
-
-```shell
-example
-`acks=all
-compression.type=snappy`.
-```
-
-{{< include-headless "chunk/kafka-c-impl-required-options-note.md" >}}
-
-
 {{% include-headless "chunk/option-destination-retries.md" %}}
 
 {{% include-headless "chunk/option-destination-send-timezone.md" %}}
@@ -174,18 +163,6 @@ compression.type=snappy`.
 {{< include-headless "wnt/n-sync-send(yes)-limit-ose-pe.md" >}}
 
 
-## template() {#kafka-option-template}
-
-|          |                                   |
-| -------- | --------------------------------- |
-| Type:    | template or template function     |
-| Default: | `$ISODATE $HOST $MSGHDR$MSG\\n` |
-
-*Description:* The message as published to Apache Kafka. You can use templates and template functions (for example, `format-json()`) to format the message, for example, `template("$(format-json --scope rfc5424 --exclude DATE --key ISODATE)")`.
-
-For details on formatting messages in JSON format, see [format-json]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md" >}}).
-
-
 {{% include-headless "chunk/option-destination-throttle.md" %}}
 
 {{% include-headless "chunk/option-destination-timezone.md" %}}
@@ -193,12 +170,12 @@ For details on formatting messages in JSON format, see [format-json]({{< relref 
 
 ## topic() {#kafka-option-kafka-topic}
 
-|          |        |
-| -------- | ------ |
-| Type:    | string |
-| Default: | N/A    |
+|          |                               |
+| -------- | ----------------------------- |
+| Type:    | template or template function |
+| Default: | N/A                           |
 
-*Description:* The Kafka topic under which the message is published.
+*Description:* The Kafka topic under which the message is published. You can use templates to set the topic dynamically based on the source or the content of the message, for example, `topic("${PROGRAM}")`. If the resolved topic name is invalid, {{% param "product.abbrev" %}} uses the topic set in the [`fallback-topic()`](#kafka-option-fallback-topic) option.
 
 
 {{< include-headless "chunk/option-destination-ts-format.md" >}}

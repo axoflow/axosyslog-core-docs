@@ -10,6 +10,9 @@ The `riemann()` driver sends your data (for example, metrics or events) to a [Ri
 
 For the list of available parameters, see {{% xref "/chapter-destinations/configuring-destinations-riemann/reference-destination-riemann/_index.md" %}}.
 
+## Prerequisites
+
+{{< include-headless "chunk/prereq-package.md" "axosyslog-mod-riemann" "axosyslog-riemann" >}}
 
 ## Declaration:
 
@@ -20,8 +23,6 @@ For the list of available parameters, see {{% xref "/chapter-destinations/config
         metric("<the-metric-or-data-to-send-to-riemann>")
     );
 ```
-
-
 
 ## Example: Using the riemann() driver {#example-using-riemann}
 
@@ -54,6 +55,5 @@ The following destination sends the value of the SEQNUM macro (the number of mes
         flags(flow-control);
     };
 ```
-
 
 For a detailed use-case on using {{% param "product.abbrev" %}} with the Riemann monitoring system, see the article [A How to Guide on Modern Monitoring and Alerting by Fabien Wernli](https://devops.com/guide-modern-monitoring-alerting/).

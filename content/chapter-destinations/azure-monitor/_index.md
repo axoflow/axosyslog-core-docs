@@ -18,6 +18,12 @@ Also, the `table-name()` option of the driver has been renamed to `stream-name()
 
 ## Prerequisites
 
+- {{< include-headless "chunk/prereq-package-scl.md" >}}
+
+    {{< include-headless "chunk/scl-config-snippet.md" "azure-monitor()" "scl/azure/azure-monitor.conf" >}}
+
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-http" "axosyslog-http" >}}
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-cloud-auth" "axosyslog-cloud-auth" >}}
 - An Azure subscription.
 - A [Microsoft Entra application](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-portal#create-azure-ad-application). You'll need the Tenant ID, App ID, and App Secret of the application to configure the {{< product >}} destination.
 - A [Data Collection Endpoint (DCE)](https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/data-collection-endpoint-overview?tabs=portal)
@@ -44,8 +50,6 @@ destination d_azure {
   );
 };
 ```
-
-This driver is actually a reusable configuration snippet configured to send log messages using the `http()` driver using a template. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/main/scl/azure/azure-monitor.conf).
 
 ## Options
 

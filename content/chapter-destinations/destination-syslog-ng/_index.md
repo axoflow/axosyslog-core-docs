@@ -12,10 +12,13 @@ The `syslog-ng()` destination driver forwards log messages to another {{% param 
 
 {{% include-headless "chunk/ewmm-intro.md" %}}
 
-The `syslog-ng()` destination driver is available in version 3.16 and later. The node that receives this message must use the [default-network-drivers() source]({{< relref "/chapter-sources/source-default-network-drivers/_index.md" >}}) to properly handle the messages.
-
 {{% include-headless "chunk/example-ewmm-message-format.md" %}}
 
+## Prerequisites
+
+- {{% param "product.abbrev" %}} version 3.16 or later.
+- {{< include-headless "chunk/prereq-package-scl.md" >}}
+- The node that receives this message must use the [default-network-drivers() source]({{< relref "/chapter-sources/source-default-network-drivers/_index.md" >}}) to properly handle the messages.
 
 ## Declaration:
 
@@ -67,8 +70,6 @@ The `syslog-ng()` destination is a special version of the `network()` destinatio
 
 {{% include-headless "chunk/option-destination-syslog-port.md" %}}
 
-
-
 ## server()
 
 |          |                        |
@@ -77,7 +78,6 @@ The `syslog-ng()` destination is a special version of the `network()` destinatio
 | Default: | 127.0.0.1              |
 
 *Description:* The hostname or IP address of the AxoSyslog server.
-
 
 {{% include-headless "chunk/option-so-broadcast.md" %}}
 

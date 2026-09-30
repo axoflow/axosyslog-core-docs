@@ -11,6 +11,10 @@ The `panos-parser()` of {{% param "product.name" %}} solves this problem, and ca
 ## Prerequisites
 
 - Version 3.29 of {{% param "product.abbrev" %}} or later.
+- {{< include-headless "chunk/prereq-package-scl.md" >}}
+
+    {{< include-headless "chunk/scl-config-snippet.md" "panos-parser()" "scl/paloalto/panos.conf" >}}
+
 - PAN-OS log messages from Palo Alto Networks devices.
 
 ## Limitations
@@ -26,11 +30,3 @@ You can include the `panos-parser()` in your {{% param "product.abbrev" %}} conf
         panos-parser();
     };
 ```
-
-To use this parser, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
-
-```shell
-   @include "scl.conf"
-```
-
-The `panos-parser()` is a reusable configuration snippet configured to parse Palo Alto Networks PAN-OS log messages. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of this configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/paloalto/panos.conf).

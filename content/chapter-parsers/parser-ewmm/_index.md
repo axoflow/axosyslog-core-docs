@@ -6,6 +6,9 @@ weight: 700
 
 The `ewmm-parser()` can be used to parse messages sent by another AxoSyslog host using the enterprise-wide message model (EWMM) format. Available in version 3.16 and later. Note that usually you do not have to use this parser directly, because the [default-network-drivers() source]({{< relref "/chapter-sources/source-default-network-drivers/_index.md" >}}) automatically parses such messages.
 
+## Prerequisites
+
+{{< include-headless "chunk/prereq-package-scl.md" >}}
 
 ## Declaration:
 

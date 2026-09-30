@@ -10,17 +10,15 @@ aliases:
 
 Using the `mbox()` driver, {{% param "product.abbrev" %}} can read email messages from local mbox files, and convert them to multiline log messages.
 
-This driver has only one required option, the filename of the mbox file. To use the `mbox()` driver, the `scl.conf` file must be included in your {{% param "product.abbrev" %}} configuration:
+## Prerequisites
 
-```shell
-@include "scl.conf"
-```
+{{< include-headless "chunk/prereq-package-scl.md" >}}
 
-The `mbox()` driver is actually a reusable configuration snippet configured to read log messages using the `file()` driver. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of the configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/mbox/mbox.conf).
+{{< include-headless "chunk/scl-config-snippet.md" "mbox()" "scl/mbox/mbox.conf" >}}
 
-## Example: Using the mbox() driver {#example-source-mbox}
+## Configuration
 
-The following example reads the emails of the root user on the {{% param "product.abbrev" %}} host.
+This driver has only one required option, the filename of the mbox file. The following example reads the emails of the root user on the {{% param "product.abbrev" %}} host.
 
 ```shell
 @include "scl.conf"

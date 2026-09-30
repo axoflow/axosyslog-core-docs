@@ -8,22 +8,19 @@ This section describes the {{% param "product.name" %}} application's Python HTT
 
 For more information about modules in {{% param "product.abbrev" %}}, see {{% xref "/chapter-configuration-file/modules/_index.md" %}}.
 
-
 ## The Python HTTP header plugin
 
 The {{% param "product.abbrev" %}} application supports adding custom headers to HTTP requests using the Python programming language.
 
-
-
 ## Prerequisites
+
+{{< include-headless "chunk/prereq-package.md" "axosyslog-mod-python" "axosyslog-python" >}}
 
 {{% alert title="Note" color="info" %}}
 
 Before you use the `python-http-header` plugin, make sure that your {{% param "product.abbrev" %}} appliance was compiled with Python support. If you installed {{% param "product.abbrev" %}} from a package, make sure that the subpackage containing Python support is also installed.
 
 {{% /alert %}}
-
-
 
 ## Configuration
 
@@ -50,8 +47,6 @@ If you put the class implementation into its own module, it should be put into a
 
   - `mark-errors-as-critical(yes|no)`: Optional option. Its default value is `yes`. In case there is a Python error, this parameter decides if the HTTP destination will still try to send the request with the failed headers, or disconnect instead.
 
-
-
 ## Defining the python-http-header() interface
 
 You can define the Python interface with the following:
@@ -76,16 +71,11 @@ If the plugin fails, the HTTP module does not send the HTTP request without the 
 
 {{% /alert %}}
 
-
 Methods used in the configuration:
 
   - `__init__(self, options)`: Optional method. The options specified in the {{% param "product.abbrev" %}} configuration can be stored in the instance using this method.
   - `get_headers(self, body, headers)`: Mandatory method. Returns a list of strings of form [`"header: value"`, ...]. The returned headers will be set for the outgoing HTTP request. The body contains the body of the HTTP request. The headers contain the current headers that the HTTP destination has already added to the request.
   - `on_http_response_received(self, http_code)`: Optional method. If specified, {{% param "product.abbrev" %}} inserts the `http_code` of the previous response. This can be used to handle error (for example, for recreating auth headers, or dropping cache).
-
-
-
-
 
 ## Example configuration for using the Python HTTP header plugin
 
@@ -141,7 +131,5 @@ The following example can be copy-pasted and used as a template for using the Py
         flags(flow-control);
     };
 ```
-
-
 
 {{< include-headless "wnt/w-http-header-py-supp.md" >}}

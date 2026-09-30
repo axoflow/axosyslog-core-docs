@@ -12,14 +12,15 @@ The name-value pairs selected with the `value-pairs()` option will be sent as AM
 
 For the list of available parameters, see {{% xref "/chapter-destinations/configuring-destinations-amqp/reference-destination-amqp/_index.md" %}}.
 
+## Prerequisites
+
+{{< include-headless "chunk/prereq-package.md" "axosyslog-mod-amqp" "axosyslog-amqp" >}}
 
 ## Declaration:
 
 ```shell
    amqp( host("<amqp-server-address>") );
 ```
-
-
 
 ## Example: Using the amqp() driver {#example-using-amqp}
 

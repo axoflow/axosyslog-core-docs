@@ -10,16 +10,17 @@ The `snmp()` driver sends SNMP traps using the Simple Network Management Protoco
 
 The `snmp()` driver is available in {{% param "product.abbrev" %}} version 3.22 and later.
 
-
 {{% alert title="Note" color="info" %}}
 
 The `snmp` destination driver currently supports sending SNMP traps only using the UDP transport protocol.
 
 {{% /alert %}}
 
-
 The `snmp()` driver requires the `host()`, `trap-obj()`, and `snmp-obj()` options to be set, as well as the `engine-id()` and `version()` options when using the SNMPv3 protocol. For the list of available optional parameters, see {{% xref "/chapter-destinations/destination-snmp/reference-destination-snmp/_index.md" %}}.
 
+## Prerequisites
+
+{{< include-headless "chunk/prereq-package.md" "axosyslog-mod-snmp" "axosyslog-afsnmp" >}}
 
 ## Declaration:
 
@@ -27,23 +28,17 @@ The `snmp()` driver requires the `host()`, `trap-obj()`, and `snmp-obj()` option
    destination d_snmp {snmp(host() trap-obj() snmp-obj() ...);};
 ```
 
-
-
 {{% alert title="Warning" color="warning" %}}
 
 If {{% param "product.abbrev" %}} cannot resolve the destination hostname during startup, it will try to resolve the hostname again when the next message to be sent as an SNMP trap is received. However, if this name resolution fails, the trap will be dropped.
 
 {{% /alert %}}
 
-
-
 {{% alert title="Note" color="info" %}}
 
 The `snmp()` destination driver does not generate MARK signals itself, but can receive and forward MARK signals.
 
 {{% /alert %}}
-
-
 
 ## Example: Using the snmp() destination driver
 

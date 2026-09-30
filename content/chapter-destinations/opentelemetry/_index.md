@@ -9,9 +9,14 @@ dest_type: grpc
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-Starting with version 4.3.0, {{% param "product_name" %}} can send logs, metrics, and traces to [OpenTelemetry](https://opentelemetry.io/) over the [OpenTelemetry Protocol (OTLP/gRPC)](https://opentelemetry.io/docs/specs/otlp/).
+{{% param "product_name" %}} can send logs, metrics, and traces to [OpenTelemetry](https://opentelemetry.io/) over the [OpenTelemetry Protocol (OTLP/gRPC)](https://opentelemetry.io/docs/specs/otlp/).
 
 The only required parameter is the `url()` of the destination server, which includes the port number as well.
+
+## Prerequisites
+
+- {{% param "product.name" %}} version 4.3.0 or later.
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-grpc" "axosyslog-grpc" >}}
 
 ## Example: Forwarding OpenTelemetry data
 
@@ -59,6 +64,8 @@ log non_otel_to_otel_tls {
   };
 };
 ```
+
+## Options
 
 {{< readfile "/headless/chunk/grpc-authentication.md" >}}
 

@@ -6,7 +6,7 @@ short_description: "Store messages on the Hadoop Distributed File System (HDFS)"
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-Starting with version 3.7, {{% param "product.abbrev" %}} can send plain-text log files to the [Hadoop Distributed File System (HDFS)](http://hadoop.apache.org/), allowing you to store your log data on a distributed, scalable file system. This is especially useful if you have huge amounts of log messages that would be difficult to store otherwise, or if you want to process your messages using Hadoop tools (for example, Apache Pig).
+{{% param "product.abbrev" %}} can send plain-text log files to the [Hadoop Distributed File System (HDFS)](http://hadoop.apache.org/), allowing you to store your log data on a distributed, scalable file system. This is especially useful if you have huge amounts of log messages that would be difficult to store otherwise, or if you want to process your messages using Hadoop tools (for example, Apache Pig).
 
 Note the following limitations when using the {{% param "product.abbrev" %}} `hdfs` destination:
 
@@ -14,6 +14,14 @@ Note the following limitations when using the {{% param "product.abbrev" %}} `hd
 
   - {{< include-headless "chunk/para-hdfs-flush.md" >}}
 
+## Prerequisites
+
+- {{% param "product.abbrev" %}} version 3.7 or later.
+- {{< include-headless "chunk/prereq-package-scl.md" >}}
+
+    {{< include-headless "chunk/scl-config-snippet.md" "hdfs()" "scl/hdfs/plugin.conf" >}}
+
+- {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-hdfs" "axosyslog-java" >}}
 
 ## Declaration:
 
@@ -26,8 +34,6 @@ Note the following limitations when using the {{% param "product.abbrev" %}} `hd
         hdfs-file("<path-to-logfile>")
     );
 ```
-
-
 
 ## Example: Storing logfiles on HDFS {#example-destination-hdfs}
 
@@ -45,7 +51,6 @@ The following example defines an `hdfs` destination using only the required para
     };
 ```
 
-
   - To install the software required for the `hdfs` destination, see {{% xref "/chapter-destinations/configuring-destinations-hdfs/destination-hdfs-prerequisites/_index.md" %}}.
 
   - For details on how the `hdfs` destination works, see {{% xref "/chapter-destinations/configuring-destinations-hdfs/destination-hdfs-interaction/_index.md" %}}.
@@ -55,7 +60,5 @@ The following example defines an `hdfs` destination using only the required para
   - For details on using Kerberos authentication, see {{% xref "/chapter-destinations/configuring-destinations-hdfs/destination-hdfs-kerberos-authentication/_index.md" %}}.
 
   - For the list of options, see {{% xref "/chapter-destinations/configuring-destinations-hdfs/reference-destination-hdfs/_index.md" %}}.
-
-The `hdfs()` driver is actually a reusable configuration snippet configured to receive log messages using the Java language-binding of {{% param "product.abbrev" %}}. For details on using or writing such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}. You can find the source of the hdfs configuration snippet on [GitHub](https://github.com/axoflow/axosyslog/blob/master/scl/hdfs/plugin.conf).
 
 {{< include-headless "wnt/note-jvm-reload.md" >}}

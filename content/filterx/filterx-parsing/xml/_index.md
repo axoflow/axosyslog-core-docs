@@ -8,6 +8,8 @@ weight: 1300
 
 Available in {{< product >}} 4.9 and later.
 
+{{< include-headless "chunk/prereq-package-deb-only.md" "axosyslog-mod-xml-parser" >}}
+
 The `parse_xml()` FilterX function parses raw XMLs into dictionaries. This is a new implementation, so the limitations and options of the [legacy `xml-parser()`]({{< relref "/chapter-parsers/xml-parser/_index.md" >}}) do not apply.
 
 There is no standardized way of converting XML into a dict. {{< product >}} creates the most compact dict possible. This means certain nodes will have different types and structures depending on the input XML element. Note the following points:

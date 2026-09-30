@@ -12,14 +12,15 @@ The name-value pairs selected with the `value-pairs()` option will be sent as ST
 
 For the list of available parameters, see {{% xref "/chapter-destinations/configuring-destinations-stomp/reference-destination-stomp/_index.md" %}}.
 
+## Prerequisites
+
+{{< include-headless "chunk/prereq-package-deb-only.md" "axosyslog-mod-stomp" >}}
 
 ## Declaration:
 
 ```shell
    stomp( host("<stomp-server-address>") );
 ```
-
-
 
 ## Example: Using the stomp() driver {#example-using-stomp}
 

@@ -8,13 +8,15 @@ short_description: "Store messages in a MongoDB database"
 
 The `mongodb()` driver sends messages to a [MongoDB](https://www.mongodb.com/) database. MongoDB is a schema-free, document-oriented database. For the list of available optional parameters, see {{% xref "/chapter-destinations/configuring-destinations-mongodb/reference-destination-mongodb/_index.md" %}}.
 
+## Prerequisites
+
+{{< include-headless "chunk/prereq-package.md" "axosyslog-mod-mongodb" "axosyslog-mongodb" >}}
 
 ## Declaration
 
 ```shell
    mongodb(parameters);
 ```
-
 
 The `mongodb()` driver does not support creating indexes, as that can be a very complex operation in MongoDB. If needed, the administrator of the MongoDB database must ensure that indexes are created on the collections.
 
@@ -23,7 +25,6 @@ The `mongodb()` driver does not add the `_id` field to the message: the MongoDB 
 The {{% param "product.abbrev" %}} `mongodb()` driver is compatible with MongoDB server version 1.4 and newer.
 
 {{< include-headless "wnt/note-typehinting.md" >}}
-
 
 ## Example: Using the mongodb() driver {#example-destination-mongodb}
 
