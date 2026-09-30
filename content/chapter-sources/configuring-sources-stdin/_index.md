@@ -1,6 +1,6 @@
 ---
 title: "stdin: Collect messages from the standard input stream"
-weight:  5100
+weight: 3650
 driver: "stdin()"
 short_description: "Collect messages from the standard input stream"
 ---

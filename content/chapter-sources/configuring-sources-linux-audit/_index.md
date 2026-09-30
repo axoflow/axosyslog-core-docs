@@ -1,6 +1,6 @@
 ---
 title: "linux-audit: Collect messages from Linux audit logs"
-weight:  1300
+weight: 1370
 driver: "linux-audit()"
 short_description: "Collect messages from Linux audit logs"
 ---

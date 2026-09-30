@@ -1,6 +1,6 @@
 ---
 title: "internal: Collect internal messages"
-weight:  500
+weight: 1260
 driver: "internal()"
 short_description: "Collect internal messages"
 ---
