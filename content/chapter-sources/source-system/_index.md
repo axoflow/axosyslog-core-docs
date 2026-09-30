@@ -3,6 +3,8 @@ title: "system: Collect the system-specific log messages of a platform"
 weight:  4100
 driver: "system()"
 short_description: "Collect the system-specific log messages of a platform"
+aliases:
+- /chapter-sources/source-system/reference-source-system/
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
@@ -136,3 +138,9 @@ sun-streams(&quot;/dev/log&quot; door(&quot;/var/run/syslog_door&quot;));
 </tr>
 </tbody>
 </table>
+
+## `system()` source options
+
+The `system()` driver has the following options:
+
+{{< include-headless "chunk/option-hook-commands.md" >}}

@@ -10,31 +10,29 @@ The `stdin()` driver collects messages from the standard input stream. When the 
 
 The `stdin()` driver causes AxoSyslog to exit once it hits end-of-file (EOF).
 
-
-## Declaration:
+## Declaration
 
 ```shell
-   stdin(); 
+stdin();
 ```
 
-
+For the list of available optional parameters, see {{% xref "/chapter-sources/configuring-sources-stdin/stdin-source-options/_index.md" %}}.
 
 ## Example: Using the stdin() driver
 
 ```shell
-   @version: {{% param "product.configversion" %}}
-    log { 
-        source { stdin(); };
-        destination { file("/dev/stdout"); };
-    };
+@version: {{% param "product.configversion" %}}
+log {
+    source { stdin(); };
+    destination { file("/dev/stdout"); };
+};
 ```
 
 The following code snippet is an example of how the `stdin()` driver is used to collect a test message:
 
 ```shell
-   $ echo "this is a test message" | ./syslog-ng -Fe --no-caps
-    [2017-11-14T13:47:16.757938] syslog-ng starting up; version='3.12.1'
-    [2017-11-14T13:47:16.758195] syslog-ng shutting down; version='3.12.1'
-    Nov 14 13:47:16 testserver this is a test message
+$ echo "this is a test message" | ./syslog-ng -Fe --no-caps
+[2017-11-14T13:47:16.757938] syslog-ng starting up; version='3.12.1'
+[2017-11-14T13:47:16.758195] syslog-ng shutting down; version='3.12.1'
+Nov 14 13:47:16 testserver this is a test message
 ```
-
