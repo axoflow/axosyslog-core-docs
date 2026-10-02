@@ -83,40 +83,18 @@ upstream, so treat its output as a floor and confirm anything thin against
 
 ---
 
-## Task 4: Check the module and package matrix — BLOCKED
+## Task 4: Check the module and package matrix
 
-> **Placeholder.** This task becomes available once
-> <https://github.com/axoflow/axosyslog-core-docs/pull/239> ("Documents Module
-> and package requirements") is merged. Until then, **skip it** and say so in
-> the summary — do not improvise a package audit by hand, and do not report the
-> matrix as verified.
+Run `/check-packages`.
 
-Check whether the PR has landed before skipping:
+It verifies `content/headless/chunk/package-matrix.md` against
+`packaging/debian/control` and `packaging/rhel/axosyslog.spec` in
+`tmp/axosyslog`, and checks that every driver page names its package in a
+Prerequisites section. New drivers found in Task 3 are the likely source of
+drift here, so run it after that task, not before.
 
-```sh
-gh pr view 239 --repo axoflow/axosyslog-core-docs --json state,mergedAt
-ls .claude/commands/check-packages.md scripts/package-matrix-update.py
-```
-
-The PR adds all four pieces this task needs: the `/check-packages` command, the
-`scripts/package-matrix-update.py` checker, `content/headless/chunk/package-matrix.md`,
-and the `chunk/prereq-package*.md` snippets. A local
-`.claude/commands/check-packages.md2` already exists — that is the draft, parked
-with a non-`.md` extension precisely because the script it calls is not in the
-repo yet. Do not rename it to activate it; take the merged version instead.
-
-**Once the PR is merged**, replace this placeholder with:
-
-> Run `/check-packages`.
->
-> It verifies `content/headless/chunk/package-matrix.md` against
-> `packaging/debian/control` and `packaging/rhel/axosyslog.spec` in
-> `tmp/axosyslog`, and checks that every driver page names its package in a
-> Prerequisites section. New drivers found in Task 3 are the likely source of
-> drift here, so run it after that task, not before.
->
-> `python3 scripts/package-matrix-update.py` exits `0` when the docs match the
-> source and `1` when something needs review.
+`python3 scripts/package-matrix-update.py` exits `0` when the docs match the
+source and `1` when something needs review.
 
 ---
 
