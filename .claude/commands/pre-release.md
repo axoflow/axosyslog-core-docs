@@ -1,11 +1,11 @@
 ---
-description: Run all documentation preparation tasks for a new AxoSyslog release — source checks, What's new, and version bumps.
+description: Run all documentation preparation tasks for a new AxoSyslog release — source checks, Helm chart sync, What's new, and version bumps.
 ---
 
 Run all documentation preparation tasks for a new {{% param "product.name" %}}
 release.
 
-Work through the seven tasks below in order. After completing each task, pause
+Work through the eight tasks below in order. After completing each task, pause
 and summarize what changed before moving on. Do not start the next task until
 the user confirms the previous one is done.
 
@@ -127,7 +127,85 @@ exist.
 
 ---
 
-## Task 6: Finalize the What's new section
+## Task 6: Sync the Helm chart pages
+
+Docs pages: `content/install/helm/_index.md` (install walkthrough) and
+`content/install/helm/helm-chart-parameters.md` (parameter reference). The chart
+lives in `tmp/axosyslog/charts/axosyslog` and is released together with
+{{% param "product.name" %}}, so its `appVersion` should be `<release>.0`.
+
+1. **See what changed in the chart.** Find the commit that last touched the
+   parameters page, and list the chart commits since its date:
+
+   ```sh
+   head -8 tmp/axosyslog/charts/axosyslog/Chart.yaml
+   git log -1 --format=%cs -- content/install/helm/helm-chart-parameters.md
+   git -C tmp/axosyslog log --oneline --since=<that-date> -- charts/
+   ```
+
+   Read every commit whose subject starts with `breaking(chart)` in full. These
+   rename components, labels, and keys (for example, 0.22.0 renamed `syslog` to
+   `aggregator`), and they break the install page as well as the parameter
+   reference.
+
+2. **Compare the parameter keys.**
+
+   ```sh
+   python3 scripts/helm-chart-params-check.py
+   ```
+
+   It lists the keys of `values.yaml` that are not in the parameter tables,
+   and the documented keys that do not exist in the chart. It exits `0` when
+   the two match. Commented-out keys in `values.yaml` (like `# url:`) count as
+   options, because the templates read them.
+
+   The script only compares names. Check by hand:
+
+   - **Defaults.** A commented-out key has no default. Document it as `""`, and
+     give its sample value as an example in the description. The commented-out
+     samples in `values.yaml` are the most common source of wrong defaults on
+     this page.
+   - **Keys that the templates ignore.** Grep `templates/` for each new key. A
+     key in `values.yaml` that no template reads does nothing. Do not document
+     it, and report it to the user as a chart bug.
+     `aggregator.config.sources.axosyslogOtlp.extraOptionsRaw` is a known
+     example, so the script always reports it until upstream fixes it.
+   - **Descriptions.** The `# --` comments in `values.yaml` (also rendered in
+     `charts/axosyslog/README.md` by helm-docs) are the upstream descriptions.
+     Use them as a starting point, not as the final text.
+
+3. **Render the chart, and check the install page against the output.**
+
+   ```sh
+   helm template axosyslog-1713953907 tmp/axosyslog/charts/axosyslog \
+     | grep -E '^kind:|^  name:'
+   helm template axosyslog-1713953907 tmp/axosyslog/charts/axosyslog -s templates/NOTES.txt
+   ```
+
+   Every resource name, pod name, label selector, and `--set` flag on
+   `_index.md` must match the rendered output. Also render each `--set`
+   variant on the page, and confirm that it changes the output. Helm accepts
+   keys that do not exist without an error, so a renamed key fails without any
+   message. For example, `--set syslog.enabled=false` still deployed the
+   aggregator after the rename.
+
+   Also check the ports on the parameters page against `templates/service.yaml`
+   (service ports and NodePorts) and the StatefulSet (container ports).
+
+4. **Keep the anchors stable.** Other pages link to the section anchors of the
+   parameters page. If you rename an anchor, find and update every link to it:
+
+   ```sh
+   grep -rn 'helm-chart-parameters[^)"]*#' content layouts
+   ```
+
+Report the chart version you checked, the key drift, and any chart bugs you
+found (ignored keys, resources rendered for disabled components) as a separate
+list the user can forward upstream.
+
+---
+
+## Task 7: Finalize the What's new section
 
 Docs page: `content/whats-new/_index.md`.
 
@@ -174,7 +252,7 @@ Compare the existing list against `tmp/axosyslog/NEWS.md` and:
 
 ---
 
-## Task 7: Bump the version numbers
+## Task 8: Bump the version numbers
 
 This repo couples five fields in `config/_default/config.toml` to
 `data/versions.yaml`. Hugo config takes no template functions, so none of it is
@@ -229,7 +307,7 @@ Show the user a diff of every change and get confirmation before writing.
 
 ## Done
 
-When all seven tasks are complete, verify the whole build once more and report:
+When all eight tasks are complete, verify the whole build once more and report:
 
 ```sh
 hugo --minify
