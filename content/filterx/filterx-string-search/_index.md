@@ -38,7 +38,7 @@ ${MESSAGE} = "%ASA-5-111010: User ''john'', running ''CLI'' from IP 0.0.0.0, exe
 includes($MESSAGE, 'john', limit=40)
 ```
 
-For more complex searches, or if you need to match a regular expression, use the [`regexp_search` FilterX function]({{< relref "/filterx/filterx-string-search/_index.md#regexp-search" >}}).
+For more complex searches, or if you need to match a regular expression, use the [`regexp_search` FilterX function]({{< relref "/filterx/function-reference.md#regexp-search" >}}).
 
 <!-- FIXME json object search example -->
 
