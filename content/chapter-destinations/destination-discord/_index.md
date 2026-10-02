@@ -32,7 +32,7 @@ destination {
 
 By default the message sending is throttled to 5 message/sec, see [Discord: Rate Limits](https://discord.com/developers/topics/rate-limits#global-rate-limit). To change this, use the `throttle()` option.
 
-## Example: Using the discord() driver {#example-destination-collectd}
+## Example: Using the discord() driver {#example-destination-discord}
 
 The following example sends messages with custom avatar, and text-to-speech enabled.
 

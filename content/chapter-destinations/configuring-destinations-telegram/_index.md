@@ -27,7 +27,7 @@ telegram(parameters);
 
 {{% include-headless "chunk/destination-http-proxy-settings.md" %}}
 
-## Example: Using the telegram() driver {#example-destination-mongodb}
+## Example: Using the telegram() driver {#example-destination-telegram}
 
 The following example creates a `telegram()` destination.
 
