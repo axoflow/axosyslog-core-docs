@@ -164,6 +164,10 @@ To make sure that the aggregator receives messages, send test messages from the 
 
 {{< include-headless "disk-buffer-in-container.md" >}}
 
+## Upgrade the Helm chart {#upgrade}
+
+To upgrade the chart to a newer version, and to roll back an upgrade, see {{% xref "/install/upgrade-axosyslog/_index.md#helm" %}}.
+
 ## Uninstall the Helm chart {#uninstall}
 
 {{% alert title="Tip" color="info" %}}
