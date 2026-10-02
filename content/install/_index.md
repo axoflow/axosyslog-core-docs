@@ -25,6 +25,7 @@ This chapter explains how to install {{% param "product.name" %}} on various pla
 - {{% xref "/install/docker/_index.md" %}}
 - {{% xref "/install/podman/_index.md" %}}
 - {{% xref "/install/helm/_index.md" %}}
+- {{% xref "/install/macos/_index.md" %}}
 
 ## Upgrade `syslog-ng` to AxoSyslog
 
