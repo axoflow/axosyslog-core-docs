@@ -8,4 +8,6 @@ weight:  300
 
 In relay mode, {{% param "product.abbrev" %}} receives logs through the network from {{% param "product.abbrev" %}} clients and forwards them to the central {{% param "product.abbrev" %}} server using a network connection. Relays also log the messages from the relay host into a local file, or forward these messages to the central {{% param "product.abbrev" %}} server.
 
+To configure a relay, see {{% xref "/quickstart/relaying-log-messages/procedure-configuring-syslog-ng-relays/_index.md" %}}.
+
 {{% include-headless "chunk/relay-mode-uses.md" %}}

@@ -6,7 +6,7 @@ aliases:
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
-To configure AxoSyslog on a client host, complete the following steps.
+To configure AxoSyslog on a client host, complete the following steps. For an overview of how clients fit into a logging infrastructure, see {{% xref "/chapter-concepts/concepts-modes-of-operation/concepts-client-mode/_index.md" %}}.
 
 1. Install the AxoSyslog application on the host. For details installing AxoSyslog on specific operating systems, see {{% xref "/install/_index.md" %}}.
 1. Configure the local sources to collect the log messages of the host. Starting with version 3.2, {{% param "product.abbrev" %}} automatically collects the log messages that use the native system logging method of the platform, for example, messages from `/dev/log` on Linux, or `/dev/klog` on FreeBSD. For a complete list of messages that are collected automatically, see {{% xref "/chapter-sources/source-system/_index.md" %}}.

@@ -59,3 +59,5 @@ echo "deb [signed-by=/usr/share/keyrings/axoflow-code-signing-pub.gpg] https://p
     ```shell
     apt install axosyslog
     ```
+
+{{< include-headless "chunk/install-help.md" >}}
