@@ -34,7 +34,7 @@ destination d_file {
 };
 log {
     source(s_local);
-    filterx(p_hostname_segmentation());
+    filterx { p_hostname_segmentation(); };
     destination(d_file);
 };
 ```
@@ -76,7 +76,7 @@ The results can be used for example, to separate log messages into different fil
 ```shell
 log {
     source(s_local);
-    filterx(p_apache());
+    filterx { p_apache(); };
     destination(d_file);
 };
 destination d_file {
@@ -94,7 +94,7 @@ You can use multiple parsers in a layered manner to split parts of an already pa
 ```shell
 block filterx p_apache_timestamp() {
     cols = ["TIMESTAMP.DAY", "TIMESTAMP.MONTH", "TIMESTAMP.YEAR", "TIMESTAMP.HOUR", "TIMESTAMP.MIN", "TIMESTAMP.SEC", "TIMESTAMP.ZONE"];
-    ${APACHE.TIMESTAMP} = parse_csv(${APACHE.TIMESTAMP}, columns=cols, delimiters=("/: "), dialect="escape-none");
+    ${APACHE.TIMESTAMP} = parse_csv(${APACHE.TIMESTAMP}, columns=cols, delimiter="/: ", dialect="escape-none");
     
     # Set the important elements as name-value pairs so they can be referenced in the destination template
     ${APACHE_TIMESTAMP_DAY} = ${APACHE.TIMESTAMP_DAY};
@@ -104,8 +104,8 @@ destination d_file {
 };
 log {
     source(s_local);
-    filterx(p_apache());
-    filterx(p_apache_timestamp());
+    filterx { p_apache(); };
+    filterx { p_apache_timestamp(); };
     destination(d_file);
 };
 ```
