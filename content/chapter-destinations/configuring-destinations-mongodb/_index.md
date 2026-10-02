@@ -3,6 +3,8 @@ title: "mongodb(): Store messages in a MongoDB database"
 weight:  3100
 driver: "mongodb()"
 short_description: "Store messages in a MongoDB database"
+aliases:
+- /chapter-destinations/configuring-destinations-mongodb/mongodb-connecting-server/
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
@@ -42,21 +44,6 @@ The following example displays the default values.
    destination d_mongodb {
         mongodb(
             uri("mongodb://localhost:27017/syslog")
-            collection("messages")
-            value-pairs(
-                scope("selected-macros" "nv-pairs" "sdata")
-            )
-        );
-    };
-```
-
-The following example shows the same setup using the deprecated libmongo-client syntax (as used in {{% param "product.abbrev" %}} version 3.7), and is equivalent with the previous example.
-
-```shell
-   destination d_mongodb {
-        mongodb(
-            servers("localhost:27017")
-            database("syslog")
             collection("messages")
             value-pairs(
                 scope("selected-macros" "nv-pairs" "sdata")
