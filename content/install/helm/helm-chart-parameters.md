@@ -2,11 +2,17 @@
 title: Parameters of the AxoSyslog Helm chart
 linktitle: Chart parameters
 weight: 100
+description: Configurable parameters and default values of the AxoSyslog Helm chart for the collector, aggregator, and metrics exporter.
 ---
 
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
-The following table lists the configurable parameters of the AxoSyslog collector chart and their default values. For details on installing the chart, see {{% xref "/install/helm/_index.md" %}}.
+The following tables list the configurable parameters of the `axosyslog` Helm chart and their default values. For details on installing the chart, see {{% xref "/install/helm/_index.md" %}}.
+
+The chart has two components that you can enable or disable independently:
+
+- The [collector](#collector) is a DaemonSet that runs on every node, collects the pod logs, and forwards them to a destination. By default, it forwards the logs to the aggregator.
+- The [aggregator](#aggregator) is a StatefulSet that receives syslog and `axosyslog-otlp()` messages from the network (including the messages of the collector), and routes them to local or remote destinations.
 
 ## Collector parameters {#collector}
 
@@ -14,18 +20,19 @@ When you deploy {{% param "product.abbrev" %}} as a collector (which is a Daemon
 
 | Parameter | Description | Default |
 | --------- | ----------- | ------- |
-|  collector.enabled  | Deploy AxoSyslog as a collector to collect and forward local logs |  `true`  |
-|  collector.config.destinations  | The configurations of destinations that can be configured using chart values: [syslog](#collector-syslog-destination), [opensearch](#collector-opensearch-destination), and [syslogNgOtlp](#collector-syslogngotlp-destination). For destinations and options not available as chart values, you can use the `collector.config.raw` option. |  `""`  |
-|  collector.config.raw  | A complete `syslog-ng` configuration. If this parameter is set, all other parameters in the `collector.config` section are ignored. You can use this to set parameters that are not available as chart values. For details on how to create a configuration for `syslog-ng`, see the [AxoSyslog Core documentation](https://axoflow.com/docs/axosyslog-core/). |  `""`  |
+|  collector.enabled  | Deploy {{% param "product.abbrev" %}} as a collector to collect and forward local logs. |  `true`  |
+|  collector.config.destinations  | The configurations of destinations that can be configured using chart values: [syslog](#collector-syslog-destination), [opensearch](#collector-opensearch-destination), and [axosyslogOtlp](#collector-axosyslogotlp-destination). For destinations and options not available as chart values, you can use the `collector.config.raw` option. | The [syslog](#collector-syslog-destination) destination is enabled, and sends the logs to the aggregator. |
+|  collector.config.raw  | A complete `syslog-ng` configuration. If this parameter is set, all other parameters in the `collector.config` section are ignored. You can use this to set parameters that are not available as chart values. For details on how to create a configuration for `syslog-ng`, see the [{{% param "product.name" %}} documentation]({{< relref "/_index.md" >}}). |  `""`  |
 |  collector.config.rewrites.set  |  A list of name-value pairs to set for the collected log messages. Uses the [`set` rewrite rule]({{< relref "/chapter-manipulating-messages/modifying-messages/rewrite-set/_index.md" >}}). |  `{}`  |
-|  collector.config.sources.kubernetes.enabled  | Collect pod logs using the [`kubernetes()`]({{< relref "/chapter-sources/configuring-sources-kubernetes/_index.md" >}}) source. If disabled, the chart doesn't configure any source. For the list of available sources, see the [Sources chapter]({{< relref "/chapter-sources/_index.md" >}}) |  `true`  |
-|  collector.config.sources.kubernetes.prefix  | Set JSON prefix for logs collected from the Kubernetes cluster  |  `""`  |
-|  collector.config.sources.kubernetes.keyDelimiter  | Set JSON key delimiter for logs collected from the Kubernetes cluster  |  `""`  |
-|  collector.stats.level | Specifies the level of statistics {{% param "product.abbrev" %}} collects about the processed messages. For details, see ({{% xref "/chapter-global-options/reference-options/_index.md#global-option-stats-level" %}}). | `2` |
+|  collector.config.sources.kubernetes.enabled  | Collect pod logs using the [`kubernetes()`]({{< relref "/chapter-sources/configuring-sources-kubernetes/_index.md" >}}) source. If disabled, the chart doesn't configure any source. For the list of available sources, see the [Sources chapter]({{< relref "/chapter-sources/_index.md" >}}). |  `true`  |
+|  collector.config.sources.kubernetes.prefix  | Set JSON prefix for logs collected from the Kubernetes cluster.  |  `""`  |
+|  collector.config.sources.kubernetes.keyDelimiter  | Set JSON key delimiter for logs collected from the Kubernetes cluster.  |  `""`  |
+|  collector.config.sources.kubernetes.maxContainers  | The maximum number of containers to collect logs from. Sets the `max-containers()` option of the `kubernetes()` source.  |  `""`  |
+|  collector.config.stats.level | Specifies the level of statistics {{% param "product.abbrev" %}} collects about the processed messages. For details, see {{% xref "/chapter-global-options/reference-options/_index.md#global-option-stats-level" %}}. | `2` |
 
 The following example uses the `collector.config.raw` parameter to configure a custom destination:
 
-```shell
+```yaml
 collector:
   config:
     raw: |
@@ -39,7 +46,7 @@ collector:
 
         destination {
           logscale(
-            token("your-secret-humio-ingest-token")
+            token("<YOUR_INGEST_TOKEN>")
           );
         };
 
@@ -49,20 +56,20 @@ collector:
   hostNetworking: true
 ```
 
-### Syslog destination {#collector-syslog-destination}
+### Collector syslog destination {#collector-syslog-destination}
 
-Send logs over the network, conforming to RFC3164 using the [`network()`]({{< relref "/chapter-destinations/configuring-destinations-network/_index.md" >}}) destination driver.
+Send logs over the network, conforming to RFC3164 using the [`network()`]({{< relref "/chapter-destinations/configuring-destinations-network/_index.md" >}}) destination driver. By default, the collector uses this destination to send the logs to the [aggregator](#aggregator) in JSON format.
 
 | Parameter | Description | Default |
 | --------- | ----------- | ------- |
-|  collector.config.destinations.syslog.enabled  | Enables the destination. | `false`  |
-|  collector.config.destinations.syslog.address  | The IP address of the destination host. |  `localhost`  |
+|  collector.config.destinations.syslog.enabled  | Enables the destination. | `true`  |
+|  collector.config.destinations.syslog.address  | The IP address or hostname of the destination host. Can include Helm templates. |  `<release-name>-aggregator.<namespace>.svc.cluster.local`  |
 |  collector.config.destinations.syslog.extraOptionsRaw  | Other options of the [`network()` destination]({{< relref "/chapter-destinations/configuring-destinations-network/_index.md" >}}). |  `"time-reopen(10)"`  |
-|  collector.config.destinations.syslog.port  | The port number to send the messages to. |  `12345`  |
+|  collector.config.destinations.syslog.port  | The port number to send the messages to. |  `514`  |
 |  collector.config.destinations.syslog.template  | A template to format the messages. |  `"$(format-json .*)"`  |
 |  collector.config.destinations.syslog.transport  | The transport protocol to use. Possible values: `tcp`, `udp` |  `tcp`  |
 
-For example:
+For example, to send the logs to a syslog server outside the cluster:
 
 ```yaml
 collector:
@@ -71,27 +78,28 @@ collector:
       syslog:
         enabled: true
         transport: tcp
-        address: localhost
-        port: 12345
+        address: 192.0.2.10
+        port: 514
         template: "$(format-json .*)"
 ```
 
-### OpenSearch destination {#collector-opensearch-destination}
+### Collector OpenSearch destination {#collector-opensearch-destination}
 
 Send logs to OpenSearch over HTTP or HTTPS.
 
 | Parameter | Description | Default |
 | --------- | ----------- | ------- |
 |  collector.config.destinations.opensearch.enabled  | Enables the destination. | `false`  |
-|  collector.config.destinations.opensearch.address  | The URL of the OpenSearch server. |  `http://my-release-opensearch.default.svc.cluster.local:9200`  |
-|  collector.config.destinations.opensearch.index  | Name of the OpenSearch index that stores the messages. |  `"test-axoflow-index"`  |
-|  collector.config.destinations.opensearch.user  | The username to use for authentication on the OpenSearch server, if not authenticating with a certificate. |  `"admin"`  |
-|  collector.config.destinations.opensearch.password  | The password to use for authentication on the OpenSearch server. |  `"admin"`  |
+|  collector.config.destinations.opensearch.url  | The URL of the OpenSearch server, for example, `http://my-release-opensearch.default.svc.cluster.local:9200`. |  `""`  |
+|  collector.config.destinations.opensearch.index  | Name of the OpenSearch index that stores the messages. |  `""`  |
+|  collector.config.destinations.opensearch.user  | The username to use for authentication on the OpenSearch server, if not authenticating with a certificate. |  `""`  |
+|  collector.config.destinations.opensearch.password  | The password to use for authentication on the OpenSearch server. |  `""`  |
 |  collector.config.destinations.opensearch.template  | A template to format the messages. |  `"$(format-json .*)"`  |
-|  collector.config.destinations.opensearch.tls.CADir  | A directory containing a set of trusted CA certificates in PEM format. The name of the files must be the 32-bit hash of the subject's name. {{% param "product.abbrev" %}} verifies the certificate of the server using these CA certificates. |  `"/path/to/CADir/"`  |
-|  collector.config.destinations.opensearch.tls.CAFile  | The CA certificate in PEM format to use when verifying the certificate of the server. |  `"/path/to/CAFile.pem"`  |
-|  collector.config.destinations.opensearch.tls.Cert  | Name of a file containing an X.509 certificate or a certificate chain in PEM format. AxoSyslog authenticates with this certificate on the server, with the private key set in the `collector.config.destinations.opensearch.tls.Key` field. If the file contains a certificate chain, the file must begin with the certificate of the host, followed by the CA certificate that signed the certificate of the host, and any other signing CAs in order. |  `"/path/to/Cert.pem"`  |
-|  collector.config.destinations.opensearch.tls.Key  | Name of a file containing an unencrypted private key in PEM format. AxoSyslog authenticates with this key and the certificate set in the `collector.config.destinations.opensearch.tls.Cert` field. |  `"/path/to/Key.pem"`  |
+|  collector.config.destinations.opensearch.extraOptionsRaw  | Other options of the [`elasticsearch-http()` destination]({{< relref "/chapter-destinations/configuring-destinations-elasticsearch-http/_index.md" >}}). |  `"time-reopen(10)"`  |
+|  collector.config.destinations.opensearch.tls.CADir  | A directory containing a set of trusted CA certificates in PEM format. The name of the files must be the 32-bit hash of the subject's name. {{% param "product.abbrev" %}} verifies the certificate of the server using these CA certificates. |  `""`  |
+|  collector.config.destinations.opensearch.tls.CAFile  | The CA certificate in PEM format to use when verifying the certificate of the server. |  `""`  |
+|  collector.config.destinations.opensearch.tls.Cert  | Name of a file containing an X.509 certificate or a certificate chain in PEM format. {{% param "product.abbrev" %}} authenticates with this certificate on the server, with the private key set in the `collector.config.destinations.opensearch.tls.Key` field. If the file contains a certificate chain, the file must begin with the certificate of the host, followed by the CA certificate that signed the certificate of the host, and any other signing CAs in order. |  `""`  |
+|  collector.config.destinations.opensearch.tls.Key  | Name of a file containing an unencrypted private key in PEM format. {{% param "product.abbrev" %}} authenticates with this key and the certificate set in the `collector.config.destinations.opensearch.tls.Cert` field. |  `""`  |
 |  collector.config.destinations.opensearch.tls.peerVerify  | If true, {{% param "product.abbrev" %}} verifies the certificate of the server with the CA certificates set in `collector.config.destinations.opensearch.tls.CAFile` and `collector.config.destinations.opensearch.tls.CADir`. |  `false`  |
 
 For example:
@@ -100,124 +108,137 @@ For example:
 collector:
   config:
     destinations:
+      syslog:
+        enabled: false
       opensearch:
-        - address: 10.104.232.94
-          index: "test-axoflow-index"
-          tls:
-            CAFile: "/path/to/CAFile.pem"
-            CADir: "/path/to/CADir/"
-            Cert: "/path/to/Cert.pem"
-            Key: "/path/to/Key.pem"
-            peerVerify: true
-            template: "$(format-json .*)"
+        enabled: true
+        url: http://my-release-opensearch.default.svc.cluster.local:9200
+        index: "test-axoflow-index"
+        tls:
+          CAFile: "/path/to/CAFile.pem"
+          Cert: "/path/to/Cert.pem"
+          Key: "/path/to/Key.pem"
+          peerVerify: true
 ```
 
-### syslogNgOtlp destination {#collector-syslogngotlp-destination}
+### Collector axosyslogOtlp destination {#collector-axosyslogotlp-destination}
 
-Send logs over to another {{% param "product.abbrev" %}} node using the [`syslog-ng-otlp()`]({{< relref "/chapter-destinations/destination-syslog-ng-otlp/_index.md" >}}) destination driver.
+Send logs to another {{% param "product.abbrev" %}} node using the [`axosyslog-otlp()`]({{< relref "/chapter-destinations/destination-syslog-ng-otlp/_index.md" >}}) destination driver.
 
 | Parameter | Description | Default |
 | --------- | ----------- | ------- |
-|  collector.config.destinations.syslogNgOtlp.enabled  | Enables the destination. | `false`  |
-|  collector.config.destinations.syslogNgOtlp.url  | The IP address and port of the destination host. |  `"192.168.77.133:4317"`  |
-|  collector.config.destinations.syslogNgOtlp.extraOptionsRaw  | Other options of the [`syslog-ng-otlp()` destinations]({{< relref "/chapter-destinations/destination-syslog-ng-otlp/_index.md" >}}). |  "time-reopen(1) batch-timeout(1000) batch-lines(1000)"  |
+|  collector.config.destinations.axosyslogOtlp.enabled  | Enables the destination. | `false`  |
+|  collector.config.destinations.axosyslogOtlp.url  | The IP address or hostname and the port of the destination host. Can include Helm templates. |  `<release-name>-aggregator.<namespace>.svc.cluster.local:4317`  |
+|  collector.config.destinations.axosyslogOtlp.extraOptionsRaw  | Other options of the [`axosyslog-otlp()` destination]({{< relref "/chapter-destinations/destination-syslog-ng-otlp/_index.md" >}}). |  `"time-reopen(1) batch-timeout(1000) batch-lines(1000)"`  |
+
+For example, to send the logs to the aggregator using `axosyslog-otlp()` instead of syslog:
+
+```yaml
+collector:
+  config:
+    destinations:
+      syslog:
+        enabled: false
+      axosyslogOtlp:
+        enabled: true
+```
 
 ### Other collector parameters
 
 | Parameter | Description | Default |
 | --------- | ----------- | ------- |
-|  collector.affinity  | Pod affinity |  `{}`  |
-|  collector.annotations  | Additional annotations to apply to the DaemonSet |  `{}`  |
-|  collector.extraVolumes  | Additional volumes to mount |  `[]`  |
-|  collector.hostAliases  | Add host aliases |  `[]`  |
-|  collector.hostNetworking  | Whether to enable host networking |  `false`  |
-|  collector.labels  | Additional labels to apply to the DaemonSet |  `{}`  |
-|  collector.maxUnavailable  | The maximum number of unavailable pods during a rolling update |  `1`  |
-|  collector.nodeSelector  | Node labels for pod assignment |  `{}`  |
-|  collector.resources  | Resource requests and limits |  `{}`  |
-|  collector.tolerations  | Tolerations for pod assignment |  `[]`  |
-|  collector.secretMounts  | Mount additional secrets as volumes |  `[]`  |
-|  collector.securityContext  | Security context for the pod |  `{}`  |
+|  collector.affinity  | Affinity rules for collector pod scheduling. |  `{}`  |
+|  collector.annotations  | Additional annotations for the collector DaemonSet and its pods. |  `{}`  |
+|  collector.extraVolumes  | Additional volumes to add to the collector pod. |  `[]`  |
+|  collector.extraVolumeMounts  | Additional volume mounts to add to the collector container. |  `[]`  |
+|  collector.hostAliases  | Custom entries added to `/etc/hosts` for collector pods. |  `[]`  |
+|  collector.hostNetworking  | Use the host network namespace for collector pods. |  `false`  |
+|  collector.labels  | Additional labels for the collector DaemonSet and its pods. |  `{}`  |
+|  collector.maxUnavailable  | The maximum number of unavailable pods during a rolling update of the DaemonSet. |  `1`  |
+|  collector.nodeSelector  | Node selector for collector pod assignment. |  `{}`  |
+|  collector.resources  | CPU and memory resource requests and limits for the collector. If not set, the global `resources` value is used. |  `{}`  |
+|  collector.secretMounts  | Secrets to mount as files into the collector container. |  `[]`  |
+|  collector.securityContext  | Container-level security context for the collector. If not set, the global `securityContext` value is used. |  `{}`  |
+|  collector.tolerations  | Tolerations for collector pod scheduling. |  `[]`  |
 
-## Syslog server parameters {#syslog-server}
+## Aggregator parameters {#aggregator}
 
-When you deploy {{% param "product.abbrev" %}} as a server (which is a StatefulSet), it receives incoming data from the network and routes it to a local or remote destination. collects and forwards local logs to a destination. You can use the following parameters to configure the syslog server. The parameters for specific destinations are shown in subsequent sections.
-
-| Parameter | Description | Default |
-| --------- | ----------- | ------- |
-|  syslog.enabled  | Deploy {{% param "product.abbrev" %}} as a collector to collect and forward local logs |  `true`  |
-|  syslog.bufferStorage.enabled | Configures a storage using PersistentVolumes to use as disk-buffer. | `false` |
-|  syslog.bufferStorage.storageClass | The class of the storage to use, for example, `standard`. | `standard` |
-|  syslog.bufferStorage.size | The maximum size of the storage to use as disk-buffer, for example, `10Gi`. | `10Gi` |
-|  syslog.logFileStorage.enabled | Configures a storage using PersistentVolumes to store the log files. | `false` |
-|  syslog.logFileStorage.storageClass | The class of the storage to use, for example, `standard`. | `standard` |
-|  syslog.logFileStorage.size | The maximum size of the storage to use as for log storage, for example, `10Gi`. | `500Gi` |
-|  syslog.config.raw  | A complete `syslog-ng` configuration. If this parameter is set, all other parameters in the `syslog.config` section are ignored. You can use this to set parameters that are not available as chart values. For details on how to create a configuration for `syslog-ng`, see the [AxoSyslog Core documentation](https://axoflow.com/docs/axosyslog-core/). |  `""`  |
-|  syslog.config.stats.level | Specifies the detail of statistics {{% param "product.abbrev" %}} collects about the processed messages. For details, see {{% xref "/chapter-global-options/reference-options/_index.md#global-option-stats-level" %}}. | `2` |
-|  syslog.config.rewrites.set  | A list of name-value pairs to set for the collected log messages. Uses the [`set` rewrite rule]({{< relref "/chapter-manipulating-messages/modifying-messages/rewrite-set/_index.md" >}}). |  `{}`  |
-|  syslog.config.sources  | The configurations of the sources that can be configured using chart values: [syslog](#syslog-syslog-source) and [syslogNgOtlp](#syslog-syslog-ng-otlp-source). |  [syslog](#syslog-syslog-source) and [syslogNgOtlp](#syslog-syslog-ng-otlp-source) are enabled by default. See the individual sources for details. For sources not available as chart values, you can use the `collector.config.raw` option.  |
-|  syslog.config.destinations  | The configurations of destinations that can be configured using chart values: [file](#syslog-file-destination), [syslog](#syslog-syslog-destination), [opensearch](#syslog-opensearch-destination), and [syslogNgOtlp](#syslog-syslog-ng-otlp-destination).  | The [file](#syslog-file-destination), [syslog](#syslog-syslog-destination), [opensearch](#syslog-opensearch-destination) destinations are enabled by default. For destinations not available as chart values, you can use the `collector.config.raw` option.  |
-
-### Syslog source {#syslog-syslog-source}
-
-You can use the syslog source to receive RFC3164 or RFC5424 formatted syslog messages on the following ports:
-
-- 1514: RFC3164-formatted traffic over TCP and UDP (NodePort 30514)
-- 1601: RFC5424-formatted traffic over TCP (NodePort 30601)
-- 6514: RFC5424-formatted traffic over TLS (NodePort 30614)
-
-If needed, you can open additional ports using the [`service.extraPorts`](#generic-chart-parameters) option.
+When you deploy {{% param "product.abbrev" %}} as an aggregator (which is a StatefulSet), it receives incoming data from the network and routes it to a local or remote destination. You can use the following parameters to configure the aggregator. The parameters for specific sources and destinations are shown in subsequent sections.
 
 | Parameter | Description | Default |
 | --------- | ----------- | ------- |
-|  syslog.config.sources.syslog.enabled  | Enable receiving syslog messages. |  `true`  |
-|  syslog.config.sources.syslog.max-connections  | Maximum number of parallel connections. |  `1000`  |
-|  syslog.config.sources.syslog.log-iw-size  | The initial window size used for [flow-control]({{< relref "/chapter-routing-filters/concepts-flow-control/_index.md" >}}). |  `100000`  |
-|  syslog.config.sources.syslog.tls.peerVerify  | Set to `yes` to request a certificate from the peers. In this case, you must also set the CA directory or the CA file. |  `no`  |
-|  syslog.config.sources.syslog.tls.CAFile  | A file containing trusted CA certificates. For details, see [TLS options]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#ca-file" >}}). |  `""`  |
-|  syslog.config.sources.syslog.tls.CADir  | The directory for the trusted CA files. For details, see [TLS options]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#ca-dir" >}}). |  `""`  |
-|  syslog.config.sources.syslog.tls.Cert  | The certificate file to show to the peer. For details, see [TLS options]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#cert-file" >}}). |  `""`  |
-|  syslog.config.sources.syslog.tls.Key  | The private key file for the certificate. For details, see [TLS options]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#key-file" >}}). |  `""`  |
+|  aggregator.enabled  | Deploy {{% param "product.abbrev" %}} as an aggregator to receive logs from the network. |  `true`  |
+|  aggregator.replicaCount  | The number of aggregator replicas. |  `1`  |
+|  aggregator.bufferStorage.enabled | Configures a storage using PersistentVolumes to use as disk-buffer. | `false` |
+|  aggregator.bufferStorage.storageClass | The class of the storage to use, for example, `standard`. | `standard` |
+|  aggregator.bufferStorage.size | The maximum size of the storage to use as disk-buffer, for example, `10Gi`. | `10Gi` |
+|  aggregator.logFileStorage.enabled | Configures a storage using PersistentVolumes to store the log files. The volume is mounted to `/var/log`. | `false` |
+|  aggregator.logFileStorage.storageClass | The class of the storage to use, for example, `standard`. | `standard` |
+|  aggregator.logFileStorage.size | The maximum size of the storage to use for log storage, for example, `50Gi`. | `50Gi` |
+|  aggregator.config.raw  | A complete `syslog-ng` configuration. If this parameter is set, all other parameters in the `aggregator.config` section are ignored. You can use this to set parameters that are not available as chart values. For details on how to create a configuration for `syslog-ng`, see the [{{% param "product.name" %}} documentation]({{< relref "/_index.md" >}}). |  `""`  |
+|  aggregator.config.stats.level | Specifies the level of statistics {{% param "product.abbrev" %}} collects about the processed messages. For details, see {{% xref "/chapter-global-options/reference-options/_index.md#global-option-stats-level" %}}. | `2` |
+|  aggregator.config.rewrites.set  | A list of name-value pairs to set for the received log messages. Uses the [`set` rewrite rule]({{< relref "/chapter-manipulating-messages/modifying-messages/rewrite-set/_index.md" >}}). |  `{}`  |
+|  aggregator.config.sources  | The configurations of the sources that can be configured using chart values: [syslog](#aggregator-syslog-source) and [axosyslogOtlp](#aggregator-axosyslogotlp-source). For sources not available as chart values, you can use the `aggregator.config.raw` option. | Both sources are enabled. |
+|  aggregator.config.destinations  | The configurations of destinations that can be configured using chart values: [file](#aggregator-file-destination), [syslog](#aggregator-syslog-destination), [opensearch](#aggregator-opensearch-destination), and [axosyslogOtlp](#aggregator-axosyslogotlp-destination). For destinations not available as chart values, you can use the `aggregator.config.raw` option. | The [file](#aggregator-file-destination) destination is enabled. |
 
-### syslogNgOtlp source {#syslog-syslog-ng-otlp-source}
+### Aggregator syslog source {#aggregator-syslog-source}
 
-Initializes a [`syslog-ng-otlp()`]({{< relref "/chapter-sources/source-syslog-ng-otlp/_index.md" >}}) to receive messages from another {{% param "product.abbrev" %}} node that sends telemetry data using the [`syslog-ng-otlp()`]({{< relref "/chapter-destinations/destination-syslog-ng-otlp/_index.md" >}}) destination driver.
+You can use the syslog source to receive RFC3164 or RFC5424 formatted syslog messages. The source uses the [`default-network-drivers()`]({{< relref "/chapter-sources/source-default-network-drivers/_index.md" >}}) source driver. The following table shows the ports where the aggregator receives the messages:
+
+| Traffic | Container port | Service port | NodePort |
+| ------- | -------------- | ------------ | -------- |
+| RFC3164 over UDP | 1514 | 514 | 30514 |
+| RFC3164 over TCP | 1514 | 514 | 30514 |
+| RFC5424 over TCP | 1601 | 601 | 30601 |
+| RFC5424 over TLS (only if `aggregator.config.sources.syslog.tls` is set) | 6514 | 6514 | 30614 |
+
+The NodePorts are used only if `service.type` is `NodePort` or `LoadBalancer`. If needed, you can open additional ports using the [`service.extraPorts`](#generic-chart-parameters) option.
 
 | Parameter | Description | Default |
 | --------- | ----------- | ------- |
-|  syslog.config.sources.syslogNgOtlp.enabled  | Enable receiving `syslog-ng-otlp()` messages. |  `true`  |
-|  syslog.config.sources.syslogNgOtlp.port  | The port where messages are received. |  `4317`  |
-<!--       nodePort: {{ .syslogNgOtlp.port | default 30317 }} https://github.com/axoflow/axosyslog/blob/80c963bb29a055974288c0cd9eea5f2200068242/charts/axosyslog/templates/service.yaml#L41C1-L41C57 itt nem ertem a port vs nodeport beallitast (olyan mintha fixen a 4317-en hallgatoznank, es a port opcioval a nodeport-ot allitanank) -->
-<!-- FIXME a values.yaml-ben van extraoptions is, de a templateben nem latom hogy hasznalnank -->
+|  aggregator.config.sources.syslog.enabled  | Enable receiving syslog messages. |  `true`  |
+|  aggregator.config.sources.syslog.rfc3164UdpPort  | The NodePort for RFC3164-formatted messages over UDP. |  `30514`  |
+|  aggregator.config.sources.syslog.rfc3164TcpPort  | The NodePort for RFC3164-formatted messages over TCP. |  `30514`  |
+|  aggregator.config.sources.syslog.rfc5424TcpPort  | The NodePort for RFC5424-formatted messages over TCP. |  `30601`  |
+|  aggregator.config.sources.syslog.rfc5424TlsPort  | The NodePort for RFC5424-formatted messages over TLS. |  `30614`  |
+|  aggregator.config.sources.syslog.maxConnections  | Maximum number of parallel connections. |  `1000`  |
+|  aggregator.config.sources.syslog.initWindowSize  | The initial window size used for [flow-control]({{< relref "/chapter-routing-filters/concepts-flow-control/_index.md" >}}). |  `100000`  |
+|  aggregator.config.sources.syslog.tls.peerVerify  | If `true`, {{% param "product.abbrev" %}} requests a certificate from the peers. In this case, you must also set the CA directory or the CA file. |  `false`  |
+|  aggregator.config.sources.syslog.tls.CAFile  | A file containing trusted CA certificates. For details, see [TLS options]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#ca-file" >}}). |  `""`  |
+|  aggregator.config.sources.syslog.tls.CADir  | The directory for the trusted CA files. For details, see [TLS options]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#ca-dir" >}}). |  `""`  |
+|  aggregator.config.sources.syslog.tls.Cert  | The certificate file to show to the peer. For details, see [TLS options]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#cert-file" >}}). |  `""`  |
+|  aggregator.config.sources.syslog.tls.Key  | The private key file for the certificate. For details, see [TLS options]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#key-file" >}}). |  `""`  |
 
-### File destination {#syslog-file-destination}
+### Aggregator axosyslogOtlp source {#aggregator-axosyslogotlp-source}
 
-To write the collected logs into files, configure the [`syslog.logFileStorage`](#syslog-server) and the `syslog.config.destinations.file` options.
+Initializes an [`axosyslog-otlp()`]({{< relref "/chapter-sources/source-syslog-ng-otlp/_index.md" >}}) source to receive messages from another {{% param "product.abbrev" %}} node that sends telemetry data using the [`axosyslog-otlp()`]({{< relref "/chapter-destinations/destination-syslog-ng-otlp/_index.md" >}}) destination driver. The source receives the messages on port 4317 (container and service port).
 
 | Parameter | Description | Default |
 | --------- | ----------- | ------- |
-|  syslog.config.destinations.file.enabled | Enables the file destination. | `true` |
-|  syslog.config.destinations.file.path | The path and filename of the log files. Can include macros. For examples, see {{% xref "/chapter-destinations/configuring-destinations-file/_index.md" %}}. | `"/var/log/syslog"` |
-|  syslog.config.destinations.file.template | The [template]({{< relref "/chapter-destinations/configuring-destinations-file/reference-destination-file/_index.md#template" >}}) used to format the log messages. Can include macros. | `""` |
-|  syslog.config.destinations.file.extraOptionsRaw  | Other options of the [`file()` destination]({{< relref "/chapter-destinations/configuring-destinations-file/_index.md" >}}). If the directories used in `syslog.destinations.file.path` do not exist, set `extraOptionsRaw: "create-dirs(yes)"` |  `"create-dirs(yes)"`  |
+|  aggregator.config.sources.axosyslogOtlp.enabled  | Enable receiving `axosyslog-otlp()` messages. |  `true`  |
+|  aggregator.config.sources.axosyslogOtlp.port  | The NodePort for `axosyslog-otlp()` messages. Used only if `service.type` is `NodePort` or `LoadBalancer`. |  `30317`  |
+
+### Aggregator file destination {#aggregator-file-destination}
+
+To write the received logs into files, configure the [`aggregator.logFileStorage`](#aggregator) and the `aggregator.config.destinations.file` options.
+
+| Parameter | Description | Default |
+| --------- | ----------- | ------- |
+|  aggregator.config.destinations.file.enabled | Enables the file destination. | `true` |
+|  aggregator.config.destinations.file.path | The path and filename of the log files. Can include macros. For examples, see {{% xref "/chapter-destinations/configuring-destinations-file/_index.md" %}}. | `"/var/log/syslog"` |
+|  aggregator.config.destinations.file.template | The [template]({{< relref "/chapter-destinations/configuring-destinations-file/reference-destination-file/_index.md#template" >}}) used to format the log messages. Can include macros. | `""` |
+|  aggregator.config.destinations.file.extraOptionsRaw  | Other options of the [`file()` destination]({{< relref "/chapter-destinations/configuring-destinations-file/_index.md" >}}). If the directories used in `aggregator.config.destinations.file.path` do not exist, set `extraOptionsRaw: "create-dirs(yes)"`. |  `"create-dirs(yes)"`  |
 
 For example:
 
 ```yaml
-syslog:
+aggregator:
   enabled: true
   logFileStorage:
     enabled: true
     storageClass: standard
-    size: 500Gi
-  bufferStorage:
-    enabled: false
-    storageClass: standard
-    size: 10Gi
+    size: 50Gi
   config:
-    sources:
-      syslog:
-        enabled: true
     destinations:
       file:
         enabled: true
@@ -225,45 +246,42 @@ syslog:
         extraOptionsRaw: "create-dirs(yes)"
 ```
 
-### OpenSearch destination {#syslog-opensearch-destination}
+### Aggregator OpenSearch destination {#aggregator-opensearch-destination}
 
 Send logs to [OpenSearch]({{< relref "/chapter-destinations/destination-opensearch/_index.md" >}}) over HTTP or HTTPS.
 
 | Parameter | Description | Default |
 | --------- | ----------- | ------- |
-|  syslog.config.destinations.opensearch.enabled  | Enables the destination. | `true` |
-|  syslog.config.destinations.opensearch.url  | The URL of the OpenSearch server. | `http://my-release-opensearch.default.svc.cluster.local:9200` |
-|  syslog.config.destinations.opensearch.extraOptionsRaw  | Other options of the [`opensearch()` destination]({{< relref "/chapter-destinations/destination-opensearch/_index.md" >}}). |  `"time-reopen(10)"`  |
-|  syslog.config.destinations.opensearch.index  | Name of the OpenSearch index that stores the messages. |  `"test-axoflow-index"`  |
-|  syslog.config.destinations.opensearch.user  | The username to use for authentication on the OpenSearch server, if not authenticating with a certificate. |  `"admin"`  |
-|  syslog.config.destinations.opensearch.password  | The password to use for authentication on the OpenSearch server. |  `"admin"`  |
-|  syslog.config.destinations.opensearch.template  | A template to format the messages. |  `"$(format-json --scope rfc5424 --exclude DATE --key ISODATE @timestamp=${ISODATE})"`  |
-|  syslog.config.destinations.opensearch.tls.CAFile  | The CA certificate in PEM format to use when verifying the certificate of the server. |  `""`  |
-|  syslog.config.destinations.opensearch.tls.CADir  | A directory containing a set of trusted CA certificates in PEM format. The name of the files must be the 32-bit hash of the subject's name. {{% param "product.abbrev" %}} verifies the certificate of the server using these CA certificates. |  `""`  |
-|  syslog.config.destinations.opensearch.tls.Cert  | Name of a file containing an X.509 certificate or a certificate chain in PEM format. AxoSyslog authenticates with this certificate on the server, with the private key set in the `syslog.config.destinations.opensearch.tls.Key` field. If the file contains a certificate chain, the file must begin with the certificate of the host, followed by the CA certificate that signed the certificate of the host, and any other signing CAs in order. |  `""`  |
-|  syslog.config.destinations.opensearch.tls.Key  | Name of a file containing an unencrypted private key in PEM format. AxoSyslog authenticates with this key and the certificate set in the `syslog.config.destinations.opensearch.tls.Cert` field. |  `""`  |
-|  syslog.config.destinations.opensearch.tls.peerVerify  | If true, {{% param "product.abbrev" %}} verifies the certificate of the server with the CA certificates set in `syslog.config.destinations.opensearch.tls.CAFile` and `syslog.config.destinations.opensearch.tls.CADir`. |  `""`  |
+|  aggregator.config.destinations.opensearch.enabled  | Enables the destination. | `false` |
+|  aggregator.config.destinations.opensearch.url  | The URL of the OpenSearch server, for example, `http://my-release-opensearch.default.svc.cluster.local:9200`. | `""` |
+|  aggregator.config.destinations.opensearch.extraOptionsRaw  | Other options of the [`elasticsearch-http()` destination]({{< relref "/chapter-destinations/configuring-destinations-elasticsearch-http/_index.md" >}}). |  `"time-reopen(10)"`  |
+|  aggregator.config.destinations.opensearch.index  | Name of the OpenSearch index that stores the messages. |  `""`  |
+|  aggregator.config.destinations.opensearch.user  | The username to use for authentication on the OpenSearch server, if not authenticating with a certificate. |  `""`  |
+|  aggregator.config.destinations.opensearch.password  | The password to use for authentication on the OpenSearch server. |  `""`  |
+|  aggregator.config.destinations.opensearch.template  | A template to format the messages, for example, `"$(format-json --scope rfc5424 --exclude DATE --key ISODATE @timestamp=${ISODATE})"`. |  `""`  |
+|  aggregator.config.destinations.opensearch.tls.CAFile  | The CA certificate in PEM format to use when verifying the certificate of the server. |  `""`  |
+|  aggregator.config.destinations.opensearch.tls.CADir  | A directory containing a set of trusted CA certificates in PEM format. The name of the files must be the 32-bit hash of the subject's name. {{% param "product.abbrev" %}} verifies the certificate of the server using these CA certificates. |  `""`  |
+|  aggregator.config.destinations.opensearch.tls.Cert  | Name of a file containing an X.509 certificate or a certificate chain in PEM format. {{% param "product.abbrev" %}} authenticates with this certificate on the server, with the private key set in the `aggregator.config.destinations.opensearch.tls.Key` field. If the file contains a certificate chain, the file must begin with the certificate of the host, followed by the CA certificate that signed the certificate of the host, and any other signing CAs in order. |  `""`  |
+|  aggregator.config.destinations.opensearch.tls.Key  | Name of a file containing an unencrypted private key in PEM format. {{% param "product.abbrev" %}} authenticates with this key and the certificate set in the `aggregator.config.destinations.opensearch.tls.Cert` field. |  `""`  |
+|  aggregator.config.destinations.opensearch.tls.peerVerify  | If true, {{% param "product.abbrev" %}} verifies the certificate of the server with the CA certificates set in `aggregator.config.destinations.opensearch.tls.CAFile` and `aggregator.config.destinations.opensearch.tls.CADir`. |  `false`  |
 
 For example:
 
 ```yaml
-syslog:
+aggregator:
   enabled: true
   bufferStorage:
     enabled: true
     storageClass: standard
     size: 10Gi
   config:
-    sources:
-      syslog:
-        enabled: true
     destinations:
       opensearch:
         enabled: true
         url: http://my-release-opensearch.default.svc.cluster.local:9200
         index: "test-axoflow-index"
-        user: "admin"
-        password: "admin"
+        user: "<YOUR_USERNAME>"
+        password: "<YOUR_PASSWORD>"
         #tls:
         #  CAFile: "/path/to/CAFile.pem"
         #  CADir: "/path/to/CADir/"
@@ -273,38 +291,35 @@ syslog:
         extraOptionsRaw: "time-reopen(10)"
 ```
 
-### Syslog destination {#syslog-syslog-destination}
+### Aggregator syslog destination {#aggregator-syslog-destination}
 
 Send logs over the network, conforming to RFC3164 using the [`network()`]({{< relref "/chapter-destinations/configuring-destinations-network/_index.md" >}}) destination driver.
 
 | Parameter | Description | Default |
 | --------- | ----------- | ------- |
-|  syslog.config.destinations.syslog.enabled  | Enables the destination. | `true`  |
-|  syslog.config.destinations.syslog.address  | The IP address of the destination host. |  `""`  |
-|  syslog.config.destinations.syslog.extraOptionsRaw  | Other options of the [`network()` destination]({{< relref "/chapter-destinations/configuring-destinations-network/_index.md" >}}). |  `"time-reopen(10)"`  |
-|  syslog.config.destinations.syslog.port  | The port number to send the messages to. |  `12345`  |
-|  syslog.config.destinations.syslog.template  | A template to format the messages. |  `""`  |
-|  syslog.config.destinations.syslog.transport  | The transport protocol to use. Possible values: `tcp`, `udp` |  `tcp`  |
+|  aggregator.config.destinations.syslog.enabled  | Enables the destination. | `false`  |
+|  aggregator.config.destinations.syslog.address  | The IP address or hostname of the destination host. |  `""`  |
+|  aggregator.config.destinations.syslog.extraOptionsRaw  | Other options of the [`network()` destination]({{< relref "/chapter-destinations/configuring-destinations-network/_index.md" >}}). |  `"time-reopen(10)"`  |
+|  aggregator.config.destinations.syslog.port  | The port number to send the messages to. |  `""`  |
+|  aggregator.config.destinations.syslog.template  | A template to format the messages. |  `""`  |
+|  aggregator.config.destinations.syslog.transport  | The transport protocol to use. Possible values: `tcp`, `udp` |  `tcp`  |
 
 For example:
 
 ```yaml
-syslog:
+aggregator:
   enabled: true
   bufferStorage:
     enabled: true
     storageClass: standard
     size: 10Gi
   config:
-    sources:
-      syslog:
-        enabled: true
     destinations:
       syslog:
         enabled: true
         transport: tcp
-        address: 192.168.77.133
-        port: 12345
+        address: 192.0.2.10
+        port: 514
         # convert incoming data to JSON
         #template: "$(format-json .*)\n"
         # use standard syslog logfile
@@ -312,68 +327,102 @@ syslog:
         extraOptionsRaw: "time-reopen(10)"
 ```
 
-### syslogNgOtlp destination {#syslog-syslog-ng-otlp-destination}
+### Aggregator axosyslogOtlp destination {#aggregator-axosyslogotlp-destination}
 
-Send data using the [`syslog-ng-otlp()`]({{< relref "/chapter-destinations/destination-syslog-ng-otlp/_index.md" >}}) destination driver to another {{% param "product.abbrev" %}} node.
+Send data using the [`axosyslog-otlp()`]({{< relref "/chapter-destinations/destination-syslog-ng-otlp/_index.md" >}}) destination driver to another {{% param "product.abbrev" %}} node.
 
 | Parameter | Description | Default |
 | --------- | ----------- | ------- |
-|  syslog.config.destinations.syslogNgOtlp.enabled | Enables the destination. | `no` |
-|  syslog.config.destinations.syslogNgOtlp.url | The IP address of the destination host. | `""` |
-|  syslog.config.destinations.syslogNgOtlp.extraOptionsRaw  | Other options of the [`syslog-ng-otlp()` destination]({{< relref "/chapter-destinations/destination-syslog-ng-otlp/_index.md" >}}). |  `"time-reopen(1) batch-timeout(1000) batch-lines(1000)"`  |
+|  aggregator.config.destinations.axosyslogOtlp.enabled | Enables the destination. | `false` |
+|  aggregator.config.destinations.axosyslogOtlp.url | The IP address or hostname and the port of the destination host. Can include Helm templates. | `""` |
+|  aggregator.config.destinations.axosyslogOtlp.extraOptionsRaw  | Other options of the [`axosyslog-otlp()` destination]({{< relref "/chapter-destinations/destination-syslog-ng-otlp/_index.md" >}}). |  `"time-reopen(1) batch-timeout(1000) batch-lines(1000)"`  |
 
 For example:
 
 ```yaml
-syslog:
+aggregator:
   enabled: true
   bufferStorage:
     enabled: true
     storageClass: standard
     size: 10Gi
   config:
-    sources:
-      syslog:
-        enabled: true
     destinations:
-      syslogNgOtlp:
+      axosyslogOtlp:
         enabled: true
-        url: "192.168.77.133:4317"
+        url: "192.0.2.10:4317"
         extraOptionsRaw: "time-reopen(1) batch-timeout(1000) batch-lines(1000)"
 ```
 
-## Generic chart parameters
+### Other aggregator parameters
 
 | Parameter | Description | Default |
 | --------- | ----------- | ------- |
-|  image.repository  | The container image repository |  `ghcr.io/axoflow/axosyslog`  |
-|  image.pullPolicy  | The container image pull policy |  `IfNotPresent`  |
-|  image.tag  | The container image tag |  `{{% param "product.techversion" %}}`   |
-|  image.extraArgs  | Custom arguments applied as the value of spec.container.args |  `[]`  |
-|  imagePullSecrets  | The names of secrets containing private registry credentials |  `[]`  |
-|  nameOverride  | Override the chart name |  `""`  |
-|  fullnameOverride  | Override the full chart name |  `""`  |
-|  rbac.create  | Create RBAC resources |  `true`  |
-|  rbac.extraRules  | Additional RBAC rules |  `[]`  |
-|  openShift.enabled  | Set to `true` when deploying on OpenShift |  `false`  |
-|  openShift.securityContextConstraints.create  | Create SecurityContextConstraints on OpenShift |  `true`  |
-|  openShift.securityContextConstraints.annotations  | Annotations to apply to SecurityContextConstraints |  `{}`  |
-|  service.create  | Create a service so the [syslog server](#syslog-server) can receive incoming connections. |  `true`  |
-|  service.extraports  | Open additional ports for the [syslog server](#syslog-server) |  `[]`  |
-|  serviceAccount.create  | Whether to create a service account |  `true`  |
-|  serviceAccount.annotations  | Annotations to apply to the service account |  `{}`  |
-|  namespace  | The Kubernetes namespace to deploy to |  `""`  |
-|  podAnnotations  | Additional annotations to apply to the pod |  `{}`  |
-|  podSecurityContext  | Security context for the pod |  `{}`  |
-|  securityContext  | Security context for the container |  `{}`  |
-|  resources  | Resource requests and limits for the collector container. If not set, the values of `collector.resources` are used. |  {}  |
-|  nodeSelector  | Node labels for pod assignment |  `{}`  |
-|  tolerations  | Tolerations for pod assignment |  `[]`  |
-|  affinity  | Pod affinity |  `{}`  |
-|  updateStrategy  | Update strategy for the Collector DaemonSet |  `RollingUpdate`  |
-|  priorityClassName  | The name of the [PriorityClass](https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#priorityclass) the pod belongs to |  `""`  |
-|  dnsConfig  | The [DNS configuration of the pod](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-dns-config) |  `{}`  |
-|  hostAliases  | Additional [entries to the pod's hosts file](https://kubernetes.io/docs/tasks/network/customize-hosts-file-for-pods/#adding-additional-entries-with-hostaliases) |  `[]`  |
-|  secretMounts  | Additional secrets to mount for the pod. If not set, the values of `collector.secretMounts` are used. |  `[]`  |
-|  extraVolumes  | Additional volumes to mount for the pod. If not set, the values of `collector.extraVolumes` are used. |  `[]`  |
-|  terminationGracePeriodSeconds  | How many seconds a [pod with a failing probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes) has before shut down |  `30`  |
+|  aggregator.affinity  | Affinity rules for aggregator pod scheduling. |  `{}`  |
+|  aggregator.annotations  | Additional annotations for the aggregator StatefulSet and its pods. |  `{}`  |
+|  aggregator.extraVolumes  | Additional volumes to add to the aggregator pod. |  `[]`  |
+|  aggregator.extraVolumeMounts  | Additional volume mounts to add to the aggregator container. |  `[]`  |
+|  aggregator.hostAliases  | Custom entries added to `/etc/hosts` for aggregator pods. |  `[]`  |
+|  aggregator.labels  | Additional labels for the aggregator StatefulSet and its pods. |  `{}`  |
+|  aggregator.nodeSelector  | Node selector for aggregator pod assignment. |  `{}`  |
+|  aggregator.resources  | CPU and memory resource requests and limits for the aggregator. If not set, the global `resources` value is used. |  `{}`  |
+|  aggregator.secretMounts  | Secrets to mount as files into the aggregator container. |  `[]`  |
+|  aggregator.securityContext  | Container-level security context for the aggregator. If not set, the global `securityContext` value is used. |  `{}`  |
+|  aggregator.tolerations  | Tolerations for aggregator pod scheduling. |  `[]`  |
+
+## Metrics parameters {#metrics}
+
+You can deploy [`axosyslog-metrics-exporter`](https://github.com/axoflow/axosyslog-metrics-exporter) as a sidecar container of the collector to expose the metrics of {{% param "product.abbrev" %}} in Prometheus format on port 9577. If you use the Prometheus Operator, you can also deploy a PodMonitor to scrape the metrics.
+
+| Parameter | Description | Default |
+| --------- | ----------- | ------- |
+|  metricsExporter.enabled  | Deploy `axosyslog-metrics-exporter` as a sidecar on the collector DaemonSet. |  `false`  |
+|  metricsExporter.image.repository  | The image repository of the metrics exporter. |  `ghcr.io/axoflow/axosyslog-metrics-exporter`  |
+|  metricsExporter.image.tag  | The image tag of the metrics exporter. |  `latest`  |
+|  metricsExporter.image.pullPolicy  | The image pull policy of the metrics exporter. If not set, the default policy of Kubernetes applies. |  `""`  |
+|  metricsExporter.resources  | CPU and memory resource requests and limits for the metrics exporter sidecar. |  `{}`  |
+|  metricsExporter.securityContext  | Container-level security context for the metrics exporter sidecar. |  `{}`  |
+|  podMonitor.enabled  | Deploy a PodMonitor custom resource for the Prometheus Operator. Requires `metricsExporter.enabled`. |  `false`  |
+|  podMonitor.labels  | Additional labels for the PodMonitor. |  `{}`  |
+|  podMonitor.annotations  | Additional annotations for the PodMonitor. |  `{}`  |
+
+## Generic chart parameters
+
+The following parameters apply to both the collector and the aggregator. Where a component has its own parameter with the same name (for example, `collector.resources` or `aggregator.resources`), the component-level setting overrides the generic one.
+
+| Parameter | Description | Default |
+| --------- | ----------- | ------- |
+|  image.repository  | The container image repository. |  `ghcr.io/axoflow/axosyslog`  |
+|  image.pullPolicy  | The container image pull policy. |  `IfNotPresent`  |
+|  image.tag  | The container image tag. If not set, the `appVersion` of the chart is used. |  `""`   |
+|  image.extraArgs  | Additional arguments passed to the `syslog-ng` process. |  `[]`  |
+|  imagePullSecrets  | The names of secrets containing private registry credentials. |  `[]`  |
+|  nameOverride  | Override the chart name. |  `""`  |
+|  fullnameOverride  | Override the fully qualified chart name. |  `""`  |
+|  rbac.create  | Create a ClusterRole and a ClusterRoleBinding for the collector. |  `true`  |
+|  rbac.extraRules  | Additional RBAC rules to add to the ClusterRole. |  `[]`  |
+|  openShift.enabled  | Set to `true` when deploying on OpenShift. |  `false`  |
+|  openShift.securityContextConstraints.create  | Create SecurityContextConstraints on OpenShift. |  `true`  |
+|  openShift.securityContextConstraints.annotations  | Annotations to apply to SecurityContextConstraints. |  `{}`  |
+|  service.create  | Create a service so the [aggregator](#aggregator) can receive incoming connections. |  `true`  |
+|  service.type  | The type of the service. Possible values: `NodePort`, `LoadBalancer`, `ClusterIP`, `ExternalName` |  `NodePort`  |
+|  service.annotations  | Annotations to apply to the service. |  `{}`  |
+|  service.extraPorts  | Additional ports to expose on the service of the [aggregator](#aggregator). |  `[]`  |
+|  serviceAccount.create  | Create a service account for the pods. |  `true`  |
+|  serviceAccount.annotations  | Annotations to apply to the service account. |  `{}`  |
+|  namespace  | The Kubernetes namespace to deploy to. If not set, the namespace of the Helm release is used. |  `""`  |
+|  podAnnotations  | Annotations applied to all pods. |  `{}`  |
+|  podSecurityContext  | Pod-level security context applied to all pods. |  `{}`  |
+|  securityContext  | Default container-level security context for all components. |  `{}`  |
+|  resources  | Default CPU and memory resource requests and limits for all components. |  `{}`  |
+|  nodeSelector  | Default node selector for all pods. |  `{}`  |
+|  tolerations  | Default tolerations for all pods. |  `[]`  |
+|  affinity  | Default affinity rules for all pods. |  `{}`  |
+|  updateStrategy  | Update strategy for the DaemonSet and the StatefulSet. |  `RollingUpdate`  |
+|  priorityClassName  | The [PriorityClass](https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#priorityclass) of the pods. |  `""`  |
+|  dnsConfig  | The [DNS configuration of the pods](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-dns-config). |  `{}`  |
+|  hostAliases  | Default [entries to the hosts file of the pods](https://kubernetes.io/docs/tasks/network/customize-hosts-file-for-pods/#adding-additional-entries-with-hostaliases). |  `[]`  |
+|  secretMounts  | Default secrets to mount as files. |  `[]`  |
+|  extraVolumes  | Default additional volumes for all pods. |  `[]`  |
+|  extraVolumeMounts  | Default additional volume mounts for all pods. |  `[]`  |
+|  terminationGracePeriodSeconds  | The time in seconds given to the pods to terminate gracefully. |  `30`  |
