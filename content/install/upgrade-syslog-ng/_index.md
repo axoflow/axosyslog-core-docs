@@ -11,7 +11,7 @@ We assume that you’ve installed `syslog-ng` from the repositories of your dist
 1. Check that the syslog-ng service is running:
 
     ```shell
-    sudo systemctl syslog-ng status
+    sudo systemctl status syslog-ng
     ```
 
     The output will look something like:
@@ -53,7 +53,7 @@ We assume that you’ve installed `syslog-ng` from the repositories of your dist
 1. Check that the `syslog-ng` service is still running:
 
     ```shell
-    sudo systemctl syslog-ng status
+    sudo systemctl status syslog-ng
     ```
 
     The output should be identical to the earlier result:
