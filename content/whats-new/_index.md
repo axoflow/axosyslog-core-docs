@@ -7,6 +7,8 @@ weight: 10
 
 {{< include-headless "banner-new-to-axosyslog.md" >}}
 
+Before you upgrade, check the deprecations and breaking changes of every version between your current version and the target version. For the upgrade steps, see {{% xref "/install/upgrade-axosyslog/_index.md" %}}.
+
 ## Version 4.28
 
 - The new [`elasticsearch-bulk()` source]({{< relref "/chapter-sources/elasticsearch-bulk/_index.md" >}}) implements the Elasticsearch Bulk API, so Elastic Agent, Beats, and other clients can send their events to {{< product >}} by pointing their Elasticsearch output at it.

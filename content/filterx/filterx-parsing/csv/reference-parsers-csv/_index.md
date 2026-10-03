@@ -66,14 +66,14 @@ The `COLUMN1`, `COLUMN2`, and `COLUMN3` variables will contain the strings `exam
 Using the `greedy=true` flag will assign the remainder of the message to the last column, so that the `COLUMN1`, `COLUMN2`, and `COLUMN3` variables will contain the strings `example1`, `example2`, and `example3, some more information`.
 
 ```shell
-my-parsed-values = parse_csv(${MESSAGE}, columns=["COLUMN1", "COLUMN2", "COLUMN3"], delimiters=[","], greedy=true);
+my-parsed-values = parse_csv(${MESSAGE}, columns=["COLUMN1", "COLUMN2", "COLUMN3"], delimiter=",", greedy=true);
 ```
 
-## quote-pairs() {#quote-pairs}
+## quote_pairs {#quote-pairs}
 
 |           |                                 |
 | --------- | ------------------------------- |
-| Synopsis: | `quote-pairs=["<qoute-pair1>", "<qoute-pair2>"]` |
+| Synopsis: | `quote_pairs=["<quote-pair1>", "<quote-pair2>"]` |
 
 Available in {{% param "product.abbrev" %}} 4.18 and later.
 
@@ -96,7 +96,7 @@ filterx {
 | Synopsis: | `strip_whitespace=true` |
 | Default value: | `false` |
 
-*Description:* Remove leading and trailing whitespaces from all columns. The `strip_whitespace` option is an alias for `strip_whitespace`.
+*Description:* Remove leading and trailing whitespaces from all columns. The `strip_whitespaces` option is an alias for `strip_whitespace`.
 
 ## string_delimiters {#string-delimiters}
 
@@ -106,8 +106,8 @@ filterx {
 
 *Description:* In case you have to use a string as a delimiter, list your string delimiters as a JSON array in the `string_delimiters=["<delimiter_string1>", "<delimiter_string2>", ...]` option.
 
-By default, the `parse_csv` FilterX function uses the comma as a delimiter. If you want to use only strings as delimiters, you have to disable the default space delimiter, for example: `delimiter="", string_delimiters=["<delimiter_string>"])`
+By default, the `parse_csv` FilterX function uses the comma as a delimiter. If you want to use only strings as delimiters, you have to disable the default comma delimiter, for example: `delimiter="", string_delimiters=["<delimiter_string>"]`
 
-Otherwise, {{% param "product.abbrev" %}} will use the string delimiters in addition to the default character delimiter, so for example, `string_delimiters=["=="]` is actually equivalent to `delimiters=",", string_delimiters=["=="]`, and not `delimiters="", string_delimiters=["=="]`
+Otherwise, {{% param "product.abbrev" %}} will use the string delimiters in addition to the default character delimiter, so for example, `string_delimiters=["=="]` is actually equivalent to `delimiter=",", string_delimiters=["=="]`, and not `delimiter="", string_delimiters=["=="]`
 
 {{< include-headless "chunk/csv-parser-multiple-delimiters.md" >}}

@@ -13,3 +13,5 @@ command: docker
 {{< include-headless "disk-buffer-in-container.md" >}}
 
 {{< readfile "/headless/docker-expose-port.md" >}}
+
+{{< include-headless "chunk/install-help.md" >}}

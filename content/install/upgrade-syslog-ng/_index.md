@@ -6,12 +6,14 @@ weight: 2000
 
 If you’re already using `syslog-ng`, you can upgrade your existing `syslog-ng` deployments to {{< product >}} in a matter of minutes, by simply installing {{< product >}} on the host.
 
+If you already run {{< product >}} and want to upgrade it to a newer version, see {{% xref "/install/upgrade-axosyslog/_index.md" %}}.
+
 We assume that you’ve installed `syslog-ng` from the repositories of your distribution. To upgrade to {{< product >}}, complete the following steps.
 
 1. Check that the syslog-ng service is running:
 
     ```shell
-    sudo systemctl syslog-ng status
+    sudo systemctl status syslog-ng
     ```
 
     The output will look something like:
@@ -53,7 +55,7 @@ We assume that you’ve installed `syslog-ng` from the repositories of your dist
 1. Check that the `syslog-ng` service is still running:
 
     ```shell
-    sudo systemctl syslog-ng status
+    sudo systemctl status syslog-ng
     ```
 
     The output should be identical to the earlier result:

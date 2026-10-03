@@ -12,7 +12,7 @@ Usage: `format_windows_eventlog_xml(input_dictionary)`
 
 Example usage:
 
-```json
+```shell
 $MESSAGE = format_windows_eventlog_xml({
     "Event": {
         "@xmlns": "http://schemas.microsoft.com/win/2004/08/events/event",
@@ -42,9 +42,9 @@ $MESSAGE = format_windows_eventlog_xml({
             "Provider": "",
             "Keywords": {"Keyword": "Classic"},
         },
-        "EventData":
-            {eventdata}
-    }});"""
+        "EventData": {"Data": ["foo", "bar"]},
+    }
+});
 ```
 
 This JSON becomes the following XML:

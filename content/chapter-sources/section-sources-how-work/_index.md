@@ -83,6 +83,25 @@ The following source statement collects the following log messages:
 
 ## Sources list
 
+### Choose a network source
+
+| If your clients send… | Use |
+|---|---|
+| BSD syslog (RFC3164) over TCP, UDP, or TLS | [`network()`]({{< relref "/chapter-sources/configuring-sources-network/_index.md" >}}) |
+| IETF syslog (RFC5424) over TCP, UDP, or TLS | [`syslog()`]({{< relref "/chapter-sources/source-syslog/_index.md" >}}) |
+| Mixed syslog traffic that you want to receive and parse automatically | [`default-network-drivers()`]({{< relref "/chapter-sources/source-default-network-drivers/_index.md" >}}) |
+| OpenTelemetry (OTLP/gRPC) from OpenTelemetry clients | [`opentelemetry()`]({{< relref "/chapter-sources/opentelemetry/_index.md" >}}) |
+| Logs from another {{% param "product.abbrev" %}} node | [`axosyslog-otlp()`]({{< relref "/chapter-sources/source-syslog-ng-otlp/_index.md" >}}) |
+| HTTP or HTTPS requests (webhooks) | [`webhook()` or `webhook-json()`]({{< relref "/chapter-sources/webhook/_index.md" >}}), or [`ehttp()`]({{< relref "/chapter-sources/ehttp/_index.md" >}}) |
+| Events for the Splunk HTTP Event Collector (for example, from SC4S) | [`splunk-hec()`]({{< relref "/chapter-sources/splunk-hec/_index.md" >}}) |
+| Data from Elastic Agent, Beats, or other Elasticsearch Bulk API clients | [`elasticsearch-bulk()`]({{< relref "/chapter-sources/elasticsearch-bulk/_index.md" >}}) |
+
+The `default-network-drivers()` source needs `@include "scl.conf"` in your configuration file.
+
+{{% alert title="Note" color="info" %}}
+The `tcp()`, `tcp6()`, `udp()`, and `udp6()` drivers are obsolete. Use `network()` instead. For the migration steps, see {{% xref "/chapter-sources/configuring-sources-tcpudp/reference-source-tcpudp/source-tcpudp-to-network/_index.md" %}}.
+{{% /alert %}}
+
 The following table lists the source drivers available in {{% param "product.abbrev" %}}.
 
 {{< list-drivers "chapter-sources" >}}

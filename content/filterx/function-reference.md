@@ -613,9 +613,9 @@ For details, see {{< relref "/filterx/filterx-parsing/xml/_index.md" >}}
 
 Parses a Windows Event Log XML object into a JSON object.
 
-Usage: `parse_xml(msg)`
+Usage: `parse_windows_eventlog_xml(msg)`
 
-For details, see {{< relref "/filterx/filterx-parsing/xml/_index.md" >}}
+For details, see {{% xref "/filterx/filterx-parsing/windows-eventlog/_index.md" %}}.
 
 ## protobuf_message {#protobuf-message}
 

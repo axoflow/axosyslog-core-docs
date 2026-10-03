@@ -2,7 +2,7 @@
 title: "splunk-hec-event: Send messages to Splunk HEC"
 linktitle: Splunk HEC
 weight:  5700
-driver: "splunk-hec-event()"
+driver: "splunk-hec-event(), splunk-hec-raw()"
 short_description: "Send messages to Splunk HEC"
 dest_type: http
 ---

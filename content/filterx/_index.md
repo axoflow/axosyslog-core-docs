@@ -1,7 +1,7 @@
 ---
 title: FilterX
 description: "Filter, parse, and rewrite messages in filterx blocks: syntax, variables, types, operators, functions, and migration from legacy filters."
-weight: 4800
+weight: 2400
 ---
 
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->

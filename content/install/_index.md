@@ -1,11 +1,13 @@
 ---
 title: "Install AxoSyslog"
-description: "Install AxoSyslog on Debian, Ubuntu, RHEL, Fedora, or AlmaLinux, run it with Docker, Podman, or Helm, or upgrade from syslog-ng."
+description: "Install AxoSyslog on Debian, Ubuntu, RHEL, Fedora, or AlmaLinux, run it with Docker, Podman, or Helm, upgrade to a newer version, or upgrade from syslog-ng."
 weight: 500
 aliases:
 - /chapter-install/syslog-ng-compile-options/
 - /chapter-install/compiling-syslog-ng/
 - /chapter-install/
+- /chapter-intro/supported-platforms/
+- /intro/supported-platforms/
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
@@ -23,6 +25,11 @@ This chapter explains how to install {{% param "product.name" %}} on various pla
 - {{% xref "/install/docker/_index.md" %}}
 - {{% xref "/install/podman/_index.md" %}}
 - {{% xref "/install/helm/_index.md" %}}
+- {{% xref "/install/macos/_index.md" %}}
+
+## Upgrade AxoSyslog
+
+To upgrade an existing {{% param "product.name" %}} installation to a newer version (packages, container images, or the Helm chart), see {{% xref "/install/upgrade-axosyslog/_index.md" %}}.
 
 ## Upgrade `syslog-ng` to AxoSyslog
 

@@ -175,7 +175,7 @@ If you don't already have an application that generates logs deployed to the Kub
 1. Add the AxoSyslog Helm repository:
 
     ```bash
-    helm repo add axosyslog https://axoflow.github.io/axosyslog-charts
+    helm repo add axosyslog https://axoflow.github.io/axosyslog
     helm repo update
     ```
 

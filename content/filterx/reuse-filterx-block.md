@@ -19,7 +19,7 @@ Then use it in a log path:
 ```shell
 log {
     source(s1);
-    filterx(<identifier>);
+    filterx { <identifier>(); };
     destination(d1);
 };
 ```
@@ -33,7 +33,7 @@ block filterx demo_filterx() {
 };
 log {
     source(s1);
-    filter(demo_filterx);
+    filterx { demo_filterx(); };
     destination(d1);
 };
 ```
