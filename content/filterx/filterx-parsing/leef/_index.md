@@ -1,6 +1,7 @@
 ---
 title: "Parse LEEF with FilterX"
 linkTitle: "LEEF"
+description: "Parse LEEF 1.0 and 2.0 messages into a dict with the parse_leef() FilterX function, and set its pair and value separators."
 weight: 1100
 aliases:
 - /filterx/filterx-parsing/leef/leef-parser-options/

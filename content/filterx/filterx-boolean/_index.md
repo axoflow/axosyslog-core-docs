@@ -1,6 +1,7 @@
 ---
 title: "Boolean operators in FilterX"
 linkTitle: "Boolean operators"
+description: "Combine FilterX filter expressions with the and, or, and not operators, and invert conditions correctly using De Morgan's laws."
 weight:  300
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->

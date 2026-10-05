@@ -1,6 +1,8 @@
 ---
 title: Key-value pairs
+description: "Format a FilterX dictionary as key=value pairs with format_kv(), with custom value and pair separators and quoting of values."
 ---
+<!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
 Formats a dictionary into a string containing key=value pairs.
 

@@ -1,6 +1,8 @@
 ---
 title: RFC5424 syslog
+description: "Build an RFC5424 syslog message from FilterX data with format_syslog_5424(), and set its priority, timestamp, host, program, PID, and message ID."
 ---
+<!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
 Available in {{< product >}} 4.21 and later.
 

@@ -1,6 +1,7 @@
 ---
 title: "Parse comma-separated values with FilterX"
 linkTitle: "CSV"
+description: "Split messages along delimiters into lists or dicts with the parse_csv() FilterX function, with examples for Apache logs and message segments."
 weight: 400
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
