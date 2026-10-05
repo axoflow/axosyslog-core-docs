@@ -640,7 +640,7 @@ message CustomRecord {
 }
 ```
 
-You can create the following object in FilterX, then include the `protobuf_data` variable in the message::
+You can create the following object in FilterX, then include the `protobuf_data` variable in the message:
 
 ```shell
 filterx {
