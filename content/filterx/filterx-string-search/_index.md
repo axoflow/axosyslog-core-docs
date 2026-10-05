@@ -2,7 +2,7 @@
 title: "String search in FilterX"
 linkTitle: "String search"
 description: "Search strings with the includes(), startswith(), and endswith() FilterX functions, and replace substrings with str_replace() or regexp_subst()."
-weight:  550
+weight: 800
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 

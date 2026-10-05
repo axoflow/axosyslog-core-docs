@@ -2,7 +2,7 @@
 title: "Parse dates and timestamps with FilterX"
 linkTitle: "Date"
 description: "Parse date strings into datetime values with the strptime() FilterX function, and set the timestamp of the message with set_timestamp()."
-weight: 550
+weight: 300
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 

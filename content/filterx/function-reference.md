@@ -2,7 +2,7 @@
 title: FilterX function reference
 linkTitle: Functions
 description: "Reference of all FilterX functions, from base64_decode() to vars(), with their arguments and usage examples."
-weight: 2500
+weight: 2100
 ---
 
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
@@ -550,19 +550,19 @@ Creates a [dictionary]({{< relref "/filterx/filterx-language/_index.md#json" >}}
 
 {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-grpc" "axosyslog-grpc" >}}
 
-Creates an [OpenTelemetry log record object]({{< relref "/filterx/filterx-otel/_index.md#otel-logrecord-reference" >}}).
+Creates an [OpenTelemetry log record object]({{< relref "/filterx/filterx-otel/otel-fields/_index.md#otel-logrecord-reference" >}}).
 
 ## otel_resource {#otel-resource}
 
 {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-grpc" "axosyslog-grpc" >}}
 
-Creates an [OpenTelemetry resource object]({{< relref "/filterx/filterx-otel/_index.md#otel-resource-reference" >}}).
+Creates an [OpenTelemetry resource object]({{< relref "/filterx/filterx-otel/otel-fields/_index.md#otel-resource-reference" >}}).
 
 ## otel_scope {#otel-scope}
 
 {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-grpc" "axosyslog-grpc" >}}
 
-Creates an [OpenTelemetry scope object]({{< relref "/filterx/filterx-otel/_index.md#otel-scope-reference" >}}).
+Creates an [OpenTelemetry scope object]({{< relref "/filterx/filterx-otel/otel-fields/_index.md#otel-scope-reference" >}}).
 
 ## parse_cef {#parse-cef}
 

@@ -2,7 +2,7 @@
 title: "Troubleshoot FilterX"
 linkTitle: "Troubleshooting"
 description: "Track why FilterX expressions fail with failure_info_enable(), failure_info_meta(), failure_info(), and failure_info_clear(), with an example config."
-weight: 3200
+weight: 2200
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 

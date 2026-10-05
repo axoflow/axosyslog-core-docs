@@ -1,6 +1,7 @@
 ---
 title: Windows Event Logs XML
 description: "Format a FilterX dictionary into Windows Event Log XML with format_windows_eventlog_xml(), a specialized version of format_xml()."
+weight: 700
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 

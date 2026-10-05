@@ -2,7 +2,7 @@
 title: "Parse JSON with FilterX"
 linkTitle: "JSON"
 description: "Parse JSON strings into FilterX dict and list objects with the json() and json_array() functions, then access their fields."
-weight: 700
+weight: 400
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 

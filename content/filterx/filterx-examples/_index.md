@@ -2,7 +2,7 @@
 title: "FilterX use cases and examples"
 linkTitle: "Examples"
 description: "Common FilterX tasks: set, delete, and rename message fields, conditional rewrites, and an iptables parser written in FilterX."
-weight: 250
+weight: 400
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
