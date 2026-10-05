@@ -30,4 +30,4 @@ If you use the `${.SDATA.custom@18372.4.sourceip}` macro in a template or SQL ta
 
 You can verify whether or not the format is correct by looking at the actual network traffic. The SDATA field-group will be called `custom@18372.4`, and `sourceip` will become a field within that group. If you decide to set up several fields, they will be listed in consecutive order within the field-group's SDATA block.
 
-In FilterX, you can set the same fields with an [assignment]({{< relref "/filterx/_index.md#assign-values" >}}), for example, `${.SDATA.meta.sequenceId} = 55555;`. To read SDATA fields, see the related {{% xref "/filterx/filterx-sdata/_index.md" %}} functions.
+In FilterX, you can set the same fields with an [assignment]({{< relref "/filterx/filterx-language/_index.md#assign-values" >}}), for example, `${.SDATA.meta.sequenceId} = 55555;`. To read SDATA fields, see the related {{% xref "/filterx/filterx-sdata/_index.md" %}} functions.

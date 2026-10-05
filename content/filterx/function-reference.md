@@ -408,7 +408,7 @@ If you want to assign a value to a variable if it's not set, use the [`=??` oper
 
 ## istype
 
-Returns true if the object (first argument) has the specified type (second argument). The type must be a quoted string. (See [List of type names]({{< relref "/filterx/_index.md#variable-types" >}}).)
+Returns true if the object (first argument) has the specified type (second argument). The type must be a quoted string. (See [List of type names]({{< relref "/filterx/filterx-language/_index.md#variable-types" >}}).)
 
 Usage: `istype(object, "type_str")`
 
@@ -537,13 +537,13 @@ Moves the specified variable to its new location, instead of copying it. This is
 
 {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-grpc" "axosyslog-grpc" >}}
 
-Creates a [dictionary]({{< relref "/filterx/_index.md#json" >}}) represented as an OpenTelemetry array.
+Creates a [dictionary]({{< relref "/filterx/filterx-language/_index.md#json" >}}) represented as an OpenTelemetry array.
 
 ## otel_kvlist {#otel-kvlist}
 
 {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-grpc" "axosyslog-grpc" >}}
 
-Creates a [dictionary]({{< relref "/filterx/_index.md#json" >}}) represented as an OpenTelemetry key-value list.
+Creates a [dictionary]({{< relref "/filterx/filterx-language/_index.md#json" >}}) represented as an OpenTelemetry key-value list.
 
 ## otel_logrecord {#otel-logrecord}
 
@@ -971,7 +971,7 @@ You can use the following format codes in the format string:
 
 ## string
 
-Cast a value into a string. Note that currently {{< product >}} evaluates strings and executes [template functions]({{< relref "/filterx/_index.md#template-functions" >}}) and template expressions within the strings. In the future, template evaluation will be moved to a separate FilterX function.
+Cast a value into a string. Note that currently {{< product >}} evaluates strings and executes [template functions]({{< relref "/filterx/filterx-language/_index.md#template-functions" >}}) and template expressions within the strings. In the future, template evaluation will be moved to a separate FilterX function.
 
 Usage: `string(<string or expression to cast>)`
 
@@ -1045,7 +1045,7 @@ Deletes a variable, a name-value pair, or a key in a complex object (like JSON),
 
 You can also list multiple values to delete: `unset(${<first-name-value-pair-to-unset>}, ${<second-name-value-pair-to-unset>});`
 
-See also {{% xref "/filterx/_index.md#delete-values" %}}.
+See also {{% xref "/filterx/filterx-language/_index.md#delete-values" %}}.
 
 ## unset_empties {#unset-empties}
 

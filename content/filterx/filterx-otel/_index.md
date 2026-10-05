@@ -86,7 +86,7 @@ To modify messages received via the OpenTelemetry protocol (OTLP), such as the o
     };
     ```
 
-1. After the mapping, you can access the elements of the different data structures as [FilterX dictionaries]({{< relref "/filterx/_index.md#json" >}}), for example, the body of the message (`log.body`), its attributes (`log.attributes`), or the attributes of the resource (`resource.attributes`).
+1. After the mapping, you can access the elements of the different data structures as [FilterX dictionaries]({{< relref "/filterx/filterx-language/_index.md#json" >}}), for example, the body of the message (`log.body`), its attributes (`log.attributes`), or the attributes of the resource (`resource.attributes`).
 
     The following example does two things:
 

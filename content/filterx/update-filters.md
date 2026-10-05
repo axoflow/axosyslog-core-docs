@@ -52,7 +52,7 @@ filterx {
 
 The following filter functions have no equivalents in FilterX yet:
 
-- The [`filter()` filter function]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-filter/_index.md" >}}). You can't call a FilterX block from another FilterX block, but you can [access name-value pairs and pass variables](/filterx/_index.md#scoping) from multiple FilterX blocks.
+- The [`filter()` filter function]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-filter/_index.md" >}}). You can't call a FilterX block from another FilterX block, but you can [access name-value pairs and pass variables](/filterx/filterx-language/_index.md#scoping) from multiple FilterX blocks.
 - [`rate-limit()`]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-rate-limit/_index.md" >}})
 - [`tags()`]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-tags/_index.md" >}})
 
@@ -63,7 +63,7 @@ This section shows you how to update your existing `rewrite` expressions to `fil
 You can replace most [rewrite rules]({{< relref "/chapter-manipulating-messages/modifying-messages/_index.md" >}}) with FilterX functions and value assignments, for example:
 
 - `rewrite{subst()}` with the [`regexp_subst` FilterX function]({{< relref "/filterx/function-reference.md#regexp-subst" >}})
-- `rewrite{set()}` with [value assignments]({{< relref "/filterx/_index.md#assign-values" >}})
+- `rewrite{set()}` with [value assignments]({{< relref "/filterx/filterx-language/_index.md#assign-values" >}})
 - `rewrite{unset()}` with the [`unset` FilterX function]({{< relref "/filterx/function-reference.md#unset" >}})
 - `rewrite{rename()}` with assigning a value to the new field, then using the [`unset`]({{< relref "/filterx/function-reference.md#unset" >}}) function on the old field
 - [Timezone manipulation]({{< relref "/chapter-manipulating-messages/modifying-messages/rewrite-timezone/_index.md" >}}) with the similar [FilterX functions]({{< relref "/filterx/filterx-timezone/_index.md" >}}).
