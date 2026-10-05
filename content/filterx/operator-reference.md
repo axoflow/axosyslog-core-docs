@@ -1,6 +1,7 @@
 ---
 title: FilterX operator reference
 linkTitle: Operators
+description: "Reference of FilterX operators: arithmetic, comparison, boolean, null coalescing, assign if non-null, list membership, regexp match, slicing, ternary."
 weight: 2000
 ---
 

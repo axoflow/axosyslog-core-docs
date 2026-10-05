@@ -1,5 +1,7 @@
 ---
-title: "Options of key=value parsers"
+title: "Options of the parse_kv FilterX function"
+linkTitle: "Options"
+description: "Reference of the parse_kv() FilterX function options: pair_separator, value_separator, stray_words_key, and stray_words_append_to_value."
 weight:  100
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->

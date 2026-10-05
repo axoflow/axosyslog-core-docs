@@ -1,7 +1,8 @@
 ---
-title: "Comma-separated values"
+title: "Parse comma-separated values with FilterX"
 linkTitle: "CSV"
-weight: 400
+description: "Split messages along delimiters into lists or dicts with the parse_csv() FilterX function, with examples for Apache logs and message segments."
+weight: 200
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
@@ -13,7 +14,9 @@ Usage: `parse_csv(<input-string>, columns=json_array, delimiter=string, string_d
 
 Only the input parameter is mandatory.
 
-If the `columns` option is set, `parse_csv` returns a [dictionary]({{< relref "/filterx/_index.md#json" >}}) with the column names (as keys) and the parsed values. If the [`columns`]({{< relref "/filterx/filterx-parsing/csv/reference-parsers-csv/_index.md#columns" >}}) option isn't set, `parse_csv` returns a list.
+If the `columns` option is set, `parse_csv` returns a [dictionary]({{< relref "/filterx/filterx-language/_index.md#json" >}}) with the column names (as keys) and the parsed values. If the [`columns`]({{< relref "/filterx/filterx-parsing/csv/reference-parsers-csv/_index.md#columns" >}}) option isn't set, `parse_csv` returns a list.
+
+To create comma-separated values from FilterX data, see {{% xref "/filterx/filterx-format-data/format-csv.md" %}}.
 
 The following example separates hostnames like `example-1` and `example-2` into two parts.
 
@@ -86,7 +89,7 @@ destination d_file {
 
 ## Segment a part of a message {#example-parser-multiple}
 
-You can use multiple parsers in a layered manner to split parts of an already parsed message into further segments. The following example splits the timestamp of a parsed Apache log message into separate fields. Note that the [scoping of FilterX variables]({{< relref "/filterx/_index.md#scoping" >}}) is important:
+You can use multiple parsers in a layered manner to split parts of an already parsed message into further segments. The following example splits the timestamp of a parsed Apache log message into separate fields. Note that the [scoping of FilterX variables]({{< relref "/filterx/filterx-language/_index.md#scoping" >}}) is important:
 
 - If you add the new parser to the FilterX block used in the [previous example](#example-parser-apache), every variable is available.
 - If you use a separate FilterX block, only global variables and name-value pairs (variables with names starting with the `$` character) are accessible from the block.

@@ -1,10 +1,15 @@
 ---
 title: Log Event Extended Format (LEEF)
+description: "Format a FilterX dictionary into a LEEF 1.0 or 2.0 message with the format_leef() function."
+weight: 500
 ---
+<!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
 Available in {{< product >}} 4.13 and later.
 
 Formats a dictionary into the [Log Event Extended Format (LEEF)](https://www.ibm.com/docs/en/SS42VS_DSM/pdf/b_Leef_format_guide.pdf). Both LEEF versions (1.0 and 2.0) are supported.
+
+To parse LEEF messages, see {{% xref "/filterx/filterx-parsing/leef/_index.md" %}}.
 
 Usage: `${MESSAGE} = format_leef(my_dictionary);`
 

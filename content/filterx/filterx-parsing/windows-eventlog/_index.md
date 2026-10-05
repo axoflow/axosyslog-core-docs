@@ -1,6 +1,8 @@
 ---
-title: "Windows Event Log"
-weight: 1100
+title: "Parse Windows Event Log XML with FilterX"
+linkTitle: "Windows Event Log"
+description: "Parse Windows Event Log XML into a dict with the parse_windows_eventlog_xml() FilterX function, and see when the parser fails."
+weight: 700
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
@@ -11,6 +13,8 @@ Available in {{< product >}} 4.9 and later.
 {{< include-headless "chunk/prereq-package-deb-only.md" "axosyslog-mod-xml-parser" >}}
 
 The `parse_windows_eventlog_xml()` FilterX function parses Windows Event Logs XMLs. It's a specialized version of the [`parse_xml()` parser]({{< relref "/filterx/filterx-parsing/xml/_index.md" >}}).
+
+To create Windows Event Log XML from FilterX data, see {{% xref "/filterx/filterx-format-data/format-windows-eventlog-xml.md" %}}.
 
 The parser returns false in the following cases:
 

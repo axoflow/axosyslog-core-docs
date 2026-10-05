@@ -1,6 +1,8 @@
 ---
-title: "Metrics"
-weight: 1000
+title: "Create metrics with FilterX"
+linkTitle: "Metrics"
+description: "Count processed messages and maintain labeled metric counters with the update_metric() FilterX function and the metrics_labels type."
+weight: 1500
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 

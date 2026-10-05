@@ -1,10 +1,15 @@
 ---
 title: Common Event Format (CEF)
+description: "Format a FilterX dictionary into a Common Event Format (CEF) message with the format_cef() function."
+weight: 100
 ---
+<!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
 Available in {{< product >}} 4.13 and later.
 
 Formats a dictionary into the [Common Event Format (CEF)](https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-8.3/cef-implementation-standard/Content/CEF/Chapter%201%20What%20is%20CEF.htm).
+
+To parse CEF messages, see {{% xref "/filterx/filterx-parsing/cef/_index.md" %}}.
 
 Usage: `${MESSAGE} = format_cef(my_dictionary);`
 

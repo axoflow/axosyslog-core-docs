@@ -23,7 +23,7 @@ Before you upgrade, check the deprecations and breaking changes of every version
 
 ## Version 4.27 (2026-08-19)
 
-- FilterX has a new [`tuple`]({{< relref "/filterx/_index.md#tuples" >}}) variable type, a read-only, list-like data type similar to a Python tuple. You can initialize a tuple only once, after that it remains read-only until the end of its lifecycle.
+- FilterX has a new [`tuple`]({{< relref "/filterx/filterx-language/_index.md#tuples" >}}) variable type, a read-only, list-like data type similar to a Python tuple. You can initialize a tuple only once, after that it remains read-only until the end of its lifecycle.
 - The new [`uuid7`]({{< relref "/filterx/function-reference.md#uuid7" >}}) FilterX function generates a random [RFC 9562 UUIDv7](https://datatracker.ietf.org/doc/rfc9562/) identifier. Such identifiers embed a millisecond-precision Unix timestamp, so they sort lexically by creation time. In addition, the [`uuid`]({{< relref "/filterx/function-reference.md#uuid-or-uuid4" >}}) function is now also available under the `uuid4` alias.
 - The [`http()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#response-adapter" >}}), `splunk-hec-event()`, and [`openobserve()`]({{< relref "/chapter-destinations/openobserve/_index.md#response-adapter" >}}) destinations now support the `response-adapter()` option. Some servers put the error data in the HTTP response body instead of the status code, and this option lets {{< product >}} find these errors and retry the affected batch.
 - In the [`arrow-flight()`](/chapter-destinations/arrow-flight/_index.md) destination, the `timeout()` option is deprecated. Use the `keep-alive()` option instead.
@@ -169,7 +169,7 @@ For LEEF:
 - You can format arbitrary data as protobuf using the specified schema (proto file) using the {{% xref "/filterx/function-reference.md#protobuf-message" %}} FilterX function. Also, you can send such pre-formatted data using the `proto-var()` option of the [ClickHouse]({{< relref "/chapter-destinations/clickhouse/_index.md#proto-var" >}}) and [Google BigQuery]({{< relref "/chapter-destinations/google-bigquery/_index.md#proto-var" >}}) destinations.
 - You can now format dictionaries as XML and Windows Event Log XML using the [`format_xml`]({{< relref "/filterx/function-reference.md#format-xml" >}}) and [`format_windows_eventlog_xml`]({{< relref "/filterx/function-reference.md#format-windows-eventlog-xml" >}}) FilterX functions.
 - You can now format dictionaries as CEF and LEEF messages using the [`format_cef`]({{< relref "/filterx/function-reference.md#format-cef" >}}) and [`format_leef`]({{< relref "/filterx/function-reference.md#format-leef" >}}) FilterX functions.
-- Changes in {{% xref "/filterx/filterx-parsing/cef/_index.md" %}} and {{% xref "/filterx/filterx-parsing/leef/_index.md" %}}:
+- Changes in the [`parse_cef`]({{< relref "/filterx/filterx-parsing/cef/_index.md" >}}) and [`parse_leef`]({{< relref "/filterx/filterx-parsing/leef/_index.md" >}}) FilterX functions:
 
     {{< include-headless "chunk/filterx-separate-extension.md" >}}
 
