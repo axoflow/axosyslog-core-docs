@@ -7,6 +7,8 @@ weight: 400
 
 Formats a dictionary into a string containing key=value pairs.
 
+To parse key=value pairs, see {{% xref "/filterx/filterx-parsing/key-value-parser/_index.md" %}}.
+
 Usage: `format_kv(kvs_dict, value_separator="<separator-character>", pair_separator="<separator-string>", quote_char="<quote-character>", always_quote=<boolean>)`
 
 By default, `format_kv` uses `=` to separate values, and `, ` (comma and space) to separate the pairs:

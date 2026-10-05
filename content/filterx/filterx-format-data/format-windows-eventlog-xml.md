@@ -11,6 +11,8 @@ Available in {{< product >}} 4.13 and later.
 
 Formats a dictionary into Windows Event Logs XML. It's a specialized version of the [`format_xml()` function]({{< relref "/filterx/filterx-format-data/format-xml.md" >}}), all generic formatting tips apply to `format_windows_eventlog_xml()` as well.
 
+To parse Windows Event Log XML, see {{% xref "/filterx/filterx-parsing/windows-eventlog/_index.md" %}}.
+
 Usage: `format_windows_eventlog_xml(input_dictionary)`
 
 Example usage:

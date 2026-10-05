@@ -26,7 +26,7 @@ FilterX blocks consist of a list of FilterX statements, each statement evaluates
     - `null`,
 
 Statements that result in an error (for example, if a comparison cannot be evaluated because of type error, or a field or a dictionary referenced in the statement doesn't exist or is unset) are also treated as falsy.
-<!-- FIXME write more about error handling in a separate section -->
+To find and fix such errors, see {{% xref "/filterx/filterx-troubleshooting/_index.md" %}}.
 
 ## FilterX statements
 

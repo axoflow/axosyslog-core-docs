@@ -7,6 +7,8 @@ weight: 300
 
 Formats any value into a raw JSON string.
 
+To parse JSON strings, see {{% xref "/filterx/filterx-parsing/json/_index.md" %}}.
+
 Usage: `format_json($data)`
 
 <!-- FIXME add example -->
