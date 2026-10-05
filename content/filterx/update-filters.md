@@ -85,7 +85,7 @@ You can replace most [parsers]({{< relref "/chapter-parsers/_index.md" >}}) with
 
 - [`csv-parser()`]({{< relref "/chapter-parsers/csv-parser/_index.md" >}}) with the [`parse_csv`]({{< relref "/filterx/filterx-parsing/csv/_index.md" >}}) FilterX function
 - [`date-parser()`]({{< relref "/chapter-parsers/date-parser/_index.md" >}}) with the [`strptime`]({{< relref "/filterx/function-reference.md#strptime" >}}) FilterX function. To set the timestamp of the message, use [`set_timestamp`]({{< relref "/filterx/function-reference.md#set-timestamp" >}}) on the result.
-- [`json-parser()`]({{< relref "/chapter-parsers/json-parser/_index.md" >}}) with the [`json`]({{< relref "/filterx/function-reference.md#json" >}}) FilterX function
+- [`json-parser()`]({{< relref "/chapter-parsers/json-parser/_index.md" >}}) with the [`json`]({{< relref "/filterx/filterx-parsing/json/_index.md" >}}) FilterX function
 - [`kv-parser()`]({{< relref "/chapter-parsers/key-value-parser/_index.md" >}}) with the [`parse_kv`]({{< relref "/filterx/filterx-parsing/key-value-parser/_index.md" >}}) FilterX function
 - [`metrics-probe()`]({{< relref "/chapter-parsers/metrics-probe/_index.md" >}}) with the [`update_metric`]({{< relref "/filterx/filterx-metrics/_index.md" >}}) FilterX function
 - [`regexp-parser()`]({{< relref "/chapter-parsers/parser-regexp/_index.md" >}}) with the [`regexp_search`]({{< relref "/filterx/function-reference.md#regexp-search" >}}) FilterX function
