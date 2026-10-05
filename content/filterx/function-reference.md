@@ -347,7 +347,7 @@ See {{% xref "/filterx/filterx-timezone/_index.md#guess-timezone" %}}.
 
 ## has_sdata
 
-See {{% xref "/filterx/filterx-sdata/_index.md" %}}.
+Returns `true` if the SDATA field of the current message is not empty. See {{% xref "/filterx/filterx-sdata/_index.md" %}}.
 
 ## hex_decode {#hex-decode}
 
