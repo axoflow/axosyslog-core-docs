@@ -1,5 +1,6 @@
 ---
-title: "Options of CSV parsers"
+title: "Options of the parse_csv FilterX function"
+linkTitle: "Options"
 weight:  100
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->

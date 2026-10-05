@@ -1,5 +1,6 @@
 ---
-title: "LEEF"
+title: "Parse LEEF with FilterX"
+linkTitle: "LEEF"
 weight: 1100
 aliases:
 - /filterx/filterx-parsing/leef/leef-parser-options/

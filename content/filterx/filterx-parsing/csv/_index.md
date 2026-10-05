@@ -1,5 +1,5 @@
 ---
-title: "Comma-separated values"
+title: "Parse comma-separated values with FilterX"
 linkTitle: "CSV"
 weight: 400
 ---
