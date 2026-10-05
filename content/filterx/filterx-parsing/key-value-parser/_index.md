@@ -1,6 +1,7 @@
 ---
 title: "Parse key=value pairs with FilterX"
 linkTitle: "key=value pairs"
+description: "Split key=value pairs, like Postfix or MySQL logs, into a dict with the parse_kv() FilterX function, and handle repeated keys and stray words."
 weight: 1100
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->

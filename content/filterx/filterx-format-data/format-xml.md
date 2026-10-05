@@ -1,7 +1,9 @@
 ---
 title: "Format data as XML"
 linkTitle: "XML"
+description: "Format a FilterX dictionary into XML with format_xml(), and see how attributes, text values, lists, and empty elements are mapped."
 ---
+<!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
 Available in {{< product >}} 4.13 and later.
 

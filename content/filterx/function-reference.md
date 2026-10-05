@@ -1,6 +1,7 @@
 ---
 title: FilterX function reference
 linkTitle: Functions
+description: "Reference of all FilterX functions, from base64_decode() to vars(), with their arguments and usage examples."
 weight: 2500
 ---
 

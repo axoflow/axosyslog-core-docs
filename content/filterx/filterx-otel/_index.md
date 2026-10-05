@@ -1,6 +1,7 @@
 ---
 title: "Handle OpenTelemetry log records"
 linkTitle: "OpenTelemetry logs"
+description: "Route, modify, and create OpenTelemetry log records in FilterX, convert syslog messages to OTEL, and reference the otel_logrecord fields."
 weight:  900
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->

@@ -1,5 +1,6 @@
 ---
 title: Reuse FilterX blocks
+description: "Define a FilterX block once with block filterx, then call it by name from the filterx statements of multiple log paths."
 weight: 3000
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->

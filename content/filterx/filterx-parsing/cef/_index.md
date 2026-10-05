@@ -1,6 +1,7 @@
 ---
 title: "Parse CEF with FilterX"
 linkTitle: "CEF"
+description: "Parse Common Event Format (CEF) messages into a dict with the parse_cef() FilterX function, and set its pair and value separators."
 weight: 100
 aliases:
 - /filterx/filterx-parsing/cef/cef-parser-options/

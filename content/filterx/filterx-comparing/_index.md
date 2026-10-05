@@ -1,6 +1,7 @@
 ---
 title: "Comparing values in FilterX"
 linkTitle: "Comparing values"
+description: "Compare macros, templates, and variables as strings or numbers in FilterX, including strict equality and inequality that also check the type."
 weight:  500
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
