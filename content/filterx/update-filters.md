@@ -1,9 +1,9 @@
 ---
-title: "Update filters to FilterX"
+title: "Update to FilterX"
 weight:  1000
 ---
 
-The following sections show you how you can change your existing filters and rewrite rules to FilterX statements. Note that:
+The following sections show you how you can change your existing filters, parsers, and rewrite rules to FilterX statements. Note that:
 
 - Many examples in the FilterX documentation were adapted from the existing filter, parser, and rewrite examples to show how you can achieve the same functionality with FilterX.
 - Don't worry if you can't update something to FilterX. While you can't use other blocks within a FilterX block, you can use both in a log statement, for example, you can use a FilterX block, then a parser if needed.
@@ -52,7 +52,7 @@ filterx {
 
 The following filter functions have no equivalents in FilterX yet:
 
-- The [`filter()` filter function]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-filter/_index.md" >}}). You can't call a FilterX block from another FilterX block, but you can [access name-value pairs and pass variables](/filterx/filterx-language/_index.md#scoping) from multiple FilterX blocks.
+- The [`filter()` filter function]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-filter/_index.md" >}}). You can't call a FilterX block from another FilterX block, but you can [access name-value pairs and pass variables]({{< relref "/filterx/filterx-language/_index.md#scoping" >}}) from multiple FilterX blocks.
 - [`rate-limit()`]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-rate-limit/_index.md" >}})
 - [`tags()`]({{< relref "/chapter-routing-filters/filters/reference-filters/filter-tags/_index.md" >}})
 
@@ -67,34 +67,35 @@ You can replace most [rewrite rules]({{< relref "/chapter-manipulating-messages/
 - `rewrite{unset()}` with the [`unset` FilterX function]({{< relref "/filterx/function-reference.md#unset" >}})
 - `rewrite{rename()}` with assigning a value to the new field, then using the [`unset`]({{< relref "/filterx/function-reference.md#unset" >}}) function on the old field
 - [Timezone manipulation]({{< relref "/chapter-manipulating-messages/modifying-messages/rewrite-timezone/_index.md" >}}) with the similar [FilterX functions]({{< relref "/filterx/filterx-timezone/_index.md" >}}).
+- `set-pri()`, `set-severity()`, and `set-facility()` with the [`set_pri` FilterX function]({{< relref "/filterx/function-reference.md#set-pri" >}})
+- Setting multiple fields at once with the [`set_fields` FilterX function]({{< relref "/filterx/function-reference.md#set-fields" >}})
+- Conditional rewrites with value comparisons in the FilterX block. For an example, see {{% xref "/filterx/filterx-examples/_index.md" %}}.
 
-<!-- 
-set-severity(), set-facility() set-pri() rewrite functions > no equivalent
+The following rewrite rules have no equivalents in FilterX yet:
 
-Setting match variables with the set-matches() rewrite rule
-    > I don't even get what this does
+- [`credit-card-mask()` and `credit-card-hash()`]({{< relref "/chapter-manipulating-messages/modifying-messages/anonymizing-credit-card-numbers/_index.md" >}}). You can mask the numbers with the [`regexp_subst` FilterX function]({{< relref "/filterx/function-reference.md#regexp-subst" >}}) instead.
+- [`set-tag()` and `clear-tag()`]({{< relref "/chapter-routing-filters/filters/tagging-messages/_index.md" >}})
+- `set-matches()`
 
-Setting multiple message fields to specific values
-    > no equivalent
+## Update parsers
 
-map-value-pairs: Rename value-pairs to normalize logs
-    > Does the simple rename cover that, or no equivalent?
+This section shows you how to update your existing `parser` expressions to `filterx`.
 
-Conditional rewrites
-    > see use cases
+You can replace most [parsers]({{< relref "/chapter-parsers/_index.md" >}}) with FilterX functions. These functions return the parsed data, which you can assign to a variable or a name-value pair. For example, you can replace:
 
-Anonymizing credit card numbers
-    > no equivalent, but can be replicated using some regexp_subst expressions, see the scl for details tmp/axosyslog/scl/rewrite/cc-mask.conf
+- [`csv-parser()`]({{< relref "/chapter-parsers/csv-parser/_index.md" >}}) with the [`parse_csv`]({{< relref "/filterx/filterx-parsing/csv/_index.md" >}}) FilterX function
+- [`date-parser()`]({{< relref "/chapter-parsers/date-parser/_index.md" >}}) with the [`strptime`]({{< relref "/filterx/function-reference.md#strptime" >}}) FilterX function. To set the timestamp of the message, use [`set_timestamp`]({{< relref "/filterx/function-reference.md#set-timestamp" >}}) on the result.
+- [`json-parser()`]({{< relref "/chapter-parsers/json-parser/_index.md" >}}) with the [`json`]({{< relref "/filterx/function-reference.md#json" >}}) FilterX function
+- [`kv-parser()`]({{< relref "/chapter-parsers/key-value-parser/_index.md" >}}) with the [`parse_kv`]({{< relref "/filterx/filterx-parsing/key-value-parser/_index.md" >}}) FilterX function
+- [`metrics-probe()`]({{< relref "/chapter-parsers/metrics-probe/_index.md" >}}) with the [`update_metric`]({{< relref "/filterx/filterx-metrics/_index.md" >}}) FilterX function
+- [`regexp-parser()`]({{< relref "/chapter-parsers/parser-regexp/_index.md" >}}) with the [`regexp_search`]({{< relref "/filterx/function-reference.md#regexp-search" >}}) FilterX function
+- [`windows-eventlog-xml-parser()`]({{< relref "/chapter-parsers/windows-eventlog-xml-parser/_index.md" >}}) with the [`parse_windows_eventlog_xml`]({{< relref "/filterx/filterx-parsing/windows-eventlog/_index.md" >}}) FilterX function
+- [`xml-parser()`]({{< relref "/chapter-parsers/xml-parser/_index.md" >}}) with the [`parse_xml`]({{< relref "/filterx/filterx-parsing/xml/_index.md" >}}) FilterX function
 
-add/delete tags: do we need here a round-trip here like this, or is it working without that?: 
-    temp-tags = json-array($TAGS);
-    temp-tags += "new-tag";
-    $TAGS = format_csv(temp-tags);
+To parse CEF and LEEF messages, use the [`parse_cef`]({{< relref "/filterx/filterx-parsing/cef/_index.md" >}}) and [`parse_leef`]({{< relref "/filterx/filterx-parsing/leef/_index.md" >}}) FilterX functions. These formats have no classic parsers.
 
-    - How can you delete an element with a specific value from a list (not by index)
-        like this in python:
-            thislist = ["apple", "banana", "cherry"]
-            thislist.remove("banana")
- -->
+The following parsers have no equivalents in FilterX yet. You can still use them in the same log path as your FilterX blocks.
 
-<!-- FIXME group-by like contexts and similar don't work yet -->
+- [`db-parser()`]({{< relref "/chapter-parsers/chapter-patterndb/_index.md" >}}) (pattern databases)
+- [`grouping-by()`]({{< relref "/chapter-correlating-log-messages/grouping-by-parser/_index.md" >}}) and other correlation parsers
+- Application-specific parsers, like the Cisco, FortiGate, or iptables parsers
