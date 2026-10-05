@@ -8,6 +8,8 @@ weight: 200
 
 Formats a dictionary or a list into a comma-separated string.
 
+To parse comma-separated values, see {{% xref "/filterx/filterx-parsing/csv/_index.md" %}}.
+
 Usage: `format_csv(<input-list-or-dict>, columns=<json-list>, delimiter=<delimiter-character>, default_value=<string>)`
 
 Only the input is mandatory, other arguments are optional. Note that the delimiter must be a single character.

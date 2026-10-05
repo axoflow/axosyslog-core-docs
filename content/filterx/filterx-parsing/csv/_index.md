@@ -16,6 +16,8 @@ Only the input parameter is mandatory.
 
 If the `columns` option is set, `parse_csv` returns a [dictionary]({{< relref "/filterx/filterx-language/_index.md#json" >}}) with the column names (as keys) and the parsed values. If the [`columns`]({{< relref "/filterx/filterx-parsing/csv/reference-parsers-csv/_index.md#columns" >}}) option isn't set, `parse_csv` returns a list.
 
+To create comma-separated values from FilterX data, see {{% xref "/filterx/filterx-format-data/format-csv.md" %}}.
+
 The following example separates hostnames like `example-1` and `example-2` into two parts.
 
 ```shell

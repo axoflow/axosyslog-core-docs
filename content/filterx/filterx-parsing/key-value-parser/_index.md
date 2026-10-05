@@ -10,6 +10,8 @@ weight: 500
 
 The `parse_kv` FilterX function can split a string consisting of whitespace or comma-separated `key=value` pairs (for example, Postfix log messages). You can also specify other value separator characters instead of the equal sign, for example, colon (`:`) to parse MySQL log messages. The {{% param "product.abbrev" %}} application automatically trims any leading or trailing whitespace characters from the keys and values, and also parses values that contain unquoted whitespace.
 
+To create key=value pairs from FilterX data, see {{% xref "/filterx/filterx-format-data/format-kv.md" %}}.
+
 {{< include-headless "wnt/n-kv-parser-repeated-keys.md" >}}
 
 {{% alert title="Warning" color="warning" %}}

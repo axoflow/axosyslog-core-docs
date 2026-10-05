@@ -9,6 +9,8 @@ Available in {{< product >}} 4.13 and later.
 
 Formats a dictionary into the [Common Event Format (CEF)](https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-8.3/cef-implementation-standard/Content/CEF/Chapter%201%20What%20is%20CEF.htm).
 
+To parse CEF messages, see {{% xref "/filterx/filterx-parsing/cef/_index.md" %}}.
+
 Usage: `${MESSAGE} = format_cef(my_dictionary);`
 
 For example:

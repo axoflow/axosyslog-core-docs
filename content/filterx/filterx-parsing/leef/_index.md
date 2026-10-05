@@ -14,6 +14,8 @@ The `parse_leef` FilterX function parses messages formatted in the [Log Event Ex
 
 Both LEEF versions (1.0 and 2.0) are supported.
 
+To create LEEF messages from FilterX data, see {{% xref "/filterx/filterx-format-data/format-leef.md" %}}.
+
 ## Declaration
 
 Usage: `parse_leef(<input-string>, value_separator="=", pair_separator="|", separate_extensions=false)`

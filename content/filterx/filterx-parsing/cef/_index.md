@@ -12,6 +12,8 @@ Available in {{< product >}} 4.9 and later.
 
 The `parse_cef` FilterX function parses messages formatted in the [Common Event Format (CEF)](https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-8.3/cef-implementation-standard/Content/CEF/Chapter%201%20What%20is%20CEF.htm) into a JSON object.
 
+To create CEF messages from FilterX data, see {{% xref "/filterx/filterx-format-data/format-cef.md" %}}.
+
 ## Declaration
 
 Usage: `parse_cef(<input-string>, value_separator="=", pair_separator="|", separate_extensions=false)`

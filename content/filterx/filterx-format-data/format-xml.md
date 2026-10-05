@@ -12,6 +12,8 @@ Available in {{< product >}} 4.13 and later.
 
 Formats a dictionary into XML. To format data as Windows Event Log XML, see {{% xref "/filterx/filterx-format-data/format-windows-eventlog-xml.md" %}}.
 
+To parse XML, see {{% xref "/filterx/filterx-parsing/xml/_index.md" %}}.
+
 Usage: `format_xml({"key1":{"nestedkey":"value"}})`
 
 The output XML for the previous example will be: `<key><nestedkey>value</nestedkey></key>`
