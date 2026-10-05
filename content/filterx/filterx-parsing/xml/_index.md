@@ -2,7 +2,7 @@
 title: "Parse XML with FilterX"
 linkTitle: "XML"
 description: "Parse raw XML into a dict with the parse_xml() FilterX function, and see how elements, attributes, and text values are mapped to dict keys."
-weight: 1300
+weight: 800
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 

@@ -1,7 +1,7 @@
 ---
 title: "Update to FilterX"
 description: "Convert existing filter expressions, rewrite rules, and parsers in your configuration to equivalent FilterX statements and functions."
-weight:  1000
+weight: 1600
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 

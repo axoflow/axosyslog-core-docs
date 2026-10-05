@@ -2,7 +2,7 @@
 title: "Handle SDATA in RFC5424 log records"
 linkTitle: "SDATA in syslog"
 description: "Filter RFC5424 messages on their structured data with the get_sdata(), has_sdata(), and is_sdata_from_enterprise() FilterX functions."
-weight:  900
+weight: 1300
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 

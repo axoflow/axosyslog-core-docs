@@ -1,6 +1,7 @@
 ---
 title: Log Event Extended Format (LEEF)
 description: "Format a FilterX dictionary into a LEEF 1.0 or 2.0 message with the format_leef() function."
+weight: 500
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 

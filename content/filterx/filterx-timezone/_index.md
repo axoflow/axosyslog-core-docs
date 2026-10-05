@@ -2,7 +2,7 @@
 title: "Handle and fix timezones and timestamps"
 linkTitle: "Timezones and timestamps"
 description: "Fix, guess, set, and inspect message timezones with the fix_timezone(), guess_timezone(), set_timezone(), and get_timezone_source() functions."
-weight:  3000
+weight: 1200
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
