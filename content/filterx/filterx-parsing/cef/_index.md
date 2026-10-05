@@ -1,5 +1,6 @@
 ---
-title: "CEF"
+title: "Parse CEF with FilterX"
+linkTitle: "CEF"
 weight: 100
 aliases:
 - /filterx/filterx-parsing/cef/cef-parser-options/

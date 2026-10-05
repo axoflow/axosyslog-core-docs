@@ -155,7 +155,7 @@ Next, you parse the iptables message into separate fields, and send them as JSON
     ${MESSAGE} = format_json(iptables);
     ```
 
-    - {{% xref "/filterx/filterx-parsing/key-value-parser/_index.md" %}} splits the message into key=value pairs, and stores them in the `iptables` variable.
+    - [`parse_kv`]({{< relref "/filterx/filterx-parsing/key-value-parser/_index.md" >}}) splits the message into key=value pairs, and stores them in the `iptables` variable.
     - `iptables` is a local FilterX variable, because its name doesn't start with `$`. {{< product >}} doesn't send local variables to the destination, unless you assign them to a name-value pair. For details, see [FilterX variables in destinations]({{< relref "/filterx/filterx-language/_index.md#variables-in-destinations" >}}).
     - [`format_json`]({{< relref "/filterx/function-reference.md#format-json" >}}) converts `iptables` to a JSON string, and the line assigns it to `${MESSAGE}`.
 

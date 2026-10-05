@@ -1,5 +1,6 @@
 ---
-title: XML
+title: "Format data as XML"
+linkTitle: "XML"
 ---
 
 Available in {{< product >}} 4.13 and later.

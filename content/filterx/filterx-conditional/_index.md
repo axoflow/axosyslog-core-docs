@@ -1,5 +1,6 @@
 ---
-title: Conditional statements
+title: "Conditional statements in FilterX"
+linkTitle: "Conditional statements"
 weight: 525
 ---
 

@@ -1,5 +1,6 @@
 ---
-title: "Windows Event Log"
+title: "Parse Windows Event Log XML with FilterX"
+linkTitle: "Windows Event Log"
 weight: 1100
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->

@@ -1,5 +1,6 @@
 ---
-title: Comma-separated values
+title: "Format data as comma-separated values"
+linkTitle: "CSV"
 ---
 
 Formats a dictionary or a list into a comma-separated string.

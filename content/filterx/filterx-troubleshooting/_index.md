@@ -1,5 +1,6 @@
 ---
-title: Troubleshooting
+title: "Troubleshoot FilterX"
+linkTitle: "Troubleshooting"
 weight: 3200
 ---
 
