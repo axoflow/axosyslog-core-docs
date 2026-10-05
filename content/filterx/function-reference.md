@@ -605,7 +605,7 @@ Parse an XML object into a JSON object.
 
 Usage: `parse_xml(msg)`
 
-For details, see {{< relref "/filterx/filterx-parsing/xml/_index.md" >}}
+For details, see {{% xref "/filterx/filterx-parsing/xml/_index.md" %}}.
 
 ## parse_windows_eventlog_xml {#parse-windows}
 
