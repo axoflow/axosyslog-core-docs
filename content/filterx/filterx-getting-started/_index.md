@@ -113,7 +113,7 @@ Now you add a FilterX block that lets only iptables messages through.
     };
     ```
 
-    A message passes the FilterX block only if every statement in the block is true. For details, see {{% xref "/filterx/_index.md" %}}. The `=~` operator checks if the message matches a regular expression. For details, see {{% xref "/filterx/operator-reference.md" %}}.
+    A message passes the FilterX block only if every statement in the block is true. For details, see [Truthy and falsy values]({{< relref "/filterx/filterx-language/_index.md#truthy-falsy" >}}). The `=~` operator checks if the message matches a regular expression. For details, see {{% xref "/filterx/operator-reference.md" %}}.
 
 1. Reload the configuration:
 
@@ -156,7 +156,7 @@ Next, you parse the iptables message into separate fields, and send them as JSON
     ```
 
     - {{% xref "/filterx/filterx-parsing/key-value-parser/_index.md" %}} splits the message into key=value pairs, and stores them in the `iptables` variable.
-    - `iptables` is a local FilterX variable, because its name doesn't start with `$`. {{< product >}} doesn't send local variables to the destination, unless you assign them to a name-value pair. For details, see [FilterX variables in destinations]({{< relref "/filterx/_index.md#variables-in-destinations" >}}).
+    - `iptables` is a local FilterX variable, because its name doesn't start with `$`. {{< product >}} doesn't send local variables to the destination, unless you assign them to a name-value pair. For details, see [FilterX variables in destinations]({{< relref "/filterx/filterx-language/_index.md#variables-in-destinations" >}}).
     - [`format_json`]({{< relref "/filterx/function-reference.md#format-json" >}}) converts `iptables` to a JSON string, and the line assigns it to `${MESSAGE}`.
 
 1. Reload the configuration, and append the two sample messages again, the same way as in [Step 2](#step-2).
@@ -261,4 +261,4 @@ docker rm -f filterx-tutorial
 - {{% xref "/filterx/reuse-filterx-block.md" %}}
 - {{% xref "/filterx/update-filters.md" %}}
 - {{% xref "/filterx/function-reference.md" %}}
-- [Create an iptables parser]({{< relref "/filterx/_index.md#create-an-iptables-parser" >}})
+- [Create an iptables parser]({{< relref "/filterx/filterx-examples/_index.md#create-an-iptables-parser" >}})
