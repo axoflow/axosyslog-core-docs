@@ -16,7 +16,7 @@
 
 Starting with {{% param "product.abbrev" %}} version 4.29, you can change the `capacity-bytes()` of an existing disk-buffer file. The new value takes effect when you reload or restart {{% param "product.abbrev" %}}, if the content of the disk-buffer allows it:
 
-- The change is applied only while the disk-buffer file isn't wrapped around, that is, the messages haven't wrapped to the beginning of the file.
+- The new value takes effect on the next reload or restart, or later, once the content of the disk-buffer allows it.
 - When you decrease the size, the change is applied only if the messages in the file fit into the new size. In this case, {{% param "product.abbrev" %}} truncates the file to the new size.
 
 Otherwise, {{% param "product.abbrev" %}} logs a warning, and applies the new value later, when the content of the disk-buffer allows it. When you increase the size and `prealloc(yes)` is set, {{% param "product.abbrev" %}} preallocates the file to the new size.
