@@ -38,9 +38,12 @@
 #   latest  : true for the current release. Published at the site root (no version
 #             segment), so it keeps the existing URLs and their SEO.
 
-- version: "4.28"
-  name: "4.28 (current)"
+- version: "4.29"
+  name: "4.29 (current)"
   latest: true
+
+- version: "4.28"
+  ref: "release-4.28"
 
 - version: "4.27"
   ref: "release-4.27"

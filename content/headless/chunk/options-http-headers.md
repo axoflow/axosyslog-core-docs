@@ -18,6 +18,6 @@ The following headers are included by default:
 - X-Syslog-Facility: `<facility>`
 - X-Syslog-Level: `<loglevel/priority>`
 
-Starting with {{< product >}} 4.18, you can use templates in the headers. Note that when using batching in the destination adn templates in `headers()`, the value of the template is calculated from the first message of the batch. Make sure to set the [`worker-partition-key()`](#worker-partition-key) option properly to group similar messages.
+Starting with {{< product >}} 4.18, you can use templates in the headers. If you enable batching in the destination (`batch-lines()` or `batch-bytes()`) and use message-dependent templates in `headers()`, you must set the [`worker-partition-key()`](#worker-partition-key) option, otherwise the destination fails to start. {{< product >}} flushes the batch whenever the partition key changes, so every message of a batch has the same header values. (In versions before 4.29, the header values were calculated from the first message of the batch.)
 
 If you want to use literal dollar signs (`$`) in `headers()`, escape them like `$$`.
