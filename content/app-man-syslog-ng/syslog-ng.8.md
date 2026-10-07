@@ -100,6 +100,10 @@ The {{% param "product.abbrev" %}} application is a flexible and highly scalable
     
     Enable interactive mode.
 
+- `--list-paths`
+
+    Parse the configuration file, print the files and directories that it refers to, then exit without starting {{% param "product.abbrev" %}}. Available in {{% param "product.abbrev" %}} 4.29 and later.
+
 - `--log-level <level>` or `-L <level>`
 
     Set the internal log level of {{% param "product.abbrev" %}} to `default`, `verbose`, `debug`, or `trace`. Available in {{% param "product.abbrev" %}} 4.0 and later.
