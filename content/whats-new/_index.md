@@ -9,7 +9,16 @@ weight: 10
 
 Before you upgrade, check the deprecations and breaking changes of every version between your current version and the target version. For the upgrade steps, see {{% xref "/install/upgrade-axosyslog/_index.md" %}}.
 
-## Version 4.28
+## Version 4.29 (2026-10-07)
+
+- You can now change the [`capacity-bytes()`]({{< relref "/chapter-routing-filters/concepts-diskbuffer/_index.md" >}}) option of an existing disk-buffer file. The new value takes effect on the next reload or restart, or later, once the content of the disk-buffer allows it.
+- The new [`syslog-ng --list-paths`]({{< relref "/app-man-syslog-ng/syslog-ng.8.md" >}}) command-line option prints the files and directories that the configuration refers to, without starting {{< product >}}.
+- The [`azure(monitor())` authentication]({{< relref "/chapter-destinations/azure-monitor/_index.md#auth-url" >}}) of `cloud-auth()` has a new `auth-url()` option to set the login host that the access token is requested from. Previously, the token endpoint was always `https://login.microsoftonline.com`, so only the public Azure cloud was available.
+- When batching is enabled in the `http()` destination, templated [`headers()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#headers" >}}) now require the [`worker-partition-key()`]({{< relref "/chapter-destinations/configuring-destinations-http-nonjava/reference-destination-http-nonjava/_index.md#worker-partition-key" >}}) option, the same way as templated `url()` and `body-prefix()` options do. Previously, the header values of the first message were used for the whole batch. In addition, `worker-partition-key()` is now required only if the templates actually depend on the message.
+
+For a list of bugfixes, see the [GitHub release page](https://github.com/axoflow/axosyslog/releases/tag/axosyslog-4.29.0).
+
+## Version 4.28 (2026-09-16)
 
 - The new [`elasticsearch-bulk()` source]({{< relref "/chapter-sources/elasticsearch-bulk/_index.md" >}}) implements the Elasticsearch Bulk API, so Elastic Agent, Beats, and other clients can send their events to {{< product >}} by pointing their Elasticsearch output at it.
 - The new [`splunk-hec()` source]({{< relref "/chapter-sources/splunk-hec/_index.md" >}}) receives messages from Splunk HTTP Event Collector (HEC) clients, so you can point your existing HEC clients at {{< product >}} and process or route the events before forwarding them.
@@ -20,6 +29,8 @@ Before you upgrade, check the deprecations and breaking changes of every version
 
 - The [`format_kv`]({{< relref "/filterx/filterx-format-data/format-kv.md" >}}) FilterX function now supports the `quote_char` and `always_quote` options to control how values are quoted.
 - The [`update_metric`]({{< relref "/filterx/filterx-metrics/_index.md#set" >}}) FilterX function now supports the `set` option, which assigns an absolute value to the counter instead of incrementing it. This makes `update_metric` usable for gauge-like metrics.
+
+For a list of bugfixes, see the [GitHub release page](https://github.com/axoflow/axosyslog/releases/tag/axosyslog-4.28.0).
 
 ## Version 4.27 (2026-08-19)
 
