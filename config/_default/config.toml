@@ -349,6 +349,6 @@ anchor = "smart"
   # the release you are on. So on release: add " (current)" to the new version
   # here on main, and strip it from the outgoing version on its release branch
   # before that branch is republished.
-  body_attribute = 'data-pagefind-filter="section:4.28 (current)"'
+  body_attribute = 'data-pagefind-filter="section:4.28"'
   [cascade.target]
     path = '/**'
