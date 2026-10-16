@@ -1,7 +1,10 @@
 ---
-title: Conditional statements
-weight: 525
+title: "Conditional statements in FilterX"
+linkTitle: "Conditional statements"
+description: "Build decision trees in FilterX with if, elif, and else statements, or with switch-case expressions that also support integer ranges."
+weight: 700
 ---
+<!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
 A conditional statement ( `if (expr) { ... } elif (expr) {} else { ... };`) allows you to evaluate complex decision trees. For example:
 

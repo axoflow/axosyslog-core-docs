@@ -14,7 +14,7 @@ You can set the value of available macros, for example, HOST, MESSAGE, PROGRAM, 
 
 {{< include-headless "wnt/note-rewrite-hard-macros.md" >}}
 
-See also the equivalent FilterX operation, [assigning a value]({{< relref "/filterx/_index.md#assign-values" >}}).
+See also the equivalent FilterX operation, [assigning a value]({{< relref "/filterx/filterx-language/_index.md#assign-values" >}}).
 
 Use the following syntax:
 

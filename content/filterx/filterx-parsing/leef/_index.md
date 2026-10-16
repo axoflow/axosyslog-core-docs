@@ -1,6 +1,8 @@
 ---
-title: "LEEF"
-weight: 1100
+title: "Parse LEEF with FilterX"
+linkTitle: "LEEF"
+description: "Parse LEEF 1.0 and 2.0 messages into a dict with the parse_leef() FilterX function, and set its pair and value separators."
+weight: 600
 aliases:
 - /filterx/filterx-parsing/leef/leef-parser-options/
 ---
@@ -11,6 +13,8 @@ Available in {{< product >}} 4.9 and later.
 The `parse_leef` FilterX function parses messages formatted in the [Log Event Extended Format (LEEF)](https://www.ibm.com/docs/en/SS42VS_DSM/pdf/b_Leef_format_guide.pdf) into a JSON object.
 
 Both LEEF versions (1.0 and 2.0) are supported.
+
+To create LEEF messages from FilterX data, see {{% xref "/filterx/filterx-format-data/format-leef.md" %}}.
 
 ## Declaration
 

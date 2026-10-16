@@ -1,12 +1,16 @@
 ---
-title: "key=value pairs"
-weight: 1100
+title: "Parse key=value pairs with FilterX"
+linkTitle: "key=value pairs"
+description: "Split key=value pairs, like Postfix or MySQL logs, into a dict with the parse_kv() FilterX function, and handle repeated keys and stray words."
+weight: 500
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
 
 
 The `parse_kv` FilterX function can split a string consisting of whitespace or comma-separated `key=value` pairs (for example, Postfix log messages). You can also specify other value separator characters instead of the equal sign, for example, colon (`:`) to parse MySQL log messages. The {{% param "product.abbrev" %}} application automatically trims any leading or trailing whitespace characters from the keys and values, and also parses values that contain unquoted whitespace.
+
+To create key=value pairs from FilterX data, see {{% xref "/filterx/filterx-format-data/format-kv.md" %}}.
 
 {{< include-headless "wnt/n-kv-parser-repeated-keys.md" >}}
 

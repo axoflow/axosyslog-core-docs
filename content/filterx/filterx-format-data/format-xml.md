@@ -1,12 +1,18 @@
 ---
-title: XML
+title: "Format data as XML"
+linkTitle: "XML"
+description: "Format a FilterX dictionary into XML with format_xml(), and see how attributes, text values, lists, and empty elements are mapped."
+weight: 800
 ---
+<!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
 Available in {{< product >}} 4.13 and later.
 
 {{< include-headless "chunk/prereq-package-deb-only.md" "axosyslog-mod-xml-parser" >}}
 
 Formats a dictionary into XML. To format data as Windows Event Log XML, see {{% xref "/filterx/filterx-format-data/format-windows-eventlog-xml.md" %}}.
+
+To parse XML, see {{% xref "/filterx/filterx-parsing/xml/_index.md" %}}.
 
 Usage: `format_xml({"key1":{"nestedkey":"value"}})`
 

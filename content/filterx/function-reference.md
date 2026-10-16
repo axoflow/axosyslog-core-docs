@@ -1,7 +1,8 @@
 ---
 title: FilterX function reference
 linkTitle: Functions
-weight: 2500
+description: "Reference of all FilterX functions, from base64_decode() to vars(), with their arguments and usage examples."
+weight: 2100
 ---
 
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
@@ -347,7 +348,7 @@ See {{% xref "/filterx/filterx-timezone/_index.md#guess-timezone" %}}.
 
 ## has_sdata
 
-See {{% xref "/filterx/filterx-sdata/_index.md" %}}.
+Returns `true` if the SDATA field of the current message is not empty. See {{% xref "/filterx/filterx-sdata/_index.md" %}}.
 
 ## hex_decode {#hex-decode}
 
@@ -408,7 +409,7 @@ If you want to assign a value to a variable if it's not set, use the [`=??` oper
 
 ## istype
 
-Returns true if the object (first argument) has the specified type (second argument). The type must be a quoted string. (See [List of type names]({{< relref "/filterx/_index.md#variable-types" >}}).)
+Returns true if the object (first argument) has the specified type (second argument). The type must be a quoted string. (See [List of type names]({{< relref "/filterx/filterx-language/_index.md#variable-types" >}}).)
 
 Usage: `istype(object, "type_str")`
 
@@ -537,31 +538,31 @@ Moves the specified variable to its new location, instead of copying it. This is
 
 {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-grpc" "axosyslog-grpc" >}}
 
-Creates a [dictionary]({{< relref "/filterx/_index.md#json" >}}) represented as an OpenTelemetry array.
+Creates a [dictionary]({{< relref "/filterx/filterx-language/_index.md#json" >}}) represented as an OpenTelemetry array.
 
 ## otel_kvlist {#otel-kvlist}
 
 {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-grpc" "axosyslog-grpc" >}}
 
-Creates a [dictionary]({{< relref "/filterx/_index.md#json" >}}) represented as an OpenTelemetry key-value list.
+Creates a [dictionary]({{< relref "/filterx/filterx-language/_index.md#json" >}}) represented as an OpenTelemetry key-value list.
 
 ## otel_logrecord {#otel-logrecord}
 
 {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-grpc" "axosyslog-grpc" >}}
 
-Creates an [OpenTelemetry log record object]({{< relref "/filterx/filterx-otel/_index.md#otel-logrecord-reference" >}}).
+Creates an [OpenTelemetry log record object]({{< relref "/filterx/filterx-otel/otel-fields/_index.md#otel-logrecord-reference" >}}).
 
 ## otel_resource {#otel-resource}
 
 {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-grpc" "axosyslog-grpc" >}}
 
-Creates an [OpenTelemetry resource object]({{< relref "/filterx/filterx-otel/_index.md#otel-resource-reference" >}}).
+Creates an [OpenTelemetry resource object]({{< relref "/filterx/filterx-otel/otel-fields/_index.md#otel-resource-reference" >}}).
 
 ## otel_scope {#otel-scope}
 
 {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-grpc" "axosyslog-grpc" >}}
 
-Creates an [OpenTelemetry scope object]({{< relref "/filterx/filterx-otel/_index.md#otel-scope-reference" >}}).
+Creates an [OpenTelemetry scope object]({{< relref "/filterx/filterx-otel/otel-fields/_index.md#otel-scope-reference" >}}).
 
 ## parse_cef {#parse-cef}
 
@@ -605,7 +606,7 @@ Parse an XML object into a JSON object.
 
 Usage: `parse_xml(msg)`
 
-For details, see {{< relref "/filterx/filterx-parsing/xml/_index.md" >}}
+For details, see {{% xref "/filterx/filterx-parsing/xml/_index.md" %}}.
 
 ## parse_windows_eventlog_xml {#parse-windows}
 
@@ -640,7 +641,7 @@ message CustomRecord {
 }
 ```
 
-You can create the following object in FilterX, then include the `protobuf_data` variable in the message::
+You can create the following object in FilterX, then include the `protobuf_data` variable in the message:
 
 ```shell
 filterx {
@@ -971,7 +972,7 @@ You can use the following format codes in the format string:
 
 ## string
 
-Cast a value into a string. Note that currently {{< product >}} evaluates strings and executes [template functions]({{< relref "/filterx/_index.md#template-functions" >}}) and template expressions within the strings. In the future, template evaluation will be moved to a separate FilterX function.
+Cast a value into a string. Note that currently {{< product >}} evaluates strings and executes [template functions]({{< relref "/filterx/filterx-language/_index.md#template-functions" >}}) and template expressions within the strings. In the future, template evaluation will be moved to a separate FilterX function.
 
 Usage: `string(<string or expression to cast>)`
 
@@ -1045,7 +1046,7 @@ Deletes a variable, a name-value pair, or a key in a complex object (like JSON),
 
 You can also list multiple values to delete: `unset(${<first-name-value-pair-to-unset>}, ${<second-name-value-pair-to-unset>});`
 
-See also {{% xref "/filterx/_index.md#delete-values" %}}.
+See also {{% xref "/filterx/filterx-language/_index.md#delete-values" %}}.
 
 ## unset_empties {#unset-empties}
 

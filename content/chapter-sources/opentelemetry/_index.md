@@ -96,7 +96,7 @@ Available in {{< product >}} 4.28 and later.
 *Description:* Determines how {{% param "product.abbrev" %}} makes the contents of incoming OpenTelemetry log records available for processing.
 
 - `logmessage`: {{% param "product.abbrev" %}} stores the record in the `${.otel_raw.log}`, `${.otel_raw.resource}`, and `${.otel_raw.scope}` name-value pairs. To work with them in FilterX, map them to OTEL objects first, as described in {{% xref "/filterx/filterx-otel/_index.md" %}}.
-- `filterx-dict`: {{% param "product.abbrev" %}} converts the record directly into three declared FilterX variables called `log`, `resource`, and `scope`, each holding a plain [FilterX dictionary]({{< relref "/filterx/_index.md#json" >}}). Use them in your FilterX block without any input mapping.
+- `filterx-dict`: {{% param "product.abbrev" %}} converts the record directly into three declared FilterX variables called `log`, `resource`, and `scope`, each holding a plain [FilterX dictionary]({{< relref "/filterx/filterx-language/_index.md#json" >}}). Use them in your FilterX block without any input mapping.
 
     Because this skips serializing and deserializing the `${.otel_raw.*}` name-value pairs, `mode(filterx-dict)` is significantly faster than `mode(logmessage)` when you process the records in FilterX.
 
