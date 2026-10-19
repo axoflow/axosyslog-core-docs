@@ -1,5 +1,3 @@
----
----
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
 The following table lists the {{% param "product.name" %}} modules, the configuration objects each provides, and the package to install.
