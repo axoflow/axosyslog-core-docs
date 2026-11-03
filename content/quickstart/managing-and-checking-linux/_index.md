@@ -34,7 +34,7 @@ To stop {{% param "product.abbrev" %}}
 
 1. Check the status of {{% param "product.abbrev" %}} service (see [Checking {{% param "product.abbrev" %}} status](#check-syslog-ng-status)).
 
-## Restart {{% param "product.abbrev" %}}
+## Restart {{% param "product.abbrev" %}} {#restart-axosyslog}
 
 To restart {{% param "product.abbrev" %}}, execute the following command as root.
 
