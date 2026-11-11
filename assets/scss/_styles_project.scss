@@ -96,29 +96,10 @@
     gap: 0;
 }
 
-// THE LOGO BOX IS CROPPED TO THE ARTWORK.
-//
-// This site's assets/icons/logo.svg has a 329.1x155.5 viewBox and its ink stops at
-// 179.6 -- 149.5 units, 46.1px at the drawn height, of empty canvas on the right.
-// The layout reserved all of it: measured, the logo box was 101.5px wide for a mark
-// 55.4px wide, and the name started at x197.5 with a 46px hole in front of it while
-// AxoFlow's wordmark sits 15px off its mark.
-//
-// Cropped here rather than by correcting the viewBox in the file: that artwork is a
-// brand asset this repository holds, and a stylesheet fixing its own layout is a
-// smaller claim than a stylesheet editing the logo. Nothing is lost -- the ink
-// starts at the viewBox origin, so only trailing emptiness is clipped.
-// `display: block`, NOT flex. As a flex container this box makes the SVG a flex
-// item, and a flex item shrinks to the width it is given rather than overflowing
-// it -- so the 55.4px did not crop the artwork, it resized it. With the viewBox's
-// own `xMidYMid meet` that scales to fit both axes: measured, the mark rendered
-// 30.2px wide instead of 55.4, a third smaller than intended and centred in the
-// leftover space. A block box lets the SVG keep its natural 101.5px and clips it.
-.td-navbar .navbar-brand__logo {
-    display: block;
-    width: 55.4px; // the ink, at the 48px the bar draws the logo
-    height: 48px;
-    overflow: hidden;
+// The brand name is not drawn: assets/icons/logo.svg already spells "AxoLocker",
+// so rendering `.Site.Title` beside it would set the name twice.
+.navbar-brand__name {
+    display: none;
 }
 
 // The name has to be painted on the dark bar, exactly as AxoFlow's wordmark is.
