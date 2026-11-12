@@ -62,6 +62,10 @@ content-type()
 `default-index()`, `default-source()`, and `default-sourcetype()` accept literal strings, and are used as fallback values if a log message doesn't set these fields. These values are passed to the URL as query parameters, so they don't inflate the body of the HTTP request
 for each message in the batch, which saves bandwidth.
 
+{{% only-in "AxoSyslog Commercial Version" %}}
+In configurations migrated from syslog-ng&trade; Premium Edition, the default value of `default-source()` is `syslog-ng` instead of `axosyslog`, like in syslog-ng&trade; Premium Edition. This applies to the `splunk-hec-event()` and the `splunk-hec-raw()` destinations.
+{{% /only-in %}}
+
 `fields()` accepts template, which is passed as additional indexing metadata to Splunk.
 
 `extra-headers()`, `extra-queries()`, and `content-type()` are additional HTTP request options.

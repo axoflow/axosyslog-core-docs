@@ -33,9 +33,11 @@ Among others, {{% param "product.abbrev" %}} allows you the following.
 
 {{% param "product.abbrev" %}} is a building block for end-to-end observability pipelines that exposes [detailed metrics]({{< relref "/chapter-log-statistics/metrics-reference/_index.md" >}}) about its own operation, so you can monitor the health and throughput of your pipeline.
 
+{{% only-in "AxoSyslog" %}}
 ### Run natively in cloud-native and Kubernetes environments
 
 The {{% param "product.abbrev" %}} application is the ideal choice to collect logs and observability data in massively heterogeneous environments that use several different operating systems, and it runs natively in containerized and [Kubernetes]({{< relref "/chapter-sources/configuring-sources-kubernetes/_index.md" >}}) environments. You can deploy it using the official [Helm charts]({{< relref "/install/helm/_index.md" >}}).
+{{% /only-in %}}
 
 ### Flexible data extraction and processing
 
@@ -55,9 +57,13 @@ To get the most information out of your data, {{% param "product.abbrev" %}} all
 
 The data that your organization has to process, store, and review increases daily, so many organizations use big data and cloud solutions for their logs. To accommodate this huge amount of data, {{% param "product.abbrev" %}} natively supports storing log messages and observability data in destinations like [Elasticsearch]({{< relref "/chapter-destinations/configuring-destinations-elasticsearch-http/_index.md" >}})/[OpenSearch]({{< relref "/chapter-destinations/destination-opensearch/_index.md" >}})/[OpenObserve]({{< relref "/chapter-destinations/openobserve/_index.md" >}}), modern analytics services like [ClickHouse]({{< relref "/chapter-destinations/clickhouse/_index.md" >}}) and [Microsoft Sentinel and Azure Monitor]({{< relref "/chapter-destinations/azure-monitor/_index.md" >}}), and cloud storage solutions like [Google BigQuery]({{< relref "/chapter-destinations/google-bigquery/_index.md" >}}), [Google Pub/Sub]({{< relref "/chapter-destinations/google-pubsub/_index.md" >}}) and [Amazon S3]({{< relref "/chapter-destinations/destination-s3/_index.md" >}}).
 
+{{% only-in "AxoSyslog Commercial Version" %}}
+{{% param "product.abbrev" %}} also has drivers that accept the configuration of the syslog-ng&trade; Premium Edition drivers, for example, to send data to Microsoft Sentinel using the HTTP Data Collector API, Azure Event Hubs, Azure Log Analytics, and Google BigQuery using the HTTP API. For the list of these drivers, see {{% xref "/chapter-concepts/axosyslog-cv-vs-axosyslog/_index.md" %}}.
+{{% /only-in %}}
+
 ### Message queue support
 
-Large organizations increasingly rely on queuing infrastructure to transfer their data. For that purpose, {{% param "product.abbrev" %}} supports [Apache Kafka]({{< relref "/chapter-destinations/configuring-destinations-kafka-c/_index.md" >}}), the [Advanced Message Queuing Protocol (AMQP)]({{< relref "/chapter-destinations/configuring-destinations-amqp/_index.md" >}}), [MQTT]({{< relref "/chapter-destinations/destination-mqtt-intro/_index.md" >}}) and the [Simple Text Oriented Messaging Protocol (STOMP)]({{< relref "/chapter-destinations/configuring-destinations-stomp/_index.md" >}}).
+Large organizations increasingly rely on queuing infrastructure to transfer their data. For that purpose, {{% param "product.abbrev" %}} supports [Apache Kafka]({{< relref "/chapter-destinations/configuring-destinations-kafka-c/_index.md" >}}), the [Advanced Message Queuing Protocol (AMQP)]({{< relref "/chapter-destinations/configuring-destinations-amqp/_index.md" >}}),{{% only-in "AxoSyslog" %}} [MQTT]({{< relref "/chapter-destinations/destination-mqtt-intro/_index.md" >}}),{{% /only-in %}} and the [Simple Text Oriented Messaging Protocol (STOMP)]({{< relref "/chapter-destinations/configuring-destinations-stomp/_index.md" >}}).
 
 ### SQL, NoSQL, and monitoring
 
@@ -81,6 +87,12 @@ Log messages may contain sensitive information that should not be accessed by th
 
 The {{% param "product.abbrev" %}} application can operate in both IPv4 and IPv6 network environments, and can receive and send messages to both types of networks.
 
+{{% only-in "AxoSyslog Commercial Version" %}}
+## Differences from AxoSyslog {#differences-from-axosyslog}
+
+{{% param "product.name" %}} is built from the source code of the open-source AxoSyslog, but some drivers are different. For details, see {{% xref "/chapter-concepts/axosyslog-cv-vs-axosyslog/_index.md" %}}.
+{{% /only-in %}}
+
 ## What {{% param "product.name" %}} is not {#what-axosyslog-is-not}
 
 The {{% param "product.name" %}} application is not log analysis software. It can filter log messages and select only the ones matching certain criteria. It can even convert the messages and restructure them to a predefined format, or parse the messages and segment them into different fields. But {{% param "product.name" %}} cannot interpret and analyze the meaning behind the messages, or recognize patterns in the occurrence of different messages.
@@ -89,7 +101,7 @@ The {{% param "product.name" %}} application is not log analysis software. It ca
 
 Log messages contain information about the events happening on the hosts. Monitoring system events is essential for security and system health monitoring reasons.
 
-The original syslog protocol separates messages based on the priority of the message and the facility sending the message. These two parameters alone are often inadequate to consistently classify messages, as many applications might use the same facility, and the facility itself is not even included in the log message. To make things worse, many log messages contain unimportant information. The AxoSyslog application helps you to select only the really interesting messages, and forward them to a central server.
+The original syslog protocol separates messages based on the priority of the message and the facility sending the message. These two parameters alone are often inadequate to consistently classify messages, as many applications might use the same facility, and the facility itself is not even included in the log message. To make things worse, many log messages contain unimportant information. The {{% param "product.name" %}} application helps you to select only the really interesting messages, and forward them to a central server.
 
 Company policies or other regulations often require log messages to be archived. Storing the important messages in a central location greatly simplifies this process.
 

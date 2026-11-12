@@ -219,6 +219,10 @@ Available in {{< product >}} 4.20 and later.
 
 *Description:* A suffix added to the object key.
 
+{{% only-in "AxoSyslog Commercial Version" %}}
+In configurations migrated from syslog-ng&trade; Premium Edition, the default value of `object-key-suffix()` is `.log`, like in syslog-ng&trade; Premium Edition.
+{{% /only-in %}}
+
 {{< include-headless "chunk/destination-s3-object-name.md" >}}
 
 ## object-key-timestamp()
