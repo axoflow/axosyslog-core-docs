@@ -69,7 +69,7 @@ The `set()` rewrite rule has the following options. In addition to `condition()`
 | Type:    | number |
 | Default: | `0`    |
 
-*Description:* The number of digits that {{% param "product.abbrev" %}} stores when it expands a timestamp macro with fractions of a second. Overrides the global [`frac-digits()`]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-frac-digits" >}}) option for this rule.
+*Description:* The number of digits that {{% param "product.abbrev" %}} stores when it expands a timestamp macro with fractions of a second. Overrides the global [`frac-digits()`]({{< relref "/chapter-global-options/reference-options/_index.md#frac-digits" >}}) option for this rule.
 
 {{< include-headless "chunk/option-source-internal.md" >}}
 
