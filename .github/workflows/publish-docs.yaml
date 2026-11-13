@@ -330,7 +330,7 @@ jobs:
             --cache-control "public, max-age=345600, must-revalidate"
           aws s3 sync "$SOURCE_DIR" "s3://$AWS_S3_BUCKET/$DESTINATION_DIR" \
             --endpoint-url "$AWS_S3_ENDPOINT" --region "$AWS_REGION" --checksum-algorithm CRC32 \
-            --exclude "*" --include "llms.txt" --include "*/llms-full.txt" --include "llms-full.txt" $DELETE_EXCLUDES \
+            --exclude "*" --include "llms.txt" --include "*/llms.txt" --include "*/llms-full.txt" --include "llms-full.txt" $DELETE_EXCLUDES \
             --content-type "text/plain; charset=utf-8" \
             --cache-control "public, max-age=345600, must-revalidate"
 
