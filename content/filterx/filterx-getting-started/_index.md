@@ -152,12 +152,12 @@ Next, you parse the iptables message into separate fields, and send them as JSON
 
     ```shell
     iptables = parse_kv(${MESSAGE}, value_separator="=", pair_separator=" ");
-    ${MESSAGE} = format_json(iptables);
+    ${MESSAGE} = iptables;
     ```
 
     - [`parse_kv`]({{< relref "/filterx/filterx-parsing/key-value-parser/_index.md" >}}) splits the message into key=value pairs, and stores them in the `iptables` variable.
     - `iptables` is a local FilterX variable, because its name doesn't start with `$`. {{< product >}} doesn't send local variables to the destination, unless you assign them to a name-value pair. For details, see [FilterX variables in destinations]({{< relref "/filterx/filterx-language/_index.md#variables-in-destinations" >}}).
-    - [`format_json`]({{< relref "/filterx/function-reference.md#format-json" >}}) converts `iptables` to a JSON string, and the line assigns it to `${MESSAGE}`.
+    - Assigning the `iptables` dict to `${MESSAGE}` stores it as JSON, so the destination receives a JSON string. You don't have to format it explicitly. To send it in another format, use a formatting function, like [`format_kv`]({{< relref "/filterx/filterx-format-data/format-kv.md" >}}). For details, see {{% xref "/filterx/filterx-format-data/_index.md" %}}.
 
 1. Reload the configuration, and append the two sample messages again, the same way as in [Step 2](#step-2).
 
@@ -179,7 +179,7 @@ Next, you parse the iptables message into separate fields, and send them as JSON
 
 Finally, you rename the `SRC` field to `src_ip`.
 
-1. Add the following lines to the FilterX block, before the `format_json` line:
+1. Add the following lines to the FilterX block, before the `${MESSAGE} = iptables;` line:
 
     ```shell
     iptables.src_ip = iptables.SRC;
@@ -198,7 +198,7 @@ Finally, you rename the `SRC` field to `src_ip`.
         iptables = parse_kv(${MESSAGE}, value_separator="=", pair_separator=" ");
         iptables.src_ip = iptables.SRC;
         unset(iptables.SRC);
-        ${MESSAGE} = format_json(iptables);
+        ${MESSAGE} = iptables;
     };
     ```
 
@@ -242,7 +242,7 @@ log {
         iptables = parse_kv(${MESSAGE}, value_separator="=", pair_separator=" ");
         iptables.src_ip = iptables.SRC;
         unset(iptables.SRC);
-        ${MESSAGE} = format_json(iptables);
+        ${MESSAGE} = iptables;
     };
     destination(d_tutorial);
 };

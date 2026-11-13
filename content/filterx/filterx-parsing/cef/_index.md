@@ -50,11 +50,11 @@ The following is a CEF-formatted message including mandatory and custom (extensi
 CEF:0|KasperskyLab|SecurityCenter|13.2.0.1511|KLPRCI_TaskState|Completed successfully|1|foo=foo bar=bar baz=test
 ```
 
-The following FilterX expression parses it and converts it into JSON format:
+The following FilterX expression parses it, and stores the result in the `${PARSED_MESSAGE}` name-value pair. Assigning a dict to a name-value pair stores it as JSON, so you don't have to format it explicitly:
 
 ```shell
 filterx {
-    ${PARSED_MESSAGE} = json(parse_cef(${MESSAGE}));
+    ${PARSED_MESSAGE} = parse_cef(${MESSAGE});
 };
 ```
 

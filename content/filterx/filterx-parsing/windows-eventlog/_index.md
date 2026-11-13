@@ -26,7 +26,7 @@ For example, the following converts the input XML into a JSON object:
 ```shell
 filterx {
   xml = "<xml-input/>"
-  $MSG = json(parse_windows_eventlog_xml(xml));
+  $MSG = parse_windows_eventlog_xml(xml);
 };
 ```
 

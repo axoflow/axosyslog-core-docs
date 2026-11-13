@@ -62,11 +62,11 @@ The following is a LEEF-formatted message including mandatory and custom (extens
 LEEF:1.0|Microsoft|MSExchange|4.0 SP1|15345|src=192.0.2.0	dst=172.50.123.1	sev=5cat=anomaly	srcPort=81	dstPort=21	usrName=john.smith
 ```
 
-The following FilterX expression parses it and converts it into JSON format:
+The following FilterX expression parses it, and stores the result in the `${PARSED_MESSAGE}` name-value pair. Assigning a dict to a name-value pair stores it as JSON, so you don't have to format it explicitly:
 
 ```shell
 filterx {
-    ${PARSED_MESSAGE} = json(parse_leef(${MESSAGE}));
+    ${PARSED_MESSAGE} = parse_leef(${MESSAGE});
 };
 ```
 
