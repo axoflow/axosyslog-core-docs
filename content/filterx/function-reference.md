@@ -316,6 +316,30 @@ For details, see {{% xref "/filterx/filterx-format-data/format-windows-eventlog-
 
 See {{% xref "/filterx/filterx-sdata/_index.md" %}}.
 
+## get_timestamp {#get-timestamp}
+
+Available in {{< product >}} 4.12 and later.
+
+Usage: `get_timestamp(stamp="stamp")`
+
+Returns a timestamp of the message as a `datetime` value. The `stamp` argument determines which timestamp to return:
+
+- `stamp`: The timestamp of the message (the date in the message header, or the date when {{< product >}} received the message if the message has no date). This is the default.
+- `recvd`: The date when {{< product >}} received the message.
+
+The `stamp` argument must be a literal string. Any other value causes a configuration error.
+
+For example:
+
+```shell
+received = get_timestamp(stamp="recvd");
+${.processing_delay_us} = int(received) - int(get_timestamp());
+```
+
+Casting a `datetime` value to integer returns the number of microseconds elapsed since the UNIX epoch. To get milliseconds, divide it by 1000: `int(get_timestamp()) / 1000`.
+
+To change a timestamp of the message, use [`set_timestamp`](#set-timestamp).
+
 ## get_timezone_source
 
 See {{% xref "/filterx/filterx-timezone/_index.md#get-timezone-source" %}}.
