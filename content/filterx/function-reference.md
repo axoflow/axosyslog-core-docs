@@ -45,6 +45,34 @@ For example:
 base64_encode("foobar");  # Returns "Zm9vYmFy"
 ```
 
+## bool
+
+Cast a value into a boolean. The result is the [truthiness]({{< relref "/filterx/filterx-language/_index.md#truthy-falsy" >}}) of the value: `true` for truthy values, `false` for falsy values.
+
+Usage: `bool(<value>)`
+
+For example:
+
+```shell
+has_tags = bool(tags);  # false if tags is an empty list
+```
+
+Note that the string is not parsed: `bool("false")` returns `true`, because `"false"` is a non-empty string. To check a string, compare it instead, for example: `${.enabled} == "true"`.
+
+## bytes
+
+Cast a string or a `protobuf` value into `bytes`, a type that represents binary data. Casting any other type causes an error.
+
+Usage: `bytes(<string or protobuf value>)`
+
+For example:
+
+```shell
+raw = bytes(${MESSAGE});
+```
+
+Functions that decode binary data, like [`base64_decode`](#base64-decode) and [`hex_decode`](#hex-decode), return `bytes` values.
+
 ## cache_json_file {#cache-json-file}
 
 Load the contents of an external JSON file in an efficient manner. You can use this function to lookup contextual information. (Basically, this is a FilterX-specific implementation of the [`add-contextual-data() functionality`]({{< relref "/chapter-enrich-data/data-enrichment-add-contextual-data/_index.md" >}}).)
@@ -121,6 +149,26 @@ Usually, you use the [strptime](#strptime) FilterX function to create datetime v
 
 Deduplicate `metrics_labels` objects. For details, see {{% xref "/filterx/filterx-metrics/_index.md#metrics-labels" %}}.
 
+## dict {#dict}
+
+Available in {{< product >}} 4.10 and later.
+
+Create a dict, or cast a value into a dict. `dict()` is the same function as [`json()`](#json).
+
+Usage: `dict(<dict or JSON string>)`
+
+- Without an argument, it returns an empty dict. This is the same as `{}`.
+- If the argument is a dict, it returns the dict. If the argument is another dict-like object (for example, `otel_kvlist`), it copies its elements into a new dict.
+- If the argument is a string, it parses the string as JSON. The JSON must be an object. To parse other JSON values, use [`parse_json`](#parse-json).
+- Any other argument, an invalid JSON string, or more than one argument causes an error.
+
+For example:
+
+```shell
+d = dict('{"host": "web01", "port": 443}');
+d.port == 443;
+```
+
 ## dict_to_pairs {#dict-to-pairs}
 
 Convert dicts to list of pairs.
@@ -157,6 +205,23 @@ For example:
 ```shell
 digest("foobar");                   # Raw SHA-256 hash as bytes
 digest("foobar", alg="md5");        # Raw MD5 hash as bytes
+```
+
+## double
+
+Cast a value into a double (floating-point number).
+
+Usage: `double(<value>)`
+
+- Integers and booleans are converted to a double.
+- Strings are parsed as a decimal number. The whole string must be a number, otherwise the cast fails.
+- A `datetime` value becomes the number of seconds elapsed since the UNIX epoch, with the microseconds as the fraction.
+- Any other type causes an error.
+
+For example:
+
+```shell
+${.response_time} = double(${.apache.response_time_str});
 ```
 
 ## dpath
@@ -421,6 +486,26 @@ includes(input-string, [substring_1, substring_2], ignorecase=true, limit=10);
 
 For details, see {{% xref "/filterx/filterx-string-search/_index.md" %}}.
 
+## int
+
+Cast a value into an integer.
+
+Usage: `int(<value>)`
+
+- Doubles are rounded to the nearest integer, for example, `int(2.5)` is `3`. Values outside the 64-bit integer range are clamped to the smallest or largest integer.
+- Booleans become `0` or `1`.
+- Strings are parsed as a base-10 integer. The whole string must be a number, otherwise the cast fails: `int("42")` works, `int("42ms")` and `int("4.2")` fail.
+- A `datetime` value becomes the number of microseconds elapsed since the UNIX epoch. To get milliseconds, divide it by 1000: `int(get_timestamp()) / 1000`. Dividing two integers returns an integer.
+- Any other type causes an error.
+
+For example:
+
+```shell
+${.status} = int(${.apache.status});
+```
+
+If the cast can fail, use the [null coalescing operator]({{< relref "/filterx/operator-reference.md#null-coalescing-operator" >}}) to set a default value: `${.status} = int(${.apache.status}) ?? 0;`
+
 ## ip
 
 See {{% xref "/filterx/filterx-subnet/_index.md#ip" %}}.
@@ -525,6 +610,25 @@ Returns the number of items in an object as an integer: the length (number of ch
 
 Usage: `len(object)`
 
+## list {#list}
+
+Available in {{< product >}} 4.12 and later.
+
+Create a list, or cast a value into a list. `list()` is the same function as [`json_array()`](#json-array).
+
+Usage: `list(<list or JSON string>)`
+
+- Without an argument, it returns an empty list. This is the same as `[]`.
+- If the argument is a list, it returns the list. If the argument is another list-like object (for example, a tuple or an `otel_array`), it copies its elements into a new list.
+- If the argument is a string, it parses the string as a JSON array.
+- Any other argument, an invalid JSON string, or more than one argument causes an error.
+
+For example:
+
+```shell
+ports = list("[80, 443]");
+```
+
 ## load_vars {#load-vars}
 
 Loads variables from a dict. It's the inverse of [`vars()`](#vars). It loads and declares FilterX-level variables. If a key in the dict begins with the `$` character, it's loaded as an {{< product >}} macro. This function can be used to transfer several variables between FilterX blocks on different log paths and messages.
@@ -614,6 +718,25 @@ Usage: `parse_csv(msg_str [columns=json_array, delimiter=string, string_delimite
 
 For details, see {{% xref "/filterx/filterx-parsing/csv/_index.md" %}}.
 
+## parse_json {#parse-json}
+
+Available in {{< product >}} 4.11 and later.
+
+Parse a JSON string, and return the value it represents.
+
+Usage: `parse_json(<string>)`
+
+Unlike [`json()`](#json), which accepts only a JSON object, `parse_json()` accepts any JSON value, and returns a value of the matching type: a dict, a list, a string, a number, a boolean, or `null`.
+
+For example:
+
+```shell
+js = parse_json(${MESSAGE});
+js.data_map.key1 == 1;
+```
+
+If the argument isn't a string, or it isn't valid JSON, `parse_json()` returns an error. To create JSON from FilterX values, use [`format_json`](#format-json).
+
 ## parse_kv {#parse-kv}
 
 Split a string consisting of whitespace or comma-separated `key=value` pairs (for example, WELF-formatted messages).
@@ -652,6 +775,14 @@ Usage: `parse_windows_eventlog_xml(msg)`
 
 For details, see {{% xref "/filterx/filterx-parsing/windows-eventlog/_index.md" %}}.
 
+## protobuf
+
+Cast a `bytes` or a `protobuf` value into `protobuf`, the type that holds serialized protobuf data. Casting any other type causes an error.
+
+Usage: `protobuf(<bytes or protobuf value>)`
+
+The value isn't validated against a schema. To build a protobuf message from FilterX values using a schema, use [`protobuf_message`](#protobuf-message).
+
 ## protobuf_message {#protobuf-message}
 
 {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-grpc" "axosyslog-grpc" >}}
@@ -683,6 +814,39 @@ filterx {
   protobuf_data = protobuf_message(my_dict, schema_file="my_schema_file.proto");
   ${MESSAGE} = {
     "protobuf_data": protobuf_data,
+  };
+};
+```
+
+## pubsub_message {#pubsub-message}
+
+{{< include-headless "chunk/prereq-package.md" "axosyslog-mod-grpc" "axosyslog-grpc" >}}
+
+Available in {{< product >}} 4.10 and later.
+
+Create a Google Pub/Sub message to send with the [`google-pubsub-grpc()` destination]({{< relref "/chapter-destinations/google-pubsub-grpc/_index.md" >}}).
+
+Usage: `pubsub_message(<data>, <attributes>)`
+
+- `data`: The payload of the message. Strings, `bytes`, and `protobuf` values are sent as is, other values are converted to a string.
+- `attributes`: A dict of the attributes of the message. The number of attributes can differ from message to message.
+
+Without arguments, `pubsub_message()` returns an empty message. Calling it with one argument, or with an `attributes` argument that isn't a dict, causes an error.
+
+Pass the message to the destination in its [`proto-var()`]({{< relref "/chapter-destinations/google-pubsub-grpc/_index.md#proto-var" >}}) option, instead of `data()` and `attributes()`. For example:
+
+```shell
+log {
+  source(s_network);
+  filterx {
+    $pubsub = pubsub_message(${MESSAGE}, {"host": ${HOST}, "program": ${PROGRAM}});
+  };
+  destination {
+    google-pubsub-grpc(
+      project("my-project")
+      topic("my-topic")
+      proto-var("$pubsub")
+    );
   };
 };
 ```
@@ -800,6 +964,23 @@ You can use the following flags with the `regexp_subst` function:
 - `newline=true`: {{< include-headless "chunk/regex-flag-newline.md" >}}
 
 - `utf8=true`: {{< include-headless "chunk/regex-flag-utf8.md" >}}
+
+## repr {#repr}
+
+Available in {{< product >}} 4.11 and later.
+
+Return the string representation of a value, as it would appear in JSON.
+
+Usage: `repr(<value>)`
+
+The difference from [`string()`](#string) is how strings are handled: `repr()` puts them in double quotes and escapes the special characters, `string()` returns them unchanged. For example, if `${HOST}` is `web01`:
+
+```shell
+string(${HOST});  # web01
+repr(${HOST});    # "web01"
+```
+
+For other types, both return the same: for example, `repr({"a": 1})` is `{"a":1}`. If a value has no string representation, `repr()` returns an error.
 
 ## set_fields {#set-fields}
 
@@ -1075,6 +1256,10 @@ The [`isodate`](#isodate) FilterX function is a specialized variant of `strptime
 ## subnet
 
 See {{% xref "/filterx/filterx-subnet/_index.md#subnet" %}}.
+
+## tuple
+
+See {{% xref "/filterx/filterx-language/_index.md#tuples" %}}.
 
 ## unset
 
