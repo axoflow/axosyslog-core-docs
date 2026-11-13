@@ -39,12 +39,11 @@ tagline = "Scalable security data processor"
   mediaType   = "text/plain"
   isPlainText = true
 
-# Declared but not enabled, so the PDF edition is off. docsy-axoflow ships
+# Declared here, but only enabled by the pdf environment (config/pdf/), so the
+# normal site build never renders it. docsy-axoflow ships
 # layouts/docs/{baseof,list}.pdf.html; without a `pdf` output format Hugo does
 # not read `.pdf.` in those names as a format, and renders the HTML section
-# pages with the PDF layout instead. No page kind lists `pdf` under [outputs],
-# so nothing is built for it. To turn the PDF edition on, add it to
-# outputs.home in a config/pdf/ environment (see the theme's CLAUDE.md).
+# pages with the PDF layout instead.
 [outputFormats.pdf]
   name           = "pdf"
   mediaType      = "text/html"
@@ -117,6 +116,9 @@ tagline = "Scalable security data processor"
   # "4.27 (current)" from data/versions.yaml, so the sidebar now carries the
   # version twice; drop this param if the duplicate is unwanted.
   version = "4.29.0"
+  # Names the PDF edition (<product_name>-<version_tag>.pdf, see the theme's
+  # pdf/file.html) and goes on its cover. Move it with `version`.
+  version_tag = "4.29.0"
   version_menu_canonicallinks = true
 
   # A link to latest version of the docs. Used in the "version-banner" partial to
@@ -267,6 +269,13 @@ tagline = "Scalable security data processor"
 ##########
 # Parameters for shortcodes
 ##########
+
+[params.pdf]
+  # "Download guide as PDF" under the page contents. The PDF is rendered by
+  # .github/workflows/pdf.yaml and uploaded next to the pages; its file name
+  # comes from product_name and version_tag (the theme's pdf/file.html). The
+  # print settings are in config/pdf/config.toml.
+  download = true
 
 [params.product]
 name = "AxoSyslog"
