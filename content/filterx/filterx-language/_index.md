@@ -370,12 +370,22 @@ t = tuple([1,2,3,d]); # a tuple with the value (1,2,3,{"foo":"foovalue","bar":"b
 
 {{< include-headless "chunk/filterx-list-membership-operator.md" >}}
 
-<!--
 ### Type casting
 
- FIXME type casting
+To convert a value into another type, call the function named after the target type, for example, `int(${.apache.status})`. The following type casting functions are available:
 
-  -->
+- [`bool`]({{< relref "/filterx/function-reference.md#bool" >}})
+- [`bytes`]({{< relref "/filterx/function-reference.md#bytes" >}})
+- [`datetime`]({{< relref "/filterx/function-reference.md#datetime" >}})
+- [`dict`]({{< relref "/filterx/function-reference.md#dict" >}}) and [`json`]({{< relref "/filterx/function-reference.md#json" >}})
+- [`double`]({{< relref "/filterx/function-reference.md#double" >}})
+- [`int`]({{< relref "/filterx/function-reference.md#int" >}})
+- [`list`]({{< relref "/filterx/function-reference.md#list" >}}) and [`json_array`]({{< relref "/filterx/function-reference.md#json-array" >}})
+- [`protobuf`]({{< relref "/filterx/function-reference.md#protobuf" >}})
+- [`string`]({{< relref "/filterx/function-reference.md#string" >}})
+- [`tuple`](#tuples)
+
+If a value can't be converted, the cast returns an error, and the statement is falsy. To use a default value instead, use the [null coalescing operator]({{< relref "/filterx/operator-reference.md#null-coalescing-operator" >}}), for example: `${.status} = int(${.apache.status}) ?? 0;`
 
 ## FilterX variables in destinations {#variables-in-destinations}
 
