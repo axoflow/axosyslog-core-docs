@@ -211,15 +211,23 @@ jobs:
       - name: Read the PDF file name
         id: pdf
         run: |
-          file=$(grep -oE '<meta name="?docs-pdf-file"? content="?[^" >]+' public/index.html | sed -E 's/.*content="?//' | head -1)
+          # `|| true`: refs without a PDF edition have no such meta, and the
+          # default shell runs with pipefail.
+          file=$(grep -oE '<meta name="?docs-pdf-file"? content="?[^" >]+' public/index.html | sed -E 's/.*content="?//' | head -1 || true)
           echo "file=$file" >> "$GITHUB_OUTPUT"
           echo "PDF edition: ${file:-none}"
 
       # Runs before the archived versions are pulled into public/, so only this
       # build gets converted. Each version converts its own pages when it deploys.
+      # Themes pinned by older release branches (4.27 and earlier) predate the
+      # requirements file; this keeps one copy of this workflow valid on all of them.
       - name: Convert HTML to Markdown
         run: |
-          pip install -r themes/docsy-axoflow/scripts/requirements-markdown.txt
+          if [ -f themes/docsy-axoflow/scripts/requirements-markdown.txt ]; then
+            pip install -r themes/docsy-axoflow/scripts/requirements-markdown.txt
+          else
+            pip install beautifulsoup4 html2text
+          fi
           python themes/docsy-axoflow/scripts/hugo_to_markdown.py --input public --output public
 
       # Cross-version search: the latest site's Pagefind index must cover every
