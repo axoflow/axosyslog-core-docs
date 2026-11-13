@@ -5,6 +5,8 @@
     "postcss-cli": "^11.0.1"
   },
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^8.0.0"
+    "@fullhuman/postcss-purgecss": "^8.0.0",
+    "pagedjs": "^0.4.3",
+    "puppeteer": "^24.43.1"
   }
 }
