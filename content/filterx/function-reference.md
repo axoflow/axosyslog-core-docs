@@ -203,6 +203,12 @@ endswith(input-string, [substring_1, substring_2], ignorecase=true);
 
 For details, see {{% xref "/filterx/filterx-string-search/_index.md" %}}.
 
+## failure_info, failure_info_clear, failure_info_enable, failure_info_meta {#failure-info}
+
+Available in {{< product >}} 4.12 and later.
+
+Collect and return information about failing FilterX expressions. For details, see {{% xref "/filterx/filterx-troubleshooting/_index.md#track-failures" %}}.
+
 ## flatten
 
 Flattens the nested elements of an object using the specified separator, similarly to the [`format-flat-json()` template function]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md#template-function-format-flat-json" >}}). For example, you can use it to flatten nested JSON objects in the output if the receiving application cannot handle nested JSON objects.
@@ -414,6 +420,10 @@ includes(input-string, [substring_1, substring_2], ignorecase=true, limit=10);
 ```
 
 For details, see {{% xref "/filterx/filterx-string-search/_index.md" %}}.
+
+## ip
+
+See {{% xref "/filterx/filterx-subnet/_index.md#ip" %}}.
 
 ## isodate
 
@@ -1061,6 +1071,10 @@ You can use the following format codes in the format string:
 {{< include-headless "chunk/date-string-format.md" >}}
 
 The [`isodate`](#isodate) FilterX function is a specialized variant of `strptime`, that accepts only a fixed format.
+
+## subnet
+
+See {{% xref "/filterx/filterx-subnet/_index.md#subnet" %}}.
 
 ## unset
 
