@@ -153,14 +153,9 @@ Deduplicate `metrics_labels` objects. For details, see {{% xref "/filterx/filter
 
 Available in {{< product >}} 4.10 and later.
 
-Create a dict, or cast a value into a dict. `dict()` is the same function as [`json()`](#json).
+Create a dict. `dict()` is the same as [`json()`](#json). If the argument is a JSON string, it's parsed like with [`parse_json`](#parse-json). Without an argument, it returns an empty dict, the same as `{}`.
 
-Usage: `dict(<dict or JSON string>)`
-
-- Without an argument, it returns an empty dict. This is the same as `{}`.
-- If the argument is a dict, it returns the dict. If the argument is another dict-like object (for example, `otel_kvlist`), it copies its elements into a new dict.
-- If the argument is a string, it parses the string as JSON. The JSON must be an object. To parse other JSON values, use [`parse_json`](#parse-json).
-- Any other argument, an invalid JSON string, or more than one argument causes an error.
+Usage: `dict(<value>)`
 
 For example:
 
@@ -614,14 +609,9 @@ Usage: `len(object)`
 
 Available in {{< product >}} 4.12 and later.
 
-Create a list, or cast a value into a list. `list()` is the same function as [`json_array()`](#json-array).
+Create a list. `list()` is the same as [`json_array()`](#json-array). If the argument is a JSON string, it's parsed like with [`parse_json`](#parse-json). Without an argument, it returns an empty list, the same as `[]`.
 
-Usage: `list(<list or JSON string>)`
-
-- Without an argument, it returns an empty list. This is the same as `[]`.
-- If the argument is a list, it returns the list. If the argument is another list-like object (for example, a tuple or an `otel_array`), it copies its elements into a new list.
-- If the argument is a string, it parses the string as a JSON array.
-- Any other argument, an invalid JSON string, or more than one argument causes an error.
+Usage: `list(<value>)`
 
 For example:
 
