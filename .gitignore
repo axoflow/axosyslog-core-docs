@@ -35,3 +35,7 @@ node_modules/
 *~
 todo.md
 .hugo_build.lock
+
+# PDF edition build (themes/docsy-axoflow/scripts/pdf/build.sh)
+public_pdf/
+/*.pdf

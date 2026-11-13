@@ -1,0 +1,26 @@
+# Build profile for the single-file PDF edition: `hugo --environment pdf`.
+#
+# Renders /_pdf/index.html (every published page concatenated into one HTML
+# document), which themes/docsy-axoflow/scripts/pdf/ turns into the PDF.
+# Kept out of the default and production profiles so a normal site build never
+# pays for it, and the large HTML document never ships to the web server.
+#
+# PurgeCSS keys off HUGO_ENVIRONMENT=production, so this profile also gets the
+# unpurged stylesheet: the PDF-only selectors can't be stripped by accident.
+
+buildDrafts = false
+enableRobotsTXT = false
+
+[params.pdf]
+  # WebP cannot go into a PDF, so Chrome would store every screenshot
+  # losslessly. JPEG is embedded as-is. See the print branch of
+  # themes/docsy-axoflow/layouts/_markup/render-image.html.
+  image_format = "jpg"
+  image_width = 1600
+  image_quality = 88
+
+[outputs]
+  home = ["HTML", "pdf"]
+  # The per-section print pages are not used by the PDF.
+  section = ["HTML"]
+  page = ["HTML"]

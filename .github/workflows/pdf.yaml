@@ -1,0 +1,198 @@
+name: Build PDF (reusable)
+
+# Renders one documentation version as a single PDF and, when publishing,
+# uploads it next to that version's pages:
+#   latest  → https://axoflow.com/docs/axosyslog-core/<product>-<version_tag>.pdf
+#   archive → https://axoflow.com/docs/axosyslog-core/<version>/<product>-<version_tag>.pdf
+# The file name comes from the theme's pdf/file.html, via build.sh; the site's
+# "Download guide as PDF" link reads the same partial.
+#
+# Called by:
+#   - publish-docs.yaml → alongside every site deploy, latest and archived
+#   - manually via workflow_dispatch, to build a PDF without deploying it
+#
+# Deliberately a separate job from the site build: Paged.js lays the whole
+# document out in JavaScript, and an out-of-memory render must never be able
+# to block a docs release.
+
+on:
+  workflow_call:
+    inputs:
+      ref:
+        description: "Git ref (branch or tag) to build. Empty = default branch."
+        type: string
+        default: ''
+      version:
+        description: "Version id (also the URL sub-path / R2 sub-dir). Ignored when is_latest."
+        type: string
+        default: ''
+      is_latest:
+        description: "True for the latest version (uploaded to the site root)."
+        type: boolean
+        default: false
+      publish:
+        description: "Upload the PDF to R2 as well as to the workflow artifacts."
+        type: boolean
+        default: false
+    secrets:
+      R2_PUBLIC_EDITOR_ACCESS_KEY_ID:
+        required: false
+      R2_PUBLIC_EDITOR_ACCESS_KEY_SECRET:
+        required: false
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Git ref (branch or tag) to build"
+        type: string
+        default: ''
+      engine:
+        description: "Render engine"
+        type: choice
+        options: [paged, chrome]
+        default: paged
+
+permissions:
+  contents: read
+
+jobs:
+  pdf:
+    name: Build PDF
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.ref }}
+          submodules: 'true'
+          fetch-depth: 0
+
+      # Release refs cut before the PDF edition existed have no pdf environment.
+      # Skip them quietly rather than fail every "Publish versions" run; their
+      # pages carry no download link either, since params.pdf came in together.
+      - name: Check that this ref has a PDF edition
+        id: enabled
+        run: |
+          if [ -f config/pdf/config.toml ] && [ -x themes/docsy-axoflow/scripts/pdf/build.sh ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::No PDF edition on this ref (config/pdf/ or the theme's scripts/pdf/ is missing); skipping."
+          fi
+
+      # Ends up in the PDF's Subject field, so a copy of the file found on
+      # someone's disk can still be traced back to the commit it came from.
+      - name: Stamp build provenance
+        if: steps.enabled.outputs.enabled == 'true'
+        env:
+          REF: ${{ inputs.ref }}
+        run: |
+          [ -n "$REF" ] || REF="$(git rev-parse --abbrev-ref HEAD)"
+          {
+            echo "HUGO_PARAMS_BUILDREF=$REF"
+            echo "HUGO_PARAMS_BUILDCOMMIT=$(git rev-parse HEAD)"
+            echo "HUGO_PARAMS_BUILDDOCSYCOMMIT=$(git -C themes/docsy rev-parse HEAD || true)"
+            echo "HUGO_PARAMS_BUILDDOCSYAXOFLOWCOMMIT=$(git -C themes/docsy-axoflow rev-parse HEAD || true)"
+          } | tee -a "$GITHUB_ENV"
+
+      # Same overlay as publish-docs.yaml, so an archived PDF's version line
+      # matches the pages it was published next to.
+      - name: Overlay version list from main
+        if: steps.enabled.outputs.enabled == 'true' && inputs.version != '' && !inputs.is_latest
+        run: |
+          git fetch --depth=1 origin main
+          mkdir -p data
+          git show FETCH_HEAD:data/versions.yaml > data/versions.yaml
+
+      - name: Set up Hugo
+        if: steps.enabled.outputs.enabled == 'true'
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.160.1'
+          extended: true
+
+      - name: Set up Node
+        if: steps.enabled.outputs.enabled == 'true'
+        uses: actions/setup-node@v7
+        with:
+          node-version: lts/Krypton
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install Docsy assets
+        if: steps.enabled.outputs.enabled == 'true'
+        run: npm install --omit=dev
+        working-directory: themes/docsy
+
+      # PostCSS plus the renderer (puppeteer, pagedjs), all from
+      # package-lock.json. Chromium comes from puppeteer's postinstall, pinned by
+      # the lockfile, rather than from the runner image: the preinstalled Chrome
+      # auto-updates, and a renderer that changes under us would repaginate the
+      # book between releases for no reason.
+      - name: Install PostCSS and the renderer
+        if: steps.enabled.outputs.enabled == 'true'
+        run: npm ci
+
+      # beautifulsoup4 for prepare.py, pypdf for the document properties step.
+      - name: Install Python dependencies
+        if: steps.enabled.outputs.enabled == 'true'
+        run: pip install --quiet beautifulsoup4 pypdf
+
+      # build.sh names the file (<product>-<version_tag>.pdf) and reports it
+      # as steps.build.outputs.file / .path.
+      - name: Build the PDF
+        id: build
+        if: steps.enabled.outputs.enabled == 'true'
+        run: themes/docsy-axoflow/scripts/pdf/build.sh -e "${{ inputs.engine || 'paged' }}"
+
+      - name: Upload artifact
+        if: steps.enabled.outputs.enabled == 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ steps.build.outputs.file }}
+          path: ${{ steps.build.outputs.path }}
+          retention-days: 30
+
+      # Same derivation as publish-docs.yaml's "Resolve build target", so the
+      # PDF lands in the directory its version's pages are deployed to.
+      - name: Resolve upload target
+        id: target
+        if: steps.enabled.outputs.enabled == 'true' && inputs.publish
+        run: |
+          root=$(grep -E '^[[:space:]]*baseurl[[:space:]]*=' config/production/config.toml | head -1 | sed -E 's/.*=[[:space:]]*"([^"]+)".*/\1/')
+          root="${root%/}/"
+          if [ "${{ inputs.is_latest }}" = "true" ]; then
+            baseurl="$root"
+          else
+            [ -n "${{ inputs.version }}" ] || { echo "version is required for an archived upload" >&2; exit 1; }
+            baseurl="${root}${{ inputs.version }}/"
+          fi
+          dest=$(printf '%s' "$baseurl" | sed -E 's#^[a-z]+://[^/]+/##; s#/$##')
+          echo "dest=$dest" >> "$GITHUB_OUTPUT"
+          echo "dest=$dest"
+
+      - name: install-aws-cli
+        if: steps.enabled.outputs.enabled == 'true' && inputs.publish
+        uses: unfor19/install-aws-cli-action@v1
+        with:
+          arch: amd64
+
+      # Bucket and credentials must match publish-docs.yaml's "Deploy to
+      # Cloudflare R2" step.
+      - name: Publish to Cloudflare R2
+        if: steps.enabled.outputs.enabled == 'true' && inputs.publish
+        env:
+          AWS_S3_BUCKET: 'axosyslog-core-docs'
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_PUBLIC_EDITOR_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_PUBLIC_EDITOR_ACCESS_KEY_SECRET }}
+          AWS_S3_ENDPOINT: 'https://dc6bedf14f451ab276dc7caf3307af2a.r2.cloudflarestorage.com/'
+          AWS_REGION: 'auto'
+          DESTINATION_DIR: ${{ steps.target.outputs.dest }}
+        run: |
+          # publish-docs.yaml's --delete sync skips this file by name (the home
+          # page's docs-pdf-file meta), so the next site deploy keeps it.
+          aws s3 cp "${{ steps.build.outputs.path }}" \
+            "s3://$AWS_S3_BUCKET/$DESTINATION_DIR/${{ steps.build.outputs.file }}" \
+            --endpoint-url "$AWS_S3_ENDPOINT" --region "$AWS_REGION" \
+            --content-type application/pdf

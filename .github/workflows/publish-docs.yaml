@@ -6,6 +6,9 @@ name: Publish docs (reusable)
 #   - publish-versions.yaml        → each archived version, built from its tag/branch into a sub-dir
 #   - publish-version-on-push.yaml → one archived version, on a push to its release branch
 #
+# Each call also runs pdf.yaml in parallel, which renders that version's PDF
+# edition and uploads it next to its pages.
+#
 # The build and the multi-pass R2 sync live here once and are parameterized by inputs.
 # The base URL and R2 sub-dir are derived from the production baseURL and the version
 # id, so callers only pass the version + ref (never repeated URLs or sub-dirs).
@@ -39,6 +42,21 @@ permissions:
   contents: read
 
 jobs:
+  # The PDF edition, rendered and uploaded next to the pages by a separate
+  # workflow. It runs in parallel with the site deploy and does not gate it: a
+  # failed render must never hold back the docs.
+  pdf:
+    name: PDF edition
+    uses: ./.github/workflows/pdf.yaml
+    with:
+      ref: ${{ inputs.ref }}
+      version: ${{ inputs.version }}
+      is_latest: ${{ inputs.is_latest }}
+      publish: true
+    secrets:
+      R2_PUBLIC_EDITOR_ACCESS_KEY_ID: ${{ secrets.R2_PUBLIC_EDITOR_ACCESS_KEY_ID }}
+      R2_PUBLIC_EDITOR_ACCESS_KEY_SECRET: ${{ secrets.R2_PUBLIC_EDITOR_ACCESS_KEY_SECRET }}
+
   build:
     name: Build & deploy
     runs-on: ubuntu-latest
@@ -186,6 +204,17 @@ jobs:
       - name: Build
         run: hugo --environment production --baseURL "${{ steps.target.outputs.baseurl }}"
 
+      # pdf.yaml uploads the PDF edition next to these pages under this name.
+      # The theme puts it on the home page; the --delete sync below must leave
+      # that one file alone. Read before the archived versions are pulled into
+      # public/, so it is this build's own home page.
+      - name: Read the PDF file name
+        id: pdf
+        run: |
+          file=$(grep -oE '<meta name="?docs-pdf-file"? content="?[^" >]+' public/index.html | sed -E 's/.*content="?//' | head -1)
+          echo "file=$file" >> "$GITHUB_OUTPUT"
+          echo "PDF edition: ${file:-none}"
+
       # Runs before the archived versions are pulled into public/, so only this
       # build gets converted. Each version converts its own pages when it deploys.
       - name: Convert HTML to Markdown
@@ -270,6 +299,7 @@ jobs:
           # Empty for archived versions (their --delete is already scoped to their
           # own sub-dir prefix); on the root deploy it protects the version dirs.
           DELETE_EXCLUDES: ${{ steps.guard.outputs.excludes }}
+          PDF_FILE: ${{ steps.pdf.outputs.file }}
         run: |
           # Multi-pass sync to set Cache-Control (and Content-Type) per file type.
           # Pass 1 — fingerprinted bundles only. Everything under scss/ is
@@ -309,7 +339,10 @@ jobs:
           # the version sub-directories intact on the root (latest) deploy; for an
           # archived version it is empty and --delete is scoped to that version's
           # own sub-dir prefix, so it never touches the root or other versions.
+          # $PDF_FILE is the PDF edition, uploaded by pdf.yaml: no site build
+          # produces it, so --delete would prune it. PDFs of earlier version_tags
+          # are left unprotected on purpose, so --delete clears them out.
           aws s3 sync "$SOURCE_DIR" "s3://$AWS_S3_BUCKET/$DESTINATION_DIR" \
             --endpoint-url "$AWS_S3_ENDPOINT" --region "$AWS_REGION" --checksum-algorithm CRC32 \
-            --delete $DELETE_EXCLUDES \
+            --delete $DELETE_EXCLUDES ${PDF_FILE:+--exclude "$PDF_FILE"} \
             --cache-control "public, max-age=345600, must-revalidate"
