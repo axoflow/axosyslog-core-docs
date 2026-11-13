@@ -5,11 +5,11 @@ description: Run all documentation preparation tasks for a new AxoSyslog release
 Run all documentation preparation tasks for a new {{% param "product.name" %}}
 release.
 
-Work through the eight tasks below in order. After completing each task, pause
+Work through the nine tasks below in order. After completing each task, pause
 and summarize what changed before moving on. Do not start the next task until
 the user confirms the previous one is done.
 
-Task 4 is **blocked** until a pending pull request lands — see the task for what
+Task 5 is **blocked** until a pending pull request lands — see the task for what
 to do in the meantime.
 
 Ask up front: **"Which AxoSyslog release are we preparing for? (for example,
@@ -35,7 +35,7 @@ on `main` and **say so explicitly in every later finding** — `main` carries
 options that are not in the release, and documenting them early is the most
 common way this process goes wrong.
 
-Then read the upstream changelog. It drives Tasks 3 and 5:
+Then read the upstream changelog. It drives Tasks 3 and 6:
 
 ```sh
 sed -n '1,120p' tmp/axosyslog/NEWS.md
@@ -75,7 +75,7 @@ Pay particular attention to:
 - **New global options** — these belong in
   `content/chapter-global-options/reference-options/_index.md`.
 - **FilterX functions** — these are *not* covered by `axosyslog-cfg-helper`.
-  Check `content/filterx/function-reference.md` against the source by hand.
+  Task 4 checks them.
 
 `/check-options` carries the important caveat that its bundled database lags
 upstream, so treat its output as a floor and confirm anything thin against
@@ -83,7 +83,24 @@ upstream, so treat its output as a floor and confirm anything thin against
 
 ---
 
-## Task 4: Check the module and package matrix
+## Task 4: Check the FilterX function reference
+
+Run `/check-filterx-functions`.
+
+It compares the FilterX functions registered in `tmp/axosyslog` with the
+headings of `content/filterx/function-reference.md`, in both directions, and
+holds the rules for stubs, full entries, and finding the version a function was
+added in. `python3 scripts/filterx-functions-check.py` exits `0` when the page
+matches the source and `1` when something needs review.
+
+The report covers every function, not only the ones in this release, so it
+also shows the older backlog of undocumented functions. Fix the functions that
+`NEWS.md` lists for `<release>`, and report the rest as a separate list rather
+than folding it into the release.
+
+---
+
+## Task 5: Check the module and package matrix
 
 Run `/check-packages`.
 
@@ -98,7 +115,7 @@ source and `1` when something needs review.
 
 ---
 
-## Task 5: Check the metrics reference
+## Task 6: Check the metrics reference
 
 ```sh
 python3 scripts/metrics-update.py
@@ -127,7 +144,7 @@ exist.
 
 ---
 
-## Task 6: Sync the Helm chart pages
+## Task 7: Sync the Helm chart pages
 
 Docs pages: `content/install/helm/_index.md` (install walkthrough) and
 `content/install/helm/helm-chart-parameters.md` (parameter reference). The chart
@@ -205,7 +222,7 @@ list the user can forward upstream.
 
 ---
 
-## Task 7: Finalize the What's new section
+## Task 8: Finalize the What's new section
 
 Docs page: `content/whats-new/_index.md`.
 
@@ -252,7 +269,7 @@ Compare the existing list against `tmp/axosyslog/NEWS.md` and:
 
 ---
 
-## Task 8: Bump the version numbers
+## Task 9: Bump the version numbers
 
 This repo couples five fields in `config/_default/config.toml` to
 `data/versions.yaml`. Hugo config takes no template functions, so none of it is
@@ -307,7 +324,7 @@ Show the user a diff of every change and get confirmation before writing.
 
 ## Done
 
-When all eight tasks are complete, verify the whole build once more and report:
+When all nine tasks are complete, verify the whole build once more and report:
 
 ```sh
 hugo --minify
@@ -320,8 +337,8 @@ Then remind the user:
 > archived sub-sites pick up the new version list, and strip ` (current)` from
 > `body_attribute` on `release-<previous>` before that branch is republished.
 
-If Task 4 was skipped, state that explicitly in the closing summary — name it as
+If Task 5 was skipped, state that explicitly in the closing summary — name it as
 unverified rather than letting it disappear from the list of completed work. Do
-the same for Task 5 if Docker was unavailable.
+the same for Task 6 if Docker was unavailable.
 
 Do not commit, tag, or push anything as part of this command.

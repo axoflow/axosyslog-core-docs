@@ -1,5 +1,7 @@
 ---
-title: "CEF"
+title: "Parse CEF with FilterX"
+linkTitle: "CEF"
+description: "Parse Common Event Format (CEF) messages into a dict with the parse_cef() FilterX function, and set its pair and value separators."
 weight: 100
 aliases:
 - /filterx/filterx-parsing/cef/cef-parser-options/
@@ -9,6 +11,8 @@ aliases:
 Available in {{< product >}} 4.9 and later.
 
 The `parse_cef` FilterX function parses messages formatted in the [Common Event Format (CEF)](https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-8.3/cef-implementation-standard/Content/CEF/Chapter%201%20What%20is%20CEF.htm) into a JSON object.
+
+To create CEF messages from FilterX data, see {{% xref "/filterx/filterx-format-data/format-cef.md" %}}.
 
 ## Declaration
 
@@ -46,11 +50,11 @@ The following is a CEF-formatted message including mandatory and custom (extensi
 CEF:0|KasperskyLab|SecurityCenter|13.2.0.1511|KLPRCI_TaskState|Completed successfully|1|foo=foo bar=bar baz=test
 ```
 
-The following FilterX expression parses it and converts it into JSON format:
+The following FilterX expression parses it, and stores the result in the `${PARSED_MESSAGE}` name-value pair. Assigning a dict to a name-value pair stores it as JSON, so you don't have to format it explicitly:
 
 ```shell
 filterx {
-    ${PARSED_MESSAGE} = json(parse_cef(${MESSAGE}));
+    ${PARSED_MESSAGE} = parse_cef(${MESSAGE});
 };
 ```
 

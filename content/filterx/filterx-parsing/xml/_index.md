@@ -1,6 +1,8 @@
 ---
-title: "XML"
-weight: 1300
+title: "Parse XML with FilterX"
+linkTitle: "XML"
+description: "Parse raw XML into a dict with the parse_xml() FilterX function, and see how elements, attributes, and text values are mapped to dict keys."
+weight: 800
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
@@ -11,6 +13,8 @@ Available in {{< product >}} 4.9 and later.
 {{< include-headless "chunk/prereq-package-deb-only.md" "axosyslog-mod-xml-parser" >}}
 
 The `parse_xml()` FilterX function parses raw XMLs into dictionaries. This is a new implementation, so the limitations and options of the [legacy `xml-parser()`]({{< relref "/chapter-parsers/xml-parser/_index.md" >}}) do not apply.
+
+To create XML from FilterX data, see {{% xref "/filterx/filterx-format-data/format-xml.md" %}}.
 
 There is no standardized way of converting XML into a dict. {{< product >}} creates the most compact dict possible. This means certain nodes will have different types and structures depending on the input XML element. Note the following points:
 

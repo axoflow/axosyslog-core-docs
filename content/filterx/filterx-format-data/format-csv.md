@@ -1,8 +1,14 @@
 ---
-title: Comma-separated values
+title: "Format data as comma-separated values"
+linkTitle: "CSV"
+description: "Format a FilterX dict or list into a delimiter-separated string with format_csv(), and set the columns, delimiter, and default value."
+weight: 200
 ---
+<!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
 Formats a dictionary or a list into a comma-separated string.
+
+To parse comma-separated values, see {{% xref "/filterx/filterx-parsing/csv/_index.md" %}}.
 
 Usage: `format_csv(<input-list-or-dict>, columns=<json-list>, delimiter=<delimiter-character>, default_value=<string>)`
 

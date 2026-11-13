@@ -1,12 +1,17 @@
 ---
 title: Windows Event Logs XML
+description: "Format a FilterX dictionary into Windows Event Log XML with format_windows_eventlog_xml(), a specialized version of format_xml()."
+weight: 700
 ---
+<!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
 Available in {{< product >}} 4.13 and later.
 
 {{< include-headless "chunk/prereq-package-deb-only.md" "axosyslog-mod-xml-parser" >}}
 
 Formats a dictionary into Windows Event Logs XML. It's a specialized version of the [`format_xml()` function]({{< relref "/filterx/filterx-format-data/format-xml.md" >}}), all generic formatting tips apply to `format_windows_eventlog_xml()` as well.
+
+To parse Windows Event Log XML, see {{% xref "/filterx/filterx-parsing/windows-eventlog/_index.md" %}}.
 
 Usage: `format_windows_eventlog_xml(input_dictionary)`
 

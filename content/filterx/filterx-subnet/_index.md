@@ -1,7 +1,8 @@
 ---
 title: "IP addresses and subnets"
 linkTitle: "IP addresses and subnets"
-weight:  3100
+description: "Represent IPv4 and IPv6 addresses and subnets with the ip() and subnet() FilterX types, and filter messages by source network."
+weight: 900
 ---
 <!-- This file is under the copyright of Axoflow, and licensed under Apache License 2.0, except for using the Axoflow and AxoSyslog trademarks. -->
 
