@@ -75,7 +75,7 @@ Publishing:
 | What | How |
 |------|-----|
 | Current release | Automatic, on every push to `main` (`publish.yaml`) |
-| An older version | Automatic, on every push to its release branch (`publish-version-on-push.yaml`) |
+| An older version | Automatic, on every push to its release branch (`publish-version-on-push.yaml` starts **Publish versions** on `main`) |
 | Every older version | Actions → **Publish versions**, leave the version blank |
 | One older version | Actions → **Publish versions**, version = `4.26` |
 
@@ -95,9 +95,10 @@ tag.
    outgoing one a `ref:`.
 5. Push `main`, then run **Publish versions** to rebuild the older sub-sites.
 
-Every release branch also needs `publish-docs.yaml` and
-`publish-version-on-push.yaml` present: on a push, GitHub runs the workflow
-definitions from the pushed branch, not from `main`.
+Every release branch needs `publish-version-on-push.yaml` (copy it from `main`):
+on a push, GitHub runs the workflow definition from the pushed branch, not from
+`main`. That file only starts **Publish versions** on `main`, so every version is
+built by `main`'s pipeline and the release branch needs no other workflow.
 
 ## Generating Markdown output for LLMs
 

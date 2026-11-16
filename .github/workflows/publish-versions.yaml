@@ -8,6 +8,9 @@ name: Publish versions
 #     sub-site picks up the new central version list in its switcher), or
 #   - to republish a single archived version after fixing its branch/tag.
 #
+# publish-version-on-push.yaml also starts it, with one version, on every push
+# to a release branch.
+#
 # The latest version is published separately by publish.yaml (on push to main).
 
 on:
@@ -20,6 +23,12 @@ on:
 
 permissions:
   contents: read
+
+# Two quick pushes to one release branch: the second run replaces the first,
+# as it did when the push workflow built the version itself.
+concurrency:
+  group: publish-versions-${{ inputs.version || 'all' }}
+  cancel-in-progress: true
 
 jobs:
   matrix:

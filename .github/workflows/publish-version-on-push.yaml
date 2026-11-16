@@ -7,12 +7,17 @@ name: Publish archived version on push
 # is this branch. The latest version (main) is handled by publish.yaml; this
 # workflow never touches the site root.
 #
+# It builds nothing itself: it starts main's "Publish versions" for the version,
+# so every version is built by main's pipeline (publish-docs.yaml, pdf.yaml, and
+# the theme actions main pins). Release branches carry no copy of the pipeline
+# that could fall behind.
+#
 # IMPORTANT: for `push` events GitHub runs the workflow definition from the pushed
-# branch, not from main — and that goes for the reusable `./.github/workflows/
-# publish-docs.yaml` it calls as well. Both files must therefore exist on every
-# release-* branch that a version tracks, or pushes to that branch silently
-# publish nothing. When a release branch predates them, rebuild it manually
-# instead: Actions → "Publish versions" → version = <id>.
+# branch, not from main. THIS file must therefore exist on every release-* branch
+# that a version tracks, or pushes to that branch silently publish nothing. It
+# depends on nothing else in the branch, so copying it there is enough. When a
+# release branch lacks it, rebuild manually: Actions → "Publish versions" →
+# version = <id>.
 
 on:
   push:
@@ -21,10 +26,6 @@ on:
 
 permissions:
   contents: read
-
-concurrency:
-  group: publish-archived-${{ github.ref_name }}
-  cancel-in-progress: true
 
 jobs:
   resolve:
@@ -58,15 +59,20 @@ jobs:
           print("version=" + ver)
           PY
 
+  # A workflow_dispatch sent with GITHUB_TOKEN does start a run (most events it
+  # causes do not), so no app token or PAT is needed.
   publish:
-    name: Publish ${{ needs.resolve.outputs.version }}
+    name: Start "Publish versions" for ${{ needs.resolve.outputs.version }}
     needs: resolve
     if: ${{ needs.resolve.outputs.version != '' }}
-    uses: ./.github/workflows/publish-docs.yaml
-    with:
-      ref: ${{ github.ref_name }}
-      version: ${{ needs.resolve.outputs.version }}
-      is_latest: false
-    secrets:
-      R2_PUBLIC_EDITOR_ACCESS_KEY_ID: ${{ secrets.R2_PUBLIC_EDITOR_ACCESS_KEY_ID }}
-      R2_PUBLIC_EDITOR_ACCESS_KEY_SECRET: ${{ secrets.R2_PUBLIC_EDITOR_ACCESS_KEY_SECRET }}
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - name: Dispatch main's pipeline
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ needs.resolve.outputs.version }}
+        run: |
+          gh workflow run publish-versions.yaml -R "$GITHUB_REPOSITORY" --ref main -f version="$VERSION"
+          echo "::notice::Started \"Publish versions\" on main for $VERSION (pushed: $GITHUB_REF_NAME at ${GITHUB_SHA:0:8})"
