@@ -40,29 +40,16 @@ jobs:
       - name: Checkout (main)
         uses: actions/checkout@v7
 
+      - name: Check out the theme it pins
+        run: git submodule update --init --depth 1 themes/docsy-axoflow
+
       - name: Read data/versions.yaml
         id: set
         env:
           ONLY: ${{ github.event.inputs.version }}
         run: |
           pip install --quiet pyyaml
-          python3 - >> "$GITHUB_OUTPUT" <<'PY'
-          import json, os, yaml
-          only = os.environ.get("ONLY", "").strip()
-          data = yaml.safe_load(open("data/versions.yaml")) or []
-          out = []
-          for v in data:
-              if v.get("latest"):
-                  continue
-              ver = str(v.get("version") or "").strip()
-              ref = str(v.get("ref") or "").strip()
-              if not ver or not ref:
-                  continue
-              if only and ver != only:
-                  continue
-              out.append({"version": ver, "ref": ref})
-          print("versions=" + json.dumps(out))
-          PY
+          python3 themes/docsy-axoflow/scripts/ci/versions.py --github-output matrix --only "$ONLY"
 
   publish:
     name: Publish ${{ matrix.version.version }}

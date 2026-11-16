@@ -11,6 +11,13 @@ name: Build PDF (reusable)
 #   - publish-docs.yaml → alongside every site deploy, latest and archived
 #   - manually via workflow_dispatch, to build a PDF without deploying it
 #
+# THE INTERFACE every docsy-axoflow site's pdf.yaml should share: `ref`,
+# `destination` (the bucket prefix of the version's pages), `versions_yaml`
+# (the version list to build an archived ref with), and `publish`. The caller
+# works out the last three once (publish-docs.yaml's plan job, through the
+# theme's scripts/ci/versions.py), so this workflow knows nothing about
+# versions.
+#
 # Deliberately a separate job from the site build: Paged.js lays the whole
 # document out in JavaScript, and an out-of-memory render must never be able
 # to block a docs release.
@@ -22,14 +29,14 @@ on:
         description: "Git ref (branch or tag) to build. Empty = default branch."
         type: string
         default: ''
-      version:
-        description: "Version id (also the URL sub-path / R2 sub-dir). Ignored when is_latest."
+      destination:
+        description: "Bucket prefix of this version's pages (docs/axosyslog-core, docs/axosyslog-core/4.28). Required to publish."
         type: string
         default: ''
-      is_latest:
-        description: "True for the latest version (uploaded to the site root)."
-        type: boolean
-        default: false
+      versions_yaml:
+        description: "data/versions.yaml to build with, for an archived ref. Empty = the ref's own."
+        type: string
+        default: ''
       publish:
         description: "Upload the PDF to R2 as well as to the workflow artifacts."
         type: boolean
@@ -96,14 +103,15 @@ jobs:
             echo "HUGO_PARAMS_BUILDDOCSYAXOFLOWCOMMIT=$(git -C themes/docsy-axoflow rev-parse HEAD || true)"
           } | tee -a "$GITHUB_ENV"
 
-      # Same overlay as publish-docs.yaml, so an archived PDF's version line
-      # matches the pages it was published next to.
-      - name: Overlay version list from main
-        if: steps.enabled.outputs.enabled == 'true' && inputs.version != '' && !inputs.is_latest
+      # Same overlay as the site build, so an archived PDF's version line
+      # matches the pages it is published next to.
+      - name: Overlay the version list
+        if: steps.enabled.outputs.enabled == 'true' && inputs.versions_yaml != ''
+        env:
+          VERSIONS_YAML: ${{ inputs.versions_yaml }}
         run: |
-          git fetch --depth=1 origin main
           mkdir -p data
-          git show FETCH_HEAD:data/versions.yaml > data/versions.yaml
+          printf '%s\n' "$VERSIONS_YAML" > data/versions.yaml
 
       - name: Set up Hugo
         if: steps.enabled.outputs.enabled == 'true'
@@ -154,23 +162,13 @@ jobs:
           path: ${{ steps.build.outputs.path }}
           retention-days: 30
 
-      # Same derivation as publish-docs.yaml's "Resolve build target", so the
-      # PDF lands in the directory its version's pages are deployed to.
-      - name: Resolve upload target
-        id: target
+      - name: Check the upload target
         if: steps.enabled.outputs.enabled == 'true' && inputs.publish
+        env:
+          DESTINATION: ${{ inputs.destination }}
         run: |
-          root=$(grep -E '^[[:space:]]*baseurl[[:space:]]*=' config/production/config.toml | head -1 | sed -E 's/.*=[[:space:]]*"([^"]+)".*/\1/')
-          root="${root%/}/"
-          if [ "${{ inputs.is_latest }}" = "true" ]; then
-            baseurl="$root"
-          else
-            [ -n "${{ inputs.version }}" ] || { echo "version is required for an archived upload" >&2; exit 1; }
-            baseurl="${root}${{ inputs.version }}/"
-          fi
-          dest=$(printf '%s' "$baseurl" | sed -E 's#^[a-z]+://[^/]+/##; s#/$##')
-          echo "dest=$dest" >> "$GITHUB_OUTPUT"
-          echo "dest=$dest"
+          [ -n "$DESTINATION" ] || { echo "publish needs a destination" >&2; exit 1; }
+          echo "Uploading to $DESTINATION/${{ steps.build.outputs.file }}"
 
       - name: install-aws-cli
         if: steps.enabled.outputs.enabled == 'true' && inputs.publish
@@ -188,7 +186,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_PUBLIC_EDITOR_ACCESS_KEY_SECRET }}
           AWS_S3_ENDPOINT: 'https://dc6bedf14f451ab276dc7caf3307af2a.r2.cloudflarestorage.com/'
           AWS_REGION: 'auto'
-          DESTINATION_DIR: ${{ steps.target.outputs.dest }}
+          DESTINATION_DIR: ${{ inputs.destination }}
         run: |
           # publish-docs.yaml's --delete sync skips this file by name (the home
           # page's docs-pdf-file meta), so the next site deploy keeps it.

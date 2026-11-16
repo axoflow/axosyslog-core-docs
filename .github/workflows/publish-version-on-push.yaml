@@ -39,25 +39,16 @@ jobs:
         with:
           ref: main
 
+      - name: Check out the theme main pins
+        run: git submodule update --init --depth 1 themes/docsy-axoflow
+
       - name: Map branch -> version
         id: map
         env:
           BRANCH: ${{ github.ref_name }}
         run: |
           pip install --quiet pyyaml
-          python3 - >> "$GITHUB_OUTPUT" <<'PY'
-          import os, yaml
-          branch = os.environ["BRANCH"]
-          data = yaml.safe_load(open("data/versions.yaml")) or []
-          ver = ""
-          for v in data:
-              if v.get("latest"):
-                  continue
-              if str(v.get("ref") or "").strip() == branch:
-                  ver = str(v.get("version") or "").strip()
-                  break
-          print("version=" + ver)
-          PY
+          python3 themes/docsy-axoflow/scripts/ci/versions.py --github-output branch-version "$BRANCH"
 
   # A workflow_dispatch sent with GITHUB_TOKEN does start a run (most events it
   # causes do not), so no app token or PAT is needed.
