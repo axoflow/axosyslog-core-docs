@@ -75,7 +75,7 @@ Publishing:
 | What | How |
 |------|-----|
 | Current release | Automatic, on every push to `main` (`publish.yaml`) |
-| An older version | Automatic, on every push to its release branch (`publish-version-on-push.yaml`) |
+| An older version | Automatic, on every push to its release branch (`publish-version-on-push.yaml` starts **Publish versions** on `main`) |
 | Every older version | Actions → **Publish versions**, leave the version blank |
 | One older version | Actions → **Publish versions**, version = `4.26` |
 
@@ -95,9 +95,10 @@ tag.
    outgoing one a `ref:`.
 5. Push `main`, then run **Publish versions** to rebuild the older sub-sites.
 
-Every release branch also needs `publish-docs.yaml` and
-`publish-version-on-push.yaml` present: on a push, GitHub runs the workflow
-definitions from the pushed branch, not from `main`.
+Every release branch needs `publish-version-on-push.yaml` (copy it from `main`):
+on a push, GitHub runs the workflow definition from the pushed branch, not from
+`main`. That file only starts **Publish versions** on `main`, so every version is
+built by `main`'s pipeline and the release branch needs no other workflow.
 
 ## Generating Markdown output for LLMs
 
@@ -129,3 +130,5 @@ The site can be converted to Markdown files suitable for LLM consumption using t
 The script mirrors the Hugo output directory structure, converting each `index.html` to an `index.md` file in the same directory. Each file starts with a YAML header (title, URL, description, last modified date). Links are absolute, and internal links point to the Markdown copy of the target page. Taxonomy pages and alias redirects are skipped.
 
 Hugo also writes `llms.txt` to the site root: an index of the top-level sections, each linking its own `llms.txt` (for example, `chapter-destinations/llms.txt`) that lists the section's Markdown copies. The script then writes `llms-full.txt` files from those copies: one at the site root with every page, and one per top-level section (for example, `chapter-destinations/llms-full.txt`).
+
+An archived version gets its own set under its sub-directory (for example, `4.28/llms.txt`), with links that stay inside that version. Whether it is built depends on the `[outputs]` block in the `config/_default/config.toml` of the version's `ref`, not of `main`: `home` must list `"llms"`. Versions whose theme predates the per-section files (4.27 and older) publish a single `llms.txt` without section indexes.
