@@ -27,9 +27,11 @@ description = "Documentation for AxoSyslog, the scalable security data processor
 tagline = "Scalable security data processor"
 
 [outputs]
-    home = ["HTML", "print", "llms"]
-    # Enable print this section menu item
-    section = [ "HTML", "print" ]
+    # No `print`: it rendered every section a second time as one flattened page,
+    # and nothing links to those pages. "Print this page" calls window.print(),
+    # and the whole book is the PDF edition (config/pdf/).
+    home = ["HTML", "llms"]
+    section = ["HTML"]
     page = ["HTML"]
 
 # output for llm bots
