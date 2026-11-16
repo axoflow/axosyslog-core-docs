@@ -73,6 +73,28 @@ jobs:
           set-safe-directory: true
           fetch-depth: 0
 
+      # The theme's CI actions (r2-deploy) come from the theme commit that THIS
+      # workflow file was committed with, not from the submodule of the ref
+      # being built: "Publish versions" runs main's workflow on a release
+      # branch whose pinned theme predates the actions. Same pairing as the
+      # workflow file itself, so the two never disagree.
+      - name: Resolve the pipeline's theme commit
+        id: pipeline
+        run: |
+          git fetch --depth=1 origin "$GITHUB_SHA"
+          theme=$(git ls-tree FETCH_HEAD themes/docsy-axoflow | awk '{print $3}')
+          [ -n "$theme" ] || { echo "no themes/docsy-axoflow gitlink in $GITHUB_SHA" >&2; exit 1; }
+          echo "theme=$theme" >> "$GITHUB_OUTPUT"
+          echo "Pipeline theme: $theme (built ref pins $(git -C themes/docsy-axoflow rev-parse HEAD))"
+
+      - name: Check out the pipeline's theme actions
+        uses: actions/checkout@v7
+        with:
+          repository: axoflow/docsy-axoflow
+          ref: ${{ steps.pipeline.outputs.theme }}
+          path: .pipeline-theme
+          sparse-checkout: .github/actions
+
       # Stamp every page with the ref/commit it came from (theme renders these as
       # <meta name="docs-build-*">), so a published sub-site can be checked against
       # the ref it is supposed to track. Resolved from the checkout, not from
@@ -275,10 +297,10 @@ jobs:
       - name: Package manpages into a single file
         run: tar -czf ./public/manpages.tar.gz -C public/manpages .
 
-      # On the root (latest) deploy, Pass 3 below uses --delete to prune removed
+      # On the root (latest) deploy, the deploy step's --delete prunes removed
       # pages. Without a guard that would also delete every version sub-directory,
-      # since they are not part of main's build. Build an --exclude per non-latest
-      # version (its id is its sub-dir) so the archived sub-sites are never pruned —
+      # since they are not part of main's build. List every non-latest version
+      # (its id is its sub-dir) so the archived sub-sites are never pruned —
       # and, on the same pass, so the copies pulled in for the unified index are not
       # uploaded back over the sub-site that produced them.
       - name: Compute version-subdir delete guard
@@ -291,66 +313,21 @@ jobs:
           data = yaml.safe_load(open("data/versions.yaml")) or []
           dirs = [str(v["version"]).strip() for v in data
                   if not v.get("latest") and str(v.get("version") or "").strip()]
-          print("excludes=" + " ".join(f"--exclude {d}/*" for d in dirs))
+          print("dirs=" + " ".join(dirs))
           PY
           echo "Protected version subdirs computed."
 
+      # The multi-pass sync (cache headers per file type, charsets for the
+      # Markdown copies and llms*.txt, --delete) lives in the theme, shared by
+      # every docsy-axoflow site.
       - name: Deploy to Cloudflare R2
-        env:
-          AWS_S3_BUCKET: 'axosyslog-core-docs'
-          AWS_ACCESS_KEY_ID: ${{ secrets.R2_PUBLIC_EDITOR_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_PUBLIC_EDITOR_ACCESS_KEY_SECRET }}
-          AWS_S3_ENDPOINT: 'https://dc6bedf14f451ab276dc7caf3307af2a.r2.cloudflarestorage.com/'
-          AWS_REGION: 'auto'
-          SOURCE_DIR: 'public'
-          DESTINATION_DIR: ${{ steps.target.outputs.dest }}
-          # Empty for archived versions (their --delete is already scoped to their
-          # own sub-dir prefix); on the root deploy it protects the version dirs.
-          DELETE_EXCLUDES: ${{ steps.guard.outputs.excludes }}
-          PDF_FILE: ${{ steps.pdf.outputs.file }}
-        run: |
-          # Multi-pass sync to set Cache-Control (and Content-Type) per file type.
-          # Pass 1 — fingerprinted bundles only. Everything under scss/ is
-          # Hugo-fingerprinted (the content hash is in the filename), so a
-          # change produces a new filename. Safe to cache immutably for a year.
-          aws s3 sync "$SOURCE_DIR" "s3://$AWS_S3_BUCKET/$DESTINATION_DIR" \
-            --endpoint-url "$AWS_S3_ENDPOINT" --region "$AWS_REGION" --checksum-algorithm CRC32 \
-            --exclude "*" \
-            --include "scss/*" \
-            --include "js/*" --include "css/*" --include "webfonts/*" --include "fonts/*" \
-            --include "icons/*" --include "img/*" --include "favicons/*" \
-            --cache-control "public, max-age=31536000, immutable"
-
-          # Pass 2 — other static assets, 30 days.
-          aws s3 sync "$SOURCE_DIR" "s3://$AWS_S3_BUCKET/$DESTINATION_DIR" \
-            --endpoint-url "$AWS_S3_ENDPOINT" --region "$AWS_REGION" --checksum-algorithm CRC32 \
-            --exclude "*" \
-            --include "pagefind/*" \
-            --cache-control "public, max-age=2592000"
-
-          # Pass 2b — the Markdown copies and llms*.txt, with the charset stated:
-          # the CLI guesses the type without one, and the text is full of ’ and –.
-          # Same caching as HTML. Pass 3 then skips them as already up to date.
-          aws s3 sync "$SOURCE_DIR" "s3://$AWS_S3_BUCKET/$DESTINATION_DIR" \
-            --endpoint-url "$AWS_S3_ENDPOINT" --region "$AWS_REGION" --checksum-algorithm CRC32 \
-            --exclude "*" --include "*.md" $DELETE_EXCLUDES \
-            --content-type "text/markdown; charset=utf-8" \
-            --cache-control "public, max-age=345600, must-revalidate"
-          aws s3 sync "$SOURCE_DIR" "s3://$AWS_S3_BUCKET/$DESTINATION_DIR" \
-            --endpoint-url "$AWS_S3_ENDPOINT" --region "$AWS_REGION" --checksum-algorithm CRC32 \
-            --exclude "*" --include "llms.txt" --include "*/llms.txt" --include "*/llms-full.txt" --include "llms-full.txt" $DELETE_EXCLUDES \
-            --content-type "text/plain; charset=utf-8" \
-            --cache-control "public, max-age=345600, must-revalidate"
-
-          # Pass 3 — HTML and everything else: 4 days, must revalidate.
-          # --delete prunes files removed from the build. $DELETE_EXCLUDES keeps
-          # the version sub-directories intact on the root (latest) deploy; for an
-          # archived version it is empty and --delete is scoped to that version's
-          # own sub-dir prefix, so it never touches the root or other versions.
-          # $PDF_FILE is the PDF edition, uploaded by pdf.yaml: no site build
-          # produces it, so --delete would prune it. PDFs of earlier version_tags
-          # are left unprotected on purpose, so --delete clears them out.
-          aws s3 sync "$SOURCE_DIR" "s3://$AWS_S3_BUCKET/$DESTINATION_DIR" \
-            --endpoint-url "$AWS_S3_ENDPOINT" --region "$AWS_REGION" --checksum-algorithm CRC32 \
-            --delete $DELETE_EXCLUDES ${PDF_FILE:+--exclude "$PDF_FILE"} \
-            --cache-control "public, max-age=345600, must-revalidate"
+        uses: ./.pipeline-theme/.github/actions/r2-deploy
+        with:
+          bucket: axosyslog-core-docs
+          destination: ${{ steps.target.outputs.dest }}
+          # Empty for archived versions (their --delete is already scoped to
+          # their own sub-dir); on the root deploy it protects the version dirs.
+          protect: ${{ steps.guard.outputs.dirs }}
+          pdf-file: ${{ steps.pdf.outputs.file }}
+          access-key-id: ${{ secrets.R2_PUBLIC_EDITOR_ACCESS_KEY_ID }}
+          secret-access-key: ${{ secrets.R2_PUBLIC_EDITOR_ACCESS_KEY_SECRET }}
