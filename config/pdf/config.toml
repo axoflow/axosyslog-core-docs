@@ -8,9 +8,6 @@
 # PurgeCSS keys off HUGO_ENVIRONMENT=production, so this profile also gets the
 # unpurged stylesheet: the PDF-only selectors can't be stripped by accident.
 
-buildDrafts = false
-enableRobotsTXT = false
-
 [params.pdf]
   # WebP cannot go into a PDF, so Chrome would store every screenshot
   # losslessly. JPEG is embedded as-is. See the print branch of

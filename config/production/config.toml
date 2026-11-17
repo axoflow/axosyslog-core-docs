@@ -1,5 +1,4 @@
 baseurl = "https://axoflow.com/docs/axosyslog-core/"
-buildDrafts = false
 googleAnalytics = "GTM-NPCJB3VK"
 
 [services]
@@ -8,8 +7,6 @@ googleAnalytics = "GTM-NPCJB3VK"
 id = "GTM-NPCJB3VK"
 
 [params]
-
-url_latest_version = "https://axoflow.com/docs/axosyslog-core/"
 
 # Content group for Google Analytics. Optional.
 contentGroup = "axosyslog-docs"

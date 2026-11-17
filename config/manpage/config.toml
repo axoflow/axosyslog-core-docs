@@ -1,5 +1,4 @@
 baseurl = "https://axoflow.com/docs/axosyslog-core/"
-buildDrafts = false
 
 
 [markup.goldmark.renderer]
