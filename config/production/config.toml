@@ -1,5 +1,4 @@
 baseurl = "https://axoflow.com/docs/axosyslog-core/"
-googleAnalytics = "GTM-NPCJB3VK"
 
 [services]
 [services.googleAnalytics]
