@@ -83,10 +83,8 @@ description = "Documentation for AxoSyslog, the scalable security data processor
 
   # email = ""
 
-  # Printed on the PDF edition's cover (docsy-axoflow's pdf/cover.html). The
-  # web footer's copyright line comes from the theme's footer data instead.
-  copyright = "Axoflow Inc."
-  copyright_from = 2023
+  # NO `copyright` OR `copyright_from`: docsy-axoflow defaults them for the PDF
+  # cover ("Axoflow Inc.", 2023). Set `copyright_from` here to change the year.
 
   # The PDF edition's author meta falls back to this (docs/baseof.pdf.html).
   project_name = "AxoSyslog"
