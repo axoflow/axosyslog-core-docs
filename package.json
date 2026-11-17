@@ -7,6 +7,9 @@
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^8.0.0",
     "pagedjs": "^0.4.3",
-    "puppeteer": "^24.43.1"
+    "puppeteer": "^25.17.0"
+  },
+  "allowScripts": {
+    "puppeteer@25.17.0": true
   }
 }
