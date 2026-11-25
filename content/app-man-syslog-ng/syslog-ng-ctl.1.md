@@ -374,6 +374,31 @@ Use the `syslog-ng-ctl reload` command to reload the configuration file of {{% p
 
 The `syslog-ng-ctl reload` command returns 0 if the operation was successful, 1 otherwise.
 
+If the reload fails, `syslog-ng-ctl reload` prints the reason, and {{% param "product.abbrev" %}} keeps running with its previous configuration. It reports both kinds of errors (available in {{< product >}} 4.30 and later):
+
+- Syntax errors in the new configuration, with the location of the error:
+
+    ```shell
+    $ syslog-ng-ctl reload
+    Syntax error parsing configuration file, previous config remained intact
+
+    Error parsing log statement: syntax error, unexpected LL_IDENTIFIER, expecting '}'
+
+    In /etc/syslog-ng.conf:9:2-9:6:
+    ...
+    ```
+
+- Errors that occur when {{% param "product.abbrev" %}} initializes the new configuration, for example, when it cannot bind to a port:
+
+    ```shell
+    $ syslog-ng-ctl reload
+    Config reload failed, reverted to previous config
+
+    Error binding socket; addr='AF_INET(99.99.99.99:514)', error='Cannot assign requested address (99)'
+    Error initializing message pipeline; plugin_name='tcp', location='/etc/syslog-ng.conf:8:11'
+    Error initializing new configuration, reverting to old config;
+    ```
+
 ## Reopening destination files {#syslog-ng-ctl-reopen}
 
 `syslog-ng-ctl reopen`
