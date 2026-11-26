@@ -9,6 +9,10 @@ weight: 10
 
 Before you upgrade, check the deprecations and breaking changes of every version between your current version and the target version. For the upgrade steps, see {{% xref "/install/upgrade-axosyslog/_index.md" %}}.
 
+## Version 4.30
+
+- The new [`lumberjack()` transport]({{< relref "/chapter-sources/lumberjack/_index.md" >}}) of the `network()` source receives events over the Lumberjack (Beats) protocol, so Filebeat, the other Beats, and Logstash can send their events to {{< product >}} by pointing their Logstash output at it.
+
 ## Version 4.29 (2026-10-07)
 
 - You can now change the [`capacity-bytes()`]({{< relref "/chapter-routing-filters/concepts-diskbuffer/_index.md" >}}) option of an existing disk-buffer file. The new value takes effect on the next reload or restart, or later, once the content of the disk-buffer allows it.
