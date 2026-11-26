@@ -13,3 +13,5 @@
 
 If you use the `udp` transport, {{% param "product.abbrev" %}} automatically sends multicast packets if a multicast destination address is specified. The `tcp` transport does not support multicasting.
 
+Available in version 4.30 and later: the `network()` destination also accepts the `splunk-s2s` transport, which sends data to Splunk indexers over the Splunk-to-Splunk (S2S) protocol. For details, see {{% xref "/chapter-destinations/splunk-s2s/_index.md" %}}.
+
