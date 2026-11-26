@@ -25,6 +25,7 @@ Before you upgrade, check the deprecations and breaking changes of every version
     - [`response-action()`]({{< relref "/chapter-destinations/arrow-flight/_index.md#response-action" >}}) of the `arrow-flight()` destination sets how {{< product >}} handles the different Arrow Flight results, for example, to drop or retry a batch instead of disconnecting.
     - [`prefix()`]({{< relref "/chapter-destinations/opentelemetry/_index.md#prefix" >}}) of the `opentelemetry()` destination sets the name-value pairs that the OTLP payload is read from, so you can send a record that you built in FilterX.
     - [`kafka-logging()`]({{< relref "/chapter-destinations/configuring-destinations-kafka-c/reference-destination-kafka-c/_index.md#kafka-option-kafka-logging" >}}) of the `kafka()` destination controls the log messages of the librdkafka library.
+- The [`azure(monitor())` authentication]({{< relref "/chapter-destinations/azure-monitor/_index.md#azure-cert-file" >}}) of `cloud-auth()` can authenticate with a client certificate (`cert-file()` and `key-file()`) instead of a client secret, and can verify the login host with custom CA certificates (`ca-file()` and `ca-dir()`). If Azure rejects a request as unauthorized, {{< product >}} now requests a new access token.
 
 ### Breaking changes
 
