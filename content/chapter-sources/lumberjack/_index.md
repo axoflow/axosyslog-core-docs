@@ -58,7 +58,7 @@ To receive the events without TLS, omit the `tls()` option from the source, and 
 - {{% param "product.name" %}} doesn't parse the event as a syslog message. The `${MESSAGE}` macro contains the event as JSON, exactly as the sender sent it.
 - Version 1 of the protocol sends the events as key-value pairs. {{% param "product.name" %}} converts them into a JSON object.
 - The `${.lumberjack.version}` name-value pair contains the version of the protocol that the event arrived in (`1` or `2`).
-- The `${HOST}` macro contains the address or the hostname of the sender, depending on the [`use-dns()`]({{< relref "/chapter-sources/configuring-sources-network/reference-source-network/_index.md#source-option-use-dns" >}}) option.
+- The `${HOST}` macro contains the address or the hostname of the sender, depending on the [`use-dns()`]({{< relref "/chapter-sources/configuring-sources-network/reference-source-network/_index.md#use-dns" >}}) option.
 - The timestamps of the message are the time when {{% param "product.name" %}} received it.
 
 To access the fields of the event, parse `${MESSAGE}` with the [`json-parser()`]({{< relref "/chapter-parsers/json-parser/_index.md" >}}) or in [FilterX]({{< relref "/filterx/_index.md" >}}). The following example uses the [`=??` operator]({{< relref "/filterx/operator-reference.md#assign-non-null" >}}), so `${HOST}` and `${MESSAGE}` keep their original values if the event doesn't have the `host.name` or `message` field:
