@@ -26,6 +26,9 @@ Before you upgrade, check the deprecations and breaking changes of every version
     - [`prefix()`]({{< relref "/chapter-destinations/opentelemetry/_index.md#prefix" >}}) of the `opentelemetry()` destination sets the name-value pairs that the OTLP payload is read from, so you can send a record that you built in FilterX.
     - [`kafka-logging()`]({{< relref "/chapter-destinations/configuring-destinations-kafka-c/reference-destination-kafka-c/_index.md#kafka-option-kafka-logging" >}}) of the `kafka()` destination controls the log messages of the librdkafka library.
 - The [`azure(monitor())` authentication]({{< relref "/chapter-destinations/azure-monitor/_index.md#azure-cert-file" >}}) of `cloud-auth()` can authenticate with a client certificate (`cert-file()` and `key-file()`) instead of a client secret, and can verify the login host with custom CA certificates (`ca-file()` and `ca-dir()`). If Azure rejects a request as unauthorized, {{< product >}} now requests a new access token.
+- The new [`$(bucket)` template function]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md#template-function-bucket" >}}) returns a stable bucket number for its values, so you can distribute the messages among several log paths, for example, by host.
+- The template functions that use value-pairs, for example, [`format-json`]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md#template-function-format-json" >}}), now accept the `"key" => "value"` syntax.
+- The gRPC-based sources, for example, the [`opentelemetry()` source]({{< relref "/chapter-sources/opentelemetry/_index.md#tls" >}}), reload their TLS key and certificates when you reload the configuration, without restarting the gRPC server.
 
 ### Breaking changes
 
