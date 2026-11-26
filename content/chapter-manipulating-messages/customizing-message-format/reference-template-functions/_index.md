@@ -35,6 +35,43 @@ Available in {{% param "product.abbrev" %}} version 3.10 and later.
 
 
 
+## bucket {#template-function-bucket}
+
+*Syntax:*
+
+```shell
+$(bucket <number-of-buckets> <value> [<value> ...])
+$(bucket --weights <weight1>,<weight2>,... <value> [<value> ...])
+```
+
+Available in {{< product >}} 4.30 and later.
+
+*Description:* Calculates a hash from the values, and returns a bucket number between `0` and `<number-of-buckets> - 1`. The same values always get the same bucket number, so you can use `$(bucket)` to distribute the messages among several log paths based on their content, for example, by the name of the sending host.
+
+- `<number-of-buckets>`: The number of buckets. The maximum is 4096.
+- `--weights`: A comma-separated list of non-negative integers, one for every bucket, instead of the number of buckets. The share of a bucket is proportional to its weight. A bucket with weight `0` gets no messages. You can set at most 4096 weights, and every weight can be at most 4096. Not every weight can be `0`.
+
+For example, the following configuration distributes the messages between two destinations by the name of the host, so the messages of a host always go to the same destination:
+
+```shell
+log {
+  source(s_network);
+  channel {
+    if ("$(bucket 2 ${HOST})" == "0") {
+      destination(d_first);
+    } else {
+      destination(d_second);
+    };
+  };
+};
+```
+
+To send about three times more hosts to the first destination, use `$(bucket --weights 3,1 ${HOST})`.
+
+{{< warning >}}
+The hash function can change in later {{< product >}} versions, or on other platforms. After an upgrade, the same values can get a different bucket number.
+{{< /warning >}}
+
 ## ceil {#template-function-ceil}
 
 *Syntax:*
@@ -412,6 +449,15 @@ The following example selects every available information about the log message,
       --exclude R_* --exclude S_* --key .SDATA.meta.sequenceId
       --pair MSGHDR="$PROGRAM[$PID]: ")
 ```
+
+In version 4.30 and later, you can also define a value-pair with the `=>` syntax, the same way as in other parts of the configuration. For example, the following two template functions are the same:
+
+```shell
+$(format-json "host" => "${HOST}" "msg" => "${MSG}")
+$(format-json host=${HOST} msg=${MSG})
+```
+
+The `=>` syntax works in every template function that uses value-pairs, for example, `format-flat-json` and `format-welf`. A key must be before the `=>`, and a value must be after it, otherwise the configuration is invalid.
 
 The following example shows how to use this template function to store log messages in JSON format:
 

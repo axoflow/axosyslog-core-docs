@@ -62,6 +62,8 @@ This is the default method, authentication is disabled (`auth(insecure())`).
 gRPC-based drivers have a different `tls()` block implementation from the `network()` or `http()` drivers, but most features are the same.
 {{% /alert %}}
 
+In version 4.30 and later, the gRPC-based sources (for example, the `opentelemetry()` source) read the key and the certificate files again when you reload the configuration of {{< product >}}, without restarting the gRPC server. That way you can replace expiring certificates without closing the connections of the clients. This requires a {{< product >}} build that uses a gRPC version with in-memory certificate providers. If the new key or certificates are invalid, {{< product >}} logs an error.
+
 {{< if "opentelemetry" >}}
 ```shell
 destination d_otlp {
