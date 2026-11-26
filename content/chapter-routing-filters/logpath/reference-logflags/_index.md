@@ -10,7 +10,7 @@ Flags influence the behavior of `syslog-ng`, and the way it processes messages. 
 
 {{% alert title="Warning" color="warning" %}}
 
-The `final`, `fallback`, and `catchall` flags apply only for the top-level log paths, they have no effect on embedded log paths.
+The `catchall` flag works only in top-level log statements: using it in an embedded log statement is a configuration error. In embedded log statements and junctions, the `final` and `fallback` flags apply only to the other branches of the same enclosing log statement, not to other log paths.
 
 {{% /alert %}}
 

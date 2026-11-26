@@ -13,6 +13,7 @@ Before you upgrade, check the deprecations and breaking changes of every version
 
 - The new [`lumberjack()` transport]({{< relref "/chapter-sources/lumberjack/_index.md" >}}) of the `network()` source receives events over the Lumberjack (Beats) protocol, so Filebeat, the other Beats, and Logstash can send their events to {{< product >}} by pointing their Logstash output at it.
 - The new `splunk-s2s` transport of the `network()` source and destination implements the Splunk-to-Splunk (S2S) protocol. The [source]({{< relref "/chapter-sources/splunk-s2s/_index.md" >}}) receives data from Splunk Universal and Heavy Forwarders, and the [destination]({{< relref "/chapter-destinations/splunk-s2s/_index.md" >}}) sends data to Splunk indexers the same way as a forwarder does.
+- The new experimental [`destination-failover` log path flag]({{< relref "/chapter-routing-filters/logpath/destination-failover/_index.md" >}}) sends messages over an ordered list of alternative destinations. While a destination is unreachable, the messages go to the next alternative, and they return to the first one when it becomes available again. The alternatives can use different destination drivers, for example, a remote server and a local file.
 
 ## Version 4.29 (2026-10-07)
 
