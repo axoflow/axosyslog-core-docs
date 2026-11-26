@@ -18,6 +18,9 @@ Before you upgrade, check the deprecations and breaking changes of every version
 - New FilterX functions:
     - [`format_sdata()`]({{< relref "/filterx/filterx-sdata/_index.md#format-sdata" >}}) formats a dictionary as RFC5424 structured data. The new `sdata` argument of [`format_syslog_5424()`]({{< relref "/filterx/filterx-format-data/format-rfc5424.md#sdata" >}}) accepts such a dictionary, or a string.
     - [`random()`]({{< relref "/filterx/function-reference.md#random" >}}) and [`random_bool()`]({{< relref "/filterx/function-reference.md#random-bool" >}}) return random values for per-message decisions, for example, to sample the messages, or to spread them across destinations.
+- New TLS options:
+    - The [`server-name()`]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#tls-options-server-name" >}}) option of the `network()`, `syslog()`, and `tcp()` destinations sets the name that {{< product >}} verifies the certificate of the server against, so a destination can connect to an IP address or a load balancer, and still verify the name of the server.
+    - The [`ssl-options(partial-chain)`]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#tls-options-ssl-options-verification" >}}) option makes every certificate in `ca-file()` and `ca-dir()` a trust anchor, for example, an intermediate CA.
 
 ### Breaking changes
 
