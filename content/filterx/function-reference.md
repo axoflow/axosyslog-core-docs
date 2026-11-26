@@ -346,11 +346,23 @@ Usage: `${MESSAGE} = format_leef(my_dictionary);`
 
 For details, see {{% xref "/filterx/filterx-format-data/format-leef.md" %}}.
 
+## format_sdata {#format-sdata}
+
+Available in {{< product >}} 4.30 and later.
+
+Formats a dictionary as the structured data (SDATA) part of an RFC5424 message, for example, `format_sdata({"meta@32473": {"sequenceId": 42}})` returns `[meta@32473 sequenceId="42"]`.
+
+Usage: `format_sdata(<dictionary>)`
+
+For details, see [`format_sdata()`]({{< relref "/filterx/filterx-sdata/_index.md#format-sdata" >}}).
+
 ## format_syslog_5424 {#format_syslog_5424}
 
 Available in {{< product >}} 4.21 and later.
 
 Formats data as an [RFC5424 (IETF-syslog)]({{< relref "/chapter-concepts/concepts-message-structure/concepts-message-ietfsyslog/" >}}) syslog message.
+
+In version 4.30 and later, `format_syslog_5424()` adds the structured data of the message only if you set the `sdata` argument, for example, `sdata=$SDATA`.
 
 For details, see {{% xref "/filterx/filterx-format-data/format-rfc5424.md" %}}.
 
@@ -852,6 +864,56 @@ log {
   };
 };
 ```
+
+## random {#random}
+
+Available in {{< product >}} 4.30 and later.
+
+Usage: `random()` or `random(<n>)`
+
+Returns a random number:
+
+- `random()` returns a double between 0 and 1. It can return 0, but never 1.
+- `random(n)` returns an integer between 0 and `n-1`. `n` must be a positive integer, otherwise `random()` returns an error.
+
+For example, to assign every message to one of three groups at random. You can route the messages later by filtering on `$destination`:
+
+```shell
+switch (random(3)) {
+  case 0:
+    $destination = "first";
+    break;
+  case 1:
+    $destination = "second";
+    break;
+  default:
+    $destination = "third";
+    break;
+};
+```
+
+`random()` uses a fast generator for every thread. Don't use it for security purposes: its values are not cryptographically secure.
+
+## random_bool {#random-bool}
+
+Available in {{< product >}} 4.30 and later.
+
+Usage: `random_bool()` or `random_bool(<probability>)`
+
+Returns `true` with the specified probability, and `false` otherwise. The probability must be a number between `0` and `1`. Default value: `0.5`.
+
+- If the probability is a literal outside this range, the configuration is invalid.
+- If the probability is a variable or an expression outside this range, `random_bool()` returns an error.
+
+Use it to process only a part of the messages, for example, to keep about 1% of the messages:
+
+```shell
+if (not random_bool(0.01)) {
+  drop;
+};
+```
+
+Like [`random()`](#random), `random_bool()` isn't cryptographically secure.
 
 ## regexp_search {#regexp-search}
 

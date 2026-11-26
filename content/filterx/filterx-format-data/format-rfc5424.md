@@ -20,7 +20,8 @@ format_syslog_5424(
   host=<variable-or-expression>,
   program=<variable-or-expression>,
   pid=<variable-or-expression>,
-  msgid=<variable-or-expression>
+  msgid=<variable-or-expression>,
+  sdata=<variable-or-expression>
 )
 ```
 
@@ -42,16 +43,36 @@ format_syslog_5424(
     );
  -->
 
-If you want to include SDATA in the message, set the [`SDATA` macro]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-macros/_index.md#macro-sdata" >}}).
+## Structured data (SDATA) in the message {#sdata}
 
-For example:
+Available in {{< product >}} 4.30 and later.
+
+The `sdata` argument sets the structured data (SDATA) part of the message:
+
+- If it's a string, {{< product >}} uses it as the structured data without changes. To keep the structured data of the original message, use `sdata=$SDATA`.
+- If it's a dictionary, {{< product >}} formats it the same way as the [`format_sdata()` function]({{< relref "/filterx/filterx-sdata/_index.md#format-sdata" >}}). For example, `sdata={"meta@32473": {"sequenceId": 42}}` becomes `[meta@32473 sequenceId="42"]`.
+- If it's not set, it's an empty string, or {{< product >}} can't evaluate it, the structured data of the message is `-`.
+
+{{< warning >}}
+In {{< product >}} 4.29 and earlier, `format_syslog_5424()` added the structured data of the processed message (the `${SDATA}` macro) to the formatted message. In version 4.30 and later, it doesn't. To keep the structured data, add the `sdata=$SDATA` argument.
+{{< /warning >}}
+
+## Example: Format an RFC5424 message {#example}
+
+The following call formats a static message:
 
 ```shell
 format_syslog_5424("My static message text", timestamp=datetime(1765146872.0), host="host-value", program="prog-value", pid="5424", msgid="1234");
 ```
 
-Becomes:
+The result is:
 
 ```shell
 <13>1 2025-12-07T22:34:32.000000+00:00 host-value prog-value 5424 1234 - My static message text
+```
+
+To keep the structured data of the original message, add the `sdata=$SDATA` argument:
+
+```shell
+$MESSAGE = format_syslog_5424($MESSAGE, sdata=$SDATA);
 ```
