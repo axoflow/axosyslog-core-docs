@@ -2,6 +2,7 @@
 title: "TLS options"
 weight:  900
 plain_tls: true
+description: "Reference of the TLS options of the network() and syslog() drivers: certificates, CAs, protocol versions, ciphers, and certificate verification."
 ---
 <!-- DISCLAIMER: This file is based on the syslog-ng Open Source Edition documentation https://github.com/balabit/syslog-ng-ose-guides/commit/2f4a52ee61d1ea9ad27cb4f3168b95408fddfdf2 and is used under the terms of The syslog-ng Open Source Edition Documentation License. The file has been modified by Axoflow. -->
 
@@ -219,6 +220,34 @@ Example configuration:
     };
 ```
 
+## server-name() {#tls-options-server-name}
+
+|                  |          |
+| ---------------- | -------- |
+| Accepted values: | string   |
+| Default:         | empty string |
+
+Available in {{% param "product.abbrev" %}} 4.30 and later.
+
+*Description:* The name that {{% param "product.abbrev" %}} compares with the certificate of the server. You can use this option only in destinations: `network()`, `syslog()`, and `tcp()`. Use it if the destination connects to an IP address or to a load balancer, but the certificate of the server contains its name.
+
+By default, {{% param "product.abbrev" %}} verifies the certificate against the address set in the destination. If you set `server-name()`, {{% param "product.abbrev" %}} verifies the certificate against this name instead. This also applies to the [failover servers]({{< relref "/chapter-destinations/concepts-failover/_index.md" >}}). If you also set [`sni(yes)`](#tls-options-sni), {{% param "product.abbrev" %}} sends this name in the SNI extension. An empty string means that the option isn't set.
+
+For example:
+
+```shell
+destination d_tls_by_ip {
+    network(
+        "10.0.0.5" port(6514)
+        transport("tls")
+        tls(
+            ca-file("/etc/syslog-ng/ca.d/ca.crt")
+            server-name("logs.example.com")
+        )
+    );
+};
+```
+
 ## sigalgs() {#tls-options-sigalgs}
 
 |                  |                                 |
@@ -242,6 +271,7 @@ Example configuration:
 
 Available in {{% param "product.abbrev" %}} 3.24 and newer.
 
+If you also set the [`server-name()`](#tls-options-server-name) option, {{% param "product.abbrev" %}} sends the value of `server-name()` instead of the address of the destination (available in {{% param "product.abbrev" %}} 4.30 and later).
 
 ### Example: Using Server Name Indication
 
@@ -264,54 +294,92 @@ The following destination sends the hostname of its destination during the TLS h
 
 ## ssl-options() {#tls-options-ssl-options}
 
-|                  |                                                                                                                    |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------ |
-| Accepted values: | comma-separated list of the following options: `no-sslv2`, `no-sslv3`, `no-tlsv1`, `no-tlsv11`, `no-tlsv12`, `no-tlsv13`, `none`, `ignore-hostname-mismatch`, `ignore-validity-period` |
-| Default:         | no-sslv2                                                                                                           |
+|                  |                                                                    |
+| ---------------- | ------------------------------------------------------------------ |
+| Accepted values: | comma-separated list of the values described in the following sections |
+| Default:         | `no-sslv2`                                                         |
 
-Available in {{% param "product.abbrev" %}} 3.7 and newer.
+Available in {{% param "product.abbrev" %}} 3.7 and later.
 
-*Description:* Sets the specified options of the SSL/TLS protocols. You can use it to disable specific protocol versions, and set other options. Note that disabling a newer protocol version (for example, TLSv1.1) does not automatically disable older versions of the same protocol (for example, TLSv1.0). For example, use the following option to permit using only TLSv1.1 or newer:
+*Description:* Sets options of the SSL/TLS protocols. You can use it to disable specific protocol versions, to relax the verification of the certificates, and to accept connections that the peer closes without notification. You can combine the values, for example, `ssl-options(no-sslv2, no-sslv3, ignore-validity-period)`.
 
-```shell
-   ssl-options(no-sslv2, no-sslv3, no-tlsv1)
-```
+### Restrict the TLS protocol versions {#tls-options-ssl-options-protocols}
 
-Using `ssl-options(none)` means that {{% param "product.abbrev" %}} does not specify any restrictions on the protocol used. However, in this case, the underlying OpenSSL library can restrict the available protocols, for example, certain OpenSSL versions automatically disable SSLv2.
+- `no-sslv2`, `no-sslv3`, `no-tlsv1`, `no-tlsv11`, `no-tlsv12`, `no-tlsv13`: Disable the specified protocol version.
+- `none`: {{% param "product.abbrev" %}} doesn't restrict the protocol versions. However, the OpenSSL library can restrict the available protocols, for example, certain OpenSSL versions automatically disable SSLv2.
 
-By specifying `ignore-hostname-mismatch`, you can ignore the subject name of a certificate during the validation process. This means that {{% param "product.abbrev" %}} checks only that the certificate itself is trusted by the current set of trust anchors (e.g. trusted CAs), and ignores the mismatch between the targeted hostname and the certificate subject. `ignore-hostname-mismatch` is available in {{% param "product.abbrev" %}} 4.4 and newer.
+Disabling a newer protocol version (for example, TLSv1.1) doesn't disable the older versions (for example, TLSv1.0). To allow only a protocol version and the newer ones, use the [`ssl-version()`](#ssl-version) option instead, for example, `ssl-version("tlsv1_2")`.
 
-By specifying `ignore-validity-period`, you can ignore the you can ignore the validity periods of certificates during the certificate validation process. `ignore-validity-period` is available in {{% param "product.abbrev" %}} 4.5 and newer.
-
-### Example: Using ssl-options
-
-The following destination explicitly disables SSL and TLSv1.0
+The following destination disables SSL and TLSv1.0:
 
 ```shell
-   destination demo_tls_destination {
-        network(
-             "172.16.177.147" port(6514)
-            transport("tls")
-            tls(
-                ca_dir("/etc/syslog-ng/ca.d")
-                key-file("/etc/syslog-ng/cert.d/clientkey.pem")
-                cert-file("/etc/syslog-ng/cert.d/clientcert.pem")
-                ssl-options(no-sslv2, no-sslv3, no-tlsv1)
-            )
-        );
-    };
+destination demo_tls_destination {
+    network(
+        "192.0.2.10" port(6514)
+        transport("tls")
+        tls(
+            ca-dir("/etc/syslog-ng/ca.d")
+            key-file("/etc/syslog-ng/cert.d/clientkey.pem")
+            cert-file("/etc/syslog-ng/cert.d/clientcert.pem")
+            ssl-options(no-sslv2, no-sslv3, no-tlsv1)
+        )
+    );
+};
 ```
 
-## ssl-version()
+### Relax the verification of certificates {#tls-options-ssl-options-verification}
 
-|          |                                |
-| -------- | ------------------------------ |
-| Type:    | string                         |
-| Default: | None, uses the libcurl default |
+- `ignore-hostname-mismatch`: {{% param "product.abbrev" %}} ignores the subject name of the certificate during the validation. It checks only that the certificate is trusted by the current set of trust anchors (for example, the trusted CAs), and ignores the mismatch between the target hostname and the subject of the certificate. Available in {{% param "product.abbrev" %}} 4.4 and later.
+- `ignore-validity-period`: {{% param "product.abbrev" %}} ignores the validity periods of the certificates during the validation. Available in {{% param "product.abbrev" %}} 4.5 and later.
+- `partial-chain`: Every certificate in the [`ca-file()`](#ca-file) and [`ca-dir()`](#ca-dir) options becomes a trust anchor, also if it isn't a self-signed root certificate. For example, you can trust an intermediate CA without trusting its root CA. {{% param "product.abbrev" %}} stops the verification at this certificate, so it doesn't check the validity, the revocation (CRL), and the name constraints of the certificates above it. You can use `partial-chain` in sources and destinations. Available in {{% param "product.abbrev" %}} 4.30 and later.
 
-Available in {{% param "product_name" %}} version 4.5.0 and later.
+For example, the following destination trusts an intermediate CA:
 
-*Description:* Specifies the permitted SSL/TLS version. Possible values: `sslv2`, `sslv3`, `tlsv1`, `tlsv1_0`, `tlsv1_1`, `tlsv1_2`, `tlsv1_3`.
+```shell
+destination d_intermediate_ca {
+    network(
+        "logs.example.com" port(6514)
+        transport("tls")
+        tls(
+            ca-file("/etc/syslog-ng/ca.d/intermediate.crt")
+            ssl-options(partial-chain)
+        )
+    );
+};
+```
+
+{{< warning >}}
+These values weaken the verification of the certificates. For example, with `partial-chain`, a revoked or expired certificate above the trust anchor doesn't cause an error. Use them only if you can't fix the certificates, for example, if you can't add the root CA to `ca-file()` or `ca-dir()`.
+{{< /warning >}}
+
+### Accept connections closed without close_notify {#tls-options-ssl-options-unexpected-eof}
+
+`ignore-unexpected-eof`: {{% param "product.abbrev" %}} accepts a connection that the peer closes without sending the TLS `close_notify` alert. Some TLS implementations don't send this alert. Without this option, {{% param "product.abbrev" %}} reports an error, for example: `error:0A000126:SSL routines::unexpected eof while reading`. `ignore-unexpected-eof` requires OpenSSL 3.0 or newer.
+
+{{< warning >}}
+With `ignore-unexpected-eof`, {{% param "product.abbrev" %}} can't detect if an attacker truncates the connection. Use it only if all of the following are true:
+
+- {{% param "product.abbrev" %}} logs the `unexpected eof while reading` error,
+- you can't fix the peer that doesn't send the `close_notify` alert, and
+- the protocol of the connection detects or prevents truncation, for example, it acknowledges the messages.
+{{< /warning >}}
+
+## ssl-version() {#ssl-version}
+
+|                  |                                |
+| ---------------- | ------------------------------ |
+| Accepted values: | `sslv3`, `tlsv1` (or `tlsv1_0`), `tlsv1_1`, `tlsv1_2`, `tlsv1_3` |
+| Default:         | None, the OpenSSL library decides |
+
+Available in {{% param "product.abbrev" %}} 4.5 and later.
+
+*Description:* The oldest SSL/TLS protocol version that {{% param "product.abbrev" %}} accepts. {{% param "product.abbrev" %}} also accepts the newer versions. For example, to accept only TLS 1.2 and TLS 1.3:
+
+```shell
+ssl-version("tlsv1_2")
+```
+
+You can use `ssl-version()` in sources and destinations. To disable specific protocol versions, use the [`ssl-options()`](#tls-options-ssl-options-protocols) option.
 
 ## trusted-dn() {#tls-options-trusted-dn}
 
