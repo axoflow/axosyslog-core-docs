@@ -15,6 +15,14 @@ Before you upgrade, check the deprecations and breaking changes of every version
 - The new `splunk-s2s` transport of the `network()` source and destination implements the Splunk-to-Splunk (S2S) protocol. The [source]({{< relref "/chapter-sources/splunk-s2s/_index.md" >}}) receives data from Splunk Universal and Heavy Forwarders, and the [destination]({{< relref "/chapter-destinations/splunk-s2s/_index.md" >}}) sends data to Splunk indexers the same way as a forwarder does.
 - The new experimental [`destination-failover` log path flag]({{< relref "/chapter-routing-filters/logpath/destination-failover/_index.md" >}}) sends messages over an ordered list of alternative destinations. While a destination is unreachable, the messages go to the next alternative, and they return to the first one when it becomes available again. The alternatives can use different destination drivers, for example, a remote server and a local file.
 - The new [`geoip()` FilterX function]({{< relref "/filterx/filterx-geoip/_index.md" >}}) looks up the country, city, location, or ASN of an IP address in a GeoIP2, GeoLite2, or DB-IP database. It returns typed FilterX values, and can return a whole record as a dictionary. Instead of the path of a database file, you can select the database by its kind (`country`, `city`, or `asn`), which also works in the [`geoip2()` parser]({{< relref "/chapter-enrich-data/geoip2-parser/geoip2-parser-options/_index.md#geoip2-parser-kind" >}}) and the `$(geoip2)` template function.
+- New FilterX functions:
+    - [`format_sdata()`]({{< relref "/filterx/filterx-sdata/_index.md#format-sdata" >}}) formats a dictionary as RFC5424 structured data. The new `sdata` argument of [`format_syslog_5424()`]({{< relref "/filterx/filterx-format-data/format-rfc5424.md#sdata" >}}) accepts such a dictionary, or a string.
+    - [`random()`]({{< relref "/filterx/function-reference.md#random" >}}) and [`random_bool()`]({{< relref "/filterx/function-reference.md#random-bool" >}}) return random values for per-message decisions, for example, to sample the messages, or to spread them across destinations.
+
+### Breaking changes
+
+- [`format_syslog_5424()`]({{< relref "/filterx/filterx-format-data/format-rfc5424.md#sdata" >}}) doesn't add the structured data of the message (the `${SDATA}` macro) to the formatted message any more. To keep it, add the `sdata=$SDATA` argument.
+- In FilterX, the [`break` statement]({{< relref "/filterx/filterx-conditional/_index.md#break" >}}) now leaves the innermost `switch` block, also from a nested block of a case. A `break` outside a `switch` block is a configuration error.
 
 ## Version 4.29 (2026-10-07)
 
