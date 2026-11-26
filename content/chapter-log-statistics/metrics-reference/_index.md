@@ -55,7 +55,7 @@ The following list shows the metrics available in {{< product >}}.
 
 ## events_allocated_bytes
 
-*Description*: The total amount of memory used by log messages in {{< product >}}.
+*Description*: The total amount of memory used by log messages in {{< product >}}. In version 4.30 and later, this metric is available only at [`stats(level(3))`]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-stats-level" >}}).
 
 ## filtered_events_total
 
@@ -98,6 +98,8 @@ syslogng_input_transport_errors_total{address="127.0.0.1:5515",driver="syslog",i
 
 *Description*: The number of messages the [`internal()`]({{< relref "/chapter-sources/configuring-sources-internal/_index.md" >}}) source has queued, processed, or dropped.
 
+In version 4.30 and later, this metric also has a series for every syslog severity (`severity` label, for example, `err`, `warning`, `notice`, `info`, `debug`), which counts every message that {{< product >}} logs about itself. A rise in the `err` or `warning` series shows when {{< product >}} started to log errors, also for failures that have no dedicated counter.
+
 ## io_worker_latency_seconds
 
 *Description*: Shows how overloaded the IO workers of {{< product >}} are.
@@ -113,6 +115,22 @@ syslogng_input_transport_errors_total{address="127.0.0.1:5515",driver="syslog",i
 ## last_successful_config_reload_timestamp_seconds
 
 *Description*: The date when the {{< product >}} configuration was last reloaded successfully.
+
+## lumberjack_acknowledgements_total
+
+*Description*: The number of acknowledgements that the [`lumberjack()` transport]({{< relref "/chapter-sources/lumberjack/_index.md#metrics" >}}) sent to the senders. Available in {{< product >}} 4.30 and later.
+
+## lumberjack_frames_dropped_total
+
+*Description*: The number of events that the [`lumberjack()` transport]({{< relref "/chapter-sources/lumberjack/_index.md#metrics" >}}) dropped because they were larger than `log-msg-size()` (`reason="too_large"`). Available in {{< product >}} 4.30 and later.
+
+## lumberjack_frames_total
+
+*Description*: The number of events that the [`lumberjack()` transport]({{< relref "/chapter-sources/lumberjack/_index.md#metrics" >}}) received, by the version of the protocol (`version` label: `1` or `2`). Available in {{< product >}} 4.30 and later.
+
+## lumberjack_protocol_errors_total
+
+*Description*: The number of connections that the [`lumberjack()` transport]({{< relref "/chapter-sources/lumberjack/_index.md#metrics" >}}) closed because of a protocol error, by the type of the error (`reason` label). Available in {{< product >}} 4.30 and later.
 
 ## mainloop_io_worker_roundtrip_latency_seconds
 
@@ -150,6 +168,15 @@ syslogng_input_transport_errors_total{address="127.0.0.1:5515",driver="syslog",i
 
 *Description*: For destinations that use batching, it shows the number of batches that were sent because of timeout (either `batch-timeout()` or `batch-idle-timeout()` expired).
 
+## output_connection_failures_total
+
+*Description*: The number of failed or lost connections of a destination, by the class of the failure (`reason` label). Available in {{< product >}} 4.30 and later.
+
+- Socket-based destinations (`network()`, `syslog()`, `tcp()`, `unix-stream()`, and so on) report `refused`, `timeout`, `no-route`, `reset`, `eof`, `resolve`, or `error`.
+- The `http()` destination reports `resolve`, `connect`, `timeout`, `reset`, `tls`, or `error`. This metric also counts the `http()` requests that failed before a response arrived.
+
+The [`output_unreachable`](#output_unreachable) metric shows whether a destination is currently unreachable, this metric shows why.
+
 ## output_event_bytes_total
 
 *Description*: Log messages sent to each destination, measured in bytes.
@@ -172,7 +199,9 @@ syslogng_input_transport_errors_total{address="127.0.0.1:5515",driver="syslog",i
 
 ## output_grpc_requests_total
 
-*Description*: The total number of gRPC requests.
+*Description*: The total number of gRPC requests, by the response code of the server (`response_code` label).
+
+In version 4.30 and later, the [`arrow-flight()`]({{< relref "/chapter-destinations/arrow-flight/_index.md" >}}) destination also reports this metric. It counts every batch write, and its response codes are the status codes of Arrow Flight, for example, `ok`, `unavailable`, or `unauthenticated`.
 
 ## output_http_requests_total
 

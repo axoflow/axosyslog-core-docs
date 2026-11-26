@@ -54,7 +54,7 @@ The `cat` command has the following options:
 
     Display version information.
 
-## Example: The cat command
+### Example: The cat command
 
 ```shell
 ./dqtool cat ../var/syslog-ng-00000.qf
@@ -99,7 +99,7 @@ The `relocate` command has the following options:
 
     The path to the {{% param "product.abbrev" %}} persist file. The `relocate` command automatically updates the entries of the disk-buffer files in the persist file.
 
-## Examples
+### Examples: The relocate command
 
 Relocate a single queue file:
 

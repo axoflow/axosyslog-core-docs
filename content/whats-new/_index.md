@@ -9,7 +9,7 @@ weight: 10
 
 Before you upgrade, check the deprecations and breaking changes of every version between your current version and the target version. For the upgrade steps, see {{% xref "/install/upgrade-axosyslog/_index.md" %}}.
 
-## Version 4.30
+## Version 4.30 (2026-11-27)
 
 - The new [`lumberjack()` transport]({{< relref "/chapter-sources/lumberjack/_index.md" >}}) of the `network()` source receives events over the Lumberjack (Beats) protocol, so Filebeat, the other Beats, and Logstash can send their events to {{< product >}} by pointing their Logstash output at it.
 - The new `splunk-s2s` transport of the `network()` source and destination implements the Splunk-to-Splunk (S2S) protocol. The [source]({{< relref "/chapter-sources/splunk-s2s/_index.md" >}}) receives data from Splunk Universal and Heavy Forwarders, and the [destination]({{< relref "/chapter-destinations/splunk-s2s/_index.md" >}}) sends data to Splunk indexers the same way as a forwarder does.
@@ -29,11 +29,27 @@ Before you upgrade, check the deprecations and breaking changes of every version
 - The new [`$(bucket)` template function]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md#template-function-bucket" >}}) returns a stable bucket number for its values, so you can distribute the messages among several log paths, for example, by host.
 - The template functions that use value-pairs, for example, [`format-json`]({{< relref "/chapter-manipulating-messages/customizing-message-format/reference-template-functions/_index.md#template-function-format-json" >}}), now accept the `"key" => "value"` syntax.
 - The gRPC-based sources, for example, the [`opentelemetry()` source]({{< relref "/chapter-sources/opentelemetry/_index.md#tls" >}}), reload their TLS key and certificates when you reload the configuration, without restarting the gRPC server.
+- The new, experimental [`filterx-tool`]({{< relref "/app-man-syslog-ng/filterx-tool.1.md" >}}) command-line tool checks the syntax of FilterX scripts, and prints their abstract syntax tree.
+- [`syslog-ng-ctl reload`]({{< relref "/app-man-syslog-ng/syslog-ng-ctl.1.md#syslog-ng-ctl-reload" >}}) now prints the error if the new configuration has a syntax error or can't be initialized.
+- The new [`stats(tag-stats())`]({{< relref "/chapter-global-options/reference-options/_index.md#global-option-stats-tag-stats" >}}) global option enables or disables the per-tag counters independently of `stats(level())`.
+- New and extended metrics:
+    - [`output_connection_failures_total`]({{< relref "/chapter-log-statistics/metrics-reference/_index.md#output_connection_failures_total" >}}) counts the failed and lost connections of the socket-based and `http()` destinations by reason.
+    - [`internal_events_total`]({{< relref "/chapter-log-statistics/metrics-reference/_index.md#internal_events_total" >}}) counts the internal messages of {{< product >}} by severity.
+    - The `arrow-flight()` destination reports the [`output_grpc_requests_total`]({{< relref "/chapter-log-statistics/metrics-reference/_index.md#output_grpc_requests_total" >}}) metric.
+    - The `lumberjack()` transport has its own [metrics]({{< relref "/chapter-sources/lumberjack/_index.md#metrics" >}}).
+- Performance improvements:
+    - Lower CPU usage when acknowledging messages, and lower latency for memory queues with a large `log-fetch-limit()`.
+    - Better throughput with several source threads, and when log paths fork and modify messages: {{< product >}} frees the messages in the thread that allocated them. As a result, the [`events_allocated_bytes`]({{< relref "/chapter-log-statistics/metrics-reference/_index.md#events_allocated_bytes" >}}) metric is available only at `stats(level(3))`.
+    - The `network()`, `syslog()`, `file()`, `pipe()`, `program()`, and `stdout()` destinations use less CPU. `pipe()`, `program()`, and `stdout()` now write up to `flush-lines()` messages at once, like `file()`.
+    - Lower per-message overhead when resolving `${HOST_FROM}`, faster `syslog-ng-ctl stats prometheus` and `stats csv` queries on busy hosts, and `loggen` uses much less CPU.
 
 ### Breaking changes
 
 - [`format_syslog_5424()`]({{< relref "/filterx/filterx-format-data/format-rfc5424.md#sdata" >}}) doesn't add the structured data of the message (the `${SDATA}` macro) to the formatted message any more. To keep it, add the `sdata=$SDATA` argument.
 - In FilterX, the [`break` statement]({{< relref "/filterx/filterx-conditional/_index.md#break" >}}) now leaves the innermost `switch` block, also from a nested block of a case. A `break` outside a `switch` block is a configuration error.
+- The histogram buckets in the output of [`syslog-ng-ctl stats prometheus`]({{< relref "/app-man-syslog-ng/syslog-ng-ctl.1.md" >}}) are now cumulative, as Prometheus expects. If your dashboards or alerts work around the old values, remove the workaround after upgrading.
+
+For a list of bugfixes, see the [GitHub release page](https://github.com/axoflow/axosyslog/releases/tag/axosyslog-4.30.0).
 
 ## Version 4.29 (2026-10-07)
 

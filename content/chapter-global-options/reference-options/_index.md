@@ -720,6 +720,25 @@ Possible values:
 - `no`: Disable syslog stats.
 - `auto`: Use the setting of the old [`stats(level())` option](#global-option-stats-level).
 
+### tag-stats() {#global-option-stats-tag-stats}
+
+|                  |        |
+| ---------------- | ------ |
+| Accepted values: | `yes`, `no`, `auto` |
+| Default:         | `auto` |
+
+Available in {{% param "product.abbrev" %}} 4.30 and later.
+
+*Description:* Controls the [`tagged_events_total`]({{< relref "/chapter-log-statistics/metrics-reference/_index.md#tagged_events_total" >}}) metric, which counts the messages that have a specific [tag]({{< relref "/chapter-routing-filters/filters/tagging-messages/_index.md" >}}), separately for every tag. The metric appears in every statistics output, for example, in the output of the [`syslog-ng-ctl stats prometheus`]({{< relref "/app-man-syslog-ng/syslog-ng-ctl.1.md" >}}) command.
+
+Possible values:
+
+- `yes`: Enable the tag counters at every [`stats(level())`](#global-option-stats-level).
+- `no`: Disable the tag counters.
+- `auto`: Enable the tag counters only at `stats(level(3))`. This is how earlier versions worked.
+
+Use `yes` to get the tag counters without the other counters of `stats(level(3))`, or `no` to disable them at `stats(level(3))`.
+
 ## stats-freq()
 
 Deprecated legacy option. Use [`stats(freq())`](#global-option-stats-freq) instead.
