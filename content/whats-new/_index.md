@@ -12,6 +12,7 @@ Before you upgrade, check the deprecations and breaking changes of every version
 ## Version 4.30
 
 - The new [`lumberjack()` transport]({{< relref "/chapter-sources/lumberjack/_index.md" >}}) of the `network()` source receives events over the Lumberjack (Beats) protocol, so Filebeat, the other Beats, and Logstash can send their events to {{< product >}} by pointing their Logstash output at it.
+- The new `splunk-s2s` transport of the `network()` source and destination implements the Splunk-to-Splunk (S2S) protocol. The [source]({{< relref "/chapter-sources/splunk-s2s/_index.md" >}}) receives data from Splunk Universal and Heavy Forwarders, and the [destination]({{< relref "/chapter-destinations/splunk-s2s/_index.md" >}}) sends data to Splunk indexers the same way as a forwarder does.
 
 ## Version 4.29 (2026-10-07)
 

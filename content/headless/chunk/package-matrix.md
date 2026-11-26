@@ -17,6 +17,7 @@ The following table lists the {{% param "product.name" %}} modules, the configur
 | SQL | `sql()` | {{< if deb >}}`axosyslog-mod-sql`{{< /if >}}{{< if rpm >}}`axosyslog-sql`{{< /if >}} |
 | Redis | `redis()` | {{< if deb >}}`axosyslog-mod-redis`{{< /if >}}{{< if rpm >}}`axosyslog-redis`{{< /if >}} |
 | Riemann | `riemann()` | {{< if deb >}}`axosyslog-mod-riemann`{{< /if >}}{{< if rpm >}}`axosyslog-riemann`{{< /if >}} |
+| Splunk S2S | The `splunk-s2s` transport, to receive data from Splunk forwarders and send data to Splunk indexers | {{< if deb >}}`axosyslog-mod-splunk-s2s`{{< /if >}}{{< if rpm >}}`axosyslog-splunk-s2s`{{< /if >}} |
 | SMTP | `smtp()` | {{< if deb >}}`axosyslog-mod-smtp`{{< /if >}}{{< if rpm >}}`axosyslog-smtp`{{< /if >}} |
 | SNMP | `snmp()`, `snmptrapd-parser()`, and the `snmptrap()` SCL source | {{< if deb >}}`axosyslog-mod-snmp`{{< /if >}}{{< if rpm >}}`axosyslog-afsnmp`{{< /if >}} |
 | GeoIP2 | `geoip2()` parser and the `$(geoip2)` template function | {{< if deb >}}`axosyslog-mod-geoip2`{{< /if >}}{{< if rpm >}}`axosyslog-geoip`{{< /if >}} |

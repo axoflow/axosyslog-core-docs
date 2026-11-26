@@ -11,6 +11,11 @@ The `splunk-hec()` source receives messages from clients that send data to the [
 
 To send messages to Splunk, use the [`splunk-hec-event()` destination]({{< relref "/chapter-destinations/syslog-ng-with-splunk/_index.md" >}}) instead.
 
+{{% param "product.name" %}} can receive data from Splunk clients in two ways:
+
+- The `splunk-hec()` source receives data from clients that send it over HTTP to the HTTP Event Collector (HEC).
+- The [`splunk-s2s` transport]({{< relref "/chapter-sources/splunk-s2s/_index.md" >}}) of the `network()` source receives data from Splunk Universal and Heavy Forwarders over the Splunk-to-Splunk (S2S) protocol, the protocol that forwarders use to send data to Splunk indexers.
+
 {{% alert title="Note" color="info" %}}
 This driver is a reusable configuration snippet. For details on such configuration snippets, see {{% xref "/chapter-configuration-file/large-configs/config-blocks/_index.md" %}}.
 {{% /alert %}}
