@@ -101,7 +101,7 @@ description = "Documentation for AxoSyslog, the scalable security data processor
   # and the fallback banner would print it. The switcher above the tree shows
   # "4.29 (current)" from data/versions.yaml, so the sidebar carries the version
   # twice; drop this param if the duplicate is unwanted.
-  version = "4.29.0"
+  version = "4.30.0"
   # Names the PDF edition (<product_name>-<version_tag>.pdf, see the theme's
   # pdf/file.html) and goes on its cover. Move it with `version`.
   version_tag = "4.29.0"
@@ -199,11 +199,11 @@ description = "Documentation for AxoSyslog, the scalable security data processor
 [params.product]
 name = "AxoSyslog"
 abbrev = "AxoSyslog"
-version = "4.29"
+version = "4.30"
 # techversion includes patch version number, needed for install/image commands
 # configversion is needed in the config file examples
-techversion = "4.29.0"
-configversion = "4.29"
+techversion = "4.30.0"
+configversion = "4.30"
 syslog-ng = "syslog-ng"
 selinux = "SELinux"
 apparmor = "AppArmor"
@@ -266,6 +266,6 @@ resampleFilter = "CatmullRom"
   # the release you are on. So on release: add " (current)" to the new version
   # here on main, and strip it from the outgoing version on its release branch
   # before that branch is republished.
-  body_attribute = 'data-pagefind-filter="section:4.29 (current)"'
+  body_attribute = 'data-pagefind-filter="section:4.30 (current)"'
   [cascade.target]
     path = '/**'
