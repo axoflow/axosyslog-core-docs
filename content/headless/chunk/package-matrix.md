@@ -20,7 +20,7 @@ The following table lists the {{% param "product.name" %}} modules, the configur
 | Splunk S2S | The `splunk-s2s` transport, to receive data from Splunk forwarders and send data to Splunk indexers | {{< if deb >}}`axosyslog-mod-splunk-s2s`{{< /if >}}{{< if rpm >}}`axosyslog-splunk-s2s`{{< /if >}} |
 | SMTP | `smtp()` | {{< if deb >}}`axosyslog-mod-smtp`{{< /if >}}{{< if rpm >}}`axosyslog-smtp`{{< /if >}} |
 | SNMP | `snmp()`, `snmptrapd-parser()`, and the `snmptrap()` SCL source | {{< if deb >}}`axosyslog-mod-snmp`{{< /if >}}{{< if rpm >}}`axosyslog-afsnmp`{{< /if >}} |
-| GeoIP2 | `geoip2()` parser and the `$(geoip2)` template function | {{< if deb >}}`axosyslog-mod-geoip2`{{< /if >}}{{< if rpm >}}`axosyslog-geoip`{{< /if >}} |
+| GeoIP2 | `geoip2()` parser, the `$(geoip2)` template function, and the `geoip()` FilterX function | {{< if deb >}}`axosyslog-mod-geoip2`{{< /if >}}{{< if rpm >}}`axosyslog-geoip`{{< /if >}} |
 | Java | `java()`. Only the HDFS Java module is shipped, the Java implementations of the Elasticsearch and HTTP destinations aren't. | {{< if deb >}}`axosyslog-mod-java`, `axosyslog-mod-java-common-lib`{{< /if >}}{{< if rpm >}}`axosyslog-java`{{< /if >}} |
 | HDFS | `hdfs()` | {{< if deb >}}`axosyslog-mod-hdfs` (also requires `axosyslog-mod-java` and `axosyslog-mod-java-common-lib`){{< /if >}}{{< if rpm >}}`axosyslog-java`{{< /if >}} |
 | Secure logging | `$(slog)` template function and the `slog*` command-line tools | {{< if deb >}}`axosyslog-mod-slog`{{< /if >}}{{< if rpm >}}`axosyslog-slog`{{< /if >}} |
