@@ -99,6 +99,48 @@ When `path()` resolves to different values for different messages, {{% param "pr
 
 {{% include-headless "chunk/option-destination-retries.md" %}}
 
+## response-action() {#response-action}
+
+|          |             |
+| -------- | ----------- |
+| Type:    | arrow list  |
+| Default: | see the list of results |
+
+Available in {{< product >}} 4.30 and later.
+
+*Description:* Sets how {{< product >}} handles the different results of the Arrow Flight server. The keys are Arrow status codes, not gRPC status codes: the Arrow Flight client converts the gRPC status of the server into an Arrow status, so several gRPC codes become the same Arrow code. For example:
+
+```shell
+arrow-flight(
+  url("grpc://localhost:8815")
+  path("logs")
+  schema("message" STRING => $MSG)
+  response-action(
+    invalid => disconnect
+    io-error => drop
+  )
+);
+```
+
+The supported results, the gRPC codes they include, and their default actions:
+
+| Result            | gRPC codes                                                                                                         | Default action |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------ | -------------- |
+| `io-error`        | `UNAVAILABLE`, `INTERNAL`, `ABORTED`, `DATA_LOSS`, `DEADLINE_EXCEEDED`, `PERMISSION_DENIED`, `UNAUTHENTICATED`      | `disconnect`   |
+| `cancelled`       | `CANCELLED`                                                                                                        | `disconnect`   |
+| `unknown-error`   | `UNKNOWN`, and every code that isn't listed in this table                                                         | `disconnect`   |
+| `invalid`         | `INVALID_ARGUMENT`, `RESOURCE_EXHAUSTED`, `FAILED_PRECONDITION`, `OUT_OF_RANGE`                                    | `drop`         |
+| `key-error`       | `NOT_FOUND`                                                                                                        | `drop`         |
+| `already-exists`  | `ALREADY_EXISTS`                                                                                                   | `drop`         |
+| `not-implemented` | `UNIMPLEMENTED`                                                                                                    | `drop`         |
+
+The available actions:
+
+- `disconnect`: {{< product >}} disconnects, waits for [`time-reopen()`]({{< relref "/chapter-global-options/reference-options/_index.md#time-reopen" >}}), reconnects, and retries the batch indefinitely.
+- `drop`: {{< product >}} drops the batch.
+- `retry`: {{< product >}} retries the batch [`retries()`](#retries) times, then drops it.
+- `success`: {{< product >}} considers the batch delivered.
+
 ## schema()
 
 |          |                |

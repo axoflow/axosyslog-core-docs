@@ -95,6 +95,44 @@ log non_otel_to_otel_tls {
 
 {{% include-headless "chunk/option-persist-name.md" %}}
 
+## prefix() {#prefix}
+
+|          |               |
+| -------- | ------------- |
+| Type:    | string        |
+| Default: | `.otel_raw`   |
+
+Available in {{< product >}} 4.30 and later.
+
+*Description:* The prefix of the name-value pairs that contain the OTLP payload to send. By default, the `opentelemetry()` destination reads the payload from the `${.otel_raw.*}` name-value pairs, which the [`opentelemetry()` source]({{< relref "/chapter-sources/opentelemetry/_index.md" >}}) sets. Use `prefix()` to send a record that you build yourself, for example, in FilterX:
+
+```shell
+log {
+  source(s_network);
+  filterx {
+    ${.axo.type} = "log";
+    ${.axo.log} = otel_logrecord({"body": $MESSAGE});
+  };
+  destination {
+    opentelemetry(
+      url("otel-collector.example.com:4317")
+      prefix(".axo")
+    );
+  };
+};
+```
+
+The destination reads the following name-value pairs:
+
+- `<prefix>.type`: the type of the record: `log`, `metric`, or `span`.
+- `<prefix>.log`, `<prefix>.metric`, or `<prefix>.span`: the record.
+- `<prefix>.resource` and `<prefix>.scope`: the resource and the scope of the record.
+- `<prefix>.resource_schema_url` and `<prefix>.scope_schema_url`: the schema URLs of the resource and the scope.
+
+The trailing dot is optional, so `prefix(".axo")` and `prefix(".axo.")` are the same. The leading dot keeps the name-value pairs out of the default scope of [`value-pairs()`]({{< relref "/chapter-concepts/concepts-value-pairs/_index.md" >}}), but it isn't required.
+
+The `prefix()` option doesn't affect the `${.otel.*}` name-value pairs, which set the individual fields of the record. The `axosyslog-otlp()` destination doesn't have this option.
+
 {{< include-headless "chunk/option-destination-grpc-response-action.md" >}}
 
 {{% include-headless "chunk/option-destination-retries.md" %}}
