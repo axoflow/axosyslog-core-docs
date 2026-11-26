@@ -491,11 +491,15 @@ To retrieve additional GeoIP information, see {{% xref "/chapter-enrich-data/geo
 ```shell
 $(geoip2 --database <path-to-geoip2-database-file>
     [ --field "registered_country.names.ru" ] ${HOST})
+$(geoip2 --kind <country|city|asn>
+    [ --field "registered_country.names.ru" ] ${HOST})
 ```
 
 {{< include-headless "chunk/prereq-package.md" "axosyslog-mod-geoip2" "axosyslog-geoip" >}}
 
 *Description:* This template function extracts specific fields from the mmdb database using the `--field` parameter. If you omit this parameter, it returns the 2-letter country code of any IPv4/IPv6 address or host.
+
+Available in {{< product >}} 4.30 and later: instead of the path of the database file, you can set the type of the database with the `--kind` option, for example, `$(geoip2 --kind asn --field autonomous_system_number ${HOST})`. You can't use the `--kind` and `--database` options together. For details on the database kinds, see the [`kind()` option of the `geoip2()` parser]({{< relref "/chapter-enrich-data/geoip2-parser/geoip2-parser-options/_index.md#geoip2-parser-kind" >}}). In FilterX, use the [`geoip()` function]({{< relref "/filterx/filterx-geoip/_index.md" >}}).
 
 
 {{% alert title="Note" color="info" %}}

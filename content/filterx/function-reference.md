@@ -378,6 +378,18 @@ Usage: `format_windows_eventlog_xml(input_dictionary)`
 
 For details, see {{% xref "/filterx/filterx-format-data/format-windows-eventlog-xml.md" %}}.
 
+## geoip {#geoip}
+
+{{< include-headless "chunk/prereq-package.md" "axosyslog-mod-geoip2" "axosyslog-geoip" >}}
+
+Available in {{< product >}} 4.30 and later.
+
+Looks up an IP address in a GeoIP2, GeoLite2, or DB-IP database, and returns the data of the address, for example, its country code, city, location, or ASN.
+
+Usage: `geoip(<ip-address>, kind="country", field="country.iso_code")` or `geoip(<ip-address>, database="<path-to-database>", field="country.iso_code")`
+
+For details, see {{% xref "/filterx/filterx-geoip/_index.md" %}}.
+
 ## get_sdata
 
 See {{% xref "/filterx/filterx-sdata/_index.md" %}}.
