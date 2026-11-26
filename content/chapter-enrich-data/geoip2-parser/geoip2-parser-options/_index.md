@@ -24,6 +24,25 @@ For example, to insert the `.geoip2` prefix, use the `prefix(.geoip2)` option. T
 
 {{% include-headless "chunk/option-parser-geoip.md" %}}
 
+## kind() {#geoip2-parser-kind}
+
+|           |                                                     |
+| --------- | --------------------------------------------------- |
+| Synopsis: | `kind("country")`, `kind("city")`, or `kind("asn")` |
+| Default:  |                                                     |
+
+Available in {{< product >}} 4.30 and later.
+
+*Description:* The type of the GeoIP database to use, instead of the path of the database file. You can't use the `kind()` and `database()` options together. For example:
+
+```shell
+parser p_geoip2 { geoip2("${HOST}" kind("city") prefix(".geoip2.")); };
+```
+
+If you set neither `kind()` nor `database()`, {{% param "product.abbrev" %}} uses the GeoLite2 City database from its default location.
+
+{{< include-headless "chunk/geoip-database-kinds.md" >}}
+
 {{< include-headless "chunk/option-source-internal.md" >}}
 
 {{% include-headless "chunk/option-parser-template.md" %}}
