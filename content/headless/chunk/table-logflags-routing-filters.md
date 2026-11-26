@@ -7,6 +7,12 @@
 
 This flag means that the source of the message is ignored, only the filters of the log path are taken into account when matching messages. A log statement using the `catchall` flag processes every message that arrives to any of the defined sources.
 
+### destination-failover
+
+Available in {{< product >}} 4.30 and later. Experimental.
+
+Sends the messages over an ordered list of alternative destinations: while a destination is unreachable, the messages go to the next alternative, and they return to the first one when it becomes available again. Separate the alternatives with embedded log statements that have `flags(final)`, or with an `if {} else {}` statement. For details, see {{% xref "/chapter-routing-filters/logpath/destination-failover/_index.md" %}}.
+
 ### drop-unmatched
 
 This flag means that the message is dropped along a log path when it does not match a filter or is discarded by a parser. Without using the `drop-unmatched` flag, {{% param "product.abbrev" %}} would continue to process the message along alternative paths.
