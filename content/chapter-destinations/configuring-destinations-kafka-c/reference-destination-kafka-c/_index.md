@@ -107,6 +107,21 @@ The syntax of the config() option is the following:
 {{< include-headless "chunk/option-hook-commands.md" >}}
 
 
+## kafka-logging() {#kafka-option-kafka-logging}
+
+|          |                                  |
+| -------- | -------------------------------- |
+| Type:    | `kafka`, `disabled`, or `trace`  |
+| Default: | `kafka`                          |
+
+Available in {{< product >}} 4.30 and later.
+
+*Description:* Sets what {{< product >}} does with the log messages of the librdkafka library:
+
+- `kafka`: {{< product >}} forwards the messages of librdkafka to its own log. It always logs the errors and the warnings. To log the notice and info messages, start {{< product >}} with the `-v` option. To log the debug messages, use the `-d` option.
+- `disabled`: {{< product >}} disables the logging of librdkafka.
+- `trace`: {{< product >}} logs every message of librdkafka at the trace level.
+
 ## key() {#kafka-option-key}
 
 |          |              |

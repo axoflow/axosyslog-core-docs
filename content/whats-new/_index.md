@@ -21,6 +21,10 @@ Before you upgrade, check the deprecations and breaking changes of every version
 - New TLS options:
     - The [`server-name()`]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#tls-options-server-name" >}}) option of the `network()`, `syslog()`, and `tcp()` destinations sets the name that {{< product >}} verifies the certificate of the server against, so a destination can connect to an IP address or a load balancer, and still verify the name of the server.
     - The [`ssl-options(partial-chain)`]({{< relref "/chapter-encrypted-transport-tls/tlsoptions/_index.md#tls-options-ssl-options-verification" >}}) option makes every certificate in `ca-file()` and `ca-dir()` a trust anchor, for example, an intermediate CA.
+- New destination options:
+    - [`response-action()`]({{< relref "/chapter-destinations/arrow-flight/_index.md#response-action" >}}) of the `arrow-flight()` destination sets how {{< product >}} handles the different Arrow Flight results, for example, to drop or retry a batch instead of disconnecting.
+    - [`prefix()`]({{< relref "/chapter-destinations/opentelemetry/_index.md#prefix" >}}) of the `opentelemetry()` destination sets the name-value pairs that the OTLP payload is read from, so you can send a record that you built in FilterX.
+    - [`kafka-logging()`]({{< relref "/chapter-destinations/configuring-destinations-kafka-c/reference-destination-kafka-c/_index.md#kafka-option-kafka-logging" >}}) of the `kafka()` destination controls the log messages of the librdkafka library.
 
 ### Breaking changes
 
